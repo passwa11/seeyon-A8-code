@@ -17,26 +17,6 @@ layui.use(['table', 'layer', 'element'], function () {
     };
 
     //集团领导
-    // $.ajax({
-    //     type: 'get',
-    //     async: true,
-    //     url: (_ctxPath ? _ctxPath : '/seeyon') + "/rest/cap4/customFieldCtrl/batchPrint",
-    //     dataType: 'json',
-    //     data: {
-    //         //'formId': content.contentTemplateId,
-    //         // 'masterId': content.contentDataId,
-    //         //'fieldName': messageObj.id,
-    //         // 'subId': messageObj.recordId	// 增加此参数的传递，重复表控件才会有
-    //     },
-    //     contentType: 'application/json',
-    //     beforeSend: function () {
-    //
-    //     },
-    //     success: function (res) {
-    //
-    //     }
-    // });
-
     $.ajax({
         type:'GET',
         url:'/seeyon/ext/selectPeople.do?method=selectJtldEntity',
