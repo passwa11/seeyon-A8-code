@@ -31,30 +31,30 @@ public class JtldEntityManagerImpl implements JtldEntityManager {
     }
 
     @Override
-    public List<Map> selectJtldEntity() {
-        List<Map> list = getJtldEntityDao().selectJtldEntity();
+    public List<Map> selectJtldEntity(String name) {
+        List<Map> list = getJtldEntityDao().selectJtldEntity(name);
 //        JSONArray json = JSON.parseArray(JSON.toJSONString(list));
         return list;
     }
 
     @Override
-    public List<Map> selectFormmain0148() {
-        List<Map> list = getJtldEntityDao().selectFormmain0148();
+    public List<Map> selectFormmain0148(String name) {
+        List<Map> list = getJtldEntityDao().selectFormmain0148(name);
 //        JSONArray json = JSON.parseArray(JSON.toJSONString(list));
 
         return list;
     }
 
     @Override
-    public List<Map> selectFormmain0106() {
-        List<Map> list = getJtldEntityDao().selectFormmain0106();
+    public List<Map> selectFormmain0106(String name) {
+        List<Map> list = getJtldEntityDao().selectFormmain0106(name);
 //        JSONArray json = JSON.parseArray(JSON.toJSONString(list));
         return list;
     }
 
     @Override
-    public List<Map> selectFormmain0087() {
-        List<Map> list = getJtldEntityDao().selectFormmain0087();
+    public List<Map> selectFormmain0087(String name) {
+        List<Map> list = getJtldEntityDao().selectFormmain0087(name);
 //        JSONArray json = JSON.parseArray(JSON.toJSONString(list));
         return list;
     }

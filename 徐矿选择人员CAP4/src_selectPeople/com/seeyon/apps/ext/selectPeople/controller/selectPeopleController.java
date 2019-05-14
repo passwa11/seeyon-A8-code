@@ -29,9 +29,15 @@ public class selectPeopleController extends BaseController {
     //集团领导
     public ModelAndView selectJtldEntity(HttpServletRequest request, HttpServletResponse response) {
         try {
-            List<Map> list = jtldEntityManager.selectJtldEntity();
+            String name=request.getParameter("name");
+            if(null ==name || name.equals("") ){
+                name="";
+            }
+            List<Map> list = jtldEntityManager.selectJtldEntity(name);
             Map<String, Object> map = new HashMap<>();
             map.put("code", 0);
+            map.put("message", "");
+            map.put("total", list.size());
             map.put("data", list);
             JSONObject json = new JSONObject(map);
             render(response, json.toJSONString());
@@ -45,9 +51,15 @@ public class selectPeopleController extends BaseController {
     //党政办
     public ModelAndView selectFormmain0148_policy(HttpServletRequest request, HttpServletResponse response) {
         try {
-            List<Map> list = jtldEntityManager.selectFormmain0148();
+            String name=request.getParameter("name");
+            if(null ==name || name.equals("") ){
+                name="";
+            }
+            List<Map> list = jtldEntityManager.selectFormmain0148(name);
             Map<String, Object> map = new HashMap<>();
             map.put("code", 0);
+            map.put("message", "");
+            map.put("total", list.size());
             map.put("data", list);
             JSONObject json = new JSONObject(map);
             render(response, json.toJSONString());
@@ -61,9 +73,15 @@ public class selectPeopleController extends BaseController {
     //机关单位
     public ModelAndView selectFormmain0106_organ(HttpServletRequest request, HttpServletResponse response) {
         try {
-            List<Map> list = jtldEntityManager.selectFormmain0106();
+            String name=request.getParameter("name");
+            if(null ==name || name.equals("") ){
+                name="";
+            }
+            List<Map> list = jtldEntityManager.selectFormmain0106(name);
             Map<String, Object> map = new HashMap<>();
             map.put("code", 0);
+            map.put("message", "");
+            map.put("total", list.size());
             map.put("data", list);
             JSONObject json = new JSONObject(map);
             render(response, json.toJSONString());
@@ -77,9 +95,15 @@ public class selectPeopleController extends BaseController {
     //基层单位
     public ModelAndView selectFormmain0087_baseUnits(HttpServletRequest request, HttpServletResponse response) {
         try {
-            List<Map> list = jtldEntityManager.selectFormmain0087();
+            String name=request.getParameter("name");
+            if(null ==name || name.equals("") ){
+                name="";
+            }
+            List<Map> list = jtldEntityManager.selectFormmain0087(name);
             Map<String, Object> map = new HashMap<>();
             map.put("code", 0);
+            map.put("message", "");
+            map.put("total", list.size());
             map.put("data", list);
             JSONObject json = new JSONObject(map);
             render(response, json.toJSONString());
