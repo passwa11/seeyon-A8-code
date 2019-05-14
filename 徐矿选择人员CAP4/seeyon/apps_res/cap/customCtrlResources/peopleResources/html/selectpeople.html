@@ -33,27 +33,54 @@
                     </ul>
                     <div class="layui-tab-content">
                         <div class="layui-tab-item layui-show">
-                            <form class="layui-form" action="" lay-filter="example">
-                                <div class="layui-form-item">
-                                    <div class="layui-input-inline">
-                                        <input type="text" name="username" lay-verify="title" autocomplete="off"
-                                               placeholder="姓名" class="layui-input">
-                                    </div>
-                                    <button class="layui-btn layui-btn-primary layui-btn-radius" id="queryPeople">查询</button>
+                            <div class="layui-form-item">
+                                <div class="layui-input-inline">
+                                    <input type="text" id="jtldInput" name="username" lay-verify="title"
+                                           autocomplete="off"
+                                           placeholder="姓名" class="layui-input">
                                 </div>
-                            </form>
+                                <button class="layui-btn layui-btn-primary layui-btn-radius" id="queryjtldPeople">查询
+                                </button>
+                            </div>
                             <table id="jtld" lay-filter="jtldFilter"></table>
 
                         </div>
                         <div class="layui-tab-item">
+                            <div class="layui-form-item">
+                                <div class="layui-input-inline">
+                                    <input type="text" id="dzbksInput" name="username" lay-verify="title"
+                                           autocomplete="off"
+                                           placeholder="党政办" class="layui-input">
+                                </div>
+                                <button class="layui-btn layui-btn-primary layui-btn-radius" id="querydzbksPeople">查询
+                                </button>
+                            </div>
                             <table id="dzbks" lay-filter="dzbksFilter"></table>
 
                         </div>
                         <div class="layui-tab-item">
+                            <div class="layui-form-item">
+                                <div class="layui-input-inline">
+                                    <input type="text" id="bsxxInput" name="username" lay-verify="title"
+                                           autocomplete="off"
+                                           placeholder="机关部门" class="layui-input">
+                                </div>
+                                <button class="layui-btn layui-btn-primary layui-btn-radius" id="querybsxxPeople">查询
+                                </button>
+                            </div>
                             <table id="bsxx" lay-filter="bsxxFilter"></table>
 
                         </div>
                         <div class="layui-tab-item">
+                            <div class="layui-form-item">
+                                <div class="layui-input-inline">
+                                    <input type="text" id="jcdwInput" name="username" lay-verify="title"
+                                           autocomplete="off"
+                                           placeholder="基层单位" class="layui-input">
+                                </div>
+                                <button class="layui-btn layui-btn-primary layui-btn-radius" id="queryjcdwPeople">查询
+                                </button>
+                            </div>
                             <table id="jcdw" lay-filter="jcdwFilter"></table>
                         </div>
                     </div>

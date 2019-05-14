@@ -27,11 +27,11 @@ layui.use(['table', 'layer', 'element'], function () {
             data: {"info": JSON.stringify(selectedMember)},
             dataType: 'text',
             success: function (data) {
-                layer.msg('人员信息保存成功', {icon: 1,time: 1500});
+                layer.msg('人员信息保存成功', {icon: 1, time: 1500});
 
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                layer.msg('人员信息保存失败！！！', {icon: 5,time: 1500});
+                layer.msg('人员信息保存失败！！！', {icon: 5, time: 1500});
             }
         });
     });
@@ -42,25 +42,33 @@ layui.use(['table', 'layer', 'element'], function () {
         selectedMember = [];
     });
 
+//    jtldFun(null);
+
+
     //集团领导
-    $.ajax({
-        type:'GET',
-        url:'/seeyon/ext/selectPeople.do?method=selectJtldEntity',
-        dataType:'json',
-        success:function (data) {
-            table.render({
-                elem: '#jtld'
-                , id: 'jtldId'
-                , height: 400
-                , page: false //开启分页
-                , cols: [[ //表头
-                    {field: 'field0003', title: '用户名', width: '50%'}
-                    , {field: 'field0004', title: '所属部门', width: '50%', sort: true}
-                ]],
-                data:data.data
-            });
-        }
+    $("#queryjtldPeople").on('click', function () {
+        //执行重载
+        table.reload('jtldId', {
+            page: {
+                curr: 1 //重新从第 1 页开始
+            }
+            , where: {
+                name: $("#jtldInput").val()
+            }
+        });
     });
+    table.render({
+        id: 'jtldId'
+        , elem: '#jtld'
+        , url: '/seeyon/ext/selectPeople.do?method=selectJtldEntity'
+        , height: 400
+        , page: false //开启分页
+        , cols: [[ //表头
+            {field: 'field0004', title: '所属部门', width: '50%', sort: true},
+            {field: 'field0003', title: '用户名', width: '50%'}
+        ]]
+    });
+
 
     table.on('row(jtldFilter)', function (obj) {
         // alert(obj.data);
@@ -111,23 +119,29 @@ layui.use(['table', 'layer', 'element'], function () {
     });
 
     //党政办
-    $.ajax({
-        type:'GET',
-        url:'/seeyon/ext/selectPeople.do?method=selectFormmain0148_policy',
-        dataType:'json',
-        success:function (data) {
-            table.render({
-                elem: '#dzbks'
-                , height: 400
-                , page: false //开启分页
-                , cols: [[ //表头
-                    {field: 'field0002', title: '科室', width: '46%'}
-                    , {field: 'name', title: '机要员', width: '50%', sort: true}
-                ]],
-                data: data.data
-            });
-        }
+    $("#querydzbksPeople").on('click', function () {
+        //执行重载
+        table.reload('dzbksId', {
+            page: {
+                curr: 1 //重新从第 1 页开始
+            }
+            , where: {
+                name: $("#dzbksInput").val()
+            }
+        });
     });
+    table.render({
+        id: 'dzbksId'
+        , elem: '#dzbks',
+        url: '/seeyon/ext/selectPeople.do?method=selectFormmain0148_policy'
+        , height: 400
+        , page: false //开启分页
+        , cols: [[ //表头
+            {field: 'field0002', title: '科室', width: '46%'}
+            , {field: 'name', title: '机要员', width: '50%', sort: true}
+        ]]
+    });
+
 
     table.on('row(dzbksFilter)', function (obj) {
         // alert(obj.data);
@@ -178,23 +192,29 @@ layui.use(['table', 'layer', 'element'], function () {
     });
 
     //机关部门
-    $.ajax({
-        type:'GET',
-        url:'/seeyon/ext/selectPeople.do?method=selectFormmain0106_organ',
-        dataType:'json',
-        success:function (data) {
-            table.render({
-                elem: '#bsxx'
-                , height: 400
-                , page: false //开启分页
-                , cols: [[ //表头
-                    {field: 'field0013', title: '部室', width: '46%'}
-                    , {field: 'name', title: '机要员', width: '50%', sort: true}
-                ]],
-                data: data.data
-            });
-        }
+    $("#querybsxxPeople").on('click', function () {
+        //执行重载
+        table.reload('bsxxId', {
+            page: {
+                curr: 1 //重新从第 1 页开始
+            }
+            , where: {
+                name: $("#bsxxInput").val()
+            }
+        });
     });
+    table.render({
+        id: 'bsxxId'
+        , elem: '#bsxx'
+        , height: 400
+        , url: '/seeyon/ext/selectPeople.do?method=selectFormmain0106_organ'
+        , page: false //开启分页
+        , cols: [[ //表头
+            {field: 'field0013', title: '部室', width: '46%'}
+            , {field: 'name', title: '机要员', width: '50%', sort: true}
+        ]]
+    });
+
 
     table.on('row(bsxxFilter)', function (obj) {
         // alert(obj.data);
@@ -245,24 +265,30 @@ layui.use(['table', 'layer', 'element'], function () {
     });
 
     //基层单位
-    $.ajax({
-        type:'GET',
-        url:'/seeyon/ext/selectPeople.do?method=selectFormmain0087_baseUnits',
-        dataType:'json',
-        success:function (data) {
-            table.render({
-                elem: '#jcdw'
-                , height: 400
-                , page: false //开启分页
-                , cols: [[ //表头
-                    {field: 'field0010', title: '单位', width: '46%'}
-                    , {field: 'name', title: '机要员', width: '50%', sort: true}
-                ]],
-                data: data.data
-
-            });
-        }
+    $("#queryjcdwPeople").on('click', function () {
+        //执行重载
+        table.reload('jcdwId', {
+            page: {
+                curr: 1 //重新从第 1 页开始
+            }
+            , where: {
+                name: $("#jcdwInput").val()
+            }
+        });
     });
+    table.render({
+        id: 'jcdwId'
+        , elem: '#jcdw'
+        , url: '/seeyon/ext/selectPeople.do?method=selectFormmain0087_baseUnits'
+        , height: 400
+        , page: false //开启分页
+        , cols: [[ //表头
+            {field: 'field0010', title: '单位', width: '46%'}
+            , {field: 'name', title: '机要员', width: '50%', sort: true}
+        ]]
+
+    });
+
 
     table.on('row(jcdwFilter)', function (obj) {
         // alert(obj.data);
