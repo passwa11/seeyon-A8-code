@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.seeyon.apps.ext.selectPeople.po.Formmain0148" table="formmain_0148" lazy="false">
+        <id name="id"
+            type="long"
+            column="id"
+        >
+            <generator class="assigned"/>
+        </id>
+        <property
+                name="state"
+                type="long"
+                column="state"
+        />
+
+        <property
+                name="startMemberId"
+                type="string"
+                column="start_member_id"
+        />
+
+        <property
+                name="startDate"
+                type="date"
+                column="start_date"
+        />
+
+        <property
+                name="approveMemberId"
+                type="string"
+                column="approve_member_id"
+        />
+
+        <property
+                name="approveDate"
+                type="date"
+                column="approve_date"
+        />
+
+        <property
+                name="finishedflag"
+                type="long"
+                column="finishedflag"
+        />
+
+        <property
+                name="ratifyflag"
+                type="long"
+                column="ratifyflag"
+        />
+
+        <property
+                name="ratifyMemberId"
+                type="string"
+                column="ratify_member_id"
+        />
+
+        <property
+                name="ratifyDate"
+                type="date"
+                column="ratify_date"
+        />
+
+        <property
+                name="sort"
+                type="long"
+                column="sort"
+        />
+
+        <property
+                name="modifyMemberId"
+                type="string"
+                column="modify_member_id"
+        />
+
+        <property
+                name="modifyDate"
+                type="date"
+                column="modify_date"
+        />
+
+        <property
+                name="field0001"
+                type="string"
+                column="field0001"
+        />
+
+        <property
+                name="field0002"
+                type="string"
+                column="field0002"
+        />
+
+        <property
+                name="field0003"
+                type="string"
+                column="field0003"
+        />
+    </class>
+
+
+</hibernate-mapping>

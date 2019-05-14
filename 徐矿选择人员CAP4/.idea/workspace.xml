@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a57fcf99-adb9-4a13-90b1-817366dd19ad" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/classes/" />
+    <ignored path="$PROJECT_DIR$/2/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/html/selectpeople.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-756">
+              <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#dl#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/layui-people.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="110" column="12" lean-forward="true" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="12" />
+              <folding>
+                <element signature="e#663#669#0" />
+                <element signature="e#1618#4028#0" />
+                <element signature="e#26#32#0" expanded="true" />
+                <element signature="e#32#38#0" expanded="true" />
+                <element signature="e#38#44#0" expanded="true" />
+                <element signature="e#44#50#0" expanded="true" />
+                <element signature="e#26#32#0" expanded="true" />
+                <element signature="e#32#38#0" expanded="true" />
+                <element signature="e#38#44#0" expanded="true" />
+                <element signature="e#44#50#0" expanded="true" />
+                <element signature="e#4418#6823#0" />
+                <element signature="e#26#32#0" expanded="true" />
+                <element signature="e#32#38#0" expanded="true" />
+                <element signature="e#38#44#0" expanded="true" />
+                <element signature="e#44#50#0" expanded="true" />
+                <element signature="e#26#32#0" expanded="true" />
+                <element signature="e#32#38#0" expanded="true" />
+                <element signature="e#38#44#0" expanded="true" />
+                <element signature="e#44#50#0" expanded="true" />
+                <element signature="e#7167#9572#0" />
+                <element signature="e#26#32#0" expanded="true" />
+                <element signature="e#32#38#0" expanded="true" />
+                <element signature="e#38#44#0" expanded="true" />
+                <element signature="e#44#50#0" expanded="true" />
+                <element signature="e#26#32#0" expanded="true" />
+                <element signature="e#32#38#0" expanded="true" />
+                <element signature="e#38#44#0" expanded="true" />
+                <element signature="e#44#50#0" expanded="true" />
+                <element signature="e#9917#12322#0" />
+                <element signature="e#26#32#0" expanded="true" />
+                <element signature="e#32#38#0" expanded="true" />
+                <element signature="e#38#44#0" expanded="true" />
+                <element signature="e#44#50#0" expanded="true" />
+                <element signature="e#26#32#0" expanded="true" />
+                <element signature="e#32#38#0" expanded="true" />
+                <element signature="e#38#44#0" expanded="true" />
+                <element signature="e#44#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="191">
+              <caret line="45" column="49" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#render#0;class#selectPeopleController#0" />
+                <element signature="method#insertData#0;class#selectPeopleController#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>formmain0148</find>
+      <find>ctxPath</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/selectPeople/spring/spring-fieldctrl.xml" />
+        <option value="$PROJECT_DIR$/src/Test.java" />
+        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/selectPeople/pluginCfg.xml" />
+        <option value="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/selectPeople.js" />
+        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/customFieldCtrl/fieldCtrl/SelectPeopleFieldCtrl.java" />
+        <option value="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/html/selectpeople.html" />
+        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/ZselectPluginInitializer.java" />
+        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/selectPerplePluginInitializer.java" />
+        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/selectPeople/po/myquery/Formmain0148.hbm.xml" />
+        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/selectPeople/po/myquery/Formson0174.hbm.xml" />
+        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/selectPeople/po/myquery/JtldEntity.hbm.xml" />
+        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/selectPeople/spring/spring-Zselect-plugin.xml" />
+        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/selectPeople/spring/spring-Zselect-manager.xml" />
+        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/selectPeople/spring/spring-Zselect-dao.xml" />
+        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/selectPeople/spring/spring-selectPeople-controller.xml" />
+        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDao.java" />
+        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/manager/JtldEntityManagerImpl.java" />
+        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/manager/JtldEntityManager.java" />
+        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java" />
+        <option value="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/layui-people.js" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="245" />
+    <option name="y" value="46" />
+    <option name="width" value="1157" />
+    <option name="height" value="803" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
+              <item name="cap" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
+              <item name="cap" type="462c0819:PsiDirectoryNode" />
+              <item name="customCtrlResources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
+              <item name="cap" type="462c0819:PsiDirectoryNode" />
+              <item name="customCtrlResources" type="462c0819:PsiDirectoryNode" />
+              <item name="peopleResources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
+              <item name="cap" type="462c0819:PsiDirectoryNode" />
+              <item name="customCtrlResources" type="462c0819:PsiDirectoryNode" />
+              <item name="peopleResources" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
+              <item name="cap" type="462c0819:PsiDirectoryNode" />
+              <item name="customCtrlResources" type="462c0819:PsiDirectoryNode" />
+              <item name="peopleResources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
+              <item name="plugin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
+              <item name="plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="selectPeople" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
+              <item name="plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="fieldCtrl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="selectPeople" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="po" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="myquery" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="com.zeroturnaround.javarebel.idea.plugin.settings.AdvancedConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\JAVA\JAVA_Project\徐矿选择人员CAP4\seeyon\WEB-INF\cfgHome\plugin\selectPeople\spring" />
+      <recent name="F:\JAVA\JAVA_Project\徐矿选择人员CAP4\src_selectPeople\com\seeyon\apps\selectPeople\po\myquery" />
+      <recent name="F:\JAVA\JAVA_Project\徐矿选择人员CAP4\src_selectPeople\com\seeyon\apps\ext\selectPeople" />
+      <recent name="F:\JAVA\JAVA_Project\徐矿选择人员CAP4\seeyon\apps_res\cap\customCtrlResources\peopleResources\css" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Remote.Unnamed">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="徐矿选择人员CAP4" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="Remote" nameIsGenerated="true">
+      <module name="徐矿选择人员CAP4" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="8000" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="8000" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Remote.Unnamed" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a57fcf99-adb9-4a13-90b1-817366dd19ad" name="Default Changelist" comment="" />
+      <created>1557799984202</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1557799984202</updated>
+      <workItem from="1557799991787" duration="18003000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="18003000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1554" height="916" extended-state="6" />
+    <layout>
+      <window_info id="JRebel" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="UI Designer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21218206" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Spring" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Messages" weight="0.15943877" />
+      <window_info anchor="bottom" id="Java Enterprise" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="JRebel Executor" />
+      <window_info anchor="bottom" id="JRebel Console" sideWeight="0.50066936" side_tool="true" visible="true" weight="0.072704084" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.16964285" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49933067" visible="true" weight="0.072704084" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="BPMNPalette" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Bean Validation" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/wfutils.jar!/www/seeyon/com/utils/UUIDUtil.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="7" column="44" lean-forward="true" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/css/img/icon16.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/css/zlc.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/selectPeople/spring/spring-fieldctrl.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/manager/ZselectManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/manager/ZselectManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/po/Fmain0148.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/po/Formmain0148.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/po/Formson0174.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/po/JtldEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/util/JsonKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/selectPerplePluginInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/util/JDBCUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/selectPeople/spring/spring-selectPeople-plugin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/selectPeople/pluginCfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/selectPeople/spring/spring-selectPeople-dao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/selectPeople/spring/spring-selectPeople-manager.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="93" selection-start-line="4" selection-start-column="93" selection-end-line="4" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/customFieldCtrl/fieldCtrl/SelectPeopleFieldCtrl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="e#398#399#0" expanded="true" />
+            <element signature="e#417#418#0" expanded="true" />
+            <element signature="e#535#536#0" expanded="true" />
+            <element signature="e#553#554#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="14" column="40" lean-forward="true" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/manager/JtldEntityManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/selectPeople.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1944">
+          <caret line="84" column="28" selection-start-line="84" selection-start-column="28" selection-end-line="84" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/selectPeople/spring/spring-selectPeople-controller.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="33" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="45" column="50" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1946#1947#0" expanded="true" />
+            <element signature="e#1990#1991#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/selectPeople/po/myquery/Formson0174.hbm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/selectPeople/po/myquery/JtldEntity.hbm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/selectPeople/po/myquery/Formmain0148.hbm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="69" lean-forward="true" selection-start-line="3" selection-start-column="69" selection-end-line="3" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/manager/JtldEntityManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/html/selectpeople.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-756">
+          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#dl#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="45" column="49" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#render#0;class#selectPeopleController#0" />
+            <element signature="method#insertData#0;class#selectPeopleController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/layui-people.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="110" column="12" lean-forward="true" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="12" />
+          <folding>
+            <element signature="e#663#669#0" />
+            <element signature="e#1618#4028#0" />
+            <element signature="e#26#32#0" expanded="true" />
+            <element signature="e#32#38#0" expanded="true" />
+            <element signature="e#38#44#0" expanded="true" />
+            <element signature="e#44#50#0" expanded="true" />
+            <element signature="e#26#32#0" expanded="true" />
+            <element signature="e#32#38#0" expanded="true" />
+            <element signature="e#38#44#0" expanded="true" />
+            <element signature="e#44#50#0" expanded="true" />
+            <element signature="e#4418#6823#0" />
+            <element signature="e#26#32#0" expanded="true" />
+            <element signature="e#32#38#0" expanded="true" />
+            <element signature="e#38#44#0" expanded="true" />
+            <element signature="e#44#50#0" expanded="true" />
+            <element signature="e#26#32#0" expanded="true" />
+            <element signature="e#32#38#0" expanded="true" />
+            <element signature="e#38#44#0" expanded="true" />
+            <element signature="e#44#50#0" expanded="true" />
+            <element signature="e#7167#9572#0" />
+            <element signature="e#26#32#0" expanded="true" />
+            <element signature="e#32#38#0" expanded="true" />
+            <element signature="e#38#44#0" expanded="true" />
+            <element signature="e#44#50#0" expanded="true" />
+            <element signature="e#26#32#0" expanded="true" />
+            <element signature="e#32#38#0" expanded="true" />
+            <element signature="e#38#44#0" expanded="true" />
+            <element signature="e#44#50#0" expanded="true" />
+            <element signature="e#9917#12322#0" />
+            <element signature="e#26#32#0" expanded="true" />
+            <element signature="e#32#38#0" expanded="true" />
+            <element signature="e#38#44#0" expanded="true" />
+            <element signature="e#44#50#0" expanded="true" />
+            <element signature="e#26#32#0" expanded="true" />
+            <element signature="e#32#38#0" expanded="true" />
+            <element signature="e#38#44#0" expanded="true" />
+            <element signature="e#44#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>徐矿选择人员CAP4</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.22080925" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
