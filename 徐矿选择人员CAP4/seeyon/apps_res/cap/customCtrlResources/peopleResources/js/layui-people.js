@@ -16,6 +16,32 @@ layui.use(['table', 'layer', 'element'], function () {
         }
     };
 
+    //保存
+    $("#save").on('click', function () {
+        console.log(selectedMember);
+        // alert(selectedMember.join(","));
+        $.ajax({
+            sync: true,
+            type: "POST",
+            url: "/seeyon/ext/selectPeople.do?method=insertData",
+            data: {"info": JSON.stringify(selectedMember)},
+            dataType: 'text',
+            success: function (data) {
+                layer.msg('人员信息保存成功', {icon: 1,time: 1500});
+
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                layer.msg('人员信息保存失败！！！', {icon: 5,time: 1500});
+            }
+        });
+    });
+
+    //清除
+    $("#selected_info_reset").on('click', function () {
+        $("dl.selected-info dd").remove();
+        selectedMember = [];
+    });
+
     //集团领导
     $.ajax({
         type:'GET',
@@ -25,9 +51,8 @@ layui.use(['table', 'layer', 'element'], function () {
             table.render({
                 elem: '#jtld'
                 , id: 'jtldId'
-                , height: 500
-                // ,url: '/demo/table/user/' //数据接口
-                , page: true //开启分页
+                , height: 400
+                , page: false //开启分页
                 , cols: [[ //表头
                     {field: 'field0003', title: '用户名', width: '50%'}
                     , {field: 'field0004', title: '所属部门', width: '50%', sort: true}
@@ -93,9 +118,8 @@ layui.use(['table', 'layer', 'element'], function () {
         success:function (data) {
             table.render({
                 elem: '#dzbks'
-                , height: 500
-                // ,url: '/demo/table/user/' //数据接口
-                , page: true //开启分页
+                , height: 400
+                , page: false //开启分页
                 , cols: [[ //表头
                     {field: 'field0002', title: '科室', width: '46%'}
                     , {field: 'name', title: '机要员', width: '50%', sort: true}
@@ -161,8 +185,8 @@ layui.use(['table', 'layer', 'element'], function () {
         success:function (data) {
             table.render({
                 elem: '#bsxx'
-                , height: 500
-                , page: true //开启分页
+                , height: 400
+                , page: false //开启分页
                 , cols: [[ //表头
                     {field: 'field0013', title: '部室', width: '46%'}
                     , {field: 'name', title: '机要员', width: '50%', sort: true}
@@ -228,8 +252,8 @@ layui.use(['table', 'layer', 'element'], function () {
         success:function (data) {
             table.render({
                 elem: '#jcdw'
-                , height: 500
-                , page: true //开启分页
+                , height: 400
+                , page: false //开启分页
                 , cols: [[ //表头
                     {field: 'field0010', title: '单位', width: '46%'}
                     , {field: 'name', title: '机要员', width: '50%', sort: true}
