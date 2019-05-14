@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<accessrules>
+			<accessrule kind="accessible" pattern="**"/>
+		</accessrules>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/ctp"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="src_ajax"/>
+	<classpathentry kind="src" path="src_common"/>
+	<classpathentry kind="src" path="src_rest"/>
+	<classpathentry kind="src" path="src_msg"/>
+	<classpathentry kind="src" path="src_testBPM"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/sp3"/>
+	<classpathentry kind="output" path="seeyon/WEB-INF/classes"/>
+</classpath>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+	<id>testBPM</id>
+	<name>流程事件插件</name>
+	<category>20190512</category>
+</plugin>
