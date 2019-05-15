@@ -40,6 +40,7 @@
         initDom: function () {
             var self = this;
             dynamicLoading.css(self.preUrl + 'css/zlc.css');
+            dynamicLoading.js(self.preUrl + 'js/JsBarcode.all.min.js');
             self.appendChildDom();
         },
         events: function () {
@@ -52,28 +53,13 @@
         },
         appendChildDom: function () {
             var self = this;
-            var showHTML = '';
-            var display = self.messageObj.display.escapeHTML();
-            if (display != "") {
-                showHTML += '<section class="cap4-people is-one ">'
-                    + '<div class="cap4-people__left">' + display + '</div>'
-                    + '<div class="cap4-people__right">';
-            } else {
-                showHTML += '<div >';
-            }
-            showHTML += '<div class="cap4-people__cnt" id="editDiv_' + self.privateId + '" style="display:block;">'
-                + '<div class="cap4-people__text" id="show_' + self.privateId + '">' + self.messageObj.showValue + '</div>'
-                + '<div class="cap4-people__picker" id="click_' + self.privateId + '"';
+            var domStructure = '<section class="customButton_box_content">' +
+                '<div class="customButton_class_box ' + self.privateId + '" title="' + self.messageObj.display.escapeHTML() + '">' + self.messageObj.display.escapeHTML() + '</div>' +
+                '</section>';
+            document.querySelector('#' + self.privateId).innerHTML = domStructure;
 
-            showHTML += '><img src="' + window.top._ctxPath + '/skin/dist/images/location.png"></div></div>';
-            showHTML += "<div id='allmap'></div>";
-            showHTML += "</div></section>";
-            /*var div = document.getElementById(privateId);
-            div.innerHTML = showHTML;*/
-
-            document.querySelector('#' + self.privateId).innerHTML = showHTML;
-            document.querySelector('#click_' + self.privateId).addEventListener('click', function () {
-                self.location(self.privateId, self.messageObj, self.adaptation);
+            document.querySelector('.' + self.privateId).addEventListener('click', function () {
+                self.print(self.privateId, self.messageObj, self.adaptation);
             });
         }
         , location: function (privateId, messageObj, adaptation) {
