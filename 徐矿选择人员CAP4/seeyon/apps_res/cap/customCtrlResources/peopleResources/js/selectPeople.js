@@ -62,8 +62,40 @@
                 self.print(self.privateId, self.messageObj, self.adaptation);
             });
         }
-        , location: function (privateId, messageObj, adaptation) {
+        //显示输入框
+        // , location: function (privateId, messageObj, adaptation) {
+        //
+        //     var dialog = $.dialog({
+        //         id: 'dialog',
+        //         url: this.preUrl + '/html/selectpeople.html',
+        //         width: 1050,
+        //         height: 620,
+        //         title: '人员选择',
+        //         type: 'panel',
+        //         transParams: {oldPlace: messageObj.value},
+        //         checkMax: true,
+        //         closeParam: {
+        //             'show': false,
+        //             autoClose: false,
+        //             handler: function () {
+        //             }
+        //         },
+        //         buttons: [{
+        //             text: "保存",
+        //             handler: function () {
+        //                 alert(1);
+        //             }
+        //         }, {
+        //             text: "取消",
+        //             handler: function () {
+        //                 dialog.close()
+        //             }
+        //         }]
+        //     });
+        // }
 
+        //显示按钮
+        , print: function (privateId, messageObj, adaptation) {
             var dialog = $.dialog({
                 id: 'dialog',
                 url: this.preUrl + '/html/selectpeople.html',
@@ -95,8 +127,8 @@
     };
 
     var dynamicLoading = {
-        css: function(path) {
-            if(!path || path.length === 0) {
+        css: function (path) {
+            if (!path || path.length === 0) {
                 throw new Error('argument "path" is required !');
             }
             var head = document.getElementsByTagName('head')[0];
@@ -106,8 +138,8 @@
             link.type = 'text/css';
             head.appendChild(link);
         },
-        js: function(path) {
-            if(!path || path.length === 0) {
+        js: function (path) {
+            if (!path || path.length === 0) {
                 throw new Error('argument "path" is required !');
             }
             var head = document.getElementsByTagName('head')[0];
