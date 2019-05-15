@@ -41,12 +41,14 @@
             var self = this;
             dynamicLoading.css(self.preUrl + 'css/zlc.css');
             dynamicLoading.js(self.preUrl + 'js/JsBarcode.all.min.js');
+            // dynamicLoading.js(self.preUrl + 'js/layui-people.js');
             self.appendChildDom();
         },
         events: function () {
             var self = this;
             // 监听是否数据刷新
             self.adaptation.ObserverEvent.listen('Event' + self.privateId, function () {
+                // alert(12);
                 self.messageObj = self.adaptation.childrenGetData(self.privateId);
                 self.appendChildDom();
             });
@@ -96,6 +98,10 @@
 
         //显示按钮
         , print: function (privateId, messageObj, adaptation) {
+            // console.log(privateId)
+            console.log(messageObj);
+            console.log(messageObj['id']);
+
             var dialog = $.dialog({
                 id: 'dialog',
                 url: this.preUrl + '/html/selectpeople.html',
@@ -114,7 +120,8 @@
                 buttons: [{
                     text: "保存",
                     handler: function () {
-                        alert(1);
+                        var peoples = dialog.getReturnValue();
+                        console.log("保存事件返回的值："+JSON.stringify(peoples));
                     }
                 }, {
                     text: "取消",

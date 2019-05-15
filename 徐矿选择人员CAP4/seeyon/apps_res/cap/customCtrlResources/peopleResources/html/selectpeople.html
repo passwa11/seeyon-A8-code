@@ -9,6 +9,26 @@
     <script type="text/javascript" src="../layui/layui.js"></script>
     <script type="text/javascript" src="../layui/jquery.js"></script>
     <script type="text/javascript" src="../js/layui-people.js"></script>
+    <script type="text/javascript" >
+        function OK() {
+            var peoples = new Array();
+            $("dl").find('dd').each(function () {
+                var v = $(this).attr("lay-value");
+                var name = $(this).attr("lay-name");
+                var dept = $(this).attr("lay-dept");
+                var obj = {};//添加成员对象
+                obj["field0001"] = v;
+                obj["field0004"] = dept;
+                obj["field0003"] = name;
+                peoples.push(obj);
+            });
+            console.log(peoples);
+            return {
+                valid : true,
+                data : peoples
+            };
+        }
+    </script>
 </head>
 <body>
 
@@ -96,12 +116,15 @@
                 </div>
             </div>
             <!-- 已选择信息 -->
-            <dl class="selected-info" style="height: 350px;"></dl>
+            <dl class="selected-info" style="height: 400px;"></dl>
             <div style="text-align: center">
                 <div style="margin-top: 20px;"></div>
                 <div class="layui-input-inline">
                     <button class="layui-btn layui-btn-primary layui-btn-radius" id="selected_info_reset">清空</button>
-                    <button class="layui-btn layui-btn-radius" id="save">保存</button>
+                    <button class="layui-btn layui-btn-primary layui-btn-radius" onclick="test()">测试</button>
+                    <div id="idInfo"></div>
+                    <div id="nameInfo"></div>
+                    <div id="deptInfo"></div>
                 </div>
             </div>
         </div>
