@@ -27,6 +27,11 @@
         self.initDom();
         // 事件
         self.events();
+
+        function backfillData() {
+
+        }
+
     }
 
     App.prototype = {
@@ -64,39 +69,39 @@
                 self.print(self.privateId, self.messageObj, self.adaptation);
             });
         }
-        //显示输入框
+        // 显示输入框
         // , location: function (privateId, messageObj, adaptation) {
         //
-        //     var dialog = $.dialog({
-        //         id: 'dialog',
-        //         url: this.preUrl + '/html/selectpeople.html',
-        //         width: 1050,
-        //         height: 620,
-        //         title: '人员选择',
-        //         type: 'panel',
-        //         transParams: {oldPlace: messageObj.value},
-        //         checkMax: true,
-        //         closeParam: {
-        //             'show': false,
-        //             autoClose: false,
-        //             handler: function () {
-        //             }
-        //         },
-        //         buttons: [{
-        //             text: "保存",
-        //             handler: function () {
-        //                 alert(1);
-        //             }
-        //         }, {
-        //             text: "取消",
-        //             handler: function () {
-        //                 dialog.close()
-        //             }
-        //         }]
-        //     });
+        // var dialog = $.dialog({
+        // id: 'dialog',
+        // url: this.preUrl + '/html/selectpeople.html',
+        // width: 1050,
+        // height: 620,
+        // title: '人员选择',
+        // type: 'panel',
+        // transParams: {oldPlace: messageObj.value},
+        // checkMax: true,
+        // closeParam: {
+        // 'show': false,
+        // autoClose: false,
+        // handler: function () {
+        // }
+        // },
+        // buttons: [{
+        // text: "保存",
+        // handler: function () {
+        // alert(1);
+        // }
+        // }, {
+        // text: "取消",
+        // handler: function () {
+        // dialog.close()
+        // }
+        // }]
+        // });
         // }
 
-        //显示按钮
+        // 显示按钮
         , print: function (privateId, messageObj, adaptation) {
             // console.log(privateId)
             console.log(messageObj);
@@ -120,8 +125,104 @@
                 buttons: [{
                     text: "保存",
                     handler: function () {
+
+                        //添加明细行并回填数据
+                        function addLineAndFilldata(content, adaptation, messageObj, privateId) {
+                            $.ajax({
+                                type: 'get',
+                                async: true,
+                                url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo",
+                                dataType: 'json',
+                                data: {
+                                    'masterId': content.contentDataId,
+                                    'subId': messageObj.recordId	// 增加此参数的传递，重复表控件才会有
+                                },
+                                contentType: 'application/json',
+                                success: function (res) {
+                                    // 判断是否需要添加
+                                    if (res.code != 0) {
+                                        $.alert(res.message);
+                                        return;
+                                    }
+                                    var add = res.data.add;
+                                    if (add) {
+                                        var addLineParam = {};
+                                        addLineParam.tableName = res.data.subTbName;
+                                        addLineParam.isFormRecords = true;
+                                        addLineParam.callbackFn = function () {
+                                            addLineAndFilldata(content,
+                                                adaptation, messageObj,
+                                                privateId, value, e);
+                                        }
+                                        window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
+                                    } else {
+                                        console.log("回填数据进来了没？");
+                                        console.log(res);
+                                        var backfill = {};
+                                        // 回填重复表
+                                        backfill.tableName = res.data.subTbName;
+                                        console.log("biao=" + res.data.subTbName);
+                                        backfill.tableCategory = "formson";
+                                        backfill.updateData = {
+                                            field0002: {
+                                                showValue: "2",
+                                                showValue2: "2",
+                                                value: "2"
+                                            }
+                                            ,field0003: {
+                                                showValue: "2",
+                                                showValue2: "2",
+                                                value: "2"
+                                            }
+
+                                        };
+                                        backfill.updateRecordId = res.data.recordId;
+                                        console.log("recordId=" + res.data.recordId);
+                                        console.log(backfill);
+                                        adaptation.backfillFormControlData(backfill, privateId);
+
+
+
+
+                                        // if (res.code != 0) {
+                                        //     $.alert(res.message);
+                                        //     return;
+                                        // }
+                                        // var backfill = {};
+                                        // var array = res.data.subs;
+                                        // if (null != array && array.length > 0) {
+                                        //     for (var i = 0; i < array.length; i++) {
+                                        //         var arr = array[i];
+                                        //         // 回填重复表
+                                        //         backfill.tableName = arr.tbName;
+                                        //         backfill.tableCategory = "formson";
+                                        //         backfill.updateData = arr.data;
+                                        //         backfill.updateRecordId = arr.recordId;
+                                        //         adaptation.backfillFormControlData(backfill, privateId);
+                                        //     }
+                                        // }
+
+                                    }
+                                }
+                            });
+
+                        }
+
+                        function save() {
+                            var content = messageObj.formdata.content;
+                            addLineAndFilldata(content, adaptation, messageObj, privateId)
+                        }
+
                         var peoples = dialog.getReturnValue();
-                        console.log("保存事件返回的值："+JSON.stringify(peoples));
+                        var pdata=peoples.data;
+                        console.log("保存事件返回的值：" + JSON.stringify(pdata));
+                        for (var i=0;i<pdata.length;i++){
+
+                        }
+                        save();
+
+
+                        dialog.close();
                     }
                 }, {
                     text: "取消",
@@ -132,6 +233,7 @@
             });
         }
     };
+
 
     var dynamicLoading = {
         css: function (path) {
