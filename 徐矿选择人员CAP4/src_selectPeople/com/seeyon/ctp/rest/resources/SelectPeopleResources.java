@@ -32,7 +32,9 @@ public class SelectPeopleResources extends BaseResource {
     @GET
     @Produces({"application/json"})
     @Path("backfillpeopleInfo")
-    public Response backfillpeopleInfo(@QueryParam("formId") String formId, @QueryParam("masterId") String masterId, @QueryParam("value") String value) throws BusinessException {
+    public Response backfillpeopleInfo(@QueryParam("formId") String formId, @QueryParam("masterId") String masterId,
+                                       @QueryParam("value") String value,
+                                       @QueryParam("subId")String recordId) throws BusinessException {
         FormBean formBean = cap4FormManager.getForm(Long.valueOf(formId), false);
         FormDataMasterBean cacheFormData = cap4FormManager.getSessioMasterDataBean(Long.valueOf(Long.parseLong(masterId)));
 
@@ -49,14 +51,17 @@ public class SelectPeopleResources extends BaseResource {
 
         FormDataSubBean subdata=null;
 //        // 赋值bug修改   新增到空白的一行上面
-//        List<FormDataSubBean> filterList = subs.stream().filter(item->
-//                StrKit.isNull(CAP4FormKit.getFieldValue(item, SelectPeople.field0004.getText())))
-//                .collect(Collectors.toList());
-//
-//        if(StrKit.isNull(filterList)) {
-//            result.put("add", true);
-//            return success(result);
-//        }
+        List<FormDataSubBean> filterList = subs.stream().filter(item->
+                StrKit.isNull(CAP4FormKit.getFieldValue(item, SelectPeople.field0001.getText())))
+                .collect(Collectors.toList());
+
+        if(StrKit.isNull(filterList)) {
+            result.put("add", true);
+            return success(result);
+        }
+
+        Map<String, Object> masterMap = cacheFormData.getAllDataMap();
+
 
         subdata = subs.get(0);
 
