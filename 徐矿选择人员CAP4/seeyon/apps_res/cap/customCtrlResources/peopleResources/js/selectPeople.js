@@ -139,7 +139,8 @@
                                 data: {
                                     'masterId': content.contentDataId,
                                     'formId':  content.contentTemplateId,
-                                    'value':userid
+                                    'value':userid,
+                                    'subId': messageObj.recordId
                                 },
                                 contentType: 'application/json',
                                 success: function (res) {
@@ -155,6 +156,7 @@
                                         addLineParam.isFormRecords = true;
                                         addLineParam.callbackFn = function () {
                                             // addLineAndFilldata(content,adaptation, messageObj, privateId, value);
+                                            save();
                                         }
                                         window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
                                     } else {
@@ -198,9 +200,9 @@
 
                         function save() {
                             var content = messageObj.formdata.content;
-                            for(var i =0; i<peoples.data.length;i++){
-                                console.log(peoples.data.get(i));
-                                var obj=peoples.data.get(i);
+                            var array=peoples.data;
+                            for(var i =0; i<array.length;i++){
+                                var obj=array[i];
                                 addLineAndFilldata(content, adaptation, messageObj, privateId,obj.field0001);
                             }
 
