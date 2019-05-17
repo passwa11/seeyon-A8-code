@@ -156,6 +156,8 @@
                                         addLineParam.isFormRecords = true;
                                         addLineParam.callbackFn = function () {
                                             // addLineAndFilldata(content,adaptation, messageObj, privateId, value);
+                                            console.log("========================================================");
+                                            console.log(messageObj);
                                             save();
                                         }
                                         window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
