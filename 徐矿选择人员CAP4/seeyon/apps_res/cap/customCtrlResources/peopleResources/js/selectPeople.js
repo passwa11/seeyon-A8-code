@@ -154,7 +154,7 @@
                                         addLineParam.tableName = res.data.subTbName;
                                         addLineParam.isFormRecords = true;
                                         addLineParam.callbackFn = function () {
-                                            addLineAndFilldata(content,adaptation, messageObj, privateId, value);
+                                            // addLineAndFilldata(content,adaptation, messageObj, privateId, value);
                                         }
                                         window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
                                     } else {
@@ -198,7 +198,12 @@
 
                         function save() {
                             var content = messageObj.formdata.content;
-                            addLineAndFilldata(content, adaptation, messageObj, privateId,userid)
+                            for(var i =0; i<peoples.data.length;i++){
+                                console.log(peoples.data.get(i));
+                                var obj=peoples.data.get(i);
+                                addLineAndFilldata(content, adaptation, messageObj, privateId,obj.field0001);
+                            }
+
                         }
 
                         save();
