@@ -126,8 +126,11 @@
                     text: "保存",
                     handler: function () {
 
+                        var peoples = dialog.getReturnValue();
+                        console.log("保存事件返回的值：" + JSON.stringify(peoples));
+
                         //添加明细行并回填数据
-                        function addLineAndFilldata(content, adaptation, messageObj, privateId) {
+                        function addLineAndFilldata(content, adaptation, messageObj, privateId,userid) {
                             $.ajax({
                                 type: 'get',
                                 async: true,
@@ -135,7 +138,8 @@
                                 dataType: 'json',
                                 data: {
                                     'masterId': content.contentDataId,
-                                    'subId': messageObj.recordId	// 增加此参数的传递，重复表控件才会有
+                                    'formId':  content.contentTemplateId,
+                                    'value':userid
                                 },
                                 contentType: 'application/json',
                                 success: function (res) {
@@ -150,9 +154,7 @@
                                         addLineParam.tableName = res.data.subTbName;
                                         addLineParam.isFormRecords = true;
                                         addLineParam.callbackFn = function () {
-                                            addLineAndFilldata(content,
-                                                adaptation, messageObj,
-                                                privateId, value, e);
+                                            addLineAndFilldata(content,adaptation, messageObj, privateId, value);
                                         }
                                         window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
                                     } else {
@@ -160,47 +162,33 @@
                                         console.log(res);
                                         var backfill = {};
                                         // 回填重复表
-                                        backfill.tableName = res.data.subTbName;
-                                        console.log("biao=" + res.data.subTbName);
-                                        backfill.tableCategory = "formson";
-                                        backfill.updateData = {
-                                            field0002: {
-                                                showValue: "2",
-                                                showValue2: "2",
-                                                value: "2"
-                                            }
-                                            ,field0003: {
-                                                showValue: "2",
-                                                showValue2: "2",
-                                                value: "2"
-                                            }
+                                        var array=peoples.data;
+                                        for (var i=0 ; i<array.length;i++){
+                                            var arr = array[i];
+                                            backfill.tableName = res.data.subTbName;
+                                            backfill.tableCategory = "formson";
+                                            backfill.updateData = {
+                                                field0007: {
+                                                    showValue: arr.field0001,
+                                                    showValue2: arr.field0001,
+                                                    value: arr.field0001
+                                                }
+                                                ,field0008: {
+                                                    showValue: arr.field0004,
+                                                    showValue2: arr.field0004,
+                                                    value: arr.field0004
+                                                }
+                                                ,field0009: {
+                                                    showValue: arr.field0003,
+                                                    showValue2: arr.field0003,
+                                                    value: arr.field0003
+                                                }
 
-                                        };
-                                        backfill.updateRecordId = res.data.recordId;
-                                        console.log("recordId=" + res.data.recordId);
-                                        console.log(backfill);
-                                        adaptation.backfillFormControlData(backfill, privateId);
+                                            };
+                                            backfill.updateRecordId = res.data.recordId;
+                                            adaptation.backfillFormControlData(backfill, privateId);
 
-
-
-
-                                        // if (res.code != 0) {
-                                        //     $.alert(res.message);
-                                        //     return;
-                                        // }
-                                        // var backfill = {};
-                                        // var array = res.data.subs;
-                                        // if (null != array && array.length > 0) {
-                                        //     for (var i = 0; i < array.length; i++) {
-                                        //         var arr = array[i];
-                                        //         // 回填重复表
-                                        //         backfill.tableName = arr.tbName;
-                                        //         backfill.tableCategory = "formson";
-                                        //         backfill.updateData = arr.data;
-                                        //         backfill.updateRecordId = arr.recordId;
-                                        //         adaptation.backfillFormControlData(backfill, privateId);
-                                        //     }
-                                        // }
+                                        }
 
                                     }
                                 }
@@ -210,15 +198,9 @@
 
                         function save() {
                             var content = messageObj.formdata.content;
-                            addLineAndFilldata(content, adaptation, messageObj, privateId)
+                            addLineAndFilldata(content, adaptation, messageObj, privateId,userid)
                         }
 
-                        var peoples = dialog.getReturnValue();
-                        var pdata=peoples.data;
-                        console.log("保存事件返回的值：" + JSON.stringify(pdata));
-                        for (var i=0;i<pdata.length;i++){
-
-                        }
                         save();
 
 
