@@ -35,13 +35,14 @@ public class SelectPeopleResources extends BaseResource {
     public Response backfillpeopleInfo(@QueryParam("formId") String formId, @QueryParam("masterId") String masterId,
                                        @QueryParam("value") String value,
                                        @QueryParam("subId")String recordId) throws BusinessException {
+        //formBean是主表的信息
         FormBean formBean = cap4FormManager.getForm(Long.valueOf(formId), false);
         FormDataMasterBean cacheFormData = cap4FormManager.getSessioMasterDataBean(Long.valueOf(Long.parseLong(masterId)));
 
         if (null == cacheFormData) {
             return fail("表单数据在session中找不到（masterId:" + masterId + "），请尝试重新打开。");
         }
-
+        //subForms是明细表信息
         List<FormTableBean> subForms = formBean.getSubTableBean();
         FormTableBean subForm = subForms.get(0);
         List<FormDataSubBean> subs = cacheFormData.getSubData(subForm.getTableName());
