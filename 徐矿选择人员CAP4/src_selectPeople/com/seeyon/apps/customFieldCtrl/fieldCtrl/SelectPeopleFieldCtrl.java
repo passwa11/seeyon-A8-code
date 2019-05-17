@@ -13,6 +13,11 @@ public class SelectPeopleFieldCtrl extends FormFieldCustomCtrl{
 		return "6530795810723998937";
 	}
 
+	//重写canUse()方法， 使控件可以在客户端使用  ，具体能不能生效  我也不晓得
+	@Override
+	public boolean canUse() {
+		return true;
+	}
 
 	@Override
 	public String getFieldLength() {
