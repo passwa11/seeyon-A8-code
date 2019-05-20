@@ -34,7 +34,8 @@ public class SelectPeopleResources extends BaseResource {
     @Path("backfillpeopleInfo")
     public Response backfillpeopleInfo(@QueryParam("formId") String formId, @QueryParam("masterId") String masterId,
                                        @QueryParam("value") String value,
-                                       @QueryParam("subId")String recordId) throws BusinessException {
+                                       @QueryParam("subId")String recordId,
+                                       @QueryParam("dataInfo")String dataInfo) throws BusinessException {
         //formBean是主表的信息
         FormBean formBean = cap4FormManager.getForm(Long.valueOf(formId), false);
         FormDataMasterBean cacheFormData = cap4FormManager.getSessioMasterDataBean(Long.valueOf(Long.parseLong(masterId)));
