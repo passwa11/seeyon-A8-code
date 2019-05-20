@@ -60,11 +60,14 @@
         },
         appendChildDom: function () {
             var self = this;
-            var domStructure = '<section class="customButton_box_content">' +
+            var domStructure = '<div>8888888</div><section class="customButton_box_content">' +
                 '<div class="customButton_class_box ' + self.privateId + '" title="' + self.messageObj.display.escapeHTML() + '">' + self.messageObj.display.escapeHTML() + '</div>' +
                 '</section>';
             document.querySelector('#' + self.privateId).innerHTML = domStructure;
-
+            // console.log(document.getElementsByName("tr"));
+//获取em元素
+            var ems=document.querySelectorAll("tr");
+            console.log(ems[0]);
             document.querySelector('.' + self.privateId).addEventListener('click', function () {
                 self.print(self.privateId, self.messageObj, self.adaptation);
             });
@@ -103,9 +106,7 @@
 
         // 显示按钮
         , print: function (privateId, messageObj, adaptation) {
-            // console.log(privateId)
             console.log(messageObj);
-            console.log(messageObj['id']);
 
             var dialog = $.dialog({
                 id: 'dialog',
@@ -125,7 +126,6 @@
                 buttons: [{
                     text: "保存",
                     handler: function () {
-
                         var peoples = dialog.getReturnValue();
                         console.log("保存事件返回的值：" + JSON.stringify(peoples));
 
@@ -140,7 +140,8 @@
                                     'masterId': content.contentDataId,
                                     'formId':  content.contentTemplateId,
                                     'value':userid,
-                                    'subId': messageObj.recordId
+                                    'subId': messageObj.recordId,
+                                    'dataInfo': JSON.stringify(peoples)
                                 },
                                 contentType: 'application/json',
                                 success: function (res) {
@@ -156,8 +157,6 @@
                                         addLineParam.isFormRecords = true;
                                         addLineParam.callbackFn = function () {
                                             // addLineAndFilldata(content,adaptation, messageObj, privateId, value);
-                                            console.log("========================================================");
-                                            console.log(messageObj);
                                             save();
                                         }
                                         window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
