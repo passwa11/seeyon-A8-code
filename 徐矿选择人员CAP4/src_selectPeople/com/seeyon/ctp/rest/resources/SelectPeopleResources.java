@@ -44,6 +44,7 @@ public class SelectPeopleResources extends BaseResource {
         //formBean是主表的信息
         FormBean formBean = cap4FormManager.getForm(Long.valueOf(formId), false);
         FormDataMasterBean cacheFormData = cap4FormManager.getSessioMasterDataBean(Long.valueOf(Long.parseLong(masterId)));
+        String checkMaster=cap4FormManager.checkSessioMasterDataExists(masterId);
 
         if (null == cacheFormData) {
             return fail("表单数据在session中找不到（masterId:" + masterId + "），请尝试重新打开。");
