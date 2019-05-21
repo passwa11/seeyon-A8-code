@@ -28,11 +28,9 @@
         // 事件
         self.events();
 
-        function backfillData() {
-
-        }
-
     }
+
+    var test = "test";
 
     App.prototype = {
         initParams: function (options) {
@@ -41,6 +39,7 @@
             self.privateId = options.privateId;
             self.messageObj = options.getData;
             self.preUrl = options.url_prefix;
+
         },
         initDom: function () {
             var self = this;
@@ -53,21 +52,16 @@
             var self = this;
             // 监听是否数据刷新
             self.adaptation.ObserverEvent.listen('Event' + self.privateId, function () {
-                // alert(12);
                 self.messageObj = self.adaptation.childrenGetData(self.privateId);
                 self.appendChildDom();
             });
         },
         appendChildDom: function () {
             var self = this;
-            var domStructure = '<div>8888888</div><section class="customButton_box_content">' +
+            var domStructure = '<section class="customButton_box_content">' +
                 '<div class="customButton_class_box ' + self.privateId + '" title="' + self.messageObj.display.escapeHTML() + '">' + self.messageObj.display.escapeHTML() + '</div>' +
                 '</section>';
             document.querySelector('#' + self.privateId).innerHTML = domStructure;
-            // console.log(document.getElementsByName("tr"));
-//获取em元素
-            var ems=document.querySelectorAll("tr");
-            console.log(ems[0]);
             document.querySelector('.' + self.privateId).addEventListener('click', function () {
                 self.print(self.privateId, self.messageObj, self.adaptation);
             });
@@ -106,7 +100,6 @@
 
         // 显示按钮
         , print: function (privateId, messageObj, adaptation) {
-            console.log(messageObj);
 
             var dialog = $.dialog({
                 id: 'dialog',
@@ -127,10 +120,34 @@
                     text: "保存",
                     handler: function () {
                         var peoples = dialog.getReturnValue();
-                        console.log("保存事件返回的值：" + JSON.stringify(peoples));
+                        $("#selectPeople").val(JSON.stringify(peoples));
+                        var list = peoples.data;
+                        var sonarr=messageObj.formdata.formsons.front_formson_2.records;
+                        var fieldData = adaptation.childrenGetData(privateId);
+                        for (var k = 0; k < list.length; k++) {
+                            var addLineParam = {};
+                            addLineParam.tableName = "formson_0288";
+                            addLineParam.isFormRecords = true;
+                            addLineParam.callbackFn = function () {
+                                console.log(messageObj);
+                                var newArr=new Array();
+                                var sonarr=messageObj.formdata.formsons.front_formson_2.records;
+                                var i;
+                                for(i in sonarr){
+                                    if(!isNaN(i)){
+                                        newArr.push(sonarr[i].recordId);
+                                    }
+                                }
+                                console.log(newArr);
+
+                            }
+                            window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
+                        }
+
+                        // console.log(newArr, newArr.join(","));
 
                         //添加明细行并回填数据
-                        function addLineAndFilldata(content, adaptation, messageObj, privateId,userid) {
+                        function addLineAndFilldata(content, adaptation, messageObj, privateId, userid) {
                             $.ajax({
                                 type: 'get',
                                 async: true,
@@ -138,8 +155,8 @@
                                 dataType: 'json',
                                 data: {
                                     'masterId': content.contentDataId,
-                                    'formId':  content.contentTemplateId,
-                                    'value':userid,
+                                    'formId': content.contentTemplateId,
+                                    'value': userid,
                                     'subId': messageObj.recordId,
                                     'dataInfo': JSON.stringify(peoples)
                                 },
@@ -150,49 +167,33 @@
                                         $.alert(res.message);
                                         return;
                                     }
-                                    var add = res.data.add;
-                                    if (add) {
-                                        var addLineParam = {};
-                                        addLineParam.tableName = res.data.subTbName;
-                                        addLineParam.isFormRecords = true;
-                                        addLineParam.callbackFn = function () {
-                                            // addLineAndFilldata(content,adaptation, messageObj, privateId, value);
-                                            save();
-                                        }
-                                        window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
-                                    } else {
-                                        console.log("回填数据进来了没？");
-                                        console.log(res);
-                                        var backfill = {};
-                                        // 回填重复表
-                                        var array=peoples.data;
-                                        for (var i=0 ; i<array.length;i++){
-                                            var arr = array[i];
-                                            backfill.tableName = res.data.subTbName;
-                                            backfill.tableCategory = "formson";
-                                            backfill.updateData = {
-                                                field0007: {
-                                                    showValue: arr.field0001,
-                                                    showValue2: arr.field0001,
-                                                    value: arr.field0001
-                                                }
-                                                ,field0008: {
-                                                    showValue: arr.field0004,
-                                                    showValue2: arr.field0004,
-                                                    value: arr.field0004
-                                                }
-                                                ,field0009: {
-                                                    showValue: arr.field0003,
-                                                    showValue2: arr.field0003,
-                                                    value: arr.field0003
-                                                }
+                                    var backfill = {};
+                                    // 回填重复表
+                                    var array = peoples.data;
+                                    for (var i = 0; i < array.length; i++) {
+                                        var arr = array[i];
+                                        backfill.tableName = res.data.subTbName;
+                                        backfill.tableCategory = "formson";
+                                        backfill.updateData = {
+                                            field0007: {
+                                                showValue: arr.field0001,
+                                                showValue2: arr.field0001,
+                                                value: arr.field0001
+                                            }
+                                            , field0008: {
+                                                showValue: arr.field0004,
+                                                showValue2: arr.field0004,
+                                                value: arr.field0004
+                                            }
+                                            , field0009: {
+                                                showValue: arr.field0003,
+                                                showValue2: arr.field0003,
+                                                value: arr.field0003
+                                            }
 
-                                            };
-                                            backfill.updateRecordId = res.data.recordId;
-                                            adaptation.backfillFormControlData(backfill, privateId);
-
-                                        }
-
+                                        };
+                                        backfill.updateRecordId = res.data.recordId;
+                                        adaptation.backfillFormControlData(backfill, privateId);
                                     }
                                 }
                             });
@@ -201,12 +202,7 @@
 
                         function save() {
                             var content = messageObj.formdata.content;
-                            var array=peoples.data;
-                            for(var i =0; i<array.length;i++){
-                                var obj=array[i];
-                                addLineAndFilldata(content, adaptation, messageObj, privateId,obj.field0001);
-                            }
-
+                            addLineAndFilldata(content, adaptation, messageObj, privateId, null);
                         }
 
                         save();

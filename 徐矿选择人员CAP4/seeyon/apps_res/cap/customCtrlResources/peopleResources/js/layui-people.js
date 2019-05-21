@@ -20,7 +20,6 @@ layui.use(['table', 'layer', 'element'], function () {
 
     //保存
     $("#save").on('click', function () {
-        console.log(selectedMember);
         // alert(selectedMember.join(","));
         // $.ajax({
         //     sync: true,
@@ -149,7 +148,6 @@ layui.use(['table', 'layer', 'element'], function () {
 
     table.on('row(dzbksFilter)', function (obj) {
         // alert(obj.data);
-        console.log(obj.data);
         var tr_obj = obj.data;
         var obj = {};//添加成员对象
         obj["value"] = tr_obj.field0001;
@@ -226,7 +224,6 @@ layui.use(['table', 'layer', 'element'], function () {
 
     table.on('row(bsxxFilter)', function (obj) {
         // alert(obj.data);
-        console.log(obj.data);
         var tr_obj = obj.data;
         var obj = {};//添加成员对象
         obj["value"] = tr_obj.field0001;
@@ -304,7 +301,6 @@ layui.use(['table', 'layer', 'element'], function () {
 
     table.on('row(jcdwFilter)', function (obj) {
         // alert(obj.data);
-        console.log(obj.data);
         var tr_obj = obj.data;
         var obj = {};//添加成员对象
         obj["value"] = tr_obj.field0001;
