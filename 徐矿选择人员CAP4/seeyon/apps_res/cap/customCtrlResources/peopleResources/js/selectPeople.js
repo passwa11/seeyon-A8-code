@@ -90,7 +90,7 @@
                         var peoples = dialog.getReturnValue();
 
                         //添加明细行并回填数据
-                        function addLineAndFilldata(content, adaptation, messageObj, privateId) {
+                        function addLineAndFilldata(content, adaptation, messageObj, privateId, datainfo) {
                             $.ajax({
                                 type: 'get',
                                 async: false,
@@ -98,7 +98,8 @@
                                 dataType: 'json',
                                 data: {
                                     'masterId': content.contentDataId,
-                                    'dataInfo': JSON.stringify(peoples)
+                                    'dataInfo': JSON.stringify(datainfo)
+
                                 },
                                 contentType: 'application/json',
                                 success: function (res) {
@@ -108,40 +109,43 @@
                                         return;
                                     }
                                     console.log(res);
-                                    var add = res.data.add;
-                                    if (add) {
-                                        var addLineParam = {};
-                                        addLineParam.tableName = res.data.tableName;
-                                        addLineParam.isFormRecords = true;
-                                        addLineParam.callbackFn = function () {
-                                            save();
-                                        }
-                                        window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
-                                    } else {
-                                        var backfill = {};
-                                        // 回填重复表
-                                        // var array = peoples.data;
-                                        // for (var i = 0; i < array.length; i++) {
-                                        //     var arr = array[i];
-                                        backfill.tableName = res.data.tableName;
-                                        backfill.tableCategory = "formson";
-                                        backfill.updateData = res.data.data;
-                                        backfill.updateRecordId = res.data.recordId;
-                                        adaptation.backfillFormControlData(backfill, privateId);
-                                        // }
-                                    }
+                                    var backfill = {};
+                                    //
+                                    // backfill.tableName = res.data.tableName;
+                                    // backfill.tableCategory = "formson";
+                                    // backfill.updateData = res.data.data;
+                                    // backfill.updateRecordId = res.data.recordId;
+                                    // adaptation.backfillFormControlData(backfill, privateId);
                                 }
                             });
                         }
 
-                        function save() {
+                        var num = peoples.data.length;
+
+                        function save(num) {
                             var content = messageObj.formdata.content;
-                            addLineAndFilldata(content, adaptation, messageObj, privateId);
+                            for (var i = 0; i < num; i++) {
+                                //这是插入行
+
+                                if ((i + 1) < num) {
+                                    var addLineParam = {};
+                                    addLineParam.tableName = "formson_0288";
+                                    addLineParam.isFormRecords = true;
+                                    addLineParam.callbackFn = function () {
+                                    }
+                                } else if ((i + 1) == num) {
+                                    var addLineParam = {};
+                                    addLineParam.tableName = "formson_0288";
+                                    addLineParam.isFormRecords = true;
+                                    addLineParam.callbackFn = function () {
+                                        addLineAndFilldata(content, adaptation, messageObj, privateId, peoples)
+                                    }
+                                }
+                                window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
+                            }
                         }
 
-                        save();
-
-
+                        save(num);
                         dialog.close();
                     }
                 }, {

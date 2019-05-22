@@ -43,7 +43,7 @@ public class SelectPeopleResources extends BaseResource {
         //fastjson 解析json字符串
         JSONObject jsonObject = JSON.parseObject(dataInfo);
         JSONArray jsonArray = jsonObject.getJSONArray("data");
-        List<ZJsonObject> list = JSON.parseObject(jsonArray.toJSONString(), new TypeReference<List<ZJsonObject>>() {
+        List<ZJsonObject> listJson = JSON.parseObject(jsonArray.toJSONString(), new TypeReference<List<ZJsonObject>>() {
         });
 
         //formBean是主表的信息
@@ -53,73 +53,57 @@ public class SelectPeopleResources extends BaseResource {
             return fail("表单数据在session中找不到（masterId:" + masterId + "），请尝试重新打开。");
         }
         try {
-
             //明细行信息，使用cap4提供
             List<FormDataSubBean> subBeans = CAP4FormKit.getSubBeans(cacheFormData);
-            // 增加一个逻辑：先判断是否含有这个数据
-            List<FormDataSubBean> filterList = null;
-
-            // 赋值bug修改   新增到空白的一行上面
-            filterList = subBeans.stream().filter(item ->
-                    StrKit.isNull(CAP4FormKit.getFieldValue(item, SelectPeople.field0001.getText())))
-                    .collect(Collectors.toList());
-
-
             String tableName = subBeans.get(0).getFormTable().getTableName();
             result.put("tableName", tableName);
-            List<FormDataSubBean> subs = cacheFormData.getSubData(tableName);
 
-
-            if (StrKit.isNull(filterList) || filterList.size()==0) {
-                result.put("add", true);
-                return success(result);
-            } else {
-                result.put("add", false);
-            }
-
-            Map<String, Object> masterMap = filterList.get(0).getRowData();
-
-
-            Map<String, Object> filldatas = new HashMap<>();
-
-
-
+            Map<String, Object> filldatas = null;
             int count = 1;
-            for (String key : masterMap.keySet()) {
+            Map<String, Object> dataMap = null;
+            List<Object> listMap = new ArrayList<>();
+            for (int i = 0; i < listJson.size(); i++) {
+                Map<String, Object> masterMap = subBeans.get(i).getRowData();
+                filldatas = new HashMap<>();
+                dataMap = new HashMap<>();
+                ZJsonObject zJsonObject = listJson.get(i);
+                Map<String, Object> subTemp1 = new HashMap<>();
 
-                if (key.startsWith("field")) {
-                    Object fieldVal = masterMap.get(key);
-                    if (null == fieldVal) {
-                        Map<String, Object> subTemp1 = new HashMap<>();
-                        subTemp1.put("showValue", list.get(0).getField0001());
-                        subTemp1.put("showValue2", list.get(0).getField0001());
-                        subTemp1.put("value", list.get(0).getField0001());
+                subTemp1.put("showValue", zJsonObject.getField0001());
+                subTemp1.put("showValue2", zJsonObject.getField0001());
+                subTemp1.put("value", zJsonObject.getField0001());
 
-                        Map<String, Object> subTemp2 = new HashMap<>();
-                        subTemp2.put("showValue", list.get(0).getField0004());
-                        subTemp2.put("showValue2", list.get(0).getField0004());
-                        subTemp2.put("value", list.get(0).getField0004());
+                Map<String, Object> subTemp2 = new HashMap<>();
+                subTemp2.put("showValue", zJsonObject.getField0004());
+                subTemp2.put("showValue2", zJsonObject.getField0004());
+                subTemp2.put("value", zJsonObject.getField0004());
 
-                        Map<String, Object> subTemp3 = new HashMap<>();
-                        subTemp3.put("showValue", list.get(0).getField0003());
-                        subTemp3.put("showValue2", list.get(0).getField0003());
-                        subTemp3.put("value", list.get(0).getField0003());
-                        if (count == 1) {
-                            filldatas.put(key, subTemp1);
+                Map<String, Object> subTemp3 = new HashMap<>();
+                subTemp3.put("showValue", zJsonObject.getField0003());
+                subTemp3.put("showValue2", zJsonObject.getField0003());
+                subTemp3.put("value", zJsonObject.getField0003());
+                for (String key : masterMap.keySet()) {
+                    if (key.startsWith("field")) {
+                        Object fieldVal = masterMap.get(key);
+                        if (null == fieldVal) {
+                            if (count == 1) {
+                                filldatas.put(key, subTemp1);
+                            }
+                            if (count == 2) {
+                                filldatas.put(key, subTemp2);
+                            }
+                            if (count == 3) {
+                                filldatas.put(key, subTemp3);
+                            }
+                            count++;
+                            dataMap.put("updateData", filldatas);
                         }
-                        if (count == 2) {
-                            filldatas.put(key, subTemp2);
-                        }
-                        if (count == 3) {
-                            filldatas.put(key, subTemp3);
-                        }
-                        count++;
+                        dataMap.put("recordId", masterMap.get("id") + "");
                     }
                 }
+                listMap.add(dataMap);
             }
-
-            result.put("recordId", filterList.get(0).getId() + "");
-            result.put("data", filldatas);
+            result.put("data", listMap);
         } catch (Exception e) {
             e.printStackTrace();
         }
