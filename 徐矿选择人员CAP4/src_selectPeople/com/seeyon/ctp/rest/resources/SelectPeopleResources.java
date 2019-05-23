@@ -63,6 +63,8 @@ public class SelectPeopleResources extends BaseResource {
 
             //过滤明细行，排除有数据的明细行
             List<FormDataSubBean> excludeExist = new ArrayList<>();
+
+//            List<ZJsonObject> zJsonObjectList = new ArrayList<>();
             for (int i = 0; i < subBeans.size(); i++) {
                 Map<String, Object> map = subBeans.get(i).getRowData();
                 for (String key : map.keySet()) {
@@ -71,6 +73,15 @@ public class SelectPeopleResources extends BaseResource {
                         if (null == fieldVal) {
                             excludeExist.add(subBeans.get(i));
                             break;
+                        } else {
+                            String val =  fieldVal+"";
+                            for (int j = 0; j < listJson.size(); j++) {
+                                ZJsonObject zj=listJson.get(j);
+                                if(val.equals(zj.getField0001())){
+                                    listJson.remove(j);
+                                }
+                            }
+                            break;
                         }
                     }
                 }
@@ -78,16 +89,17 @@ public class SelectPeopleResources extends BaseResource {
 
             String tableName = subBeans.get(0).getFormTable().getTableName();
             result.put("tableName", tableName);
-            if(isNext==0){
+
+            if (isNext <= 0) {
                 result.put("add", false);
-            }else {
+            } else {
                 result.put("add", true);
             }
             Map<String, Object> filldatas = null;
 
             Map<String, Object> dataMap = null;
             List<Object> listMap = new ArrayList<>();
-            for (int i = 0; i < listJson.size(); i++) {
+            for (int i = 0; i < excludeExist.size(); i++) {
                 Map<String, Object> masterMap = excludeExist.get(i).getRowData();
                 filldatas = new HashMap<>();
                 dataMap = new HashMap<>();
@@ -151,7 +163,7 @@ public class SelectPeopleResources extends BaseResource {
             List<FormDataSubBean> subBeans = CAP4FormKit.getSubBeans(cacheFormData);
             System.out.println(subBeans.size());
         } catch (Exception e) {
-            System.out.println("刷新缓存出错了：" +e.getMessage());
+            System.out.println("刷新缓存出错了：" + e.getMessage());
             logger.error("刷新缓存出错了：" + e.getMessage());
         }
         return success("");
