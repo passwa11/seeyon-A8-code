@@ -42,6 +42,7 @@ public class SelectPeopleResources extends BaseResource {
     @Produces({"application/json"})
     @Path("backfillpeopleInfo")
     public Response backfillpeopleInfo(@QueryParam("masterId") String masterId,
+                                       @QueryParam("flag") int isNext,
                                        @QueryParam("dataInfo") String dataInfo) throws BusinessException {
 
         //fastjson 解析json字符串
@@ -77,7 +78,11 @@ public class SelectPeopleResources extends BaseResource {
 
             String tableName = subBeans.get(0).getFormTable().getTableName();
             result.put("tableName", tableName);
-
+            if(isNext==0){
+                result.put("add", false);
+            }else {
+                result.put("add", true);
+            }
             Map<String, Object> filldatas = null;
 
             Map<String, Object> dataMap = null;
