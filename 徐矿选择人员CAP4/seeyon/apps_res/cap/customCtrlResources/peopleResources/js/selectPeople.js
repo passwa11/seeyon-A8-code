@@ -109,8 +109,8 @@
                                         return;
                                     }
                                     console.log(res);
-                                    var dataList=res.data.data;
-                                    for (var i=0; i < dataList.length; i ++) {
+                                    var dataList = res.data.data;
+                                    for (var i = 0; i < dataList.length; i++) {
                                         console.log(dataList[i][dataList[i].recordId])
                                         var backfill = {};
                                         backfill.tableName = res.data.tableName;
@@ -118,6 +118,26 @@
                                         backfill.updateData = dataList[i][dataList[i].recordId];
                                         backfill.updateRecordId = dataList[i].recordId;
                                         adaptation.backfillFormControlData(backfill, privateId);
+                                    }
+                                }
+                            });
+                        }
+
+                        function refreshCache(content, adaptation, messageObj, privateId) {
+                            $.ajax({
+                                type: 'get',
+                                async: false,
+                                url: "/seeyon/rest/cap4/selectPeople/refreshCache",
+                                dataType: 'json',
+                                data: {
+                                    'masterId': content.contentDataId
+                                },
+                                contentType: 'application/json',
+                                success: function (res) {
+                                    // 判断是否需要添加
+                                    if (res.code != 0) {
+                                        $.alert(res.message);
+                                        return;
                                     }
                                 }
                             });
@@ -134,6 +154,7 @@
                                     addLineParam.tableName = "formson_0288";
                                     addLineParam.isFormRecords = true;
                                     addLineParam.callbackFn = function () {
+                                        refreshCache(content, adaptation, messageObj, privateId);
                                     }
                                 } else if ((i + 1) == num) {
                                     var addLineParam = {};
