@@ -90,7 +90,7 @@
                         var peoples = dialog.getReturnValue();
                         //添加明细行并回填数据
                         var content = messageObj.formdata.content;
-                        var num = peoples.data.length +1;
+                        var num = peoples.data.length ;
                         addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, num)
 
                         function addLineAndFilldata(content, adaptation, messageObj, privateId, datainfo, flag) {
