@@ -55,6 +55,22 @@ public class SelectPeopleResources extends BaseResource {
         try {
             //明细行信息，使用cap4提供
             List<FormDataSubBean> subBeans = CAP4FormKit.getSubBeans(cacheFormData);
+
+            //过滤明细行，排除有数据的明细行
+            List<FormDataSubBean> excludeExist=new ArrayList<>();
+            for (int i = 0; i < subBeans.size(); i++) {
+                Map<String, Object> map = subBeans.get(i).getRowData();
+                for (String key : map.keySet()) {
+                    if (key.startsWith("field")) {
+                        Object fieldVal = map.get(key);
+                        if (null == fieldVal) {
+                            excludeExist.add(subBeans.get(i));
+                            break;
+                        }
+                    }
+                }
+            }
+
             String tableName = subBeans.get(0).getFormTable().getTableName();
             result.put("tableName", tableName);
 
@@ -63,7 +79,7 @@ public class SelectPeopleResources extends BaseResource {
             Map<String, Object> dataMap = null;
             List<Object> listMap = new ArrayList<>();
             for (int i = 0; i < listJson.size(); i++) {
-                Map<String, Object> masterMap = subBeans.get(i).getRowData();
+                Map<String, Object> masterMap = excludeExist.get(i).getRowData();
                 filldatas = new HashMap<>();
                 dataMap = new HashMap<>();
                 ZJsonObject zJsonObject=listJson.get(i);
