@@ -59,14 +59,14 @@ public class SelectPeopleResources extends BaseResource {
             result.put("tableName", tableName);
 
             Map<String, Object> filldatas = null;
-            int count = 1;
+
             Map<String, Object> dataMap = null;
             List<Object> listMap = new ArrayList<>();
             for (int i = 0; i < listJson.size(); i++) {
                 Map<String, Object> masterMap = subBeans.get(i).getRowData();
                 filldatas = new HashMap<>();
                 dataMap = new HashMap<>();
-                ZJsonObject zJsonObject = listJson.get(i);
+                ZJsonObject zJsonObject=listJson.get(i);
                 Map<String, Object> subTemp1 = new HashMap<>();
 
                 subTemp1.put("showValue", zJsonObject.getField0001());
@@ -82,6 +82,9 @@ public class SelectPeopleResources extends BaseResource {
                 subTemp3.put("showValue", zJsonObject.getField0003());
                 subTemp3.put("showValue2", zJsonObject.getField0003());
                 subTemp3.put("value", zJsonObject.getField0003());
+
+                int count = 1;
+
                 for (String key : masterMap.keySet()) {
                     if (key.startsWith("field")) {
                         Object fieldVal = masterMap.get(key);
@@ -96,7 +99,7 @@ public class SelectPeopleResources extends BaseResource {
                                 filldatas.put(key, subTemp3);
                             }
                             count++;
-                            dataMap.put("updateData", filldatas);
+                            dataMap.put( masterMap.get("id") + "", filldatas);
                         }
                         dataMap.put("recordId", masterMap.get("id") + "");
                     }
