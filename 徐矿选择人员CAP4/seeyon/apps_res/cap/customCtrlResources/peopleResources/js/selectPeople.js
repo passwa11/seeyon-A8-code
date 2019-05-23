@@ -109,13 +109,16 @@
                                         return;
                                     }
                                     console.log(res);
-                                    var backfill = {};
-                                    //
-                                    // backfill.tableName = res.data.tableName;
-                                    // backfill.tableCategory = "formson";
-                                    // backfill.updateData = res.data.data;
-                                    // backfill.updateRecordId = res.data.recordId;
-                                    // adaptation.backfillFormControlData(backfill, privateId);
+                                    var dataList=res.data.data;
+                                    for (var i=0; i < dataList.length; i ++) {
+                                        console.log(dataList[i][dataList[i].recordId])
+                                        var backfill = {};
+                                        backfill.tableName = res.data.tableName;
+                                        backfill.tableCategory = "formson";
+                                        backfill.updateData = dataList[i][dataList[i].recordId];
+                                        backfill.updateRecordId = dataList[i].recordId;
+                                        adaptation.backfillFormControlData(backfill, privateId);
+                                    }
                                 }
                             });
                         }
@@ -126,7 +129,6 @@
                             var content = messageObj.formdata.content;
                             for (var i = 0; i < num; i++) {
                                 //这是插入行
-
                                 if ((i + 1) < num) {
                                     var addLineParam = {};
                                     addLineParam.tableName = "formson_0288";
