@@ -89,8 +89,8 @@ public class SelectPeopleResources extends BaseResource {
 
             String tableName = subBeans.get(0).getFormTable().getTableName();
             result.put("tableName", tableName);
-            int newNext = isNext + 1;
-            if (newNext <= 0) {
+//            int newNext = isNext + 1;
+            if (isNext <= 0) {
                 result.put("add", false);
             } else {
                 result.put("add", true);
