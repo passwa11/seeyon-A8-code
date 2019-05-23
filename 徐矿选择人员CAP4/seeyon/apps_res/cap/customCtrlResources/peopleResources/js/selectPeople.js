@@ -90,7 +90,7 @@
                         var peoples = dialog.getReturnValue();
                         //添加明细行并回填数据
                         var content = messageObj.formdata.content;
-                        var num = peoples.data.length;
+                        var num = peoples.data.length +1;
                         addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, num)
 
                         function addLineAndFilldata(content, adaptation, messageObj, privateId, datainfo, flag) {
@@ -117,7 +117,7 @@
 
                                     if (isNext) {
                                         var addLineParam = {};
-                                        addLineParam.tableName = "formson_0288";
+                                        addLineParam.tableName = res.data.tableName;
                                         addLineParam.isFormRecords = true;
                                         addLineParam.callbackFn = function () {
                                             addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, flag);
