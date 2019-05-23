@@ -74,10 +74,10 @@ public class SelectPeopleResources extends BaseResource {
                             excludeExist.add(subBeans.get(i));
                             break;
                         } else {
-                            String val =  fieldVal+"";
+                            String val = fieldVal + "";
                             for (int j = 0; j < listJson.size(); j++) {
-                                ZJsonObject zj=listJson.get(j);
-                                if(val.equals(zj.getField0001())){
+                                ZJsonObject zj = listJson.get(j);
+                                if (val.equals(zj.getField0001())) {
                                     listJson.remove(j);
                                 }
                             }
@@ -89,8 +89,8 @@ public class SelectPeopleResources extends BaseResource {
 
             String tableName = subBeans.get(0).getFormTable().getTableName();
             result.put("tableName", tableName);
-
-            if (isNext <= 0) {
+            int newNext = isNext + 1;
+            if (newNext <= 0) {
                 result.put("add", false);
             } else {
                 result.put("add", true);
@@ -152,21 +152,5 @@ public class SelectPeopleResources extends BaseResource {
         return success(result);
     }
 
-    @GET
-    @Produces({"application/json"})
-    @Path("refreshCache")
-    public Response refreshCache(@QueryParam("masterId") String masterId) throws BusinessException {
-        //formBean是主表的信息
-        FormDataMasterBean cacheFormData = cap4FormManager.getSessioMasterDataBean(Long.valueOf(Long.parseLong(masterId)));
-        //明细行信息，使用cap4提供
-        try {
-            List<FormDataSubBean> subBeans = CAP4FormKit.getSubBeans(cacheFormData);
-            System.out.println(subBeans.size());
-        } catch (Exception e) {
-            System.out.println("刷新缓存出错了：" + e.getMessage());
-            logger.error("刷新缓存出错了：" + e.getMessage());
-        }
-        return success("");
-    }
 
 }
