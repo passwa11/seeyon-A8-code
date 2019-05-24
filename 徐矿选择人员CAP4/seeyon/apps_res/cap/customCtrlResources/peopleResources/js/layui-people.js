@@ -65,12 +65,15 @@ layui.use(['table', 'layer', 'element'], function () {
         , height: 400
         , page: false //开启分页
         , cols: [[ //表头
-            // {type:'checkbox'},
-            {field: 'field0004', title: '所属部门', width: '50%', sort: true},
-            {field: 'field0003', title: '用户名', width: '50%'}
+            {type:'checkbox'},
+            {field: 'field0004', title: '所属部门', width: '44%', sort: true},
+            {field: 'field0003', title: '用户名', width: '44%'}
         ]]
     });
 
+    table.on('checkbox(jtldFilter)', function(obj){
+        console.log(obj.data);
+    });
 
     table.on('row(jtldFilter)', function (obj) {
 
@@ -140,8 +143,9 @@ layui.use(['table', 'layer', 'element'], function () {
         , height: 400
         , page: false //开启分页
         , cols: [[ //表头
-            {field: 'field0004', title: '科室', width: '46%'}
-            , {field: 'field0003', title: '机要员', width: '50%', sort: true}
+            {type:'checkbox'},
+            {field: 'field0004', title: '科室', width: '44%'}
+            , {field: 'field0003', title: '机要员', width: '44%', sort: true}
         ]]
     });
 
@@ -216,8 +220,9 @@ layui.use(['table', 'layer', 'element'], function () {
         , url: '/seeyon/ext/selectPeople.do?method=selectFormmain0106_organ'
         , page: false //开启分页
         , cols: [[ //表头
-            {field: 'field0004', title: '部室', width: '46%'}
-            , {field: 'field0003', title: '机要员', width: '50%', sort: true}
+            {type:'checkbox'},
+            {field: 'field0004', title: '部室', width: '44%'}
+            , {field: 'field0003', title: '机要员', width: '44%', sort: true}
         ]]
     });
 
@@ -292,8 +297,9 @@ layui.use(['table', 'layer', 'element'], function () {
         , height: 400
         , page: false //开启分页
         , cols: [[ //表头
-            {field: 'field0004', title: '单位', width: '46%'}
-            , {field: 'field0003', title: '机要员', width: '50%', sort: true}
+            {type:'checkbox'},
+            {field: 'field0004', title: '单位', width: '44%'}
+            , {field: 'field0003', title: '机要员', width: '44%', sort: true}
         ]]
 
     });
