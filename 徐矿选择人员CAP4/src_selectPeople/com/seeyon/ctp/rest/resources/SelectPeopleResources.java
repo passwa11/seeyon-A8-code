@@ -89,7 +89,6 @@ public class SelectPeopleResources extends BaseResource {
 
             String tableName = subBeans.get(0).getFormTable().getTableName();
             result.put("tableName", tableName);
-//            int newNext = isNext + 1;
             if (isNext <= 0) {
                 result.put("add", false);
             } else {
@@ -103,47 +102,52 @@ public class SelectPeopleResources extends BaseResource {
                 Map<String, Object> masterMap = excludeExist.get(i).getRowData();
                 filldatas = new HashMap<>();
                 dataMap = new HashMap<>();
-                ZJsonObject zJsonObject = listJson.get(i);
-                Map<String, Object> subTemp1 = new HashMap<>();
+                ZJsonObject zJsonObject = null;
+                if (i < listJson.size()) {
+                    zJsonObject = listJson.get(i);
+                    Map<String, Object> subTemp1 = new HashMap<>();
 
-                subTemp1.put("showValue", zJsonObject.getField0001());
-                subTemp1.put("showValue2", zJsonObject.getField0001());
-                subTemp1.put("value", zJsonObject.getField0001());
+                    subTemp1.put("showValue", zJsonObject.getField0001());
+                    subTemp1.put("showValue2", zJsonObject.getField0001());
+                    subTemp1.put("value", zJsonObject.getField0001());
 
-                Map<String, Object> subTemp2 = new HashMap<>();
-                subTemp2.put("showValue", zJsonObject.getField0004());
-                subTemp2.put("showValue2", zJsonObject.getField0004());
-                subTemp2.put("value", zJsonObject.getField0004());
+                    Map<String, Object> subTemp2 = new HashMap<>();
+                    subTemp2.put("showValue", zJsonObject.getField0004());
+                    subTemp2.put("showValue2", zJsonObject.getField0004());
+                    subTemp2.put("value", zJsonObject.getField0004());
 
-                Map<String, Object> subTemp3 = new HashMap<>();
-                subTemp3.put("showValue", zJsonObject.getField0003());
-                subTemp3.put("showValue2", zJsonObject.getField0003());
-                subTemp3.put("value", zJsonObject.getField0003());
+                    Map<String, Object> subTemp3 = new HashMap<>();
+                    subTemp3.put("showValue", zJsonObject.getField0003());
+                    subTemp3.put("showValue2", zJsonObject.getField0003());
+                    subTemp3.put("value", zJsonObject.getField0003());
 
-                int count = 1;
+                    int count = 1;
 
-                for (String key : masterMap.keySet()) {
-                    if (key.startsWith("field")) {
-                        Object fieldVal = masterMap.get(key);
-                        if (null == fieldVal) {
-                            if (count == 1) {
-                                filldatas.put(key, subTemp1);
+                    for (String key : masterMap.keySet()) {
+                        if (key.startsWith("field")) {
+                            Object fieldVal = masterMap.get(key);
+                            if (null == fieldVal) {
+                                if (count == 1) {
+                                    filldatas.put(key, subTemp1);
+                                }
+                                if (count == 2) {
+                                    filldatas.put(key, subTemp2);
+                                }
+                                if (count == 3) {
+                                    filldatas.put(key, subTemp3);
+                                }
+                                count++;
+                                dataMap.put(masterMap.get("id") + "", filldatas);
                             }
-                            if (count == 2) {
-                                filldatas.put(key, subTemp2);
-                            }
-                            if (count == 3) {
-                                filldatas.put(key, subTemp3);
-                            }
-                            count++;
-                            dataMap.put(masterMap.get("id") + "", filldatas);
+                            dataMap.put("recordId", masterMap.get("id") + "");
                         }
-                        dataMap.put("recordId", masterMap.get("id") + "");
                     }
+                    listMap.add(dataMap);
                 }
-                listMap.add(dataMap);
             }
+
             result.put("data", listMap);
+
         } catch (Exception e) {
             System.out.println("选择人员回填数据报错了：" + e.getMessage());
             logger.error("选择人员回填数据报错了：" + e.getMessage());
