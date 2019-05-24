@@ -90,8 +90,8 @@
                         var peoples = dialog.getReturnValue();
                         //添加明细行并回填数据
                         var content = messageObj.formdata.content;
-                        var num = peoples.data.length ;
-                        addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, num)
+                        var num = peoples.data.length + 1;
+                        addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, num);
 
                         function addLineAndFilldata(content, adaptation, messageObj, privateId, datainfo, flag) {
                             flag--;
@@ -126,15 +126,18 @@
                                     } else {
                                         console.log(res);
                                         var dataList = res.data.data;
-                                        for (var i = 0; i < dataList.length; i++) {
-                                            console.log(dataList[i][dataList[i].recordId])
-                                            var backfill = {};
-                                            backfill.tableName = res.data.tableName;
-                                            backfill.tableCategory = "formson";
-                                            backfill.updateData = dataList[i][dataList[i].recordId];
-                                            backfill.updateRecordId = dataList[i].recordId;
-                                            adaptation.backfillFormControlData(backfill, privateId);
+                                        if (null != dataList && dataList != '') {
+                                            for (var i = 0; i < dataList.length; i++) {
+                                                console.log(dataList[i][dataList[i].recordId])
+                                                var backfill = {};
+                                                backfill.tableName = res.data.tableName;
+                                                backfill.tableCategory = "formson";
+                                                backfill.updateData = dataList[i][dataList[i].recordId];
+                                                backfill.updateRecordId = dataList[i].recordId;
+                                                adaptation.backfillFormControlData(backfill, privateId);
+                                            }
                                         }
+
                                     }
 
                                 }
