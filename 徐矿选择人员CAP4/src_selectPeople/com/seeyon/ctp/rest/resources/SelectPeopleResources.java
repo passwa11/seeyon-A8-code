@@ -16,6 +16,7 @@ import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -41,7 +42,7 @@ public class SelectPeopleResources extends BaseResource {
     @GET
     @Produces({"application/json"})
     @Path("backfillpeopleInfo")
-    public Response backfillpeopleInfo(@QueryParam("masterId") String masterId,
+    public Response backfillpeopleInfo(@QueryParam(value = "masterId") String masterId,
                                        @QueryParam("flag") int isNext,
                                        @QueryParam("dataInfo") String dataInfo) throws BusinessException {
 
@@ -94,6 +95,8 @@ public class SelectPeopleResources extends BaseResource {
             } else {
                 result.put("add", true);
             }
+
+            result.put("dataCount",listJson.size());
             Map<String, Object> filldatas = null;
 
             Map<String, Object> dataMap = null;
