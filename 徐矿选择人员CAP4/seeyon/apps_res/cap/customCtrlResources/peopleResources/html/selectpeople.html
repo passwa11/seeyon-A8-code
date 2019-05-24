@@ -9,7 +9,7 @@
     <script type="text/javascript" src="../layui/layui.js"></script>
     <script type="text/javascript" src="../layui/jquery.js"></script>
     <script type="text/javascript" src="../js/layui-people.js"></script>
-    <script type="text/javascript" >
+    <script type="text/javascript">
         function OK() {
             var peoples = new Array();
             $("dl").find('dd').each(function () {
@@ -23,8 +23,8 @@
                 peoples.push(obj);
             });
             return {
-                valid : true,
-                data : peoples
+                valid: true,
+                data: peoples
             };
         }
     </script>
@@ -106,7 +106,14 @@
                 </div>
             </div>
         </div>
-        <div class="layui-col-xs6">
+        <div class="layui-col-xs1">
+            <div class="" style="margin-top: 200px">
+                <button class="layui-btn layui-btn-radius  layui-btn-sm layui-btn-primary">
+                    &nbsp;<i class="layui-icon layui-icon-next"></i>
+                </button>
+            </div>
+        </div>
+        <div class="layui-col-xs5">
             <div class="layui-card" style="margin-top: 20px">
                 <div class="layui-table-header">
                     <div style="line-height: 30px;height: 30px;padding-left: 20px;">
