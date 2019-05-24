@@ -65,15 +65,223 @@ layui.use(['table', 'layer', 'element'], function () {
         , height: 400
         , page: false //开启分页
         , cols: [[ //表头
-            {type:'checkbox'},
+            {type: 'checkbox'},
             {field: 'field0004', title: '所属部门', width: '44%', sort: true},
             {field: 'field0003', title: '用户名', width: '44%'}
         ]]
     });
 
-    table.on('checkbox(jtldFilter)', function(obj){
-        console.log(obj.data);
+
+    $("#sureSelect").on('click', function () {
+        var jtld = layui.table.checkStatus("jtldId");
+        var arrJtld = jtld.data;
+        for (var i = 0; i < arrJtld.length; i++) {
+            var tr_obj = arrJtld[i];
+            console.log(tr_obj);
+            var obj = {};//添加成员对象
+            obj["value"] = tr_obj.field0001;
+            obj["text"] = tr_obj.field0004;
+            obj["dept"] = tr_obj.field0003;
+            if ($("dl.selected-info dd").length <= 0) {
+                var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                $("dl.selected-info").prepend(option);
+                selectedMember.unshift(obj);//存储选择信息
+                $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                    $(this).remove();
+                    //刷新选择信息
+                    selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                        return obj_selected.value != obj.value;
+                    });
+                });
+            } else {
+                var selected = function () {//判断是否已选择了该人员
+                    var flag = true;
+                    $("dl.selected-info dd").each(function (i, item) {
+                        if ($(item).attr("lay-value") == obj.value) {
+                            layer.msg('已选择了[' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + ']', {time: 1500});
+                            $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                            flag = false;//已经选择
+                        }
+                    });
+                    return flag;
+                }
+                if (selected()) {
+                    // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                    var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+
+                    $("dl.selected-info").prepend(option);
+                    selectedMember.unshift(obj);//存储选择信息
+                    $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                        $(this).remove();
+                        //刷新选择信息
+                        selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                            return obj_selected.value != obj.value;
+                        });
+                    });
+                }
+            }
+        }
+
+        var dzb = layui.table.checkStatus("dzbksId");
+        var arrDzb = dzb.data;
+        for (var i = 0; i < arrDzb.length; i++) {
+            var tr_obj = arrDzb[i];
+            var obj = {};//添加成员对象
+            obj["value"] = tr_obj.field0001;
+            obj["text"] = tr_obj.field0004;
+            obj["dept"] = tr_obj.field0003;
+            if ($("dl.selected-info dd").length <= 0) {
+                // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+
+                $("dl.selected-info").prepend(option);
+                selectedMember.unshift(obj);//存储选择信息
+                $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                    $(this).remove();
+                    //刷新选择信息
+                    selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                        return obj_selected.value != obj.value;
+                    });
+                });
+            } else {
+                var selected = function () {//判断是否已选择了该人员
+                    var flag = true;
+                    $("dl.selected-info dd").each(function (i, item) {
+                        if ($(item).attr("lay-value") == obj.value) {
+                            layer.msg('已选择了[' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + ']', {time: 1500});
+                            $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                            flag = false;//已经选择
+                        }
+                    });
+                    return flag;
+                }
+                if (selected()) {
+                    // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                    var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+
+                    $("dl.selected-info").prepend(option);
+                    selectedMember.unshift(obj);//存储选择信息
+                    $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                        $(this).remove();
+                        //刷新选择信息
+                        selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                            return obj_selected.value != obj.value;
+                        });
+                    });
+                }
+            }
+        }
+
+        var jgbm = layui.table.checkStatus("bsxxId");
+        var arrJgbm = jgbm.data;
+        for (var i = 0; i < arrJgbm.length; i++) {
+            var tr_obj = arrJgbm[i];
+            var obj = {};//添加成员对象
+            obj["value"] = tr_obj.field0001;
+            obj["text"] = tr_obj.field0004;
+            obj["dept"] = tr_obj.field0003;
+            if ($("dl.selected-info dd").length <= 0) {
+                // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+
+                $("dl.selected-info").prepend(option);
+                selectedMember.unshift(obj);//存储选择信息
+                $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                    $(this).remove();
+                    //刷新选择信息
+                    selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                        return obj_selected.value != obj.value;
+                    });
+                });
+            } else {
+                var selected = function () {//判断是否已选择了该人员
+                    var flag = true;
+                    $("dl.selected-info dd").each(function (i, item) {
+                        if ($(item).attr("lay-value") == obj.value) {
+                            layer.msg('已选择了[' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + ']', {time: 1500});
+                            $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                            flag = false;//已经选择
+                        }
+                    });
+                    return flag;
+                }
+                if (selected()) {
+                    // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                    var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+
+                    $("dl.selected-info").prepend(option);
+                    selectedMember.unshift(obj);//存储选择信息
+                    $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                        $(this).remove();
+                        //刷新选择信息
+                        selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                            return obj_selected.value != obj.value;
+                        });
+                    });
+                }
+            }
+        }
+
+
+        var jcdw = layui.table.checkStatus("jcdwId");
+        var arrJcdw = jcdw.data;
+        for (var i = 0; i < arrJcdw.length; i++) {
+            var tr_obj = arrJcdw[i];
+            var obj = {};//添加成员对象
+            obj["value"] = tr_obj.field0001;
+            obj["text"] = tr_obj.field0004;
+            obj["dept"] = tr_obj.field0003;
+            if ($("dl.selected-info dd").length <= 0) {
+                var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+
+                // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                $("dl.selected-info").prepend(option);
+                selectedMember.unshift(obj);//存储选择信息
+                $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                    $(this).remove();
+                    //刷新选择信息
+                    selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                        return obj_selected.value != obj.value;
+                    });
+                });
+            } else {
+                var selected = function () {//判断是否已选择了该人员
+                    var flag = true;
+                    $("dl.selected-info dd").each(function (i, item) {
+                        if ($(item).attr("lay-value") == obj.value) {
+                            layer.msg('已选择了[' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + ']', {time: 1500});
+                            $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                            flag = false;//已经选择
+                        }
+                    });
+                    return flag;
+                }
+                if (selected()) {
+                    // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                    var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+
+                    $("dl.selected-info").prepend(option);
+                    selectedMember.unshift(obj);//存储选择信息
+                    $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                        $(this).remove();
+                        //刷新选择信息
+                        selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                            return obj_selected.value != obj.value;
+                        });
+                    });
+                }
+            }
+        }
     });
+
 
     table.on('row(jtldFilter)', function (obj) {
 
@@ -143,7 +351,7 @@ layui.use(['table', 'layer', 'element'], function () {
         , height: 400
         , page: false //开启分页
         , cols: [[ //表头
-            {type:'checkbox'},
+            {type: 'checkbox'},
             {field: 'field0004', title: '科室', width: '44%'}
             , {field: 'field0003', title: '机要员', width: '44%', sort: true}
         ]]
@@ -220,7 +428,7 @@ layui.use(['table', 'layer', 'element'], function () {
         , url: '/seeyon/ext/selectPeople.do?method=selectFormmain0106_organ'
         , page: false //开启分页
         , cols: [[ //表头
-            {type:'checkbox'},
+            {type: 'checkbox'},
             {field: 'field0004', title: '部室', width: '44%'}
             , {field: 'field0003', title: '机要员', width: '44%', sort: true}
         ]]
@@ -297,7 +505,7 @@ layui.use(['table', 'layer', 'element'], function () {
         , height: 400
         , page: false //开启分页
         , cols: [[ //表头
-            {type:'checkbox'},
+            {type: 'checkbox'},
             {field: 'field0004', title: '单位', width: '44%'}
             , {field: 'field0003', title: '机要员', width: '44%', sort: true}
         ]]
