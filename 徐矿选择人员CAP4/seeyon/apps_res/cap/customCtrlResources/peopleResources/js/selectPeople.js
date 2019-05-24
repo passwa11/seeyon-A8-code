@@ -91,7 +91,31 @@
                         //添加明细行并回填数据
                         var content = messageObj.formdata.content;
                         var num = peoples.data.length + 1;
-                        addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, num);
+
+                        $.ajax({
+                            type: 'get',
+                            async: true,
+                            url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo",
+                            dataType: 'json',
+                            data: {
+                                'masterId': content.contentDataId,
+                                'dataInfo': JSON.stringify(peoples),
+                                'flag': 0
+                            },
+                            contentType: 'application/json',
+                            success: function (res) {
+                                // 判断是否需要添加
+                                if (res.code != 0) {
+                                    $.alert(res.message);
+                                    return;
+                                }
+
+                                var dataCount=res.data.dataCount + 1;
+                                addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, dataCount);
+
+                            }
+                        });
+
 
                         function addLineAndFilldata(content, adaptation, messageObj, privateId, datainfo, flag) {
                             flag--;
@@ -117,6 +141,8 @@
 
                                     if (isNext) {
                                         var addLineParam = {};
+                                        var dataCount=res.data.dataCount;
+
                                         addLineParam.tableName = res.data.tableName;
                                         addLineParam.isFormRecords = true;
                                         addLineParam.callbackFn = function () {
@@ -124,11 +150,9 @@
                                         }
                                         window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
                                     } else {
-                                        console.log(res);
                                         var dataList = res.data.data;
                                         if (null != dataList && dataList != '') {
                                             for (var i = 0; i < dataList.length; i++) {
-                                                console.log(dataList[i][dataList[i].recordId])
                                                 var backfill = {};
                                                 backfill.tableName = res.data.tableName;
                                                 backfill.tableCategory = "formson";
