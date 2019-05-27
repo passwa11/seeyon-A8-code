@@ -109,14 +109,14 @@ public class Mail263Util {
      * @return
      */
     public static String sign(String... args) {
-//        if (args != null && args.length > 0) {
-//            StringBuffer signsb = new StringBuffer("");
-//            for (String arg : args) {
-//                signsb.append(arg);
-//            }
-//            String sign = SSOMD5.createEncrypPassword(signsb.toString());
-//            return sign.toLowerCase();
-//        }
+        if (args != null && args.length > 0) {
+            StringBuffer signsb = new StringBuffer("");
+            for (String arg : args) {
+                signsb.append(arg);
+            }
+            String sign = SSOMD5.createEncrypPassword(signsb.toString());
+            return sign.toLowerCase();
+        }
         return null;
     }
 
