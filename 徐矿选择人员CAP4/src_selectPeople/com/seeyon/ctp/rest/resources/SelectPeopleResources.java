@@ -167,7 +167,6 @@ public class SelectPeopleResources extends BaseResource {
     @Produces({"application/json"})
     @Path("backfillpeopleInfo2")
     public Response backfillpeopleInfo2(Map<String,Object> postMap) throws BusinessException {
-
         //fastjson 解析json字符串
         String masterId=(String) postMap.get("masterId");
         String dataInfo=(String) postMap.get("dataInfo");
