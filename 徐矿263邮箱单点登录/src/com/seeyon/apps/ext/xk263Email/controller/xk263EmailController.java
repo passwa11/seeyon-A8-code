@@ -1,6 +1,8 @@
 package com.seeyon.apps.ext.xk263Email.controller;
 
+import com.seeyon.apps.ext.xk263Email.util.SSOMD5;
 import com.seeyon.ctp.common.controller.BaseController;
+import com.seeyon.v3x.common.web.login.CurrentUser;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +28,8 @@ public class xk263EmailController extends BaseController {
          * sign = 32位MD5 （ cid=单点登录接口账号&domain=邮箱域名&uid=用户ID&key=单点登录接口密钥 ）
          * @return
          */
-        String userId = "123";
+        String userId=Long.toString(CurrentUser.get().getId());
+
         StringBuffer sb = new StringBuffer("http://pcc.263.net/PCC/263mail.do?");
         sb.append("cid=");
         sb.append(SSO_CID);
@@ -36,8 +39,6 @@ public class xk263EmailController extends BaseController {
         sb.append(userId);
         sb.append("&sign=");
         sb.append(sign("cid=" + SSO_CID, "&domain=" + MAIL_DOMAIN, "&uid=" + userId, "&key=" + SSO_KEY));
-
-
         Map<String, Object> model = new HashMap<>();
         return new ModelAndView("");
     }
@@ -49,14 +50,14 @@ public class xk263EmailController extends BaseController {
      * @return
      */
     public static String sign(String... args) {
-//        if (args != null && args.length > 0) {
-//            StringBuffer signsb = new StringBuffer("");
-//            for (String arg : args) {
-//                signsb.append(arg);
-//            }
-//            String sign = SSOMD5.createEncrypPassword(signsb.toString());
-//            return sign.toLowerCase();
-//        }
+        if (args != null && args.length > 0) {
+            StringBuffer signsb = new StringBuffer("");
+            for (String arg : args) {
+                signsb.append(arg);
+            }
+            String sign = SSOMD5.createEncrypPassword(signsb.toString());
+            return sign.toLowerCase();
+        }
         return null;
     }
 

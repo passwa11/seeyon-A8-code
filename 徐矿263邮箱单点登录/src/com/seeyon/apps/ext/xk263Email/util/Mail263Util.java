@@ -88,18 +88,18 @@ public class Mail263Util {
      *
      * @return
      */
-    public static String getSSOUrl(String alias) throws Exception {
-        StringBuffer sb = new StringBuffer("http://pcc.263.net/PCC/263mail.do?");
-        sb.append("cid=");
-        sb.append(SSO_CID);
-        sb.append("&domain=");
-        sb.append(MAIL_DOMAIN);
-        sb.append("&uid=");
-        sb.append(alias);
-        sb.append("&sign=");
-        sb.append(sign("cid=" + SSO_CID, "&domain=" + MAIL_DOMAIN, "&uid=" + alias, "&key=" + SSO_KEY));
-        return sb.toString();
-    }
+//    public static String getSSOUrl(String alias) throws Exception {
+//        StringBuffer sb = new StringBuffer("http://pcc.263.net/PCC/263mail.do?");
+//        sb.append("cid=");
+//        sb.append(SSO_CID);
+//        sb.append("&domain=");
+//        sb.append(MAIL_DOMAIN);
+//        sb.append("&uid=");
+//        sb.append(alias);
+//        sb.append("&sign=");
+//        sb.append(sign("cid=" + SSO_CID, "&domain=" + MAIL_DOMAIN, "&uid=" + alias, "&key=" + SSO_KEY));
+//        return sb.toString();
+//    }
 
     /**
      * 生成调用API时的sign
@@ -108,17 +108,17 @@ public class Mail263Util {
      * @param args
      * @return
      */
-    public static String sign(String... args) {
-        if (args != null && args.length > 0) {
-            StringBuffer signsb = new StringBuffer("");
-            for (String arg : args) {
-                signsb.append(arg);
-            }
-            String sign = SSOMD5.createEncrypPassword(signsb.toString());
-            return sign.toLowerCase();
-        }
-        return null;
-    }
+//    public static String sign(String... args) {
+//        if (args != null && args.length > 0) {
+//            StringBuffer signsb = new StringBuffer("");
+//            for (String arg : args) {
+//                signsb.append(arg);
+//            }
+//            String sign = SSOMD5.createEncrypPassword(signsb.toString());
+//            return sign.toLowerCase();
+//        }
+//        return null;
+//    }
 
 
 
