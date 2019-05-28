@@ -91,17 +91,21 @@
                         //添加明细行并回填数据
                         var content = messageObj.formdata.content;
                         var num = peoples.data.length + 1;
+                        // debugger;
+                        console.log(peoples);
+                        var jsonObj = {
+                            "masterId": content.contentDataId + "",
+                            "dataInfo": JSON.stringify(peoples),
+                            "flag": "0"
+                        };
+                        console.log(jsonObj);
 
                         $.ajax({
-                            type: 'get',
+                            type: 'post',
                             async: true,
-                            url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo",
+                            url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo2",
                             dataType: 'json',
-                            data: {
-                                'masterId': content.contentDataId,
-                                'dataInfo': JSON.stringify(peoples),
-                                'flag': 0
-                            },
+                            data: JSON.stringify(jsonObj),
                             contentType: 'application/json',
                             success: function (res) {
                                 // 判断是否需要添加
@@ -110,25 +114,27 @@
                                     return;
                                 }
 
-                                var dataCount=res.data.dataCount + 1;
+                                var dataCount = res.data.dataCount + 1;
                                 addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, dataCount);
 
+                            }, error: function (res) {
                             }
                         });
 
 
                         function addLineAndFilldata(content, adaptation, messageObj, privateId, datainfo, flag) {
                             flag--;
+                            var jsonAdd = {
+                                'masterId': content.contentDataId,
+                                'dataInfo': JSON.stringify(datainfo),
+                                'flag': flag+""
+                            };
                             $.ajax({
-                                type: 'get',
+                                type: 'post',
                                 async: true,
-                                url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo",
+                                url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo2",
                                 dataType: 'json',
-                                data: {
-                                    'masterId': content.contentDataId,
-                                    'dataInfo': JSON.stringify(datainfo),
-                                    'flag': flag
-                                },
+                                data: JSON.stringify(jsonAdd),
                                 contentType: 'application/json',
                                 success: function (res) {
                                     // 判断是否需要添加
@@ -141,7 +147,7 @@
 
                                     if (isNext) {
                                         var addLineParam = {};
-                                        var dataCount=res.data.dataCount;
+                                        var dataCount = res.data.dataCount;
 
                                         addLineParam.tableName = res.data.tableName;
                                         addLineParam.isFormRecords = true;
