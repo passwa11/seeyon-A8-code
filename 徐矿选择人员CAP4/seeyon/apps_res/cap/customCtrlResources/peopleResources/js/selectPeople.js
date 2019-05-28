@@ -32,6 +32,7 @@
 
     var test = "test";
 
+
     App.prototype = {
         initParams: function (options) {
             var self = this;
