@@ -102,7 +102,6 @@ public class Xk263EmailSection extends BaseSectionImpl {
         ht.setModel(HtmlTemplete.ModelType.inner);
         ht.setShowBottomButton(true);
         ht.addBottomButton("<button>进入邮箱</button>", "javascript:var rv = v3x.openWindow({url: \"https://www.baidu.com/\",dialogType:'open',workSpace: 'yes'});");
-//        ht.add
         return ht;
     }
 }
