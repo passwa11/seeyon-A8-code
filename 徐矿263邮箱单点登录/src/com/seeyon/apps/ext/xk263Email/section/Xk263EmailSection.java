@@ -1,9 +1,11 @@
 package com.seeyon.apps.ext.xk263Email.section;
 
+import com.seeyon.apps.ext.xk263Email.util.SignUtil;
 import com.seeyon.ctp.portal.section.BaseSectionImpl;
 import com.seeyon.ctp.portal.section.templete.BaseSectionTemplete;
 import com.seeyon.ctp.portal.section.templete.HtmlTemplete;
 import com.seeyon.ctp.util.Strings;
+import com.seeyon.v3x.common.web.login.CurrentUser;
 
 import java.util.Map;
 
@@ -11,6 +13,13 @@ import java.util.Map;
  * 周刘成   2019/5/28
  */
 public class Xk263EmailSection extends BaseSectionImpl {
+
+    /**
+     * 263授权单点登录sid和key
+     */
+    public static String SSO_CID = "ff80808150fbc5b2015124367cc103ba";
+    public static String SSO_KEY = "4fW3H8my2cBeE";
+    public static String MAIL_DOMAIN = "xkjt.net";
 
     @Override
     public String getId() {
@@ -64,16 +73,36 @@ public class Xk263EmailSection extends BaseSectionImpl {
      */
     @Override
     public BaseSectionTemplete projection(Map<String, String> map) {
+        String alias = CurrentUser.get().getLoginName();
+
+        StringBuffer sb = new StringBuffer("http://pcc.263.net/PCC/263mail.do?");
+        sb.append("cid=");
+        sb.append(SSO_CID);
+        sb.append("&domain=");
+        sb.append(MAIL_DOMAIN);
+        sb.append("&uid=");
+        sb.append(alias);
+        sb.append("&sign=");
+        sb.append(SignUtil.sign("cid=" + SSO_CID, "&domain=" + MAIL_DOMAIN, "&uid=" + alias, "&key=" + SSO_KEY));
+
         //栏目解析主方法
 
         HtmlTemplete ht = new HtmlTemplete();
         StringBuilder html = new StringBuilder();
-        html.append("<a  href=\"http://www.seeyon.com\" title=\"示例\">示例</a>");
+
+        String tmp="<div style=\"overflow: visible;margin-top:250px;float:right;\">"+
+                "<span onclick=\"winOpen=window.open('"+sb.toString()+"');\"" +
+                " class=\"common_button common_button_icon hand margin_r_5\">    " +
+                "<i class=\"font_size14 margin_r_5 vportal vp-markedAsRead\"></i>进入邮箱</span></p></div>";
+        tmp +="<div><a  href=\""+sb.toString()+"\" title=\"示例\">示例</a></div>";
+
+        html.append(tmp);
         ht.setHeight("230");
         ht.setHtml(html.toString());
         ht.setModel(HtmlTemplete.ModelType.inner);
         ht.setShowBottomButton(true);
-        ht.addBottomButton(BaseSectionTemplete.BOTTOM_BUTTON_LABEL_MORE, "javascript:alert('ok');");
+        ht.addBottomButton("<button>进入邮箱</button>", "javascript:var rv = v3x.openWindow({url: \"https://www.baidu.com/\",dialogType:'open',workSpace: 'yes'});");
+//        ht.add
         return ht;
     }
 }
