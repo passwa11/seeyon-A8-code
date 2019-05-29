@@ -1,5 +1,7 @@
 package com.seeyon.apps.ext.xk263Email.section;
 
+import com.seeyon.apps.ext.xk263Email.axis.xmapi.XmapiImpl;
+import com.seeyon.apps.ext.xk263Email.axis.xmapi.XmapiImplServiceLocator;
 import com.seeyon.apps.ext.xk263Email.util.SignUtil;
 import com.seeyon.ctp.portal.section.BaseSectionImpl;
 import com.seeyon.ctp.portal.section.templete.BaseSectionTemplete;
@@ -7,19 +9,31 @@ import com.seeyon.ctp.portal.section.templete.HtmlTemplete;
 import com.seeyon.ctp.util.Strings;
 import com.seeyon.v3x.common.web.login.CurrentUser;
 
+import javax.xml.rpc.ServiceException;
+import java.rmi.RemoteException;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * 周刘成   2019/5/28
  */
 public class Xk263EmailSection extends BaseSectionImpl {
 
+
+    public static ExecutorService pool = Executors.newCachedThreadPool();
+    public static XmapiImplServiceLocator service = new XmapiImplServiceLocator();
     /**
      * 263授权单点登录sid和key
      */
     public static String SSO_CID = "ff80808150fbc5b2015124367cc103ba";
     public static String SSO_KEY = "4fW3H8my2cBeE";
     public static String MAIL_DOMAIN = "xkjt.net";
+    /**
+     * 263授权人员组织account和key
+     */
+    public static String API_KEY = "R5hy7M2dcv4AK";
+    public static String API_ACCOUNT = "xkjt.net";
 
     @Override
     public String getId() {
@@ -73,8 +87,8 @@ public class Xk263EmailSection extends BaseSectionImpl {
      */
     @Override
     public BaseSectionTemplete projection(Map<String, String> map) {
+        //单点登录url
         String alias = CurrentUser.get().getLoginName();
-
         StringBuffer sb = new StringBuffer("http://pcc.263.net/PCC/263mail.do?");
         sb.append("cid=");
         sb.append(SSO_CID);
@@ -85,16 +99,36 @@ public class Xk263EmailSection extends BaseSectionImpl {
         sb.append("&sign=");
         sb.append(SignUtil.sign("cid=" + SSO_CID, "&domain=" + MAIL_DOMAIN, "&uid=" + alias, "&key=" + SSO_KEY));
 
+        //获取263未读邮件数
+        String count = "";
+        try {
+            XmapiImpl apiImpl = service.getxmapi();
+            String sign = SignUtil.sign(alias, MAIL_DOMAIN, API_KEY);
+            count = apiImpl.getDirInfo_New(alias, MAIL_DOMAIN, "", 0, API_ACCOUNT, sign);
+            try {
+                int code = Integer.parseInt(count);
+                if (code < 0) {
+                    count = "0";
+                }
+            } catch (Exception e) {
+                count = "0";
+            }
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
         //栏目解析主方法
 
         HtmlTemplete ht = new HtmlTemplete();
         StringBuilder html = new StringBuilder();
 
-        String tmp="<div style=\"overflow: visible;margin-top:250px;float:right;\">"+
-                "<span onclick=\"winOpen=window.open('"+sb.toString()+"');\"" +
+        String tmp = "<div style=\"overflow: visible;margin-top:250px;float:right;\">" +
+                "<span onclick=\"winOpen=window.open('" + sb.toString() + "');\"" +
                 " class=\"common_button common_button_icon hand margin_r_5\">    " +
                 "<i class=\"font_size14 margin_r_5 vportal vp-markedAsRead\"></i>进入邮箱</span></p></div>";
-        tmp +="<div><a  href=\""+sb.toString()+"\" title=\"示例\">示例</a></div>";
+        tmp += "<div><h5>你有&nbsp;&nbsp;<span style=\"color:red\">"+count+"</span>&nbsp;&nbsp;封未读邮件。</h5></div>";
 
         html.append(tmp);
         ht.setHeight("230");

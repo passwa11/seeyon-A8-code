@@ -25,13 +25,15 @@ import javax.mail.Session;
 //import com.cnofe.sso.utils.SSOMD5;
 //import com.cnofe.sys.entity.SysOrgEntity;
 //import com.cnofe.sys.entity.SysUserEntity;
+import com.seeyon.apps.ext.xk263Email.axis.xmapi.XmapiImpl;
+import com.seeyon.apps.ext.xk263Email.axis.xmapi.XmapiImplServiceLocator;
 import com.sun.mail.imap.IMAPFolder;
 import com.sun.mail.imap.IMAPStore;
 
 public class Mail263Util {
 
     public static ExecutorService pool = Executors.newCachedThreadPool();
-//	public static XmapiImplServiceLocator service = new XmapiImplServiceLocator();
+	public static XmapiImplServiceLocator service = new XmapiImplServiceLocator();
 
     /**
      * 263授权单点登录sid和key
