@@ -23,9 +23,9 @@ public class Xk263EmailSection extends BaseSectionImpl {
     @Override
     public String getName(Map<String, String> map) {
         //栏目显示的名字，必须实现国际化，在栏目属性的“columnsName”中存储
-        String name = "未读邮件";
+        String name = "我的邮件";
         if (Strings.isBlank(name)) {
-            return "未读邮件";
+            return "我的邮件";
         } else {
             return name;
         }
