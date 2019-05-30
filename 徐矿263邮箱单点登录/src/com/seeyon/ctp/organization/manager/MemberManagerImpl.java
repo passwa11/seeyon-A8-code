@@ -1141,6 +1141,39 @@ public class MemberManagerImpl implements MemberManager {
         		orgManagerDirect.insertRepeatSortNum(V3xOrgMember.class.getSimpleName(), updateMember.getOrgAccountId(),
         				updateMember.getSortId(), updateMember.getIsInternal(),updateMember.getId());
         	}
+
+            //zlc  判断是否需要创建263邮箱
+            String create263 = (String) map.get("create263");
+            if(null != create263 && !"".equals(create263)){
+                if(create263.equals("true")){
+                    try {
+                        XmapiImpl apiImpl = xmapiImplServiceLocator.getxmapi();
+
+                        // （ userid + domain + passwd + 接口密钥 ）
+                        String sign = SignUtil.sign((String) map.get("loginName"),ZCommonUtil.MAIL_DOMAIN, ZCommonUtil.USER_PWD, ZCommonUtil.API_KEY);
+
+                        int createResult = apiImpl.regUser_New((String) map.get("loginName"),
+                                ZCommonUtil.MAIL_DOMAIN,
+                                ZCommonUtil.USER_PWD,
+                                ZCommonUtil.USER_CRYPTTYPE_0,
+                                ZCommonUtil.USER_GID_33,
+                                -1,
+                                ZCommonUtil.GBKToBase64((String) map.get("name")),
+                                "",
+                                (String) map.get("telnumber"),
+                                (String) map.get("officenumber"),
+                                "", "", "",
+                                ZCommonUtil.USER_ROLE_ID,
+                                ZCommonUtil.USER_CHANGEPWD_ON,
+                                ZCommonUtil.API_ACCOUNT, sign);
+
+                    } catch (ServiceException e) {
+                        logger.error("创建263邮箱出错了,错误信息为："+e.getMessage());
+                    } catch (Exception e){
+
+                    }
+                }
+            }
         }
         
         /***ldap/ad绑定登录名，存储在ctp_org_user_mapper****/
