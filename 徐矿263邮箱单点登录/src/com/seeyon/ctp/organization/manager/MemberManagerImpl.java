@@ -15,6 +15,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TimeZone;
 
+import com.seeyon.apps.ext.xk263Email.axis.xmapi.XmapiImpl;
+import com.seeyon.apps.ext.xk263Email.axis.xmapi.XmapiImplServiceLocator;
+import com.seeyon.apps.ext.xk263Email.util.Mail263Util;
+import com.seeyon.apps.ext.xk263Email.util.SignUtil;
+import com.seeyon.apps.ext.xk263Email.util.ZCommonUtil;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -81,6 +86,8 @@ import com.seeyon.ctp.util.UUIDLong;
 import com.seeyon.ctp.util.UniqueList;
 import com.seeyon.ctp.util.ZipUtil;
 import com.seeyon.ctp.util.annotation.CheckRoleAccess;
+
+import javax.xml.rpc.ServiceException;
 
 @CheckRoleAccess(roleTypes={Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator,Role_NAME.DepAdmin,Role_NAME.HrAdmin})
 public class MemberManagerImpl implements MemberManager {
@@ -607,6 +614,8 @@ public class MemberManagerImpl implements MemberManager {
         return createMember(accountId, map);
     }
 
+    public XmapiImplServiceLocator xmapiImplServiceLocator = new XmapiImplServiceLocator();
+
     @Override
     @CheckRoleAccess(roleTypes={Role_NAME.GroupAdmin,Role_NAME.AccountAdministrator,Role_NAME.HrAdmin, Role_NAME.DepAdmin})
     public Object createMember(String accountId, Map map) throws BusinessException {
@@ -744,6 +753,38 @@ public class MemberManagerImpl implements MemberManager {
         if(returnMessage.isSuccess()){
             /**ldap*/
             this.newMemberBingLdap(member, map);
+            //zlc  判断是否需要创建263邮箱
+            String create263 = (String) map.get("create263");
+            if(null != create263 && !"".equals(create263)){
+                if(create263.equals("true")){
+                    try {
+                        XmapiImpl apiImpl = xmapiImplServiceLocator.getxmapi();
+
+                        // （ userid + domain + passwd + 接口密钥 ）
+                        String sign = SignUtil.sign((String) map.get("loginName"),Mail263Util.MAIL_DOMAIN, Mail263Util.USER_PWD, Mail263Util.API_KEY);
+
+                        int createResult = apiImpl.regUser_New((String) map.get("loginName"),
+                                ZCommonUtil.MAIL_DOMAIN,
+                                ZCommonUtil.USER_PWD,
+                                ZCommonUtil.USER_CRYPTTYPE_0,
+                                ZCommonUtil.USER_GID_33,
+                                -1,
+                                ZCommonUtil.GBKToBase64((String) map.get("name")),
+                                "",
+                                (String) map.get("telnumber"),
+                                (String) map.get("officenumber"),
+                                "fax", "", "",
+                                ZCommonUtil.USER_ROLE_ID,
+                                ZCommonUtil.USER_CHANGEPWD_ON,
+                                ZCommonUtil.API_ACCOUNT, sign);
+
+                    } catch (ServiceException e) {
+                        logger.error("创建263邮箱出错了,错误信息为："+e.getMessage());
+                    } catch (Exception e){
+
+                    }
+                }
+            }
         }
         //role
         if (member.getIsInternal()) {//内部人员读取roleIds

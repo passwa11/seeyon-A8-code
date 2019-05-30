@@ -3,6 +3,8 @@ package com.seeyon.apps.ext.xk263Email.util;
 import com.seeyon.apps.ext.xk263Email.axis.xmapi.XmapiImpl;
 import com.seeyon.apps.ext.xk263Email.axis.xmapi.XmapiImplServiceLocator;
 import com.seeyon.v3x.common.web.login.CurrentUser;
+import com.twelvemonkeys.io.enc.Base64Encoder;
+import sun.misc.BASE64Encoder;
 
 import javax.xml.rpc.ServiceException;
 import java.rmi.RemoteException;
@@ -29,6 +31,19 @@ public class ZCommonUtil {
     public static String API_KEY = "R5hy7M2dcv4AK";
     public static String API_ACCOUNT = "xkjt.net";
 
+
+    //创建263邮箱用户需要的参数
+    // 默认密码
+    public static String USER_PWD = "123";
+    // 密码类型 密码的明文:0 密码的32位MD5小写加密串:4
+    public static int USER_CRYPTTYPE_0 = 0;
+    // 组ID（空间大小ID），263G-5万封:33 263G-10万封:43
+    public static int USER_GID_33 = 33;
+    // 角色ID，默认0
+    public static int USER_ROLE_ID = 0;
+    // 首次登录是否需要修改密码，不能为空，0为不需修改，1为需要修改
+    public static int USER_CHANGEPWD_OFF = 0;
+    public static int USER_CHANGEPWD_ON = 1;
 
     public static String get263LoginUrl() {
         /**
@@ -76,6 +91,21 @@ public class ZCommonUtil {
             count = "0";
         }
         return count;
+    }
+
+    /**
+     * 将字符串转换成gbk编码后用Base64编码
+     *
+     * @param s
+     * @return
+     * @throws Exception
+     */
+    public static String GBKToBase64(String s) throws Exception {
+        if (s == null) {
+            return "";
+        }
+        String base64 = new BASE64Encoder().encode(s.getBytes("GBK"));
+        return base64;
     }
 
 }
