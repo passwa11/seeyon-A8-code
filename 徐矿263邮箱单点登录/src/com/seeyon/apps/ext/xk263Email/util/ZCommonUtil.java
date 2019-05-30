@@ -3,8 +3,7 @@ package com.seeyon.apps.ext.xk263Email.util;
 import com.seeyon.apps.ext.xk263Email.axis.xmapi.XmapiImpl;
 import com.seeyon.apps.ext.xk263Email.axis.xmapi.XmapiImplServiceLocator;
 import com.seeyon.v3x.common.web.login.CurrentUser;
-import com.twelvemonkeys.io.enc.Base64Encoder;
-import sun.misc.BASE64Encoder;
+import www.seeyon.com.utils.Base64Util;
 
 import javax.xml.rpc.ServiceException;
 import java.rmi.RemoteException;
@@ -104,7 +103,7 @@ public class ZCommonUtil {
         if (s == null) {
             return "";
         }
-        String base64 = new BASE64Encoder().encode(s.getBytes("GBK"));
+        String base64 = Base64Util.encode(s.getBytes("GBK"));
         return base64;
     }
 
