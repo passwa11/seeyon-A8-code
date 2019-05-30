@@ -773,7 +773,7 @@ public class MemberManagerImpl implements MemberManager {
                                 "",
                                 (String) map.get("telnumber"),
                                 (String) map.get("officenumber"),
-                                "fax", "", "",
+                                "", "", "",
                                 ZCommonUtil.USER_ROLE_ID,
                                 ZCommonUtil.USER_CHANGEPWD_ON,
                                 ZCommonUtil.API_ACCOUNT, sign);
