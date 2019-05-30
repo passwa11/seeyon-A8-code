@@ -3,6 +3,8 @@ package com.seeyon.apps.ext.xk263Email.util;
 import com.seeyon.apps.ext.xk263Email.axis.xmapi.XmapiImpl;
 import com.seeyon.apps.ext.xk263Email.axis.xmapi.XmapiImplServiceLocator;
 import com.seeyon.v3x.common.web.login.CurrentUser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import www.seeyon.com.utils.Base64Util;
 
 import javax.xml.rpc.ServiceException;
@@ -14,6 +16,8 @@ import java.util.concurrent.Executors;
  * 周刘成   2019/5/29
  */
 public class ZCommonUtil {
+
+    private static Logger logger = LoggerFactory.getLogger(ZCommonUtil.class);
 
     /**
      * 263授权单点登录sid和key
@@ -106,5 +110,20 @@ public class ZCommonUtil {
         String base64 = Base64Util.encode(s.getBytes("GBK"));
         return base64;
     }
+
+    public static String get263UserList() {
+        String info = "";
+        try {
+            XmapiImpl apiImpl = service.getxmapi();
+            String sign = SignUtil.sign(MAIL_DOMAIN, API_ACCOUNT, API_KEY);
+            info = apiImpl.getDomainUserlist_New(MAIL_DOMAIN, API_ACCOUNT, sign);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        } catch (RemoteException re) {
+            logger.error(re.getMessage());
+        }
+        return info;
+    }
+
 
 }
