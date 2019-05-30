@@ -761,7 +761,7 @@ public class MemberManagerImpl implements MemberManager {
                         XmapiImpl apiImpl = xmapiImplServiceLocator.getxmapi();
 
                         // （ userid + domain + passwd + 接口密钥 ）
-                        String sign = SignUtil.sign((String) map.get("loginName"),Mail263Util.MAIL_DOMAIN, Mail263Util.USER_PWD, Mail263Util.API_KEY);
+                        String sign = SignUtil.sign((String) map.get("loginName"),ZCommonUtil.MAIL_DOMAIN, ZCommonUtil.USER_PWD, ZCommonUtil.API_KEY);
 
                         int createResult = apiImpl.regUser_New((String) map.get("loginName"),
                                 ZCommonUtil.MAIL_DOMAIN,
