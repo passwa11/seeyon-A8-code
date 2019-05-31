@@ -73,7 +73,7 @@ public class Xk263EmailSection extends BaseSectionImpl {
         HtmlTemplete ht = new HtmlTemplete();
         StringBuilder html = new StringBuilder();
 
-        String userStr=ZCommonUtil.get263UserList();
+//        String userStr=ZCommonUtil.get263UserList();
 
         String tmp = "<div style=\"overflow: visible;margin-top:250px;float:right;\">" +
                 "<span onclick=\"winOpen=window.open('" + loginUrl + "');\"" +
