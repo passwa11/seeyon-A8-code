@@ -622,6 +622,7 @@ public class MemberManagerImpl implements MemberManager {
         Long currentAccountId = Long.parseLong(accountId);
         User user = AppContext.getCurrentUser();
         V3xOrgMember member = new V3xOrgMember();
+        member.setCreate263((String)map.get("create263"));
         ParamUtil.mapToBean(map, member, false);
         if(null == map.get("birthday")
                 || Strings.isBlank((String)map.get("birthday"))) {
@@ -677,6 +678,7 @@ public class MemberManagerImpl implements MemberManager {
             member.setSecond_post(secondPostList);
         }
         map.put("imageid", map.get("imageid"));
+
         
         
         //更新人员类型枚举引用状态

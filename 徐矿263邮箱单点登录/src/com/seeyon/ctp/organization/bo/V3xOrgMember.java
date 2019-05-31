@@ -13,6 +13,19 @@
 
 package com.seeyon.ctp.organization.bo;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.seeyon.apps.addressbook.constants.AddressbookConstants;
 import com.seeyon.apps.addressbook.po.AddressBookSet;
 import com.seeyon.ctp.common.AppContext;
@@ -25,11 +38,6 @@ import com.seeyon.ctp.organization.dao.OrgHelper;
 import com.seeyon.ctp.organization.po.OrgMember;
 import com.seeyon.ctp.util.StringUtil;
 import com.seeyon.ctp.util.Strings;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import java.io.Serializable;
-import java.util.*;
 
 /**
  * <p>Title: 人员实体类BO对象</p>
@@ -42,10 +50,10 @@ public class V3xOrgMember extends V3xOrgEntity implements Serializable {
     private static final long   serialVersionUID = -1332273704873347989L;
     private final static Log   logger    = LogFactory.getLog(V3xOrgMember.class);
 
-    private Long      orgLevelId       = -1L;
-    private Long      orgPostId        = -1L;
-    private Long      orgDepartmentId  = -1L;
-    private Integer   type             = OrgConstants.MEMBER_TYPE.FORMAL.ordinal();  //默认人员正常
+    private java.lang.Long      orgLevelId       = -1L;
+    private java.lang.Long      orgPostId        = -1L;
+    private java.lang.Long      orgDepartmentId  = -1L;
+    private java.lang.Integer   type             = OrgConstants.MEMBER_TYPE.FORMAL.ordinal();  //默认人员正常
     private Boolean             isInternal       = true;                                       //是否为内部人员
     private Boolean             isLoginable      = true;                                       //是否为能登录账号
     private Boolean             isVirtual        = false;                                      //是否为虚拟账号
@@ -66,6 +74,16 @@ public class V3xOrgMember extends V3xOrgEntity implements Serializable {
 	private String pinyin;
 	
 	private String pinyinhead;
+
+	private Boolean create263=false;
+
+    public Boolean getCreate263() {
+        return create263;
+    }
+
+    public void setCreate263(String create263) {
+        this.create263 = create263.equals("true")?true:false;
+    }
 
     /**
      * 复制传入的实体的属性值到Member的实例。
@@ -94,6 +112,7 @@ public class V3xOrgMember extends V3xOrgEntity implements Serializable {
         this.isVirtual = orgMember.getIsVirtual();
         this.enabled = orgMember.getEnabled();
         this.externalType = orgMember.getExternalType();
+        this.create263 = orgMember.getCreate263();
 
         if(orgMember.second_post != null){
             this.second_post = new ArrayList<MemberPost>(orgMember.second_post);
@@ -208,6 +227,7 @@ public class V3xOrgMember extends V3xOrgEntity implements Serializable {
         o.setVirtual(this.isVirtual);
         o.setEnable(this.enabled);
         o.setExternalType(this.externalType);
+        o.setCreate263(this.create263);
 
         o.setExtAttr1((String) this.properties.get("EXT_ATTR_1"));
         o.setExtAttr2((String) this.properties.get("EXT_ATTR_2"));
@@ -524,14 +544,12 @@ public class V3xOrgMember extends V3xOrgEntity implements Serializable {
 
     /**
      * 得到手机号
-     * 
+     * emailaddress
      * @return
      */
     public String getTelNumber() {
         return (String) this.properties.get("EXT_ATTR_1");
     }
-
-//    public String getC
 
     /**
      * 替换原有所有属性
@@ -833,9 +851,6 @@ public class V3xOrgMember extends V3xOrgEntity implements Serializable {
     public String getBlog() {
         return (String) this.properties.get("EXT_ATTR_7");
     }
-
-
-
     
     public String getWebsite() {
         return (String) this.properties.get("EXT_ATTR_6");
@@ -891,11 +906,6 @@ public class V3xOrgMember extends V3xOrgEntity implements Serializable {
         private static final long serialVersionUID = 164684307944703307L;
         
         private final V3xOrgMember source;
-
-        //周刘成 人员新建页面，添加是否创建263邮箱
-//        public Boolean getCreate263() {
-//            return this.source.getCreate263();
-//        }
         
         //可修改的属性
         private Long sortId; //如果是兼职单位人员，需要修改为兼职单位的排序号
