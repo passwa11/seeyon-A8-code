@@ -90,6 +90,7 @@
                     handler: function () {
                         var peoples = dialog.getReturnValue();
                         //添加明细行并回填数据
+                        console.log(messageObj)
                         var content = messageObj.formdata.content;
                         var num = peoples.data.length + 1;
                         // debugger;
@@ -166,6 +167,7 @@
                                                 backfill.updateData = dataList[i][dataList[i].recordId];
                                                 backfill.updateRecordId = dataList[i].recordId;
                                                 adaptation.backfillFormControlData(backfill, privateId);
+
                                             }
                                         }
 
