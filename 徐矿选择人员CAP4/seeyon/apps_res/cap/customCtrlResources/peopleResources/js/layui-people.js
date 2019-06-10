@@ -9,69 +9,7 @@ layui.use(['table', 'layer', 'element'], function () {
     var selectedMember = [];//选择信息数组
     var element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
 
-    //触发事件
-    var active = {
-
-        tabChange: function () {
-            //切换到指定Tab项
-            element.tabChange('demo', '22'); //切换到：用户管理
-        }
-    };
-
-    //保存
-    $("#save").on('click', function () {
-        // alert(selectedMember.join(","));
-        // $.ajax({
-        //     sync: true,
-        //     type: "POST",
-        //     url: "/seeyon/ext/selectPeople.do?method=insertData",
-        //     data: {"info": JSON.stringify(selectedMember)},
-        //     dataType: 'text',
-        //     success: function (data) {
-        //         layer.msg('人员信息保存成功', {icon: 1, time: 1500});
-        //
-        //     },
-        //     error: function (XMLHttpRequest, textStatus, errorThrown) {
-        //         layer.msg('人员信息保存失败！！！', {icon: 5, time: 1500});
-        //     }
-        // });
-    });
-
-    //清除
-    $("#selected_info_reset").on('click', function () {
-        $("dl.selected-info dd").remove();
-        selectedMember = [];
-    });
-
-//    jtldFun(null);
-
-
-    //集团领导
-    $("#queryjtldPeople").on('click', function () {
-        //执行重载
-        table.reload('jtldId', {
-            page: {
-                curr: 1 //重新从第 1 页开始
-            }
-            , where: {
-                name: $("#jtldInput").val()
-            }
-        });
-    });
-    table.render({
-        id: 'jtldId'
-        , elem: '#jtld'
-        , url: '/seeyon/ext/selectPeople.do?method=selectJtldEntity'
-        , height: 400
-        , page: false //开启分页
-        , cols: [[ //表头
-            {type: 'checkbox'},
-            {field: 'field0004', title: '所属部门', width: '44%', sort: true},
-            {field: 'field0003', title: '用户名', width: '44%'}
-        ]]
-    });
-
-
+    //全选
     $("#sureSelect").on('click', function () {
         var jtld = layui.table.checkStatus("jtldId");
         var arrJtld = jtld.data;
@@ -281,6 +219,71 @@ layui.use(['table', 'layer', 'element'], function () {
             }
         }
     });
+
+
+
+    //触发事件
+    var active = {
+
+        tabChange: function () {
+            //切换到指定Tab项
+            element.tabChange('demo', '22'); //切换到：用户管理
+        }
+    };
+
+    //保存
+    $("#save").on('click', function () {
+        // alert(selectedMember.join(","));
+        // $.ajax({
+        //     sync: true,
+        //     type: "POST",
+        //     url: "/seeyon/ext/selectPeople.do?method=insertData",
+        //     data: {"info": JSON.stringify(selectedMember)},
+        //     dataType: 'text',
+        //     success: function (data) {
+        //         layer.msg('人员信息保存成功', {icon: 1, time: 1500});
+        //
+        //     },
+        //     error: function (XMLHttpRequest, textStatus, errorThrown) {
+        //         layer.msg('人员信息保存失败！！！', {icon: 5, time: 1500});
+        //     }
+        // });
+    });
+
+    //清除
+    $("#selected_info_reset").on('click', function () {
+        $("dl.selected-info dd").remove();
+        selectedMember = [];
+    });
+
+//    jtldFun(null);
+
+
+    //集团领导
+    $("#queryjtldPeople").on('click', function () {
+        //执行重载
+        table.reload('jtldId', {
+            page: {
+                curr: 1 //重新从第 1 页开始
+            }
+            , where: {
+                name: $("#jtldInput").val()
+            }
+        });
+    });
+    table.render({
+        id: 'jtldId'
+        , elem: '#jtld'
+        , url: '/seeyon/ext/selectPeople.do?method=selectJtldEntity'
+        , height: 400
+        , page: false //开启分页
+        , cols: [[ //表头
+            {type: 'checkbox'},
+            {field: 'field0004', title: '所属部门', width: '44%', sort: true},
+            {field: 'field0003', title: '用户名', width: '44%'}
+        ]]
+    });
+
 
 
     table.on('row(jtldFilter)', function (obj) {
