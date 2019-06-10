@@ -12,6 +12,24 @@ import java.util.Map;
  */
 public class JtldEntityDaoImpl implements JtldEntityDao {
 
+    //
+
+
+    @Override
+    public List<Map> selectPeopleByDeskWorkId(String id) {
+        String sql="select f.FORMMAIN_ID,f.FIELD0003,o.NAME,f.field0002 \n" +
+                "from ( select * from ( select fs.FIELD0003,FS.FORMMAIN_ID,FS.ID,FM.FIELD0001,FM.FIELD0002 from formson_0291 fs LEFT JOIN formmain_0290 fm on FS.FORMMAIN_ID=FM.ID   ) h where h.FORMMAIN_ID='"+id+"') f \n" +
+                "LEFT JOIN ORG_MEMBER o on f.FIELD0003=o.id";
+        List<Map> list = JDBCUtil.doQuery(sql);
+        return list;
+    }
+
+    @Override
+    public List<Map> selectDeskWork(String name) {
+        String sql ="select f.id,f.FIELD0001,f.FIELD0002 from formmain_0290 f where f.FIELD0002 like '%"+name+"%'";
+        List<Map> list = JDBCUtil.doQuery(sql);
+        return list;
+    }
 
     @Override
     public List<Map> selectJtldEntity(String name) {

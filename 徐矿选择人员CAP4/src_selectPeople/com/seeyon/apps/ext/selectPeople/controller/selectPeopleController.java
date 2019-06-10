@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,12 +27,67 @@ public class selectPeopleController extends BaseController {
         return new ModelAndView("apps/ext/Zselect/index");
     }
 
+    //new 党政办
+    public ModelAndView selectDeskWork(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String name = request.getParameter("name");
+            if (null == name || name.equals("")) {
+                name = "";
+            }
+            List<Map> list = jtldEntityManager.selectDeskWork(name);
+            List<Map<String, String>> revoler = new ArrayList<>();
+            for (Map map : list) {
+                Map<String, String> m = new HashMap<>();
+                BigDecimal bigDecimal = (BigDecimal) map.get("id");
+                m.put("id", bigDecimal.toString());
+
+                m.put("field0001", (String) map.get("field0001"));
+                m.put("field0002", (String) map.get("field0002"));
+                revoler.add(m);
+            }
+            Map<String, Object> map = new HashMap<>();
+            map.put("code", 0);
+            map.put("message", "");
+            map.put("total", revoler.size());
+            map.put("data", revoler);
+            JSONObject json = new JSONObject(map);
+            render(response, json.toJSONString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    //根据科室的id获取科室下的人员
+    public ModelAndView selectPeopleByDeskWorkId(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String id = request.getParameter("id");
+            if (null == id || id.equals("")) {
+                id = "";
+            }
+            List<Map> list = jtldEntityManager.selectPeopleByDeskWorkId(id);
+            Map<String, Object> map = new HashMap<>();
+            map.put("code", 0);
+            map.put("message", "");
+            map.put("total", list.size());
+            map.put("data", list);
+            JSONObject json = new JSONObject(map);
+            render(response, json.toJSONString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+
     //集团领导
     public ModelAndView selectJtldEntity(HttpServletRequest request, HttpServletResponse response) {
         try {
-            String name=request.getParameter("name");
-            if(null ==name || name.equals("") ){
-                name="";
+            String name = request.getParameter("name");
+            if (null == name || name.equals("")) {
+                name = "";
             }
             List<Map> list = jtldEntityManager.selectJtldEntity(name);
             Map<String, Object> map = new HashMap<>();
@@ -51,9 +107,9 @@ public class selectPeopleController extends BaseController {
     //党政办
     public ModelAndView selectFormmain0148_policy(HttpServletRequest request, HttpServletResponse response) {
         try {
-            String name=request.getParameter("name");
-            if(null ==name || name.equals("") ){
-                name="";
+            String name = request.getParameter("name");
+            if (null == name || name.equals("")) {
+                name = "";
             }
             List<Map> list = jtldEntityManager.selectFormmain0148(name);
             Map<String, Object> map = new HashMap<>();
@@ -73,9 +129,9 @@ public class selectPeopleController extends BaseController {
     //机关单位
     public ModelAndView selectFormmain0106_organ(HttpServletRequest request, HttpServletResponse response) {
         try {
-            String name=request.getParameter("name");
-            if(null ==name || name.equals("") ){
-                name="";
+            String name = request.getParameter("name");
+            if (null == name || name.equals("")) {
+                name = "";
             }
             List<Map> list = jtldEntityManager.selectFormmain0106(name);
             Map<String, Object> map = new HashMap<>();
@@ -95,9 +151,9 @@ public class selectPeopleController extends BaseController {
     //基层单位
     public ModelAndView selectFormmain0087_baseUnits(HttpServletRequest request, HttpServletResponse response) {
         try {
-            String name=request.getParameter("name");
-            if(null ==name || name.equals("") ){
-                name="";
+            String name = request.getParameter("name");
+            if (null == name || name.equals("")) {
+                name = "";
             }
             List<Map> list = jtldEntityManager.selectFormmain0087(name);
             Map<String, Object> map = new HashMap<>();

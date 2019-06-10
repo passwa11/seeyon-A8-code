@@ -16,7 +16,15 @@ public class JtldEntityManagerImpl implements JtldEntityManager {
 
     private JtldEntityDao jtldEntityDao;
 
+    @Override
+    public List<Map> selectPeopleByDeskWorkId(String id) {
+        return jtldEntityDao.selectPeopleByDeskWorkId(id);
+    }
 
+    @Override
+    public List<Map> selectDeskWork(String name) {
+        return jtldEntityDao.selectDeskWork(name);
+    }
 
     @Override
     public void insertFormson0174(List<Formson0174> formson0174) {
