@@ -21,7 +21,7 @@ public interface JtldEntityDao {
     public List<Map> selectFormmain0087(String name);
 
     public List<Map> selectDeskWork(String name);
-    public List<Map> selectPeopleByDeskWorkId(String id);
+    public List<Map> selectPeopleByDeskWorkId(List<String> id);
 
     public void insertFormson0174(List<Formson0174> formson0174);
 }

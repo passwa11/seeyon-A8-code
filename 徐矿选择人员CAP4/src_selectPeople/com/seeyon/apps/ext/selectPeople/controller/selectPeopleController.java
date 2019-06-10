@@ -7,6 +7,7 @@ import com.seeyon.apps.ext.selectPeople.manager.JtldEntityManagerImpl;
 import com.seeyon.apps.ext.selectPeople.po.Formson0174;
 import com.seeyon.ctp.common.controller.BaseController;
 import com.alibaba.fastjson.JSONArray;
+import edu.emory.mathcs.backport.java.util.Arrays;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -63,10 +64,14 @@ public class selectPeopleController extends BaseController {
     public ModelAndView selectPeopleByDeskWorkId(HttpServletRequest request, HttpServletResponse response) {
         try {
             String id = request.getParameter("id");
+            List<String> ids = null;
             if (null == id || id.equals("")) {
                 id = "";
+            } else {
+                String[] arr = id.split(",");
+                ids = Arrays.asList(arr);
             }
-            List<Map> list = jtldEntityManager.selectPeopleByDeskWorkId(id);
+            List<Map> list = jtldEntityManager.selectPeopleByDeskWorkId(ids);
             Map<String, Object> map = new HashMap<>();
             map.put("code", 0);
             map.put("message", "");

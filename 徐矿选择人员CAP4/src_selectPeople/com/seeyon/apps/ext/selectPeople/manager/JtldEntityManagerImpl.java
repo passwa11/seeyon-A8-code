@@ -17,7 +17,7 @@ public class JtldEntityManagerImpl implements JtldEntityManager {
     private JtldEntityDao jtldEntityDao;
 
     @Override
-    public List<Map> selectPeopleByDeskWorkId(String id) {
+    public List<Map> selectPeopleByDeskWorkId(List<String> id) {
         return jtldEntityDao.selectPeopleByDeskWorkId(id);
     }
 
