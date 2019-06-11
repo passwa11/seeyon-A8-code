@@ -14,10 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class selectPeopleController extends BaseController {
 
@@ -35,7 +32,7 @@ public class selectPeopleController extends BaseController {
             if (null == name || name.equals("")) {
                 name = "";
             }
-            List<Map<String,Object>> list = jtldEntityManager.selectDeskWork(name);
+            List<Map<String, Object>> list = jtldEntityManager.selectDeskWork(name);
             List<Map<String, String>> revoler = new ArrayList<>();
             for (Map map : list) {
                 Map<String, String> m = new HashMap<>();
@@ -73,12 +70,22 @@ public class selectPeopleController extends BaseController {
                 ids = Arrays.asList(arr);
             }
             List<Map<String, Object>> list = jtldEntityManager.selectPeopleByDeskWorkId(ids);
-
+            List<Map<String, Object>> handle = new ArrayList<>();
+            for (int i = 0; i < list.size(); i++) {
+                LinkedHashMap<String, Object> m = new LinkedHashMap<>();
+                Map<String, Object> val = list.get(i);
+                m.put("field0001", val.get("field0003"));
+                m.put("field0004", val.get("name"));
+                m.put("field0003", val.get("field0002"));
+                m.put("flag", "");
+                m.put("id", "");
+                handle.add(m);
+            }
             Map<String, Object> map = new HashMap<>();
             map.put("code", 0);
             map.put("message", "");
-            map.put("total", list.size());
-            map.put("data", list);
+            map.put("total", handle.size());
+            map.put("data", handle);
             JSONObject json = new JSONObject(map);
             render(response, json.toJSONString());
         } catch (Exception e) {
@@ -127,7 +134,7 @@ public class selectPeopleController extends BaseController {
             if (null == name || name.equals("")) {
                 name = "";
             }
-            List<Map<String,Object>> list = jtldEntityManager.selectFormmain0148(name);
+            List<Map<String, Object>> list = jtldEntityManager.selectFormmain0148(name);
             Map<String, Object> map = new HashMap<>();
             map.put("code", 0);
             map.put("message", "");
@@ -149,7 +156,7 @@ public class selectPeopleController extends BaseController {
             if (null == name || name.equals("")) {
                 name = "";
             }
-            List<Map<String,Object>> list = jtldEntityManager.selectFormmain0106(name);
+            List<Map<String, Object>> list = jtldEntityManager.selectFormmain0106(name);
             List<Map<String, Object>> revoler = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
                 Map<String, Object> m = new HashMap<>();
@@ -180,7 +187,7 @@ public class selectPeopleController extends BaseController {
             if (null == name || name.equals("")) {
                 name = "";
             }
-            List<Map<String,Object>> list = jtldEntityManager.selectFormmain0087(name);
+            List<Map<String, Object>> list = jtldEntityManager.selectFormmain0087(name);
             List<Map<String, Object>> revoler = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
                 Map<String, Object> m = new HashMap<>();
