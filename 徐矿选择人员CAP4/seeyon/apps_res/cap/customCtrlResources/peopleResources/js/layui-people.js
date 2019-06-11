@@ -77,13 +77,12 @@ layui.use(['table', 'layer', 'element'], function () {
         var arrJtld = jtld.data;
         for (var i = 0; i < arrJtld.length; i++) {
             var tr_obj = arrJtld[i];
-            console.log(tr_obj);
             var obj = {};//添加成员对象
             obj["value"] = tr_obj.field0001;
             obj["text"] = tr_obj.field0004;
             obj["dept"] = tr_obj.field0003;
             if ($("dl.selected-info dd").length <= 0) {
-                var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                var option = '<dd lay-value="' + obj.value + '" lay-flag="jtld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
                 $("dl.selected-info").prepend(option);
                 selectedMember.unshift(obj);//存储选择信息
                 $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
@@ -108,7 +107,7 @@ layui.use(['table', 'layer', 'element'], function () {
                 }
                 if (selected()) {
                     // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                    var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                    var option = '<dd lay-value="' + obj.value + '" lay-flag="jtld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
 
                     $("dl.selected-info").prepend(option);
                     selectedMember.unshift(obj);//存储选择信息
@@ -130,11 +129,11 @@ layui.use(['table', 'layer', 'element'], function () {
             var tr_obj = arrDzb[i];
             var obj = {};//添加成员对象
             obj["value"] = tr_obj.field0001;
-            obj["text"] = tr_obj.field0004;
-            obj["dept"] = tr_obj.field0003;
+            obj["text"] = tr_obj.field0002;
+            obj["dept"] = "";
             if ($("dl.selected-info dd").length <= 0) {
                 // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                var option = '<dd lay-value="' + obj.value + '" lay-id="'+tr_obj.id+'"  lay-flag="dzb" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
 
                 $("dl.selected-info").prepend(option);
                 selectedMember.unshift(obj);//存储选择信息
@@ -160,7 +159,7 @@ layui.use(['table', 'layer', 'element'], function () {
                 }
                 if (selected()) {
                     // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                    var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                    var option = '<dd lay-value="' + obj.value + '" lay-id="'+tr_obj.id+'"  lay-flag="dzb"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
 
                     $("dl.selected-info").prepend(option);
                     selectedMember.unshift(obj);//存储选择信息
@@ -186,7 +185,7 @@ layui.use(['table', 'layer', 'element'], function () {
             obj["dept"] = tr_obj.field0003;
             if ($("dl.selected-info dd").length <= 0) {
                 // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                var option = '<dd lay-value="' + obj.value + '" lay-flag="jgbm" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
 
                 $("dl.selected-info").prepend(option);
                 selectedMember.unshift(obj);//存储选择信息
@@ -212,7 +211,7 @@ layui.use(['table', 'layer', 'element'], function () {
                 }
                 if (selected()) {
                     // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                    var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                    var option = '<dd lay-value="' + obj.value + '" lay-flag="jgbm"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
 
                     $("dl.selected-info").prepend(option);
                     selectedMember.unshift(obj);//存储选择信息
@@ -238,7 +237,7 @@ layui.use(['table', 'layer', 'element'], function () {
             obj["text"] = tr_obj.field0004;
             obj["dept"] = tr_obj.field0003;
             if ($("dl.selected-info dd").length <= 0) {
-                var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                var option = '<dd lay-value="' + obj.value + '" lay-flag="jcdw" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
 
                 // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
                 $("dl.selected-info").prepend(option);
@@ -265,7 +264,7 @@ layui.use(['table', 'layer', 'element'], function () {
                 }
                 if (selected()) {
                     // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                    var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                    var option = '<dd lay-value="' + obj.value + '"  lay-flag="jcdw"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
 
                     $("dl.selected-info").prepend(option);
                     selectedMember.unshift(obj);//存储选择信息
@@ -291,7 +290,7 @@ layui.use(['table', 'layer', 'element'], function () {
         obj["text"] = tr_obj.field0004;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+            var option = '<dd lay-value="' + obj.value + '" lay-flag="jtld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
             $("dl.selected-info").prepend(option);
             selectedMember.unshift(obj);//存储选择信息
             $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
@@ -316,7 +315,7 @@ layui.use(['table', 'layer', 'element'], function () {
             }
             if (selected()) {
                 // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                var option = '<dd lay-value="' + obj.value + '" lay-flag="jtld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
 
                 $("dl.selected-info").prepend(option);
                 selectedMember.unshift(obj);//存储选择信息
@@ -361,6 +360,7 @@ layui.use(['table', 'layer', 'element'], function () {
 
     table.on('row(dzbksFilter)', function (obj) {
         // alert(obj.data);
+        console.log(obj)
         var tr_obj = obj.data;
         var obj = {};//添加成员对象
         obj["value"] = tr_obj.field0001;
@@ -368,7 +368,7 @@ layui.use(['table', 'layer', 'element'], function () {
         obj["dept"] = "";
         if ($("dl.selected-info dd").length <= 0) {
             // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-            var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+            var option = '<dd lay-value="' + obj.value + '" lay-id="'+tr_obj.id+'" lay-flag="dzb" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
 
             $("dl.selected-info").prepend(option);
             selectedMember.unshift(obj);//存储选择信息
@@ -394,7 +394,7 @@ layui.use(['table', 'layer', 'element'], function () {
             }
             if (selected()) {
                 // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                var option = '<dd lay-value="' + obj.value + '"  lay-id="'+tr_obj.id+'" lay-flag="dzb"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
 
                 $("dl.selected-info").prepend(option);
                 selectedMember.unshift(obj);//存储选择信息
@@ -445,7 +445,7 @@ layui.use(['table', 'layer', 'element'], function () {
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
             // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-            var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+            var option = '<dd lay-value="' + obj.value + '" lay-flag="bs"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
 
             $("dl.selected-info").prepend(option);
             selectedMember.unshift(obj);//存储选择信息
@@ -471,7 +471,7 @@ layui.use(['table', 'layer', 'element'], function () {
             }
             if (selected()) {
                 // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                var option = '<dd lay-value="' + obj.value + '" lay-flag="bs"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
 
                 $("dl.selected-info").prepend(option);
                 selectedMember.unshift(obj);//存储选择信息
@@ -522,7 +522,7 @@ layui.use(['table', 'layer', 'element'], function () {
         obj["text"] = tr_obj.field0004;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+            var option = '<dd lay-value="' + obj.value + '" lay-flag="jcdw" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
 
             // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
             $("dl.selected-info").prepend(option);
@@ -549,7 +549,7 @@ layui.use(['table', 'layer', 'element'], function () {
             }
             if (selected()) {
                 // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-value="' + obj.value + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                var option = '<dd lay-value="' + obj.value + '" lay-flag="jcdw"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
 
                 $("dl.selected-info").prepend(option);
                 selectedMember.unshift(obj);//存储选择信息

@@ -58,8 +58,6 @@
         appendChildDom: function () {
 
             var self = this;
-            console.log("----------------");
-            console.log(self.messageObj);
 
             var showHTML = '';
             var display = self.messageObj.display.escapeHTML();

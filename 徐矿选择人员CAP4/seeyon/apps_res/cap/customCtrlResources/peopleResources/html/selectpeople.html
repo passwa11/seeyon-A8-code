@@ -16,10 +16,17 @@
                 var v = $(this).attr("lay-value");
                 var name = $(this).attr("lay-name");
                 var dept = $(this).attr("lay-dept");
+                var flag = $(this).attr("lay-flag");
+                var id = $(this).attr("lay-id");
+                if (undefined == id) {
+                    id="";
+                }
                 var obj = {};//添加成员对象
                 obj["field0001"] = v;
                 obj["field0004"] = dept;
                 obj["field0003"] = name;
+                obj["flag"] = flag;
+                obj["id"] = id;
                 peoples.push(obj);
             });
             return {

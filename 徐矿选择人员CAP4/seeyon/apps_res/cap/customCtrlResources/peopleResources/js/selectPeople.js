@@ -90,53 +90,35 @@
                     handler: function () {
                         var peoples = dialog.getReturnValue();
                         //添加明细行并回填数据
-                        console.log(messageObj)
                         var content = messageObj.formdata.content;
                         var num = peoples.data.length + 1;
-                        // debugger;
-                        console.log(peoples);
-                        var jsonObj = {
-                            "masterId": content.contentDataId + "",
-                            "dataInfo": JSON.stringify(peoples),
-                            "flag": "0"
-                        };
-                        console.log(jsonObj);
-
-                        $.ajax({
-                            type: 'post',
-                            async: true,
-                            url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo2",
-                            dataType: 'json',
-                            data: JSON.stringify(jsonObj),
-                            contentType: 'application/json',
-                            success: function (res) {
-                                // 判断是否需要添加
-                                if (res.code != 0) {
-                                    $.alert(res.message);
-                                    return;
-                                }
-
-                                var dataCount = res.data.dataCount + 1;
-                                addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, dataCount);
-
-                            }, error: function (res) {
+                        //2019-06-11
+                        var arr = peoples.data;
+                        var conditionId = new Array();
+                        var newPeople = new Array();
+                        for (var i = 0; i < peoples.data.length; i++) {
+                            var a = arr[i];
+                            var flag = a.flag;
+                            if (flag == 'dzb') {
+                                var id = a.id;
+                                conditionId.push(id);
+                            } else {
+                                newPeople.push(a);
                             }
-                        });
-
-
-                        function addLineAndFilldata(content, adaptation, messageObj, privateId, datainfo, flag) {
-                            flag--;
-                            var jsonAdd = {
-                                'masterId': content.contentDataId,
-                                'dataInfo': JSON.stringify(datainfo),
-                                'flag': flag+""
+                        }
+                        if (conditionId.length == 0) {
+                            var jsonObj = {
+                                "masterId": content.contentDataId + "",
+                                "dataInfo": JSON.stringify(peoples),
+                                "flag": "0"
                             };
+
                             $.ajax({
                                 type: 'post',
                                 async: true,
                                 url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo2",
                                 dataType: 'json',
-                                data: JSON.stringify(jsonAdd),
+                                data: JSON.stringify(jsonObj),
                                 contentType: 'application/json',
                                 success: function (res) {
                                     // 判断是否需要添加
@@ -144,40 +126,163 @@
                                         $.alert(res.message);
                                         return;
                                     }
-                                    var isNext = res.data.add;
-                                    var val = 0;
 
-                                    if (isNext) {
-                                        var addLineParam = {};
-                                        var dataCount = res.data.dataCount;
+                                    var dataCount = res.data.dataCount + 1;
+                                    addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, dataCount);
 
-                                        addLineParam.tableName = res.data.tableName;
-                                        addLineParam.isFormRecords = true;
-                                        addLineParam.callbackFn = function () {
-                                            addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, flag);
+                                }, error: function (res) {
+                                }
+                            });
+
+                            function addLineAndFilldata(content, adaptation, messageObj, privateId, datainfo, flag) {
+                                flag--;
+                                var jsonAdd = {
+                                    'masterId': content.contentDataId,
+                                    'dataInfo': JSON.stringify(datainfo),
+                                    'flag': flag + ""
+                                };
+                                $.ajax({
+                                    type: 'post',
+                                    async: true,
+                                    url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo2",
+                                    dataType: 'json',
+                                    data: JSON.stringify(jsonAdd),
+                                    contentType: 'application/json',
+                                    success: function (res) {
+                                        // 判断是否需要添加
+                                        if (res.code != 0) {
+                                            $.alert(res.message);
+                                            return;
                                         }
-                                        window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
-                                    } else {
-                                        var dataList = res.data.data;
-                                        if (null != dataList && dataList != '') {
-                                            for (var i = 0; i < dataList.length; i++) {
-                                                var backfill = {};
-                                                backfill.tableName = res.data.tableName;
-                                                backfill.tableCategory = "formson";
-                                                backfill.updateData = dataList[i][dataList[i].recordId];
-                                                backfill.updateRecordId = dataList[i].recordId;
-                                                adaptation.backfillFormControlData(backfill, privateId);
+                                        var isNext = res.data.add;
+                                        var val = 0;
 
+                                        if (isNext) {
+                                            var addLineParam = {};
+                                            var dataCount = res.data.dataCount;
+
+                                            addLineParam.tableName = res.data.tableName;
+                                            addLineParam.isFormRecords = true;
+                                            addLineParam.callbackFn = function () {
+                                                addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, flag);
                                             }
+                                            window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
+                                        } else {
+                                            var dataList = res.data.data;
+                                            if (null != dataList && dataList != '') {
+                                                for (var i = 0; i < dataList.length; i++) {
+                                                    var backfill = {};
+                                                    backfill.tableName = res.data.tableName;
+                                                    backfill.tableCategory = "formson";
+                                                    backfill.updateData = dataList[i][dataList[i].recordId];
+                                                    backfill.updateRecordId = dataList[i].recordId;
+                                                    adaptation.backfillFormControlData(backfill, privateId);
+
+                                                }
+                                            }
+
                                         }
 
                                     }
+                                });
+                            }
 
+                            dialog.close();
+                        } else {
+                            $.ajax({
+                                type: 'post',
+                                async: true,
+                                url: '/seeyon/ext/selectPeople.do?method=selectPeopleByDeskWorkId&id=' + conditionId,
+                                dataType: 'json',
+                                contentType: 'application/json',
+                                success: function (res) {
+                                    var c = newPeople.concat(res.data);
+                                    peoples['data'] = c;
+                                    var jsonObj = {
+                                        "masterId": content.contentDataId + "",
+                                        "dataInfo": JSON.stringify(peoples),
+                                        "flag": "0"
+                                    };
+
+                                    $.ajax({
+                                        type: 'post',
+                                        async: true,
+                                        url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo2",
+                                        dataType: 'json',
+                                        data: JSON.stringify(jsonObj),
+                                        contentType: 'application/json',
+                                        success: function (res) {
+                                            // 判断是否需要添加
+                                            if (res.code != 0) {
+                                                $.alert(res.message);
+                                                return;
+                                            }
+
+                                            var dataCount = res.data.dataCount + 1;
+                                            addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, dataCount);
+
+                                        }, error: function (res) {
+                                        }
+                                    });
+
+                                    function addLineAndFilldata(content, adaptation, messageObj, privateId, datainfo, flag) {
+                                        flag--;
+                                        var jsonAdd = {
+                                            'masterId': content.contentDataId,
+                                            'dataInfo': JSON.stringify(datainfo),
+                                            'flag': flag + ""
+                                        };
+                                        $.ajax({
+                                            type: 'post',
+                                            async: true,
+                                            url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo2",
+                                            dataType: 'json',
+                                            data: JSON.stringify(jsonAdd),
+                                            contentType: 'application/json',
+                                            success: function (res) {
+                                                // 判断是否需要添加
+                                                if (res.code != 0) {
+                                                    $.alert(res.message);
+                                                    return;
+                                                }
+                                                var isNext = res.data.add;
+                                                var val = 0;
+
+                                                if (isNext) {
+                                                    var addLineParam = {};
+                                                    var dataCount = res.data.dataCount;
+
+                                                    addLineParam.tableName = res.data.tableName;
+                                                    addLineParam.isFormRecords = true;
+                                                    addLineParam.callbackFn = function () {
+                                                        addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, flag);
+                                                    }
+                                                    window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
+                                                } else {
+                                                    var dataList = res.data.data;
+                                                    if (null != dataList && dataList != '') {
+                                                        for (var i = 0; i < dataList.length; i++) {
+                                                            var backfill = {};
+                                                            backfill.tableName = res.data.tableName;
+                                                            backfill.tableCategory = "formson";
+                                                            backfill.updateData = dataList[i][dataList[i].recordId];
+                                                            backfill.updateRecordId = dataList[i].recordId;
+                                                            adaptation.backfillFormControlData(backfill, privateId);
+
+                                                        }
+                                                    }
+
+                                                }
+
+                                            }
+                                        });
+                                    }
+
+                                    dialog.close();
                                 }
                             });
                         }
 
-                        dialog.close();
                     }
                 }, {
                     text: "取消",
