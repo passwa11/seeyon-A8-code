@@ -13,7 +13,7 @@ public class JDBCUtil
 {
   private static final Logger log = Logger.getLogger(JDBCUtil.class);
 
-  public static List<Map> doQuery(String sql)
+  public static List<Map<String,Object>> doQuery(String sql)
   {
     JDBCAgent jdbc = new JDBCAgent();
     List resultMap = new ArrayList();

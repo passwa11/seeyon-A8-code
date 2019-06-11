@@ -11,16 +11,16 @@ import java.util.Map;
  */
 public interface JtldEntityManager {
 
-    public List<Map> selectJtldEntity(String name);
+    public List<Map<String,Object>> selectJtldEntity(String name);
 
-    public List<Map> selectFormmain0148(String name);
+    public List<Map<String,Object>> selectFormmain0148(String name);
 
-    public List<Map> selectFormmain0106(String name);
+    public List<Map<String,Object>> selectFormmain0106(String name);
 
-    public List<Map> selectFormmain0087(String name);
+    public List<Map<String,Object>> selectFormmain0087(String name);
 
-    public List<Map> selectDeskWork(String name);
-    public List<Map> selectPeopleByDeskWorkId(List<String> id);
+    public List<Map<String,Object>> selectDeskWork(String name);
+    public List<Map<String,Object>> selectPeopleByDeskWorkId(List<String> id);
 
     public void insertFormson0174(List<Formson0174> formson0174);
 

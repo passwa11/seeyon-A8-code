@@ -17,12 +17,12 @@ public class JtldEntityManagerImpl implements JtldEntityManager {
     private JtldEntityDao jtldEntityDao;
 
     @Override
-    public List<Map> selectPeopleByDeskWorkId(List<String> id) {
+    public List<Map<String,Object>> selectPeopleByDeskWorkId(List<String> id) {
         return jtldEntityDao.selectPeopleByDeskWorkId(id);
     }
 
     @Override
-    public List<Map> selectDeskWork(String name) {
+    public List<Map<String,Object>> selectDeskWork(String name) {
         return jtldEntityDao.selectDeskWork(name);
     }
 
@@ -39,30 +39,30 @@ public class JtldEntityManagerImpl implements JtldEntityManager {
     }
 
     @Override
-    public List<Map> selectJtldEntity(String name) {
-        List<Map> list = getJtldEntityDao().selectJtldEntity(name);
+    public List<Map<String,Object>> selectJtldEntity(String name) {
+        List<Map<String,Object>> list = getJtldEntityDao().selectJtldEntity(name);
 //        JSONArray json = JSON.parseArray(JSON.toJSONString(list));
         return list;
     }
 
     @Override
-    public List<Map> selectFormmain0148(String name) {
-        List<Map> list = getJtldEntityDao().selectFormmain0148(name);
+    public List<Map<String,Object>> selectFormmain0148(String name) {
+        List<Map<String,Object>> list = getJtldEntityDao().selectFormmain0148(name);
 //        JSONArray json = JSON.parseArray(JSON.toJSONString(list));
 
         return list;
     }
 
     @Override
-    public List<Map> selectFormmain0106(String name) {
-        List<Map> list = getJtldEntityDao().selectFormmain0106(name);
+    public List<Map<String,Object>> selectFormmain0106(String name) {
+        List<Map<String,Object>> list = getJtldEntityDao().selectFormmain0106(name);
 //        JSONArray json = JSON.parseArray(JSON.toJSONString(list));
         return list;
     }
 
     @Override
-    public List<Map> selectFormmain0087(String name) {
-        List<Map> list = getJtldEntityDao().selectFormmain0087(name);
+    public List<Map<String,Object>> selectFormmain0087(String name) {
+        List<Map<String,Object>> list = getJtldEntityDao().selectFormmain0087(name);
 //        JSONArray json = JSON.parseArray(JSON.toJSONString(list));
         return list;
     }
