@@ -2,11 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7b4918a-ce9f-41ba-a98d-44843a915f6d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../CAP4培训课件/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/徐矿选择人员CAP4.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CAP4培训课件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CAP4培训课件/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/selectPeople.js" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/selectPeople.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/src_selectPeople/com/seeyon/ctp/rest/resources/SelectPeopleResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/src_selectPeople/com/seeyon/ctp/rest/resources/SelectPeopleResources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/xk263EmailPluginInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/xk263EmailPluginInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/jzMsg/JzMsgPipeline.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/jzMsg/JzMsgPipeline.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_msg/com/seeyon/apps/jzMsg/JzMsgPipeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_msg/com/seeyon/apps/jzMsg/JzMsgPipeline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_msg/com/seeyon/apps/jzMsg/res/ReturnRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_msg/com/seeyon/apps/jzMsg/res/ReturnRes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/苏皖区培训课件.iml" beforeDir="false" afterPath="$PROJECT_DIR$/苏皖区培训课件.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/seeyon/WEB-INF/classes/" />
@@ -16,14 +24,93 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src_msg/com/seeyon/apps/jzMsg/res/ReturnRes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
+              <folding>
+                <element signature="e#271#272#0" expanded="true" />
+                <element signature="e#300#301#0" expanded="true" />
+                <element signature="e#341#342#0" expanded="true" />
+                <element signature="e#377#378#0" expanded="true" />
+                <element signature="e#407#408#0" expanded="true" />
+                <element signature="e#433#434#0" expanded="true" />
+                <element signature="e#471#472#0" expanded="true" />
+                <element signature="e#501#502#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src_msg/com/seeyon/apps/jzMsg/JzMsgPipeline.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="333">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-common.jar!/com/seeyon/ctp/common/usermessage/pipeline/MessagePipelineThreadPool.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="110" column="20" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src_msg/com/seeyon/v3x/mobile/adapter/sms/AdaptMobileImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="71" selection-start-line="71" selection-end-line="71" />
+              <folding>
+                <element signature="e#1126#1127#0" expanded="true" />
+                <element signature="e#1145#1146#0" expanded="true" />
+                <element signature="e#1193#1194#0" expanded="true" />
+                <element signature="e#1212#1213#0" expanded="true" />
+                <element signature="e#1263#1264#0" expanded="true" />
+                <element signature="e#1281#1282#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>AdapterMobileMessageManger</find>
+      <find>AdaptMobileImpl</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="99" />
-    <option name="y" value="40" />
-    <option name="width" value="1376" />
-    <option name="height" value="900" />
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src_msg/com/seeyon/apps/jzMsg/JzMsgPipeline.java" />
+        <option value="$PROJECT_DIR$/src_msg/com/seeyon/apps/jzMsg/res/ReturnRes.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="216" />
+    <option name="y" value="24" />
+    <option name="width" value="1525" />
+    <option name="height" value="803" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -31,8 +118,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -43,40 +128,73 @@
             <path>
               <item name="苏皖区培训课件" type="b2602c69:ProjectViewProjectNode" />
               <item name="苏皖区培训课件" type="462c0819:PsiDirectoryNode" />
-              <item name="src_rest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="苏皖区培训课件" type="b2602c69:ProjectViewProjectNode" />
-              <item name="苏皖区培训课件" type="462c0819:PsiDirectoryNode" />
-              <item name="src_rest" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="苏皖区培训课件" type="b2602c69:ProjectViewProjectNode" />
               <item name="苏皖区培训课件" type="462c0819:PsiDirectoryNode" />
-              <item name="src_rest" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="extend" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="苏皖区培训课件" type="b2602c69:ProjectViewProjectNode" />
               <item name="苏皖区培训课件" type="462c0819:PsiDirectoryNode" />
-              <item name="src_rest" type="462c0819:PsiDirectoryNode" />
+              <item name="src_msg" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="苏皖区培训课件" type="b2602c69:ProjectViewProjectNode" />
+              <item name="苏皖区培训课件" type="462c0819:PsiDirectoryNode" />
+              <item name="src_msg" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="苏皖区培训课件" type="b2602c69:ProjectViewProjectNode" />
+              <item name="苏皖区培训课件" type="462c0819:PsiDirectoryNode" />
+              <item name="src_msg" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="jzMsg" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="苏皖区培训课件" type="b2602c69:ProjectViewProjectNode" />
+              <item name="苏皖区培训课件" type="462c0819:PsiDirectoryNode" />
+              <item name="src_msg" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="jzMsg" type="462c0819:PsiDirectoryNode" />
+              <item name="po" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="苏皖区培训课件" type="b2602c69:ProjectViewProjectNode" />
+              <item name="苏皖区培训课件" type="462c0819:PsiDirectoryNode" />
+              <item name="src_msg" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="jzMsg" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="苏皖区培训课件" type="b2602c69:ProjectViewProjectNode" />
+              <item name="苏皖区培训课件" type="462c0819:PsiDirectoryNode" />
+              <item name="src_msg" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="sms" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="com.zeroturnaround.javarebel.idea.plugin.settings.AdvancedConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -111,6 +229,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Unnamed" type="Remote" nameIsGenerated="true">
+      <module name="苏皖区培训课件" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="8000" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="8000" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -142,16 +274,19 @@
       <updated>1557970248995</updated>
       <workItem from="1557970255561" duration="17000" />
       <workItem from="1558486751541" duration="15000" />
+      <workItem from="1559023939856" duration="4660000" />
+      <workItem from="1559353508521" duration="2123000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32000" />
+    <option name="totallyTimeSpent" value="6815000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="99" y="40" width="1376" height="900" extended-state="0" />
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21808511" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19680265" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="JRebel" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -159,10 +294,11 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Designer" order="7" />
+      <window_info anchor="bottom" id="JRebel Executor" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.31203407" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -172,6 +308,9 @@
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="JRebel Console" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Spring" order="13" />
+      <window_info anchor="bottom" id="Java Enterprise" order="14" />
+      <window_info anchor="bottom" id="Messages" order="15" weight="0.16858238" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -182,16 +321,249 @@
       <window_info anchor="right" id="Database" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" id="Bean Validation" order="10" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src_msg/com/seeyon/v3x/mobile/adapter/sms/AdaptMobileImpl.java</url>
+          <line>67</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src_msg/com/seeyon/v3x/mobile/adapter/sms/AdaptMobileImpl.java</url>
+          <line>68</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src_msg/com/seeyon/v3x/mobile/adapter/sms/AdaptMobileImpl.java</url>
+          <line>84</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src_msg/com/seeyon/apps/jzMsg/po/JzMsgPo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_msg/com/seeyon/apps/jzMsg/po/JzReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/extend/js/ctp/portal/person/personalWork/ajaxTest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_common/com/seeyon/apps/common/kit/HttpKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-617">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/msgTest/pluginCfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/msgTest/spring/spring.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/ajaxTest/pluginProperties.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_ajax/com/seeyon/apps/ajax/manager/HelloAjaxManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_ajax/com/seeyon/apps/ajax/manager/HelloAjaxManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/ajaxTest/spring/spring-ajaxTest-manager.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/ajaxTest/pluginCfg.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/ajaxTest/spring/spring-ajaxTest-controller.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_ajax/com/seeyon/apps/ajax/controller/HelloAjaxController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/testBPM/spring/spring.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/testBPM/pluginCfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_msg/com/seeyon/apps/jzMsg/JzMsgPipeline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-common.jar!/com/seeyon/ctp/common/usermessage/pipeline/MessagePipelineThreadPool.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="110" column="20" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_msg/com/seeyon/apps/jzMsg/res/ReturnRes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#271#272#0" expanded="true" />
+            <element signature="e#300#301#0" expanded="true" />
+            <element signature="e#341#342#0" expanded="true" />
+            <element signature="e#377#378#0" expanded="true" />
+            <element signature="e#407#408#0" expanded="true" />
+            <element signature="e#433#434#0" expanded="true" />
+            <element signature="e#471#472#0" expanded="true" />
+            <element signature="e#501#502#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_msg/com/seeyon/v3x/mobile/adapter/sms/AdaptMobileImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
+          <folding>
+            <element signature="e#1126#1127#0" expanded="true" />
+            <element signature="e#1145#1146#0" expanded="true" />
+            <element signature="e#1193#1194#0" expanded="true" />
+            <element signature="e#1212#1213#0" expanded="true" />
+            <element signature="e#1263#1264#0" expanded="true" />
+            <element signature="e#1281#1282#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>苏皖区培训课件</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>

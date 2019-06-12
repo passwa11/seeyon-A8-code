@@ -62,7 +62,7 @@ public class JzMsgPipeline implements MessagePipeline {
         for(Message oaMsg : messages) {
         	System.out.println(oaMsg.getBodyContent());
         	System.out.println(oaMsg.getRemoteURL());
-            /*try {
+            try {
                 String remoteURL = oaMsg.getRemoteURL();
                 V3xOrgMember receive = oaMsg.getReceiverMember();
                 remoteURL += "&M=" + receive.getId();
@@ -83,7 +83,7 @@ public class JzMsgPipeline implements MessagePipeline {
                 }
             } catch(Exception e) {
                 log.error("金智消息推送异常", e);
-            }*/
+            }
         }
     }
 

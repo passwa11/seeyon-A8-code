@@ -11,9 +11,20 @@
       <sourceFolder url="file://$MODULE_DIR$/src_msg" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src_testBPM" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="JavaSE-1.8" jdkType="JavaSDK" />
-    <orderEntry type="library" name="ctp" level="project" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="sp3" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
+        </SOURCES>
+        <jarDirectory url="file://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" />
+        <jarDirectory url="file://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
   </component>
 </module>
