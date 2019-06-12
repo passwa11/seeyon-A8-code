@@ -159,6 +159,9 @@ public class xkEdocController extends BaseController {
         String filename = request.getParameter("filename");
         String fileId = request.getParameter("fileId");
         String createDate = request.getParameter("createDate");
+        String type = request.getParameter("type");
+        String isQuickSend = request.getParameter("isQuickSend");
+        String summaryId = request.getParameter("summaryId");
         BufferedInputStream bis = null;
         BufferedOutputStream bos = null;
         String n = "";
@@ -167,7 +170,25 @@ public class xkEdocController extends BaseController {
             String spath = fileManager.getFolder(new Date(), false);
             String[] arrs = createDate.split("\\-");
             String p = spath.substring(0, spath.indexOf("upload") + 6);
-            String y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + fileId;
+            String y = "";
+            String hostFileUrl = "";
+            if (type.equals("2")) {
+                if (null != isQuickSend && !"".equals(isQuickSend)) {
+                    if (("true").equals(isQuickSend)) {
+                        List<Map> listMap = xkjtSummaryAttManager.queryHostFile(summaryId);
+                        if (listMap.size() > 0) {
+                            for (Map map : listMap) {
+                                BigDecimal bigDecimal = (BigDecimal) map.get("attachment_id");
+                                hostFileUrl = bigDecimal.toString();
+                            }
+                        }
+                        y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + hostFileUrl;
+                    } else {
+                        y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + fileId;
+                    }
+
+                }
+            }
             n = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + filename;
             File newFile = new File(n);
             if (!newFile.exists()) {
