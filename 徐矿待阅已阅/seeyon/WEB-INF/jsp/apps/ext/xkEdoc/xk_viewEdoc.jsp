@@ -210,8 +210,10 @@
         var time = $("#time").val();
         var arr = time.split(" ");
         var fileName = $("#suject").val();
-        // alert(fileName);
-        var url = "/seeyon/ext/xkEdoc.do?method=downloadfile&fileId=" + fileUrl + "&createDate=" + arr[0] + "&filename=" + encodeURI(fileName +".pdf");
+        var isQuickSend = $("#isQuickSend").val();
+        var summaryId = $("#summaryId").val();
+        var url = "/seeyon/ext/xkEdoc.do?method=downloadfile&type=2&fileId=" + fileUrl + "&createDate=" + arr[0] + "&filename=" + encodeURI(fileName +".pdf")
+            + "&isQuickSend=" + isQuickSend + "&summaryId=" + summaryId;
         $("#downloadFileFrame").attr("src", url);
     }
 
@@ -259,9 +261,11 @@
             }
             var uploadTime = year + "-" + month + "-" + day;
             var fileName = data.filename;
-
+            var isQuickSend = $("#isQuickSend").val();
+            var summaryId = $("#summaryId").val();
             if (obj.event === 'downloadFile') {
-                var url = "/seeyon/ext/xkEdoc.do?method=downloadfile&fileId=" + fileUrl + "&createDate=" + uploadTime + "&filename=" + encodeURI(fileName);
+                var url = "/seeyon/ext/xkEdoc.do?method=downloadfile&type=1&fileId=" + fileUrl + "&createDate=" + uploadTime + "&filename=" + encodeURI(fileName)
+                    + "&isQuickSend=" + isQuickSend+ "&summaryId=" + summaryId;
 
                 $("#downloadFileFrame").attr("src", url);
             }
