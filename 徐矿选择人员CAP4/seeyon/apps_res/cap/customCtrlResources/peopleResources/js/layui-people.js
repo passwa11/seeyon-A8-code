@@ -66,8 +66,8 @@ layui.use(['table', 'layer', 'element'], function () {
         , page: false //开启分页
         , cols: [[ //表头
             {type: 'checkbox'},
-            {field: 'field0004', title: '所属部门', width: '44%', sort: true},
-            {field: 'field0003', title: '用户名', width: '44%'}
+            {field: 'field0004', title: '所属部门', width: '68%', sort: true},
+            {field: 'field0003', title: '用户名', width: '20%'}
         ]]
     });
 
@@ -430,8 +430,8 @@ layui.use(['table', 'layer', 'element'], function () {
         , page: false //开启分页
         , cols: [[ //表头
             {type: 'checkbox'},
-            {field: 'field0004', title: '部室', width: '44%'}
-            , {field: 'field0003', title: '机要员', width: '44%', sort: true}
+            {field: 'field0004', title: '部室', width: '68%'}
+            , {field: 'field0003', title: '机要员', width: '20%', sort: true}
         ]]
     });
 
@@ -507,8 +507,8 @@ layui.use(['table', 'layer', 'element'], function () {
         , page: false //开启分页
         , cols: [[ //表头
             {type: 'checkbox'},
-            {field: 'field0004', title: '单位', width: '44%'}
-            , {field: 'field0003', title: '机要员', width: '44%', sort: true}
+            {field: 'field0004', title: '单位', width: '68%'}
+            , {field: 'field0003', title: '机要员', width: '20%', sort: true}
         ]]
 
     });
