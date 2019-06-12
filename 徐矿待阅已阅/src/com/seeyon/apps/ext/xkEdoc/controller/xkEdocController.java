@@ -125,19 +125,29 @@ public class xkEdocController extends BaseController {
         String summaryId = request.getParameter("summaryId");
 
         try {
-
             // 获取相关的附件列表
             List<Attachment> attachmentVOs = attachmentManager.getByReference(Long.parseLong(summaryId));
+
+            String hostFileUrl = "";
+            List<Map> listMap = xkjtSummaryAttManager.queryHostFile(summaryId);
+            if (null != listMap && listMap.size() > 0) {
+                for (Map map : listMap) {
+                    BigDecimal bigDecimal = (BigDecimal) map.get("attachment_id");
+                    hostFileUrl = bigDecimal.toString();
+                }
+            }
             List<AttachmentEx> list = new ArrayList<>();
-            for (Attachment attachment : attachmentVOs
-            ) {
-                AttachmentEx attachmentEx = new AttachmentEx();
-                attachmentEx.setFilepath(Long.toString(attachment.getFileUrl()));
-                attachmentEx.setCreatedate(attachment.getCreatedate());
-                attachmentEx.setFileUrl(attachment.getFileUrl());
-                attachmentEx.setFilename(attachment.getFilename());
-                attachmentEx.setSize(attachment.getSize());
-                list.add(attachmentEx);
+            for (Attachment attachment : attachmentVOs) {
+                String fileUrl = Long.toString(attachment.getFileUrl());
+                if (!hostFileUrl.equals(fileUrl)) {
+                    AttachmentEx attachmentEx = new AttachmentEx();
+                    attachmentEx.setFilepath(Long.toString(attachment.getFileUrl()));
+                    attachmentEx.setCreatedate(attachment.getCreatedate());
+                    attachmentEx.setFileUrl(attachment.getFileUrl());
+                    attachmentEx.setFilename(attachment.getFilename());
+                    attachmentEx.setSize(attachment.getSize());
+                    list.add(attachmentEx);
+                }
             }
             System.out.println(attachmentVOs.size());
             Map<String, Object> map = new HashMap<>();
