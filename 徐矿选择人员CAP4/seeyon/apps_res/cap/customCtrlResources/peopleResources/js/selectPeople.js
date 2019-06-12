@@ -73,7 +73,7 @@
             var dialog = $.dialog({
                 id: 'dialog',
                 url: this.preUrl + '/html/selectpeople.html',
-                width: 1050,
+                width: 1250,
                 height: 620,
                 title: '人员选择',
                 type: 'panel',
