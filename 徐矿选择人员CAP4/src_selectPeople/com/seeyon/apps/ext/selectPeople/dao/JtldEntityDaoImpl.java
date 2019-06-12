@@ -22,7 +22,7 @@ public class JtldEntityDaoImpl implements JtldEntityDao {
         if (null != id && id.size() > 0) {
             if (id.size() > 0 && id.size() == 1) {
                 String s = "select f.FORMMAIN_ID,f.FIELD0003,o.NAME,f.field0002 \n" +
-                        "from ( select * from ( select fs.FIELD0003,FS.FORMMAIN_ID,FS.ID,FM.FIELD0001,FM.FIELD0002 from formson_0291 fs LEFT JOIN formmain_0290 fm on FS.FORMMAIN_ID=FM.ID   ) h where h.FORMMAIN_ID='" + id.get(0) + "') f \n" +
+                        "from ( select * from ( select fs.FIELD0003,FS.FORMMAIN_ID,FS.ID,FM.FIELD0001,FM.FIELD0002 from formson_0188 fs LEFT JOIN formmain_0187 fm on FS.FORMMAIN_ID=FM.ID   ) h where h.FORMMAIN_ID='" + id.get(0) + "') f \n" +
                         "LEFT JOIN ORG_MEMBER o on f.FIELD0003=o.id";
                 sql.append(s);
             } else if (id.size() > 1) {
@@ -31,7 +31,7 @@ public class JtldEntityDaoImpl implements JtldEntityDao {
                         sql.append(" UNION all ");
                     }
                     String s = "select f.FORMMAIN_ID,f.FIELD0003,o.NAME,f.field0002 \n" +
-                            "from ( select * from ( select fs.FIELD0003,FS.FORMMAIN_ID,FS.ID,FM.FIELD0001,FM.FIELD0002 from formson_0291 fs LEFT JOIN formmain_0290 fm on FS.FORMMAIN_ID=FM.ID   ) h where h.FORMMAIN_ID='" + id.get(i) + "') f \n" +
+                            "from ( select * from ( select fs.FIELD0003,FS.FORMMAIN_ID,FS.ID,FM.FIELD0001,FM.FIELD0002 from formson_0188 fs LEFT JOIN formmain_0187 fm on FS.FORMMAIN_ID=FM.ID   ) h where h.FORMMAIN_ID='" + id.get(i) + "') f \n" +
                             "LEFT JOIN ORG_MEMBER o on f.FIELD0003=o.id";
                     sql.append(s);
                 }
@@ -44,7 +44,7 @@ public class JtldEntityDaoImpl implements JtldEntityDao {
 
     @Override
     public List<Map<String,Object>> selectDeskWork(String name) {
-        String sql = "select f.id,f.FIELD0001,f.FIELD0002 from formmain_0290 f where f.FIELD0002 like '%" + name + "%'";
+        String sql = "select f.id,f.FIELD0001,f.FIELD0002 from formmain_0187 f where f.FIELD0002 like '%" + name + "%'";
         List<Map<String,Object>> list = JDBCUtil.doQuery(sql);
         return list;
     }
