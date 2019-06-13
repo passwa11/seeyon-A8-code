@@ -9,4 +9,6 @@ import java.util.Map;
 public interface XkjtSummaryAttManager {
 
     public List<Map> queryHostFile(String summaryId);
+
+    public List<Map<String, Object>> queryEdocBody(String summaryId);
 }

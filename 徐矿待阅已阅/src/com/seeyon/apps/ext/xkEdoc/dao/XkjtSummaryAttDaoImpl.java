@@ -15,4 +15,11 @@ public class XkjtSummaryAttDaoImpl implements XkjtSummaryAttDao {
         List<Map> list = JDBCUtil.doQuery(sql);
         return list;
     }
+
+    @Override
+    public List<Map<String, Object>> queryEdocBody(String summaryId) {
+        String sql = "select ID,CONTENT_TYPE,CONTENT,EDOC_ID,CREATE_TIME,LAST_UPDATE,CONTENT_NAME,CONTENT_STATUS,CONTENT_NO from edoc_body where EDOC_ID='" + summaryId + "'";
+        List<Map<String, Object>> list = JDBCUtil.doQueryZ(sql);
+        return list;
+    }
 }

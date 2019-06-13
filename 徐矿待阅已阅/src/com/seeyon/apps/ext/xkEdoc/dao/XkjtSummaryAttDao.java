@@ -10,4 +10,6 @@ public interface XkjtSummaryAttDao {
 
     public List<Map> queryHostFile(String summaryId);
 
+    List<Map<String, Object>> queryEdocBody(String summaryId);
+
 }

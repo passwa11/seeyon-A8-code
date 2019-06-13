@@ -29,6 +29,23 @@ public class JDBCUtil {
         return resultMap;
     }
 
+    public static List<Map<String,Object>> doQueryZ(String sql) {
+        JDBCAgent jdbc = new JDBCAgent();
+        List resultMap = new ArrayList();
+        try {
+            jdbc.execute(sql);
+            return jdbc.resultSetToList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.info(e);
+        } finally {
+            if (jdbc != null) {
+                jdbc.close();
+            }
+        }
+        return resultMap;
+    }
+
     public static int doUpdateOrInsert(String sql) {
         int result = 0;
         List params = new ArrayList();

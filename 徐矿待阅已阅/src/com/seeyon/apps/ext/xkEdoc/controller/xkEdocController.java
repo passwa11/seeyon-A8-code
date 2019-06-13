@@ -1,5 +1,7 @@
 package com.seeyon.apps.ext.xkEdoc.controller;
 
+import java.util.Date;
+
 import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.xkEdoc.manager.XkjtSummaryAttManager;
 import com.seeyon.apps.ext.xkEdoc.manager.XkjtSummaryAttManagerImpl;
@@ -171,10 +173,27 @@ public class xkEdocController extends BaseController {
         String summaryId = request.getParameter("summaryId");
 
         try {
+            EdocSummary edocSummary = edocManager.getEdocSummaryById(Long.parseLong(summaryId), true);
+            List<Map<String, Object>> bodyList = xkjtSummaryAttManager.queryEdocBody(summaryId);
             // 获取相关的附件列表
             List<Attachment> attachmentVOs = attachmentManager.getByReference(Long.parseLong(summaryId));
 
             List<AttachmentEx> list = new ArrayList<>();
+            String subject = edocSummary.getSubject() + ".pdf";
+            for (int i = 0; i < bodyList.size(); i++) {
+                String contentType = (String) bodyList.get(i).get("content_type");
+//                if (contentType.equals("Pdf")) {
+                    AttachmentEx attachmentEx = new AttachmentEx();
+                    attachmentEx.setFilepath(((String) bodyList.get(i).get("content")));
+                    attachmentEx.setCreatedate((Date) bodyList.get(i).get("create_time"));
+                    attachmentEx.setFileUrl(Long.parseLong((String) bodyList.get(i).get("content")));
+                    attachmentEx.setFilename(subject);
+                    attachmentEx.setSize(0l);
+                    list.add(attachmentEx);
+//                }
+
+            }
+
             for (Attachment attachment : attachmentVOs) {
                 AttachmentEx attachmentEx = new AttachmentEx();
                 attachmentEx.setFilepath(Long.toString(attachment.getFileUrl()));

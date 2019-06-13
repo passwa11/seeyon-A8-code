@@ -17,4 +17,9 @@ public class XkjtSummaryAttManagerImpl implements XkjtSummaryAttManager {
     public List<Map> queryHostFile(String summaryId) {
         return xkjtSummaryAttDao.queryHostFile(summaryId);
     }
+
+    @Override
+    public List<Map<String, Object>> queryEdocBody(String summaryId) {
+        return xkjtSummaryAttDao.queryEdocBody(summaryId);
+    }
 }
