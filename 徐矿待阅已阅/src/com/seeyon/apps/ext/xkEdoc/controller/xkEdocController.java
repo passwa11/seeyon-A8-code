@@ -179,7 +179,7 @@ public class xkEdocController extends BaseController {
             List<Attachment> attachmentVOs = attachmentManager.getByReference(Long.parseLong(summaryId));
 
             List<AttachmentEx> list = new ArrayList<>();
-            String subject = edocSummary.getSubject() + ".pdf";
+            String subject = (edocSummary.getSubject() + ".doc").replace(" ","");
             for (int i = 0; i < bodyList.size(); i++) {
                 String contentType = (String) bodyList.get(i).get("content_type");
 //                if (contentType.equals("Pdf")) {
@@ -271,7 +271,7 @@ public class xkEdocController extends BaseController {
             bis = new BufferedInputStream(new FileInputStream(file));
             bos = new BufferedOutputStream(response.getOutputStream());
             // 设置response内容的类型
-            response.setCharacterEncoding("UTF-8");
+//            response.setCharacterEncoding("UTF-8");
 //            response.setContentType(new MimetypesFileTypeMap().getContentType(file));
             response.setContentType("application/octet-stream;charset=utf-8");
             // 设置头部信息
@@ -287,14 +287,14 @@ public class xkEdocController extends BaseController {
             e.printStackTrace();
         } finally {
             try {
-                File file = new File(n);
-                file.delete();
                 if (bis != null) {
                     bis.close();
                 }
                 if (bos != null) {
                     bos.close();
                 }
+                File file = new File(n);
+                file.delete();
             } catch (IOException e) {
                 e.printStackTrace();
             }
