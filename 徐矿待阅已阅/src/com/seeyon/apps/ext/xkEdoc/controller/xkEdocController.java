@@ -164,6 +164,41 @@ public class xkEdocController extends BaseController {
         return null;
     }
 
+    /**
+     * 发文单上获取附件列表
+     */
+    public ModelAndView sendFileList(HttpServletRequest request, HttpServletResponse response) {
+        String summaryId = request.getParameter("summaryId");
+
+        try {
+            // 获取相关的附件列表
+            List<Attachment> attachmentVOs = attachmentManager.getByReference(Long.parseLong(summaryId));
+
+            List<AttachmentEx> list = new ArrayList<>();
+            for (Attachment attachment : attachmentVOs) {
+                AttachmentEx attachmentEx = new AttachmentEx();
+                attachmentEx.setFilepath(Long.toString(attachment.getFileUrl()));
+                attachmentEx.setCreatedate(attachment.getCreatedate());
+                attachmentEx.setFileUrl(attachment.getFileUrl());
+                attachmentEx.setFilename(attachment.getFilename());
+                attachmentEx.setSize(attachment.getSize());
+                list.add(attachmentEx);
+            }
+            System.out.println(attachmentVOs.size());
+            Map<String, Object> map = new HashMap<>();
+            map.put("code", 0);
+            map.put("message", "");
+            map.put("total", list.size());
+            map.put("data", list);
+            JSONObject json = new JSONObject(map);
+            render(response, json.toJSONString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
 
     public ModelAndView downloadfile(HttpServletRequest request, HttpServletResponse response) {
         String filename = request.getParameter("filename");
@@ -192,13 +227,21 @@ public class xkEdocController extends BaseController {
                                 hostFileUrl = bigDecimal.toString();
                             }
                         }
-                        y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + hostFileUrl;
+                        if (hostFileUrl.equals("")) {
+                            y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + fileId;
+
+                        } else {
+                            y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + hostFileUrl;
+                        }
                     } else {
                         y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + fileId;
                     }
 
                 }
+            } else {
+                y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + fileId;
             }
+
             n = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + filename;
             File newFile = new File(n);
             if (!newFile.exists()) {
