@@ -182,7 +182,7 @@ public class xkEdocController extends BaseController {
             String subject = (edocSummary.getSubject() + ".doc").replace(" ","");
             for (int i = 0; i < bodyList.size(); i++) {
                 String contentType = (String) bodyList.get(i).get("content_type");
-//                if (contentType.equals("Pdf")) {
+                if (contentType.equals("Pdf")) {
                     AttachmentEx attachmentEx = new AttachmentEx();
                     attachmentEx.setFilepath(((String) bodyList.get(i).get("content")));
                     attachmentEx.setCreatedate((Date) bodyList.get(i).get("create_time"));
@@ -190,7 +190,7 @@ public class xkEdocController extends BaseController {
                     attachmentEx.setFilename(subject);
                     attachmentEx.setSize(0l);
                     list.add(attachmentEx);
-//                }
+                }
 
             }
 
