@@ -179,7 +179,7 @@ public class xkEdocController extends BaseController {
             List<Attachment> attachmentVOs = attachmentManager.getByReference(Long.parseLong(summaryId));
 
             List<AttachmentEx> list = new ArrayList<>();
-            String subject = (edocSummary.getSubject() + ".doc").replace(" ","");
+            String subject = (edocSummary.getSubject() + ".pdf").replace(" ","");
             for (int i = 0; i < bodyList.size(); i++) {
                 String contentType = (String) bodyList.get(i).get("content_type");
                 if (contentType.equals("Pdf")) {
