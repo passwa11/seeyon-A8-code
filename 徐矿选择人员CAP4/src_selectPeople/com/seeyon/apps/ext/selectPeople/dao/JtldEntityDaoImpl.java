@@ -76,7 +76,7 @@ public class JtldEntityDaoImpl implements JtldEntityDao {
 
     @Override
     public List<Map<String,Object>> selectFormmain0087(String name) {
-        String sql = "select f.field0001 field0002,f.field0007 field0001,f.field0008,f.field0009,f.field0010 field0004,m.name field0003 from FORMMAIN_0087 f left join org_member m on f.field0007=m.id where f.field0010 like '%" + name + "%'";
+        String sql = "select f.field0001 field0002,f.field0007 field0001,f.field0008,f.field0009,f.field0010 field0004,m.name field0003,f.FIELD0011 zsort from FORMMAIN_0087 f left join org_member m on f.field0007=m.id where f.field0010 like '%" + name + "%' order by zsort asc";
         List<Map<String,Object>> list = JDBCUtil.doQuery(sql);
         return list;
     }
