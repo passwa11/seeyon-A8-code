@@ -100,7 +100,7 @@
                         <label class="layui-form-label">发文时间</label>
                         <div class="layui-input-block">
                             <input type="text" lay-verify="" autocomplete="off" class="layui-input" disabled
-                                   value="${summary.createTime}">
+                                   value="${createTime}">
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                         <label class="layui-form-label">拟稿日期</label>
                         <div class="layui-input-block">
                             <input type="text" lay-verify="" autocomplete="off" class="layui-input" disabled
-                                   value="${summary.createTime}">
+                                   value="${createTime}">
                         </div>
                     </div>
                 </div>
@@ -222,7 +222,6 @@
         var $ = layui.jquery;
         var layer = layui.layer;
         var table = layui.table;
-
 
         table.render({
             id: 'fileListId'
