@@ -1,5 +1,6 @@
 package com.seeyon.apps.ext.xkEdoc.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.alibaba.fastjson.JSONObject;
@@ -109,7 +110,10 @@ public class xkEdocController extends BaseController {
             summaryId = Long.parseLong(s_summaryId);
         }
         EdocSummary summary = edocManager.getEdocSummaryById(summaryId, true);
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String createTime = simpleDateFormat.format(summary.getCreateTime());
         mav.addObject("summary", summary);
+        mav.addObject("createTime", createTime);
 
         Set<EdocBody> edocBodies = summary.getEdocBodies();
         Iterator<EdocBody> it = edocBodies.iterator();
