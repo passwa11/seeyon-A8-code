@@ -1,6 +1,6 @@
 package com.seeyon.apps.ext.zMember.dao.impl;
 
-import com.seeyon.apps.ext.zMember.dao.zMember;
+import com.seeyon.apps.ext.zMember.dao.zMemberDao;
 import com.seeyon.ctp.organization.po.OrgMember;
 import com.seeyon.ctp.util.DBAgent;
 import com.seeyon.ctp.util.FlipInfo;
@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * 周刘成   2019/6/20
  */
-public class zMemberImpl implements zMember {
+public class zMemberDaoImpl implements zMemberDao {
     @Override
     public List<OrgMember> getAllMemberPO(String username, Map<String, Object> param, FlipInfo flipInfo) {
         StringBuilder hql = new StringBuilder();

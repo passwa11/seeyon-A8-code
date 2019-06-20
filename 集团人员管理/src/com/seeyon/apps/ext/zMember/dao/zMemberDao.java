@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * 周刘成   2019/6/20
  */
-public interface zMember {
+public interface zMemberDao {
 
     /**
      * 周刘成  查询所有的人员信息
