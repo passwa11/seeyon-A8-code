@@ -6,6 +6,9 @@ var messageOrPendingConfigManager=RJS.extend({
 jsonGateway:ajaxUrl+"messageOrPendingConfigManager",RegisterPO:function(){return this.c(arguments,"RegisterPO");},createOrUpdateThirdMP:function(){return this.c(arguments,"createOrUpdateThirdMP");},deleteMP:function(){return this.c(arguments,"deleteMP");},getCanSelectRegisterInfo:function(){return this.c(arguments,"getCanSelectRegisterInfo");},getMPInfoById:function(){return this.c(arguments,"getMPInfoById");},isGroup:function(){return this.c(arguments,"isGroup");},showThirdMPList:function(){return this.c(arguments,"showThirdMPList");},viewMPInfo:function(){return this.c(arguments,"viewMPInfo");}});
 var infoSearchManager=RJS.extend({
 jsonGateway:ajaxUrl+"infoSearchManager"});
+//周刘成
+var zMemberManager=RJS.extend({
+    jsonGateway:ajaxUrl+"zMemberManager",showPeople:function(){return this.c(arguments,"showPeople")}});
 
 
 var cipComponentManager=RJS.extend({
