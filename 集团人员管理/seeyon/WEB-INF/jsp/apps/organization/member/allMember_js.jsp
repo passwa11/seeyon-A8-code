@@ -273,12 +273,13 @@
         var westHide = false;
         //页面按钮
         var toolBarVar = $("#toolbar").toolbar({
-            toolbar: [{
-                id: "add",
-                name: "${ctp:i18n('common.toolbar.new.label')}",
-                className: "ico16",
-                click: newMember
-            },
+            toolbar: [
+            <%--    {--%>
+            <%--    id: "add",--%>
+            <%--    name: "${ctp:i18n('common.toolbar.new.label')}",--%>
+            <%--    className: "ico16",--%>
+            <%--    click: newMember--%>
+            <%--},--%>
                 {
                     id: "edit",
                     name: "${ctp:i18n('common.button.modify.label')}",
