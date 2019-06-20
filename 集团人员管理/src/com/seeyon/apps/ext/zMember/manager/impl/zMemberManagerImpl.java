@@ -92,7 +92,7 @@ public class zMemberManagerImpl implements zMemberManager {
         }
         /********************/
 
-        zMemberDao.getAllMemberPO(queryParams, fi);
+        zMemberDao.getAllMemberPO(queryParams,true,enabled, fi);
         return this.dealResult(fi);
     }
 
