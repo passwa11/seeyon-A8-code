@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans>
-	<bean>
-		<serviceName>zMemberManager</serviceName>
-		<operations>
-			<op>showPeople</op>
-		</operations>
-	</bean>
-
-
+    <bean>
+        <serviceName>zMemberManager</serviceName>
+        <operations>
+            <op>showPeople</op>
+        </operations>
+    </bean>
 </beans>
