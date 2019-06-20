@@ -106,7 +106,7 @@
                     name: 'stateName',
                     width: 'small'
                 }],
-            managerName: "memberManager",
+            managerName: "zMemberManager",
             managerMethod: "showPeople",
             parentId: 'center',
             vChange: true,
