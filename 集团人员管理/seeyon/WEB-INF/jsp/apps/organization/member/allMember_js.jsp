@@ -38,6 +38,92 @@
         $("tr[class='forInter']").show();
         $("tr[class='forOuter']").hide();
         $("#button_area").hide();
+
+        //搜索框
+        var searchobj = $.searchCondition({
+            top: 7,
+            right: 10,
+            searchHandler: function () {
+                s = searchobj.g.getReturnValue();
+                s.enabled = filter.enabled;
+                s.accountId = loginAccountId;
+                filter.cond = 'yes';
+                if ('state' == filter.condition) {
+                    s.state = filter.value;
+                }
+                if (null != filter.state) {
+                    s.state = filter.state;
+                }
+                // if(null != preDeptId || '' != preDeptId) {
+                //   s.orgDepartmentId = preDeptId;
+                // }
+                isSearch = true;
+                $("#memberTable").ajaxgridLoad(s);
+            },
+            conditions: [{
+                id: 'search_name',
+                name: 'search_name',
+                type: 'input',
+                text: "${ctp:i18n('member.list.find.name')}",
+                value: 'name',
+                maxLength: 40
+            },
+                {
+                    id: 'search_loginName',
+                    name: 'search_loginName',
+                    type: 'input',
+                    text: "${ctp:i18n('member.list.find.loginname')}",
+                    value: 'loginName',
+                    maxLength: 100
+                },
+                {
+                    id: 'search_department',
+                    name: 'search_department',
+                    type: 'selectPeople',
+                    text: "${ctp:i18n('import.type.dept')}",
+                    value: 'orgDepartmentId',
+                    comp: "type:'selectPeople',panels:'Department',selectType:'Department',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"
+                },
+                {
+                    id: 'search_post',
+                    name: 'search_post',
+                    type: 'selectPeople',
+                    text: "${ctp:i18n('org.member_form.primaryPost.label')}",
+                    value: 'orgPostId',
+                    comp: "type:'selectPeople',panels:'Post',selectType:'Post',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"
+                },
+                {//副岗查询
+                    id: 'search_secpost',
+                    name: 'search_secpost',
+                    type: 'selectPeople',
+                    text: "${ctp:i18n('org.member_form.secondPost.label')}",
+                    value: 'secPostId',
+                    comp: "type:'selectPeople',panels:'Post',selectType:'Post',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"
+                },
+                {
+                    id: 'search_level',
+                    name: 'search_level',
+                    type: 'selectPeople',
+                    text: "${ctp:i18n('org.member_form.levelName.label')}",
+                    value: 'orgLevelId',
+                    comp: "type:'selectPeople',panels:'Level',selectType:'Level',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"
+                }, {
+                    id: 'search_workLocal',
+                    name: 'search_workLocal',
+                    type: 'input',
+                    text: "${ctp:i18n('member.location')}",
+                    value: 'search_workLocalId',
+                    maxLength: 40
+                }, {
+                    id: 'search_code',
+                    name: 'search_code',
+                    type: 'input',
+                    text: "${ctp:i18n('org.member_form.code')}",
+                    value: 'code',
+                    maxLength: 20
+                }
+            ]
+        });
         //列表
         grid = $("#memberTable").ajaxgrid({
             gridType: 'autoGrid',
@@ -1161,91 +1247,7 @@
             }
         }
 
-        //搜索框
-        var searchobj = $.searchCondition({
-            top: 7,
-            right: 10,
-            searchHandler: function () {
-                s = searchobj.g.getReturnValue();
-                s.enabled = filter.enabled;
-                s.accountId = loginAccountId;
-                filter.cond = 'yes';
-                if ('state' == filter.condition) {
-                    s.state = filter.value;
-                }
-                if (null != filter.state) {
-                    s.state = filter.state;
-                }
-                // if(null != preDeptId || '' != preDeptId) {
-                //   s.orgDepartmentId = preDeptId;
-                // }
-                isSearch = true;
-                $("#memberTable").ajaxgridLoad(s);
-            },
-            conditions: [{
-                id: 'search_name',
-                name: 'search_name',
-                type: 'input',
-                text: "${ctp:i18n('member.list.find.name')}",
-                value: 'name',
-                maxLength: 40
-            },
-                {
-                    id: 'search_loginName',
-                    name: 'search_loginName',
-                    type: 'input',
-                    text: "${ctp:i18n('member.list.find.loginname')}",
-                    value: 'loginName',
-                    maxLength: 100
-                },
-                {
-                    id: 'search_department',
-                    name: 'search_department',
-                    type: 'selectPeople',
-                    text: "${ctp:i18n('import.type.dept')}",
-                    value: 'orgDepartmentId',
-                    comp: "type:'selectPeople',panels:'Department',selectType:'Department',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"
-                },
-                {
-                    id: 'search_post',
-                    name: 'search_post',
-                    type: 'selectPeople',
-                    text: "${ctp:i18n('org.member_form.primaryPost.label')}",
-                    value: 'orgPostId',
-                    comp: "type:'selectPeople',panels:'Post',selectType:'Post',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"
-                },
-                {//副岗查询
-                    id: 'search_secpost',
-                    name: 'search_secpost',
-                    type: 'selectPeople',
-                    text: "${ctp:i18n('org.member_form.secondPost.label')}",
-                    value: 'secPostId',
-                    comp: "type:'selectPeople',panels:'Post',selectType:'Post',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"
-                },
-                {
-                    id: 'search_level',
-                    name: 'search_level',
-                    type: 'selectPeople',
-                    text: "${ctp:i18n('org.member_form.levelName.label')}",
-                    value: 'orgLevelId',
-                    comp: "type:'selectPeople',panels:'Level',selectType:'Level',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"
-                }, {
-                    id: 'search_workLocal',
-                    name: 'search_workLocal',
-                    type: 'input',
-                    text: "${ctp:i18n('member.location')}",
-                    value: 'search_workLocalId',
-                    maxLength: 40
-                }, {
-                    id: 'search_code',
-                    name: 'search_code',
-                    type: 'input',
-                    text: "${ctp:i18n('org.member_form.code')}",
-                    value: 'code',
-                    maxLength: 20
-                }
-            ]
-        });
+
 
 
         //连续添加人员，保留部门排序号岗位职务
