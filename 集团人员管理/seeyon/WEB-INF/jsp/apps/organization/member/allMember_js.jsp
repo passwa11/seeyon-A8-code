@@ -161,8 +161,8 @@
                     width: 'smallest'
                 },
                 {
-                    display: "${ctp:i18n('org.member_form.deptName.label')}",
-                    name: 'departmentName',
+                    display: "所属机构",
+                    name: 'accountName',
                     sortable: true,
                     width: 'small'
                 },
@@ -1246,8 +1246,6 @@
                 $('#sssssssss').height($('#grid_detail').height() - 50).css('overflow', 'auto');
             }
         }
-
-
 
 
         //连续添加人员，保留部门排序号岗位职务
