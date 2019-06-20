@@ -7,16 +7,19 @@ import com.seeyon.apps.ldap.event.OrganizationLdapEvent;
 import com.seeyon.apps.ldap.util.LdapUtils;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.common.i18n.ResourceUtil;
+import com.seeyon.ctp.organization.OrgConstants;
 import com.seeyon.ctp.organization.bo.V3xOrgMember;
 import com.seeyon.ctp.organization.dao.OrgHelper;
 import com.seeyon.ctp.organization.manager.OrgManager;
 import com.seeyon.ctp.organization.po.OrgMember;
 import com.seeyon.ctp.organization.webmodel.WebV3xOrgMember;
 import com.seeyon.ctp.util.FlipInfo;
+import com.seeyon.ctp.util.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -41,8 +44,55 @@ public class zMemberManagerImpl implements zMemberManager {
 
     @Override
     public FlipInfo showPeople(FlipInfo fi, Map params) throws BusinessException {
-        String username = (String) params.get("username");
-        zMemberDao.getAllMemberPO(username, params, fi);
+
+        /********过滤和条件搜索*******/
+        Map queryParams = new HashMap<String, Object>();
+        Boolean enabled = null;
+        Long secondPostId = null;
+        String workLocal = null;
+        String condition = String.valueOf(params.get("condition"));
+        Object value = params.get("value") == null ? "" : params.get("value");
+        if ("state".equals(condition)) {//在职/离职过滤
+            value = "1".equals(String.valueOf(params.get("value"))) ? Integer.valueOf(1) : Integer.valueOf(2);
+            queryParams.put("state", value);
+        }
+        if ("name".equals(condition)) {
+            queryParams.put("name", value);
+        }
+        if ("loginName".equals(condition)) {
+            queryParams.put("loginName", value);
+        }
+        if (params.containsKey("state") && Strings.isNotBlank(String.valueOf(params.get("state")))) {
+            queryParams.put("state", Integer.parseInt(String.valueOf(params.get("state"))));
+        }
+        if (params.containsKey("enabled") && Strings.isNotBlank(String.valueOf(params.get("enabled")))) {
+            enabled = (Boolean) params.get("enabled");
+        }
+        if (params.containsKey("orgDepartmentId") && Strings.isNotBlank(String.valueOf(params.get("orgDepartmentId")))) {
+            queryParams.put("orgDepartmentId", Long.parseLong(String.valueOf(params.get("orgDepartmentId"))));
+        }
+        if ("secPostId".equals(condition)) {
+            List<String> strs = (List<String>) params.get("value");
+            if (Strings.isEmpty(strs)) {
+                value = null;
+            } else {
+                String s1 = strs.get(1).trim();
+                if (Strings.isEmpty(s1)) {
+                    value = null;
+                } else {
+                    String[] strs2 = s1.split("[|]");
+                    value = Long.valueOf(strs2[1].trim());
+                }
+            }
+            enabled = true;
+            secondPostId = (Long) value;
+        }
+        if ("code".equals(condition)) {
+            queryParams.put("code", value);
+        }
+        /********************/
+
+        zMemberDao.getAllMemberPO(queryParams, fi);
         return this.dealResult(fi);
     }
 

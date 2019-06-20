@@ -15,16 +15,16 @@ import java.util.Map;
  */
 public class zMemberDaoImpl implements zMemberDao {
     @Override
-    public List<OrgMember> getAllMemberPO(String username, Map<String, Object> param, FlipInfo flipInfo) {
+    public List<OrgMember> getAllMemberPO( Map<String, Object> param, FlipInfo flipInfo) {
         StringBuilder hql = new StringBuilder();
         Map<String, Object> params = new HashMap<String, Object>();
         hql.append("SELECT m ");
         hql.append(" FROM OrgMember as m ");
         hql.append(" WHERE 1=1 ");
-        if (username != null) {
-            hql.append(" AND m.name=:username ");
-            params.put("username", username);
-        }
+//        if (username != null) {
+//            hql.append(" AND m.name=:username ");
+//            params.put("username", username);
+//        }
 //		if (isInternal != null) {
 //			hql.append(" AND m.internal=:internal");
 //			params.put("internal", isInternal);

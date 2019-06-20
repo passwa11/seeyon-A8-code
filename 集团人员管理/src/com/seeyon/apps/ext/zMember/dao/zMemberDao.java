@@ -20,7 +20,7 @@ public interface zMemberDao {
      * @param flipInfo
      * @return
      */
-    List<OrgMember> getAllMemberPO(String username, Map<String, Object> param, FlipInfo flipInfo);
+    List<OrgMember> getAllMemberPO( Map<String, Object> param, FlipInfo flipInfo);
 
 
     int selectUnitPeopleCount();
