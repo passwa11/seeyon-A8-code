@@ -21,4 +21,9 @@ public class zMemberManagerImpl implements zMemberManager {
         zMemberDao.getAllMemberPO(username, params, fi);
         return fi;
     }
+
+    @Override
+    public int selectUnitPeopleCount() {
+        return zMemberDao.selectUnitPeopleCount();
+    }
 }

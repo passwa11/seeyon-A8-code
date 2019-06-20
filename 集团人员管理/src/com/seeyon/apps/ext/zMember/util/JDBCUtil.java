@@ -29,6 +29,18 @@ public class JDBCUtil {
         return resultMap;
     }
 
+    public static int recordCount(String sql) {
+        JDBCAgent jdbc = new JDBCAgent();
+        int count = 0;
+        try {
+            count = jdbc.execute(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+
     public static int doUpdateOrInsert(String sql) {
         int result = 0;
         List params = new ArrayList();

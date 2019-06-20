@@ -23,4 +23,5 @@ public interface zMemberDao {
     List<OrgMember> getAllMemberPO(String username, Map<String, Object> param, FlipInfo flipInfo);
 
 
+    int selectUnitPeopleCount();
 }

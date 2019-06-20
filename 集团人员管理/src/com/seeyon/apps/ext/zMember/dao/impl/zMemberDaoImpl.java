@@ -1,6 +1,7 @@
 package com.seeyon.apps.ext.zMember.dao.impl;
 
 import com.seeyon.apps.ext.zMember.dao.zMemberDao;
+import com.seeyon.apps.ext.zMember.util.JDBCUtil;
 import com.seeyon.ctp.organization.po.OrgMember;
 import com.seeyon.ctp.util.DBAgent;
 import com.seeyon.ctp.util.FlipInfo;
@@ -39,5 +40,10 @@ public class zMemberDaoImpl implements zMemberDao {
         return DBAgent.find(hql.toString(), params, flipInfo);
     }
 
-
+    @Override
+    public int selectUnitPeopleCount() {
+        String sql = "select count(1) from org_member where 1=1  AND m.deleted=false AND m.admin=false AND m.virtual=false AND m.assigned=true";
+        int count = JDBCUtil.recordCount(sql);
+        return count;
+    }
 }

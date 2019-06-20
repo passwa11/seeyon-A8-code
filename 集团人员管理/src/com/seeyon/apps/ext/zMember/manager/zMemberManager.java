@@ -12,4 +12,5 @@ public interface zMemberManager {
     //周刘成
     FlipInfo showPeople(FlipInfo fi, Map params) throws BusinessException;
 
+    int selectUnitPeopleCount();
 }
