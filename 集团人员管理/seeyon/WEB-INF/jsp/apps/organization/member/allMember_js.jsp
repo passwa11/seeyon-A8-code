@@ -76,45 +76,46 @@
                     value: 'loginName',
                     maxLength: 100
                 },
+                <%--{--%>
+                <%--    id: 'search_department',--%>
+                <%--    name: 'search_department',--%>
+                <%--    type: 'selectPeople',--%>
+                <%--    text: "${ctp:i18n('import.type.dept')}",--%>
+                <%--    value: 'orgDepartmentId',--%>
+                <%--    comp: "type:'selectPeople',panels:'Department',selectType:'Department',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"--%>
+                <%--},--%>
+                <%--{--%>
+                <%--    id: 'search_post',--%>
+                <%--    name: 'search_post',--%>
+                <%--    type: 'selectPeople',--%>
+                <%--    text: "${ctp:i18n('org.member_form.primaryPost.label')}",--%>
+                <%--    value: 'orgPostId',--%>
+                <%--    comp: "type:'selectPeople',panels:'Post',selectType:'Post',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"--%>
+                <%--},--%>
+                <%--{//副岗查询--%>
+                <%--    id: 'search_secpost',--%>
+                <%--    name: 'search_secpost',--%>
+                <%--    type: 'selectPeople',--%>
+                <%--    text: "${ctp:i18n('org.member_form.secondPost.label')}",--%>
+                <%--    value: 'secPostId',--%>
+                <%--    comp: "type:'selectPeople',panels:'Post',selectType:'Post',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"--%>
+                <%--},--%>
+                <%--{--%>
+                <%--    id: 'search_level',--%>
+                <%--    name: 'search_level',--%>
+                <%--    type: 'selectPeople',--%>
+                <%--    text: "${ctp:i18n('org.member_form.levelName.label')}",--%>
+                <%--    value: 'orgLevelId',--%>
+                <%--    comp: "type:'selectPeople',panels:'Level',selectType:'Level',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"--%>
+                <%--}, {--%>
+                <%--    id: 'search_workLocal',--%>
+                <%--    name: 'search_workLocal',--%>
+                <%--    type: 'input',--%>
+                <%--    text: "${ctp:i18n('member.location')}",--%>
+                <%--    value: 'search_workLocalId',--%>
+                <%--    maxLength: 40--%>
+                <%--}, --%>
                 {
-                    id: 'search_department',
-                    name: 'search_department',
-                    type: 'selectPeople',
-                    text: "${ctp:i18n('import.type.dept')}",
-                    value: 'orgDepartmentId',
-                    comp: "type:'selectPeople',panels:'Department',selectType:'Department',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"
-                },
-                {
-                    id: 'search_post',
-                    name: 'search_post',
-                    type: 'selectPeople',
-                    text: "${ctp:i18n('org.member_form.primaryPost.label')}",
-                    value: 'orgPostId',
-                    comp: "type:'selectPeople',panels:'Post',selectType:'Post',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"
-                },
-                {//副岗查询
-                    id: 'search_secpost',
-                    name: 'search_secpost',
-                    type: 'selectPeople',
-                    text: "${ctp:i18n('org.member_form.secondPost.label')}",
-                    value: 'secPostId',
-                    comp: "type:'selectPeople',panels:'Post',selectType:'Post',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"
-                },
-                {
-                    id: 'search_level',
-                    name: 'search_level',
-                    type: 'selectPeople',
-                    text: "${ctp:i18n('org.member_form.levelName.label')}",
-                    value: 'orgLevelId',
-                    comp: "type:'selectPeople',panels:'Level',selectType:'Level',maxSize:'1',onlyLoginAccount: true,accountId:'${accountId}'"
-                }, {
-                    id: 'search_workLocal',
-                    name: 'search_workLocal',
-                    type: 'input',
-                    text: "${ctp:i18n('member.location')}",
-                    value: 'search_workLocalId',
-                    maxLength: 40
-                }, {
                     id: 'search_code',
                     name: 'search_code',
                     type: 'input',
@@ -122,6 +123,14 @@
                     value: 'code',
                     maxLength: 20
                 }
+                // ,{
+                //     id: 'search_account',
+                //     name: 'search_account',
+                //     type: 'input',
+                //     text: "机构名称",
+                //     value: 'accountName',
+                //     maxLength: 50
+                // }
             ]
         });
         //列表

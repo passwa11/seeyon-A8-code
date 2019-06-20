@@ -59,6 +59,10 @@ public class zMemberManagerImpl implements zMemberManager {
         if ("name".equals(condition)) {
             queryParams.put("name", value);
         }
+
+        if ("accountName".equals(condition)) {
+            queryParams.put("accountName", value);
+        }
         if ("loginName".equals(condition)) {
             queryParams.put("loginName", value);
         }
