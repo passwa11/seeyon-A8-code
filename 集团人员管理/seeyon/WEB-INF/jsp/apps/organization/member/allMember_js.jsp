@@ -473,7 +473,7 @@
                     name: "${ctp:i18n('member.advanced')}",
                     className: "ico16 setting_16",
                     subMenu: [{
-                        id: "cancelMemberBtn",
+                        id: "cancelMemberBtn2",
                         name: "${ctp:i18n('member.callout')}",
                         click: cancelMember
                     },
