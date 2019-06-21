@@ -14,6 +14,7 @@
     <%@ include file="/WEB-INF/jsp/apps/organization/member/allMember_js.jsp" %>
     <title>MemberManagerment</title>
 </head>
+
 <body>
 <div id='layout' class="comp" comp="type:'layout'">
     <div class="layout_north" layout="height:40,sprit:false,border:false">
