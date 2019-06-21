@@ -247,28 +247,7 @@
         filter.enabled = true;
         filter.accountId = loginAccountId;
         $("#memberTable").ajaxgridLoad(filter);
-        //部门树
-        $("#deptTree").tree({
-            idKey: "id",
-            pIdKey: "parentId",
-            nameKey: "name",
-            onClick: showMembersByDept,
-            nodeHandler: function (n) {
-                if (n.data.parentId == n.data.id) {
-                    n.open = true;
-                } else {
-                    n.open = false;
-                }
-            }
-        });
 
-        //手动去除部门树上的节点选择状态
-        function cancelSelectTree() {
-            $("#deptTree").treeObj().cancelSelectedNode();
-            preDeptId = '';
-            searchobj.g.clearCondition();
-            s = searchobj.g.getReturnValue();
-        }
 
         var westHide = false;
         //页面按钮
