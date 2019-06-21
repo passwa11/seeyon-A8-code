@@ -2,19 +2,187 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36e88280-e35b-47df-aff3-f0239d1a348d" name="Default Changelist" comment="过滤有数据的明细行">
-      <change beforePath="$PROJECT_DIR$/../CAP4培训课件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CAP4培训课件/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.project" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/xk263EmailPluginInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/xk263EmailPluginInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐矿待阅已阅/xkjt_edoc.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/.settings/de.loskutov.FileSync.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/WEB-INF/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/WEB-INF/cfgHome/plugin/hidden/pluginCfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/WEB-INF/cfgHome/plugin/hidden/spring/spring-fieldctrl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/WEB-INF/cfgHome/plugin/selectPeople/pluginCfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/WEB-INF/cfgHome/plugin/selectPeople/spring/spring-fieldctrl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/WEB-INF/cfgHome/plugin/selectPeople/spring/spring-selectPeople-controller.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/WEB-INF/cfgHome/plugin/selectPeople/spring/spring-selectPeople-dao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/WEB-INF/cfgHome/plugin/selectPeople/spring/spring-selectPeople-manager.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/WEB-INF/cfgHome/plugin/selectPeople/spring/spring-selectPeople-plugin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/hiddenResources/js/hidden.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/css/img/icon16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/css/zlc.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/html/selectpeople.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/JsBarcode.all.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/layui-people.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/selectPeople.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/css/layui.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/css/layui.mobile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/css/modules/code.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/css/modules/laydate/default/laydate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/css/modules/layer/default/icon-ext.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/css/modules/layer/default/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/css/modules/layer/default/layer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/css/modules/layer/default/loading-0.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/css/modules/layer/default/loading-1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/css/modules/layer/default/loading-2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/css/selection_infomation-lt.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/css/selection_infomation.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/font/iconfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/font/iconfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/font/iconfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/font/iconfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/0.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/10.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/11.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/12.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/13.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/14.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/15.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/16.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/17.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/18.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/19.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/20.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/21.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/22.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/23.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/24.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/25.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/26.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/27.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/28.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/29.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/30.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/31.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/32.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/33.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/34.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/35.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/36.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/37.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/38.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/39.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/4.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/40.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/41.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/42.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/43.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/44.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/45.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/46.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/47.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/48.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/49.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/5.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/50.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/51.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/52.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/53.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/54.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/55.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/56.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/57.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/58.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/59.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/6.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/60.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/61.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/62.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/63.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/64.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/65.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/66.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/67.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/68.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/69.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/7.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/70.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/71.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/8.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/images/face/9.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/carousel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/code.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/colorpicker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/element.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/flow.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/form.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/laydate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/layedit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/layer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/laypage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/laytpl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/mobile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/rate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/slider.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/table.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/tree.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/upload.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/layui.all.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/layui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/customFieldCtrl/constants/SelectPeople.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/customFieldCtrl/fieldCtrl/HiddenFieldCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/customFieldCtrl/fieldCtrl/SelectPeopleFieldCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/customFieldCtrl/kit/CAP4FormKit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/customFieldCtrl/kit/DateKit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/customFieldCtrl/kit/EnumUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/customFieldCtrl/kit/StrKit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/customFieldCtrl/vo/People.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/customFieldCtrl/vo/ZJsonObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/ext/selectPeople/manager/JtldEntityManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/ext/selectPeople/manager/JtldEntityManagerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/ext/selectPeople/po/Fmain0148.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/ext/selectPeople/po/Formmain0148.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/ext/selectPeople/po/Formson0174.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/ext/selectPeople/po/JtldEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/ext/selectPeople/selectPerplePluginInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/ext/selectPeople/util/JDBCUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/ext/selectPeople/util/JsonKit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/selectPeople/po/myquery/Formmain0148.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/selectPeople/po/myquery/Formson0174.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/apps/selectPeople/po/myquery/JtldEntity.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/src_selectPeople/com/seeyon/ctp/rest/resources/SelectPeopleResources.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/徐矿选择人员CAP4.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/授权码/人员选择.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4 - 副本/授权码/说明.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../苏皖区培训课件/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/../苏皖区培训课件/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../苏皖区培训课件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../苏皖区培训课件/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../苏皖区培训课件/seeyon/WEB-INF/classes/com/seeyon/apps/jzMsg/JzMsgPipeline.class" beforeDir="false" afterPath="$PROJECT_DIR$/../苏皖区培训课件/seeyon/WEB-INF/classes/com/seeyon/apps/jzMsg/JzMsgPipeline.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../苏皖区培训课件/src_msg/com/seeyon/apps/jzMsg/JzMsgPipeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/../苏皖区培训课件/src_msg/com/seeyon/apps/jzMsg/JzMsgPipeline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../苏皖区培训课件/src_msg/com/seeyon/apps/jzMsg/res/ReturnRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/../苏皖区培训课件/src_msg/com/seeyon/apps/jzMsg/res/ReturnRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../苏皖区培训课件/苏皖区培训课件.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../苏皖区培训课件/苏皖区培训课件.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../集团人员管理/src/com/seeyon/apps/ext/zMember/controller/zMemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/src/com/seeyon/apps/ext/zMember/controller/zMemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../集团人员管理/src/com/seeyon/apps/ext/zMember/dao/impl/zMemberDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/src/com/seeyon/apps/ext/zMember/dao/impl/zMemberDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../集团人员管理/src/com/seeyon/apps/ext/zMember/dao/zMemberDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/src/com/seeyon/apps/ext/zMember/dao/zMemberDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../集团人员管理/src/com/seeyon/apps/ext/zMember/manager/impl/zMemberManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/src/com/seeyon/apps/ext/zMember/manager/impl/zMemberManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../集团人员管理/src/com/seeyon/apps/ext/zMember/manager/zMemberManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/src/com/seeyon/apps/ext/zMember/manager/zMemberManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../集团人员管理/src/com/seeyon/apps/ext/zMember/util/JDBCUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/src/com/seeyon/apps/ext/zMember/util/JDBCUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/seeyon/WEB-INF/classes/" />
@@ -28,7 +196,53 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2908">
+              <caret line="195" column="17" lean-forward="true" selection-start-line="195" selection-start-column="17" selection-end-line="195" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="329">
+              <caret line="72" column="42" selection-start-line="72" selection-start-column="42" selection-end-line="72" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/util/JDBCUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="24" column="18" lean-forward="true" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-core.jar!/com/seeyon/ctp/util/JDBCAgent.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="63" column="24" lean-forward="true" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -57,6 +271,7 @@
       <find>layTableAllChoose</find>
       <find>formmain_0290</find>
       <find>formson_0291</find>
+      <find>formmain_0148</find>
     </findStrings>
     <replaceStrings>
       <replace>44%</replace>
@@ -75,23 +290,23 @@
         <option value="$PROJECT_DIR$/src/Test.java" />
         <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/manager/JtldEntityManager.java" />
         <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDao.java" />
-        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/util/JDBCUtil.java" />
         <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/manager/JtldEntityManagerImpl.java" />
         <option value="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/hiddenResources/js/hidden.js" />
         <option value="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/html/selectpeople.html" />
         <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java" />
         <option value="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/table.js" />
-        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java" />
         <option value="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/layui-people.js" />
         <option value="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/selectPeople.js" />
+        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/util/JDBCUtil.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="176" />
-    <option name="y" value="77" />
+    <option name="x" value="-15" />
+    <option name="y" value="64" />
     <option name="width" value="1537" />
-    <option name="height" value="961" />
+    <option name="height" value="1005" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -99,7 +314,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -110,6 +324,17 @@
             <path>
               <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
               <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
               <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -131,19 +356,61 @@
               <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="myquery" type="462c0819:PsiDirectoryNode" />
+              <item name="selectPeople" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
               <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
               <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
+              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="selectPeople" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="seeyon-ctp-core.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="seeyon-ctp-core.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="seeyon-ctp-core.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="ctp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="seeyon-ctp-core.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="ctp" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -151,7 +418,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/A8/xkjt_edoc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -301,6 +568,10 @@
       <workItem from="1560150884483" duration="8754000" />
       <workItem from="1560213250551" duration="11664000" />
       <workItem from="1560299836158" duration="3835000" />
+      <workItem from="1560321084526" duration="844000" />
+      <workItem from="1560743519650" duration="609000" />
+      <workItem from="1560753345085" duration="4445000" />
+      <workItem from="1561010386769" duration="1541000" />
     </task>
     <task id="LOCAL-00001" summary="有问题？">
       <created>1558576316059</created>
@@ -596,16 +867,31 @@
       <option name="project" value="LOCAL" />
       <updated>1560304532423</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="修改sql 排序">
+      <created>1560755972516</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1560755972517</updated>
+    </task>
+    <task id="LOCAL-00044" summary="修改sql排序">
+      <created>1560758293975</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1560758293975</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127977000" />
+    <option name="totallyTimeSpent" value="135416000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18798237" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1831219" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -613,6 +899,7 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Image Layers" order="7" />
+      <window_info id="Mybatis Builder" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.22364217" />
@@ -627,9 +914,13 @@
       <window_info anchor="bottom" id="Messages" order="11" weight="0.2800852" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="14" visible="true" weight="0.7390841" />
+      <window_info anchor="bottom" id="Version Control" order="14" weight="0.28418803" />
       <window_info anchor="bottom" id="JRebel Executor" order="15" />
       <window_info anchor="bottom" id="JRebel Console" order="16" sideWeight="0.5005513" side_tool="true" weight="0.1256656" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" order="17" />
+      <window_info anchor="bottom" id="MyBatis Sql Log" order="18" />
+      <window_info anchor="bottom" id="Tail" order="19" />
+      <window_info anchor="bottom" id="File Transfer" order="20" visible="true" weight="0.18343195" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -642,6 +933,7 @@
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="right" id="Bean Validation" order="10" />
       <window_info anchor="right" id="Maven Projects" order="11" />
+      <window_info anchor="right" id="RestServices" order="12" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12899669" />
@@ -707,7 +999,9 @@
     <MESSAGE value="post" />
     <MESSAGE value="过滤有数据的明细行" />
     <MESSAGE value="修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改" />
+    <MESSAGE value="修改sql 排序" />
+    <MESSAGE value="修改sql排序" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改sql排序" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -806,13 +1100,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/util/JDBCUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/hiddenResources/js/hidden.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -841,45 +1128,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/manager/JtldEntityManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/manager/JtldEntityManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="66" column="24" lean-forward="true" selection-start-line="66" selection-start-column="24" selection-end-line="66" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/layui/lay/modules/table.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27">
           <caret line="1" column="2855" selection-start-line="1" selection-start-column="2855" selection-end-line="1" selection-end-column="2855" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="20" column="45" lean-forward="true" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -996,6 +1248,59 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="6" column="56" lean-forward="true" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/manager/JtldEntityManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/manager/JtldEntityManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+          <folding>
+            <element signature="e#841#842#0" expanded="true" />
+            <element signature="e#906#907#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="72" column="42" selection-start-line="72" selection-start-column="42" selection-end-line="72" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-core.jar!/com/seeyon/ctp/util/JDBCAgent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="63" column="24" lean-forward="true" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/util/JDBCUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="24" column="18" lean-forward="true" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2908">
+          <caret line="195" column="17" lean-forward="true" selection-start-line="195" selection-start-column="17" selection-end-line="195" selection-end-column="17" />
         </state>
       </provider>
     </entry>

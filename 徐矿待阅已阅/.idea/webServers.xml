@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="bd43baa7-042e-4314-a1ef-25357c0abd1b" name="localhost" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="F:\test" accessType="MOUNT" />
+      </webServer>
+      <webServer id="18dd65fe-f2b3-44e5-99ed-098e448b8c80" name="徐矿已阅待阅" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="F:\Seeyon\A8\ApacheJetspeed\webapps\seeyon" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
