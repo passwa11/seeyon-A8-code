@@ -17,9 +17,6 @@
 <body>
     <div id='layout' class="comp" comp="type:'layout'">
 
-        <div class="layout_west" id="west" layout="width:0">
-            <div id="deptTree"></div>
-        </div>
         <div class="layout_center over_hidden" layout="border:false" id="center">
             <div id="toolbar"></div>
             <table id="memberTable" class="flexme3" style="display: none"></table>
