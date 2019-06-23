@@ -181,8 +181,10 @@ public class xkEdocController extends BaseController {
             List<Map<String, Object>> bodyList = xkjtSummaryAttManager.queryEdocBody(summaryId);
             // 获取相关的附件列表
             List<Attachment> attachmentVOs = attachmentManager.getByReference(Long.parseLong(summaryId));
-
+            //其他附件
             List<AttachmentEx> list = new ArrayList<>();
+            //主附件
+            List<AttachmentEx> mainList = new ArrayList<>();
             String subject = (edocSummary.getSubject() + ".pdf").replace(" ","");
             for (int i = 0; i < bodyList.size(); i++) {
                 String contentType = (String) bodyList.get(i).get("content_type");
@@ -193,7 +195,7 @@ public class xkEdocController extends BaseController {
                     attachmentEx.setFileUrl(Long.parseLong((String) bodyList.get(i).get("content")));
                     attachmentEx.setFilename(subject);
                     attachmentEx.setSize(0l);
-                    list.add(attachmentEx);
+                    mainList.add(attachmentEx);
                 }
 
             }
@@ -213,6 +215,7 @@ public class xkEdocController extends BaseController {
             map.put("message", "");
             map.put("total", list.size());
             map.put("data", list);
+            map.put("main", mainList);
             JSONObject json = new JSONObject(map);
             render(response, json.toJSONString());
         } catch (Exception e) {
