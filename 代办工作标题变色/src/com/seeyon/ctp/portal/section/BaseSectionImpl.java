@@ -472,7 +472,7 @@ public abstract class BaseSectionImpl implements BaseSection, Comparable<BaseSec
 
             result.put("Name", name);
             //周刘成修改
-            if ("待办工作".equals(name)) {
+            if (name.indexOf("待办")!=-1) {
                 MultiRowVariableColumnColTemplete templete = (MultiRowVariableColumnColTemplete) c;
                 List<MultiRowVariableColumnColTemplete.Row> listRows = templete.getRows();
                 for (int i = 0; i < listRows.size(); i++) {
