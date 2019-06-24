@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ab42415f-98e8-4284-8bbe-416dec826267" name="Default Changelist" comment="" />
+    <list default="true" id="ab42415f-98e8-4284-8bbe-416dec826267" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/controller/ExchangeEdocController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="821" lean-forward="true" selection-start-line="821" selection-end-line="821" />
+            <state relative-caret-position="166">
+              <caret line="823" column="36" selection-start-line="823" selection-start-column="36" selection-end-line="823" selection-end-column="36" />
               <folding>
                 <element signature="e#6645#6646#0" expanded="true" />
                 <element signature="e#6691#6692#0" expanded="true" />
@@ -49,46 +52,6 @@
                 <element signature="e#10339#10340#0" expanded="true" />
                 <element signature="e#11136#11137#0" expanded="true" />
                 <element signature="e#11181#11182#0" expanded="true" />
-                <element signature="e#20864#20893#0" expanded="true" />
-                <element signature="e#22018#22034#0" expanded="true" />
-                <element signature="e#25322#25338#0" expanded="true" />
-                <element signature="e#27774#27783#0" expanded="true" />
-                <element signature="e#28281#28297#0" expanded="true" />
-                <element signature="e#30960#30974#0" expanded="true" />
-                <element signature="e#41793#41809#0" expanded="true" />
-                <element signature="e#42749#42765#0" expanded="true" />
-                <element signature="e#43247#43264#0" expanded="true" />
-                <element signature="e#48877#48893#0" expanded="true" />
-                <element signature="e#49330#49347#0" expanded="true" />
-                <element signature="e#59650#59666#0" expanded="true" />
-                <element signature="e#60055#60072#0" expanded="true" />
-                <element signature="e#67597#67609#0" expanded="true" />
-                <element signature="e#71830#71847#0" expanded="true" />
-                <element signature="e#78315#78323#0" expanded="true" />
-                <element signature="e#84208#84214#0" expanded="true" />
-                <element signature="e#105786#105806#0" expanded="true" />
-                <element signature="e#111925#111941#0" expanded="true" />
-                <element signature="e#111991#112005#0" expanded="true" />
-                <element signature="e#117865#117881#0" expanded="true" />
-                <element signature="e#142378#142384#0" expanded="true" />
-                <element signature="e#148013#148029#0" expanded="true" />
-                <element signature="e#148353#148369#0" expanded="true" />
-                <element signature="e#148714#148731#0" expanded="true" />
-                <element signature="e#154663#154679#0" expanded="true" />
-                <element signature="e#155092#155109#0" expanded="true" />
-                <element signature="e#155533#155549#0" expanded="true" />
-                <element signature="e#158018#158019#0" expanded="true" />
-                <element signature="e#158081#158082#0" expanded="true" />
-                <element signature="e#176278#176279#0" expanded="true" />
-                <element signature="e#176315#176316#0" expanded="true" />
-                <element signature="e#176377#176378#0" expanded="true" />
-                <element signature="e#176426#176427#0" expanded="true" />
-                <element signature="e#176467#176468#0" expanded="true" />
-                <element signature="e#176500#176501#0" expanded="true" />
-                <element signature="e#176556#176557#0" expanded="true" />
-                <element signature="e#176600#176601#0" expanded="true" />
-                <element signature="e#176665#176666#0" expanded="true" />
-                <element signature="e#176715#176716#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,6 +70,9 @@
       <find>newEdocList</find>
     </findStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -119,65 +85,28 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="248" />
     <option name="y" value="47" />
     <option name="width" value="1537" />
     <option name="height" value="950" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="test" type="b2602c69:ProjectViewProjectNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../s/A-8-code/徐矿选择人员CAP4" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -271,17 +200,18 @@
       <workItem from="1560494531741" duration="339000" />
       <workItem from="1560569648531" duration="1433000" />
       <workItem from="1560733880429" duration="10031000" />
+      <workItem from="1561088959197" duration="34000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11803000" />
+    <option name="totallyTimeSpent" value="11837000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="248" y="47" width="1537" height="950" extended-state="0" />
+    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20379147" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16813672" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="JRebel" order="2" side_tool="true" />
       <window_info id="Capture Tool" order="3" />
@@ -402,20 +332,8 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/../Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/spring-webmvc.jar!/org/springframework/web/servlet/mvc/multiaction/MultiActionController.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1209">
-          <caret line="216" column="38" selection-start-line="216" selection-start-column="38" selection-end-line="216" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/v3x/edoc/manager/EdocManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="80" column="16" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/../Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/spring-webmvc.jar!/org/springframework/web/servlet/mvc/multiaction/MultiActionController.class" />
+    <entry file="jar://$PROJECT_DIR$/../Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/v3x/edoc/manager/EdocManager.class" />
     <entry file="file://$PROJECT_DIR$/out/classes/production/test/com/seeyon/v3x/exchange/controller/ExchangeEdocController.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
@@ -426,173 +344,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/../Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/v3x/exchange/manager/EdocExchangeManagerImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="999" column="66" selection-start-line="999" selection-start-column="66" selection-end-line="999" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/v3x/exchange/manager/RecieveEdocManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/v3x/exchange/manager/RecieveEdocManagerImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/v3x/exchange/dao/EdocRecieveRecordDao.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/dao/EdocSendRecordDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="22" column="61" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="61" />
-          <folding>
-            <element signature="e#1033#1049#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/manager/SendEdocManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="61" column="60" lean-forward="true" selection-start-line="61" selection-start-column="60" selection-end-line="61" selection-end-column="60" />
-          <folding>
-            <element signature="e#2800#2801#0" expanded="true" />
-            <element signature="e#2823#2824#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/v3x/exchange/manager/EdocExchangeManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/manager/EdocExchangeManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/manager/SendEdocManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="14" column="62" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/manager/EdocExchangeManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="91" column="60" selection-start-line="91" selection-start-column="60" selection-end-line="91" selection-end-column="60" />
-          <folding>
-            <element signature="e#4369#4370#0" expanded="true" />
-            <element signature="e#4427#4428#0" expanded="true" />
-            <element signature="e#4501#4502#0" expanded="true" />
-            <element signature="e#4550#4551#0" expanded="true" />
-            <element signature="e#4957#4958#0" expanded="true" />
-            <element signature="e#5004#5005#0" expanded="true" />
-            <element signature="e#5078#5079#0" expanded="true" />
-            <element signature="e#5136#5137#0" expanded="true" />
-            <element signature="e#5207#5208#0" expanded="true" />
-            <element signature="e#5267#5268#0" expanded="true" />
-            <element signature="e#5343#5344#0" expanded="true" />
-            <element signature="e#5401#5402#0" expanded="true" />
-            <element signature="e#5720#5721#0" expanded="true" />
-            <element signature="e#5749#5750#0" expanded="true" />
-            <element signature="e#5817#5818#0" expanded="true" />
-            <element signature="e#5862#5863#0" expanded="true" />
-            <element signature="e#5914#5915#0" expanded="true" />
-            <element signature="e#5945#5946#0" expanded="true" />
-            <element signature="e#6019#6020#0" expanded="true" />
-            <element signature="e#6068#6069#0" expanded="true" />
-            <element signature="e#6122#6123#0" expanded="true" />
-            <element signature="e#6154#6155#0" expanded="true" />
-            <element signature="e#6340#6341#0" expanded="true" />
-            <element signature="e#6374#6375#0" expanded="true" />
-            <element signature="e#6560#6561#0" expanded="true" />
-            <element signature="e#6587#6588#0" expanded="true" />
-            <element signature="e#6649#6650#0" expanded="true" />
-            <element signature="e#6690#6691#0" expanded="true" />
-            <element signature="e#6728#6729#0" expanded="true" />
-            <element signature="e#6752#6753#0" expanded="true" />
-            <element signature="e#6805#6806#0" expanded="true" />
-            <element signature="e#6840#6841#0" expanded="true" />
-            <element signature="e#7055#7056#0" expanded="true" />
-            <element signature="e#7096#7097#0" expanded="true" />
-            <element signature="e#10277#10285#0" expanded="true" />
-            <element signature="e#12675#12683#0" expanded="true" />
-            <element signature="e#15708#15723#0" expanded="true" />
-            <element signature="e#38591#38592#0" expanded="true" />
-            <element signature="e#38642#38643#0" expanded="true" />
-            <element signature="e#39741#39742#0" expanded="true" />
-            <element signature="e#39768#39769#0" expanded="true" />
-            <element signature="e#39830#39831#0" expanded="true" />
-            <element signature="e#39871#39872#0" expanded="true" />
-            <element signature="e#39925#39926#0" expanded="true" />
-            <element signature="e#39957#39958#0" expanded="true" />
-            <element signature="e#40139#40140#0" expanded="true" />
-            <element signature="e#40171#40172#0" expanded="true" />
-            <element signature="e#40690#40715#0" expanded="true" />
-            <element signature="e#40764#40775#0" expanded="true" />
-            <element signature="e#41222#41223#0" expanded="true" />
-            <element signature="e#41255#41256#0" expanded="true" />
-            <element signature="e#41442#41443#0" expanded="true" />
-            <element signature="e#41474#41475#0" expanded="true" />
-            <element signature="e#42227#42243#0" expanded="true" />
-            <element signature="e#42767#42784#0" expanded="true" />
-            <element signature="e#47413#47429#0" expanded="true" />
-            <element signature="e#47932#47949#0" expanded="true" />
-            <element signature="e#50708#50716#0" expanded="true" />
-            <element signature="e#55384#55401#0" expanded="true" />
-            <element signature="e#55459#55476#0" expanded="true" />
-            <element signature="e#57567#57583#0" expanded="true" />
-            <element signature="e#59235#59251#0" expanded="true" />
-            <element signature="e#59765#59779#0" expanded="true" />
-            <element signature="e#60360#60371#0" expanded="true" />
-            <element signature="e#61502#61518#0" expanded="true" />
-            <element signature="e#64020#64036#0" expanded="true" />
-            <element signature="e#65975#65991#0" expanded="true" />
-            <element signature="e#68738#68754#0" expanded="true" />
-            <element signature="e#72647#72667#0" expanded="true" />
-            <element signature="e#72743#72749#0" expanded="true" />
-            <element signature="e#78684#78713#0" expanded="true" />
-            <element signature="e#79202#79211#0" expanded="true" />
-            <element signature="e#85314#85330#0" expanded="true" />
-            <element signature="e#85881#85895#0" expanded="true" />
-            <element signature="e#86642#86659#0" expanded="true" />
-            <element signature="e#86707#86713#0" expanded="true" />
-            <element signature="e#91114#91131#0" expanded="true" />
-            <element signature="e#91181#91197#0" expanded="true" />
-            <element signature="e#91796#91812#0" expanded="true" />
-            <element signature="e#93645#93661#0" expanded="true" />
-            <element signature="e#93981#93998#0" expanded="true" />
-            <element signature="e#102073#102102#0" expanded="true" />
-            <element signature="e#107650#107667#0" expanded="true" />
-            <element signature="e#109310#109319#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/../Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/v3x/exchange/manager/EdocExchangeManagerImpl.class" />
+    <entry file="jar://$PROJECT_DIR$/../Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/v3x/exchange/manager/RecieveEdocManager.class" />
+    <entry file="jar://$PROJECT_DIR$/../Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/v3x/exchange/manager/RecieveEdocManagerImpl.class" />
+    <entry file="jar://$PROJECT_DIR$/../Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/v3x/exchange/dao/EdocRecieveRecordDao.class" />
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/dao/EdocSendRecordDao.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/manager/SendEdocManagerImpl.java" />
+    <entry file="jar://$PROJECT_DIR$/../Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/v3x/exchange/manager/EdocExchangeManager.class" />
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/manager/EdocExchangeManager.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/manager/SendEdocManager.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/manager/EdocExchangeManagerImpl.java" />
     <entry file="file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/controller/ExchangeEdocController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="821" lean-forward="true" selection-start-line="821" selection-end-line="821" />
+        <state relative-caret-position="166">
+          <caret line="823" column="36" selection-start-line="823" selection-start-column="36" selection-end-line="823" selection-end-column="36" />
           <folding>
             <element signature="e#6645#6646#0" expanded="true" />
             <element signature="e#6691#6692#0" expanded="true" />
@@ -624,46 +389,6 @@
             <element signature="e#10339#10340#0" expanded="true" />
             <element signature="e#11136#11137#0" expanded="true" />
             <element signature="e#11181#11182#0" expanded="true" />
-            <element signature="e#20864#20893#0" expanded="true" />
-            <element signature="e#22018#22034#0" expanded="true" />
-            <element signature="e#25322#25338#0" expanded="true" />
-            <element signature="e#27774#27783#0" expanded="true" />
-            <element signature="e#28281#28297#0" expanded="true" />
-            <element signature="e#30960#30974#0" expanded="true" />
-            <element signature="e#41793#41809#0" expanded="true" />
-            <element signature="e#42749#42765#0" expanded="true" />
-            <element signature="e#43247#43264#0" expanded="true" />
-            <element signature="e#48877#48893#0" expanded="true" />
-            <element signature="e#49330#49347#0" expanded="true" />
-            <element signature="e#59650#59666#0" expanded="true" />
-            <element signature="e#60055#60072#0" expanded="true" />
-            <element signature="e#67597#67609#0" expanded="true" />
-            <element signature="e#71830#71847#0" expanded="true" />
-            <element signature="e#78315#78323#0" expanded="true" />
-            <element signature="e#84208#84214#0" expanded="true" />
-            <element signature="e#105786#105806#0" expanded="true" />
-            <element signature="e#111925#111941#0" expanded="true" />
-            <element signature="e#111991#112005#0" expanded="true" />
-            <element signature="e#117865#117881#0" expanded="true" />
-            <element signature="e#142378#142384#0" expanded="true" />
-            <element signature="e#148013#148029#0" expanded="true" />
-            <element signature="e#148353#148369#0" expanded="true" />
-            <element signature="e#148714#148731#0" expanded="true" />
-            <element signature="e#154663#154679#0" expanded="true" />
-            <element signature="e#155092#155109#0" expanded="true" />
-            <element signature="e#155533#155549#0" expanded="true" />
-            <element signature="e#158018#158019#0" expanded="true" />
-            <element signature="e#158081#158082#0" expanded="true" />
-            <element signature="e#176278#176279#0" expanded="true" />
-            <element signature="e#176315#176316#0" expanded="true" />
-            <element signature="e#176377#176378#0" expanded="true" />
-            <element signature="e#176426#176427#0" expanded="true" />
-            <element signature="e#176467#176468#0" expanded="true" />
-            <element signature="e#176500#176501#0" expanded="true" />
-            <element signature="e#176556#176557#0" expanded="true" />
-            <element signature="e#176600#176601#0" expanded="true" />
-            <element signature="e#176665#176666#0" expanded="true" />
-            <element signature="e#176715#176716#0" expanded="true" />
           </folding>
         </state>
       </provider>

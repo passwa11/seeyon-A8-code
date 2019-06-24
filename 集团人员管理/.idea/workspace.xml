@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d13ab38-2602-4c38-a3b6-b5e19b1f64a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/organization/account/account.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/organization/account/account_js.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../修改送文单单位名称/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../修改送文单单位名称/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../修改送文单单位名称/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -17,39 +17,7 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/organization/member/allMember.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
-              <folding>
-                <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/organization/account/account.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="146" column="31" selection-start-line="146" selection-start-column="31" selection-end-line="146" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/organization/account/account_js.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="1544" column="22" selection-start-line="1544" selection-start-column="22" selection-end-line="1544" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -67,6 +35,7 @@
       <find>sssssssss</find>
       <find>console</find>
       <find>集团</find>
+      <find>z7</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -98,11 +67,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="305" />
-    <option name="y" value="11" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="204" />
+    <option name="y" value="50" />
     <option name="width" value="1537" />
-    <option name="height" value="969" />
+    <option name="height" value="889" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -175,16 +144,6 @@
               <item name="apps" type="462c0819:PsiDirectoryNode" />
               <item name="organization" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="集团人员管理" type="b2602c69:ProjectViewProjectNode" />
-              <item name="集团人员管理" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="organization" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -196,7 +155,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/organization/account" />
+    <property name="last_opened_file_path" value="F:/A8/V7.0SP2/V7.0SP2" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -293,7 +252,7 @@
       <updated>1560995593864</updated>
       <workItem from="1560995596645" duration="633000" />
       <workItem from="1560996289775" duration="20938000" />
-      <workItem from="1561077069520" duration="7185000" />
+      <workItem from="1561077069520" duration="8551000" />
     </task>
     <task id="LOCAL-00001" summary="新建">
       <created>1560996416866</created>
@@ -484,15 +443,21 @@
       <option name="project" value="LOCAL" />
       <updated>1561087084499</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="修改获取数据的方法">
+      <created>1561087336677</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1561087336677</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28756000" />
+    <option name="totallyTimeSpent" value="30122000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24476296" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -743,8 +708,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/organization/account/account_js.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="1544" column="22" selection-start-line="1544" selection-start-column="22" selection-end-line="1544" selection-end-column="22" />
+        <state relative-caret-position="216">
+          <caret line="1542" column="77" lean-forward="true" selection-start-line="1542" selection-start-column="77" selection-end-line="1542" selection-end-column="77" />
+          <folding>
+            <element signature="n#style#0;n#label#0;n#th#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#th#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#th#0;n#tr#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#th#0;n#tr#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
