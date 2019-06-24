@@ -110,7 +110,7 @@ public class xkEdocController extends BaseController {
             summaryId = Long.parseLong(s_summaryId);
         }
         EdocSummary summary = edocManager.getEdocSummaryById(summaryId, true);
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String createTime = simpleDateFormat.format(summary.getCreateTime());
         mav.addObject("summary", summary);
         mav.addObject("createTime", createTime);
@@ -185,29 +185,43 @@ public class xkEdocController extends BaseController {
             List<AttachmentEx> list = new ArrayList<>();
             //主附件
             List<AttachmentEx> mainList = new ArrayList<>();
-            String subject = (edocSummary.getSubject() + ".pdf").replace(" ","");
-            for (int i = 0; i < bodyList.size(); i++) {
-                String contentType = (String) bodyList.get(i).get("content_type");
-                if (contentType.equals("Pdf")) {
-                    AttachmentEx attachmentEx = new AttachmentEx();
-                    attachmentEx.setFilepath(((String) bodyList.get(i).get("content")));
-                    attachmentEx.setCreatedate((Date) bodyList.get(i).get("create_time"));
-                    attachmentEx.setFileUrl(Long.parseLong((String) bodyList.get(i).get("content")));
-                    attachmentEx.setFilename(subject);
-                    attachmentEx.setSize(0l);
-                    mainList.add(attachmentEx);
+            String subject = (edocSummary.getSubject() + ".pdf").replace(" ", "");
+//            for (int i = 0; i < bodyList.size(); i++) {
+//                String contentType = (String) bodyList.get(i).get("content_type");
+//                if (contentType.equals("Pdf")) {
+//                    AttachmentEx attachmentEx = new AttachmentEx();
+//                    attachmentEx.setFilepath(((String) bodyList.get(i).get("content")));
+//                    attachmentEx.setCreatedate((Date) bodyList.get(i).get("create_time"));
+//                    attachmentEx.setFileUrl(Long.parseLong((String) bodyList.get(i).get("content")));
+//                    attachmentEx.setFilename(subject);
+//                    attachmentEx.setSize(0l);
+//                    mainList.add(attachmentEx);
+//                }
+//
+//            }
+            String hostFileUrl = "";
+            List<Map> listMap = xkjtSummaryAttManager.queryHostFile(summaryId);
+            if (null != listMap && listMap.size() > 0) {
+                for (Map map : listMap) {
+                    BigDecimal bigDecimal = (BigDecimal) map.get("attachment_id");
+                    hostFileUrl = bigDecimal.toString();
                 }
-
             }
 
             for (Attachment attachment : attachmentVOs) {
+                String fileUrl = Long.toString(attachment.getFileUrl());
                 AttachmentEx attachmentEx = new AttachmentEx();
                 attachmentEx.setFilepath(Long.toString(attachment.getFileUrl()));
                 attachmentEx.setCreatedate(attachment.getCreatedate());
                 attachmentEx.setFileUrl(attachment.getFileUrl());
                 attachmentEx.setFilename(attachment.getFilename());
                 attachmentEx.setSize(attachment.getSize());
-                list.add(attachmentEx);
+                if (!hostFileUrl.equals(fileUrl)) {
+                    list.add(attachmentEx);
+                } else {
+                    mainList.add(attachmentEx);
+                }
+
             }
             System.out.println(attachmentVOs.size());
             Map<String, Object> map = new HashMap<>();
