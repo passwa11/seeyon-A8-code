@@ -19,13 +19,16 @@ $(function () {
         $.ajax({
             type: 'post',
             async: true,
-            url: '/seeyon/ext/xkEdoc.do?method=sendFileList&summaryId=${summary.id}',
+            url: '/seeyon/ext/xkEdoc.do?method=sendFileList&summaryId=${summary.id}&isQuickSend=${summary.isQuickSend}',
             dataType: 'json',
             success: function (res) {
                 console.log(res);
                 var list = res.data;
+                console.log(list,"list");
                 var mainlist= res.main;
-                var tmp = '';
+				console.log(mainlist,"mainlist");
+
+				var tmp = '';
                 var maintmp='';
                 for (var i = 0; i < list.length; i++) {
                     tmp += '<tr style="height: 35px;border-top: 1px solid red">';
@@ -38,7 +41,7 @@ $(function () {
 				for (var j = 0; j < mainlist.length; j++) {
 					maintmp += '<tr style="height: 35px;border-top: 1px solid red">';
 					maintmp += '<td width="80%" style="border-top:  #ff0000 1pt solid;">' +
-							'<a href="javascript:void(0);" onclick="downloadfilez(\''+list[j].filepath+'\',\''+list[j].createdate+'\',\''+list[j].filename+'\',\'${summary.isQuickSend}\',\'${summary.id}\')">' + list[j].filename + '</a></td>';
+							'<a href="javascript:void(0);" onclick="downloadfilez(\''+mainlist[j].filepath+'\',\''+mainlist[j].createdate+'\',\''+mainlist[j].filename+'\',\'${summary.isQuickSend}\',\'${summary.id}\')">' + mainlist[j].filename + '</a></td>';
 					maintmp += '</tr>';
 				}
                 $("#fileTable").html(tmp);
@@ -803,7 +806,7 @@ function sendPrint1(){
 				</tbody>
 			</table>
 		</div>
-		<fieldset width="60%" style="border: 0px">
+		<fieldset width="60%" style="border: 0px;margin-top: 30px;">
 			<legend style="color: red;font-size: 20px;" >主文件</legend>
 		</fieldset>
 		<table  style="border-color: red;border-top: #ff0000 1pt solid;border-bottom:  #ff0000 1pt solid;" cellspacing="0"  width="60%" align="center">
