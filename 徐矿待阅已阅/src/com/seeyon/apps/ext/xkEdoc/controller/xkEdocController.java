@@ -175,6 +175,7 @@ public class xkEdocController extends BaseController {
      */
     public ModelAndView sendFileList(HttpServletRequest request, HttpServletResponse response) {
         String summaryId = request.getParameter("summaryId");
+        String isQuickSend = request.getParameter("isQuickSend");
 
         try {
             EdocSummary edocSummary = edocManager.getEdocSummaryById(Long.parseLong(summaryId), true);
@@ -185,44 +186,44 @@ public class xkEdocController extends BaseController {
             List<AttachmentEx> list = new ArrayList<>();
             //主附件
             List<AttachmentEx> mainList = new ArrayList<>();
-            String subject = (edocSummary.getSubject() + ".pdf").replace(" ", "");
-//            for (int i = 0; i < bodyList.size(); i++) {
-//                String contentType = (String) bodyList.get(i).get("content_type");
-//                if (contentType.equals("Pdf")) {
-//                    AttachmentEx attachmentEx = new AttachmentEx();
-//                    attachmentEx.setFilepath(((String) bodyList.get(i).get("content")));
-//                    attachmentEx.setCreatedate((Date) bodyList.get(i).get("create_time"));
-//                    attachmentEx.setFileUrl(Long.parseLong((String) bodyList.get(i).get("content")));
-//                    attachmentEx.setFilename(subject);
-//                    attachmentEx.setSize(0l);
-//                    mainList.add(attachmentEx);
-//                }
-//
-//            }
+//            String subject = (edocSummary.getSubject() + ".pdf").replace(" ", "");
+
             String hostFileUrl = "";
-            List<Map> listMap = xkjtSummaryAttManager.queryHostFile(summaryId);
-            if (null != listMap && listMap.size() > 0) {
-                for (Map map : listMap) {
-                    BigDecimal bigDecimal = (BigDecimal) map.get("attachment_id");
-                    hostFileUrl = bigDecimal.toString();
-                }
-            }
-
-            for (Attachment attachment : attachmentVOs) {
-                String fileUrl = Long.toString(attachment.getFileUrl());
-                AttachmentEx attachmentEx = new AttachmentEx();
-                attachmentEx.setFilepath(Long.toString(attachment.getFileUrl()));
-                attachmentEx.setCreatedate(attachment.getCreatedate());
-                attachmentEx.setFileUrl(attachment.getFileUrl());
-                attachmentEx.setFilename(attachment.getFilename());
-                attachmentEx.setSize(attachment.getSize());
-                if (!hostFileUrl.equals(fileUrl)) {
-                    list.add(attachmentEx);
+            if (null != isQuickSend && !"".equals(isQuickSend)) {
+                if (("true").equals(isQuickSend)) {
+                    List<Map> listMap = xkjtSummaryAttManager.queryHostFile(summaryId);
+                    if (listMap.size() > 0) {
+                        for (Map map : listMap) {
+                            BigDecimal bigDecimal = (BigDecimal) map.get("attachment_id");
+                            hostFileUrl = bigDecimal.toString();
+                        }
+                    }
+                    for (Attachment attachment : attachmentVOs) {
+                        String fileUrl = Long.toString(attachment.getFileUrl());
+                        AttachmentEx attachmentEx = new AttachmentEx();
+                        attachmentEx.setFilepath(Long.toString(attachment.getFileUrl()));
+                        attachmentEx.setCreatedate(attachment.getCreatedate());
+                        attachmentEx.setFileUrl(attachment.getFileUrl());
+                        attachmentEx.setFilename(attachment.getFilename());
+                        attachmentEx.setSize(attachment.getSize());
+                        if (!hostFileUrl.equals(fileUrl)) {
+                            list.add(attachmentEx);
+                        } else {
+                            mainList.add(attachmentEx);
+                        }
+                    }
                 } else {
-                    mainList.add(attachmentEx);
+                    Set<EdocBody> edocBodies = edocSummary.getEdocBodies();
+                    Iterator<EdocBody> it = edocBodies.iterator();
+                    EdocBody edocBody = null;
+                    while (it.hasNext()) {
+                        edocBody = it.next();
+                        if (edocBody.getContentType().equals("Pdf")) {
+                        }
+                    }
                 }
-
             }
+
             System.out.println(attachmentVOs.size());
             Map<String, Object> map = new HashMap<>();
             map.put("code", 0);
@@ -237,6 +238,12 @@ public class xkEdocController extends BaseController {
             System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    public List<AttachmentEx> handlingList(List<Attachment> attachments) {
+
+        return null;
+
     }
 
 
