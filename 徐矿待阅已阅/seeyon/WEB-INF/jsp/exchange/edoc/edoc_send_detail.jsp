@@ -27,13 +27,18 @@ $(function () {
                 var mainlist= res.main;
                 var tmp = '';
                 var maintmp='';
-                for (var i = 0; i < list.length; i++) {
-                    tmp += '<tr style="height: 35px;border-top: 1px solid red">';
-                    tmp += '<td width="80%" style="border-top:  #ff0000 1pt solid;">' +
-                        '<a href="javascript:void(0);" onclick="downloadfilez(\''+list[i].filepath+'\',\''+list[i].createdate+'\',\''+list[i].filename+'\',\'${summary.isQuickSend}\',\'${summary.id}\')">' + list[i].filename + '</a></td>';
-                    // tmp += '<td width="auto" style="border-top:  #ff0000 1pt solid;">' + list[i].createdate + '</td>';
-                    tmp += '</tr>';
-                }
+                if(list.length>0){
+					for (var i = 0; i < list.length; i++) {
+						tmp += '<tr style="height: 35px;border-top: 1px solid red">';
+						tmp += '<td width="80%" style="border-top:  #ff0000 1pt solid;">' +
+								'<a href="javascript:void(0);" onclick="downloadfilez(\''+list[i].filepath+'\',\''+list[i].createdate+'\',\''+list[i].filename+'\',\'${summary.isQuickSend}\',\'${summary.id}\')">' + list[i].filename + '</a></td>';
+						// tmp += '<td width="auto" style="border-top:  #ff0000 1pt solid;">' + list[i].createdate + '</td>';
+						tmp += '</tr>';
+					}
+				}else {
+					tmp += '<tr><td width="80%" style="border-top:  #ff0000 1pt solid;">无数据！</td></tr>';
+				}
+
 
 				if(mainlist.length>0){
 					for (var j = 0; j < mainlist.length; j++) {
