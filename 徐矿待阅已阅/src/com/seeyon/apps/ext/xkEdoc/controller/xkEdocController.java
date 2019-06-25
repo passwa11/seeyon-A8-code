@@ -155,7 +155,6 @@ public class xkEdocController extends BaseController {
                     list.add(attachmentEx);
                 }
             }
-            System.out.println(attachmentVOs.size());
             Map<String, Object> map = new HashMap<>();
             map.put("code", 0);
             map.put("message", "");
@@ -190,41 +189,46 @@ public class xkEdocController extends BaseController {
 
             String hostFileUrl = "";
             if (null != isQuickSend && !"".equals(isQuickSend)) {
-                if (("true").equals(isQuickSend)) {
-                    List<Map> listMap = xkjtSummaryAttManager.queryHostFile(summaryId);
-                    if (listMap.size() > 0) {
-                        for (Map map : listMap) {
-                            BigDecimal bigDecimal = (BigDecimal) map.get("attachment_id");
-                            hostFileUrl = bigDecimal.toString();
-                        }
-                    }
-                    for (Attachment attachment : attachmentVOs) {
-                        String fileUrl = Long.toString(attachment.getFileUrl());
-                        AttachmentEx attachmentEx = new AttachmentEx();
-                        attachmentEx.setFilepath(Long.toString(attachment.getFileUrl()));
-                        attachmentEx.setCreatedate(attachment.getCreatedate());
-                        attachmentEx.setFileUrl(attachment.getFileUrl());
-                        attachmentEx.setFilename(attachment.getFilename());
-                        attachmentEx.setSize(attachment.getSize());
-                        if (!hostFileUrl.equals(fileUrl)) {
-                            list.add(attachmentEx);
-                        } else {
-                            mainList.add(attachmentEx);
-                        }
-                    }
-                } else {
-                    Set<EdocBody> edocBodies = edocSummary.getEdocBodies();
-                    Iterator<EdocBody> it = edocBodies.iterator();
-                    EdocBody edocBody = null;
-                    while (it.hasNext()) {
-                        edocBody = it.next();
-                        if (edocBody.getContentType().equals("Pdf")) {
-                        }
+                List<Map> listMap = xkjtSummaryAttManager.queryHostFile(summaryId);
+                if (listMap.size() > 0) {
+                    for (Map map : listMap) {
+                        BigDecimal bigDecimal = (BigDecimal) map.get("attachment_id");
+                        hostFileUrl = bigDecimal.toString();
                     }
                 }
+
+                for (Attachment attachment : attachmentVOs) {
+                    String fileUrl = Long.toString(attachment.getFileUrl());
+                    AttachmentEx attachmentEx = new AttachmentEx();
+                    attachmentEx.setFilepath(Long.toString(attachment.getFileUrl()));
+                    attachmentEx.setCreatedate(attachment.getCreatedate());
+                    attachmentEx.setFileUrl(attachment.getFileUrl());
+                    attachmentEx.setFilename(attachment.getFilename());
+                    attachmentEx.setSize(attachment.getSize());
+                    if (!hostFileUrl.equals(fileUrl)) {
+                        list.add(attachmentEx);
+                    } else {
+                        mainList.add(attachmentEx);
+                    }
+                }
+//                } else {
+//                    for (Attachment attachment : attachmentVOs) {
+//                        String fileUrl = Long.toString(attachment.getFileUrl());
+//                        AttachmentEx attachmentEx = new AttachmentEx();
+//                        attachmentEx.setFilepath(Long.toString(attachment.getFileUrl()));
+//                        attachmentEx.setCreatedate(attachment.getCreatedate());
+//                        attachmentEx.setFileUrl(attachment.getFileUrl());
+//                        attachmentEx.setFilename(attachment.getFilename());
+//                        attachmentEx.setSize(attachment.getSize());
+//                        if (!hostFileUrl.equals(fileUrl)) {
+//                            list.add(attachmentEx);
+//                        } else {
+//                            mainList.add(attachmentEx);
+//                        }
+//                    }
+//                }
             }
 
-            System.out.println(attachmentVOs.size());
             Map<String, Object> map = new HashMap<>();
             map.put("code", 0);
             map.put("message", "");
@@ -310,7 +314,6 @@ public class xkEdocController extends BaseController {
                 bos.write(buffer, 0, len);
             }
             bos.flush();
-            System.out.println(spath);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
