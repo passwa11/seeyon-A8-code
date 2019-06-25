@@ -24,11 +24,8 @@ $(function () {
             success: function (res) {
                 console.log(res);
                 var list = res.data;
-                console.log(list,"list");
                 var mainlist= res.main;
-				console.log(mainlist,"mainlist");
-
-				var tmp = '';
+                var tmp = '';
                 var maintmp='';
                 for (var i = 0; i < list.length; i++) {
                     tmp += '<tr style="height: 35px;border-top: 1px solid red">';
@@ -38,11 +35,15 @@ $(function () {
                     tmp += '</tr>';
                 }
 
-				for (var j = 0; j < mainlist.length; j++) {
-					maintmp += '<tr style="height: 35px;border-top: 1px solid red">';
-					maintmp += '<td width="80%" style="border-top:  #ff0000 1pt solid;">' +
-							'<a href="javascript:void(0);" onclick="downloadfilez(\''+mainlist[j].filepath+'\',\''+mainlist[j].createdate+'\',\''+mainlist[j].filename+'\',\'${summary.isQuickSend}\',\'${summary.id}\')">' + mainlist[j].filename + '</a></td>';
-					maintmp += '</tr>';
+				if(mainlist.length>0){
+					for (var j = 0; j < mainlist.length; j++) {
+						maintmp += '<tr style="height: 35px;border-top: 1px solid red">';
+						maintmp += '<td width="80%" style="border-top:  #ff0000 1pt solid;">' +
+								'<a href="javascript:void(0);" onclick="downloadfilez(\''+mainlist[j].filepath+'\',\''+mainlist[j].createdate+'\',\''+mainlist[j].filename+'\',\'${summary.isQuickSend}\',\'${summary.id}\')">' + mainlist[j].filename + '</a></td>';
+						maintmp += '</tr>';
+					}
+				}else {
+					maintmp += '<tr><td width="80%" style="border-top:  #ff0000 1pt solid;">无数据！</td></tr>';
 				}
                 $("#fileTable").html(tmp);
 
