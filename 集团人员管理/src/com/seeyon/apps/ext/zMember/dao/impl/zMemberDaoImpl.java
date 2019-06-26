@@ -7,6 +7,7 @@ import com.seeyon.ctp.util.DBAgent;
 import com.seeyon.ctp.util.FlipInfo;
 import com.seeyon.ctp.util.SQLWildcardUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.hibernate.SessionFactory;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +18,12 @@ import java.util.Set;
  * 周刘成   2019/6/20
  */
 public class zMemberDaoImpl implements zMemberDao {
+
+    @Override
+    public List<OrgMember> getAllMemberPO_New(Map<String, Object> param, Boolean p1, Boolean p2, FlipInfo flipInfo) {
+        return null;
+    }
+
     @Override
     public List<OrgMember> getAllMemberPO(Map<String, Object> param, Boolean isInternal, Boolean enable, FlipInfo flipInfo) {
         StringBuilder hql = new StringBuilder();

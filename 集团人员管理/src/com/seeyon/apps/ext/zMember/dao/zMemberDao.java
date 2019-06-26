@@ -22,6 +22,8 @@ public interface zMemberDao {
      */
     List<OrgMember> getAllMemberPO( Map<String, Object> param,Boolean p1,Boolean p2, FlipInfo flipInfo);
 
+    List<OrgMember> getAllMemberPO_New( Map<String, Object> param,Boolean p1,Boolean p2, FlipInfo flipInfo);
+
 
     int selectUnitPeopleCount();
 }
