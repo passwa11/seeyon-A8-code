@@ -82,7 +82,7 @@ public class zMemberDaoImpl implements zMemberDao {
 
     @Override
     public int selectUnitPeopleCount() {
-        String sql = "select m.name from org_member m where 1=1  AND m.IS_DELETED=0 AND m.IS_ADMIN=0 AND m.IS_VIRTUAL=0 AND m.IS_ASSIGNED=1";
+        String sql = "select m.name from org_member m where 1=1  AND m.IS_DELETED=0 AND m.IS_ADMIN=0 AND m.IS_VIRTUAL=0 AND m.IS_ASSIGNED=1 and IS_ENABLE=1";
         List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
         int count = 0;
         if (list != null) {
