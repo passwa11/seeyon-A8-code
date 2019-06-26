@@ -7,11 +7,9 @@ import com.seeyon.ctp.util.DBAgent;
 import com.seeyon.ctp.util.FlipInfo;
 import com.seeyon.ctp.util.SQLWildcardUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.xpath.operations.Bool;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 周刘成   2019/6/20
@@ -77,7 +75,47 @@ public class zMemberDaoImpl implements zMemberDao {
         sql.append(" ORDER BY m.SORT_ID ASC ) tw where rownum<=" + pages + " ) thr where thr.rowno > " + page + " ");
 
         List<Map<String, Object>> result = JDBCUtil.executeUpdate4Oracle04(sql.toString());
-        return null;
+        List<OrgMember> rows = new ArrayList<>();
+        if (null != result && result.size() > 0) {
+            for (int i = 0; i < result.size(); i++) {
+                OrgMember orgMember = new OrgMember();
+                orgMember.setName((String) result.get(i).get("NAME"));
+                orgMember.setCode((String) result.get(i).get("CODE"));
+                int Internal = Integer.parseInt((String) result.get(i).get("IS_INTERNAL"));
+                orgMember.setInternal(getBoolean(Internal));
+                orgMember.setLoginable(getBoolean(Integer.parseInt((String) result.get(i).get("IS_LOGINABLE"))));
+                orgMember.setVirtual(getBoolean(Integer.parseInt((String) result.get(i).get("IS_VIRTUAL"))));
+                orgMember.setAdmin(getBoolean(Integer.parseInt((String) result.get(i).get("IS_ADMIN"))));
+                orgMember.setAssigned(getBoolean(Integer.parseInt((String) result.get(i).get("IS_ASSIGNED"))));
+                orgMember.setType(Integer.parseInt((String) result.get(i).get("TYPE")));
+                orgMember.setState(Integer.parseInt((String) result.get(i).get("STATE")));
+                orgMember.setEnable(getBoolean(Integer.parseInt((String) result.get(i).get("IS_ENABLE"))));
+                orgMember.setDeleted(getBoolean(Integer.parseInt((String) result.get(i).get("IS_DELETED"))));
+                orgMember.setStatus(Integer.parseInt((String) result.get(i).get("STATUS")));
+                orgMember.setSortId((Long) result.get(i).get("SORT_ID"));
+                orgMember.setOrgDepartmentId((Long) result.get(i).get("ORG_DEPARTMENT_ID"));
+                orgMember.setOrgPostId((Long) result.get(i).get("ORG_POST_ID"));
+                orgMember.setOrgLevelId((Long) result.get(i).get("ORG_LEVEL_ID"));
+                orgMember.setOrgAccountId((Long) result.get(i).get("ORG_ACCOUNT_ID"));
+                orgMember.setDescription((String) result.get(i).get("DESCRIPTION"));
+                orgMember.setCreateTime((Date) result.get(i).get("CREATE_TIME"));
+                orgMember.setUpdateTime((Date) result.get(i).get("UPDATE_TIME"));
+                orgMember.setExternalType((Integer) result.get(i).get("EXTERNAL_TYPE"));
+                orgMember.setId((Long) result.get(i).get("ID"));
+                rows.add(orgMember);
+            }
+        }
+        return rows;
+    }
+
+    public boolean getBoolean(int i) {
+        Boolean flag = null;
+        if (i == 0) {
+            flag = false;
+        } else if (i == 1) {
+            flag = true;
+        }
+        return flag;
     }
 
     @Override

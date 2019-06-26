@@ -96,7 +96,11 @@ public class zMemberManagerImpl implements zMemberManager {
         }
         /********************/
 
-        zMemberDao.getAllMemberPO(queryParams,true,enabled, fi);
+//        zMemberDao.getAllMemberPO(queryParams,true,enabled, fi);
+        List<OrgMember> list = zMemberDao.getAllMemberPO_New(queryParams, true, enabled, fi);
+        fi.setData(list);
+        int count = zMemberDao.selectUnitPeopleCount();
+        fi.setTotal(count);
         return this.dealResult(fi);
     }
 
