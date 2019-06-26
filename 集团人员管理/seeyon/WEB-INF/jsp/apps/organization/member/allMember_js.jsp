@@ -271,101 +271,101 @@
                     className: "ico16 delete del_16",
                     click: delMembers
                 },
-                {
-                    id: "import_export",
-                    name: "${ctp:i18n('export.or.import')}",
-                    className: "ico16 import_16",
-                    subMenu: [{
-                        name: "${ctp:i18n('import.excel')}",
-                        click: function () {
-                            dialog = $.dialog({
-                                width: 600,
-                                height: 400,
-                                isDrag: false,
-                                //targetWindow:window.parent,
-                                //BUG请不要打开这个属性，否则弹出窗口取得对象无法关闭这个框
-                                id: 'importdialog',
-                                url: '${path}/organization/organizationControll.do?method=importExcel&importType=member&accountId=' + loginAccountId + "${ctp:csrfSuffix()}",
-                                title: "${ctp:i18n('import.excel')}",
-                                closeParam: {
-                                    'show': true,
-                                    handler: function () {
-                                        filter = new Object();
-                                        filter.enabled = true;
-                                        filter.accountId = loginAccountId;
-                                        isSearch = false;
-                                        $("#memberTable").ajaxgridLoad(filter);
-                                    }
-                                }
-                            });
-                        }
-                    },
-                        {
-                            name: "${ctp:i18n('org.template.excel.download')}",
-                            click: function () {
-                                var downloadUrl = "${path}/organization/organizationControll.do?method=downloadTemplate&type=Member&accountId=" + loginAccountId + "${ctp:csrfSuffix()}";
-                                var eurl = "<c:url value='" + downloadUrl + "' />";
-                                exportIFrame.location.href = eurl;
-                            }
-                        },
-                        {
-                            name: "${ctp:i18n('org.post_form.export.exel')}",
-                            click: function () {
-                                var exportFlag = oManager.getOrgExportFlag();
-                                if (exportFlag || exportFlag == 'true') {
-                                    $.alert("${ctp:i18n('org.alert.info')}");
-                                    return;
-                                } else {
-                                    $.alert({
-                                        'title': "${ctp:i18n('common.prompt')}",
-                                        'msg': "${ctp:i18n('member.export.prompt.wait')}",
-                                        ok_fn: function () {
-                                            imanager.canIO({
-                                                success: function (rel) {
-                                                    if ('ok' == rel) {
-                                                        var downloadUrl_e = "${path}/organization/member.do?method=exportMembers&orgDepartmentId=" + preDeptId + "&accountId=" + loginAccountId + "${ctp:csrfSuffix()}";
-                                                        if (s != undefined && s != null) {
-                                                            var s_condition = s.condition;
-                                                            var s_value = encodeURIComponent(s.value);
-                                                            var s_enable = s.enable;
-                                                            var s_accountId = s.accountId;
-                                                            var s_state = s.state;
-                                                            var s_type = s.type;
-                                                            var url_s = "s_type:" + s_type + ";s_condition:" + s_condition + ";s_value:" + s_value + ";s_enable:" + s_enable + ";s_accountId:" + s_accountId + ";s_state:" + s_state;
-                                                            downloadUrl_e = downloadUrl_e + "&s=" + url_s;
-                                                        }
+                <%--{--%>
+                <%--    id: "import_export",--%>
+                <%--    name: "${ctp:i18n('export.or.import')}",--%>
+                <%--    className: "ico16 import_16",--%>
+                <%--    subMenu: [{--%>
+                <%--        name: "${ctp:i18n('import.excel')}",--%>
+                <%--        click: function () {--%>
+                <%--            dialog = $.dialog({--%>
+                <%--                width: 600,--%>
+                <%--                height: 400,--%>
+                <%--                isDrag: false,--%>
+                <%--                //targetWindow:window.parent,--%>
+                <%--                //BUG请不要打开这个属性，否则弹出窗口取得对象无法关闭这个框--%>
+                <%--                id: 'importdialog',--%>
+                <%--                url: '${path}/organization/organizationControll.do?method=importExcel&importType=member&accountId=' + loginAccountId + "${ctp:csrfSuffix()}",--%>
+                <%--                title: "${ctp:i18n('import.excel')}",--%>
+                <%--                closeParam: {--%>
+                <%--                    'show': true,--%>
+                <%--                    handler: function () {--%>
+                <%--                        filter = new Object();--%>
+                <%--                        filter.enabled = true;--%>
+                <%--                        filter.accountId = loginAccountId;--%>
+                <%--                        isSearch = false;--%>
+                <%--                        $("#memberTable").ajaxgridLoad(filter);--%>
+                <%--                    }--%>
+                <%--                }--%>
+                <%--            });--%>
+                <%--        }--%>
+                <%--    },--%>
+                <%--        {--%>
+                <%--            name: "${ctp:i18n('org.template.excel.download')}",--%>
+                <%--            click: function () {--%>
+                <%--                var downloadUrl = "${path}/organization/organizationControll.do?method=downloadTemplate&type=Member&accountId=" + loginAccountId + "${ctp:csrfSuffix()}";--%>
+                <%--                var eurl = "<c:url value='" + downloadUrl + "' />";--%>
+                <%--                exportIFrame.location.href = eurl;--%>
+                <%--            }--%>
+                <%--        },--%>
+                <%--        {--%>
+                <%--            name: "${ctp:i18n('org.post_form.export.exel')}",--%>
+                <%--            click: function () {--%>
+                <%--                var exportFlag = oManager.getOrgExportFlag();--%>
+                <%--                if (exportFlag || exportFlag == 'true') {--%>
+                <%--                    $.alert("${ctp:i18n('org.alert.info')}");--%>
+                <%--                    return;--%>
+                <%--                } else {--%>
+                <%--                    $.alert({--%>
+                <%--                        'title': "${ctp:i18n('common.prompt')}",--%>
+                <%--                        'msg': "${ctp:i18n('member.export.prompt.wait')}",--%>
+                <%--                        ok_fn: function () {--%>
+                <%--                            imanager.canIO({--%>
+                <%--                                success: function (rel) {--%>
+                <%--                                    if ('ok' == rel) {--%>
+                <%--                                        var downloadUrl_e = "${path}/organization/member.do?method=exportMembers&orgDepartmentId=" + preDeptId + "&accountId=" + loginAccountId + "${ctp:csrfSuffix()}";--%>
+                <%--                                        if (s != undefined && s != null) {--%>
+                <%--                                            var s_condition = s.condition;--%>
+                <%--                                            var s_value = encodeURIComponent(s.value);--%>
+                <%--                                            var s_enable = s.enable;--%>
+                <%--                                            var s_accountId = s.accountId;--%>
+                <%--                                            var s_state = s.state;--%>
+                <%--                                            var s_type = s.type;--%>
+                <%--                                            var url_s = "s_type:" + s_type + ";s_condition:" + s_condition + ";s_value:" + s_value + ";s_enable:" + s_enable + ";s_accountId:" + s_accountId + ";s_state:" + s_state;--%>
+                <%--                                            downloadUrl_e = downloadUrl_e + "&s=" + url_s;--%>
+                <%--                                        }--%>
 
-                                                        if (filter != undefined && filter != null) {
-                                                            var filter_condition = filter.condition;
-                                                            var filter_value = encodeURIComponent(filter.value);
-                                                            var filter_enabled = filter.enabled;
-                                                            var filter_accountId = filter.accountId;
-                                                            var filter_showByType = filter.showByType;
-                                                            var filter_cond = filter.cond;
-                                                            var filter_deptId = filter.deptId;
-                                                            var url_filter = "filter_value:" + filter_value + ";filter_condition:" + filter_condition + ";" +
-                                                                "filter_enabled:" + filter_enabled + ";filter_accountId:" + filter_accountId + ";" +
-                                                                "filter_showByType:" + filter_showByType + ";filter_cond:" + filter_cond + ";" +
-                                                                "filter_deptId:" + filter_deptId;
-                                                            downloadUrl_e = downloadUrl_e + "&filter=" + url_filter;
-                                                        }
+                <%--                                        if (filter != undefined && filter != null) {--%>
+                <%--                                            var filter_condition = filter.condition;--%>
+                <%--                                            var filter_value = encodeURIComponent(filter.value);--%>
+                <%--                                            var filter_enabled = filter.enabled;--%>
+                <%--                                            var filter_accountId = filter.accountId;--%>
+                <%--                                            var filter_showByType = filter.showByType;--%>
+                <%--                                            var filter_cond = filter.cond;--%>
+                <%--                                            var filter_deptId = filter.deptId;--%>
+                <%--                                            var url_filter = "filter_value:" + filter_value + ";filter_condition:" + filter_condition + ";" +--%>
+                <%--                                                "filter_enabled:" + filter_enabled + ";filter_accountId:" + filter_accountId + ";" +--%>
+                <%--                                                "filter_showByType:" + filter_showByType + ";filter_cond:" + filter_cond + ";" +--%>
+                <%--                                                "filter_deptId:" + filter_deptId;--%>
+                <%--                                            downloadUrl_e = downloadUrl_e + "&filter=" + url_filter;--%>
+                <%--                                        }--%>
 
-                                                        var eurl_e = "<c:url value='" + downloadUrl_e + "' />";
-                                                        exportIFrame.location.href = eurl_e + "${ctp:csrfSuffix()}";
-                                                    }
-                                                }
-                                            });
-                                        }
-                                    });
-                                }
-                            }
-                        },
-                        {
-                            id: 'importLDIF',
-                            name: "${ctp:i18n('ldap.impPost.ldif')}",
-                            click: impPost
-                        }]
-                },
+                <%--                                        var eurl_e = "<c:url value='" + downloadUrl_e + "' />";--%>
+                <%--                                        exportIFrame.location.href = eurl_e + "${ctp:csrfSuffix()}";--%>
+                <%--                                    }--%>
+                <%--                                }--%>
+                <%--                            });--%>
+                <%--                        }--%>
+                <%--                    });--%>
+                <%--                }--%>
+                <%--            }--%>
+                <%--        },--%>
+                <%--        {--%>
+                <%--            id: 'importLDIF',--%>
+                <%--            name: "${ctp:i18n('ldap.impPost.ldif')}",--%>
+                <%--            click: impPost--%>
+                <%--        }]--%>
+                <%--},--%>
                 {
                     id: "filter",
                     name: "${ctp:i18n('member.filter')}",
