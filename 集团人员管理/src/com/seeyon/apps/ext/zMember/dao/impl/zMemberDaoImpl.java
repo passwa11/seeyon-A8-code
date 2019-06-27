@@ -94,16 +94,16 @@ public class zMemberDaoImpl implements zMemberDao {
                 orgMember.setEnable(getBoolean(Integer.parseInt(((BigDecimal) result.get(i).get("is_enable")).toString())));
                 orgMember.setDeleted(getBoolean(Integer.parseInt(((BigDecimal) result.get(i).get("is_deleted")).toString())));
                 orgMember.setStatus(Integer.parseInt(((BigDecimal) result.get(i).get("status")).toString()));
-                orgMember.setSortId((Long) result.get(i).get("sort_id"));
-                orgMember.setOrgDepartmentId((Long) result.get(i).get("org_department_id"));
-                orgMember.setOrgPostId((Long) result.get(i).get("org_post_id"));
-                orgMember.setOrgLevelId((Long) result.get(i).get("org_level_id"));
-                orgMember.setOrgAccountId((Long) result.get(i).get("org_account_id"));
+                orgMember.setSortId(Long.parseLong(((BigDecimal) result.get(i).get("sort_id")).toString()));
+                orgMember.setOrgDepartmentId(Long.parseLong(((BigDecimal) result.get(i).get("org_department_id")).toString()));
+                orgMember.setOrgPostId(Long.parseLong(((BigDecimal) result.get(i).get("org_post_id")).toString()));
+                orgMember.setOrgLevelId(Long.parseLong(((BigDecimal) result.get(i).get("org_level_id")).toString()));
+                orgMember.setOrgAccountId(Long.parseLong(((BigDecimal) result.get(i).get("org_account_id")).toString()));
                 orgMember.setDescription((String) result.get(i).get("description"));
                 orgMember.setCreateTime((Date) result.get(i).get("create_time"));
                 orgMember.setUpdateTime((Date) result.get(i).get("update_time"));
-                orgMember.setExternalType((Integer) result.get(i).get("external_type"));
-                orgMember.setId((Long) result.get(i).get("id"));
+                orgMember.setExternalType(Integer.parseInt(((BigDecimal) result.get(i).get("external_type")).toString()));
+                orgMember.setId(Long.parseLong(((BigDecimal) result.get(i).get("id")).toString()));
                 rows.add(orgMember);
             }
         }
