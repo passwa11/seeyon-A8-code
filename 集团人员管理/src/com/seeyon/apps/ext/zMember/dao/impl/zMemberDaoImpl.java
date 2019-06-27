@@ -24,7 +24,7 @@ public class zMemberDaoImpl implements zMemberDao {
         int page = (flipInfo.getPage() - 1) * 20;
         int pages = flipInfo.getPage() * 20;
 
-        sql.append("select * from ( select tw.*,rownum  rowno from ( select m.*  ");
+        sql.append("select * from ( select tw.*,rownum  rowno from ( select DISTINCT m.*  ");
         if (null != param && param.containsKey("loginName")) {
             sql.append(" FROM ORG_MEMBER  m, ORG_PRINCIPAL  p ");
             sql.append(" WHERE m.ID=p.MEMBER_ID ");
