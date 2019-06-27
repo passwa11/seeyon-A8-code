@@ -7,7 +7,6 @@ import com.seeyon.ctp.util.DBAgent;
 import com.seeyon.ctp.util.FlipInfo;
 import com.seeyon.ctp.util.SQLWildcardUtil;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.xpath.operations.Bool;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -73,7 +72,8 @@ public class zMemberDaoImpl implements zMemberDao {
                 }
             }
         }
-        sql.append(" ORDER BY m.SORT_ID ASC ) tw where rownum<=" + pages + " ) thr where thr.rowno > " + page + " ");
+//        sql.append(" ORDER BY m.SORT_ID ASC ) tw where rownum<=" + pages + " ) thr where thr.rowno > " + page + " ");
+        sql.append(" ) tw where rownum<=" + pages + " ) thr where thr.rowno > " + page + " ");
 
         List<Map<String, Object>> result = JDBCUtil.doQuery(sql.toString());
         List<OrgMember> rows = new ArrayList<>();
