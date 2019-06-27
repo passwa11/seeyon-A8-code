@@ -9,6 +9,7 @@ import com.seeyon.ctp.util.SQLWildcardUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.xpath.operations.Bool;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 /**
@@ -81,18 +82,18 @@ public class zMemberDaoImpl implements zMemberDao {
                 OrgMember orgMember = new OrgMember();
                 orgMember.setName((String) result.get(i).get("name"));
                 orgMember.setCode((String) result.get(i).get("code"));
-                String internalz = (String) result.get(i).get("is_internal");
+                String internalz = ((BigDecimal) result.get(i).get("is_internal")).toString();
                 int Internal = Integer.parseInt(internalz);
                 orgMember.setInternal(getBoolean(Internal));
-                orgMember.setLoginable(getBoolean(Integer.parseInt((String) result.get(i).get("is_loginable"))));
-                orgMember.setVirtual(getBoolean(Integer.parseInt((String) result.get(i).get("is_virtual"))));
-                orgMember.setAdmin(getBoolean(Integer.parseInt((String) result.get(i).get("is_admin"))));
-                orgMember.setAssigned(getBoolean(Integer.parseInt((String) result.get(i).get("is_assigned"))));
-                orgMember.setType(Integer.parseInt((String) result.get(i).get("type")));
-                orgMember.setState(Integer.parseInt((String) result.get(i).get("state")));
-                orgMember.setEnable(getBoolean(Integer.parseInt((String) result.get(i).get("is_enable"))));
-                orgMember.setDeleted(getBoolean(Integer.parseInt((String) result.get(i).get("is_deleted"))));
-                orgMember.setStatus(Integer.parseInt((String) result.get(i).get("status")));
+                orgMember.setLoginable(getBoolean(Integer.parseInt(((BigDecimal) result.get(i).get("is_loginable")).toString())));
+                orgMember.setVirtual(getBoolean(Integer.parseInt(((BigDecimal) result.get(i).get("is_virtual")).toString())));
+                orgMember.setAdmin(getBoolean(Integer.parseInt(((BigDecimal) result.get(i).get("is_admin")).toString())));
+                orgMember.setAssigned(getBoolean(Integer.parseInt(((BigDecimal) result.get(i).get("is_assigned")).toString())));
+                orgMember.setType(Integer.parseInt(((BigDecimal) result.get(i).get("type")).toString()));
+                orgMember.setState(Integer.parseInt(((BigDecimal) result.get(i).get("state")).toString()));
+                orgMember.setEnable(getBoolean(Integer.parseInt(((BigDecimal) result.get(i).get("is_enable")).toString())));
+                orgMember.setDeleted(getBoolean(Integer.parseInt(((BigDecimal) result.get(i).get("is_deleted")).toString())));
+                orgMember.setStatus(Integer.parseInt(((BigDecimal) result.get(i).get("status")).toString()));
                 orgMember.setSortId((Long) result.get(i).get("sort_id"));
                 orgMember.setOrgDepartmentId((Long) result.get(i).get("org_department_id"));
                 orgMember.setOrgPostId((Long) result.get(i).get("org_post_id"));
