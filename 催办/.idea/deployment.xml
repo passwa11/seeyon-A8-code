@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="集团人员管理">
+  <component name="PublishConfigData" serverName="催办">
     <serverData>
-      <paths name="集团人员管理 (project level)">
+      <paths name="催办">
         <serverdata>
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$/seeyon" web="/" />
