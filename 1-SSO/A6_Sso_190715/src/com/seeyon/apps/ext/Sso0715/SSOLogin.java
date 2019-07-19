@@ -12,6 +12,7 @@ public class SSOLogin extends SSOLoginHandshakeAbstract {
     @Override
     public String handshake(String ticket) {
 //ticket
+
         if (ticket == null || ticket.equals("")) {
             return null;
         }
