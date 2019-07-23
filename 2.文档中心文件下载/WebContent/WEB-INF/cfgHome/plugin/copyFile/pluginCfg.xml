@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+	<id>copyFile</id>
+	<name>备份公文单</name>
+	<category>29899</category>
+</plugin>
