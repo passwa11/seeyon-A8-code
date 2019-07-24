@@ -33,7 +33,7 @@ public class Portal190724Controller extends BaseController {
         boolean b = jsonResolveTools.savelaws(currentUserId, username, password);
         List<Contract> contracts = null;
         if (b) {
-            contracts = portal190724Manager.getAllLaw(currentUserId);
+            contracts = portal190724Manager.getLimitLaw(currentUserId);
         }
         ModelAndView mav = new ModelAndView("apps/ext/Portal190724/index");
         mav.addObject("contracts", contracts);

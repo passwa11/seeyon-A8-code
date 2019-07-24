@@ -14,4 +14,8 @@ public interface Portal190724Dao {
     boolean save(Long long1, List<Contract> list);
 
     List<Contract> getAllLaw(Long long1);
+
+    List<Contract> getLimitLaw(Long long1);
+
+
 }

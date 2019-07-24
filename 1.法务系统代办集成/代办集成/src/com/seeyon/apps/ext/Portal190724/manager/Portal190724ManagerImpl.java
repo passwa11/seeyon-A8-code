@@ -35,4 +35,9 @@ public class Portal190724ManagerImpl implements Portal190724Manager {
     public List<Contract> getAllLaw(Long long1) {
         return dao.getAllLaw(long1);
     }
+
+    @Override
+    public List<Contract> getLimitLaw(Long long1) {
+        return dao.getLimitLaw(long1);
+    }
 }

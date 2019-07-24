@@ -14,4 +14,5 @@ public interface Portal190724Manager {
 
     List<Contract> getAllLaw(Long long1);
 
+    List<Contract> getLimitLaw(Long long1);
 }

@@ -192,11 +192,7 @@ public class Portal190724DaoImpl implements Portal190724Dao {
                     laws.add(contract);
                 }
             }
-        } catch (ClassNotFoundException e) {
-            laws = null;
-            System.out.println("查询所有法律信息发生异常：异常信息");
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             laws = null;
             System.out.println("查询所有法律信息发生异常：异常信息");
             e.printStackTrace();
@@ -215,4 +211,49 @@ public class Portal190724DaoImpl implements Portal190724Dao {
         return laws;
     }
 
+    @Override
+    public List<Contract> getLimitLaw(Long long1) {
+        List<Contract> laws = new ArrayList<>();
+        String sql = (new StringBuilder("select * from Contract where OAUSERID like '")).append(long1).append("%' and rownum <10").toString();
+        System.out.println("获取所有法律代办列表的sql :" + sql);
+        Connection conn = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            Class.forName(driverClassName);
+            conn = DriverManager.getConnection(url, username, password);
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            if (rs != null) {
+                for (int i = 0; rs.next(); i++) {
+                    Contract contract = new Contract();
+                    contract.setTaskName(rs.getString("TASKNAME"));
+                    contract.setBusiType(rs.getString("BUSITYPE"));
+                    contract.setCreateOrg(rs.getString("CREATEORG"));
+                    contract.setCreateUser(rs.getString("CREATEUSER"));
+                    contract.setBeginTime(rs.getString("BEGINTIME"));
+                    contract.setTaskUrl(rs.getString("TASKURL"));
+                    contract.setHandleUser(rs.getString("HANDLEUSER"));
+                    contract.setAppTaskId(rs.getString("APPTASKID"));
+                    laws.add(contract);
+                }
+            }
+        } catch (Exception e) {
+            laws = null;
+            System.out.println("查询所有法律信息发生异常：异常信息");
+            e.printStackTrace();
+        } finally {
+            try {
+                if (null != pst) {
+                    pst.close();
+                }
+                if (null != conn) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return laws;
+    }
 }
