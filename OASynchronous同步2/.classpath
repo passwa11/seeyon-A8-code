@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/activation-1.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/annogen-0.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/ant-1.7.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/ant-launcher-1.7.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/antlr-2.7.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/ant-nodeps-1.7.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/aopalliance.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/aspectjrt-1.5.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axiom-api-1.2.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axiom-dom-1.2.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axiom-impl-1.2.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-adb-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-adb-codegen-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-ant-plugin-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-clustering-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-codegen-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-corba-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-fastinfoset-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-java2wsdl-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-jaxbri-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-jaxws-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-jaxws-api-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-jibx-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-json-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-jws-api-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-kernel-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-metadata-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-mtompolicy-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-saaj-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-saaj-api-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-spring-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis2-xmlbeans-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/axis-ant.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/backport-util-concurrent-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/bcmail-jdk15-1.45.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/bcprov-jdk15-133.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/c3p0-0.9.1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/cglib-nodep-2.1_3.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-attributes-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-attributes-compiler.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-beanutils-1.7.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-codec-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-collections-3.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-configuration-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-digester-1.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-discovery-0.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-fileupload-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-httpclient-3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-io-1.3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-jexl-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-lang-2.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-logging-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-modeler-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-net-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/commons-validator-1.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/comyons.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/cryptix31.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/DBstep.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/dee.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/dee-client.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/dee-common.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/docEncode.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/dtdparser-1.21.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/ehcache-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/ezmorph-1.0.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/FontBox-0.1.0-dev.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/fontbox-1.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/freemarker.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/geronimo-annotation_1.0_spec-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/geronimo-jms_1.1_spec-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/geronimo-stax-api_1.0_spec-1.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/groovy-all-1.8.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/h2-1.3.162.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/hibernate2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/hibernate-3.1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/htmlparser.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/HtmlToGif.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/httpcore-4.0-beta1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/httpcore-nio-4.0-beta1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/icu4j-2.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/itext-2.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/iTrusCertAPI-2.7.9_jdk15.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jackson-core-asl-1.7.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jackson-core-lgpl-1.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jackson-mapper-asl-1.7.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jacob.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jalopy-1.0b11.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/javassist-3.7.ga.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jaxb-api-2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jaxb-impl-2.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jaxb-xjc-2.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jaxen-1.1-6.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jaxrpc.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jaxws-api-2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jcommon-1.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jdom-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jempbox-1.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jersey-all-1.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jettison-1.0-RC2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jfreechart-1.0.13.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jgroups-all.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jibx-bind-1.1.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jibx-run-1.1.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/json.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/json-lib-2.4-jdk15.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jsr173_api-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jstl-1.1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jta-1.0.1B.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/junit.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/jxl.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/localstore.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/log4j-1.2.13.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/longpolling.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/lucene-core-2.9.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/lucene-highlighter-2.9.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/lucene-memory-2.9.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/mail-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/mex-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/milyn-smooks-all-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/mocnoyeeswz.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/mvel2-2.0.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/NCbasic.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/neethi-2.0.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/odmg-3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/ognl-2.7.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/ooxml-schemas-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/opencsv-1.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/opensaml-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/oro-2.0.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/oscache-2.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/p6spy-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/PDFBox-0.7.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/pdfbox-1.1.0_M1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/persistence-api-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/poi-3.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/poi-contrib-3.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/poi-ooxml-3.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/poi-ooxml-schemas-3.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/poi-scratchpad-3.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/portals-bridges-springmvc-0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/pull-parser-2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/quartz-all-1.6.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/rampart-core-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/rampart-policy-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/rampart-trust-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/RedOfficeParser.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/request-1.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/rss.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/RY3jni.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/saaj-api-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/saaj-impl-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/sapjco3.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/seeyon-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/seeyon-common.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/sjp.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/smproxy.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/snakeyaml-1.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/soapmonitor-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/spring-1.2.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/spring-aspects-2.0-rc2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/springmodules-validation-0.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/spring-tomcat-weaver-2.0.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/standard-1.1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/stax-api-1.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/stax-utils-20040917.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/stringtemplate-2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/tidymq.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/tm-extractors-0.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/v3x-cap.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/v3x-common.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/v3x-index.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/v3x-login.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/v3x-officetrans.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/v3x-product.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/v3x-services.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/v3x-workflow.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/velocity-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/wfutils.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/woden-api-1.0M8.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/woden-impl-dom-1.0M8.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/wsdl4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/wsf-spring-1.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/wsf-spring-sample-1.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/wss4j-1.5.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/wstx-asl-3.2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/xalan-2.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/xbean-2.2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/xercesImpl.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/xfire-all-1.2.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/xfire-jsr181-api-1.0-M1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/xlock.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/xml-apis-1.3.04.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/xmlbeans-2.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/xmlParserAPIs-2.6.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/xml-resolver-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/XmlSchema-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/xmlsec-1.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/xom-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/xpp3_min-1.1.3.4.O.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/xpp3-1.1.3.4d_b4_min.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/xstream-1.2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/seeyon/OASynchronous/lib/oracle.jdbc.10g.2.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/activation-1.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/annogen-0.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/ant-1.7.0.jar"/>
+	<classpathentry kind="lib" path="lib/ant-launcher-1.7.0.jar"/>
+	<classpathentry kind="lib" path="lib/ant-nodeps-1.7.0.jar"/>
+	<classpathentry kind="lib" path="lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="lib/aopalliance.jar"/>
+	<classpathentry kind="lib" path="lib/aspectjrt-1.5.0.jar"/>
+	<classpathentry kind="lib" path="lib/axiom-api-1.2.7.jar"/>
+	<classpathentry kind="lib" path="lib/axiom-dom-1.2.7.jar"/>
+	<classpathentry kind="lib" path="lib/axiom-impl-1.2.7.jar"/>
+	<classpathentry kind="lib" path="lib/axis-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/axis-ant.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-adb-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-adb-codegen-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-ant-plugin-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-clustering-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-codegen-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-corba-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-fastinfoset-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-java2wsdl-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-jaxbri-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-jaxws-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-jaxws-api-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-jibx-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-json-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-jws-api-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-kernel-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-metadata-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-mtompolicy-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-saaj-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-saaj-api-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-spring-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/axis2-xmlbeans-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/backport-util-concurrent-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/bcmail-jdk15-1.45.jar"/>
+	<classpathentry kind="lib" path="lib/bcprov-jdk15-133.jar"/>
+	<classpathentry kind="lib" path="lib/c3p0-0.9.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/cglib-nodep-2.1_3.jar"/>
+	<classpathentry kind="lib" path="lib/commons-attributes-api.jar"/>
+	<classpathentry kind="lib" path="lib/commons-attributes-compiler.jar"/>
+	<classpathentry kind="lib" path="lib/commons-beanutils-1.7.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-codec-1.3.jar"/>
+	<classpathentry kind="lib" path="lib/commons-collections-3.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-configuration-1.3.jar"/>
+	<classpathentry kind="lib" path="lib/commons-digester-1.8.jar"/>
+	<classpathentry kind="lib" path="lib/commons-discovery-0.4.jar"/>
+	<classpathentry kind="lib" path="lib/commons-fileupload-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-httpclient-3.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-1.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-jexl-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.3.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-modeler-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-net-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-validator-1.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/comyons.jar"/>
+	<classpathentry kind="lib" path="lib/cryptix31.jar"/>
+	<classpathentry kind="lib" path="lib/DBstep.jar"/>
+	<classpathentry kind="lib" path="lib/dee-client.jar"/>
+	<classpathentry kind="lib" path="lib/dee-common.jar"/>
+	<classpathentry kind="lib" path="lib/dee.jar"/>
+	<classpathentry kind="lib" path="lib/docEncode.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/dtdparser-1.21.jar"/>
+	<classpathentry kind="lib" path="lib/ehcache-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="lib/FontBox-0.1.0-dev.jar"/>
+	<classpathentry kind="lib" path="lib/fontbox-1.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/freemarker.jar"/>
+	<classpathentry kind="lib" path="lib/geronimo-annotation_1.0_spec-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/geronimo-jms_1.1_spec-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/geronimo-stax-api_1.0_spec-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/groovy-all-1.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/h2-1.3.162.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-3.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate2.jar"/>
+	<classpathentry kind="lib" path="lib/htmlparser.jar"/>
+	<classpathentry kind="lib" path="lib/HtmlToGif.jar"/>
+	<classpathentry kind="lib" path="lib/httpcore-4.0-beta1.jar"/>
+	<classpathentry kind="lib" path="lib/httpcore-nio-4.0-beta1.jar"/>
+	<classpathentry kind="lib" path="lib/icu4j-2.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/itext-2.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/iTrusCertAPI-2.7.9_jdk15.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-core-asl-1.7.5.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-core-lgpl-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-mapper-asl-1.7.5.jar"/>
+	<classpathentry kind="lib" path="lib/jacob.jar"/>
+	<classpathentry kind="lib" path="lib/jalopy-1.0b11.jar"/>
+	<classpathentry kind="lib" path="lib/javassist-3.7.ga.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb-api-2.0.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb-impl-2.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb-xjc-2.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/jaxen-1.1-6.jar"/>
+	<classpathentry kind="lib" path="lib/jaxrpc.jar"/>
+	<classpathentry kind="lib" path="lib/jaxws-api-2.0.jar"/>
+	<classpathentry kind="lib" path="lib/jcommon-1.0.16.jar"/>
+	<classpathentry kind="lib" path="lib/jdom-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jempbox-1.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jersey-all-1.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/jettison-1.0-RC2.jar"/>
+	<classpathentry kind="lib" path="lib/jfreechart-1.0.13.jar"/>
+	<classpathentry kind="lib" path="lib/jgroups-all.jar"/>
+	<classpathentry kind="lib" path="lib/jibx-bind-1.1.5.jar"/>
+	<classpathentry kind="lib" path="lib/jibx-run-1.1.5.jar"/>
+	<classpathentry kind="lib" path="lib/json-lib-2.4-jdk15.jar"/>
+	<classpathentry kind="lib" path="lib/json.jar"/>
+	<classpathentry kind="lib" path="lib/jsr173_api-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jstl-1.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/jta-1.0.1B.jar"/>
+	<classpathentry kind="lib" path="lib/junit.jar"/>
+	<classpathentry kind="lib" path="lib/jxl.jar"/>
+	<classpathentry kind="lib" path="lib/localstore.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.13.jar"/>
+	<classpathentry kind="lib" path="lib/longpolling.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-core-2.9.4.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-highlighter-2.9.4.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-memory-2.9.4.jar"/>
+	<classpathentry kind="lib" path="lib/mail-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/mex-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/milyn-smooks-all-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/mocnoyeeswz.jar"/>
+	<classpathentry kind="lib" path="lib/mvel2-2.0.17.jar"/>
+	<classpathentry kind="lib" path="lib/NCbasic.jar"/>
+	<classpathentry kind="lib" path="lib/neethi-2.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/odmg-3.0.jar"/>
+	<classpathentry kind="lib" path="lib/ognl-2.7.3.jar"/>
+	<classpathentry kind="lib" path="lib/ooxml-schemas-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/opencsv-1.8.jar"/>
+	<classpathentry kind="lib" path="lib/opensaml-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/oracle.jdbc.10g.2.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/oro-2.0.6.jar"/>
+	<classpathentry kind="lib" path="lib/oscache-2.3.jar"/>
+	<classpathentry kind="lib" path="lib/p6spy-1.3.jar"/>
+	<classpathentry kind="lib" path="lib/PDFBox-0.7.3.jar"/>
+	<classpathentry kind="lib" path="lib/pdfbox-1.1.0_M1.jar"/>
+	<classpathentry kind="lib" path="lib/persistence-api-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/poi-3.6.jar"/>
+	<classpathentry kind="lib" path="lib/poi-contrib-3.6.jar"/>
+	<classpathentry kind="lib" path="lib/poi-ooxml-3.6.jar"/>
+	<classpathentry kind="lib" path="lib/poi-ooxml-schemas-3.6.jar"/>
+	<classpathentry kind="lib" path="lib/poi-scratchpad-3.6.jar"/>
+	<classpathentry kind="lib" path="lib/portals-bridges-springmvc-0.1.jar"/>
+	<classpathentry kind="lib" path="lib/pull-parser-2.jar"/>
+	<classpathentry kind="lib" path="lib/quartz-all-1.6.0.jar"/>
+	<classpathentry kind="lib" path="lib/rampart-core-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/rampart-policy-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/rampart-trust-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/RedOfficeParser.jar"/>
+	<classpathentry kind="lib" path="lib/request-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/rss.jar"/>
+	<classpathentry kind="lib" path="lib/RY3jni.jar"/>
+	<classpathentry kind="lib" path="lib/saaj-api-1.3.jar"/>
+	<classpathentry kind="lib" path="lib/saaj-impl-1.3.jar"/>
+	<classpathentry kind="lib" path="lib/sapjco3.jar"/>
+	<classpathentry kind="lib" path="lib/seeyon-api.jar"/>
+	<classpathentry kind="lib" path="lib/seeyon-common.jar"/>
+	<classpathentry kind="lib" path="lib/sjp.jar"/>
+	<classpathentry kind="lib" path="lib/smproxy.jar"/>
+	<classpathentry kind="lib" path="lib/snakeyaml-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/soapmonitor-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/spring-1.2.8.jar"/>
+	<classpathentry kind="lib" path="lib/spring-aspects-2.0-rc2.jar"/>
+	<classpathentry kind="lib" path="lib/spring-tomcat-weaver-2.0.7.jar"/>
+	<classpathentry kind="lib" path="lib/springmodules-validation-0.4.jar"/>
+	<classpathentry kind="lib" path="lib/standard-1.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/stax-api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/stax-utils-20040917.jar"/>
+	<classpathentry kind="lib" path="lib/stringtemplate-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/tidymq.jar"/>
+	<classpathentry kind="lib" path="lib/tm-extractors-0.4.jar"/>
+	<classpathentry kind="lib" path="lib/v3x-cap.jar"/>
+	<classpathentry kind="lib" path="lib/v3x-common.jar"/>
+	<classpathentry kind="lib" path="lib/v3x-index.jar"/>
+	<classpathentry kind="lib" path="lib/v3x-login.jar"/>
+	<classpathentry kind="lib" path="lib/v3x-officetrans.jar"/>
+	<classpathentry kind="lib" path="lib/v3x-product.jar"/>
+	<classpathentry kind="lib" path="lib/v3x-services.jar"/>
+	<classpathentry kind="lib" path="lib/v3x-workflow.jar"/>
+	<classpathentry kind="lib" path="lib/velocity-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/wfutils.jar"/>
+	<classpathentry kind="lib" path="lib/woden-api-1.0M8.jar"/>
+	<classpathentry kind="lib" path="lib/woden-impl-dom-1.0M8.jar"/>
+	<classpathentry kind="lib" path="lib/wsdl4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/wsf-spring-1.5.jar"/>
+	<classpathentry kind="lib" path="lib/wsf-spring-sample-1.5.jar"/>
+	<classpathentry kind="lib" path="lib/wss4j-1.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/wstx-asl-3.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/xalan-2.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/xbean-2.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="lib/xfire-all-1.2.5.jar"/>
+	<classpathentry kind="lib" path="lib/xfire-jsr181-api-1.0-M1.jar"/>
+	<classpathentry kind="lib" path="lib/xlock.jar"/>
+	<classpathentry kind="lib" path="lib/xml-apis-1.3.04.jar"/>
+	<classpathentry kind="lib" path="lib/xml-resolver-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/xmlParserAPIs-2.6.0.jar"/>
+	<classpathentry kind="lib" path="lib/XmlSchema-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/xmlsec-1.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/xom-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/xpp3_min-1.1.3.4.O.jar"/>
+	<classpathentry kind="lib" path="lib/xpp3-1.1.3.4d_b4_min.jar"/>
+	<classpathentry kind="lib" path="lib/xstream-1.2.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
