@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="456f8ccc-df0f-4d93-83b6-96282c4f795e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../OASynchronous同步2/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../OASynchronous同步2/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OASynchronous同步2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OASynchronous同步2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/calsses/com/seeyon/apps/xkjt/controller/XkjtController.jad" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,36 +17,53 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/calsses/com/seeyon/apps/xkjt/section/LeaderDaiYueSection.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+            <state relative-caret-position="253">
+              <caret line="66" column="45" lean-forward="true" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
               <folding>
-                <element signature="e#0#2564#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/calsses/com/seeyon/apps/xkjt/controller/XkjtController.class">
+        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/plugin/xkjt/dai_yue_more.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="61" selection-start-line="61" selection-end-line="61" />
+            <state relative-caret-position="627">
+              <caret line="22" column="72" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="72" />
               <folding>
-                <element signature="e#0#6097#0" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/seeyon/apps_res/xkjt/dai_yue_more.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="53" column="50" lean-forward="true" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/calsses/com/seeyon/apps/xkjt/controller/XkjtController.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="430">
+              <caret line="53" column="19" lean-forward="true" selection-start-line="51" selection-start-column="7" selection-end-line="53" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/plugin/xkjt/dai_yue.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="462">
@@ -58,15 +80,17 @@
       <find>xkjtLeaderDaiYues</find>
       <find>daiYueMore</find>
       <find>dai_yue_more</find>
+      <find>daiYueTable</find>
+      <find>ModelType</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="7" />
-    <option name="y" value="23" />
-    <option name="width" value="1536" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-524" />
+    <option name="y" value="34" />
+    <option name="width" value="1885" />
     <option name="height" value="950" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -93,51 +117,13 @@
               <item name="栏目集成已阅待阅示例" type="b2602c69:ProjectViewProjectNode" />
               <item name="栏目集成已阅待阅示例" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="栏目集成已阅待阅示例" type="b2602c69:ProjectViewProjectNode" />
               <item name="栏目集成已阅待阅示例" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="calsses" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="栏目集成已阅待阅示例" type="b2602c69:ProjectViewProjectNode" />
-              <item name="栏目集成已阅待阅示例" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="calsses" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="栏目集成已阅待阅示例" type="b2602c69:ProjectViewProjectNode" />
-              <item name="栏目集成已阅待阅示例" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="calsses" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="栏目集成已阅待阅示例" type="b2602c69:ProjectViewProjectNode" />
-              <item name="栏目集成已阅待阅示例" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="calsses" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="栏目集成已阅待阅示例" type="b2602c69:ProjectViewProjectNode" />
-              <item name="栏目集成已阅待阅示例" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="calsses" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
               <item name="xkjt" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -145,24 +131,6 @@
               <item name="栏目集成已阅待阅示例" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="calsses" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="xkjt" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="栏目集成已阅待阅示例" type="b2602c69:ProjectViewProjectNode" />
-              <item name="栏目集成已阅待阅示例" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="calsses" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="xkjt" type="462c0819:PsiDirectoryNode" />
-              <item name="section" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="栏目集成已阅待阅示例" type="b2602c69:ProjectViewProjectNode" />
@@ -195,6 +163,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../大屯项目集成/datun-portallow" />
@@ -264,36 +233,35 @@
       <option name="presentableId" value="Default" />
       <updated>1563932796059</updated>
       <workItem from="1563932797422" duration="1656000" />
+      <workItem from="1563949012389" duration="2266000" />
     </task>
+    <task id="LOCAL-00001" summary="add">
+      <created>1563950152242</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1563950152242</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1656000" />
+    <option name="totallyTimeSpent" value="3922000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="JRebel" side_tool="true" />
-      <window_info id="Image Layers" />
-      <window_info id="UI Designer" />
-      <window_info id="Mybatis Builder" side_tool="true" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info id="Capture Tool" />
-      <window_info id="Designer" />
-      <window_info id="Jspresso Snap" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21321961" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2153518" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="FindBugs-IDEA" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Tail" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="MyBatis Log" />
-      <window_info anchor="bottom" id="JRebel Executor" />
-      <window_info anchor="bottom" id="JRebel Console" side_tool="true" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Mybatis Builder" order="6" side_tool="true" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info id="JRebel" order="8" side_tool="true" />
+      <window_info id="Jspresso Snap" order="9" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -301,22 +269,38 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="RestServices" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="BPMNPalette" />
-      <window_info anchor="right" id="Remote Host" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Version Control" order="12" />
+      <window_info anchor="bottom" id="JRebel Executor" order="13" />
+      <window_info anchor="bottom" id="JRebel Console" order="14" side_tool="true" />
+      <window_info anchor="bottom" id="MyBatis Log" order="15" />
+      <window_info anchor="bottom" id="Tail" order="16" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="BPMNPalette" order="6" />
+      <window_info anchor="right" id="Remote Host" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
+      <window_info anchor="right" id="Palette&#9;" order="9" />
+      <window_info anchor="right" id="Theme Preview" order="10" />
+      <window_info anchor="right" id="RestServices" order="11" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="add" />
+    <option name="LAST_COMMIT_MESSAGE" value="add" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/calsses/com/seeyon/apps/xkjt/section/LeaderBanJieSection.class">
@@ -328,30 +312,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/calsses/com/seeyon/apps/xkjt/controller/XkjtController.jad">
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/calsses/com/seeyon/apps/xkjt/controller/XkjtController.jad" />
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/plugin/xkjt/dai_yue_more.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="60" column="57" selection-start-line="60" selection-start-column="57" selection-end-line="60" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/calsses/com/seeyon/apps/xkjt/controller/XkjtController.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        <state relative-caret-position="627">
+          <caret line="22" column="72" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="72" />
           <folding>
-            <element signature="e#0#6097#0" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/calsses/com/seeyon/apps/xkjt/section/LeaderDaiYueSection.class">
+    <entry file="file://$PROJECT_DIR$/seeyon/apps_res/xkjt/dai_yue_more.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#2564#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="363">
+          <caret line="53" column="50" lean-forward="true" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -359,6 +334,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="44" column="17" selection-start-line="44" selection-start-column="17" selection-end-line="44" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/calsses/com/seeyon/apps/xkjt/section/LeaderDaiYueSection.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="66" column="45" lean-forward="true" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/calsses/com/seeyon/apps/xkjt/controller/XkjtController.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="53" column="19" lean-forward="true" selection-start-line="51" selection-start-column="7" selection-end-line="53" selection-end-column="19" />
         </state>
       </provider>
     </entry>
