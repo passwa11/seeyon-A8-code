@@ -65,7 +65,7 @@ public class SectionPortal extends BaseSectionImpl {
     public BaseSectionTemplete projection(Map<String, String> preference) {
         String v = configTools.getString("portlet.appKey");
         System.out.println("portlet.appKey:" + v);
-        String sectionUrl = "/seeyon/ext/Portal190724.do?method=todoList";
+        String sectionUrl = "/seeyon/ext/Portal190724.do?method=todoList&type=limit";
         if (Strings.isNotBlank((String)preference.get("sectionUrl"))) {
             sectionUrl = (String)preference.get("sectionUrl");
         }
@@ -75,7 +75,7 @@ public class SectionPortal extends BaseSectionImpl {
         ht.setHtml(html.toString());
         ht.setModel(HtmlTemplete.ModelType.inner);
         ht.setShowBottomButton(true);
-        ht.addBottomButton("common_more_label", "/ext/Portal190724.do?method=todoList", HtmlTemplete.OPEN_TYPE.href.name());
+        ht.addBottomButton("common_more_label", "/ext/Portal190724.do?method=todoList&type=more", HtmlTemplete.OPEN_TYPE.href.name());
         return ht;
 /*        // 栏目解析主方法
         HtmlTemplete ht = new HtmlTemplete();

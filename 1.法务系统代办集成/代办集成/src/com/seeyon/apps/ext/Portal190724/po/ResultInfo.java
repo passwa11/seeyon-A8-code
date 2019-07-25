@@ -1,4 +1,4 @@
-package com.seeyon.apps.ext.Portal190724.pojo;
+package com.seeyon.apps.ext.Portal190724.po;
 
 import java.util.List;
 

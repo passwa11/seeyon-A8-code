@@ -1,10 +1,12 @@
-package com.seeyon.apps.ext.Portal190724.pojo;
+package com.seeyon.apps.ext.Portal190724.po;
 
 /**
  * 合同
  */
 public class Contract {
 
+    private Long id;
+    private Long oauserId;
     private String taskName;//标题
     private String busiType;//业务类型
     private String createOrg;//经办单位
@@ -13,6 +15,22 @@ public class Contract {
     private String taskUrl;//待办URL
     private String handleUser;//当前审核人
     private String appTaskId;//待办唯一标识
+
+    public Long getOauserId() {
+        return oauserId;
+    }
+
+    public void setOauserId(Long oauserId) {
+        this.oauserId = oauserId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTaskName() {
         return taskName;

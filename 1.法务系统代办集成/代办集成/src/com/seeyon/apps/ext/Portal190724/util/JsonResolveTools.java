@@ -3,8 +3,8 @@ package com.seeyon.apps.ext.Portal190724.util;
 import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.Portal190724.manager.Portal190724Manager;
 import com.seeyon.apps.ext.Portal190724.manager.Portal190724ManagerImpl;
-import com.seeyon.apps.ext.Portal190724.pojo.Contract;
-import com.seeyon.apps.ext.Portal190724.pojo.Result;
+import com.seeyon.apps.ext.Portal190724.po.Contract;
+import com.seeyon.apps.ext.Portal190724.po.Result;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

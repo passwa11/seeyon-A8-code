@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>待阅</title>
+    <title>待处理</title>
     <style>
         html, body {
             margin: 0;

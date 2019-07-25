@@ -1,12 +1,11 @@
 package com.seeyon.apps.ext.Portal190724.util;
 
 import com.alibaba.fastjson.JSONObject;
-import com.seeyon.apps.ext.Portal190724.pojo.Result;
+import com.seeyon.apps.ext.Portal190724.po.Result;
 import com.seeyon.v3x.common.web.login.CurrentUser;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;

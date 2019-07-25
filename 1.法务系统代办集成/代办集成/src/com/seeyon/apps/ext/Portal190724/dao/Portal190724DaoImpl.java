@@ -1,8 +1,11 @@
 package com.seeyon.apps.ext.Portal190724.dao;
 
 
-import com.seeyon.apps.ext.Portal190724.pojo.Contract;
+import com.seeyon.apps.ext.Portal190724.po.Contract;
 import com.seeyon.apps.ext.Portal190724.util.ReadConfigTools;
+import com.seeyon.ctp.common.exceptions.BusinessException;
+import com.seeyon.ctp.util.DBAgent;
+import com.seeyon.ctp.util.FlipInfo;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -215,7 +218,7 @@ public class Portal190724DaoImpl implements Portal190724Dao {
     public List<Contract> getLimitLaw(Long long1) {
         List<Contract> laws = new ArrayList<>();
 //        String sql = (new StringBuilder("select * from Contract where OAUSERID like '")).append(long1).append("%' and rownum <10").toString();
-        String sql = (new StringBuilder("select * from Contract where OAUSERID like '")).append(long1).append("%'  limit 10").toString();
+        String sql = (new StringBuilder("select * from CONTRACT where OAUSERID like '")).append(long1).append("%' ").toString();
         System.out.println("获取所有法律代办列表的sql :" + sql);
         Connection conn = null;
         PreparedStatement pst = null;
@@ -256,5 +259,12 @@ public class Portal190724DaoImpl implements Portal190724Dao {
             }
         }
         return laws;
+    }
+
+    @Override
+    public FlipInfo findMoreLaw(FlipInfo fi, Map params) throws BusinessException {
+        String hql = "from Contract where oauserId=:oauserId order by beginTime desc";
+        DBAgent.find(hql, params, fi);
+        return fi;
     }
 }

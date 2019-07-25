@@ -1,4 +1,4 @@
-package com.seeyon.apps.ext.Portal190724.pojo;
+package com.seeyon.apps.ext.Portal190724.po;
 
 /**
  * 周刘成   2019/7/24
