@@ -36,20 +36,27 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 
     <tbody>
-    <c:forEach var="detail" items="${contracts}">
+    <c:forEach var="cont" items="${contracts}">
         <tr>
-            <td width="50%" class="active" onclick="Open(this,'${detail.id}','${detail.edoc_id}')">
-                <a href="javascript:void(0);">${detail.title}</a>
+            <td width="50%" class="active">
+                <a href="javascript:void(0);" onclick="openTodo('${cont.taskUrl}','${param}')">${cont.taskName}</a>
             </td>
             <td width="10%" align="center">
-                <span title="${detail.doc_mark}">${detail.doc_mark}</span>
+                <span title="${cont.createUser}">${cont.createUser}</span>
             </td>
             <td width="30%" align="center">
-                <span title="<fmt:formatDate value='${detail.send_date}' pattern='yyyy-MM-dd' />"><fmt:formatDate value='${detail.send_date}' pattern='yyyy-MM-dd'/></span>
+                <span title="${cont.beginTime}">
+                        ${cont.beginTime}
+                </span>
             </td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
+<script type="text/javascript">
+    function openTodo(url, param) {
+        window.open(url + param + "&Timespan=" + parseInt(new Date().getTime() / 1000), "_blank");
+    }
+</script>
 </body>
 </html>

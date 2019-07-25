@@ -214,7 +214,8 @@ public class Portal190724DaoImpl implements Portal190724Dao {
     @Override
     public List<Contract> getLimitLaw(Long long1) {
         List<Contract> laws = new ArrayList<>();
-        String sql = (new StringBuilder("select * from Contract where OAUSERID like '")).append(long1).append("%' and rownum <10").toString();
+//        String sql = (new StringBuilder("select * from Contract where OAUSERID like '")).append(long1).append("%' and rownum <10").toString();
+        String sql = (new StringBuilder("select * from Contract where OAUSERID like '")).append(long1).append("%'  limit 10").toString();
         System.out.println("获取所有法律代办列表的sql :" + sql);
         Connection conn = null;
         PreparedStatement pst = null;

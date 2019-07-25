@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.seeyon.apps.ext.Portal190724.manager.Portal190724Manager;
 import com.seeyon.apps.ext.Portal190724.manager.Portal190724ManagerImpl;
 import com.seeyon.apps.ext.Portal190724.pojo.Contract;
+import com.seeyon.apps.ext.Portal190724.util.GetTokenTool;
 import com.seeyon.apps.ext.Portal190724.util.JsonResolveTools;
 import com.seeyon.ctp.common.controller.BaseController;
 
@@ -27,16 +28,24 @@ public class Portal190724Controller extends BaseController {
      */
     public ModelAndView todoList(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Long currentUserId = CurrentUser.get().getId();
-        Map<String, Object> accountMap = portal190724Manager.select(String.valueOf(CurrentUser.get().getId()));
-        String username = accountMap.keySet().iterator().next();
-        String password = (String) accountMap.get(username);
-        boolean b = jsonResolveTools.savelaws(currentUserId, username, password);
+//        Map<String, Object> accountMap = portal190724Manager.select(String.valueOf(CurrentUser.get().getId()));
+//        String username = accountMap.keySet().iterator().next();
+//        String password = (String) accountMap.get(username);
+//        boolean b = jsonResolveTools.savelaws(currentUserId, username, password);
         List<Contract> contracts = null;
-        if (b) {
-            contracts = portal190724Manager.getLimitLaw(currentUserId);
+        GetTokenTool tokenTool = new GetTokenTool();
+        Map<String, Object> getMap = tokenTool.checkToken();
+        StringBuffer sb = new StringBuffer();
+        for (Map.Entry<String, Object> entry : getMap.entrySet()) {
+            sb.append("&").append(entry.getKey()).append("=").append(entry.getValue());
         }
+//        if (b) {
+        contracts = portal190724Manager.getLimitLaw(currentUserId);
+//        }
+
         ModelAndView mav = new ModelAndView("apps/ext/Portal190724/index");
         mav.addObject("contracts", contracts);
+        mav.addObject("param", sb.toString());
         return mav;
     }
 }
