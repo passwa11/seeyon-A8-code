@@ -34,9 +34,9 @@ public class PocketUtil {
     private static final String did = "4019295";
     private static final String secret = "134c2FA58206427c";
 
-    private static final String url = "https://api.kdzl.cn/cgi-bin/oauth/access_token";
+    private static final String url = "https://192.168.10.17:4430/cgi-bin/oauth/access_token";
 
-    private static final String Path = "https://api.kdzl.cn/cgi-bin/oauth/access_token?appid=281474976776194&did=4019295&secret=134c2FA58206427c";
+    private static final String Path = "https://192.168.10.17:4430/cgi-bin/oauth/access_token?appid=281474976776194&did=4019295&secret=134c2FA58206427c";
 
     public static String getJson(String reqUrl) {
         TrustManager[] tm = {new MyX509TrustManager()};
