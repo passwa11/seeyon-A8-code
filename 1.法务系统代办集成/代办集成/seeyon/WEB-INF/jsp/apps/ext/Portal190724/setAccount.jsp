@@ -46,7 +46,7 @@
                         <td class="bg-gray" width="20%" nowrap="nowrap">密码:</td>
                         <td class="new-column" width="80%">
                             <input class="input-100per" style="height: 28px;width: 200px;" type="password" name="law_pas" id="law_pas"
-                                maxlength="50" value="${requestScope.pwd}"/>
+                                   maxlength="50" value="${requestScope.pwd}"/>
                         </td>
                     </tr>
                 </table>
