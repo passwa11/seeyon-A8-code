@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<bean>
+			<serviceName>fdManager</serviceName>
+			<operations>
+				<op>getCompanyData</op>
+				<op>getProductProjectData</op>
+				<op>getRDProjectData</op>
+				<op>getBankData</op>
+				<op>getMasterFieldName</op>
+				<op>setYSValue</op>
+				<op>setSubValue</op>
+			</operations>
+	</bean>
+</beans>

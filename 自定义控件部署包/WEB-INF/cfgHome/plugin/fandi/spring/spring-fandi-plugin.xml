@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="fdGetNameOfCompany" class="com.seeyon.apps.fandi.extend.FdNameOfCompanyManager">
+	</bean>
+	<bean id="fdGetNameOfProductProject" class="com.seeyon.apps.fandi.extend.FdNameOfProductProjectManager">
+	</bean>
+	<bean id="fdGetNameOfRDProject" class="com.seeyon.apps.fandi.extend.FdNameOfRDProjectManager">
+	</bean>
+	<bean id="fdGetNameOfProductProjectForFeiYon" class="com.seeyon.apps.fandi.extend.FdNameOfProductProjectForFeiYonManager">
+	</bean>
+	<bean id="fdGetNameOfRDProjectForFeiYon" class="com.seeyon.apps.fandi.extend.FdNameOfRDProjectForFeiYonManager">
+	</bean>
+</beans>

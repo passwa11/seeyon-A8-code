@@ -13,7 +13,6 @@
     <%--    <script type="text/javascript" charset="UTF-8" src="${path}/apps_res/xkjt/dai_yue_more.js${ctp:resSuffix()}"></script>--%>
 </head>
 <body>
-<h1>tttttttttttt</h1>
 <div id="layout">
     <div class="layout_north bg_color" id="north">
         <div class="common_crumbs">
