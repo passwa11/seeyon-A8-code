@@ -52,19 +52,25 @@
                 </table>
             </fieldset>
 
-            <input type="reset" style="border: none;
-            color: #030303;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;" value="取消"/>
+            <input type="reset" style="border: none;color: #030303;padding: 10px 20px;text-align: center;
+            text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;" value="取消"/>
 
             <input type="button" class="button" onclick="return setLaw(this.form)" value="确定"/>&nbsp;&nbsp;
         </div>
     </form>
 </center>
 </body>
+<script type="text/javascript">
+    function setLaw(form) {
+        var law_user = document.getElementById('law_user').value;
+        var law_pas = document.getElementById('law_pas').value;
+        if (law_user == '' || law_pas == '') {
+            alert('请输入正确的用户名、密码');
+            return false;
+        }
+        var url = '/seeyon/ext/setUserController.do?method=setResult';
+        document.lawForm.action = url;
+        document.lawForm.submit();
+    }
+</script>
 </html>
