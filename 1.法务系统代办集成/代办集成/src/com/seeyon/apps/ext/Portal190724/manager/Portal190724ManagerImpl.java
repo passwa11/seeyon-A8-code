@@ -4,6 +4,7 @@ package com.seeyon.apps.ext.Portal190724.manager;
 import com.seeyon.apps.ext.Portal190724.dao.Portal190724Dao;
 import com.seeyon.apps.ext.Portal190724.dao.Portal190724DaoImpl;
 import com.seeyon.apps.ext.Portal190724.po.Contract;
+import com.seeyon.apps.ext.Portal190724.po.UserPas;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.authenticate.domain.User;
 import com.seeyon.ctp.common.exceptions.BusinessException;
@@ -53,5 +54,10 @@ public class Portal190724ManagerImpl implements Portal190724Manager {
         params.put("oauserId", user.getId());
         this.dao.findMoreLaw(fi, params);
         return fi;
+    }
+
+    @Override
+    public int setAddAccount(UserPas userPas) {
+        return dao.setAddAccount(userPas);
     }
 }

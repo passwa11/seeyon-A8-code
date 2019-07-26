@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d607215e-76df-4996-9096-1c1350f22bbe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/po/UserPas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/po/UserPas.hbm.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/Portal190724/setAccount.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/Portal190724/setAccount.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../OASynchronous同步2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../OASynchronous同步2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../../大屯项目集成/datun-portallow" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../../大屯项目集成/datun-sso-login" afterDir="false" />
@@ -23,37 +30,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/controller/Portal190724Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="57" column="94" selection-start-line="57" selection-start-column="94" selection-end-line="57" selection-end-column="94" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.java">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="27" column="42" lean-forward="true" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+            <state relative-caret-position="235">
+              <caret line="277" column="95" lean-forward="true" selection-start-line="277" selection-start-column="95" selection-end-line="277" selection-end-column="95" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/section/SectionPortal.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="70" column="85" lean-forward="true" selection-start-line="70" selection-start-column="85" selection-end-line="70" selection-end-column="85" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#select#0;class#Portal190724DaoImpl#0" />
+                <element signature="method#selectState#0;class#Portal190724DaoImpl#0" />
+                <element signature="method#save#0;class#Portal190724DaoImpl#0" />
+                <element signature="method#getAllLaw#0;class#Portal190724DaoImpl#0" />
+                <element signature="method#getLimitLaw#0;class#Portal190724DaoImpl#0" />
               </folding>
             </state>
           </provider>
@@ -62,73 +50,55 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/po/UserPas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+            <state relative-caret-position="99">
+              <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/Portal190724/spring/spring-Portal190724-controller.xml">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/quartz/SampleTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="8" column="46" lean-forward="true" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
+            <state relative-caret-position="467">
+              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
               <folding>
-                <element signature="e#146#147#0" expanded="true" />
-                <element signature="e#182#183#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/Portal190724/spring/spring-Portal190724-manager.xml">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="38" column="81" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="81" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/Portal190724/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/Portal190724/setAccount.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="69" column="9" lean-forward="true" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
+            <state relative-caret-position="533">
+              <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#form#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#legend#0;n#fieldset#0;n#div#0;n#form#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#td#1;n#tr#0;n#table#0;n#fieldset#0;n#div#0;n#form#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#td#1;n#tr#1;n#table#0;n#fieldset#0;n#div#0;n#form#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#div#0;n#form#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/Portal190724PluginInitializer.java">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="10" column="49" lean-forward="true" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+            <state relative-caret-position="500">
+              <caret line="60" column="27" lean-forward="true" selection-start-line="60" selection-start-column="27" selection-end-line="60" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1731#1732#0" expanded="true" />
+                <element signature="e#1755#1756#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -169,14 +139,10 @@
         <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/pojo/ResultInfo.java" />
         <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/util/JsonResolveTools.java" />
         <option value="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/Portal190724/index.jsp" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.java" />
         <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/pojo/Contract.java" />
         <option value="$PROJECT_DIR$/seeyon/ajaxStub.js" />
         <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/ajax/ajax-dotoz.xml" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.java" />
         <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/pojo/Contract.hbm.xml" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.java" />
         <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/po/Contract.hbm.xml" />
         <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/po/Contract.java" />
         <option value="$PROJECT_DIR$/src/law/lowPlugin.properties" />
@@ -189,15 +155,20 @@
         <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/Portal190724/spring/spring-Portal190724-manager.xml" />
         <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/po/UserPas.java" />
         <option value="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/Portal190724/setAccount.jsp" />
+        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.java" />
+        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/po/UserPas.hbm.xml" />
+        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.java" />
         <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.java" />
+        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-27" />
-    <option name="y" value="107" />
-    <option name="width" value="1920" />
-    <option name="height" value="803" />
+    <option name="x" value="-102" />
+    <option name="y" value="45" />
+    <option name="width" value="1885" />
+    <option name="height" value="950" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -325,6 +296,22 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ext" type="462c0819:PsiDirectoryNode" />
               <item name="Portal190724" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="代办集成" type="b2602c69:ProjectViewProjectNode" />
+              <item name="代办集成" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ext" type="462c0819:PsiDirectoryNode" />
+              <item name="Portal190724" type="462c0819:PsiDirectoryNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="代办集成" type="b2602c69:ProjectViewProjectNode" />
+              <item name="代办集成" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ext" type="462c0819:PsiDirectoryNode" />
+              <item name="Portal190724" type="462c0819:PsiDirectoryNode" />
               <item name="po" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -358,7 +345,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/Portal190724" />
+    <property name="last_opened_file_path" value="F:/A8项目代码示例/二开/组织机构同步/seeyon_dbsy_20170502" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -372,6 +359,7 @@
       <recent name="com.seeyon.apps.ext.Portal190724.pojo" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\s\A-8-code\1.法务系统代办集成\代办集成\src\com\seeyon\apps\ext\Portal190724\po" />
       <recent name="F:\s\A-8-code\1.法务系统代办集成\代办集成\seeyon\WEB-INF\jsp\apps\ext\Portal190724" />
       <recent name="F:\s\A-8-code\1.法务系统代办集成\代办集成\seeyon\WEB-INF\cfgHome\ajax" />
       <recent name="F:\s\A-8-code\1.法务系统代办集成\代办集成\seeyon" />
@@ -462,7 +450,7 @@
       <workItem from="1563928657042" duration="19249000" />
       <workItem from="1563959437104" duration="1443000" />
       <workItem from="1564013935465" duration="26139000" />
-      <workItem from="1564101184553" duration="17171000" />
+      <workItem from="1564101184553" duration="19308000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1563959798082</created>
@@ -541,17 +529,24 @@
       <option name="project" value="LOCAL" />
       <updated>1564130317415</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="update">
+      <created>1564131634304</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1564131634304</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64002000" />
+    <option name="totallyTimeSpent" value="66139000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20842217" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14658849" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -564,7 +559,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.17880794" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.12803532" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -611,9 +606,15 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.java</url>
-          <line>25</line>
+          <line>29</line>
           <properties />
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.java</url>
+          <line>273</line>
+          <properties />
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -777,16 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/ajax/ajax-dotoz.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -802,16 +793,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/pojo/Contract.hbm.xml" />
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/spring-core.jar!/org/springframework/cglib/proxy/MethodProxy.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2970">
@@ -836,27 +817,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="6" column="46" lean-forward="true" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="262" lean-forward="true" selection-start-line="262" selection-end-line="262" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getAllLaw#0;class#Portal190724DaoImpl#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -953,13 +913,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/po/UserPas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/Portal190724/setAccount.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="413">
@@ -974,12 +927,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.java">
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="27" column="42" lean-forward="true" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+        <state relative-caret-position="533">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="60" column="27" lean-forward="true" selection-start-line="60" selection-start-column="27" selection-end-line="60" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1731#1732#0" expanded="true" />
+            <element signature="e#1755#1756#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/po/UserPas.hbm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="7" column="41" lean-forward="true" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/po/UserPas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="277" column="95" lean-forward="true" selection-start-line="277" selection-start-column="95" selection-end-line="277" selection-end-column="95" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#select#0;class#Portal190724DaoImpl#0" />
+            <element signature="method#selectState#0;class#Portal190724DaoImpl#0" />
+            <element signature="method#save#0;class#Portal190724DaoImpl#0" />
+            <element signature="method#getAllLaw#0;class#Portal190724DaoImpl#0" />
+            <element signature="method#getLimitLaw#0;class#Portal190724DaoImpl#0" />
           </folding>
         </state>
       </provider>

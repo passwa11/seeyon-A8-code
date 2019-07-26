@@ -2,6 +2,7 @@ package com.seeyon.apps.ext.Portal190724.dao;
 
 
 import com.seeyon.apps.ext.Portal190724.po.Contract;
+import com.seeyon.apps.ext.Portal190724.po.UserPas;
 import com.seeyon.apps.ext.Portal190724.util.ReadConfigTools;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.util.DBAgent;
@@ -266,5 +267,67 @@ public class Portal190724DaoImpl implements Portal190724Dao {
         String hql = "from Contract where oauserId=:oauserId order by beginTime desc";
         DBAgent.find(hql, params, fi);
         return fi;
+    }
+
+    @Override
+    public int setAddAccount(UserPas userPas) {
+        int i = -1;
+        String checkSql = "select * from Law_Fox_Table where id=" + userPas.getId();
+        String updateSql = "update Law_Fox_Table lft set lft.law_user='" + userPas.getLaw_user()
+                + "',lft.law_pas='" + userPas.getLaw_pas() + "' where lft.id=" + userPas.getId();
+//        String sql = "insert into Law_Fox_Table values(?,?,?,'','','','',0,0,0,0,0,0,0,0,0)";
+        String sql = "insert into Law_Fox_Table values(?,?,?,'','','','')";
+        Connection conn = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        try {
+            Class.forName(driverClassName);
+            conn = DriverManager.getConnection(url, username, password);
+            pst = conn.prepareStatement(checkSql);
+            rs = pst.executeQuery();
+            boolean next = rs.next();
+            if (next == true) {
+                int count = pst.executeUpdate(updateSql);
+                if (count == 1) {
+                    try {
+                        pst.close();
+                        conn.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    return 0;
+                } else {
+                    try {
+                        pst.close();
+                        conn.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    return -1;
+                }
+
+            } else {
+                pst = conn.prepareStatement(sql);
+                pst.setString(1, userPas.getId());
+                pst.setString(2, userPas.getLaw_user());
+                pst.setString(3, userPas.getLaw_pas());
+                int rows = pst.executeUpdate();
+                if (rows == 1) {
+                    i = 0;
+                }
+            }
+
+        } catch (Exception e) {
+            i = -1;
+            System.out.println("查询发生异常：异常信息------->" + e.getMessage());
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return i;
     }
 }

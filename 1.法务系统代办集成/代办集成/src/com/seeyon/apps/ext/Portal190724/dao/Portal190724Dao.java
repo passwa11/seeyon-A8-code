@@ -1,6 +1,7 @@
 package com.seeyon.apps.ext.Portal190724.dao;
 
 import com.seeyon.apps.ext.Portal190724.po.Contract;
+import com.seeyon.apps.ext.Portal190724.po.UserPas;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.util.FlipInfo;
 
@@ -20,6 +21,8 @@ public interface Portal190724Dao {
     List<Contract> getLimitLaw(Long long1);
 
     FlipInfo findMoreLaw(FlipInfo var1, Map var2) throws BusinessException;
+
+    int setAddAccount(UserPas userPas);// 用户设置法律user\pas
 
 
 }
