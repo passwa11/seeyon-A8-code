@@ -8,4 +8,6 @@
         <property name="sectionType" value="common"/>
         <property name="sortId" value="99"/>
     </bean>
+
+    <bean name="sampleTask" class="com.seeyon.apps.ext.quartz.SampleTask"/>
 </beans>

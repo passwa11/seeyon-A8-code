@@ -1,6 +1,7 @@
 package com.seeyon.apps.ext.Portal190724.section;
 
 import com.seeyon.apps.ext.Portal190724.util.ReadConfigTools;
+import com.seeyon.ctp.common.timer.TimerHolder;
 import com.seeyon.ctp.portal.section.BaseSectionImpl;
 import com.seeyon.ctp.portal.section.templete.BaseSectionTemplete;
 import com.seeyon.ctp.portal.section.templete.HtmlTemplete;
@@ -63,6 +64,8 @@ public class SectionPortal extends BaseSectionImpl {
      */
     @Override
     public BaseSectionTemplete projection(Map<String, String> preference) {
+
+
         String v = configTools.getString("portlet.appKey");
         System.out.println("portlet.appKey:" + v);
         String sectionUrl = "/seeyon/ext/Portal190724.do?method=todoList&type=limit";
