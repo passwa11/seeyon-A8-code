@@ -15,25 +15,46 @@
     <%--    <script type="text/javascript" charset="UTF-8" src="${path}/apps_res/xkjt/dai_yue_more.js${ctp:resSuffix()}"></script>--%>
 </head>
 <body>
-<div id='layout'  class="comp" comp="type:'layout'">
+<%--<div id='layout'  class="comp" comp="type:'layout'">
     <div class="layout_north bg_color" id="north">
         <div class="common_crumbs">
             <span class="margin_r_10">当前位置:</span><a href="javascript:;">代办</a>
         </div>
     </div>
-<%--    <div class="layout_center over_hidden" id="center">--%>
-<%--        <table class="flexme3" style="display: none" id="daibanTable"></table>--%>
-<%--    </div>--%>
 
     <div class="layout_center over_hidden" layout="border:true" id="center">
         <table id="daibanTable" class="flexme3" ></table>
+    </div>
+</div>--%>
+
+<div id="layout">
+    <div class="layout_north bg_color" id="north">
+        <div class="common_crumbs">
+            <span class="margin_r_10">当前位置:</span><a href="javascript:;">待阅</a>
+        </div>
+    </div>
+    <div class="layout_center over_hidden" id="center">
+        <table class="flexme3" style="display: none" id="daibanTable"></table>
     </div>
 </div>
 </body>
 <script>
     var grid;
     $().ready(function () {
-
+        new MxtLayout({
+            'id' : 'layout',
+            'centerArea' : {
+                'id' : 'center',
+                'border' : false,
+                'minHeight' : 20
+            },
+            'northArea' : {
+                'id' : 'north',
+                'height' : 30,
+                'sprit' : false,
+                'border' : false
+            },
+        });
         //表格加载
         grid = $('#daibanTable').ajaxgrid({
             colModel: [
