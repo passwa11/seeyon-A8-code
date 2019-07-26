@@ -54,4 +54,11 @@ public class Portal190724Controller extends BaseController {
         return mav;
     }
 
+
+    public ModelAndView toSetUserPage(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("apps/ext/Portal190724/setAccount");
+        return modelAndView;
+    }
+
 }
