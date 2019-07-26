@@ -10,25 +10,32 @@
     <meta http-equiv="Expires" content="0"/>
     <title>更多</title>
     <script type="text/javascript" src="${path}/ajax.do?managerName=portal190724Manager"></script>
+    <script type="text/javascript" charset="UTF-8" src="<c:url value="/common/js/V3X.js${ctp:resSuffix()}" />"></script>
+
     <%--    <script type="text/javascript" charset="UTF-8" src="${path}/apps_res/xkjt/dai_yue_more.js${ctp:resSuffix()}"></script>--%>
 </head>
 <body>
-<div id="layout">
+<div id='layout'  class="comp" comp="type:'layout'">
     <div class="layout_north bg_color" id="north">
         <div class="common_crumbs">
             <span class="margin_r_10">当前位置:</span><a href="javascript:;">代办</a>
         </div>
     </div>
-    <div class="layout_center over_hidden" id="center">
-        <table class="flexme3" style="display: none" id="daibanTable"></table>
+<%--    <div class="layout_center over_hidden" id="center">--%>
+<%--        <table class="flexme3" style="display: none" id="daibanTable"></table>--%>
+<%--    </div>--%>
+
+    <div class="layout_center over_hidden" layout="border:true" id="center">
+        <table id="daibanTable" class="flexme3" ></table>
     </div>
 </div>
 </body>
 <script>
-    $(function () {
+    var grid;
+    $().ready(function () {
 
         //表格加载
-        var grid = $('#daibanTable').ajaxgrid({
+        grid = $('#daibanTable').ajaxgrid({
             colModel: [
                 {
                     display: "公文标题",
@@ -52,7 +59,7 @@
             height: 200,
             showTableToggleBtn: true,
             parentId: 'center',
-            vChange: true,
+            vChange: false,
             vChangeParam: {
                 overflow: "hidden",
                 autoResize: true
@@ -69,8 +76,9 @@
         return txt;
     }
 
-    function openDetail() {
-        alert(1);
+    function openDetail(data, r, c) {
+        console.log(data,'data')
+        window.open("http://www.baidu.com","_blank");
     }
 </script>
 </html>
