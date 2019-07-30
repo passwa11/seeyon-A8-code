@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- 人员 -->
+	<class name="com.seeyon.apps.synorg.po.hr.HrMember" table="V_SEEYON_MEMBER" lazy="false">
+		<!-- 主建：编码 -->
+		<id name="code" type="string" column="CODE" length="50">
+			<generator class="assigned" />
+		</id>
+		<!-- 姓名 -->
+		<property name="name" column="NAME" type="string" not-null="false" length="100" />
+		<!-- 登录名 -->
+		<property name="loginName" column="LOGIN_NAME" type="string" not-null="false" length="50" />
+		<!-- 是否启用 -->
+		<property name="enable" column="IS_ENABLE" type="boolean" not-null="false" length="4" />
+		<!-- 部门 -->
+		<property name="departmentCode" column="DEPARTMENT_CODE" type="string" not-null="false" length="50" />
+		<!-- 岗位 -->
+		<property name="postName" column="POST_NAME" type="string" not-null="false" length="50" />
+		<!-- 职务级别 -->
+		<property name="levelCode" column="LEVEL_CODE" type="string" not-null="false" length="50" />
+		<!-- 邮件地址 -->
+		<property name="email" column="EMAIL" type="string" not-null="false" length="255" />
+		<!-- 手机号码 -->
+		<property name="telNumber" column="TEL_NUMBER" type="string" not-null="false" length="255" />
+		<!-- 性别 -->
+		<property name="gender" column="GENDER" type="integer" not-null="false" length="4" />
+		<!-- 出生日期 -->
+		<property name="birthday" column="BIRTHDAY" type="timestamp" not-null="false" length="7" />
+		<!-- 身份证号 -->
+		<property name="idNum" column="ID_NUM" type="string" not-null="false" length="255" />
+	</class>
+</hibernate-mapping>

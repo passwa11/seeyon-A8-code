@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="syncUnitManager" class="com.seeyon.apps.synorg.manager.SyncUnitManagerImpl"></bean>
+	<bean id="syncDepartmentManager" class="com.seeyon.apps.synorg.manager.SyncDepartmentManagerImpl"></bean>
+	<bean id="syncLevelManager" class="com.seeyon.apps.synorg.manager.SyncLevelManagerImpl"></bean>
+	<bean id="syncPostManager" class="com.seeyon.apps.synorg.manager.SyncPostManagerImpl"></bean>
+	<bean id="syncMemberManager" class="com.seeyon.apps.synorg.manager.SyncMemberManagerImpl"></bean>
+	<bean id="syncOrgManager" class="com.seeyon.apps.synorg.manager.SyncOrgManagerImpl"></bean>
+	<bean id="syncLogManager" class="com.seeyon.apps.synorg.manager.SyncLogManagerImpl"></bean>
+	<bean id="syncDataManager" class="com.seeyon.apps.synorg.manager.SyncDataManagerImpl"></bean>
+    <bean id="adapterOrgDataManager" class="com.seeyon.apps.synorg.manager.AdapterOrgDataManagerImpl"></bean>
+    <bean id="syncDeptRoleManager" class="com.seeyon.apps.synorg.manager.SyncDeptRoleManagerImpl"></bean>
+    
+	<bean id="syncOrgConfigManager" class="com.seeyon.apps.synorg.manager.SyncOrgConfigManagerImpl" init-method="init" />
+</beans>

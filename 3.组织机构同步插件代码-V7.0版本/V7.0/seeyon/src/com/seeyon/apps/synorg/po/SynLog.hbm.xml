@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- 日志表 -->
+	<class name="com.seeyon.apps.synorg.po.SynLog" table="PLUGIN_SYN_LOG" lazy="false">
+
+		<id name="id" type="long" column="ID">
+			<generator class="assigned" />
+		</id>
+
+		<!-- 实体类型：Department-部门 Member-人员 Post-职务 Level-岗位 -->
+		<property name="entityType" column="ENTITY_TYPE" type="string" not-null="true" length="50" />
+		<!-- 实体名称 -->
+		<property name="entityName" column="ENTITY_NAME" type="string" not-null="true" length="100" />
+		<!-- 实体编码 -->
+		<property name="entityCode" column="ENTITY_CODE" type="string" not-null="true" length="50" />
+		<!-- 同步状态 0-失败 1-成功 -->
+		<property name="synState" column="SYN_STATE" type="integer" not-null="true" length="4" />
+		<!-- 排同步操作类型： 1-新建 2-更新 3-删除 -->
+		<property name="synType" column="SYN_TYPE" type="integer" not-null="true" length="4" />
+		<!-- 同步日志 -->
+		<property name="synLog" column="SYN_LOG" type="string" not-null="false" length="500" />
+		<!-- 同步时间 -->
+		<property name="synDate" column="SYN_DATE" type="timestamp" not-null="false" length="7" />
+	</class>
+</hibernate-mapping>

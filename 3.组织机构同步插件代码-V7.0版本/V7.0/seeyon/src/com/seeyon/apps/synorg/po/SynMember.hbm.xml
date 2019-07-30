@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- 人员 -->
+	<class name="com.seeyon.apps.synorg.po.SynMember" table="PLUGIN_SYN_MEMBER" lazy="false">
+		<!-- 主建：编码 -->
+		<id name="code" type="string" column="CODE" length="50">
+			<generator class="assigned" />
+		</id>
+		<!-- 姓名 -->
+		<property name="name" column="NAME" type="string" not-null="false" length="50" />
+		<!-- 登录名 -->
+		<property name="loginName" column="LOGIN_NAME" type="string" not-null="false" length="50" />
+		<!-- 密码 -->
+		<property name="password" column="PASSWORD" type="string" not-null="false" length="50" />
+		<!-- 是否启用 -->
+		<property name="enable" column="IS_ENABLE" type="boolean" not-null="false" length="4" />
+		<!-- 排序 -->
+		<property name="sortId" column="SORT_ID" type="long" not-null="false" length="10" />
+		<!-- 部门 -->
+		<property name="departmentCode" column="DEPARTMENT_CODE" type="string" not-null="false" length="50" />
+		<!-- 岗位 -->
+		<property name="postCode" column="POST_CODE" type="string" not-null="false" length="50" />
+		<!-- 职务级别 -->
+		<property name="levelCode" column="LEVEL_CODE" type="string" not-null="false" length="50" />
+		<!-- 描述 -->
+		<property name="description" column="DESCRIPTION" type="string" not-null="false" length="500" />
+		<!-- 邮件地址 -->
+		<property name="email" column="EMAIL" type="string" not-null="false" length="255" />
+		<!-- 办公电话 -->
+		<property name="officeNum" column="OFFICE_NUM" type="string" not-null="false" length="255" />
+		<!-- 手机号码 -->
+		<property name="telNumber" column="TEL_NUMBER" type="string" not-null="false" length="255" />
+		<!-- 住址 -->
+		<property name="address" column="ADDRESS" type="string" not-null="false" length="255" />
+		<!-- 邮政编码 -->
+		<property name="postalCode" column="POSTAL_CODE" type="string" not-null="false" length="255" />
+		<!-- 个人网页 -->
+		<property name="website" column="WEBSITE" type="string" not-null="false" length="255" />
+		<!-- 博客地址 -->
+		<property name="blog" column="BLOG" type="string" not-null="false" length="255" />
+		<!-- 性别 -->
+		<property name="gender" column="GENDER" type="integer" not-null="false" length="4" />
+		<!-- 出生日期 -->
+		<property name="birthday" column="BIRTHDAY" type="timestamp" not-null="false" length="7" />
+		<!-- 微博 -->
+		<property name="weibo" column="WEIBO" type="string" not-null="false" length="255" />
+		<!-- 微信 -->
+		<property name="weixin" column="WEIXIN" type="string" not-null="false" length="255" />
+		<!-- 身份证号 -->
+		<property name="idNum" column="ID_NUM" type="string" not-null="false" length="255" />
+		<!-- 学位 -->
+		<property name="degree" column="DEGREE" type="string" not-null="false" length="255" />
+		<!-- 通信地址 -->
+		<property name="postAddress" column="POST_ADDRESS" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr1" column="EXT_ATTR_1" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr2" column="EXT_ATTR_2" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr3" column="EXT_ATTR_3" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr4" column="EXT_ATTR_4" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr5" column="EXT_ATTR_5" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr6" column="EXT_ATTR_6" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr7" column="EXT_ATTR_7" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr8" column="EXT_ATTR_8" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr9" column="EXT_ATTR_9" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr10" column="EXT_ATTR_10" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr11" column="EXT_ATTR_11" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr12" column="EXT_ATTR_12" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr13" column="EXT_ATTR_13" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr14" column="EXT_ATTR_14" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr15" column="EXT_ATTR_15" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr16" column="EXT_ATTR_16" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr17" column="EXT_ATTR_17" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr18" column="EXT_ATTR_18" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr19" column="EXT_ATTR_19" type="string" not-null="false" length="255" />
+		<!-- 预留字段 -->
+		<property name="extAttr20" column="EXT_ATTR_20" type="string" not-null="false" length="255" />
+		<!-- 创建时间 -->
+		<property name="createDate" column="CREATE_DATE" type="timestamp" not-null="true" length="7" />
+		<!-- 同步时间 -->
+		<property name="syncDate" column="SYNC_DATE" type="timestamp" not-null="false" length="7" />
+		<!-- 同步状态 -->
+		<property name="syncState" column="SYNC_STATE" type="integer" not-null="false" length="4" />
+	</class>
+</hibernate-mapping>
