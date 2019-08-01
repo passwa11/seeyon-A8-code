@@ -41,7 +41,6 @@ public class ProxyServlet extends HttpServlet {
         String ticket = StringHandlerUtil.encode(account);
         response.setContentType("text/html;charset=UTF-8");
         String ssoUrl = "http://127.0.0.1:8888/seeyon/login/sso?ticket=" + ticket + "&from=sample";
-//        重定向
-        response.sendRedirect(url);
+        response.sendRedirect(ssoUrl);
     }
 }
