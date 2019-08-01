@@ -33,14 +33,14 @@ public class ProxyServlet extends HttpServlet {
         //获取用户简略信息
 //        https://api.kd77.cn/cgi-bin/roster/user/get?access_token=1234adfb64&code=23832afd8&detail=0
         //获取用户详细信息
-        String url = "https://api.kd77.cn/cgi-bin/roster/user/get?access_token=" + token + "&code=" + code + "&detail=1";
+        String url = "https://211.103.127.211:6802/cgi-bin/roster/user/get?access_token=" + token + "&code=" + code + "&detail=1";
         String resultStr = PocketUtil.getJson(url);
         Pocket pocket = JSONObject.parseObject(resultStr, Pocket.class);
         Member member = pocket.getUser();
         String account = member.getAccount();
         String ticket = StringHandlerUtil.encode(account);
         response.setContentType("text/html;charset=UTF-8");
-        String ssoUrl = "http://127.0.0.1:80/seeyon/login/sso?ticket=" + ticket + "&from=sample";
+        String ssoUrl = "http://127.0.0.1:8888/seeyon/login/sso?ticket=" + ticket + "&from=sample";
 //        重定向
         response.sendRedirect(url);
     }
