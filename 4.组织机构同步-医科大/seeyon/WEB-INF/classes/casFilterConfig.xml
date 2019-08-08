@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<loginServer>http://cas.xzhmu.edu.cn/cas</loginServer>
+	<validateServer>http://cas.xzhmu.edu.cn/cas</validateServer>
+	<this>oa.xzhmu.edu.cn</this>
+	<wrapRequest>false</wrapRequest>
+	<checkAlive>false</checkAlive>
+	<notForceAuthUrls>
+		<url-pattern>\.js$</url-pattern>
+		<url-pattern>\.xsl$</url-pattern>
+		<url-pattern>\.xml$</url-pattern>
+		<url-pattern>\.gif$</url-pattern>
+		<url-pattern>\.jpg$</url-pattern>
+		<url-pattern>\.bmp$</url-pattern>
+		<url-pattern>\.png$</url-pattern>
+		<url-pattern>\.css$</url-pattern>
+		<url-pattern>\.swf$</url-pattern>
+		<url-pattern>\.html.*</url-pattern>
+
+		<url-pattern><![CDATA[.*/fileUpload.*]]></url-pattern>
+		<url-pattern><![CDATA[.*/PicUploadServlet.*]]></url-pattern>
+		<url-pattern><![CDATA[.*/VotePicUploadServlet.*]]></url-pattern>
+		<url-pattern><![CDATA[.*/ActivityPicUploadServlet.*]]></url-pattern>
+		<url-pattern><![CDATA[.*/*.service.*]]></url-pattern>
+		<url-pattern><![CDATA[.*/gVarInit.jsp.*]]></url-pattern>
+		<url-pattern><![CDATA[.*/apps.action.*]]></url-pattern>
+		<url-pattern><![CDATA[.*/yzmServlet.*]]></url-pattern>
+	</notForceAuthUrls>
+</config>

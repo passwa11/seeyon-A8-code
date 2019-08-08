@@ -189,9 +189,9 @@ public class JDBCUtil {
         Connection connector = null;
         try {
             String driver = "com.mysql.jdbc.Driver";
-            String url = "jdbc:mysql://127.0.0.1:3306/a6";
+            String url = "jdbc:mysql://127.0.0.1:3306/a6v56";
             String user = "root";
-            String password = "root";
+            String password = "tsslj123";
             Class.forName(driver);
             connector = DriverManager.getConnection(url, user, password);
             System.out.println("连接数据库成功----------");
@@ -199,6 +199,7 @@ public class JDBCUtil {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("mysql连接出错了");
         }
 
         return connector;

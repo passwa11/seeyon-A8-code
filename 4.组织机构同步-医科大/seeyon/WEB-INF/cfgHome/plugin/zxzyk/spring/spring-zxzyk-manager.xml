@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+    <bean id="xzykManager" class="com.seeyon.apps.ext.zxzyk.manager.xzykManagerImpl"/>
+    <bean id="orgDeptManager" class="com.seeyon.apps.ext.zxzyk.manager.OrgDeptManagerImpl"/>
+    <bean id="orgLevelManager" class="com.seeyon.apps.ext.zxzyk.manager.OrgLevelManagerImpl"/>
+    <bean id="orgMemberManager" class="com.seeyon.apps.ext.zxzyk.manager.OrgMemberManagerImpl"/>
+
+    <bean parent="pluginMainMenu">
+        <!--主菜单ID，唯一的数字字符串 -->
+        <property name="id" value="20190730"/>
+        <!--主菜单名称 -->
+        <property name="name" value="同步测试"/>
+        <!--主菜单排序 -->
+        <property name="sortId" value="1"/>
+        <!--菜单认证类 -->
+        <property name="menuCheck">
+            <bean class="com.seeyon.ctp.menu.check.MenuForAllUsersChecker"/>
+        </property>
+        <!--二级菜单 -->
+        <property name="children">
+            <list>
+                <bean class="com.seeyon.ctp.plugin.PluginMenu">
+                    <!--二级菜单ID唯一数字串 -->
+                    <property name="id" value="11111"/>
+                    <!--二级菜单名称 -->
+                    <property name="name" value="部门同步"/>
+                    <!--菜单打开方式：mainfrm: 工作区打开; newWindow: 新窗口打开 -->
+                    <property name="target" value="mainfrm"/>
+                    <!--菜单图标 -->
+                    <property name="icon" value="/apps_res/plugin/nc/images/2401.gif"/>
+                    <!--菜单链接地址，这个连接必须是协同的内部连接 -->
+                    <property name="url" value="/ext/xzyk.do?method=syncDept"/>
+                    <!--菜单访问认证类 -->
+                    <property name="menuCheck">
+                        <bean class="com.seeyon.ctp.menu.check.UserMenuCheck"/>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+</beans>

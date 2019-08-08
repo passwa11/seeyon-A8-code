@@ -30,7 +30,7 @@ public class Sso0715Controller extends BaseController {
             /**
              * 获取所有的人员信息
              */
-            String memberUrl = "https://api.kd77.cn/cgi-bin/roster/department/get_member";
+            String memberUrl = "https://192.168.10.17:4430/cgi-bin/roster/department/get_member";
             String memberStr = PocketUtil.getAllMember(memberUrl, "1", "1");
             Pocket pocket = JSONObject.parseObject(memberStr, Pocket.class);
             System.out.println(pocket.getMember().size());
