@@ -2,7 +2,11 @@
 <config>
 	<loginServer>http://cas.xzhmu.edu.cn/cas</loginServer>
 	<validateServer>http://cas.xzhmu.edu.cn/cas</validateServer>
-	<this>oa.xzhmu.edu.cn</this>
+<!--	正式地址-->
+<!--	<this>oa.xzhmu.edu.cn</this>-->
+<!--	测试地址-->
+	<this>222.193.95.137:80</this>
+<!--	<this>127.0.0.1:80</this>-->
 	<wrapRequest>false</wrapRequest>
 	<checkAlive>false</checkAlive>
 	<notForceAuthUrls>

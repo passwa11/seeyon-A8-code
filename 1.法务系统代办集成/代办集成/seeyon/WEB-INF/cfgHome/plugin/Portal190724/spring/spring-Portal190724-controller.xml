@@ -3,4 +3,5 @@
 <beans default-autowire="byName">
     <bean name="/ext/Portal190724.do" class="com.seeyon.apps.ext.Portal190724.controller.Portal190724Controller"/>
     <bean name="/ext/setUserController.do" class="com.seeyon.apps.ext.Portal190724.controller.LawSetUserController"/>
+    <bean name="/ext/test.do" class="com.seeyon.apps.ext.Portal190724.controller.TestController"/>
 </beans>

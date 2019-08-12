@@ -27,7 +27,7 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
     public List<OrgDept> queryByFirstDept() {
 
         List<OrgDept> firstDeptList = new ArrayList<>();
-        String sql = "select v.code,v.name,(select m.id from m_org_unit m where m.code = v.uint) parent,v.uint from (select * from v_org_unit where IS_DELETED <> '1') v  where v.uint is not null and v.uint in('0') and not exists(select 1 from m_org_unit m where m.code = v.code) ";
+        String sql = "select v.code,v.name,(select m.id from m_org_unit m where m.code = v.uint) parent,v.uint from (select * from V_TEST_UINT where IS_DELETED <> '1') v  where v.uint is not null and v.uint in('0') and not exists(select 1 from m_org_unit m where m.code = v.code) ";
         Connection connection = SyncConnectionUtil.getMidConnection();
         PreparedStatement prep = null;
         ResultSet res = null;
@@ -61,7 +61,7 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
     public List<OrgDept> queryByOtherDept(String accountId) {
 
         List<OrgDept> firstDeptList = new ArrayList<>();
-        String sql = "select v.code,v.name,(select m.id from m_org_unit m where m.code = v.uint) parent,v.uint from (select * from v_org_unit where IS_DELETED <> '1') v  where v.uint is not null and v.uint not in('0')  and not exists(select 1 from m_org_unit m where m.code = v.code)";
+        String sql = "select v.code,v.name,(select m.id from m_org_unit m where m.code = v.uint) parent,v.uint from (select * from V_TEST_UINT where IS_DELETED <> '1') v  where v.uint is not null and v.uint not in('0')  and not exists(select 1 from m_org_unit m where m.code = v.code)";
         Connection connection = SyncConnectionUtil.getMidConnection();
         PreparedStatement prep = null;
         ResultSet res = null;
@@ -226,7 +226,7 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
         try {
             connection = SyncConnectionUtil.getMidConnection();
             //获取需要删除的部门
-            String qSql = "select m.* from M_ORG_UNIT m where 1=1 and  not exists (select 1 from v_org_unit v where v.code=m.code)";
+            String qSql = "select m.* from M_ORG_UNIT m where 1=1 and  not exists (select 1 from V_TEST_UINT v where v.code=m.code)";
             ps = connection.prepareStatement(qSql);
             res = ps.executeQuery();
             List<OrgDept> deptList = new ArrayList<>();
@@ -270,7 +270,7 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
     @Override
     public void updateOrgDept() {
         OrgCommon orgCommon = new OrgCommon();
-        String sql = "select mv.id,mv.code,v2.name,v2.uint,m2.id unitid,v2.IS_ENABLE  from   (select distinct m.id,v.code from v_org_unit v,m_org_unit m where m.code = v.code     and (nvl(v.name,'~') <> nvl(m.name,'~') or nvl(v.uint,'~') <> nvl(m.uint,'~') or v.IS_ENABLE ='0') ) mv    left join v_org_unit v2 on mv.code = v2.code   left join m_org_unit m2 on v2.uint = m2.code order by mv.code";
+        String sql = "select mv.id,mv.code,v2.name,v2.uint,m2.id unitid,v2.IS_ENABLE  from   (select distinct m.id,v.code from V_TEST_UINT v,m_org_unit m where m.code = v.code     and (nvl(v.name,'~') <> nvl(m.name,'~') or nvl(v.uint,'~') <> nvl(m.uint,'~') or v.IS_ENABLE ='0') ) mv    left join V_TEST_UINT v2 on mv.code = v2.code   left join m_org_unit m2 on v2.uint = m2.code order by mv.code";
         CTPRestClient client = SyncConnectionUtil.getOaRest();
         Connection connection = null;
         PreparedStatement ps = null;

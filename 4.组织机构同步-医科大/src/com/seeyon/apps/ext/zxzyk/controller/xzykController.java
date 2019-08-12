@@ -25,29 +25,33 @@ public class xzykController extends BaseController {
         return new ModelAndView("apps/ext/xzyk/index");
     }
 
+    public ModelAndView syncPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        return new ModelAndView("apps/ext/xzyk/index");
+    }
+
     public ModelAndView syncDept(HttpServletRequest request, HttpServletResponse response) throws Exception {
         OrgCommon common = new OrgCommon();
 
         Map<String, Object> map = new HashMap<>();
         try {
-            //部门
-            orgDeptManager.updateOrgDept();
-            orgDeptManager.insertOtherDept();
-
-
-//            //职级
-            orgLevelManager.updateOrgLevel();
-            orgLevelManager.insertOrgLevel();
-
+//            //部门
+//            orgDeptManager.updateOrgDept();
+//            orgDeptManager.insertOtherDept();
 //
-//            //人员
-            orgMemberManager.updateOrgMember();
-            orgMemberManager.insertOrgMember();
-
-
-            orgDeptManager.deleteOrgDept();
-            orgMemberManager.deleteOrgMember();
-            orgLevelManager.deleteNotExistLevel();
+//
+////            //职级
+//            orgLevelManager.updateOrgLevel();
+//            orgLevelManager.insertOrgLevel();
+//
+////
+////            //人员
+//            orgMemberManager.updateOrgMember();
+//            orgMemberManager.insertOrgMember();
+//
+//
+//            orgDeptManager.deleteOrgDept();
+//            orgMemberManager.deleteOrgMember();
+//            orgLevelManager.deleteNotExistLevel();
             map.put("code", 0);
             map.put("msg", "success");
         } catch (Exception e) {
@@ -59,6 +63,9 @@ public class xzykController extends BaseController {
         render(response, json.toJSONString());
         return null;
     }
+
+
+
 
     /**
      * 给前台渲染json数据

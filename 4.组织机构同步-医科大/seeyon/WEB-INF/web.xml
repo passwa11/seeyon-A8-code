@@ -13,7 +13,7 @@
     </filter>
     <filter-mapping>
         <filter-name>CAS Filter</filter-name>
-        <url-pattern>/xzykLogin.jsp</url-pattern>
+        <url-pattern>/index.jsp</url-pattern>
     </filter-mapping>
 
 

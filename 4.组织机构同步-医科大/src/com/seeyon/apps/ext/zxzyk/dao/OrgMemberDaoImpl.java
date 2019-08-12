@@ -18,7 +18,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
     public List<OrgMember> queryAddOrgMember() {
         String sql = "select c2.code,c2.name,c2.id,c2.POSTID,c2.description,c2.mobile,M_ORG_UNIT.id unitId,M_ORG_LEVEL.id levelId from " +
                 "(select memb.*,M_ORG_POST.id postid from (" +
-                "select * from V_ORG_MEMBER vm where not EXISTS(select * from M_ORG_MEMBER  where vm.code = M_ORG_MEMBER.code)) " +
+                "select * from V_TEST_MEMBER vm where not EXISTS(select * from M_ORG_MEMBER  where vm.code = M_ORG_MEMBER.code)) " +
                 "memb,M_ORG_POST  where memb.org_post_id = M_ORG_POST.code) c2 LEFT JOIN M_ORG_UNIT  on nvl(c2.org_account_id,c2.sup_department_id) = M_ORG_UNIT.code " +
                 "LEFT JOIN M_ORG_LEVEL  on c2.org_level_id=M_ORG_LEVEL.code";
 
@@ -132,12 +132,12 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
     @Override
     public List<OrgMember> queryUpdateOrgMember() {
         String sql = " select t.id,t.code,k.name,k.org_department_id unitid,k.org_level_id levelid,k.org_post_id postid,k.description,k.mobile from  (select distinct m.id,v.code  from m_org_member m,  " +
-                " (select v1.code,v1.name,u1.id org_department_id,l1.id org_level_id,p1.id org_post_id,v1.description,v1.mobile    from v_org_member v1,m_org_unit u1,m_org_level l1,m_org_post p1   " +
+                " (select v1.code,v1.name,u1.id org_department_id,l1.id org_level_id,p1.id org_post_id,v1.description,v1.mobile    from V_TEST_MEMBER v1,m_org_unit u1,m_org_level l1,m_org_post p1   " +
                 "where v1.org_department_id = u1.code and v1.org_level_id = l1.code and v1.org_post_id = p1.code) v   where v.code = m.code   and (       nvl(m.name,'~') <> nvl(v.name,'~') or   " +
                 " nvl(m.org_department_id,'~') <> nvl(v.org_department_id,'~') or       nvl(m.org_level_id,'~') <> nvl(v.org_level_id,'~') or       nvl(m.org_post_id,'~') <> nvl(v.org_post_id,'~') or  " +
                 " nvl(m.description,'~') <> nvl(v.description,'~') or       nvl(m.mobile,'~') <> nvl(v.mobile,'~')   ) ) t  left join  " +
                 " (select v2.code,v2.name,u2.id org_department_id,l2.id org_level_id,p2.id org_post_id,v2.description,v2.mobile   " +
-                "from v_org_member v2,m_org_unit u2,m_org_level l2,m_org_post p2   where v2.org_department_id = u2.code and v2.org_level_id = l2.code and v2.org_post_id = p2.code) k   on t.code = k.code ";
+                "from V_TEST_MEMBER v2,m_org_unit u2,m_org_level l2,m_org_post p2   where v2.org_department_id = u2.code and v2.org_level_id = l2.code and v2.org_post_id = p2.code) k   on t.code = k.code ";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection = SyncConnectionUtil.getMidConnection();
         PreparedStatement ps = null;
@@ -242,7 +242,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryNotExistOrgMember() {
-        String sql = "select M_ORG_MEMBER.id from M_ORG_MEMBER where not EXISTS (select * from V_ORG_MEMBER where M_ORG_MEMBER.code=V_ORG_MEMBER.code )";
+        String sql = "select M_ORG_MEMBER.id from M_ORG_MEMBER where not EXISTS (select * from V_TEST_MEMBER where M_ORG_MEMBER.code=V_TEST_MEMBER.code )";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection = SyncConnectionUtil.getMidConnection();
         PreparedStatement ps = null;
