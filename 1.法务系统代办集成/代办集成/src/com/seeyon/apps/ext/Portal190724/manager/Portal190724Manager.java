@@ -11,6 +11,9 @@ import java.util.Map;
 public interface Portal190724Manager {
     int selectState(String s);
 
+    int updateState(String id);
+
+
     Map select(String s);
 
     boolean save(Long long1, List<Contract> list);

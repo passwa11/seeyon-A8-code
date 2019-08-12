@@ -23,6 +23,11 @@ public class Portal190724ManagerImpl implements Portal190724Manager {
     private Portal190724Dao dao = new Portal190724DaoImpl();
 
     @Override
+    public int updateState(String id) {
+        return dao.updateState(id);
+    }
+
+    @Override
     public int selectState(String s) {
         return dao.selectState(s);
     }

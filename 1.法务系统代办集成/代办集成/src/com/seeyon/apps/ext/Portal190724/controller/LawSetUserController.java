@@ -25,24 +25,24 @@ public class LawSetUserController extends BaseController {
      * 跳转到账户设置页面
      */
     public ModelAndView toSetUserPage(HttpServletRequest request, HttpServletResponse response) {
-        CTPServiceClientManager clientManager = CTPServiceClientManager.getInstance("http://127.0.0.1:80");
-        CTPRestClient client = clientManager.getRestClient();
-        boolean flag = client.authenticate("gw", "gw111111");
-        // 新建岗位
-        Map data = new HashMap() {
-            {
-                put("orgAccountId", "5351864036140924954"); //单位ID
-                put("code", "111111");//编号
-                put("name", "子级菜单");//名称
-                put("description", "子级菜单");
-                put("enabled","true");//启用是否
-                put("superior", "-8730818828569195440");//父级ID
-                put("superiorName", "test");//父级ID
-            }
-        };
-
-        String post = client.post("/orgDepartment", data, String.class);//注意：这里的Map data 切勿传入null，及时data没有信息，也需Map data = new HashMap();
-        System.out.println(post);
+//        CTPServiceClientManager clientManager = CTPServiceClientManager.getInstance("http://127.0.0.1:80");
+//        CTPRestClient client = clientManager.getRestClient();
+//        boolean flag = client.authenticate("gw", "gw111111");
+//        // 新建岗位
+//        Map data = new HashMap() {
+//            {
+//                put("orgAccountId", "5351864036140924954"); //单位ID
+//                put("code", "111111");//编号
+//                put("name", "子级菜单");//名称
+//                put("description", "子级菜单");
+//                put("enabled","true");//启用是否
+//                put("superior", "-8730818828569195440");//父级ID
+//                put("superiorName", "test");//父级ID
+//            }
+//        };
+//
+//        String post = client.post("/orgDepartment", data, String.class);//注意：这里的Map data 切勿传入null，及时data没有信息，也需Map data = new HashMap();
+//        System.out.println(post);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("apps/ext/Portal190724/setAccount");
         return modelAndView;

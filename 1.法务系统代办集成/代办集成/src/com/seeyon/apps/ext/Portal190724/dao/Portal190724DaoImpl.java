@@ -30,6 +30,41 @@ public class Portal190724DaoImpl implements Portal190724Dao {
         driverClassName = configTools.getString("lowPortalPlugin.db.driverClassName");
     }
 
+    @Override
+    public int updateState(String id) {
+        int i = -1;
+        String sql = "update Law_Fox_Table lft set lft.law_state='1' where lft.id=?";// 用户已登录法律系统
+        Connection conn = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName(driverClassName);
+            conn = DriverManager.getConnection(url, username, password);
+            if (conn != null) {
+                pst = conn.prepareStatement(sql);
+                // 绑定参数
+                pst.setString(1, id);
+                int row = pst.executeUpdate();
+                if (row == 1) {
+                    i = 0;
+                }
+            }
+        } catch (Exception e) {
+            i = -1;
+            System.out.println("更待状态发生异常：异常信息------->" + e.getMessage());
+        } finally {
+            try {
+                pst.close();
+                conn.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return i;
+    }
+
     //获取登录法律系统用户名密码
     public Map<String, String> select(String id) {
         Map<String, String> map = new HashMap<String, String>();

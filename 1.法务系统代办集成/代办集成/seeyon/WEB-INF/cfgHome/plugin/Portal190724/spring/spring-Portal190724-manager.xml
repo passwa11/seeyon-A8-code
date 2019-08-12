@@ -14,34 +14,43 @@
 
     <bean parent="pluginMainMenu">
         <!--主菜单ID，唯一的数字字符串 -->
-        <property name="id" value="444446" />
+        <property name="id" value="444446"/>
         <!--主菜单名称 -->
-        <property name="name" value="单点登录" />
+        <property name="name" value="单点登录"/>
         <!--主菜单排序 -->
-        <property name="sortId" value="1" />
+        <property name="sortId" value="1"/>
         <!--菜单认证类 -->
         <property name="menuCheck">
-            <bean class="com.seeyon.ctp.menu.check.MenuForAllUsersChecker" />
+            <bean class="com.seeyon.ctp.menu.check.MenuForAllUsersChecker"/>
         </property>
         <!--二级菜单 -->
         <property name="children">
             <list>
                 <bean class="com.seeyon.ctp.plugin.PluginMenu">
                     <!--二级菜单ID唯一数字串 -->
-                    <property name="id" value="11111" />
+                    <property name="id" value="11111"/>
                     <!--二级菜单名称 -->
-                    <property name="name" value="设置账户" />
+                    <property name="name" value="设置账户"/>
                     <!--菜单打开方式：mainfrm: 工作区打开; newWindow: 新窗口打开 -->
-                    <property name="target" value="mainfrm" />
+                    <property name="target" value="mainfrm"/>
                     <!--菜单图标 -->
-                    <property name="icon" value="/apps_res/plugin/nc/images/2401.gif" />
+                    <property name="icon" value="/apps_res/plugin/nc/images/2401.gif"/>
                     <!--菜单链接地址，这个连接必须是协同的内部连接 -->
-                    <property name="url" value="/ext/setUserController.do?method=toSetUserPage" />
+                    <property name="url" value="/ext/setUserController.do?method=toSetUserPage"/>
                     <!--菜单访问认证类 -->
                     <property name="menuCheck">
-                        <bean class="com.seeyon.ctp.menu.check.UserMenuCheck" />
+                        <bean class="com.seeyon.apps.ext.Portal190724.check.LawMenuForallUserChecker"/>
                     </property>
                 </bean>
+                <bean class="com.seeyon.ctp.plugin.PluginMenu">
+                    <property name="name" value="法律系统登录"/>
+                    <property name="icon" value="/apps_res/plugin/nc/images/menu.gif"/>
+                    <property name="url" value="/lawLoginController.do?method=login"/>
+                    <property name="menuCheck">
+                        <bean class="com.seeyon.apps.ext.Portal190724.check.LawMenuForallUserChecker"/>
+                    </property>
+                </bean>
+
             </list>
         </property>
     </bean>
