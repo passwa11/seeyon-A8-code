@@ -5,7 +5,7 @@
 
     <bean id="xk263EmailSection" class="com.seeyon.apps.ext.xk263Email.section.Xk263EmailSection" init-method="init">
         <property name="sectionType" value="common"/>
-        <property name="sortId" value="99"/>
+        <property name="sortId" value="100"/>
     </bean>
 
     <bean parent="pluginMainMenu">
@@ -25,7 +25,7 @@
                 <bean class="com.seeyon.ctp.plugin.PluginMenu">
                     <property name="name" value="办公邮箱"/>
                     <property name="icon" value="/apps_res/plugin/nc/images/menu.gif"/>
-                    <property name="url" value="/ext/lawLogin.do?method=login"/>
+                    <property name="url" value="/ext/xk263Email.do?method=login263Email"/>
                     <property name="menuCheck">
                         <bean class="com.seeyon.apps.ext.xk263Email.check.Xk263EmailChecker"/>
                     </property>
