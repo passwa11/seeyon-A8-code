@@ -24,6 +24,8 @@
             <list>
                 <bean class="com.seeyon.ctp.plugin.PluginMenu">
                     <property name="name" value="办公邮箱"/>
+<!--                    &lt;!&ndash; 菜单打开方式 mainfrm:工作区; newWindow:新窗口 - >-->
+                    <property name="target" value="newWindow" />
                     <property name="icon" value="/apps_res/plugin/nc/images/menu.gif"/>
                     <property name="url" value="/ext/xk263Email.do?method=login263Email"/>
                     <property name="menuCheck">
