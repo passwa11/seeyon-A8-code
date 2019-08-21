@@ -5,7 +5,7 @@
 
     <bean id="xk263EmailSection" class="com.seeyon.apps.ext.xk263Email.section.Xk263EmailSection" init-method="init">
         <property name="sectionType" value="common"/>
-        <property name="sortId" value="100"/>
+        <property name="sortId" value="99"/>
     </bean>
 
     <bean parent="pluginMainMenu">
@@ -17,7 +17,7 @@
         <property name="sortId" value="1"/>
         <!--菜单认证类 -->
         <property name="menuCheck">
-            <bean class="com.seeyon.ctp.menu.check.MenuForAllUsersChecker"/>
+            <bean class="com.seeyon.apps.ext.xk263Email.check.Xk263EmailChecker"/>
         </property>
         <!--二级菜单 -->
         <property name="children">
