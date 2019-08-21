@@ -8,5 +8,29 @@
         <property name="sortId" value="99"/>
     </bean>
 
-
+    <bean parent="pluginMainMenu">
+        <!--主菜单ID，唯一的数字字符串 -->
+        <property name="id" value="20190821"/>
+        <!--主菜单名称 -->
+        <property name="name" value="集团邮箱"/>
+        <!--主菜单排序 -->
+        <property name="sortId" value="1"/>
+        <!--菜单认证类 -->
+        <property name="menuCheck">
+            <bean class="com.seeyon.ctp.menu.check.MenuForAllUsersChecker"/>
+        </property>
+        <!--二级菜单 -->
+        <property name="children">
+            <list>
+                <bean class="com.seeyon.ctp.plugin.PluginMenu">
+                    <property name="name" value="办公邮箱"/>
+                    <property name="icon" value="/apps_res/plugin/nc/images/menu.gif"/>
+                    <property name="url" value="/ext/lawLogin.do?method=login"/>
+                    <property name="menuCheck">
+                        <bean class="com.seeyon.apps.ext.xk263Email.check.Xk263EmailChecker"/>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
 </beans>
