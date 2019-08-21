@@ -3,6 +3,10 @@ package com.seeyon.apps.ext.xk263Email.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.xk263Email.util.ZCommonUtil;
 import com.seeyon.ctp.common.controller.BaseController;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +34,7 @@ public class xk263EmailController extends BaseController {
 
     /**
      * 单点到263邮箱
+     *
      * @param request
      * @param response
      * @return
@@ -38,10 +43,10 @@ public class xk263EmailController extends BaseController {
     public ModelAndView login263Email(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String loginUrl = ZCommonUtil.get263LoginUrl();
         String count = ZCommonUtil.getUnreadCount();
-
-        request.setAttribute("loginUrl", loginUrl);
-        request.setAttribute("count", count);
-        return new ModelAndView("apps/ext/xk263Email/login");
+        StringBuffer url = new StringBuffer();
+        url.append("redirect:");
+        url.append(loginUrl);
+        return new ModelAndView(url.toString());
     }
 
     private void render(HttpServletResponse response, String text) {
