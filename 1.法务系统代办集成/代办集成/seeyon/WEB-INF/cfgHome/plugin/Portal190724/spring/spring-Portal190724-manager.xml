@@ -45,7 +45,7 @@
                 <bean class="com.seeyon.ctp.plugin.PluginMenu">
                     <property name="name" value="法律系统登录"/>
                     <property name="icon" value="/apps_res/plugin/nc/images/menu.gif"/>
-                    <property name="url" value="/lawLoginController.do?method=login"/>
+                    <property name="url" value="/ext/lawLogin.do?method=login"/>
                     <property name="menuCheck">
                         <bean class="com.seeyon.apps.ext.Portal190724.check.LawMenuForallUserChecker"/>
                     </property>
