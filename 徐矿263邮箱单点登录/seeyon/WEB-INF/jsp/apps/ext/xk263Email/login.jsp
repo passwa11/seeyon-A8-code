@@ -1,7 +1,7 @@
 <%@page import="java.net.URLEncoder" %>
 <%@page import="java.net.URLDecoder" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
-<%@ include file="/WEB-INF/jsp/form/formcreate/formHeader.jsp" %>
+<%--<%@ include file="/WEB-INF/jsp/form/formcreate/formHeader.jsp" %>--%>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
