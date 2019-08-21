@@ -27,6 +27,23 @@ public class xk263EmailController extends BaseController {
         return null;
     }
 
+
+    /**
+     * 单点到263邮箱
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ModelAndView login263Email(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String loginUrl = ZCommonUtil.get263LoginUrl();
+        String count = ZCommonUtil.getUnreadCount();
+
+        request.setAttribute("loginUrl", loginUrl);
+        request.setAttribute("count", count);
+        return new ModelAndView("apps/ext/xk263Email/login");
+    }
+
     private void render(HttpServletResponse response, String text) {
         response.setContentType("application/json;charset=UTF-8");
         try {
