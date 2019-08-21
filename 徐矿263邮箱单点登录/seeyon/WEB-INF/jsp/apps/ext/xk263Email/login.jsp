@@ -6,7 +6,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
-
+<%--                这个页面没用到            --%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -23,7 +23,10 @@
 
         function login() {
             var login = '<%=request.getAttribute("loginUrl")%>';
-            window.open(login);
+            // console.log(login,'1');
+            window.open('http://pcc.263.net/PCC/263mail.do?cid=ff80808150fbc5b2015124367cc103ba&domain=xkjt.net&uid=hh&sign=206ebf9f1d8b71aa455e9fee3ae5cd0c');
+            // console.log(login,'2');
+
         }
     </script>
 </head>
