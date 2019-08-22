@@ -8,35 +8,35 @@
         <property name="sortId" value="99"/>
     </bean>
 
-    <bean parent="pluginMainMenu">
-        <!--主菜单ID，唯一的数字字符串 -->
-        <property name="id" value="20190821"/>
-        <!--主菜单名称 -->
-        <property name="name" value="集团邮箱"/>
-        <!--主菜单排序 -->
-        <property name="sortId" value="1"/>
+<!--    <bean parent="pluginMainMenu">-->
+<!--        &lt;!&ndash;主菜单ID，唯一的数字字符串 &ndash;&gt;-->
+<!--        <property name="id" value="20190821"/>-->
+<!--        &lt;!&ndash;主菜单名称 &ndash;&gt;-->
+<!--        <property name="name" value="集团邮箱"/>-->
+<!--        &lt;!&ndash;主菜单排序 &ndash;&gt;-->
+<!--        <property name="sortId" value="1"/>-->
 
-        <!--二级菜单 -->
-        <property name="children">
-            <list>
-                <bean class="com.seeyon.ctp.plugin.PluginMenu">
-                    <property name="id" value="2019082201"/>
-                    <property name="name" value="办公邮箱"/>
-<!--                    &lt;!&ndash; 菜单打开方式 mainfrm:工作区; newWindow:新窗口 - >-->
-                    <property name="target" value="newWindow" />
-                    <property name="icon" value="/apps_res/plugin/nc/images/menu.gif"/>
-                    <property name="url" value="/ext/xk263Email.do?method=login263Email"/>
-                    <property name="menuCheck">
-<!--                        <bean class="com.seeyon.ctp.menu.check.UserMenuCheck"/>-->
-                        <bean class="com.seeyon.ctp.menu.check.MenuForAllUsersChecker"/>
-                    </property>
-                </bean>
-            </list>
-        </property>
-        <!--菜单认证类 -->
-        <property name="menuCheck">
-            <bean class="com.seeyon.ctp.menu.check.MenuForAllUsersChecker "/>
-        </property>
-    </bean>
+<!--        &lt;!&ndash;二级菜单 &ndash;&gt;-->
+<!--        <property name="children">-->
+<!--            <list>-->
+<!--                <bean class="com.seeyon.ctp.plugin.PluginMenu">-->
+<!--                    <property name="id" value="2019082201"/>-->
+<!--                    <property name="name" value="办公邮箱"/>-->
+<!--&lt;!&ndash;                    &lt;!&ndash; 菜单打开方式 mainfrm:工作区; newWindow:新窗口 - >&ndash;&gt;-->
+<!--                    <property name="target" value="newWindow" />-->
+<!--                    <property name="icon" value="/apps_res/plugin/nc/images/menu.gif"/>-->
+<!--                    <property name="url" value="/ext/xk263Email.do?method=login263Email"/>-->
+<!--                    <property name="menuCheck">-->
+<!--&lt;!&ndash;                        <bean class="com.seeyon.ctp.menu.check.UserMenuCheck"/>&ndash;&gt;-->
+<!--                        <bean class="com.seeyon.ctp.menu.check.MenuForAllUsersChecker"/>-->
+<!--                    </property>-->
+<!--                </bean>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        &lt;!&ndash;菜单认证类 &ndash;&gt;-->
+<!--        <property name="menuCheck">-->
+<!--            <bean class="com.seeyon.ctp.menu.check.MenuForAllUsersChecker "/>-->
+<!--        </property>-->
+<!--    </bean>-->
 
 </beans>
