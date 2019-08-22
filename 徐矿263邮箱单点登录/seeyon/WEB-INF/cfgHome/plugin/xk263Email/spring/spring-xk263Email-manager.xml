@@ -27,14 +27,14 @@
                     <property name="icon" value="/apps_res/plugin/nc/images/menu.gif"/>
                     <property name="url" value="/ext/xk263Email.do?method=login263Email"/>
                     <property name="menuCheck">
-                        <bean class="com.seeyon.apps.ext.xk263Email.check.Xk263EmailChecker"/>
+                        <bean class="com.seeyon.ctp.menu.check.UserMenuCheck"/>
                     </property>
                 </bean>
             </list>
         </property>
         <!--菜单认证类 -->
         <property name="menuCheck">
-            <bean class="com.seeyon.apps.ext.xk263Email.check.Xk263EmailChecker"/>
+            <bean class="com.seeyon.ctp.menu.check.UserMenuCheck"/>
         </property>
     </bean>
 
