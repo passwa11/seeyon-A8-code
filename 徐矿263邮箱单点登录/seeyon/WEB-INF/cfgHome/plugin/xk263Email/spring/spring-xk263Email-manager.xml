@@ -15,14 +15,12 @@
         <property name="name" value="集团邮箱"/>
         <!--主菜单排序 -->
         <property name="sortId" value="1"/>
-        <!--菜单认证类 -->
-        <property name="menuCheck">
-            <bean class="com.seeyon.apps.ext.xk263Email.check.Xk263EmailChecker"/>
-        </property>
+
         <!--二级菜单 -->
         <property name="children">
             <list>
                 <bean class="com.seeyon.ctp.plugin.PluginMenu">
+                    <property name="id" value="2019082201"/>
                     <property name="name" value="办公邮箱"/>
 <!--                    &lt;!&ndash; 菜单打开方式 mainfrm:工作区; newWindow:新窗口 - >-->
                     <property name="target" value="newWindow" />
@@ -34,5 +32,10 @@
                 </bean>
             </list>
         </property>
+        <!--菜单认证类 -->
+        <property name="menuCheck">
+            <bean class="com.seeyon.apps.ext.xk263Email.check.Xk263EmailChecker"/>
+        </property>
     </bean>
+
 </beans>
