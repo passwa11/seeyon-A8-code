@@ -17,7 +17,7 @@ public class OrgLevelDaoImpl implements OrgLevelDao {
     @Override
     public List<OrgLevel> queryOrgLevel() {
         List<OrgLevel> levelList = new ArrayList<>();
-        String sql = "select vl.id,vl.name,vl.code,vl.is_enable from V_TEST_LEVEL vl where not exists (select * from M_ORG_LEVEL ml where ml.code=vl.code)";
+        String sql = "select vl.id,vl.name,vl.code,vl.is_enable from V_ORG_LEVEL vl where not exists (select * from M_ORG_LEVEL ml where ml.code=vl.code)";
         Connection connection = SyncConnectionUtil.getMidConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -87,7 +87,7 @@ public class OrgLevelDaoImpl implements OrgLevelDao {
     @Override
     public List<OrgLevel> queryChangerLevel() {
         List<OrgLevel> levelList = new ArrayList<>();
-        String sql = "select VL.CODE,VL.name,ML.ID from V_TEST_LEVEL vl,M_ORG_LEVEL ml where VL.code =ML.code and VL.name <> ML.NAME";
+        String sql = "select VL.CODE,VL.name,ML.ID from V_ORG_LEVEL vl,M_ORG_LEVEL ml where VL.code =ML.code and VL.name <> ML.NAME";
         ResultSet rs = null;
         Connection connection = SyncConnectionUtil.getMidConnection();
         PreparedStatement ps = null;
@@ -146,7 +146,7 @@ public class OrgLevelDaoImpl implements OrgLevelDao {
     @Override
     public List<OrgLevel> queryNotExistLevel() {
         List<OrgLevel> levelList = new ArrayList<>();
-        String sql = "select * from M_ORG_LEVEL ml where not EXISTS (select * from V_TEST_LEVEL vl where VL.CODE =ML.code)";
+        String sql = "select * from M_ORG_LEVEL ml where not EXISTS (select * from V_ORG_LEVEL vl where VL.CODE =ML.code)";
         ResultSet rs = null;
         Connection connection = SyncConnectionUtil.getMidConnection();
         PreparedStatement ps = null;

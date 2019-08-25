@@ -2,11 +2,16 @@ package com.seeyon.apps.ext.zxzyk.quartz;
 
 import com.seeyon.apps.ext.zxzyk.dao.OrgCommon;
 import com.seeyon.apps.ext.zxzyk.manager.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by Administrator on 2019-7-29.
  */
 public class SyncDeptTask implements Runnable {
+
+    private Logger logger = LoggerFactory.getLogger(SyncDeptTask.class);
+
 
     private OrgDeptManager orgDeptManager = new OrgDeptManagerImpl();
 
@@ -18,6 +23,8 @@ public class SyncDeptTask implements Runnable {
 
     @Override
     public void run() {
+        logger.info("==============================同步组织信息执行了吗？======================================");
+
         //部门
         orgDeptManager.updateOrgDept();
         orgDeptManager.insertOtherDept();
