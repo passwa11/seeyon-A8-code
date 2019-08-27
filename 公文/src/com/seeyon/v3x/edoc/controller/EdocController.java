@@ -14,8 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.seeyon.v3x.edoc.domain.*;
 import com.seeyon.v3x.edoc.manager.*;
-import com.seeyon.v3x.edoc.manager.CtpPdfSavepathManager;
-import com.seeyon.v3x.edoc.manager.CtpPdfSavepathManagerImpl;
 import com.seeyon.v3x.edoc.util.*;
 import com.seeyon.v3x.webmail.util.FileUtil;
 import freemarker.template.Configuration;
@@ -2986,17 +2984,17 @@ public class EdocController extends BaseController {
 
             String process_xml = request.getParameter("process_xml");
             String templeteProcessId = request.getParameter("templeteProcessId");
-//周刘成
-//            if (isQuickSend == false) {
-//                int flag = transitionPdf(edocSummary, body);
-//                if (flag == -1) {
-//                    StringBuffer sb = new StringBuffer();
-//                    sb.append("alert('" + StringEscapeUtils.escapeJavaScript("转换服务出错了，请联系管理员") + "');");
-//                    sb.append("history.back();");
-//                    rendJavaScript(response, sb.toString());
-//                    return null;
-//                }
-//            }
+            //zhou
+            if (isQuickSend == false) {
+                int flag = transitionPdf(edocSummary, body);
+                if (flag == -1) {
+                    StringBuffer sb = new StringBuffer();
+                    sb.append("alert('" + StringEscapeUtils.escapeJavaScript("转换服务出错了，请联系管理员") + "');");
+                    sb.append("history.back();");
+                    rendJavaScript(response, sb.toString());
+                    return null;
+                }
+            }
             try {
                 affairId = edocManager.transRunCase(edocSummary, body, senderOninion, sendType, options, comm, agentToId,
                         isNewSent, process_xml, workflowNodePeoplesInput, workflowNodeConditionInput, templeteProcessId);
