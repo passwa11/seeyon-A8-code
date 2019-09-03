@@ -1,5 +1,6 @@
 package com.seeyon.apps.ext.zxzyk.dao;
 
+import com.alibaba.fastjson.JSONArray;
 import com.seeyon.apps.ext.zxzyk.po.OrgDept;
 import com.seeyon.apps.ext.zxzyk.util.SyncConnectionUtil;
 import com.seeyon.apps.ext.zxzyk.util.TreeUtil;
@@ -116,20 +117,39 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
                     } else {
                         dmap.put("superior", dept.getOrgAccountId());
                     }
-                    JSONObject json = client.post("/orgDepartment", dmap, JSONObject.class);
-                    if (null != json) {
-                        if (json.getBoolean("success")) {
-                            JSONObject ent = json.getJSONArray("successMsgs").getJSONObject(0).getJSONObject("ent");
-                            String deptid = ent.getString("id");
-                            ps.setString(1, deptid != null && !"".equals(deptid) ? deptid : "");
-                            ps.setString(2, dept.getDeptcode() != null && !"".equals(dept.getDeptcode()) ? dept.getDeptcode() : "");
-                            ps.setString(3, dept.getDeptname() != null && !"".equals(dept.getDeptname()) ? dept.getDeptname() : "");
-                            boolean flag = dept.getSuperior() != null && !"".equals(dept.getSuperior()) && !dept.getSuperior().equals(dept.getOrgAccountId());
-                            ps.setString(4, flag ? dept.getSuperior() : "");
-                            String sortId = ent.getString("sortId");
-                            ps.setString(5, sortId != null && !sortId.equals("") ? sortId : "");
-                            ps.addBatch();
+
+                    String isExist2 = client.get("/orgDepartment/code/" + dept.getDeptcode(), String.class);
+                    JSONArray jsonArray = JSONArray.parseArray(isExist2);
+
+                    if (0 == jsonArray.size()) {
+                        JSONObject json = client.post("/orgDepartment", dmap, JSONObject.class);
+                        if (null != json) {
+                            if (json.getBoolean("success")) {
+                                JSONObject ent = json.getJSONArray("successMsgs").getJSONObject(0).getJSONObject("ent");
+                                String deptid = ent.getString("id");
+                                ps.setString(1, deptid != null && !"".equals(deptid) ? deptid : "");
+                                ps.setString(2, dept.getDeptcode() != null && !"".equals(dept.getDeptcode()) ? dept.getDeptcode() : "");
+                                ps.setString(3, dept.getDeptname() != null && !"".equals(dept.getDeptname()) ? dept.getDeptname() : "");
+                                boolean flag = dept.getSuperior() != null && !"".equals(dept.getSuperior()) && !dept.getSuperior().equals(dept.getOrgAccountId());
+                                ps.setString(4, flag ? dept.getSuperior() : "");
+                                String sortId = ent.getString("sortId");
+                                ps.setString(5, sortId != null && !sortId.equals("") ? sortId : "");
+                                ps.addBatch();
+                            }
                         }
+                    } else {
+                        com.alibaba.fastjson.JSONObject isExist = com.alibaba.fastjson.JSONObject.parseObject(jsonArray.get(0).toString());
+
+                        String deptid = isExist.getString("id");
+                        ps.setString(1, deptid != null && !"".equals(deptid) ? deptid : "");
+                        ps.setString(2, dept.getDeptcode() != null && !"".equals(dept.getDeptcode()) ? dept.getDeptcode() : "");
+                        ps.setString(3, "");
+                        boolean flag = dept.getSuperior() != null && !"".equals(dept.getSuperior()) && !dept.getSuperior().equals(dept.getOrgAccountId());
+                        ps.setString(4, dept.getSuperior());
+                        ps.setString(5, "");
+                        ps.addBatch();
+                        ps.executeBatch();
+                        connection.commit();//执行
                     }
 
                 }
@@ -157,7 +177,7 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
                 ps = connection.prepareStatement(insertSql);
                 try {
                     for (int i = 0; i < list.size(); i++) {
-                        List<OrgDept> deptList=queryByOtherDept(new OrgCommon().getOrgAccountId());
+                        List<OrgDept> deptList = queryByOtherDept(new OrgCommon().getOrgAccountId());
                         if (null != deptList && deptList.size() > 0) {
                             List<OrgDept> handleList = TreeUtil.getRootList(deptList);
                             getList(handleList, client, ps);
@@ -191,25 +211,36 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
             } else {
                 dmap.put("superior", dept.getOrgAccountId());
             }
-            JSONObject json = client.post("/orgDepartment", dmap, JSONObject.class);
-            if (null != json) {
-                if (json.getBoolean("success")) {
-                    JSONObject ent = json.getJSONArray("successMsgs").getJSONObject(0).getJSONObject("ent");
-                    String deptid = ent.getString("id");
-                    ps.setString(1, deptid != null && !"".equals(deptid) ? deptid : "");
-                    ps.setString(2, dept.getDeptcode() != null && !"".equals(dept.getDeptcode()) ? dept.getDeptcode() : "");
-                    ps.setString(3, dept.getDeptname() != null && !"".equals(dept.getDeptname()) ? dept.getDeptname() : "");
-                    boolean flag = dept.getSuperior() != null && !"".equals(dept.getSuperior()) && !dept.getSuperior().equals(dept.getOrgAccountId());
-                    ps.setString(4, flag ? dept.getSuperior() : "");
-                    String sortId = ent.getString("sortId");
-                    ps.setString(5, sortId != null && !sortId.equals("") ? sortId : "");
-//                    ps.addBatch();
-                    ps.executeUpdate();
+            String isExist2 = client.get("/orgDepartment/code/" + dept.getDeptcode(), String.class);
+            JSONArray jsonArray = JSONArray.parseArray(isExist2);
+            if (0 == jsonArray.size()) {
+                JSONObject json = client.post("/orgDepartment", dmap, JSONObject.class);
+                if (null != json) {
+                    if (json.getBoolean("success")) {
+                        JSONObject ent = json.getJSONArray("successMsgs").getJSONObject(0).getJSONObject("ent");
+                        String deptid = ent.getString("id");
+                        ps.setString(1, deptid != null && !"".equals(deptid) ? deptid : "");
+                        ps.setString(2, dept.getDeptcode() != null && !"".equals(dept.getDeptcode()) ? dept.getDeptcode() : "");
+                        ps.setString(3, dept.getDeptname() != null && !"".equals(dept.getDeptname()) ? dept.getDeptname() : "");
+                        boolean flag = dept.getSuperior() != null && !"".equals(dept.getSuperior()) && !dept.getSuperior().equals(dept.getOrgAccountId());
+                        ps.setString(4, flag ? dept.getSuperior() : "");
+                        String sortId = ent.getString("sortId");
+                        ps.setString(5, sortId != null && !sortId.equals("") ? sortId : "");
+                        ps.executeUpdate();
+                    }
                 }
+            } else {
+                com.alibaba.fastjson.JSONObject isExist = com.alibaba.fastjson.JSONObject.parseObject(jsonArray.get(0).toString());
+
+                String deptid = isExist.getString("id");
+                ps.setString(1, deptid != null && !"".equals(deptid) ? deptid : "");
+                ps.setString(2, dept.getDeptcode() != null && !"".equals(dept.getDeptcode()) ? dept.getDeptcode() : "");
+                ps.setString(3, "");
+                boolean flag = dept.getSuperior() != null && !"".equals(dept.getSuperior()) && !dept.getSuperior().equals(dept.getOrgAccountId());
+                ps.setString(4, "");
+                ps.setString(5, "");
+                ps.executeUpdate();
             }
-//            if (dept.getList().size() > 0) {
-//                getList(dept.getList(), client, ps);
-//            }
         }
     }
 
@@ -287,7 +318,7 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
                 orgDept.setDeptname(res.getString("name"));
                 orgDept.setOrgAccountId(orgCommon.getOrgAccountId());
                 orgDept.setUnitcode(res.getString("uint") == null ? "" : res.getString("uint"));
-                if (res.getObject("unitid") != null && !"".equals(res.getString("unitid")) && !"0".equals(res.getString("unitid"))) {
+                if (!"".equals(res.getString("unitid")) && !"0".equals(res.getString("unitid"))) {
                     orgDept.setSuperior(res.getString("unitid"));
                 } else {
                     orgDept.setSuperior(orgCommon.getOrgAccountId());
@@ -323,8 +354,8 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
                                 updateSql.append(" name = '',");
                             }
 
-                            if (null != dept.getSuperior() && !"".equals(dept.getSuperior().toString())) {
-                                updateSql.append(" uint = '" + dept.getSuperior().toString() + "' ");
+                            if (null != dept.getUnitcode() && !"".equals(dept.getUnitcode())) {
+                                updateSql.append(" uint = '" + dept.getUnitcode() + "' ");
                             } else {
                                 updateSql.append(" uint = '' ");
                             }

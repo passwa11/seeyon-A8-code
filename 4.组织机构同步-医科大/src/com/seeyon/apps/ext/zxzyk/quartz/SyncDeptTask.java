@@ -25,20 +25,15 @@ public class SyncDeptTask implements Runnable {
     public void run() {
         logger.info("==============================同步组织信息执行了吗？======================================");
 
-        //部门
-        orgDeptManager.updateOrgDept();
         orgDeptManager.insertOtherDept();
-
-
+        orgDeptManager.updateOrgDept();
         //职级
-        orgLevelManager.updateOrgLevel();
         orgLevelManager.insertOrgLevel();
-
+        orgLevelManager.updateOrgLevel();
 
         //人员
-        orgMemberManager.updateOrgMember();
         orgMemberManager.insertOrgMember();
-
+        orgMemberManager.updateOrgMember();
 
         orgMemberManager.deleteOrgMember();
         orgDeptManager.deleteOrgDept();

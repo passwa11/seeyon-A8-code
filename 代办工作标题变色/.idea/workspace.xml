@@ -2,10 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="990d4793-309b-48cd-85f8-78758fbdb8e8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ctp-portal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ctp-portal.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/BaseSectionImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/BaseSectionImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/Portal190724.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/Portal190724.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/Portal190724Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/Portal190724Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/TestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/law/lowPlugin.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/law/lowPlugin.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,22 +33,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="485" column="53" lean-forward="true" selection-start-line="485" selection-start-column="53" selection-end-line="485" selection-end-column="53" />
+            <state relative-caret-position="9108">
+              <caret line="326" selection-start-line="326" selection-end-line="326" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
                 <element signature="e#7933#7934#0" expanded="true" />
                 <element signature="e#7960#7961#0" expanded="true" />
-                <element signature="e#9799#9815#0" expanded="true" />
+                <element signature="e#8391#8392#0" expanded="true" />
+                <element signature="e#21024#21025#0" expanded="true" />
                 <element signature="e#21060#21061#0" expanded="true" />
+                <element signature="e#21125#21126#0" expanded="true" />
                 <element signature="e#21166#21167#0" expanded="true" />
+                <element signature="e#21218#21219#0" expanded="true" />
                 <element signature="e#21251#21252#0" expanded="true" />
+                <element signature="e#23582#23583#0" expanded="true" />
                 <element signature="e#23609#23610#0" expanded="true" />
+                <element signature="e#23747#23748#0" expanded="true" />
                 <element signature="e#23775#23776#0" expanded="true" />
+                <element signature="e#23861#23862#0" expanded="true" />
                 <element signature="e#23888#23889#0" expanded="true" />
+                <element signature="e#24273#24274#0" expanded="true" />
                 <element signature="e#24299#24300#0" expanded="true" />
+                <element signature="e#24382#24383#0" expanded="true" />
                 <element signature="e#24408#24409#0" expanded="true" />
+                <element signature="e#24469#24470#0" expanded="true" />
                 <element signature="e#24497#24498#0" expanded="true" />
               </folding>
             </state>
@@ -44,37 +65,41 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/templete/MultiRowVariableColumnColTemplete.java">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="718">
-              <caret line="310" lean-forward="true" selection-start-line="310" selection-end-line="310" />
+            <state relative-caret-position="66">
+              <caret line="29" column="46" lean-forward="true" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
               <folding>
-                <element signature="e#3399#3400#0" expanded="true" />
-                <element signature="e#3444#3445#0" expanded="true" />
-                <element signature="e#3508#3509#0" expanded="true" />
-                <element signature="e#3568#3569#0" expanded="true" />
+                <element signature="e#1785#1786#0" expanded="true" />
+                <element signature="e#1837#1838#0" expanded="true" />
+                <element signature="e#2727#2755#0" expanded="true" />
+                <element signature="e#3111#3112#0" expanded="true" />
+                <element signature="e#3134#3135#0" expanded="true" />
+                <element signature="e#3171#3172#0" expanded="true" />
+                <element signature="e#3201#3202#0" expanded="true" />
+                <element signature="e#4686#4687#0" expanded="true" />
+                <element signature="e#4721#4722#0" expanded="true" />
+                <element signature="e#4787#4788#0" expanded="true" />
+                <element signature="e#4836#4837#0" expanded="true" />
+                <element signature="e#6645#6657#0" expanded="true" />
+                <element signature="e#6726#6737#0" expanded="true" />
+                <element signature="e#9204#9216#0" expanded="true" />
+                <element signature="e#12645#12646#0" expanded="true" />
+                <element signature="e#12663#12664#0" expanded="true" />
+                <element signature="e#12743#12744#0" expanded="true" />
+                <element signature="e#12807#12808#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/collaboration/manager/PendingManagerImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6527">
-              <caret line="3776" column="12" selection-start-line="3776" selection-start-column="12" selection-end-line="3776" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSection.java">
+        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/PendingManagerImpl.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="706">
-              <caret line="162" column="13" lean-forward="true" selection-start-line="162" selection-start-column="13" selection-end-line="162" selection-end-column="13" />
+            <state relative-caret-position="264">
+              <caret line="128" column="46" lean-forward="true" selection-start-line="128" selection-start-column="46" selection-end-line="128" selection-end-column="46" />
               <folding>
-                <element signature="e#6641#6653#0" expanded="true" />
-                <element signature="e#6722#6733#0" expanded="true" />
+                <element signature="e#0#192142#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -114,17 +139,18 @@
         <option value="$PROJECT_DIR$/src/com/Test.java" />
         <option value="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/SectionManager.java" />
         <option value="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/SectionManagerImpl.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSection.java" />
         <option value="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/templete/MultiRowVariableColumnColTemplete.java" />
         <option value="$PROJECT_DIR$/src/com/seeyon/apps/collaboration/manager/PendingManagerImpl.java" />
         <option value="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSection.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="76" />
-    <option name="width" value="1537" />
-    <option name="height" value="900" />
+    <option name="x" value="280" />
+    <option name="y" value="12" />
+    <option name="width" value="1536" />
+    <option name="height" value="957" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -132,8 +158,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -156,21 +180,6 @@
               <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
               <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="portal" type="462c0819:PsiDirectoryNode" />
-              <item name="sections" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="portal" type="462c0819:PsiDirectoryNode" />
-              <item name="sections" type="462c0819:PsiDirectoryNode" />
-              <item name="tpl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -235,52 +244,6 @@
               <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="ctp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="ctp" type="462c0819:PsiDirectoryNode" />
-              <item name="portal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="ctp" type="462c0819:PsiDirectoryNode" />
-              <item name="portal" type="462c0819:PsiDirectoryNode" />
-              <item name="section" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="ctp" type="462c0819:PsiDirectoryNode" />
-              <item name="portal" type="462c0819:PsiDirectoryNode" />
-              <item name="section" type="462c0819:PsiDirectoryNode" />
-              <item name="templete" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="jsp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -316,127 +279,36 @@
               <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="section" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-apps-common.jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-apps-common.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-apps-common.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-apps-common.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="collaboration" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-apps-common.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="collaboration" type="462c0819:PsiDirectoryNode" />
               <item name="manager" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-apps-common.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="ctp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-apps-common.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="ctp" type="462c0819:PsiDirectoryNode" />
               <item name="portal" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-apps-common.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="ctp" type="462c0819:PsiDirectoryNode" />
               <item name="portal" type="462c0819:PsiDirectoryNode" />
               <item name="section" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-ctp-portal.jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-ctp-portal.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-ctp-portal.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ctp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-ctp-portal.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ctp" type="462c0819:PsiDirectoryNode" />
-              <item name="portal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-ctp-portal.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ctp" type="462c0819:PsiDirectoryNode" />
-              <item name="portal" type="462c0819:PsiDirectoryNode" />
-              <item name="section" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-ctp-portal.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="ctp" type="462c0819:PsiDirectoryNode" />
-              <item name="portal" type="462c0819:PsiDirectoryNode" />
-              <item name="section" type="462c0819:PsiDirectoryNode" />
-              <item name="templete" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="D:/JAVA_D/javaSources/Ruoyi_new/RuoYi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../A8-Test/Gc" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -446,9 +318,10 @@
     <property name="two.files.diff.last.used.file" value="$USER_HOME$/Desktop/morePending.jsp" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\A8\ctp_2019_06_19\ctp-portal\src\test" />
-      <recent name="F:\A8\ctp_2019_06_19\ctp-portal\html" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\A8\ctp_2019_06_19\ctp-portal\seeyon\portal\sections\tpl" />
+      <recent name="F:\A8\ctp_2019_06_19\ctp-portal\seeyon\WEB-INF\jsp\apps\collaboration" />
+      <recent name="F:\A8\ctp_2019_06_19\ctp-portal\seeyon" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.seeyon.ctp.portal.section.templete" />
@@ -457,10 +330,9 @@
       <recent name="seeyon.apps.collaboration.manager" />
       <recent name="seeyon.ctp.portal.section.templete" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\A8\ctp_2019_06_19\ctp-portal\seeyon\portal\sections\tpl" />
-      <recent name="F:\A8\ctp_2019_06_19\ctp-portal\seeyon\WEB-INF\jsp\apps\collaboration" />
-      <recent name="F:\A8\ctp_2019_06_19\ctp-portal\seeyon" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\A8\ctp_2019_06_19\ctp-portal\src\test" />
+      <recent name="F:\A8\ctp_2019_06_19\ctp-portal\html" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -577,14 +449,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34638000" />
+    <option name="totallyTimeSpent" value="37380000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info id="Jspresso Snap" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28059536" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17173333" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -593,6 +463,7 @@
       <window_info id="Mybatis Builder" order="6" side_tool="true" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Image Layers" order="8" />
+      <window_info id="Jspresso Snap" order="9" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32962963" />
@@ -602,13 +473,13 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="7" />
       <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32905984" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.13907285" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="File Transfer" order="12" weight="0.20512821" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" />
       <window_info anchor="bottom" id="Database Changes" order="14" />
-      <window_info anchor="bottom" id="Version Control" order="15" />
+      <window_info anchor="bottom" id="Version Control" order="15" weight="0.18984547" />
       <window_info anchor="bottom" id="JRebel Console" order="16" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="17" weight="0.46581197" />
       <window_info anchor="bottom" id="MyBatis Sql Log" order="18" />
@@ -632,6 +503,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="修改判断" />
@@ -719,7 +600,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/html/tpl-multiRowVariableColumnColTemplete.html" />
     <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/SectionManager.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/SectionManagerImpl.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/SectionManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4422">
+          <caret line="177" column="21" selection-start-line="177" selection-start-column="21" selection-end-line="177" selection-end-column="21" />
+          <folding>
+            <element signature="e#5957#5974#0" expanded="true" />
+            <element signature="e#6141#6158#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/Test.java" />
     <entry file="file://$PROJECT_DIR$/src/test/PendingManagerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -816,22 +707,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="485" column="53" lean-forward="true" selection-start-line="485" selection-start-column="53" selection-end-line="485" selection-end-column="53" />
+        <state relative-caret-position="9108">
+          <caret line="326" selection-start-line="326" selection-end-line="326" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#7933#7934#0" expanded="true" />
             <element signature="e#7960#7961#0" expanded="true" />
-            <element signature="e#9799#9815#0" expanded="true" />
+            <element signature="e#8391#8392#0" expanded="true" />
+            <element signature="e#21024#21025#0" expanded="true" />
             <element signature="e#21060#21061#0" expanded="true" />
+            <element signature="e#21125#21126#0" expanded="true" />
             <element signature="e#21166#21167#0" expanded="true" />
+            <element signature="e#21218#21219#0" expanded="true" />
             <element signature="e#21251#21252#0" expanded="true" />
+            <element signature="e#23582#23583#0" expanded="true" />
             <element signature="e#23609#23610#0" expanded="true" />
+            <element signature="e#23747#23748#0" expanded="true" />
             <element signature="e#23775#23776#0" expanded="true" />
+            <element signature="e#23861#23862#0" expanded="true" />
             <element signature="e#23888#23889#0" expanded="true" />
+            <element signature="e#24273#24274#0" expanded="true" />
             <element signature="e#24299#24300#0" expanded="true" />
+            <element signature="e#24382#24383#0" expanded="true" />
             <element signature="e#24408#24409#0" expanded="true" />
+            <element signature="e#24469#24470#0" expanded="true" />
             <element signature="e#24497#24498#0" expanded="true" />
           </folding>
         </state>
@@ -859,11 +759,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="706">
-          <caret line="162" column="13" lean-forward="true" selection-start-line="162" selection-start-column="13" selection-end-line="162" selection-end-column="13" />
+        <state relative-caret-position="66">
+          <caret line="29" column="46" lean-forward="true" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
           <folding>
-            <element signature="e#6641#6653#0" expanded="true" />
-            <element signature="e#6722#6733#0" expanded="true" />
+            <element signature="e#1785#1786#0" expanded="true" />
+            <element signature="e#1837#1838#0" expanded="true" />
+            <element signature="e#2727#2755#0" expanded="true" />
+            <element signature="e#3111#3112#0" expanded="true" />
+            <element signature="e#3134#3135#0" expanded="true" />
+            <element signature="e#3171#3172#0" expanded="true" />
+            <element signature="e#3201#3202#0" expanded="true" />
+            <element signature="e#4686#4687#0" expanded="true" />
+            <element signature="e#4721#4722#0" expanded="true" />
+            <element signature="e#4787#4788#0" expanded="true" />
+            <element signature="e#4836#4837#0" expanded="true" />
+            <element signature="e#6645#6657#0" expanded="true" />
+            <element signature="e#6726#6737#0" expanded="true" />
+            <element signature="e#9204#9216#0" expanded="true" />
+            <element signature="e#12645#12646#0" expanded="true" />
+            <element signature="e#12663#12664#0" expanded="true" />
+            <element signature="e#12743#12744#0" expanded="true" />
+            <element signature="e#12807#12808#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/space/controller/SpaceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12375">
+          <caret line="462" selection-start-line="462" selection-end-line="462" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/SectionRegisterManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3432">
+          <caret line="131" column="28" selection-start-line="131" selection-start-column="28" selection-end-line="131" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/util/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8349">
+          <caret line="265" column="20" selection-start-line="265" selection-start-column="20" selection-end-line="265" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/PendingManagerImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="128" column="46" lean-forward="true" selection-start-line="128" selection-start-column="46" selection-end-line="128" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#192142#0" expanded="true" />
           </folding>
         </state>
       </provider>

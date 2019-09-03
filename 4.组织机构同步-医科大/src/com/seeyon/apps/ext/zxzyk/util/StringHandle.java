@@ -35,4 +35,9 @@ public class StringHandle {
         }
     }
 
+    public static void main(String[] args) {
+        String code="999992016999";
+        String e=encode(code);
+        System.out.println(e);
+    }
 }

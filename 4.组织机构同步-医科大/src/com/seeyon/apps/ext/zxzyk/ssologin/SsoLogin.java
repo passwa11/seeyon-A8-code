@@ -18,7 +18,7 @@ public class SsoLogin {
     public static void login(HttpServletRequest request, HttpServletResponse response) {
         CASFilterRequestWrapper reqWrapper = new CASFilterRequestWrapper(request);
         String loginName = reqWrapper.getRemoteUser();
-        String encodeloginName= StringHandle.encode(loginName);
+        String encodeloginName = StringHandle.encode(loginName);
         if (null != loginName) {
             try {
                 response.sendRedirect("login/sso?from=xzykSso&ticket=" + encodeloginName);
@@ -38,5 +38,14 @@ public class SsoLogin {
         } catch (IOException e) {
             log.error("医科系统打开Oa代办事项出错了，错误信息：" + e.getMessage());
         }
+    }
+
+
+    public static void test(HttpServletRequest request, HttpServletResponse response) {
+        String ticket = request.getParameter("ticket");
+        String loginname="999992016999";
+        String memberId="";
+        System.out.println("获取ticket:" + ticket);
+
     }
 }

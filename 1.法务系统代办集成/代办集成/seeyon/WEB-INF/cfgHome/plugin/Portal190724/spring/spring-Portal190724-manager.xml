@@ -39,7 +39,8 @@
                     <property name="url" value="/ext/setUserController.do?method=toSetUserPage"/>
                     <!--菜单访问认证类 -->
                     <property name="menuCheck">
-                        <bean class="com.seeyon.apps.ext.Portal190724.check.LawMenuForallUserChecker"/>
+<!--                        <bean class="com.seeyon.apps.ext.Portal190724.check.LawMenuForallUserChecker"/>-->
+                        <bean class="com.seeyon.ctp.menu.check.MenuForAllUsersChecker"/>
                     </property>
                 </bean>
                 <bean class="com.seeyon.ctp.plugin.PluginMenu">
@@ -47,7 +48,9 @@
                     <property name="icon" value="/apps_res/plugin/nc/images/menu.gif"/>
                     <property name="url" value="/ext/lawLogin.do?method=login"/>
                     <property name="menuCheck">
-                        <bean class="com.seeyon.apps.ext.Portal190724.check.LawMenuForallUserChecker"/>
+<!--                        <bean class="com.seeyon.apps.ext.Portal190724.check.LawMenuForallUserChecker"/>-->
+                        <bean class="com.seeyon.ctp.menu.check.MenuForAllUsersChecker"/>
+
                     </property>
                 </bean>
 

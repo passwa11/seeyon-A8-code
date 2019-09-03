@@ -6,32 +6,24 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="neusoft-cas-1.1.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.20" level="application_server_libraries" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://D:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
+          <root url="file://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://D:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
+          <root url="file://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
         </SOURCES>
-        <jarDirectory url="file://D:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" />
-        <jarDirectory url="file://D:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" type="SOURCES" />
+        <jarDirectory url="file://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" />
+        <jarDirectory url="file://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="file://D:/Seeyon/A8/ApacheJetspeed/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="file://D:/Seeyon/A8/ApacheJetspeed/lib" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="neusoft-cas-1.1.1" level="project" />
   </component>
 </module>

@@ -16,7 +16,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryAddOrgMember() {
-        String sql = "select c2.code,c2.name,c2.id,c2.POSTID,c2.description,c2.mobile,M_ORG_UNIT.id unitId,M_ORG_LEVEL.id levelId from " +
+        String sql = "select DISTINCT c2.code,c2.name,c2.id,c2.POSTID,c2.description,c2.mobile,M_ORG_UNIT.id unitId,M_ORG_LEVEL.id levelId from " +
                 "(select memb.*,M_ORG_POST.id postid from (" +
                 "select * from V_ORG_MEMBER vm where not EXISTS(select * from M_ORG_MEMBER  where vm.code = M_ORG_MEMBER.code)) " +
                 "memb,M_ORG_POST  where memb.org_post_id = M_ORG_POST.code) c2 LEFT JOIN M_ORG_UNIT  on nvl(c2.org_account_id,c2.sup_department_id) = M_ORG_UNIT.code " +
@@ -115,6 +115,20 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 DBAgent.save(orgUser);
                             }
                         }
+                    } else {
+                        String userid = memberJson.getString("id");
+                        ps.setString(1, userid);
+                        ps.setString(2, member.getMembercode());
+                        ps.setString(3, member.getMembername());
+                        ps.setString(4, member.getLoginName());
+                        ps.setString(5, "");
+                        ps.setString(6, "");
+                        ps.setString(7, member.getDescription());
+                        ps.setString(8, member.getTelNumber());
+                        ps.setString(9, "");
+                        ps.addBatch();
+                        ps.executeBatch();
+                        connection.commit();
                     }
 
                 }
@@ -207,6 +221,12 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                     sql = sql + " org_department_id = '" + member.getOrgDepartmentId() + "', ";
                                 } else {
                                     sql = sql + " org_department_id = '', ";
+                                }
+
+                                if (member.getOrgPostId() != null && !"".equals(member.getOrgPostId())) {
+                                    sql = sql + " org_post_id = '" + member.getOrgPostId() + "', ";
+                                } else {
+                                    sql = sql + " org_post_id = '', ";
                                 }
 
                                 if (member.getOrgLevelId() != null && !"".equals(member.getOrgLevelId())) {
