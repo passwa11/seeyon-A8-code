@@ -2,38 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d13ab38-2602-4c38-a3b6-b5e19b1f64a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/cfgHome/ajax/ajax-dotoz.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/jsp/apps/ext/Portal190724/list_more.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/ajaxStub.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/pojo/Contract.hbm.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../自定义控件部署包/.idea/自定义控件部署包.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/ReadConfigTools.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/Portal190724Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/Portal190724Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/section/SectionPortal.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/section/SectionPortal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/law/lowPlugin.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/law/lowPlugin.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/jsp/apps/ext/Portal190724/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/jsp/apps/ext/Portal190724/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/controller/Portal190724Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/controller/Portal190724Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/pojo/Contract.java" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/pojo/Contract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/section/SectionPortal.java" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/section/SectionPortal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/law/lowPlugin.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/src/law/lowPlugin.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../栏目集成已阅待阅示例/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../栏目集成已阅待阅示例/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/META-INF/A8_Sso_190715.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/SSOLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/SSOLogin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/util/PocketUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/util/PocketUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../苏皖区培训课件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../苏皖区培训课件/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,8 +21,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zMember/dao/impl/zMemberDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2508">
-              <caret line="85" column="59" selection-start-line="85" selection-start-column="59" selection-end-line="85" selection-end-column="59" />
+            <state relative-caret-position="594">
+              <caret line="179" column="39" lean-forward="true" selection-start-line="179" selection-start-column="39" selection-end-line="179" selection-end-column="39" />
+              <folding>
+                <element signature="method#getAllMemberPO_New#0;class#zMemberDaoImpl#0" />
+                <element signature="method#getBoolean#0;class#zMemberDaoImpl#0" />
+                <element signature="method#getAllMemberPO#0;class#zMemberDaoImpl#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,56 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/organization/member/allMember.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/ajaxStub.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="10" column="39" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/ajax/ajax-zMember.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/organization/member/allMember_js.jsp">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zMember/controller/zMemberController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="144" column="32" selection-start-line="144" selection-start-column="32" selection-end-line="144" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/organization/account/account_js.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50886">
-              <caret line="1542" column="77" selection-start-line="1542" selection-start-column="77" selection-end-line="1542" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zMember/util/JDBCUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="11" column="21" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="21" />
+            <state relative-caret-position="-627">
+              <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -177,10 +108,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="48" />
-    <option name="y" value="27" />
-    <option name="width" value="1885" />
-    <option name="height" value="950" />
+    <option name="x" value="-434" />
+    <option name="y" value="31" />
+    <option name="width" value="1565" />
+    <option name="height" value="943" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -190,6 +121,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -283,6 +216,13 @@
               <item name="集团人员管理" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="zMember" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="集团人员管理" type="b2602c69:ProjectViewProjectNode" />
+              <item name="集团人员管理" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="zMember" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -319,15 +259,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../徐矿263邮箱单点登录" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -459,6 +397,7 @@
       <workItem from="1564034274985" duration="1792000" />
       <workItem from="1564038179082" duration="487000" />
       <workItem from="1564043857849" duration="12000" />
+      <workItem from="1567490617308" duration="722000" />
     </task>
     <task id="LOCAL-00001" summary="新建">
       <created>1560996416866</created>
@@ -744,12 +683,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67718000" />
+    <option name="totallyTimeSpent" value="68440000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19722815" />
+      <window_info id="MyBatis Builder" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19936034" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="JRebel" order="2" side_tool="true" />
       <window_info id="Capture Tool" order="3" />
@@ -1032,13 +973,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zMember/controller/zMemberController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="20" column="77" selection-start-line="20" selection-start-column="77" selection-end-line="20" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-core.jar!/com/seeyon/ctp/util/FlipInfo.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -1062,20 +996,6 @@
             <marker date="1561625450160" expanded="false" signature="8509:8525" ph="&lt;~&gt;" />
             <marker date="1561625450160" expanded="false" signature="11821:11837" ph="&lt;~&gt;" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zMember/dao/impl/zMemberDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2508">
-          <caret line="85" column="59" selection-start-line="85" selection-start-column="59" selection-end-line="85" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zMember/manager/impl/zMemberManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="45" column="30" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -1116,8 +1036,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/organization/member/allMember_js.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="144" column="32" selection-start-line="144" selection-start-column="32" selection-end-line="144" selection-end-column="32" />
+        <state relative-caret-position="260">
+          <caret line="142" column="32" lean-forward="true" selection-start-line="142" selection-start-column="32" selection-end-line="142" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zMember/dao/impl/zMemberDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="179" column="39" lean-forward="true" selection-start-line="179" selection-start-column="39" selection-end-line="179" selection-end-column="39" />
+          <folding>
+            <element signature="method#getAllMemberPO_New#0;class#zMemberDaoImpl#0" />
+            <element signature="method#getBoolean#0;class#zMemberDaoImpl#0" />
+            <element signature="method#getAllMemberPO#0;class#zMemberDaoImpl#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zMember/manager/impl/zMemberManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="45" column="30" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zMember/controller/zMemberController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-627">
+          <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
         </state>
       </provider>
     </entry>

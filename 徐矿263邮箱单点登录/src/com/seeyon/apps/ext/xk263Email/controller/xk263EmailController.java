@@ -3,10 +3,6 @@ package com.seeyon.apps.ext.xk263Email.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.xk263Email.util.ZCommonUtil;
 import com.seeyon.ctp.common.controller.BaseController;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;

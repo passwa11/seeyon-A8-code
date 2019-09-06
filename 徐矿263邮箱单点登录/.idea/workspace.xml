@@ -2,57 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5d562e7-146f-4eca-80c5-dde774810624" name="Default Changelist" comment="修改">
-      <change afterPath="$PROJECT_DIR$/../263邮箱菜单集成/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/Portal190724.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/Portal190724.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/Portal190724Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/Portal190724Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/TestController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/law/lowPlugin.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/law/lowPlugin.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../代办工作标题变色/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../代办工作标题变色/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplProxy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplServiceLocator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiSoapBindingStub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/apps/ext/xk263Email/section/Xk263EmailSection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/apps/ext/xk263Email/util/Mail263Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/apps/ext/xk263Email/util/SSOMD5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/apps/ext/xk263Email/util/SignUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/apps/ext/xk263Email/util/ZCommonUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/apps/ext/xk263Email/xk263EmailPluginInitializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/bo/V3xOrgMember$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/bo/V3xOrgMember$V3xOrgMemberImmutableDecorator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/bo/V3xOrgMember.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$EntityPropertyGetter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/dao/OrgHelper$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/dao/OrgHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/manager/MemberManagerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录.iml" beforeDir="false" afterPath="$PROJECT_DIR$/徐矿263邮箱单点登录.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/ctp/organization/dao/OrgHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/organization/dao/OrgHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -67,51 +23,125 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/check/Xk263EmailChecker.java">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/bo/V3xOrgEntity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+            <state relative-caret-position="5247">
+              <caret line="177" column="26" selection-start-line="177" selection-start-column="26" selection-end-line="177" selection-end-column="26" />
               <folding>
-                <element signature="e#252#253#0" expanded="true" />
-                <element signature="e#279#280#0" expanded="true" />
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#6442#6443#0" expanded="true" />
+                <element signature="e#6465#6466#0" expanded="true" />
+                <element signature="e#6513#6514#0" expanded="true" />
+                <element signature="e#6546#6547#0" expanded="true" />
+                <element signature="e#6837#6838#0" expanded="true" />
+                <element signature="e#6862#6863#0" expanded="true" />
+                <element signature="e#7020#7021#0" expanded="true" />
+                <element signature="e#7048#7049#0" expanded="true" />
+                <element signature="e#7127#7128#0" expanded="true" />
+                <element signature="e#7151#7152#0" expanded="true" />
+                <element signature="e#7198#7199#0" expanded="true" />
+                <element signature="e#7233#7234#0" expanded="true" />
+                <element signature="e#7311#7312#0" expanded="true" />
+                <element signature="e#7335#7336#0" expanded="true" />
+                <element signature="e#7382#7383#0" expanded="true" />
+                <element signature="e#7417#7418#0" expanded="true" />
+                <element signature="e#7497#7498#0" expanded="true" />
+                <element signature="e#7523#7524#0" expanded="true" />
+                <element signature="e#7627#7628#0" expanded="true" />
+                <element signature="e#7666#7667#0" expanded="true" />
+                <element signature="e#7733#7734#0" expanded="true" />
+                <element signature="e#7751#7752#0" expanded="true" />
+                <element signature="e#7782#7783#0" expanded="true" />
+                <element signature="e#7802#7803#0" expanded="true" />
+                <element signature="e#7844#7845#0" expanded="true" />
+                <element signature="e#7871#7872#0" expanded="true" />
+                <element signature="e#8067#8068#0" expanded="true" />
+                <element signature="e#8094#8095#0" expanded="true" />
+                <element signature="e#8134#8135#0" expanded="true" />
+                <element signature="e#8166#8167#0" expanded="true" />
+                <element signature="e#8235#8236#0" expanded="true" />
+                <element signature="e#8255#8256#0" expanded="true" />
+                <element signature="e#8337#8338#0" expanded="true" />
+                <element signature="e#8364#8365#0" expanded="true" />
+                <element signature="e#8398#8399#0" expanded="true" />
+                <element signature="e#8421#8422#0" expanded="true" />
+                <element signature="e#8469#8470#0" expanded="true" />
+                <element signature="e#8502#8503#0" expanded="true" />
+                <element signature="e#8620#8621#0" expanded="true" />
+                <element signature="e#8641#8642#0" expanded="true" />
+                <element signature="e#8769#8770#0" expanded="true" />
+                <element signature="e#8798#8799#0" expanded="true" />
+                <element signature="e#9007#9008#0" expanded="true" />
+                <element signature="e#9046#9047#0" expanded="true" />
+                <element signature="e#9081#9082#0" expanded="true" />
+                <element signature="e#9115#9116#0" expanded="true" />
+                <element signature="e#9169#9170#0" expanded="true" />
+                <element signature="e#9215#9216#0" expanded="true" />
+                <element signature="e#9516#9517#0" expanded="true" />
+                <element signature="e#9562#9563#0" expanded="true" />
+                <element signature="e#9835#9836#0" expanded="true" />
+                <element signature="e#9866#9867#0" expanded="true" />
+                <element signature="e#10254#10255#0" expanded="true" />
+                <element signature="e#10308#10309#0" expanded="true" />
+                <element signature="e#10350#10351#0" expanded="true" />
+                <element signature="e#10431#10432#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/MenuCheck.class">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/dao/OrgHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/UserMenuCheck.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/MenuForAllUsersChecker.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="503">
+              <caret line="2895" column="5" selection-start-line="2895" selection-start-column="5" selection-end-line="2895" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#19691#19692#0" expanded="true" />
+                <element signature="e#19760#19761#0" expanded="true" />
+                <element signature="e#33001#33002#0" expanded="true" />
+                <element signature="e#33062#33063#0" expanded="true" />
+                <element signature="e#40329#40330#0" expanded="true" />
+                <element signature="e#40381#40382#0" expanded="true" />
+                <element signature="e#41777#41778#0" expanded="true" />
+                <element signature="e#41832#41833#0" expanded="true" />
+                <element signature="e#41981#41982#0" expanded="true" />
+                <element signature="e#42041#42042#0" expanded="true" />
+                <element signature="e#50685#50686#0" expanded="true" />
+                <element signature="e#50739#50740#0" expanded="true" />
+                <element signature="e#50883#50884#0" expanded="true" />
+                <element signature="e#50939#50940#0" expanded="true" />
+                <element signature="e#62173#62174#0" expanded="true" />
+                <element signature="e#62223#62224#0" expanded="true" />
+                <element signature="e#94345#94346#0" expanded="true" />
+                <element signature="e#94406#94407#0" expanded="true" />
+                <element signature="e#95297#95298#0" expanded="true" />
+                <element signature="e#95356#95357#0" expanded="true" />
+                <element signature="e#98929#98930#0" expanded="true" />
+                <element signature="e#99021#99022#0" expanded="true" />
+                <element signature="e#99159#99160#0" expanded="true" />
+                <element signature="e#99283#99284#0" expanded="true" />
+                <element signature="e#102101#102102#0" expanded="true" />
+                <element signature="e#102130#102131#0" expanded="true" />
+                <element signature="e#102279#102280#0" expanded="true" />
+                <element signature="e#102310#102311#0" expanded="true" />
+                <element signature="e#102476#102477#0" expanded="true" />
+                <element signature="e#102515#102516#0" expanded="true" />
+                <element signature="e#102702#102703#0" expanded="true" />
+                <element signature="e#102738#102739#0" expanded="true" />
+                <element signature="e#102919#102920#0" expanded="true" />
+                <element signature="e#102958#102959#0" expanded="true" />
+                <element signature="e#103147#103148#0" expanded="true" />
+                <element signature="e#103185#103186#0" expanded="true" />
+                <element signature="e#103653#103654#0" expanded="true" />
+                <element signature="e#103702#103703#0" expanded="true" />
+                <element signature="e#103904#103905#0" expanded="true" />
+                <element signature="e#103948#103949#0" expanded="true" />
+                <element signature="e#104263#104264#0" expanded="true" />
+                <element signature="e#104289#104290#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -152,10 +182,12 @@
       <find>description</find>
       <find>setCreate263</find>
       <find>isDeleted</find>
-      <find>263</find>
       <find>login263Email</find>
       <find>true</find>
       <find>create</find>
+      <find>create263</find>
+      <find>263</find>
+      <find>getAll</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,30 +204,30 @@
         <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplProxy.java" />
         <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiSoapBindingStub.java" />
         <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/util/Mail263Util.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/dao/OrgHelper.java" />
         <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/po/OrgMember.java" />
         <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/po/OrgMember.hbm.xml" />
         <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/util/ZCommonUtil.java" />
         <option value="$PROJECT_DIR$/seeyon/说明" />
         <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/section/Xk263EmailSection.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/bo/V3xOrgEntity.java" />
         <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/bo/V3xOrgMember.java" />
         <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/pluginCfg.xml" />
         <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java" />
         <option value="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/xk263Email/login.jsp" />
         <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/addxk263EmaiMenu.xml" />
         <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/check/Xk263EmailChecker.java" />
+        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/bo/V3xOrgEntity.java" />
         <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml" />
+        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java" />
+        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/dao/OrgHelper.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-434" />
-    <option name="y" value="31" />
-    <option name="width" value="1565" />
-    <option name="height" value="943" />
+    <option name="x" value="163" />
+    <option name="y" value="21" />
+    <option name="width" value="1616" />
+    <option name="height" value="977" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -203,7 +235,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -288,7 +320,7 @@
               <item name="classes" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="ctp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="徐矿263邮箱单点登录" type="b2602c69:ProjectViewProjectNode" />
@@ -298,8 +330,8 @@
               <item name="classes" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="ext" type="462c0819:PsiDirectoryNode" />
+              <item name="ctp" type="462c0819:PsiDirectoryNode" />
+              <item name="organization" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="徐矿263邮箱单点登录" type="b2602c69:ProjectViewProjectNode" />
@@ -309,9 +341,9 @@
               <item name="classes" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="ext" type="462c0819:PsiDirectoryNode" />
-              <item name="xk263Email" type="462c0819:PsiDirectoryNode" />
+              <item name="ctp" type="462c0819:PsiDirectoryNode" />
+              <item name="organization" type="462c0819:PsiDirectoryNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="徐矿263邮箱单点登录" type="b2602c69:ProjectViewProjectNode" />
@@ -321,10 +353,9 @@
               <item name="classes" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="ext" type="462c0819:PsiDirectoryNode" />
-              <item name="xk263Email" type="462c0819:PsiDirectoryNode" />
-              <item name="check" type="462c0819:PsiDirectoryNode" />
+              <item name="ctp" type="462c0819:PsiDirectoryNode" />
+              <item name="organization" type="462c0819:PsiDirectoryNode" />
+              <item name="po" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="徐矿263邮箱单点登录" type="b2602c69:ProjectViewProjectNode" />
@@ -377,6 +408,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
               <item name="xk263Email" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿263邮箱单点登录" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿263邮箱单点登录" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="xk263Email" type="462c0819:PsiDirectoryNode" />
+              <item name="xmapi" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="徐矿263邮箱单点登录" type="b2602c69:ProjectViewProjectNode" />
@@ -393,6 +432,14 @@
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
               <item name="xk263Email" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐矿263邮箱单点登录" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿263邮箱单点登录" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="xk263Email" type="462c0819:PsiDirectoryNode" />
+              <item name="section" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="徐矿263邮箱单点登录" type="b2602c69:ProjectViewProjectNode" />
@@ -434,6 +481,16 @@
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
               <item name="ctp" type="462c0819:PsiDirectoryNode" />
               <item name="organization" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="OrgHelper.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
+            <path>
+              <item name="徐矿263邮箱单点登录" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐矿263邮箱单点登录" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="ctp" type="462c0819:PsiDirectoryNode" />
+              <item name="organization" type="462c0819:PsiDirectoryNode" />
               <item name="manager" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -449,7 +506,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -457,14 +514,14 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="F:/JAVA/JAVA_Project/ttt" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.customizations" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/bo/V3xOrgMember.java" />
+    <property name="two.files.diff.last.used.file" value="$USER_HOME$/Desktop/MemberManagerImpl.class" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -564,6 +621,10 @@
       <workItem from="1566367510804" duration="11801000" />
       <workItem from="1566434319016" duration="9551000" />
       <workItem from="1566457769067" duration="7000" />
+      <workItem from="1567490752207" duration="7767000" />
+      <workItem from="1567502142204" duration="1685000" />
+      <workItem from="1567556969834" duration="4635000" />
+      <workItem from="1567575337903" duration="69000" />
     </task>
     <task id="LOCAL-00001" summary="修改">
       <created>1558928655910</created>
@@ -838,16 +899,23 @@
       <option name="project" value="LOCAL" />
       <updated>1566452519062</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="修改">
+      <created>1567498448032</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1567498448032</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97196000" />
+    <option name="totallyTimeSpent" value="111352000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22133334" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20053333" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -859,21 +927,21 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49933067" weight="0.15836526" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49933067" weight="0.14900662" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.12472406" />
-      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Java Enterprise" order="11" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="13" weight="0.28918323" />
-      <window_info anchor="bottom" id="JRebel Executor" order="14" />
-      <window_info anchor="bottom" id="JRebel Console" order="15" sideWeight="0.50066936" side_tool="true" weight="0.39974457" />
-      <window_info anchor="bottom" id="Messages" order="16" weight="0.2174393" />
-      <window_info anchor="bottom" id="FindBugs-IDEA" order="17" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Java Enterprise" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.12803532" />
+      <window_info anchor="bottom" id="JRebel Executor" order="13" />
+      <window_info anchor="bottom" id="JRebel Console" order="14" sideWeight="0.5008" side_tool="true" visible="true" weight="0.12472406" />
+      <window_info anchor="bottom" id="Messages" order="15" weight="0.2174393" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" order="16" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="17" sideWeight="0.4992" visible="true" weight="0.12472406" />
       <window_info anchor="bottom" id="File Transfer" order="18" weight="0.3289183" />
       <window_info anchor="bottom" id="MyBatis Log" order="19" />
       <window_info anchor="bottom" id="Tail" order="20" />
@@ -992,23 +1060,10 @@
           <properties />
           <option name="timeStamp" value="35" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/UserMenuCheck.class</url>
-          <line>32</line>
-          <properties />
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/mail.jar!/com/sun/mail/util/BASE64DecoderStream.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1701">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/mail.jar!/com/sun/mail/util/BASE64EncoderStream.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1116">
@@ -1110,27 +1165,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplProxy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="255" lean-forward="true" selection-start-line="255" selection-end-line="255" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/com/seeyon/ctp/organization/manager/MemberManagerImpl.class" />
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/xk263EmailPluginInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="e#219#220#0" expanded="true" />
-            <element signature="e#266#267#0" expanded="true" />
-            <element signature="e#309#310#0" expanded="true" />
-            <element signature="e#356#357#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/manager/OrgManagerDirect.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -1138,262 +1173,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/dao/OrgHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="1461" selection-start-line="1461" selection-end-line="1461" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#46935#46951#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/dao/OrgDaoImpl.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="1022" selection-start-line="1022" selection-end-line="1022" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/po/OrgMember.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="173" column="36" selection-start-line="173" selection-start-column="36" selection-end-line="173" selection-end-column="36" />
-          <folding>
-            <element signature="e#4608#4609#0" expanded="true" />
-            <element signature="e#4630#4631#0" expanded="true" />
-            <element signature="e#4896#4897#0" expanded="true" />
-            <element signature="e#4923#4924#0" expanded="true" />
-            <element signature="e#4974#4975#0" expanded="true" />
-            <element signature="e#5012#5013#0" expanded="true" />
-            <element signature="e#4860#4861#0" expanded="true" />
-            <element signature="e#4882#4883#0" expanded="true" />
-            <element signature="e#4987#4988#0" expanded="true" />
-            <element signature="e#5015#5016#0" expanded="true" />
-            <element signature="e#5078#5079#0" expanded="true" />
-            <element signature="e#5100#5101#0" expanded="true" />
-            <element signature="e#5205#5206#0" expanded="true" />
-            <element signature="e#5233#5234#0" expanded="true" />
-            <element signature="e#5303#5304#0" expanded="true" />
-            <element signature="e#5329#5330#0" expanded="true" />
-            <element signature="e#5457#5458#0" expanded="true" />
-            <element signature="e#5493#5494#0" expanded="true" />
-            <element signature="e#5565#5566#0" expanded="true" />
-            <element signature="e#5592#5593#0" expanded="true" />
-            <element signature="e#5725#5726#0" expanded="true" />
-            <element signature="e#5763#5764#0" expanded="true" />
-            <element signature="e#5834#5835#0" expanded="true" />
-            <element signature="e#5859#5860#0" expanded="true" />
-            <element signature="e#5985#5986#0" expanded="true" />
-            <element signature="e#6019#6020#0" expanded="true" />
-            <element signature="e#6087#6088#0" expanded="true" />
-            <element signature="e#6110#6111#0" expanded="true" />
-            <element signature="e#6227#6228#0" expanded="true" />
-            <element signature="e#6257#6258#0" expanded="true" />
-            <element signature="e#6327#6328#0" expanded="true" />
-            <element signature="e#6353#6354#0" expanded="true" />
-            <element signature="e#6481#6482#0" expanded="true" />
-            <element signature="e#6517#6518#0" expanded="true" />
-            <element signature="e#6591#6592#0" expanded="true" />
-            <element signature="e#6613#6614#0" expanded="true" />
-            <element signature="e#6729#6730#0" expanded="true" />
-            <element signature="e#6757#6758#0" expanded="true" />
-            <element signature="e#6825#6826#0" expanded="true" />
-            <element signature="e#6848#6849#0" expanded="true" />
-            <element signature="e#6961#6962#0" expanded="true" />
-            <element signature="e#6991#6992#0" expanded="true" />
-            <element signature="e#7058#7059#0" expanded="true" />
-            <element signature="e#7082#7083#0" expanded="true" />
-            <element signature="e#7201#7202#0" expanded="true" />
-            <element signature="e#7233#7234#0" expanded="true" />
-            <element signature="e#7302#7303#0" expanded="true" />
-            <element signature="e#7327#7328#0" expanded="true" />
-            <element signature="e#7451#7452#0" expanded="true" />
-            <element signature="e#7485#7486#0" expanded="true" />
-            <element signature="e#7560#7561#0" expanded="true" />
-            <element signature="e#7584#7585#0" expanded="true" />
-            <element signature="e#7707#7708#0" expanded="true" />
-            <element signature="e#7739#7740#0" expanded="true" />
-            <element signature="e#7802#7803#0" expanded="true" />
-            <element signature="e#7826#7827#0" expanded="true" />
-            <element signature="e#7938#7939#0" expanded="true" />
-            <element signature="e#7970#7971#0" expanded="true" />
-            <element signature="e#8044#8045#0" expanded="true" />
-            <element signature="e#8077#8078#0" expanded="true" />
-            <element signature="e#8228#8229#0" expanded="true" />
-            <element signature="e#8278#8279#0" expanded="true" />
-            <element signature="e#8346#8347#0" expanded="true" />
-            <element signature="e#8373#8374#0" expanded="true" />
-            <element signature="e#8500#8501#0" expanded="true" />
-            <element signature="e#8538#8539#0" expanded="true" />
-            <element signature="e#8609#8610#0" expanded="true" />
-            <element signature="e#8637#8638#0" expanded="true" />
-            <element signature="e#8770#8771#0" expanded="true" />
-            <element signature="e#8810#8811#0" expanded="true" />
-            <element signature="e#8881#8882#0" expanded="true" />
-            <element signature="e#8911#8912#0" expanded="true" />
-            <element signature="e#9050#9051#0" expanded="true" />
-            <element signature="e#9094#9095#0" expanded="true" />
-            <element signature="e#9164#9165#0" expanded="true" />
-            <element signature="e#9193#9194#0" expanded="true" />
-            <element signature="e#9326#9327#0" expanded="true" />
-            <element signature="e#9368#9369#0" expanded="true" />
-            <element signature="e#9437#9438#0" expanded="true" />
-            <element signature="e#9465#9466#0" expanded="true" />
-            <element signature="e#9595#9596#0" expanded="true" />
-            <element signature="e#9635#9636#0" expanded="true" />
-            <element signature="e#9704#9705#0" expanded="true" />
-            <element signature="e#9732#9733#0" expanded="true" />
-            <element signature="e#9862#9863#0" expanded="true" />
-            <element signature="e#9902#9903#0" expanded="true" />
-            <element signature="e#9971#9972#0" expanded="true" />
-            <element signature="e#9997#9998#0" expanded="true" />
-            <element signature="e#10122#10123#0" expanded="true" />
-            <element signature="e#10158#10159#0" expanded="true" />
-            <element signature="e#10227#10228#0" expanded="true" />
-            <element signature="e#10253#10254#0" expanded="true" />
-            <element signature="e#10378#10379#0" expanded="true" />
-            <element signature="e#10414#10415#0" expanded="true" />
-            <element signature="e#10483#10484#0" expanded="true" />
-            <element signature="e#10509#10510#0" expanded="true" />
-            <element signature="e#10634#10635#0" expanded="true" />
-            <element signature="e#10670#10671#0" expanded="true" />
-            <element signature="e#10739#10740#0" expanded="true" />
-            <element signature="e#10765#10766#0" expanded="true" />
-            <element signature="e#10890#10891#0" expanded="true" />
-            <element signature="e#10926#10927#0" expanded="true" />
-            <element signature="e#10995#10996#0" expanded="true" />
-            <element signature="e#11021#11022#0" expanded="true" />
-            <element signature="e#11146#11147#0" expanded="true" />
-            <element signature="e#11182#11183#0" expanded="true" />
-            <element signature="e#11251#11252#0" expanded="true" />
-            <element signature="e#11277#11278#0" expanded="true" />
-            <element signature="e#11402#11403#0" expanded="true" />
-            <element signature="e#11438#11439#0" expanded="true" />
-            <element signature="e#11507#11508#0" expanded="true" />
-            <element signature="e#11533#11534#0" expanded="true" />
-            <element signature="e#11658#11659#0" expanded="true" />
-            <element signature="e#11694#11695#0" expanded="true" />
-            <element signature="e#11763#11764#0" expanded="true" />
-            <element signature="e#11789#11790#0" expanded="true" />
-            <element signature="e#11914#11915#0" expanded="true" />
-            <element signature="e#11950#11951#0" expanded="true" />
-            <element signature="e#12019#12020#0" expanded="true" />
-            <element signature="e#12045#12046#0" expanded="true" />
-            <element signature="e#12170#12171#0" expanded="true" />
-            <element signature="e#12206#12207#0" expanded="true" />
-            <element signature="e#12276#12277#0" expanded="true" />
-            <element signature="e#12303#12304#0" expanded="true" />
-            <element signature="e#12432#12433#0" expanded="true" />
-            <element signature="e#12470#12471#0" expanded="true" />
-            <element signature="e#12541#12542#0" expanded="true" />
-            <element signature="e#12568#12569#0" expanded="true" />
-            <element signature="e#12698#12699#0" expanded="true" />
-            <element signature="e#12736#12737#0" expanded="true" />
-            <element signature="e#12807#12808#0" expanded="true" />
-            <element signature="e#12834#12835#0" expanded="true" />
-            <element signature="e#12964#12965#0" expanded="true" />
-            <element signature="e#13002#13003#0" expanded="true" />
-            <element signature="e#13073#13074#0" expanded="true" />
-            <element signature="e#13100#13101#0" expanded="true" />
-            <element signature="e#13230#13231#0" expanded="true" />
-            <element signature="e#13268#13269#0" expanded="true" />
-            <element signature="e#13339#13340#0" expanded="true" />
-            <element signature="e#13366#13367#0" expanded="true" />
-            <element signature="e#13496#13497#0" expanded="true" />
-            <element signature="e#13534#13535#0" expanded="true" />
-            <element signature="e#13605#13606#0" expanded="true" />
-            <element signature="e#13632#13633#0" expanded="true" />
-            <element signature="e#13762#13763#0" expanded="true" />
-            <element signature="e#13800#13801#0" expanded="true" />
-            <element signature="e#13868#13869#0" expanded="true" />
-            <element signature="e#13895#13896#0" expanded="true" />
-            <element signature="e#14022#14023#0" expanded="true" />
-            <element signature="e#14060#14061#0" expanded="true" />
-            <element signature="e#14128#14129#0" expanded="true" />
-            <element signature="e#14155#14156#0" expanded="true" />
-            <element signature="e#14282#14283#0" expanded="true" />
-            <element signature="e#14320#14321#0" expanded="true" />
-            <element signature="e#14388#14389#0" expanded="true" />
-            <element signature="e#14415#14416#0" expanded="true" />
-            <element signature="e#14542#14543#0" expanded="true" />
-            <element signature="e#14580#14581#0" expanded="true" />
-            <element signature="e#14648#14649#0" expanded="true" />
-            <element signature="e#14675#14676#0" expanded="true" />
-            <element signature="e#14802#14803#0" expanded="true" />
-            <element signature="e#14840#14841#0" expanded="true" />
-            <element signature="e#14908#14909#0" expanded="true" />
-            <element signature="e#14935#14936#0" expanded="true" />
-            <element signature="e#15062#15063#0" expanded="true" />
-            <element signature="e#15100#15101#0" expanded="true" />
-            <element signature="e#15168#15169#0" expanded="true" />
-            <element signature="e#15195#15196#0" expanded="true" />
-            <element signature="e#15322#15323#0" expanded="true" />
-            <element signature="e#15360#15361#0" expanded="true" />
-            <element signature="e#15428#15429#0" expanded="true" />
-            <element signature="e#15455#15456#0" expanded="true" />
-            <element signature="e#15582#15583#0" expanded="true" />
-            <element signature="e#15620#15621#0" expanded="true" />
-            <element signature="e#15688#15689#0" expanded="true" />
-            <element signature="e#15715#15716#0" expanded="true" />
-            <element signature="e#15842#15843#0" expanded="true" />
-            <element signature="e#15880#15881#0" expanded="true" />
-            <element signature="e#15948#15949#0" expanded="true" />
-            <element signature="e#15975#15976#0" expanded="true" />
-            <element signature="e#16102#16103#0" expanded="true" />
-            <element signature="e#16140#16141#0" expanded="true" />
-            <element signature="e#16208#16209#0" expanded="true" />
-            <element signature="e#16235#16236#0" expanded="true" />
-            <element signature="e#16362#16363#0" expanded="true" />
-            <element signature="e#16400#16401#0" expanded="true" />
-            <element signature="e#16468#16469#0" expanded="true" />
-            <element signature="e#16495#16496#0" expanded="true" />
-            <element signature="e#16622#16623#0" expanded="true" />
-            <element signature="e#16660#16661#0" expanded="true" />
-            <element signature="e#16728#16729#0" expanded="true" />
-            <element signature="e#16755#16756#0" expanded="true" />
-            <element signature="e#16882#16883#0" expanded="true" />
-            <element signature="e#16920#16921#0" expanded="true" />
-            <element signature="e#16988#16989#0" expanded="true" />
-            <element signature="e#17015#17016#0" expanded="true" />
-            <element signature="e#17142#17143#0" expanded="true" />
-            <element signature="e#17180#17181#0" expanded="true" />
-            <element signature="e#17248#17249#0" expanded="true" />
-            <element signature="e#17275#17276#0" expanded="true" />
-            <element signature="e#17402#17403#0" expanded="true" />
-            <element signature="e#17440#17441#0" expanded="true" />
-            <element signature="e#17508#17509#0" expanded="true" />
-            <element signature="e#17535#17536#0" expanded="true" />
-            <element signature="e#17662#17663#0" expanded="true" />
-            <element signature="e#17700#17701#0" expanded="true" />
-            <element signature="e#17770#17771#0" expanded="true" />
-            <element signature="e#17797#17798#0" expanded="true" />
-            <element signature="e#17926#17927#0" expanded="true" />
-            <element signature="e#17964#17965#0" expanded="true" />
-            <element signature="e#18034#18035#0" expanded="true" />
-            <element signature="e#18061#18062#0" expanded="true" />
-            <element signature="e#18190#18191#0" expanded="true" />
-            <element signature="e#18228#18229#0" expanded="true" />
-            <element signature="e#18298#18299#0" expanded="true" />
-            <element signature="e#18325#18326#0" expanded="true" />
-            <element signature="e#18454#18455#0" expanded="true" />
-            <element signature="e#18492#18493#0" expanded="true" />
-            <element signature="e#18562#18563#0" expanded="true" />
-            <element signature="e#18589#18590#0" expanded="true" />
-            <element signature="e#18718#18719#0" expanded="true" />
-            <element signature="e#18756#18757#0" expanded="true" />
-            <element signature="e#18826#18827#0" expanded="true" />
-            <element signature="e#18853#18854#0" expanded="true" />
-            <element signature="e#18982#18983#0" expanded="true" />
-            <element signature="e#19020#19021#0" expanded="true" />
-            <element signature="e#19091#19092#0" expanded="true" />
-            <element signature="e#19118#19119#0" expanded="true" />
-            <element signature="e#19247#19248#0" expanded="true" />
-            <element signature="e#19285#19286#0" expanded="true" />
-            <element signature="e#19354#19355#0" expanded="true" />
-            <element signature="e#19381#19382#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1411,17 +1194,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#GBKToBase64#0;class#ZCommonUtil#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/section/Xk263EmailSection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#projection#0;class#Xk263EmailSection#0" />
           </folding>
         </state>
       </provider>
@@ -1468,75 +1240,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/bo/V3xOrgMember.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1353">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/bo/V3xOrgEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="182" lean-forward="true" selection-start-line="182" selection-end-line="182" />
-          <folding>
-            <element signature="e#6442#6443#0" expanded="true" />
-            <element signature="e#6465#6466#0" expanded="true" />
-            <element signature="e#6513#6514#0" expanded="true" />
-            <element signature="e#6546#6547#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/po/OrgMember.hbm.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="455" column="22" lean-forward="true" selection-start-line="455" selection-start-column="22" selection-end-line="455" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-plugin.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/pluginCfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="4" column="33" lean-forward="true" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-controller.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="2018" selection-start-line="2018" selection-end-line="2018" />
-          <folding>
-            <element signature="e#82981#82992#0" expanded="true" />
-            <element signature="e#83050#83067#0" expanded="true" />
-            <element signature="e#83131#83148#0" expanded="true" />
-            <element signature="e#83212#83226#0" expanded="true" />
-            <element signature="e#83329#83346#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="336" column="40" lean-forward="true" selection-start-line="336" selection-start-column="40" selection-end-line="336" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/jcseg-server.jar!/javax/servlet/http/HttpServletResponse.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-45">
@@ -1550,16 +1253,6 @@
           <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
           <folding>
             <element signature="e#0#1822#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1589,10 +1282,86 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/addxk263EmaiMenu.xml" />
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml">
+    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/MenuCheck.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/MenuForAllUsersChecker.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/UserMenuCheck.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="1899" column="2" lean-forward="true" selection-start-line="1899" selection-start-column="2" selection-end-line="1899" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="96" column="32" lean-forward="true" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/organization/po/OrgMember.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="94" column="31" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#12532#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/section/Xk263EmailSection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#projection#0;class#Xk263EmailSection#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/xk263EmailPluginInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="e#219#220#0" expanded="true" />
+            <element signature="e#266#267#0" expanded="true" />
+            <element signature="e#309#310#0" expanded="true" />
+            <element signature="e#356#357#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/bo/V3xOrgMember.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="89" column="23" lean-forward="true" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/po/OrgMember.hbm.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="488" column="20" lean-forward="true" selection-start-line="488" selection-start-column="20" selection-end-line="488" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -1607,24 +1376,177 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/MenuCheck.class">
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        <state relative-caret-position="1089">
+          <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/UserMenuCheck.class">
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/pluginCfg.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+        <state relative-caret-position="198">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/MenuForAllUsersChecker.class">
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8283">
+          <caret line="255" selection-start-line="255" selection-end-line="255" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-controller.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-plugin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/po/OrgMember.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="324" column="9" selection-start-line="324" selection-start-column="9" selection-end-line="324" selection-end-column="9" />
+          <folding>
+            <element signature="e#4977#4978#0" expanded="true" />
+            <element signature="e#5015#5016#0" expanded="true" />
+            <element signature="e#6304#6305#0" expanded="true" />
+            <element signature="e#6327#6328#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/bo/V3xOrgEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5247">
+          <caret line="177" column="26" selection-start-line="177" selection-start-column="26" selection-end-line="177" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6442#6443#0" expanded="true" />
+            <element signature="e#6465#6466#0" expanded="true" />
+            <element signature="e#6513#6514#0" expanded="true" />
+            <element signature="e#6546#6547#0" expanded="true" />
+            <element signature="e#6837#6838#0" expanded="true" />
+            <element signature="e#6862#6863#0" expanded="true" />
+            <element signature="e#7020#7021#0" expanded="true" />
+            <element signature="e#7048#7049#0" expanded="true" />
+            <element signature="e#7127#7128#0" expanded="true" />
+            <element signature="e#7151#7152#0" expanded="true" />
+            <element signature="e#7198#7199#0" expanded="true" />
+            <element signature="e#7233#7234#0" expanded="true" />
+            <element signature="e#7311#7312#0" expanded="true" />
+            <element signature="e#7335#7336#0" expanded="true" />
+            <element signature="e#7382#7383#0" expanded="true" />
+            <element signature="e#7417#7418#0" expanded="true" />
+            <element signature="e#7497#7498#0" expanded="true" />
+            <element signature="e#7523#7524#0" expanded="true" />
+            <element signature="e#7627#7628#0" expanded="true" />
+            <element signature="e#7666#7667#0" expanded="true" />
+            <element signature="e#7733#7734#0" expanded="true" />
+            <element signature="e#7751#7752#0" expanded="true" />
+            <element signature="e#7782#7783#0" expanded="true" />
+            <element signature="e#7802#7803#0" expanded="true" />
+            <element signature="e#7844#7845#0" expanded="true" />
+            <element signature="e#7871#7872#0" expanded="true" />
+            <element signature="e#8067#8068#0" expanded="true" />
+            <element signature="e#8094#8095#0" expanded="true" />
+            <element signature="e#8134#8135#0" expanded="true" />
+            <element signature="e#8166#8167#0" expanded="true" />
+            <element signature="e#8235#8236#0" expanded="true" />
+            <element signature="e#8255#8256#0" expanded="true" />
+            <element signature="e#8337#8338#0" expanded="true" />
+            <element signature="e#8364#8365#0" expanded="true" />
+            <element signature="e#8398#8399#0" expanded="true" />
+            <element signature="e#8421#8422#0" expanded="true" />
+            <element signature="e#8469#8470#0" expanded="true" />
+            <element signature="e#8502#8503#0" expanded="true" />
+            <element signature="e#8620#8621#0" expanded="true" />
+            <element signature="e#8641#8642#0" expanded="true" />
+            <element signature="e#8769#8770#0" expanded="true" />
+            <element signature="e#8798#8799#0" expanded="true" />
+            <element signature="e#9007#9008#0" expanded="true" />
+            <element signature="e#9046#9047#0" expanded="true" />
+            <element signature="e#9081#9082#0" expanded="true" />
+            <element signature="e#9115#9116#0" expanded="true" />
+            <element signature="e#9169#9170#0" expanded="true" />
+            <element signature="e#9215#9216#0" expanded="true" />
+            <element signature="e#9516#9517#0" expanded="true" />
+            <element signature="e#9562#9563#0" expanded="true" />
+            <element signature="e#9835#9836#0" expanded="true" />
+            <element signature="e#9866#9867#0" expanded="true" />
+            <element signature="e#10254#10255#0" expanded="true" />
+            <element signature="e#10308#10309#0" expanded="true" />
+            <element signature="e#10350#10351#0" expanded="true" />
+            <element signature="e#10431#10432#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/dao/OrgHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="2895" column="5" selection-start-line="2895" selection-start-column="5" selection-end-line="2895" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#19691#19692#0" expanded="true" />
+            <element signature="e#19760#19761#0" expanded="true" />
+            <element signature="e#33001#33002#0" expanded="true" />
+            <element signature="e#33062#33063#0" expanded="true" />
+            <element signature="e#40329#40330#0" expanded="true" />
+            <element signature="e#40381#40382#0" expanded="true" />
+            <element signature="e#41777#41778#0" expanded="true" />
+            <element signature="e#41832#41833#0" expanded="true" />
+            <element signature="e#41981#41982#0" expanded="true" />
+            <element signature="e#42041#42042#0" expanded="true" />
+            <element signature="e#50685#50686#0" expanded="true" />
+            <element signature="e#50739#50740#0" expanded="true" />
+            <element signature="e#50883#50884#0" expanded="true" />
+            <element signature="e#50939#50940#0" expanded="true" />
+            <element signature="e#62173#62174#0" expanded="true" />
+            <element signature="e#62223#62224#0" expanded="true" />
+            <element signature="e#94345#94346#0" expanded="true" />
+            <element signature="e#94406#94407#0" expanded="true" />
+            <element signature="e#95297#95298#0" expanded="true" />
+            <element signature="e#95356#95357#0" expanded="true" />
+            <element signature="e#98929#98930#0" expanded="true" />
+            <element signature="e#99021#99022#0" expanded="true" />
+            <element signature="e#99159#99160#0" expanded="true" />
+            <element signature="e#99283#99284#0" expanded="true" />
+            <element signature="e#102101#102102#0" expanded="true" />
+            <element signature="e#102130#102131#0" expanded="true" />
+            <element signature="e#102279#102280#0" expanded="true" />
+            <element signature="e#102310#102311#0" expanded="true" />
+            <element signature="e#102476#102477#0" expanded="true" />
+            <element signature="e#102515#102516#0" expanded="true" />
+            <element signature="e#102702#102703#0" expanded="true" />
+            <element signature="e#102738#102739#0" expanded="true" />
+            <element signature="e#102919#102920#0" expanded="true" />
+            <element signature="e#102958#102959#0" expanded="true" />
+            <element signature="e#103147#103148#0" expanded="true" />
+            <element signature="e#103185#103186#0" expanded="true" />
+            <element signature="e#103653#103654#0" expanded="true" />
+            <element signature="e#103702#103703#0" expanded="true" />
+            <element signature="e#103904#103905#0" expanded="true" />
+            <element signature="e#103948#103949#0" expanded="true" />
+            <element signature="e#104263#104264#0" expanded="true" />
+            <element signature="e#104289#104290#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

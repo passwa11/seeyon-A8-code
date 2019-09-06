@@ -7,25 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="864fee10-e4cb-4213-ad21-7544b03670a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../SSOLoginTest/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成/.idea/webServers.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/test.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成/src/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../../大屯项目集成/datun-portallow" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../../大屯项目集成/datun-sso-login" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A6_Sso_190715/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../A6_Sso_190715/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/controller/Sso0715Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/controller/Sso0715Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/util/JDBCUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/../A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/util/JDBCUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A6_Sso_190715/src/com/seeyon/apps/ext/Sso0715/controller/Sso0715Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../A6_Sso_190715/src/com/seeyon/apps/ext/Sso0715/controller/Sso0715Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A6_Sso_190715/src/com/seeyon/apps/ext/Sso0715/util/JDBCUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../A6_Sso_190715/src/com/seeyon/apps/ext/Sso0715/util/JDBCUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿263邮箱单点登录/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿263邮箱单点登录/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿263邮箱单点登录/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿263邮箱单点登录/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿263邮箱单点登录/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿263邮箱单点登录/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿263邮箱单点登录/src/com/seeyon/ctp/organization/dao/OrgHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿263邮箱单点登录/src/com/seeyon/ctp/organization/dao/OrgHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ProxySend/WEB-INF/classes/com/controller/ProxyServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ProxySend/WEB-INF/classes/com/controller/ProxyServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ProxySend/WEB-INF/classes/com/util/PocketUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/ProxySend/WEB-INF/classes/com/util/PocketUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProxySend/com/controller/ProxyServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProxySend/com/controller/ProxyServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProxySend/com/util/PocketUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProxySend/com/util/PocketUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSOLoginTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSOLoginTest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../集团人员管理/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,22 +32,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/controller/ProxyServlet.java">
+        <entry file="file://$PROJECT_DIR$/src/com/controller/testServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="32" column="18" lean-forward="true" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/out/artifacts/ProxySend/WEB-INF/classes/com/controller/ProxyServlet.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+            <state relative-caret-position="182">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -93,6 +73,7 @@
         <option value="$PROJECT_DIR$/src/com/util/StringHandlerUtil.java" />
         <option value="$PROJECT_DIR$/src/com/util/PocketUtil.java" />
         <option value="$PROJECT_DIR$/src/com/controller/ProxyServlet.java" />
+        <option value="$PROJECT_DIR$/src/com/controller/testServlet.java" />
       </list>
     </option>
   </component>
@@ -103,11 +84,11 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-135" />
-    <option name="y" value="99" />
-    <option name="width" value="1885" />
-    <option name="height" value="950" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="326" />
+    <option name="y" value="22" />
+    <option name="width" value="1616" />
+    <option name="height" value="977" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -116,7 +97,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -127,62 +107,6 @@
             <path>
               <item name="ProxySend" type="b2602c69:ProjectViewProjectNode" />
               <item name="ProxySend" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProxySend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProxySend" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProxySend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProxySend" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="ProxySend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProxySend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProxySend" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="ProxySend" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProxySend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProxySend" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="ProxySend" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProxySend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProxySend" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="ProxySend" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProxySend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProxySend" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="ProxySend" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProxySend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProxySend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -202,24 +126,19 @@
               <item name="ProxySend" type="b2602c69:ProjectViewProjectNode" />
               <item name="ProxySend" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ProxySend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProxySend" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -229,10 +148,12 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.controller" />
       <recent name="com.pojo" />
       <recent name="com.util" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\s\A-8-code\第三方单点登录OA\ProxySend\web" />
       <recent name="F:\A8\1-SSO\ProxySend\src\com\pojo" />
       <recent name="F:\A8\1-SSO\ProxySend\web\WEB-INF\lib" />
       <recent name="F:\A8\1-SSO\ProxySend\src\com\ssl" />
@@ -452,6 +373,8 @@
       <workItem from="1564619191168" duration="3159000" />
       <workItem from="1564646491585" duration="2471000" />
       <workItem from="1565058167630" duration="1283000" />
+      <workItem from="1567589046971" duration="1628000" />
+      <workItem from="1567644904180" duration="2510000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1564619719079</created>
@@ -478,13 +401,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20031000" />
+    <option name="totallyTimeSpent" value="24169000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="326" y="22" width="1616" height="977" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1673774" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20578778" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -495,6 +418,7 @@
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info id="Web" order="9" side_tool="true" />
       <window_info id="Jspresso Snap" order="10" weight="0.3299458" />
+      <window_info id="MyBatis Builder" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.11135612" />
@@ -571,9 +495,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/pojo/Department.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/pojo/Photo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -581,41 +502,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/pojo/Extend.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/pojo/Mobile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/pojo/Pocket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/util/Base64.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="189" column="24" selection-start-line="189" selection-start-column="24" selection-end-line="189" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/pojo/Member.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="11" column="31" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -652,20 +542,79 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/out/artifacts/ProxySend/WEB-INF/classes/com/controller/ProxyServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/pojo/Department.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/pojo/Extend.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/pojo/Member.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/pojo/Mobile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/pojo/Pocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/test.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/controller/ProxyServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="32" column="18" lean-forward="true" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+        <state relative-caret-position="182">
+          <caret line="14" column="3" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/ProxySend/WEB-INF/classes/com/controller/ProxyServlet.class">
+    <entry file="file://$PROJECT_DIR$/src/com/controller/testServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
+        <state relative-caret-position="182">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
