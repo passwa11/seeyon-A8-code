@@ -2,10 +2,13 @@ package com.test;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -79,8 +82,52 @@ public class RestTest {
         }
     }
 
+    public static void testRestGet() {
+        String token = getToken();
+        String urlpath = "http://127.0.0.1:81/seeyon/rest/affairs/pending/code/zhangsan?ticket=zhangsan&token=" + token;
+        CloseableHttpClient client = HttpClients.createDefault();
+        RequestConfig.Builder requestConfig = RequestConfig.custom();
+        //设置连接超时时间
+        requestConfig.setConnectTimeout(5000);
+        // 设置请求超时时间
+        requestConfig.setConnectionRequestTimeout(5000);
+        requestConfig.setSocketTimeout(5000);
+        //默认允许自动重定向
+        requestConfig.setRedirectsEnabled(true);
+        HttpResponse response = null;
+        try {
+            HttpGet httpGet = new HttpGet(urlpath);
+            response = client.execute(httpGet);
+            int statusCode = response.getStatusLine().getStatusCode();
+            if (statusCode != HttpStatus.SC_OK) {
+                System.out.println("HTTP请求未成功！HTTP Status Code:" + response.getStatusLine());
+            }
+            HttpEntity httpEntity = response.getEntity();
+            if (null != httpEntity) {
+                String responseContent = EntityUtils.toString(httpEntity, "UTF-8");
+                //释放资源
+                EntityUtils.consume(httpEntity);
+                System.out.println("响应内容：" + responseContent);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                client.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public static void main(String[] args) {
-        testInterface();
+        /**
+         * 使用java自带的url方式访问
+         */
+//        testInterface();
+        /**
+         * 使用httpclient 包中的httpGet请求
+         */
+        testRestGet();
     }
 }
