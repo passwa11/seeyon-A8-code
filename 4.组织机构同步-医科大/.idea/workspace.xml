@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="816d8994-cada-4cd0-be87-e236d8acd877" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/../第三方单点登录OA/ProxySend/web/test.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/src/com/seeyon/ctp/organization/dao/OrgHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/src/com/seeyon/ctp/organization/dao/OrgHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/ProxySend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/ProxySend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,8 +20,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/ssologin/XzykSsoLoginHandshake.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="165">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/ssologin/SsoLogin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="259">
+              <caret line="17" column="88" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,13 +42,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/ssologin/SsoLogin.java">
+        <entry file="file://$PROJECT_DIR$/src/casFilterConfig.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="17" column="88" lean-forward="true" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="165">
+              <caret line="5" column="29" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -158,10 +159,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="326" />
-    <option name="y" value="22" />
-    <option name="width" value="1616" />
-    <option name="height" value="977" />
+    <option name="x" value="123" />
+    <option name="y" value="12" />
+    <option name="width" value="1565" />
+    <option name="height" value="943" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -169,6 +170,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -351,7 +353,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -643,6 +644,7 @@
       <workItem from="1567583829148" duration="207000" />
       <workItem from="1567590153357" duration="653000" />
       <workItem from="1567645017973" duration="7673000" />
+      <workItem from="1567742323377" duration="627000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1566710766079</created>
@@ -662,7 +664,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="252091000" />
+    <option name="totallyTimeSpent" value="252718000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -677,7 +679,7 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1936" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19573334" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1208,13 +1210,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/casFilterConfig.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="5" column="39" lean-forward="true" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/seeyon/oabill.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -1238,8 +1233,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/ssologin/XzykSsoLoginHandshake.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="165">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1249,10 +1244,17 @@
     <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/ssologin/SsoLogin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="259">
-          <caret line="17" column="88" lean-forward="true" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
+          <caret line="17" column="88" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/casFilterConfig.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="29" />
         </state>
       </provider>
     </entry>
