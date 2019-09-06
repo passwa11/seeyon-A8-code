@@ -78,8 +78,12 @@ public class RestTest {
 
     public static void testRestGet() {
         String token = getToken();
-        String urlpath = "http://127.0.0.1:81/seeyon/rest/affairs/pending/code/zhangsan?ticket=zhangsan&token=" + token;
+//        String urlpath = "http://127.0.0.1:81/seeyon/rest/affairs/pending/code/zhangsan?ticket=zhangsan&token=" + token;
 //        String urlpath = "http://127.0.0.1:81/seeyon/rest/edoc/receipt/pending?ticket=zhangsan&token=" + token;
+//        http://127.0.0.1/seeyon/rest/affairs/done?memberId={xxxx}
+//        已办协同合一了
+//        String urlpath = "http://127.0.0.1:81/seeyon/rest/affairs/done?memberId=7486210341116071885&token=" + token;
+        String urlpath = "http://127.0.0.1:81/seeyon/rest/orgMember/?loginName=zhangsan&token=" + token;
         CloseableHttpClient client = HttpClients.createDefault();
         RequestConfig.Builder requestConfig = RequestConfig.custom();
         //设置连接超时时间
