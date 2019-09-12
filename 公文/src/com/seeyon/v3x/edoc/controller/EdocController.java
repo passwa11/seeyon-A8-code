@@ -3298,7 +3298,7 @@ public class EdocController extends BaseController {
                     System.out.println("附件地址路径：" + fujianP);
                     String mergerpath = wendanP ;
                     if (!("").equals(fujianP.toString())) {
-                        mergerpath = mergerpath.concat("|" + fujianP.toString());
+                        mergerpath = mergerpath.concat("|"+zhengwenP+"|" + fujianP.toString());
                     }
 
                     //类根路径  F:\Seeyon\A8\ApacheJetspeed\webapps\seeyon\WEB-INF\classes
@@ -3309,7 +3309,7 @@ public class EdocController extends BaseController {
                         f.mkdirs();
                     }
 
-                    flag = mergeFormAndBody(edocSummary, "http://10.100.1.132:8088/convert/webservice/ConvertService?wsdl", mergerpath, mergeSavePath, isReceive);
+                    flag = mergeFormAndBody(edocSummary, "http://10.11.100.41:8088/convert/webservice/ConvertService?wsdl", mergerpath, mergeSavePath, isReceive);
                     bodyFile.delete();
                     formFile.delete();
                     if (flag != -1) {
