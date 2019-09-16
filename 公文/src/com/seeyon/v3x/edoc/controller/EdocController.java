@@ -3308,8 +3308,8 @@ public class EdocController extends BaseController {
                     if (!f.exists()) {
                         f.mkdirs();
                     }
-
-                    flag = mergeFormAndBody(edocSummary, "http://10.11.100.41:8088/convert/webservice/ConvertService?wsdl", mergerpath, mergeSavePath, isReceive);
+                    // 正式ip:10.11.100.41   测试ip:10.100.1.132
+                    flag = mergeFormAndBody(edocSummary, "http://10.100.1.132:8088/convert/webservice/ConvertService?wsdl", mergerpath, mergeSavePath, isReceive);
                     bodyFile.delete();
                     formFile.delete();
                     if (flag != -1) {
