@@ -3296,9 +3296,9 @@ public class EdocController extends BaseController {
                     System.out.println("公文单地址路径：" + wendanP);
                     System.out.println("正文地址路径：" + zhengwenP);
                     System.out.println("附件地址路径：" + fujianP);
-                    String mergerpath = wendanP ;
+                    String mergerpath = wendanP.concat("|"+zhengwenP);
                     if (!("").equals(fujianP.toString())) {
-                        mergerpath = mergerpath.concat("|"+zhengwenP+"|" + fujianP.toString());
+                        mergerpath = mergerpath.concat("|" + fujianP.toString());
                     }
 
                     //类根路径  F:\Seeyon\A8\ApacheJetspeed\webapps\seeyon\WEB-INF\classes
