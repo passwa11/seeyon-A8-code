@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d607215e-76df-4996-9096-1c1350f22bbe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../代办集成-最新/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../公文/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/src/com/seeyon/v3x/edoc/controller/EdocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../公文/src/com/seeyon/v3x/edoc/controller/EdocController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../../大屯项目集成/datun-portallow" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../../大屯项目集成/datun-sso-login" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/util/DesUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
+            <state relative-caret-position="3927">
               <caret line="122" column="32" selection-start-line="122" selection-start-column="32" selection-end-line="122" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -42,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/util/GetTokenTool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
+            <state relative-caret-position="1584">
+              <caret line="61" column="17" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3176#3177#0" expanded="true" />
@@ -59,7 +63,7 @@
         <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/httpclient.jar!/org/apache/http/client/methods/HttpPost.class">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="132">
-              <caret line="8" column="48" lean-forward="true" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
+              <caret line="8" column="48" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -111,8 +115,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/util/JsonResolveTools.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="63" column="13" lean-forward="true" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
+            <state relative-caret-position="193">
+              <caret line="58" column="36" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -190,11 +194,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="282" />
-    <option name="y" value="21" />
-    <option name="width" value="1565" />
-    <option name="height" value="943" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="491" />
+    <option name="y" value="25" />
+    <option name="width" value="1223" />
+    <option name="height" value="947" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -202,7 +206,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -322,7 +326,25 @@
               <item name="seeyon" type="462c0819:PsiDirectoryNode" />
               <item name="ext" type="462c0819:PsiDirectoryNode" />
               <item name="Portal190724" type="462c0819:PsiDirectoryNode" />
+              <item name="check" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="代办集成" type="b2602c69:ProjectViewProjectNode" />
+              <item name="代办集成" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="ext" type="462c0819:PsiDirectoryNode" />
+              <item name="Portal190724" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="代办集成" type="b2602c69:ProjectViewProjectNode" />
+              <item name="代办集成" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="ext" type="462c0819:PsiDirectoryNode" />
+              <item name="Portal190724" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="代办集成" type="b2602c69:ProjectViewProjectNode" />
@@ -381,14 +403,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/JAVA/JAVA_Project/Rest" />
+    <property name="last_opened_file_path" value="F:/==A8项目代码示例/大屯OA/datunCode/A8_Document" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -521,7 +543,9 @@
       <workItem from="1566804885495" duration="2350000" />
       <workItem from="1566869101745" duration="58000" />
       <workItem from="1567577851580" duration="1735000" />
-      <workItem from="1567748277611" duration="3266000" />
+      <workItem from="1567748277611" duration="5607000" />
+      <workItem from="1567821851010" duration="2644000" />
+      <workItem from="1568001250066" duration="28000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1563959798082</created>
@@ -632,12 +656,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121181000" />
+    <option name="totallyTimeSpent" value="126194000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="282" y="21" width="1565" height="943" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21210106" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17866667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -657,7 +681,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="7" weight="0.3289183" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.3289183" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49973333" visible="true" weight="0.22733077" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49973333" visible="true" weight="0.196468" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5002667" side_tool="true" weight="0.3620309" />
       <window_info anchor="bottom" id="File Transfer" order="12" weight="0.3642384" />
@@ -1042,6 +1066,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/util/DesUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3927">
+          <caret line="122" column="32" selection-start-line="122" selection-start-column="32" selection-end-line="122" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/util/GetTokenTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1584">
+          <caret line="61" column="17" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3176#3177#0" expanded="true" />
+            <element signature="e#3205#3206#0" expanded="true" />
+            <element signature="e#3483#3484#0" expanded="true" />
+            <element signature="e#3517#3518#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/httpclient.jar!/org/apache/http/client/methods/HttpPost.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="8" column="48" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/Portal190724/spring/spring-Portal190724-controller.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1078,41 +1133,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/util/DesUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="122" column="32" selection-start-line="122" selection-start-column="32" selection-end-line="122" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/util/GetTokenTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3176#3177#0" expanded="true" />
-            <element signature="e#3205#3206#0" expanded="true" />
-            <element signature="e#3483#3484#0" expanded="true" />
-            <element signature="e#3517#3518#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/httpclient.jar!/org/apache/http/client/methods/HttpPost.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="8" column="48" lean-forward="true" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Portal190724/util/JsonResolveTools.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="63" column="13" lean-forward="true" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
+        <state relative-caret-position="193">
+          <caret line="58" column="36" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
         </state>
       </provider>
     </entry>

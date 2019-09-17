@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class 
+    name="com.seeyon.v3x.edoc.domain.EdocZcdb" 
+    table="edoc_zcdb"
+    lazy="false"
+>
+    <id
+        name="id"
+        type="long"
+        column="id"
+        length="20"
+    >
+        <generator class="assigned" />
+    </id>
+    <property
+        name="affairId"
+        type="long"
+        column="affair_id"
+        length="20"
+    />
+    <property
+        name="zcdbTime"
+        type="timestamp"
+        column="zcdb_time"
+        length="19"
+    />
+
+
+
+</class>
+</hibernate-mapping>

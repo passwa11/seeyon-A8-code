@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class 
+    name="com.seeyon.v3x.edoc.domain.EdocObjTeam" 
+    table="edoc_obj_team"
+    lazy="true"
+>
+    <id
+        name="id"
+        type="long"
+        column="id"
+        length="20"
+    >
+        <generator class="assigned" />
+    </id>
+    <property
+        name="createTime"
+        type="timestamp"
+        column="create_time"
+        length="19"
+    />
+    <property
+        name="description"
+        type="string"
+        column="description"
+        not-null="true"
+        length="1024"
+    />
+    <property
+        name="name"
+        type="string"
+        column="name"
+        not-null="true"
+        length="255"
+    />
+    <property
+        name="orgAccountId"
+        type="long"
+        column="org_account_id"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="ownerId"
+        type="long"
+        column="owner_id"
+        length="20"
+    />
+    <property
+        name="sortId"
+        type="integer"
+        column="sort_id"
+        length="11"
+    />
+    <property
+        name="state"
+        type="byte"
+        column="state"
+        length="3"
+    />
+    <property
+        name="updateTime"
+        type="timestamp"
+        column="update_time"
+        length="19"
+    />
+    <set name="edocObjTeamMembers"  order-by="sort_num asc" lazy="false" cascade="all-delete-orphan" inverse="true">
+        <key>
+            <column name="team_id" />
+        </key>
+        <one-to-many class="com.seeyon.v3x.edoc.domain.EdocObjTeamMember" />
+    </set>
+
+    <!-- Associations -->
+
+</class>
+</hibernate-mapping>

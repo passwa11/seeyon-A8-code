@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5d562e7-146f-4eca-80c5-dde774810624" name="Default Changelist" comment="修改">
+      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../代办工作标题变色/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../代办工作标题变色/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../修改送文单单位名称/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../修改送文单单位名称/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../催办/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../催办/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../催办/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../催办/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/controller/EdocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/controller/EdocController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/ctp/organization/dao/OrgHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/organization/dao/OrgHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../自定义控件部署包/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../自定义控件部署包/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -26,7 +35,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/bo/V3xOrgEntity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5247">
+            <state relative-caret-position="5132">
               <caret line="177" column="26" selection-start-line="177" selection-start-column="26" selection-end-line="177" selection-end-column="26" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -93,10 +102,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="96" column="32" lean-forward="true" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/dao/OrgHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="503">
-              <caret line="2895" column="5" selection-start-line="2895" selection-start-column="5" selection-end-line="2895" selection-end-column="5" />
+            <state relative-caret-position="247">
+              <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#19691#19692#0" expanded="true" />
@@ -235,7 +253,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -507,6 +524,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -514,7 +532,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/JAVA/JAVA_Project/ttt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -625,6 +643,7 @@
       <workItem from="1567502142204" duration="1685000" />
       <workItem from="1567556969834" duration="4635000" />
       <workItem from="1567575337903" duration="69000" />
+      <workItem from="1568189347865" duration="51000" />
     </task>
     <task id="LOCAL-00001" summary="修改">
       <created>1558928655910</created>
@@ -910,12 +929,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111352000" />
+    <option name="totallyTimeSpent" value="111403000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20053333" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20266667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -938,10 +958,10 @@
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.12803532" />
       <window_info anchor="bottom" id="JRebel Executor" order="13" />
-      <window_info anchor="bottom" id="JRebel Console" order="14" sideWeight="0.5008" side_tool="true" visible="true" weight="0.12472406" />
+      <window_info anchor="bottom" id="JRebel Console" order="14" sideWeight="0.50133336" side_tool="true" visible="true" weight="0.12472406" />
       <window_info anchor="bottom" id="Messages" order="15" weight="0.2174393" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="16" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="17" sideWeight="0.4992" visible="true" weight="0.12472406" />
+      <window_info anchor="bottom" id="Terminal" order="17" sideWeight="0.49866667" visible="true" weight="0.12472406" />
       <window_info anchor="bottom" id="File Transfer" order="18" weight="0.3289183" />
       <window_info anchor="bottom" id="MyBatis Log" order="19" />
       <window_info anchor="bottom" id="Tail" order="20" />
@@ -1310,13 +1330,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="96" column="32" lean-forward="true" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/organization/po/OrgMember.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="265">
@@ -1431,9 +1444,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/dao/OrgHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#19691#19692#0" expanded="true" />
+            <element signature="e#19760#19761#0" expanded="true" />
+            <element signature="e#33001#33002#0" expanded="true" />
+            <element signature="e#33062#33063#0" expanded="true" />
+            <element signature="e#40329#40330#0" expanded="true" />
+            <element signature="e#40381#40382#0" expanded="true" />
+            <element signature="e#41777#41778#0" expanded="true" />
+            <element signature="e#41832#41833#0" expanded="true" />
+            <element signature="e#41981#41982#0" expanded="true" />
+            <element signature="e#42041#42042#0" expanded="true" />
+            <element signature="e#50685#50686#0" expanded="true" />
+            <element signature="e#50739#50740#0" expanded="true" />
+            <element signature="e#50883#50884#0" expanded="true" />
+            <element signature="e#50939#50940#0" expanded="true" />
+            <element signature="e#62173#62174#0" expanded="true" />
+            <element signature="e#62223#62224#0" expanded="true" />
+            <element signature="e#94345#94346#0" expanded="true" />
+            <element signature="e#94406#94407#0" expanded="true" />
+            <element signature="e#95297#95298#0" expanded="true" />
+            <element signature="e#95356#95357#0" expanded="true" />
+            <element signature="e#98929#98930#0" expanded="true" />
+            <element signature="e#99021#99022#0" expanded="true" />
+            <element signature="e#99159#99160#0" expanded="true" />
+            <element signature="e#99283#99284#0" expanded="true" />
+            <element signature="e#102101#102102#0" expanded="true" />
+            <element signature="e#102130#102131#0" expanded="true" />
+            <element signature="e#102279#102280#0" expanded="true" />
+            <element signature="e#102310#102311#0" expanded="true" />
+            <element signature="e#102476#102477#0" expanded="true" />
+            <element signature="e#102515#102516#0" expanded="true" />
+            <element signature="e#102702#102703#0" expanded="true" />
+            <element signature="e#102738#102739#0" expanded="true" />
+            <element signature="e#102919#102920#0" expanded="true" />
+            <element signature="e#102958#102959#0" expanded="true" />
+            <element signature="e#103147#103148#0" expanded="true" />
+            <element signature="e#103185#103186#0" expanded="true" />
+            <element signature="e#103653#103654#0" expanded="true" />
+            <element signature="e#103702#103703#0" expanded="true" />
+            <element signature="e#103904#103905#0" expanded="true" />
+            <element signature="e#103948#103949#0" expanded="true" />
+            <element signature="e#104263#104264#0" expanded="true" />
+            <element signature="e#104289#104290#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/bo/V3xOrgEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5247">
+        <state relative-caret-position="5132">
           <caret line="177" column="26" selection-start-line="177" selection-start-column="26" selection-end-line="177" selection-end-column="26" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -1498,55 +1563,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/dao/OrgHelper.java">
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="2895" column="5" selection-start-line="2895" selection-start-column="5" selection-end-line="2895" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#19691#19692#0" expanded="true" />
-            <element signature="e#19760#19761#0" expanded="true" />
-            <element signature="e#33001#33002#0" expanded="true" />
-            <element signature="e#33062#33063#0" expanded="true" />
-            <element signature="e#40329#40330#0" expanded="true" />
-            <element signature="e#40381#40382#0" expanded="true" />
-            <element signature="e#41777#41778#0" expanded="true" />
-            <element signature="e#41832#41833#0" expanded="true" />
-            <element signature="e#41981#41982#0" expanded="true" />
-            <element signature="e#42041#42042#0" expanded="true" />
-            <element signature="e#50685#50686#0" expanded="true" />
-            <element signature="e#50739#50740#0" expanded="true" />
-            <element signature="e#50883#50884#0" expanded="true" />
-            <element signature="e#50939#50940#0" expanded="true" />
-            <element signature="e#62173#62174#0" expanded="true" />
-            <element signature="e#62223#62224#0" expanded="true" />
-            <element signature="e#94345#94346#0" expanded="true" />
-            <element signature="e#94406#94407#0" expanded="true" />
-            <element signature="e#95297#95298#0" expanded="true" />
-            <element signature="e#95356#95357#0" expanded="true" />
-            <element signature="e#98929#98930#0" expanded="true" />
-            <element signature="e#99021#99022#0" expanded="true" />
-            <element signature="e#99159#99160#0" expanded="true" />
-            <element signature="e#99283#99284#0" expanded="true" />
-            <element signature="e#102101#102102#0" expanded="true" />
-            <element signature="e#102130#102131#0" expanded="true" />
-            <element signature="e#102279#102280#0" expanded="true" />
-            <element signature="e#102310#102311#0" expanded="true" />
-            <element signature="e#102476#102477#0" expanded="true" />
-            <element signature="e#102515#102516#0" expanded="true" />
-            <element signature="e#102702#102703#0" expanded="true" />
-            <element signature="e#102738#102739#0" expanded="true" />
-            <element signature="e#102919#102920#0" expanded="true" />
-            <element signature="e#102958#102959#0" expanded="true" />
-            <element signature="e#103147#103148#0" expanded="true" />
-            <element signature="e#103185#103186#0" expanded="true" />
-            <element signature="e#103653#103654#0" expanded="true" />
-            <element signature="e#103702#103703#0" expanded="true" />
-            <element signature="e#103904#103905#0" expanded="true" />
-            <element signature="e#103948#103949#0" expanded="true" />
-            <element signature="e#104263#104264#0" expanded="true" />
-            <element signature="e#104289#104290#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="297">
+          <caret line="96" column="32" lean-forward="true" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
         </state>
       </provider>
     </entry>

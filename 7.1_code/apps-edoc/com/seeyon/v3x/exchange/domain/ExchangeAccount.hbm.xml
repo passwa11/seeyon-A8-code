@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class 
+    name="com.seeyon.v3x.exchange.domain.ExchangeAccount" 
+    table="edoc_exchange_account"
+    lazy="true"
+>
+    <id
+        name="id"
+        type="long"
+        column="id"
+        length="20"
+    >
+        <generator class="assigned" />
+    </id>
+	<property
+        name="accountId"
+        type="string"
+        column="account_id"
+        length="255"
+    />
+    <property
+        name="name"
+        type="string"
+        column="name"
+        not-null="true"
+        length="255"
+    />    
+	<property
+        name="accountType"
+        type="integer"
+        column="account_type"
+		not-null="true"
+        length="4"
+    />
+    <property
+        name="description"
+        type="string"
+        column="description"
+        length="255"
+    /> 
+	<property
+        name="isInternalAccount"
+        type="boolean"
+        column="is_internal_account"
+		not-null="true"
+        length="4"
+    />		
+	<property
+        name="internalOrgId"
+        type="long"
+        column="internal_org_id"
+        length="20"
+    />
+    <property
+        name="internalDeptId"
+        type="long"
+        column="internal_dept_id"
+        length="20"
+    />
+	<property
+        name="internalUserId"
+        type="long"
+        column="internal_user_id"
+        length="20"
+    />
+	<property
+        name="exchangeServerId"
+        type="string"
+        column="exchange_server_id"
+        length="255"
+    /> 
+    <property
+        name="createTime"
+        type="timestamp"
+        column="create_time"
+		not-null="true"
+        length="19"
+    />
+	<property
+        name="lastUpdate"
+        type="timestamp"
+        column="last_update"
+		not-null="true"
+        length="19"
+    />
+    <property
+        name="status"
+        type="integer"
+        column="status"
+        not-null="true"
+        length="4"
+    />
+   <property
+        name="domainId"
+        type="java.lang.Long"
+        column="domain_id"
+        not-null="true"
+        length="20"
+    />
+	
+</class>
+</hibernate-mapping>

@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.seeyon.v3x.edoc.domain.EdocOpinion" lazy="false" table="edoc_opinion">
+	<id
+        name="id"
+        type="long"
+        column="id"
+        length="20"
+    >
+		<generator class="assigned" />
+	</id>
+	<property
+        name="affairId"
+        type="long"
+        column="affair_id"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="nodeId"
+        type="long"
+        column="node_id"
+        not-null="true"
+        length="20"
+    />
+	<property
+        name="attribute"
+        type="integer"
+        column="attribute"
+        not-null="true"
+        length="11"
+    />
+    <property
+        name="opinionType"
+        type="integer"
+        column="opinion_type"
+        not-null="true"
+        length="11"
+    />
+	<property
+        name="content"
+        type="string"
+        column="content"
+    />
+	<property
+        name="createTime"
+        type="timestamp"
+        column="create_time"
+        not-null="true"
+        length="19"
+    />
+	<property
+        name="createUserId"
+        type="long"
+        column="create_user_id"
+        not-null="true"
+        length="20"
+    />
+	<property
+        name="isHidden"
+        type="boolean"
+        column="is_hidden"
+        not-null="true"
+        length="4"
+    />
+    <property
+        name="policy"
+        type="string"
+        column="policy"
+        not-null="false"
+        length="32"
+    />
+    <property
+        name="proxyName"
+        type="string"
+        column="proxy_name"
+        length="255"
+    />
+	<property
+        name="state"
+        type="integer"
+        column="state"
+        length="4"
+    />
+    <property
+        name="subEdocId"
+        type="long"
+        column="sub_edoc_id"
+        length="20"
+    />
+    <property
+        name="updateTime"
+        type="timestamp"
+        column="update_time"
+        length="19"
+    />
+    <property
+        name="subOpinionId"
+        type="long"
+        column="sub_opinion_id"
+        length="20"
+    />
+    <property 
+    	name="departmentName"
+    	type="string"
+    	column="department_name"
+    	length="500"
+    />
+    <property 
+    	name="accountName"
+    	type="string"
+    	column="account_name"
+    	length="500"	
+    />
+    <property 
+    	name="departmentSortId"
+    	type="long"
+    	column="department_sort_id"
+    	length="22"	
+    />
+	<!-- Associations -->
+	<!-- bi-directional many-to-one association to EdocSummary -->
+	<many-to-one
+        name="edocSummary"
+        class="com.seeyon.v3x.edoc.domain.EdocSummary"
+        lazy="false"  cascade="none">
+		<column name="edoc_id" length="20"/>
+	</many-to-one>
+
+</class>
+</hibernate-mapping>

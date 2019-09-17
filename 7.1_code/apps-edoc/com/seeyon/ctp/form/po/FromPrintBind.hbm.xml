@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.seeyon.ctp.form.po.FromPrintBind" lazy="false" table="form_print_bind">
+	<id name="id" type="long" column="id" length="20" >
+		<generator class="assigned" />
+	</id>
+	<property name="fileUrl" type="long" column="fileUrl" />
+    <property name="fileName" type="string" column="fileName" />
+    <property name="fileCreateTime" type="timestamp" column="fileCreateTime" />
+    <property name="unitId" type="long" column="unitId" />
+    <property name="edocXsnId" type="long" column="edocXsnId" />
+</class>
+</hibernate-mapping>

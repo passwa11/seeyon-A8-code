@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-autowire="byName">	
+	<bean id="exchangeEdocController.do" 
+		class="com.seeyon.v3x.exchange.controller.ExchangeEdocController"
+		autowire="byName"
+		>
+		<property name="exchangeAccountManager" ref="exchangeAccountManager"></property>
+		<property name="edocExchangeManager" ref="edocExchangeManager"></property>
+		<property name="metadataManager" ref="metadataManager"></property>
+		<property name="orgManager" ref="orgManager"></property>
+		<property name="affairManager" ref="affairManager"></property>
+		<property name="edocSummaryManager" ref="edocSummaryManager"></property>
+		<property name="userMessageManager" ref="userMessageManager"></property>
+		<property name="sendEdocManager" ref="sendEdocManager"></property>
+		<property name="edocSummaryRelationManager" ref="edocSummaryRelationManager" />	
+	</bean>
+</beans>

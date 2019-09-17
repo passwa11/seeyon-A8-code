@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.seeyon.apps.govdoc.po">
+	<class name="GovdocRegister" table="govdoc_register">
+		<id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="summaryId" type="long" column="summary_id"/>
+        <property name="createTime" type="timestamp" column="create_time"/>
+        <property name="recUserName" type="string" column="rec_user_name"/>
+        <property name="recNo" type="string" column="rec_no"/>
+		<property name="recTime" type="timestamp" column="rec_time"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class 
+    name="com.seeyon.v3x.edoc.domain.EdocArchiveModifyLog" 
+    table="edoc_archive_modify_log"
+    lazy="false"
+>
+    <id
+        name="id"
+        type="long"
+        column="id"
+        length="20"
+    >
+        <generator class="assigned" />
+    </id>
+    <property
+        name="summaryId"
+        type="long"
+        column="summary_id"
+        length="20"
+    />
+    <property
+        name="userId"
+        type="long"
+        column="user_id"
+        length="20"
+    />
+	<property
+		name="updatePerson"
+		type="java.lang.String"
+		column="update_person"
+		length="255"
+	/>
+	<property
+		name="modifyContent"
+		type="integer"
+		column="modify_content"
+		length="4"
+	/>
+	<property
+		name="modifyForm"
+		type="integer"
+		column="modify_form"
+		length="4"
+	/>
+	<property
+		name="modifyAtt"
+		type="integer"
+		column="modify_att"
+		length="4"
+	/>
+    <property
+        name="updateTime"
+        type="timestamp"
+        column="update_time"
+        length="19"
+    />
+
+
+
+</class>
+</hibernate-mapping>

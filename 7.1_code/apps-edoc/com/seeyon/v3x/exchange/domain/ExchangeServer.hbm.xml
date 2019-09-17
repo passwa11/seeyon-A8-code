@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class 
+    name="com.seeyon.v3x.exchange.domain.ExchangeServer" 
+    table="exchange_server"
+    lazy="true"
+>
+    <id
+        name="id"
+        type="long"
+        column="id"
+        length="20"
+    >
+        <generator class="assigned" />
+    </id>
+    <property
+        name="exchangeServerId"
+        type="string"
+        column="exchange_server_id"
+        length="255"
+    />
+	<property
+        name="name"
+        type="string"
+        column="name"
+		not-null="true"
+        length="255"
+    />
+	<property
+        name="serverAddress"
+        type="string"
+        column="server_address"
+		not-null="true"
+        length="255"
+    />
+	<property
+        name="serverPort"
+        type="string"
+        column="server_port"
+        length="255"
+    />
+	<property
+        name="loginAccount"
+        type="string"
+        column="account"
+		not-null="true"
+        length="255"
+    />
+	<property
+        name="loginPassword"
+        type="string"
+        column="password"
+		not-null="true"
+        length="255"
+    />
+    <property
+        name="status"
+        type="integer"
+        column="status"
+        not-null="true"
+        length="4"
+    />
+	<property
+        name="isActive"
+        type="boolean"
+        column="is_active"
+        not-null="true"
+        length="4"
+    />
+	
+</class>
+</hibernate-mapping>

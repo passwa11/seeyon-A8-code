@@ -2,7 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab42415f-98e8-4284-8bbe-416dec826267" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../代办工作标题变色/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../代办工作标题变色/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../催办/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../催办/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../催办/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../催办/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/controller/EdocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/controller/EdocController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../自定义控件部署包/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../自定义控件部署包/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/controller/ExchangeEdocController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="823" column="36" selection-start-line="823" selection-start-column="36" selection-end-line="823" selection-end-column="36" />
+            <state relative-caret-position="529">
+              <caret line="825" column="13" selection-start-line="825" selection-start-column="13" selection-end-line="825" selection-end-column="13" />
               <folding>
                 <element signature="e#6645#6646#0" expanded="true" />
                 <element signature="e#6691#6692#0" expanded="true" />
@@ -86,9 +100,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="248" />
-    <option name="y" value="47" />
-    <option name="width" value="1537" />
+    <option name="x" value="200" />
+    <option name="y" value="189" />
+    <option name="width" value="1536" />
     <option name="height" value="950" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -97,8 +111,29 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="修改送文单单位名称" type="b2602c69:ProjectViewProjectNode" />
+              <item name="修改送文单单位名称" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="修改送文单单位名称" type="b2602c69:ProjectViewProjectNode" />
+              <item name="修改送文单单位名称" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="修改送文单单位名称" type="b2602c69:ProjectViewProjectNode" />
+              <item name="修改送文单单位名称" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -106,7 +141,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../公文" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -201,17 +236,18 @@
       <workItem from="1560569648531" duration="1433000" />
       <workItem from="1560733880429" duration="10031000" />
       <workItem from="1561088959197" duration="34000" />
+      <workItem from="1568102868990" duration="27000" />
+      <workItem from="1568188819214" duration="138000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11837000" />
+    <option name="totallyTimeSpent" value="12002000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16813672" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17226666" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="JRebel" order="2" side_tool="true" />
       <window_info id="Capture Tool" order="3" />
@@ -220,6 +256,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Designer" order="7" />
       <window_info id="Image Layers" order="8" />
+      <window_info id="MyBatis Builder" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -356,8 +393,8 @@
     <entry file="file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/manager/EdocExchangeManagerImpl.java" />
     <entry file="file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/controller/ExchangeEdocController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="823" column="36" selection-start-line="823" selection-start-column="36" selection-end-line="823" selection-end-column="36" />
+        <state relative-caret-position="529">
+          <caret line="825" column="13" selection-start-line="825" selection-start-column="13" selection-end-line="825" selection-end-column="13" />
           <folding>
             <element signature="e#6645#6646#0" expanded="true" />
             <element signature="e#6691#6692#0" expanded="true" />

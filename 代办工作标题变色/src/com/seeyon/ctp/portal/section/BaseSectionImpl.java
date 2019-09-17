@@ -473,32 +473,38 @@ public abstract class BaseSectionImpl implements BaseSection, Comparable<BaseSec
             result.put("Name", name);
             //周刘成修改
             if (name.indexOf("待办") != -1) {
-                MultiRowVariableColumnColTemplete templete = (MultiRowVariableColumnColTemplete) c;
-                List<MultiRowVariableColumnColTemplete.Row> listRows = templete.getRows();
-                for (int i = 0; i < listRows.size(); i++) {
-                    MultiRowVariableColumnColTemplete.Row row = listRows.get(i);
-                    List<MultiRowVariableColumnColTemplete.Cell> rowCells = row.getCells();
-                    MultiRowVariableColumnColTemplete.Cell cell = rowCells.get(1);
-                    MultiRowVariableColumnColTemplete.Cell cellZero = rowCells.get(0);
-                    String time = cell.getCellContentHTML();
-                    String receiveTime = cellZero.getReceiveTimeAll();
-                    if (time.indexOf("今日") != -1) {
-                        cell.setClassName("primary");
-                    } else {
-                        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                        LocalDateTime dateTime = LocalDateTime.parse(receiveTime.concat(":00"), df);
-                        //计算日期相差的小时
-                        Duration duration = Duration.between(dateTime, LocalDateTime.now());
-                        Long hour = duration.toHours();
-                        if (hour > 24 && hour < 72) {
-                            cell.setClassName("yellow");
-                        } else if (hour >= 72) {
-                            cell.setClassName("red");
-                        } else {
-                            cell.setClassName("primary");
+                if(null != c){
+                    MultiRowVariableColumnColTemplete templete = (MultiRowVariableColumnColTemplete) c;
+                    List<MultiRowVariableColumnColTemplete.Row> listRows = templete.getRows();
+                    if(null != listRows && listRows.size() > 0){
+                        for (int i = 0; i < listRows.size(); i++) {
+                            MultiRowVariableColumnColTemplete.Row row = listRows.get(i);
+                            List<MultiRowVariableColumnColTemplete.Cell> rowCells = row.getCells();
+                            MultiRowVariableColumnColTemplete.Cell cell = rowCells.get(1);
+                            MultiRowVariableColumnColTemplete.Cell cellZero = rowCells.get(0);
+                            String time = cell.getCellContentHTML();
+                            String receiveTime = cellZero.getReceiveTimeAll();
+                            if (time.indexOf("今日") != -1) {
+                                cell.setClassName("primary");
+                            } else {
+                                DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                                LocalDateTime dateTime = LocalDateTime.parse(receiveTime.concat(":00"), df);
+                                //计算日期相差的小时
+                                Duration duration = Duration.between(dateTime, LocalDateTime.now());
+                                Long hour = duration.toHours();
+                                if (hour > 24 && hour < 72) {
+                                    cell.setClassName("yellow");
+                                } else if (hour >= 72) {
+                                    cell.setClassName("red");
+                                } else {
+                                    cell.setClassName("primary");
+                                }
+                            }
                         }
                     }
+
                 }
+
                 //周刘成 区分代办
                 result.put("flag", "daiban");
                 result.put("Data", c);

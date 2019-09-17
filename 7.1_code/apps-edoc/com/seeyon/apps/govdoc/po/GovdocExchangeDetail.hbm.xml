@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-11-13 16:41:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.seeyon.apps.govdoc.po">
+    <class name="GovdocExchangeDetail" table="govdoc_exchange_detail" >
+        <id name="id" type="long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="mainId" type="long">
+            <column name="MAIN_ID" not-null="true">
+            </column>
+        </property>
+        <property name="sendAccountId" type="long">
+            <column name="SEND_ACCOUNT_ID">
+            </column>
+        </property>
+        <property name="recOrgId" type="long">
+            <column name="REC_ORG_ID">
+            </column>
+        </property>
+        <property name="recAccountId" type="long">
+            <column name="REC_ACCOUNT_ID">
+            </column>
+        </property>
+        <property name="recOrgType" type="integer">
+            <column name="REC_ORG_TYPE" precision="3" scale="0">
+            </column>
+        </property>
+        <property name="recOrgName" type="string">
+            <column name="REC_ORG_NAME">
+            </column>
+        </property>
+        <property name="content" type="string">
+            <column name="CONTENT">
+            </column>
+        </property>
+        <property name="recNo" type="string">
+            <column name="REC_NO">
+            </column>
+        </property>
+        <property name="recUserName" type="string">
+            <column name="REC_USER_NAME">
+            </column>
+        </property>
+        <property name="recUserId" type="long">
+            <column name="rec_user_id">
+            </column>
+        </property>
+        <property name="recTime" type="timestamp">
+            <column name="REC_TIME" length="19">
+            </column>
+        </property>
+        <property name="status" type="integer">
+            <column name="STATUS" precision="3" scale="0">
+            </column>
+        </property>
+        <property name="cuibanNum" type="java.lang.Integer">
+            <column name="CUIBAN_NUM">
+            </column>
+        </property>
+        <property name="summaryId" type="java.lang.Long">
+            <column name="SUMMARY_ID">
+            </column>
+        </property>
+        <property name="nodeInfo" type="long">
+            <column name="NODE_INFO"></column>
+        </property>
+        <property name="recSummaryId" type="long">
+            <column name="rec_summary_id"></column>
+        </property>
+        <property name="opinion" type="string">
+            <column name="opinion"/>
+        </property>
+        <property name="createTime" type="timestamp">
+            <column name="create_time" length="19">
+            </column>
+        </property>
+        <property name="signAffairId" type="long">
+            <column name="sign_affair_id">
+            </column>
+        </property>
+        <property name="extAttr" type="string">
+            <column name="ext_attr">
+            </column>
+        </property>
+        <property name="sendUnit" type="string">
+            <column name="send_unit">
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

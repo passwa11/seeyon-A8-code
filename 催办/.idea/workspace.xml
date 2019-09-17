@@ -2,14 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="854f534c-1d6f-4eb8-adaf-fc4d4c490d9b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/workflow/designer/controller/WorkFlowHastenController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/workflow/designer/dao/WorkitemRunDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/workflow/designer/dao/WorkitemRunDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/workflow/designer/manager/WorkitemRunManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/workflow/designer/manager/WorkitemRunManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/workflow/designer/util/JDBCUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/path.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/domain/CtpPdfSavepath.hbm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../A8-Test/Gc/lib/commons-lang-2.6.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../A8-Test/Gc/src/cn/d/singlerton/test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../A8-Test/font/html/one.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../A8-Test/xzyk/src/xzykConf/xzykPlugin.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../A8-Test/表单提交/src/com/seeyon/ctp/form/service/FormDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../代办工作标题变色/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../代办工作标题变色/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../修改送文单单位名称/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../修改送文单单位名称/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/controller/EdocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/controller/EdocController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../A8-Test/催办/seeyon/WEB-INF/jsp/ctp/workflow/workflowPreHasten.jsp" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,7 +31,17 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/workflow/SuperviseManagerImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="115" column="48" lean-forward="true" selection-start-line="115" selection-start-column="48" selection-end-line="115" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -33,7 +52,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -67,8 +86,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -116,13 +133,61 @@
               <item name="催办" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="催办" type="b2602c69:ProjectViewProjectNode" />
+              <item name="催办" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="workflow" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="催办" type="b2602c69:ProjectViewProjectNode" />
+              <item name="催办" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="workflow" type="462c0819:PsiDirectoryNode" />
+              <item name="designer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="催办" type="b2602c69:ProjectViewProjectNode" />
+              <item name="催办" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="workflow" type="462c0819:PsiDirectoryNode" />
+              <item name="designer" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="催办" type="b2602c69:ProjectViewProjectNode" />
+              <item name="催办" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="workflow" type="462c0819:PsiDirectoryNode" />
+              <item name="designer" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="催办" type="b2602c69:ProjectViewProjectNode" />
+              <item name="催办" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="workflow" type="462c0819:PsiDirectoryNode" />
+              <item name="designer" type="462c0819:PsiDirectoryNode" />
+              <item name="manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="催办" type="b2602c69:ProjectViewProjectNode" />
+              <item name="催办" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="workflow" type="462c0819:PsiDirectoryNode" />
+              <item name="designer" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -219,6 +284,7 @@
       <workItem from="1562027070085" duration="1401000" />
       <workItem from="1562035501628" duration="420000" />
       <workItem from="1562045013455" duration="57000" />
+      <workItem from="1568102903464" duration="27000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1562035789458</created>
@@ -231,12 +297,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12942000" />
+    <option name="totallyTimeSpent" value="12969000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1874" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1731936" />
+      <window_info id="MyBatis Builder" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1748401" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -406,6 +474,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="99" selection-start-column="99" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/workflow/SuperviseManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="115" column="48" lean-forward="true" selection-start-line="115" selection-start-column="48" selection-end-line="115" selection-end-column="48" />
         </state>
       </provider>
     </entry>

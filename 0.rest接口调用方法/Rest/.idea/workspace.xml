@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="33393363-84fd-4b8c-bb95-c71ada1747ce" name="Default Changelist" comment="" />
+    <list default="true" id="33393363-84fd-4b8c-bb95-c71ada1747ce" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../公文/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/src/com/seeyon/v3x/edoc/controller/EdocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../公文/src/com/seeyon/v3x/edoc/controller/EdocController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../../大屯项目集成/datun-portallow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../../大屯项目集成/datun-sso-login" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,20 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-core.jar!/com/seeyon/client/CTPServiceClientManager.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/test/RestTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="131">
+              <caret line="71" column="43" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,6 +66,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -77,16 +81,19 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="282" />
-    <option name="y" value="21" />
+    <option name="x" value="157" />
+    <option name="y" value="84" />
     <option name="width" value="1565" />
     <option name="height" value="943" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -94,15 +101,25 @@
               <item name="Rest" type="b2602c69:ProjectViewProjectNode" />
               <item name="Rest" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Rest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Rest" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Rest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Rest" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -221,16 +238,57 @@
       <workItem from="1567646598078" duration="1283000" />
       <workItem from="1567740647466" duration="4970000" />
       <workItem from="1567751589004" duration="5000" />
+      <workItem from="1567751695538" duration="3447000" />
+      <workItem from="1567755502200" duration="4639000" />
+      <workItem from="1567819387198" duration="55000" />
+      <workItem from="1568102587636" duration="2000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1567751788843</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1567751788843</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update">
+      <created>1567752825785</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1567752825785</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update">
+      <created>1567752880875</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1567752880875</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update">
+      <created>1567755434727</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1567755434727</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update">
+      <created>1567758953327</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1567758953327</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36560000" />
+    <option name="totallyTimeSpent" value="44703000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12693334" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16266666" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -241,7 +299,7 @@
       <window_info id="MyBatis Builder" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3781698" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.200883" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5260606" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -257,7 +315,7 @@
       <window_info anchor="bottom" id="MyBatis Log" order="15" />
       <window_info anchor="bottom" id="JRebel Executor" order="16" />
       <window_info anchor="bottom" id="JRebel Console" order="17" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="18" weight="0.36" />
+      <window_info anchor="bottom" id="Messages" order="18" weight="0.3598234" />
       <window_info anchor="bottom" id="Tail" order="19" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -277,6 +335,12 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -294,7 +358,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/test/RestTest.java</url>
-          <line>58</line>
+          <line>55</line>
           <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
@@ -302,6 +366,13 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-core.jar!/com/seeyon/client/CTPServiceClientManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/test/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="924">
@@ -319,17 +390,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-core.jar!/com/seeyon/client/CTPServiceClientManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/test/RestTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="131">
+          <caret line="71" column="43" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

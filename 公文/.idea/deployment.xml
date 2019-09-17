@@ -2,28 +2,14 @@
 <project version="4">
   <component name="PublishConfigData">
     <serverData>
-      <paths name="ctp-portal">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="ctp_20190619">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="公文">
+      <paths name="menu">
         <serverdata>
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$/seeyon" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="集团人员管理">
+      <paths name="代办">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
