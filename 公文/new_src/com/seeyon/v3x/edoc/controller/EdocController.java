@@ -3309,6 +3309,8 @@ public class EdocController extends BaseController {
 //                            不合并正文
                             mergerpath = wendanP;
                         }
+                    } else {
+                        mergerpath = wendanP;
                     }
                     if (!("").equals(fujianP.toString())) {
                         mergerpath = mergerpath.concat("|" + fujianP.toString());
