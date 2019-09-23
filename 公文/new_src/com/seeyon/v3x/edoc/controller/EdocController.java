@@ -3299,7 +3299,17 @@ public class EdocController extends BaseController {
                     System.out.println("公文单地址路径：" + wendanP);
                     System.out.println("正文地址路径：" + zhengwenP);
                     System.out.println("附件地址路径：" + fujianP);
-                    String mergerpath = wendanP.concat("|"+zhengwenP) ;
+                    String mergerpath = "";
+                    String formId=Long.toString(edocSummary.getFormId()).trim();
+                    if(null != formId && !"".equals(formId)){
+//                        合并正文
+                        if(formId.equals("-7139423850050401892") || formId.equals("1542089478047025160")){
+                            mergerpath = wendanP.concat("|"+zhengwenP) ;
+                        }else {
+//                            不合并正文
+                            mergerpath = wendanP;
+                        }
+                    }
                     if (!("").equals(fujianP.toString())) {
                         mergerpath = mergerpath.concat("|" + fujianP.toString());
                     }
