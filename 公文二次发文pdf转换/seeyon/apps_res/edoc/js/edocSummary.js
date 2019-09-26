@@ -333,7 +333,7 @@ function htmlSign(){
 	var affairId=affair_id+"";//转成字符串格式
 	contentIframe.handWrite(theform.summary_id.value,theform.disPosition.value,true,affairId);
 }
-function edocSubmit() {
+function edocSubmit(permissionNode,summaryId) {
 	disabledPrecessButtonEdoc();//置灰按钮
 	var flag;
 	var childrenPageAttitude = contentIframe.document.getElementsByName("attitude");
@@ -387,16 +387,16 @@ function edocSubmit() {
 	    	  edocSubmitFunc();
 	      }
 		  if (permissionNode == '二次转换') {
-        var d = new Date();
-        var year = d.getFullYear();
-        var month = (d.getMonth()+1 )<= 9 ? '0' + (d.getMonth()+1) : d.getMonth()+1;
-        var day = d.getDate() <= 9 ? '0' + d.getDate() : d.getDate();
-        $.post("/seeyon/ext/transformEdoc.do?method=toTransformPdf",
-            {permissionNode: permissionNode, summaryId: summaryId,year:year,month:month,day:day}, function (zdata) {
-                var obj = eval('(' + zdata + ')');
-                console.log(obj.code);
-            });
-    }
+				var d = new Date();
+				var year = d.getFullYear();
+				var month = (d.getMonth()+1 )<= 9 ? '0' + (d.getMonth()+1) : d.getMonth()+1;
+				var day = d.getDate() <= 9 ? '0' + d.getDate() : d.getDate();
+				$.post("/seeyon/ext/transformEdoc.do?method=toTransformPdf",
+					{permissionNode: permissionNode, summaryId: summaryId,year:year,month:month,day:day}, function (zdata) {
+						var obj = eval('(' + zdata + ')');
+						console.log(obj.code);
+					});
+			}
 }
 function edocSubmitCallback(rv){
 	if (rv == "continue" ){
