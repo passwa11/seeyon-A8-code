@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="066743ca-2b82-46a1-97b3-2eaacafbdf87" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/7.1_code.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../公文二次发文pdf转换/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../A8-Test/7.1_code/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../A8-Test/Gc/lib/commons-lang-2.6.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../A8-Test/Gc/src/cn/d/singlerton/test.java" afterDir="false" />
@@ -14,24 +10,11 @@
       <change afterPath="$PROJECT_DIR$/../../A8-Test/xzyk/src/xzykConf/xzykPlugin.properties" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../A8-Test/表单提交/src/com/seeyon/ctp/form/service/FormDataController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/公文.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/公文.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDaoImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/domain/CtpPdfSavepath.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManagerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/v3x/exchange/controller/ExchangeEdocController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../公文二次发文pdf转换/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文二次发文pdf转换/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../公文二次发文pdf转换/seeyon/WEB-INF/classes/com/seeyon/apps/ext/transformEdoc/controller/transformEdocController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../公文二次发文pdf转换/seeyon/WEB-INF/classes/com/seeyon/apps/ext/transformEdoc/controller/transformEdocController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../公文二次发文pdf转换/src/com/seeyon/apps/ext/transformEdoc/controller/transformEdocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../公文二次发文pdf转换/src/com/seeyon/apps/ext/transformEdoc/controller/transformEdocController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../A8-Test/催办/seeyon/WEB-INF/jsp/ctp/workflow/workflowPreHasten.jsp" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,7 +46,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -173,7 +156,15 @@
       <workItem from="1569222945488" duration="88000" />
       <workItem from="1569223293782" duration="6534000" />
       <workItem from="1569288332614" duration="1424000" />
-      <workItem from="1569290169908" duration="1993000" />
+      <workItem from="1569290169908" duration="2473000" />
+      <workItem from="1569296724889" duration="1462000" />
+      <workItem from="1569305256770" duration="403000" />
+      <workItem from="1569314813166" duration="123000" />
+      <workItem from="1569315067628" duration="628000" />
+      <workItem from="1569372290195" duration="626000" />
+      <workItem from="1569378500781" duration="1431000" />
+      <workItem from="1569392178402" duration="616000" />
+      <workItem from="1569396870563" duration="1454000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1566893299814</created>
