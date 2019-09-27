@@ -1495,7 +1495,6 @@ var openFrom= "${param.openFrom}";
 		}
 
 		function opentPdf(object,url) {
-			console.log("进来了");
 			var _url =  url;
 			var rv = v3x.openWindow({
 				url: _url,
