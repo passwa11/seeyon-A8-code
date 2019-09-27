@@ -12,49 +12,5 @@
     <bean name="sampleTask" class="com.seeyon.apps.ext.quartz.SampleTask"/>
 
 
-   <!-- <bean parent="pluginMainMenu">
-        &lt;!&ndash;主菜单ID，唯一的数字字符串 &ndash;&gt;
-        <property name="id" value="444446"/>
-        &lt;!&ndash;主菜单名称 &ndash;&gt;
-        <property name="name" value="单点登录"/>
-        &lt;!&ndash;主菜单排序 &ndash;&gt;
-        <property name="sortId" value="1"/>
-        &lt;!&ndash;菜单认证类 &ndash;&gt;
-        <property name="menuCheck">
-            <bean class="com.seeyon.ctp.menu.check.MenuForAllUsersChecker"/>
-        </property>
-        &lt;!&ndash;二级菜单 &ndash;&gt;
-        <property name="children">
-            <list>
-                <bean class="com.seeyon.ctp.plugin.PluginMenu">
-                    &lt;!&ndash;二级菜单ID唯一数字串 &ndash;&gt;
-                    <property name="id" value="11111"/>
-                    &lt;!&ndash;二级菜单名称 &ndash;&gt;
-                    <property name="name" value="设置账户"/>
-                    &lt;!&ndash;菜单打开方式：mainfrm: 工作区打开; newWindow: 新窗口打开 &ndash;&gt;
-                    <property name="target" value="mainfrm"/>
-                    &lt;!&ndash;菜单图标 &ndash;&gt;
-                    <property name="icon" value="/apps_res/plugin/nc/images/2401.gif"/>
-                    &lt;!&ndash;菜单链接地址，这个连接必须是协同的内部连接 &ndash;&gt;
-                    <property name="url" value="/ext/setUserController.do?method=toSetUserPage"/>
-                    &lt;!&ndash;菜单访问认证类 &ndash;&gt;
-                    <property name="menuCheck">
-                        &lt;!&ndash;<bean class="com.seeyon.apps.ext.Portal190724.check.LawMenuForallUserChecker"/>&ndash;&gt;
-                        <bean class="com.seeyon.ctp.menu.check.MenuForAllUsersChecker"/>
-                    </property>
-                </bean>
-                <bean class="com.seeyon.ctp.plugin.PluginMenu">
-                    <property name="name" value="法律系统登录"/>
-                    <property name="icon" value="/apps_res/plugin/nc/images/menu.gif"/>
-                    <property name="url" value="/ext/lawLogin.do?method=login"/>
-                    <property name="menuCheck">
-                        &lt;!&ndash;<bean class="com.seeyon.apps.ext.Portal190724.check.LawMenuForallUserChecker"/>&ndash;&gt;
-                        <bean class="com.seeyon.ctp.menu.check.MenuForAllUsersChecker"/>
-                    </property>
 
-                </bean>
-
-            </list>
-        </property>
-    </bean>-->
 </beans>

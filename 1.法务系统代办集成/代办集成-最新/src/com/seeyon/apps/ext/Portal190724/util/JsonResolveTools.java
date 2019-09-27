@@ -58,10 +58,13 @@ public class JsonResolveTools {
             br.close();
             connection.disconnect();
             if (null != sb.toString() && !"".equals(sb.toString()) && !"null".equals(sb.toString().trim())) {
+//                Result result = JSONObject.parseObject(sb.toString(), Result.class);
+//                List<Contract> contractList = result.getResultInfo().getData();
+//                return contractList;
                 JSONObject json = JSONObject.parseObject(sb.toString());
                 String result = json.get("result").toString();
-                if (null != result && !"".equals(result)) {
-                    JSONObject resultJson = JSONObject.parseObject(result);
+                JSONObject resultJson = JSONObject.parseObject(result);
+                if (resultJson.size() > 0) {
                     String dataJson = resultJson.get("data").toString();
                     if (null != dataJson && !"".equals(dataJson)) {
                         List<Contract> contractList = JSONObject.parseArray(dataJson, Contract.class);
@@ -84,6 +87,8 @@ public class JsonResolveTools {
             } else {
                 flag = portal190724Manager.save(u_id, contractList);
             }
+        } else {
+            portal190724Manager.deleteLaw(Long.toString(u_id));
         }
         return flag;
     }

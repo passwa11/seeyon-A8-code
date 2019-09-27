@@ -2,6 +2,7 @@ package com.seeyon.apps.ext.Portal190724.controller;
 
 import com.seeyon.apps.ext.Portal190724.manager.Portal190724Manager;
 import com.seeyon.apps.ext.Portal190724.manager.Portal190724ManagerImpl;
+import com.seeyon.apps.ext.Portal190724.po.UserPas;
 import com.seeyon.apps.ext.Portal190724.util.DesUtil;
 import com.seeyon.apps.ext.Portal190724.util.GetTokenTool;
 import com.seeyon.ctp.common.constants.SystemProperties;
@@ -25,7 +26,21 @@ public class LoginController extends BaseController {
 
     private GetTokenTool tokenTool = new GetTokenTool();
 
-    private SystemProperties sys = SystemProperties.getInstance();
+    //单点登录档案
+    public ModelAndView loginDocument(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Long currentUserId = CurrentUser.get().getId();
+        UserPas userPas = manager.selectDocAccount(Long.toString(currentUserId));
+        if (null != userPas) {
+            request.setAttribute("userID", userPas.getRecord_user());
+            request.setAttribute("password", userPas.getRecord_pas());
+            request.setAttribute("ouserID", Long.toString(currentUserId));
+            request.setAttribute("documentAuthority", "0");
+            manager.updateDocState("RECORD_STATE", currentUserId + "");//修改登录状态
+        } else {
+            request.setAttribute("documentAuthority", "1");//未配置档案系统用户名、密码
+        }
+        return new ModelAndView("apps/ext/Portal190724/documentlogin");
+    }
 
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Long currentUserId = CurrentUser.get().getId();

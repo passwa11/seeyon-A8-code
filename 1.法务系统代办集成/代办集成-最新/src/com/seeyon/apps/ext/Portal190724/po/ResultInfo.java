@@ -28,6 +28,14 @@ public class ResultInfo {
         this.data = data;
     }
 
+    public ResultInfo(int total, int currPage, List<Contract> data, int totalPage, int pageSize) {
+        this.total = total;
+        this.totalPage = totalPage;
+        this.pageSize = pageSize;
+        this.currPage = currPage;
+        this.data = data;
+    }
+
     public int getTotal() {
         return total;
     }

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="066743ca-2b82-46a1-97b3-2eaacafbdf87" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/../公文二次发文pdf转换/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../A8-Test/7.1_code/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../A8-Test/Gc/lib/commons-lang-2.6.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../A8-Test/Gc/src/cn/d/singlerton/test.java" afterDir="false" />
@@ -11,8 +10,6 @@
       <change afterPath="$PROJECT_DIR$/../../A8-Test/表单提交/src/com/seeyon/ctp/form/service/FormDataController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../公文二次发文pdf转换/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文二次发文pdf转换/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文二次发文pdf转换/seeyon/WEB-INF/classes/com/seeyon/apps/ext/transformEdoc/controller/transformEdocController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../公文二次发文pdf转换/seeyon/WEB-INF/classes/com/seeyon/apps/ext/transformEdoc/controller/transformEdocController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文二次发文pdf转换/src/com/seeyon/apps/ext/transformEdoc/controller/transformEdocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../公文二次发文pdf转换/src/com/seeyon/apps/ext/transformEdoc/controller/transformEdocController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../A8-Test/催办/seeyon/WEB-INF/jsp/ctp/workflow/workflowPreHasten.jsp" beforeDir="false" />
@@ -165,6 +162,7 @@
       <workItem from="1569378500781" duration="1431000" />
       <workItem from="1569392178402" duration="616000" />
       <workItem from="1569396870563" duration="1454000" />
+      <workItem from="1569547399282" duration="2851000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1566893299814</created>
@@ -317,6 +315,11 @@
           <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
           <line>2770</line>
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/new_src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>3452</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

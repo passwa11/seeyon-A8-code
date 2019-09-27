@@ -22,22 +22,15 @@
     <script type="text/javascript">
 
         function login() {
-            var login = '<%=request.getAttribute("lawAuthority")%>';
-
-            var Token = '<%=request.getAttribute("Token")%>';
-            var Timespan = '<%=request.getAttribute("Timespan")%>';
-            var AppKey = '<%=request.getAttribute("AppKey")%>';
-            var loginName = '<%=request.getAttribute("loginName")%>';
-
-            if (login != '1') {
-//                正式环境
-                window.open('http://172.16.3.63:80/law/main/login.htm?Token=' + Token + '&Timespan=' + Timespan + '&AppKey=' + AppKey + '&loginName=' + loginName);
-//                测试环境
-//                window.open('http://172.16.3.108:9595/law/main/login.htm?Token=' + Token + '&Timespan=' + Timespan + '&AppKey=' + AppKey + '&loginName=' + loginName);
+            var documentAuthority = '<%=request.getAttribute("documentAuthority")%>';
+            if (documentAuthority != '1') {
+                var userID = '<%=request.getAttribute("userID")%>';
+                var password = '<%=request.getAttribute("password")%>';
+                var ouserID = '<%=request.getAttribute("ouserID")%>';
+                window.open('Http://172.16.0.92/integration/page/oaTolaw.jsp?userID='+userID+'&Password='+password+'&ouserID='+ouserID);
                 return true;
             } else if (login == '1') {
                 alert("请先设置法律系统用户名、密码 ");
-                //window.location.href='http:/localhost/seeyon/sysMgr/individual/individualManager';//法律系统主页面
                 return false;
             }
 

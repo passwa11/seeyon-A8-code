@@ -13,8 +13,15 @@ public interface Portal190724Manager {
 
     int updateState(String id);
 
+    int updateDocState(String columnName,String id);
+
+    void deleteLaw(String userId);
+
 
     Map select(String s);
+
+    UserPas selectDocAccount(String s);
+
 
     boolean save(Long long1, List<Contract> list);
 
@@ -25,4 +32,7 @@ public interface Portal190724Manager {
     FlipInfo findMoreLaw(FlipInfo var1, Map var2) throws BusinessException;
 
     int setAddAccount(UserPas userPas);// 用户设置法律user\pas
+
+    void setDocAccount(UserPas userPas) throws Exception;// 用户设置档案系统user\pas
+
 }

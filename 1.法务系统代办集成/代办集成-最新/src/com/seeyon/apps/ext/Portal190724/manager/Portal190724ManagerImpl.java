@@ -23,8 +23,18 @@ public class Portal190724ManagerImpl implements Portal190724Manager {
     private Portal190724Dao dao = new Portal190724DaoImpl();
 
     @Override
+    public void deleteLaw(String userId) {
+        dao.deleteLaw(userId);
+    }
+
+    @Override
     public int updateState(String id) {
         return dao.updateState(id);
+    }
+
+    @Override
+    public int updateDocState(String columnName, String id) {
+        return dao.updateDocState(columnName,id);
     }
 
     @Override
@@ -35,6 +45,11 @@ public class Portal190724ManagerImpl implements Portal190724Manager {
     @Override
     public Map select(String s) {
         return dao.select(s);
+    }
+
+    @Override
+    public UserPas selectDocAccount(String s) {
+        return dao.selectDocAccount(s);
     }
 
     @Override
@@ -64,5 +79,10 @@ public class Portal190724ManagerImpl implements Portal190724Manager {
     @Override
     public int setAddAccount(UserPas userPas) {
         return dao.setAddAccount(userPas);
+    }
+
+    @Override
+    public void setDocAccount(UserPas userPas) throws Exception{
+        dao.setDocAccount(userPas);
     }
 }

@@ -11,7 +11,7 @@ public class Result {
     public Result() {
     }
 
-    public Result(ResultInfo result, String status, String message) {
+    public Result(String status, String message,ResultInfo result) {
         this.result = result;
         this.status = status;
         this.message = message;

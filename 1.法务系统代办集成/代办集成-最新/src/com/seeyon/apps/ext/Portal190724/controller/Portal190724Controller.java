@@ -57,23 +57,23 @@ public class Portal190724Controller extends BaseController {
      * 代办列表
      */
     public ModelAndView todoList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        ModelAndView mav = new ModelAndView();
         String type = request.getParameter("type");
         Long currentUserId = CurrentUser.get().getId();
         Map<String, Object> accountMap = portal190724Manager.select(String.valueOf(CurrentUser.get().getId()));
-        String username = accountMap.keySet().iterator().next();
-        String password = (String) accountMap.get(username);
-        boolean b = jsonResolveTools.savelaws(currentUserId, username, password);
-        StringBuffer sb = new StringBuffer();
-        List<Contract> contracts = null;
-        GetTokenTool tokenTool = new GetTokenTool();
-        Map<String, Object> getMap = tokenTool.checkToken();
-        for (Map.Entry<String, Object> entry : getMap.entrySet()) {
-            if (!entry.getKey().equals("Timespan")) {
-                sb.append("&").append(entry.getKey()).append("=").append(entry.getValue());
+        if (accountMap.size() != 0) {
+            String username = accountMap.keySet().iterator().next();
+            String password = (String) accountMap.get(username);
+            boolean b = jsonResolveTools.savelaws(currentUserId, username, password);
+            StringBuffer sb = new StringBuffer();
+            List<Contract> contracts = null;
+            GetTokenTool tokenTool = new GetTokenTool();
+            Map<String, Object> getMap = tokenTool.checkToken();
+            for (Map.Entry<String, Object> entry : getMap.entrySet()) {
+                if (!entry.getKey().equals("Timespan")) {
+                    sb.append("&").append(entry.getKey()).append("=").append(entry.getValue());
+                }
             }
-        }
-        ModelAndView mav = new ModelAndView();
-        if (b) {
             if (type.equals("limit")) {
                 mav.setViewName("apps/ext/Portal190724/index");
                 contracts = portal190724Manager.getLimitLaw(currentUserId);
@@ -82,9 +82,18 @@ public class Portal190724Controller extends BaseController {
                 contracts = portal190724Manager.getAllLaw(currentUserId);
             }
 
+            mav.addObject("contracts", contracts);
+            mav.addObject("detailParam", sb.toString());
+        } else {
+            if (type.equals("limit")) {
+                mav.setViewName("apps/ext/Portal190724/index");
+            } else {
+                mav.setViewName("apps/ext/Portal190724/list_more");
+            }
+            mav.addObject("contracts", "");
+            mav.addObject("detailParam", "");
         }
-        mav.addObject("contracts", contracts);
-        mav.addObject("detailParam", sb.toString());
+
         return mav;
     }
 

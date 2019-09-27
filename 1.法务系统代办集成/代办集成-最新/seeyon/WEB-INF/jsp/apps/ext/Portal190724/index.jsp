@@ -36,21 +36,30 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 
     <tbody>
-    <c:forEach var="cont" items="${contracts}">
-        <tr>
-            <td width="50%" class="active">
-                <a href="javascript:void(0);" onclick="openTodo('${cont.taskUrl}','${detailParam}')">${cont.taskName}</a>
-            </td>
-            <td width="10%" align="center">
-                <span title="${cont.createUser}">${cont.createUser}</span>
-            </td>
-            <td width="30%" align="center">
+    <c:if test="${not empty contracts}">
+        <c:forEach var="cont" items="${contracts}">
+            <tr>
+                <td width="50%" class="active">
+                    <a href="javascript:void(0);" onclick="openTodo('${cont.taskUrl}','${detailParam}')">${cont.taskName}</a>
+                </td>
+                <td width="10%" align="center">
+                    <span title="${cont.createUser}">${cont.createUser}</span>
+                </td>
+                <td width="30%" align="center">
                 <span title="${cont.beginTime}">
                         ${cont.beginTime}
                 </span>
+                </td>
+            </tr>
+        </c:forEach>
+    </c:if>
+    <c:if test="${empty contracts}">
+        <tr>
+            <td width="50%" class="active" colspan="3">
+                暂无数据...
             </td>
         </tr>
-    </c:forEach>
+    </c:if>
     </tbody>
 </table>
 <script type="text/javascript">
