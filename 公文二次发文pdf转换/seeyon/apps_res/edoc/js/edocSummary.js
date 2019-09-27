@@ -12,13 +12,13 @@ function senderEditAtt(){
 	senderEditAttCallbackParam.processId = processId;
 	senderEditAttCallbackParam.currentUser = currentUser;
 	var result = editAttachments(attList,summaryId,summaryId,'4', senderEditAttCallback);
-} 
+}
 
 /**
  * 修改附件回调函数
  */
 function senderEditAttCallback(result){
-    
+
     var processId = senderEditAttCallbackParam.processId;
     var currentUser = senderEditAttCallbackParam.currentUser;
   //提交
@@ -27,7 +27,7 @@ function senderEditAttCallback(result){
         $('#attchmentForm').ajaxSubmit({
                 url : genericURL + "?method=updateAttachment&edocSummaryId="+summaryId+"&affairId="+affair_id,
 				type : 'POST',
-				beforeSend: CsrfGuard.beforeAjaxSend, 
+				beforeSend: CsrfGuard.beforeAjaxSend,
                 success : function(data) {
                     updateAttachmentMemory(result,summaryId,summaryId,'');
                     //附件提交完成后，需要清理缓存日志
@@ -53,7 +53,7 @@ function initCaseProcessXML(){
 			requestCaller.addParameter(1, "String", caseId);
 			requestCaller.addParameter(2, "String", processId);
 			var processXMLs = requestCaller.serviceRequest();
-			
+
 			if(processXMLs){
 				caseProcessXML = processXMLs[0];
 				caseLogXML = processXMLs[1];
@@ -138,9 +138,9 @@ function init_edocSUmmary() {
 		}
 	}
 	if(onlySeeContent=='true'){ //借阅只借阅正文的时候，切换到正文也签
-		showPrecessAreaTd('content');	
+		showPrecessAreaTd('content');
 	}else{
-		showPrecessAreaTd('edocform');	
+		showPrecessAreaTd('edocform');
 	}
 
 
@@ -163,9 +163,9 @@ function init_edocSUmmary() {
 			document.getElementById("attachment2Tr").style.display="";
 		}
 	}
-	
 
-	
+
+
 	//是否在已发中显示修改附件的按钮
 	if(canEditAtt == 'true') showModifyAttachmentLabel();
 
@@ -179,10 +179,10 @@ function init_edocSUmmary() {
 	 if( bodyType=="HTML"){
 		/* $('#scrollContentTd div').html($('#ctn').html());*/
 		document.getElementById('htmlContentIframe').src = detailURL+"?method=edocContent&summaryId="+summaryId+"&onlySeeContent="+onlySeeContent + CsrfGuard.getUrlSurffix();
-	} 
+	}
 	//窗体加载时显示意见输入框
 	readLoading();
-	
+
 	windowResizeTop();
 	initMoreOperation();
 }
@@ -237,32 +237,32 @@ function showModifyAttachmentLabel(){
 
 var __isExeUnload = false;
 function unLoad(processId, summaryId,userId){
-    
+
     if(__isExeUnload){
         return;
     }
-    
+
     __isExeUnload = true;
-    
+
 	try{
 		if(isCheckContentEdit && ocxContentIsModify()==true)
 		{//正文为修改状态，是否进行保存
 			event.returnValue=V5_Edoc().$.i18n("edoc.alert.modify.content.leave.js");//您修改了正文内容没有保存，确定离开当前页面吗？
 		}
-		
+
 		//文单解锁, 这解锁和内部onunload有重复， 不知道为什么暂时不干掉
     	contentIframe.edocContentUnLoad();
 
     	//只能手动拼装JOSN
     	var leaveParams = "{";
-    	
+
     	//解锁参数
     	var lockParams = "{";
     	lockParams += '"summaryId":"'+summaryId+'"';
     	lockParams += ',"processId":"'+processId+'"';
     	lockParams += "}";
     	leaveParams += '"DelLock":' + lockParams;
-    	
+
     	//处理时间记录
     	var viewParam = "{";
     	viewParam += '"affairId":"'+affair_id+'"';
@@ -271,9 +271,9 @@ function unLoad(processId, summaryId,userId){
     	viewParam += ',"signleViewPeriod":"'+affairSignleViewPeriod+'"';
         viewParam += "}";
         leaveParams += ',"ViewRecord":' + viewParam
-    	
+
     	leaveParams += "}";
-    	
+
     	var requestCaller = new XMLHttpRequestCaller(this, "ajaxEdocManager", "onLeaveDealPage", false,"POST",false);
         requestCaller.addParameter(1, "String", leaveParams);
         requestCaller.serviceRequest();
@@ -312,18 +312,18 @@ function htmlSign(){
 		alert(V5_Edoc().$.i18n("edoc.alert.no.office.js"));//当前浏览器不支持office签章！
 		return;
     }
-	
+
 	// 判断是否有其他用户在修改文单
 	if(checkAndLockEdocEditForm(summaryId)){
-		 return;	
+		 return;
 	}
-	  
+
 	var isReportToSupAccount = document.getElementById("isReportToSupAccount");
 	if(isReportToSupAccount && isReportToSupAccount.value == "true"){
 		alert(V5_Edoc().$.i18n("edoc.alert.sign.yjhb.js"));//文单含有意见汇报元素，不能进行文单签批操作!
 		return;
 	}
-	
+
 	var advanceOfficeOcx=advanceOffice;
 	if(advanceOfficeOcx == "false"){
 		alert(permissionAdvanceOfficeHtmlSignAuthorLabel);
@@ -394,7 +394,7 @@ function edocSubmit(permissionNode,summaryId) {
 				$.post("/seeyon/ext/transformEdoc.do?method=toTransformPdf",
 					{permissionNode: permissionNode, summaryId: summaryId,year:year,month:month,day:day}, function (zdata) {
 						var obj = eval('(' + zdata + ')');
-						console.log(obj.code);
+						// console.log(obj.code);
 					});
 			}
 }
@@ -479,7 +479,7 @@ function edocSubmitForm() {
             }
             // 验证文号定义是否存在
             if (!contentIframe.checkMarkDefinition(contentIframe.sendForm)){
-            	enablePrecessButtonEdoc();    	
+            	enablePrecessButtonEdoc();
             	return false;
             }
         }
@@ -500,7 +500,7 @@ function edocSubmitForm() {
                 }
                 if (aField.access == "edit" && aField.required == 'true'
                         && inputObj.value.length == 0) {
-                    
+
                     alert(_("edocLang.edoc_alter_required_not_null"));
                     contentIframe.document.getElementById(aField.fieldName).focus();
                     enablePrecessButtonEdoc();
@@ -598,7 +598,7 @@ function edocSubmitForm() {
                     }
                   }
             });
-            
+
         } else {
             // yangzd 在多人执行时，删除当前编辑人的编辑信息
             /*
@@ -625,7 +625,7 @@ function edocSubmitForm() {
                     throw new Error(edocReleaseLock); // "需要释放锁"
                     return;
                 }
-                
+
                 checkExchangeRole({"callbackFn":_exeCheckExchangeRoleCallback});
                 return;//不在继续了其余交给checkExchangeRole内部实现
             }else{
@@ -637,7 +637,7 @@ function edocSubmitForm() {
         //如果出现了异常情况
         //比如1 印发分数个数错误，2 意见必填时，没有填写
         EdocLock.releaseWorkflowByAction(obj.processId, obj.currentUser,
-                EdocLock.SUBMIT);//14    
+                EdocLock.SUBMIT);//14
     }
 }
 
@@ -661,7 +661,7 @@ function seletcOpinionTypeCallback(retObj) {
                 	enablePrecessButtonEdoc();
                     throw new Error(edocReleaseLock); // "需要释放锁"
                 }
-                
+
                 checkExchangeRole({"callbackFn":_exeCheckExchangeRoleCallback});
             }else{
                 _exeCheckExchangeRoleCallback(true);
@@ -671,7 +671,7 @@ function seletcOpinionTypeCallback(retObj) {
         // 如果出现了异常情况
         // 比如1 印发分数个数错误，2 意见必填时，没有填写
         EdocLock.releaseWorkflowByAction(obj.processId, obj.currentUser,
-                EdocLock.SUBMIT);//14    
+                EdocLock.SUBMIT);//14
         enablePrecessButtonEdoc();
     }
 }
@@ -680,9 +680,9 @@ function seletcOpinionTypeCallback(retObj) {
  * 执行交换角色验证
  */
 function _exeCheckExchangeRoleCallback(value){
-    
+
     if(value){
-        
+
         var obj = getProcessAndUserId();
         try {
             var subForm = document.theform;
@@ -698,19 +698,19 @@ function _exeCheckExchangeRoleCallback(value){
             // 如果出现了异常情况
             // 比如1 印发分数个数错误，2 意见必填时，没有填写
             EdocLock.releaseWorkflowByAction(obj.processId, obj.currentUser,
-                    EdocLock.SUBMIT);//14     
+                    EdocLock.SUBMIT);//14
             enablePrecessButtonEdoc();
         }
-        
+
     }else{//验证失败
-        
+
         var obj = getProcessAndUserId();
-        
+
         // 如果出现了异常情况
         // 比如1 印发分数个数错误，2 意见必填时，没有填写
         EdocLock.releaseWorkflowByAction(obj.processId, obj.currentUser,
                 EdocLock.SUBMIT);// 14
-        
+
         enablePrecessButtonEdoc();
     }
 }
@@ -718,18 +718,18 @@ function _exeCheckExchangeRoleCallback(value){
 
 //最后一个节点，判断是否有套红、盖章，提示用户
 function checkIsNeedTHAndGZ(){
-	
+
 	var wfLastInput=document.getElementById("workflow_last_input").value;
-	
+
 	if(edocType != "1" && finished!="true" && (wfLastInput=='true' || hasExchangeType==true)) {
-			
+
 	    var bodyType = document.getElementById("bodyType").value;
 	    var isNotTH=false;
 	    var isNotGZ_tupian=false;//图片章
 	    var isNotGZ_zhuanye=false; //专业章
 	    var isNotGZ_html=false;//html章
 	    var isNotGZ=false;
-	   
+
 	    try {//Chrome浏览器不支持Office控件，直接不验证了
 	    	if(!isHandWriteRef()){
 	    		return false;
@@ -737,7 +737,7 @@ function checkIsNeedTHAndGZ(){
 	        if((bodyType == "OfficeWord" || bodyType == "WpsWord" ) && getBookmarksCount()==0){ //套红
 	            isNotTH=true;
 	          }
-	        
+
 	          if(bodyType!="HTML"){ //图片章
 	        	  var fileId =  getOfficeOcxRecordID();
 	        	  if(fileId!="" && fileId!=null && checkIsHaveHtmlSign(fileId)=="false"){
@@ -757,7 +757,7 @@ function checkIsNeedTHAndGZ(){
 	              }
 	          }catch(e){
 	          }
-	          
+
 	          if((isNotGZ_tupian && isNotGZ_zhuanye)||isNotGZ_html){
 	              isNotGZ=true;
 	          }
@@ -769,7 +769,7 @@ function checkIsNeedTHAndGZ(){
 	          if(isNotGZ){
 	            isNotGZ_alert=_("edocLang.edoc_finish_Signet");
 	          }
-	          
+
 	          if(isNotTH || isNotGZ){
 	            if(window.confirm(_("edocLang.edoc_finish_taohongAndSignet_1")+isNotTH_alert+((isNotTH_alert!="" && isNotGZ_alert!="")?_("edocLang.edoc_finish_And"):"")+isNotGZ_alert+_("edocLang.edoc_finish_taohongAndSignet_2"))==false){
 	               return false;
@@ -778,12 +778,12 @@ function checkIsNeedTHAndGZ(){
 	    } catch (e) {
 	    }
 	  }
-  
+
    return true;
 }
 function deleteUpdateObjAndIsAffairEnd(){
 	var requestCaller = new XMLHttpRequestCaller(this, "ajaxEdocSummaryManager", "deleteUpdateObjAndIsAffairEnd",false);
-	requestCaller.addParameter(1, "String", summaryId); 
+	requestCaller.addParameter(1, "String", summaryId);
 	requestCaller.addParameter(2, "String", affair_id);
 	var ds = requestCaller.serviceRequest();
 	return ds;
@@ -802,7 +802,7 @@ function predoZcdb(obj){
 		alert(affairHaveBeenProcessing);
 		parent.doEndSign_pending(affair_id);
 		return;
-	}	
+	}
 	doZcdb(obj);
 }
 function disabledMemberList(){
@@ -830,7 +830,7 @@ function addIdentifier(){
 		}
 
 		var bool = orgMemberId.search(memberArray[i]);
-		
+
 		if(bool != "-1" || bool != -1){
 			memberArray[i] += "|0";
 		}else{
@@ -856,11 +856,11 @@ function addIdentifier(){
 
 var checkExchangeRoleCallbackParam = {};
 function checkExchangeRole(params) {
-    
+
     params = params || params;
     var callbackFn = params.callbackFn || function(){};
     var selectDeptflag = false;
-    
+
     var typeAndIds = "";
     var msgKey = "edocLang.alert_set_departExchangeRole";
     var obj = document.getElementById("edocExchangeType_depart");
@@ -876,11 +876,11 @@ function checkExchangeRole(params) {
         // xiangfan 添加 修复GOV-4911 Start
         var list = null;
         var sendUserDeptId = "";
-        
+
         var selectDeptObj = document.getElementsByName("exchangeDeptType")[0];
         var selectDeptIndex = selectDeptObj.selectedIndex;
         var selectDeptType = (selectDeptObj.options[selectDeptIndex]).value;
-        
+
         if(selectDeptType == "Creater"){
             list = createrExchangeDepts;
             msgKey = "edocLang.alert_set_departExchangeRole";
@@ -888,19 +888,19 @@ function checkExchangeRole(params) {
             list = deptSenderList;
             msgKey = "edocLang.alert_set_dispatcherExcahgeRole";
         }
-        
+
         if (list != null && list != "undifined" && list != "") {
             var _url = genericControllerURL
                     + "edoc/selectDeptSender&memberList="
                     + encodeURIComponent(list);
             var listArr = list.split("|");
             if (listArr.length > 1) {
-                
+
                 checkExchangeRoleCallbackParam.msgKey = msgKey;
                 checkExchangeRoleCallbackParam.selectdExchangeUserName = selectdExchangeUserName;
                 checkExchangeRoleCallbackParam.callbackFn = callbackFn;
                 selectDeptflag = true;
-                
+
                 window.checkExchangeRoleWin = getA8Top().$.dialog({
                     title : V5_Edoc().$.i18n("edoc.select.exchangeDept.js"),//选择交换部门
                     transParams : {
@@ -925,7 +925,7 @@ function checkExchangeRole(params) {
                     document.getElementById("returnDeptId").value = sendUserDeptId;
                 }
             }
-        
+
         // xiangfan 添加 修复GOV-4911 End
         if(!selectDeptflag){
             typeAndIds = "Department|" + sendUserDeptId;
@@ -935,7 +935,7 @@ function checkExchangeRole(params) {
         typeAndIds = "Account|" + sendUserAccountId;
         msgKey = "edocLang.alert_set_accountExchangeRole";
     }
-    
+
     if(!selectDeptflag){
         _exeCheckExchangeRole(typeAndIds, selectdExchangeUserId, msgKey, selectdExchangeUserName, callbackFn);
     }
@@ -969,15 +969,15 @@ function _exeCheckExchangeRole(typeAndIds, selectdExchangeUserId, msgKey, select
 
 /**
  * 分发部门选择回调函数
- * 
+ *
  * @returns
  */
 function checkExchangeRoleCallback(sendUserDepartmentId) {
-    
+
     var msgKey = checkExchangeRoleCallbackParam.msgKey;
     var selectdExchangeUserName = checkExchangeRoleCallbackParam.selectdExchangeUserName;
     var callbackFn = checkExchangeRoleCallbackParam.callbackFn;
-    
+
     if (sendUserDepartmentId == "cancel"
             || typeof (sendUserDepartmentId) == 'undefined') {
 
@@ -1013,7 +1013,7 @@ function menuItemOut(id){
 		document.getElementById(id).filters.alpha.opacity -= 10;
     }else{
 		window.clearInterval(timerDarker);
-		
+
 		if(document.getElementById(id).filters.alpha.opacity <= 0) {
 			document.getElementById(id).style.display = "none";
 		}
@@ -1035,7 +1035,7 @@ function openSuperviseWindow(summaryId){
     var sfTemp = document.getElementById("sVisorsFromTemplate");
     var urlStr ="edocSupervise.do?method=superviseWindow";
     if(mId.value != null && mId.value != ""){
-        urlStr += "&supervisorId=" + mId.value + "&supervisors=" + encodeURIComponent(sNames.value) 
+        urlStr += "&supervisorId=" + mId.value + "&supervisors=" + encodeURIComponent(sNames.value)
         + "&superviseTitle=" + encodeURIComponent(title.value) + "&awakeDate=" + sDate.value  + "&sVisorsFromTemplate="+sfTemp.value +"&unCancelledVisor="+unCancelledVisor.value + "&count="+count.value;
     }
 
@@ -1054,13 +1054,13 @@ function openSuperviseWindow(summaryId){
  */
 function openSuperviseWindowCallback(rv){
     if(rv!=null && rv!="undefined"){
-        
+
         var isDeleteSupervisior = document.getElementById("isDeleteSupervisior");
         var mId = document.getElementById("supervisorId");
         var sDate = document.getElementById("awakeDate");
         var sNames = document.getElementById("supervisors");
         var title = document.getElementById("superviseTitle");
-        
+
         try{
             document.getElementById('valiSupervise').value="1";
         }catch(e){
@@ -1093,7 +1093,7 @@ function showDigarm(id,fromSupervis) {
 	} */
 	var top2 = window.parent;
 	var isOpenFrom=isOpenFrom;
-	
+
 	var defaultNode = getEdocDefaultNode();
 	var defaultNodeName = defaultNode.instance.defaultNodeName;
 	var defaultNodeLable =defaultNode.instance.defaultNodeLable;
@@ -1115,14 +1115,14 @@ function getEdocDefaultNode(){
 	 }
 	var requestCaller = new XMLHttpRequestCaller(this, "ajaxEdocSummaryManager", "getEdocDefaultNode",false);
 	requestCaller.addParameter(1, "String", appName);
-	requestCaller.addParameter(2, "Long", flowPermAccountId); 
+	requestCaller.addParameter(2, "Long", flowPermAccountId);
 	var defaultNode = requestCaller.serviceRequest();
 	return defaultNode;
 }
 
 function editRefreshWorkflow(callBackObj){
     var wfurl = "workflow/designer.do?method=showDiagram&isTemplate="+templateFlag+"&isDebugger=false&scene="+scene+"&processId="+processId+"&caseId="+caseId+"&currentNodeId="+activityId+"&appName=edoc&showHastenButton=true";
-    
+
     $("#monitorFrame").attr("src",encodeURI(wfurl));
 }
 function showPrecessAreaTd(type){
@@ -1143,7 +1143,7 @@ function showPrecessAreaTd(type){
 	var content1TR = document.getElementById('content1TR');
 	var content2TR = document.getElementById('content2TR');
 	var edocFormFrame = document.getElementById("contentIframe");
-	
+
 	var edocform_input = document.getElementById('edocform_btn');
 	var content_input = document.getElementById('content_btn');
 	var workflow_input = document.getElementById('workflow_btn');
@@ -1172,7 +1172,7 @@ function showPrecessAreaTd(type){
 			if(content2_input)content2_input.className = 'deal_btn_m';
 			if(workflow_input)workflow_input.className = 'deal_btn_r';
 		}
-		
+
 	}
 	var bodyType = document.getElementById("bodyType").value;
 	if((type == "content" || type == "content1" || type == "content2") && bodyType != "HTML"){
@@ -1181,7 +1181,7 @@ function showPrecessAreaTd(type){
 	else{
 		initSet();
 	}
-	
+
 	if(type == 'edocform'){
 		if(edocFormFrame){
 			edocFormFrame.style.height="";
@@ -1210,7 +1210,7 @@ function showPrecessAreaTd(type){
 		$("#monitorFrame").attr('src',wfUrl);
 		if(workflowTR){
 			workflowTR.style.display = '';
-			
+
 			//流程图
 			$("#workflowTR table").height($("#workflowTR").height());
 		}
@@ -1337,7 +1337,7 @@ function setTrackCheckboxChecked(){
 			//obj.checked = false;
 			//alert(_("edocLang.edoc_alertSignAfterOption"));
 		}
-		
+
 	}
 	 var partText = document.getElementById("zdgzryName");
 	 partText.style.display="none";
@@ -1412,7 +1412,7 @@ function readLoading(){
 
 //选择了加签的人员之后，调用的刷新流程图的方法
 function refreshWorkflow(callBackObj){
-	
+
 	// best 流程被修改后不是最后节点，把办结置位提交
 	try {
 		var isShow = $("#isLast").val();
@@ -1421,10 +1421,10 @@ function refreshWorkflow(callBackObj){
 		}
 	} catch (e){}
 	// best 流程被修改后不是最后节点，把办结置位提交
-	
+
     var wfurl = "workflow/designer.do?method=showDiagram&isTemplate="+templateFlag+"&isDebugger=false&scene="+scene+"&processId="+processId+"&caseId="+caseId+"&currentNodeId="+activityId+"&appName=edoc&showHastenButton=false";
     wfurl +=  CsrfGuard.getUrlSurffix();
-    
+
     var xml = parent.parent.document.getElementById("process_xml").value;
     var json = parent.parent.document.getElementById("readyObjectJSON").value;
     var addNodeJson = parent.parent.document.getElementById("processChangeMessage").value;
@@ -1432,7 +1432,7 @@ function refreshWorkflow(callBackObj){
     $("#process_xml").attr("value",xml);
     $("#readyObjectJSON").attr("value",json);
     $("#monitorFrame").attr("src",encodeURI(wfurl)+CsrfGuard.getUrlSurffix());
-    
+
     var edocformTR = document.getElementById('edocformTR');
     var workflowTR = document.getElementById('workflowTR');
     var edocFormFrame = document.getElementById("contentIframe");
@@ -1443,7 +1443,7 @@ function refreshWorkflow(callBackObj){
 	if(edocformTR){
 		edocformTR.style.height = '1px';
 	}
-	
+
     if(workflowTR)workflowTR.style.display = '';
 
     var edocform_input = document.getElementById('edocform_btn');
@@ -1453,7 +1453,7 @@ function refreshWorkflow(callBackObj){
     if(typeof(callBackObj) != 'undefined'){
         if(callBackObj.messageDataList){
     		document.getElementById("process_message_data").value=(callBackObj.messageDataList);
-        } 
+        }
 	}
 	var contentTR = document.getElementById('contentTR');
 	var content1TR = document.getElementById('content1TR');
@@ -1543,7 +1543,7 @@ function edocDeletePeople(workitemId,processId,activityId,performer,caseId,isTem
 }
 //调用工作流知会接口
 function addInform(workitemId,processId,activityId,performer,caseId){
-    parent.parent.informNode(workitemId,processId,activityId,performer,caseId,appNameNode,false,"zhihui",wOrgAccountId,refreshWorkflow); 
+    parent.parent.informNode(workitemId,processId,activityId,performer,caseId,appNameNode,false,"zhihui",wOrgAccountId,refreshWorkflow);
 }
 //移交
 function transfer(){
@@ -1568,7 +1568,7 @@ function transferFun(elements){
 		var id = elements[0].id;
 		$("#transferMemberId").val(id);
 		doTransfer();
-}		
+}
 function doTransfer(){
 		if(!isAffairValid(affair_id)){
 			//doEndSign_pending(affair_id);
@@ -1583,7 +1583,7 @@ function doTransfer(){
 	  		      return;
 	  		    }
 	  		  }
-	  	
+
 	  	if(!contentIframe.saveEdocForm()){
           	return;
           }
@@ -1595,19 +1595,19 @@ function doTransfer(){
           {
           	return;
           }
-         
+
           //移交前意见处理
          beforeSubmitButton();
      	//保存附件
 	   	 saveAttachment();
-	   	 
+
 	  	var transferMemberId = $("#transferMemberId").val();
 	  	var url = genericURL + "?method=colTransfer&&affairId="+affair_id+"&transferMemberId="+transferMemberId;
 	  	var theForm = document.theform;
 	  	 theForm.action = url;
 	  	 theForm.method = "POST";
 	     theForm.submit();
-	     
+
 	     //取消屏幕离开提示
 	  	 cancelConfirm();
 }
@@ -1624,7 +1624,7 @@ function TransmitToBulletin(){
 	      {
 	          if(!saveContent()){return;}
 	      }
-	      
+
 	  }
 	  //Ajax判断是否有发布新闻、公告的权限
 	  var requestCaller = new XMLHttpRequestCaller(this, "bulIssueManager", "hasAuthority", false);
@@ -1639,7 +1639,7 @@ function TransmitToBulletin(){
 	  if(rv){
 	    alert(v3x.getMessage("edocLang.edoc_transferred_announcement"));
 	  }
-	  
+
 	}
 	//调用工作流传阅接口
 	function passRead(){
@@ -1659,7 +1659,7 @@ function TransmitToBulletin(){
 		                           +"&edocType="+edocType
 		                           +"&sel="+encodeURIat(selected);
 		  var replyedAffairId = document.getElementById("replyedAffairId");
-		  
+
 		  if(replyedAffairId!=null && typeof(replyedAffairId)!='undefined'){
 		      url+="&replyedAffairId="+replyedAffairId.value;
 		  }
@@ -1670,10 +1670,10 @@ function TransmitToBulletin(){
 			  height:370,
 			  width:300
 		      });
-		  
+
 		}
 	function showPushWindowCallback(ret){
-		if(typeof(ret) != 'undefined' && ret != null){ 
+		if(typeof(ret) != 'undefined' && ret != null){
 		    //直接取消的时候返回undefined。没有选择点确定的时候返回为空
 		    var memberIds = ret[0];
 		    var memberNames = ret[1];
@@ -1685,8 +1685,8 @@ function TransmitToBulletin(){
 		    }
 		  }
 	}
-	
-	
+
+
 	function _hideButton(){
 		$("#wfzsbutton,#wflczs1").hide();//流程追溯
 		$("#mxrz1,#sxzt1").hide();
@@ -1760,7 +1760,7 @@ function TransmitToBulletin(){
 		    $("#contentOP").val($("#contentOP").val().replace(/\s+/g,'').replace(/\n/,'').trim());
 		}catch(e){}
 });
-	
+
 	//开始
 	if(_sysAdminFlag){
 	   	getDom();
@@ -1780,8 +1780,8 @@ function TransmitToBulletin(){
 	    return xmlDoc;
 	}
 	//结束
-	
-	
+
+
 	//js最后加载
 
 	$(document).ready(function(){
@@ -1837,12 +1837,12 @@ function TransmitToBulletin(){
 		  }
 		}
 	}
-	
+
 	function windowResizeTop() {
-	    
+
 	    var tempHeight = $("body").height()-document.getElementById("hhhhhhh").getBoundingClientRect().top;
-	    
-	    
+
+
 		$("#hhhhhhh,#signAreaTable,#scrollContentTd div").height(tempHeight);
 		var $contentIframe = $("#contentIframe");
 		if($contentIframe.css("height") !== "1px"){
@@ -1861,12 +1861,12 @@ function TransmitToBulletin(){
 
   if(document.getElementById("AddCalEventDIV")) {
 	  if(resources.indexOf("F02_eventlistK")>-1){
-		document.getElementById("AddCalEventDIV").style.display="block";	
+		document.getElementById("AddCalEventDIV").style.display="block";
 	  }else{
-	    document.getElementById("AddCalEventDIV").style.display="none";	
+	    document.getElementById("AddCalEventDIV").style.display="none";
 	  }
   }
-  
+
 //截取跟踪指定人长度
   function trackNameFun(res){
   	var userName="";
@@ -1884,7 +1884,7 @@ function TransmitToBulletin(){
   	partText.style.width="82px";
   	 $("#zdgzryName").val(nameSprit);
   }
-  
+
 /**
   * 在子页面点击插入附件后回调函数
  */
@@ -1936,7 +1936,7 @@ function selectDateTime(request, obj, width, height) {
 					alert(_("edocLang.edoc_zcdb_remind_later_than_now"));
 					return false;
 				}
-				doSelectZcdbTime();	
+				doSelectZcdbTime();
 			}
 		}});
 	}else{
@@ -1974,15 +1974,15 @@ function doSelectZcdbTime() {
 	}
 	isCancelZcdbTime = false;
 	cancelConfirm();
-	
+
 	var aObj=document.getElementById("zcdbAdviceA");
-	
+
 	predoZcdb(aObj);
 }
 
 //移除actions里面的项
 function removeAction(actions,actStr){
-    
+
     if(actions && actStr){
         var tempActions = actions;
         tempActions = tempActions.replace("[", "").replace("]", "");
@@ -1992,7 +1992,7 @@ function removeAction(actions,actStr){
                 var tempItem = tempArray[i];
                 var tempItemTrim = tempItem.replace(/^\s+|\s+$/g,'');//取消前后空白
                 if(tempItemTrim == actStr){
-                    
+
                     if(i == 0){
                         actions = actions.replace(tempItem + ",", "").replace(tempItem, "");
                     }else {
@@ -2017,7 +2017,7 @@ function transToArr(actions) {
 			actions=removeAction(actions,"Forward");
 		}
 		actions = actions.replace("[", "").replace("]", "");
-		
+
 		if (actions != "") {
 			arr = actions.split(",");
 			for(var i = 0; i < arr.length; i++){
@@ -2126,7 +2126,7 @@ $(function(){
 			divObj.appendTo(advancedDivObj);//绑定到高级
 		}
 	}
-	
+
 	// best 打开待阅已阅时默认打开正文
 	try {
 		var isShow = $("#isShow").val();
@@ -2138,7 +2138,7 @@ $(function(){
 		}
 	} catch (e) {}
 	// best 打开待阅已阅时默认打开正文
-	
+
 });
 
 /**
