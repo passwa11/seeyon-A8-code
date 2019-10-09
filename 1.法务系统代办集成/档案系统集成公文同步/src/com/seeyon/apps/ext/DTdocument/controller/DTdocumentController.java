@@ -31,7 +31,7 @@ public class DTdocumentController extends BaseController {
         SyncOrgData.getInstance().syncSummary();
 
         SyncOrgData.getInstance().copyEdoc();
-        SyncOrgData.getInstance().syncSummary();
+        SyncOrgData.getInstance().copyAttachment();
 
         return null;
     }
