@@ -14,14 +14,14 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/../../lib" />
+          <root url="file://F:/Seeyon/A87.1_Sp1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://$MODULE_DIR$/../../lib" />
+          <root url="file://F:/Seeyon/A87.1_Sp1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
         </SOURCES>
-        <jarDirectory url="file://$MODULE_DIR$/../../lib" recursive="false" />
-        <jarDirectory url="file://$MODULE_DIR$/../../lib" recursive="false" type="SOURCES" />
+        <jarDirectory url="file://F:/Seeyon/A87.1_Sp1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" />
+        <jarDirectory url="file://F:/Seeyon/A87.1_Sp1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
   </component>
