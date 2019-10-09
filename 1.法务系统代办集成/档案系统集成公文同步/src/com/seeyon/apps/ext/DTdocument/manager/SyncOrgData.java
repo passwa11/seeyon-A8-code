@@ -97,9 +97,9 @@ public class SyncOrgData {
             CallableStatement edoc_content = connection.prepareCall("{call pro_test(?)}");
             edoc_content.setInt(1, 3);
             edoc_content.execute();
-//            CallableStatement edoc_attach = connection.prepareCall("{call pro_test(?)}");
-//            edoc_attach.setInt(1, 4);
-//            edoc_attach.execute();
+            CallableStatement edoc_attach = connection.prepareCall("{call pro_test(?)}");
+            edoc_attach.setInt(1, 4);
+            edoc_attach.execute();
 //            正式
 //            String sql = "select a.id as id, a.subject as subject, substr(to_char(a.create_time, 'yyyy-mm-dd'), 0, 4) year,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 6, 2) month,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 9, 2) day from edoc_summary a, edoc_body b where a.has_archive = 1 and a.id = b.edoc_id and a.id in (select id from TEMP_NUMBER1)";
 //            测试
@@ -109,25 +109,25 @@ public class SyncOrgData {
 
             String[] htmlContent = null;
             String sPath = "";
-            while(rs.next()) {
-                String idTest=rs.getString("id");
-                System.out.println("id test :"+ idTest);
+            while (rs.next()) {
+                String idTest = rs.getString("id");
+                System.out.println("id test :" + idTest);
                 htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("id")));
                 Transformer transformer = tFactory.newTransformer(new StreamSource(new StringReader(htmlContent[1])));
                 sPath = "/upload/" + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("id") + ".html";
-                if(!(new File("/upload" + File.separator + rs.getString("year"))).exists() && !(new File("/upload" + File.separator + rs.getString("year"))).isDirectory()) {
+                if (!(new File("/upload" + File.separator + rs.getString("year"))).exists() && !(new File("/upload" + File.separator + rs.getString("year"))).isDirectory()) {
                     (new File("/upload" + File.separator + rs.getString("year"))).mkdir();
                 }
 
-                if(!(new File("/upload" + File.separator + rs.getString("year") + File.separator + rs.getString("month"))).exists() && !(new File("/upload" + File.separator + rs.getString("year") + File.separator + rs.getString("month"))).isDirectory()) {
+                if (!(new File("/upload" + File.separator + rs.getString("year") + File.separator + rs.getString("month"))).exists() && !(new File("/upload" + File.separator + rs.getString("year") + File.separator + rs.getString("month"))).isDirectory()) {
                     (new File("/upload" + File.separator + rs.getString("year") + File.separator + rs.getString("month"))).mkdir();
                 }
 
-                if(!(new File("/upload" + File.separator + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day"))).exists() && !(new File("/upload" + File.separator + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day"))).isDirectory()) {
+                if (!(new File("/upload" + File.separator + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day"))).exists() && !(new File("/upload" + File.separator + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day"))).isDirectory()) {
                     (new File("/upload" + File.separator + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day"))).mkdir();
                 }
 
-                if(!(new File(sPath)).exists()) {
+                if (!(new File(sPath)).exists()) {
                     (new File(sPath)).createNewFile();
                 }
 
@@ -139,12 +139,12 @@ public class SyncOrgData {
         }
     }
 
-    private void copyEdoc(Connection conn) {
+    public void copyEdoc() {
         System.out.println("开始复制OA正文>>>>>>>>>>>>");
         String str = "";
         Statement st = null;
         ResultSet rs = null;
-
+        Connection conn = DbConnUtil.getInstance().getConnection();
         try {
             str = " select '/upload/' || substr(to_char(C.Create_Date, 'yyyy-mm-dd'), 0, 4) || '/' ||  substr(to_char(C.Create_Date, 'yyyy-mm-dd'), 6, 2) || '/' ||  substr(to_char(C.Create_Date, 'yyyy-mm-dd'), 9, 2) || '/' || C.Filename || '.doc' as C_FTPFILEPATH  from edoc_summary A left join (select * from edoc_body where content_type <> 'HTML') B on B.Edoc_Id = A.Id left join ctp_file C on to_char(B.content) = C.Id  where a.has_archive = 1 and B.Id is not null  and a.id in (select id from TEMP_NUMBER10)";
             st = conn.createStatement();
@@ -152,7 +152,7 @@ public class SyncOrgData {
             String sPath = "";
             String sFilePath = "";
 
-            while(rs.next()) {
+            while (rs.next()) {
                 sPath = rs.getString("C_FTPFILEPATH");
                 sFilePath = sPath.substring(0, sPath.lastIndexOf("."));
                 if ((new File(sFilePath)).exists()) {
@@ -166,12 +166,12 @@ public class SyncOrgData {
         System.out.println("开始复制OA正文结束>>>>>>>>>>>>");
     }
 
-    private void copyAttachment(Connection conn) {
+    public void copyAttachment() {
         System.out.println("开始复制OA附件>>>>>>>>>>>>");
         String str = "";
         Statement st = null;
         ResultSet rs = null;
-
+        Connection conn = DbConnUtil.getInstance().getConnection();
         try {
             str = " select '/upload/' || substr(to_char(C.createdate, 'yyyy-mm-dd'), 0, 4) || '/' ||  substr(to_char(C.createdate, 'yyyy-mm-dd'), 6, 2) || '/' ||  substr(to_char(C.createdate, 'yyyy-mm-dd'), 9, 2) || '/' ||  C.file_url || substr(C.Filename, instr(C.Filename, '.', -1, 1)) C_FTPFILEPATH   from edoc_summary A left join edoc_body  B on B.Edoc_Id = A.Id left join ctp_attachment C on b.Edoc_Id = c.reference  where a.has_archive = 1 and C.id is not null  and a.id in (select id from TEMP_NUMBER10)";
             st = conn.createStatement();
@@ -179,7 +179,7 @@ public class SyncOrgData {
             String sPath = "";
             String sFilePath = "";
 
-            while(rs.next()) {
+            while (rs.next()) {
                 sPath = rs.getString("C_FTPFILEPATH");
                 sFilePath = sPath.substring(0, sPath.lastIndexOf("."));
                 if ((new File(sFilePath)).exists()) {

@@ -29,8 +29,9 @@ public class DTdocumentController extends BaseController {
          * 同步公文
          */
         SyncOrgData.getInstance().syncSummary();
-//        SyncData syncData=new SyncData();
-//        syncData.syncSummary();
+
+        SyncOrgData.getInstance().copyEdoc();
+        SyncOrgData.getInstance().syncSummary();
 
         return null;
     }
