@@ -109,9 +109,9 @@ public class SyncOrgData {
 
             String[] htmlContent = null;
             String sPath = "";
+            String classPath = this.getClass().getResource("/").getPath();
+            String p = classPath.substring(0, classPath.indexOf("ApacheJetspeed")).concat("base");
             while (rs.next()) {
-                String idTest = rs.getString("id");
-                System.out.println("id test :" + idTest);
                 htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("id")));
                 Transformer transformer = tFactory.newTransformer(new StreamSource(new StringReader(htmlContent[1])));
                 sPath = "/upload/" + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("id") + ".html";
@@ -127,12 +127,12 @@ public class SyncOrgData {
                     (new File("/upload" + File.separator + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day"))).mkdir();
                 }
 
-                if (!(new File(sPath)).exists()) {
-                    (new File(sPath)).createNewFile();
+                if (!(new File(p + sPath)).exists()) {
+                    (new File(p + sPath)).createNewFile();
                 }
 
-                System.out.println("上传HTML文件路径>>>>>>" + sPath);
-                transformer.transform(new StreamSource(new StringReader(htmlContent[0])), new StreamResult(new OutputStreamWriter(new FileOutputStream(sPath), "GBK")));
+//                System.out.println("上传HTML文件路径>>>>>>" + sPath);
+                transformer.transform(new StreamSource(new StringReader(htmlContent[0])), new StreamResult(new OutputStreamWriter(new FileOutputStream(p+sPath), "GBK")));
             }
         } catch (Exception e) {
             e.printStackTrace();
