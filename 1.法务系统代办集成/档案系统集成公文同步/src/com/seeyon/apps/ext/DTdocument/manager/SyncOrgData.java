@@ -139,8 +139,10 @@ public class SyncOrgData {
         }
     }
 
+    /**
+     * 复制OA正文
+     */
     public void copyEdoc() {
-        System.out.println("开始复制OA正文>>>>>>>>>>>>");
         String str = "";
         Statement st = null;
         ResultSet rs = null;
@@ -151,23 +153,25 @@ public class SyncOrgData {
             rs = st.executeQuery(str);
             String sPath = "";
             String sFilePath = "";
-
+            String classPath = this.getClass().getResource("/").getPath();
+            String p = classPath.substring(0, classPath.indexOf("ApacheJetspeed")).concat("base");
             while (rs.next()) {
                 sPath = rs.getString("C_FTPFILEPATH");
                 sFilePath = sPath.substring(0, sPath.lastIndexOf("."));
-                if ((new File(sFilePath)).exists()) {
-                    FileUtil.copyFile(new File(sFilePath), new File(sPath));
+                if ((new File(p + sFilePath)).exists()) {
+                    FileUtil.copyFile(new File(p + sFilePath), new File(p + sPath));
                 }
             }
         } catch (Exception var7) {
             var7.printStackTrace();
         }
 
-        System.out.println("开始复制OA正文结束>>>>>>>>>>>>");
     }
 
+    /**
+     * 复制OA附件
+     */
     public void copyAttachment() {
-        System.out.println("开始复制OA附件>>>>>>>>>>>>");
         String str = "";
         Statement st = null;
         ResultSet rs = null;
@@ -178,19 +182,20 @@ public class SyncOrgData {
             rs = st.executeQuery(str);
             String sPath = "";
             String sFilePath = "";
+            String classPath = this.getClass().getResource("/").getPath();
+            String p = classPath.substring(0, classPath.indexOf("ApacheJetspeed")).concat("base");
 
             while (rs.next()) {
                 sPath = rs.getString("C_FTPFILEPATH");
                 sFilePath = sPath.substring(0, sPath.lastIndexOf("."));
-                if ((new File(sFilePath)).exists()) {
-                    FileUtil.copyFile(new File(sFilePath), new File(sPath));
+                if ((new File(p + sFilePath)).exists()) {
+                    FileUtil.copyFile(new File(p + sFilePath), new File(p + sPath));
                 }
             }
         } catch (Exception var7) {
             var7.printStackTrace();
         }
 
-        System.out.println("开始复制OA附件结束>>>>>>>>>>>>");
     }
 
 }
