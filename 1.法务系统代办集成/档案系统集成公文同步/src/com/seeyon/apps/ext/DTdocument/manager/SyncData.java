@@ -42,13 +42,13 @@ public class SyncData {
             CallableStatement edoc_content = connection.prepareCall("{call pro_test(?)}");
             edoc_content.setInt(1, 3);
             edoc_content.execute();
-//            CallableStatement edoc_attach = connection.prepareCall("{call pro_test(?)}");
-//            edoc_attach.setInt(1, 4);
-//            edoc_attach.execute();
+            CallableStatement edoc_attach = connection.prepareCall("{call pro_test(?)}");
+            edoc_attach.setInt(1, 4);
+            edoc_attach.execute();
 //            正式
-//            String sql = "select a.id as id, a.subject as subject, substr(to_char(a.create_time, 'yyyy-mm-dd'), 0, 4) year,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 6, 2) month,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 9, 2) day from edoc_summary a, edoc_body b where a.has_archive = 1 and a.id = b.edoc_id and a.id in (select id from TEMP_NUMBER1)";
+            String sql = "select a.id as id, a.subject as subject, substr(to_char(a.create_time, 'yyyy-mm-dd'), 0, 4) year,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 6, 2) month,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 9, 2) day from edoc_summary a, edoc_body b where a.has_archive = 1 and a.id = b.edoc_id and a.id in (select id from TEMP_NUMBER1)";
 //            测试
-            String sql = "select a.id as id, a.subject as subject, substr(to_char(a.create_time, 'yyyy-mm-dd'), 0, 4) year,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 6, 2) month,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 9, 2) day from edoc_summary a, edoc_body b where a.has_archive = 1 and a.id = b.edoc_id and a.id in (select id from TEMP_NUMBER10)";
+//            String sql = "select a.id as id, a.subject as subject, substr(to_char(a.create_time, 'yyyy-mm-dd'), 0, 4) year,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 6, 2) month,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 9, 2) day from edoc_summary a, edoc_body b where a.has_archive = 1 and a.id = b.edoc_id and a.id in (select id from TEMP_NUMBER10)";
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
 //            DocumentFactory df = V3XLocator.getInstance().lookup(DocumentFactoryImpl.class);
