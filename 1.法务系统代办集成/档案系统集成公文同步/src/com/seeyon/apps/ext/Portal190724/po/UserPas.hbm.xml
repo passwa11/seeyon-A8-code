@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="com.seeyon.apps.ext.DTdocument.po">
+<hibernate-mapping package="com.seeyon.apps.ext.Portal190724.po">
     <class name="com.seeyon.apps.ext.Portal190724.po.UserPas" table="LAW_FOX_TABLE" lazy="false">
         <id name="id" type="string" column="ID">
             <generator class="assigned"/>
