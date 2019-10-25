@@ -59,9 +59,9 @@ public class SyncOrgData {
      * @return
      */
     public int syncOrgUnit() {
-        String sql = "insert into s_midorg@testlink(ID,FLDSSGSID,FLDSSGSMC,C_ORGNAME,C_ORGID,C_PARENTID,C_DATE,I_TAG,I_STATE) " +
+        String sql = "insert into s_midorg@DBLINK_OA_FOR_ARC(ID,FLDSSGSID,FLDSSGSMC,C_ORGNAME,C_ORGID,C_PARENTID,C_DATE,I_TAG,I_STATE) " +
                 "select OU1.id,ou1.ORG_ACCOUNT_ID fldssgsid,nvl((select name from ORG_UNIT ou2 where OU2.id=OU1.ORG_ACCOUNT_ID),ou1.name) fldssgsmc,ou1.name C_ORGNAME,ou1.id C_ORGID ,ou1.path C_PARENTID,SYSDATE,0 tag,0 s_state " +
-                "from ORG_UNIT ou1,ORG_UNIT ou3 where  substr(OU1.path,0,length(OU1.path)-4)=ou3.path and ou1.IS_DELETED='0' and ou1.id not in (select id from s_midorg@testlink) ORDER BY OU1.SORT_ID asc";
+                "from ORG_UNIT ou1,ORG_UNIT ou3 where  substr(OU1.path,0,length(OU1.path)-4)=ou3.path and ou1.IS_DELETED='0' and ou1.id not in (select id from s_midorg@DBLINK_OA_FOR_ARC) ORDER BY OU1.SORT_ID asc";
         int flag = syncOrg(sql);
         return flag;
     }
@@ -72,10 +72,10 @@ public class SyncOrgData {
      * @return
      */
     public int syncOrgMember() {
-        String sql = "insert into s_midusers@testlink(ID,FLDSSGSID,FLDSSGSMC,C_USERNAME,C_LOGNAME,C_ORGID,C_PASSWORD,C_TELPHONE,C_EMAIL,I_LEAVE,I_TAG,I_STATE,I_DATE,C_PDE1,C_PDE2,C_PDE3) " +
+        String sql = "insert into s_midusers@DBLINK_OA_FOR_ARC(ID,FLDSSGSID,FLDSSGSMC,C_USERNAME,C_LOGNAME,C_ORGID,C_PASSWORD,C_TELPHONE,C_EMAIL,I_LEAVE,I_TAG,I_STATE,I_DATE,C_PDE1,C_PDE2,C_PDE3) " +
                 "select id,org_account_id FLDSSGSID,(select name from ORG_UNIT ou where OU.id=OM1.org_account_id) fldssgsmc ,name C_USERNAME,(select login_name from ORG_PRINCIPAL om2 where OM2.MEMBER_ID=OM1.id) C_LOGNAME,OM1.ORG_DEPARTMENT_ID C_ORGID, " +
                 "(select CREDENTIAL_VALUE from ORG_PRINCIPAL om2 where OM2.MEMBER_ID=OM1.id) pwd,ext_attr_1 mobile,ext_attr_2 email,(case OM1.state when 1 then 0 when 2 then 1 else 1 end) I_LEAVE,0 I_TAG,0 I_STATE,SYSDATE I_DATE,'' C_PDE1,'' C_PDE2,'' C_PDE3 " +
-                "from ORG_MEMBER om1 where  OM1.id not in (select id from s_midusers@testlink)";
+                "from ORG_MEMBER om1 where  OM1.id not in (select id from s_midusers@DBLINK_OA_FOR_ARC)";
         int flag = syncOrg(sql);
         return flag;
     }
