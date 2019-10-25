@@ -1,0 +1,3 @@
+create database link DBLINK_OA_FOR_ARC  connect to CZOA IDENTIFIED BY "1"
+using '(DESCRIPTION =(ADDRESS_LIST =(ADDRESS =(PROTOCOL = TCP)(HOST = 10.60.2.119)(PORT = 1521)))(CONNECT_DATA =(SID = orcl)))';
+
