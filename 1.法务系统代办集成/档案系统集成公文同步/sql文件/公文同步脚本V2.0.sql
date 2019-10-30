@@ -43,7 +43,9 @@ create global temporary table TEMP_NUMBER2
   FLDZH             VARCHAR2(100),
   FLDCOMPANY        VARCHAR2(100),
   FLDTYPE           VARCHAR2(100),
-  I_STATE           VARCHAR2(10) 
+  I_STATE           VARCHAR2(10) ,
+  FLDPERNAME VARCHAR2(255) ,
+  FLDORGNAME VARCHAR2(255)
 )
 on commit preserve rows;
 
