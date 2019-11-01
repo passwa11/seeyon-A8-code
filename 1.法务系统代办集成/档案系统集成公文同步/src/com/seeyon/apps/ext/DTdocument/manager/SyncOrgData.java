@@ -1,8 +1,16 @@
 package com.seeyon.apps.ext.DTdocument.manager;
 
 import com.seeyon.apps.ext.DTdocument.util.DbConnUtil;
+import com.seeyon.ctp.common.AppContext;
+import com.seeyon.v3x.edoc.domain.EdocBody;
+import com.seeyon.v3x.edoc.domain.EdocSummary;
+import com.seeyon.v3x.edoc.exception.EdocException;
+import com.seeyon.v3x.edoc.manager.EdocSummaryManager;
+import com.seeyon.v3x.edoc.manager.EdocSummaryManagerImpl;
 import com.seeyon.v3x.services.document.DocumentFactory;
 import com.seeyon.v3x.services.document.impl.DocumentFactoryImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import www.seeyon.com.utils.FileUtil;
 
 import javax.xml.transform.Transformer;
@@ -14,22 +22,35 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.StringReader;
 import java.sql.*;
+import java.util.Set;
 
 /**
  * Created by Administrator on 2019-9-10.
  */
 public class SyncOrgData {
 
+    private static Logger logger = LoggerFactory.getLogger(SyncOrgData.class);
+
     public static SyncOrgData syncOrgData;
 
     private DocumentFactory df = new DocumentFactoryImpl();
     private TransformerFactory tFactory = TransformerFactory.newInstance();
+    private EdocSummaryManagerImpl edocSummaryManager= (EdocSummaryManagerImpl) AppContext.getBean("edocSummaryManager");
 
     public static SyncOrgData getInstance() {
         return syncOrgData = new SyncOrgData();
     }
 
     public SyncOrgData() {
+    }
+
+    public void  getSummary(){
+        try {
+            EdocSummary summary=edocSummaryManager.getEdocSummaryById(7529576166400344252l,true,false);
+            Set<EdocBody> bodySet=summary.getEdocBodies();
+        } catch (EdocException e) {
+            e.printStackTrace();
+        }
     }
 
     public int syncOrg(String sql) {
@@ -59,9 +80,9 @@ public class SyncOrgData {
      * @return
      */
     public int syncOrgUnit() {
-        String sql = "insert into s_midorg@DBLINK_OA_FOR_ARC(ID,FLDSSGSID,FLDSSGSMC,C_ORGNAME,C_ORGID,C_PARENTID,C_DATE,I_TAG,I_STATE) " +
+        String sql = "insert into s_midorg@testlink(ID,FLDSSGSID,FLDSSGSMC,C_ORGNAME,C_ORGID,C_PARENTID,C_DATE,I_TAG,I_STATE) " +
                 "select OU1.id,ou1.ORG_ACCOUNT_ID fldssgsid,nvl((select name from ORG_UNIT ou2 where OU2.id=OU1.ORG_ACCOUNT_ID),ou1.name) fldssgsmc,ou1.name C_ORGNAME,ou1.id C_ORGID ,ou1.path C_PARENTID,SYSDATE,0 tag,0 s_state " +
-                "from ORG_UNIT ou1,ORG_UNIT ou3 where  substr(OU1.path,0,length(OU1.path)-4)=ou3.path and ou1.IS_DELETED='0' and ou1.id not in (select id from s_midorg@DBLINK_OA_FOR_ARC) ORDER BY OU1.SORT_ID asc";
+                "from ORG_UNIT ou1,ORG_UNIT ou3 where  substr(OU1.path,0,length(OU1.path)-4)=ou3.path and ou1.IS_DELETED='0' and ou1.id not in (select id from s_midorg@testlink) ORDER BY OU1.SORT_ID asc";
         int flag = syncOrg(sql);
         return flag;
     }
@@ -72,10 +93,10 @@ public class SyncOrgData {
      * @return
      */
     public int syncOrgMember() {
-        String sql = "insert into s_midusers@DBLINK_OA_FOR_ARC(ID,FLDSSGSID,FLDSSGSMC,C_USERNAME,C_LOGNAME,C_ORGID,C_PASSWORD,C_TELPHONE,C_EMAIL,I_LEAVE,I_TAG,I_STATE,I_DATE,C_PDE1,C_PDE2,C_PDE3) " +
+        String sql = "insert into s_midusers@testlink(ID,FLDSSGSID,FLDSSGSMC,C_USERNAME,C_LOGNAME,C_ORGID,C_PASSWORD,C_TELPHONE,C_EMAIL,I_LEAVE,I_TAG,I_STATE,I_DATE,C_PDE1,C_PDE2,C_PDE3) " +
                 "select id,org_account_id FLDSSGSID,(select name from ORG_UNIT ou where OU.id=OM1.org_account_id) fldssgsmc ,name C_USERNAME,(select login_name from ORG_PRINCIPAL om2 where OM2.MEMBER_ID=OM1.id) C_LOGNAME,OM1.ORG_DEPARTMENT_ID C_ORGID, " +
                 "(select CREDENTIAL_VALUE from ORG_PRINCIPAL om2 where OM2.MEMBER_ID=OM1.id) pwd,ext_attr_1 mobile,ext_attr_2 email,(case OM1.state when 1 then 0 when 2 then 1 else 1 end) I_LEAVE,0 I_TAG,0 I_STATE,SYSDATE I_DATE,'' C_PDE1,'' C_PDE2,'' C_PDE3 " +
-                "from ORG_MEMBER om1 where  OM1.id not in (select id from s_midusers@DBLINK_OA_FOR_ARC)";
+                "from ORG_MEMBER om1 where  OM1.id not in (select id from s_midusers@testlink)";
         int flag = syncOrg(sql);
         return flag;
     }
@@ -101,9 +122,9 @@ public class SyncOrgData {
             edoc_attach.setInt(1, 4);
             edoc_attach.execute();
 //            正式
-            String sql = "select a.id as id, a.subject as subject, substr(to_char(a.create_time, 'yyyy-mm-dd'), 0, 4) year,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 6, 2) month,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 9, 2) day from edoc_summary a, edoc_body b where a.has_archive = 1 and a.id = b.edoc_id and a.id in (select id from TEMP_NUMBER1)";
+//            String sql = "select a.id as id, a.subject as subject, substr(to_char(a.create_time, 'yyyy-mm-dd'), 0, 4) year,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 6, 2) month,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 9, 2) day from edoc_summary a, (select c.MODULE_ID from CTP_CONTENT_ALL c,ctp_file f where to_number(c.CONTENT) = f.id) b where a.has_archive = 1 and a.id = b.MODULE_ID and a.id in (select id from TEMP_NUMBER1)";
 //            测试
-//            String sql = "select a.id as id, a.subject as subject, substr(to_char(a.create_time, 'yyyy-mm-dd'), 0, 4) year,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 6, 2) month,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 9, 2) day from edoc_summary a, edoc_body b where a.has_archive = 1 and a.id = b.edoc_id and a.id in (select id from TEMP_NUMBER10)";
+            String sql = "select a.id as id, a.subject as subject, substr(to_char(a.create_time, 'yyyy-mm-dd'), 0, 4) year,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 6, 2) month,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 9, 2) day from edoc_summary a, (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)) zall,ctp_file cf where ZALL.CONTENT=CF.id) b where a.has_archive = 1 and a.id = b.MODULE_ID and a.id in (select id from TEMP_NUMBER1)";
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
 
@@ -132,9 +153,12 @@ public class SyncOrgData {
                 }
 
 //                System.out.println("上传HTML文件路径>>>>>>" + sPath);
-                transformer.transform(new StreamSource(new StringReader(htmlContent[0])), new StreamResult(new OutputStreamWriter(new FileOutputStream(p+sPath), "GBK")));
+                transformer.transform(new StreamSource(new StringReader(htmlContent[0])), new StreamResult(new OutputStreamWriter(new FileOutputStream(p + sPath), "GBK")));
             }
+        } catch (SQLException sql) {
+            logger.info("同步公文sql出错了：" + sql.getMessage());
         } catch (Exception e) {
+            logger.info("同步公文出错了：" + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -148,7 +172,7 @@ public class SyncOrgData {
         ResultSet rs = null;
         Connection conn = DbConnUtil.getInstance().getConnection();
         try {
-            str = " select '/upload/' || substr(to_char(C.Create_Date, 'yyyy-mm-dd'), 0, 4) || '/' ||  substr(to_char(C.Create_Date, 'yyyy-mm-dd'), 6, 2) || '/' ||  substr(to_char(C.Create_Date, 'yyyy-mm-dd'), 9, 2) || '/' || C.Filename || '.doc' as C_FTPFILEPATH  from edoc_summary A left join (select * from edoc_body where content_type <> 'HTML') B on B.Edoc_Id = A.Id left join ctp_file C on to_char(B.content) = C.Id  where a.has_archive = 1 and B.Id is not null  and a.id in (select id from TEMP_NUMBER10)";
+            str = " select '/upload/' || substr(to_char(C.Create_Date, 'yyyy-mm-dd'), 0, 4) || '/' ||  substr(to_char(C.Create_Date, 'yyyy-mm-dd'), 6, 2) || '/' ||  substr(to_char(C.Create_Date, 'yyyy-mm-dd'), 9, 2) || '/' || C.Filename || '.doc' as C_FTPFILEPATH  from edoc_summary A left join (select * from edoc_body where content_type <> 'HTML') B on B.Edoc_Id = A.Id left join ctp_file C on to_char(B.content) = C.Id  where a.has_archive = 1 and B.Id is not null  and a.id in (select id from TEMP_NUMBER1)";
             st = conn.createStatement();
             rs = st.executeQuery(str);
             String sPath = "";
@@ -177,7 +201,7 @@ public class SyncOrgData {
         ResultSet rs = null;
         Connection conn = DbConnUtil.getInstance().getConnection();
         try {
-            str = " select '/upload/' || substr(to_char(C.createdate, 'yyyy-mm-dd'), 0, 4) || '/' ||  substr(to_char(C.createdate, 'yyyy-mm-dd'), 6, 2) || '/' ||  substr(to_char(C.createdate, 'yyyy-mm-dd'), 9, 2) || '/' ||  C.file_url || substr(C.Filename, instr(C.Filename, '.', -1, 1)) C_FTPFILEPATH   from edoc_summary A left join edoc_body  B on B.Edoc_Id = A.Id left join ctp_attachment C on b.Edoc_Id = c.reference  where a.has_archive = 1 and C.id is not null  and a.id in (select id from TEMP_NUMBER10)";
+            str = " select '/upload/' || substr(to_char(C.createdate, 'yyyy-mm-dd'), 0, 4) || '/' ||  substr(to_char(C.createdate, 'yyyy-mm-dd'), 6, 2) || '/' ||  substr(to_char(C.createdate, 'yyyy-mm-dd'), 9, 2) || '/' ||  C.file_url || substr(C.Filename, instr(C.Filename, '.', -1, 1)) C_FTPFILEPATH   from edoc_summary A left join edoc_body  B on B.Edoc_Id = A.Id left join ctp_attachment C on b.Edoc_Id = c.att_reference  where a.has_archive = 1 and C.id is not null  and a.id in (select id from TEMP_NUMBER1)";
             st = conn.createStatement();
             rs = st.executeQuery(str);
             String sPath = "";
