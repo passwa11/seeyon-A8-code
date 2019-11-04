@@ -1,15 +1,40 @@
 package com.seeyon.apps.ext.DTdocument;
 
+import com.seeyon.apps.ext.DTdocument.quartz.SyncDataTask;
 import com.seeyon.ctp.common.AbstractSystemInitializer;
-public class DTdocumentPluginInitializer extends AbstractSystemInitializer{
+import com.seeyon.ctp.common.timer.TimerHolder;
 
-@Override
-public void initialize() {
-	System.out.println("¼ÓÔØDTdocument²å¼ş");
-}
+import java.util.Calendar;
+import java.util.Date;
 
-@Override
-public void destroy() {
-	System.out.println("Ïú»ÙDTdocument²å¼ş");
-}
+public class DTdocumentPluginInitializer extends AbstractSystemInitializer {
+
+    @Override
+    public void initialize() {
+//        final long PERIOD_DAY = 24 * 60 * 60 * 1000;
+//        SyncDataTask dataTask = new SyncDataTask();
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.set(Calendar.HOUR_OF_DAY, 1); //å‡Œæ™¨1ç‚¹
+//        calendar.set(Calendar.MINUTE, 0);
+//        calendar.set(Calendar.SECOND, 0);
+//        //ç¬¬ä¸€æ¬¡æ‰§è¡Œå®šæ—¶ä»»åŠ¡çš„æ—¶é—´
+//        Date date = calendar.getTime();
+//        if (date.before(new Date())) {
+//            date = this.addDay(date, 1);
+//        }
+//        TimerHolder.newTimer(dataTask, date, PERIOD_DAY);
+        System.out.println("å¯åŠ¨DTdocumentæ’ä»¶");
+    }
+
+    public Date addDay(Date date, int num) {
+        Calendar startDT = Calendar.getInstance();
+        startDT.setTime(date);
+        startDT.add(Calendar.DAY_OF_MONTH, num);
+        return startDT.getTime();
+    }
+
+    @Override
+    public void destroy() {
+        System.out.println("é”€æ¯DTdocumentæ’ä»¶");
+    }
 }
