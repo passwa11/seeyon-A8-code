@@ -23,16 +23,15 @@ public class DTdocumentController extends BaseController {
     private DTdocumentManager manager = new DTdocumentManagerImpl();
 
     public ModelAndView syncdata(HttpServletRequest request, HttpServletResponse response) {
-        SyncOrgData.getInstance().getSummary();
-//        SyncOrgData.getInstance().syncOrgUnit();
-//        SyncOrgData.getInstance().syncOrgMember();
+        SyncOrgData.getInstance().syncOrgUnit();
+        SyncOrgData.getInstance().syncOrgMember();
         /**
          * 同步公文
          */
         SyncOrgData.getInstance().syncSummary();
-//
-//        SyncOrgData.getInstance().copyEdoc();
-//        SyncOrgData.getInstance().copyAttachment();
+
+        SyncOrgData.getInstance().copyEdoc();
+        SyncOrgData.getInstance().copyAttachment();
 
         return null;
     }
