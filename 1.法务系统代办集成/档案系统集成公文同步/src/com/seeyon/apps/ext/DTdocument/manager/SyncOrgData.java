@@ -13,14 +13,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import www.seeyon.com.utils.FileUtil;
 
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.StringReader;
+import java.io.*;
 import java.sql.*;
 import java.util.Set;
 
@@ -35,7 +34,7 @@ public class SyncOrgData {
 
     private DocumentFactory df = new DocumentFactoryImpl();
     private TransformerFactory tFactory = TransformerFactory.newInstance();
-    private EdocSummaryManagerImpl edocSummaryManager= (EdocSummaryManagerImpl) AppContext.getBean("edocSummaryManager");
+    private EdocSummaryManagerImpl edocSummaryManager = (EdocSummaryManagerImpl) AppContext.getBean("edocSummaryManager");
 
     public static SyncOrgData getInstance() {
         return syncOrgData = new SyncOrgData();
@@ -44,10 +43,10 @@ public class SyncOrgData {
     public SyncOrgData() {
     }
 
-    public void  getSummary(){
+    public void getSummary() {
         try {
-            EdocSummary summary=edocSummaryManager.getEdocSummaryById(7529576166400344252l,true,false);
-            Set<EdocBody> bodySet=summary.getEdocBodies();
+            EdocSummary summary = edocSummaryManager.getEdocSummaryById(7529576166400344252l, true, false);
+            Set<EdocBody> bodySet = summary.getEdocBodies();
         } catch (EdocException e) {
             e.printStackTrace();
         }
@@ -124,7 +123,14 @@ public class SyncOrgData {
 //            正式
 //            String sql = "select a.id as id, a.subject as subject, substr(to_char(a.create_time, 'yyyy-mm-dd'), 0, 4) year,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 6, 2) month,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 9, 2) day from edoc_summary a, (select c.MODULE_ID from CTP_CONTENT_ALL c,ctp_file f where to_number(c.CONTENT) = f.id) b where a.has_archive = 1 and a.id = b.MODULE_ID and a.id in (select id from TEMP_NUMBER1)";
 //            测试
-            String sql = "select a.id as id, a.subject as subject, substr(to_char(a.create_time, 'yyyy-mm-dd'), 0, 4) year,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 6, 2) month,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 9, 2) day from edoc_summary a, (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)) zall,ctp_file cf where ZALL.CONTENT=CF.id) b where a.has_archive = 1 and a.id = b.MODULE_ID and a.id in (select id from TEMP_NUMBER1)";
+//            String sql = "select a.id as id, a.subject as subject, substr(to_char(a.create_time, 'yyyy-mm-dd'), 0, 4) year,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 6, 2) month,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 9, 2) day from edoc_summary a, (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)) zall,ctp_file cf where ZALL.CONTENT=CF.id) b where a.has_archive = 1 and a.id = b.MODULE_ID and a.id in (select id from TEMP_NUMBER1)";
+            String sql = "SELECT A . affairId AS ID,A.edocSummaryId,A .subject AS subject," +
+                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),0,4) YEAR," +
+                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),6,2) MONTH," +
+                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),9,2) DAY " +
+                    "FROM (select c.id affairId,e.id edocSummaryId,e.SUBJECT,e.create_time,e.has_archive from CTP_AFFAIR c,EDOC_SUMMARY e where c.OBJECT_ID=e.id and c.ARCHIVE_ID is not null and e.has_archive = 1) A," +
+                    "(SELECT * FROM CTP_CONTENT_ALL C,CTP_FILE F WHERE TO_NUMBER(C.CONTENT) = F.ID AND C.CONTENT_TYPE NOT IN (10)) B WHERE A .has_archive = 1 " +
+                    " AND to_number(A . edocSummaryId) = to_number(b.MODULE_ID) AND to_number(A . edocSummaryId) IN (SELECT to_number(ID) FROM TEMP_NUMBER1)";
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
 
@@ -134,7 +140,7 @@ public class SyncOrgData {
             String p = classPath.substring(0, classPath.indexOf("ApacheJetspeed")).concat("base");
             while (rs.next()) {
                 htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("id")));
-                Transformer transformer = tFactory.newTransformer(new StreamSource(new StringReader(htmlContent[1])));
+
                 sPath = "/upload/" + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("id") + ".html";
                 if (!(new File("/upload" + File.separator + rs.getString("year"))).exists() && !(new File("/upload" + File.separator + rs.getString("year"))).isDirectory()) {
                     (new File("/upload" + File.separator + rs.getString("year"))).mkdir();
@@ -153,7 +159,25 @@ public class SyncOrgData {
                 }
 
 //                System.out.println("上传HTML文件路径>>>>>>" + sPath);
-                transformer.transform(new StreamSource(new StringReader(htmlContent[0])), new StreamResult(new OutputStreamWriter(new FileOutputStream(p + sPath), "GBK")));
+//                Transformer transformer = tFactory.newTransformer();
+//                Source source = new StreamSource(new StringReader(htmlContent[1]));
+                File file = new File(p + sPath);
+                if (!(file.exists())) {
+                    file.createNewFile();
+                }
+//                Result result = new StreamResult(new OutputStreamWriter(new FileOutputStream(file), "GBK"));
+//                transformer.transform(source, result);
+                FileOutputStream fos = null;
+                try {
+                    fos = new FileOutputStream(file);
+                    String msg = htmlContent[1];
+                    fos.write(msg.getBytes());
+                } catch (IOException e) {
+                    logger.info("向文件中写入内容出错了:" + e.getMessage());
+                } finally {
+                    fos.close();
+                }
+
             }
         } catch (SQLException sql) {
             logger.info("同步公文sql出错了：" + sql.getMessage());
