@@ -4,7 +4,8 @@ BEGIN
     if (flag = 1) then
         --临时记录此次同步的公文信息表主键
         begin
-            insert into TEMP_NUMBER1(ID) select to_char(A.id) from edoc_summary A left join edoc_body B on A.Id = B.Edoc_Id  where has_archive = 1  and A.id not in (select id from S_OADATA@DBLINK_OA_FOR_ARC);
+            insert into TEMP_NUMBER1(ID)
+            select to_char(A.id) from edoc_summary A left join (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)) zall,ctp_file cf where ZALL.CONTENT=CF.id) B on A.Id = B.MODULE_ID  where has_archive = 1  and A.id not in (select id from S_OADATA@DBLINK_OA_FOR_ARC);
 
         exception
             when others then
