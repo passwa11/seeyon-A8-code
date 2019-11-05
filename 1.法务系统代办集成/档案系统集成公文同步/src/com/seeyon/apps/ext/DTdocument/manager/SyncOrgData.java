@@ -1,5 +1,6 @@
 package com.seeyon.apps.ext.DTdocument.manager;
 
+import com.seeyon.apps.ext.DTdocument.po.TempDate;
 import com.seeyon.apps.ext.DTdocument.util.DbConnUtil;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.v3x.edoc.domain.EdocBody;
@@ -21,6 +22,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.sql.*;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -32,6 +34,7 @@ public class SyncOrgData {
 
     public static SyncOrgData syncOrgData;
 
+    private DTdocumentManager dt = new DTdocumentManagerImpl();
     private DocumentFactory df = new DocumentFactoryImpl();
     private TransformerFactory tFactory = TransformerFactory.newInstance();
     private EdocSummaryManagerImpl edocSummaryManager = (EdocSummaryManagerImpl) AppContext.getBean("edocSummaryManager");
@@ -108,22 +111,51 @@ public class SyncOrgData {
         Statement statement = null;
         ResultSet rs = null;
         try {
-            CallableStatement edoc_key = connection.prepareCall("{call pro_test(?)}");
-            edoc_key.setInt(1, 1);
-            edoc_key.execute();
-            CallableStatement edoc_record = connection.prepareCall("{call pro_test(?)}");
-            edoc_record.setInt(1, 2);
-            edoc_record.execute();
-            CallableStatement edoc_content = connection.prepareCall("{call pro_test(?)}");
-            edoc_content.setInt(1, 3);
-            edoc_content.execute();
-            CallableStatement edoc_attach = connection.prepareCall("{call pro_test(?)}");
-            edoc_attach.setInt(1, 4);
-            edoc_attach.execute();
-//            正式
-//            String sql = "select a.id as id, a.subject as subject, substr(to_char(a.create_time, 'yyyy-mm-dd'), 0, 4) year,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 6, 2) month,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 9, 2) day from edoc_summary a, (select c.MODULE_ID from CTP_CONTENT_ALL c,ctp_file f where to_number(c.CONTENT) = f.id) b where a.has_archive = 1 and a.id = b.MODULE_ID and a.id in (select id from TEMP_NUMBER1)";
-//            测试
-//            String sql = "select a.id as id, a.subject as subject, substr(to_char(a.create_time, 'yyyy-mm-dd'), 0, 4) year,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 6, 2) month,  substr(to_char(a.create_time, 'yyyy-mm-dd'), 9, 2) day from edoc_summary a, (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)) zall,ctp_file cf where ZALL.CONTENT=CF.id) b where a.has_archive = 1 and a.id = b.MODULE_ID and a.id in (select id from TEMP_NUMBER1)";
+            List<TempDate> list = dt.getAllTempDate();
+            if (list.size() > 0) {
+                CallableStatement edoc_key = connection.prepareCall("{call PRO_DT_TEST(?,?,?)}");
+                edoc_key.setInt(1, 1);
+                edoc_key.setString(2, list.get(0).getStartdate());
+                edoc_key.setString(3, list.get(0).getEnddate());
+                edoc_key.execute();
+                CallableStatement edoc_record = connection.prepareCall("{call PRO_DT_TEST(?,?,?)}");
+                edoc_record.setInt(1, 2);
+                edoc_record.setString(2, list.get(0).getStartdate());
+                edoc_record.setString(3, list.get(0).getEnddate());
+                edoc_record.execute();
+                CallableStatement edoc_content = connection.prepareCall("{call PRO_DT_TEST(?,?,?)}");
+                edoc_content.setInt(1, 3);
+                edoc_content.setString(2, list.get(0).getStartdate());
+                edoc_content.setString(3, list.get(0).getEnddate());
+                edoc_content.execute();
+                CallableStatement edoc_attach = connection.prepareCall("{call PRO_DT_TEST(?,?,?)}");
+                edoc_attach.setInt(1, 4);
+                edoc_attach.setString(2, list.get(0).getStartdate());
+                edoc_attach.setString(3, list.get(0).getEnddate());
+                edoc_attach.execute();
+            }else {
+                CallableStatement edoc_key = connection.prepareCall("{call PRO_DT_TEST(?,?,?)}");
+                edoc_key.setInt(1, 1);
+                edoc_key.setString(2, null);
+                edoc_key.setString(3, null);
+                edoc_key.execute();
+                CallableStatement edoc_record = connection.prepareCall("{call PRO_DT_TEST(?,?,?)}");
+                edoc_record.setInt(1, 2);
+                edoc_record.setString(2, null);
+                edoc_record.setString(3, null);
+                edoc_record.execute();
+                CallableStatement edoc_content = connection.prepareCall("{call PRO_DT_TEST(?,?,?)}");
+                edoc_content.setInt(1, 3);
+                edoc_content.setString(2, null);
+                edoc_content.setString(3, null);
+                edoc_content.execute();
+                CallableStatement edoc_attach = connection.prepareCall("{call PRO_DT_TEST(?,?,?)}");
+                edoc_attach.setInt(1, 4);
+                edoc_attach.setString(2, null);
+                edoc_attach.setString(3, null);
+                edoc_attach.execute();
+            }
+
             String sql = "SELECT A . affairId AS ID,A.edocSummaryId,A .subject AS subject," +
                     "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),0,4) YEAR," +
                     "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),6,2) MONTH," +
