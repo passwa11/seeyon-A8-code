@@ -1,5 +1,5 @@
 /*
-  1、在OA服务器上创建临时表，用于记录需要同步的公文信息表主键及正文内码
+  1锟斤拷锟斤拷OA锟斤拷锟斤拷锟斤拷锟较达拷锟斤拷锟斤拷时锟斤拷锟斤拷锟节硷拷录锟斤拷要同锟斤拷锟侥癸拷锟斤拷锟斤拷息锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
 */
 
 create global temporary table TEMP_NUMBER1
@@ -9,7 +9,7 @@ create global temporary table TEMP_NUMBER1
 on commit preserve rows;
 
 /*
-  2、在OA服务器上创建临时表，用于记录需要同步的公文信息表
+  2锟斤拷锟斤拷OA锟斤拷锟斤拷锟斤拷锟较达拷锟斤拷锟斤拷时锟斤拷锟斤拷锟节硷拷录锟斤拷要同锟斤拷锟侥癸拷锟斤拷锟斤拷息锟斤拷
 */
 create global temporary table TEMP_NUMBER2
 (
@@ -43,14 +43,14 @@ create global temporary table TEMP_NUMBER2
   FLDZH             VARCHAR2(100),
   FLDCOMPANY        VARCHAR2(100),
   FLDTYPE           VARCHAR2(100),
-  I_STATE           VARCHAR2(10) ,
-  FLDPERNAME VARCHAR2(255) ,
-  FLDORGNAME VARCHAR2(255)
+  I_STATE           VARCHAR2(10)
+--   ,FLDPERNAME VARCHAR2(255) ,
+--   FLDORGNAME VARCHAR2(255)
 )
 on commit preserve rows;
 
 /*
-  3、在OA服务器上创建临时表，用于记录需要同步的公文正文表
+  3锟斤拷锟斤拷OA锟斤拷锟斤拷锟斤拷锟较达拷锟斤拷锟斤拷时锟斤拷锟斤拷锟节硷拷录锟斤拷要同锟斤拷锟侥癸拷锟斤拷锟斤拷锟侥憋拷
 */
 
 create global temporary table TEMP_NUMBER3
@@ -65,7 +65,7 @@ create global temporary table TEMP_NUMBER3
 on commit preserve rows;
 
 /*
-  4、在OA服务器上创建临时表，用于记录需要同步的公文附件表
+  4锟斤拷锟斤拷OA锟斤拷锟斤拷锟斤拷锟较达拷锟斤拷锟斤拷时锟斤拷锟斤拷锟节硷拷录锟斤拷要同锟斤拷锟侥癸拷锟侥革拷锟斤拷锟斤拷
 */
 
 create global temporary table TEMP_NUMBER4
