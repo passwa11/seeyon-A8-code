@@ -51,9 +51,9 @@ BEGIN
                    '来文字号',
                    '所属单位：大屯',
                    '',
-                   0,
-                   c.name,
-                   e.name
+                   0
+--                    ,c.name,
+--                    e.name
             from edoc_summary A, (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)) zall,ctp_file cf where ZALL.CONTENT=CF.id) b, org_member c, (select CA.OBJECT_ID,DR.CREATE_USER_ID from CTP_AFFAIR ca,DOC_RESOURCES dr where ca.id=DR.SOURCE_ID) d, ORG_UNIT e
             where A.has_archive = 1
               and a.id = b.MODULE_ID
