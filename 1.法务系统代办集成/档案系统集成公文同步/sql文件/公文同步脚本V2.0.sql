@@ -1,6 +1,4 @@
-/*
-  1����OA�������ϴ�����ʱ�����ڼ�¼��Ҫͬ���Ĺ�����Ϣ����������������
-*/
+
 
 create global temporary table TEMP_NUMBER1
 (
@@ -8,9 +6,7 @@ create global temporary table TEMP_NUMBER1
 )
 on commit preserve rows;
 
-/*
-  2����OA�������ϴ�����ʱ�����ڼ�¼��Ҫͬ���Ĺ�����Ϣ��
-*/
+
 create global temporary table TEMP_NUMBER2
 (
    ID                VARCHAR2(50),
@@ -49,9 +45,6 @@ create global temporary table TEMP_NUMBER2
 )
 on commit preserve rows;
 
-/*
-  3����OA�������ϴ�����ʱ�����ڼ�¼��Ҫͬ���Ĺ������ı�
-*/
 
 create global temporary table TEMP_NUMBER3
 (
@@ -64,9 +57,7 @@ create global temporary table TEMP_NUMBER3
 )
 on commit preserve rows;
 
-/*
-  4����OA�������ϴ�����ʱ�����ڼ�¼��Ҫͬ���Ĺ��ĸ�����
-*/
+
 
 create global temporary table TEMP_NUMBER4
 (
