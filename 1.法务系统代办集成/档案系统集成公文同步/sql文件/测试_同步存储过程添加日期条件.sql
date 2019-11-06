@@ -4,33 +4,26 @@ BEGIN
 
     if (flag = 1) then
         --临时记录此次同步的公文信息表主键
-       if(date1<>'null') then
-						begin
-								insert into TEMP_NUMBER1(ID)
-								select to_char(A.id) from edoc_summary A left join (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)) zall,ctp_file cf where ZALL.CONTENT=CF.id) B on A.Id = B.MODULE_ID  where has_archive = 1
-								and (a.CREATE_TIME BETWEEN to_date(date1,'yyyy-MM-dd') and to_date(date2,'yyyy-MM-dd'))
-								and A.id not in (select id from S_OADATA@testlink);
 
-						exception
-								when others then
-										ROLLBACK;
-										DBMS_OUTPUT.put_line('TEMP_NUMBER2 Error No:' || SQLCODE);
-										DBMS_OUTPUT.put_line(SQLERRM);
-						end;
-					else
-						begin
-								insert into TEMP_NUMBER1(ID) select to_char(A.id) from edoc_summary A left
-								join (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)) zall,ctp_file cf where ZALL.CONTENT=CF.id) B on A.Id = B.MODULE_ID
-								where has_archive = 1
-								and A.id not in (select id from S_OADATA@testlink);
-								commit;
-								exception
-								when others then
-										ROLLBACK;
-										DBMS_OUTPUT.put_line('TEMP_NUMBER2 Error No:' || SQLCODE);
-										DBMS_OUTPUT.put_line(SQLERRM);
-						end;
-					end if;
+        begin
+        if(date1<>'null') then
+                insert into TEMP_NUMBER1(ID)
+                select to_char(A.id) from edoc_summary A left join (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)) zall,ctp_file cf where ZALL.CONTENT=CF.id) B on A.Id = B.MODULE_ID  where has_archive = 1
+                and (a.CREATE_TIME BETWEEN to_date(date1,'yyyy-MM-dd') and to_date(date2,'yyyy-MM-dd'))
+                and A.id not in (select id from S_OADATA@testlink);
+        else
+        insert into TEMP_NUMBER1(ID) select to_char(A.id) from edoc_summary A left
+                join (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)) zall,ctp_file cf where ZALL.CONTENT=CF.id) B on A.Id = B.MODULE_ID
+                where has_archive = 1
+                and A.id not in (select id from S_OADATA@testlink);
+        end if;
+        exception
+        when others then
+                ROLLBACK;
+                DBMS_OUTPUT.put_line('TEMP_NUMBER2 Error No:' || SQLCODE);
+                DBMS_OUTPUT.put_line(SQLERRM);
+        end;
+
     elsif (flag = 2) then
         --公文信息表
         begin
