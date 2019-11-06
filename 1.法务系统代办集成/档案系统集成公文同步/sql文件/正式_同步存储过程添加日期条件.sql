@@ -9,7 +9,7 @@ BEGIN
 								insert into TEMP_NUMBER1(ID)
 								select to_char(A.id) from edoc_summary A left join (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)) zall,ctp_file cf where ZALL.CONTENT=CF.id) B on A.Id = B.MODULE_ID  where has_archive = 1
 								and (a.CREATE_TIME BETWEEN to_date(date1,'yyyy-MM-dd') and to_date(date2,'yyyy-MM-dd'))
-								and A.id not in (select id from S_OADATA@testlink);
+								and A.id not in (select id from S_OADATA@DBLINK_OA_FOR_ARC);
 
 						exception
 								when others then
@@ -22,7 +22,7 @@ BEGIN
 								insert into TEMP_NUMBER1(ID) select to_char(A.id) from edoc_summary A left
 								join (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)) zall,ctp_file cf where ZALL.CONTENT=CF.id) B on A.Id = B.MODULE_ID
 								where has_archive = 1
-								and A.id not in (select id from S_OADATA@testlink);
+								and A.id not in (select id from S_OADATA@DBLINK_OA_FOR_ARC);
 								commit;
 								exception
 								when others then
@@ -81,7 +81,7 @@ BEGIN
               and c.org_department_id = e.id
               and a.id = d.OBJECT_ID
 							and (a.CREATE_TIME BETWEEN to_date(date1,'yyyy-MM-dd') and to_date(date2,'yyyy-MM-dd'))
-              and A.id not in (select id from S_OADATA@testlink);
+              and A.id not in (select id from S_OADATA@DBLINK_OA_FOR_ARC);
 						ELSE
 								insert into TEMP_NUMBER2
 									select A.id,
@@ -128,9 +128,9 @@ BEGIN
 										and c.id = d.create_user_id
 										and c.org_department_id = e.id
 										and a.id = d.OBJECT_ID
-										and A.id not in (select id from S_OADATA@testlink);
+										and A.id not in (select id from S_OADATA@DBLINK_OA_FOR_ARC);
 						end if;
-            insert into S_OADATA@testlink
+            insert into S_OADATA@DBLINK_OA_FOR_ARC
             (id,
              fldsubject,
              fldfwbh,
@@ -288,7 +288,7 @@ BEGIN
               and A.id in (select id from TEMP_NUMBER1);
 					end if;
 
-            insert into S_OAFILE@testlink
+            insert into S_OAFILE@DBLINK_OA_FOR_ARC
             (id, c_midrecid, c_filetitle, c_ftpfilepath, c_type, i_size)
             select * from TEMP_NUMBER3;
 
@@ -342,7 +342,7 @@ BEGIN
               and A.id in (select id from TEMP_NUMBER1);
 					end if;
             -- 2014/11/04 modify
-            insert into S_OAFILE@testlink
+            insert into S_OAFILE@DBLINK_OA_FOR_ARC
             (id, c_midrecid, c_filetitle, c_ftpfilepath, c_type, i_size)
             select * from TEMP_NUMBER4;
 
