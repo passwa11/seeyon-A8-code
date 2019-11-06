@@ -1,5 +1,5 @@
 CREATE OR REPLACE
-procedure pro_dt_test(flag number,date1 in varchar2,date2 in varchar2) IS
+procedure pro_number1(flag number,date1 in varchar2,date2 in varchar2) IS
 BEGIN
 
     if (flag = 1) then
