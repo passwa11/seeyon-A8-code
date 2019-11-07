@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://v3x.seeyon.com/taglib/core" prefix="v3x" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib uri="http://v3x.seeyon.com/bridges/spring-portlet-html" prefix="html" %>
-<%@ taglib prefix="ctp" uri="http://www.seeyon.com/ctp" %>
+<%@ include file="/WEB-INF/jsp/common/common.jsp"%>
+<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>--%>
+<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
+<%--<%@ taglib uri="http://v3x.seeyon.com/taglib/core" prefix="v3x" %>--%>
+<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>--%>
+<%--<%@ taglib uri="http://v3x.seeyon.com/bridges/spring-portlet-html" prefix="html" %>--%>
+<%--<%@ taglib prefix="ctp" uri="http://www.seeyon.com/ctp" %>--%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -194,8 +195,19 @@
 <script type="text/javascript">
     var v3x = new V3X();
 
+    var param = {
+        id:'${daiYueId}',
+        status:12
+    };
+    var dyId='${daiYueId}';
+    if(dyId!=''){
+        var requestCaller = new XMLHttpRequestCaller(this, "xkjtManager", "updateXkjtLeaderDaiYueByCondition", false);
+        requestCaller.addParameter(1, "String", param.id);
+        requestCaller.addParameter(2, "String", param.status);
+        var bool = requestCaller.serviceRequest();
+    }
+
     function opentPdf() {
-        // console.log("进来了");
         // var time = $("#time").val();
         // var arr = time.split(" ");
         // var isQuickSend = $("#isQuickSend").val();
@@ -243,7 +255,6 @@
         //监听工具条
         table.on('tool(fileListFilter)', function (obj) {
             var data = obj.data; //获得当前行数据
-            console.log(data);
             debugger;
             // var v = data.v;
             var fileUrl = data.filepath;
