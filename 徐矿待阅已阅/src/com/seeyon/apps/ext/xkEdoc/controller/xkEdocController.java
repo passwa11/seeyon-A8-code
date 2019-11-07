@@ -7,6 +7,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.xkEdoc.manager.XkjtSummaryAttManager;
 import com.seeyon.apps.ext.xkEdoc.manager.XkjtSummaryAttManagerImpl;
 import com.seeyon.apps.ext.xkEdoc.po.AttachmentEx;
+import com.seeyon.apps.xkjt.po.XkjtLeaderDaiYue;
+import com.seeyon.ctp.common.AppContext;
+import com.seeyon.ctp.common.authenticate.domain.User;
 import com.seeyon.ctp.common.controller.BaseController;
 import com.seeyon.ctp.common.filemanager.manager.AttachmentManager;
 import com.seeyon.ctp.common.filemanager.manager.AttachmentManagerImpl;
@@ -110,10 +113,19 @@ public class xkEdocController extends BaseController {
             summaryId = Long.parseLong(s_summaryId);
         }
         EdocSummary summary = edocManager.getEdocSummaryById(summaryId, true);
+        User user = AppContext.getCurrentUser();
+        long memberId=user.getId();
+        List<XkjtLeaderDaiYue> daiYues=xkjtSummaryAttManager.queryDaiyueByEdocIdAndLeaderId(memberId,summaryId);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String createTime = simpleDateFormat.format(summary.getCreateTime());
         mav.addObject("summary", summary);
         mav.addObject("createTime", createTime);
+        if(daiYues.size()>0){
+            Long daiYueId=daiYues.get(0).getId();
+            mav.addObject("daiYueId", daiYueId);
+        }else{
+            mav.addObject("daiYueId", "");
+        }
 
         Set<EdocBody> edocBodies = summary.getEdocBodies();
         Iterator<EdocBody> it = edocBodies.iterator();
