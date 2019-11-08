@@ -46,7 +46,7 @@ public class DoneSentListExporter {
 		    boolean flag = initInfo(ticket, firstNum, pageSize, flipInfo, "receive_time");
 		    if (flag) {
 		    	StringBuilder hql = new StringBuilder("from " + CtpAffair.class.getName() + " as affair where affair.receiveTime is not null  ");
-			    Map map = new HashMap();
+		    	Map map = new HashMap();
 
 			    hql.append(" and affair.memberId=:memberId  ");
 			    map.put("memberId", AppContext.getCurrentUser().getId());
@@ -109,7 +109,16 @@ public class DoneSentListExporter {
 		if(null == pendExport){
 			return "";
 		}else{
-			pendExport.setTotal(100);
+			StringBuilder hqlTotal = new StringBuilder("from " + CtpAffair.class.getName() + " as affair where affair.receiveTime is not null  ");
+			Map mapTotal=new HashMap();
+			hqlTotal.append(" and affair.memberId=:memberId  ");
+			mapTotal.put("memberId", AppContext.getCurrentUser().getId());
+			hqlTotal.append(" and affair.state in (:state)  ");
+			mapTotal.put("state", Integer.valueOf(StateEnum.col_pending.getKey()));
+			hqlTotal.append(" and affair.delete = :delete  ");
+			mapTotal.put("delete", Boolean.valueOf(false));
+			List<CtpAffair> listTotal = DBAgent.find(hqlTotal.toString(), mapTotal);
+			pendExport.setTotal(listTotal.size());
 			return "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n" + pendExport.toXML();
 		}
 	}
@@ -126,7 +135,7 @@ public class DoneSentListExporter {
 		    boolean flag = initInfo(ticket, firstNum, pageSize, flipInfo, "complete_time");
 		    if (flag) {
 		    	StringBuilder hql = new StringBuilder("from " + CtpAffair.class.getName() + " as affair where affair.completeTime is not null  ");
-			    Map map = new HashMap();
+		    	Map map = new HashMap();
 
 			    hql.append(" and affair.memberId=:memberId  ");
 			    map.put("memberId", AppContext.getCurrentUser().getId());
@@ -189,6 +198,16 @@ public class DoneSentListExporter {
 		if(null == doneExport){
 			return "";
 		}else{
+			StringBuilder hqlTotal = new StringBuilder("from " + CtpAffair.class.getName() + " as affair where affair.completeTime is not null  ");
+			Map maptotal=new HashMap();
+			hqlTotal.append(" and affair.memberId=:memberId  ");
+			maptotal.put("memberId", AppContext.getCurrentUser().getId());
+			hqlTotal.append(" and affair.state in (:state)  ");
+			maptotal.put("state", Integer.valueOf(StateEnum.col_done.getKey()));
+			hqlTotal.append(" and affair.delete = :delete  ");
+			maptotal.put("delete", Boolean.valueOf(false));
+			List<CtpAffair> listTotal = DBAgent.find(hqlTotal.toString(), maptotal);
+			doneExport.setTotal(listTotal.size());
 			return "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n" + doneExport.toXML();
 		}
 	}
@@ -205,7 +224,7 @@ public class DoneSentListExporter {
 		    boolean flag = initInfo(ticket, firstNum, pageSize, flipInfo, "create_date");
 		    if (flag) {
 		    	StringBuilder hql = new StringBuilder("from " + CtpAffair.class.getName() + " as affair where affair.createDate is not null  ");
-			    Map map = new HashMap();
+		    	Map map = new HashMap();
 
 			    hql.append(" and affair.memberId=:memberId  ");
 			    map.put("memberId", AppContext.getCurrentUser().getId());
@@ -258,6 +277,16 @@ public class DoneSentListExporter {
 		if(null == sentExport){
 			return "";
 		}else{
+			StringBuilder hqlTotal = new StringBuilder("from " + CtpAffair.class.getName() + " as affair where affair.createDate is not null  ");
+			Map maptotal=new HashMap();
+			hqlTotal.append(" and affair.memberId=:memberId  ");
+			maptotal.put("memberId", AppContext.getCurrentUser().getId());
+			hqlTotal.append(" and affair.state in (:state)  ");
+			maptotal.put("state", Integer.valueOf(StateEnum.col_sent.getKey()));
+			hqlTotal.append(" and affair.delete = :delete  ");
+			maptotal.put("delete", Boolean.valueOf(false));
+			List<CtpAffair> list = DBAgent.find(hqlTotal.toString(), maptotal);
+			sentExport.setTotal(list.size());
 			return "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n" + sentExport.toXML();
 		}
 	}
