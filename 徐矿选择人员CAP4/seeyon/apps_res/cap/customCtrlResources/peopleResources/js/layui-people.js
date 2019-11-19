@@ -279,6 +279,59 @@ layui.use(['table', 'layer', 'element'], function () {
                 }
             }
         }
+
+        //---------------------分公司--------------------------------------
+        var company = layui.table.checkStatus("companyId");
+        var arrCompany = company.data;
+        for (var i = 0; i < arrCompany.length; i++) {
+            var tr_obj = arrCompany[i];
+            var obj = {};//添加成员对象
+            obj["value"] = tr_obj.field0001;
+            obj["text"] = tr_obj.field0004;
+            obj["dept"] = tr_obj.field0003;
+            if ($("dl.selected-info dd").length <= 0) {
+                var option = '<dd lay-value="' + obj.value + '" lay-flag="company" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+
+                // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                $("dl.selected-info").prepend(option);
+                selectedMember.unshift(obj);//存储选择信息
+                $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                    $(this).remove();
+                    //刷新选择信息
+                    selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                        return obj_selected.value != obj.value;
+                    });
+                });
+            } else {
+                var selected = function () {//判断是否已选择了该人员
+                    var flag = true;
+                    $("dl.selected-info dd").each(function (i, item) {
+                        if ($(item).attr("lay-value") == obj.value) {
+                            layer.msg('已选择了[' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + ']', {time: 1500});
+                            $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                            flag = false;//已经选择
+                        }
+                    });
+                    return flag;
+                }
+                if (selected()) {
+                    // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                    var option = '<dd lay-value="' + obj.value + '"  lay-flag="company"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+
+                    $("dl.selected-info").prepend(option);
+                    selectedMember.unshift(obj);//存储选择信息
+                    $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                        $(this).remove();
+                        //刷新选择信息
+                        selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                            return obj_selected.value != obj.value;
+                        });
+                    });
+                }
+            }
+        }
     });
 
 
@@ -565,5 +618,82 @@ layui.use(['table', 'layer', 'element'], function () {
         }
     });
 
+//-------------------------新添加-------------------------------------
+    //分公司
+    $("#queryCompanyPeople").on('click', function () {
+        //执行重载
+        table.reload('companyId', {
+            page: {
+                curr: 1 //重新从第 1 页开始
+            }
+            , where: {
+                name: $("#companyInput").val()
+            }
+        });
+    });
+    table.render({
+        id: 'companyId'
+        , elem: '#company'
+        , url: '/seeyon/ext/selectPeople.do?method=selectFormmain0323_company'
+        , height: 400
+        , page: false //开启分页
+        , cols: [[ //表头
+            {type: 'checkbox'},
+            {field: 'field0004', title: '单位', width: '88%'}
+            // , {field: 'field0003', title: '机要员', width: '20%', sort: true}
+        ]]
 
+    });
+
+
+    table.on('row(companyFilter)', function (obj) {
+        // alert(obj.data);
+        var tr_obj = obj.data;
+        var obj = {};//添加成员对象
+        obj["value"] = tr_obj.field0001;
+        obj["text"] = tr_obj.field0004;
+        obj["dept"] = tr_obj.field0003;
+        if ($("dl.selected-info dd").length <= 0) {
+            var option = '<dd lay-value="' + obj.value + '" lay-flag="company" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+
+            // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+            $("dl.selected-info").prepend(option);
+            selectedMember.unshift(obj);//存储选择信息
+            $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+            $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                $(this).remove();
+                //刷新选择信息
+                selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                    return obj_selected.value != obj.value;
+                });
+            });
+        } else {
+            var selected = function () {//判断是否已选择了该人员
+                var flag = true;
+                $("dl.selected-info dd").each(function (i, item) {
+                    if ($(item).attr("lay-value") == obj.value) {
+                        layer.msg('已选择了[' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + ']', {time: 1500});
+                        $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                        flag = false;//已经选择
+                    }
+                });
+                return flag;
+            }
+            if (selected()) {
+                // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                var option = '<dd lay-value="' + obj.value + '" lay-flag="company"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+
+                $("dl.selected-info").prepend(option);
+                selectedMember.unshift(obj);//存储选择信息
+                $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                    $(this).remove();
+                    //刷新选择信息
+                    selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                        return obj_selected.value != obj.value;
+                    });
+                });
+            }
+        }
+    });
 });

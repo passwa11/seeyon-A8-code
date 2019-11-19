@@ -55,6 +55,7 @@
                         <li class="layui-this">集团领导</li>
                         <li>党政办</li>
                         <li>机关部门</li>
+                        <li>分公司</li>
                         <li>基层单位</li>
                     </ul>
                     <div class="layui-tab-content">
@@ -96,6 +97,18 @@
                             </div>
                             <table id="bsxx" lay-filter="bsxxFilter"></table>
 
+                        </div>
+                        <div class="layui-tab-item">
+                            <div class="layui-form-item">
+                                <div class="layui-input-inline">
+                                    <input type="text" id="companyInput" name="username" lay-verify="title"
+                                           autocomplete="off"
+                                           placeholder="分公司" class="layui-input">
+                                </div>
+                                <button class="layui-btn layui-btn-primary layui-btn-radius" id="queryCompanyPeople">查询
+                                </button>
+                            </div>
+                            <table id="company" lay-filter="companyFilter"></table>
                         </div>
                         <div class="layui-tab-item">
                             <div class="layui-form-item">

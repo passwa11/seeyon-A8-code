@@ -211,6 +211,37 @@ public class selectPeopleController extends BaseController {
         return null;
     }
 
+    //分公司
+    public ModelAndView selectFormmain0323_company(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String name = request.getParameter("name");
+            if (null == name || name.equals("")) {
+                name = "";
+            }
+            List<Map<String, Object>> list = jtldEntityManager.selectFormmain0323(name);
+            List<Map<String, Object>> revoler = new ArrayList<>();
+            for (int i = 0; i < list.size(); i++) {
+                Map<String, Object> m = new HashMap<>();
+                for (Map.Entry<String, Object> entry : list.get(i).entrySet()) {
+                    m.put(entry.getKey(), entry.getValue());
+                }
+                m.put("flag", "jtld");
+                revoler.add(m);
+            }
+            Map<String, Object> map = new HashMap<>();
+            map.put("code", 0);
+            map.put("message", "");
+            map.put("total", revoler.size());
+            map.put("data", revoler);
+            JSONObject json = new JSONObject(map);
+            render(response, json.toJSONString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
     /**
      * 给前台渲染json数据
      *

@@ -20,6 +20,8 @@ public interface JtldEntityDao {
 
     public List<Map<String,Object>> selectFormmain0087(String name);
 
+    public List<Map<String,Object>> selectFormmain0323(String name);
+
     public List<Map<String,Object>> selectDeskWork(String name);
     public List<Map<String,Object>> selectPeopleByDeskWorkId(List<String> id);
 
