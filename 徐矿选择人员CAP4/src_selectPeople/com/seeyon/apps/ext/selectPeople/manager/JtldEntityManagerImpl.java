@@ -46,6 +46,12 @@ public class JtldEntityManagerImpl implements JtldEntityManager {
     }
 
     @Override
+    public List<Map<String, Object>> selectFormmain0380(String name) {
+        List<Map<String, Object>> list = getJtldEntityDao().selectFormmain0380(name);
+        return list;
+    }
+
+    @Override
     public List<Map<String, Object>> selectFormmain0148(String name) {
         List<Map<String, Object>> list = getJtldEntityDao().selectFormmain0148(name);
 //        JSONArray json = JSON.parseArray(JSON.toJSONString(list));

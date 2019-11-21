@@ -66,7 +66,7 @@ layui.use(['table', 'layer', 'element'], function () {
         , page: false //开启分页
         , cols: [[ //表头
             {type: 'checkbox'},
-            {field: 'field0004', title: '所属部门', width: '68%', sort: true},
+            {field: 'field0004', title: '职务', width: '68%', sort: true},
             {field: 'field0003', title: '用户名', width: '20%'}
         ]]
     });
@@ -122,6 +122,57 @@ layui.use(['table', 'layer', 'element'], function () {
                 }
             }
         }
+
+        var dzbld = layui.table.checkStatus("dzbldId");
+        var arrdzbldId = dzbld.data;
+        for (var i = 0; i < arrdzbldId.length; i++) {
+            var tr_obj = arrdzbldId[i];
+            var obj = {};//添加成员对象
+            obj["value"] = tr_obj.field0001;
+            obj["text"] = tr_obj.field0004;
+            obj["dept"] = tr_obj.field0003;
+            if ($("dl.selected-info dd").length <= 0) {
+                var option = '<dd lay-value="' + obj.value + '" lay-flag="dzbld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                $("dl.selected-info").prepend(option);
+                selectedMember.unshift(obj);//存储选择信息
+                $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                    $(this).remove();
+                    //刷新选择信息
+                    selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                        return obj_selected.value != obj.value;
+                    });
+                });
+            } else {
+                var selected = function () {//判断是否已选择了该人员
+                    var flag = true;
+                    $("dl.selected-info dd").each(function (i, item) {
+                        if ($(item).attr("lay-value") == obj.value) {
+                            layer.msg('已选择了[' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + ']', {time: 1500});
+                            $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                            flag = false;//已经选择
+                        }
+                    });
+                    return flag;
+                }
+                if (selected()) {
+                    // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                    var option = '<dd lay-value="' + obj.value + '" lay-flag="dzbld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+
+                    $("dl.selected-info").prepend(option);
+                    selectedMember.unshift(obj);//存储选择信息
+                    $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                        $(this).remove();
+                        //刷新选择信息
+                        selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                            return obj_selected.value != obj.value;
+                        });
+                    });
+                }
+            }
+        }
+
 
         var dzb = layui.table.checkStatus("dzbksId");
         var arrDzb = dzb.data;
@@ -383,7 +434,80 @@ layui.use(['table', 'layer', 'element'], function () {
             }
         }
     });
+    //=====================党政办领导=============================================
+    $("#querydzbldPeople").on('click', function () {
+        //执行重载
+        table.reload('dzbldId', {
+            page: {
+                curr: 1 //重新从第 1 页开始
+            }
+            , where: {
+                name: $("#dzbldInput").val()
+            }
+        });
+    });
+    table.render({
+        id: 'dzbldId'
+        , elem: '#dzbld'
+        , url: '/seeyon/ext/selectPeople.do?method=selectFormmain0380'
+        , height: 400
+        , page: false //开启分页
+        , cols: [[ //表头
+            {type: 'checkbox'},
+            {field: 'field0004', title: '职务', width: '68%', sort: true},
+            {field: 'field0003', title: '用户名', width: '20%'}
+        ]]
+    });
+    table.on('row(dzbldFilter)', function (obj) {
 
+        var tr_obj = obj.data;
+        var obj = {};//添加成员对象
+        obj["value"] = tr_obj.field0001;
+        obj["text"] = tr_obj.field0004;
+        obj["dept"] = tr_obj.field0003;
+        if ($("dl.selected-info dd").length <= 0) {
+            var option = '<dd lay-value="' + obj.value + '" lay-flag="dzbld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+            $("dl.selected-info").prepend(option);
+            selectedMember.unshift(obj);//存储选择信息
+            $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+            $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                $(this).remove();
+                //刷新选择信息
+                selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                    return obj_selected.value != obj.value;
+                });
+            });
+        } else {
+            var selected = function () {//判断是否已选择了该人员
+                var flag = true;
+                $("dl.selected-info dd").each(function (i, item) {
+                    if ($(item).attr("lay-value") == obj.value) {
+                        layer.msg('已选择了[' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + ']', {time: 1500});
+                        $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                        flag = false;//已经选择
+                    }
+                });
+                return flag;
+            }
+            if (selected()) {
+                // var option = '<dd lay-value="' + obj.value + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                var option = '<dd lay-value="' + obj.value + '" lay-flag="dzbld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+
+                $("dl.selected-info").prepend(option);
+                selectedMember.unshift(obj);//存储选择信息
+                $(".selected-info dd[lay-value=" + obj.value + "]").addClass("selected-this").siblings().removeClass("selected-this");
+                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                    $(this).remove();
+                    //刷新选择信息
+                    selectedMember = $.grep(selectedMember, function (obj_selected, n) {
+                        return obj_selected.value != obj.value;
+                    });
+                });
+            }
+        }
+    });
+    //==================================================================
+    //
     //党政办
     $("#querydzbksPeople").on('click', function () {
         //执行重载

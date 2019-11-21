@@ -53,6 +53,7 @@
                 <div class="layui-tab">
                     <ul class="layui-tab-title">
                         <li class="layui-this">集团领导</li>
+                        <li>党政办领导</li>
                         <li>党政办</li>
                         <li>机关部门</li>
                         <li>分公司</li>
@@ -70,6 +71,19 @@
                                 </button>
                             </div>
                             <table id="jtld" lay-filter="jtldFilter"></table>
+
+                        </div>
+                        <div class="layui-tab-item layui-show">
+                            <div class="layui-form-item">
+                                <div class="layui-input-inline">
+                                    <input type="text" id="dzbldInput" name="username" lay-verify="title"
+                                           autocomplete="off"
+                                           placeholder="姓名" class="layui-input">
+                                </div>
+                                <button class="layui-btn layui-btn-primary layui-btn-radius" id="querydzbldPeople">查询
+                                </button>
+                            </div>
+                            <table id="dzbld" lay-filter="dzbldFilter"></table>
 
                         </div>
                         <div class="layui-tab-item">

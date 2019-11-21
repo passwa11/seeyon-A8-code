@@ -127,6 +127,36 @@ public class selectPeopleController extends BaseController {
         return null;
     }
 
+    public ModelAndView selectFormmain0380(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String name = request.getParameter("name");
+            if (null == name || name.equals("")) {
+                name = "";
+            }
+            List<Map<String, Object>> list = jtldEntityManager.selectFormmain0380(name);
+            List<Map<String, Object>> revoler = new ArrayList<>();
+            for (int i = 0; i < list.size(); i++) {
+                Map<String, Object> m = new HashMap<>();
+                for (Map.Entry<String, Object> entry : list.get(i).entrySet()) {
+                    m.put(entry.getKey(), entry.getValue());
+                }
+                m.put("flag", "jtld");
+                revoler.add(m);
+            }
+            Map<String, Object> map = new HashMap<>();
+            map.put("code", 0);
+            map.put("message", "");
+            map.put("total", revoler.size());
+            map.put("data", revoler);
+            JSONObject json = new JSONObject(map);
+            render(response, json.toJSONString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
     //党政办
     public ModelAndView selectFormmain0148_policy(HttpServletRequest request, HttpServletResponse response) {
         try {

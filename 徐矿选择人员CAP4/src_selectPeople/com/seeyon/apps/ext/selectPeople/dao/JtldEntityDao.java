@@ -14,6 +14,8 @@ public interface JtldEntityDao {
 
     public List<Map<String,Object>> selectJtldEntity(String name);
 
+    public List<Map<String,Object>> selectFormmain0380(String name);
+
     public List<Map<String,Object>> selectFormmain0148(String name);
 
     public List<Map<String,Object>> selectFormmain0106(String name);
