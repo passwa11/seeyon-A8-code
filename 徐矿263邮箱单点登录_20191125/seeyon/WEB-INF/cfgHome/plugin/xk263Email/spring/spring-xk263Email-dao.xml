@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-autowire="byName" default-lazy-init="false" default-dependency-check="none">
+
+    <bean id="orgMember263MailDao" class="com.seeyon.apps.ext.xk263Email.dao.OrgMember263MailDaoImpl" init-method="init"></bean>
+
+</beans>

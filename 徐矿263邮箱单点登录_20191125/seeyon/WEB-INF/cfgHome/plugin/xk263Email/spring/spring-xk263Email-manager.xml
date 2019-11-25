@@ -8,6 +8,8 @@
         <property name="sortId" value="99"/>
     </bean>
 
+    <bean id ="orgMember263MailDaoManager" class="com.seeyon.apps.ext.xk263Email.manager.OrgMember263MailDaoManagerImpl"></bean>
+
 <!--    <bean parent="pluginMainMenu">-->
 <!--        &lt;!&ndash;主菜单ID，唯一的数字字符串 &ndash;&gt;-->
 <!--        <property name="id" value="20190821"/>-->
