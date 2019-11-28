@@ -48,7 +48,7 @@ public class ZCommonUtil {
     public static int USER_CHANGEPWD_OFF = 0;
     public static int USER_CHANGEPWD_ON = 1;
 
-    public static String get263LoginUrl() {
+    public static String get263LoginUrl(String alias) {
         /**
          * 获取单点登录URL
          * 单点登录接口为HTTP链接形式，根据接口要求提供正确参数，
@@ -57,7 +57,7 @@ public class ZCommonUtil {
          * sign = 32位MD5 （ cid=单点登录接口账号&domain=邮箱域名&uid=用户ID&key=单点登录接口密钥 ）
          * @return
          */
-        String alias = CurrentUser.get().getLoginName();
+//        String alias = CurrentUser.get().getLoginName();
 
         StringBuffer sb = new StringBuffer("http://pcc.263.net/PCC/263mail.do?");
         sb.append("cid=");

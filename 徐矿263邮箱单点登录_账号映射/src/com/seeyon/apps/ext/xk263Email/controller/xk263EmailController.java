@@ -90,7 +90,19 @@ public class xk263EmailController extends BaseController {
     }
 
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String loginUrl = ZCommonUtil.get263LoginUrl();
+        User user = AppContext.getCurrentUser();
+        Long userId = user.getId();
+        OrgMember263EmailMapper member263EmailMapper = null;
+        try {
+            member263EmailMapper = mapperManager.selectByUserId(userId.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String loginUrl = "";
+        if (null != member263EmailMapper) {
+            loginUrl = ZCommonUtil.get263LoginUrl(member263EmailMapper.getMail263Name());
+        }
+
         String count = ZCommonUtil.getUnreadCount();
 
         Map<String, Object> map = new HashMap<>();
@@ -112,12 +124,22 @@ public class xk263EmailController extends BaseController {
      * @throws Exception
      */
     public ModelAndView login263Email(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String loginUrl = ZCommonUtil.get263LoginUrl();
-        String count = ZCommonUtil.getUnreadCount();
-        StringBuffer url = new StringBuffer();
-        url.append("redirect:");
-        url.append(loginUrl);
-        return new ModelAndView(url.toString());
+        User user = AppContext.getCurrentUser();
+        Long userId = user.getId();
+        OrgMember263EmailMapper member263EmailMapper = null;
+        try {
+            member263EmailMapper = mapperManager.selectByUserId(userId.toString());
+            StringBuffer url = new StringBuffer();
+            if (null != member263EmailMapper) {
+                String loginUrl = ZCommonUtil.get263LoginUrl(member263EmailMapper.getMail263Name());
+                url.append("redirect:");
+                url.append(loginUrl);
+            }
+            return new ModelAndView(url.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     private void render(HttpServletResponse response, String text) {
