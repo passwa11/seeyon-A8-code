@@ -39,6 +39,8 @@ public class xk263EmailController extends BaseController {
 
     public ModelAndView doSave263(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Map<String, Object> map = new HashMap<>();
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         String emailName = request.getParameter("mail263Name");
         User user = AppContext.getCurrentUser();
@@ -52,8 +54,7 @@ public class xk263EmailController extends BaseController {
             mapper.setDeptId(user.getDepartmentId().toString());
             mapper.setDeptName(user.getLoginAccountName());
             mapper.setStatus("1");
-            LocalDateTime localDateTime = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
             mapper.setUpdateTime(formatter.format(localDateTime));
             try {
                 mapperManager.insertOrgMember263Email(mapper);
@@ -64,8 +65,12 @@ public class xk263EmailController extends BaseController {
             }
         } else {
             Long id = member263EmailMapper.getUserId();
-            if (userId == id) {
+            if (userId.longValue() == id.longValue()) {
                 try {
+                    member263EmailMapper.setMail263Name(emailName);
+                    member263EmailMapper.setUpdateTime(formatter.format(localDateTime));
+                    member263EmailMapper.setDeptId(user.getDepartmentId().toString());
+                    member263EmailMapper.setDeptName(user.getLoginAccountName());
                     mapperManager.updateOrgMember263Email(member263EmailMapper);
                     map.put("code", 0);
                 } catch (Exception e) {
