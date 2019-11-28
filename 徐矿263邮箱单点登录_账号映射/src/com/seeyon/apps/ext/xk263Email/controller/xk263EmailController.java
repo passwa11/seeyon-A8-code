@@ -8,15 +8,21 @@ import com.seeyon.apps.ext.xk263Email.util.ZCommonUtil;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.authenticate.domain.User;
 import com.seeyon.ctp.common.controller.BaseController;
+import com.seeyon.ctp.common.log.CtpLogFactory;
+import org.apache.commons.logging.Log;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
 public class xk263EmailController extends BaseController {
+
+    private static Log log = CtpLogFactory.getLog(xk263EmailController.class);
 
     private OrgMember263EmailMapperManager mapperManager = new OrgMember263EmailMapperManagerImpl();
 
@@ -29,6 +35,35 @@ public class xk263EmailController extends BaseController {
         modelAndView.addObject("member", member263EmailMapper);
         return modelAndView;
 
+    }
+
+    public ModelAndView doSave263(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String emailName=request.getParameter("mail263Name");
+        User user = AppContext.getCurrentUser();
+        Long userId = user.getId();
+
+        OrgMember263EmailMapper mapper=new OrgMember263EmailMapper();
+        mapper.setUserId(userId);
+        mapper.setLoginName(user.getName());
+        mapper.setMail263Name(emailName);
+        mapper.setDeptId(user.getDepartmentId().toString());
+        mapper.setDeptName(user.getLoginAccountName());
+        mapper.setStatus("1");
+        LocalDateTime localDateTime=LocalDateTime.now();
+        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        mapper.setUpdateTime(formatter.format(localDateTime));
+        Map<String, Object> map = new HashMap<>();
+        try {
+            mapperManager.insertOrgMember263Email(mapper);
+            map.put("code", 0);
+        }catch (Exception e){
+            log.error("设置263账户保存出错："+e.getMessage(),e);
+            map.put("code", -1);
+        }
+
+        JSONObject json = new JSONObject(map);
+        render(response, json.toJSONString());
+        return null;
     }
 
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {

@@ -33,7 +33,7 @@
 
         <div style="width: 500px;margin-top: 50px;" align="center">
             <fieldset>
-                <legend style="font-size: 16px;color: #030303">263邮箱账户设置 </legend>
+                <legend style="font-size: 16px;color: #030303">263邮箱账户设置</legend>
                 <br>
                 <table width="70%" border="0" cellspacing="0" cellpadding="0" height="100px;"
                        align="center">
@@ -52,6 +52,11 @@
 <%--                                   maxlength="50" value="${requestScope.userPas.law_pas}"/>--%>
 <%--                        </td>--%>
 <%--                    </tr>--%>
+                    <tr>
+                        <td colspan="2">
+                            <span id="errInfo"></span>
+                        </td>
+                    </tr>
                 </table>
             </fieldset>
             <div id="btnDiv">
@@ -82,15 +87,13 @@
         //等其他参数
     };
     function setLaw() {
-        var law_user = document.getElementById('law_user').value;
-        var law_pas = document.getElementById('law_pas').value;
-        if (law_user == '' || law_pas == '') {
-            alert('请输入正确的用户名、密码');
+        var mail263Name = document.getElementById('mail263Name').value;
+        if (mail263Name == '') {
+            alert('请输入正确的用户名');
             return false;
         }
-        $.post("/seeyon/ext/setUserController.do?method=setResult", {
-            law_user: law_user,
-            law_pas: law_pas
+        $.post("/seeyon/ext/xk263Email.do?method=doSave263", {
+            mail263Name: mail263Name
         }, function (data) {
             if (data.code == 0) {
                 $("#btnDiv").hide();
