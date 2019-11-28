@@ -28,7 +28,7 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
     public List<OrgDept> queryByFirstDept() {
 
         List<OrgDept> firstDeptList = new ArrayList<>();
-        String sql = "select v.code,v.name,(select m.id from m_org_unit m where m.code = v.uint) parent,v.uint from (select * from V_ORG_UNIT where IS_DELETED <> '1') v  where v.uint is not null and v.uint in('0') and not exists(select 1 from m_org_unit m where m.code = v.code) ";
+        String sql = "select v.code,v.name,(select m.id from M_ORG_UNIT m where m.code = v.uint) parent,v.uint from (select * from V_ORG_UNIT where IS_DELETED <> '1') v  where v.uint is not null and v.uint in('0') and not exists(select 1 from M_ORG_UNIT m where m.code = v.code) ";
         Connection connection = SyncConnectionUtil.getMidConnection();
         PreparedStatement prep = null;
         ResultSet res = null;
@@ -62,7 +62,7 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
     public List<OrgDept> queryByOtherDept(String accountId) {
 
         List<OrgDept> firstDeptList = new ArrayList<>();
-        String sql = "select v.code,v.name,(select m.id from m_org_unit m where m.code = v.uint) parent,v.uint from (select * from V_ORG_UNIT where IS_DELETED <> '1') v  where v.uint is not null and v.uint not in('0')  and not exists(select 1 from m_org_unit m where m.code = v.code)";
+        String sql = "select v.code,v.name,(select m.id from M_ORG_UNIT m where m.code = v.uint) parent,v.uint from (select * from V_ORG_UNIT where IS_DELETED <> '1') v  where v.uint is not null and v.uint not in('0')  and not exists(select 1 from M_ORG_UNIT m where m.code = v.code)";
         Connection connection = SyncConnectionUtil.getMidConnection();
         PreparedStatement prep = null;
         ResultSet res = null;
@@ -97,7 +97,7 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
         CTPRestClient client = SyncConnectionUtil.getOaRest();
         Connection connection = null;
         PreparedStatement ps = null;
-        String insertSql = "insert into m_org_unit(id,code,name,uint,sort_id) values (?,?,?,?,?)";
+        String insertSql = "insert into M_ORG_UNIT(id,code,name,uint,sort_id) values (?,?,?,?,?)";
         try {
             if (null != list && list.size() > 0) {
                 connection = SyncConnectionUtil.getMidConnection();
@@ -170,7 +170,7 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
         CTPRestClient client = SyncConnectionUtil.getOaRest();
         Connection connection = null;
         PreparedStatement ps = null;
-        String insertSql = "insert into m_org_unit(id,code,name,uint,sort_id) values (?,?,?,?,?)";
+        String insertSql = "insert into M_ORG_UNIT(id,code,name,uint,sort_id) values (?,?,?,?,?)";
         try {
             if (null != list && list.size() > 0) {
                 connection = SyncConnectionUtil.getMidConnection();
@@ -252,7 +252,7 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
         PreparedStatement ps = null;
         ResultSet res = null;
         StringBuffer sb = new StringBuffer();
-        sb.append("delete from m_org_unit where id in (0");
+        sb.append("delete from M_ORG_UNIT where id in (0");
         try {
             connection = SyncConnectionUtil.getMidConnection();
             //获取需要删除的部门
@@ -300,7 +300,7 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
     @Override
     public void updateOrgDept() {
         OrgCommon orgCommon = new OrgCommon();
-        String sql = "select mv.id,mv.code,v2.name,v2.uint,m2.id unitid,v2.IS_ENABLE  from   (select distinct m.id,v.code from V_ORG_UNIT v,m_org_unit m where m.code = v.code     and (nvl(v.name,'~') <> nvl(m.name,'~') or nvl(v.uint,'~') <> nvl(m.uint,'~') or v.IS_ENABLE ='0') ) mv    left join V_ORG_UNIT v2 on mv.code = v2.code   left join m_org_unit m2 on v2.uint = m2.code order by mv.code";
+        String sql = "select mv.id,mv.code,v2.name,v2.uint,m2.id unitid,v2.IS_ENABLE  from   (select distinct m.id,v.code from V_ORG_UNIT v,M_ORG_UNIT m where m.code = v.code     and (nvl(v.name,'~') <> nvl(m.name,'~') or nvl(v.uint,'~') <> nvl(m.uint,'~') or v.IS_ENABLE ='0') ) mv    left join V_ORG_UNIT v2 on mv.code = v2.code   left join M_ORG_UNIT m2 on v2.uint = m2.code order by mv.code";
         CTPRestClient client = SyncConnectionUtil.getOaRest();
         Connection connection = null;
         PreparedStatement ps = null;
@@ -347,7 +347,7 @@ public class OrgDeptDaoImpl extends OrgCommon implements OrgDeptDao {
                         if (json.getBoolean("success")) {
                             JSONObject ent = json.getJSONArray("successMsgs").getJSONObject(0).getJSONObject("ent");
                             StringBuffer updateSql = new StringBuffer();
-                            updateSql.append("update m_org_unit set ");
+                            updateSql.append("update M_ORG_UNIT set ");
                             if (null != dept.getDeptname() && !"".equals(dept.getDeptname())) {
                                 updateSql.append(" name = '" + dept.getDeptname() + "',");
                             } else {

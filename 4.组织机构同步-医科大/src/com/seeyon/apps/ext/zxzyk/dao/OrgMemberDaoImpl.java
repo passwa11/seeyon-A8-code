@@ -16,12 +16,18 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryAddOrgMember() {
+        //正式
         String sql = "select DISTINCT c2.code,c2.name,c2.id,c2.POSTID,c2.description,c2.mobile,M_ORG_UNIT.id unitId,M_ORG_LEVEL.id levelId from " +
                 "(select memb.*,M_ORG_POST.id postid from (" +
                 "select * from V_ORG_MEMBER vm where not EXISTS(select * from M_ORG_MEMBER  where vm.code = M_ORG_MEMBER.code  and vm.name = M_ORG_MEMBER.name)) " +
                 "memb,M_ORG_POST  where memb.org_post_id = M_ORG_POST.code) c2 LEFT JOIN M_ORG_UNIT  on nvl(c2.org_account_id,c2.sup_department_id) = M_ORG_UNIT.code " +
                 "LEFT JOIN M_ORG_LEVEL  on c2.org_level_id=M_ORG_LEVEL.code";
-
+        //测试
+        String testsql="select DISTINCT c2.code,c2.name,c2.id,c2.POSTID,c2.description,c2.mobile,M_test_unit.id unitId,M_test_LEVEL.id levelId from " +
+                "                (select memb.*,M_ORG_POST.id postid from (" +
+                "                select * from V_test_MEMBER vm where not EXISTS(select * from M_test_MEMBER  where vm.code = M_test_MEMBER.code  and vm.name = M_test_MEMBER.name)) " +
+                "                memb,M_ORG_POST  where memb.org_post_id = M_ORG_POST.code) c2 LEFT JOIN M_test_unit  on nvl(c2.org_account_id,c2.sup_department_id) = M_test_unit.code " +
+                "                LEFT JOIN M_test_LEVEL  on c2.org_level_id=M_test_LEVEL.code";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection = SyncConnectionUtil.getMidConnection();
         PreparedStatement ps = null;
@@ -60,7 +66,10 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
         CTPRestClient client = SyncConnectionUtil.getOaRest();
         Connection connection = null;
         PreparedStatement ps = null;
+        //正式
         String insertSql = "insert into m_org_member(id,code,name,login_name,org_department_id,org_level_id,description,mobile,org_post_id) values (?,?,?,?,?,?,?,?,?)";
+        //测试
+        String testinsertSql = "insert into m_test_member(id,code,name,login_name,org_department_id,org_level_id,description,mobile,org_post_id) values (?,?,?,?,?,?,?,?,?)";
 
         try {
             connection = SyncConnectionUtil.getMidConnection();
@@ -111,7 +120,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 orgUser.setMemberId(Long.parseLong(userid));
                                 orgUser.setActionTime(new Date());
                                 orgUser.setDescription("te");
-                                orgUser.setExUnitCode("000");
+                                orgUser.setExUnitCode("uid="+ent.getString("loginName"));
                                 DBAgent.save(orgUser);
                             }
                         }
@@ -145,6 +154,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryUpdateOrgMember() {
+        //正式
         String sql = " select t.id,t.code,k.name,k.org_department_id unitid,k.org_level_id levelid,k.org_post_id postid,k.description,k.mobile from  (select distinct m.id,v.code  from m_org_member m,  " +
                 " (select v1.code,v1.name,u1.id org_department_id,l1.id org_level_id,p1.id org_post_id,v1.description,v1.mobile    from V_ORG_MEMBER v1,m_org_unit u1,m_org_level l1,m_org_post p1   " +
                 "where v1.org_department_id = u1.code and v1.org_level_id = l1.code and v1.org_post_id = p1.code) v   where v.code = m.code   and (       nvl(m.name,'~') <> nvl(v.name,'~') or   " +
@@ -152,6 +162,14 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                 " nvl(m.description,'~') <> nvl(v.description,'~') or       nvl(m.mobile,'~') <> nvl(v.mobile,'~')   ) ) t  left join  " +
                 " (select v2.code,v2.name,u2.id org_department_id,l2.id org_level_id,p2.id org_post_id,v2.description,v2.mobile   " +
                 "from V_ORG_MEMBER v2,m_org_unit u2,m_org_level l2,m_org_post p2   where v2.org_department_id = u2.code and v2.org_level_id = l2.code and v2.org_post_id = p2.code) k   on t.code = k.code ";
+        //测试
+        String testsql="select t.id,t.code,k.name,k.org_department_id unitid,k.org_level_id levelid,k.org_post_id postid,k.description,k.mobile from  (select distinct m.id,v.code  from m_test_member m,  " +
+                "                 (select v1.code,v1.name,u1.id org_department_id,l1.id org_level_id,p1.id org_post_id,v1.description,v1.mobile    from V_test_MEMBER v1,m_test_unit u1,m_test_level l1,m_org_post p1   " +
+                "                where v1.org_department_id = u1.code and v1.org_level_id = l1.code and v1.org_post_id = p1.code) v   where v.code = m.code   and (       nvl(m.name,'~') <> nvl(v.name,'~') or   " +
+                "                 nvl(m.org_department_id,'~') <> nvl(v.org_department_id,'~') or       nvl(m.org_level_id,'~') <> nvl(v.org_level_id,'~') or       nvl(m.org_post_id,'~') <> nvl(v.org_post_id,'~') or  " +
+                "                 nvl(m.description,'~') <> nvl(v.description,'~') or       nvl(m.mobile,'~') <> nvl(v.mobile,'~')   ) ) t  left join  " +
+                "                 (select v2.code,v2.name,u2.id org_department_id,l2.id org_level_id,p2.id org_post_id,v2.description,v2.mobile   " +
+                "                from V_test_MEMBER v2,m_test_unit u2,m_test_level l2,m_org_post p2   where v2.org_department_id = u2.code and v2.org_level_id = l2.code and v2.org_post_id = p2.code) k   on t.code = k.code ";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection = SyncConnectionUtil.getMidConnection();
         PreparedStatement ps = null;
@@ -303,7 +321,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                     if (null != jsonObject) {
 
                         if (jsonObject.getBoolean("success")) {
-                            dsql.append("'" + member.getMemberid() + "'");
+                            dsql.append(",'" + member.getMemberid() + "'");
                         }
                     } else {
                         dsql.append(",'" + member.getMemberid() + "'");

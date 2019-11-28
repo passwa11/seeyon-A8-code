@@ -24,6 +24,9 @@ public class xzykController extends BaseController {
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {
         return new ModelAndView("apps/ext/xzyk/index");
     }
+    public ModelAndView openOaBill(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        return new ModelAndView("apps/ext/xzyk/oabill");
+    }
 
     public ModelAndView syncPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
         return new ModelAndView("apps/ext/xzyk/index");
