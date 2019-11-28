@@ -32,6 +32,8 @@ public class fileUploadConfigController extends BaseController {
     private fileUploadConfigManager manager = new fileUploadConfigManagerImpl();
 
     public ModelAndView getAllUploadMem(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        System.out.println("hello");
+        System.out.println("可以自动同步吗");
         List<ZOrgUploadMember> list = null;
         Map<String, Object> map = new HashMap<>();
         List<MiddleTemp> tempList = new ArrayList<>();

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.seeyon.apps.ext.fileUploadConfig.po.ZOrgUploadMember" table="ORG_UPLOAD_MEMBER" lazy="false">
+        <id name="userid"
+              type="long"
+              column="USERID"
+    >
+            <generator class="assigned"/>
+        </id>
+
+        <property
+                name="status"
+                type="string"
+                column="STATUS"
+                length="200"
+        />
+        <property
+                name="deptid"
+                type="string"
+                column="DEPTID"
+                length="200"
+        />
+        <property
+                name="loginname"
+                type="string"
+                column="LOGINNAME"
+                length="200"
+        />
+    </class>
+
+
+</hibernate-mapping>

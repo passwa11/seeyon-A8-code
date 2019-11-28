@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d607215e-76df-4996-9096-1c1350f22bbe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Portal190724.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Portal190724.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/xzyk_20190903.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../公文/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../公文/.idea/公文.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../公文/.idea/公文.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../../大屯项目集成/datun-portallow" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../../大屯项目集成/datun-sso-login" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../大屯项目集成/大屯项目代码.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,19 +23,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>portlet.getTodoz.path</find>
-      <find>getJsonStr</find>
-      <find>daibanTable</find>
-      <find>DBAgent</find>
-      <find>save</find>
-      <find>param</find>
-      <find>setUserController.do?</find>
-      <find>getTokenByPost</find>
-      <find>findMoreLaw</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
@@ -52,7 +32,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/Seeyon/A87.1_Sp1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -354,6 +334,8 @@
       <workItem from="1567044370926" duration="4289000" />
       <workItem from="1567731619543" duration="1101000" />
       <workItem from="1570586749973" duration="494000" />
+      <workItem from="1574661226205" duration="1291000" />
+      <workItem from="1574737434318" duration="696000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1563959798082</created>
@@ -464,7 +446,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

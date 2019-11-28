@@ -3,8 +3,57 @@
   <component name="ChangeListManager">
     <list default="true" id="816d8994-cada-4cd0-be87-e236d8acd877" name="Default Changelist" comment="update">
       <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/metadata/menu-AccountAdmin-Enterprise.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/metadata/menu-AccountAdmin-Enterprise.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/pluginCfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/pluginCfg.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/pluginProperties.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/pluginProperties.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-controller.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-controller.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-dao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-dao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-manager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-manager.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/zxzyk/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/zxzyk/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fileUploadConfig/src/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fileUploadConfig/src/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/cfgHome/plugin/xk263Email/pluginCfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-controller.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-dao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-plugin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/jsp/apps/ext/xk263Email/login.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/jsp/apps/ext/xk263Email/setAccount.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/common/toastr/toastr.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/common/toastr/toastr.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/说明" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplProxy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplServiceLocator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiSoapBindingStub.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/check/Xk263EmailChecker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/dao/OrgMember263MailDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/dao/OrgMember263MailDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/manager/OrgMember263MailDaoManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/manager/OrgMember263MailDaoManagerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/po/OrgMember263EmailMapper.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/po/OrgMember263EmailMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/section/Xk263EmailSection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/util/Mail263Util.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/util/SSOMD5.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/util/SignUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/util/ZCommonUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/xk263EmailPluginInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/ctp/organization/bo/V3xOrgEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/ctp/organization/bo/V3xOrgMember.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/ctp/organization/dao/OrgHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/ctp/organization/po/OrgMember.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/ctp/organization/po/OrgMember.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,43 +63,6 @@
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/ssologin/XzykSsoLoginHandshake.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/ssologin/SsoLogin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="17" column="88" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/casFilterConfig.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="5" column="29" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -101,260 +113,8 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xzyk/controller/xzykController.java" />
-        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xzyk/pluginCfg.xml" />
-        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-plugin.xml" />
-        <option value="D:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-core.jar!/com/seeyon/client/CTPRestClient.class" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/rest/resources/DepartmentResource.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/dao/OrgPostDao.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/dao/OrgPostDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/util/SyncConnectionUtil.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/dao/OrgLevelDao.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/manager/OrgLevelManager.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/manager/OrgLevelManagerImpl.java" />
-        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-dao.xml" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/po/CtpOrgUser.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/po/CtpOrgUser.hbm.xml" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/dao/OrgMemberDao.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/manager/OrgMemberManager.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/manager/OrgMemberManagerImpl.java" />
-        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-sso.xml" />
-        <option value="$PROJECT_DIR$/seeyon/index.jsp" />
-        <option value="$PROJECT_DIR$/seeyon/oabill.jsp" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/po/OrgDept.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/util/TreeUtil.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/manager/OrgDeptManager.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/dao/OrgDeptDao.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/manager/OrgDeptManagerImpl.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/dao/OrgMemberDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/dao/OrgDeptDaoImpl.java" />
-        <option value="$PROJECT_DIR$/seeyon/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/util/StringHandlerUtil.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/ssologin/XzykSsoLoginHandshake.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/controller/SyncController.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/dao/OrgLevelDaoImpl.java" />
-        <option value="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/zxzyk/index.jsp" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/controller/xzykController.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/zxzykPluginInitializer.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/quartz/SyncDeptTask.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/util/StringHandle.java" />
-        <option value="$PROJECT_DIR$/src/Test.java" />
-        <option value="$PROJECT_DIR$/src/Testzzz.java" />
-        <option value="$PROJECT_DIR$/src/xzykConf/xzykPlugin.properties" />
-        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-controller.xml" />
-        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/metadata/menu-AccountAdmin-Enterprise.xml" />
-        <option value="$PROJECT_DIR$/test/com/seeyon/test/SeeyonTest.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/controller/TestController.java" />
-        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-manager.xml" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/rest/resources/AffairResource.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/rest/resources/EdocSummaryResource.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/rest/util/TicketUtil.java" />
-        <option value="$PROJECT_DIR$/src/casFilterConfig.xml" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/ssologin/SsoLogin.java" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="123" />
-    <option name="y" value="12" />
-    <option name="width" value="1565" />
-    <option name="height" value="943" />
-  </component>
+  <component name="ProjectId" id="1UESstJZUNgeKGa8spOoXN5i0ES" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
-              <item name="metadata" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
-              <item name="plugin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
-              <item name="plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="zxzyk" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
-              <item name="plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="zxzyk" type="462c0819:PsiDirectoryNode" />
-              <item name="spring" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="zxzyk" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="zxzyk" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="zxzyk" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="zxzyk" type="462c0819:PsiDirectoryNode" />
-              <item name="po" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="zxzyk" type="462c0819:PsiDirectoryNode" />
-              <item name="quartz" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="zxzyk" type="462c0819:PsiDirectoryNode" />
-              <item name="ssologin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="zxzyk" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="4.组织机构同步-医科大" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="xzykConf" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-apps-common.jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-apps-common.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-apps-common.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="4.组织机构同步-医科大" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="seeyon-apps-common.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="agent" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
-  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
@@ -645,6 +405,7 @@
       <workItem from="1567590153357" duration="653000" />
       <workItem from="1567645017973" duration="7673000" />
       <workItem from="1567742323377" duration="627000" />
+      <workItem from="1574920474891" duration="568000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1566710766079</created>
@@ -660,11 +421,15 @@
       <option name="project" value="LOCAL" />
       <updated>1567583992706</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update">
+      <created>1574920816900</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574920816900</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="252718000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -675,60 +440,19 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19573334" />
-      <window_info id="Structure" order="1" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Nl-Palette" order="7" />
-      <window_info id="JRebel" order="8" side_tool="true" />
-      <window_info id="MyBatis Builder" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.38702703" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.46799117" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.196468" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32972974" />
-      <window_info anchor="bottom" id="Spring" order="7" weight="0.32890365" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.21412803" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.24613686" />
-      <window_info anchor="bottom" id="File Transfer" order="11" weight="0.32781458" />
-      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32972974" />
-      <window_info anchor="bottom" id="Version Control" order="13" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="15" />
-      <window_info anchor="bottom" id="FindBugs-IDEA" order="16" />
-      <window_info anchor="bottom" id="JRebel Console" order="17" side_tool="true" />
-      <window_info anchor="bottom" id="JRebel Executor" order="18" />
-      <window_info anchor="bottom" id="MyBatis Log" order="19" />
-      <window_info anchor="bottom" id="Tail" order="20" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Remote Host" order="4" />
-      <window_info anchor="right" id="Properties" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="right" id="Palette&#9;" order="9" />
-      <window_info anchor="right" id="Theme Preview" order="10" />
-      <window_info anchor="right" id="Bean Validation" order="11" />
-      <window_info anchor="right" id="Maven" order="12" />
-      <window_info anchor="right" id="BPMNPalette" order="13" />
-      <window_info anchor="right" id="RestServices" order="14" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -742,103 +466,86 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/dao/OrgMemberDaoImpl.java</url>
           <line>59</line>
-          <properties />
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/dao/OrgMemberDaoImpl.class</url>
           <line>136</line>
-          <properties />
           <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/controller/xzykController.java</url>
           <line>47</line>
-          <properties />
           <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/dao/OrgMemberDaoImpl.java</url>
           <line>133</line>
-          <properties />
           <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/ssologin/SsoLogin.java</url>
           <line>32</line>
-          <properties />
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/controller/xzykController.java</url>
           <line>32</line>
-          <properties />
           <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/dao/OrgDeptDaoImpl.java</url>
           <line>270</line>
-          <properties />
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/controller/TestController.class</url>
           <line>21</line>
-          <properties />
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/ssologin/XzykSsoLoginHandshake.java</url>
           <line>9</line>
-          <properties />
           <option name="timeStamp" value="90" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/rest/resources/EdocSummaryResource.java</url>
           <line>128</line>
-          <properties />
           <option name="timeStamp" value="94" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/rest/resources/EdocSummaryResource.java</url>
           <line>671</line>
-          <properties />
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/test/com/seeyon/test/SeeyonTest.java</url>
           <line>14</line>
-          <properties />
           <option name="timeStamp" value="99" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/controller/TestController.java</url>
           <line>86</line>
-          <properties />
           <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/controller/TestController.java</url>
           <line>93</line>
-          <properties />
           <option name="timeStamp" value="101" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/controller/TestController.java</url>
           <line>43</line>
-          <properties />
           <option name="timeStamp" value="102" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/rest/resources/EdocSummaryResource.java</url>
           <line>613</line>
-          <properties />
           <option name="timeStamp" value="103" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/rest/resources/EdocSummaryResource.java</url>
           <line>227</line>
-          <properties />
           <option name="timeStamp" value="104" />
         </line-breakpoint>
       </breakpoints>
@@ -847,417 +554,6 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/manager/OrgDeptManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/controller/SyncController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/controller/xzykController.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="46" column="35" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/controller/xzykController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1386">
-          <caret line="53" column="50" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/zxzyk/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-core.jar!/com/seeyon/ctp/common/timer/TimerHolder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1386">
-          <caret line="49" column="23" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/zxzykPluginInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/quartz/SyncDeptTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Testzzz.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1254">
-          <caret line="38" column="24" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/util/StringHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/dao/OrgDeptDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="118" column="92" selection-start-line="118" selection-start-column="20" selection-end-line="118" selection-end-column="92" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#deleteDept#0;class#OrgDeptDaoImpl#0" />
-            <element signature="method#updateOrgDept#0;class#OrgDeptDaoImpl#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-controller.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="5" column="21" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/metadata/menu-AccountAdmin-Enterprise.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="337" selection-start-line="337" selection-end-line="337" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/metadata/menu-AccountAdmin.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1188" />
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/spring-webmvc.jar!/org/springframework/web/servlet/DispatcherServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12738">
-          <caret line="446" column="17" selection-start-line="446" selection-start-column="17" selection-end-line="446" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/controller/TestController.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-core.jar!/com/seeyon/client/CTPServiceClientManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="e#537#538#0" expanded="true" />
-            <element signature="e#613#614#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/util/SyncConnectionUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-core.jar!/com/seeyon/client/CTPRestClient.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-ai.jar!/com/seeyon/apps/ai/bo/SortWeightBO.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/ctp/rest/resources/EdocResource.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16335">
-          <caret line="211" column="21" lean-forward="true" selection-start-line="211" selection-start-column="21" selection-end-line="211" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#251156#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-soap.jar!/com/seeyon/ctp/rest/resources/EdocSummaryResource.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-538">
-          <caret line="89" column="14" lean-forward="true" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-core.jar!/com/seeyon/client/GenericRestClient.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
-          <folding>
-            <element signature="e#2527#2528#0" expanded="true" />
-            <element signature="e#2595#2596#0" expanded="true" />
-            <element signature="e#2651#2652#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="211" column="6" selection-start-line="211" selection-start-column="6" selection-end-line="211" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/spring-webmvc.jar!/org/springframework/web/servlet/mvc/multiaction/MultiActionController.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1801">
-          <caret line="211" lean-forward="true" selection-start-line="211" selection-end-line="211" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/com/seeyon/test/SeeyonTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#221#222#0" expanded="true" />
-            <element signature="e#245#246#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-cip-api.jar!/com/seeyon/ctp/common/authenticate/sso/SSOTicketManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5577">
-          <caret line="285" lean-forward="true" selection-start-line="285" selection-end-line="285" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/jersey-server.jar!/org/glassfish/jersey/server/ServerRuntime.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="176" selection-start-line="176" selection-end-line="176" />
-          <folding>
-            <element signature="e#8607#10176#0" expanded="true" />
-            <element signature="e#10175#10176#0" expanded="true" />
-            <element signature="e#15866#16785#0" expanded="true" />
-            <element signature="e#16784#16785#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/jersey-server.jar!/org/glassfish/jersey/server/model/ResourceMethodInvoker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="245" selection-start-line="245" selection-end-line="245" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/rest/resources/EdocSummaryResource.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="1143" column="35" lean-forward="true" selection-start-line="1143" selection-start-column="35" selection-end-line="1143" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-manager.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/jersey-server.jar!/org/glassfish/jersey/server/model/internal/AbstractJavaResourceMethodDispatcher.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
-          <folding>
-            <element signature="e#0#4788#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/jersey-server.jar!/org/glassfish/jersey/server/model/internal/ResourceMethodInvocationHandlerFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#2284#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/controller/TestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1056">
-          <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/v3x/edoc/manager/EdocListManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/v3x/edoc/manager/EdocListManagerImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="73" column="54" selection-start-line="73" selection-start-column="54" selection-end-line="73" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-edoc.jar!/com/seeyon/v3x/edoc/dao/EdocListDao.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18678">
-          <caret line="597" column="27" selection-start-line="597" selection-start-column="27" selection-end-line="597" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-cip-api.jar!/com/seeyon/ctp/portal/sso/SSOTicketBean.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/rest/resources/AffairResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/rest/resources/EdocSummaryResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="1238" column="29" selection-start-line="1238" selection-start-column="29" selection-end-line="1238" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/manager/OrgMemberManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/dao/OrgMemberDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
-          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/xzykConf/xzykPlugin.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/rest/util/TicketUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
-          <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/testz.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/oabill.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-sso.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="8" column="72" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/ssologin/XzykSsoLoginHandshake.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/zxzyk/ssologin/SsoLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="17" column="88" selection-start-line="17" selection-start-column="88" selection-end-line="17" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/casFilterConfig.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="5" column="29" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>

@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5d562e7-146f-4eca-80c5-dde774810624" name="Default Changelist" comment="修改">
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/7.1_code.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/.idea/公文.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/公文.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDaoImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/domain/CtpPdfSavepath.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManagerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/exchange/controller/ExchangeEdocController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fileUploadConfig/src/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fileUploadConfig/src/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +68,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="F:/s/A-8-code/徐矿263邮箱单点登录" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -195,6 +181,7 @@
       <workItem from="1567575337903" duration="69000" />
       <workItem from="1568189347865" duration="51000" />
       <workItem from="1568865143081" duration="287000" />
+      <workItem from="1574919954202" duration="110000" />
     </task>
     <task id="LOCAL-00001" summary="修改">
       <created>1558928655910</created>
@@ -497,7 +484,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
