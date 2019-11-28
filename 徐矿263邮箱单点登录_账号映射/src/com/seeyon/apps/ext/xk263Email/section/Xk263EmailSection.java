@@ -1,6 +1,11 @@
 package com.seeyon.apps.ext.xk263Email.section;
 
+import com.seeyon.apps.ext.xk263Email.manager.OrgMember263EmailMapperManager;
+import com.seeyon.apps.ext.xk263Email.manager.OrgMember263EmailMapperManagerImpl;
+import com.seeyon.apps.ext.xk263Email.po.OrgMember263EmailMapper;
 import com.seeyon.apps.ext.xk263Email.util.ZCommonUtil;
+import com.seeyon.ctp.common.AppContext;
+import com.seeyon.ctp.common.authenticate.domain.User;
 import com.seeyon.ctp.portal.section.BaseSectionImpl;
 import com.seeyon.ctp.portal.section.templete.BaseSectionTemplete;
 import com.seeyon.ctp.portal.section.templete.HtmlTemplete;
@@ -12,6 +17,8 @@ import java.util.Map;
  * 周刘成   2019/5/28
  */
 public class Xk263EmailSection extends BaseSectionImpl {
+
+    private OrgMember263EmailMapperManager mapperManager = new OrgMember263EmailMapperManagerImpl();
 
 
     @Override
@@ -66,7 +73,19 @@ public class Xk263EmailSection extends BaseSectionImpl {
      */
     @Override
     public BaseSectionTemplete projection(Map<String, String> map) {
-        String loginUrl= ZCommonUtil.get263LoginUrl();
+        User user = AppContext.getCurrentUser();
+        Long userId = user.getId();
+        OrgMember263EmailMapper member263EmailMapper = null;
+        try {
+            member263EmailMapper = mapperManager.selectByUserId(userId.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String loginUrl = "";
+        if (null != member263EmailMapper) {
+            loginUrl = ZCommonUtil.get263LoginUrl(member263EmailMapper.getMail263Name());
+        }
+
         String count=ZCommonUtil.getUnreadCount();
         //栏目解析主方法
 
