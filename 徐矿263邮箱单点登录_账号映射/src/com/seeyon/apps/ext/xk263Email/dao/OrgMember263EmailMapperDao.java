@@ -10,4 +10,6 @@ public interface OrgMember263EmailMapperDao {
     void insertOrgMember263Email(OrgMember263EmailMapper orgMember263EmailMapper);
 
     OrgMember263EmailMapper selectByUserId(Long userid);
+
+    void updateOrgMember263Email(OrgMember263EmailMapper orgMember263EmailMapper);
 }

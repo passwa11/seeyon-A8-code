@@ -8,6 +8,11 @@ import com.seeyon.ctp.util.DBAgent;
  */
 public class OrgMember263EmailMapperDaoImpl implements OrgMember263EmailMapperDao {
     @Override
+    public void updateOrgMember263Email(OrgMember263EmailMapper orgMember263EmailMapper) {
+        DBAgent.update(orgMember263EmailMapper);
+    }
+
+    @Override
     public void insertOrgMember263Email(OrgMember263EmailMapper orgMember263EmailMapper) {
         DBAgent.save(orgMember263EmailMapper);
     }

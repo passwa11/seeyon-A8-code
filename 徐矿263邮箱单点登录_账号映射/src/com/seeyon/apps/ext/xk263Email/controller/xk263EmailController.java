@@ -38,28 +38,46 @@ public class xk263EmailController extends BaseController {
     }
 
     public ModelAndView doSave263(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String emailName=request.getParameter("mail263Name");
+        Map<String, Object> map = new HashMap<>();
+
+        String emailName = request.getParameter("mail263Name");
         User user = AppContext.getCurrentUser();
         Long userId = user.getId();
-
-        OrgMember263EmailMapper mapper=new OrgMember263EmailMapper();
-        mapper.setUserId(userId);
-        mapper.setLoginName(user.getName());
-        mapper.setMail263Name(emailName);
-        mapper.setDeptId(user.getDepartmentId().toString());
-        mapper.setDeptName(user.getLoginAccountName());
-        mapper.setStatus("1");
-        LocalDateTime localDateTime=LocalDateTime.now();
-        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        mapper.setUpdateTime(formatter.format(localDateTime));
-        Map<String, Object> map = new HashMap<>();
-        try {
-            mapperManager.insertOrgMember263Email(mapper);
-            map.put("code", 0);
-        }catch (Exception e){
-            log.error("设置263账户保存出错："+e.getMessage(),e);
-            map.put("code", -1);
+        OrgMember263EmailMapper member263EmailMapper = mapperManager.selectByUserId(userId.toString());
+        if (null == member263EmailMapper) {
+            OrgMember263EmailMapper mapper = new OrgMember263EmailMapper();
+            mapper.setUserId(userId);
+            mapper.setLoginName(user.getName());
+            mapper.setMail263Name(emailName);
+            mapper.setDeptId(user.getDepartmentId().toString());
+            mapper.setDeptName(user.getLoginAccountName());
+            mapper.setStatus("1");
+            LocalDateTime localDateTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            mapper.setUpdateTime(formatter.format(localDateTime));
+            try {
+                mapperManager.insertOrgMember263Email(mapper);
+                map.put("code", 0);
+            } catch (Exception e) {
+                log.error("设置263账户保存出错：" + e.getMessage(), e);
+                map.put("code", -1);
+            }
+        } else {
+            Long id = member263EmailMapper.getUserId();
+            if (userId == id) {
+                try {
+                    mapperManager.updateOrgMember263Email(member263EmailMapper);
+                    map.put("code", 0);
+                } catch (Exception e) {
+                    log.error("设置263账户->修改出错：" + e.getMessage(), e);
+                    map.put("code", -1);
+                }
+            } else {
+                map.put("code", -1);
+                map.put("msg", "此邮箱账户已被" + member263EmailMapper.getLoginName() + "(单位:" + member263EmailMapper.getDeptName() + ")绑定！！！");
+            }
         }
+
 
         JSONObject json = new JSONObject(map);
         render(response, json.toJSONString());

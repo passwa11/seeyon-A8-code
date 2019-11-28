@@ -12,6 +12,12 @@ public class OrgMember263EmailMapperManagerImpl implements OrgMember263EmailMapp
     private OrgMember263EmailMapperDao dao = new OrgMember263EmailMapperDaoImpl();
 
     @Override
+    public void updateOrgMember263Email(OrgMember263EmailMapper orgMember263EmailMapper) {
+        dao.updateOrgMember263Email(orgMember263EmailMapper);
+
+    }
+
+    @Override
     public void insertOrgMember263Email(OrgMember263EmailMapper orgMember263EmailMapper) {
         dao.insertOrgMember263Email(orgMember263EmailMapper);
     }

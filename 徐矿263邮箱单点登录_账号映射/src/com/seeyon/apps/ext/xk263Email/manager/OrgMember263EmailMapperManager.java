@@ -10,4 +10,7 @@ public interface OrgMember263EmailMapperManager {
     void insertOrgMember263Email(OrgMember263EmailMapper orgMember263EmailMapper);
 
     OrgMember263EmailMapper selectByUserId(String userid);
+
+    void updateOrgMember263Email(OrgMember263EmailMapper orgMember263EmailMapper);
+
 }
