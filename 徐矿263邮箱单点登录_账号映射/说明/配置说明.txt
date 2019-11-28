@@ -1,0 +1,3 @@
+使用system账号，配置关联系统
+
+    在url中配置地址为：http://ip:端口/seeyon/ext/xk263Email.do?method=openSetAccountPage
