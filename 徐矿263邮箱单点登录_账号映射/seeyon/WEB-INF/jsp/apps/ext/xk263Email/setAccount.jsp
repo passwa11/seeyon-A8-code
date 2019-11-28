@@ -100,6 +100,7 @@
                 toastr.success('设置成功');
             } else {
                 toastr.error('设置失败');
+                $("#errInfo").html(data.msg);
             }
         });
 //        var url = '/seeyon/ext/setUserController.do?method=setResult';
