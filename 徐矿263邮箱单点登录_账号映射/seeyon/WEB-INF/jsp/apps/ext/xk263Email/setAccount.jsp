@@ -41,7 +41,7 @@
                         <td class="bg-gray" width="20%" nowrap="nowrap">用户名:</td>
                         <td class="new-column" width="80%">
                             <input class="input-100per" style="width: 200px;" type="text" name="mail263Name" id="mail263Name"
-                                   maxlength="50" value="${requestScope.member.mail263Name}"/>
+                                   maxlength="50" value="${requestScope.member.mail263Name}" onfocus="clearInput()"/>
                         </td>
                     </tr>
 <%--                    <tr>--%>
@@ -53,8 +53,8 @@
 <%--                        </td>--%>
 <%--                    </tr>--%>
                     <tr>
-                        <td colspan="2">
-                            <span id="errInfo"></span>
+                        <td colspan="2" style="text-align: center;color: red">
+                            <span id="errInfo" style="font-size: 30px;"></span>
                         </td>
                     </tr>
                 </table>
@@ -86,6 +86,9 @@
         hideMethod: "fadeOut"  	//隐藏的方式，和jquery相同
         //等其他参数
     };
+    function clearInput() {
+        $("#errInfo").html("");
+    }
     function setLaw() {
         var mail263Name = document.getElementById('mail263Name').value;
         if (mail263Name == '') {
