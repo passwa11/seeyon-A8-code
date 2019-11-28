@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>账户设置</title>
+    <title>263邮箱账户设置</title>
     <style type="text/css">
 
         .button {
@@ -33,25 +33,25 @@
 
         <div style="width: 500px;margin-top: 50px;" align="center">
             <fieldset>
-                <legend style="font-size: 16px;color: #030303"> 法律系统设置</legend>
+                <legend style="font-size: 16px;color: #030303">263邮箱账户设置 </legend>
                 <br>
                 <table width="70%" border="0" cellspacing="0" cellpadding="0" height="100px;"
                        align="center">
                     <tr>
                         <td class="bg-gray" width="20%" nowrap="nowrap">用户名:</td>
                         <td class="new-column" width="80%">
-                            <input class="input-100per" style="width: 200px;" type="text" name="law_user" id="law_user"
-                                   maxlength="50" value="${requestScope.userPas.law_user}"/>
+                            <input class="input-100per" style="width: 200px;" type="text" name="mail263Name" id="mail263Name"
+                                   maxlength="50" value="${requestScope.member.mail263Name}"/>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="bg-gray" width="20%" nowrap="nowrap">密码:</td>
-                        <td class="new-column" width="80%">
-                            <input class="input-100per" style="height: 28px;width: 200px;" type="password"
-                                   name="law_pas" id="law_pas"
-                                   maxlength="50" value="${requestScope.userPas.law_pas}"/>
-                        </td>
-                    </tr>
+<%--                    <tr>--%>
+<%--                        <td class="bg-gray" width="20%" nowrap="nowrap">密码:</td>--%>
+<%--                        <td class="new-column" width="80%">--%>
+<%--                            <input class="input-100per" style="height: 28px;width: 200px;" type="password"--%>
+<%--                                   name="law_pas" id="law_pas"--%>
+<%--                                   maxlength="50" value="${requestScope.userPas.law_pas}"/>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
                 </table>
             </fieldset>
             <div id="btnDiv">
