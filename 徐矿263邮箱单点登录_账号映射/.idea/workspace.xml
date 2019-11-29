@@ -5,11 +5,6 @@
       <change afterPath="$PROJECT_DIR$/../限制附件上传类型/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/de.loskutov.FileSync.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/xk263Email/setAccount.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/xk263Email/setAccount.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录.iml" beforeDir="false" afterPath="$PROJECT_DIR$/徐矿263邮箱单点登录.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../限制附件上传类型/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../限制附件上传类型/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,7 +38,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../限制附件上传类型" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -163,14 +158,8 @@
       <workItem from="1574152491946" duration="678000" />
       <workItem from="1574650677605" duration="3235000" />
       <workItem from="1574660083012" duration="614000" />
-      <workItem from="1574921201626" duration="12411000" />
-    </task>
-    <task id="LOCAL-00001" summary="修改">
-      <created>1558928655910</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1558928655910</updated>
+      <workItem from="1574921201626" duration="12548000" />
+      <workItem from="1574988011392" duration="878000" />
     </task>
     <task id="LOCAL-00002" summary="修改">
       <created>1558942081906</created>
@@ -508,7 +497,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574933246408</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="修改">
+      <created>1574933929224</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1574933929226</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -610,14 +606,14 @@
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.class</url>
-          <line>34</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java</url>
           <line>137</line>
           <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

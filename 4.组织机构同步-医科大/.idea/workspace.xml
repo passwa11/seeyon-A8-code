@@ -1,60 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="816d8994-cada-4cd0-be87-e236d8acd877" name="Default Changelist" comment="update">
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/metadata/menu-AccountAdmin-Enterprise.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/metadata/menu-AccountAdmin-Enterprise.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/pluginCfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/pluginCfg.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/pluginProperties.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/pluginProperties.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-controller.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-controller.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-dao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-dao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-manager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-manager.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-plugin.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/zxzyk/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/zxzyk/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fileUploadConfig/src/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fileUploadConfig/src/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/cfgHome/plugin/xk263Email/pluginCfg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-controller.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-dao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-plugin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/jsp/apps/ext/xk263Email/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/WEB-INF/jsp/apps/ext/xk263Email/setAccount.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/common/toastr/toastr.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/common/toastr/toastr.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/seeyon/说明" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplProxy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplServiceLocator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiSoapBindingStub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/check/Xk263EmailChecker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/dao/OrgMember263MailDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/dao/OrgMember263MailDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/manager/OrgMember263MailDaoManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/manager/OrgMember263MailDaoManagerImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/po/OrgMember263EmailMapper.hbm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/po/OrgMember263EmailMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/section/Xk263EmailSection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/util/Mail263Util.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/util/SSOMD5.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/util/SignUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/util/ZCommonUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/apps/ext/xk263Email/xk263EmailPluginInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/ctp/organization/bo/V3xOrgEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/ctp/organization/bo/V3xOrgMember.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/ctp/organization/dao/OrgHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/ctp/organization/po/OrgMember.hbm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_20191125/src/com/seeyon/ctp/organization/po/OrgMember.java" beforeDir="false" />
-    </list>
+    <list default="true" id="816d8994-cada-4cd0-be87-e236d8acd877" name="Default Changelist" comment="update" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +66,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../徐矿263邮箱单点登录_账号映射" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -405,7 +352,7 @@
       <workItem from="1567590153357" duration="653000" />
       <workItem from="1567645017973" duration="7673000" />
       <workItem from="1567742323377" duration="627000" />
-      <workItem from="1574920474891" duration="568000" />
+      <workItem from="1574920474891" duration="721000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1566710766079</created>
@@ -428,7 +375,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574920816900</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="update">
+      <created>1574921078588</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574921078588</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
