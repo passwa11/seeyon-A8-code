@@ -1,0 +1,8 @@
+WARNING=DO NOT MODIFY THIS FILE IF YOU DON'T UNDERSTAND
+defaultDestination=E\:/Seeyon/A8V7sp3/ApacheJetspeed/webapps/seeyon
+defaultVariables=
+eclipse.preferences.version=1
+includeTeamPrivateFiles=false
+map|0=/|,|,|seeyon/|,
+map|1=seeyon|,|,|,|,
+useCurrentDateForDestinationFiles=false

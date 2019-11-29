@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<!--FORMSON_0331  FORMSON_0085-->
+    <class name="com.seeyon.apps.meetingSeat.po.Formson0256" table="FORMSON_0331" lazy="false">
+        <id name="id" type="long" column="id">
+        	<generator class="increment"/>
+        </id>
+        <property name="formmainId" type="long" column="formmain_id"/>
+
+        <property name="sort" type="long" column="sort"/>
+        <property name="field0008" type="long" column="field0008"/>
+        <property name="field0004" type="string" column="field0004"/>   
+        <property name="field0012" type="string" column="field0012"/>       
+        <property name="field0025" type="string" column="field0025"/>       
+        <property name="field0026" type="string" column="field0026"/>
+        <property name="field0034" type="string" column="field0034"/>
+        <property name="field0035" type="string" column="field0035"/>
+
+    </class>
+
+
+</hibernate-mapping>

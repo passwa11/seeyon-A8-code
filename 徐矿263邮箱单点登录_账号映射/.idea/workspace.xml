@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c5d562e7-146f-4eca-80c5-dde774810624" name="Default Changelist" comment="修改">
-      <change afterPath="$PROJECT_DIR$/../限制附件上传类型/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../限制附件上传类型/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../限制附件上传类型/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="c5d562e7-146f-4eca-80c5-dde774810624" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +33,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/HeiMa/day15_jdbc/code/day15_00_jdbc" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -159,14 +154,7 @@
       <workItem from="1574650677605" duration="3235000" />
       <workItem from="1574660083012" duration="614000" />
       <workItem from="1574921201626" duration="12548000" />
-      <workItem from="1574988011392" duration="878000" />
-    </task>
-    <task id="LOCAL-00002" summary="修改">
-      <created>1558942081906</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1558942081906</updated>
+      <workItem from="1574988011392" duration="1196000" />
     </task>
     <task id="LOCAL-00003" summary="修改">
       <created>1559032675801</created>
@@ -504,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574933929226</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="修改">
+      <created>1574988936215</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1574988936216</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
