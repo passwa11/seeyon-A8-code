@@ -2,17 +2,24 @@
 <project version="4">
   <component name="PublishConfigData">
     <serverData>
-      <paths name="test">
+      <paths name="menu">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="徐矿选择人员CAP4">
+      <paths name="test">
         <serverdata>
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$/seeyon" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="代办">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

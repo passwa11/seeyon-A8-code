@@ -41,6 +41,7 @@ public class selectPeopleController extends BaseController {
 
                 m.put("field0001", (String) map.get("field0001"));
                 m.put("field0002", (String) map.get("field0002"));
+                m.put("field0006", (String) map.get("field0006"));
                 m.put("flag", "dzb");
                 revoler.add(m);
             }
@@ -77,6 +78,7 @@ public class selectPeopleController extends BaseController {
                 m.put("field0001", val.get("field0003"));
                 m.put("field0004", val.get("name"));
                 m.put("field0003", val.get("field0002"));
+                m.put("field0006", val.get("field0006"));
                 m.put("flag", "");
                 m.put("id", "");
                 handle.add(m);

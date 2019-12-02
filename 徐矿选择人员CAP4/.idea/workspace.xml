@@ -2,29 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36e88280-e35b-47df-aff3-f0239d1a348d" name="Default Changelist" comment="过滤有数据的明细行">
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/7.1_code.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/.idea/公文.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/公文.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDaoImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/domain/CtpPdfSavepath.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManagerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/exchange/controller/ExchangeEdocController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/apps/meetingSeat/manager/MeetingSeatManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/apps/meetingSeat/manager/MeetingSeatManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/ctp/rest/resources/MeetingSeatResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/ctp/rest/resources/MeetingSeatResources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/html/selectpeople.html" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/html/selectpeople.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/layui-people.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/layui-people.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/selectPeople.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/selectPeople.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/customFieldCtrl/vo/ZJsonObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/customFieldCtrl/vo/ZJsonObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/ctp/rest/resources/SelectPeopleResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/ctp/rest/resources/SelectPeopleResources.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,21 +34,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-56" />
-    <option name="y" value="80" />
-    <option name="width" value="1885" />
-    <option name="height" value="950" />
-  </component>
   <component name="ProjectId" id="1RGJDrvneTW3NQlJCovjZATbKI5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/seeyon" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -221,6 +205,7 @@
       <workItem from="1568101546364" duration="1023000" />
       <workItem from="1568189664659" duration="43000" />
       <workItem from="1569287385467" duration="74000" />
+      <workItem from="1575247462644" duration="15066000" />
     </task>
     <task id="LOCAL-00001" summary="有问题？">
       <created>1558576316059</created>
@@ -558,7 +543,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -585,13 +572,23 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java</url>
-          <line>142</line>
+          <line>144</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java</url>
-          <line>171</line>
+          <line>173</line>
           <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

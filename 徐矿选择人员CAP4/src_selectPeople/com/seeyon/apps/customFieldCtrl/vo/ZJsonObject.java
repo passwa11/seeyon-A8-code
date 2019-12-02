@@ -8,6 +8,15 @@ public class ZJsonObject {
     private String field0001;//人员编号
     private String field0003;//部门名称
     private String field0004;//人员姓名
+    private String field0006;
+
+    public String getField0006() {
+        return field0006;
+    }
+
+    public void setField0006(String field0006) {
+        this.field0006 = field0006;
+    }
 
     public String getField0001() {
         return field0001;
