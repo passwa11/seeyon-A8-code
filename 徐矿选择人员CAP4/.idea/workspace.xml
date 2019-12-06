@@ -4,16 +4,7 @@
     <list default="true" id="36e88280-e35b-47df-aff3-f0239d1a348d" name="Default Changelist" comment="过滤有数据的明细行">
       <change beforePath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/apps/meetingSeat/manager/MeetingSeatManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/apps/meetingSeat/manager/MeetingSeatManagerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/ctp/rest/resources/MeetingSeatResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/ctp/rest/resources/MeetingSeatResources.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/html/selectpeople.html" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/html/selectpeople.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/layui-people.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/layui-people.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/selectPeople.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/selectPeople.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/customFieldCtrl/vo/ZJsonObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/customFieldCtrl/vo/ZJsonObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/ctp/rest/resources/SelectPeopleResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/ctp/rest/resources/SelectPeopleResources.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +31,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/seeyon" />
+    <property name="last_opened_file_path" value="F:/0_调试代码/徐矿选择人员CAP4" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -205,7 +196,9 @@
       <workItem from="1568101546364" duration="1023000" />
       <workItem from="1568189664659" duration="43000" />
       <workItem from="1569287385467" duration="74000" />
-      <workItem from="1575247462644" duration="15066000" />
+      <workItem from="1575247462644" duration="16854000" />
+      <workItem from="1575276252707" duration="182000" />
+      <workItem from="1575596658737" duration="3164000" />
     </task>
     <task id="LOCAL-00001" summary="有问题？">
       <created>1558576316059</created>
@@ -522,7 +515,21 @@
       <option name="project" value="LOCAL" />
       <updated>1561367318309</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="过滤有数据的明细行">
+      <created>1575269765772</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1575269765773</updated>
+    </task>
+    <task id="LOCAL-00047" summary="过滤有数据的明细行">
+      <created>1575599120851</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1575599120851</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -552,6 +559,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="有问题？" />
     <MESSAGE value="添加全选" />
     <MESSAGE value="添加全选功能" />
@@ -560,12 +569,12 @@
     <MESSAGE value="修改post请求" />
     <MESSAGE value="post请求" />
     <MESSAGE value="post" />
-    <MESSAGE value="过滤有数据的明细行" />
     <MESSAGE value="修改" />
     <MESSAGE value="修改sql 排序" />
     <MESSAGE value="修改sql排序" />
     <MESSAGE value="修改0087 字段名称 0010改成0012" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改0087 字段名称 0010改成0012" />
+    <MESSAGE value="过滤有数据的明细行" />
+    <option name="LAST_COMMIT_MESSAGE" value="过滤有数据的明细行" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -579,16 +588,6 @@
           <url>file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java</url>
           <line>173</line>
           <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
