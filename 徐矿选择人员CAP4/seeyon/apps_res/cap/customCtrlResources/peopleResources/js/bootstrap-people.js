@@ -560,9 +560,8 @@ function jcdwSure(){
 }
 
 
-
-function removeSelect() {
-    var list = $("dl").find("dd.selected-this");
+function commonInfo(s) {
+    var list = $("dl").find("dd"+s);
     $.each(list, function (i, item) {
         $(".selected-info dd[lay-value=" + $(item).attr('lay-value') + "]").remove();
         var type=$(item).attr("lay-flag");
@@ -645,8 +644,13 @@ function removeSelect() {
         }
     });
 }
+function removeSelect() {
+    commonInfo('.selected-this');
+}
 
-
+function clearSelect(){
+    commonInfo('');
+}
 //查询条件
 function queryParams(params) {
     return {
