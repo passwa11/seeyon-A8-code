@@ -1920,6 +1920,7 @@ var _openDataLink = function(_parameter, e) {
             showMenu(_openUrl, _parameter._sectionBeanId, 'mainFrame', '', this);
             break;
         case 3:
+            //href_blank 直接超链，在新窗口打开
             openCtpWindow({
                 'url': _openUrl
             });
