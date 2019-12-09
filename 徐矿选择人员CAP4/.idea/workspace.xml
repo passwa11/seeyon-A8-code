@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36e88280-e35b-47df-aff3-f0239d1a348d" name="Default Changelist" comment="过滤有数据的明细行">
-      <change beforePath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/apps/meetingSeat/manager/MeetingSeatManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/apps/meetingSeat/manager/MeetingSeatManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/ctp/rest/resources/MeetingSeatResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/ctp/rest/resources/MeetingSeatResources.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +29,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/0_调试代码/徐矿选择人员CAP4" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -199,6 +197,8 @@
       <workItem from="1575247462644" duration="16854000" />
       <workItem from="1575276252707" duration="182000" />
       <workItem from="1575596658737" duration="3164000" />
+      <workItem from="1575622455636" duration="92000" />
+      <workItem from="1575679936348" duration="1763000" />
     </task>
     <task id="LOCAL-00001" summary="有问题？">
       <created>1558576316059</created>
@@ -529,7 +529,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575599120851</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="修改选人功能">
+      <created>1575681098472</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1575681098472</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,7 +581,8 @@
     <MESSAGE value="修改sql排序" />
     <MESSAGE value="修改0087 字段名称 0010改成0012" />
     <MESSAGE value="过滤有数据的明细行" />
-    <option name="LAST_COMMIT_MESSAGE" value="过滤有数据的明细行" />
+    <MESSAGE value="修改选人功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改选人功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
