@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e2365740-a727-46ec-8f77-2524c94db40e" name="Default Changelist" comment="" />
+    <list default="true" id="e2365740-a727-46ec-8f77-2524c94db40e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/seeyon/main/login/default/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/needless_check_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../263邮箱菜单集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../263邮箱菜单集成/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/loginCheck/spring/spring-loginCheck-controller.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/loginCheck/spring/spring-loginCheck-controller.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,14 +23,14 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1UUr1oOlyMKk2q3aHHoWzOE0SUj" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/seeyon/main/login/default" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -33,6 +40,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\a8_code\A-8-code\徐医附院_关联系统打开窗口事件\seeyon\main\login\default" />
+      <recent name="F:\a8_code\A-8-code\徐医附院_关联系统打开窗口事件\src" />
       <recent name="D:\JAVA_D\javaSources\loginCheck\seeyon\portal\sections" />
     </key>
   </component>
@@ -115,6 +124,9 @@
       <workItem from="1575446985494" duration="1812000" />
       <workItem from="1575875908807" duration="2126000" />
       <workItem from="1575879120440" duration="166000" />
+      <workItem from="1575879443564" duration="3982000" />
+      <workItem from="1575937811239" duration="2527000" />
+      <workItem from="1575944567040" duration="1653000" />
     </task>
     <servers />
   </component>
@@ -141,6 +153,16 @@
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java</url>
           <line>20</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

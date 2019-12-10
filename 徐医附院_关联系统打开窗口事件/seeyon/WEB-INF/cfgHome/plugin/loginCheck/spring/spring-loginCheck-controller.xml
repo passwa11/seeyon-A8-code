@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans default-autowire="byName">
-<bean name="/ext/loginCheck.do" class="com.seeyon.apps.ext.loginCheck.controller.loginCheckController" />
+    <bean name="/ext/loginCheck.do" class="com.seeyon.apps.ext.loginCheck.controller.loginCheckController"/>
+    <bean name="/ext/getClientIp.do" class="com.seeyon.apps.ext.loginCheck.controller.GetClientIPController"/>
 </beans>
