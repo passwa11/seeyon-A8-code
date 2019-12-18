@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+    <bean id="sectionPortal" class="com.seeyon.apps.ext.modulePortlet.section.ModulesSection" init-method="init">
+        <property name="sectionType" value="common"/>
+        <property name="sortId" value="99"/>
+    </bean>
+</beans>

@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="816d8994-cada-4cd0-be87-e236d8acd877" name="Default Changelist" comment="update" />
+    <list default="true" id="816d8994-cada-4cd0-be87-e236d8acd877" name="Default Changelist" comment="update">
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../263邮箱菜单集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../263邮箱菜单集成/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/xzyk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/xzyk.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院/fileUploadConfig/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院/fileUploadConfig/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/main/login/default/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/main/login/default/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_账号映射/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录_账号映射/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,44 +29,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>isGroup</find>
-      <find>client</find>
-      <find>getOaRest</find>
-      <find>accountId</find>
-      <find>queryByFirstDept</find>
-      <find>superiorN</find>
-      <find>client.</find>
-      <find>DefaultCASFilter</find>
-      <find>insertOrgDept</find>
-      <find>V_ORG_UNIT</find>
-      <find>Menu</find>
-      <find>V_TEST_UINT</find>
-      <find>V_ORG_MEM</find>
-      <find>V_Org_unit</find>
-      <find>V_ORG_MEMBER</find>
-      <find>index.jsp</find>
-      <find>indexlo</find>
-      <find>xzykSso</find>
-      <find>v_org_level</find>
-      <find>affairs</find>
-      <find>dispatch/pending</find>
-      <find>mId</find>
-      <find>receipt/pending</find>
-      <find>ticketusList</find>
-      <find>getUser</find>
-      <find>user</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>V_ORG_UNIT_TEST</replace>
-      <replace>OrgDept</replace>
-      <replace>v_org_unit</replace>
-      <replace>V_TEST_UINT</replace>
-      <replace>V_TEST_MEMBER</replace>
-      <replace>V_TEST_LEVEL</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -66,7 +38,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../徐矿263邮箱单点登录_账号映射" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -353,6 +325,11 @@
       <workItem from="1567645017973" duration="7673000" />
       <workItem from="1567742323377" duration="627000" />
       <workItem from="1574920474891" duration="721000" />
+      <workItem from="1576218703889" duration="180000" />
+      <workItem from="1576219389199" duration="105000" />
+      <workItem from="1576463276571" duration="1022000" />
+      <workItem from="1576467538977" duration="1118000" />
+      <workItem from="1576468760310" duration="656000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1566710766079</created>
@@ -402,7 +379,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -508,91 +487,5 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>xzyk</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

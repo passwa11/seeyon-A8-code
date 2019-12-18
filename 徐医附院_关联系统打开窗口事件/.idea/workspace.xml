@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2365740-a727-46ec-8f77-2524c94db40e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/seeyon/main/login/default/login.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/needless_check_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../263邮箱菜单集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../263邮箱菜单集成/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院/fileUploadConfig/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院/fileUploadConfig/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/loginCheck/spring/spring-loginCheck-controller.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/loginCheck/spring/spring-loginCheck-controller.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/main/login/default/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/main/login/default/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_账号映射/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录_账号映射/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +32,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/seeyon/main/login/default" />
+    <property name="last_opened_file_path" value="F:/Seeyon/A87.1_sp1_oracle/ApacheJetspeed/webapps/seeyon" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -126,8 +128,18 @@
       <workItem from="1575879120440" duration="166000" />
       <workItem from="1575879443564" duration="3982000" />
       <workItem from="1575937811239" duration="2527000" />
-      <workItem from="1575944567040" duration="1653000" />
+      <workItem from="1575944567040" duration="2542000" />
+      <workItem from="1575962008519" duration="65000" />
+      <workItem from="1576459174115" duration="2577000" />
     </task>
+    <task id="LOCAL-00001" summary="获取客户端ip">
+      <created>1575946411275</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1575946411275</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +157,12 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="获取客户端ip" />
+    <option name="LAST_COMMIT_MESSAGE" value="获取客户端ip" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

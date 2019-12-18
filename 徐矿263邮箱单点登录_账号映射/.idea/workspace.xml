@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c5d562e7-146f-4eca-80c5-dde774810624" name="Default Changelist" comment="" />
+    <list default="true" id="c5d562e7-146f-4eca-80c5-dde774810624" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../263邮箱菜单集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../263邮箱菜单集成/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +38,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="D:/HeiMa/day15_jdbc/code/day15_00_jdbc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -155,6 +160,7 @@
       <workItem from="1574660083012" duration="614000" />
       <workItem from="1574921201626" duration="12548000" />
       <workItem from="1574988011392" duration="1196000" />
+      <workItem from="1575971433889" duration="26000" />
     </task>
     <task id="LOCAL-00003" summary="修改">
       <created>1559032675801</created>

@@ -103,7 +103,8 @@
                                                 <input type="button" id="login_button" class="point" value="${ctp:i18n('login.label.Login')}" onClick="loginButtonOnClickHandler();"/>
                                                 <input id="submit_button" type="submit" style="display: none" value=""/>
                                             </div>
-                                            <div class="text" id="ipInfo" style="font-size: 15px;">
+<%--                                            zhou--%>
+                                            <div class="text" id="ipInfo" style="font-size: 15px;color:black;">
                                             </div>
                                         </div>
                                     </div>
@@ -228,7 +229,8 @@
                                             <input type="button" id="login_button" class="point" value="${ctp:i18n('login.label.Login')}" onClick="loginButtonOnClickHandler();"/>
                                             <input id="submit_button" type="submit" style="display: none" value=""/>
                                         </div>
-                                        <div class="text" id="ipInfo" style="font-size: 15px;">
+<%--                                        zhou--%>
+                                        <div class="text" id="ipInfo" style="font-size: 15px;color: #ccc43f">
                                         </div>
                                     </div>
                                 </div>

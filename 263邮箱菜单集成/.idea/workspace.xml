@@ -2,63 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5d562e7-146f-4eca-80c5-dde774810624" name="Default Changelist" comment="修改">
-      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/check/Xk263EmailChecker.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/section/Xk263EmailSection.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/Portal190724.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/Portal190724.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/Portal190724Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/Portal190724Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/TestController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/law/lowPlugin.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/law/lowPlugin.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../代办工作标题变色/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../代办工作标题变色/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplProxy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplService.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplServiceLocator.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplServiceLocator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiSoapBindingStub.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiSoapBindingStub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/section/Xk263EmailSection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/util/Mail263Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/util/Mail263Util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/util/SSOMD5.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/util/SSOMD5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/util/SignUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/util/SignUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/util/ZCommonUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/util/ZCommonUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/xk263EmailPluginInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/xk263EmailPluginInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/bo/V3xOrgMember$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/bo/V3xOrgMember$V3xOrgMemberImmutableDecorator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/bo/V3xOrgMember.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$EntityPropertyGetter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/OrgHelper$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/OrgHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/manager/MemberManagerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/徐矿263邮箱单点登录.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/徐矿263邮箱单点登录.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/classes/" />
-    <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,59 +15,6 @@
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/check/Xk263EmailChecker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-              <folding>
-                <element signature="e#252#253#0" expanded="true" />
-                <element signature="e#279#280#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/MenuCheck.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/UserMenuCheck.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/MenuForAllUsersChecker.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -164,190 +59,8 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/util/SSOMD5.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/util/SignUtil.java" />
-        <option value="$PROJECT_DIR$/seeyon/1.html" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplService.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplServiceLocator.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplProxy.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiSoapBindingStub.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/util/Mail263Util.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/dao/OrgHelper.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/po/OrgMember.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/po/OrgMember.hbm.xml" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/util/ZCommonUtil.java" />
-        <option value="$PROJECT_DIR$/seeyon/说明" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/section/Xk263EmailSection.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/bo/V3xOrgEntity.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/bo/V3xOrgMember.java" />
-        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/pluginCfg.xml" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java" />
-        <option value="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/xk263Email/login.jsp" />
-        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/addxk263EmaiMenu.xml" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/check/Xk263EmailChecker.java" />
-        <option value="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="642" />
-    <option name="y" value="11" />
-    <option name="width" value="1503" />
-    <option name="height" value="931" />
-  </component>
+  <component name="ProjectId" id="1UjqQDPnQy7st4EmHbTSbTvhwWh" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
-              <item name="plugin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
-              <item name="plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="xk263Email" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
-              <item name="plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="xk263Email" type="462c0819:PsiDirectoryNode" />
-              <item name="spring" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="ext" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="ext" type="462c0819:PsiDirectoryNode" />
-              <item name="xk263Email" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="xk263Email" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="xk263Email" type="462c0819:PsiDirectoryNode" />
-              <item name="xmapi" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="263邮箱菜单集成" type="b2602c69:ProjectViewProjectNode" />
-              <item name="263邮箱菜单集成" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="xk263Email" type="462c0819:PsiDirectoryNode" />
-              <item name="check" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-    </panes>
-  </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -461,6 +174,8 @@
       <workItem from="1566434319016" duration="9270000" />
       <workItem from="1566452631473" duration="4264000" />
       <workItem from="1566463250671" duration="1810000" />
+      <workItem from="1575880338140" duration="238000" />
+      <workItem from="1575971303402" duration="8000" />
     </task>
     <task id="LOCAL-00001" summary="修改">
       <created>1558928655910</created>
@@ -745,57 +460,6 @@
     <option name="localTasksCounter" value="41" />
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102982000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23466666" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="JRebel" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="UI Designer" order="6" />
-      <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info id="MyBatis Builder" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49933067" weight="0.15836526" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.14238411" />
-      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Java Enterprise" order="11" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="13" weight="0.28918323" />
-      <window_info anchor="bottom" id="JRebel Executor" order="14" />
-      <window_info anchor="bottom" id="JRebel Console" order="15" sideWeight="0.50066936" side_tool="true" weight="0.39974457" />
-      <window_info anchor="bottom" id="Messages" order="16" weight="0.2174393" />
-      <window_info anchor="bottom" id="FindBugs-IDEA" order="17" />
-      <window_info anchor="bottom" id="File Transfer" order="18" weight="0.3289183" />
-      <window_info anchor="bottom" id="MyBatis Log" order="19" />
-      <window_info anchor="bottom" id="Tail" order="20" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="BPMNPalette" order="6" />
-      <window_info anchor="right" id="Database" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Theme Preview" order="9" />
-      <window_info anchor="right" id="Bean Validation" order="10" />
-      <window_info anchor="right" id="RestServices" order="11" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -807,6 +471,19 @@
         <option value="3" />
         <option value="1" />
       </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
@@ -822,406 +499,75 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java</url>
           <line>621</line>
-          <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java</url>
           <line>760</line>
-          <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java</url>
           <line>1902</line>
-          <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java</url>
           <line>893</line>
-          <properties />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java</url>
           <line>750</line>
-          <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java</url>
           <line>2018</line>
-          <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/bo/V3xOrgMember.class</url>
           <line>481</line>
-          <properties />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/dao/OrgHelper.class</url>
           <line>1108</line>
-          <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java</url>
           <line>1945</line>
-          <properties />
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java</url>
           <line>1974</line>
-          <properties />
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java</url>
           <line>605</line>
-          <properties />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java</url>
           <line>330</line>
-          <properties />
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.class</url>
           <line>34</line>
-          <properties />
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/UserMenuCheck.class</url>
           <line>32</line>
-          <properties />
           <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/mail.jar!/com/sun/mail/util/BASE64DecoderStream.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1701">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/mail.jar!/com/sun/mail/util/BASE64EncoderStream.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1116">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/wfutils.jar!/www/seeyon/com/utils/Base64Util.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/util/Collection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="287" column="7" lean-forward="true" selection-start-line="287" selection-start-column="7" selection-end-line="287" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/util/List.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="236" column="7" lean-forward="true" selection-start-line="236" selection-start-column="7" selection-end-line="236" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/bo/OrganizationMessage.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/util/Mail263Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="317" column="7" lean-forward="true" selection-start-line="317" selection-start-column="7" selection-end-line="317" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/bo/V3xOrgPrincipal.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="1902" column="31" lean-forward="true" selection-start-line="1902" selection-start-column="31" selection-end-line="1902" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/dao/OrgDao.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="95" column="9" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-core.jar!/com/seeyon/ctp/util/ParamUtil.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="385" lean-forward="true" selection-start-line="385" selection-end-line="385" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/po/OrgMember.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/util/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="374" column="14" selection-start-line="374" selection-start-column="14" selection-end-line="374" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/dao/OrgHelper.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="1107" column="38" selection-start-line="1107" selection-start-column="38" selection-end-line="1107" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-883">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplProxy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="255" lean-forward="true" selection-start-line="255" selection-end-line="255" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/com/seeyon/ctp/organization/manager/MemberManagerImpl.class" />
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/xk263EmailPluginInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="e#219#220#0" expanded="true" />
-            <element signature="e#266#267#0" expanded="true" />
-            <element signature="e#309#310#0" expanded="true" />
-            <element signature="e#356#357#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/manager/OrgManagerDirect.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="137" column="24" selection-start-line="137" selection-start-column="24" selection-end-line="137" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/dao/OrgHelper.java" />
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/dao/OrgDaoImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="1022" selection-start-line="1022" selection-end-line="1022" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/po/OrgMember.java" />
-    <entry file="file://$PROJECT_DIR$/seeyon/说明" />
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/util/ZCommonUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="41" column="43" lean-forward="true" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#GBKToBase64#0;class#ZCommonUtil#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/section/Xk263EmailSection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#projection#0;class#Xk263EmailSection#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/dao/OrgCache.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="55" column="31" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/bo/V3xOrgEntity.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="104" column="29" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/manager/OrgManagerImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="229" selection-start-line="229" selection-end-line="229" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/dao/OrgCacheImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="975" selection-start-line="975" selection-end-line="975" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/bo/V3xOrgMember.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4374">
-          <caret line="192" column="40" selection-start-line="192" selection-start-column="40" selection-end-line="192" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/manager/OrgManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="348" column="12" selection-start-line="348" selection-start-column="12" selection-end-line="348" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/bo/V3xOrgMember.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/bo/V3xOrgEntity.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/po/OrgMember.hbm.xml" />
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-plugin.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/pluginCfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="4" column="33" lean-forward="true" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-controller.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java" />
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/jcseg-server.jar!/javax/servlet/http/HttpServletResponse.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-45">
-          <caret line="72" column="9" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#1822#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/organization/manager/MemberManagerImpl.class" />
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/xk263Email/login.jsp" />
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/check/Xk263EmailChecker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#0#388#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/addxk263EmaiMenu.xml" />
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/xk263Email/spring/spring-xk263Email-manager.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/xk263Email/check/Xk263EmailChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding>
-            <element signature="e#252#253#0" expanded="true" />
-            <element signature="e#279#280#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/MenuCheck.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/UserMenuCheck.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/menu/check/MenuForAllUsersChecker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>

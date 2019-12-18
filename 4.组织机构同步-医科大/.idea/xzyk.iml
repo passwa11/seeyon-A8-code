@@ -15,14 +15,14 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
+          <root url="file://F:/Seeyon/A87.1_sp1_oracle/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
+          <root url="file://F:/Seeyon/A87.1_sp1_oracle/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
         </SOURCES>
-        <jarDirectory url="file://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" />
-        <jarDirectory url="file://F:/Seeyon/A87.1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" type="SOURCES" />
+        <jarDirectory url="file://F:/Seeyon/A87.1_sp1_oracle/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" />
+        <jarDirectory url="file://F:/Seeyon/A87.1_sp1_oracle/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
   </component>

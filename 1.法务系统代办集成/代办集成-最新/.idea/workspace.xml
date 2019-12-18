@@ -3,6 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="d607215e-76df-4996-9096-1c1350f22bbe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../263邮箱菜单集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../263邮箱菜单集成/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/xzyk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/xzyk.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐医附院/fileUploadConfig/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院/fileUploadConfig/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/seeyon/main/login/default/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/seeyon/main/login/default/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿263邮箱单点登录_账号映射/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿263邮箱单点登录_账号映射/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -336,6 +344,11 @@
       <workItem from="1570586749973" duration="494000" />
       <workItem from="1574661226205" duration="1291000" />
       <workItem from="1574737434318" duration="696000" />
+      <workItem from="1575971045720" duration="77000" />
+      <workItem from="1575971244819" duration="34000" />
+      <workItem from="1576139384961" duration="614000" />
+      <workItem from="1576485771523" duration="2191000" />
+      <workItem from="1576543630371" duration="115000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1563959798082</created>
