@@ -106,6 +106,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.PageContext;
 import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 
 /**
@@ -1250,10 +1252,11 @@ public class TemplateController extends BaseController {
                 category += ",4,19,20,21";
             }
             if (AppContext.hasPlugin("govdoc")) {
-                category += ",401,402,404";
+                //zhou :去除404
+                category += ",401,402";
             }
             if (AppContext.hasPlugin("infosend")) {
-                category += ",32";
+//                category += ",32";
             }
             category = this.getMoreTemplateCategorys(category, fragmentId, ordinal);
         }
@@ -1380,15 +1383,15 @@ public class TemplateController extends BaseController {
                     ordinal);
             showRecentTemplate = preference.get("showRecentTemplate") != null ? Boolean.valueOf(preference.get("showRecentTemplate")) : true;
         }
-
-        if (showRecentTemplate) {
-            TemplateTreeVo recentTemplate = new TemplateTreeVo();
-            recentTemplate.setId(-1l);
-            recentTemplate.setName(ResourceUtil.getString("template.choose.category.recent.label"));//最近使用根目录
-            recentTemplate.setpId(null);
-            recentTemplate.setType("category");
-            listTreeVo.add(recentTemplate);
-        }
+        //zhou:去除最近使用模板
+//        if (showRecentTemplate) {
+//            TemplateTreeVo recentTemplate = new TemplateTreeVo();
+//            recentTemplate.setId(-1l);
+//            recentTemplate.setName(ResourceUtil.getString("template.choose.category.recent.label"));//最近使用根目录
+//            recentTemplate.setpId(null);
+//            recentTemplate.setType("category");
+//            listTreeVo.add(recentTemplate);
+//        }
 
         List<CtpTemplate> templetes = new ArrayList<CtpTemplate>();
         //idCategory通过分类Id组装模板树，templetes通过模板组装模板树
@@ -1405,15 +1408,24 @@ public class TemplateController extends BaseController {
                 categoryMap.put(vo.getId(), vo);
             }
             // 协同三个根节点："最近使用模板"、"公共模板"、"个人模板"无论下面是否有具体模板，都在前端展示。公文显示对应的公文
-            if (vo.getId() == 0 || vo.getId() == 100 || vo.getId() == -1 || Long.valueOf(ModuleType.info.getKey()).equals(vo.getId()) || (Long.valueOf(ModuleType.edoc.getKey()).equals(vo.getId())
-                    || Long.valueOf(ModuleType.edocSend.getKey()).equals(vo.getId()) || Long.valueOf(ModuleType.edocRec.getKey()).equals(vo.getId())
+//            if (vo.getId() == 0 || vo.getId() == 100 || vo.getId() == -1 || Long.valueOf(ModuleType.info.getKey()).equals(vo.getId()) || (Long.valueOf(ModuleType.edoc.getKey()).equals(vo.getId())
+//                    || Long.valueOf(ModuleType.edocSend.getKey()).equals(vo.getId()) || Long.valueOf(ModuleType.edocRec.getKey()).equals(vo.getId())
+//                    || Long.valueOf(ModuleType.edocSign.getKey()).equals(vo.getId()) || Long.valueOf(ModuleType.govdocSend.getKey()).equals(vo.getId())
+//                    || Long.valueOf(ModuleType.govdocRec.getKey()).equals(vo.getId()) || Long.valueOf(ModuleType.govdocSign.getKey()).equals(vo.getId())) && user.getExternalType() == OrgConstants.ExternalType.Inner.ordinal()
+//                    && !newTreeVOId.contains(vo.getId())) {
+            //zhou 去除最近模板  个人模板
+            if (vo.getId() == 0   || (Long.valueOf(ModuleType.edoc.getKey()).equals(vo.getId())|| Long.valueOf(ModuleType.edocSend.getKey()).equals(vo.getId()) || Long.valueOf(ModuleType.edocRec.getKey()).equals(vo.getId())
                     || Long.valueOf(ModuleType.edocSign.getKey()).equals(vo.getId()) || Long.valueOf(ModuleType.govdocSend.getKey()).equals(vo.getId())
                     || Long.valueOf(ModuleType.govdocRec.getKey()).equals(vo.getId()) || Long.valueOf(ModuleType.govdocSign.getKey()).equals(vo.getId())) && user.getExternalType() == OrgConstants.ExternalType.Inner.ordinal()
                     && !newTreeVOId.contains(vo.getId())) {
-                newTreeVoList.add(vo);
-                newTreeVOId.add(vo.getId());
+                //zhou :过滤掉签报
+                if(vo.getId()!=404){
+                    newTreeVoList.add(vo);
+                    newTreeVOId.add(vo.getId());
+                }
             }
         }
+
         for (TemplateVO template : showTemplates) {
             // 如果包含此模板的分类
             if (template.getSystem() && categoryMap.containsKey(template.getCategoryId())) {
@@ -1465,8 +1477,11 @@ public class TemplateController extends BaseController {
         Map<Long, String> templeteCreatorAlt = new HashMap<Long, String>();
         //设置图标,设置浮动显示的模版来源
         this.templateManager.floatDisplayTemplateSource(showTemplates, templeteIcon, templeteCreatorAlt);
-
-        modelAndView.addObject("showCategorys", JSONUtil.toJSONString(listTreeVo));
+        Predicate<TemplateTreeVo> p1= n ->n.getId()!=404;
+        Predicate<TemplateTreeVo> p2= n ->n.getId()!=32;
+        Predicate<TemplateTreeVo> p3= n ->n.getId()!=100;
+        List<TemplateTreeVo> list=listTreeVo.stream().filter(p1.and(p2).and(p3)).collect(Collectors.toList());
+        modelAndView.addObject("showCategorys", JSONUtil.toJSONString(list));
         modelAndView.addObject("selectId",sureSelectId);
         modelAndView.addObject("showTemplates", JSONUtil.toJSONString(showTemplates));
         modelAndView.addObject("templeteIcon", templeteIcon);

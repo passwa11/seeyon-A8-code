@@ -9,6 +9,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -530,14 +532,14 @@ public class modulePortletController extends BaseController {
             showRecentTemplate = preference.get("showRecentTemplate") != null ? Boolean.valueOf(preference.get("showRecentTemplate")) : true;
         }
 
-        if (showRecentTemplate) {
-            TemplateTreeVo recentTemplate = new TemplateTreeVo();
-            recentTemplate.setId(-1l);
-            recentTemplate.setName(ResourceUtil.getString("template.choose.category.recent.label"));//最近使用根目录
-            recentTemplate.setpId(null);
-            recentTemplate.setType("category");
-            listTreeVo.add(recentTemplate);
-        }
+//        if (showRecentTemplate) {
+//            TemplateTreeVo recentTemplate = new TemplateTreeVo();
+//            recentTemplate.setId(-1l);
+//            recentTemplate.setName(ResourceUtil.getString("template.choose.category.recent.label"));//最近使用根目录
+//            recentTemplate.setpId(null);
+//            recentTemplate.setType("category");
+//            listTreeVo.add(recentTemplate);
+//        }
 
         List<CtpTemplate> templetes = new ArrayList<CtpTemplate>();
         //idCategory通过分类Id组装模板树，templetes通过模板组装模板树
@@ -614,8 +616,11 @@ public class modulePortletController extends BaseController {
         Map<Long, String> templeteCreatorAlt = new HashMap<Long, String>();
         //设置图标,设置浮动显示的模版来源
         this.templateManager.floatDisplayTemplateSource(showTemplates, templeteIcon, templeteCreatorAlt);
-
-        modelAndView.addObject("showCategorys", listTreeVo);
+        Predicate<TemplateTreeVo> p1= n ->n.getId()!=404;
+        Predicate<TemplateTreeVo> p2= n ->n.getId()!=32;
+        Predicate<TemplateTreeVo> p3= n ->n.getId()!=100;
+        List<TemplateTreeVo> list=listTreeVo.stream().filter(p1.and(p2).and(p3)).collect(Collectors.toList());
+        modelAndView.addObject("showCategorys", list);
         modelAndView.addObject("showTemplates", JSONUtil.toJSONString(showTemplates));
         modelAndView.addObject("templeteIcon", templeteIcon);
         modelAndView.addObject("templeteCreatorAlt", templeteCreatorAlt);
