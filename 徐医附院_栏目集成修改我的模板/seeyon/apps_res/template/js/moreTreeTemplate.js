@@ -17,7 +17,7 @@ $().ready(function() {
 		});
 	}else{
 		$("#tree").tree({
-			onClick : showTemplate_change,//1
+			onClick : showTemplate,//1
 			idKey : "id",
 			pIdKey : "pId",
 			nameKey : "name",
