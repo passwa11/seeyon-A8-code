@@ -7,6 +7,7 @@
 
 </head>
 <body>
+<c:set var="count" scope="session" value="0"/>
 <c:forEach var="cate" items="${showCategorys}" varStatus="v">
     <c:if test="${cate.id!=-1}">
         <c:if test="${cate.pId!=null}">
