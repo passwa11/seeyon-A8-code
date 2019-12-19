@@ -1,5 +1,6 @@
 package com.seeyon.apps.ext.modulePortlet.section;
 
+import com.seeyon.apps.ext.modulePortlet.util.ConfigUtil;
 import com.seeyon.ctp.portal.section.BaseSectionImpl;
 import com.seeyon.ctp.portal.section.templete.BaseSectionTemplete;
 import com.seeyon.ctp.portal.section.templete.HtmlTemplete;
@@ -18,9 +19,9 @@ public class ModulesSection extends BaseSectionImpl {
 
     @Override
     public String getName(Map<String, String> map) {
-        String name = "流程审批";
+        String name = ConfigUtil.getPortletName();
         if (Strings.isBlank(name)) {
-            return "流程审批";
+            return ConfigUtil.getPortletName();
         } else {
             return name;
         }
