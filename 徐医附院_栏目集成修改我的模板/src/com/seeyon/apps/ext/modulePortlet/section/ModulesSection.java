@@ -18,9 +18,9 @@ public class ModulesSection extends BaseSectionImpl {
 
     @Override
     public String getName(Map<String, String> map) {
-        String name = "我的模板";
+        String name = "流程审批";
         if (Strings.isBlank(name)) {
-            return "我的模板";
+            return "流程审批";
         } else {
             return name;
         }
