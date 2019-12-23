@@ -1,18 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="066743ca-2b82-46a1-97b3-2eaacafbdf87" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/../../A8-Test/7.1_code/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A8-Test/Gc/lib/commons-lang-2.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A8-Test/Gc/src/cn/d/singlerton/test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A8-Test/font/html/one.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A8-Test/xzyk/src/xzykConf/xzykPlugin.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../A8-Test/表单提交/src/com/seeyon/ctp/form/service/FormDataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文二次发文pdf转换/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文二次发文pdf转换/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../A8-Test/催办/seeyon/WEB-INF/jsp/ctp/workflow/workflowPreHasten.jsp" beforeDir="false" />
+    <list default="true" id="066743ca-2b82-46a1-97b3-2eaacafbdf87" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../A8-Test/7.1_code/.idea/7.1_code.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../A8-Test/7.1_code/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../A8-Test/Gc/Gc.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../A8-Test/Gc/lib/commons-lang-2.6.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../A8-Test/Gc/src/cn/d/singlerton/test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../A8-Test/Test/Test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../A8-Test/TestTree/TestTree.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../A8-Test/font/font.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../A8-Test/font/html/one.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../A8-Test/xzyk/.idea/xzyk.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../A8-Test/xzyk/src/xzykConf/xzykPlugin.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../A8-Test/表单提交/.idea/表单提交.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../A8-Test/表单提交/src/com/seeyon/ctp/form/service/FormDataController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../A8-Test/组织机构同步标准插件/.idea/组织机构同步标准插件.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/ProxySend/ProxySend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/cap4form/cap4form.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/demo_WorkflowEvent/demo_WorkflowEvent.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/libraries/Maven__oracle_jdbc_ojdbc14_14_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/com.javaJdbc.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/javaJdbc.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/annotation/HibernateAnnotationProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/annotation/IdProperty.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/annotation/Persistent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/annotation/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/annotation/Property.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/PizzaStore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/factory/Factory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/factory/MealFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/pizza/ApplePizza.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/pizza/CalzonePizza.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/pizza/MargheritaPizza.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/pizza/Meal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/pizza/Tiramisu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/processor/FacrotyProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/util/JdbcUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/listenerevent/listenerevent.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/testEvent/.idea/testEvent.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/wf_node_samples/.idea/wf_node_samples.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/公文.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A8-Test/催办/seeyon/WEB-INF/jsp/ctp/workflow/workflowPreHasten.jsp" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,11 +57,30 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+  </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="公文" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="F:\s\公文\.idea" />
+      </set>
+    </option>
   </component>
   <component name="ProjectConfigurationFiles">
     <option name="files">
@@ -37,20 +93,24 @@
       </list>
     </option>
   </component>
-  <component name="ProjectId" id="1RDcFf3W4MOGTc36vEFsO2Pb9j4" />
+  <component name="ProjectId" id="1RPkOFV5BO5udzw0U9AJ4uqjwmN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/HeiMa/day22_baseEnhance/源码/day22_03_annotation" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="com.zeroturnaround.javarebel.idea.plugin.settings.AdvancedConfigurable" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/new_src/com/seeyon/v3x/edoc/controller/EdocController.java" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="two.files.diff.last.used.file" value="F:/EdocController.java" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -71,7 +131,9 @@
   </component>
   <component name="RunManager">
     <configuration default="true" type="Applet">
+      <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="WIDTH" value="0" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -82,19 +144,91 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Unnamed" type="Remote" nameIsGenerated="true">
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="Remote">
       <module name="公文" />
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" />
-      <option name="HOST" value="localhost" />
+      <option name="HOST" value="10.11.100.32" />
       <option name="PORT" value="8000" />
       <option name="AUTO_RESTART" value="false" />
       <RunnerSettings RunnerId="Debug">
@@ -103,11 +237,84 @@
       </RunnerSettings>
       <method v="2" />
     </configuration>
+    <configuration default="true" type="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="false" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" />
+      <option name="PORT" />
+      <option name="AUTO_RESTART" value="false" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <properties />
       <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.20" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment />
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="_公文" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="59157" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -120,6 +327,15 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
     </configuration>
   </component>
   <component name="SvnConfiguration">
@@ -141,28 +357,17 @@
       <workItem from="1567755719711" duration="1741000" />
       <workItem from="1568102940525" duration="13000" />
       <workItem from="1568188954105" duration="373000" />
-      <workItem from="1568251364980" duration="11322000" />
-      <workItem from="1568594002640" duration="8596000" />
-      <workItem from="1568699087241" duration="23000" />
-      <workItem from="1568705781417" duration="1123000" />
-      <workItem from="1568712543003" duration="494000" />
-      <workItem from="1568768788179" duration="34000" />
-      <workItem from="1568798271495" duration="821000" />
-      <workItem from="1568854087963" duration="900000" />
-      <workItem from="1569205005850" duration="2318000" />
-      <workItem from="1569222945488" duration="88000" />
-      <workItem from="1569223293782" duration="6534000" />
-      <workItem from="1569288332614" duration="1424000" />
-      <workItem from="1569290169908" duration="2473000" />
-      <workItem from="1569296724889" duration="1462000" />
-      <workItem from="1569305256770" duration="403000" />
-      <workItem from="1569314813166" duration="123000" />
-      <workItem from="1569315067628" duration="628000" />
-      <workItem from="1569372290195" duration="626000" />
-      <workItem from="1569378500781" duration="1431000" />
-      <workItem from="1569392178402" duration="616000" />
-      <workItem from="1569396870563" duration="1454000" />
-      <workItem from="1569547399282" duration="2851000" />
+      <workItem from="1568251364980" duration="7925000" />
+      <workItem from="1568272575336" duration="1707000" />
+      <workItem from="1568593931304" duration="6910000" />
+      <workItem from="1568703775023" duration="28290000" />
+      <workItem from="1569303579692" duration="72000" />
+      <workItem from="1569566603530" duration="2629000" />
+      <workItem from="1569576087257" duration="671000" />
+      <workItem from="1569716828421" duration="477000" />
+      <workItem from="1572315564932" duration="49000" />
+      <workItem from="1572482204480" duration="844000" />
+      <workItem from="1577065417227" duration="167000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1566893299814</created>
@@ -178,43 +383,17 @@
       <option name="project" value="LOCAL" />
       <updated>1568256994862</updated>
     </task>
-    <task id="LOCAL-00003" summary="update">
-      <created>1568606622462</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1568606622462</updated>
-    </task>
-    <task id="LOCAL-00004" summary="update">
-      <created>1568614291530</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1568614291530</updated>
-    </task>
-    <task id="LOCAL-00005" summary="update">
-      <created>1569205070458</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1569205070458</updated>
-    </task>
-    <task id="LOCAL-00006" summary="update">
-      <created>1569225031104</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1569225031104</updated>
-    </task>
-    <task id="LOCAL-00007" summary="update">
-      <created>1569228765087</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1569228765087</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -253,17 +432,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
-          <line>7573</line>
+          <line>7603</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
-          <line>7574</line>
+          <line>7604</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
-          <line>7604</line>
+          <line>7634</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -273,55 +452,74 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
-          <line>2467</line>
+          <line>2470</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
-          <line>5257</line>
+          <line>5274</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
-          <line>5762</line>
+          <line>5792</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
-          <line>2509</line>
+          <line>2512</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
-          <line>3312</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
-          <line>2987</line>
+          <line>2990</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
-          <line>3210</line>
+          <line>3368</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>3233</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>5410</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>5343</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>3298</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>3213</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>3328</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>3345</line>
           <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
-          <line>3295</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
-          <line>2770</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/new_src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
-          <line>3452</line>
-          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
 </project>

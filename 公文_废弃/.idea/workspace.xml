@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="066743ca-2b82-46a1-97b3-2eaacafbdf87" name="Default Changelist" comment="update">
+      <change afterPath="$PROJECT_DIR$/../徐医附院_把菜单添加输入密码验证/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/new_src/com/seeyon/v3x/edoc/controller/EdocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/new_src/com/seeyon/v3x/edoc/controller/EdocController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../公文二次发文pdf转换/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文二次发文pdf转换/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_把菜单添加输入密码验证/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_把菜单添加输入密码验证/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/section/ModulesSection.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/section/ModulesSection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/ctp/common/template/controller/TemplateController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/ctp/common/template/controller/TemplateController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/ctp/common/template/controller/TemplateController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/ctp/common/template/controller/TemplateController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/ctp/common/template/controller/TemplateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/ctp/common/template/controller/TemplateController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/栏目集成_我的模板.zip" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/公文.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/deployment.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1RDcFf3W4MOGTc36vEFsO2Pb9j4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="F:/s/公文" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="com.zeroturnaround.javarebel.idea.plugin.settings.AdvancedConfigurable" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\s\A8-Test\公文\seeyon\WEB-INF\classes\com\seeyon\v3x\edoc\domain" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="Remote" nameIsGenerated="true">
+      <module name="公文" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="8000" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="8000" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="066743ca-2b82-46a1-97b3-2eaacafbdf87" name="Default Changelist" comment="" />
+      <created>1561441511598</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1561441511598</updated>
+      <workItem from="1561441513093" duration="6757000" />
+      <workItem from="1561778781595" duration="24000" />
+      <workItem from="1565082329895" duration="862000" />
+      <workItem from="1566281020437" duration="86000" />
+      <workItem from="1566891917362" duration="414000" />
+      <workItem from="1566892855330" duration="487000" />
+      <workItem from="1567755719711" duration="1741000" />
+      <workItem from="1568102940525" duration="13000" />
+      <workItem from="1568188954105" duration="373000" />
+      <workItem from="1568251364980" duration="11322000" />
+      <workItem from="1568594002640" duration="8596000" />
+      <workItem from="1568699087241" duration="23000" />
+      <workItem from="1568705781417" duration="1123000" />
+      <workItem from="1568712543003" duration="494000" />
+      <workItem from="1568768788179" duration="34000" />
+      <workItem from="1568798271495" duration="821000" />
+      <workItem from="1568854087963" duration="900000" />
+      <workItem from="1569205005850" duration="2318000" />
+      <workItem from="1569222945488" duration="88000" />
+      <workItem from="1569223293782" duration="6534000" />
+      <workItem from="1569288332614" duration="1424000" />
+      <workItem from="1569290169908" duration="2473000" />
+      <workItem from="1569296724889" duration="1462000" />
+      <workItem from="1569305256770" duration="403000" />
+      <workItem from="1569314813166" duration="123000" />
+      <workItem from="1569315067628" duration="628000" />
+      <workItem from="1569372290195" duration="626000" />
+      <workItem from="1569378500781" duration="1431000" />
+      <workItem from="1569392178402" duration="616000" />
+      <workItem from="1569396870563" duration="1454000" />
+      <workItem from="1569547399282" duration="2851000" />
+      <workItem from="1577060668388" duration="3085000" />
+      <workItem from="1577064777447" duration="58000" />
+      <workItem from="1577065143986" duration="367000" />
+    </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1566893299814</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1566893299815</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update">
+      <created>1568256994862</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1568256994862</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update">
+      <created>1568606622462</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1568606622462</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update">
+      <created>1568614291530</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1568614291530</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update">
+      <created>1569205070458</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1569205070458</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update">
+      <created>1569225031104</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1569225031104</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update">
+      <created>1569228765087</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1569228765087</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>7573</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>7574</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>7604</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/exchange/controller/ExchangeEdocController.java</url>
+          <line>3477</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>2467</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>5257</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>5762</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>2509</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>3312</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>2987</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>3210</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>3295</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>2770</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/new_src/com/seeyon/v3x/edoc/controller/EdocController.java</url>
+          <line>3452</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -18,6 +18,9 @@ import com.seeyon.v3x.edoc.util.*;
 import com.seeyon.v3x.webmail.util.FileUtil;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+import jcifs.smb.SmbException;
+import jcifs.smb.SmbFile;
+import jcifs.smb.SmbFileInputStream;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.converters.SqlTimestampConverter;
@@ -2985,16 +2988,16 @@ public class EdocController extends BaseController {
             String process_xml = request.getParameter("process_xml");
             String templeteProcessId = request.getParameter("templeteProcessId");
             //zhou
-            if (isQuickSend == false) {
-                int flag = transitionPdf(edocSummary, body);
-                if (flag == -1) {
-                    StringBuffer sb = new StringBuffer();
-                    sb.append("alert('" + StringEscapeUtils.escapeJavaScript("转换服务出错了，请联系管理员") + "');");
-                    sb.append("history.back();");
-                    rendJavaScript(response, sb.toString());
-                    return null;
-                }
-            }
+//            if (isQuickSend == false) {
+//                int flag = transitionPdf(edocSummary, body);
+//                if (flag == -1) {
+//                    StringBuffer sb = new StringBuffer();
+//                    sb.append("alert('" + StringEscapeUtils.escapeJavaScript("转换服务出错了，请联系管理员") + "');");
+//                    sb.append("history.back();");
+//                    rendJavaScript(response, sb.toString());
+//                    return null;
+//                }
+//            }
             try {
                 affairId = edocManager.transRunCase(edocSummary, body, senderOninion, sendType, options, comm, agentToId,
                         isNewSent, process_xml, workflowNodePeoplesInput, workflowNodeConditionInput, templeteProcessId);
@@ -3296,7 +3299,17 @@ public class EdocController extends BaseController {
                     System.out.println("公文单地址路径：" + wendanP);
                     System.out.println("正文地址路径：" + zhengwenP);
                     System.out.println("附件地址路径：" + fujianP);
-                    String mergerpath = wendanP.concat("|"+zhengwenP);
+                    String mergerpath = "";
+                    String formId=Long.toString(edocSummary.getFormId()).trim();
+                    if(null != formId && !"".equals(formId)){
+//                        合并正文
+                        if(formId.equals("-7139423850050401892") || formId.equals("1542089478047025160")){
+                            mergerpath = wendanP.concat("|"+zhengwenP) ;
+                        }else {
+//                            不合并正文
+                            mergerpath = wendanP;
+                        }
+                    }
                     if (!("").equals(fujianP.toString())) {
                         mergerpath = mergerpath.concat("|" + fujianP.toString());
                     }
@@ -3308,8 +3321,9 @@ public class EdocController extends BaseController {
                     if (!f.exists()) {
                         f.mkdirs();
                     }
-                    // 正式ip:10.11.100.41   测试ip:10.100.1.132
-                    flag = mergeFormAndBody(edocSummary, "http://10.100.1.132:8088/convert/webservice/ConvertService?wsdl", mergerpath, mergeSavePath, isReceive);
+
+//                    flag = mergeFormAndBody(edocSummary, "http://10.11.100.41:8088/convert/webservice/ConvertService?wsdl", mergerpath, mergeSavePath, isReceive);
+                    flag = mergeFormAndBody(edocSummary, "http://10.11.100.41:8088/convert/webservice/ConvertService?wsdl", mergerpath, mergeSavePath, isReceive);
                     bodyFile.delete();
                     formFile.delete();
                     if (flag != -1) {
@@ -3325,6 +3339,8 @@ public class EdocController extends BaseController {
         // 0:代表转换成功，-1：转换失败  -2：表示公文单模板不存在
         return flag;
     }
+
+
 
     public String returnFileName(String path, String type, File file) {
         File wdfile = new File(path);
@@ -3353,6 +3369,7 @@ public class EdocController extends BaseController {
         CtpPdfSavepath ctpPdfSavepath = new CtpPdfSavepath(edocSummary.getId(), reverPath);
 
         try {
+            ctpPdfSavepathManager.deleteCtpPdfSavepath(ctpPdfSavepath);
             ctpPdfSavepathManager.insertCtpPdfSavepath(ctpPdfSavepath);
         } catch (Exception e) {
             e.printStackTrace();
@@ -5389,6 +5406,19 @@ public class EdocController extends BaseController {
                     edocSummaryQuick = edocSummaryQuickManager.findBySummaryId(edocSummary.getId());
 
                 }
+
+                //zhou
+//                EdocBody body=edocSummary.getBody(0);
+//                if (isQuickSend == false) {
+//                    int flag = transitionPdf(edocSummary, body);
+//                    if (flag == -1) {
+//                        StringBuffer sbuffer = new StringBuffer();
+//                        sbuffer.append("alert('" + StringEscapeUtils.escapeJavaScript("转换服务出错了，请联系管理员") + "');");
+//                        sbuffer.append("history.back();");
+//                        rendJavaScript(response, sbuffer.toString());
+//                        return null;
+//                    }
+//                }
                 // 快速发文--end
 
                 String processId = edocSummary.getProcessId();
