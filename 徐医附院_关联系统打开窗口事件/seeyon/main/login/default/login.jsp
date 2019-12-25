@@ -15,6 +15,13 @@
     <c:if test="${ctp:hasPlugin('zx')}">
         <script type="text/javascript" src="/seeyon/apps_res/uc/rongcloud/chat.js${ctp:resSuffix()}"></script>
     </c:if>
+    <style>
+        font,#ipInfo{
+            color: #0C0C0C;
+            font-size: 15px;
+        }
+
+    </style>
 </head>
 <body onload="calSelecterHeight();" class="h100b" style="margin:0;padding:0;${loginFrom!='loginPortal'?'overflow:hidden;':'' }">
 <c:choose>
@@ -103,8 +110,7 @@
                                                 <input type="button" id="login_button" class="point" value="${ctp:i18n('login.label.Login')}" onClick="loginButtonOnClickHandler();"/>
                                                 <input id="submit_button" type="submit" style="display: none" value=""/>
                                             </div>
-<%--                                            zhou--%>
-                                            <div class="text" id="ipInfo" style="font-size: 15px;color:black;">
+                                            <div class="text" id="ipInfo" >
                                             </div>
                                         </div>
                                     </div>
@@ -229,8 +235,7 @@
                                             <input type="button" id="login_button" class="point" value="${ctp:i18n('login.label.Login')}" onClick="loginButtonOnClickHandler();"/>
                                             <input id="submit_button" type="submit" style="display: none" value=""/>
                                         </div>
-<%--                                        zhou--%>
-                                        <div class="text" id="ipInfo" style="font-size: 15px;color: #ccc43f">
+                                        <div class="text" id="ipInfo" >
                                         </div>
                                     </div>
                                 </div>

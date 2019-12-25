@@ -16,6 +16,15 @@ import java.util.Map;
 public class loginCheckController extends BaseController {
 
 
+    public ModelAndView getLinkid(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String linkId = ConfigInfo.getLinkId();
+        Map map = new HashMap();
+        map.put("link", linkId);
+        JSONObject json = new JSONObject(map);
+        render(response, json.toJSONString());
+        return null;
+    }
+
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         String ipAddress = request.getServerName();

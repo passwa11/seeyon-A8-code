@@ -1898,9 +1898,20 @@ var _openDataLink = function(_parameter, e) {
     }
     // console.log(_openUrl,'zhou');
     //zhou:徐医附院  为了区分内联系统和点击跟多事件冲突
-    if(_openUrl.indexOf('linkSystemController')!=-1 && _openUrl.indexOf('method=linkConnect')!=-1){
-        _openType = 5;
-    }
+    $.ajaxSettings.async = false;
+    $.post("/seeyon/ext/loginCheck.do?method=getLinkid",null,function(data){
+        var link =data.link;
+        var arr=link.split(",");
+        // if(_openUrl.indexOf('linkSystemController')!=-1 && _openUrl.indexOf('method=linkConnect')!=-1){
+        for (var i = 0; i < arr.length; i++) {
+            if(_openUrl.indexOf(arr[i])!=-1 ){
+                _openType = 5;
+                break;
+            }
+        }
+    });
+    $.ajaxSettings.async = true;
+
     // alert(_openType);
     switch (_openType) {
         case 0:

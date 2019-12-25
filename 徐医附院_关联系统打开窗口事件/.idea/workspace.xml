@@ -2,13 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2365740-a727-46ec-8f77-2524c94db40e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../263邮箱菜单集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../263邮箱菜单集成/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seeyon/main/login/default/css/login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院/fileUploadConfig/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院/fileUploadConfig/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/config/ipConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/config/ipConfig.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/main/login/default/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/main/login/default/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录_账号映射/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录_账号映射/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/portal/sections/section.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/portal/sections/section.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/ipConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ipConfig.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_把菜单添加输入密码验证/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_把菜单添加输入密码验证/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,7 +38,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/Seeyon/A87.1_sp1_oracle/ApacheJetspeed/webapps/seeyon" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/seeyon/main/login/default/css" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -42,6 +48,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\a8_code\A-8-code\徐医附院_关联系统打开窗口事件\seeyon\main\login\default\css" />
       <recent name="F:\a8_code\A-8-code\徐医附院_关联系统打开窗口事件\seeyon\main\login\default" />
       <recent name="F:\a8_code\A-8-code\徐医附院_关联系统打开窗口事件\src" />
       <recent name="D:\JAVA_D\javaSources\loginCheck\seeyon\portal\sections" />
@@ -131,6 +138,7 @@
       <workItem from="1575944567040" duration="2542000" />
       <workItem from="1575962008519" duration="65000" />
       <workItem from="1576459174115" duration="2577000" />
+      <workItem from="1577242045574" duration="10134000" />
     </task>
     <task id="LOCAL-00001" summary="获取客户端ip">
       <created>1575946411275</created>
@@ -169,18 +177,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="10" />
+          <line>29</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

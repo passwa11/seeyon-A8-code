@@ -9,6 +9,7 @@ import java.util.Properties;
  */
 public class ConfigInfo {
     public static String ipAddress;
+    public static String linkId;
 
     private static ConfigInfo ConfigInfo;
 
@@ -25,6 +26,7 @@ public class ConfigInfo {
         try {
             prop.load(in);
             ipAddress = prop.getProperty("xyfy.ip.address");
+            linkId = prop.getProperty("xyfy.ip.linkId");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -32,5 +34,9 @@ public class ConfigInfo {
 
     public static String getIpAddress() {
         return ipAddress;
+    }
+
+    public static String getLinkId() {
+        return linkId;
     }
 }
