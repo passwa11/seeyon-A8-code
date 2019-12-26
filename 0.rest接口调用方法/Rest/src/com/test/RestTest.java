@@ -28,13 +28,14 @@ public class RestTest {
 
     public static String getToken() {
         String token = "";
-        String url = "http://127.0.0.1:81/seeyon/rest/token";
+        String url = "http://127.0.0.1:80/seeyon/rest/token";
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost httpPost = null;
         HttpResponse response = null;
         httpPost = new HttpPost(url);
         httpPost.setHeader("Content-Type", "application/json;charset=utf-8");
-        String requestParams = "{\"userName\":\"gw\",\"password\":\"gw111111\"}";
+//        String requestParams = "{\"userName\":\"rest\",\"password\":\"rest111111\"}";
+        String requestParams = "{\"userName\":\"rest\",\"password\":\"5e9172a7-a3bc-4d89-94ec-601bcef6befc\"}";
         StringEntity postingString = new StringEntity(requestParams, "utf-8");
         httpPost.setEntity(postingString);
         try {
@@ -78,12 +79,11 @@ public class RestTest {
 
     public static void testRestGet() {
         String token = getToken();
-//        String urlpath = "http://127.0.0.1:81/seeyon/rest/affairs/pending/code/zhangsan?ticket=zhangsan&token=" + token;
-//        String urlpath = "http://127.0.0.1:81/seeyon/rest/edoc/receipt/pending?ticket=zhangsan&token=" + token;
 //        http://127.0.0.1/seeyon/rest/affairs/done?memberId={xxxx}
 //        已办协同合一了
-//        String urlpath = "http://127.0.0.1:81/seeyon/rest/affairs/done?memberId=7486210341116071885&token=" + token;
-        String urlpath = "http://127.0.0.1:81/seeyon/rest/orgMember/?loginName=zhangsan&token=" + token;
+        String urlpath = "http://127.0.0.1:80/seeyon/rest/affairs/pending?memberId=-7231816252026829543&token=" + token;
+//        String urlpath = "http://127.0.0.1:80/seeyon/rest/affairs/done?memberId=-7231816252026829543&token=" + token;
+//        String urlpath = "http://127.0.0.1:80/seeyon/rest/orgMember/?loginName=zhangsan&token=" + token;
         CloseableHttpClient client = HttpClients.createDefault();
         RequestConfig.Builder requestConfig = RequestConfig.custom();
         //设置连接超时时间
