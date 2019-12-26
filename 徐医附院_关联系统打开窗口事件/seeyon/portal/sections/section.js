@@ -1913,21 +1913,6 @@ var _openDataLink = function (_parameter, e) {
 
     }
 
-
-    // $.ajaxSettings.async = false;
-    // $.post("/seeyon/ext/loginCheck.do?method=getLinkid",null,function(data){
-    //     var link =data.link;
-    //     var arr=link.split(",");
-    //     // if(_openUrl.indexOf('linkSystemController')!=-1 && _openUrl.indexOf('method=linkConnect')!=-1){
-    //     for (var i = 0; i < arr.length; i++) {
-    //         if(_openUrl.indexOf(arr[i])!=-1 ){
-    //             _openType = 5;
-    //             break;
-    //         }
-    //     }
-    // });
-    // $.ajaxSettings.async = true;
-
     switch (_openType) {
         case 0:
             //openWorkSpace 弹出 满工作区
