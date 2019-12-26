@@ -43,7 +43,7 @@ var hasPreLoginSectionShowed = false;
  */
 
 //渲染所有的Portlets
-var renderPortlets = function(_currentSpaceId) {
+var renderPortlets = function (_currentSpaceId) {
     vPortal.pageLoad = true;
     vPortal.currentSpaceIsLoad = false;
     _currentSpaceId == undefined && console.error("_spaceId is undefined");
@@ -83,7 +83,7 @@ var renderPortlets = function(_currentSpaceId) {
 }
 
 //根据摘要数据，将栏目外框架渲染至对应位置
-var rendePortletFrame = function(_spaceId) {
+var rendePortletFrame = function (_spaceId) {
     //根据栏目摘要数据，按X、Y坐标为栏目创建占位DOM
     //网页式的滚动条不在main区域，这里就不设置了，设置了之后会导致data-section-width比实际偏小
     if (!document.querySelector(".webStyle")) {
@@ -104,7 +104,7 @@ var rendePortletFrame = function(_spaceId) {
         for (var x in currentSpaceSummary.portlets[y]) {
             //当前的section
             var _currentSection = currentSpaceSummary.portlets[y][x];
-            if (typeof(_currentSection.sections) == "undefined" || !_currentSection.sections) {
+            if (typeof (_currentSection.sections) == "undefined" || !_currentSection.sections) {
                 continue;
             }
             var _fragmentDOM = document.getElementById("fragment_" + y + "_0");
@@ -150,7 +150,7 @@ var rendePortletFrame = function(_spaceId) {
 var totalSectionNum = 0; //空间默认渲染的栏目总数
 var loadSectionNum = 0; //已经加载的栏目数量
 //渲染所有栏目的数据
-var renderAllSection = function(_spaceId) {
+var renderAllSection = function (_spaceId) {
     //刷新空间的时候重置变量
     totalSectionNum = 0;
     loadSectionNum = 0;
@@ -165,10 +165,10 @@ var renderAllSection = function(_spaceId) {
         //根据X坐标，遍历section
         for (var x in currentSpaceSummary.portlets[y]) {
             //第一次进入，标识一下，栏目非空
-            if(noPortlets) noPortlets = false;
+            if (noPortlets) noPortlets = false;
             //当前的section
             var _currentSectionSummary_X = currentSpaceSummary.portlets[y][x];
-            if (typeof(_currentSectionSummary_X.sections) == "undefined" || !_currentSectionSummary_X.sections || _currentSectionSummary_X.sections.length == 0) {
+            if (typeof (_currentSectionSummary_X.sections) == "undefined" || !_currentSectionSummary_X.sections || _currentSectionSummary_X.sections.length == 0) {
                 continue;
             }
             var currentMySections = _currentSectionSummary_X.sections[0].sections;
@@ -267,7 +267,7 @@ var renderAllSection = function(_spaceId) {
         //根据Y坐标,请求当前Portlet下的所有标题页签的总条数，并渲染它，功能等完善
     }
     //没有栏目的时候，直接计算内容区的最小高度  让底部区可以在最下面显示
-    if(noPortlets){
+    if (noPortlets) {
         setMainMinHeight();
     }
     if (!containLoginSection && preLoginBtn) {
@@ -279,14 +279,14 @@ var renderAllSection = function(_spaceId) {
 }
 
 //缓存AllSectionPanels，每个sectionPanels即一个页签
-var cacheAllSectionPanels = function(_parameter) {
+var cacheAllSectionPanels = function (_parameter) {
     for (var p = 0, len = vPortal.spacesSummary[vPortal.currentSpaceId]['portlets'][Number(_parameter.y)][Number(_parameter.xIndex)].sections.length; p < len; p++) {
         cacheThisPanel(_parameter, p);
     }
 }
 
 //组装并缓存单个pannel
-var cacheThisPanel = function(_parameter, _index, _extParameter) {
+var cacheThisPanel = function (_parameter, _index, _extParameter) {
     //空间下的栏目摘要
     var _currentSpaceSummary = vPortal.spacesSummary[vPortal.currentSpaceId];
     //当前X坐标的摘要
@@ -349,14 +349,14 @@ var cacheThisPanel = function(_parameter, _index, _extParameter) {
 }
 
 //更新AI智能排序按钮的值
-var updateAiSort4ParamValue = function(_panelId, _sectionPanel, _paramValues) {
+var updateAiSort4ParamValue = function (_panelId, _sectionPanel, _paramValues) {
     var _tempArray = new Array();
-    for(var i = 0; i < _paramValues.length; i++) {
-        if( i === 1 ) {
+    for (var i = 0; i < _paramValues.length; i++) {
+        if (i === 1) {
             _tempArray[i] = _sectionPanel.aiSort;
-        }else if( i === 2 ){
+        } else if (i === 2) {
             _tempArray[i] = _sectionPanel.aiSortValue;
-        }else {
+        } else {
             _tempArray[i] = _paramValues[i];
         }
     }
@@ -365,7 +365,7 @@ var updateAiSort4ParamValue = function(_panelId, _sectionPanel, _paramValues) {
 }
 
 //通过请求回来的data更新vPortal.allSectionPanels或_parameter
-var updatePanelOrParameter = function(_data, _parameter, _type) {
+var updatePanelOrParameter = function (_data, _parameter, _type) {
     if (!_data.preference) return;
     var typeObj = {
         "updatePanelCache": vPortal.allSectionPanels[_data.preference.panelId],
@@ -434,7 +434,7 @@ var updatePanelOrParameter = function(_data, _parameter, _type) {
 }
 
 //通过空间摘要数据，设置栏目背景色
-var setSectionBackgroundColor = function(_entityId, _value) {
+var setSectionBackgroundColor = function (_entityId, _value) {
     var _currentSectionDom = document.getElementById("section_" + _entityId);
     var _currentBodyDom = document.getElementById("panelBody_" + _entityId);
     if (_value != null && _currentSectionDom && _currentBodyDom) {
@@ -449,9 +449,9 @@ var setSectionBackgroundColor = function(_entityId, _value) {
     }
 }
 //通过空间摘要数据，设置栏目内容区高度
-var setSectionBodyHeight = function(_panelId, _entityId, _value) {
+var setSectionBodyHeight = function (_panelId, _entityId, _value) {
     var _currentSectionBodyDom = document.getElementById("panelBody_" + _entityId);
-    if(!_currentSectionBodyDom) return;
+    if (!_currentSectionBodyDom) return;
     if (_value != null && _value != 0) {
         if (_currentSectionBodyDom && _currentSectionBodyDom.getAttribute("class") && _currentSectionBodyDom.getAttribute("class").indexOf("padding10") > 0) {
             //如果有内padding10，需要将高度减去20
@@ -471,8 +471,8 @@ var setSectionBodyHeight = function(_panelId, _entityId, _value) {
 }
 
 // 某些sectionBeanId有自己的JS需要在请求数据前执行，如天气栏目，有些栏目的init又在resolveFunction中，所以需要判断
-var getInitFunction = function(_parameter, _extParameter) {
-    if(vPortal.allSectionPanels[_parameter.panelId]) {
+var getInitFunction = function (_parameter, _extParameter) {
+    if (vPortal.allSectionPanels[_parameter.panelId]) {
         vPortal.allSectionPanels[_parameter.panelId].isLoad = "isStart";
     }
     var _sectionBeanId = _parameter.sectionBeanId;
@@ -497,7 +497,7 @@ var getInitFunction = function(_parameter, _extParameter) {
 }
 
 //如果栏目有假数据，调用假数据进行渲染，否则向后台发起ajax请求，获取真实的数据
-var selectRenderData = function(_parameter, _extParameter) {
+var selectRenderData = function (_parameter, _extParameter) {
     var _sectionBeanId = _parameter.sectionBeanId;
     if (vPortal.isDesigner && previewVPortalSpace == false) {
         if (vPortal.sectionTestData != undefined && vPortal.sectionTestData[_sectionBeanId] != undefined) {
@@ -517,11 +517,11 @@ var selectRenderData = function(_parameter, _extParameter) {
 }
 
 //根据ID等参数，请求1个section，并调用它的渲染函数
-var getDataAndRenderSection = function(_parameter, _extParameter, retryCount) {
+var getDataAndRenderSection = function (_parameter, _extParameter, retryCount) {
     //刷新页签等操作，不更新此变量
-    if(_extParameter && _extParameter.from == "renderSpace") totalSectionNum++;
+    if (_extParameter && _extParameter.from == "renderSpace") totalSectionNum++;
 
-    if (typeof(_extParameter) != "undefined" && _extParameter.total != null && _extParameter.total != '') {
+    if (typeof (_extParameter) != "undefined" && _extParameter.total != null && _extParameter.total != '') {
         _parameter.pageLoad = vPortal.pageLoad;
     }
     if (_parameter.r_ordinal && _parameter.r_ordinal != _parameter.ordinal) {
@@ -533,7 +533,7 @@ var getDataAndRenderSection = function(_parameter, _extParameter, retryCount) {
     data.arguments = $.toJSON(_parameter);
     var url = '/seeyon/ajax.do?method=ajaxAction&managerName=sectionManager'; //注意：为了etag，这个url不能加随机数
 
-    if (typeof(retryCount) == "undefined") {
+    if (typeof (retryCount) == "undefined") {
         retryCount = 0;
     }
     jQuery.ajax({
@@ -543,7 +543,7 @@ var getDataAndRenderSection = function(_parameter, _extParameter, retryCount) {
         dataType: "json",
         beforeSend: CsrfGuard.beforeAjaxSend,
         async: true,
-        success: function(jsonObj) {
+        success: function (jsonObj) {
             if (retryCount < 1 && jsonObj == "__LOGOUT") { //如果是苹果浏览器遇到这种情况，重试1次
                 var time = new Date().getTime();
                 _parameter.time = time;
@@ -562,7 +562,7 @@ var getDataAndRenderSection = function(_parameter, _extParameter, retryCount) {
                 }
 
                 if (JSON.stringify(_result) == "{}" || !_result) {
-                    document.getElementById("panelBody_" + _parameter.entityId).innerHTML = "<span class='colorRed'>" + $.i18n("portal.section.error.label1") +  "</span>";
+                    document.getElementById("panelBody_" + _parameter.entityId).innerHTML = "<span class='colorRed'>" + $.i18n("portal.section.error.label1") + "</span>";
                     return;
                 }
                 if (_result && _result.error !== undefined) {
@@ -573,7 +573,9 @@ var getDataAndRenderSection = function(_parameter, _extParameter, retryCount) {
                     //统计渲染栏目的耗时，IE8-不支持，所以使用try
                     try {
                         //console.time("【" + _result.Name + _parameter.entityId + "】（包含beforeInit、renderTpl、afterInit）共用时");
-                    } catch (e) {};
+                    } catch (e) {
+                    }
+                    ;
                     if (_result.Data.refreshSpaceId && _result.Data.refreshSpaceId !== "" && _result.Data.refreshSpacePath && _result.Data.refreshSpacePath !== "") {
                         //点击的是ai智能排序，且账号无个性化空间数据，后台会生成用户的个性化空间数据，前端需要刷新空间
                         updateSpacePathAndId4Cache(_result.Data.refreshSpaceId, _result.Data.refreshSpacePath);
@@ -586,14 +588,14 @@ var getDataAndRenderSection = function(_parameter, _extParameter, retryCount) {
                 }
             }
         },
-        error: function(request, settings, e) {
+        error: function (request, settings, e) {
             console.error(e);
         }
     });
 }
 
 //获取tpl对应的js，并执行相应的beforeInit
-var getTplJsAndBeforeInit = function(_result, _parameter, _extParameter) {
+var getTplJsAndBeforeInit = function (_result, _parameter, _extParameter) {
     var _resolveFunction = _result.Data.resolveFunction;
     if (vPortal.sectionHandler[_resolveFunction] !== undefined && vPortal.sectionHandler[_resolveFunction].beforeInit !== undefined) {
         vPortal.sectionHandler[_resolveFunction].beforeInit(_result, _parameter);
@@ -604,7 +606,7 @@ var getTplJsAndBeforeInit = function(_result, _parameter, _extParameter) {
 }
 
 //准备渲染1个栏目
-var renderEachSectionData = function(_data, _parameter, _extParameter) {
+var renderEachSectionData = function (_data, _parameter, _extParameter) {
     //更新一下vPortal.allSectionPanel的缓存数据
     updatePanelOrParameter(_data, _parameter, "updatePanelCache");
     this._data = _data;
@@ -644,10 +646,10 @@ var renderEachSectionData = function(_data, _parameter, _extParameter) {
 
     //通过空间摘要数据，设置栏目内容区高度   这里的判断条件和changeTabAndReloadSection基本一致
     //防护一下，有的栏目模板没有定义相关的js，避免报错
-    if (typeof(vPortal.sectionHandler[_parameter.rf]) != "undefined") {
+    if (typeof (vPortal.sectionHandler[_parameter.rf]) != "undefined") {
         //如果在栏目模板里面定义了autoHeight=true则不设置
-        if (typeof(vPortal.sectionHandler[_parameter.rf].autoHeight) == "undefined" || (typeof(vPortal.sectionHandler[_parameter.rf].autoHeight) != "undefined" && vPortal.sectionHandler[_parameter.rf].autoHeight === false)) {
-            setSectionBodyHeight(_parameter.panelId,_parameter.entityId,_parameter.bodyHeight);
+        if (typeof (vPortal.sectionHandler[_parameter.rf].autoHeight) == "undefined" || (typeof (vPortal.sectionHandler[_parameter.rf].autoHeight) != "undefined" && vPortal.sectionHandler[_parameter.rf].autoHeight === false)) {
+            setSectionBodyHeight(_parameter.panelId, _parameter.entityId, _parameter.bodyHeight);
         }
     }
 
@@ -661,7 +663,7 @@ var renderEachSectionData = function(_data, _parameter, _extParameter) {
 };
 
 //查找栏目的tpl模板，如果缓存中没有，就通过ajax向后台请求，并调用渲染的方法
-renderEachSectionData.prototype.getTplAndRenderTpl = function(_data, _parameter, _extParameter) {
+renderEachSectionData.prototype.getTplAndRenderTpl = function (_data, _parameter, _extParameter) {
     var _this = this;
     //获取tpl模板名称
     var _resolveFunction = _data.Data.resolveFunction;
@@ -688,7 +690,7 @@ renderEachSectionData.prototype.getTplAndRenderTpl = function(_data, _parameter,
         ///执行栏目的afterInit
         getTplJsAndAfterInit(_data, _parameter);
     } else {
-        var _resSuffix = typeof(vPortal.resSuffix) !== "undefined" ? vPortal.resSuffix : "";
+        var _resSuffix = typeof (vPortal.resSuffix) !== "undefined" ? vPortal.resSuffix : "";
         var _url = _ctxPath + "/portal/sections/tpl/tpl-" + _resolveFunction + ".html" + _resSuffix + "?a=1" + CsrfGuard.getUrlSurffix();
         $.ajax({
             url: _url,
@@ -696,7 +698,7 @@ renderEachSectionData.prototype.getTplAndRenderTpl = function(_data, _parameter,
             dataType: 'html',
             cache: true,
             beforeSend: CsrfGuard.beforeAjaxSend,
-            success: function(result) {
+            success: function (result) {
                 vPortal.sectionTplCache[_resolveFunction] = result;
                 _this.renderTpl(result, _drawArea, _data, _parameter, _extParameter);
 
@@ -704,7 +706,7 @@ renderEachSectionData.prototype.getTplAndRenderTpl = function(_data, _parameter,
                 ///执行栏目的afterInit
                 getTplJsAndAfterInit(_data, _parameter);
             },
-            error: function() {
+            error: function () {
                 console.error("no tpl：" + _resolveFunction);
             }
         });
@@ -712,28 +714,32 @@ renderEachSectionData.prototype.getTplAndRenderTpl = function(_data, _parameter,
 }
 
 /*--渲染1个栏目数据--*/
-renderEachSectionData.prototype.renderTpl = function(_tpl, _drawArea, _data, _parameter, _extParameter) {
+renderEachSectionData.prototype.renderTpl = function (_tpl, _drawArea, _data, _parameter, _extParameter) {
     var _this = this;
     //统计渲染栏目的耗时，IE8-不支持，所以使用try
     try {
         //console.time("【" + _this._data.Name + _this._data._entityId + "】 渲染用时");
-    } catch (e) {};
+    } catch (e) {
+    }
+    ;
 
     var _drawAreaObj = document.getElementById(_drawArea);
     //因为此方法异步了，假如空间1的栏目还未加载完毕，点击空间2的时候，空间1的栏目DOM被干掉了，此时就会有问题
     if (_drawAreaObj == null) return;
 
-    laytpl(_tpl).render(this._data, function(_html) {
+    laytpl(_tpl).render(this._data, function (_html) {
         _drawAreaObj.innerHTML = _html;
         _html = null;
         _tpl = null;
         //统计渲染栏目的耗时，IE8-不支持，所以使用try
         try {
             //console.timeEnd("【" + _this._data.Name + _this._data._entityId + "】 渲染用时");
-        } catch (e) {};
+        } catch (e) {
+        }
+        ;
     });
     //标题为多彩磁贴时，有个特殊的需求：section-body的padding-top为0
-    if (typeof(_parameter) !== "undefined" && typeof(_parameter.b_s) !== "undefined" && _parameter.b_s == "card2") {
+    if (typeof (_parameter) !== "undefined" && typeof (_parameter.b_s) !== "undefined" && _parameter.b_s == "card2") {
         _drawAreaObj.style.paddingTop = 0;
     }
     _drawAreaObj = null;
@@ -745,7 +751,7 @@ renderEachSectionData.prototype.renderTpl = function(_tpl, _drawArea, _data, _pa
         //渲染标题（改变了标题时需要渲染标题）
         //this.renderTitle();
         //渲染总数
-        if (typeof(_extParameter) != "undefined" && (_extParameter.from === "reload" || _extParameter.from === "changeTab") && this._data.Total != undefined) {
+        if (typeof (_extParameter) != "undefined" && (_extParameter.from === "reload" || _extParameter.from === "changeTab") && this._data.Total != undefined) {
             this.renderTotalFromData();
         }
     }
@@ -762,7 +768,7 @@ renderEachSectionData.prototype.renderTpl = function(_tpl, _drawArea, _data, _pa
 };
 
 //渲染栏目的两类按钮：自定义功能按钮、更多
-renderEachSectionData.prototype.renderButtons = function(_hideButton) {
+renderEachSectionData.prototype.renderButtons = function (_hideButton) {
     //“更多”按钮
     var _moreButton = this._data.Data.moreButton;
     var _entityId = this._data._entityId;
@@ -842,12 +848,13 @@ renderEachSectionData.prototype.renderButtons = function(_hideButton) {
     //栏目自定义的功能的按钮
     var _bottomButtons = this._data.Data.bottomButtons;
     var _sectionButtonAllInOneDOm = document.getElementById("sectionButtonAllInOne" + this._data._entityId);
-    if (typeof(_bottomButtons) == "undefined" || _bottomButtons == null) {
+    if (typeof (_bottomButtons) == "undefined" || _bottomButtons == null) {
         if (_sectionButtonAllInOneDOm) {
             _sectionButtonAllInOneDOm.style.display = "none";
         }
         return;
-    };
+    }
+    ;
     if (_bottomButtons.length == 0 && _sectionButtonAllInOneDOm) {
         _sectionButtonAllInOneDOm.style.display = "none";
     } else if (_bottomButtons.length > 0 && _sectionButtonAllInOneDOm) {
@@ -911,7 +918,7 @@ renderEachSectionData.prototype.renderButtons = function(_hideButton) {
 }
 
 //渲染总数，这个总数来源于栏目数据
-renderEachSectionData.prototype.renderTotalFromData = function() {
+renderEachSectionData.prototype.renderTotalFromData = function () {
     if (this._data._panelId) {
         var _thisPanelId = this._data._panelId;
     } else {
@@ -936,7 +943,7 @@ renderEachSectionData.prototype.renderTotalFromData = function() {
 }
 
 //渲染标题
-renderEachSectionData.prototype.renderTitle = function() {
+renderEachSectionData.prototype.renderTitle = function () {
     if (this._data._panelId) {
         var _thisPanelId = this._data._panelId;
     } else {
@@ -952,7 +959,7 @@ renderEachSectionData.prototype.renderTitle = function() {
 }
 
 //“换一换”的功能
-renderEachSectionData.prototype.refreshAnotherData = function() {
+renderEachSectionData.prototype.refreshAnotherData = function () {
     var _sectionPanelDom = document.getElementById("section_" + this._data._entityId);
     if (this._data.Data.showChangeButton && this._data.Data.datas !== null) {
         //此页签有“换一换”的功能
@@ -976,7 +983,7 @@ renderEachSectionData.prototype.refreshAnotherData = function() {
 }
 
 //获取tpl对应的js，并执行相应的afterinit
-var getTplJsAndAfterInit = function(_result, _parameter) {
+var getTplJsAndAfterInit = function (_result, _parameter) {
     var _resolveFunction = _result.Data.resolveFunction;
     if (_result.Data.customizeResolveFunction) {
         _resolveFunction = _result.Data.customizeResolveFunction;
@@ -992,7 +999,9 @@ var getTplJsAndAfterInit = function(_result, _parameter) {
     //统计渲染栏目的耗时，IE8-不支持，所以使用try
     try {
         //console.timeEnd("【" + _result.Name + _result._entityId + "】（包含beforeInit、renderTpl、afterInit）共用时");
-    } catch (e) {};
+    } catch (e) {
+    }
+    ;
     if (vPortal.pageLoad && preLoginBtn && !hasPreLoginSectionShowed) {
         var containLoginSection = false;
         if (_parameter.sectionBeanId == "loginSection") {
@@ -1021,12 +1030,12 @@ var getTplJsAndAfterInit = function(_result, _parameter) {
 
 
 //更新栏目的加载状态
-var updateSectionState = function() {
+var updateSectionState = function () {
     var topWrapper = getCtpTop().document.getElementById("wrapper");
     //栏目全部加载完毕 || 加载完毕后点击页签  &&  主题空间||项目空间  && 需要变形的页面
     if (totalSectionNum == loadSectionNum && vPortal.isThemeSpace && topWrapper) {
         var _containerHeight = document.querySelector(".container").clientHeight;
-        var isFirstLoad = typeof(vPortal.spacesSummary[spaceId].containerHeight) == "undefined"; //第一次加载此主题空间
+        var isFirstLoad = typeof (vPortal.spacesSummary[spaceId].containerHeight) == "undefined"; //第一次加载此主题空间
         var isTabchange = vPortal.spacesSummary[spaceId].containerHeight && vPortal.spacesSummary[spaceId].containerHeight != _containerHeight; //击页签后，高度发生变化的时候,
         var isNeedSet = topWrapper.className.indexOf("isThemeSpace") != -1 || topWrapper.className.indexOf("isProjectSpace") != -1; //顶层框架下 且是主题空间或项目空间
 
@@ -1043,9 +1052,9 @@ var updateSectionState = function() {
 }
 
 //当前已加载的栏目标识
-var loadSectionNumIncrease = function() {
+var loadSectionNumIncrease = function () {
     //页签切换的时候  不会++
-    if (totalSectionNum !== loadSectionNum) loadSectionNum ++;
+    if (totalSectionNum !== loadSectionNum) loadSectionNum++;
 }
 
 /**
@@ -1054,14 +1063,14 @@ var loadSectionNumIncrease = function() {
  * 不传入containerHeight的时候，自动计算，适用一些特殊场景，在高度变化后，直接调用即可
  * 如果某个栏目在AfterInit里面有异步且会改变高度的话，可以调用一下此方法
  **/
-var doAutoIframeHeight = function(containerHeight) {
+var doAutoIframeHeight = function (containerHeight) {
     var lastHeight;
     var topWrapper = getCtpTop().document.getElementById("wrapper");
     var _isThemeSpace = topWrapper.className.indexOf("isThemeSpace") != -1; //顶层框架下 且是主题空间
     var _isProjectSpace = topWrapper.className.indexOf("isProjectSpace") != -1; //顶层框架下 且是项目空间
 
     //编辑栏目的时候需要计算高度，其他时候直接设置即可
-    if (typeof(containerHeight) == "undefined" && (_isThemeSpace || _isProjectSpace)) {
+    if (typeof (containerHeight) == "undefined" && (_isThemeSpace || _isProjectSpace)) {
         containerHeight = document.querySelector(".container").clientHeight;
     }
     if (_isThemeSpace) { //主题空间
@@ -1077,7 +1086,7 @@ var doAutoIframeHeight = function(containerHeight) {
 }
 
 //网页式门户模板，设置main区域的  最小高度
-var setMainMinHeight = function() {
+var setMainMinHeight = function () {
     //非网页式门户直接return
     var webStyle = getCtpTop().document.querySelector(".webStyle");
     if (webStyle == null) return;
@@ -1107,7 +1116,7 @@ var setMainMinHeight = function() {
 }
 
 //渲染栏目标题区的页签（默认样式），因页签有计算宽度等功能，为了前端性能，不在tpl模板中渲染
-var renderSectionTabs = function(_section) {
+var renderSectionTabs = function (_section) {
     //当前section栏目标题区
     var _currentTabsArea = document.getElementById("sectionHeaderTabs_" + _section.id)
     if (!_currentTabsArea) {
@@ -1298,8 +1307,8 @@ var renderSectionTabs = function(_section) {
 }
 
 //处理total，如果大于999时，显示为999+
-var getTotalStr = function(_t) {
-    if (typeof(_t) !== "undefined" && _t !== "") {
+var getTotalStr = function (_t) {
+    if (typeof (_t) !== "undefined" && _t !== "") {
         if (Number(_t) > 999) {
             var _tempStr = "<span class='total999'>999<sup>+</sup></span>";
         } else {
@@ -1312,7 +1321,7 @@ var getTotalStr = function(_t) {
 }
 
 //渲染栏目标题区页签：样式2
-var renderSectionTabs_card2 = function(_section) {
+var renderSectionTabs_card2 = function (_section) {
     var _tabsLen = _section.sections.length;
     var _currentTabsArea = document.getElementById("section-header-card2_" + _section.id);
     var _currentTabsAreaWidth = Math.floor(_currentTabsArea.offsetWidth) - 1;
@@ -1394,7 +1403,7 @@ var renderSectionTabs_card2 = function(_section) {
 }
 
 //组装页签的LI：样式2
-var packagingCardTabsLi = function(_currentSection, _sectionTab, i, _eachRowWidth, _showIconBg) {
+var packagingCardTabsLi = function (_currentSection, _sectionTab, i, _eachRowWidth, _showIconBg) {
     var _tabColorArray = ["#49a4ea", "#8693f3", "#5484ff", "#ff916e", "#3cbaff", "#38a0f5", "#ffae43"];
     var _tempLiStr = new StringBuffer();
     var _currentStatus = i == 0 ? " class='current'" : "";
@@ -1418,7 +1427,7 @@ var packagingCardTabsLi = function(_currentSection, _sectionTab, i, _eachRowWidt
 }
 
 /*--切换标题页签--*/
-var changeTabAndReloadSection = function(_sectionId, _panelId) {
+var changeTabAndReloadSection = function (_sectionId, _panelId) {
     if (vPortal && vPortal.isDesigner) {
         return;
     }
@@ -1429,9 +1438,9 @@ var changeTabAndReloadSection = function(_sectionId, _panelId) {
     _panelBodyDom.innerHTML = "<span class='contentLoading'>" + $.i18n('section.loading.label') + "<span class='ellipsis-anim'></span></span>";
 
     //防护一下，有的栏目模板没有定义相关的js，避免报错
-    if (typeof(vPortal.sectionHandler[vPortal.allSectionPanels[_panelId].rf]) != "undefined") {
+    if (typeof (vPortal.sectionHandler[vPortal.allSectionPanels[_panelId].rf]) != "undefined") {
         //如果在栏目模板里面定义了autoHeight=true则不设置
-        if (typeof(vPortal.sectionHandler[vPortal.allSectionPanels[_panelId].rf].autoHeight) == "undefined" || (typeof(vPortal.sectionHandler[vPortal.allSectionPanels[_panelId].rf].autoHeight) != "undefined" && vPortal.sectionHandler[vPortal.allSectionPanels[_panelId].rf].autoHeight === false)) {
+        if (typeof (vPortal.sectionHandler[vPortal.allSectionPanels[_panelId].rf].autoHeight) == "undefined" || (typeof (vPortal.sectionHandler[vPortal.allSectionPanels[_panelId].rf].autoHeight) != "undefined" && vPortal.sectionHandler[vPortal.allSectionPanels[_panelId].rf].autoHeight === false)) {
             //不需要判断页签样式的区别，setSectionBodyHeight会处理
             setSectionBodyHeight(_panelId, vPortal.allSectionPanels[_panelId].entityId, vPortal.allSectionPanels[_panelId].bodyHeight);
 
@@ -1446,7 +1455,7 @@ var changeTabAndReloadSection = function(_sectionId, _panelId) {
                 // _panelBodyDom.style.height = Number(vPortal.allSectionPanels[_panelId].bodyHeight) - vPortal.sectionPaddingTop - vPortal.sectionPaddingBottom + "px";
             }*/
 
-        } else if (typeof(vPortal.sectionHandler[vPortal.allSectionPanels[_panelId].rf].autoHeight) != "undefined" && vPortal.sectionHandler[vPortal.allSectionPanels[_panelId].rf].autoHeight === true) {
+        } else if (typeof (vPortal.sectionHandler[vPortal.allSectionPanels[_panelId].rf].autoHeight) != "undefined" && vPortal.sectionHandler[vPortal.allSectionPanels[_panelId].rf].autoHeight === true) {
             //设置了autoHeight的时候，需要还原
             _panelBodyDom.style.height = "";
         }
@@ -1469,7 +1478,7 @@ var changeTabAndReloadSection = function(_sectionId, _panelId) {
 };
 
 //处理多页签的高亮效果
-var setTabHighlight = function(_sectionId, _panelId) {
+var setTabHighlight = function (_sectionId, _panelId) {
     var _sectionHeaderDom = document.getElementById("sectionHeaderTabs_" + _sectionId);
     //如果能找着sectionHeaderTabs_+_sectionId的dom，表明是默认的页签样式，不是卡片1或卡片2的样式
     if (_sectionHeaderDom) {
@@ -1495,13 +1504,13 @@ var setTabHighlight = function(_sectionId, _panelId) {
             _sectionHeaderAllLi[i].setAttribute("class", "");
         }
     }
-    if(document.getElementById("sectionName_" + _panelId)){
+    if (document.getElementById("sectionName_" + _panelId)) {
         document.getElementById("sectionName_" + _panelId).setAttribute("class", "current");
     }
 }
 
 //通过panelId渲染某个页签
-var renderEachPanel = function(_panelId, _from, _params) {
+var renderEachPanel = function (_panelId, _from, _params) {
     vPortal.pageLoad = false;
     var _sectionPanel = vPortal.allSectionPanels[_panelId];
     var _panelTabLi = document.getElementById("sectionName_" + _panelId);
@@ -1517,7 +1526,7 @@ var renderEachPanel = function(_panelId, _from, _params) {
     var _paramKeys = null;
     var _paramValues = null;
     if (_params) {
-        if (typeof(_sectionPanel.paramKeys) != 'undefined' && _sectionPanel.paramKeys) {
+        if (typeof (_sectionPanel.paramKeys) != 'undefined' && _sectionPanel.paramKeys) {
 
             var paramKeysMap = new Object();
             if (_params.paramKeys && _params.paramValues) {
@@ -1661,7 +1670,7 @@ var renderEachPanel = function(_panelId, _from, _params) {
 }
 
 //更新当前portlet下所有页签的total数据
-var updateCurrentPortletAllTotal = function(_currentSection, y, x, index) {
+var updateCurrentPortletAllTotal = function (_currentSection, y, x, index) {
     if (vPortal.admin == "true") { //管理员状态，不执行这个方法
         return;
     }
@@ -1671,7 +1680,7 @@ var updateCurrentPortletAllTotal = function(_currentSection, y, x, index) {
         "tab": index.toString()
     }
     callBackendMethod("sectionManager", "getPortletTotals", _parameter, {
-        success: function(_result) {
+        success: function (_result) {
             if (_result == '__LOGOUT') {
                 offlineFun();
                 return;
@@ -1702,14 +1711,14 @@ var updateCurrentPortletAllTotal = function(_currentSection, y, x, index) {
                 }
             }
         },
-        error: function(error) {
+        error: function (error) {
             console.error(error);
         }
     });
 }
 
 //更新sectionOperation中几个按钮的参数
-var updateSectionOperationLink = function(_sectionId, _panelId) {
+var updateSectionOperationLink = function (_sectionId, _panelId) {
     //修改右侧4个按钮事件中的id
     if (document.getElementById("sectionButtonSetting_" + _sectionId)) {
         document.getElementById("edit_section_" + _sectionId).setAttribute("onclick", "javascript:sectionOperation('" + _panelId + "','loadSectionPro')");
@@ -1720,7 +1729,7 @@ var updateSectionOperationLink = function(_sectionId, _panelId) {
 }
 
 //渲染单个portlet，包含外框和数据，参数来源为panelId
-var renderPortletFromPanelId = function(_panelId) {
+var renderPortletFromPanelId = function (_panelId) {
     //当前的portlet Dom
     var _currentSectionPanel = vPortal.allSectionPanels[_panelId];
     if (_currentSectionPanel == undefined) {
@@ -1768,9 +1777,10 @@ var renderPortletFromPanelId = function(_panelId) {
 }
 
 //渲染单个portlet，包含外框和数据，参数来源为portletId
-var renderPortletFromPortletId = function(_portletId) {}
+var renderPortletFromPortletId = function (_portletId) {
+}
 //AI智能排序按钮
-var checkAndSetAiSort = function(_sectionId, _panelId, _hasAiSortBtn, _aiSortValue) {
+var checkAndSetAiSort = function (_sectionId, _panelId, _hasAiSortBtn, _aiSortValue) {
     if (document.getElementById("aiSort-" + _sectionId)) {
         if (_hasAiSortBtn === "1" && document.getElementById("sectionHeaderTabs_" + _sectionId) && document.getElementById("sectionHeaderTabs_" + _sectionId).querySelector(".showedTabs") && document.getElementById("sectionHeaderTabs_" + _sectionId).querySelector(".showedTabs").querySelector("#sectionName_" + _panelId) || _hasAiSortBtn === "1" && document.getElementById("section-bigTitle-" + _sectionId)) {
             //_hasAiSortBtn为1，且该待办栏目不在多页签的下拉中时，需求显示AI排序按钮，或者当前栏目有大标题且_hasAiSortBtn为1时，也需要显示AI排序按钮
@@ -1789,7 +1799,7 @@ var checkAndSetAiSort = function(_sectionId, _panelId, _hasAiSortBtn, _aiSortVal
 }
 
 //AI智能排序的功能
-var changeAiSort = function(_sectionId, _panelId, _value) {
+var changeAiSort = function (_sectionId, _panelId, _value) {
     //根据_value，改变“智能排序”按钮的状态，并请求和渲染此栏目，并通过_params告知后台，这个操作来自于点击“智能排序”按钮
     if (_value === "1") {
         vPortal.allSectionPanels[_panelId].aiSortValue = "0";
@@ -1812,12 +1822,12 @@ var changeAiSort = function(_sectionId, _panelId, _value) {
 
 /*--sectionHandler：删除、添加、编辑栏目--*/
 var portalSectionHanderJsIsLoad = false;
-var sectionOperation = function(_sectionId, _operationType) {
+var sectionOperation = function (_sectionId, _operationType) {
     if (portalSectionHanderJsIsLoad) {
         portalSectionHander[_operationType](_sectionId);
     } else {
         var _portalSectionHanderJSURL = "/seeyon/portal/sections/portalSectionHander.js";
-        $.getScript(_portalSectionHanderJSURL, function(_result, _textStatus, _jqXHR) {
+        $.getScript(_portalSectionHanderJSURL, function (_result, _textStatus, _jqXHR) {
             //请求过来的JS文件实际为一串string，需要eval一下
             eval(_result);
             portalSectionHander[_operationType](_sectionId);
@@ -1827,13 +1837,13 @@ var sectionOperation = function(_sectionId, _operationType) {
 }
 
 /*--栏目内的数据打开链接--*/
-var _openDataLink = function(_parameter, e) {
+var _openDataLink = function (_parameter, e) {
     debugger;
 
     console.log("栏目内的数据打开链接");
     //重复点击防护
     var eventFlag = avoidRepeatedClicks(_parameter.url);
-    if(!eventFlag) return;
+    if (!eventFlag) return;
 
     //只有ie8 ie9下需要进行事件冒泡的阻止
     if (e != null && SeeUtils.isIE) {
@@ -1871,13 +1881,13 @@ var _openDataLink = function(_parameter, e) {
                         id: "ok",
                         isEmphasize: true,
                         text: $.i18n('common.button.ok.label'),
-                        handler: function() {
+                        handler: function () {
                             dialog.close();
                             vPortal.sectionHandler.reload(_parameter.sectionBeanId); //刷新栏目
                         }
                     }, {
                         text: $.i18n('common.button.cancel.label'),
-                        handler: function() {
+                        handler: function () {
                             dialog.close();
                         }
                     }]
@@ -1898,21 +1908,26 @@ var _openDataLink = function(_parameter, e) {
     }
     // console.log(_openUrl,'zhou');
     //zhou:徐医附院  为了区分内联系统和点击跟多事件冲突
-    $.ajaxSettings.async = false;
-    $.post("/seeyon/ext/loginCheck.do?method=getLinkid",null,function(data){
-        var link =data.link;
-        var arr=link.split(",");
-        // if(_openUrl.indexOf('linkSystemController')!=-1 && _openUrl.indexOf('method=linkConnect')!=-1){
-        for (var i = 0; i < arr.length; i++) {
-            if(_openUrl.indexOf(arr[i])!=-1 ){
-                _openType = 5;
-                break;
-            }
-        }
-    });
-    $.ajaxSettings.async = true;
+    if (_openUrl.indexOf('linkSystemController') != -1 && _openUrl.indexOf('method=linkConnect') != -1) {
+        _openType = 5;
 
-    // alert(_openType);
+    }
+
+
+    // $.ajaxSettings.async = false;
+    // $.post("/seeyon/ext/loginCheck.do?method=getLinkid",null,function(data){
+    //     var link =data.link;
+    //     var arr=link.split(",");
+    //     // if(_openUrl.indexOf('linkSystemController')!=-1 && _openUrl.indexOf('method=linkConnect')!=-1){
+    //     for (var i = 0; i < arr.length; i++) {
+    //         if(_openUrl.indexOf(arr[i])!=-1 ){
+    //             _openType = 5;
+    //             break;
+    //         }
+    //     }
+    // });
+    // $.ajaxSettings.async = true;
+
     switch (_openType) {
         case 0:
             //openWorkSpace 弹出 满工作区
@@ -1945,14 +1960,47 @@ var _openDataLink = function(_parameter, e) {
         case 5:
             ///zhou:徐医附院
             //href_blank 直接超链，在新窗口打开
-            $.post("/seeyon/ext/loginCheck.do?method=index",null,function(data){
-                var code =data.code;
-                if(code==0){
-                    openCtpWindow({
-                        'url': _openUrl
-                    });
-                }else{
-                    confirm("抱歉，请在内网登录打开!");
+            var linid = _openUrl.substring(_openUrl.indexOf('linkId=') + 7);
+            $.post("/seeyon/ext/loginCheck.do?method=index", {linkId: linid}, function (data) {
+                var code = data.code;
+                if (code == 0) {
+                    var type = data.flag;
+                    var linkIds = data.linkIds;
+                    if (linkIds != '') {
+                        var arr = linkIds.split(",");
+                        if (type == 'nei') {
+                            for (var i = 0; i < arr.length; i++) {
+                                if (_openUrl.indexOf(arr[i]) != -1) {
+                                    openCtpWindow({
+                                        'url': _openUrl
+                                    });
+                                    break;
+                                }
+                            }
+                        }
+                        if (type == 'yuan') {
+                            for (var i = 0; i < arr.length; i++) {
+                                if (_openUrl.indexOf(arr[i]) != -1) {
+                                    openCtpWindow({
+                                        'url': _openUrl
+                                    });
+                                    break;
+                                }
+                            }
+                        }
+                        if (type == 'gong') {
+                            for (var i = 0; i < arr.length; i++) {
+                                if (_openUrl.indexOf(arr[i]) != -1) {
+                                    openCtpWindow({
+                                        'url': _openUrl
+                                    });
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    confirm(data.msg);
                 }
             });
             break;
@@ -1966,7 +2014,7 @@ var _openDataLink = function(_parameter, e) {
 }
 
 //刷新页面中某个类型的所有栏目
-vPortal.sectionHandler.reload = function(_sectionBeanId) {
+vPortal.sectionHandler.reload = function (_sectionBeanId) {
     //在二级页面的时候就不刷新了，避免报错
     if (document.getElementById("main").className.indexOf("hasIframe") > -1) return;
     for (var key in vPortal.allSectionPanels) {
@@ -1977,14 +2025,14 @@ vPortal.sectionHandler.reload = function(_sectionBeanId) {
 }
 
 //更新栏目加载状态
-vPortal.sectionHandler.updateLoadStateBySectionBeanId = function(_sectionBeanId) {
-    if(vPortal.allSectionPanels[_sectionBeanId]){
+vPortal.sectionHandler.updateLoadStateBySectionBeanId = function (_sectionBeanId) {
+    if (vPortal.allSectionPanels[_sectionBeanId]) {
         vPortal.allSectionPanels[_sectionBeanId].isLoad = "isEnd";
     }
 }
 
 //消息盒子新来消息后刷新所有消息栏目
-vPortal.sectionHandler.refreshMessageIdsForSection = function(messages) {
+vPortal.sectionHandler.refreshMessageIdsForSection = function (messages) {
     for (var key in vPortal.allSectionPanels) {
         if (vPortal.allSectionPanels[key].sectionBeanId == "messageSection") {
             vPortal.sectionHandler.messageTemplete.unshiftMessageIds(vPortal.allSectionPanels[key].id, messages);
@@ -1992,7 +2040,7 @@ vPortal.sectionHandler.refreshMessageIdsForSection = function(messages) {
     }
 }
 
-vPortal.sectionHandler.refreshMessageSection = function(newMessage) {
+vPortal.sectionHandler.refreshMessageSection = function (newMessage) {
     for (var key in vPortal.allSectionPanels) {
         if (vPortal.allSectionPanels[key].sectionBeanId == "messageSection") {
             vPortal.sectionHandler.messageTemplete.appendMessage(vPortal.allSectionPanels[key].id, newMessage);
@@ -2006,7 +2054,7 @@ vPortal.sectionHandler.refreshMessageSection = function(newMessage) {
  * @author yinr 业务配置栏目
  */
 /** 栏目挂接相关JS方法 Start **/
-var showDiv = function(innerHtmlContent, bizConfigId, tar) {
+var showDiv = function (innerHtmlContent, bizConfigId, tar) {
     var sb = new StringBuffer();
     var a = innerHtmlContent.split("|");
     var len = a.length;
@@ -2035,13 +2083,13 @@ var showDiv = function(innerHtmlContent, bizConfigId, tar) {
     oDiv.innerHTML = sb.toString();
     showTemp();
 };
-var showTemp = function() {
+var showTemp = function () {
     document.getElementById('showPositionDiv').style.display = "block";
 };
-var hideTemp = function() {
+var hideTemp = function () {
     document.getElementById('showPositionDiv').style.display = "none";
 };
-var showResult = function(type, formId, bizConfigId, queryOrReportName) {
+var showResult = function (type, formId, bizConfigId, queryOrReportName) {
     var openUrl = "/report/queryReport.do?method=goIndexRight&type=query&fromPortal=true&reportId=" + formId + "&reportName=";
     if ("query" == type) {
         openUrl = "/form/queryResult.do?method=queryExc&fromPortal=true&type=query&queryId=" + formId + "&queryName=";
@@ -2057,7 +2105,7 @@ var showResult = function(type, formId, bizConfigId, queryOrReportName) {
         "openType": "4"
     });
 };
-var openLink = function(url) {
+var openLink = function (url) {
     //此处url存在/seeyon前缀，需要截断处理
     _openDataLink({
         "url": url.slice(7, url.length),
@@ -2067,16 +2115,16 @@ var openLink = function(url) {
 /** 栏目挂接相关JS方法 End **/
 
 //栏目中的点击显示人员卡片
-var showMemberCard = function(memberId) {
+var showMemberCard = function (memberId) {
     var _options = {
         "memberId": memberId
     };
-    if (typeof(insertScriptP) == "undefined") {
+    if (typeof (insertScriptP) == "undefined") {
         $.ajax({
             url: _ctxPath + "/common/js/ui/seeyon.ui.peopleCrad-debug.js",
             dataType: "script",
             cache: true,
-            success: function() {
+            success: function () {
                 insertScriptP();
                 return PeopleCard(_options);
             }
@@ -2088,7 +2136,7 @@ var showMemberCard = function(memberId) {
 }
 
 //栏目中的单列打开链接
-var open_link = function(_url, _openType) {
+var open_link = function (_url, _openType) {
     var _openUrl = "";
     if (_url.indexOf("/seeyon") == 0) {
         _openUrl = _url;
@@ -2098,15 +2146,15 @@ var open_link = function(_url, _openType) {
 
     switch (_openType) {
         case "0":
-            //openWorkSpace 弹出 满工作区
+        //openWorkSpace 弹出 满工作区
         case "1":
-            //openWorkSpaceRight 弹出 只占用右边工作区
+        //openWorkSpaceRight 弹出 只占用右边工作区
         case "2":
             //href 直接超链
             showMenu(_openUrl);
             break;
         case "3":
-            //href_blank 直接超链，在新窗口打开
+        //href_blank 直接超链，在新窗口打开
         case "4":
             //multiWindow 多窗口打开
             openCtpWindow({
@@ -2120,11 +2168,12 @@ var open_link = function(_url, _openType) {
 }
 
 //栏目底部的“换一换”功能
-var sectionRefreshAnotherData = function(_panelId, _pageNo) {
+var sectionRefreshAnotherData = function (_panelId, _pageNo) {
     renderEachPanel(_panelId, "fromRefreshAnotherData", {
         pageNo: _pageNo
     });
 }
+
 /**
  *
  * @param id 当前事件ID
@@ -2146,7 +2195,7 @@ function openCalEvent(id, shareType, receiveMemberId, isHasUpdate, sectionID) {
     if (res != null && res != "") {
         $.alert({
             'msg': res,
-            ok_fn: function() {
+            ok_fn: function () {
                 sectionHandler.reload(sectionID, true);
             }
         });
@@ -2163,10 +2212,10 @@ function openCalEvent(id, shareType, receiveMemberId, isHasUpdate, sectionID) {
             targetWindow: getCtpTop(),
             checkMax: true,
             transParams: {
-                diaClose: function() {
+                diaClose: function () {
                     dialogCalendarUpdate.close();
                 },
-                showButton: function() {
+                showButton: function () {
                     dialogCalendarUpdate.showBtn("sure");
                     dialogCalendarUpdate.hideBtn("update");
                 },
@@ -2177,10 +2226,10 @@ function openCalEvent(id, shareType, receiveMemberId, isHasUpdate, sectionID) {
             buttons: [{
                 id: "sure",
                 text: $.i18n('common.button.ok.label'),
-                handler: function() {
+                handler: function () {
                     var rv = dialogCalendarUpdate.getReturnValue();
                     if (rv) {
-                        setTimeout(function() {
+                        setTimeout(function () {
                             vPortal.sectionHandler.reload(sectionID);
                         }, 500);
                     }
@@ -2188,19 +2237,19 @@ function openCalEvent(id, shareType, receiveMemberId, isHasUpdate, sectionID) {
             }, {
                 id: "update",
                 text: $.i18n('common.button.modify.label'),
-                handler: function() {
+                handler: function () {
                     dialogCalendarUpdate.getReturnValue("update");
                 }
             }, {
                 id: "cancel",
                 text: $.i18n('common.button.cancel.label'),
-                handler: function() {
+                handler: function () {
                     dialogCalendarUpdate.close();
                 }
             }, {
                 id: "btnClose",
                 text: $.i18n('calendar.close'),
-                handler: function() {
+                handler: function () {
                     dialogCalendarUpdate.close();
                 }
             }]
@@ -2219,7 +2268,7 @@ function openCalEvent(id, shareType, receiveMemberId, isHasUpdate, sectionID) {
 }
 
 //有些特殊的无头栏目，如果无背景色时，需要将背景色设置为透明，去掉阴影，边框设为透明
-var setSectionBgcTransparent = function(_entityId, _sst, _bgc) {
+var setSectionBgcTransparent = function (_entityId, _sst, _bgc) {
     var _sectionDom = document.getElementById("section_" + _entityId);
     if (_sst == "0" && (_bgc == "" || _bgc == "transparent" || _bgc.indexOf("rgba") === 0 && _bgc.split(",").length === 4 && _bgc.split(",")[3].trim() === "0)") && _sectionDom) {
         _sectionDom.style.backgroundColor = "transparent";
@@ -2252,20 +2301,20 @@ function getTextWidth(_text, _fontSize) {
 }
 
 //hover上去出现滚动条的统一方法
-var initHoverScrollbar = function(_obj) {
+var initHoverScrollbar = function (_obj) {
     var _thisDiv = _obj;
     if (window.addEventListener && _thisDiv) {
-        _thisDiv.addEventListener("mouseover", function() {
+        _thisDiv.addEventListener("mouseover", function () {
             this.style.overflow = "auto";
         });
-        _thisDiv.addEventListener("mouseout", function() {
+        _thisDiv.addEventListener("mouseout", function () {
             this.style.overflow = "hidden";
         });
     } else if (_thisDiv) {
-        _thisDiv.attachEvent("mouseover", function() {
+        _thisDiv.attachEvent("mouseover", function () {
             this.style.overflow = "auto";
         });
-        _thisDiv.attachEvent("mouseout", function() {
+        _thisDiv.attachEvent("mouseout", function () {
             this.style.overflow = "hidden";
         });
     }
@@ -2279,14 +2328,14 @@ var initHoverScrollbar = function(_obj) {
 vPortal.alreaLocation = 0;
 vPortal.needLocationWeatherSection = [];
 vPortal.sectionHandler.weatherTemplete = {
-    afterInit: function(_data, _parameter, _extParameter) {
+    afterInit: function (_data, _parameter, _extParameter) {
         document.getElementById("section_" + _data._entityId).style.border = "none";
         //this.getCity({'obj':$("#prov_"+_data._entityId),'_entityId':_data._entityId});
         //如果无背景色时，需要将背景色设置为透明，去掉阴影，边框设为透明
         setSectionBgcTransparent(_data._entityId, _data._sst, _data._bgc);
         this.showWeatherSection(_data, _parameter);
     },
-    showWeatherSection: function(_data, _parameter) {
+    showWeatherSection: function (_data, _parameter) {
         if (_data.Data.propertyMap && _data.Data.propertyMap.city) {
             _data.Data.city = _data.Data.propertyMap.city;
         }
@@ -2300,7 +2349,7 @@ vPortal.sectionHandler.weatherTemplete = {
                 //定位开始
                 if (vPortal.canLocation == 'true') {
                     if (!vPortal.alreaLocation || vPortal.alreaLocation == 0) { //定位只定一次
-                        $.getScript(vPortal.locationUrl + "&callback=vPortal.sectionHandler.weatherTemplete.setCurrentCity", function() {
+                        $.getScript(vPortal.locationUrl + "&callback=vPortal.sectionHandler.weatherTemplete.setCurrentCity", function () {
                             vPortal.sectionHandler.weatherTemplete.showCurrentCityWeather(_data);
                         });
                         vPortal.alreaLocation = 1;
@@ -2318,7 +2367,7 @@ vPortal.sectionHandler.weatherTemplete = {
             }
         }
     },
-    updateWeatherToDom: function(w, _data) {
+    updateWeatherToDom: function (w, _data) {
         if (w) {
             if (!vPortal.needLocationWeatherSection) {
                 vPortal.needLocationWeatherSection = [];
@@ -2335,7 +2384,7 @@ vPortal.sectionHandler.weatherTemplete = {
             }
         }
     },
-    needUpdateCurrentCityWeather: function() { //是否需要更新vPortal里缓存的当前城市天气,设置2小时缓存
+    needUpdateCurrentCityWeather: function () { //是否需要更新vPortal里缓存的当前城市天气,设置2小时缓存
         var t = new Date().getTime();
         if (!vPortal.currentCityWeatherTime || (t - vPortal.currentCityWeatherTime) > 7200000) {
             return true;
@@ -2343,7 +2392,7 @@ vPortal.sectionHandler.weatherTemplete = {
             return false;
         }
     },
-    setCurrentCity: function(json) {
+    setCurrentCity: function (json) {
         if (!json || !json.city || json.city == '') {
             return;
         }
@@ -2367,7 +2416,7 @@ vPortal.sectionHandler.weatherTemplete = {
             }*/
         }
     },
-    showCurrentCityWeather: function(_data) {
+    showCurrentCityWeather: function (_data) {
         if (vPortal.currentCityWeather && !this.needUpdateCurrentCityWeather()) {
             this.updateWeatherToDom(vPortal.currentCityWeather, _data);
             return vPortal.currentCityWeather;
@@ -2375,8 +2424,8 @@ vPortal.sectionHandler.weatherTemplete = {
         //var weather = callBackendMethod("weatherAreaInfoManager", "getWeatherByCityName", vPortal.currentCity);
         var data = new Object();
         data.managerMethod = "getWeatherByCityName";
-        if(!vPortal.currentCity){
-        	vPortal.currentCity= "北京";
+        if (!vPortal.currentCity) {
+            vPortal.currentCity = "北京";
         }
         data.arguments = $.toJSON(vPortal.currentCity);
         var url = '/seeyon/ajax.do?method=ajaxAction&managerName=weatherAreaInfoManager'; //注意：为了etag，这个url不能加随机数
@@ -2387,7 +2436,7 @@ vPortal.sectionHandler.weatherTemplete = {
             dataType: "json",
             beforeSend: CsrfGuard.beforeAjaxSend,
             async: true,
-            success: function(weather) {
+            success: function (weather) {
                 vPortal.sectionHandler.weatherTemplete.updateWeatherToDom(weather, _data);
                 vPortal.currentCityWeather = weather;
                 vPortal.currentCityWeatherTime = new Date().getTime();
@@ -2395,7 +2444,7 @@ vPortal.sectionHandler.weatherTemplete = {
             }
         });
     },
-    getCity: function(_p) {
+    getCity: function (_p) {
         var selectObj = _p.obj;
         var cityObj = $("#city_" + _p._entityId);
         var key = $(selectObj).val();
@@ -2405,14 +2454,14 @@ vPortal.sectionHandler.weatherTemplete = {
             return;
         }
         callBackendMethod("weatherAreaInfoManager", "getDistrictListByProvEn", key, {
-            success: function(data) {
+            success: function (data) {
                 if (data == '__LOGOUT') {
                     offlineFun();
                     return;
                 }
                 if (null != data) {
                     $(cityObj).empty();
-                    $.each(data, function(key, value) {
+                    $.each(data, function (key, value) {
                         if (value == vPortal.cityName) {
                             $(cityObj).append("<option selected value='" + key + "'>" + value + "</option>");
                         } else {
@@ -2423,7 +2472,7 @@ vPortal.sectionHandler.weatherTemplete = {
             }
         });
     },
-    saveCity: function(_panelId) {
+    saveCity: function (_panelId) {
         var _currentSectionPanel = vPortal.allSectionPanels[_panelId];
         var url = "/seeyon/portal/weatherController.do?method=updateProperty&entityId=" + _currentSectionPanel.entityId + "&x=" + _currentSectionPanel.x + "&y=" + _currentSectionPanel.y + "&spaceId=" + _currentSectionPanel.spaceId + "&width=" + _currentSectionPanel.sWidth;
         var city = $("#city_" + _currentSectionPanel.entityId).find("option:selected").text();
@@ -2455,7 +2504,7 @@ vPortal.sectionHandler.weatherTemplete = {
             data: $.parseJSON(data),
             type: 'POST',
             dataType: 'json',
-            success: function(data) {
+            success: function (data) {
                 if (data.result != "true") {
                     var pagePath = data.pagePath;
                     var spaceId = data.spaceId;
@@ -2468,7 +2517,7 @@ vPortal.sectionHandler.weatherTemplete = {
             }
         }, newData);
     },
-    toggleWeather: function(_entityId) {
+    toggleWeather: function (_entityId) {
         var weatherObj = document.getElementById("weather_" + _entityId);
         var weatherAreaObj = document.getElementById("weatherArea_" + _entityId);
         if (weatherObj.style.display == "none") {
@@ -2485,7 +2534,7 @@ vPortal.sectionHandler.weatherTemplete = {
         if (l == 0) {
             //添加省的数据
             callBackendMethod("weatherAreaInfoManager", "getProvList", {
-                success: function(data) {
+                success: function (data) {
                     if (data == '__LOGOUT') {
                         offlineFun();
                         return;
@@ -2493,7 +2542,7 @@ vPortal.sectionHandler.weatherTemplete = {
                     var provObj = $("#prov_" + _entityId);
                     $(provObj).empty();
                     $(provObj).append("<option value=''>当前城市</option>");
-                    $.each(data, function(key, value) {
+                    $.each(data, function (key, value) {
                         $(provObj).append("<option value='" + key + "'>" + value + "</option>");
                     });
                     //添加城市
@@ -2506,134 +2555,134 @@ vPortal.sectionHandler.weatherTemplete = {
     }
 }
 
-function windowAtob(sectionName){
+function windowAtob(sectionName) {
     if (vPortal.isDesigner && typeof (previewVPortalSpace) != "undefined" && previewVPortalSpace == false) {
-       return sectionName;  // 设计器中的假数据无需转换
+        return sectionName;  // 设计器中的假数据无需转换
     }
-	var base = new Base64();
-	var str = base.decode(sectionName);
-	return str;
+    var base = new Base64();
+    var str = base.decode(sectionName);
+    return str;
 }
 
 function Base64() {
 
-  // private property
-  var _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+    // private property
+    var _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
-  // public method for encoding
-  this.encode = function (input) {
-      var output = "";
-      var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
-      var i = 0;
-      input = _utf8_encode(input);
-      while (i < input.length) {
-          chr1 = input.charCodeAt(i++);
-          chr2 = input.charCodeAt(i++);
-          chr3 = input.charCodeAt(i++);
-          enc1 = chr1 >> 2;
-          enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
-          enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
-          enc4 = chr3 & 63;
-          if (isNaN(chr2)) {
-              enc3 = enc4 = 64;
-          } else if (isNaN(chr3)) {
-              enc4 = 64;
-          }
-          output = output +
-          _keyStr.charAt(enc1) + _keyStr.charAt(enc2) +
-          _keyStr.charAt(enc3) + _keyStr.charAt(enc4);
-      }
-      return output;
-  }
+    // public method for encoding
+    this.encode = function (input) {
+        var output = "";
+        var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+        var i = 0;
+        input = _utf8_encode(input);
+        while (i < input.length) {
+            chr1 = input.charCodeAt(i++);
+            chr2 = input.charCodeAt(i++);
+            chr3 = input.charCodeAt(i++);
+            enc1 = chr1 >> 2;
+            enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+            enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+            enc4 = chr3 & 63;
+            if (isNaN(chr2)) {
+                enc3 = enc4 = 64;
+            } else if (isNaN(chr3)) {
+                enc4 = 64;
+            }
+            output = output +
+                _keyStr.charAt(enc1) + _keyStr.charAt(enc2) +
+                _keyStr.charAt(enc3) + _keyStr.charAt(enc4);
+        }
+        return output;
+    }
 
-  // public method for decoding
-  this.decode = function (input) {
-      var output = "";
-      var chr1, chr2, chr3;
-      var enc1, enc2, enc3, enc4;
-      var i = 0;
-      input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
-      while (i < input.length) {
-          enc1 = _keyStr.indexOf(input.charAt(i++));
-          enc2 = _keyStr.indexOf(input.charAt(i++));
-          enc3 = _keyStr.indexOf(input.charAt(i++));
-          enc4 = _keyStr.indexOf(input.charAt(i++));
-          chr1 = (enc1 << 2) | (enc2 >> 4);
-          chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
-          chr3 = ((enc3 & 3) << 6) | enc4;
-          output = output + String.fromCharCode(chr1);
-          if (enc3 != 64) {
-              output = output + String.fromCharCode(chr2);
-          }
-          if (enc4 != 64) {
-              output = output + String.fromCharCode(chr3);
-          }
-      }
-      output = _utf8_decode(output);
-      return output;
-  }
+    // public method for decoding
+    this.decode = function (input) {
+        var output = "";
+        var chr1, chr2, chr3;
+        var enc1, enc2, enc3, enc4;
+        var i = 0;
+        input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+        while (i < input.length) {
+            enc1 = _keyStr.indexOf(input.charAt(i++));
+            enc2 = _keyStr.indexOf(input.charAt(i++));
+            enc3 = _keyStr.indexOf(input.charAt(i++));
+            enc4 = _keyStr.indexOf(input.charAt(i++));
+            chr1 = (enc1 << 2) | (enc2 >> 4);
+            chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+            chr3 = ((enc3 & 3) << 6) | enc4;
+            output = output + String.fromCharCode(chr1);
+            if (enc3 != 64) {
+                output = output + String.fromCharCode(chr2);
+            }
+            if (enc4 != 64) {
+                output = output + String.fromCharCode(chr3);
+            }
+        }
+        output = _utf8_decode(output);
+        return output;
+    }
 
-  // private method for UTF-8 encoding
-  var _utf8_encode = function (string) {
-      string = string.replace(/\r\n/g,"\n");
-      var utftext = "";
-      for (var n = 0; n < string.length; n++) {
-          var c = string.charCodeAt(n);
-          if (c < 128) {
-              utftext += String.fromCharCode(c);
-          } else if((c > 127) && (c < 2048)) {
-              utftext += String.fromCharCode((c >> 6) | 192);
-              utftext += String.fromCharCode((c & 63) | 128);
-          } else {
-              utftext += String.fromCharCode((c >> 12) | 224);
-              utftext += String.fromCharCode(((c >> 6) & 63) | 128);
-              utftext += String.fromCharCode((c & 63) | 128);
-          }
+    // private method for UTF-8 encoding
+    var _utf8_encode = function (string) {
+        string = string.replace(/\r\n/g, "\n");
+        var utftext = "";
+        for (var n = 0; n < string.length; n++) {
+            var c = string.charCodeAt(n);
+            if (c < 128) {
+                utftext += String.fromCharCode(c);
+            } else if ((c > 127) && (c < 2048)) {
+                utftext += String.fromCharCode((c >> 6) | 192);
+                utftext += String.fromCharCode((c & 63) | 128);
+            } else {
+                utftext += String.fromCharCode((c >> 12) | 224);
+                utftext += String.fromCharCode(((c >> 6) & 63) | 128);
+                utftext += String.fromCharCode((c & 63) | 128);
+            }
 
-      }
-      return utftext;
-  }
+        }
+        return utftext;
+    }
 
-  // private method for UTF-8 decoding
-  var _utf8_decode = function (utftext) {
-      var string = "";
-      var i = 0;
-      var c =0;
-	  var c1 =0;
-	  var c2 = 0;
-	  var c3 = 0;
-      while ( i < utftext.length ) {
-          c = utftext.charCodeAt(i);
-          if (c < 128) {
-              string += String.fromCharCode(c);
-              i++;
-          } else if((c > 191) && (c < 224)) {
-              c2 = utftext.charCodeAt(i+1);
-              string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
-              i += 2;
-          } else {
-              c2 = utftext.charCodeAt(i+1);
-              c3 = utftext.charCodeAt(i+2);
-              string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
-              i += 3;
-          }
-      }
-      return string;
-  }
+    // private method for UTF-8 decoding
+    var _utf8_decode = function (utftext) {
+        var string = "";
+        var i = 0;
+        var c = 0;
+        var c1 = 0;
+        var c2 = 0;
+        var c3 = 0;
+        while (i < utftext.length) {
+            c = utftext.charCodeAt(i);
+            if (c < 128) {
+                string += String.fromCharCode(c);
+                i++;
+            } else if ((c > 191) && (c < 224)) {
+                c2 = utftext.charCodeAt(i + 1);
+                string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
+                i += 2;
+            } else {
+                c2 = utftext.charCodeAt(i + 1);
+                c3 = utftext.charCodeAt(i + 2);
+                string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
+                i += 3;
+            }
+        }
+        return string;
+    }
 }
 
 
-var avoidRepeatedClicks = function(_key){
+var avoidRepeatedClicks = function (_key) {
     //重复点击防护
-    if(vPortal.urlCache[_key]){
+    if (vPortal.urlCache[_key]) {
         // console.log("you click too fast !");
         return false;
-    }else{
+    } else {
         vPortal.urlCache[_key] = "clicked";
-        setTimeout(function(){
+        setTimeout(function () {
             //释放，允许再次点击
             delete vPortal.urlCache[_key];
-        },1000);
+        }, 1000);
         return true;
     }
 }

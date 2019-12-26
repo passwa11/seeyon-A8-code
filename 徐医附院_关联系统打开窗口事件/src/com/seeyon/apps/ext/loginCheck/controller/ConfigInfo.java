@@ -9,7 +9,13 @@ import java.util.Properties;
  */
 public class ConfigInfo {
     public static String ipAddress;
-    public static String linkId;
+    public static String yuanwaiNet;
+    public static String gongwangNet;
+
+    public static String neiLinkId;
+    public static String yuanLinkId;
+    public static String gongLinkId;
+
 
     private static ConfigInfo ConfigInfo;
 
@@ -26,17 +32,39 @@ public class ConfigInfo {
         try {
             prop.load(in);
             ipAddress = prop.getProperty("xyfy.ip.address");
-            linkId = prop.getProperty("xyfy.ip.linkId");
+            yuanwaiNet = prop.getProperty("xyfy.ip.yuanwai");
+            gongwangNet = prop.getProperty("xyfy.ip.gongwang");
+
+            neiLinkId = prop.getProperty("xyfy.ip.neilinkId");
+            yuanLinkId = prop.getProperty("xyfy.ip.yuanlinkId");
+            gongLinkId = prop.getProperty("xyfy.ip.gonglinkId");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String getYuanwaiNet() {
+        return yuanwaiNet;
+    }
+
+    public static String getGongwangNet() {
+        return gongwangNet;
     }
 
     public static String getIpAddress() {
         return ipAddress;
     }
 
-    public static String getLinkId() {
-        return linkId;
+    public static String getNeiLinkId() {
+        return neiLinkId;
+    }
+
+    public static String getYuanLinkId() {
+        return yuanLinkId;
+    }
+
+    public static String getGongLinkId() {
+        return gongLinkId;
     }
 }

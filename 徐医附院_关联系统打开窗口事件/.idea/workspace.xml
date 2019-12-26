@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2365740-a727-46ec-8f77-2524c94db40e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/seeyon/main/login/default/css/login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/config/ipConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/config/ipConfig.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/main/login/default/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/main/login/default/login.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/portal/sections/section.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/portal/sections/section.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java" afterDir="false" />
@@ -38,7 +36,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/seeyon/main/login/default/css" />
+    <property name="last_opened_file_path" value="F:/Seeyon/A87.1_sp1_oracle/ApacheJetspeed/webapps/seeyon" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -138,7 +136,8 @@
       <workItem from="1575944567040" duration="2542000" />
       <workItem from="1575962008519" duration="65000" />
       <workItem from="1576459174115" duration="2577000" />
-      <workItem from="1577242045574" duration="10134000" />
+      <workItem from="1577242045574" duration="10411000" />
+      <workItem from="1577321446390" duration="11874000" />
     </task>
     <task id="LOCAL-00001" summary="获取客户端ip">
       <created>1575946411275</created>
@@ -147,11 +146,28 @@
       <option name="project" value="LOCAL" />
       <updated>1575946411275</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="获取客户端ip">
+      <created>1577257024353</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1577257024353</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -177,8 +193,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java</url>
-          <line>29</line>
+          <line>31</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
