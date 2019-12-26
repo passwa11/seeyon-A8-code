@@ -72,6 +72,7 @@ public class loginCheckController extends BaseController {
             }
         } else {
             map.put("linkIds", "linkId is null");
+            map.put("msg", "访问地址出错了！");
         }
         map.put("flag", type);
         return map;
