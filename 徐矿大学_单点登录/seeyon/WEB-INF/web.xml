@@ -25,7 +25,8 @@
         </init-param>
         <init-param>
             <param-name>serverName</param-name>
-            <param-value>http://219.219.55.69:8080</param-value>
+<!--            <param-value>http://219.219.55.69:8080</param-value>-->
+            <param-value>http://219.219.50.8:80</param-value>
         </init-param>
     </filter>
 
@@ -39,7 +40,9 @@
         </init-param>
         <init-param>
             <param-name>serverName</param-name>
-            <param-value>http://219.219.55.69:8080</param-value>
+<!--            <param-value>http://219.219.55.69:8080</param-value>-->
+            <param-value>http://219.219.50.8:80</param-value>
+
         </init-param>
         <init-param>
             <param-name>redirectAfterValidation</param-name>
