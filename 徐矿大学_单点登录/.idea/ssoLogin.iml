@@ -24,5 +24,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="cas-client-core-3.2.1" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

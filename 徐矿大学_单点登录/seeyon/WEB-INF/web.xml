@@ -8,6 +8,7 @@
     <display-name>SEEYON CTP</display-name>
 
     <!--  start:zhou=============================================================================================  -->
+
     <!-- ==================== 单点登录开始 ================ -->
     <!-- 用于单点退出，该过滤器用于实现单点登出功能，可选配置 -->
     <listener>
@@ -539,6 +540,17 @@
             <transport-guarantee>NONE</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
+
+<!--start:zhou 20191230-->
+    <servlet>
+        <servlet-name>XkSsoLogin</servlet-name>
+        <servlet-class>com.seeyon.apps.ext.ssoLogin.sso.XkSsoLogin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>XkSsoLogin</servlet-name>
+        <url-pattern>/xklogin</url-pattern>
+    </servlet-mapping>
+<!--end:zhou    -->
 
     <!-- web service -->
     <servlet>

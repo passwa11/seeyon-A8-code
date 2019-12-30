@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5133f731-b77c-4cfb-845c-040dfaef0d1c" name="Default Changelist" comment="" />
+    <list default="true" id="5133f731-b77c-4cfb-845c-040dfaef0d1c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/src/com/test/Demo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/src/com/test/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/lib/Ice.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/lib/idstar.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/lib/jakarta-regexp-1.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/lib/servlet.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/client.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/out/production/RestTest/com/test/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/out/production/RestTest/com/test/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/out/production/RestTest/com/test/RestTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/out/production/RestTest/com/test/RestTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/src/com/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/src/com/test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/src/com/test/RestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/src/com/test/RestTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/config/ipConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/config/ipConfig.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/src/config/ipConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/src/config/ipConfig.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_把菜单添加输入密码验证/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_把菜单添加输入密码验证/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ssoLogin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ssoLogin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/index.jsp_001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/index_bak.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/ssoLogin/sso/XkSsoLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/ssoLogin/sso/XkSsoLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/ssoLogin/sso/XkdxSsoLoginHandshake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/ssoLogin/sso/XkdxSsoLoginHandshake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/徐矿大学单点登录.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,11 +45,16 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1UuqvqnQqJb0a0feU5DqEa647EW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/seeyon/WEB-INF/lib" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -32,9 +67,11 @@
       <recent name="com.seeyon.apps.ext.ssoLogin.util" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\a8_code\A-8-code\徐矿大学_单点登录\seeyon\WEB-INF\lib" />
+      <recent name="F:\a8_code\A-8-code\徐矿大学_单点登录\src" />
+      <recent name="F:\a8_code\A-8-code\徐矿大学_单点登录\seeyon" />
       <recent name="F:\0_调试代码\ssoLogin\seeyon" />
       <recent name="F:\0_调试代码\ssoLogin\seeyon\WEB-INF\lib" />
-      <recent name="F:\0_调试代码\ssoLogin\seeyon\WEB-INF" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -101,10 +138,114 @@
       <workItem from="1576217062955" duration="2338000" />
       <workItem from="1576227307818" duration="505000" />
       <workItem from="1576456393855" duration="10125000" />
+      <workItem from="1577350227061" duration="1810000" />
+      <workItem from="1577408999791" duration="12950000" />
+      <workItem from="1577493762032" duration="3753000" />
+      <workItem from="1577667295716" duration="3480000" />
+      <workItem from="1577673529167" duration="912000" />
+      <workItem from="1577684742853" duration="4146000" />
     </task>
+    <task id="LOCAL-00001" summary="解决7.1sp1拦截jsp 问题">
+      <created>1577351280024</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1577351280024</updated>
+    </task>
+    <task id="LOCAL-00002" summary="解决7.1sp1拦截jsp 问题">
+      <created>1577411203876</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1577411203876</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update">
+      <created>1577672455907</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1577672455907</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:F:/a8_code/A-8-code/徐矿大学_单点登录/src/com/seeyon" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="2">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:F:/a8_code/A-8-code/徐矿大学_单点登录/src/com/seeyon/ctp/common/web/filter" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_TABS">
+      <set>
+        <option value="1" />
+        <option value="2" />
+      </set>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="解决7.1sp1拦截jsp 问题" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
