@@ -1,7 +1,6 @@
 package com.seeyon.apps.ext.ssoLogin.controller;
 
 import com.seeyon.apps.ext.ssoLogin.util.StringHandle;
-import org.jasig.cas.client.authentication.AttributePrincipal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.security.Principal;
-import java.util.Map;
 
 /**
  * 周刘成   2019-12-31
