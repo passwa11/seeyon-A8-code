@@ -42,7 +42,7 @@ public class syncPostDaoImpl implements syncPostDao {
                 post.settId(map.get("t_id") != null ? ((BigDecimal) map.get("t_id")).longValue() : 0);
                 post.setAccountId(map.get("account_id") != null ? ((BigDecimal) map.get("account_id")).longValue() : 0);
                 post.setSortId(map.get("sort_id") != null ? ((BigDecimal) map.get("sort_id")).longValue() : 0);
-                post.setPostCode((String) map.get("post_code"));
+                post.setPostCode(((String) map.get("t_id")));
                 post.setPostName((String) map.get("post_name"));
                 post.setPostDesc((String) map.get("post_desc"));
                 post.setOperationType(map.get("operation_type") != null ? ((BigDecimal) map.get("operation_type")).longValue() : 0);
@@ -67,7 +67,7 @@ public class syncPostDaoImpl implements syncPostDao {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            String thirtySql = "update mid_post set oa_id=? where post_code=?";
+            String thirtySql = "update mid_post set oa_id=?,post_code=? where t_id=?";
             ps = connection.prepareStatement(thirtySql);
             if (null != list && list.size() > 0) {
                 Map map = null;
@@ -98,6 +98,7 @@ public class syncPostDaoImpl implements syncPostDao {
                             //向第三方中间库中写数据
                             ps.setObject(1, postId);
                             ps.setObject(2, post.getPostCode());
+                            ps.setObject(3, post.gettId());
                             ps.executeUpdate();
                         }
                     }
