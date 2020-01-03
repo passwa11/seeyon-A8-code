@@ -17,9 +17,6 @@
       <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/src/config/ipConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/src/config/ipConfig.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐医附院_把菜单添加输入密码验证/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_把菜单添加输入密码验证/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/sso/XkdxSsoLoginHandshake.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/sso/XkdxSsoLoginHandshake.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/util/StringHandle.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/util/StringHandle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/ssoLogin/controller/SsoLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/ssoLogin/controller/SsoLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,7 +41,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -137,7 +134,7 @@
       <workItem from="1577695162059" duration="1588000" />
       <workItem from="1577760077498" duration="6754000" />
       <workItem from="1577773728883" duration="28000" />
-      <workItem from="1577775153867" duration="2695000" />
+      <workItem from="1577775153867" duration="3373000" />
     </task>
     <task id="LOCAL-00001" summary="解决7.1sp1拦截jsp 问题">
       <created>1577351280024</created>
@@ -188,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577779037916</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update">
+      <created>1577779680366</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1577779680366</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -2,14 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d607215e-76df-4996-9096-1c1350f22bbe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../263邮箱菜单集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../263邮箱菜单集成/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/src/com/test/Demo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/src/com/test/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../徐矿大学_单点登录/src/needless_check_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/out/production/RestTest/com/test/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/out/production/RestTest/com/test/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/out/production/RestTest/com/test/RestTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/out/production/RestTest/com/test/RestTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/src/com/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/src/com/test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/src/com/test/RestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/src/com/test/RestTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/xzyk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/xzyk.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../徐医附院/fileUploadConfig/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院/fileUploadConfig/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../公文/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/seeyon/main/login/default/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/seeyon/main/login/default/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../徐矿263邮箱单点登录_账号映射/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿263邮箱单点登录_账号映射/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/config/ipConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/config/ipConfig.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/src/config/ipConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/src/config/ipConfig.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐医附院_把菜单添加输入密码验证/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_把菜单添加输入密码验证/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿大学_单点登录/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -349,6 +356,7 @@
       <workItem from="1576139384961" duration="614000" />
       <workItem from="1576485771523" duration="2191000" />
       <workItem from="1576543630371" duration="115000" />
+      <workItem from="1577697114487" duration="265000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1563959798082</created>

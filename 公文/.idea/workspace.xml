@@ -2,54 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="066743ca-2b82-46a1-97b3-2eaacafbdf87" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../A8-Test/7.1_code/.idea/7.1_code.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../A8-Test/7.1_code/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../A8-Test/Gc/Gc.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../A8-Test/Gc/lib/commons-lang-2.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../A8-Test/Gc/src/cn/d/singlerton/test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../A8-Test/Test/Test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../A8-Test/TestTree/TestTree.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../A8-Test/font/font.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../A8-Test/font/html/one.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../A8-Test/xzyk/.idea/xzyk.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../A8-Test/xzyk/src/xzykConf/xzykPlugin.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../A8-Test/表单提交/.idea/表单提交.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../A8-Test/表单提交/src/com/seeyon/ctp/form/service/FormDataController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../A8-Test/组织机构同步标准插件/.idea/组织机构同步标准插件.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/ProxySend/ProxySend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/cap4form/cap4form.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/demo_WorkflowEvent/demo_WorkflowEvent.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/libraries/Maven__oracle_jdbc_ojdbc14_14_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/com.javaJdbc.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/javaJdbc.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/annotation/HibernateAnnotationProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/annotation/IdProperty.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/annotation/Persistent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/annotation/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/annotation/Property.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/PizzaStore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/factory/Factory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/factory/MealFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/pizza/ApplePizza.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/pizza/CalzonePizza.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/pizza/MargheritaPizza.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/pizza/Meal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/pizza/Tiramisu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/demo/processor/FacrotyProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/javaJdbc/src/main/java/com/zhou/util/JdbcUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/listenerevent/listenerevent.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/testEvent/.idea/testEvent.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/wf_node_samples/.idea/wf_node_samples.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/公文.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../A8-Test/催办/seeyon/WEB-INF/jsp/ctp/workflow/workflowPreHasten.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +56,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="D:/HeiMa/day22_baseEnhance/源码/day22_03_annotation" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -113,6 +66,9 @@
     <property name="two.files.diff.last.used.file" value="F:/EdocController.java" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.seeyon.ctp.rest.resources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\s\A8-Test\公文\seeyon\WEB-INF\classes\com\seeyon\v3x\edoc\domain" />
     </key>
@@ -368,6 +324,8 @@
       <workItem from="1572315564932" duration="49000" />
       <workItem from="1572482204480" duration="844000" />
       <workItem from="1577065417227" duration="167000" />
+      <workItem from="1577066174557" duration="981000" />
+      <workItem from="1577079701594" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1566893299814</created>
@@ -383,7 +341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568256994862</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add">
+      <created>1577066894709</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1577066894709</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -425,7 +390,8 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="add" />
+    <option name="LAST_COMMIT_MESSAGE" value="add" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

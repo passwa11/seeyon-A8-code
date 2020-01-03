@@ -106,7 +106,7 @@ public class RestTest {
                 String responseContent = EntityUtils.toString(httpEntity, "UTF-8");
                 //释放资源
                 EntityUtils.consume(httpEntity);
-                System.out.println("响应内容：" + responseContent);
+                System.out.println(responseContent);
             }
         } catch (Exception e) {
             e.printStackTrace();
