@@ -8,11 +8,11 @@ public interface syncPostDao {
 
     List<SyncOrgPost> queryNotExitPost();
 
-    List<SyncOrgPost> queryChangePost();
+//    List<SyncOrgPost> queryChangePost();
 
     //创建岗位
     void insertPost(List<SyncOrgPost> list);
 
-    void updatePost(List<SyncOrgPost> list);
+//    void updatePost(List<SyncOrgPost> list);
 
 }

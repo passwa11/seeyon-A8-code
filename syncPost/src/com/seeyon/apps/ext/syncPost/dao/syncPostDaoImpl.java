@@ -26,11 +26,11 @@ public class syncPostDaoImpl implements syncPostDao {
         return this.generalMethod(sql);
     }
 
-    @Override
-    public List<SyncOrgPost> queryChangePost() {
-        String sql = "select l.*,m.post_id from MID_POST m,MID_POST@gcxylink l where m.POST_CODE= l.POST_CODE and ( m.POST_NAME<> l.POST_NAME or m.POST_DESC <> l.POST_DESC)";
-        return this.generalMethod(sql);
-    }
+//    @Override
+//    public List<SyncOrgPost> queryChangePost() {
+//        String sql = "select l.*,m.post_id from MID_POST m,MID_POST@gcxylink l where m.POST_CODE= l.POST_CODE and ( m.POST_NAME<> l.POST_NAME or m.POST_DESC <> l.POST_DESC)";
+//        return this.generalMethod(sql);
+//    }
 
     public List<SyncOrgPost> generalMethod(String sql) {
         List<SyncOrgPost> levelList = new ArrayList<>();
@@ -113,46 +113,46 @@ public class syncPostDaoImpl implements syncPostDao {
         }
     }
 
-    @Override
-    public void updatePost(List<SyncOrgPost> list) {
-        CTPRestClient client = SyncConnectionUtil.getOaRest();
-        try {
-            if (null != list && list.size() > 0) {
-                Map map = null;
-                MidPost mp = null;
-                List updateList = new ArrayList();
-                List<MidPost> midPostList = new ArrayList<>();
-                for (SyncOrgPost post : list) {
-                    map = new HashMap();
-                    map.put("id", post.getPostId());
-                    map.put("code", post.getPostCode());
-                    map.put("name", post.getPostName());
-                    map.put("description", post.getPostDesc());
-                    updateList.add(map);
-
-                    mp = new MidPost();
-                    mp.setId(post.gettId());
-                    mp.setPostName(post.getPostName());
-                    mp.setPostDesc(post.getPostDesc());
-                    mp.setPostCode(post.getPostCode());
-                    mp.setPostId(post.getPostId());
-                    midPostList.add(mp);
-                }
-                JSONObject json = client.post("/orgPost/updatePosts", updateList, JSONObject.class);
-                if (null != json) {
-                    if (json.getBoolean("success")) {
-                        for (MidPost n : midPostList) {
-                            String sql = "update mid_post set POST_NAME='" + n.getPostName() + "',POST_DESC='" + n.getPostDesc() + "' where POST_ID=" + n.getPostId();
-                            JDBCUtil.doUpdate(sql);
-                        }
-
-                    }
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    @Override
+//    public void updatePost(List<SyncOrgPost> list) {
+//        CTPRestClient client = SyncConnectionUtil.getOaRest();
+//        try {
+//            if (null != list && list.size() > 0) {
+//                Map map = null;
+//                MidPost mp = null;
+//                List updateList = new ArrayList();
+//                List<MidPost> midPostList = new ArrayList<>();
+//                for (SyncOrgPost post : list) {
+//                    map = new HashMap();
+//                    map.put("id", post.getPostId());
+//                    map.put("code", post.getPostCode());
+//                    map.put("name", post.getPostName());
+//                    map.put("description", post.getPostDesc());
+//                    updateList.add(map);
+//
+//                    mp = new MidPost();
+//                    mp.setId(post.gettId());
+//                    mp.setPostName(post.getPostName());
+//                    mp.setPostDesc(post.getPostDesc());
+//                    mp.setPostCode(post.getPostCode());
+//                    mp.setPostId(post.getPostId());
+//                    midPostList.add(mp);
+//                }
+//                JSONObject json = client.post("/orgPost/updatePosts", updateList, JSONObject.class);
+//                if (null != json) {
+//                    if (json.getBoolean("success")) {
+//                        for (MidPost n : midPostList) {
+//                            String sql = "update mid_post set POST_NAME='" + n.getPostName() + "',POST_DESC='" + n.getPostDesc() + "' where POST_ID=" + n.getPostId();
+//                            JDBCUtil.doUpdate(sql);
+//                        }
+//
+//                    }
+//                }
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 }

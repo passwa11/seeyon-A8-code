@@ -20,18 +20,18 @@ public class syncPostManagerImpl implements syncPostManager {
         postDao.insertPost(list);
     }
 
-    @Override
-    public List<SyncOrgPost> queryChangePost() {
-        return postDao.queryChangePost();
-    }
+//    @Override
+//    public List<SyncOrgPost> queryChangePost() {
+//        return postDao.queryChangePost();
+//    }
 
     @Override
     public List<SyncOrgPost> queryNotExitPost() {
         return postDao.queryNotExitPost();
     }
 
-    @Override
-    public void updatePost(List<SyncOrgPost> list) {
-        postDao.updatePost(list);
-    }
+//    @Override
+//    public void updatePost(List<SyncOrgPost> list) {
+//        postDao.updatePost(list);
+//    }
 }

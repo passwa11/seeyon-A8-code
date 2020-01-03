@@ -22,8 +22,8 @@ public class SyncPostTask extends Thread {
         List<SyncOrgPost> list = manager.queryNotExitPost();
         manager.insertPost(list);
         //update
-        List<SyncOrgPost> updateList = manager.queryChangePost();
-        manager.updatePost(updateList);
+//        List<SyncOrgPost> updateList = manager.queryChangePost();
+//        manager.updatePost(updateList);
     }
 
     public syncPostManager getManager() {

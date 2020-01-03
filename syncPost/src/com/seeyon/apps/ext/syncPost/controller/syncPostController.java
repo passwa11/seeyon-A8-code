@@ -23,8 +23,8 @@ public class syncPostController extends BaseController {
         List<SyncOrgPost> list = syncPostManager.queryNotExitPost();
         syncPostManager.insertPost(list);
         //update
-        List<SyncOrgPost> updateList = syncPostManager.queryChangePost();
-        syncPostManager.updatePost(updateList);
+//        List<SyncOrgPost> updateList = syncPostManager.queryChangePost();
+//        syncPostManager.updatePost(updateList);
         return null;
     }
 }

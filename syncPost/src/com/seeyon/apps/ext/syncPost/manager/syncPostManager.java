@@ -8,10 +8,10 @@ public interface syncPostManager {
 
     List<SyncOrgPost> queryNotExitPost();
 
-    List<SyncOrgPost> queryChangePost();
+//    List<SyncOrgPost> queryChangePost();
 
     void insertPost(List<SyncOrgPost> list);
 
-    void updatePost(List<SyncOrgPost> list);
+//    void updatePost(List<SyncOrgPost> list);
 
 }
