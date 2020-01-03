@@ -15,7 +15,7 @@ public class syncPostPluginInitializer extends AbstractSystemInitializer {
         SyncPostTask deptTask = new SyncPostTask();
 
         //一小时执行一次
-//        TimerHolder.newTimer(deptTask, 20 * 60 * 1000, PERIOD_DAY);
+        TimerHolder.newTimer(deptTask, 20 * 60 * 1000, PERIOD_DAY);
         //test
 //        TimerHolder.newTimer(deptTask, 1 * 60 * 1000, 2*60*1000);
 
