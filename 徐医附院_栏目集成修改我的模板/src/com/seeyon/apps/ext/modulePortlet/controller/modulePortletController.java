@@ -619,7 +619,9 @@ public class modulePortletController extends BaseController {
         Predicate<TemplateTreeVo> p1= n ->n.getId()!=404;
         Predicate<TemplateTreeVo> p2= n ->n.getId()!=32;
         Predicate<TemplateTreeVo> p3= n ->n.getId()!=100;
-        List<TemplateTreeVo> list=listTreeVo.stream().filter(p1.and(p2).and(p3)).collect(Collectors.toList());
+        Predicate<TemplateTreeVo> p4= n ->n.getId()!=401;
+        Predicate<TemplateTreeVo> p5= n ->n.getId()!=402;
+        List<TemplateTreeVo> list=listTreeVo.stream().filter(p1.and(p2).and(p3).and(p4).and(p5)).collect(Collectors.toList());
         modelAndView.addObject("showCategorys", list);
         modelAndView.addObject("showTemplates", JSONUtil.toJSONString(showTemplates));
         modelAndView.addObject("templeteIcon", templeteIcon);
