@@ -37,16 +37,31 @@ public class loginCheckController extends BaseController {
         Long gongwangNum = transferIp(ConfigInfo.getGongwangNet());
 
         Map map = new HashMap();
+        String neilinkIds = ConfigInfo.getNeiLinkId();
+        String yuanwailinkIds = ConfigInfo.getYuanLinkId();
+        String gonglinkIds = ConfigInfo.getGongLinkId();
+        String clicktype_ = "";
+        if (neilinkIds.indexOf(linkId) != -1) {
+            clicktype_ = "nei";
+        }
+        if (yuanwailinkIds.indexOf(linkId) != -1) {
+            clicktype_ = "yuan";
+        }
+
+        if (gonglinkIds.indexOf(linkId) != -1) {
+            clicktype_ = "gong";
+        }
+
         String linkIds = "";
         if (ipNum.longValue() == neiWangNum.longValue()) {
-            linkIds = ConfigInfo.getNeiLinkId();
-            map = judge(linkIds, linkId, "请在院内网打开！", "nei");
+            linkIds = neilinkIds;
+            map = judge(linkIds, linkId, "nei", clicktype_);
         } else if (ipNum.longValue() == yuanwaiNum.longValue()) {
-            linkIds = ConfigInfo.getYuanLinkId();
-            map = judge(linkIds, linkId, "请在院外网打开！", "yuan");
+            linkIds = yuanwailinkIds;
+            map = judge(linkIds, linkId, "yuan", clicktype_);
         } else if (ipNum.longValue() == gongwangNum.longValue()) {
-            linkIds = ConfigInfo.getGongLinkId();
-            map = judge(linkIds, linkId, "请在公网打开！", "gong");
+            linkIds = gonglinkIds;
+            map = judge(linkIds, linkId, "gong", clicktype_);
         } else {
             map.put("code", -1);
             map.put("flag", "");
@@ -59,16 +74,24 @@ public class loginCheckController extends BaseController {
         return null;
     }
 
-    public Map judge(String linkIds, String linkId, String message, String type) {
+    public Map judge(String linkIds, String linkId, String type, String clicktype) {
         Map map = new HashMap();
         if (linkIds != null && !linkIds.equals("")) {
             map.put("linkIds", linkIds);
-            if (linkIds.contains(linkId)) {
+            if (type.equals(clicktype)) {
                 map.put("code", 0);
                 map.put("msg", "");
             } else {
                 map.put("code", -1);
-                map.put("msg", message);
+                if(clicktype.equals("nei")){
+                    map.put("msg", "请在内网打开！");
+                }
+                if(clicktype.equals("yuan")){
+                    map.put("msg", "请在院外打开！");
+                }
+                if(clicktype.equals("gong")){
+                    map.put("msg", "请在公网打开！");
+                }
             }
         } else {
             map.put("linkIds", "linkId is null");
