@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="6f9eb4c6-7623-4fed-8d7e-065525301e1a" name="关联" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="F:\Seeyon\A87.1_sp1_oracle\ApacheJetspeed\webapps\seeyon" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

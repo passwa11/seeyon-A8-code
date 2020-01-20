@@ -2,46 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="990d4793-309b-48cd-85f8-78758fbdb8e8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../syncPost/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../落款靠右/.idea/edoc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../syncPost/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../syncPost/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../syncPost/文件/insert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../syncPost/文件/insert.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/BaseSectionImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/BaseSectionImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/SectionManagerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/SectionRegisterManagerImpl$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/SectionRegisterManagerImpl$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/SectionRegisterManagerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/manager/CommonSectionSelector.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/space/controller/SpaceController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/util/Constants$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/util/Constants$EntityLevel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/util/Constants$PageSecurityModelShowType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/util/Constants$SectionType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/util/Constants$SecurityType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/util/Constants$SpaceState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/util/Constants$SpaceType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/util/Constants$SpaceTypeClass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/util/Constants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../修改送文单单位名称/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../修改送文单单位名称/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../催办/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../催办/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../催办/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../催办/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../自定义控件部署包/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../自定义控件部署包/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../默认空间代办/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../默认空间代办/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/loginCheck.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/loginCheck.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/config/ipConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/config/ipConfig.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/src/config/ipConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/src/config/ipConfig.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController.class" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,89 +28,6 @@
   </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="478" column="64" lean-forward="true" selection-start-line="478" selection-start-column="64" selection-end-line="478" selection-end-column="64" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="imports" expanded="true" />
-                <element signature="e#7933#7934#0" expanded="true" />
-                <element signature="e#7960#7961#0" expanded="true" />
-                <element signature="e#8364#8365#0" expanded="true" />
-                <element signature="e#8391#8392#0" expanded="true" />
-                <element signature="e#9799#9815#0" expanded="true" />
-                <element signature="e#21024#21025#0" expanded="true" />
-                <element signature="e#21060#21061#0" expanded="true" />
-                <element signature="e#21125#21126#0" expanded="true" />
-                <element signature="e#21166#21167#0" expanded="true" />
-                <element signature="e#21218#21219#0" expanded="true" />
-                <element signature="e#21251#21252#0" expanded="true" />
-                <element signature="e#23582#23583#0" expanded="true" />
-                <element signature="e#23609#23610#0" expanded="true" />
-                <element signature="e#23747#23748#0" expanded="true" />
-                <element signature="e#23775#23776#0" expanded="true" />
-                <element signature="e#23861#23862#0" expanded="true" />
-                <element signature="e#23888#23889#0" expanded="true" />
-                <element signature="e#24273#24274#0" expanded="true" />
-                <element signature="e#24299#24300#0" expanded="true" />
-                <element signature="e#24382#24383#0" expanded="true" />
-                <element signature="e#24408#24409#0" expanded="true" />
-                <element signature="e#24469#24470#0" expanded="true" />
-                <element signature="e#24497#24498#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/BaseSectionImpl.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4966">
-              <caret line="469" selection-start-line="469" selection-end-line="469" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-              <folding>
-                <element signature="e#1785#1786#0" expanded="true" />
-                <element signature="e#1837#1838#0" expanded="true" />
-                <element signature="e#3111#3112#0" expanded="true" />
-                <element signature="e#3134#3135#0" expanded="true" />
-                <element signature="e#3171#3172#0" expanded="true" />
-                <element signature="e#3201#3202#0" expanded="true" />
-                <element signature="e#4686#4687#0" expanded="true" />
-                <element signature="e#4721#4722#0" expanded="true" />
-                <element signature="e#4787#4788#0" expanded="true" />
-                <element signature="e#4836#4837#0" expanded="true" />
-                <element signature="e#12645#12646#0" expanded="true" />
-                <element signature="e#12663#12664#0" expanded="true" />
-                <element signature="e#12743#12744#0" expanded="true" />
-                <element signature="e#12807#12808#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/collaboration/manager/PendingManagerImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="3569" selection-start-line="3569" selection-end-line="3569" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -157,121 +53,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/com/seeyon/ctp/portal/section/templete/MultiRowVariableColumnColTemplete.java" />
-        <option value="$PROJECT_DIR$/com/seeyon/ctp/portal/section/BaseSectionImpl.java" />
-        <option value="$PROJECT_DIR$/src/com/Test.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/SectionManager.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/SectionManagerImpl.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/templete/MultiRowVariableColumnColTemplete.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/collaboration/manager/PendingManagerImpl.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSection.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="621" />
-    <option name="y" value="47" />
-    <option name="width" value="1536" />
-    <option name="height" value="950" />
-  </component>
+  <component name="ProjectId" id="1WdbQQDvj1NajahlmNjLZcWmg6P" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="ctp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="ctp" type="462c0819:PsiDirectoryNode" />
-              <item name="portal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="代办工作标题变色" type="b2602c69:ProjectViewProjectNode" />
-              <item name="代办工作标题变色" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="ctp" type="462c0819:PsiDirectoryNode" />
-              <item name="portal" type="462c0819:PsiDirectoryNode" />
-              <item name="section" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/A8/致远源码/V7.0SP3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -279,6 +72,9 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="com.zeroturnaround.javarebel.idea.plugin.settings.AdvancedConfigurable" />
     <property name="two.files.diff.last.used.file" value="$USER_HOME$/Desktop/morePending.jsp" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -297,18 +93,6 @@
       <recent name="F:\A8\ctp_2019_06_19\ctp-portal\src\test" />
       <recent name="F:\A8\ctp_2019_06_19\ctp-portal\html" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Remote.Unnamed">
     <configuration default="true" type="Applet">
@@ -376,6 +160,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -398,6 +194,8 @@
       <workItem from="1568251342166" duration="40000" />
       <workItem from="1568623673170" duration="1700000" />
       <workItem from="1568679863561" duration="2457000" />
+      <workItem from="1579482405782" duration="223000" />
+      <workItem from="1579483785399" duration="379000" />
     </task>
     <task id="LOCAL-00001" summary="修改判断">
       <created>1561364023452</created>
@@ -416,60 +214,6 @@
     <option name="localTasksCounter" value="3" />
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47146000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18826666" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="JRebel" order="3" side_tool="true" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Mybatis Builder" order="6" side_tool="true" />
-      <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info id="Image Layers" order="8" />
-      <window_info id="Jspresso Snap" order="9" />
-      <window_info id="MyBatis Builder" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32962963" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.25496688" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="FindBugs-IDEA" order="7" />
-      <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.24172185" />
-      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="File Transfer" order="12" weight="0.20419426" />
-      <window_info anchor="bottom" id="Java Enterprise" order="13" />
-      <window_info anchor="bottom" id="Database Changes" order="14" />
-      <window_info anchor="bottom" id="Version Control" order="15" weight="0.44591612" />
-      <window_info anchor="bottom" id="JRebel Console" order="16" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="17" weight="0.0794702" />
-      <window_info anchor="bottom" id="MyBatis Sql Log" order="18" />
-      <window_info anchor="bottom" id="JRebel Executor" order="19" />
-      <window_info anchor="bottom" id="Tail" order="20" />
-      <window_info anchor="bottom" id="MyBatis Log" order="21" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="BPMNPalette" order="7" />
-      <window_info anchor="right" id="Remote Host" order="8" />
-      <window_info anchor="right" id="Palette&#9;" order="9" />
-      <window_info anchor="right" id="Theme Preview" order="10" />
-      <window_info anchor="right" id="RestServices" order="11" />
-      <window_info anchor="right" id="Bean Validation" order="12" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -487,278 +231,57 @@
     <MESSAGE value="修改判断" />
     <option name="LAST_COMMIT_MESSAGE" value="修改判断" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="580" y="189" key="FileChooserDialogImpl" timestamp="1579482486752">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="580" y="189" key="FileChooserDialogImpl/0.0.1600.870/1600.-180.1920.1080@0.0.1600.870" timestamp="1579482486752" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/portal/section/BaseSectionImpl.class</url>
           <line>320</line>
-          <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-task.jar!/com/seeyon/ctp/portal/section/base/BaseTaskSection.class</url>
           <line>63</line>
-          <properties />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/PendingManagerImpl.java</url>
           <line>645</line>
-          <properties />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/PendingManagerImpl.java</url>
           <line>646</line>
-          <properties />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java</url>
           <line>379</line>
-          <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-common.jar!/com/seeyon/apps/collaboration/manager/PendingManagerImpl.class</url>
           <line>3373</line>
-          <properties />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java</url>
           <line>474</line>
-          <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java</url>
           <line>472</line>
-          <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-core.jar!/com/seeyon/ctp/util/ObjectToXMLBase.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/seeyon/ctp/portal/section/SectionManagerImpl.java" />
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/portal/section/templete/MultiRowFourColumnTemplete.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="50" column="55" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="55" />
-          <folding>
-            <element signature="e#1716#1717#0" expanded="true" />
-            <element signature="e#1783#1784#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/seeyon/ctp/portal/section/BaseSectionImpl.java" />
-    <entry file="file://$PROJECT_DIR$/com/seeyon/ctp/portal/section/templete/MultiRowVariableColumnColTemplete.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/tpl-multiRowVariableColumnColTemplete.html" />
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/SectionManager.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/SectionManagerImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/Test.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/PendingManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="86" column="2" lean-forward="true" selection-start-line="86" selection-start-column="2" selection-end-line="86" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/collaboration/morePending.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-task.jar!/com/seeyon/ctp/portal/section/base/BaseTaskSection.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="62" column="31" selection-start-line="62" selection-start-column="31" selection-end-line="62" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/portal/section/templete/BaseSectionTemplete.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="365" column="19" selection-start-line="365" selection-start-column="19" selection-end-line="365" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/portal/section/BaseSectionImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2565">
-          <caret line="298" column="17" selection-start-line="298" selection-start-column="17" selection-end-line="298" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/portal/section/BaseSection.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-common.jar!/com/seeyon/ctp/portal/section/PendingSection.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="136" selection-start-line="136" selection-end-line="136" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-common.jar!/com/seeyon/apps/collaboration/manager/PendingManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="97" column="38" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-common.jar!/com/seeyon/apps/collaboration/manager/PendingManagerImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="3367" column="16" lean-forward="true" selection-start-line="3367" selection-start-column="16" selection-end-line="3367" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-portal.jar!/com/seeyon/ctp/portal/section/templete/MultiRowVariableColumnColTemplete.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="64" column="28" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="28" />
-          <folding>
-            <element signature="e#3639#3640#0" expanded="true" />
-            <element signature="e#3701#3702#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-common.jar!/com/seeyon/ctp/portal/section/PendingRow.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="66" column="4" lean-forward="true" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/portal/sections/tpl/tpl-multiRowVariableColumnColTemplete.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/space/controller/SpaceController.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/SectionRegisterManagerImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/util/Constants.java" />
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/PendingManagerImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/templete/MultiRowVariableColumnColTemplete.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6430">
-          <caret line="310" selection-start-line="310" selection-end-line="310" />
-          <folding>
-            <element signature="e#3399#3400#0" expanded="true" />
-            <element signature="e#3444#3445#0" expanded="true" />
-            <element signature="e#3508#3509#0" expanded="true" />
-            <element signature="e#3568#3569#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-          <folding>
-            <element signature="e#1785#1786#0" expanded="true" />
-            <element signature="e#1837#1838#0" expanded="true" />
-            <element signature="e#3111#3112#0" expanded="true" />
-            <element signature="e#3134#3135#0" expanded="true" />
-            <element signature="e#3171#3172#0" expanded="true" />
-            <element signature="e#3201#3202#0" expanded="true" />
-            <element signature="e#4686#4687#0" expanded="true" />
-            <element signature="e#4721#4722#0" expanded="true" />
-            <element signature="e#4787#4788#0" expanded="true" />
-            <element signature="e#4836#4837#0" expanded="true" />
-            <element signature="e#12645#12646#0" expanded="true" />
-            <element signature="e#12663#12664#0" expanded="true" />
-            <element signature="e#12743#12744#0" expanded="true" />
-            <element signature="e#12807#12808#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/collaboration/manager/PendingManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="3569" selection-start-line="3569" selection-end-line="3569" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/BaseSectionImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4966">
-          <caret line="469" selection-start-line="469" selection-end-line="469" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="478" column="64" lean-forward="true" selection-start-line="478" selection-start-column="64" selection-end-line="478" selection-end-column="64" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#7933#7934#0" expanded="true" />
-            <element signature="e#7960#7961#0" expanded="true" />
-            <element signature="e#8364#8365#0" expanded="true" />
-            <element signature="e#8391#8392#0" expanded="true" />
-            <element signature="e#9799#9815#0" expanded="true" />
-            <element signature="e#21024#21025#0" expanded="true" />
-            <element signature="e#21060#21061#0" expanded="true" />
-            <element signature="e#21125#21126#0" expanded="true" />
-            <element signature="e#21166#21167#0" expanded="true" />
-            <element signature="e#21218#21219#0" expanded="true" />
-            <element signature="e#21251#21252#0" expanded="true" />
-            <element signature="e#23582#23583#0" expanded="true" />
-            <element signature="e#23609#23610#0" expanded="true" />
-            <element signature="e#23747#23748#0" expanded="true" />
-            <element signature="e#23775#23776#0" expanded="true" />
-            <element signature="e#23861#23862#0" expanded="true" />
-            <element signature="e#23888#23889#0" expanded="true" />
-            <element signature="e#24273#24274#0" expanded="true" />
-            <element signature="e#24299#24300#0" expanded="true" />
-            <element signature="e#24382#24383#0" expanded="true" />
-            <element signature="e#24408#24409#0" expanded="true" />
-            <element signature="e#24469#24470#0" expanded="true" />
-            <element signature="e#24497#24498#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>

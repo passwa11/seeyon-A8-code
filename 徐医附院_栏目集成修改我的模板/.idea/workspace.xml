@@ -2,19 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ef1c47a-4938-457f-8443-8903d9f42a0d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../syncPost/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../syncPost/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../syncPost/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../syncPost/文件/insert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../syncPost/文件/insert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/section/ModulesSection.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/section/ModulesSection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/common/template/controller/TemplateController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/common/template/controller/TemplateController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/common/template/controller/TemplateController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/common/template/controller/TemplateController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/common/template/controller/TemplateController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/common/template/controller/TemplateController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/栏目集成_我的模板.zip" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,11 +29,17 @@
   </component>
   <component name="ProjectId" id="1V3hLqfmOkP6IGFMusMWpM7neG9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -52,18 +55,6 @@
       <recent name="F:\0_调试代码\modulePortlet\seeyon\WEB-INF\jsp\common\template" />
       <recent name="F:\0_调试代码\modulePortlet\seeyon\apps_res\template\js" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration default="true" type="Applet">
@@ -118,6 +109,18 @@
       </method>
     </configuration>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -140,6 +143,8 @@
       <workItem from="1576734475558" duration="2898000" />
       <workItem from="1576742419736" duration="345000" />
       <workItem from="1576745322909" duration="154000" />
+      <workItem from="1578117773299" duration="1331000" />
+      <workItem from="1578368483323" duration="1819000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1576641686660</created>
@@ -183,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576745348675</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="update">
+      <created>1578118983098</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1578118983098</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +220,60 @@
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="2152" y="17" key="#Deployment" timestamp="1578118203060">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state x="2152" y="17" key="#Deployment/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1578118203060" />
+    <state x="2014" y="14" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578117964151">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state x="2014" y="14" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1578117964151" />
+    <state x="2104" y="-51" key="CommitChangelistDialog2" timestamp="1578118981187">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state x="2104" y="-51" key="CommitChangelistDialog2/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1578118981187" />
+    <state x="1858" y="-37" key="FileChooserDialogImpl" timestamp="1578376204453">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state x="1858" y="-37" key="FileChooserDialogImpl/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1578376204453" />
+    <state width="1876" height="234" key="GridCell.Tab.0.bottom" timestamp="1578119116971">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="234" key="GridCell.Tab.0.bottom/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1578119116971" />
+    <state width="1876" height="234" key="GridCell.Tab.0.center" timestamp="1578119116971">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="234" key="GridCell.Tab.0.center/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1578119116971" />
+    <state width="1876" height="234" key="GridCell.Tab.0.left" timestamp="1578119116971">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="234" key="GridCell.Tab.0.left/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1578119116971" />
+    <state width="1876" height="234" key="GridCell.Tab.0.right" timestamp="1578119116971">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="234" key="GridCell.Tab.0.right/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1578119116971" />
+    <state width="1876" height="234" key="GridCell.Tab.1.bottom" timestamp="1578119116973">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="234" key="GridCell.Tab.1.bottom/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1578119116973" />
+    <state width="1876" height="234" key="GridCell.Tab.1.center" timestamp="1578119116973">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="234" key="GridCell.Tab.1.center/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1578119116973" />
+    <state width="1876" height="234" key="GridCell.Tab.1.left" timestamp="1578119116972">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="234" key="GridCell.Tab.1.left/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1578119116972" />
+    <state width="1876" height="234" key="GridCell.Tab.1.right" timestamp="1578119116973">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1876" height="234" key="GridCell.Tab.1.right/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1578119116973" />
+    <state x="2152" y="92" key="Vcs.Push.Dialog.v2" timestamp="1578118985419">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state x="2152" y="92" key="Vcs.Push.Dialog.v2/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1578118985419" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -225,6 +291,11 @@
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/common/template/controller/TemplateController.java</url>
           <line>1428</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/common/template/controller/TemplateController.java</url>
+          <line>1217</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
