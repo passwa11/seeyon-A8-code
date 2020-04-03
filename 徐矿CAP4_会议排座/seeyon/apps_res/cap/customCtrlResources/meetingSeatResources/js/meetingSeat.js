@@ -39,15 +39,6 @@
             self.formMessage = options.formMessage;
             self.messageObj = options.getData;
             self.preUrl = options.url_prefix;
-            for(var key in self.messageObj.formdata.formmains) {
-                self.mainForm = self.messageObj.formdata.formmains[key];
-            }
-            //console.log("getData");
-            //console.log(options.getData);
-            //console.log(options);
-            // 回填图片展示的控件ID
-            //var imgField = FormBean.getFieldBeanByName("图片预览");
-            self.backFieldName = "field0051";
         },
         initDom: function () {
             var self = this;
@@ -103,31 +94,6 @@
                             return;
                         }
 
-                        // 每次渲染控件时删除当前已有的附件
-                        var backFillCtrl = self.mainForm[self.backFieldName];
-                        if(backFillCtrl.attachmentInfo && backFillCtrl.attachmentInfo.attachmentInfos && backFillCtrl.attachmentInfo.attachmentInfos.length !== 0){
-                            var att = {
-                                tableName : self.formMessage.tableName,
-                                tableCategory : self.formMessage.tableCategory,
-                                updateRecordId : "",        // 更新对应的数据行Id,主表控件没有，明细表控件有
-                                handlerMode : 'delete',
-                                fieldName : self.backFieldName,    // 回填控件对应的field_id
-                                deleteAttchmentData  : [backFillCtrl.attachmentInfo.attachmentInfos[0].id]      // 数组格式的附件信息
-                            };
-                            
-//                            var att1 = {
-//                                tableName : self.formMessage.tableName,
-//                                tableCategory : self.formMessage.tableCategory,
-//                                updateRecordId : "",        // 更新对应的数据行Id,主表控件没有，明细表控件有
-//                                handlerMode : 'delete',
-//                                fieldName : self.backFieldName1,    // 回填控件对应的field_id
-//                                deleteAttchmentData  : [backFillCtrl.attachmentInfo.attachmentInfos[0].id]      // 数组格式的附件信息
-//                            };
-
-                            adaptation.backfillFormAttachment(att, self.privateId);
-                           // adaptation.backfillFormAttachment(att1, self.privateId);
-                        }
-
                         // 需要的base64是html2canvas的promise协议回调生成，在自定义控件点击保存时必须得等待
                         // 此回调函数执行完毕再关闭弹框
                         var process = top.$.progressBar({
@@ -150,36 +116,30 @@
                                         res.data.attachment.id = res.data.id;
                                         var arr = [];
                                         arr.push(res.data.attachment);
+                                        console.log(arr,'arr');
+                                        console.log(self.formMessage,'self.formMessage');
                                         for(var i = 0; i < arr.length; i++) {
-                                        	if(arr [i]) {
-                                        		arr[i].size = arr[i].size.toString();
-                                        	}
+                                            if(arr [i]) {
+                                                arr[i].size = arr[i].size.toString();
+                                            }
                                         }
                                         var attachment = {
                                             tableName : self.formMessage.tableName,
                                             tableCategory : self.formMessage.tableCategory,
-                                            updateRecordId : "",               // 更新对应的数据行Id,主表控件没有，明细表控件有
+                                            updateRecordId : "",        // 更新对应的数据行Id,主表控件没有，明细表控件有
                                             handlerMode : 'add',
-                                            fieldName : self.backFieldName,    // 回填控件对应的field_id
-                                            addAttchmentData : arr             // 数组格式的附件信息
+                                            fieldName : 'field0051',    // 回填控件对应的field_id
+                                            addAttchmentData : arr      // 数组格式的附件信息
                                         };
-//                                        var attachment1 = {
-//                                            tableName : self.formMessage.tableName,
-//                                            tableCategory : self.formMessage.tableCategory,
-//                                            updateRecordId : "",               // 更新对应的数据行Id,主表控件没有，明细表控件有
-//                                            handlerMode : 'add',
-//                                            fieldName : self.backFieldName1,    // 回填控件对应的field_id
-//                                            addAttchmentData : arr             // 数组格式的附件信息
-//                                        };
-
+                                        console.log(attachment,'attachment');
+                                        console.log(self,'self');
                                         adaptation.backfillFormAttachment(attachment, self.privateId);
-//                                        adaptation.backfillFormAttachment(attachment1, self.privateId);
-                                        process.close();
-                                        dialog.close();
                                     }
                                 });
                                 
                                 clearInterval(interval);
+                                process.close();
+                                dialog.close();
                             }
                         }, 500);
                     }
