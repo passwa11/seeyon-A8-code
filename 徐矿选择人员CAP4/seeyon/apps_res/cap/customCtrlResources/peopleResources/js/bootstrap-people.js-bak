@@ -35,15 +35,14 @@ function initJtldTable() {
         clickToSelect: true,                //是否启用点击选中行
         columns: [
             {checkbox: true, width: '5%'}
-            // , {
-            //     field: 'field0004',
-            //     title: '职务',
-            //     width: '63%',
-            // }
             , {
+                field: 'field0004',
+                title: '职务',
+                width: '63%',
+            }, {
                 field: 'field0003',
                 title: '用户名',
-                width: '88%',
+                width: '20%',
             }
         ]
     });
@@ -73,15 +72,14 @@ function initDzbldTable() {
         clickToSelect: true,                //是否启用点击选中行
         columns: [
             {checkbox: true, width: '5%'}
-            // , {
-            //     field: 'field0004',
-            //     title: '职务',
-            //     width: '63%',
-            // }
             , {
+                field: 'field0004',
+                title: '职务',
+                width: '63%',
+            }, {
                 field: 'field0003',
                 title: '用户名',
-                width: '88%',
+                width: '20%',
             }
         ]
     });
@@ -144,15 +142,15 @@ function initJgbmTable(){
         clickToSelect: true,                //是否启用点击选中行
         columns: [
             {checkbox: true, width: '5%'}
-            // , {
-            //     field: 'field0004',
-            //     title: '部室',
-            //     width: '68%',
-            // }
+            , {
+                field: 'field0004',
+                title: '部室',
+                width: '68%',
+            }
             , {
                 field: 'field0003',
                 title: '机要员',
-                width: '88%',
+                width: '20%',
             }
         ]
     });
@@ -248,8 +246,7 @@ function jtldSure() {
         obj["text"] = tr_obj.field0004;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jtld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jtld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jtld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -270,8 +267,7 @@ function jtldSure() {
                 return flag;
             }
             if (selected()) {
-                // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jtld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jtld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jtld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -304,8 +300,7 @@ function dzbldSure() {
         obj["text"] = tr_obj.field0004;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="dzbld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="dzbld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="dzbld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -326,8 +321,7 @@ function dzbldSure() {
                 return flag;
             }
             if (selected()) {
-                // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="dzbld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="dzbld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="dzbld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -414,8 +408,7 @@ function jgbmSure() {
         obj["text"] = tr_obj.field0004;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -436,8 +429,7 @@ function jgbmSure() {
                 return flag;
             }
             if (selected()) {
-                // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -470,8 +462,7 @@ function companySure(){
         obj["text"] = tr_obj.field0004;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="company" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="company" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="company" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -492,8 +483,7 @@ function companySure(){
                 return flag;
             }
             if (selected()) {
-                // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="company"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="company"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="company"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -526,8 +516,7 @@ function jcdwSure(){
         obj["text"] = tr_obj.field0004;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jcdw" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jcdw" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">'+ obj.dept + '</dd>';
+            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jcdw" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -548,8 +537,7 @@ function jcdwSure(){
                 return flag;
             }
             if (selected()) {
-                // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jcdw"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jcdw"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jcdw"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
