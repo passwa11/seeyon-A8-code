@@ -33,36 +33,38 @@ public class loginCheckController extends BaseController {
         Long ipNum = transferIp(ipAddress);
 
         Long neiWangNum = transferIp(ConfigInfo.getIpAddress());
-        Long yuanwaiNum = transferIp(ConfigInfo.getYuanwaiNet());
-        Long gongwangNum = transferIp(ConfigInfo.getGongwangNet());
+//        Long yuanwaiNum = transferIp(ConfigInfo.getYuanwaiNet());
+//        Long gongwangNum = transferIp(ConfigInfo.getGongwangNet());
 
         Map map = new HashMap();
         String neilinkIds = ConfigInfo.getNeiLinkId();
-        String yuanwailinkIds = ConfigInfo.getYuanLinkId();
-        String gonglinkIds = ConfigInfo.getGongLinkId();
+//        String yuanwailinkIds = ConfigInfo.getYuanLinkId();
+//        String gonglinkIds = ConfigInfo.getGongLinkId();
         String clicktype_ = "";
         if (neilinkIds.indexOf(linkId) != -1) {
             clicktype_ = "nei";
         }
-        if (yuanwailinkIds.indexOf(linkId) != -1) {
-            clicktype_ = "yuan";
-        }
+//        if (yuanwailinkIds.indexOf(linkId) != -1) {
+//            clicktype_ = "yuan";
+//        }
 
-        if (gonglinkIds.indexOf(linkId) != -1) {
-            clicktype_ = "gong";
-        }
+//        if (gonglinkIds.indexOf(linkId) != -1) {
+//            clicktype_ = "gong";
+//        }
 
         String linkIds = "";
         if (ipNum.longValue() == neiWangNum.longValue()) {
             linkIds = neilinkIds;
             map = judge(linkIds, linkId, "nei", clicktype_);
-        } else if (ipNum.longValue() == yuanwaiNum.longValue()) {
-            linkIds = yuanwailinkIds;
-            map = judge(linkIds, linkId, "yuan", clicktype_);
-        } else if (ipNum.longValue() == gongwangNum.longValue()) {
-            linkIds = gonglinkIds;
-            map = judge(linkIds, linkId, "gong", clicktype_);
-        } else {
+        }
+//        else if (ipNum.longValue() == yuanwaiNum.longValue()) {
+//            linkIds = yuanwailinkIds;
+//            map = judge(linkIds, linkId, "yuan", clicktype_);
+//        } else if (ipNum.longValue() == gongwangNum.longValue()) {
+//            linkIds = gonglinkIds;
+//            map = judge(linkIds, linkId, "gong", clicktype_);
+//        }
+        else {
             map.put("code", -1);
             map.put("flag", "");
             map.put("linkIds", "linkId is null");

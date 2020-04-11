@@ -79,8 +79,7 @@ public class MeetingSeatResources extends BaseResource {
             list.add(new MeetingSeatPerson(personList.get(i).get("field0034").toString(),
                     personList.get(i).get("field0035").toString(),
                     (null == personList.get(i).get("field0026")) ? null : personList.get(i).get("field0026").toString(),
-                    (null == personList.get(i).get("field0025")) ? null
-                            : personList.get(i).get("field0025").toString()));
+                    (null == personList.get(i).get("field0025")) ? null : personList.get(i).get("field0025").toString()));
         }
         List<MeetingSeatPerson> list1 = new ArrayList<MeetingSeatPerson>();
         for (int i = 0; i < depList.size(); i++) {

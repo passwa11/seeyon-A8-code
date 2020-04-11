@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cf421d0-a01b-4b3d-8fbd-acfa073df624" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/文件/insert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/文件/insert.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/src/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/src/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,17 +28,26 @@
   </component>
   <component name="ProjectId" id="1VNICridmbFx4RQoeYpKOfX19UN" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/seeyon" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -44,18 +57,6 @@
       <recent name="F:\0_调试代码\syncPost\src\com\seeyon\apps\ext\syncPost\po" />
       <recent name="F:\0_调试代码\syncPost\src\com\seeyon\apps\ext\syncPost\util" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration default="true" type="Applet">
@@ -110,6 +111,18 @@
       </method>
     </configuration>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -131,6 +144,10 @@
       <workItem from="1578019077956" duration="1065000" />
       <workItem from="1578029778718" duration="5559000" />
       <workItem from="1578037377076" duration="162000" />
+      <workItem from="1582284958549" duration="4510000" />
+      <workItem from="1582515568586" duration="235000" />
+      <workItem from="1582515824387" duration="639000" />
+      <workItem from="1582593994032" duration="715000" />
     </task>
     <task id="LOCAL-00001" summary="去除修改部分">
       <created>1578029979355</created>
@@ -166,6 +183,16 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -186,6 +213,68 @@
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="392" y="92" key="#Deployment" timestamp="1582297111428">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="392" y="92" key="#Deployment/0.0.1600.870@0.0.1600.870" timestamp="1582297111428" />
+    <state x="392" y="92" key="#Notifications" timestamp="1582515857703">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="392" y="92" key="#Notifications/0.0.1600.870@0.0.1600.870" timestamp="1582515857703" />
+    <state x="254" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582285515379">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="254" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.870@0.0.1600.870" timestamp="1582285515379" />
+    <state x="92" y="92" width="1416" height="686" key="DiffContextDialog" timestamp="1582285200354">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="92" y="92" width="1416" height="686" key="DiffContextDialog/0.0.1600.870@0.0.1600.870" timestamp="1582285200354" />
+    <state x="580" y="188" key="FileChooserDialogImpl" timestamp="1582594465813">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="580" y="188" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1582594465813" />
+    <state width="1540" height="108" key="GridCell.Tab.0.bottom" timestamp="1582299050173">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1540" height="108" key="GridCell.Tab.0.bottom/0.0.1600.870@0.0.1600.870" timestamp="1582299050173" />
+    <state width="1540" height="108" key="GridCell.Tab.0.center" timestamp="1582299050172">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1540" height="108" key="GridCell.Tab.0.center/0.0.1600.870@0.0.1600.870" timestamp="1582299050172" />
+    <state width="1540" height="108" key="GridCell.Tab.0.left" timestamp="1582299050172">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1540" height="108" key="GridCell.Tab.0.left/0.0.1600.870@0.0.1600.870" timestamp="1582299050172" />
+    <state width="1540" height="108" key="GridCell.Tab.0.right" timestamp="1582299050172">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1540" height="108" key="GridCell.Tab.0.right/0.0.1600.870@0.0.1600.870" timestamp="1582299050172" />
+    <state width="1540" height="108" key="GridCell.Tab.1.bottom" timestamp="1582299050173">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1540" height="108" key="GridCell.Tab.1.bottom/0.0.1600.870@0.0.1600.870" timestamp="1582299050173" />
+    <state width="1540" height="108" key="GridCell.Tab.1.center" timestamp="1582299050173">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1540" height="108" key="GridCell.Tab.1.center/0.0.1600.870@0.0.1600.870" timestamp="1582299050173" />
+    <state width="1540" height="108" key="GridCell.Tab.1.left" timestamp="1582299050173">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1540" height="108" key="GridCell.Tab.1.left/0.0.1600.870@0.0.1600.870" timestamp="1582299050173" />
+    <state width="1540" height="108" key="GridCell.Tab.1.right" timestamp="1582299050173">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state width="1540" height="108" key="GridCell.Tab.1.right/0.0.1600.870@0.0.1600.870" timestamp="1582299050173" />
+    <state x="279" y="26" key="SettingsEditor" timestamp="1582515800963">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="279" y="26" key="SettingsEditor/0.0.1600.870@0.0.1600.870" timestamp="1582515800963" />
+    <state x="170" y="128" key="new project wizard" timestamp="1582594689030">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="170" y="128" key="new project wizard/0.0.1600.870@0.0.1600.870" timestamp="1582594689030" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -200,9 +289,19 @@
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/syncPost/controller/syncPostController.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="24" />
+          <line>24</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

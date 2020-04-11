@@ -1963,29 +1963,33 @@ var _openDataLink = function (_parameter, e) {
                                 }
                             }
                         }
-                        if (type == 'yuan') {
-                            for (var i = 0; i < arr.length; i++) {
-                                if (_openUrl.indexOf(arr[i]) != -1) {
-                                    openCtpWindow({
-                                        'url': _openUrl
-                                    });
-                                    break;
-                                }
-                            }
-                        }
-                        if (type == 'gong') {
-                            for (var i = 0; i < arr.length; i++) {
-                                if (_openUrl.indexOf(arr[i]) != -1) {
-                                    openCtpWindow({
-                                        'url': _openUrl
-                                    });
-                                    break;
-                                }
-                            }
-                        }
+                        // if (type == 'yuan') {
+                        //     for (var i = 0; i < arr.length; i++) {
+                        //         if (_openUrl.indexOf(arr[i]) != -1) {
+                        //             openCtpWindow({
+                        //                 'url': _openUrl
+                        //             });
+                        //             break;
+                        //         }
+                        //     }
+                        // }
+                        // if (type == 'gong') {
+                        //     for (var i = 0; i < arr.length; i++) {
+                        //         if (_openUrl.indexOf(arr[i]) != -1) {
+                        //             openCtpWindow({
+                        //                 'url': _openUrl
+                        //             });
+                        //             break;
+                        //         }
+                        //     }
+                        // }
                     }
                 } else {
-                    confirm(data.msg);
+                    // confirm(data.msg);
+                    openCtpWindow({
+                        'url': _openUrl
+                    });
+                    break;
                 }
             });
             break;

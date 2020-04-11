@@ -5,11 +5,11 @@ public class modulePortletPluginInitializer extends AbstractSystemInitializer{
 
 @Override
 public void initialize() {
-	System.out.println("加载modulePortlet插件");
+	System.out.println("鍔犺浇modulePortlet");
 }
 
 @Override
 public void destroy() {
-	System.out.println("销毁modulePortlet插件");
+	System.out.println("閿�姣乵odulePortlet");
 }
 }

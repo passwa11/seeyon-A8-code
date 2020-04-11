@@ -2,30 +2,122 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2365740-a727-46ec-8f77-2524c94db40e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../syncPost/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/webServers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../落款靠右/.idea/edoc.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../徐医附院/loginCheck/loginCheck.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../成都_公文/.idea/成都_公文.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../syncPost/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../syncPost/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../syncPost/文件/insert.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../syncPost/文件/insert.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loginCheck.iml" beforeDir="false" afterPath="$PROJECT_DIR$/loginCheck.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/config/ipConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/config/ipConfig.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/ipConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ipConfig.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/controller/modulePortletController.class" afterDir="false" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../syncPost/.idea/webServers.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../../徐医附院/loginCheck/loginCheck.iml" />
+      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/档案系统集成公文同步/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/档案系统集成公文同步/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/档案系统集成公文同步/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/档案系统集成公文同步/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" />
+      <change beforePath="$PROJECT_DIR$/../syncPost/.idea/deployment.xml" afterPath="$PROJECT_DIR$/../syncPost/.idea/deployment.xml" />
+      <change beforePath="$PROJECT_DIR$/../syncPost/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../syncPost/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/../syncPost/seeyon/WEB-INF/classes/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.class" afterPath="$PROJECT_DIR$/../syncPost/seeyon/WEB-INF/classes/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.class" />
+      <change beforePath="$PROJECT_DIR$/../syncPost/src/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.java" afterPath="$PROJECT_DIR$/../syncPost/src/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/config/ipConfig.properties" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/config/ipConfig.properties" />
+      <change beforePath="$PROJECT_DIR$/seeyon/portal/sections/section.js" afterPath="$PROJECT_DIR$/seeyon/portal/sections/section.js" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java" />
+      <change beforePath="$PROJECT_DIR$/src/config/ipConfig.properties" afterPath="$PROJECT_DIR$/src/config/ipConfig.properties" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.class" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.class" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/config/portlet.properties" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/config/portlet.properties" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/src/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.java" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/src/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.java" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/src/config/portlet.properties" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/src/config/portlet.properties" />
+      <change beforePath="$PROJECT_DIR$/../徐矿CAP4_会议排座/seeyon/apps_res/cap/customCtrlResources/meetingSeatResources/html/meetingSeat.html" afterPath="$PROJECT_DIR$/../徐矿CAP4_会议排座/seeyon/apps_res/cap/customCtrlResources/meetingSeatResources/html/meetingSeat.html" />
+      <change beforePath="$PROJECT_DIR$/../徐矿CAP4_会议排座/seeyon/apps_res/cap/customCtrlResources/meetingSeatResources/json/meetingConfig.json" afterPath="$PROJECT_DIR$/../徐矿CAP4_会议排座/seeyon/apps_res/cap/customCtrlResources/meetingSeatResources/json/meetingConfig.json" />
+      <change beforePath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/ctp/rest/resources/MeetingSeatResources.java" afterPath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/ctp/rest/resources/MeetingSeatResources.java" />
+      <change beforePath="$PROJECT_DIR$/../徐矿大学_单点登录/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../徐矿大学_单点登录/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/deployment.xml" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/deployment.xml" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/webServers.xml" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/webServers.xml" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" />
     </list>
+    <ignored path="$PROJECT_DIR$/seeyon/WEB-INF/classes/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ipConfig.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/ipConfig.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="99">
+              <caret line="3" column="30" lean-forward="false" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConfigInfo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetClientIPController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1386">
+              <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loginCheckPluginInitializer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/loginCheckPluginInitializer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="99">
+              <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loginCheckController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1056">
+              <caret line="43" column="47" lean-forward="false" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="section.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/seeyon/portal/sections/section.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="1895" column="9" lean-forward="true" selection-start-line="1895" selection-start-column="9" selection-end-line="1895" selection-end-column="9" />
+              <folding>
+                <marker date="1586424878851" expanded="true" signature="22149:22195" ph="..." />
+                <marker date="1586424878851" expanded="true" signature="22336:22418" ph="..." />
+                <marker date="1586424878851" expanded="true" signature="54376:54383" ph="..." />
+                <marker date="1586424878851" expanded="true" signature="55926:55941" ph="..." />
+                <marker date="1586424878851" expanded="true" signature="55981:56014" ph="..." />
+                <marker date="1586424878851" expanded="true" signature="59371:59399" ph="..." />
+                <marker date="1586424878851" expanded="true" signature="59465:59498" ph="..." />
+                <marker date="1586424878851" expanded="true" signature="65350:65378" ph="..." />
+                <marker date="1586424878851" expanded="true" signature="65701:65729" ph="..." />
+                <marker date="1586424878851" expanded="true" signature="66191:66219" ph="..." />
+                <marker date="1586424878851" expanded="true" signature="68559:68612" ph="..." />
+                <marker date="1586424878851" expanded="true" signature="69020:69037" ph="..." />
+                <marker date="1586424878851" expanded="true" signature="69282:69335" ph="..." />
+                <marker date="1586424878851" expanded="true" signature="69646:69663" ph="..." />
+                <marker date="1586424878851" expanded="true" signature="80967:81017" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -34,11 +126,92 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>zhou</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/config/ipConfig.properties" />
+        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java" />
+        <option value="$PROJECT_DIR$/seeyon/portal/sections/section.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="631" />
+    <option name="y" value="104" />
+    <option name="width" value="1056" />
+    <option name="height" value="777" />
+  </component>
   <component name="ProjectId" id="1UUr1oOlyMKk2q3aHHoWzOE0SUj" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="徐医附院_关联系统打开窗口事件" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐医附院_关联系统打开窗口事件" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐医附院_关联系统打开窗口事件" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐医附院_关联系统打开窗口事件" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐医附院_关联系统打开窗口事件" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐医附院_关联系统打开窗口事件" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="portal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="徐医附院_关联系统打开窗口事件" type="b2602c69:ProjectViewProjectNode" />
+              <item name="徐医附院_关联系统打开窗口事件" type="462c0819:PsiDirectoryNode" />
+              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
+              <item name="portal" type="462c0819:PsiDirectoryNode" />
+              <item name="sections" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -49,7 +222,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="F:/0_test_code/档案系统集成公文同步" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -66,75 +239,146 @@
       <recent name="D:\JAVA_D\javaSources\loginCheck\seeyon\portal\sections" />
     </key>
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="RunManager" selected="Remote.Unnamed">
-    <configuration default="true" type="Applet">
+    <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
+      <option name="HEIGHT" value="0" />
+      <option name="WIDTH" value="0" />
+      <module />
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.test.Test" />
-      <module name="loginCheck" />
-      <shortenClasspath name="CLASSPATH_FILE" />
-      <extension name="coverage">
+      <extension name="coverage" enabled="false" merge="false" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="MAIN_CLASS_NAME" value="com.test.Test" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="loginCheck" />
+      <envs />
+      <shortenClasspath name="CLASSPATH_FILE" />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Unnamed" type="Remote" nameIsGenerated="true">
+    <configuration name="Unnamed" type="Remote" factoryName="Remote">
       <module name="loginCheck" />
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="8000" />
-      <option name="AUTO_RESTART" value="false" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="8000" />
         <option name="LOCAL" value="false" />
       </RunnerSettings>
-      <method v="2" />
     </configuration>
-    <configuration default="true" type="TestNG">
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
       <properties />
       <listeners />
-      <method v="2">
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file enabled="true" id="idea.log" />
-      <method v="2">
+      <predefined_log_file id="idea.log" enabled="true" />
+      <method>
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Remote.Unnamed" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Test" />
+    </list>
     <recent_temporary>
-      <list>
-        <item itemvalue="Application.Test" />
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -149,6 +393,9 @@
         </serviceView>
       </list>
     </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -178,6 +425,12 @@
       <workItem from="1578376354980" duration="3721000" />
       <workItem from="1578539554041" duration="3234000" />
       <workItem from="1578556537751" duration="96000" />
+      <workItem from="1586420140068" duration="1493000" />
+      <workItem from="1586422219791" duration="127000" />
+      <workItem from="1586422697056" duration="2617000" />
+      <workItem from="1586436869123" duration="101000" />
+      <workItem from="1586480948618" duration="686000" />
+      <workItem from="1586490382358" duration="1201000" />
     </task>
     <task id="LOCAL-00001" summary="获取客户端ip">
       <created>1575946411275</created>
@@ -224,6 +477,54 @@
     <option name="localTasksCounter" value="7" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="6225000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="RestServices" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="JRebel Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19034483" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="MyBatis Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08413793" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26344827" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.06896552" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17030849" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="BPMNPalette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="SmartIM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -243,12 +544,21 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -333,19 +643,362 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java</url>
           <line>19</line>
+          <properties />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java</url>
           <line>29</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="15" />
+          <properties />
         </line-breakpoint>
       </breakpoints>
+      <option name="time" value="1" />
     </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/config/ipConfig.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="3" column="30" lean-forward="false" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1386">
+          <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/loginCheckPluginInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1056">
+          <caret line="43" column="47" lean-forward="false" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/portal/sections/section.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64383">
+          <caret line="1951" column="41" lean-forward="true" selection-start-line="1951" selection-start-column="41" selection-end-line="1951" selection-end-column="41" />
+          <folding>
+            <marker date="1586424878851" expanded="true" signature="22149:22195" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="22336:22418" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="54376:54383" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="55926:55941" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="55981:56014" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="59371:59399" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="59465:59498" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="65350:65378" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="65701:65729" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="66191:66219" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="68559:68612" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="69020:69037" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="69282:69335" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="69646:69663" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="80967:81017" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/ipConfig.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="3" column="30" lean-forward="false" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1716">
+          <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/loginCheckPluginInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1056">
+          <caret line="43" column="47" lean-forward="false" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/portal/sections/section.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64812">
+          <caret line="1964" column="8" lean-forward="false" selection-start-line="1964" selection-start-column="8" selection-end-line="1964" selection-end-column="8" />
+          <folding>
+            <marker date="1586424878851" expanded="true" signature="22149:22195" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="22336:22418" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="54376:54383" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="55926:55941" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="55981:56014" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="59371:59399" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="59465:59498" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="65350:65378" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="65701:65729" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="66191:66219" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="68559:68612" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="69020:69037" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="69282:69335" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="69646:69663" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="80967:81017" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/ipConfig.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="3" column="30" lean-forward="true" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1716">
+          <caret line="52" column="9" lean-forward="true" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/loginCheckPluginInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1056">
+          <caret line="43" column="47" lean-forward="true" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/portal/sections/section.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64812">
+          <caret line="1964" column="8" lean-forward="true" selection-start-line="1964" selection-start-column="8" selection-end-line="1964" selection-end-column="8" />
+          <folding>
+            <marker date="1586424878851" expanded="true" signature="22149:22195" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="22336:22418" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="54376:54383" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="55926:55941" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="55981:56014" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="59371:59399" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="59465:59498" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="65350:65378" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="65701:65729" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="66191:66219" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="68559:68612" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="69020:69037" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="69282:69335" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="69646:69663" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="80967:81017" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/ipConfig.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1353">
+          <caret line="43" column="9" lean-forward="false" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="34" column="9" lean-forward="false" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/loginCheckPluginInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="29" column="55" lean-forward="true" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/ipConfig.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1353">
+          <caret line="43" column="9" lean-forward="false" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="34" column="9" lean-forward="false" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/loginCheckPluginInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2706">
+          <caret line="93" column="17" lean-forward="false" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/Seeyon/A87.1_sp1_oracle/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/spring-webmvc.jar!/org/springframework/web/servlet/mvc/multiaction/MultiActionController.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1386">
+          <caret line="52" column="9" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/loginCheckPluginInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/ipConfig.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="3" column="30" lean-forward="false" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1056">
+          <caret line="43" column="47" lean-forward="false" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seeyon/portal/sections/section.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="1895" column="9" lean-forward="true" selection-start-line="1895" selection-start-column="9" selection-end-line="1895" selection-end-column="9" />
+          <folding>
+            <marker date="1586424878851" expanded="true" signature="22149:22195" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="22336:22418" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="54376:54383" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="55926:55941" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="55981:56014" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="59371:59399" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="59465:59498" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="65350:65378" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="65701:65729" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="66191:66219" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="68559:68612" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="69020:69037" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="69282:69335" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="69646:69663" ph="..." />
+            <marker date="1586424878851" expanded="true" signature="80967:81017" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

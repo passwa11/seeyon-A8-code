@@ -22,7 +22,7 @@ public class syncPostDaoImpl implements syncPostDao {
 
     @Override
     public List<SyncOrgPost> queryNotExitPost() {
-        String sql = "select MP.*, 0 POST_ID from mid_post@gcxylink mp where MP.t_id not in (select POST_CODE from MID_POST)";
+        String sql = "select MP.*, 0 POST_ID from mid_post@gcxylink mp where MP.post_name not in (select post_name from MID_POST)";
         return this.generalMethod(sql);
     }
 

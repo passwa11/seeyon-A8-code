@@ -2,24 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33393363-84fd-4b8c-bb95-c71ada1747ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/test/Demo1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/test/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../徐矿大学_单点登录/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../syncPost/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestTest/com/test/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestTest/com/test/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestTest/com/test/RestTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestTest/com/test/RestTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/test/RestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/test/RestTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../公文/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/config/ipConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/config/ipConfig.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../徐医附院_把菜单添加输入密码验证/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_把菜单添加输入密码验证/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿大学_单点登录/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/徐矿大学单点登录.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.法务系统代办集成/档案系统集成公文同步/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.法务系统代办集成/档案系统集成公文同步/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../syncPost/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../syncPost/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../syncPost/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../syncPost/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../syncPost/seeyon/WEB-INF/classes/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../syncPost/seeyon/WEB-INF/classes/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../syncPost/src/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../syncPost/src/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐医附院_栏目集成修改我的模板/src/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_栏目集成修改我的模板/src/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +33,13 @@
   </component>
   <component name="ProjectId" id="1VVmMYVqqh9rrhs6DKQ1G04feCY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -49,22 +48,13 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\a8_code\A-8-code\0.rest接口调用方法\Rest\src\com\test" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.RestTest">
     <configuration default="true" type="Applet">
@@ -173,6 +163,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -204,6 +206,8 @@
       <workItem from="1577346596155" duration="3967000" />
       <workItem from="1577352198578" duration="2591000" />
       <workItem from="1577406847124" duration="1414000" />
+      <workItem from="1584414368842" duration="644000" />
+      <workItem from="1584423870185" duration="1323000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1567751788843</created>
@@ -271,6 +275,16 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="488" y="96" key="FileChooserDialogImpl" timestamp="1584426018310">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="488" y="96" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1584426018310" />
+    <state x="265" y="91" key="new project wizard" timestamp="1584426115581">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="265" y="91" key="new project wizard/0.0.1600.870@0.0.1600.870" timestamp="1584426115581" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

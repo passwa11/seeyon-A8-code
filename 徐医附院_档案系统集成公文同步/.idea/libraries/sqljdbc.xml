@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="sqljdbc">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/seeyon/WEB-INF/lib/sqljdbc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/seeyon/WEB-INF/lib/sqljdbc4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

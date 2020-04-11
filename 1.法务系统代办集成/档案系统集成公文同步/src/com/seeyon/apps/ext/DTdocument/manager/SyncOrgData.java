@@ -173,7 +173,7 @@ public class SyncOrgData {
             while (rs.next()) {
                 htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("id")));
 
-                sPath = "/upload/" + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("id") + ".html";
+                sPath = "/upload/" + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + ".html";
                 if (!(new File("/upload" + File.separator + rs.getString("year"))).exists() && !(new File("/upload" + File.separator + rs.getString("year"))).isDirectory()) {
                     (new File("/upload" + File.separator + rs.getString("year"))).mkdir();
                 }
