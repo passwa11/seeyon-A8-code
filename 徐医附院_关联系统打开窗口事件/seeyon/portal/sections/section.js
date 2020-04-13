@@ -1989,7 +1989,6 @@ var _openDataLink = function (_parameter, e) {
                     openCtpWindow({
                         'url': _openUrl
                     });
-                    break;
                 }
             });
             break;

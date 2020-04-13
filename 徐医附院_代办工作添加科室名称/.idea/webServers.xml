@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="23e5998b-6319-4076-8801-9c7bb50929c5" name="徐医附院代办添加科室" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="F:\Seeyon\A87.1_sp1_oracle\ApacheJetspeed\webapps\seeyon" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

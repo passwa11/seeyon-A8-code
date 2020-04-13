@@ -2,29 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d13ab38-2602-4c38-a3b6-b5e19b1f64a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/7.1_code.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../7.1_code/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/.idea/公文.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/公文.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDaoImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/domain/CtpPdfSavepath.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManagerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/exchange/controller/ExchangeEdocController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/src/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-portallow" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/../大屯项目集成/datun-sso-login" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿263邮箱单点登录/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/loginCheckPluginInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/loginCheckPluginInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/test/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/test/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/portal/sections/section.js" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/portal/sections/section.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,6 +47,9 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="com.zeroturnaround.javarebel.idea.plugin.settings.RemoteServersConfigurable" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -192,6 +180,7 @@
       <workItem from="1568189728916" duration="70000" />
       <workItem from="1569231816640" duration="126000" />
       <workItem from="1569287468685" duration="676000" />
+      <workItem from="1586745752667" duration="736000" />
     </task>
     <task id="LOCAL-00001" summary="新建">
       <created>1560996416866</created>
