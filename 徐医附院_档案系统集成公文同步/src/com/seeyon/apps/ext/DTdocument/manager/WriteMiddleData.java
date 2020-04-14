@@ -27,8 +27,8 @@ public class WriteMiddleData {
         Connection mConn = null;
         PreparedStatement mPs = null;
         ResultSet mRs = null;
-        String sql = "select id,subject,doc_mark,issuer,send_departmen,pack_date,status,create_time,year,edoc_type from TEMP_NUMBER20 where status='0'";
-        String insertToaSql = "insert into T_OA (id,c1,c2,c3,mlh,ztm,zrz,sj,dw,wh,flag,lb) values(?,?,?,?,?,?,?,?,?,?,?,?) ";
+        String sql = "select id,subject,doc_mark,issuer,send_department,pack_date,status,create_time,year,edoc_type from TEMP_NUMBER20 where status='0'";
+        String insertToaSql = "insert into T_OA (id,c1,c2,c3,mlh,ztm,zrz,dw,wh,flag,lb) values(?,?,?,?,?,?,?,?,?,?,?) ";
         String updateSql = "update TEMP_NUMBER20 set status='1' where ID=?";
         String selectFileInfo = "select id,C_MIDRECID,C_FILETITLE,C_FTPFILEPATH,C_TYPE,I_SIZE,meta_type from TEMP_NUMBER30 where C_MIDRECID=?";
         String insertFileInfo = "insert into T_OATX(id,aid,ztm,filename,filesize) values(?,?,?,?,?)";
@@ -47,7 +47,7 @@ public class WriteMiddleData {
                 temproraryEntity.setSubject(resultSet.getString("subject"));
                 temproraryEntity.setIssuer(resultSet.getString("issuer"));
                 temproraryEntity.setDoc_mark(resultSet.getString("doc_mark"));
-                temproraryEntity.setSend_departmen(resultSet.getString("send_departmen"));
+                temproraryEntity.setSend_departmen(resultSet.getString("send_department"));
                 temproraryEntity.setPack_date(resultSet.getString("pack_date"));
                 temproraryEntity.setStatus(resultSet.getString("status"));
                 temproraryEntity.setCreate_time(resultSet.getString("create_time"));
@@ -69,11 +69,10 @@ public class WriteMiddleData {
                 mPs.setString(5, (listTemp.get(i).getYear()+"")+listTemp.get(i).getEdoc_type()+listTemp.get(i).getSend_departmen());
                 mPs.setString(6,listTemp.get(i).getSubject());
                 mPs.setString(7,listTemp.get(i).getSend_departmen());
-                mPs.setString(8,listTemp.get(i).getCreate_time());
-                mPs.setString(9,"");
-                mPs.setString(10,listTemp.get(i).getDoc_mark());
-                mPs.setString(11,listTemp.get(i).getId());
-                mPs.setString(12,listTemp.get(i).getEdoc_type());
+                mPs.setString(8,"");
+                mPs.setString(9,listTemp.get(i).getDoc_mark());
+                mPs.setString(10,listTemp.get(i).getId());
+                mPs.setString(11,listTemp.get(i).getEdoc_type());
                 mPs.addBatch();
             }
             mPs.executeBatch();
