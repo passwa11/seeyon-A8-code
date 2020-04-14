@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2365740-a727-46ec-8f77-2524c94db40e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../徐医附院/loginCheck/loginCheck.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/portal/sections/section.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/portal/sections/section.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +36,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/0_test_code/徐医附院代办工作添加科室名称" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -183,6 +183,7 @@
       <workItem from="1586480948618" duration="686000" />
       <workItem from="1586490382358" duration="1201000" />
       <workItem from="1586738830709" duration="1907000" />
+      <workItem from="1586758874543" duration="1146000" />
     </task>
     <task id="LOCAL-00001" summary="获取客户端ip">
       <created>1575946411275</created>

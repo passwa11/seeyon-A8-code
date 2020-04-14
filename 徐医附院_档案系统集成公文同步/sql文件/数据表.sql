@@ -13,7 +13,10 @@ create table TEMP_NUMBER20
   issuer          VARCHAR2(255),
   send_department VARCHAR2(255),
   pack_date       VARCHAR2(30),
-  status          VARCHAR2(6)
+  status          VARCHAR2(6),
+  create_time     varchar2(30),
+  year              varchar2(6),
+  edoc_type       varchar2(20)
 )
 
 create table TEMP_NUMBER30

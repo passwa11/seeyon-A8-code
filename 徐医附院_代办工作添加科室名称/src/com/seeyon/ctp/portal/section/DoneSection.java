@@ -381,6 +381,8 @@ public class DoneSection extends BaseSectionImpl {
             } else {
                 rowStr = "subject,receiveTime,sendUser";
             }
+        }else {
+            rowStr= rowStr.concat(",sendUnit");
         }
         String[] rows = rowStr.split(",");
         List<String> list = Arrays.asList(rows);

@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d13ab38-2602-4c38-a3b6-b5e19b1f64a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/ConfigInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/GetClientIPController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/controller/loginCheckController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/loginCheckPluginInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/loginCheck/loginCheckPluginInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/test/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/WEB-INF/classes/com/test/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/portal/sections/section.js" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/seeyon/portal/sections/section.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,7 +32,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -180,7 +172,8 @@
       <workItem from="1568189728916" duration="70000" />
       <workItem from="1569231816640" duration="126000" />
       <workItem from="1569287468685" duration="676000" />
-      <workItem from="1586745752667" duration="736000" />
+      <workItem from="1586745752667" duration="1943000" />
+      <workItem from="1586749385116" duration="23000" />
     </task>
     <task id="LOCAL-00001" summary="新建">
       <created>1560996416866</created>
