@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac16f7c2-9d1f-451a-bd87-9fcdc05aeb19" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql文件/最新.sql" afterDir="false" />
+    <list default="true" id="ac16f7c2-9d1f-451a-bd87-9fcdc05aeb19" name="Default Changelist" comment="update">
       <change beforePath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/src/com/seeyon/ctp/portal/section/DoneSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/src/com/seeyon/ctp/portal/section/DoneSection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_关联系统打开窗口事件/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DTdocument.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DTdocument.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/DTdocumentPluginInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/DTdocumentPluginInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/dao/DTdocumentDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/dao/DTdocumentDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/dao/DTdocumentDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/dao/DTdocumentDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/DTdocumentManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/DTdocumentManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/DTdocumentManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/DTdocumentManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/WriteMiddleData.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/WriteMiddleData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/po/TempDate.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/po/TempDate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/po/TemproraryEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/po/TemproraryEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/quartz/SyncDataTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/quartz/SyncDataTask.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/DbConnUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/DbConnUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/ReadConfigTools.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/ReadConfigTools.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/RenderUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/RenderUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql文件/存储过程.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql文件/存储过程.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sql文件/数据表.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql文件/数据表.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/WriteMiddleData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/WriteMiddleData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/po/TemproraryEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/po/TemproraryEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,24 +41,12 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="88102dbe-9073-41eb-9562-2d1db221b841" />
   </component>
   <component name="ProjectId" id="1Ru3Qvb94Xq37gDTq5kYi5OO5Jx" />
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>Android</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
-  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -61,32 +58,32 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/sql文件" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/po" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\a8_code\A-8-code\徐医附院_档案系统集成公文同步\sql文件" />
-      <recent name="F:\0_test_code\档案系统集成公文同步\src\law" />
-      <recent name="F:\0_test_code\档案系统集成公文同步\seeyon\WEB-INF\lib" />
-      <recent name="F:\0_test_code\档案系统集成公文同步\sql文件" />
-      <recent name="F:\JAVA\JAVA_Project\DTdocument\src\com\seeyon\apps\ext\DTdocument\manager" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\JAVA\JAVA_Project\DTdocument\src\com\seeyon\apps\ext\Portal190724\po" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.seeyon.apps.ext.DTdocument.manager" />
       <recent name="com.seeyon.apps.ext.DTdocument.util" />
       <recent name="com.seeyon.apps.ext.DTdocument.controller" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\JAVA\JAVA_Project\DTdocument\src\com\seeyon\apps\ext\Portal190724\po" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\a8_code\A-8-code\徐医附院_档案系统集成公文同步\src\com\seeyon\apps\ext\DTdocument\po" />
+      <recent name="F:\a8_code\A-8-code\徐医附院_档案系统集成公文同步\src\com\seeyon\apps\ext\DTdocument\manager" />
+      <recent name="F:\a8_code\A-8-code\徐医附院_档案系统集成公文同步\sql文件" />
+      <recent name="F:\0_test_code\档案系统集成公文同步\src\law" />
+      <recent name="F:\0_test_code\档案系统集成公文同步\seeyon\WEB-INF\lib" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -204,8 +201,24 @@
       <workItem from="1586496548709" duration="112000" />
       <workItem from="1586571120785" duration="12677000" />
       <workItem from="1586762167374" duration="2915000" />
-      <workItem from="1586823407089" duration="4506000" />
+      <workItem from="1586823407089" duration="10581000" />
+      <workItem from="1586920754929" duration="1903000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1586828382127</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586828382127</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update">
+      <created>1586831068409</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586831068409</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,40 +237,10 @@
       </map>
     </option>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java</url>
-          <line>183</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java</url>
-          <line>223</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java</url>
-          <line>94</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java</url>
-          <line>137</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java</url>
-          <line>124</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java</url>
-          <line>123</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>

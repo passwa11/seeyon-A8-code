@@ -15,6 +15,15 @@ public class TemproraryEntity {
     private String create_time;
     private String year;
     private String edoc_type;
+    private String organizer;
+
+    public String getOrganizer() {
+        return organizer;
+    }
+
+    public void setOrganizer(String organizer) {
+        this.organizer = organizer;
+    }
 
     public String getId() {
         return id;

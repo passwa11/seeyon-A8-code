@@ -1,10 +1,12 @@
+drop table TEMP_NUMBER10;
 create table TEMP_NUMBER10
 (
   id     VARCHAR2(100),
   status VARCHAR2(6)
-)
+);
 
 
+drop table TEMP_NUMBER20;
 create table TEMP_NUMBER20
 (
   id              VARCHAR2(200) not null,
@@ -16,9 +18,10 @@ create table TEMP_NUMBER20
   status          VARCHAR2(6),
   create_time     varchar2(30),
   year              varchar2(6),
-  edoc_type       varchar2(20)
-)
-
+  edoc_type       varchar2(20),
+  organizer       varchar2(400)
+);
+drop table TEMP_NUMBER30;
 create table TEMP_NUMBER30
 (
   id            VARCHAR2(64),
@@ -29,5 +32,5 @@ create table TEMP_NUMBER30
   i_size        VARCHAR2(64),
   meta_type     VARCHAR2(20),
   status        VARCHAR2(6)
-)
+);
 

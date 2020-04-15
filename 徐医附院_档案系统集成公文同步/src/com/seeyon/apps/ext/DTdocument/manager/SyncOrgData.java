@@ -1,11 +1,9 @@
 package com.seeyon.apps.ext.DTdocument.manager;
 
-import com.seeyon.apps.ext.DTdocument.po.TempDate;
 import com.seeyon.apps.ext.DTdocument.util.DbConnUtil;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.common.filemanager.manager.FileManager;
-import com.seeyon.ctp.common.filemanager.manager.FileManagerImpl;
 import com.seeyon.v3x.edoc.domain.EdocBody;
 import com.seeyon.v3x.edoc.domain.EdocSummary;
 import com.seeyon.v3x.edoc.exception.EdocException;
@@ -23,9 +21,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.PosixFilePermission;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -115,15 +113,17 @@ public class SyncOrgData {
                     "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),9,2) DAY " +
                     "FROM (select c.id affairId,e.id edocSummaryId,e.SUBJECT,e.create_time,e.has_archive from CTP_AFFAIR c,EDOC_SUMMARY e where c.OBJECT_ID=e.id and c.ARCHIVE_ID is not null and e.has_archive = 1) A," +
                     "(SELECT * FROM CTP_CONTENT_ALL C,CTP_FILE F WHERE TO_NUMBER(C.CONTENT) = F.ID AND C.CONTENT_TYPE NOT IN (10)) B WHERE A .has_archive = 1 " +
-                    " AND to_number(A . edocSummaryId) = to_number(b.MODULE_ID) AND to_number(A . edocSummaryId) IN (SELECT to_number(ID) FROM TEMP_NUMBER10 where status='0')";
+                    " AND to_number(A . edocSummaryId) = to_number(b.MODULE_ID) AND to_number(A . edocSummaryId) IN (SELECT to_number(ID) FROM TEMP_NUMBER10 where status ='0')";
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
 
             String[] htmlContent = null;
             String sPath = "";
             String classPath = fileManager.getFolder(new Date(), false);
-            String p = classPath.substring(0, classPath.indexOf("Seeyon"));
-            //linux设置权限
+            LocalDate localDate = LocalDate.now();
+            String syear = Integer.toString(localDate.getYear());
+            String p = classPath.substring(0, classPath.indexOf(syear));
+//            linux
             Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
             perms.add(PosixFilePermission.OWNER_READ);//设置所有者的读取权限
             perms.add(PosixFilePermission.OWNER_WRITE);//设置所有者的写权限
@@ -132,21 +132,23 @@ public class SyncOrgData {
             perms.add(PosixFilePermission.GROUP_EXECUTE);//设置组的读取权限
             perms.add(PosixFilePermission.OTHERS_READ);//设置其他的读取权限
             perms.add(PosixFilePermission.OTHERS_EXECUTE);//设置其他的读取权限
+
             while (rs.next()) {
                 htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("id")));
-                sPath = p + File.separator + "upload" + File.separator + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + "";
+                sPath = p + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + "";
                 File f = new File(sPath);
                 //linux设置文件和文件夹的权限
                 Path pathParent = Paths.get(f.getParentFile().getAbsolutePath());
                 Path pathDest = Paths.get(f.getAbsolutePath());
                 Files.setPosixFilePermissions(pathParent, perms);//修改文件夹路径的权限
                 Files.setPosixFilePermissions(pathDest, perms);//修改图片文件的权限
+
                 File parentfile = f.getParentFile();
                 if (!parentfile.exists()) {
                     parentfile.mkdirs();
                 }
 
-                if (!(f.exists())) {
+                if (!f.exists()) {
                     f.createNewFile();
                 }
                 FileOutputStream fos = null;
@@ -180,7 +182,7 @@ public class SyncOrgData {
     /**
      * 复制OA正文
      */
-    public void copyEdoc() {
+    public void copyEdoc2() {
         String str = "";
         Statement st = null;
         ResultSet rs = null;
@@ -220,7 +222,7 @@ public class SyncOrgData {
     /**
      * 复制OA附件
      */
-    public void copyAttachment() {
+    public void copyAttachment2() {
         String str = "";
         Statement st = null;
         ResultSet rs = null;

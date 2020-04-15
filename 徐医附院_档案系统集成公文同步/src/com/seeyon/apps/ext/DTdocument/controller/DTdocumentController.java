@@ -26,7 +26,7 @@ public class DTdocumentController extends BaseController {
 //        SyncOrgData.getInstance().copyAttachment();
         // 清空临时表的数据
 //        SyncOrgData.getInstance().clearTemporary();
-        WriteMiddleData.getInstance().getListData();
+        WriteMiddleData.getInstance().batchSqlByType();
 
         return null;
     }

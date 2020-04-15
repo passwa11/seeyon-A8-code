@@ -1,6 +1,7 @@
 package com.seeyon.apps.ext.DTdocument.quartz;
 
 import com.seeyon.apps.ext.DTdocument.manager.SyncOrgData;
+import com.seeyon.apps.ext.DTdocument.manager.WriteMiddleData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,15 +18,7 @@ public class SyncDataTask implements Runnable {
          * 同步公文
          */
         SyncOrgData.getInstance().syncSummary();
-        /**
-         * 复制正文
-         */
-        SyncOrgData.getInstance().copyEdoc();
-        /**
-         * 复制附件
-         */
-        SyncOrgData.getInstance().copyAttachment();
+        WriteMiddleData.getInstance().batchSqlByType();
 
-        SyncOrgData.getInstance().clearTemporary();
     }
 }
