@@ -1,3 +1,4 @@
+--注意把所有的in 替换成exists,不替换，数据量大会卡死。
 create or replace procedure pro_xyfy2(flag number) IS
 BEGIN
 
