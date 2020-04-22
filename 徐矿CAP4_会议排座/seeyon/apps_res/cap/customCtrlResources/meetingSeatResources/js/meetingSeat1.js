@@ -1,7 +1,7 @@
 /**
  * 说明： 是一个按钮类自定义控件的示例
  * */
-$(function() {
+$(function () {
     getPageData();
 });
 
@@ -58,8 +58,9 @@ function getPageData() {
         type: 'GET',
         dataType: 'json',
         contentType: 'application/json;charset=utf-8',
-        data: { 'meetingId': formMainData.field0028.value },
-        success: function(response) {
+        data: {'meetingId': formMainData.field0028.value},
+        success: function (response) {
+            console.log(response.data);
             _page.interfaceError = false;
             // 给人员添加序号并按序号重排序
             sortMembers(response.data);
@@ -86,7 +87,7 @@ function getPageData() {
             // 搜索
             searchFn();
         },
-        error: function(e) {
+        error: function (e) {
             var error = JSON.parse(e.responseText);
             if (error.message) {
                 top.$.error(error.message);
@@ -99,12 +100,12 @@ function getPageData() {
 
 // 4.给人员按序号重排序
 function sortMembers(data) {
-    $.each(data.users, function(idx, item) {
+    $.each(data.users, function (idx, item) {
         item.index = String(idx);
     });
 
     var index_start = data.users.length;
-    $.each(data.users1, function(idx, item) {
+    $.each(data.users1, function (idx, item) {
         item.index = String(index_start + idx);
     });
 
@@ -126,15 +127,15 @@ function createMembers(data, type) {
         _users1 = data.users1;
 
     if (type === "newCreate") {
-        _users = data.users.filter(function(item) {
+        _users = data.users.filter(function (item) {
             return !(item.row && item.col)
         })
-        _users1 = data.users1.filter(function(item) {
+        _users1 = data.users1.filter(function (item) {
             return !(item.row && item.col)
         })
     }
 
-    _users.forEach(function(row, idx) {
+    _users.forEach(function (row, idx) {
         if (idx % 3 === 0) {
             $membersList.append(
                 '<ul class="members-row person">' +
@@ -162,7 +163,7 @@ function createMembers(data, type) {
         leftCountNumber($(".members-list-title .counts"));
     });
 
-    _users1.forEach(function(row, idx) {
+    _users1.forEach(function (row, idx) {
         if (idx % 3 === 0) {
             $unitsList.append(
                 '<ul class="members-row unit">' +
@@ -208,26 +209,74 @@ function createSeats(data) {
                 '<ul class="seats-row" row="' + rowIdx + '"></ul>'
             );
         }
-
-        // 生成列
-        var colIdx = 0;
+//-----------------------------------------------------------
+        var li = liNum;
+        var base = 1;
+        var liNum3 = Number(liNum) + Number(1);
         for (var j = 0; j < liNum; j++) {
             // 生成列头
-            colIdx++;
-            $(".seats-box .seats-cols-head").append(
-                '<li class="col-index" style="width: calc(100% / ' + liNum + ')">' + colIdx + '</li>'
-            );
+            if (li % 2 == 0) {
+                $(".seats-box .seats-cols-head").append(
+                    '<li class="col-index" style="width: calc(100% / ' + (liNum3) + ')">' + li + '</li>'
+                );
+            }
+            li--;
+        }
+        $(".seats-box .seats-cols-head").append(
+            '<li class="col-index" style="width:calc(100% / ' + (liNum3) + ')">过道</li>'
+        );
+        for (var j = 0; j < liNum; j++) {
+            // 生成列头
+            if (base % 2 == 1) {
+                $(".seats-box .seats-cols-head").append(
+                    '<li class="col-index" style="width: calc(100% / ' + (liNum3) + ')">' + base + '</li>'
+                );
+            }
+            base++;
+        }
+//-----------------------------------------------------------
 
+        // 生成列
+        var liNum2 = Number(liNum) + Number(1);
+        var _m = liNum;
+        var _z = 1;
+        var colIdx = 0;
+        for (var j = 0; j < liNum2; j++) {
+            // 生成列头
+            colIdx++;
             // 生成内容列并添加col属性
-            $(".seats-box .seats-row").append(
-                '<li class="seat-li" style="width: calc(100% / ' + liNum + ')">' +
-                '<span class="seat" col="' + colIdx + '" ></span>' +
-                '<span class="icon-box clear-fix">' +
-                '<span class="move-icon"></span>' +
-                '<span class="del-icon"></span>' +
-                '</span>' +
-                '</li>'
-            );
+            if (j == ((liNum2 - 1) / 2)) {
+                $(".seats-box .seats-row").append(
+                    '<li class="seat-li2" style="width: calc(100% / ' + liNum2 + ')">' +
+                    '<span class="seat2" col="' + colIdx + '" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>' +
+                    '</li>'
+                );
+            } else {
+                if (j < ((liNum2 - 1) / 2)) {
+                    $(".seats-box .seats-row").append(
+                        '<li class="seat-li" style="width: calc(100% / ' + liNum2 + ')">' +
+                        '<span class="seat" col="' + _m + '" ></span>' +
+                        '<span class="icon-box clear-fix">' +
+                        '<span class="move-icon"></span>' +
+                        '<span class="del-icon"></span>' +
+                        '</span>' +
+                        '</li>'
+                    );
+                    _m = _m - 2;
+                } else {
+                    $(".seats-box .seats-row").append(
+                        '<li class="seat-li" style="width: calc(100% / ' + liNum2 + ')">' +
+                        '<span class="seat" col="' + _z + '" ></span>' +
+                        '<span class="icon-box clear-fix">' +
+                        '<span class="move-icon"></span>' +
+                        '<span class="del-icon"></span>' +
+                        '</span>' +
+                        '</li>'
+                    );
+                    _z = _z + 2;
+                }
+            }
+
 
             $(".seats-row").eq(j).children(".seat-li").eq(0).before('<li class="row-index">' + colIdx + '</li>')
         }
@@ -249,13 +298,25 @@ function createSeats(data) {
 // 7.初始化选中
 function defaultSeats(data) {
     var hasDefaultSeat = false;
-    $.each(data.users, function(i, user) {
+    $.each(data.users, function (i, user) {
         if (user.row && user.col) {
             hasDefaultSeat = true;
             // 左侧选中
             $(".member").eq(user.index).addClass("seated-member").attr("memberIdx", user.index);
             // 右侧落座
-            $(".seats-row").eq(user.row - 1).children(".seat-li").eq(user.col - 1).children(".seat").addClass("seated-member").text(user.name).attr("memberIdx", user.index);
+            var lli = $(".seats-row").eq(user.row - 1).children();
+            $.each(lli, function (i, item) {
+                if(i>0){
+                    var colVal=$(item).find("span").attr("col");
+                    var userCol=Number(user.col);
+                    if(userCol==colVal){
+                        $(item).children(".seat").addClass("seated-member").text(user.name).attr("memberIdx", user.index);
+                        // $(".seats-row").eq(user.row - 1).children(".seat-li").eq(userCol).children(".seat").addClass("seated-member").text(user.name).attr("memberIdx", user.index);
+                    }
+                }
+            });
+            // $(".seats-row").eq(user.row - 1).children(".seat-li").eq(user.col-1).children(".seat").addClass("seated-member").text(user.name).attr("memberIdx", user.index);
+
             // 保存落座信息
             _page.insertedMembersSeats.push({
                 row: user.row,
@@ -264,21 +325,35 @@ function defaultSeats(data) {
             });
         }
     });
-    $.each(data.users1, function(i, user) {
-        if (user.row && user.col) {
-            hasDefaultSeat = true;
-            // 左侧选中
-            $(".member").eq(user.index).addClass("seated-member").attr("memberIdx", user.index);
-            // 右侧落座
-            $(".seats-row").eq(user.row - 1).children(".seat-li").eq(user.col - 1).children(".seat").addClass("seated-member").text(user.name).attr("memberIdx", user.index);
-            // 保存落座信息
-            _page.insertedMembersSeats.push({
-                row: user.row,
-                col: user.col,
-                index: user.index
-            });
-        }
-    });
+
+
+
+    // $.each(data.users1, function(i, user) {
+    //     if (user.row && user.col) {
+    //         hasDefaultSeat = true;
+    //         // 左侧选中
+    //         $(".member").eq(user.index).addClass("seated-member").attr("memberIdx", user.index);
+    //         // 右侧落座
+    //         var lli = $(".seats-row").eq(user.row - 1).children();
+    //         $.each(lli, function (i, item) {
+    //             if(i>0){
+    //                 var colVal=$(item).find("span").attr("col");
+    //                 var userCol=Number(user.col);
+    //                 if(userCol==colVal){
+    //                     $(item).children(".seat").addClass("seated-member").text(user.name).attr("memberIdx", user.index);
+    //                     // $(".seats-row").eq(user.row - 1).children(".seat-li").eq(userCol).children(".seat").addClass("seated-member").text(user.name).attr("memberIdx", user.index);
+    //                 }
+    //             }
+    //         });
+    //         // $(".seats-row").eq(user.row - 1).children(".seat-li").eq(user.col - 1).children(".seat").addClass("seated-member").text(user.name).attr("memberIdx", user.index);
+    //         // 保存落座信息
+    //         _page.insertedMembersSeats.push({
+    //             row: user.row,
+    //             col: user.col,
+    //             index: user.index
+    //         });
+    //     }
+    // });
 
     if (!hasDefaultSeat) {
         $(".quickly-cancel").addClass("custome_disabled_btn");
@@ -295,7 +370,7 @@ function dragMember(el) {
         seats_y;
 
     el.on({
-        "mousedown": function(e) {
+        "mousedown": function (e) {
             var self = $(this);
             if ($(e.target).hasClass("del-icon")) {
                 return;
@@ -310,14 +385,14 @@ function dragMember(el) {
                 "position": "fixed"
             });
             $(document).on({
-                "mousemove": function(e) {
+                "mousemove": function (e) {
                     _page.curCloneMember.dom.css({
                         "left": e.clientX - parseInt(_page.curCloneMember.dom.css("width"), 10) / 2 + "px",
                         "top": e.clientY - parseInt(_page.curCloneMember.dom.css("height"), 10) / 2,
                         "display": "block"
                     });
                 },
-                "mouseup": function(e) {
+                "mouseup": function (e) {
                     // 移除clone元素
                     _page.curCloneMember.dom.remove();
                     // 移除document上的事件
@@ -357,7 +432,7 @@ function dragMember(el) {
 
 // 9.给右侧座位添加落座信息
 function seatMembers(el) {
-    el.on("mouseenter", function() {
+    el.on("mouseenter", function () {
         if (_page.curCloneMember.moved) {
             // 拖拽动作结束
             _page.curCloneMember.moved = false;
@@ -381,7 +456,7 @@ function seatMembers(el) {
                     col: $(this).attr("col"),
                     index: _page.curCloneMember.index
                 });
-                $(this).parent().attr("title",_page.curCloneMember.name);
+                $(this).parent().attr("title", _page.curCloneMember.name);
                 $(this).next(".icon-box").children().addClass("show");
             }
             rightCountNumber();
@@ -396,7 +471,7 @@ function quicklySeatMembers(data) {
     var $members = $(".members-list .member"),
         $units = $(".units-list .member"),
         $seats = $(".seats-box .seat");
-    $(".quickly-seat").on("click", function(e) {
+    $(".quickly-seat").on("click", function (e) {
         e.stopPropagation();
         if (_page.isHandling) {
             return;
@@ -414,7 +489,7 @@ function quicklySeatMembers(data) {
         }
         // 清空当前排座
         clearSeats();
-        $.each(data.users, function(idx, row) {
+        $.each(data.users, function (idx, row) {
             $seats.eq(idx).text(row.name).addClass("seated-member").attr("memberIdx", row.index);
             _page.insertedMembersSeats.push({
                 row: $seats.eq(idx).attr("row"),
@@ -424,7 +499,7 @@ function quicklySeatMembers(data) {
         });
 
         var index_start = data.users.length
-        $.each(data.users1, function(idx, row) {
+        $.each(data.users1, function (idx, row) {
             var _index = index_start + idx
             $seats.eq(_index).text(row.name).addClass("seated-member").attr("memberIdx", row.index);
             _page.insertedMembersSeats.push({
@@ -454,7 +529,7 @@ function quicklySeatMembers(data) {
 
 // 11.一键清空
 function quicklyCancel() {
-    $(".quickly-cancel").on("click", function(e) {
+    $(".quickly-cancel").on("click", function (e) {
         e.stopPropagation();
         if ($(this).hasClass("custome_disabled_btn")) {
             return;
@@ -482,7 +557,7 @@ function quicklyCancel() {
 
 // 12.批量操作
 function partCancel() {
-    $(".part-handle").on("click", function(e) {
+    $(".part-handle").on("click", function (e) {
         e.stopPropagation();
         if ($(this).hasClass("custome_disabled_btn")) {
             return;
@@ -512,7 +587,7 @@ function partCancel() {
 function cancelCurSeat() {
     var memberIdx;
 
-    $(".right-seats .del-icon").on("click", function(e) {
+    $(".right-seats .del-icon").on("click", function (e) {
         e.stopPropagation();
         memberIdx = $(this).parent().siblings(".seat").attr("memberIdx");
         // 清除左侧人员列表选中
@@ -537,13 +612,13 @@ function cancelCurSeat() {
         }
         rightCountNumber();
         // 把当前人员在左侧展示出来
-        var users = _page.resData.users.filter(function(user) {
-            return _page.insertedMembersSeats.every(function(item, idx) {
+        var users = _page.resData.users.filter(function (user) {
+            return _page.insertedMembersSeats.every(function (item, idx) {
                 return user.index !== item.index
             })
         });
-        var users1 = _page.resData.users1.filter(function(user) {
-            return _page.insertedMembersSeats.every(function(item, idx) {
+        var users1 = _page.resData.users1.filter(function (user) {
+            return _page.insertedMembersSeats.every(function (item, idx) {
                 return user.index !== item.index
             })
         });
@@ -563,7 +638,7 @@ function exchangeSeats() {
         seats_y;
 
     $(".move-icon").on({
-        "mousedown": function(e) {
+        "mousedown": function (e) {
             var self = $(this).parents(".seat-li");
 
             // 生成当前拖拽的clone member
@@ -577,14 +652,14 @@ function exchangeSeats() {
                 "position": "fixed"
             });
             $(document).on({
-                "mousemove": function(e) {
+                "mousemove": function (e) {
                     _page.curCloneSeat.dom.css({
                         "left": e.clientX - _x + "px",
                         "top": e.clientY - _y / 2,
                         "display": "block"
                     });
                 },
-                "mouseup": function(e) {
+                "mouseup": function (e) {
                     // 移除clone元素
                     _page.curCloneSeat.dom.remove();
                     // 移除document上的事件
@@ -656,7 +731,7 @@ function clearSeats(curSeat) {
 
 // 17.座位互换时重整落座信息
 function resetSeats(el) {
-    el.on("mouseenter", function() {
+    el.on("mouseenter", function () {
         if (_page.curCloneSeat.moved) {
             // 拖拽动作结束
             _page.curCloneSeat.moved = false;
@@ -731,7 +806,7 @@ function loadPDF(source) {
         useCORS: true,
         allowTaint: true,
         taintTest: false
-    }).then(function(canvas) {
+    }).then(function (canvas) {
         var contentWidth = canvas.width;
         var contentHeight = canvas.height;
 
@@ -779,12 +854,12 @@ function OK() {
     $(".seats-box .seated-member").next(".icon-box").children().removeClass("show");
     // $(".is-part-handleing").removeClass("is-part-handleing").siblings(".icon-box").children().removeClass("show");
     if (_page.interfaceError) {
-        return { valid: false, interfaceError: true }
+        return {valid: false, interfaceError: true}
     }
     if (_page.isHandling) {
         // 请先取消批量操作，todo...
         top.$.alert("请先取消批量操作");
-        return { valid: false };
+        return {valid: false};
     }
 
     // 需要的base64是html2canvas的promise协议回调生成，在自定义控件点击保存时必须得等待此回调函数执行完毕再关闭弹框
@@ -842,21 +917,24 @@ function leftCountNumber(dom, type) {
     type === "delete" ? --count : ++count
     dom.text(count);
 }
+
 // 落座计数
 function rightCountNumber() {
     $(".right-seats .counts").text(_page.insertedMembersSeats.length)
 }
+
 // 打开弹框
 function showDialog() {
-    $(".left-list .add-btn").on("click", function() {
+    $(".left-list .add-btn").on("click", function () {
         $(".edit-dialog input[type='text']").val("");
         $(".edit-dialog").addClass("show");
     })
 }
+
 // 切换弹框内容展示
 function checkContent() {
     var radio = $('.edit-dialog input:radio[name="radio"]');
-    radio.on("change", function() {
+    radio.on("change", function () {
         var checkedVal = $(this).val();
         if (checkedVal === "member") {
             $(".dialog-content .member-item").removeClass("hide").addClass("show");
@@ -867,22 +945,24 @@ function checkContent() {
         }
     })
 }
+
 // 关闭弹框
 function closeDialog() {
     var closeBtn = $(".edit-dialog .close-btn"),
         sureBtn = $(".edit-dialog .sure-btn"),
         cancelBtn = $(".edit-dialog .cancel-btn");
-    closeBtn.on("click", function() {
+    closeBtn.on("click", function () {
         $(".edit-dialog").removeClass("show");
     })
-    sureBtn.on("click", function() {
+    sureBtn.on("click", function () {
         setDataWhenSure();
         $(".edit-dialog").removeClass("show");
     })
-    cancelBtn.on("click", function() {
+    cancelBtn.on("click", function () {
         $(".edit-dialog").removeClass("show");
     })
 }
+
 // 点击确定时获取数据并展示数据
 function setDataWhenSure() {
     var checkedVal = $('.edit-dialog input:radio[name="radio"]:checked').val();
@@ -915,82 +995,82 @@ function setDataWhenSure() {
     quicklyCancel();
 }
 
-function addMemberOrUnitDom(data, type) {
-    $(".left-list .member").off("mousedown");
-    var users = _page.resData.users.filter(function(user) {
-        return _page.insertedMembersSeats.every(function(item, idx) {
-            return user.index !== item.index
-        })
-    });
-    var users1 = _page.resData.users1.filter(function(user) {
-        return _page.insertedMembersSeats.every(function(item, idx) {
-            return user.index !== item.index
-        })
-    });
-    var idx = users.length - 1,
-        ulIdx = parseInt(idx / 3, 10);
-    var idx1 = users1.length - 1,
-        ulIdx1 = parseInt(idx1 / 3, 10);
-    var curIdx = _page.resData.users.length + _page.resData.users1.length - 1;
-    if (type === "member") {
-        var $membersList = $(".left-list .members-list");
-        var row = users[idx];
-        if (idx % 3 === 0) {
-            $membersList.append(
-                '<ul class="members-row person">' +
-                '<li class="member" memberIdx="' + curIdx + '">' +
-                '<span class="member-name">' + row.name + '</span>' +
-                '<span class="member-dep">' + row.dep + '</span>' +
-                '<span class="icon-box clear-fix">' +
-                '<span class="del-icon"></span>' +
-                '</li>' +
-                '</ul>'
-            );
-        } else {
-            var $membersRow = $(".members-list .members-row");
-            $membersRow.eq(ulIdx).append(
-                '<li class="member" memberIdx="' + curIdx + '">' +
-                '<span class="member-name">' + row.name + '</span>' +
-                '<span class="member-dep">' + row.dep + '</span>' +
-                '<span class="icon-box clear-fix">' +
-                '<span class="del-icon"></span>' +
-                '</li>'
-            );
-        }
-        // 计数
-        leftCountNumber($(".members-list-title .counts"));
-    } else if (type === "unit") {
-        var $unitsList = $(".left-list .units-list");
-        var row = users1[idx1];
-        if (idx1 % 3 === 0) {
-            $unitsList.append(
-                '<ul class="members-row unit">' +
-                '<li class="member" memberIdx="' + curIdx + '">' +
-                '<span class="member-name">' + row.name + '</span>' +
-                '<span class="icon-box clear-fix">' +
-                '<span class="del-icon"></span>' +
-                '</li>' +
-                '</ul>'
-            );
-        } else {
-            var $unitsRow = $(".units-list .members-row");
-            $unitsRow.eq(ulIdx1).append(
-                '<li class="member" memberIdx="' + curIdx + '">' +
-                '<span class="member-name">' + row.name + '</span>' +
-                '<span class="icon-box clear-fix">' +
-                '<span class="del-icon"></span>' +
-                '</li>'
-            );
-        }
-        // 计数
-        leftCountNumber($(".units-list-title .counts"));
-    }
-    dragMember($(".left-list .member"));
-}
+// function addMemberOrUnitDom(data, type) {
+//     $(".left-list .member").off("mousedown");
+//     var users = _page.resData.users.filter(function(user) {
+//         return _page.insertedMembersSeats.every(function(item, idx) {
+//             return user.index !== item.index
+//         })
+//     });
+//     var users1 = _page.resData.users1.filter(function(user) {
+//         return _page.insertedMembersSeats.every(function(item, idx) {
+//             return user.index !== item.index
+//         })
+//     });
+//     var idx = users.length - 1,
+//         ulIdx = parseInt(idx / 3, 10);
+//     var idx1 = users1.length - 1,
+//         ulIdx1 = parseInt(idx1 / 3, 10);
+//     var curIdx = _page.resData.users.length + _page.resData.users1.length - 1;
+//     if (type === "member") {
+//         var $membersList = $(".left-list .members-list");
+//         var row = users[idx];
+//         if (idx % 3 === 0) {
+//             $membersList.append(
+//                 '<ul class="members-row person">' +
+//                 '<li class="member" memberIdx="' + curIdx + '">' +
+//                 '<span class="member-name">' + row.name + '</span>' +
+//                 '<span class="member-dep">' + row.dep + '</span>' +
+//                 '<span class="icon-box clear-fix">' +
+//                 '<span class="del-icon"></span>' +
+//                 '</li>' +
+//                 '</ul>'
+//             );
+//         } else {
+//             var $membersRow = $(".members-list .members-row");
+//             $membersRow.eq(ulIdx).append(
+//                 '<li class="member" memberIdx="' + curIdx + '">' +
+//                 '<span class="member-name">' + row.name + '</span>' +
+//                 '<span class="member-dep">' + row.dep + '</span>' +
+//                 '<span class="icon-box clear-fix">' +
+//                 '<span class="del-icon"></span>' +
+//                 '</li>'
+//             );
+//         }
+//         // 计数
+//         leftCountNumber($(".members-list-title .counts"));
+//     } else if (type === "unit") {
+//         var $unitsList = $(".left-list .units-list");
+//         var row = users1[idx1];
+//         if (idx1 % 3 === 0) {
+//             $unitsList.append(
+//                 '<ul class="members-row unit">' +
+//                 '<li class="member" memberIdx="' + curIdx + '">' +
+//                 '<span class="member-name">' + row.name + '</span>' +
+//                 '<span class="icon-box clear-fix">' +
+//                 '<span class="del-icon"></span>' +
+//                 '</li>' +
+//                 '</ul>'
+//             );
+//         } else {
+//             var $unitsRow = $(".units-list .members-row");
+//             $unitsRow.eq(ulIdx1).append(
+//                 '<li class="member" memberIdx="' + curIdx + '">' +
+//                 '<span class="member-name">' + row.name + '</span>' +
+//                 '<span class="icon-box clear-fix">' +
+//                 '<span class="del-icon"></span>' +
+//                 '</li>'
+//             );
+//         }
+//         // 计数
+//         leftCountNumber($(".units-list-title .counts"));
+//     }
+//     dragMember($(".left-list .member"));
+// }
 
 // 开启删除模式
 function openDeleteBtn() {
-    $(".left-list .delete-btn").on("click", function(e) {
+    $(".left-list .delete-btn").on("click", function (e) {
         e.stopPropagation();
         var members = $(".left-list .member");
         // 删除
@@ -1012,7 +1092,7 @@ function openDeleteBtn() {
 // 删除左侧当前项
 function deleteMemberOrUnit() {
     var delIcon = $(".left-list .del-icon");
-    delIcon.on("click", function(e) {
+    delIcon.on("click", function (e) {
         e.stopPropagation();
         var item = $(this).closest(".member");
         if (item.hasClass("seated-member")) {
@@ -1036,16 +1116,16 @@ function deleteMemberOrUnit() {
 function searchFn() {
     var $searchIpt = $(".search-ipt"),
         $meetingSeatSearch = $("#meetingSeatSearch");
-    $meetingSeatSearch.on("input", function() {
-        var users = _page.resData.users.filter(function(user) {
-            return _page.insertedMembersSeats.every(function(item) {
+    $meetingSeatSearch.on("input", function () {
+        var users = _page.resData.users.filter(function (user) {
+            return _page.insertedMembersSeats.every(function (item) {
                 return user.index !== item.index
             })
         });
         var keyword = $searchIpt.val(),
             result = [];
 
-        users.forEach(function(item) {
+        users.forEach(function (item) {
             if (item.name.indexOf(keyword) !== -1 || item.dep.indexOf(keyword) !== -1) {
                 result.push(item)
             }
