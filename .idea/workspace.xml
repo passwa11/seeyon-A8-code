@@ -2,127 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="23252443-c13e-4bf1-9541-df7c5b1da7e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/263邮箱菜单集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/check/Xk263EmailChecker.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/263邮箱菜单集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/263邮箱菜单集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/section/Xk263EmailSection.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/cfgHome/metadata/menu-AccountAdmin-Enterprise.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/cfgHome/metadata/menu-AccountAdmin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/src/com/seeyon/ctp/rest/resources/AffairResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/src/com/seeyon/ctp/rest/util/TicketUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/大屯项目集成/datun-portallow" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/大屯项目集成/datun-sso-login" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/大屯项目集成/大屯项目代码.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/徐矿263邮箱单点登录/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/.idea/Portal190724.iml" beforeDir="false" afterPath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/.idea/Portal190724.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/cfgHome/plugin/Portal190724/spring/spring-Portal190724-manager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/cfgHome/plugin/Portal190724/spring/spring-Portal190724-manager.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/LawSetUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/Portal190724Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/Portal190724Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/controller/TestController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.class" beforeDir="false" afterPath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724Dao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/dao/Portal190724DaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724Manager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Portal190724/manager/Portal190724ManagerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/law/lowPlugin.properties" beforeDir="false" afterPath="$PROJECT_DIR$/1.法务系统代办集成/代办集成/seeyon/WEB-INF/classes/law/lowPlugin.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/263邮箱菜单集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/263邮箱菜单集成/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/.idea/xzyk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/.idea/xzyk.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-controller.xml" beforeDir="false" afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-controller.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-manager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/cfgHome/plugin/zxzyk/spring/spring-zxzyk-manager.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/casFilterConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/casFilterConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/dao/OrgDeptDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/dao/OrgDeptDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/dao/OrgLevelDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/dao/OrgLevelDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/dao/OrgMemberDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/dao/OrgMemberDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/quartz/SyncDeptTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/quartz/SyncDeptTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/util/StringHandle.class" beforeDir="false" afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/util/StringHandle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/zxzykPluginInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/com/seeyon/apps/ext/zxzyk/zxzykPluginInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/xzykConf/xzykPlugin.properties" beforeDir="false" afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/seeyon/WEB-INF/classes/xzykConf/xzykPlugin.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/util/StringHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/util/StringHandle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/src/xzykConf/xzykPlugin.properties" beforeDir="false" afterPath="$PROJECT_DIR$/4.组织机构同步-医科大/src/xzykConf/xzykPlugin.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.组织机构同步-医科大/xzyk-20190813.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/代办工作标题变色/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/代办工作标题变色/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/公文/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController.class" beforeDir="false" afterPath="$PROJECT_DIR$/公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/大屯项目集成/datun-portallow" beforeDir="false" afterPath="$PROJECT_DIR$/大屯项目集成/datun-portallow" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/大屯项目集成/datun-portallow/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/大屯项目集成/datun-portallow/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/大屯项目集成/datun-portallow/Portal_Low.iml" beforeDir="false" afterPath="$PROJECT_DIR$/大屯项目集成/datun-portallow/Portal_Low.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/大屯项目集成/datun-portallow/src/conf/plugin/LowSection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/大屯项目集成/datun-portallow/src/conf/plugin/LowSection.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/大屯项目集成/datun-sso-login" beforeDir="false" afterPath="$PROJECT_DIR$/大屯项目集成/datun-sso-login" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/大屯项目集成/datun-sso-login/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/大屯项目集成/datun-sso-login/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/大屯项目集成/datun-sso-login/Copy of A8_Law.iml" beforeDir="false" afterPath="$PROJECT_DIR$/大屯项目集成/datun-sso-login/Copy of A8_Law.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/大屯项目集成/datun-sso-login/src/com/seeyon/v3x/plugin/law/LawDefintion.java" beforeDir="false" afterPath="$PROJECT_DIR$/大屯项目集成/datun-sso-login/src/com/seeyon/v3x/plugin/law/LawDefintion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/大屯项目集成/datun-sso-login/src/com/seeyon/v3x/plugin/law/controller/LawLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/大屯项目集成/datun-sso-login/src/com/seeyon/v3x/plugin/law/controller/LawLoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/徐矿263邮箱单点登录/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/263邮箱菜单集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/263邮箱菜单集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplProxy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplService.class" beforeDir="false" afterPath="$PROJECT_DIR$/263邮箱菜单集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplServiceLocator.class" beforeDir="false" afterPath="$PROJECT_DIR$/263邮箱菜单集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiImplServiceLocator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiSoapBindingStub.class" beforeDir="false" afterPath="$PROJECT_DIR$/263邮箱菜单集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/axis/xmapi/XmapiSoapBindingStub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/section/Xk263EmailSection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/util/Mail263Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/263邮箱菜单集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/util/Mail263Util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/util/SSOMD5.class" beforeDir="false" afterPath="$PROJECT_DIR$/263邮箱菜单集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/util/SSOMD5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/util/SignUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/263邮箱菜单集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/util/SignUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/util/ZCommonUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/263邮箱菜单集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/util/ZCommonUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/apps/ext/xk263Email/xk263EmailPluginInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/263邮箱菜单集成/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/xk263EmailPluginInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/bo/V3xOrgMember$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/bo/V3xOrgMember$V3xOrgMemberImmutableDecorator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/bo/V3xOrgMember.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper$EntityPropertyGetter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/EntityPropertyHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/OrgHelper$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/dao/OrgHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/manager/MemberManagerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/bin/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿263邮箱单点登录/徐矿263邮箱单点登录.iml" beforeDir="false" afterPath="$PROJECT_DIR$/徐矿263邮箱单点登录/徐矿263邮箱单点登录.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/徐矿待阅已阅/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/徐矿待阅已阅/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/徐医附院_代办工作添加科室名称/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/徐医附院_代办工作添加科室名称/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/徐医附院_档案系统集成公文同步/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/徐医附院_档案系统集成公文同步/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/SSOLogin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/controller/Sso0715Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/dao/Sso0715Dao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/dao/Sso0715DaoImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/manager/Sso0715Manager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/manager/Sso0715ManagerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/pojo/Department.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/pojo/Extend.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/pojo/Member.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/pojo/Mobile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/pojo/Photo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/pojo/Pocket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/pojo/Ssoentity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/util/JDBCUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/util/MyX509TrustManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/util/PocketUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/util/StringHandlerUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/第三方单点登录OA/A6_Sso_190715/seeyon/WEB-INF/classes/com/seeyon/apps/ext/Sso0715/util/TrustAnyHostnameVerifier.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/徐矿选择人员CAP4/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/bootstrap-people.js" beforeDir="false" afterPath="$PROJECT_DIR$/徐矿选择人员CAP4/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/bootstrap-people.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/集团人员管理/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>CAPFormDataService</find>
-    </findStrings>
-    <dirStrings>
-      <dir>F:\s\A-8-code</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -138,40 +30,18 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="121" />
-    <option name="y" value="30" />
-    <option name="width" value="1537" />
-    <option name="height" value="950" />
-  </component>
+  <component name="ProjectId" id="1anNP68cQliFqjjeLOeGdkiiw8y" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="A-8-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="A-8-code" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-    </panes>
-  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/4.组织机构同步-医科大" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.zeroturnaround.javarebel.idea.plugin.settings.AdvancedConfigurable" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -235,54 +105,23 @@
       <option name="presentableId" value="Default" />
       <updated>1567066735270</updated>
       <workItem from="1567066736569" duration="1268000" />
+      <workItem from="1587367372444" duration="252000" />
     </task>
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1268000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="121" y="30" width="1537" height="950" extended-state="0" />
-    <layout>
-      <window_info id="JRebel" side_tool="true" />
-      <window_info id="Image Layers" />
-      <window_info id="UI Designer" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info id="Capture Tool" />
-      <window_info id="Designer" />
-      <window_info id="MyBatis Builder" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24983074" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="FindBugs-IDEA" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="JRebel Console" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="RestServices" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="BPMNPalette" />
-      <window_info anchor="right" id="Remote Host" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="masterDetails">
     <states>

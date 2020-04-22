@@ -46,7 +46,7 @@ public class TestDemo {
 
         Result s= com.alibaba.fastjson.JSONObject.parseObject(str,Result.class);
         System.out.println(s);
-//        JSONArray json = JSONArray.fromObject(jsonObject.get("result"));
+        JSONArray json = JSONArray.fromObject(jsonObject.get("result"));
 //        System.out.println(array.toString());
     }
 }

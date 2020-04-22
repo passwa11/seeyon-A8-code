@@ -144,16 +144,16 @@ function initJgbmTable(){
         clickToSelect: true,                //是否启用点击选中行
         columns: [
             {checkbox: true, width: '5%'}
-            // , {
-            //     field: 'field0004',
-            //     title: '部室',
-            //     width: '68%',
-            // }
             , {
-                field: 'field0003',
-                title: '机要员',
+                field: 'field0004',
+                title: '部室',
                 width: '88%',
             }
+            // , {
+            //     field: 'field0003',
+            //     title: '机要员',
+            //     width: '88%',
+            // }
         ]
     });
 }
@@ -415,7 +415,8 @@ function jgbmSure() {
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
             // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+            // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm" lay-name="' + obj.text + '" lay-dept="' + obj.text + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -437,7 +438,7 @@ function jgbmSure() {
             }
             if (selected()) {
                 // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm"  lay-name="' + obj.text + '" lay-dept="' + obj.text + '" class="">' + obj.text + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");

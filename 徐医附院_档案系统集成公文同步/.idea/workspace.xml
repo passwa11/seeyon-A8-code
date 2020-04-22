@@ -2,29 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac16f7c2-9d1f-451a-bd87-9fcdc05aeb19" name="Default Changelist" comment="update">
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DTdocument.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DTdocument.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/DTdocumentPluginInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/DTdocumentPluginInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/dao/DTdocumentDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/dao/DTdocumentDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/dao/DTdocumentDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/dao/DTdocumentDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/DTdocumentManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/DTdocumentManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/DTdocumentManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/DTdocumentManagerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/WriteMiddleData.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/WriteMiddleData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/po/TempDate.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/po/TempDate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/po/TemproraryEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/po/TemproraryEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/quartz/SyncDataTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/quartz/SyncDataTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/DbConnUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/DbConnUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/ReadConfigTools.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/ReadConfigTools.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/RenderUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/RenderUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql文件/存储过程.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql文件/存储过程.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql文件/数据表.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql文件/数据表.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/WriteMiddleData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/WriteMiddleData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/po/TemproraryEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/po/TemproraryEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/bootstrap-people.js" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/bootstrap-people.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +42,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/po" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -202,7 +186,8 @@
       <workItem from="1586571120785" duration="12677000" />
       <workItem from="1586762167374" duration="2915000" />
       <workItem from="1586823407089" duration="10581000" />
-      <workItem from="1586920754929" duration="1903000" />
+      <workItem from="1586920754929" duration="2038000" />
+      <workItem from="1587434384691" duration="263000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1586828382127</created>
@@ -218,7 +203,21 @@
       <option name="project" value="LOCAL" />
       <updated>1586831068409</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update">
+      <created>1586938686818</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1586938686818</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update">
+      <created>1587434539534</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1587434539534</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

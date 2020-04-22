@@ -2,29 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36e88280-e35b-47df-aff3-f0239d1a348d" name="Default Changelist" comment="过滤有数据的明细行">
-      <change beforePath="" afterPath="$PROJECT_DIR$/../syncPost/.idea/webServers.xml" />
-      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/档案系统集成公文同步/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/档案系统集成公文同步/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/档案系统集成公文同步/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/档案系统集成公文同步/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" />
-      <change beforePath="$PROJECT_DIR$/../syncPost/.idea/deployment.xml" afterPath="$PROJECT_DIR$/../syncPost/.idea/deployment.xml" />
-      <change beforePath="$PROJECT_DIR$/../syncPost/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../syncPost/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../syncPost/seeyon/WEB-INF/classes/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.class" afterPath="$PROJECT_DIR$/../syncPost/seeyon/WEB-INF/classes/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.class" />
-      <change beforePath="$PROJECT_DIR$/../syncPost/src/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.java" afterPath="$PROJECT_DIR$/../syncPost/src/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.java" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.class" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.class" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/src/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.java" afterPath="$PROJECT_DIR$/../徐医附院_栏目集成修改我的模板/src/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.java" />
-      <change beforePath="$PROJECT_DIR$/../徐矿CAP4_会议排座/seeyon/apps_res/cap/customCtrlResources/meetingSeatResources/html/meetingSeat.html" afterPath="$PROJECT_DIR$/../徐矿CAP4_会议排座/seeyon/apps_res/cap/customCtrlResources/meetingSeatResources/html/meetingSeat.html" />
-      <change beforePath="$PROJECT_DIR$/../徐矿CAP4_会议排座/seeyon/apps_res/cap/customCtrlResources/meetingSeatResources/json/meetingConfig.json" afterPath="$PROJECT_DIR$/../徐矿CAP4_会议排座/seeyon/apps_res/cap/customCtrlResources/meetingSeatResources/json/meetingConfig.json" />
-      <change beforePath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/ctp/rest/resources/MeetingSeatResources.java" afterPath="$PROJECT_DIR$/../徐矿CAP4_会议排座/src_meetingSeat/com/seeyon/ctp/rest/resources/MeetingSeatResources.java" />
-      <change beforePath="$PROJECT_DIR$/../徐矿大学_单点登录/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../徐矿大学_单点登录/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/src/com/seeyon/apps/ext/TestDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/src/com/seeyon/apps/ext/TestDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/bootstrap-people.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/bootstrap-people.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/seeyon/WEB-INF/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,9 +20,6 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="FileEditorManager">
-    <leaf />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -43,200 +27,11 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>backfillpeopleInfo2</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GradleLocalSettings">
-    <option name="externalProjectsViewState">
-      <projects_view />
-    </option>
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/layui-people.js" />
-        <option value="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/bootstrap-people.js" />
-        <option value="$PROJECT_DIR$/src_selectPeople/com/seeyon/ctp/rest/resources/SelectPeopleResources.java" />
-      </list>
-    </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-15" />
-    <option name="y" value="29" />
-    <option name="width" value="1206" />
-    <option name="height" value="886" />
-  </component>
   <component name="ProjectId" id="1RGJDrvneTW3NQlJCovjZATbKI5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
-              <item name="cap" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
-              <item name="cap" type="462c0819:PsiDirectoryNode" />
-              <item name="customCtrlResources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
-              <item name="cap" type="462c0819:PsiDirectoryNode" />
-              <item name="customCtrlResources" type="462c0819:PsiDirectoryNode" />
-              <item name="hiddenResources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
-              <item name="cap" type="462c0819:PsiDirectoryNode" />
-              <item name="customCtrlResources" type="462c0819:PsiDirectoryNode" />
-              <item name="hiddenResources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
-              <item name="cap" type="462c0819:PsiDirectoryNode" />
-              <item name="customCtrlResources" type="462c0819:PsiDirectoryNode" />
-              <item name="peopleResources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
-              <item name="cap" type="462c0819:PsiDirectoryNode" />
-              <item name="customCtrlResources" type="462c0819:PsiDirectoryNode" />
-              <item name="peopleResources" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps_res" type="462c0819:PsiDirectoryNode" />
-              <item name="cap" type="462c0819:PsiDirectoryNode" />
-              <item name="customCtrlResources" type="462c0819:PsiDirectoryNode" />
-              <item name="peopleResources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="selectPeople" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="selectPeople" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="selectPeople" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="徐矿选择人员CAP4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="徐矿选择人员CAP4" type="462c0819:PsiDirectoryNode" />
-              <item name="src_selectPeople" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="myquery" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-    </panes>
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -247,7 +42,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/Seeyon/A870/ApacheJetspeed/webapps/seeyon" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -288,152 +83,93 @@
     </option>
   </component>
   <component name="RunManager" selected="Remote.Unnamed">
-    <configuration default="true" type="Applet" factoryName="Applet">
+    <configuration default="true" type="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <option name="WIDTH" value="0" />
-      <module />
-      <method>
+      <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="HiddenFieldCtrl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" runner="idea">
+      <option name="MAIN_CLASS_NAME" value="com.seeyon.apps.customFieldCtrl.fieldCtrl.HiddenFieldCtrl" />
+      <module name="徐矿选择人员CAP4" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.seeyon.apps.customFieldCtrl.fieldCtrl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="com.seeyon.apps.customFieldCtrl.fieldCtrl.HiddenFieldCtrl" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="徐矿选择人员CAP4" />
-      <envs />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="Test" type="Application" factoryName="Application" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Test" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
       <module name="徐矿选择人员CAP4" />
-      <envs />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method>
+      <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method>
+      <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Unnamed" type="Remote" factoryName="Remote">
+    <configuration name="Unnamed" type="Remote">
       <module name="徐矿选择人员CAP4" />
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="8000" />
+      <option name="AUTO_RESTART" value="false" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="8000" />
         <option name="LOCAL" value="false" />
       </RunnerSettings>
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
+    <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
       <properties />
       <listeners />
-      <method>
+      <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
-      <method>
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Application.Test" />
-      <item index="1" class="java.lang.String" itemvalue="Remote.Unnamed" />
-      <item index="2" class="java.lang.String" itemvalue="Application.HiddenFieldCtrl" />
+    <list>
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Application.HiddenFieldCtrl" />
+      <item itemvalue="Remote.Unnamed" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Application.HiddenFieldCtrl" />
+      <list>
+        <item itemvalue="Application.HiddenFieldCtrl" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -493,6 +229,9 @@
       <workItem from="1585638318935" duration="2193000" />
       <workItem from="1585640870548" duration="794000" />
       <workItem from="1586400991643" duration="9577000" />
+      <workItem from="1587346305423" duration="623000" />
+      <workItem from="1587347441721" duration="186000" />
+      <workItem from="1587518389361" duration="626000" />
     </task>
     <task id="LOCAL-00002" summary="有问题？">
       <created>1558576335669</created>
@@ -840,9 +579,6 @@
     <option name="localTasksCounter" value="51" />
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9577000" />
-  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -851,50 +587,6 @@
       <are-packages-shown value="true" />
       <is-autoscroll-to-source value="true" />
     </todo-panel>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
-    <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="RestServices" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21103448" sideWeight="0.5025707" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="JRebel Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="MyBatis Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26068965" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32965517" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14344828" sideWeight="0.4974293" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18482758" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19987147" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="BPMNPalette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="SmartIM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -915,20 +607,12 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
+              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -966,166 +650,10 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java</url>
           <line>173</line>
-          <properties />
           <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
     </breakpoint-manager>
-    <watches-manager />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/bootstrap-people.js-bak">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/html/selectpeople.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="38" column="37" lean-forward="true" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="151" column="37" lean-forward="true" selection-start-line="151" selection-start-column="37" selection-end-line="151" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/fastjson.jar!/com/alibaba/fastjson/JSON.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/jersey-server.jar!/org/glassfish/jersey/server/model/internal/ResourceMethodInvocationHandlerFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src_selectPeople/com/seeyon/ctp/rest/resources/SelectPeopleResources.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="75" column="30" lean-forward="true" selection-start-line="75" selection-start-column="30" selection-end-line="75" selection-end-column="30" />
-          <folding>
-            <element signature="e#2446#2462#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/selectPeople.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1">
-          <caret line="234" column="24" lean-forward="false" selection-start-line="234" selection-start-column="24" selection-end-line="234" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/bootstrap-people.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding>
-            <element signature="n#!!block;n#jcdwSure#0" expanded="false" />
-            <marker date="1586414287781" expanded="true" signature="13463:13469" ph="&amp;nbsp;" />
-            <marker date="1586414287781" expanded="true" signature="13469:13475" ph="&amp;nbsp;" />
-            <marker date="1586414287781" expanded="true" signature="13475:13481" ph="&amp;nbsp;" />
-            <marker date="1586414287781" expanded="true" signature="13481:13487" ph="&amp;nbsp;" />
-            <marker date="1586414287781" expanded="true" signature="14545:14551" ph="&amp;nbsp;" />
-            <marker date="1586414287781" expanded="true" signature="14551:14557" ph="&amp;nbsp;" />
-            <marker date="1586414287781" expanded="true" signature="14557:14563" ph="&amp;nbsp;" />
-            <marker date="1586414287781" expanded="true" signature="14563:14569" ph="&amp;nbsp;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/layui-people.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="52" column="31" lean-forward="true" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
-          <folding>
-            <marker date="1586412956381" expanded="true" signature="2050:2056" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="2056:2062" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="2062:2068" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="2068:2074" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="3746:3752" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="3752:3758" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="3758:3764" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="3764:3770" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="5082:5088" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="5088:5094" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="5094:5100" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="5100:5106" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="6779:6785" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="6785:6791" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="6791:6797" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="6797:6803" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="8248:8254" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="8254:8260" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="8260:8266" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="8266:8272" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="9968:9974" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="9974:9980" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="9980:9986" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="9986:9992" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="11431:11437" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="11437:11443" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="11443:11449" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="11449:11455" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="13128:13134" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="13134:13140" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="13140:13146" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="13146:13152" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="14452:14458" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="14458:14464" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="14464:14470" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="14470:14476" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="16290:16296" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="16296:16302" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="16302:16308" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="16308:16314" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="17707:17713" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="17713:17719" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="17719:17725" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="17725:17731" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="19548:19554" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="19554:19560" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="19560:19566" ph="&amp;nbsp;" />
-            <marker date="1586412956381" expanded="true" signature="19566:19572" ph="&amp;nbsp;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>
