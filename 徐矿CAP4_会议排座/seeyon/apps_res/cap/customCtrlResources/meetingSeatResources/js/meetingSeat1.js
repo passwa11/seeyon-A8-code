@@ -11,13 +11,17 @@ var _page = {
         dom: {}, // 被拖拽cloneDom的人员对象
         index: "", // 被拖拽clone对象的人员序号
         name: "", // 被拖拽clone对象的人员名称
-        moved: false // 是否完成拖拽动作（无论是否安插在右侧座位上）
+        moved: false, // 是否完成拖拽动作（无论是否安插在右侧座位上）
+        col:"",//列
+        row:""//行
     },
     curCloneSeat: {
         dom: {}, // 被拖拽cloneDom的位置对象
         index: "", // 被拖拽clone位置的人员序号
         name: "", // 被拖拽clone位置的人员名称
-        moved: false // 是否完成拖拽动作（无论是否安插在右侧座位上）
+        moved: false, // 是否完成拖拽动作（无论是否安插在右侧座位上）
+        col:"",//列
+        row:""//行
     },
     // 被安插成功的人员位置信息，{row, col, index}
     insertedMembersSeats: [],
@@ -60,7 +64,6 @@ function getPageData() {
         contentType: 'application/json;charset=utf-8',
         data: {'meetingId': formMainData.field0028.value},
         success: function (response) {
-            console.log(response.data);
             _page.interfaceError = false;
             // 给人员添加序号并按序号重排序
             sortMembers(response.data);
@@ -326,35 +329,6 @@ function defaultSeats(data) {
         }
     });
 
-
-
-    // $.each(data.users1, function(i, user) {
-    //     if (user.row && user.col) {
-    //         hasDefaultSeat = true;
-    //         // 左侧选中
-    //         $(".member").eq(user.index).addClass("seated-member").attr("memberIdx", user.index);
-    //         // 右侧落座
-    //         var lli = $(".seats-row").eq(user.row - 1).children();
-    //         $.each(lli, function (i, item) {
-    //             if(i>0){
-    //                 var colVal=$(item).find("span").attr("col");
-    //                 var userCol=Number(user.col);
-    //                 if(userCol==colVal){
-    //                     $(item).children(".seat").addClass("seated-member").text(user.name).attr("memberIdx", user.index);
-    //                     // $(".seats-row").eq(user.row - 1).children(".seat-li").eq(userCol).children(".seat").addClass("seated-member").text(user.name).attr("memberIdx", user.index);
-    //                 }
-    //             }
-    //         });
-    //         // $(".seats-row").eq(user.row - 1).children(".seat-li").eq(user.col - 1).children(".seat").addClass("seated-member").text(user.name).attr("memberIdx", user.index);
-    //         // 保存落座信息
-    //         _page.insertedMembersSeats.push({
-    //             row: user.row,
-    //             col: user.col,
-    //             index: user.index
-    //         });
-    //     }
-    // });
-
     if (!hasDefaultSeat) {
         $(".quickly-cancel").addClass("custome_disabled_btn");
         $(".part-handle").addClass("custome_disabled_btn");
@@ -565,7 +539,8 @@ function partCancel() {
 
         // 批量操作
         if (!_page.isHandling) {
-            _page.isHandling = true;
+            //zhou :拖拽左侧人员的时候会提示 取消批量操作  设置为false 暂时不要了
+            _page.isHandling = false;
             // 禁用一键入座
             $(".quickly-seat").addClass("custome_disabled_btn");
             $(this).text("取消批量操作");
@@ -640,6 +615,8 @@ function exchangeSeats() {
     $(".move-icon").on({
         "mousedown": function (e) {
             var self = $(this).parents(".seat-li");
+            var col = $(self).find("span").attr("col");
+            var row = $(self).find("span").attr("row");
 
             // 生成当前拖拽的clone member
             self.clone(false).addClass("clone_seat").appendTo($(".right-seats"));
@@ -672,10 +649,13 @@ function exchangeSeats() {
                     if ((e.clientX > seats_x) && (e.clientY < seats_y)) {
                         var curSeat = _page.curCloneSeat.dom.children(".seated-member");
                         _page.curCloneSeat = {
-                            dom: $(".clone-obj"),
+                            // dom: $(".clone-obj"),
+                            dom: self,
                             index: curSeat.attr("memberIdx"),
                             name: curSeat.text(),
-                            moved: true
+                            moved: true,
+                            col:col,
+                            row:row
                         };
 
                         resetSeats($(".seats-box .seat"));
@@ -755,13 +735,18 @@ function resetSeats(el) {
                     resetInsertedMembersSeats();
                 } else {
                     // 安插本次座位上的人员
+                    //zhou
                     $(this).text(_page.curCloneSeat.name).attr("memberIdx", _page.curCloneSeat.index).addClass("seated-member is-part-handleing").siblings(".icon-box").children().addClass("show");
-
                     for (var o = 0; o < _page.insertedMembersSeats.length; o++) {
                         var item = _page.insertedMembersSeats[o];
-                        if (_page.curCloneSeat.index === item.index) {
+                        if (_page.curCloneSeat.col == item.col && _page.curCloneSeat.row == item.row) {
                             // 清空上次座位上的text()和样式
-                            $(".seats-box .seats-row").eq(item.row - 1).find(".seat").eq(item.col - 1).text("").removeClass("seated-member is-part-handleing").attr("memberIdx", null).siblings(".icon-box").children().removeClass("show");
+                            var dom = _page.curCloneSeat.dom;
+                            $(dom).find(".seat").text("");
+                            $(dom).find(".seat").removeClass("seated-member is-part-handleing");
+                            $(dom).find(".seat").attr("memberIdx", null);
+                            $(dom).find(".seat").siblings(".icon-box").children().removeClass("show");
+                            // $(".seats-box .seats-row").eq(_page.curCloneSeat.row - 1).find(".seat").eq(item.col - 1).text("").removeClass("seated-member is-part-handleing").attr("memberIdx", null).siblings(".icon-box").children().removeClass("show");
                             // 修改本次人员的落座信息
                             _page.insertedMembersSeats[o] = {
                                 row: $(this).attr("row"),
