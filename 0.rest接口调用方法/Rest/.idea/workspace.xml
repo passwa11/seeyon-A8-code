@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="33393363-84fd-4b8c-bb95-c71ada1747ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../syncPost/.idea/webServers.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../1.法务系统代办集成/档案系统集成公文同步/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.法务系统代办集成/档案系统集成公文同步/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../syncPost/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../syncPost/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../syncPost/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../syncPost/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../syncPost/seeyon/WEB-INF/classes/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../syncPost/seeyon/WEB-INF/classes/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../syncPost/src/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../syncPost/src/com/seeyon/apps/ext/syncPost/dao/syncPostDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_栏目集成修改我的模板/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_栏目集成修改我的模板/seeyon/WEB-INF/classes/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../徐医附院_栏目集成修改我的模板/src/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_栏目集成修改我的模板/src/com/seeyon/apps/ext/modulePortlet/modulePortletPluginInitializer.java" afterDir="false" />
-    </list>
+    <list default="true" id="33393363-84fd-4b8c-bb95-c71ada1747ce" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,6 +45,18 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\a8_code\A-8-code\0.rest接口调用方法\Rest\src\com\test" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Application.RestTest">
     <configuration default="true" type="Applet">
@@ -163,18 +165,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -208,6 +198,7 @@
       <workItem from="1577406847124" duration="1414000" />
       <workItem from="1584414368842" duration="644000" />
       <workItem from="1584423870185" duration="1323000" />
+      <workItem from="1587691619457" duration="299000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1567751788843</created>
