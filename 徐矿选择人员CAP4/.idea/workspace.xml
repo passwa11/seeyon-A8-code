@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36e88280-e35b-47df-aff3-f0239d1a348d" name="Default Changelist" comment="过滤有数据的明细行">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/src/com/seeyon/apps/ext/TestDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/src/com/seeyon/apps/ext/TestDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../medhub/src/test/java/com/ncbi/medhub/TestSms.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../medhub/src/main/java/com/ncbi/medhub/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../medhub/src/main/java/com/ncbi/medhub/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../medhub/src/main/java/com/ncbi/medhub/util/HttpUtilTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/../medhub/src/main/java/com/ncbi/medhub/util/HttpUtilTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../medhub/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../medhub/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/html/selectpeople.html" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/html/selectpeople.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/bootstrap-people.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/bootstrap-people.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../集团人员管理/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/customFieldCtrl/vo/ZJsonObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/customFieldCtrl/vo/ZJsonObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/ctp/rest/resources/SelectPeopleResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/ctp/rest/resources/SelectPeopleResources.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -232,6 +235,7 @@
       <workItem from="1587346305423" duration="623000" />
       <workItem from="1587347441721" duration="186000" />
       <workItem from="1587518389361" duration="626000" />
+      <workItem from="1588225889154" duration="7825000" />
     </task>
     <task id="LOCAL-00002" summary="有问题？">
       <created>1558576335669</created>
@@ -649,8 +653,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java</url>
-          <line>173</line>
+          <line>174</line>
           <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

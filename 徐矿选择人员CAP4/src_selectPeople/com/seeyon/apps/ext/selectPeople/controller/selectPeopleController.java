@@ -79,6 +79,7 @@ public class selectPeopleController extends BaseController {
                 m.put("field0004", val.get("name"));
                 m.put("field0003", val.get("field0002"));
                 m.put("field0006", val.get("field0006"));
+                m.put("zsort", val.get("zsort"));
                 m.put("flag", "");
                 m.put("id", "");
                 handle.add(m);

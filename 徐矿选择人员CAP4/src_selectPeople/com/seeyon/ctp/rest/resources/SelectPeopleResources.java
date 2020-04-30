@@ -131,6 +131,11 @@ public class SelectPeopleResources extends BaseResource {
                     subTemp4.put("showValue", zJsonObject.getField0006());
                     subTemp4.put("showValue2", zJsonObject.getField0006());
                     subTemp4.put("value", zJsonObject.getField0006());
+
+                    Map<String, Object> subTemp5 = new HashMap<>();
+                    subTemp5.put("showValue", zJsonObject.getZsort());
+                    subTemp5.put("showValue2", zJsonObject.getZsort());
+                    subTemp5.put("value", zJsonObject.getZsort());
                     int count = 1;
 
                     for (String key : masterMap.keySet()) {
@@ -148,6 +153,9 @@ public class SelectPeopleResources extends BaseResource {
                                 }
                                 if (count == 4) {
                                     filldatas.put(key, subTemp4);
+                                }
+                                if (count == 5) {
+                                    filldatas.put(key, subTemp5);
                                 }
                                 count++;
                                 dataMap.put(masterMap.get("id") + "", filldatas);

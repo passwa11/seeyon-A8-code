@@ -9,6 +9,15 @@ public class ZJsonObject {
     private String field0003;//部门名称
     private String field0004;//人员姓名
     private String field0006;
+    private String zsort;
+
+    public String getZsort() {
+        return zsort;
+    }
+
+    public void setZsort(String zsort) {
+        this.zsort = zsort;
+    }
 
     public String getField0006() {
         return field0006;

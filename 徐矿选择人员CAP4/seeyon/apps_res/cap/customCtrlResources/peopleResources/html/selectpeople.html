@@ -32,6 +32,7 @@
                 var flag = $(this).attr("lay-flag");
                 var bs = $(this).attr("lay-bs");
                 var id = $(this).attr("lay-id");
+                var zsort = $(this).attr("lay-zsort");
                 if (undefined == id) {
                     id = "";
                 }
@@ -42,6 +43,7 @@
                 obj["field0006"] = bs;
                 obj["flag"] = flag;
                 obj["id"] = id;
+                obj["zsort"] = zsort;
                 peoples.push(obj);
             });
             return {

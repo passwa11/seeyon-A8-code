@@ -249,7 +249,7 @@ function jtldSure() {
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
             // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jtld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jtld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+            var option = '<dd lay-zsort="'+tr_obj.zsort+'" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jtld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -271,7 +271,7 @@ function jtldSure() {
             }
             if (selected()) {
                 // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jtld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jtld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+                var option = '<dd lay-zsort="'+tr_obj.zsort+'"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jtld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -305,7 +305,7 @@ function dzbldSure() {
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
             // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="dzbld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="dzbld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+            var option = '<dd  lay-zsort="'+tr_obj.zsort+'" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="dzbld" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -327,7 +327,7 @@ function dzbldSure() {
             }
             if (selected()) {
                 // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="dzbld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="dzbld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+                var option = '<dd  lay-zsort="'+tr_obj.zsort+'" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="dzbld"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -360,7 +360,7 @@ function dzbSure(){
         obj["text"] = tr_obj.field0002;
         obj["dept"] = "";
         if ($("dl.selected-info dd").length <= 0) {
-            var option = '<dd lay-bs="'+tr_obj.field0006+'"  lay-value="' + obj.value + '" lay-id="'+tr_obj.id+'"  lay-flag="dzb" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+            var option = '<dd lay-zsort="'+tr_obj.zsort+'"  lay-bs="'+tr_obj.field0006+'"  lay-value="' + obj.value + '" lay-id="'+tr_obj.id+'"  lay-flag="dzb" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -381,7 +381,7 @@ function dzbSure(){
                 return flag;
             }
             if (selected()) {
-                var option = '<dd lay-bs="'+tr_obj.field0006+'"  lay-value="' + obj.value + '" lay-id="'+tr_obj.id+'"  lay-flag="dzb" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
+                var option = '<dd  lay-zsort="'+tr_obj.zsort+'" lay-bs="'+tr_obj.field0006+'"  lay-value="' + obj.value + '" lay-id="'+tr_obj.id+'"  lay-flag="dzb" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -416,7 +416,7 @@ function jgbmSure() {
         if ($("dl.selected-info dd").length <= 0) {
             // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
             // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
-            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm" lay-name="' + obj.text + '" lay-dept="' + obj.text + '" class="">' + obj.text + '</dd>';
+            var option = '<dd lay-zsort="'+tr_obj.zsort+'"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm" lay-name="' + obj.text + '" lay-dept="' + obj.text + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -438,7 +438,7 @@ function jgbmSure() {
             }
             if (selected()) {
                 // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm"  lay-name="' + obj.text + '" lay-dept="' + obj.text + '" class="">' + obj.text + '</dd>';
+                var option = '<dd lay-zsort="'+tr_obj.zsort+'"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jgbm"  lay-name="' + obj.text + '" lay-dept="' + obj.text + '" class="">' + obj.text + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -472,7 +472,7 @@ function companySure(){
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
             // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="company" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="company" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+            var option = '<dd lay-zsort="'+tr_obj.zsort+'"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="company" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -494,7 +494,7 @@ function companySure(){
             }
             if (selected()) {
                 // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="company"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="company"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+                var option = '<dd lay-zsort="'+tr_obj.zsort+'"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="company"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -528,7 +528,7 @@ function jcdwSure(){
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
             // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jcdw" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-            var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jcdw" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">'+ obj.dept + '</dd>';
+            var option = '<dd lay-zsort="'+tr_obj.zsort+'"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jcdw" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">'+ obj.dept + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -550,7 +550,7 @@ function jcdwSure(){
             }
             if (selected()) {
                 // var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jcdw"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '&nbsp;&nbsp;&nbsp;&nbsp;' + obj.dept + '</dd>';
-                var option = '<dd lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jcdw"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
+                var option = '<dd lay-zsort="'+tr_obj.zsort+'"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0006 + '"  lay-value="' + obj.value + '" lay-flag="jcdw"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.dept + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -582,6 +582,7 @@ function commonInfo(s) {
             $('#jtld').bootstrapTable('insertRow', {
                 index: 0,
                 row: {
+                    zsort:$(item).attr('lay-zsort'),
                     field0001: $(item).attr('lay-value'),
                     field0004: $(item).attr('lay-name'),
                     field0003: $(item).attr('lay-dept'),
@@ -595,6 +596,8 @@ function commonInfo(s) {
             $('#dzbld').bootstrapTable('insertRow', {
                 index: 0,
                 row: {
+                    zsort:$(item).attr('lay-zsort'),
+
                     field0001: $(item).attr('lay-value'),
                     field0004: $(item).attr('lay-name'),
                     field0003: $(item).attr('lay-dept'),
@@ -608,6 +611,8 @@ function commonInfo(s) {
             $('#dzbks').bootstrapTable('insertRow', {
                 index: 0,
                 row: {
+                    zsort:$(item).attr('lay-zsort'),
+
                     field0001: $(item).attr('lay-value'),
                     field0002: $(item).attr('lay-name'),
                     field0006: $(item).attr('lay-bs'),
@@ -620,6 +625,8 @@ function commonInfo(s) {
             $('#jgbm').bootstrapTable('insertRow', {
                 index: 0,
                 row: {
+                    zsort:$(item).attr('lay-zsort'),
+
                     field0001: $(item).attr('lay-value'),
                     field0004: $(item).attr('lay-name'),
                     field0003: $(item).attr('lay-dept'),
@@ -633,6 +640,8 @@ function commonInfo(s) {
             $('#company').bootstrapTable('insertRow', {
                 index: 0,
                 row: {
+                    zsort:$(item).attr('lay-zsort'),
+
                     field0001: $(item).attr('lay-value'),
                     field0004: $(item).attr('lay-name'),
                     field0003: $(item).attr('lay-dept'),
@@ -646,6 +655,8 @@ function commonInfo(s) {
             $('#jcdw').bootstrapTable('insertRow', {
                 index: 0,
                 row: {
+                    zsort:$(item).attr('lay-zsort'),
+
                     field0001: $(item).attr('lay-value'),
                     field0004: $(item).attr('lay-name'),
                     field0003: $(item).attr('lay-dept'),

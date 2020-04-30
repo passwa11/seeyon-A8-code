@@ -21,8 +21,8 @@ public class JtldEntityDaoImpl implements JtldEntityDao {
         List<Map<String,Object>> list = null;
         if (null != id && id.size() > 0) {
             if (id.size() > 0 && id.size() == 1) {
-                String s = "select f.FORMMAIN_ID,f.FIELD0003,o.NAME,f.field0002,f.field0006 \n" +
-                        "from ( select * from ( select fs.FIELD0003,FS.FORMMAIN_ID,FS.ID,FM.FIELD0001,FM.FIELD0002,FM.FIELD0006 from formson_0188 fs LEFT JOIN formmain_0187 fm on FS.FORMMAIN_ID=FM.ID   ) h where h.FORMMAIN_ID='" + id.get(0) + "') f \n" +
+                String s = "select f.FORMMAIN_ID,f.FIELD0003,o.NAME,f.field0002,f.field0005 zsort,f.field0006  " +
+                        "from ( select * from ( select fs.FIELD0003,FS.FORMMAIN_ID,FS.ID,FM.FIELD0001,FM.FIELD0002,FM.FIELD0006,FM.FIELD0005 from formson_0188 fs LEFT JOIN formmain_0187 fm on FS.FORMMAIN_ID=FM.ID   ) h where h.FORMMAIN_ID='" + id.get(0) + "') f  " +
                         "LEFT JOIN ORG_MEMBER o on f.FIELD0003=o.id";
                 sql.append(s);
             } else if (id.size() > 1) {
@@ -30,8 +30,8 @@ public class JtldEntityDaoImpl implements JtldEntityDao {
                     if (i != 0) {
                         sql.append(" UNION all ");
                     }
-                    String s = "select f.FORMMAIN_ID,f.FIELD0003,o.NAME,f.field0002,f.field0006 \n" +
-                            "from ( select * from ( select fs.FIELD0003,FS.FORMMAIN_ID,FS.ID,FM.FIELD0001,FM.FIELD0002,FM.FIELD0006 from formson_0188 fs LEFT JOIN formmain_0187 fm on FS.FORMMAIN_ID=FM.ID   ) h where h.FORMMAIN_ID='" + id.get(i) + "') f \n" +
+                    String s = "select f.FORMMAIN_ID,f.FIELD0003,o.NAME,f.field0002,f.field0005 zsort,f.field0006  " +
+                            "from ( select * from ( select fs.FIELD0003,FS.FORMMAIN_ID,FS.ID,FM.FIELD0001,FM.FIELD0002,FM.FIELD0006,FM.FIELD0005 from formson_0188 fs LEFT JOIN formmain_0187 fm on FS.FORMMAIN_ID=FM.ID   ) h where h.FORMMAIN_ID='" + id.get(i) + "') f  " +
                             "LEFT JOIN ORG_MEMBER o on f.FIELD0003=o.id";
                     sql.append(s);
                 }
