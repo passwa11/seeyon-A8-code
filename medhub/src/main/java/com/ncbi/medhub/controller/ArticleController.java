@@ -24,8 +24,17 @@ public class ArticleController {
     private ArticleService articleService;
     @Value("${ncbi.medhub.accountKey}")
     private String medHubKey;
+    @Value("${test.format}")
+    private String info;
     @Autowired
     private HttpApiService apiService;
+    @RequestMapping(value = "/test")
+    public ModelAndView test(HttpServletRequest request){
+        String content="你说什么我不晓得！";
+        String s=String.format(info,content);
+        System.out.println(s);
+        return null;
+    }
 
     @RequestMapping(value = "/index")
     public ModelAndView index(HttpServletRequest request)  {

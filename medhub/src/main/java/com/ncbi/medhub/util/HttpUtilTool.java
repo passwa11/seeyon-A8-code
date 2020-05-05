@@ -5,6 +5,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
@@ -15,6 +16,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.EntityUtils;
+import org.apache.logging.log4j.util.PropertiesUtil;
 
 import javax.net.ssl.SSLContext;
 import java.io.IOException;
@@ -38,6 +40,42 @@ public class HttpUtilTool {
         }
         return httpUtilTool;
     }
+
+//    public static String doHttpsPostByPostMedthod(){
+//        HttpClient httpclient = HttpClients.createDefault();
+//
+//        try {
+//            String result = "";
+//            PostMethod post = new PostMethod(PropertiesUtil.getUrl());
+//            post.getParams().setParameter(HttpMethodParams.HTTP_CONTENT_CHARSET, "gbk");
+//            post.addParameter("SpCode", PropertiesUtil.getSpCode());
+//            post.addParameter("LoginName", PropertiesUtil.getLoginName());
+//            post.addParameter("Password", PropertiesUtil.getPassword());
+//            post.addParameter("MessageContent", String.format(PropertiesUtil.getTemplate(), content));
+////            post.addParameter("MessageContent", String.format(PropertiesUtil.getTemplate(), ((int)((Math.random()*9+1)*100000))+""));
+//            post.addParameter("UserNumber", destPhone);
+//            post.addParameter("SerialNumber", "");
+//            post.addParameter("ScheduleTime", "");
+//            post.addParameter("ExtendAccessNum", "");
+//            post.addParameter("f", PropertiesUtil.getF());
+//            httpclient.execute(post);
+//            result = new String(post.getResponseBody(), "gbk");
+//            if (null != result) {
+//                String[] arr = result.split("&");
+//                String code = arr[0].split("=")[1];
+//                if (code.equals("0")) {
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//        }
+//    }
+
 
     public String toHttpsGet(String url, Map<String, String> headers) {
         HttpGet httpGet = null;

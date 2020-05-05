@@ -7,12 +7,6 @@
       <change beforePath="$PROJECT_DIR$/../medhub/src/main/java/com/ncbi/medhub/util/HttpUtilTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/../medhub/src/main/java/com/ncbi/medhub/util/HttpUtilTool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../medhub/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../medhub/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/html/selectpeople.html" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/html/selectpeople.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/bootstrap-people.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/cap/customCtrlResources/peopleResources/js/bootstrap-people.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/customFieldCtrl/vo/ZJsonObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/customFieldCtrl/vo/ZJsonObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src_selectPeople/com/seeyon/ctp/rest/resources/SelectPeopleResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_selectPeople/com/seeyon/ctp/rest/resources/SelectPeopleResources.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +39,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/myProject/study-java/sbsm" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -235,14 +229,7 @@
       <workItem from="1587346305423" duration="623000" />
       <workItem from="1587347441721" duration="186000" />
       <workItem from="1587518389361" duration="626000" />
-      <workItem from="1588225889154" duration="7825000" />
-    </task>
-    <task id="LOCAL-00002" summary="有问题？">
-      <created>1558576335669</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1558576335669</updated>
+      <workItem from="1588225889154" duration="8210000" />
     </task>
     <task id="LOCAL-00003" summary="过滤有数据的明细行">
       <created>1558577519450</created>
@@ -580,7 +567,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586416624007</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="update">
+      <created>1588233943689</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1588233943691</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TodoView">
@@ -636,7 +630,8 @@
     <MESSAGE value="修改选人功能" />
     <MESSAGE value="优化" />
     <MESSAGE value="过滤有数据的明细行" />
-    <option name="LAST_COMMIT_MESSAGE" value="过滤有数据的明细行" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="580" y="189" key="FileChooserDialogImpl" timestamp="1585641755962">
