@@ -12,8 +12,8 @@ import java.util.Map;
 public class JDBCUtil {
     private static final Logger log = Logger.getLogger(JDBCUtil.class);
 
-    public static List<Map<String, Object>> doQuery(String sql) {
-        JDBCAgent jdbc = new JDBCAgent();
+    public static List<Map<String, Object>> doQuery(String sql) throws SQLException {
+        JDBCAgent jdbc = new JDBCAgent(JDBCAgent.getRawConnection());
         List resultMap = new ArrayList();
         try {
             jdbc.execute(sql);

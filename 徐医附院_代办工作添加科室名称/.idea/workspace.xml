@@ -2,24 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="990d4793-309b-48cd-85f8-78758fbdb8e8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/common/affair/bo/PendingRow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/common/affair/manager/PendingManagerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/controller/PortalAffairController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSectionUrlUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/DTdocument.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/DTdocument.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/DTdocumentPluginInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/DTdocumentPluginInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/dao/DTdocumentDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/dao/DTdocumentDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/dao/DTdocumentDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/dao/DTdocumentDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/DTdocumentManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/DTdocumentManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/DTdocumentManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/DTdocumentManagerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/WriteMiddleData.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/manager/WriteMiddleData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/po/TempDate.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/po/TempDate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/po/TemproraryEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/po/TemproraryEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/quartz/SyncDataTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/quartz/SyncDataTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/DbConnUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/DbConnUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/ReadConfigTools.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/ReadConfigTools.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/RenderUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/seeyon/WEB-INF/classes/com/seeyon/apps/ext/DTdocument/util/RenderUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/controller/PortalAffairController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/controller/PortalAffairController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/JDBCUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/JDBCUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/DoneSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/DoneSection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/JDBCUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/JDBCUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../矿业大学_welink接口集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../矿业大学_welink接口集成/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A8_Sso_190715_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A8_Sso_190715_2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/ProxySend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/ProxySend/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,22 +63,22 @@
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\A8\ctp_2019_06_19\ctp-portal\src\test" />
-      <recent name="F:\A8\ctp_2019_06_19\ctp-portal\html" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.seeyon.ctp.portal.controller" />
-      <recent name="com.seeyon.ctp.portal.section" />
-      <recent name="com.seeyon.apps.collaboration.manager" />
-      <recent name="com.seeyon.ctp.portal.section.templete" />
-      <recent name="seeyon.ctp.portal.section" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\a8_code\A-8-code\徐医附院_代办工作添加科室名称\seeyon\WEB-INF\jsp\apps\collaboration" />
       <recent name="F:\A8\ctp_2019_06_19\ctp-portal\seeyon\portal\sections\tpl" />
       <recent name="F:\A8\ctp_2019_06_19\ctp-portal\seeyon\WEB-INF\jsp\apps\collaboration" />
       <recent name="F:\A8\ctp_2019_06_19\ctp-portal\seeyon" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.seeyon.ctp.portal.section" />
+      <recent name="com.seeyon.ctp.common.affair.bo" />
+      <recent name="com.seeyon.ctp.common.affair.manager" />
+      <recent name="com.seeyon.ctp.portal.controller" />
+      <recent name="com.seeyon.apps.collaboration.manager" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\A8\ctp_2019_06_19\ctp-portal\src\test" />
+      <recent name="F:\A8\ctp_2019_06_19\ctp-portal\html" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -113,6 +112,14 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.seeyon.test" />
+      <module name="ctp-portal" />
+      <shortenClasspath name="MANIFEST" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -256,10 +263,12 @@
     </configuration>
     <list>
       <item itemvalue="Application.Test" />
+      <item itemvalue="Application.test" />
       <item itemvalue="Remote.Unnamed" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.test" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -294,6 +303,7 @@
       <workItem from="1586740759999" duration="5891000" />
       <workItem from="1586749414448" duration="3634000" />
       <workItem from="1586835516545" duration="1840000" />
+      <workItem from="1588730054299" duration="15027000" />
     </task>
     <task id="LOCAL-00001" summary="修改判断">
       <created>1561364023452</created>
@@ -377,39 +387,29 @@
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java</url>
-          <line>497</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java</url>
-          <line>484</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://F:/Seeyon/A87.1_sp1_oracle/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-task.jar!/com/seeyon/ctp/portal/section/MyTaskSection.class</url>
-          <line>136</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java</url>
-          <line>459</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>jar://F:/Seeyon/A87.1_sp1_oracle/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-workflow-component.jar!/com/seeyon/ctp/common/affair/manager/AffairManagerImpl.class</url>
           <line>840</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/DoneSection.java</url>
-          <line>199</line>
-          <option name="timeStamp" value="25" />
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSection.java</url>
+          <line>166</line>
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/DoneSection.java</url>
-          <line>877</line>
-          <option name="timeStamp" value="27" />
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSection.java</url>
+          <line>233</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSectionUrlUtil.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSectionUrlUtil.java</url>
+          <line>214</line>
+          <option name="timeStamp" value="49" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

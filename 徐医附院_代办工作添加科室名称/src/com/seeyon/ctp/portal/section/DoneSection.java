@@ -42,6 +42,7 @@ import org.apache.commons.logging.LogFactory;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -67,7 +68,7 @@ public class DoneSection extends BaseSectionImpl {
     	if (AppContext.hasPlugin("edoc")) {
     		return;
     	}
-    	
+
     	//不展示公文相关配置信息
     	List<SectionProperty> properties = this.getProperties();
     	for (SectionProperty sp : properties) {
@@ -75,7 +76,7 @@ public class DoneSection extends BaseSectionImpl {
     		for (SectionReference ref : references) {
     			if ("rowList".equals(ref.getName())) {
     				SectionReferenceValueRange[] valueRanges = ref.getValueRanges();
-    				List<SectionReferenceValueRange> result = new ArrayList<SectionReferenceValueRange>(); 
+    				List<SectionReferenceValueRange> result = new ArrayList<SectionReferenceValueRange>();
     				for (SectionReferenceValueRange val : valueRanges) {
     					if (!"edocMark".equals(val.getValue()) && !"sendUnit".equals(val.getValue())) {
     						result.add(val);
@@ -86,7 +87,7 @@ public class DoneSection extends BaseSectionImpl {
     		}
     	}
     }
-    
+
     @Override
     public String getIcon() {
         return "done";
@@ -97,7 +98,7 @@ public class DoneSection extends BaseSectionImpl {
         //栏目ID，与配置文件中的ID相同
         return "doneSection";
     }
-    
+
     @Override
     public boolean isAllowUsed() {
         User user = AppContext.getCurrentUser();
@@ -128,19 +129,19 @@ public class DoneSection extends BaseSectionImpl {
         }else{
             return name;
         }
-        
+
     }
 
     public Integer getTotal(Map<String, String> preference) {
         //return this.total;
     	return null;
     }
-    
+
     @Override
     public boolean isAllowMobileCustomSet() {
         return true;
     }
-    
+
     @Override
     public BaseSectionTemplete projection(Map<String, String> preference) {
         String rowStr = preference.get("rowList");
@@ -167,7 +168,7 @@ public class DoneSection extends BaseSectionImpl {
         	//添加 发起时间  放到标题之后
         	rowStr = rowStr.substring(0,8) + "createDate," + rowStr.substring(8);
         }
-        
+
         AffairCondition condition = new AffairCondition();
         FlipInfo fi = new FlipInfo();
         fi.setNeedTotal(false);
@@ -185,7 +186,7 @@ public class DoneSection extends BaseSectionImpl {
         fi.setNeedTotal(false);
         List<CtpAffair> affairs = new ArrayList<CtpAffair>();
 		try {
-			
+
 			affairs = pendingManager.querySectionAffair(condition, fi, preference, ColOpenFrom.listDone.name(), new HashMap<String, String>(), false);
 		} catch (BusinessException e1) {
 			log.error("",e1);
@@ -195,7 +196,7 @@ public class DoneSection extends BaseSectionImpl {
 			s = URLEncoder.encode(this.getName(preference), "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			log.error("",e);
-			
+
 		}
         this.getTemplete(c,affairs, preference);
         //【更多】
@@ -204,7 +205,7 @@ public class DoneSection extends BaseSectionImpl {
         c.setDataNum(coun);
         return c;
     }
-    
+
     @Override
     public BaseSectionTemplete mProjection(Map<String, String> preference) {
         User user = AppContext.getCurrentUser();
@@ -215,7 +216,7 @@ public class DoneSection extends BaseSectionImpl {
         fi.setSize(count);
         fi.setNeedTotal(false);
         List<CtpAffair> affairs = new ArrayList<CtpAffair>();
-       
+
         //condition.setVjoin(true);
         try {
             affairs = pendingManager.querySectionAffair(condition, fi, preference, ColOpenFrom.listDone.name(), new HashMap<String, String>(), false);
@@ -290,7 +291,7 @@ public class DoneSection extends BaseSectionImpl {
                 row.setState(affair.getSummaryState() == null ? "0" : affair.getSummaryState().toString());
                 row.setCreateMemberId(affair.getSenderId().toString());
                 row.setHasAttachments(AffairUtil.isHasAttachments(affair));
-                
+
                 int app = affair.getApp();
                 String categoryName = ResourceUtil.getString("application."+app+".label");
                 //分类
@@ -360,7 +361,7 @@ public class DoneSection extends BaseSectionImpl {
         c.setMoreLink(moreLink);
         return c;
     }
-    
+
     /**
      * 获得列表模版
      * @param affairs
@@ -402,7 +403,7 @@ public class DoneSection extends BaseSectionImpl {
         boolean isCategory = list.contains("category");
         //判断是否选择‘当前待办人’
         boolean isCurrentNodesInfo = list.contains("currentNodesInfo");
-        
+
         Boolean isGov = (Boolean)(SysFlag.is_gov_only.getFlag());
         if(isGov == null){
             isGov = false;
@@ -420,7 +421,7 @@ public class DoneSection extends BaseSectionImpl {
         if(null != affairs){
         	count=affairs.size();//新需求，不加空行了
         }
-        
+
         Map<Long,String> currentNodeInfos = commonAffairSectionUtils.parseCurrentNodeInfos(affairs);
         for(int i = 0;i < count;i++){
             MultiRowVariableColumnTemplete.Row row = c.addRow();
@@ -440,7 +441,7 @@ public class DoneSection extends BaseSectionImpl {
             MultiRowVariableColumnTemplete.Cell categoryCell = null;
             //当前待办人
             MultiRowVariableColumnTemplete.Cell currentNodesInfoCell=null;
-            
+
             if(isSubject){
             	subjectCell = row.addCell();
             }
@@ -465,7 +466,7 @@ public class DoneSection extends BaseSectionImpl {
             if(isCategory){
             	categoryCell = row.addCell();
             }
-            
+
             //如果为空则添加默认空行
             if(affairs == null || affairs.size() == 0){
             	continue;
@@ -486,7 +487,7 @@ public class DoneSection extends BaseSectionImpl {
                     	subject = ResourceUtil.getString("collaboration.newflow.fire.subject",subject);
                     }
                 	subjectCell.setAlt(showName);
-                    
+
                     subjectCell.setCellWidth(100);
                     int cellWidth = 50;
                     if(rows.length == 3) {
@@ -513,7 +514,7 @@ public class DoneSection extends BaseSectionImpl {
                     		subjectCell.addExtClasses("ico16 meeting_video_16");
                     	}
                     }
-                    
+
                     //设置正文类型图标
                     if(affair.getBodyType() != null && !"10".equals(affair.getBodyType()) && !"30".equals(affair.getBodyType()) && !"HTML".equals(affair.getBodyType())){
                         String bodyType = affair.getBodyType();
@@ -597,12 +598,12 @@ public class DoneSection extends BaseSectionImpl {
                     		}
                     		categoryCell.setCellContentHTML(categoryName);
                     	}
-                    	
+
                     	if(isPreApproverName){
                     		preApproverNameCell.setCellContentHTML(Functions.showMemberName(affair.getPreApprover()));
                     	}
-                    	
-                    	
+
+
                         break;
                     case meeting:
                     	String linkURL = "";
@@ -670,7 +671,7 @@ public class DoneSection extends BaseSectionImpl {
         	                		url = "/govdoc/govdoc.do?method=index&govdocType=1&listType=listDoneAll&_resourceCode=F20_govDocSendManage";
         	                		if(!f11) {
         	                			f11 = user.hasResourceCode("F20_govDocDone");
-        	                			url = "/govdoc/govdoc.do?method=index&listType=listDoneAllRoot&_resourceCode=F20_govDocDone";	
+        	                			url = "/govdoc/govdoc.do?method=index&listType=listDoneAllRoot&_resourceCode=F20_govDocDone";
         	                		}
         	                		categoryName = ResourceUtil.getString("govdoc.edocSend.label");
         	                	}
@@ -685,7 +686,7 @@ public class DoneSection extends BaseSectionImpl {
         	                		url = "/govdoc/govdoc.do?method=index&govdocType=3&listType=listDoneAll&_resourceCode=F20_signReport";
         	                		if(!f11) {
         	                			f11 = user.hasResourceCode("F20_govDocDone");
-        	                			url = "/govdoc/govdoc.do?method=index&listType=listDoneAll&_resourceCode=F20_govDocDone";	
+        	                			url = "/govdoc/govdoc.do?method=index&listType=listDoneAll&_resourceCode=F20_govDocDone";
         	                		}
         	                		categoryName = ResourceUtil.getString("govdoc.edocSign.label");
         	                	}
@@ -700,7 +701,7 @@ public class DoneSection extends BaseSectionImpl {
         	                		url = "/govdoc/govdoc.do?method=index&govdocType=2,4&listType=listDoneAll&_resourceCode=F20_receiveManage";
         	                		if(!f11) {
         	                			f11 = user.hasResourceCode("F20_govDocDone");
-        	                			url = "/govdoc/govdoc.do?method=index&listType=listDoneAllRoot&_resourceCode=F20_govDocDone";	
+        	                			url = "/govdoc/govdoc.do?method=index&listType=listDoneAllRoot&_resourceCode=F20_govDocDone";
         	                		}
         	                		categoryName = ResourceUtil.getString("govdoc.edocRec.label");
         	                	}
@@ -720,7 +721,7 @@ public class DoneSection extends BaseSectionImpl {
         	            			}
         	            			if(!f11) {
         	                			f11 = user.hasResourceCode("F20_govDocDone");
-        	                			url = "/govdoc/govdoc.do?method=index&listType=listDoneAllRoot&_resourceCode=F20_govDocDone";	
+        	                			url = "/govdoc/govdoc.do?method=index&listType=listDoneAllRoot&_resourceCode=F20_govDocDone";
         	                		}
         	            			categoryName = ResourceUtil.getString("govdoc.edocRec.label");
         	                	}
@@ -735,7 +736,7 @@ public class DoneSection extends BaseSectionImpl {
         	                		url = "/govdoc/govdoc.do?method=index&govdocType=1&listType=listDoneAll&_resourceCode=F20_govDocSendManage";
         	                		if(!f11) {
         	                			f11 = user.hasResourceCode("F20_govDocDone");
-        	                			url = "/govdoc/govdoc.do?method=index&listType=listDoneAllRoot&_resourceCode=F20_govDocDone";	
+        	                			url = "/govdoc/govdoc.do?method=index&listType=listDoneAllRoot&_resourceCode=F20_govDocDone";
         	                		}
         	                		categoryName = ResourceUtil.getString("govdoc.edocSend.label");
                             	}
@@ -750,7 +751,7 @@ public class DoneSection extends BaseSectionImpl {
         	                		url = "/govdoc/govdoc.do?method=index&govdocType=2,4&listType=listDoneAll&_resourceCode=F20_receiveManage";
         	                		if(!f11) {
         	                			f11 = user.hasResourceCode("F20_govDocDone");
-        	                			url = "/govdoc/govdoc.do?method=index&listType=listDoneAllRoot&_resourceCode=F20_govDocDone";	
+        	                			url = "/govdoc/govdoc.do?method=index&listType=listDoneAllRoot&_resourceCode=F20_govDocDone";
         	                		}
         	                		categoryName = ResourceUtil.getString("govdoc.edocRec.label");
                             	}
@@ -765,7 +766,7 @@ public class DoneSection extends BaseSectionImpl {
         	                		url = "/govdoc/govdoc.do?method=index&govdocType=3&listType=listDoneAll&_resourceCode=F20_signReport";
         	                		if(!f11) {
         	                			f11 = user.hasResourceCode("F20_govDocDone");
-        	                			url = "/govdoc/govdoc.do?method=index&listType=listDoneAll&_resourceCode=F20_govDocDone";	
+        	                			url = "/govdoc/govdoc.do?method=index&listType=listDoneAll&_resourceCode=F20_govDocDone";
         	                		}
         	                		categoryName = ResourceUtil.getString("govdoc.edocSign.label");
                             	}
@@ -821,7 +822,7 @@ public class DoneSection extends BaseSectionImpl {
                 			}
                 			categoryCell.setCellContentHTML(categoryName);
                         }
-                		
+
                 		getEdocExtField(affair, edocMarkCell, sendUnitCell, width);
                     	if(isPreApproverName) {
                     		preApproverNameCell.setCellContentHTML(Functions.showMemberName(affair.getPreApprover()));
@@ -866,7 +867,7 @@ public class DoneSection extends BaseSectionImpl {
 //                edocApps.add(ApplicationCategoryEnum.exSign.getKey());//待签收公文 23
 //                edocApps.add(ApplicationCategoryEnum.edocRegister.getKey());//待登记公文 24
 //                edocApps.add(ApplicationCategoryEnum.edocRecDistribute.getKey());//收文分发34
-                
+
                 String currentNodesInfoStr=currentNodeInfos.get(affair.getObjectId());
                 if(Strings.isNotBlank(currentNodesInfoStr)&&isCurrentNodesInfo){
                 	String currentInfo=Strings.getSafeLimitLengthString(currentNodesInfoStr, 10, "..");
@@ -877,11 +878,16 @@ public class DoneSection extends BaseSectionImpl {
                 if(sendUnitCell != null){
                     Long sendUserId=affair.getSenderId();
                     String sql = "select u.name from ORG_MEMBER m,ORG_UNIT u where m.ORG_DEPARTMENT_ID=u.id and m.id ="+(sendUserId+"")+ " and rownum=1";
-                    List<Map<String, Object>> nameList = JDBCUtil.doQuery(sql);
+                    List<Map<String, Object>> nameList = null;
+                    try {
+                        nameList = JDBCUtil.doQuery(sql);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     String name =(String) nameList.get(0).get("name");
                     sendUnitCell.setCellContentHTML("<span class='color_gray' title='"+name+"'>"+name+"</span>");
                 }
-                
+
                 //发起人
                 if(createMemberCell != null){
                 	String memberName = Functions.showMemberName(affair.getSenderId());
@@ -901,7 +907,7 @@ public class DoneSection extends BaseSectionImpl {
         }
         return c;
     }
-    
+
     private String convertPortalBodyType(String bodyType) {
     	String bodyTypeClass = "html_16";
     	if("FORM".equals(bodyType) || "20".equals(bodyType)) {
@@ -940,15 +946,15 @@ public class DoneSection extends BaseSectionImpl {
             edocMarkCell.setCellContentHTML("<span title='"+String.valueOf(extParam.get(AffairExtPropEnums.edoc_edocMark.name()))+"' >"+str+"</span>");
         }
         if(null != extParam && null != extParam.get(AffairExtPropEnums.edoc_sendUnit.name()) && sendUnitCell != null){
-        	String val = String.valueOf(extParam.get(AffairExtPropEnums.edoc_sendUnit.name()));  
+        	String val = String.valueOf(extParam.get(AffairExtPropEnums.edoc_sendUnit.name()));
         	sendUnitCell.setCellContent(val);
-        	if(val.length()>7 && width < 10){     
+        	if(val.length()>7 && width < 10){
         		val = val.substring(0, 7) + "...";
         	}
         	sendUnitCell.setCellContentHTML("<span title='"+String.valueOf(extParam.get(AffairExtPropEnums.edoc_sendUnit.name()))+"' >"+val+"</span>");
         }
     }
-    
+
     @Override
 	public String getResolveFunction(Map<String, String> preference) {
 		return MultiRowVariableColumnTemplete.RESOLVE_FUNCTION;
