@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="990d4793-309b-48cd-85f8-78758fbdb8e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/common/affair/bo/PendingRow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/common/affair/manager/PendingManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/controller/PortalAffairController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSectionUrlUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/collaboration/morePending.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/controller/PortalAffairController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/controller/PortalAffairController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/JDBCUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/JDBCUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/DoneSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/DoneSection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/JDBCUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/JDBCUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../矿业大学_welink接口集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../矿业大学_welink接口集成/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A8_Sso_190715_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A8_Sso_190715_2/.idea/workspace.xml" afterDir="false" />
@@ -303,7 +293,7 @@
       <workItem from="1586740759999" duration="5891000" />
       <workItem from="1586749414448" duration="3634000" />
       <workItem from="1586835516545" duration="1840000" />
-      <workItem from="1588730054299" duration="15027000" />
+      <workItem from="1588730054299" duration="16735000" />
     </task>
     <task id="LOCAL-00001" summary="修改判断">
       <created>1561364023452</created>
@@ -319,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1562120875662</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="更多">
+      <created>1588751440054</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1588751440054</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,7 +347,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="修改判断" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改判断" />
+    <MESSAGE value="更多" />
+    <option name="LAST_COMMIT_MESSAGE" value="更多" />
   </component>
   <component name="WindowStateProjectService">
     <state x="580" y="189" key="FileChooserDialogImpl" timestamp="1579482486752">
@@ -410,6 +408,11 @@
           <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSectionUrlUtil.java</url>
           <line>214</line>
           <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingController.java</url>
+          <line>583</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
