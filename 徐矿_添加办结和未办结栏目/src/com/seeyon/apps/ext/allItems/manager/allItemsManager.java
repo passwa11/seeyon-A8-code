@@ -8,10 +8,11 @@ import java.util.Map;
 public interface allItemsManager {
     List<Object> findXkjtAllBanJie(String templetIds);
 
-    List<Object> findXkjtAllNoBanJie(String templetIds);
+    List<Map<String, Object>> findXkjtAllNoBanJie(String templetIds);
 
     /**
      * 所有办结更多页面
+     *
      * @param flipInfo
      * @param map
      * @return
@@ -20,6 +21,7 @@ public interface allItemsManager {
 
     /**
      * 所有未办结更多页面
+     *
      * @param flipInfo
      * @param map
      * @return

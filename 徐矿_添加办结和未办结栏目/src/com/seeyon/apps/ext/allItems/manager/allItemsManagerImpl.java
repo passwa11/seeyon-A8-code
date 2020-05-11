@@ -30,7 +30,7 @@ public class allItemsManagerImpl implements allItemsManager {
     }
 
     @Override
-    public List<Object> findXkjtAllNoBanJie(String templetIds) {
+    public List<Map<String,Object>> findXkjtAllNoBanJie(String templetIds) {
         return getallItemsDao().findXkjtAllNoBanJie(templetIds);
     }
 

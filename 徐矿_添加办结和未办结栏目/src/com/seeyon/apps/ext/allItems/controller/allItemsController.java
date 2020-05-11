@@ -14,6 +14,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Map;
 
 public class allItemsController extends BaseController {
 
@@ -71,7 +72,7 @@ public class allItemsController extends BaseController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("apps/ext/allItems/no_banjie");
         String templetIds = request.getParameter("templetIds");
-        List<Object> list = null;
+        List<Map<String,Object>> list = null;
         try {
             list = allItemsManager.findXkjtAllNoBanJie(templetIds);
         } catch (Exception e) {

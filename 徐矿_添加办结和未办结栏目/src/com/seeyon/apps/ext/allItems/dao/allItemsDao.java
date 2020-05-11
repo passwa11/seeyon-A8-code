@@ -18,7 +18,7 @@ public interface allItemsDao {
      * @param templetIds
      * @return
      */
-    List<Object> findXkjtAllNoBanJie(String templetIds);
+    List<Map<String,Object>> findXkjtAllNoBanJie(String templetIds);
 
     /**
      * 所有办结更多页面
