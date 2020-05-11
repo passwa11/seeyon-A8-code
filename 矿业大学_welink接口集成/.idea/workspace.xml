@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f51a152e-3c08-4c3f-bd23-fc69917a527b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../0.rest接口调用方法/Rest/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/src/com/seeyon/ctp/common/affair/bo/PendingRow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/src/com/seeyon/ctp/common/affair/manager/PendingManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/controller/PortalAffairController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/controller/PortalAffairController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/DoneSection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/JDBCUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/JDBCUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/src/com/seeyon/ctp/portal/section/DoneSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/src/com/seeyon/ctp/portal/section/DoneSection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/src/com/seeyon/ctp/portal/section/JDBCUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_代办工作添加科室名称/src/com/seeyon/ctp/portal/section/JDBCUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A8_Sso_190715_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A8_Sso_190715_2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/ProxySend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/ProxySend/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -112,6 +123,7 @@
       <workItem from="1587429548725" duration="25463000" />
       <workItem from="1587514980854" duration="9531000" />
       <workItem from="1587886049157" duration="296000" />
+      <workItem from="1588737888037" duration="1394000" />
     </task>
     <servers />
   </component>
@@ -123,7 +135,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

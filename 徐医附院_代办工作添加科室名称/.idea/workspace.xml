@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="990d4793-309b-48cd-85f8-78758fbdb8e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/collaboration/morePending.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../矿业大学_welink接口集成/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../矿业大学_welink接口集成/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A6_Sso_190715/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../第三方单点登录OA/A8_Sso_190715_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../第三方单点登录OA/A8_Sso_190715_2/.idea/workspace.xml" afterDir="false" />
@@ -40,7 +37,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/collaboration" />
+    <property name="last_opened_file_path" value="F:/0_test_code/cap4-date" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -293,7 +290,7 @@
       <workItem from="1586740759999" duration="5891000" />
       <workItem from="1586749414448" duration="3634000" />
       <workItem from="1586835516545" duration="1840000" />
-      <workItem from="1588730054299" duration="16735000" />
+      <workItem from="1588730054299" duration="17064000" />
     </task>
     <task id="LOCAL-00001" summary="修改判断">
       <created>1561364023452</created>
@@ -316,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588751440054</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="更多">
+      <created>1588752986015</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1588752986015</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
