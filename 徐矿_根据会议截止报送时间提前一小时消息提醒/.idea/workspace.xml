@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3c289136-fd0b-421a-8efc-a8fee9bd2528" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1bTj7ZXYe4MvRnnBY7oGvqfUfmZ" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.seeyon.ctp.common.quartz" />
+      <recent name="com.seeyon.cap4.form.modules.engin.trigger" />
+      <recent name="com.seeyon.cap4.form.modules.engin.formula" />
+      <recent name="com.seeyon.cap4.form.modules.engin.businessRelation" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Remote" singleton="false" nameIsGenerated="true">
+      <module name="cap4-date" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="8000" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="8000" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3c289136-fd0b-421a-8efc-a8fee9bd2528" name="Default Changelist" comment="" />
+      <created>1588662810637</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588662810637</updated>
+      <workItem from="1588662815124" duration="6685000" />
+      <workItem from="1588725051175" duration="3121000" />
+      <workItem from="1588729552129" duration="381000" />
+      <workItem from="1588753258936" duration="4520000" />
+      <workItem from="1588757976107" duration="374000" />
+      <workItem from="1588811505198" duration="17258000" />
+      <workItem from="1588841938728" duration="3451000" />
+      <workItem from="1588898011219" duration="707000" />
+      <workItem from="1589158407840" duration="3843000" />
+      <workItem from="1589168873440" duration="595000" />
+      <workItem from="1589181727904" duration="6830000" />
+      <workItem from="1589243164014" duration="5688000" />
+      <workItem from="1589249741919" duration="13000" />
+      <workItem from="1589249777424" duration="1376000" />
+      <workItem from="1589251191700" duration="10864000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://F:/Seeyonxkjt/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-cap-core.jar!/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl.class</url>
+          <line>659</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl.java</url>
+          <line>818</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl.java</url>
+          <line>970</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl.java</url>
+          <line>963</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl.java</url>
+          <line>589</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl.java</url>
+          <line>702</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
