@@ -704,18 +704,8 @@ public class CAP4FormTriggerManagerImpl implements CAP4FormTriggerManager {
         String result="";
         Date date=null;
         if(key.equals("once")){
-            long currentTime=System.currentTimeMillis() + 3600*1000;//当前时间增加一小时用于判断截止报送时间能不能提前一小时发送提醒
-            long stopSendTime=date0.getTime();
-
-            if(stopSendTime>currentTime){
-                long minus1Hour=date0.getTime()-60*60*1000;
-                Date _minusHourDate= new Date(minus1Hour);
-                result=Datetimes.format(_minusHourDate, Datetimes.datetimeWithoutSecondStyle);
-                date= Datetimes.parse(result, Datetimes.datetimeWithoutSecondStyle);
-            } else {
                 result=Datetimes.format(date0, Datetimes.datetimeWithoutSecondStyle);
                 date= Datetimes.parse(result, Datetimes.datetimeWithoutSecondStyle);
-            }
         }else {
             result = Datetimes.format(date0, Datetimes.dateStyle) + " " + dateCondition.getTriggerTime();
             date = Datetimes.parse(result, Datetimes.datetimeWithoutSecondStyle);
