@@ -2,14 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dc661a9-1b32-4566-959a-92ae94746aa3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/allItems/coop_list_more_banjie.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/allItems/coopratiion_banjie.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/coop_ban_jie_more.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/section/CooprationBanjieSection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$UpdateQuartzJobThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$UpdateQuartzJobThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/allItems/spring/spring-allItems-manager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/allItems/spring/spring-allItems-manager.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/controller/allItemsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/controller/allItemsController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/controller/allItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/controller/allItemsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/manager/allItemsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/manager/allItemsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/manager/allItemsManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/manager/allItemsManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/徐矿选择人员CAP4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/徐矿选择人员CAP4.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +60,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/0_test_code/cap4-date" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -58,6 +74,8 @@
       <recent name="com.seeyon.apps.ext.allItems.section" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\a8_code\A-8-code\徐矿_添加办结和未办结栏目\seeyon\apps_res\xkjtBanjie" />
+      <recent name="F:\a8_code\A-8-code\徐矿_添加办结和未办结栏目\seeyon\WEB-INF\jsp\apps\ext\allItems" />
       <recent name="F:\0_test_code\allItems\seeyon" />
       <recent name="F:\0_test_code\allItems\seeyon\apps_res\xkjtBanjie" />
       <recent name="F:\0_test_code\allItems\seeyon\WEB-INF\jsp\apps\ext\allItems" />
@@ -174,6 +192,7 @@
       <workItem from="1589157477561" duration="430000" />
       <workItem from="1589162311861" duration="1263000" />
       <workItem from="1589175150564" duration="6570000" />
+      <workItem from="1589329664764" duration="11901000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1589181663375</created>
@@ -212,13 +231,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.java</url>
-          <line>129</line>
+          <line>231</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.java</url>
-          <line>122</line>
+          <line>224</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

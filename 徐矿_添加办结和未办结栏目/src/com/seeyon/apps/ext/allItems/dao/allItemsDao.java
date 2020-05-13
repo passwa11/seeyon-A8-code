@@ -8,6 +8,16 @@ import java.util.Map;
 public interface allItemsDao {
 
     /**
+     * 协同所有已办结
+     * @param templetIds
+     * @return
+     */
+    List<Map<String,Object>> findCoopratiionBanjie(String templetIds);
+    List<Map<String,Object>> findCtpAffairIdbySummaryid(String id);
+    FlipInfo findMoreCooprationXkjtBanjie(FlipInfo flipInfo, Map<String, Object> map);
+
+
+    /**
      * 所有办结
      */
     List<Object> findXkjtAllBanJie(String templetIds);

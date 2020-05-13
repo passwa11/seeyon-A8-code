@@ -18,6 +18,23 @@ public class allItemsManagerImpl implements allItemsManager {
 
     @AjaxAccess
     @Override
+    public FlipInfo findMoreCooprationXkjtBanjie(FlipInfo flipInfo, Map<String, Object> map) {
+        getallItemsDao().findMoreCooprationXkjtBanjie(flipInfo, map);
+        return flipInfo;
+    }
+
+    @Override
+    public List<Map<String, Object>> findCtpAffairIdbySummaryid(String id) {
+        return getallItemsDao().findCtpAffairIdbySummaryid(id);
+    }
+
+    @Override
+    public List<Map<String, Object>> findCoopratiionBanjie(String templetIds) {
+        return getallItemsDao().findCoopratiionBanjie(templetIds);
+    }
+
+    @AjaxAccess
+    @Override
     public FlipInfo findMoreXkjtBanjie(FlipInfo flipInfo, Map<String, Object> map) {
         getallItemsDao().findMoreXkjtBanjie(flipInfo, map);
         return flipInfo;

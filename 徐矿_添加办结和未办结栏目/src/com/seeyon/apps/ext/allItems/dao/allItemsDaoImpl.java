@@ -14,6 +14,108 @@ public class allItemsDaoImpl implements allItemsDao {
     private static final Log LOGGER = LogFactory.getLog(allItemsDaoImpl.class);
 
     @Override
+    public FlipInfo findMoreCooprationXkjtBanjie(FlipInfo flipInfo, Map<String, Object> map) {
+        List<Map<String, Object>> banjieList = new ArrayList<>();
+        StringBuffer sql = new StringBuffer();
+        sql.append("select DISTINCT id,subject,start_date,current_nodes_info,TEMPLETE_ID,name,START_MEMBER_ID from (");
+        sql.append("select s.id,s.subject,s.start_date,s.current_nodes_info,CA.id aid,s.TEMPLETE_ID,s.name,s.start_member_id  from (");
+        sql.append("select * from (select s.*,m.name from COL_SUMMARY s LEFT JOIN ORG_MEMBER m on s.START_MEMBER_ID=m.ID) sm where SM.current_nodes_info is null and SM.START_MEMBER_ID='6124365271652712753' and SM.state =3) s ");
+        sql.append("LEFT  JOIN CTP_AFFAIR ca on s.id=CA.OBJECT_ID) ss where aid is not null");
+
+        String condition = "";
+//标题
+        if (map.get("title") != null) {
+            condition = (String) map.get("title");
+            map.remove("title");
+            map.put("title", "%" + condition + "%");
+            sql.append(" AND subject like '%" + map.get("title") + "%'");
+        }
+//开始时间
+        if (map.get("beginTime") != null) {
+            sql.append(" AND start_date >=to_date('" + map.get("beginTime") + "','yyyy-mm-dd')");
+        }
+//截止时间
+        if (map.get("endTime") != null) {
+            sql.append(" AND start_date <=to_date('" + map.get("endTime") + "','yyyy-mm-dd')");
+        }
+//发起人
+        if (map.get("sender") != null) {
+            condition = (String) map.get("sender");
+            map.remove("sender");
+            map.put("sender", "%" + condition + "%");
+            sql.append(" AND name like '%" + map.get("sender") + "%'");
+        }
+//        模板
+        if (map.get("templetIds") != null && !"".equals(map.get("templetIds"))) {
+            sql.append(" AND TEMPLETE_ID IN (" + map.get("templetIds") + ")");
+        }
+        sql.append(" order by start_date desc");
+        try (JDBCAgent jdbcAgent = new JDBCAgent(true)) {
+            jdbcAgent.execute(sql.toString());
+            banjieList = jdbcAgent.resultSetToList();
+        } catch (SQLException e) {
+            LOGGER.error("办结栏目更多页加条件查询获取异常", e);
+        } catch (BusinessException b) {
+            LOGGER.error("办结栏目更多页加条件查询获取异常", b);
+        }
+        List<Map<String, Object>> addNodeInfoList = new ArrayList<>();
+        for (int i = 0; i < banjieList.size(); i++) {
+            Map<String, Object> map1 = banjieList.get(i);
+            map1.put("current_nodes_info","已结束");
+            addNodeInfoList.add(map1);
+        }
+        int page = flipInfo.getPage();
+        int size = flipInfo.getSize();
+        flipInfo.setTotal((banjieList).size());
+        List newList = new ArrayList();
+        int currIdx = page > 1 ? (page - 1) * size : 0;
+
+        for (int i = 0; i < size && i < (banjieList).size() - currIdx; ++i) {
+            newList.add((banjieList).get(currIdx + i));
+        }
+
+        flipInfo.setData(addNodeInfoList);
+        return flipInfo;
+    }
+
+    @Override
+    public List<Map<String, Object>> findCtpAffairIdbySummaryid(String id) {
+        StringBuffer sql = new StringBuffer();
+        sql.append("select * from (select id from CTP_AFFAIR where object_id ='" + id + "' and state=4 ORDER BY complete_time desc) where rownum=1");
+        JDBCAgent jdbcAgent = new JDBCAgent(true);
+        List<Map<String, Object>> banjie = null;
+        try {
+            jdbcAgent.execute(sql.toString());
+            banjie = jdbcAgent.resultSetToList();
+        } catch (Exception e) {
+            LOGGER.error("办结栏目获取异常：", e);
+        }
+        return banjie;
+    }
+
+    @Override
+    public List<Map<String, Object>> findCoopratiionBanjie(String templetIds) {
+        StringBuffer sql = new StringBuffer();
+        sql.append("select DISTINCT id,subject,start_date,current_nodes_info,TEMPLETE_ID,name,START_MEMBER_ID from (");
+        sql.append("select s.id,s.subject,s.start_date,s.current_nodes_info,CA.id aid,s.TEMPLETE_ID,s.name,s.start_member_id  from (");
+        sql.append("select * from (select s.*,m.name from COL_SUMMARY s LEFT JOIN ORG_MEMBER m on s.START_MEMBER_ID=m.ID) sm where SM.current_nodes_info is null and SM.START_MEMBER_ID='6124365271652712753' and SM.state =3) s ");
+        sql.append("LEFT  JOIN CTP_AFFAIR ca on s.id=CA.OBJECT_ID) ss where aid is not null");
+        if (templetIds != null && !templetIds.equals("null") && !templetIds.equals("")) {
+            sql.append(" and SS.TEMPLETE_ID='" + templetIds + "'");
+        }
+        sql.append(" order by start_date desc");
+        JDBCAgent jdbcAgent = new JDBCAgent(true);
+        List<Map<String, Object>> banjie = null;
+        try {
+            jdbcAgent.execute(sql.toString());
+            banjie = jdbcAgent.resultSetToList();
+        } catch (Exception e) {
+            LOGGER.error("办结栏目获取异常：", e);
+        }
+        return banjie;
+    }
+
+    @Override
     public FlipInfo findMoreXkjtBanjie(FlipInfo flipInfo, Map<String, Object> map) {
         List<Object> banjieList = new ArrayList<>();
         StringBuffer sql = new StringBuffer();
@@ -42,7 +144,7 @@ public class allItemsDaoImpl implements allItemsDao {
             sql.append(" AND summary.CREATE_PERSON like '" + map.get("sender") + "'");
         }
 //        模板
-        if (map.get("templetIds") != null) {
+        if (map.get("templetIds") != null && !"".equals(map.get("templetIds"))) {
             sql.append(" AND summary.TEMPLETE_ID IN (" + map.get("templetIds") + ")");
         }
         sql.append("   ORDER BY summary.CREATE_TIME DESC ");
@@ -70,11 +172,11 @@ public class allItemsDaoImpl implements allItemsDao {
 
     @Override
     public FlipInfo findMoreXkjtNoBanjie(FlipInfo flipInfo, Map<String, Object> map) {
-        List<Map<String,Object>> noBanjielist = new ArrayList<>();
+        List<Map<String, Object>> noBanjielist = new ArrayList<>();
         StringBuffer sql = new StringBuffer();
         sql.append(" SELECT affair.name,affair.RECEIVE_TIME,summary.id,summary.state,summary.COMPLETE_TIME,summary.DOC_MARK,summary.EDOC_TYPE,summary.SEND_UNIT,trim(summary.SUBJECT) SUBJECT, summary.CREATE_PERSON,summary.CREATE_TIME,summary.START_USER_ID from EDOC_SUMMARY summary,(select m.name,a.OBJECT_ID ,a.state,a.IS_DELETE,a.RECEIVE_TIME from ctp_affair a LEFT JOIN ORG_MEMBER m on a.MEMBER_ID = m.ID ) affair where   summary.ID = affair.OBJECT_ID and summary.STATE = 0 AND affair.state = 3 AND affair.IS_DELETE = 0  ");
         String condition = "";
-        if (map.get("templetIds") != null) {
+        if (map.get("templetIds") != null && !"".equals(map.get("templetIds"))) {
             sql.append(" AND summary.TEMPLETE_ID IN (" + map.get("templetIds") + ")");
         }
         //        标题
@@ -119,18 +221,18 @@ public class allItemsDaoImpl implements allItemsDao {
         } catch (BusinessException b) {
             LOGGER.error("未结栏目更多页加条件查询获取异常", b);
         }
-        List<Map<String,Object>> depu = new ArrayList<>();
-        HashSet<String> set=new HashSet<>();
+        List<Map<String, Object>> depu = new ArrayList<>();
+        HashSet<String> set = new HashSet<>();
         for (int i = 0; i < noBanjielist.size(); i++) {
-            String subject=(String) noBanjielist.get(i).get("subject");
-            if(set.add(subject)){
+            String subject = (String) noBanjielist.get(i).get("subject");
+            if (set.add(subject)) {
                 depu.add(noBanjielist.get(i));
             }
         }
         int page = flipInfo.getPage();
         int size = flipInfo.getSize();
         flipInfo.setTotal((depu).size());
-        List<Map<String,Object>> newList = new ArrayList();
+        List<Map<String, Object>> newList = new ArrayList();
         int currIdx = page > 1 ? (page - 1) * size : 0;
 
         for (int i = 0; i < size && i < (depu).size() - currIdx; ++i) {
@@ -148,7 +250,7 @@ public class allItemsDaoImpl implements allItemsDao {
      * @return
      */
     @Override
-    public List<Map<String,Object>> findXkjtAllNoBanJie(String templetIds) {
+    public List<Map<String, Object>> findXkjtAllNoBanJie(String templetIds) {
         StringBuilder sb = new StringBuilder();
         sb.append("select * from (");
         sb.append(" SELECT affair.name,summary.id,summary.state,summary.COMPLETE_TIME,summary.DOC_MARK,summary.EDOC_TYPE,summary.SEND_UNIT,summary.SUBJECT, summary.CREATE_PERSON,summary.CREATE_TIME,summary.START_USER_ID from EDOC_SUMMARY summary,(select m.name,a.OBJECT_ID ,a.state,a.IS_DELETE from ctp_affair a LEFT JOIN ORG_MEMBER m on a.MEMBER_ID = m.ID ) affair where   summary.ID = affair.OBJECT_ID and summary.STATE = 0 AND affair.state = 3 AND affair.IS_DELETE = 0  ");
@@ -157,7 +259,7 @@ public class allItemsDaoImpl implements allItemsDao {
         }
         sb.append("   ORDER BY summary.CREATE_TIME DESC ");
         sb.append(" ) where rownum<20 ");
-        List<Map<String,Object>> banjie = new ArrayList<>();
+        List<Map<String, Object>> banjie = new ArrayList<>();
         JDBCAgent jdbcAgent = new JDBCAgent(true);
         try {
             jdbcAgent.execute(sb.toString());
@@ -165,11 +267,11 @@ public class allItemsDaoImpl implements allItemsDao {
         } catch (Exception e) {
             LOGGER.error("办结栏目获取异常：", e);
         }
-        List<Map<String,Object>> depu = new ArrayList<>();
-        HashSet<String> set=new HashSet<>();
+        List<Map<String, Object>> depu = new ArrayList<>();
+        HashSet<String> set = new HashSet<>();
         for (int i = 0; i < banjie.size(); i++) {
-            String subject=(String) banjie.get(i).get("subject");
-            if(set.add(subject)){
+            String subject = (String) banjie.get(i).get("subject");
+            if (set.add(subject)) {
                 depu.add(banjie.get(i));
             }
         }

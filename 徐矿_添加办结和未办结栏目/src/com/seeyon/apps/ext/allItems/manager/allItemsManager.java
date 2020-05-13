@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 public interface allItemsManager {
+
+    List<Map<String,Object>> findCtpAffairIdbySummaryid(String id);
+
+    List<Map<String,Object>> findCoopratiionBanjie(String templetIds);
+
     List<Object> findXkjtAllBanJie(String templetIds);
 
     List<Map<String, Object>> findXkjtAllNoBanJie(String templetIds);
@@ -18,6 +23,8 @@ public interface allItemsManager {
      * @return
      */
     FlipInfo findMoreXkjtBanjie(FlipInfo flipInfo, Map<String, Object> map);
+    FlipInfo findMoreCooprationXkjtBanjie(FlipInfo flipInfo, Map<String, Object> map);
+
 
     /**
      * 所有未办结更多页面
