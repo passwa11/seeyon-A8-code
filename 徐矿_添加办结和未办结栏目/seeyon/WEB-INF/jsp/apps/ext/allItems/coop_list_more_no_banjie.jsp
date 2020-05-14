@@ -8,7 +8,7 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Cache-Control" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <title>协同更多办结</title>
+    <title>协同更多未办结</title>
     <script type="text/javascript" src="${path}/ajax.do?managerName=xkjtManager"></script>
     <script type="text/javascript" charset="UTF-8" src="${path}/apps_res/xkjtBanjie/coop_no_ban_jie_more.js${ctp:resSuffix()}"></script>
     <script type="text/javascript">
@@ -21,7 +21,7 @@
 <div id="layout">
     <div class="layout_north bg_color" id="north">
         <div class="common_crumbs">
-            <span class="margin_r_10">当前位置:</span><a href="javascript:void(0)">所有办结</a>
+            <span class="margin_r_10">当前位置:</span><a href="javascript:void(0)">协同更多未办结</a>
         </div>
     </div>
 

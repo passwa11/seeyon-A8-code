@@ -21,7 +21,7 @@
 <div id="layout">
     <div class="layout_north bg_color" id="north">
         <div class="common_crumbs">
-            <span class="margin_r_10">当前位置:</span><a href="javascript:void(0)">所有办结</a>
+            <span class="margin_r_10">当前位置:</span><a href="javascript:void(0)">协同更多办结</a>
         </div>
     </div>
 
