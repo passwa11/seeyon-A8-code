@@ -191,7 +191,10 @@ public class allItemsDaoImpl implements allItemsDao {
             condition = (String) map.get("title");
             map.remove("title");
             map.put("title", "%" + condition + "%");
-            sql.append(" AND summary.SUBJECT like '" + map.get("title") + "'");
+            sql.append(" AND summary.SUBJECT like '%" + map.get("title") + "%'");
+        }
+        if(map.get("docMark") != null && !"".equals(map.get("docMark") )){
+            sql.append(" AND summary.DOC_MARK like '%" + map.get("docMark") + "%'");
         }
 //开始时间
         if (map.get("beginTime") != null) {
@@ -249,7 +252,10 @@ public class allItemsDaoImpl implements allItemsDao {
             condition = (String) map.get("title");
             map.remove("title");
             map.put("title", "%" + condition + "%");
-            sql.append(" AND summary.SUBJECT like '" + map.get("title") + "'");
+            sql.append(" AND summary.SUBJECT like '%" + map.get("title") + "%'");
+        }
+        if(map.get("docMark") != null && !"".equals(map.get("docMark") )){
+            sql.append(" AND summary.DOC_MARK like '%" + map.get("docMark") + "%'");
         }
         if (map.get("name") != null) {
             sql.append(" AND affair.name like '%" + map.get("name") + "%'");

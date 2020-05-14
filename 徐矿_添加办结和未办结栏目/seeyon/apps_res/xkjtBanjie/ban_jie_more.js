@@ -37,6 +37,9 @@
                     if (params.condition == 'title') {
                         o.title = params.value;
                     }
+                    if (params.condition == 'docMark') {
+                        o.docMark = params.value;
+                    }
                     if (params.condition == 'importLevel') {
                         o.importLevel = params.value;
                     }
@@ -100,7 +103,15 @@
                     type: 'input',
                     text: "发起人",//发起人
                     value: 'sender'
-                }, {
+                }
+                , {
+                    id: 'docMark',
+                    name: 'docMark',
+                    type: 'input',
+                    text: "公文文号",//
+                    value: 'docMark'
+                }
+                , {
                     id: 'datetime',
                     name: 'datetime',
                     type: 'datemulti',
