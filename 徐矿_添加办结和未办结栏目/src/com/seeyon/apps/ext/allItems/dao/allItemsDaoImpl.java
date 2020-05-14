@@ -89,17 +89,17 @@ public class allItemsDaoImpl implements allItemsDao {
     public FlipInfo findMoreCooprationXkjtBanjie(FlipInfo flipInfo, Map<String, Object> map) {
         List<Map<String, Object>> banjieList = new ArrayList<>();
         StringBuffer sql = new StringBuffer();
-        sql.append("select DISTINCT id,subject,start_date,current_nodes_info,TEMPLETE_ID,name,START_MEMBER_ID from (");
-        sql.append("select s.id,s.subject,s.start_date,s.current_nodes_info,CA.id aid,s.TEMPLETE_ID,s.name,s.start_member_id  from (");
-        sql.append("select * from (select s.*,m.name from COL_SUMMARY s LEFT JOIN ORG_MEMBER m on s.START_MEMBER_ID=m.ID) sm where SM.current_nodes_info is null  and SM.state =3) s ");
-        sql.append("LEFT  JOIN CTP_AFFAIR ca on s.id=CA.OBJECT_ID) ss where aid is not null");
-
+//        sql.append("select DISTINCT id,subject,start_date,current_nodes_info,TEMPLETE_ID,name,START_MEMBER_ID from (");
+//        sql.append("select s.id,s.subject,s.start_date,s.current_nodes_info,CA.id aid,s.TEMPLETE_ID,s.name,s.start_member_id  from (");
+//        sql.append("select * from (select s.*,m.name from COL_SUMMARY s LEFT JOIN ORG_MEMBER m on s.START_MEMBER_ID=m.ID) sm where SM.current_nodes_info is null  and SM.state =3) s ");
+//        sql.append("LEFT  JOIN CTP_AFFAIR ca on s.id=CA.OBJECT_ID) ss where aid is not null");
+        sql.append("select * from (");
+        sql.append("select id,subject,START_DATE,FINISH_DATE,TEMPLETE_ID,START_MEMBER_ID,(select name from ORG_MEMBER where id=START_MEMBER_ID) start_name,current_nodes_info ");
+        sql.append("from COL_SUMMARY where START_MEMBER_ID='6124365271652712753'  and finish_date is not null ");
+        sql.append(") where 1=1");
         String condition = "";
 //标题
         if (map.get("title") != null) {
-            condition = (String) map.get("title");
-            map.remove("title");
-            map.put("title", "%" + condition + "%");
             sql.append(" AND subject like '%" + map.get("title") + "%'");
         }
 //开始时间
@@ -112,10 +112,7 @@ public class allItemsDaoImpl implements allItemsDao {
         }
 //发起人
         if (map.get("sender") != null) {
-            condition = (String) map.get("sender");
-            map.remove("sender");
-            map.put("sender", "%" + condition + "%");
-            sql.append(" AND name like '%" + map.get("sender") + "%'");
+            sql.append(" AND start_name like '%" + map.get("sender") + "%'");
         }
 //        模板
         if (map.get("templetIds") != null && !"".equals(map.get("templetIds"))) {
@@ -150,6 +147,7 @@ public class allItemsDaoImpl implements allItemsDao {
         return flipInfo;
     }
 
+
     @Override
     public List<Map<String, Object>> findCtpAffairIdbySummaryid(String id) {
         StringBuffer sql = new StringBuffer();
@@ -168,14 +166,16 @@ public class allItemsDaoImpl implements allItemsDao {
     @Override
     public List<Map<String, Object>> findCoopratiionBanjie(String templetIds) {
         StringBuffer sql = new StringBuffer();
-        sql.append("select DISTINCT id,subject,start_date,current_nodes_info,TEMPLETE_ID,name,START_MEMBER_ID from (");
-        sql.append("select s.id,s.subject,s.start_date,s.current_nodes_info,CA.id aid,s.TEMPLETE_ID,s.name,s.start_member_id  from (");
-        sql.append("select * from (select s.*,m.name from COL_SUMMARY s LEFT JOIN ORG_MEMBER m on s.START_MEMBER_ID=m.ID) sm where SM.current_nodes_info is null  and SM.state =3) s ");
-        sql.append("LEFT  JOIN CTP_AFFAIR ca on s.id=CA.OBJECT_ID) ss where aid is not null");
-        if (templetIds != null && !templetIds.equals("null") && !templetIds.equals("")) {
-            sql.append(" and SS.TEMPLETE_ID='" + templetIds + "'");
-        }
-        sql.append(" order by start_date desc");
+//        sql.append("select DISTINCT id,subject,start_date,current_nodes_info,TEMPLETE_ID,name,START_MEMBER_ID from (");
+//        sql.append("select s.id,s.subject,s.start_date,s.current_nodes_info,CA.id aid,s.TEMPLETE_ID,s.name,s.start_member_id  from (");
+//        sql.append("select * from (select s.*,m.name from COL_SUMMARY s LEFT JOIN ORG_MEMBER m on s.START_MEMBER_ID=m.ID) sm where SM.current_nodes_info is null  and SM.state =3) s ");
+//        sql.append("LEFT  JOIN CTP_AFFAIR ca on s.id=CA.OBJECT_ID) ss where aid is not null");
+//        if (templetIds != null && !templetIds.equals("null") && !templetIds.equals("")) {
+//            sql.append(" and SS.TEMPLETE_ID='" + templetIds + "'");
+//        }
+//        sql.append(" order by start_date desc");
+        sql.append("select id,subject,START_DATE,FINISH_DATE,TEMPLETE_ID,START_MEMBER_ID,(select name from ORG_MEMBER where id=START_MEMBER_ID) start_name ");
+        sql.append("from COL_SUMMARY where START_MEMBER_ID='6124365271652712753'  and finish_date is not null ORDER BY START_DATE desc");
         JDBCAgent jdbcAgent = new JDBCAgent(true);
         List<Map<String, Object>> banjie = null;
         try {

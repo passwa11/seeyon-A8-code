@@ -51,7 +51,7 @@
                 <span title="<fmt:formatDate value='${finish.start_date}' pattern='yyyy-MM-dd' />"><fmt:formatDate value='${finish.start_date}' pattern='yyyy-MM-dd' /></span>
             </td>
             <td style="color:#505050" width="10%" align="center">
-                <a onclick="javascript:window.top.showMemberCard('${finish.start_member_id}','5')" style="width:5px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" title="${finish.name}">${finish.name}</a>
+                <a onclick="javascript:window.top.showMemberCard('${finish.start_member_id}','5')" style="width:5px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" title="${finish.start_name}">${finish.start_name}</a>
             </td>
         </tr>
     </c:forEach>

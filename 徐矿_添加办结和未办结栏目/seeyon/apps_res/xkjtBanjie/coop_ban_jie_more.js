@@ -108,16 +108,16 @@
                 width: '20%'
             }, {
                 display: "发起者",
-                name: 'name',
+                name: 'start_name',
                 sortable: true,
                 width: '20%'
             }
-                , {
-                    display: "当前代办人",
-                    name: 'current_nodes_info',
-                    sortable: true,
-                    width: '15%'
-                }
+            , {
+                display: "当前代办人",
+                name: 'current_nodes_info',
+                sortable: true,
+                width: '15%'
+            }
                 // , {
                 // 	display : "发文单位",
                 // 	name : 'send_unit',
