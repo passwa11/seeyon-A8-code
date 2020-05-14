@@ -97,7 +97,7 @@
                 width: '5%',
                 type: 'checkbox'
             }, {
-                display: "公文标题",
+                display: "标题",
                 name: 'subject',
                 sortable: true,
                 width: '40%'
