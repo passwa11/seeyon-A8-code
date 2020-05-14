@@ -8,6 +8,14 @@ import java.util.Map;
 public interface allItemsDao {
 
     /**
+     * 协同所有未办结
+     * @param templateids
+     * @return
+     */
+    List<Map<String,Object>> findCooprationNobanjie(String templateids);
+    FlipInfo findMoreCooprationNobanjie(FlipInfo flipInfo, Map<String, Object> map);
+
+    /**
      * 协同所有已办结
      * @param templetIds
      * @return

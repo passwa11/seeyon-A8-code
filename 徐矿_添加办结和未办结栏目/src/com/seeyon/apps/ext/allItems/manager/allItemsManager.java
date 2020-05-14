@@ -7,6 +7,18 @@ import java.util.Map;
 
 public interface allItemsManager {
 
+    /**
+     * 协同所有未办结
+     */
+    List<Map<String,Object>> findCooprationNobanjie(String templetids);
+
+    FlipInfo findMoreCooprationNobj(FlipInfo flipInfo, Map<String, Object> map);
+
+    /**
+     * 协同所有办结
+     * @param id
+     * @return
+     */
     List<Map<String,Object>> findCtpAffairIdbySummaryid(String id);
 
     List<Map<String,Object>> findCoopratiionBanjie(String templetIds);

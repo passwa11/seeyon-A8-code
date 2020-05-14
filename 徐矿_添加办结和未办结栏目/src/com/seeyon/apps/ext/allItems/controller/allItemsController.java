@@ -25,7 +25,40 @@ public class allItemsController extends BaseController {
 
     private allItemsManager allItemsManager = new allItemsManagerImpl();
 
-
+    /**
+     * 跳转到协同未办结更多页面
+     */
+    public ModelAndView toMoreCooprationNoBj(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("apps/ext/allItems/coop_list_more_no_banjie");
+        String templetIds = String.valueOf(request.getParameter("templetIds"));
+        if (Strings.isNotBlank(templetIds) && !"null".equals(templetIds)) {
+            modelAndView.addObject("templetIds", templetIds);
+        } else {
+            modelAndView.addObject("templetIds", "");
+        }
+        return modelAndView;
+    }
+    /**
+     * 协同所有未办结栏目
+     * @param request
+     * @param response
+     * @return
+     */
+    public ModelAndView cooprationUnfinishDataSection(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("apps/ext/allItems/coopratiion_no_banjie");
+        String templetIds = request.getParameter("templetIds");
+        List<Map<String, Object>> list = null;
+        try {
+            list = allItemsManager.findCooprationNobanjie(templetIds);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("获取所有未办结出错了!", e);
+        }
+        modelAndView.addObject("list", list);
+        return modelAndView;
+    }
 
     /**
      * 跳转到未办结更多页面

@@ -9,9 +9,81 @@ import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.util.FlipInfo;
 import com.seeyon.ctp.util.JDBCAgent;
 import com.seeyon.ctp.util.Strings;
+import com.seeyon.ctp.util.annotation.AjaxAccess;
 
 public class allItemsDaoImpl implements allItemsDao {
     private static final Log LOGGER = LogFactory.getLog(allItemsDaoImpl.class);
+
+    @AjaxAccess
+    @Override
+    public FlipInfo findMoreCooprationNobanjie(FlipInfo flipInfo, Map<String, Object> map) {
+        StringBuffer sql = new StringBuffer();
+        sql.append("select * from (");
+        sql.append("select sup.*,complete_time,id from (");
+        sql.append("select distinct subject,object_id,sender_id,(select name from ORG_MEMBER where id=sender_id) send_name,create_date,");
+        sql.append("MEMBER_ID,(select name from ORG_MEMBER where id=MEMBER_ID) member_name  ,PRE_APPROVER,(select name from ORG_MEMBER where id=PRE_APPROVER) PRE_name,COMPLETE_TIME  from (");
+        sql.append("select * from (");
+        sql.append("select ca.* from COL_SUMMARY cs LEFT JOIN  (select * from CTP_AFFAIR where state =4) ca on cs.id=CA.object_id");
+        if (map.get("templetIds") != null && !"".equals(map.get("templetIds"))) {
+            sql.append(" AND cs.TEMPLETE_ID IN (" + map.get("templetIds") + ")");
+        }
+        sql.append(") s where s.sender_id='6124365271652712753' and s.SORT_WEIGHT=-1 and is_finish <>1");
+        sql.append(") ORDER BY create_date desc");
+        sql.append(") sup LEFT JOIN ");
+        sql.append("(select max(COMPLETE_TIME) complete_time,max(id) id,object_id from CTP_AFFAIR where COMPLETE_TIME is not null GROUP BY object_id) cac on sup.object_id=cac.object_id");
+        sql.append(") osup where 1=1");
+        if (map.get("title") != null && map.get("title") != "") {
+            sql.append(" and  osup.subject like '%"+map.get("title") +"'%");
+        }
+        if (map.get("sender") != null) {
+            sql.append(" AND osup.send_name like '%" + map.get("sender") + "%'");
+        }
+        List<Map<String, Object>> nobj = null;
+        try (JDBCAgent jdbcAgent = new JDBCAgent(true)) {
+            jdbcAgent.execute(sql.toString());
+            nobj = jdbcAgent.resultSetToList();
+        } catch (SQLException e) {
+            LOGGER.error("办结栏目更多页加条件查询获取异常", e);
+        } catch (BusinessException b) {
+            LOGGER.error("办结栏目更多页加条件查询获取异常", b);
+        }
+        int page = flipInfo.getPage();
+        int size = flipInfo.getSize();
+        flipInfo.setTotal((nobj).size());
+        List newList = new ArrayList();
+        int currIdx = page > 1 ? (page - 1) * size : 0;
+        for (int i = 0; i < size && i < (nobj).size() - currIdx; ++i) {
+            newList.add((nobj).get(currIdx + i));
+        }
+        flipInfo.setData(nobj);
+        return flipInfo;
+    }
+
+    @Override
+    public List<Map<String, Object>> findCooprationNobanjie(String templetIds) {
+        StringBuffer sql = new StringBuffer();
+        sql.append("select sup.*,complete_time,id from (");
+        sql.append("select distinct subject,object_id,sender_id,(select name from ORG_MEMBER where id=sender_id) send_name,create_date,");
+        sql.append("MEMBER_ID,(select name from ORG_MEMBER where id=MEMBER_ID) member_name  ,PRE_APPROVER,(select name from ORG_MEMBER where id=PRE_APPROVER) PRE_name,COMPLETE_TIME  from (");
+        sql.append("select * from (");
+        sql.append("select ca.* from COL_SUMMARY cs LEFT JOIN  (select * from CTP_AFFAIR where state =4) ca on cs.id=CA.object_id");
+        if (templetIds != null && !templetIds.equals("null") && !templetIds.equals("")) {
+            sql.append(" and cs.TEMPLETE_ID='" + templetIds + "'");
+        }
+        sql.append(") s where s.sender_id='6124365271652712753' and s.SORT_WEIGHT=-1 and is_finish <>1");
+        sql.append(") ORDER BY create_date desc");
+        sql.append(") sup LEFT JOIN ");
+        sql.append("(select max(COMPLETE_TIME) complete_time,max(id) id,object_id from CTP_AFFAIR where COMPLETE_TIME is not null GROUP BY object_id) cac on sup.object_id=cac.object_id");
+        JDBCAgent jdbcAgent = new JDBCAgent(true);
+        List<Map<String, Object>> wbj = null;
+        try {
+            jdbcAgent.execute(sql.toString());
+            wbj = jdbcAgent.resultSetToList();
+        } catch (Exception e) {
+            LOGGER.error("办结栏目获取异常：", e);
+        }
+        return wbj;
+    }
 
     @Override
     public FlipInfo findMoreCooprationXkjtBanjie(FlipInfo flipInfo, Map<String, Object> map) {
@@ -19,7 +91,7 @@ public class allItemsDaoImpl implements allItemsDao {
         StringBuffer sql = new StringBuffer();
         sql.append("select DISTINCT id,subject,start_date,current_nodes_info,TEMPLETE_ID,name,START_MEMBER_ID from (");
         sql.append("select s.id,s.subject,s.start_date,s.current_nodes_info,CA.id aid,s.TEMPLETE_ID,s.name,s.start_member_id  from (");
-        sql.append("select * from (select s.*,m.name from COL_SUMMARY s LEFT JOIN ORG_MEMBER m on s.START_MEMBER_ID=m.ID) sm where SM.current_nodes_info is null and SM.START_MEMBER_ID='6124365271652712753' and SM.state =3) s ");
+        sql.append("select * from (select s.*,m.name from COL_SUMMARY s LEFT JOIN ORG_MEMBER m on s.START_MEMBER_ID=m.ID) sm where SM.current_nodes_info is null  and SM.state =3) s ");
         sql.append("LEFT  JOIN CTP_AFFAIR ca on s.id=CA.OBJECT_ID) ss where aid is not null");
 
         String condition = "";
@@ -61,7 +133,7 @@ public class allItemsDaoImpl implements allItemsDao {
         List<Map<String, Object>> addNodeInfoList = new ArrayList<>();
         for (int i = 0; i < banjieList.size(); i++) {
             Map<String, Object> map1 = banjieList.get(i);
-            map1.put("current_nodes_info","已结束");
+            map1.put("current_nodes_info", "已结束");
             addNodeInfoList.add(map1);
         }
         int page = flipInfo.getPage();
@@ -98,7 +170,7 @@ public class allItemsDaoImpl implements allItemsDao {
         StringBuffer sql = new StringBuffer();
         sql.append("select DISTINCT id,subject,start_date,current_nodes_info,TEMPLETE_ID,name,START_MEMBER_ID from (");
         sql.append("select s.id,s.subject,s.start_date,s.current_nodes_info,CA.id aid,s.TEMPLETE_ID,s.name,s.start_member_id  from (");
-        sql.append("select * from (select s.*,m.name from COL_SUMMARY s LEFT JOIN ORG_MEMBER m on s.START_MEMBER_ID=m.ID) sm where SM.current_nodes_info is null and SM.START_MEMBER_ID='6124365271652712753' and SM.state =3) s ");
+        sql.append("select * from (select s.*,m.name from COL_SUMMARY s LEFT JOIN ORG_MEMBER m on s.START_MEMBER_ID=m.ID) sm where SM.current_nodes_info is null  and SM.state =3) s ");
         sql.append("LEFT  JOIN CTP_AFFAIR ca on s.id=CA.OBJECT_ID) ss where aid is not null");
         if (templetIds != null && !templetIds.equals("null") && !templetIds.equals("")) {
             sql.append(" and SS.TEMPLETE_ID='" + templetIds + "'");

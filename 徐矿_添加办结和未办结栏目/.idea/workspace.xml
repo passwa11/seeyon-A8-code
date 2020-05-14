@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3dc661a9-1b32-4566-959a-92ae94746aa3" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/allItems/coop_list_more_banjie.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/allItems/coopratiion_banjie.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/coop_ban_jie_more.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/section/CooprationBanjieSection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/allItems/coop_list_more_no_banjie.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/allItems/coopratiion_no_banjie.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/coop_no_ban_jie_more.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/section/CooprationNOBanjieSection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$UpdateQuartzJobThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$UpdateQuartzJobThread.class" afterDir="false" />
@@ -19,6 +18,8 @@
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/ban_jie_more.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/ban_jie_more.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/no_ban_jie_more.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/no_ban_jie_more.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/controller/allItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/controller/allItemsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.java" afterDir="false" />
@@ -192,7 +193,8 @@
       <workItem from="1589157477561" duration="430000" />
       <workItem from="1589162311861" duration="1263000" />
       <workItem from="1589175150564" duration="6570000" />
-      <workItem from="1589329664764" duration="11901000" />
+      <workItem from="1589329664764" duration="16965000" />
+      <workItem from="1589416309382" duration="5318000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1589181663375</created>
@@ -201,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589181663375</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="添加新的功能">
+      <created>1589354396382</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1589354396382</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,25 +233,21 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="添加新的功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加新的功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.java</url>
-          <line>231</line>
+          <line>303</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.java</url>
-          <line>224</line>
+          <line>296</line>
           <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
