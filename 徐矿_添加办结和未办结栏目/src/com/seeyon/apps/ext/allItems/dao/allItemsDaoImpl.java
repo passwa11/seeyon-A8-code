@@ -18,20 +18,20 @@ public class allItemsDaoImpl implements allItemsDao {
     @Override
     public FlipInfo findMoreCooprationNobanjie(FlipInfo flipInfo, Map<String, Object> map) {
         StringBuffer sql = new StringBuffer();
-        sql.append("select * from (");
+        sql.append("select osup.*,rownum rn from (");
         sql.append("select sup.*,cac.complete_time,cac.id from (");
         sql.append("select distinct subject,object_id,sender_id,(select name from ORG_MEMBER where id=sender_id) send_name,create_date,");
         sql.append("MEMBER_ID,(select name from ORG_MEMBER where id=MEMBER_ID) member_name  ,PRE_APPROVER,(select name from ORG_MEMBER where id=PRE_APPROVER) PRE_name  from (");
         sql.append("select * from (");
-        sql.append("select ca.* from COL_SUMMARY cs LEFT JOIN  (select * from CTP_AFFAIR where state =4) ca on cs.id=CA.object_id");
+        sql.append("select ca.* from (select * from COL_SUMMARY where 1=1 and finish_date is null ) cs LEFT JOIN  (select * from CTP_AFFAIR where state =4) ca on cs.id=CA.object_id");
         if (map.get("templetIds") != null && !"null".equals(map.get("templetIds")) && !"".equals(map.get("templetIds"))) {
             sql.append(" AND cs.TEMPLETE_ID IN (" + map.get("templetIds") + ")");
         }
-        sql.append(") s where 1=1 and s.SORT_WEIGHT=-1 and is_finish <>1");
+        sql.append(") s ");
         sql.append(") ORDER BY create_date desc");
         sql.append(") sup LEFT JOIN ");
         sql.append("(select max(COMPLETE_TIME) complete_time,max(id) id,object_id from CTP_AFFAIR where COMPLETE_TIME is not null GROUP BY object_id) cac on sup.object_id=cac.object_id");
-        sql.append(") osup where 1=1");
+        sql.append(") osup where 1=1 and osup.subject is not null ");
         if (map.get("title") != null && map.get("title") != "") {
             sql.append(" and  osup.subject like '%"+map.get("title") +"%'");
         }
@@ -55,25 +55,27 @@ public class allItemsDaoImpl implements allItemsDao {
         for (int i = 0; i < size && i < (nobj).size() - currIdx; ++i) {
             newList.add((nobj).get(currIdx + i));
         }
-        flipInfo.setData(nobj);
+        flipInfo.setData(newList);
         return flipInfo;
     }
 
     @Override
     public List<Map<String, Object>> findCooprationNobanjie(String templetIds) {
         StringBuffer sql = new StringBuffer();
+        sql.append("select subject,object_id,sender_id,send_name,create_date,member_id,member_name,pre_approver,pre_name,complete_time,id from (");
         sql.append("select sup.*,cac.complete_time,cac.id from (");
         sql.append("select distinct subject,object_id,sender_id,(select name from ORG_MEMBER where id=sender_id) send_name,create_date,");
         sql.append("MEMBER_ID,(select name from ORG_MEMBER where id=MEMBER_ID) member_name  ,PRE_APPROVER,(select name from ORG_MEMBER where id=PRE_APPROVER) PRE_name  from (");
         sql.append("select * from (");
-        sql.append("select ca.* from COL_SUMMARY cs LEFT JOIN  (select * from CTP_AFFAIR where state =4) ca on cs.id=CA.object_id");
+        sql.append("select ca.* from (select * from COL_SUMMARY where 1=1 and finish_date is null ) cs LEFT JOIN  (select * from CTP_AFFAIR where state =4) ca on cs.id=CA.object_id");
         if (templetIds != null && !templetIds.equals("null") && !templetIds.equals("")) {
             sql.append(" and cs.TEMPLETE_ID='" + templetIds + "'");
         }
-        sql.append(") s where 1=1 and s.SORT_WEIGHT=-1 and is_finish <>1");
+        sql.append(") s ");
         sql.append(") ORDER BY create_date desc");
         sql.append(") sup LEFT JOIN ");
         sql.append("(select max(COMPLETE_TIME) complete_time,max(id) id,object_id from CTP_AFFAIR where COMPLETE_TIME is not null GROUP BY object_id) cac on sup.object_id=cac.object_id");
+        sql.append(") osup where 1=1 and osup.subject is not null");
         JDBCAgent jdbcAgent = new JDBCAgent(true);
         List<Map<String, Object>> wbj = null;
         try {
@@ -89,13 +91,9 @@ public class allItemsDaoImpl implements allItemsDao {
     public FlipInfo findMoreCooprationXkjtBanjie(FlipInfo flipInfo, Map<String, Object> map) {
         List<Map<String, Object>> banjieList = new ArrayList<>();
         StringBuffer sql = new StringBuffer();
-//        sql.append("select DISTINCT id,subject,start_date,current_nodes_info,TEMPLETE_ID,name,START_MEMBER_ID from (");
-//        sql.append("select s.id,s.subject,s.start_date,s.current_nodes_info,CA.id aid,s.TEMPLETE_ID,s.name,s.start_member_id  from (");
-//        sql.append("select * from (select s.*,m.name from COL_SUMMARY s LEFT JOIN ORG_MEMBER m on s.START_MEMBER_ID=m.ID) sm where SM.current_nodes_info is null  and SM.state =3) s ");
-//        sql.append("LEFT  JOIN CTP_AFFAIR ca on s.id=CA.OBJECT_ID) ss where aid is not null");
         sql.append("select * from (");
         sql.append("select id,subject,START_DATE,FINISH_DATE,TEMPLETE_ID,START_MEMBER_ID,(select name from ORG_MEMBER where id=START_MEMBER_ID) start_name,current_nodes_info ");
-        sql.append("from COL_SUMMARY where START_MEMBER_ID='6124365271652712753'  and finish_date is not null ");
+        sql.append("from COL_SUMMARY where 1=1  and finish_date is not null ");
         sql.append(") where 1=1");
         String condition = "";
 //标题
@@ -139,11 +137,11 @@ public class allItemsDaoImpl implements allItemsDao {
         List newList = new ArrayList();
         int currIdx = page > 1 ? (page - 1) * size : 0;
 
-        for (int i = 0; i < size && i < (banjieList).size() - currIdx; ++i) {
-            newList.add((banjieList).get(currIdx + i));
+        for (int i = 0; i < size && i < (addNodeInfoList).size() - currIdx; ++i) {
+            newList.add((addNodeInfoList).get(currIdx + i));
         }
 
-        flipInfo.setData(addNodeInfoList);
+        flipInfo.setData(newList);
         return flipInfo;
     }
 
@@ -175,7 +173,7 @@ public class allItemsDaoImpl implements allItemsDao {
 //        }
 //        sql.append(" order by start_date desc");
         sql.append("select id,subject,START_DATE,FINISH_DATE,TEMPLETE_ID,START_MEMBER_ID,(select name from ORG_MEMBER where id=START_MEMBER_ID) start_name ");
-        sql.append("from COL_SUMMARY where START_MEMBER_ID='6124365271652712753'  and finish_date is not null ORDER BY START_DATE desc");
+        sql.append("from COL_SUMMARY where 1=1  and finish_date is not null ORDER BY START_DATE desc");
         JDBCAgent jdbcAgent = new JDBCAgent(true);
         List<Map<String, Object>> banjie = null;
         try {
