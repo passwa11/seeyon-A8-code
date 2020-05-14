@@ -27,7 +27,7 @@ public class allItemsDaoImpl implements allItemsDao {
         if (map.get("templetIds") != null && !"null".equals(map.get("templetIds")) && !"".equals(map.get("templetIds"))) {
             sql.append(" AND cs.TEMPLETE_ID IN (" + map.get("templetIds") + ")");
         }
-        sql.append(") s where s.sender_id='6124365271652712753' and s.SORT_WEIGHT=-1 and is_finish <>1");
+        sql.append(") s where 1=1 and s.SORT_WEIGHT=-1 and is_finish <>1");
         sql.append(") ORDER BY create_date desc");
         sql.append(") sup LEFT JOIN ");
         sql.append("(select max(COMPLETE_TIME) complete_time,max(id) id,object_id from CTP_AFFAIR where COMPLETE_TIME is not null GROUP BY object_id) cac on sup.object_id=cac.object_id");
@@ -70,7 +70,7 @@ public class allItemsDaoImpl implements allItemsDao {
         if (templetIds != null && !templetIds.equals("null") && !templetIds.equals("")) {
             sql.append(" and cs.TEMPLETE_ID='" + templetIds + "'");
         }
-        sql.append(") s where s.sender_id='6124365271652712753' and s.SORT_WEIGHT=-1 and is_finish <>1");
+        sql.append(") s where 1=1 and s.SORT_WEIGHT=-1 and is_finish <>1");
         sql.append(") ORDER BY create_date desc");
         sql.append(") sup LEFT JOIN ");
         sql.append("(select max(COMPLETE_TIME) complete_time,max(id) id,object_id from CTP_AFFAIR where COMPLETE_TIME is not null GROUP BY object_id) cac on sup.object_id=cac.object_id");
