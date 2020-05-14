@@ -19,12 +19,12 @@ public class allItemsDaoImpl implements allItemsDao {
     public FlipInfo findMoreCooprationNobanjie(FlipInfo flipInfo, Map<String, Object> map) {
         StringBuffer sql = new StringBuffer();
         sql.append("select * from (");
-        sql.append("select sup.*,complete_time,id from (");
+        sql.append("select sup.*,cac.complete_time,cac.id from (");
         sql.append("select distinct subject,object_id,sender_id,(select name from ORG_MEMBER where id=sender_id) send_name,create_date,");
-        sql.append("MEMBER_ID,(select name from ORG_MEMBER where id=MEMBER_ID) member_name  ,PRE_APPROVER,(select name from ORG_MEMBER where id=PRE_APPROVER) PRE_name,COMPLETE_TIME  from (");
+        sql.append("MEMBER_ID,(select name from ORG_MEMBER where id=MEMBER_ID) member_name  ,PRE_APPROVER,(select name from ORG_MEMBER where id=PRE_APPROVER) PRE_name  from (");
         sql.append("select * from (");
         sql.append("select ca.* from COL_SUMMARY cs LEFT JOIN  (select * from CTP_AFFAIR where state =4) ca on cs.id=CA.object_id");
-        if (map.get("templetIds") != null && !"".equals(map.get("templetIds"))) {
+        if (map.get("templetIds") != null && !"null".equals(map.get("templetIds")) && !"".equals(map.get("templetIds"))) {
             sql.append(" AND cs.TEMPLETE_ID IN (" + map.get("templetIds") + ")");
         }
         sql.append(") s where s.sender_id='6124365271652712753' and s.SORT_WEIGHT=-1 and is_finish <>1");
@@ -33,7 +33,7 @@ public class allItemsDaoImpl implements allItemsDao {
         sql.append("(select max(COMPLETE_TIME) complete_time,max(id) id,object_id from CTP_AFFAIR where COMPLETE_TIME is not null GROUP BY object_id) cac on sup.object_id=cac.object_id");
         sql.append(") osup where 1=1");
         if (map.get("title") != null && map.get("title") != "") {
-            sql.append(" and  osup.subject like '%"+map.get("title") +"'%");
+            sql.append(" and  osup.subject like '%"+map.get("title") +"%'");
         }
         if (map.get("sender") != null) {
             sql.append(" AND osup.send_name like '%" + map.get("sender") + "%'");
@@ -62,9 +62,9 @@ public class allItemsDaoImpl implements allItemsDao {
     @Override
     public List<Map<String, Object>> findCooprationNobanjie(String templetIds) {
         StringBuffer sql = new StringBuffer();
-        sql.append("select sup.*,complete_time,id from (");
+        sql.append("select sup.*,cac.complete_time,cac.id from (");
         sql.append("select distinct subject,object_id,sender_id,(select name from ORG_MEMBER where id=sender_id) send_name,create_date,");
-        sql.append("MEMBER_ID,(select name from ORG_MEMBER where id=MEMBER_ID) member_name  ,PRE_APPROVER,(select name from ORG_MEMBER where id=PRE_APPROVER) PRE_name,COMPLETE_TIME  from (");
+        sql.append("MEMBER_ID,(select name from ORG_MEMBER where id=MEMBER_ID) member_name  ,PRE_APPROVER,(select name from ORG_MEMBER where id=PRE_APPROVER) PRE_name  from (");
         sql.append("select * from (");
         sql.append("select ca.* from COL_SUMMARY cs LEFT JOIN  (select * from CTP_AFFAIR where state =4) ca on cs.id=CA.object_id");
         if (templetIds != null && !templetIds.equals("null") && !templetIds.equals("")) {

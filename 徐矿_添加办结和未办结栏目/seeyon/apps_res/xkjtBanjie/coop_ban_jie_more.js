@@ -156,14 +156,14 @@
 		$("#banJieTable").ajaxgridLoad(o);
 		//项目 徐矿 办结栏目更多根据模板id查询   zelda 2019年12月7日11:09:24 end
 		function rend(txt,rowData, rowIndex, colIndex,colObj) {
-			if (colObj.name == 'edoc_type'){
-				if (txt == 0){
-					return '<a onclick="javascript:window.top.vPortal.sectionHandler.multiRowVariableColumnTemplete.open_link(\'/edocController.do?method=entryManager&amp;entry=sendManager&amp;listType=listFinish\');" >发文</a>';
-				}else{
-					return '<a onclick="javascript:window.top.vPortal.sectionHandler.multiRowVariableColumnTemplete.open_link(\'/edocController.do?method=entryManager&amp;entry=sendManager&amp;listType=listFinish&objectId=-7217783385919962978\');" >收文</a>';
-				}
-			}
-		      return txt;
+			// if (colObj.name == 'edoc_type'){
+			// 	if (txt == 0){
+			// 		return '<a onclick="javascript:window.top.vPortal.sectionHandler.multiRowVariableColumnTemplete.open_link(\'/edocController.do?method=entryManager&amp;entry=sendManager&amp;listType=listFinish\');" >发文</a>';
+			// 	}else{
+			// 		return '<a onclick="javascript:window.top.vPortal.sectionHandler.multiRowVariableColumnTemplete.open_link(\'/edocController.do?method=entryManager&amp;entry=sendManager&amp;listType=listFinish&objectId=-7217783385919962978\');" >收文</a>';
+			// 	}
+			// }
+		    //   return txt;
 		}
 
 		function openDetail(data, r, c){

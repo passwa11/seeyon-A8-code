@@ -3,28 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="3dc661a9-1b32-4566-959a-92ae94746aa3" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/allItems/coop_list_more_no_banjie.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/allItems/coopratiion_no_banjie.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/coop_no_ban_jie_more.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/section/CooprationNOBanjieSection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$UpdateQuartzJobThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$UpdateQuartzJobThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/allItems/spring/spring-allItems-manager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/allItems/spring/spring-allItems-manager.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/controller/allItemsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/controller/allItemsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManagerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/ban_jie_more.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/ban_jie_more.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/no_ban_jie_more.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/no_ban_jie_more.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/controller/allItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/controller/allItemsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/coop_ban_jie_more.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/coop_ban_jie_more.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/coop_no_ban_jie_more.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/apps_res/xkjtBanjie/coop_no_ban_jie_more.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/manager/allItemsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/manager/allItemsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/manager/allItemsManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/allItems/manager/allItemsManagerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/徐矿选择人员CAP4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/徐矿选择人员CAP4.iml" afterDir="false" />
     </list>
@@ -194,7 +181,7 @@
       <workItem from="1589162311861" duration="1263000" />
       <workItem from="1589175150564" duration="6570000" />
       <workItem from="1589329664764" duration="16965000" />
-      <workItem from="1589416309382" duration="5318000" />
+      <workItem from="1589416309382" duration="7083000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1589181663375</created>
@@ -210,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589354396382</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="添加新的功能">
+      <created>1589421756829</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589421756829</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
