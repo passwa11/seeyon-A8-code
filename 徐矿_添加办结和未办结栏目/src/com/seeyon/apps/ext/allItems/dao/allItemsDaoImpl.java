@@ -94,7 +94,7 @@ public class allItemsDaoImpl implements allItemsDao {
         sql.append("select * from (");
         sql.append("select DISTINCT cs.* from (");
         sql.append(" select id,subject,START_DATE,FINISH_DATE,START_MEMBER_ID,(select name from ORG_MEMBER where id=START_MEMBER_ID) start_name,TEMPLETE_ID ");
-        sql.append(" from COL_SUMMARY where start_member_id ='6124365271652712753'  and finish_date is not null ORDER BY START_DATE desc ");
+        sql.append(" from COL_SUMMARY where 1=1  and finish_date is not null ORDER BY START_DATE desc ");
         sql.append(") cs,(select * from CTP_AFFAIR where is_delete=0 and sub_object_id is not null) ca where cs.id=ca.object_id order by start_date desc ");
         sql.append(") where 1=1");
 //标题
@@ -167,7 +167,7 @@ public class allItemsDaoImpl implements allItemsDao {
         StringBuffer sql = new StringBuffer();
         sql.append("select DISTINCT cs.* from (");
         sql.append(" select id,subject,START_DATE,FINISH_DATE,START_MEMBER_ID,(select name from ORG_MEMBER where id=START_MEMBER_ID) start_name,TEMPLETE_ID ");
-        sql.append(" from COL_SUMMARY where start_member_id ='6124365271652712753'  and finish_date is not null ORDER BY START_DATE desc ");
+        sql.append(" from COL_SUMMARY where 1=1  and finish_date is not null ORDER BY START_DATE desc ");
         sql.append(") cs,(select * from CTP_AFFAIR where is_delete=0 and sub_object_id is not null) ca where cs.id=ca.object_id order by start_date desc ");
         JDBCAgent jdbcAgent = new JDBCAgent(true);
         List<Map<String, Object>> banjie = null;
