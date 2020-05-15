@@ -86,7 +86,10 @@ public class allItemsDaoImpl implements allItemsDao {
         }
         return wbj;
     }
-
+    /**
+     * 更多：协同已办结的
+     * @return
+     */
     @Override
     public FlipInfo findMoreCooprationXkjtBanjie(FlipInfo flipInfo, Map<String, Object> map) {
         List<Map<String, Object>> banjieList = new ArrayList<>();
@@ -162,13 +165,22 @@ public class allItemsDaoImpl implements allItemsDao {
         return banjie;
     }
 
+    /**
+     * 协同已办结的
+     * @param templetIds
+     * @return
+     */
     @Override
     public List<Map<String, Object>> findCoopratiionBanjie(String templetIds) {
         StringBuffer sql = new StringBuffer();
         sql.append("select DISTINCT cs.* from (");
         sql.append(" select id,subject,START_DATE,FINISH_DATE,START_MEMBER_ID,(select name from ORG_MEMBER where id=START_MEMBER_ID) start_name,TEMPLETE_ID ");
         sql.append(" from COL_SUMMARY where 1=1  and finish_date is not null ORDER BY START_DATE desc ");
-        sql.append(") cs,(select * from CTP_AFFAIR where is_delete=0 and sub_object_id is not null) ca where cs.id=ca.object_id order by start_date desc ");
+        sql.append(") cs,(select * from CTP_AFFAIR where is_delete=0 and sub_object_id is not null) ca where cs.id=ca.object_id ");
+        if (templetIds != null && !"".equals(templetIds) && !"null".equals(templetIds)) {
+            sql.append(" AND cs.TEMPLETE_ID ='" + templetIds + "'");
+        }
+        sql.append(" order by start_date desc ");
         JDBCAgent jdbcAgent = new JDBCAgent(true);
         List<Map<String, Object>> banjie = null;
         try {
@@ -180,6 +192,12 @@ public class allItemsDaoImpl implements allItemsDao {
         return banjie;
     }
 
+    /**
+     * 更多：已经办结的
+     * @param flipInfo
+     * @param map
+     * @return
+     */
     @Override
     public FlipInfo findMoreXkjtBanjie(FlipInfo flipInfo, Map<String, Object> map) {
         List<Object> banjieList = new ArrayList<>();
@@ -238,6 +256,12 @@ public class allItemsDaoImpl implements allItemsDao {
         return flipInfo;
     }
 
+    /**
+     * 更多：公文未办结的
+     * @param flipInfo
+     * @param map
+     * @return
+     */
     @Override
     public FlipInfo findMoreXkjtNoBanjie(FlipInfo flipInfo, Map<String, Object> map) {
         List<Map<String, Object>> noBanjielist = new ArrayList<>();
