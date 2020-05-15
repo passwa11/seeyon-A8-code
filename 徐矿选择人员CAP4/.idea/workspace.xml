@@ -2,11 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36e88280-e35b-47df-aff3-f0239d1a348d" name="Default Changelist" comment="过滤有数据的明细行">
-      <change afterPath="$PROJECT_DIR$/../medhub/src/test/java/com/ncbi/medhub/TestSms.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../medhub/src/main/java/com/ncbi/medhub/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../medhub/src/main/java/com/ncbi/medhub/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../medhub/src/main/java/com/ncbi/medhub/util/HttpUtilTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/../medhub/src/main/java/com/ncbi/medhub/util/HttpUtilTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../medhub/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../medhub/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/jsp/apps/ext/allItems/coopratiion_banjie.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/src/com/seeyon/apps/ext/allItems/section/CooprationBanjieSection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$UpdateQuartzJobThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$UpdateQuartzJobThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/cfgHome/plugin/allItems/spring/spring-allItems-manager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/cfgHome/plugin/allItems/spring/spring-allItems-manager.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/controller/allItemsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/controller/allItemsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/manager/allItemsManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/src/com/seeyon/apps/ext/allItems/controller/allItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/src/com/seeyon/apps/ext/allItems/controller/allItemsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/src/com/seeyon/apps/ext/allItems/dao/allItemsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/src/com/seeyon/apps/ext/allItems/dao/allItemsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/src/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/src/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/src/com/seeyon/apps/ext/allItems/manager/allItemsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/src/com/seeyon/apps/ext/allItems/manager/allItemsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/src/com/seeyon/apps/ext/allItems/manager/allItemsManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/src/com/seeyon/apps/ext/allItems/manager/allItemsManagerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/徐矿选择人员CAP4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/徐矿选择人员CAP4.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +56,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="D:/myProject/study-java/sbsm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -230,6 +247,8 @@
       <workItem from="1587347441721" duration="186000" />
       <workItem from="1587518389361" duration="626000" />
       <workItem from="1588225889154" duration="8210000" />
+      <workItem from="1589348292905" duration="724000" />
+      <workItem from="1589349155590" duration="600000" />
     </task>
     <task id="LOCAL-00003" summary="过滤有数据的明细行">
       <created>1558577519450</created>
@@ -658,90 +677,5 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>徐矿选择人员CAP4</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

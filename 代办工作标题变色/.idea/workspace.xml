@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="990d4793-309b-48cd-85f8-78758fbdb8e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/edoc/edocSummary.jsp" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ctp-portal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ctp-portal.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/test/ctp-portal/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/BaseSectionImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/BaseSectionImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/PendingManagerImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/SectionManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/SectionManagerImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/Test.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_根据会议截止报送时间提前一小时消息提醒/seeyon/WEB-INF/classes/com/seeyon/cap4/form/modules/engin/trigger/CAP4FormTriggerManagerImpl$1.class" afterDir="false" />
@@ -213,7 +201,7 @@
       <workItem from="1586496666345" duration="684000" />
       <workItem from="1586498466482" duration="876000" />
       <workItem from="1589450017753" duration="443000" />
-      <workItem from="1589502129953" duration="3177000" />
+      <workItem from="1589502129953" duration="3619000" />
     </task>
     <task id="LOCAL-00001" summary="修改判断">
       <created>1561364023452</created>
@@ -229,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1562120875662</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="修改判断">
+      <created>1589505640952</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589505640952</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,6 +241,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="修改判断" />
     <option name="LAST_COMMIT_MESSAGE" value="修改判断" />
   </component>
