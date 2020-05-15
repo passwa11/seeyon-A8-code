@@ -485,6 +485,7 @@ public abstract class BaseSectionImpl implements BaseSection, Comparable<BaseSec
                             String time = cell.getCellContentHTML();
                             String receiveTime = cellZero.getReceiveTimeAll();
                             if (time.indexOf("今日") != -1) {
+                                cell.setCellContentHTML(time.substring(0,2));
                                 cell.setClassName("primary");
                             } else {
                                 DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
