@@ -4,6 +4,7 @@ import com.seeyon.apps.ext.DTdocument.util.DbConnUtil;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.common.filemanager.manager.FileManager;
+import com.seeyon.ctp.services.ServiceException;
 import com.seeyon.v3x.edoc.domain.EdocBody;
 import com.seeyon.v3x.edoc.domain.EdocSummary;
 import com.seeyon.v3x.edoc.exception.EdocException;
@@ -60,19 +61,36 @@ public class SyncOrgData {
             e.printStackTrace();
         }
         Connection connection = DbConnUtil.getInstance().getConnection();
+        try {
+            executeJdbc(connection, "3");
+            executeJdbc(connection, "4");
+        } catch (Exception e) {
+            logger.info("同步公文出错了：" + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    public void executeJdbc(Connection connection, String type) {
         Statement statement = null;
         ResultSet rs = null;
         try {
-            CallableStatement edoc_key = connection.prepareCall("{call pro_xyfy2(?)}");
+            CallableStatement edoc_key = connection.prepareCall("{call pro_xyfy" + type + "(?)}");
             edoc_key.setInt(1, 1);
             edoc_key.execute();
-            CallableStatement edoc_record = connection.prepareCall("{call pro_xyfy2(?)}");
+            CallableStatement edoc_record = connection.prepareCall("{call pro_xyfy" + type + "(?)}");
             edoc_record.setInt(1, 2);
             edoc_record.execute();
-            CallableStatement edoc_content = connection.prepareCall("{call pro_xyfy2(?)}");
+            CallableStatement edoc_content = connection.prepareCall("{call pro_xyfy" + type + "(?)}");
             edoc_content.setInt(1, 3);
             edoc_content.execute();
-            CallableStatement edoc_attach = connection.prepareCall("{call pro_xyfy2(?)}");
+            CallableStatement edoc_attach = connection.prepareCall("{call pro_xyfy" + type + "(?)}");
             edoc_attach.setInt(1, 4);
             edoc_attach.execute();
 
@@ -93,24 +111,24 @@ public class SyncOrgData {
             String syear = Integer.toString(localDate.getYear());
             String p = classPath.substring(0, classPath.indexOf(syear));
 //            linux
-            Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
-            perms.add(PosixFilePermission.OWNER_READ);//设置所有者的读取权限
-            perms.add(PosixFilePermission.OWNER_WRITE);//设置所有者的写权限
-            perms.add(PosixFilePermission.OWNER_EXECUTE);//设置所有者的执行权限
-            perms.add(PosixFilePermission.GROUP_READ);//设置组的读取权限
-            perms.add(PosixFilePermission.GROUP_EXECUTE);//设置组的读取权限
-            perms.add(PosixFilePermission.OTHERS_READ);//设置其他的读取权限
-            perms.add(PosixFilePermission.OTHERS_EXECUTE);//设置其他的读取权限
+//            Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
+//            perms.add(PosixFilePermission.OWNER_READ);//设置所有者的读取权限
+//            perms.add(PosixFilePermission.OWNER_WRITE);//设置所有者的写权限
+//            perms.add(PosixFilePermission.OWNER_EXECUTE);//设置所有者的执行权限
+//            perms.add(PosixFilePermission.GROUP_READ);//设置组的读取权限
+//            perms.add(PosixFilePermission.GROUP_EXECUTE);//设置组的读取权限
+//            perms.add(PosixFilePermission.OTHERS_READ);//设置其他的读取权限
+//            perms.add(PosixFilePermission.OTHERS_EXECUTE);//设置其他的读取权限
 
             while (rs.next()) {
                 htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("id")));
                 sPath = p + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + "";
                 File f = new File(sPath);
                 //linux设置文件和文件夹的权限
-                Path pathParent = Paths.get(f.getParentFile().getAbsolutePath());
-                Path pathDest = Paths.get(f.getAbsolutePath());
-                Files.setPosixFilePermissions(pathParent, perms);//修改文件夹路径的权限
-                Files.setPosixFilePermissions(pathDest, perms);//修改图片文件的权限
+//                Path pathParent = Paths.get(f.getParentFile().getAbsolutePath());
+//                Path pathDest = Paths.get(f.getAbsolutePath());
+//                Files.setPosixFilePermissions(pathParent, perms);//修改文件夹路径的权限
+//                Files.setPosixFilePermissions(pathDest, perms);//修改图片文件的权限
 
                 File parentfile = f.getParentFile();
                 if (!parentfile.exists()) {
@@ -132,21 +150,19 @@ public class SyncOrgData {
                 }
 
             }
-        } catch (SQLException sql) {
+        } catch (SQLException | BusinessException | ServiceException | IOException sql) {
             logger.info("同步公文sql出错了：" + sql.getMessage());
-        } catch (Exception e) {
-            logger.info("同步公文出错了：" + e.getMessage());
-            e.printStackTrace();
         } finally {
             try {
                 rs.close();
                 statement.close();
-                connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
+
     }
+
 
     /**
      * 复制OA正文
