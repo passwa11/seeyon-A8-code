@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac16f7c2-9d1f-451a-bd87-9fcdc05aeb19" name="Default Changelist" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DTdocument.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DTdocument.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/DTdocument/i18n/DTdocumentResources_en.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/DTdocument/i18n/DTdocumentResources_zh_CN.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/DTdocument/i18n/DTdocumentResources_zh_TW.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/DTdocument/i18n/export_to_js.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/dao/DTdocumentDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/dao/DTdocumentDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/DTdocumentManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/DTdocumentManagerImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData - 副本.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/WriteMiddleData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/WriteMiddleData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/quartz/SyncDataTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/quartz/SyncDataTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/util/DbConnUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/util/DbConnUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/DTdocument/spring/spring-DTdocument-dao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/DTdocument/spring/spring-DTdocument-manager.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/law/docPlugin.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/law/docPlugin.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" afterDir="false" />
@@ -205,7 +193,7 @@
       <workItem from="1588836363006" duration="524000" />
       <workItem from="1588839505963" duration="198000" />
       <workItem from="1589431386185" duration="687000" />
-      <workItem from="1589597971347" duration="5107000" />
+      <workItem from="1589597971347" duration="5925000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1586828382127</created>
@@ -256,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589618008867</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update">
+      <created>1589619206564</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1589619206564</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
