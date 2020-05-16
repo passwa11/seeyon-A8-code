@@ -5,6 +5,8 @@ import com.seeyon.apps.ext.DTdocument.manager.WriteMiddleData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.SQLException;
+
 /**
  * 周刘成   2019-11-4
  */
@@ -17,7 +19,12 @@ public class SyncDataTask implements Runnable {
         /**
          * 同步公文
          */
-        SyncOrgData.getInstance().syncSummary();
-        WriteMiddleData.getInstance().batchSqlByType();
+        try {
+            SyncOrgData.getInstance().syncSummary();
+            WriteMiddleData.getInstance().batchSqlByType();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

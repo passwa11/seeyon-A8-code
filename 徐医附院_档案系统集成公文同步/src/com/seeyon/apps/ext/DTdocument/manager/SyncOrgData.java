@@ -5,6 +5,7 @@ import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.common.filemanager.manager.FileManager;
 import com.seeyon.ctp.services.ServiceException;
+import com.seeyon.ctp.util.JDBCAgent;
 import com.seeyon.v3x.edoc.domain.EdocBody;
 import com.seeyon.v3x.edoc.domain.EdocSummary;
 import com.seeyon.v3x.edoc.exception.EdocException;
@@ -37,7 +38,6 @@ public class SyncOrgData {
 
     public static SyncOrgData syncOrgData;
 
-    private DTdocumentManager dt = new DTdocumentManagerImpl();
     private DocumentFactory df = new DocumentFactoryImpl();
     private TransformerFactory tFactory = TransformerFactory.newInstance();
     private EdocSummaryManagerImpl edocSummaryManager = (EdocSummaryManagerImpl) AppContext.getBean("edocSummaryManager");
@@ -52,7 +52,7 @@ public class SyncOrgData {
     /**
      * 同步公文
      */
-    public void syncSummary() {
+    public void syncSummary() throws SQLException {
         //获取系统路径
         try {
             String spath = fileManager.getFolder(new Date(), false);
@@ -60,7 +60,7 @@ public class SyncOrgData {
         } catch (BusinessException e) {
             e.printStackTrace();
         }
-        Connection connection = DbConnUtil.getInstance().getConnection();
+        Connection connection = JDBCAgent.getRawConnection();
         try {
             executeJdbc(connection, "3");
             executeJdbc(connection, "4");
@@ -164,95 +164,95 @@ public class SyncOrgData {
     }
 
 
-    /**
-     * 复制OA正文
-     */
-    public void copyEdoc2() {
-        String str = "";
-        Statement st = null;
-        ResultSet rs = null;
-        Connection conn = DbConnUtil.getInstance().getConnection();
-        try {
-//            str = " select '/upload/' || substr(to_char(C.Create_Date, 'yyyy-mm-dd'), 0, 4) || '/' ||  substr(to_char(C.Create_Date, 'yyyy-mm-dd'), 6, 2) || '/' ||  substr(to_char(C.Create_Date, 'yyyy-mm-dd'), 9, 2) || '/' || C.Filename || '.doc' as C_FTPFILEPATH  from edoc_summary A left join (select * from edoc_body where content_type <> 'HTML') B on B.Edoc_Id = A.Id left join ctp_file C on to_char(B.content) = C.Id  where a.has_archive = 1 and B.Id is not null  and a.id in (select id from TEMP_NUMBER10)";
-            str = "SELECT '/upload/'||SUBSTR(TO_CHAR(C.Create_Date,'yyyy-mm-dd'),0,4)||'/'||SUBSTR(TO_CHAR(C.Create_Date,'yyyy-mm-dd'),6,2)||'/'||SUBSTR(TO_CHAR(C.Create_Date,'yyyy-mm-dd'),9,2)||'/'||C.Filename||'.doc' AS C_FTPFILEPATH " +
-                    "FROM edoc_summary A LEFT JOIN (SELECT ZC.CONTENT,ZC.MODULE_ID FROM CTP_CONTENT_ALL zC,CTP_FILE F WHERE TO_NUMBER(zC.CONTENT) = F.ID AND zC.CONTENT_TYPE NOT IN (10)) B ON B.module_id = A . ID " +
-                    "LEFT JOIN ctp_file C ON TO_CHAR (B. CONTENT) = C. ID WHERE A .has_archive = 1 AND A . ID IN (SELECT ID FROM TEMP_NUMBER10)";
-            st = conn.createStatement();
-            rs = st.executeQuery(str);
-            String sPath = "";
-            String sFilePath = "";
-            String classPath = this.getClass().getResource("/").getPath();
-            String p = classPath.substring(0, classPath.indexOf("ApacheJetspeed")).concat("base");
-            while (rs.next()) {
-                sPath = rs.getString("C_FTPFILEPATH");
-                sFilePath = sPath.substring(0, sPath.lastIndexOf("."));
-                if ((new File(p + sFilePath)).exists()) {
-                    FileUtil.copyFile(new File(p + sFilePath), new File(p + sPath));
-                }
-            }
-        } catch (Exception var7) {
-            var7.printStackTrace();
-        } finally {
-            try {
-                rs.close();
-                st.close();
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-    /**
-     * 复制OA附件
-     */
-    public void copyAttachment2() {
-        String str = "";
-        Statement st = null;
-        ResultSet rs = null;
-        Connection conn = DbConnUtil.getInstance().getConnection();
-        try {
-            str = " select '/upload/' || substr(to_char(C.createdate, 'yyyy-mm-dd'), 0, 4) || '/' ||  substr(to_char(C.createdate, 'yyyy-mm-dd'), 6, 2) || '/' ||  substr(to_char(C.createdate, 'yyyy-mm-dd'), 9, 2) || '/' ||  C.file_url || substr(C.Filename, instr(C.Filename, '.', -1, 1)) C_FTPFILEPATH   from edoc_summary A left join (SELECT ZC.CONTENT,ZC.MODULE_ID FROM CTP_CONTENT_ALL zC,CTP_FILE F WHERE TO_NUMBER(zC.CONTENT) = F.ID AND zC.CONTENT_TYPE NOT IN (10))  B on B.MODULE_ID = A.Id left join ctp_attachment C on b.MODULE_ID = c.att_reference  where a.has_archive = 1 and C.id is not null  and a.id in (select id from TEMP_NUMBER10)";
-            st = conn.createStatement();
-            rs = st.executeQuery(str);
-            String sPath = "";
-            String sFilePath = "";
-            String classPath = this.getClass().getResource("/").getPath();
-            String p = classPath.substring(0, classPath.indexOf("ApacheJetspeed")).concat("base");
-
-            while (rs.next()) {
-                sPath = rs.getString("C_FTPFILEPATH");
-                sFilePath = sPath.substring(0, sPath.lastIndexOf("."));
-                if ((new File(p + sFilePath)).exists()) {
-                    FileUtil.copyFile(new File(p + sFilePath), new File(p + sPath));
-                }
-            }
-        } catch (Exception var7) {
-            var7.printStackTrace();
-        } finally {
-            try {
-                rs.close();
-                st.close();
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
-    /**
-     * 清空临时表的数据
-     */
-    public void clearTemporary() {
-        String sql10 = "delete from temp_number10";
-        String sql20 = "delete from temp_number20";
-        String sql30 = "delete from temp_number30";
-        String sql40 = "delete from temp_number40";
-        DbConnUtil.getInstance().deleteSql(sql10);
-        DbConnUtil.getInstance().deleteSql(sql20);
-        DbConnUtil.getInstance().deleteSql(sql30);
-        DbConnUtil.getInstance().deleteSql(sql40);
-    }
+//    /**
+//     * 复制OA正文
+//     */
+//    public void copyEdoc2() {
+//        String str = "";
+//        Statement st = null;
+//        ResultSet rs = null;
+//        Connection conn = DbConnUtil.getInstance().getConnection();
+//        try {
+////            str = " select '/upload/' || substr(to_char(C.Create_Date, 'yyyy-mm-dd'), 0, 4) || '/' ||  substr(to_char(C.Create_Date, 'yyyy-mm-dd'), 6, 2) || '/' ||  substr(to_char(C.Create_Date, 'yyyy-mm-dd'), 9, 2) || '/' || C.Filename || '.doc' as C_FTPFILEPATH  from edoc_summary A left join (select * from edoc_body where content_type <> 'HTML') B on B.Edoc_Id = A.Id left join ctp_file C on to_char(B.content) = C.Id  where a.has_archive = 1 and B.Id is not null  and a.id in (select id from TEMP_NUMBER10)";
+//            str = "SELECT '/upload/'||SUBSTR(TO_CHAR(C.Create_Date,'yyyy-mm-dd'),0,4)||'/'||SUBSTR(TO_CHAR(C.Create_Date,'yyyy-mm-dd'),6,2)||'/'||SUBSTR(TO_CHAR(C.Create_Date,'yyyy-mm-dd'),9,2)||'/'||C.Filename||'.doc' AS C_FTPFILEPATH " +
+//                    "FROM edoc_summary A LEFT JOIN (SELECT ZC.CONTENT,ZC.MODULE_ID FROM CTP_CONTENT_ALL zC,CTP_FILE F WHERE TO_NUMBER(zC.CONTENT) = F.ID AND zC.CONTENT_TYPE NOT IN (10)) B ON B.module_id = A . ID " +
+//                    "LEFT JOIN ctp_file C ON TO_CHAR (B. CONTENT) = C. ID WHERE A .has_archive = 1 AND A . ID IN (SELECT ID FROM TEMP_NUMBER10)";
+//            st = conn.createStatement();
+//            rs = st.executeQuery(str);
+//            String sPath = "";
+//            String sFilePath = "";
+//            String classPath = this.getClass().getResource("/").getPath();
+//            String p = classPath.substring(0, classPath.indexOf("ApacheJetspeed")).concat("base");
+//            while (rs.next()) {
+//                sPath = rs.getString("C_FTPFILEPATH");
+//                sFilePath = sPath.substring(0, sPath.lastIndexOf("."));
+//                if ((new File(p + sFilePath)).exists()) {
+//                    FileUtil.copyFile(new File(p + sFilePath), new File(p + sPath));
+//                }
+//            }
+//        } catch (Exception var7) {
+//            var7.printStackTrace();
+//        } finally {
+//            try {
+//                rs.close();
+//                st.close();
+//                conn.close();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//    }
+//
+//    /**
+//     * 复制OA附件
+//     */
+//    public void copyAttachment2() {
+//        String str = "";
+//        Statement st = null;
+//        ResultSet rs = null;
+//        Connection conn = DbConnUtil.getInstance().getConnection();
+//        try {
+//            str = " select '/upload/' || substr(to_char(C.createdate, 'yyyy-mm-dd'), 0, 4) || '/' ||  substr(to_char(C.createdate, 'yyyy-mm-dd'), 6, 2) || '/' ||  substr(to_char(C.createdate, 'yyyy-mm-dd'), 9, 2) || '/' ||  C.file_url || substr(C.Filename, instr(C.Filename, '.', -1, 1)) C_FTPFILEPATH   from edoc_summary A left join (SELECT ZC.CONTENT,ZC.MODULE_ID FROM CTP_CONTENT_ALL zC,CTP_FILE F WHERE TO_NUMBER(zC.CONTENT) = F.ID AND zC.CONTENT_TYPE NOT IN (10))  B on B.MODULE_ID = A.Id left join ctp_attachment C on b.MODULE_ID = c.att_reference  where a.has_archive = 1 and C.id is not null  and a.id in (select id from TEMP_NUMBER10)";
+//            st = conn.createStatement();
+//            rs = st.executeQuery(str);
+//            String sPath = "";
+//            String sFilePath = "";
+//            String classPath = this.getClass().getResource("/").getPath();
+//            String p = classPath.substring(0, classPath.indexOf("ApacheJetspeed")).concat("base");
+//
+//            while (rs.next()) {
+//                sPath = rs.getString("C_FTPFILEPATH");
+//                sFilePath = sPath.substring(0, sPath.lastIndexOf("."));
+//                if ((new File(p + sFilePath)).exists()) {
+//                    FileUtil.copyFile(new File(p + sFilePath), new File(p + sPath));
+//                }
+//            }
+//        } catch (Exception var7) {
+//            var7.printStackTrace();
+//        } finally {
+//            try {
+//                rs.close();
+//                st.close();
+//                conn.close();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//    }
+//
+//    /**
+//     * 清空临时表的数据
+//     */
+//    public void clearTemporary() {
+//        String sql10 = "delete from temp_number10";
+//        String sql20 = "delete from temp_number20";
+//        String sql30 = "delete from temp_number30";
+//        String sql40 = "delete from temp_number40";
+//        DbConnUtil.getInstance().deleteSql(sql10);
+//        DbConnUtil.getInstance().deleteSql(sql20);
+//        DbConnUtil.getInstance().deleteSql(sql30);
+//        DbConnUtil.getInstance().deleteSql(sql40);
+//    }
 }

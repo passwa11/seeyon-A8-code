@@ -1,5 +1,7 @@
 package com.seeyon.apps.ext.DTdocument.util;
 
+import com.seeyon.ctp.util.JDBCAgent;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -32,10 +34,10 @@ public class DbConnUtil {
 
     public DbConnUtil() {
         ReadConfigTools configTools = new ReadConfigTools();
-        url = configTools.getString("lowPortalPlugin.db.url");
-        username = configTools.getString("lowPortalPlugin.db.username");
-        password = configTools.getString("lowPortalPlugin.db.password");
-        driverClassName = configTools.getString("lowPortalPlugin.db.driverClassName");
+//        url = configTools.getString("lowPortalPlugin.db.url");
+//        username = configTools.getString("lowPortalPlugin.db.username");
+//        password = configTools.getString("lowPortalPlugin.db.password");
+//        driverClassName = configTools.getString("lowPortalPlugin.db.driverClassName");
 
         middleUrl=configTools.getString("middle.db.url");
         middleUsername=configTools.getString("middle.db.username");
@@ -43,16 +45,16 @@ public class DbConnUtil {
         middleDriverClassName=configTools.getString("middle.db.driverClassName");
     }
 
-    public Connection getConnection() {
-        Connection conn = null;
-        try {
-            Class.forName(driverClassName);
-            conn = DriverManager.getConnection(url, username, password);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return conn;
-    }
+//    public Connection getConnection() {
+//        Connection conn = null;
+//        try {
+//            Class.forName(driverClassName);
+//            conn = DriverManager.getConnection(url, username, password);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return conn;
+//    }
 
     public Connection getMiddleConnection() {
         Connection conn = null;
@@ -65,8 +67,8 @@ public class DbConnUtil {
         return conn;
     }
 
-    public void deleteSql(String sql) {
-        Connection connection = this.getConnection();
+    public void deleteSql(String sql) throws SQLException {
+        Connection connection = JDBCAgent.getRawConnection();
         PreparedStatement ps = null;
         try {
             ps = connection.prepareStatement(sql);
