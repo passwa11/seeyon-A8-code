@@ -48,37 +48,6 @@ public class SyncOrgData {
     public SyncOrgData() {
     }
 
-    public void getSummary() {
-        try {
-            EdocSummary summary = edocSummaryManager.getEdocSummaryById(7529576166400344252l, true, false);
-            Set<EdocBody> bodySet = summary.getEdocBodies();
-        } catch (EdocException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public int syncOrg(String sql) {
-        Connection connection = DbConnUtil.getInstance().getConnection();
-        PreparedStatement ps = null;
-        int flag = 0;
-        try {
-            ps = connection.prepareStatement(sql);
-            flag = ps.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return -1;
-        } finally {
-            try {
-                ps.close();
-                connection.close();
-            } catch (SQLException sq) {
-                sq.printStackTrace();
-            }
-        }
-        return flag;
-    }
-
-
     /**
      * 同步公文
      */
@@ -107,13 +76,14 @@ public class SyncOrgData {
             edoc_attach.setInt(1, 4);
             edoc_attach.execute();
 
-            String sql = "SELECT A . affairId AS ID,A.edocSummaryId,A .subject AS subject," +
+            String sql = "select id,edocSummaryId,subject,YEAR,MONTH,DAY from (SELECT A . affairId AS ID,A.edocSummaryId,A .subject AS subject," +
                     "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),0,4) YEAR," +
                     "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),6,2) MONTH," +
                     "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),9,2) DAY " +
                     "FROM (select c.id affairId,e.id edocSummaryId,e.SUBJECT,e.create_time,e.has_archive from CTP_AFFAIR c,EDOC_SUMMARY e where c.OBJECT_ID=e.id and c.ARCHIVE_ID is not null and e.has_archive = 1) A," +
                     "(SELECT * FROM CTP_CONTENT_ALL C,CTP_FILE F WHERE TO_NUMBER(C.CONTENT) = F.ID AND C.CONTENT_TYPE NOT IN (10)) B WHERE A .has_archive = 1 " +
-                    " AND to_number(A . edocSummaryId) = to_number(b.MODULE_ID) AND to_number(A . edocSummaryId) IN (SELECT to_number(ID) FROM TEMP_NUMBER10 where status ='0')";
+                    " AND (A . edocSummaryId) = (b.MODULE_ID)  )" +
+                    " where exists (SELECT ID FROM TEMP_NUMBER10 where status =0)";
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
 

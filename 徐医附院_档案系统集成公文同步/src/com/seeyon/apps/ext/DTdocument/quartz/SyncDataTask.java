@@ -19,6 +19,5 @@ public class SyncDataTask implements Runnable {
          */
         SyncOrgData.getInstance().syncSummary();
         WriteMiddleData.getInstance().batchSqlByType();
-
     }
 }
