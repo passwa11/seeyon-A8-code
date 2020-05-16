@@ -79,11 +79,10 @@ public class SyncOrgData {
             String sql = "select id,edocSummaryId,subject,YEAR,MONTH,DAY from (SELECT A . affairId AS ID,A.edocSummaryId,A .subject AS subject," +
                     "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),0,4) YEAR," +
                     "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),6,2) MONTH," +
-                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),9,2) DAY " +
-                    "FROM (select c.id affairId,e.id edocSummaryId,e.SUBJECT,e.create_time,e.has_archive from CTP_AFFAIR c,EDOC_SUMMARY e where c.OBJECT_ID=e.id and c.ARCHIVE_ID is not null and e.has_archive = 1) A," +
-                    "(SELECT * FROM CTP_CONTENT_ALL C,CTP_FILE F WHERE TO_NUMBER(C.CONTENT) = F.ID AND C.CONTENT_TYPE NOT IN (10)) B WHERE A .has_archive = 1 " +
-                    " AND (A . edocSummaryId) = (b.MODULE_ID)  )" +
-                    " where exists (SELECT ID FROM TEMP_NUMBER10 where status =0)";
+                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),9,2) DAY FROM (" +
+                    "select * from (SELECT c.ID affairId,E.ID edocSummaryId,E.SUBJECT,E.create_time,E .has_archive FROM CTP_AFFAIR c,EDOC_SUMMARY E WHERE c.OBJECT_ID = E . ID AND c.ARCHIVE_ID IS NOT NULL " +
+                    "AND E .has_archive = 1) c,TEMP_NUMBER10 t where c.EDOCSUMMARYID =t.ID " +
+                    ") A WHERE A .has_archive = 1 )where exists (SELECT ID FROM TEMP_NUMBER10 where status =0)";
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
 
