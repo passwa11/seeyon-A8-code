@@ -62,7 +62,7 @@ public class SyncOrgData {
         }
         Connection connection = JDBCAgent.getRawConnection();
         try {
-            executeJdbc(connection, "3");
+//            executeJdbc(connection, "3");
             executeJdbc(connection, "4");
         } catch (Exception e) {
             logger.info("同步公文出错了：" + e.getMessage());
@@ -150,6 +150,41 @@ public class SyncOrgData {
                 }
 
             }
+            if (type.equals("4")) {
+                LocalDate date = LocalDate.now();
+                String prefix = date.getYear() + "";
+                while (rs.next()) {
+                    //公文标椎正文  标椎正文是大文本数据  所以要先创建一个正文的文件，用来存正文内容
+                    sPath = p + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + prefix + "";
+                    File f = new File(sPath);
+                    //linux设置文件和文件夹的权限
+//                Path pathParent = Paths.get(f.getParentFile().getAbsolutePath());
+//                Path pathDest = Paths.get(f.getAbsolutePath());
+//                Files.setPosixFilePermissions(pathParent, perms);//修改文件夹路径的权限
+//                Files.setPosixFilePermissions(pathDest, perms);//修改图片文件的权限
+
+                    File parentfile = f.getParentFile();
+                    if (!parentfile.exists()) {
+                        parentfile.mkdirs();
+                    }
+
+                    if (!f.exists()) {
+                        f.createNewFile();
+                    }
+                    String content = getZwData(connection, rs.getString("edocSummaryId"));
+                    FileOutputStream fos = null;
+                    try {
+                        fos = new FileOutputStream(f);
+                        fos.write(content.getBytes());
+                    } catch (IOException e) {
+                        logger.info("向文件中写入内容出错了:" + e.getMessage());
+                    } finally {
+                        fos.close();
+                    }
+
+                }
+            }
+
         } catch (SQLException | BusinessException | ServiceException | IOException sql) {
             logger.info("同步公文sql出错了：" + sql.getMessage());
         } finally {
@@ -161,6 +196,43 @@ public class SyncOrgData {
             }
         }
 
+    }
+
+    public String getZwData(Connection connection, String summaryId) {
+        Statement statement = null;
+        ResultSet resultSet = null;
+        StringBuffer sb = new StringBuffer();
+        sb.append("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>Title</title></head><body><p>");
+        Reader reader = null;
+        try {
+            char[] buffer = new char[1024];
+            String sql = "select CONTENT from CTP_CONTENT_ALL where MODULE_ID=" + summaryId + " and CONTENT_TYPE=10";
+            int i = 0;
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                reader = resultSet.getCharacterStream("content");
+                while ((i = reader.read(buffer)) != -1) {
+                    sb.append(new String(buffer, 0, i));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                reader.close();
+            } catch (SQLException | IOException sq) {
+                sq.printStackTrace();
+            }
+        }
+        sb.append("</p></body></html>");
+        return sb.toString();
     }
 
 
