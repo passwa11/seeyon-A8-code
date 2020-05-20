@@ -150,37 +150,31 @@ public class SyncOrgData {
                     fos.close();
                 }
 
-            }
-            if (type.equals("4")) {
-                LocalDate date = LocalDate.now();
-                String prefix = date.getYear() + "";
-                while (rs.next()) {
+                if (type.equals("4")) {
+                    LocalDate date = LocalDate.now();
+                    String prefix = date.getYear() + "";
                     //公文标椎正文  标椎正文是大文本数据  所以要先创建一个正文的文件，用来存正文内容
-                    sPath = p + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + prefix + "";
-                    File f = new File(sPath);
-                    //linux设置文件和文件夹的权限
-//                Path pathParent = Paths.get(f.getParentFile().getAbsolutePath());
-//                Path pathDest = Paths.get(f.getAbsolutePath());
-//                Files.setPosixFilePermissions(pathParent, perms);//修改文件夹路径的权限
-//                Files.setPosixFilePermissions(pathDest, perms);//修改图片文件的权限
+                    p = classPath.substring(0, classPath.indexOf(syear));
+                    String sPath2 = p + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + prefix + "";
+                    File f2 = new File(sPath2);
 
-                    File parentfile = f.getParentFile();
-                    if (!parentfile.exists()) {
-                        parentfile.mkdirs();
+                    File parentfile2 = f2.getParentFile();
+                    if (!parentfile2.exists()) {
+                        parentfile2.mkdirs();
                     }
 
-                    if (!f.exists()) {
-                        f.createNewFile();
+                    if (!f2.exists()) {
+                        f2.createNewFile();
                     }
                     String content = getZwData(connection, rs.getString("edocSummaryId"));
-                    FileOutputStream fos = null;
+                    FileOutputStream fos2 = null;
                     try {
-                        fos = new FileOutputStream(f);
-                        fos.write(content.getBytes());
+                        fos2 = new FileOutputStream(f2);
+                        fos2.write(content.getBytes("UTF-8"));
                     } catch (IOException e) {
                         logger.info("向文件中写入内容出错了:" + e.getMessage());
                     } finally {
-                        fos.close();
+                        fos2.close();
                     }
                     String insertSql = "insert into TEMP_NUMBER30(ID,C_MIDRECID,C_FILETITLE,C_FTPFILEPATH,C_TYPE,I_SIZE,META_TYPE,STATUS) values(?,?,?,?,?,?,?,?)";
                     ps = connection.prepareStatement(insertSql);
@@ -196,6 +190,7 @@ public class SyncOrgData {
                 }
 
             }
+
             ps.executeBatch();
             connection.commit();
         } catch (SQLException | BusinessException | ServiceException | IOException sql) {
@@ -204,6 +199,7 @@ public class SyncOrgData {
             try {
                 rs.close();
                 statement.close();
+                ps.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
