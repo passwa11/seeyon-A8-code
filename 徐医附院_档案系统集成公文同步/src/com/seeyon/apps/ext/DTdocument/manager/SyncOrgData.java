@@ -80,6 +80,7 @@ public class SyncOrgData {
     public void executeJdbc(Connection connection, String type) {
         Statement statement = null;
         ResultSet rs = null;
+        PreparedStatement ps = null;
         try {
             CallableStatement edoc_key = connection.prepareCall("{call pro_xyfy" + type + "(?)}");
             edoc_key.setInt(1, 1);
@@ -181,10 +182,22 @@ public class SyncOrgData {
                     } finally {
                         fos.close();
                     }
-
+                    String insertSql = "insert into TEMP_NUMBER30(ID,C_MIDRECID,C_FILETITLE,C_FTPFILEPATH,C_TYPE,I_SIZE,META_TYPE,STATUS) values(?,?,?,?,?,?,?,?)";
+                    ps = connection.prepareStatement(insertSql);
+                    ps.setString(1, rs.getString("edocSummaryId") + prefix);
+                    ps.setString(2, rs.getString("edocSummaryId"));
+                    ps.setString(3, rs.getString("edocSummaryId") + prefix + ".html");
+                    ps.setString(4, sPath);
+                    ps.setString(5, "正文");
+                    ps.setString(6, f.length() + "");
+                    ps.setString(7, ".html");
+                    ps.setString(8, "0");
+                    ps.addBatch();
                 }
-            }
 
+            }
+            ps.executeBatch();
+            connection.commit();
         } catch (SQLException | BusinessException | ServiceException | IOException sql) {
             logger.info("同步公文sql出错了：" + sql.getMessage());
         } finally {
