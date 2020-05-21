@@ -4,12 +4,9 @@ BEGIN
     if (flag = 1) then
             begin
                 insert into TEMP_NUMBER10(ID,STATUS)
-                select id,val from (select to_char(A.id) id,0 val from edoc_summary A ,
-                (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL
-                where to_char(content) in (select to_char(id) from ctp_file) and trim(translate(nvl(CONTENT,'x'),'-0123456789',' ')) is NULL  ) zall,ctp_file cf where ZALL.CONTENT=CF.id
-                ) B where A.Id = B.MODULE_ID
-                and has_archive = 1) c
-                where not exists (select id from TEMP_NUMBER10);
+                select DS.id,0 from (
+								select s.* from EDOC_SUMMARY s,CTP_CONTENT_ALL ca where s.id=MODULE_ID and  s.HAS_ARCHIVE=1 and CA.CONTENT_TYPE=41
+								) ds where not EXISTS (select * from TEMP_NUMBER10 t10 where DS.id = t10.id);
 
             exception
                 when others then
@@ -24,16 +21,16 @@ BEGIN
               --发文
                 insert into TEMP_NUMBER20
                   select id,subject,doc_mark,issuer,send_department,pack_date,val,create_time,year,edoc_type,org from (
-                  select A.id,subject,doc_mark, issuer,A.send_department,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,'' org
-                  from edoc_summary A, (
-                  select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)
-                  and trim(translate(nvl(CONTENT,'x'),'-0123456789',' ')) is NULL ) zall,ctp_file cf where ZALL.CONTENT=CF.id
-                  ) b, org_member c, (select CA.OBJECT_ID,DR.CREATE_USER_ID from CTP_AFFAIR ca,DOC_RESOURCES dr where ca.id=DR.SOURCE_ID) d, ORG_UNIT e
-                  where A.has_archive = 1
-                  and a.id = b.MODULE_ID
-                  and c.id = d.create_user_id
-                  and c.org_department_id = e.id
-                  and a.id = d.OBJECT_ID and a.EDOC_TYPE=0) c where not exists(select id from temp_number10 where status='1');
+									select A.id,subject,doc_mark, issuer,A.send_department,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,'' org
+									from edoc_summary A, (
+									select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file) and CONTENT_TYPE=41
+									 ) zall,ctp_file cf where ZALL.CONTENT=CF.id
+									) b, org_member c, (select CA.OBJECT_ID,DR.CREATE_USER_ID from CTP_AFFAIR ca,DOC_RESOURCES dr where ca.id=DR.SOURCE_ID) d, ORG_UNIT e
+									where A.has_archive = 1
+									and a.id = b.MODULE_ID
+									and c.id = d.create_user_id
+									and c.org_department_id = e.id
+									and a.id = d.OBJECT_ID and a.EDOC_TYPE=0) c where  exists (select * from temp_number10 t where status='0' and c.id= t.id);
 
 
 
@@ -46,16 +43,17 @@ BEGIN
                 select b.id,listagg(b.department_name ,'、')within group(order by b.id) department_name from
                 (select s.*,o.department_name from edoc_summary s left join (select * from edoc_opinion where policy='field0010') o on s.id= o.edoc_id ) b group by b.id
                 ) th on tw.id=th.id ) A,(
-                select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)
-                and trim(translate(nvl(CONTENT,'x'),'-0123456789',' ')) is NULL ) zall,ctp_file cf where ZALL.CONTENT=CF.id
+                select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file) and CONTENT_TYPE=41
+ ) zall,ctp_file cf where ZALL.CONTENT=CF.id
                 ) b, org_member c,
                 (select CA.OBJECT_ID,DR.CREATE_USER_ID from CTP_AFFAIR ca,DOC_RESOURCES dr where ca.id=DR.SOURCE_ID) d, ORG_UNIT e
                 where A.has_archive = 1
                 and a.id = b.MODULE_ID
                 and c.id = d.create_user_id
                 and c.org_department_id = e.id
-                and a.id = d.OBJECT_ID and  a.EDOC_TYPE=1)
-                where not exists (select id from temp_number10 where status='1');
+                and a.id = d.OBJECT_ID  and  a.EDOC_TYPE=1
+) cd
+                where exists (select * from temp_number10 t where t.status='0' and cd.id=t.id);
 
 
 
@@ -64,14 +62,14 @@ BEGIN
                 select id,subject,doc_mark, issuer,send_department,pack_date,val,create_time,year,EDOC_TYPE,org from (
                 select A.id,subject,doc_mark, issuer,A.send_department,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,'' org
                 from edoc_summary A, (
-                select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)
-                and trim(translate(nvl(CONTENT,'x'),'-0123456789',' ')) is NULL ) zall,ctp_file cf where ZALL.CONTENT=CF.id
+                select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file) and CONTENT_TYPE=41
+									 ) zall,ctp_file cf where ZALL.CONTENT=CF.id
                 ) b, org_member c, (select CA.OBJECT_ID,DR.CREATE_USER_ID from CTP_AFFAIR ca,DOC_RESOURCES dr where ca.id=DR.SOURCE_ID) d, ORG_UNIT e
                 where A.has_archive = 1
                 and a.id = b.MODULE_ID
                 and c.id = d.create_user_id
                 and c.org_department_id = e.id
-                and a.id = d.OBJECT_ID and a.EDOC_TYPE=2 ) where  not exists (select id from temp_number10 where status='1') ;
+                and a.id = d.OBJECT_ID and a.EDOC_TYPE=2 ) cd where exists (select * from temp_number10 t where t.status='0' and CD.id=t.id) ;
 
         exception
             when others then
@@ -97,11 +95,11 @@ BEGIN
               0 status
               from edoc_summary A
               left join (
-              select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file)
-              and trim(translate(nvl(CONTENT,'x'),'-0123456789',' ')) is NULL ) zall,ctp_file cf where ZALL.CONTENT=CF.id
+              select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file) and CONTENT_TYPE=41
+ ) zall,ctp_file cf where ZALL.CONTENT=CF.id
               ) B on B.MODULE_ID = A.Id and  A.has_archive = 1
                left join ctp_file C on to_char(B.content) = C.Id
-              where B.Id is not null ) where exists (select id from TEMP_NUMBER10 where status='0');
+              where B.Id is not null ) cd where exists (select * from TEMP_NUMBER10 t where t.status='0' and cd.C_MIDRECID=t.id);
 
 
 
@@ -120,9 +118,11 @@ BEGIN
               '.html' META_TYPE,
               0 status
               from edoc_summary A
-              left join (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file) and trim(translate(nvl(CONTENT,'x'),'-0123456789',' ')) is NULL  and length(content)<30) zall,ctp_file cf where ZALL.CONTENT=CF.id) B
+              left join (
+select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file) and CONTENT_TYPE=41
+ ) zall,ctp_file cf where ZALL.CONTENT=CF.id) B
               on B.MODULE_ID = A.Id and  A.has_archive = 1
-              where B.Id is not null ) where exists (select id from TEMP_NUMBER10 where status='0');
+              where B.Id is not null ) cd where exists (select * from TEMP_NUMBER10 t where t.status='0' and cd.C_MIDRECID=t.id);
         exception
             when others then
                 ROLLBACK;
@@ -134,7 +134,8 @@ BEGIN
         begin
 
             insert into TEMP_NUMBER30
-              select id,C_MIDRECID,C_FILETITLE,C_FTPFILEPATH,C_TYPE,I_SIZE,META_TYPE,status from (
+
+select id,C_MIDRECID,C_FILETITLE,C_FTPFILEPATH,C_TYPE,I_SIZE,META_TYPE,status from (
               select C.id, A.Id C_MIDRECID,
               C.Filename C_FILETITLE,
               '/upload/' ||
@@ -147,12 +148,13 @@ BEGIN
               substr(C.Filename, instr(C.Filename, '.', -1, 1)) META_TYPE,
               0 status
               from edoc_summary A
-              left join (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file) and trim(translate(nvl(CONTENT,'x'),'-0123456789',' ')) is NULL  and length(content)<30) zall,ctp_file cf where ZALL.CONTENT=CF.id) B
+              left join (select zall.*,CF.MIME_TYPE,CF.id from (select to_number(content) content,MODULE_ID from CTP_CONTENT_ALL where to_char(content) in (select to_char(id) from ctp_file) and CONTENT_TYPE=41
+ ) zall,ctp_file cf where ZALL.CONTENT=CF.id) B
               on A.Id = B.MODULE_ID and  A.has_archive = 1
               left join ctp_attachment C
               on b.MODULE_ID = c.att_reference
-              where C.id is not null )
-              where exists(select id from TEMP_NUMBER10 where status='0');
+              where C.id is not null ) cd
+              where exists(select * from TEMP_NUMBER10 t where t.status='0' and cd.C_MIDRECID=t.id);
 
         exception
             when others then
