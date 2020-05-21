@@ -1,5 +1,4 @@
-CREATE OR REPLACE
-procedure pro_xyfy3(flag number) IS
+create or replace procedure pro_xyfy3(flag number) IS
 BEGIN
     if (flag = 1) then
             begin
