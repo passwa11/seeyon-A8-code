@@ -4,11 +4,9 @@ BEGIN
     if (flag = 1) then
             begin
                 insert into TEMP_NUMBER10(ID,STATUS)
-                  select id,val from (SELECT  TO_CHAR (A . ID) ID,0 val  FROM edoc_summary A,(
-                  SELECT  zall.* FROM  (
-                  select * from CTP_CONTENT_ALL where content is not null and TRIM (TRANSLATE (NVL (CONTENT,'x'),'-0123456789',' ')) is not null ) zall WHERE 1=1
-                  ) B where  A . ID = B.MODULE_ID and has_archive = 1) c
-                  where not exists (select id from TEMP_NUMBER10);
+                  select DS.id,0 from (
+									select s.* from EDOC_SUMMARY s,CTP_CONTENT_ALL ca where s.id=MODULE_ID and  s.HAS_ARCHIVE=1 and CA.CONTENT_TYPE=10
+									) ds where not EXISTS (select 1 from TEMP_NUMBER10 t10 where DS.id = t10.id);
 
             exception
                 when others then
@@ -25,51 +23,51 @@ BEGIN
                   select id,subject,doc_mark,issuer,send_department,pack_date,val,create_time,year,edoc_type,org from (
                   select A.id,subject,doc_mark, issuer,A.send_department,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,'' org
                   from edoc_summary A, (
-                  SELECT  zall.* FROM  (
-                  select * from CTP_CONTENT_ALL where content is not null and TRIM (TRANSLATE (NVL (CONTENT,'x'),'-0123456789',' ')) is not null ) zall WHERE 1=1
+                  SELECT  zall.* FROM  (select * from CTP_CONTENT_ALL where content is not null and CONTENT_TYPE=10 ) zall
                   ) b, org_member c, (select CA.OBJECT_ID,DR.CREATE_USER_ID from CTP_AFFAIR ca,DOC_RESOURCES dr where ca.id=DR.SOURCE_ID) d, ORG_UNIT e
                   where A.has_archive = 1
                   and a.id = b.MODULE_ID
                   and c.id = d.create_user_id
                   and c.org_department_id = e.id
-                  and a.id = d.OBJECT_ID and a.EDOC_TYPE=0) c where not exists(select id from temp_number10 where status='1');
+                  and a.id = d.OBJECT_ID and a.EDOC_TYPE=0) cd where  exists(select * from temp_number10 t where t.status='0' and cd.id=t.id);
 
 
 
               --收文
               insert into TEMP_NUMBER20
-                select id,subject,doc_mark,issuer,department_name,pack_date,val,create_time,year,edoc_type,send_unit from (
+
+select id,subject,doc_mark,issuer,department_name,pack_date,val,create_time,year,edoc_type,send_unit from (
                 select A.id,subject,doc_mark, issuer,A.department_name,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,
                 a.send_unit
                 from (select tw.id,tw.subject,tw.doc_mark,tw.issuer,tw.send_unit,tw.pack_date,tw.create_time,tw.edoc_type,tw.has_archive,th.department_name from edoc_summary tw left join (
                 select b.id,listagg(b.department_name ,'、')within group(order by b.id) department_name from
                 (select s.*,o.department_name from edoc_summary s left join (select * from edoc_opinion where policy='field0010') o on s.id= o.edoc_id ) b group by b.id
                 ) th on tw.id=th.id ) A,(
-                SELECT  zall.* FROM  (select * from CTP_CONTENT_ALL where content is not null and TRIM (TRANSLATE (NVL (CONTENT,'x'),'-0123456789',' ')) is not null ) zall WHERE 1=1
+                SELECT  zall.* FROM  (select * from CTP_CONTENT_ALL where content is not null and CONTENT_TYPE=10 ) zall
                 ) b, org_member c,
                 (select CA.OBJECT_ID,DR.CREATE_USER_ID from CTP_AFFAIR ca,DOC_RESOURCES dr where ca.id=DR.SOURCE_ID) d, ORG_UNIT e
                 where A.has_archive = 1
                 and a.id = b.MODULE_ID
                 and c.id = d.create_user_id
                 and c.org_department_id = e.id
-                and a.id = d.OBJECT_ID and  a.EDOC_TYPE=1)
-                where not exists (select id from temp_number10 where status='1');
+                and a.id = d.OBJECT_ID and  a.EDOC_TYPE=1) cd
+                where  exists (select * from temp_number10 t where t.status='0' and cd.id=t.id);
 
 
 
               --签报
               insert into TEMP_NUMBER20
-                select id,subject,doc_mark, issuer,send_department,pack_date,val,create_time,year,EDOC_TYPE,org from (
+
+select id,subject,doc_mark, issuer,send_department,pack_date,val,create_time,year,EDOC_TYPE,org from (
                 select A.id,subject,doc_mark, issuer,A.send_department,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,'' org
                 from edoc_summary A, (
-                SELECT  zall.* FROM  (select * from CTP_CONTENT_ALL where content is not null and TRIM (TRANSLATE (NVL (CONTENT,'x'),'-0123456789',' ')) is not null ) zall WHERE 1=1
+                SELECT  zall.* FROM  (select * from CTP_CONTENT_ALL where content is not null  and CONTENT_TYPE=10 ) zall
                 ) b, org_member c, (select CA.OBJECT_ID,DR.CREATE_USER_ID from CTP_AFFAIR ca,DOC_RESOURCES dr where ca.id=DR.SOURCE_ID) d, ORG_UNIT e
                 where A.has_archive = 1
                 and a.id = b.MODULE_ID
                 and c.id = d.create_user_id
                 and c.org_department_id = e.id
-                and a.id = d.OBJECT_ID and a.EDOC_TYPE=2 ) where  not exists (select id from temp_number10 where status='1') ;
-
+                and a.id = d.OBJECT_ID and a.EDOC_TYPE=2 ) cd where  exists (select * from temp_number10 t where t.status='0' and CD.id=t.id) ;
         exception
             when others then
                 ROLLBACK;
@@ -77,7 +75,7 @@ BEGIN
                 DBMS_OUTPUT.put_line(SQLERRM);
         end;
     elsif (flag = 3) then
-        --公文信息正文表
+
         begin
 
             -- 添加新增文单的功能
@@ -96,10 +94,10 @@ BEGIN
               0 status
               from edoc_summary A
               left join (
-              SELECT  zall.* FROM  (select * from CTP_CONTENT_ALL where content is not null and TRIM (TRANSLATE (NVL (CONTENT,'x'),'-0123456789',' ')) is not null ) zall WHERE 1=1
+              SELECT  zall.* FROM  (select * from CTP_CONTENT_ALL where content is not null and CONTENT_TYPE=10 ) zall
               ) B
               on B.MODULE_ID = A.Id and  A.has_archive = 1
-              where B.Id is not null ) where exists (select id from TEMP_NUMBER10 where status='0');
+              where B.Id is not null ) cd where exists (select * from TEMP_NUMBER10 t where t.status='0' and CD.C_MIDRECID=t.id);
         exception
             when others then
                 ROLLBACK;
@@ -125,13 +123,13 @@ BEGIN
               0 status
               from edoc_summary A
               left join (
-              SELECT  zall.* FROM  (select * from CTP_CONTENT_ALL where content is not null and TRIM (TRANSLATE (NVL (CONTENT,'x'),'-0123456789',' ')) is not null ) zall WHERE 1=1
+              SELECT  zall.* FROM  (select * from CTP_CONTENT_ALL where content is not null and  CONTENT_TYPE=10 ) zall
               ) B
               on A.Id = B.MODULE_ID and  A.has_archive = 1
               left join ctp_attachment C
               on b.MODULE_ID = c.att_reference
-              where C.id is not null )
-              where exists(select id from TEMP_NUMBER10 where status='0');
+              where C.id is not null ) cd
+              where exists (select * from TEMP_NUMBER10 t where t.status='0' and CD.C_MIDRECID=t.id);
 
         exception
             when others then
