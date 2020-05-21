@@ -194,18 +194,14 @@ public class SyncOrgData {
                     ps.setString(1, rs.getString("edocSummaryId") + prefix);
                     ps.setString(2, rs.getString("edocSummaryId"));
                     ps.setString(3, rs.getString("edocSummaryId") + prefix + ".html");
-                    ps.setString(4, sPath);
+                    ps.setString(4, sPath2);
                     ps.setString(5, "正文");
                     ps.setString(6, f.length() + "");
                     ps.setString(7, ".html");
                     ps.setString(8, "0");
-                    ps.addBatch();
+                    ps.executeUpdate();
                 }
 
-            }
-            if (null != ps) {
-                ps.executeBatch();
-                connection.commit();
             }
         } catch (SQLException | BusinessException | ServiceException | IOException sbsi) {
             logger.info("同步公文sql出错了：" + sbsi.getMessage());
