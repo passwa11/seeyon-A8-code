@@ -70,8 +70,9 @@ public class SyncOrgData {
                     "(select s.* from EDOC_SUMMARY s,CTP_CONTENT_ALL a where s.id=a.MODULE_ID and a.CONTENT_TYPE=41  " +
                     "and s.has_archive=1) E WHERE c.OBJECT_ID = E . ID AND c.ARCHIVE_ID IS NOT NULL  " +
                     "AND E .has_archive = 1) c " +
-                    ") A WHERE A .has_archive = 1 ) ss where exists (SELECT * FROM TEMP_NUMBER10 t where 1=1 and SS.EDOCSUMMARYID=t.ID)";
+                    ") A WHERE A .has_archive = 1 ) ss where exists (SELECT * FROM TEMP_NUMBER10 t where STATUS=0 and SS.EDOCSUMMARYID=t.ID)";
             executeJdbc(connection, "3", sql41);
+
 
 
             String sql10 = "select id,edocSummaryId,subject,YEAR,MONTH,DAY from (SELECT A . affairId AS ID,A.edocSummaryId,A .subject AS subject, " +
@@ -82,7 +83,7 @@ public class SyncOrgData {
                     "(select s.* from EDOC_SUMMARY s,CTP_CONTENT_ALL a where s.id=a.MODULE_ID and a.CONTENT_TYPE=10  " +
                     "and s.has_archive=1) E WHERE c.OBJECT_ID = E . ID AND c.ARCHIVE_ID IS NOT NULL  " +
                     "AND E .has_archive = 1) c " +
-                    ") A WHERE A .has_archive = 1 ) ss where exists (SELECT * FROM TEMP_NUMBER10 t where 1=1 and SS.EDOCSUMMARYID=t.ID)";
+                    ") A WHERE A .has_archive = 1 ) ss where exists (SELECT * FROM TEMP_NUMBER10 t where STATUS=0 and SS.EDOCSUMMARYID=t.ID)";
 //            executeJdbc(connection, "4", sql10);
         } catch (Exception e) {
             logger.info("同步公文出错了：" + e.getMessage());
@@ -203,16 +204,23 @@ public class SyncOrgData {
                 }
 
             }
-
-            ps.executeBatch();
-            connection.commit();
+            if (null != ps) {
+                ps.executeBatch();
+                connection.commit();
+            }
         } catch (SQLException | BusinessException | ServiceException | IOException sbsi) {
             logger.info("同步公文sql出错了：" + sbsi.getMessage());
         } finally {
             try {
-                rs.close();
-                statement.close();
-                ps.close();
+                if (rs != null) {
+                    rs.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
