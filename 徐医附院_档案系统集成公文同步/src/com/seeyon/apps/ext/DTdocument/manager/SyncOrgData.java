@@ -71,7 +71,7 @@ public class SyncOrgData {
                     "and s.has_archive=1) E WHERE c.OBJECT_ID = E . ID AND c.ARCHIVE_ID IS NOT NULL  " +
                     "AND E .has_archive = 1) c " +
                     ") A WHERE A .has_archive = 1 ) ss where exists (SELECT * FROM TEMP_NUMBER10 t where STATUS=0 and SS.EDOCSUMMARYID=t.ID)";
-            executeJdbc(connection, "3", sql41);
+//            executeJdbc(connection, "3", sql41);
 
 
 
@@ -84,7 +84,7 @@ public class SyncOrgData {
                     "and s.has_archive=1) E WHERE c.OBJECT_ID = E . ID AND c.ARCHIVE_ID IS NOT NULL  " +
                     "AND E .has_archive = 1) c " +
                     ") A WHERE A .has_archive = 1 ) ss where exists (SELECT * FROM TEMP_NUMBER10 t where STATUS=0 and SS.EDOCSUMMARYID=t.ID)";
-//            executeJdbc(connection, "4", sql10);
+            executeJdbc(connection, "4", sql10);
         } catch (Exception e) {
             logger.info("同步公文出错了：" + e.getMessage());
             e.printStackTrace();
@@ -134,7 +134,7 @@ public class SyncOrgData {
 //            perms.add(PosixFilePermission.GROUP_EXECUTE);//设置组的读取权限
 //            perms.add(PosixFilePermission.OTHERS_READ);//设置其他的读取权限
 //            perms.add(PosixFilePermission.OTHERS_EXECUTE);//设置其他的读取权限
-
+            String insertSql = "insert into TEMP_NUMBER30(ID,C_MIDRECID,C_FILETITLE,C_FTPFILEPATH,C_TYPE,I_SIZE,META_TYPE,STATUS) values(?,?,?,?,?,?,?,?)";
             while (rs.next()) {
                 htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("id")));
                 sPath = p + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + "";
@@ -190,7 +190,6 @@ public class SyncOrgData {
                     } finally {
                         fos2.close();
                     }
-                    String insertSql = "insert into TEMP_NUMBER30(ID,C_MIDRECID,C_FILETITLE,C_FTPFILEPATH,C_TYPE,I_SIZE,META_TYPE,STATUS) values(?,?,?,?,?,?,?,?)";
                     ps = connection.prepareStatement(insertSql);
                     ps.setString(1, rs.getString("edocSummaryId") + prefix);
                     ps.setString(2, rs.getString("edocSummaryId"));
