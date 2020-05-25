@@ -236,8 +236,10 @@ public class SyncOrgData {
             resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 reader = resultSet.getCharacterStream("content");
-                while ((i = reader.read(buffer)) != -1) {
-                    sb.append(new String(buffer, 0, i));
+                if(reader !=null){
+                    while ((i = reader.read(buffer)) != -1) {
+                        sb.append(new String(buffer, 0, i));
+                    }
                 }
             }
         } catch (Exception e) {
