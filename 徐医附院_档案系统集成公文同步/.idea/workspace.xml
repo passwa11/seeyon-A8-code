@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac16f7c2-9d1f-451a-bd87-9fcdc05aeb19" name="Default Changelist" comment="update">
+      <change afterPath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql文件/注意事项" beforeDir="false" afterPath="$PROJECT_DIR$/sql文件/注意事项" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/WriteMiddleData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/WriteMiddleData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/law/docPlugin-2.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/law/docPlugin.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/law/docPlugin.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/办结-未办结-总包-2020-05-15.zip" beforeDir="false" />
@@ -18,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -46,29 +51,31 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="two.files.diff.last.used.file" value="F:/0_test_code/徐医附院_档案系统集成公文同步_正式环境的code/src/law/docPlugin.properties" />
   </component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\JAVA\JAVA_Project\DTdocument\src\com\seeyon\apps\ext\Portal190724\po" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\a8_code\A-8-code\徐医附院_档案系统集成公文同步\sql文件" />
+      <recent name="F:\a8_code\A-8-code\徐医附院_档案系统集成公文同步\src\com\seeyon\apps\ext\DTdocument\po" />
+      <recent name="F:\a8_code\A-8-code\徐医附院_档案系统集成公文同步\src\com\seeyon\apps\ext\DTdocument\manager" />
+      <recent name="F:\0_test_code\档案系统集成公文同步\src\law" />
+      <recent name="F:\0_test_code\档案系统集成公文同步\seeyon\WEB-INF\lib" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.seeyon.apps.ext.DTdocument.manager" />
       <recent name="com.seeyon.apps.ext.DTdocument.util" />
       <recent name="com.seeyon.apps.ext.DTdocument.controller" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\a8_code\A-8-code\徐医附院_档案系统集成公文同步\src\com\seeyon\apps\ext\DTdocument\po" />
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\a8_code\A-8-code\徐医附院_档案系统集成公文同步\src\com\seeyon\apps\ext\DTdocument\manager" />
-      <recent name="F:\a8_code\A-8-code\徐医附院_档案系统集成公文同步\sql文件" />
-      <recent name="F:\0_test_code\档案系统集成公文同步\src\law" />
-      <recent name="F:\0_test_code\档案系统集成公文同步\seeyon\WEB-INF\lib" />
+      <recent name="F:\JAVA\JAVA_Project\DTdocument\src\com\seeyon\apps\ext\Portal190724\po" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -109,6 +116,14 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test" />
+      <module name="DTdocument" />
+      <shortenClasspath name="CLASSPATH_FILE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -156,10 +171,12 @@
     </configuration>
     <list>
       <item itemvalue="Application.Test" />
+      <item itemvalue="Application.test" />
       <item itemvalue="Remote.Unnamed" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.test" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
@@ -197,7 +214,11 @@
       <workItem from="1589768543314" duration="90000" />
       <workItem from="1589941366312" duration="1495000" />
       <workItem from="1589948429146" duration="4801000" />
-      <workItem from="1589983761551" duration="1386000" />
+      <workItem from="1589983761551" duration="6693000" />
+      <workItem from="1590019975252" duration="8176000" />
+      <workItem from="1590039914740" duration="473000" />
+      <workItem from="1590043636401" duration="27000" />
+      <workItem from="1590395252842" duration="4019000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1586828382127</created>
@@ -262,11 +283,119 @@
       <option name="project" value="LOCAL" />
       <updated>1589620003889</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="update">
+      <created>1589985201746</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1589985201746</updated>
+    </task>
+    <task id="LOCAL-00011" summary="update">
+      <created>1589985340251</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1589985340251</updated>
+    </task>
+    <task id="LOCAL-00012" summary="update">
+      <created>1589987069792</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1589987069792</updated>
+    </task>
+    <task id="LOCAL-00013" summary="update">
+      <created>1589991477279</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1589991477279</updated>
+    </task>
+    <task id="LOCAL-00014" summary="update">
+      <created>1590022906546</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1590022906547</updated>
+    </task>
+    <task id="LOCAL-00015" summary="update">
+      <created>1590025958757</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1590025958757</updated>
+    </task>
+    <task id="LOCAL-00016" summary="update">
+      <created>1590028873139</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1590028873139</updated>
+    </task>
+    <task id="LOCAL-00017" summary="update">
+      <created>1590028941263</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1590028941263</updated>
+    </task>
+    <task id="LOCAL-00018" summary="update">
+      <created>1590029954678</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1590029954678</updated>
+    </task>
+    <task id="LOCAL-00019" summary="update">
+      <created>1590030507564</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1590030507564</updated>
+    </task>
+    <task id="LOCAL-00020" summary="update">
+      <created>1590030617584</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1590030617584</updated>
+    </task>
+    <task id="LOCAL-00021" summary="update">
+      <created>1590030954627</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1590030954627</updated>
+    </task>
+    <task id="LOCAL-00022" summary="update">
+      <created>1590031033932</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1590031033932</updated>
+    </task>
+    <task id="LOCAL-00023" summary="update">
+      <created>1590395448285</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1590395448285</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -286,21 +415,5 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java</url>
-          <line>80</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

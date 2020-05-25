@@ -42,6 +42,11 @@ public class WriteMiddleData {
         String selectFileInfo = "select id,C_MIDRECID,C_FILETITLE,C_FTPFILEPATH,C_TYPE,I_SIZE,meta_type from TEMP_NUMBER30 where C_MIDRECID=?";
         String insertFileInfo = "insert into T_OATX(id,aid,ztm,filename,filesize) values(?,?,?,?,?)";
         PreparedStatement preparedStatement = null;
+
+        String getT_oa = "select id from t_oa";
+        PreparedStatement toaps = null;
+        ResultSet toaset = null;
+
         ResultSet resultSet = null;
         Connection connection = null;
         try {
@@ -67,34 +72,81 @@ public class WriteMiddleData {
             }
             resultSet.close();
             preparedStatement.close();
+
             if (listTemp.size() > 0) {
                 mConn = DbConnUtil.getInstance().getMiddleConnection();
+
+                toaps = mConn.prepareStatement(getT_oa);
+                toaset = toaps.executeQuery();
+                List<String> toaId = new ArrayList<>();
+                while (toaset.next()) {
+                    toaId.add(toaset.getString("id"));
+                }
+
                 mPs = mConn.prepareStatement(insertToaSql);
                 mConn.setAutoCommit(false);
                 for (int i = 0; i < listTemp.size(); i++) {
-                    mPs.setString(1, listTemp.get(i).getId());
-                    mPs.setString(2, listTemp.get(i).getYear());
-                    mPs.setString(3, listTemp.get(i).getEdoc_type());
-                    mPs.setString(4, listTemp.get(i).getSend_departmen());
-                    mPs.setString(5, (listTemp.get(i).getYear() + "-") + (listTemp.get(i).getSend_departmen() == null ? listTemp.get(i).getEdoc_type() + "" : listTemp.get(i).getEdoc_type() + "-" + (listTemp.get(i).getSend_departmen())));
-                    mPs.setString(6, listTemp.get(i).getSubject());
-                    if (type.equals("send")) {
-                        mPs.setString(7, listTemp.get(i).getSend_departmen());
-                    } else if (type.equals("receiver")) {
-                        mPs.setString(7, listTemp.get(i).getOrganizer());
+                    if (toaId.size() > 0) {
+                        if (!toaId.contains(listTemp.get(i).getId())) {
+                            mPs.setString(1, listTemp.get(i).getId());
+                            mPs.setString(2, listTemp.get(i).getYear());
+                            mPs.setString(3, listTemp.get(i).getEdoc_type());
+                            mPs.setString(4, listTemp.get(i).getSend_departmen());
+                            mPs.setString(5, (listTemp.get(i).getYear() + "-") + (listTemp.get(i).getSend_departmen() == null ? listTemp.get(i).getEdoc_type() + "" : listTemp.get(i).getEdoc_type() + "-" + (listTemp.get(i).getSend_departmen())));
+                            mPs.setString(6, listTemp.get(i).getSubject());
+                            if (type.equals("send")) {
+                                mPs.setString(7, listTemp.get(i).getSend_departmen());
+                            } else if (type.equals("receiver")) {
+                                mPs.setString(7, listTemp.get(i).getOrganizer());
+                            } else {
+                                mPs.setString(7, listTemp.get(i).getSend_departmen());
+                            }
+                            mPs.setString(8, "");
+                            mPs.setString(9, listTemp.get(i).getDoc_mark());
+                            mPs.setString(10, listTemp.get(i).getId());
+                            mPs.setString(11, listTemp.get(i).getEdoc_type());
+                            mPs.setString(12, listTemp.get(i).getCreate_time());
+                            mPs.addBatch();
+                        }
                     } else {
-                        mPs.setString(7, listTemp.get(i).getSend_departmen());
+                        mPs.setString(1, listTemp.get(i).getId());
+                        mPs.setString(2, listTemp.get(i).getYear());
+                        mPs.setString(3, listTemp.get(i).getEdoc_type());
+                        mPs.setString(4, listTemp.get(i).getSend_departmen());
+                        mPs.setString(5, (listTemp.get(i).getYear() + "-") + (listTemp.get(i).getSend_departmen() == null ? listTemp.get(i).getEdoc_type() + "" : listTemp.get(i).getEdoc_type() + "-" + (listTemp.get(i).getSend_departmen())));
+                        mPs.setString(6, listTemp.get(i).getSubject());
+                        if (type.equals("send")) {
+                            mPs.setString(7, listTemp.get(i).getSend_departmen());
+                        } else if (type.equals("receiver")) {
+                            mPs.setString(7, listTemp.get(i).getOrganizer());
+                        } else {
+                            mPs.setString(7, listTemp.get(i).getSend_departmen());
+                        }
+                        mPs.setString(8, "");
+                        mPs.setString(9, listTemp.get(i).getDoc_mark());
+                        mPs.setString(10, listTemp.get(i).getId());
+                        mPs.setString(11, listTemp.get(i).getEdoc_type());
+                        mPs.setString(12, listTemp.get(i).getCreate_time());
+                        mPs.addBatch();
                     }
-                    mPs.setString(8, "");
-                    mPs.setString(9, listTemp.get(i).getDoc_mark());
-                    mPs.setString(10, listTemp.get(i).getId());
-                    mPs.setString(11, listTemp.get(i).getEdoc_type());
-                    mPs.setString(12, listTemp.get(i).getCreate_time());
-                    mPs.addBatch();
+
                 }
+
                 mPs.executeBatch();
                 mConn.commit();
                 mPs.close();
+
+                toaset.close();
+                toaps.close();
+
+                String toaTx = "select id from T_OATX GROUP BY id";
+
+                toaps = mConn.prepareStatement(toaTx);
+                toaset = toaps.executeQuery();
+                List<String> toaTxid = new ArrayList<>();
+                while (toaset.next()) {
+                    toaTxid.add(toaset.getString("id"));
+                }
 
                 for (int i = 0; i < listTemp.size(); i++) {
                     preparedStatement = connection.prepareStatement(selectFileInfo);
@@ -103,12 +155,23 @@ public class WriteMiddleData {
                     mPs = mConn.prepareStatement(insertFileInfo);
                     mConn.setAutoCommit(false);
                     while (resultSet.next()) {
-                        mPs.setString(1, resultSet.getString("id"));
-                        mPs.setString(2, resultSet.getString("c_midrecid"));
-                        mPs.setString(3, resultSet.getString("c_filetitle"));
-                        mPs.setString(4, resultSet.getString("c_ftpfilepath"));
-                        mPs.setString(5, resultSet.getString("i_size"));
-                        mPs.addBatch();
+                        if (toaTxid.size() > 0) {
+                            if(!toaTxid.contains(resultSet.getString("id") + resultSet.getString("c_midrecid"))){
+                                mPs.setString(1, resultSet.getString("id") + resultSet.getString("c_midrecid"));
+                                mPs.setString(2, resultSet.getString("c_midrecid"));
+                                mPs.setString(3, resultSet.getString("c_filetitle"));
+                                mPs.setString(4, resultSet.getString("c_ftpfilepath"));
+                                mPs.setString(5, resultSet.getString("i_size"));
+                                mPs.addBatch();
+                            }
+                        } else {
+                            mPs.setString(1, resultSet.getString("id") + resultSet.getString("c_midrecid"));
+                            mPs.setString(2, resultSet.getString("c_midrecid"));
+                            mPs.setString(3, resultSet.getString("c_filetitle"));
+                            mPs.setString(4, resultSet.getString("c_ftpfilepath"));
+                            mPs.setString(5, resultSet.getString("i_size"));
+                            mPs.addBatch();
+                        }
                     }
                     mPs.executeBatch();
                     mConn.commit();
@@ -116,6 +179,10 @@ public class WriteMiddleData {
                     mPs.close();
                     resultSet.close();
                     preparedStatement.close();
+
+
+                    toaset.close();
+                    toaps.close();
                 }
 
                 preparedStatement = connection.prepareStatement(updateSql);
