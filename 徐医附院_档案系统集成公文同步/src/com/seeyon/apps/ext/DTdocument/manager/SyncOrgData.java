@@ -62,27 +62,26 @@ public class SyncOrgData {
         }
         Connection connection = JDBCAgent.getRawConnection();
         try {
-            String sql41 = "select id,edocSummaryId,subject,YEAR,MONTH,DAY from (SELECT A . affairId AS ID,A.edocSummaryId,A .subject AS subject, " +
-                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),0,4) YEAR, " +
-                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),6,2) MONTH, " +
-                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),9,2) DAY FROM ( " +
-                    "select * from (SELECT c.ID affairId,E.ID edocSummaryId,E.SUBJECT,E.create_time,E .has_archive FROM CTP_AFFAIR c, " +
-                    "(select s.* from EDOC_SUMMARY s,CTP_CONTENT_ALL a where s.id=a.MODULE_ID and a.CONTENT_TYPE=41  " +
-                    "and s.has_archive=1) E WHERE c.OBJECT_ID = E . ID AND c.ARCHIVE_ID IS NOT NULL  " +
-                    "AND E .has_archive = 1) c " +
+            String sql41 = "select id,edocSummaryId,subject,YEAR,MONTH,DAY from (SELECT A . affairId AS ID,A.edocSummaryId,A .subject AS subject,  " +
+                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),0,4) YEAR,  " +
+                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),6,2) MONTH,  " +
+                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),9,2) DAY FROM (  " +
+                    "select * from (SELECT c.ID affairId,E.ID edocSummaryId,E.SUBJECT,E.create_time,E .has_archive FROM CTP_AFFAIR c,  " +
+                    "(select s.* from (select * from EDOC_SUMMARY where has_archive=1) s,TEMP_NUMBER40 a where s.id=a.MODULE_ID and a.CONTENT_TYPE in (41,42,43,44,45)   " +
+                    ") E WHERE c.OBJECT_ID = E . ID AND c.ARCHIVE_ID IS NOT NULL   " +
+                    "AND E .has_archive = 1) c  " +
                     ") A WHERE A .has_archive = 1 ) ss where exists (SELECT * FROM TEMP_NUMBER10 t where STATUS=0 and SS.EDOCSUMMARYID=t.ID)";
-//            executeJdbc(connection, "3", sql41);
+            executeJdbc(connection, "3", sql41);
 
 
-
-            String sql10 = "select id,edocSummaryId,subject,YEAR,MONTH,DAY from (SELECT A . affairId AS ID,A.edocSummaryId,A .subject AS subject, " +
-                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),0,4) YEAR, " +
-                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),6,2) MONTH, " +
-                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),9,2) DAY FROM ( " +
-                    "select * from (SELECT c.ID affairId,E.ID edocSummaryId,E.SUBJECT,E.create_time,E .has_archive FROM CTP_AFFAIR c, " +
-                    "(select s.* from EDOC_SUMMARY s,CTP_CONTENT_ALL a where s.id=a.MODULE_ID and a.CONTENT_TYPE=10  " +
-                    "and s.has_archive=1) E WHERE c.OBJECT_ID = E . ID AND c.ARCHIVE_ID IS NOT NULL  " +
-                    "AND E .has_archive = 1) c " +
+            String sql10 = "select id,edocSummaryId,subject,YEAR,MONTH,DAY from (SELECT A . affairId AS ID,A.edocSummaryId,A .subject AS subject,  " +
+                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),0,4) YEAR,  " +
+                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),6,2) MONTH,  " +
+                    "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),9,2) DAY FROM (  " +
+                    "select * from (SELECT c.ID affairId,E.ID edocSummaryId,E.SUBJECT,E.create_time,E .has_archive FROM CTP_AFFAIR c,  " +
+                    "(select s.* from (select * from EDOC_SUMMARY where has_archive=1) s,TEMP_NUMBER40 a where s.id=a.MODULE_ID and a.CONTENT_TYPE in (10,20) " +
+                    ") E WHERE c.OBJECT_ID = E . ID AND c.ARCHIVE_ID IS NOT NULL   " +
+                    "AND E .has_archive = 1) c  " +
                     ") A WHERE A .has_archive = 1 ) ss where exists (SELECT * FROM TEMP_NUMBER10 t where STATUS=0 and SS.EDOCSUMMARYID=t.ID)";
             executeJdbc(connection, "4", sql10);
         } catch (Exception e) {
@@ -126,24 +125,24 @@ public class SyncOrgData {
             String syear = Integer.toString(localDate.getYear());
             String p = classPath.substring(0, classPath.indexOf(syear));
 //            linux
-            Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
-            perms.add(PosixFilePermission.OWNER_READ);//设置所有者的读取权限
-            perms.add(PosixFilePermission.OWNER_WRITE);//设置所有者的写权限
-            perms.add(PosixFilePermission.OWNER_EXECUTE);//设置所有者的执行权限
-            perms.add(PosixFilePermission.GROUP_READ);//设置组的读取权限
-            perms.add(PosixFilePermission.GROUP_EXECUTE);//设置组的读取权限
-            perms.add(PosixFilePermission.OTHERS_READ);//设置其他的读取权限
-            perms.add(PosixFilePermission.OTHERS_EXECUTE);//设置其他的读取权限
+//            Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
+//            perms.add(PosixFilePermission.OWNER_READ);//设置所有者的读取权限
+//            perms.add(PosixFilePermission.OWNER_WRITE);//设置所有者的写权限
+//            perms.add(PosixFilePermission.OWNER_EXECUTE);//设置所有者的执行权限
+//            perms.add(PosixFilePermission.GROUP_READ);//设置组的读取权限
+//            perms.add(PosixFilePermission.GROUP_EXECUTE);//设置组的读取权限
+//            perms.add(PosixFilePermission.OTHERS_READ);//设置其他的读取权限
+//            perms.add(PosixFilePermission.OTHERS_EXECUTE);//设置其他的读取权限
             String insertSql = "insert into TEMP_NUMBER30(ID,C_MIDRECID,C_FILETITLE,C_FTPFILEPATH,C_TYPE,I_SIZE,META_TYPE,STATUS) values(?,?,?,?,?,?,?,?)";
             while (rs.next()) {
                 htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("id")));
                 sPath = p + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + "";
                 File f = new File(sPath);
                 //linux设置文件和文件夹的权限
-                Path pathParent = Paths.get(f.getParentFile().getAbsolutePath());
-                Path pathDest = Paths.get(f.getAbsolutePath());
-                Files.setPosixFilePermissions(pathParent, perms);//修改文件夹路径的权限
-                Files.setPosixFilePermissions(pathDest, perms);//修改图片文件的权限
+//                Path pathParent = Paths.get(f.getParentFile().getAbsolutePath());
+//                Path pathDest = Paths.get(f.getAbsolutePath());
+//                Files.setPosixFilePermissions(pathParent, perms);//修改文件夹路径的权限
+//                Files.setPosixFilePermissions(pathDest, perms);//修改图片文件的权限
 
                 File parentfile = f.getParentFile();
                 if (!parentfile.exists()) {
