@@ -4,8 +4,17 @@ BEGIN
             begin
                 insert into TEMP_NUMBER10(ID,STATUS)
                   select DS.id,0 from (
-									select s.* from EDOC_SUMMARY s,CTP_CONTENT_ALL ca where s.id=MODULE_ID and  s.HAS_ARCHIVE=1 and CA.CONTENT_TYPE=10
-									) ds where not EXISTS (select 1 from TEMP_NUMBER10 t10 where DS.id = t10.id);
+                  select s.* from EDOC_SUMMARY s,CTP_CONTENT_ALL ca where s.id=MODULE_ID and  s.HAS_ARCHIVE=1 and CA.CONTENT_TYPE in (10,30)
+                  ) ds where not EXISTS (select * from TEMP_NUMBER10 t10 where DS.id = t10.id);
+
+                insert into temp_number40
+
+                select SS.module_id,SS.CONTENT,SS.content_type,SS.sort,SS.id from EDOC_SUMMARY es,
+(select c.id,s.module_id,c.content,c.content_type,s.sort from (
+select max(sort) sort,module_id from (select module_id,sort from CTP_CONTENT_ALL where CONTENT_TYPE in (10,30))  GROUP BY module_id
+) s LEFT JOIN  CTP_CONTENT_ALL c on s.sort=c.sort and s.module_id=c.module_id ) ss where  ES.id=SS.MODULE_ID;
+
+
 
             exception
                 when others then
@@ -19,54 +28,38 @@ BEGIN
         begin
               --发文
                 insert into TEMP_NUMBER20
-                  select id,subject,doc_mark,issuer,send_department,pack_date,val,create_time,year,edoc_type,org from (
-                  select A.id,subject,doc_mark, issuer,A.send_department,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,'' org
-                  from edoc_summary A, (
-                  SELECT  zall.* FROM  (select * from CTP_CONTENT_ALL where content is not null and CONTENT_TYPE=10 ) zall
-                  ) b, org_member c, (select CA.OBJECT_ID,DR.CREATE_USER_ID from CTP_AFFAIR ca,DOC_RESOURCES dr where ca.id=DR.SOURCE_ID) d, ORG_UNIT e
-                  where A.has_archive = 1
-                  and a.id = b.MODULE_ID
-                  and c.id = d.create_user_id
-                  and c.org_department_id = e.id
-                  and a.id = d.OBJECT_ID and a.EDOC_TYPE=0) cd where  exists(select * from temp_number10 t where t.status='0' and cd.id=t.id);
+                 select id,subject,doc_mark,issuer,send_department,pack_date,val,create_time,year,edoc_type,org from (
+select A.id,subject,doc_mark, issuer,A.send_department,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,'' org
+from edoc_summary A, (
+SELECT  zall.* FROM  (select * from TEMP_NUMBER40 where CONTENT_TYPE in (10,30) ) zall
+) b where A.has_archive = 1
+and a.id = b.MODULE_ID
+ and a.EDOC_TYPE =0) cd where  exists(select * from temp_number10 t where t.status='0' and cd.id=t.id);
 
 
 
               --收文
               insert into TEMP_NUMBER20
 
-select id,subject,doc_mark,issuer,department_name,pack_date,val,create_time,year,edoc_type,send_unit from (
-                select A.id,subject,doc_mark, issuer,A.department_name,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,
-                a.send_unit
-                from (select tw.id,tw.subject,tw.doc_mark,tw.issuer,tw.send_unit,tw.pack_date,tw.create_time,tw.edoc_type,tw.has_archive,th.department_name from edoc_summary tw left join (
-                select b.id,listagg(b.department_name ,'、')within group(order by b.id) department_name from
-                (select s.*,o.department_name from edoc_summary s left join (select * from edoc_opinion where policy='field0010') o on s.id= o.edoc_id ) b group by b.id
-                ) th on tw.id=th.id ) A,(
-                SELECT  zall.* FROM  (select * from CTP_CONTENT_ALL where content is not null and CONTENT_TYPE=10 ) zall
-                ) b, org_member c,
-                (select CA.OBJECT_ID,DR.CREATE_USER_ID from CTP_AFFAIR ca,DOC_RESOURCES dr where ca.id=DR.SOURCE_ID) d, ORG_UNIT e
-                where A.has_archive = 1
-                and a.id = b.MODULE_ID
-                and c.id = d.create_user_id
-                and c.org_department_id = e.id
-                and a.id = d.OBJECT_ID and  a.EDOC_TYPE=1) cd
-                where  exists (select * from temp_number10 t where t.status='0' and cd.id=t.id);
+                 select id,subject,doc_mark,issuer,send_department,pack_date,val,create_time,year,edoc_type,org from (
+select A.id,subject,doc_mark, issuer,A.send_department,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,'' org
+from edoc_summary A, (
+SELECT  zall.* FROM  (select * from TEMP_NUMBER40 where CONTENT_TYPE in (10,30) ) zall
+) b where A.has_archive = 1
+and a.id = b.MODULE_ID
+ and a.EDOC_TYPE =1) cd where  exists(select * from temp_number10 t where t.status='0' and cd.id=t.id);
 
 
 
               --签报
               insert into TEMP_NUMBER20
-
-select id,subject,doc_mark, issuer,send_department,pack_date,val,create_time,year,EDOC_TYPE,org from (
+                 select id,subject,doc_mark,issuer,send_department,pack_date,val,create_time,year,edoc_type,org from (
                 select A.id,subject,doc_mark, issuer,A.send_department,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,'' org
                 from edoc_summary A, (
-                SELECT  zall.* FROM  (select * from CTP_CONTENT_ALL where content is not null  and CONTENT_TYPE=10 ) zall
-                ) b, org_member c, (select CA.OBJECT_ID,DR.CREATE_USER_ID from CTP_AFFAIR ca,DOC_RESOURCES dr where ca.id=DR.SOURCE_ID) d, ORG_UNIT e
-                where A.has_archive = 1
+                SELECT  zall.* FROM  (select * from TEMP_NUMBER40 where CONTENT_TYPE in (10,30) ) zall
+                ) b where A.has_archive = 1
                 and a.id = b.MODULE_ID
-                and c.id = d.create_user_id
-                and c.org_department_id = e.id
-                and a.id = d.OBJECT_ID and a.EDOC_TYPE=2 ) cd where  exists (select * from temp_number10 t where t.status='0' and CD.id=t.id) ;
+                 and a.EDOC_TYPE =2) cd where  exists(select * from temp_number10 t where t.status='0' and cd.id=t.id);
         exception
             when others then
                 ROLLBACK;
@@ -93,7 +86,7 @@ select id,subject,doc_mark, issuer,send_department,pack_date,val,create_time,yea
               0 status
               from edoc_summary A
               left join (
-              SELECT  zall.* FROM  (select * from CTP_CONTENT_ALL where content is not null and CONTENT_TYPE=10 ) zall
+              SELECT  zall.* FROM  (select * from TEMP_NUMBER40 where  CONTENT_TYPE IN (10,30) ) zall
               ) B
               on B.MODULE_ID = A.Id and  A.has_archive = 1
               where B.Id is not null ) cd where exists (select * from TEMP_NUMBER10 t where t.status='0' and CD.C_MIDRECID=t.id);
@@ -122,7 +115,7 @@ select id,subject,doc_mark, issuer,send_department,pack_date,val,create_time,yea
               0 status
               from edoc_summary A
               left join (
-              SELECT  zall.* FROM  (select * from CTP_CONTENT_ALL where content is not null and  CONTENT_TYPE=10 ) zall
+              SELECT  zall.* FROM  (select * from TEMP_NUMBER40 where   CONTENT_TYPE IN (10,30) ) zall
               ) B
               on A.Id = B.MODULE_ID and  A.has_archive = 1
               left join ctp_attachment C
