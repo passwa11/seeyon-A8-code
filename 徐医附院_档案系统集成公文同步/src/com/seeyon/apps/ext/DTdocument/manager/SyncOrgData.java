@@ -125,24 +125,24 @@ public class SyncOrgData {
             String syear = Integer.toString(localDate.getYear());
             String p = classPath.substring(0, classPath.indexOf(syear));
 //            linux
-//            Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
-//            perms.add(PosixFilePermission.OWNER_READ);//设置所有者的读取权限
-//            perms.add(PosixFilePermission.OWNER_WRITE);//设置所有者的写权限
-//            perms.add(PosixFilePermission.OWNER_EXECUTE);//设置所有者的执行权限
-//            perms.add(PosixFilePermission.GROUP_READ);//设置组的读取权限
-//            perms.add(PosixFilePermission.GROUP_EXECUTE);//设置组的读取权限
-//            perms.add(PosixFilePermission.OTHERS_READ);//设置其他的读取权限
-//            perms.add(PosixFilePermission.OTHERS_EXECUTE);//设置其他的读取权限
+            Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
+            perms.add(PosixFilePermission.OWNER_READ);//设置所有者的读取权限
+            perms.add(PosixFilePermission.OWNER_WRITE);//设置所有者的写权限
+            perms.add(PosixFilePermission.OWNER_EXECUTE);//设置所有者的执行权限
+            perms.add(PosixFilePermission.GROUP_READ);//设置组的读取权限
+            perms.add(PosixFilePermission.GROUP_EXECUTE);//设置组的读取权限
+            perms.add(PosixFilePermission.OTHERS_READ);//设置其他的读取权限
+            perms.add(PosixFilePermission.OTHERS_EXECUTE);//设置其他的读取权限
             String insertSql = "insert into TEMP_NUMBER30(ID,C_MIDRECID,C_FILETITLE,C_FTPFILEPATH,C_TYPE,I_SIZE,META_TYPE,STATUS) values(?,?,?,?,?,?,?,?)";
             while (rs.next()) {
                 htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("id")));
                 sPath = p + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + "";
                 File f = new File(sPath);
                 //linux设置文件和文件夹的权限
-//                Path pathParent = Paths.get(f.getParentFile().getAbsolutePath());
-//                Path pathDest = Paths.get(f.getAbsolutePath());
-//                Files.setPosixFilePermissions(pathParent, perms);//修改文件夹路径的权限
-//                Files.setPosixFilePermissions(pathDest, perms);//修改图片文件的权限
+                Path pathParent = Paths.get(f.getParentFile().getAbsolutePath());
+                Path pathDest = Paths.get(f.getAbsolutePath());
+                Files.setPosixFilePermissions(pathParent, perms);//修改文件夹路径的权限
+                Files.setPosixFilePermissions(pathDest, perms);//修改图片文件的权限
 
                 File parentfile = f.getParentFile();
                 if (!parentfile.exists()) {
@@ -236,7 +236,7 @@ public class SyncOrgData {
             resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
                 reader = resultSet.getCharacterStream("content");
-                if(reader !=null){
+                if (reader != null) {
                     while ((i = reader.read(buffer)) != -1) {
                         sb.append(new String(buffer, 0, i));
                     }
