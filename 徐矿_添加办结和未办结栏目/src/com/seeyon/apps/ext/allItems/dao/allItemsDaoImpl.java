@@ -67,11 +67,14 @@ public class allItemsDaoImpl implements allItemsDao {
         sql.append("select distinct subject,object_id,sender_id,(select name from ORG_MEMBER where id=sender_id) send_name,create_date,");
         sql.append("MEMBER_ID,(select name from ORG_MEMBER where id=MEMBER_ID) member_name  ,PRE_APPROVER,(select name from ORG_MEMBER where id=PRE_APPROVER) PRE_name  from (");
         sql.append("select * from (");
-        sql.append("select ca.* from (select * from COL_SUMMARY where 1=1 and finish_date is null ) cs LEFT JOIN  (select * from CTP_AFFAIR where state =4) ca on cs.id=CA.object_id");
+        sql.append("select a.* from (select ca.* from (select * from COL_SUMMARY where 1=1 and finish_date is null ) cs ,  (select * from CTP_AFFAIR where state =4) ca where cs.id=CA.object_id) a");
+        sql.append("where not exists( select * from (");
+        sql.append("select ca.* from (select * from COL_SUMMARY where 1=1 and finish_date is null ) cs ,  (select * from CTP_AFFAIR where state =4) ca where cs.id=CA.object_id) b where ");
+        sql.append("b.object_id =a.object_id and b.complete_time >a.complete_time) ");
+        sql.append(") s where 1=1 ");
         if (templetIds != null && !templetIds.equals("null") && !templetIds.equals("")) {
-            sql.append(" and cs.TEMPLETE_ID='" + templetIds + "'");
+            sql.append(" and s.TEMPLETE_ID='" + templetIds + "'");
         }
-        sql.append(") s ");
         sql.append(") ORDER BY create_date desc");
         sql.append(") sup LEFT JOIN ");
         sql.append("(select max(COMPLETE_TIME) complete_time,max(id) id,object_id from CTP_AFFAIR where COMPLETE_TIME is not null GROUP BY object_id) cac on sup.object_id=cac.object_id");
