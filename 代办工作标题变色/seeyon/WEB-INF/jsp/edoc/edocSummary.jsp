@@ -1247,7 +1247,7 @@ var openFrom= "${param.openFrom}";
 									<c:if test="${canEditAtt }">
 									document.getElementById("attachmentTrContent").style.display='';
 									</c:if>
-									//-->
+									-->
 									</script>
 										</span>
 
