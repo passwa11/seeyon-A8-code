@@ -35,13 +35,15 @@
                                             {{# } }}
                                             {{# } }}
                                             <!-- 标题 -->
-                                                {{# if(flag=="primary"){}}
+                                       <!--         {{# if(flag=="primary"){}}
                                             <span class="titleText">{{ _cellContentHTML }} </span>
                                                 {{#}else if(flag=="yellow") {}}
                                             <span class="titleText" style="color: #f8d714">{{ _cellContentHTML }} </span>
                                                 {{#}else if(flag=="red") {}}
                                             <span class="titleText" style="color: #ff0024">{{ _cellContentHTML }} </span>
-                                                {{#}}}
+                                                {{#}}}-->
+
+                                            <span class="titleText">{{ _cellContentHTML }} </span>
 
                                             <!-- 正文类型 -->
                                             {{# if(_currentRowColumn.extClasses!=null){ }}
@@ -133,7 +135,7 @@
                         {{# var reg = /<(\S*?)[^>]*>/ig; var titleText = _thisRowColumn.alt != null ? _thisRowColumn.alt.replace(reg,"") : _thisRowColumn.cellContentHTML.replace(reg,""); }}
                         <td class="variableColumn columnRowDiv" title="{{ titleText }}" {{# if(j==1){ }} style="padding-left:5px;"{{# } }}><!--其它列-->
                             {{# var _thisHandler = _thisRowColumn.handler; if(_thisHandler!=null){ }}
-                            pppp<a
+                            <a
                                     {{# if(_thisHandler.click != undefined && _thisHandler.click != null){ }} onclick="javascript:{{ _thisHandler.click.name }}('{{ _thisHandler.click.parameter }}','{{ _thisRowColumn.openType }}')" {{# } }}
                                     {{# if(_thisRowColumn.app==6){ }} class="replyCard" id="replyCard{{ d._entityId }}_{{ _thisRowColumn.id }}" objectid="{{ _thisRowColumn.id }}"{{# } }}
                                     {{# if(_thisHandler.mouseover != undefined && _thisHandler.mouseover != null){ }} onmouseenter="javascript:vPortal.sectionHandler.multiRowVariableColumnColTemplete.{{ _thisHandler.mouseover.name }}('{{ _thisRowColumn.id }}','replyCard{{ d._entityId }}_{{ _thisRowColumn.id }}','{{ d._entityId }}')" {{# } }}
