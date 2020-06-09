@@ -10,7 +10,7 @@ public class ReadConfigTools {
     private Properties properties;
 
     public ReadConfigTools() {
-        InputStream inputStream = ReadConfigTools.class.getClassLoader().getResourceAsStream("xzykConf/xzykPlugin.properties");
+        InputStream inputStream = ReadConfigTools.class.getClassLoader().getResourceAsStream("config/config.properties");
 
         this.properties = new Properties();
         try {

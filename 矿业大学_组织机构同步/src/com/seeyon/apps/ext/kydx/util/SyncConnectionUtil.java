@@ -40,11 +40,10 @@ public class SyncConnectionUtil {
      * @return
      */
     public static Connection getMidConnection() {
-        String mid = "xzyk.midDataLink.";
-        String driverName = configTools.getString(mid.concat("driver"));
-        String url = configTools.getString(mid.concat("url"));
-        String username = configTools.getString(mid.concat("username"));
-        String password = configTools.getString(mid.concat("password"));
+        String driverName = configTools.getString("midDataLink.driver");
+        String url = configTools.getString("midDataLink.url");
+        String username = configTools.getString("midDataLink.username");
+        String password = configTools.getString("midDataLink.password");
         Connection connection = null;
         try {
             Class.forName(driverName);
