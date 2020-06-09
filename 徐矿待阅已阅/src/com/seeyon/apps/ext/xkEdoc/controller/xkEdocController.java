@@ -114,16 +114,16 @@ public class xkEdocController extends BaseController {
         }
         EdocSummary summary = edocManager.getEdocSummaryById(summaryId, true);
         User user = AppContext.getCurrentUser();
-        long memberId=user.getId();
-        List<XkjtLeaderDaiYue> daiYues=xkjtSummaryAttManager.queryDaiyueByEdocIdAndLeaderId(memberId,summaryId);
+        long memberId = user.getId();
+        List<XkjtLeaderDaiYue> daiYues = xkjtSummaryAttManager.queryDaiyueByEdocIdAndLeaderId(memberId, summaryId);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String createTime = simpleDateFormat.format(summary.getCreateTime());
         mav.addObject("summary", summary);
         mav.addObject("createTime", createTime);
-        if(daiYues.size()>0){
-            Long daiYueId=daiYues.get(0).getId();
+        if (daiYues.size() > 0) {
+            Long daiYueId = daiYues.get(0).getId();
             mav.addObject("daiYueId", daiYueId);
-        }else{
+        } else {
             mav.addObject("daiYueId", "");
         }
 
@@ -201,57 +201,57 @@ public class xkEdocController extends BaseController {
 
             String hostFileUrl = "";
             if (null != isQuickSend && !"".equals(isQuickSend)) {
-                if (("true").equals(isQuickSend)) {
-                    List<Map> listMap = xkjtSummaryAttManager.queryHostFile(summaryId);
-                    if (listMap.size() > 0) {
-                        for (Map map : listMap) {
-                            BigDecimal bigDecimal = (BigDecimal) map.get("attachment_id");
-                            hostFileUrl = bigDecimal.toString();
-                        }
-                    }
-                    for (Attachment attachment : attachmentVOs) {
-                        String fileUrl = Long.toString(attachment.getFileUrl());
-                        AttachmentEx attachmentEx = new AttachmentEx();
-                        attachmentEx.setFilepath(Long.toString(attachment.getFileUrl()));
-                        attachmentEx.setCreatedate(attachment.getCreatedate());
-                        attachmentEx.setFileUrl(attachment.getFileUrl());
-                        attachmentEx.setFilename(attachment.getFilename());
-                        attachmentEx.setSize(attachment.getSize());
-                        if (!hostFileUrl.equals(fileUrl)) {
-                            list.add(attachmentEx);
-                        } else {
-                            mainList.add(attachmentEx);
-                        }
-                    }
-                } else {
-
-                    for (Attachment attachment : attachmentVOs) {
-                        String fileUrl = Long.toString(attachment.getFileUrl());
-                        AttachmentEx attachmentEx = new AttachmentEx();
-                        attachmentEx.setFilepath(Long.toString(attachment.getFileUrl()));
-                        attachmentEx.setCreatedate(attachment.getCreatedate());
-                        attachmentEx.setFileUrl(attachment.getFileUrl());
-                        attachmentEx.setFilename(attachment.getFilename());
-                        attachmentEx.setSize(attachment.getSize());
-                        list.add(attachmentEx);
-                    }
-                    String fileName = edocSummary.getSubject() + ".pdf";
-                    Set<EdocBody> edocBodies = edocSummary.getEdocBodies();
-                    Iterator<EdocBody> it = edocBodies.iterator();
-                    EdocBody edocBody = null;
-                    while (it.hasNext()) {
-                        edocBody = it.next();
-                        if (edocBody.getContentType().equals("Pdf")) {
-                            AttachmentEx attachmentEx = new AttachmentEx();
-                            attachmentEx.setFilepath(edocBody.getContent());
-                            attachmentEx.setCreatedate(edocBody.getCreateTime());
-                            attachmentEx.setFileUrl(Long.parseLong(edocBody.getContent()));
-                            attachmentEx.setFilename(fileName);
-                            attachmentEx.setSize(0l);
-                            mainList.add(attachmentEx);
-                        }
+//                if (("true").equals(isQuickSend)) {
+                List<Map> listMap = xkjtSummaryAttManager.queryHostFile(summaryId);
+                if (listMap.size() > 0) {
+                    for (Map map : listMap) {
+                        BigDecimal bigDecimal = (BigDecimal) map.get("attachment_id");
+                        hostFileUrl = bigDecimal.toString();
                     }
                 }
+                for (Attachment attachment : attachmentVOs) {
+                    String fileUrl = Long.toString(attachment.getFileUrl());
+                    AttachmentEx attachmentEx = new AttachmentEx();
+                    attachmentEx.setFilepath(Long.toString(attachment.getFileUrl()));
+                    attachmentEx.setCreatedate(attachment.getCreatedate());
+                    attachmentEx.setFileUrl(attachment.getFileUrl());
+                    attachmentEx.setFilename(attachment.getFilename());
+                    attachmentEx.setSize(attachment.getSize());
+                    if (!hostFileUrl.equals(fileUrl)) {
+                        list.add(attachmentEx);
+                    } else {
+                        mainList.add(attachmentEx);
+                    }
+                }
+//                } else {
+//
+//                    for (Attachment attachment : attachmentVOs) {
+//                        String fileUrl = Long.toString(attachment.getFileUrl());
+//                        AttachmentEx attachmentEx = new AttachmentEx();
+//                        attachmentEx.setFilepath(Long.toString(attachment.getFileUrl()));
+//                        attachmentEx.setCreatedate(attachment.getCreatedate());
+//                        attachmentEx.setFileUrl(attachment.getFileUrl());
+//                        attachmentEx.setFilename(attachment.getFilename());
+//                        attachmentEx.setSize(attachment.getSize());
+//                        list.add(attachmentEx);
+//                    }
+//                    String fileName = edocSummary.getSubject() + ".pdf";
+//                    Set<EdocBody> edocBodies = edocSummary.getEdocBodies();
+//                    Iterator<EdocBody> it = edocBodies.iterator();
+//                    EdocBody edocBody = null;
+//                    while (it.hasNext()) {
+//                        edocBody = it.next();
+//                        if (edocBody.getContentType().equals("Pdf")) {
+//                            AttachmentEx attachmentEx = new AttachmentEx();
+//                            attachmentEx.setFilepath(edocBody.getContent());
+//                            attachmentEx.setCreatedate(edocBody.getCreateTime());
+//                            attachmentEx.setFileUrl(Long.parseLong(edocBody.getContent()));
+//                            attachmentEx.setFilename(fileName);
+//                            attachmentEx.setSize(0l);
+//                            mainList.add(attachmentEx);
+//                        }
+//                    }
+//                }
             }
 
             Map<String, Object> map = new HashMap<>();
