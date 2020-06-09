@@ -16,7 +16,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import www.seeyon.com.utils.FileUtil;
 
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -125,24 +130,26 @@ public class SyncOrgData {
             String syear = Integer.toString(localDate.getYear());
             String p = classPath.substring(0, classPath.indexOf(syear));
 //            linux
-            Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
-            perms.add(PosixFilePermission.OWNER_READ);//设置所有者的读取权限
-            perms.add(PosixFilePermission.OWNER_WRITE);//设置所有者的写权限
-            perms.add(PosixFilePermission.OWNER_EXECUTE);//设置所有者的执行权限
-            perms.add(PosixFilePermission.GROUP_READ);//设置组的读取权限
-            perms.add(PosixFilePermission.GROUP_EXECUTE);//设置组的读取权限
-            perms.add(PosixFilePermission.OTHERS_READ);//设置其他的读取权限
-            perms.add(PosixFilePermission.OTHERS_EXECUTE);//设置其他的读取权限
+//            Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
+//            perms.add(PosixFilePermission.OWNER_READ);//设置所有者的读取权限
+//            perms.add(PosixFilePermission.OWNER_WRITE);//设置所有者的写权限
+//            perms.add(PosixFilePermission.OWNER_EXECUTE);//设置所有者的执行权限
+//            perms.add(PosixFilePermission.GROUP_READ);//设置组的读取权限
+//            perms.add(PosixFilePermission.GROUP_EXECUTE);//设置组的读取权限
+//            perms.add(PosixFilePermission.OTHERS_READ);//设置其他的读取权限
+//            perms.add(PosixFilePermission.OTHERS_EXECUTE);//设置其他的读取权限
             String insertSql = "insert into TEMP_NUMBER30(ID,C_MIDRECID,C_FILETITLE,C_FTPFILEPATH,C_TYPE,I_SIZE,META_TYPE,STATUS) values(?,?,?,?,?,?,?,?)";
             while (rs.next()) {
                 htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("id")));
+                Transformer transformer = tFactory.newTransformer(new StreamSource(new StringReader(htmlContent[1])));
+
                 sPath = p + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + "";
                 File f = new File(sPath);
                 //linux设置文件和文件夹的权限
-                Path pathParent = Paths.get(f.getParentFile().getAbsolutePath());
-                Path pathDest = Paths.get(f.getAbsolutePath());
-                Files.setPosixFilePermissions(pathParent, perms);//修改文件夹路径的权限
-                Files.setPosixFilePermissions(pathDest, perms);//修改图片文件的权限
+//                Path pathParent = Paths.get(f.getParentFile().getAbsolutePath());
+//                Path pathDest = Paths.get(f.getAbsolutePath());
+//                Files.setPosixFilePermissions(pathParent, perms);//修改文件夹路径的权限
+//                Files.setPosixFilePermissions(pathDest, perms);//修改图片文件的权限
 
                 File parentfile = f.getParentFile();
                 if (!parentfile.exists()) {
@@ -152,16 +159,18 @@ public class SyncOrgData {
                 if (!f.exists()) {
                     f.createNewFile();
                 }
-                FileOutputStream fos = null;
-                try {
-                    fos = new FileOutputStream(f);
-                    String msg = htmlContent[1];
-                    fos.write(msg.getBytes());
-                } catch (IOException e) {
-                    logger.info("向文件中写入内容出错了:" + e.getMessage());
-                } finally {
-                    fos.close();
-                }
+//                FileOutputStream fos = null;
+//                try {
+//                    fos = new FileOutputStream(f);
+//                    String msg = htmlContent[1];
+//                    fos.write(msg.getBytes());
+//                } catch (IOException e) {
+//                    logger.info("向文件中写入内容出错了:" + e.getMessage());
+//                } finally {
+//                    fos.close();
+//                }
+                transformer.transform(new StreamSource(new StringReader(htmlContent[0])), new StreamResult(new OutputStreamWriter(new FileOutputStream(sPath), "GBK")));
+
 
                 if (type.equals("4")) {
                     LocalDate date = LocalDate.now();
@@ -202,8 +211,10 @@ public class SyncOrgData {
                 }
 
             }
-        } catch (SQLException | BusinessException | ServiceException | IOException sbsi) {
+        } catch (SQLException | BusinessException | ServiceException | IOException | TransformerConfigurationException sbsi) {
             logger.info("同步公文sql出错了：" + sbsi.getMessage());
+        } catch (TransformerException e) {
+            e.printStackTrace();
         } finally {
             try {
                 if (rs != null) {
