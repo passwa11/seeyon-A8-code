@@ -10,12 +10,12 @@ import java.sql.*;
 /**
  * Created by Administrator on 2019-7-29.
  */
-public class SyncConnectionUtil {
-    private static final Log log = LogFactory.getLog(SyncConnectionUtil.class);
+public class SyncConnectionInfoUtil {
+    private static final Log log = LogFactory.getLog(SyncConnectionInfoUtil.class);
 
     private static ReadConfigTools configTools = new ReadConfigTools();
 
-    public SyncConnectionUtil() {
+    public SyncConnectionInfoUtil() {
     }
 
     /**
