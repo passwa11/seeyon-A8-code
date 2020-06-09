@@ -23,10 +23,10 @@ public class SyncConnectionInfoUtil {
      *
      * @return
      */
-    public static CTPRestClient getOaRest() {
-        String restUrl = configTools.getString("xzyk.restInfo.url");
-        String restUser = configTools.getString("xzyk.restInfo.username");
-        String restPwd = configTools.getString("xzyk.restInfo.password");
+    public static CTPRestClient getOARestInfo() {
+        String restUrl = configTools.getString("restInfo.url");
+        String restUser = configTools.getString("restInfo.username");
+        String restPwd = configTools.getString("restInfo.password");
         CTPServiceClientManager clientManager = CTPServiceClientManager.getInstance(restUrl);
         CTPRestClient restClient = clientManager.getRestClient();
         boolean ltFlag = restClient.authenticate(restUser, restPwd);
