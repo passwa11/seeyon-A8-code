@@ -83,10 +83,17 @@ public class SyncConnectionInfoUtil {
         }
     }
 
-    public static void closePrepareStatement(PreparedStatement ps) {
+    public static void closePrepareStatement(PreparedStatement ps, Statement statement) {
         if (null != ps) {
             try {
                 ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (null != statement) {
+            try {
+                statement.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
