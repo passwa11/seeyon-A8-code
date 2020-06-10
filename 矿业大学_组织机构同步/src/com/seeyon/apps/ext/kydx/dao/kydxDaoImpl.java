@@ -33,7 +33,7 @@ public class kydxDaoImpl implements kydxDao {
             e.printStackTrace();
         } finally {
             SyncConnectionInfoUtil.closeResultSet(rs);
-            SyncConnectionInfoUtil.closePrepareStatement(ps);
+            SyncConnectionInfoUtil.closePrepareStatement(ps, null);
             SyncConnectionInfoUtil.closeConnection(connection);
         }
 
