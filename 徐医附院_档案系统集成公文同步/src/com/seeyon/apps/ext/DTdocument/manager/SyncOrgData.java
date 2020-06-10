@@ -170,13 +170,19 @@ public class SyncOrgData {
                 FileOutputStream fos = null;
                 try {
                     fos = new FileOutputStream(f);
-                    String msg = htmlContent[1] +" "+ opinion;
+                    String msg = htmlContent[1] + " " + opinion;
                     fos.write(msg.getBytes());
                 } catch (IOException e) {
                     e.printStackTrace();
                     logger.info("向文件中写入内容出错了:" + e.getMessage());
                 } finally {
                     fos.close();
+                    if (null != opinionSet) {
+                        opinionSet.close();
+                    }
+                    if (null != opinionPs) {
+                        opinionPs.close();
+                    }
                 }
 
                 if (type.equals("4")) {
@@ -242,7 +248,6 @@ public class SyncOrgData {
     }
 
     public String getJsString(ResultSet set) throws SQLException {
-        String opinionSql = "select case attribute when 2 then '【'||'同意'||'】' when  3 then '【'||'不同意'||'】' else '' end attribute,policy,department_name,create_time,content,(select name from org_member where id= s.create_user_id) create_user_id from (select * from edoc_opinion where edoc_id=?) s";
         StringBuffer sb = new StringBuffer();
         sb.append("<script type=\"text/javascript\">");
         while (set.next()) {
