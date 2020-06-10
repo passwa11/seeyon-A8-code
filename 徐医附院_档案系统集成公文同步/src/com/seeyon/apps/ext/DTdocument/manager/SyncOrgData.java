@@ -142,6 +142,7 @@ public class SyncOrgData {
             String opinionSql = "select case attribute when 2 then '【'||'同意'||'】' when  3 then '【'||'不同意'||'】' else '' end attribute,policy,department_name,create_time,content,(select name from org_member where id= s.create_user_id) create_user_id from (select * from edoc_opinion where edoc_id=?) s";
             ResultSet opinionSet = null;
             PreparedStatement opinionPs = null;
+
             while (rs.next()) {
                 opinionPs = connection.prepareStatement(opinionSql);
                 opinionPs.setString(1, rs.getString("edocSummaryId"));
