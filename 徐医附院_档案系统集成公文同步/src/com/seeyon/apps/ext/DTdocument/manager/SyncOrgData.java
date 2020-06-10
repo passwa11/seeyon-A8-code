@@ -140,7 +140,8 @@ public class SyncOrgData {
 //            perms.add(PosixFilePermission.OTHERS_EXECUTE);//设置其他的读取权限
             String insertSql = "insert into TEMP_NUMBER30(ID,C_MIDRECID,C_FILETITLE,C_FTPFILEPATH,C_TYPE,I_SIZE,META_TYPE,STATUS) values(?,?,?,?,?,?,?,?)";
             while (rs.next()) {
-                htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("id")));
+                htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("edocSummaryId")));
+//                htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("id")));
                 Transformer transformer = tFactory.newTransformer(new StreamSource(new StringReader(htmlContent[1])));
 
                 sPath = p + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + "";
