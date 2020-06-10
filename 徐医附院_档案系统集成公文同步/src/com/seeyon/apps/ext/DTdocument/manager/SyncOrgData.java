@@ -140,9 +140,10 @@ public class SyncOrgData {
 //            perms.add(PosixFilePermission.OTHERS_EXECUTE);//设置其他的读取权限
             String insertSql = "insert into TEMP_NUMBER30(ID,C_MIDRECID,C_FILETITLE,C_FTPFILEPATH,C_TYPE,I_SIZE,META_TYPE,STATUS) values(?,?,?,?,?,?,?,?)";
             while (rs.next()) {
-                htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("edocSummaryId")));
-//                htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("id")));
-                Transformer transformer = tFactory.newTransformer(new StreamSource(new StringReader(htmlContent[1])));
+//                String id=rs.getString("edocSummaryId");
+//                htmlContent = df.exportOfflineEdocModel(Long.parseLong(id));
+                htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("id")));
+//                Transformer transformer = tFactory.newTransformer(new StreamSource(new StringReader(htmlContent[1])));
 
                 sPath = p + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + "";
                 File f = new File(sPath);
@@ -160,61 +161,63 @@ public class SyncOrgData {
                 if (!f.exists()) {
                     f.createNewFile();
                 }
-//                FileOutputStream fos = null;
-//                try {
-//                    fos = new FileOutputStream(f);
-//                    String msg = htmlContent[1];
-//                    fos.write(msg.getBytes());
-//                } catch (IOException e) {
-//                    logger.info("向文件中写入内容出错了:" + e.getMessage());
-//                } finally {
-//                    fos.close();
-//                }
-                transformer.transform(new StreamSource(new StringReader(htmlContent[0])), new StreamResult(new OutputStreamWriter(new FileOutputStream(sPath), "GBK")));
-
-
-                if (type.equals("4")) {
-                    LocalDate date = LocalDate.now();
-                    String prefix = date.getYear() + "";
-                    //公文标椎正文  标椎正文是大文本数据  所以要先创建一个正文的文件，用来存正文内容
-                    p = classPath.substring(0, classPath.indexOf(syear));
-                    String sPath2 = p + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + prefix + "";
-                    File f2 = new File(sPath2);
-
-                    File parentfile2 = f2.getParentFile();
-                    if (!parentfile2.exists()) {
-                        parentfile2.mkdirs();
-                    }
-
-                    if (!f2.exists()) {
-                        f2.createNewFile();
-                    }
-                    String content = getZwData(connection, rs.getString("edocSummaryId"));
-                    FileOutputStream fos2 = null;
-                    try {
-                        fos2 = new FileOutputStream(f2);
-                        fos2.write(content.getBytes("UTF-8"));
-                    } catch (IOException e) {
-                        logger.info("向文件中写入内容出错了:" + e.getMessage());
-                    } finally {
-                        fos2.close();
-                    }
-                    ps = connection.prepareStatement(insertSql);
-                    ps.setString(1, rs.getString("edocSummaryId") + prefix);
-                    ps.setString(2, rs.getString("edocSummaryId"));
-                    ps.setString(3, rs.getString("edocSummaryId") + prefix + ".html");
-                    ps.setString(4, sPath2);
-                    ps.setString(5, "正文");
-                    ps.setString(6, f.length() + "");
-                    ps.setString(7, ".html");
-                    ps.setString(8, "0");
-                    ps.executeUpdate();
+                FileOutputStream fos = null;
+                try {
+                    fos = new FileOutputStream(f);
+                    String msg = htmlContent[1];
+                    fos.write(msg.getBytes());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    logger.info("向文件中写入内容出错了:" + e.getMessage());
+                } finally {
+                    fos.close();
                 }
+//                transformer.transform(new StreamSource(new StringReader(htmlContent[0])), new StreamResult(new OutputStreamWriter(new FileOutputStream(sPath), "GBK")));
+
+
+//                if (type.equals("4")) {
+//                    LocalDate date = LocalDate.now();
+//                    String prefix = date.getYear() + "";
+//                    //公文标椎正文  标椎正文是大文本数据  所以要先创建一个正文的文件，用来存正文内容
+//                    p = classPath.substring(0, classPath.indexOf(syear));
+//                    String sPath2 = p + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + prefix + "";
+//                    File f2 = new File(sPath2);
+//
+//                    File parentfile2 = f2.getParentFile();
+//                    if (!parentfile2.exists()) {
+//                        parentfile2.mkdirs();
+//                    }
+//
+//                    if (!f2.exists()) {
+//                        f2.createNewFile();
+//                    }
+//                    String content = getZwData(connection, rs.getString("edocSummaryId"));
+//                    FileOutputStream fos2 = null;
+//                    try {
+//                        fos2 = new FileOutputStream(f2);
+//                        fos2.write(content.getBytes("UTF-8"));
+//                    } catch (IOException e) {
+//                        logger.info("向文件中写入内容出错了:" + e.getMessage());
+//                    } finally {
+//                        fos2.close();
+//                    }
+//                    ps = connection.prepareStatement(insertSql);
+//                    ps.setString(1, rs.getString("edocSummaryId") + prefix);
+//                    ps.setString(2, rs.getString("edocSummaryId"));
+//                    ps.setString(3, rs.getString("edocSummaryId") + prefix + ".html");
+//                    ps.setString(4, sPath2);
+//                    ps.setString(5, "正文");
+//                    ps.setString(6, f.length() + "");
+//                    ps.setString(7, ".html");
+//                    ps.setString(8, "0");
+//                    ps.executeUpdate();
+//                }
 
             }
-        } catch (SQLException | BusinessException | ServiceException | IOException | TransformerConfigurationException sbsi) {
+        } catch (SQLException | BusinessException | ServiceException | IOException sbsi) {
+            sbsi.printStackTrace();
             logger.info("同步公文sql出错了：" + sbsi.getMessage());
-        } catch (TransformerException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             try {
