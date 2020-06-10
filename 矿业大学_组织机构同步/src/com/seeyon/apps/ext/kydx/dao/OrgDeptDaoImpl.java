@@ -70,7 +70,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
         CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
         Connection connection = null;
         PreparedStatement ps = null;
-        String insertSql = "insert into M_ORG_UNIT(id,code,name,uint,sort_id) values (?,?,?,?,?)";
+        String insertSql = "insert into m_org_dept(id, dept_name, dept_code, dept_parent_id, sort_id) values (?,?,?,?,?)";
         try {
             if (null != list && list.size() > 0) {
                 connection = SyncConnectionInfoUtil.getMidConnection();
@@ -100,8 +100,9 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                                 JSONObject ent = json.getJSONArray("successMsgs").getJSONObject(0).getJSONObject("ent");
                                 String deptid = ent.getString("id");
                                 ps.setString(1, deptid != null && !"".equals(deptid) ? deptid : "");
-                                ps.setString(2, dept.getDeptCode() != null && !"".equals(dept.getDeptCode()) ? dept.getDeptCode() : "");
-                                ps.setString(3, dept.getDeptName() != null && !"".equals(dept.getDeptName()) ? dept.getDeptName() : "");
+                                ps.setString(2, dept.getDeptName() != null && !"".equals(dept.getDeptName()) ? dept.getDeptName() : "");
+                                ps.setString(3, dept.getDeptCode() != null && !"".equals(dept.getDeptCode()) ? dept.getDeptCode() : "");
+
                                 boolean flag = dept.getSuperior() != null && !"".equals(dept.getSuperior()) && !dept.getSuperior().equals(dept.getDeptParentId());
                                 ps.setString(4, flag ? dept.getSuperior() : "");
                                 String sortId = ent.getString("sortId");
