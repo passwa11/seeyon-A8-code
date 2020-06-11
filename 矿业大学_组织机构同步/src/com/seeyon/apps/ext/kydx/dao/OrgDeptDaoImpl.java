@@ -78,9 +78,9 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                             }
 
                             if (null != dept.getDeptParentId() && !"".equals(dept.getDeptParentId())) {
-                                updateSql.append(" uint = '" + dept.getDeptParentId() + "' ");
+                                updateSql.append(" unit = '" + dept.getDeptParentId() + "' ");
                             } else {
-                                updateSql.append(" uint = '' ");
+                                updateSql.append(" unit = '' ");
                             }
                             updateSql.append(" where id = '" + dept.getId() + "' ");
                             SyncConnectionInfoUtil.insertResult(updateSql.toString());
