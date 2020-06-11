@@ -1,5 +1,7 @@
 package com.seeyon.apps.ext.kydx.po;
 
+import java.util.List;
+
 /**
  * 部门
  */
@@ -12,6 +14,26 @@ public class OrgDept {
     private String deptEnable;
     private String deptParentId;
     private String orgAccountId;
+
+    private String parentId;
+
+    private List<OrgDept> list;
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    public List<OrgDept> getList() {
+        return list;
+    }
+
+    public void setList(List<OrgDept> list) {
+        this.list = list;
+    }
 
     public String getOrgAccountId() {
         return orgAccountId;

@@ -12,4 +12,6 @@ public interface OrgDeptDao {
 
     List<OrgDept> queryOtherOrgDept();
 
+    void insertOtherOrgDept(List<OrgDept> list);
+
 }

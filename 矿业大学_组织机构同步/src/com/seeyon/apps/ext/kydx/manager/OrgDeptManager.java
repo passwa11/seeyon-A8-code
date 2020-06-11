@@ -7,4 +7,6 @@ import java.util.List;
 public interface OrgDeptManager {
 
     void insertOrgDept();
+
+    void insertOtherOrgDept();
 }

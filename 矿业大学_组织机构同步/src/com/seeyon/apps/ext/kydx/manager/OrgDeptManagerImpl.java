@@ -15,4 +15,10 @@ public class OrgDeptManagerImpl implements OrgDeptManager {
         List<OrgDept> list = deptDao.queryFirstOrgDept();
         deptDao.insertOrgDept(list);
     }
+
+    @Override
+    public void insertOtherOrgDept() {
+        List<OrgDept> list = deptDao.queryOtherOrgDept();
+        deptDao.insertOtherOrgDept(list);
+    }
 }

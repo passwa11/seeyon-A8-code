@@ -22,6 +22,7 @@ public class kydxController extends BaseController {
     public ModelAndView syncData(HttpServletRequest request, HttpServletResponse response) {
         try {
             deptManager.insertOrgDept();
+            deptManager.insertOtherOrgDept();
         } catch (Exception e) {
             e.printStackTrace();
         }

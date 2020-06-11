@@ -3,6 +3,7 @@ package com.seeyon.apps.ext.kydx.dao;
 import com.alibaba.fastjson.JSONArray;
 import com.seeyon.apps.ext.kydx.po.OrgDept;
 import com.seeyon.apps.ext.kydx.util.SyncConnectionInfoUtil;
+import com.seeyon.apps.ext.kydx.util.TreeUtil;
 import com.seeyon.client.CTPRestClient;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
@@ -63,7 +64,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
         CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
         Connection connection = null;
         PreparedStatement ps = null;
-        String insertSql = "insert into m_org_dept(id, name, code, unit, sort_id) values (?,?,?,?,?)";
+        String insertSql = "insert into M_ORG_UNIT(id, name, code, unit, sort_id) values (?,?,?,?,?)";
         try {
             if (null != list && list.size() > 0) {
                 connection = SyncConnectionInfoUtil.getMidConnection();
@@ -134,7 +135,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
     @Override
     public List<OrgDept> queryOtherOrgDept() {
         List<OrgDept> firstDeptList = new ArrayList<>();
-        String sql = "select * from (select id, dept_name, dept_code, dept_description, dept_enable, dept_parent_id,unit_id from third_org_dept where dept_parent_id is not null ) t where not exists (select DEPT_CODE from m_org_dept m where m.DEPT_CODE=t.dept_code ) ";
+        String sql = "select tou.code,tou.name,tou.is_enable,(select m.id from M_ORG_UNIT m where m.code= tou.UNIT) parent,tou.unit from  (select * from THIRD_ORG_UNIT where is_delete <> '1' and unit is not null and unit <>'0' ) tou where  not exists (select * from M_ORG_UNIT m where m.code = tou.code)";
         Connection connection = SyncConnectionInfoUtil.getMidConnection();
         PreparedStatement prep = null;
         ResultSet res = null;
@@ -142,20 +143,15 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
             prep = connection.prepareStatement(sql);
             res = prep.executeQuery();
             OrgDept orgDept = null;
-            String superior = new OrgCommon().getOrgAccountId();
             while (res.next()) {
                 orgDept = new OrgDept();
-                orgDept.setId(res.getString("id"));
-                orgDept.setDeptCode(res.getString("dept_code"));
-                orgDept.setDeptName(res.getString("dept_name"));
-                orgDept.setDeptDescription(res.getString("dept_description"));
-                orgDept.setDeptEnable(res.getString("dept_enable"));
-                orgDept.setDeptParentId(res.getString("dept_parent_id"));
-                if (null != res.getString("dept_parent_id") && !"".equals(res.getString("dept_parent_id"))) {
-                    orgDept.setOrgAccountId(res.getString("dept_parent_id"));
-                } else {
-                    orgDept.setOrgAccountId(new OrgCommon().getOrgAccountId());
-                }
+                orgDept.setDeptCode(res.getString("code"));
+                orgDept.setOrgAccountId(new OrgCommon().getOrgAccountId());
+                orgDept.setDeptName(res.getString("name"));
+                orgDept.setDeptEnable(res.getString("is_enable"));
+                orgDept.setDeptParentId(res.getString("unit"));
+                orgDept.setParentId(res.getString("parent"));
+
                 firstDeptList.add(orgDept);
             }
         } catch (Exception e) {
@@ -168,5 +164,83 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
 
         }
         return firstDeptList;
+    }
+
+    @Override
+    public void insertOtherOrgDept(List<OrgDept> list) {
+        CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
+        Connection connection = null;
+        PreparedStatement ps = null;
+        String insertSql = "insert into M_ORG_UNIT(id,code,name,unit,sort_id) values (?,?,?,?,?)";
+        try {
+            if (null != list && list.size() > 0) {
+                connection = SyncConnectionInfoUtil.getMidConnection();
+                ps = connection.prepareStatement(insertSql);
+                try {
+                    for (int i = 0; i < list.size(); i++) {
+                        List<OrgDept> deptList = queryOtherOrgDept();
+                        if (null != deptList && deptList.size() > 0) {
+                            List<OrgDept> handleList = TreeUtil.getRootList(deptList);
+                            getList(handleList, client, ps);
+                        }
+
+                    }
+                } catch (Exception e) {
+                    log.error("新增部门信息出错了，错误信息：" + e.getMessage());
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            SyncConnectionInfoUtil.closePrepareStatement(ps, null);
+            SyncConnectionInfoUtil.closeConnection(connection);
+        }
+    }
+
+    public void getList(List<OrgDept> list, CTPRestClient client, PreparedStatement ps) throws Exception {
+        for (OrgDept dept : list) {
+            Map<String, Object> dmap = new HashMap<>();
+            dmap.put("orgAccountId", dept.getOrgAccountId());
+            dmap.put("code", dept.getDeptCode());
+            dmap.put("name", dept.getDeptName());
+            dmap.put("enabled", dept.getDeptEnable());
+            dmap.put("superiorName", "矿业大学");
+            String parentId = dept.getParentId();
+            if (parentId != null && !parentId.equals("")) {
+                dmap.put("superior", parentId);
+            } else {
+                dmap.put("superior", dept.getOrgAccountId());
+            }
+            String isExist2 = client.get("/orgDepartment/code/" + dept.getDeptCode(), String.class);
+            JSONArray jsonArray = JSONArray.parseArray(isExist2);
+            if (0 == jsonArray.size()) {
+                JSONObject json = client.post("/orgDepartment", dmap, JSONObject.class);
+                if (null != json) {
+                    if (json.getBoolean("success")) {
+                        JSONObject ent = json.getJSONArray("successMsgs").getJSONObject(0).getJSONObject("ent");
+                        String deptid = ent.getString("id");
+                        ps.setString(1, deptid != null && !"".equals(deptid) ? deptid : "");
+                        ps.setString(2, dept.getDeptCode() != null && !"".equals(dept.getDeptCode()) ? dept.getDeptCode() : "");
+                        ps.setString(3, dept.getDeptName() != null && !"".equals(dept.getDeptName()) ? dept.getDeptName() : "");
+                        boolean flag = dept.getDeptParentId() != null && !"".equals(dept.getDeptParentId()) && !dept.getDeptParentId().equals(dept.getOrgAccountId());
+                        ps.setString(4, flag ? dept.getDeptParentId() : "");
+                        String sortId = ent.getString("sortId");
+                        ps.setString(5, sortId != null && !sortId.equals("") ? sortId : "");
+                        ps.executeUpdate();
+                    }
+                }
+            } else {
+                com.alibaba.fastjson.JSONObject isExist = com.alibaba.fastjson.JSONObject.parseObject(jsonArray.get(0).toString());
+
+                String deptid = isExist.getString("id");
+                ps.setString(1, deptid != null && !"".equals(deptid) ? deptid : "");
+                ps.setString(2, dept.getDeptCode() != null && !"".equals(dept.getDeptCode()) ? dept.getDeptCode() : "");
+                ps.setString(3, isExist.getString("name"));
+                boolean flag = dept.getDeptParentId() != null && !"".equals(dept.getDeptParentId()) && !dept.getDeptParentId().equals(dept.getOrgAccountId());
+                ps.setString(4, "");
+                ps.setString(5, "");
+                ps.executeUpdate();
+            }
+        }
     }
 }
