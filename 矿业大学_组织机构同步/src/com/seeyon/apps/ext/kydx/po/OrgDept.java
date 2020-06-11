@@ -11,14 +11,14 @@ public class OrgDept {
     private String deptDescription;
     private String deptEnable;
     private String deptParentId;
-    private String superior;
+    private String orgAccountId;
 
-    public String getSuperior() {
-        return superior;
+    public String getOrgAccountId() {
+        return orgAccountId;
     }
 
-    public void setSuperior(String superior) {
-        this.superior = superior;
+    public void setOrgAccountId(String orgAccountId) {
+        this.orgAccountId = orgAccountId;
     }
 
     public String getId() {
