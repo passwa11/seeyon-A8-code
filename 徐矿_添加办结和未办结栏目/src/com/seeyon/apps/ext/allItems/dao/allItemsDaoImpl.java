@@ -124,7 +124,7 @@ public class allItemsDaoImpl implements allItemsDao {
         if (map.get("templetIds") != null && !"".equals(map.get("templetIds"))) {
             sql.append(" AND TEMPLETE_ID IN (" + map.get("templetIds") + ")");
         }
-        sql.append(" order by start_date desc");
+        sql.append(" order by FINISH_DATE desc");
         try (JDBCAgent jdbcAgent = new JDBCAgent(true)) {
             jdbcAgent.execute(sql.toString());
             banjieList = jdbcAgent.resultSetToList();
@@ -184,7 +184,7 @@ public class allItemsDaoImpl implements allItemsDao {
         if (templetIds != null && !"".equals(templetIds) && !"null".equals(templetIds)) {
             sql.append(" AND cs.TEMPLETE_ID ='" + templetIds + "'");
         }
-        sql.append(" order by start_date desc ");
+        sql.append(" order by FINISH_DATE desc ");
         JDBCAgent jdbcAgent = new JDBCAgent(true);
         List<Map<String, Object>> banjie = null;
         try {
@@ -237,7 +237,7 @@ public class allItemsDaoImpl implements allItemsDao {
         if (map.get("templetIds") != null && !"".equals(map.get("templetIds"))) {
             sql.append(" AND summary.TEMPLETE_ID IN (" + map.get("templetIds") + ")");
         }
-        sql.append("   ORDER BY summary.CREATE_TIME DESC ");
+        sql.append("   ORDER BY summary.COMPLETE_TIME DESC ");
         try (JDBCAgent jdbcAgent = new JDBCAgent(true)) {
             jdbcAgent.execute(sql.toString());
             banjieList = jdbcAgent.resultSetToList();
@@ -392,7 +392,7 @@ public class allItemsDaoImpl implements allItemsDao {
         if (Strings.isNotBlank(templetIds)) {
             sb.append(" AND summary.TEMPLETE_ID IN (" + templetIds + ")");
         }
-        sb.append("   ORDER BY summary.CREATE_TIME DESC ");
+        sb.append("   ORDER BY summary.COMPLETE_TIME DESC ");
         sb.append(" ) where rownum<20 ");
         List<Object> banjie = new ArrayList<>();
         JDBCAgent jdbcAgent = new JDBCAgent(true);
