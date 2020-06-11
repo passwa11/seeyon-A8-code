@@ -38,6 +38,7 @@ public class allItemsDaoImpl implements allItemsDao {
         if (map.get("sender") != null) {
             sql.append(" AND osup.send_name like '%" + map.get("sender") + "%'");
         }
+        sql.append("  ORDER BY complete_time desc  ");
         List<Map<String, Object>> nobj = null;
         try (JDBCAgent jdbcAgent = new JDBCAgent(true)) {
             jdbcAgent.execute(sql.toString());
@@ -78,7 +79,7 @@ public class allItemsDaoImpl implements allItemsDao {
         sql.append(") ORDER BY create_date desc ");
         sql.append(") sup LEFT JOIN ");
         sql.append("(select max(COMPLETE_TIME) complete_time,max(id) id,object_id from CTP_AFFAIR where COMPLETE_TIME is not null GROUP BY object_id) cac on sup.object_id=cac.object_id ");
-        sql.append(") osup where 1=1 and osup.subject is not null ");
+        sql.append(") osup where 1=1 and osup.subject is not null  ORDER BY complete_time desc ");
         JDBCAgent jdbcAgent = new JDBCAgent(true);
         List<Map<String, Object>> wbj = null;
         try {
