@@ -11,7 +11,7 @@ public class OrgDept {
     private String deptName;
     private String deptCode;
     private String deptDescription;
-    private String deptEnable;
+    private boolean deptEnable = true;
     private String deptParentId;
     private String orgAccountId;
 
@@ -75,11 +75,11 @@ public class OrgDept {
         this.deptDescription = deptDescription;
     }
 
-    public String getDeptEnable() {
+    public boolean isDeptEnable() {
         return deptEnable;
     }
 
-    public void setDeptEnable(String deptEnable) {
+    public void setDeptEnable(boolean deptEnable) {
         this.deptEnable = deptEnable;
     }
 

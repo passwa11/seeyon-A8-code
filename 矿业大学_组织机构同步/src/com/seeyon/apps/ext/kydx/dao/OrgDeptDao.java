@@ -14,4 +14,6 @@ public interface OrgDeptDao {
 
     void insertOtherOrgDept(List<OrgDept> list);
 
+    void updateOrgDept();
+
 }

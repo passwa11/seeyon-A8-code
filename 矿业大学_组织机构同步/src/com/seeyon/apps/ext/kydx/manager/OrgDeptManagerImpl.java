@@ -21,4 +21,9 @@ public class OrgDeptManagerImpl implements OrgDeptManager {
         List<OrgDept> list = deptDao.queryOtherOrgDept();
         deptDao.insertOtherOrgDept(list);
     }
+
+    @Override
+    public void updateOrgDept() {
+        deptDao.updateOrgDept();
+    }
 }

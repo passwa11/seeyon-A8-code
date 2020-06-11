@@ -21,6 +21,84 @@ import java.util.Map;
 public class OrgDeptDaoImpl implements OrgDeptDao {
     private Logger log = LoggerFactory.getLogger(OrgDeptDaoImpl.class);
 
+    @Override
+    public void updateOrgDept() {
+        OrgCommon orgCommon = new OrgCommon();
+        String sql = " select m.id,t.name,t.code,t.unit,(select mo.id from m_org_unit mo where MO.code=t.unit) parentOaId,t.is_enable from (select * from third_org_unit where is_delete <>'1' ) t,m_org_unit m where t.code=m.code and (t.name <> m.name or t.unit <> m.unit)";
+        CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet res = null;
+        try {
+            connection = SyncConnectionInfoUtil.getMidConnection();
+            ps = connection.prepareStatement(sql);
+            res = ps.executeQuery();
+            List<OrgDept> deptList = new ArrayList<>();
+            OrgDept orgDept = null;
+            while (res.next()) {
+                orgDept = new OrgDept();
+                orgDept.setId(res.getString("id"));
+                orgDept.setDeptCode(res.getString("code"));
+                orgDept.setDeptName(res.getString("name"));
+                orgDept.setOrgAccountId(orgCommon.getOrgAccountId());
+                orgDept.setDeptParentId(res.getString("unit") == null ? "" : res.getString("unit"));
+                if (null != res.getString("parentOaId") && !"".equals(res.getString("parentOaId"))) {
+                    orgDept.setParentId(res.getString("parentOaId"));
+                }
+
+                String isEnable = res.getString("is_enable");
+                if (null != isEnable && !"".equals(isEnable)) {
+                    if (isEnable.equals("0")) {
+                        orgDept.setDeptEnable(false);
+                    }
+                }
+                deptList.add(orgDept);
+            }
+            List list = new ArrayList();
+            if (deptList != null && deptList.size() > 0) {
+                for (OrgDept dept : deptList) {
+                    HashMap deptMap = new HashMap();
+                    deptMap.put("id", dept.getId());
+                    deptMap.put("code", dept.getDeptCode());
+                    deptMap.put("name", dept.getDeptName());
+                    deptMap.put("superior", dept.getParentId());
+                    deptMap.put("enabled", dept.isDeptEnable());
+                    list.add(deptMap);
+                    JSONObject deptJson = JSONObject.fromObject(deptMap);
+                    JSONObject json = client.put("/orgDepartment", deptMap, JSONObject.class);
+                    if (null != json) {
+                        if (json.getBoolean("success")) {
+                            JSONObject ent = json.getJSONArray("successMsgs").getJSONObject(0).getJSONObject("ent");
+                            StringBuffer updateSql = new StringBuffer();
+                            updateSql.append("update M_ORG_UNIT set ");
+                            if (null != dept.getDeptName() && !"".equals(dept.getDeptName())) {
+                                updateSql.append(" name = '" + dept.getDeptName() + "',");
+                            } else {
+                                updateSql.append(" name = '',");
+                            }
+
+                            if (null != dept.getDeptParentId() && !"".equals(dept.getDeptParentId())) {
+                                updateSql.append(" uint = '" + dept.getDeptParentId() + "' ");
+                            } else {
+                                updateSql.append(" uint = '' ");
+                            }
+                            updateSql.append(" where id = '" + dept.getId() + "' ");
+                            SyncConnectionInfoUtil.insertResult(updateSql.toString());
+                        }
+                    }
+
+                }
+            }
+
+        } catch (Exception e) {
+            log.error("修改部门信息出错了，错误信息：" + e.getMessage());
+        } finally {
+            SyncConnectionInfoUtil.closeResultSet(res);
+            SyncConnectionInfoUtil.closePrepareStatement(ps, null);
+            SyncConnectionInfoUtil.closeConnection(connection);
+        }
+    }
+
     /**
      * 获取一级部门
      *
@@ -41,7 +119,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                 orgDept = new OrgDept();
                 orgDept.setDeptCode(rs.getString("code"));
                 orgDept.setDeptName(rs.getString("name"));
-                orgDept.setDeptEnable(rs.getString("is_enable"));
+//                orgDept.setDeptEnable(rs.getString("is_enable"));
                 orgDept.setDeptParentId(rs.getString("unit"));
                 orgDept.setOrgAccountId(new OrgCommon().getOrgAccountId());
                 orgDeptList.add(orgDept);
@@ -75,7 +153,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                     dmap.put("orgAccountId", dept.getOrgAccountId());
                     dmap.put("code", dept.getDeptCode());
                     dmap.put("name", dept.getDeptName());
-                    dmap.put("enabled", dept.getDeptEnable());
+                    dmap.put("enabled", dept.isDeptEnable());
                     dmap.put("superiorName", "矿业大学");
                     dmap.put("superior", dept.getOrgAccountId());
 
@@ -148,7 +226,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                 orgDept.setDeptCode(res.getString("code"));
                 orgDept.setOrgAccountId(new OrgCommon().getOrgAccountId());
                 orgDept.setDeptName(res.getString("name"));
-                orgDept.setDeptEnable(res.getString("is_enable"));
+//                orgDept.setDeptEnable(res.getString("is_enable"));
                 orgDept.setDeptParentId(res.getString("unit"));
                 orgDept.setParentId(res.getString("parent"));
 
@@ -203,7 +281,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
             dmap.put("orgAccountId", dept.getOrgAccountId());
             dmap.put("code", dept.getDeptCode());
             dmap.put("name", dept.getDeptName());
-            dmap.put("enabled", dept.getDeptEnable());
+            dmap.put("enabled", dept.isDeptEnable());
             dmap.put("superiorName", "矿业大学");
             String parentId = dept.getParentId();
             if (parentId != null && !parentId.equals("")) {
