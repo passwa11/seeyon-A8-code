@@ -11,6 +11,11 @@ public class OrgDeptManagerImpl implements OrgDeptManager {
     private OrgDeptDao deptDao = new OrgDeptDaoImpl();
 
     @Override
+    public void deleteOrgDept() {
+        deptDao.deleteOrgDept();
+    }
+
+    @Override
     public void insertOrgDept() {
         List<OrgDept> list = deptDao.queryFirstOrgDept();
         deptDao.insertOrgDept(list);

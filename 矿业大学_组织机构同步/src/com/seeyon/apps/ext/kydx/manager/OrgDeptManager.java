@@ -8,4 +8,6 @@ public interface OrgDeptManager {
     void insertOtherOrgDept();
 
     void updateOrgDept();
+
+    void deleteOrgDept();
 }

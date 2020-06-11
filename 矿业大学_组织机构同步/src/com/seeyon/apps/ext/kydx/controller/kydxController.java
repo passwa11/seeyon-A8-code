@@ -26,6 +26,8 @@ public class kydxController extends BaseController {
             deptManager.insertOtherOrgDept();
 
             deptManager.updateOrgDept();
+
+            deptManager.deleteOrgDept();
         } catch (Exception e) {
             e.printStackTrace();
         }
