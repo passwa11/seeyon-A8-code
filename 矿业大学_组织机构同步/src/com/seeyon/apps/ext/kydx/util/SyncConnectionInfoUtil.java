@@ -54,15 +54,13 @@ public class SyncConnectionInfoUtil {
         return connection;
     }
 
-    public static int insertResult(String sql) {
+    public static int insertResult(String sql) throws Exception {
         Connection connection = getMidConnection();
         Statement statement = null;
         int result = 0;
         try {
             statement = connection.createStatement();
             result = statement.executeUpdate(sql);
-        } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             closeStatement(statement);
             closeConnection(connection);

@@ -22,6 +22,56 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
     private Logger log = LoggerFactory.getLogger(OrgDeptDaoImpl.class);
 
     @Override
+    public void deleteOrgDept() {
+        CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet res = null;
+        StringBuffer sb = new StringBuffer();
+        sb.append("delete from M_ORG_UNIT where id in (0");
+        try {
+            connection = SyncConnectionInfoUtil.getMidConnection();
+            //获取需要删除的部门
+            String qSql = "select m.* from M_ORG_UNIT m where not exists (select 1 from third_ORG_UNIT v where v.code=m.code) UNION select m.* from M_ORG_UNIT m ,third_ORG_UNIT t where m.code=t.code and t.is_delete='1'";
+            ps = connection.prepareStatement(qSql);
+            res = ps.executeQuery();
+            List<OrgDept> deptList = new ArrayList<>();
+            OrgDept orgDept = null;
+            while (res.next()) {
+                orgDept = new OrgDept();
+                orgDept.setId(res.getString("id"));
+                deptList.add(orgDept);
+            }
+
+            //执行删除操作
+            if (null != deptList && deptList.size() > 0) {
+                for (OrgDept dept : deptList) {
+                    HashMap deptMap = new HashMap();
+                    deptMap.put("id", dept.getId());
+                    deptMap.put("enabled", false);
+                    JSONObject deptJson = JSONObject.fromObject(deptMap);
+                    JSONObject json = client.put("orgDepartment/" + dept.getId() + "/enabled/false", deptMap, JSONObject.class);
+                    if (null != json) {
+                        if (json.getBoolean("success")) {
+                            sb.append("," + dept.getId());
+                        }
+                    }
+
+                }
+                sb.append(")");
+                ps = connection.prepareStatement(sb.toString());
+                ps.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            SyncConnectionInfoUtil.closeResultSet(res);
+            SyncConnectionInfoUtil.closePrepareStatement(ps, null);
+            SyncConnectionInfoUtil.closeConnection(connection);
+        }
+    }
+
+    @Override
     public void updateOrgDept() {
         OrgCommon orgCommon = new OrgCommon();
         String sql = " select m.id,t.name,t.code,t.unit,(select mo.id from m_org_unit mo where MO.code=t.unit) parentOaId,t.is_enable from (select * from third_org_unit where is_delete <>'1' ) t,m_org_unit m where t.code=m.code and (t.name <> m.name or t.unit <> m.unit)";
