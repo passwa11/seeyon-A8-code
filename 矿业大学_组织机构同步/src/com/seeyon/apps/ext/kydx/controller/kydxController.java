@@ -31,11 +31,11 @@ public class kydxController extends BaseController {
 //
 //            deptManager.updateOrgDept();
 //
-            deptManager.deleteOrgDept();
+//            deptManager.deleteOrgDept();
 
-            levelManager.insertOrgLevel();
+//            levelManager.insertOrgLevel();
 //            levelManager.updateOrgLevel();
-//            levelManager.deleteOrgLevel();
+            levelManager.deleteOrgLevel();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -16,7 +16,7 @@ import java.util.Map;
 public class OrgLevelDaoImpl implements OrgLevelDao {
     @Override
     public List<OrgLevel> queryInsertOrgLevelList() {
-        String sql = "select name,code,description from THIRD_ORG_LEVEL l where not exists (select * from M_ORG_LEVEL m where m.code=l.code) and l.is_enable <>'0' or l.is_delete <>'1'";
+        String sql = "select name,code,description from THIRD_ORG_LEVEL l where not exists (select * from M_ORG_LEVEL m where m.code=l.code) and (l.is_enable <>'0' or l.is_delete <>'1')";
         List<OrgLevel> levelList = new ArrayList<>();
         Connection connection = SyncConnectionInfoUtil.getMidConnection();
         PreparedStatement ps = null;
@@ -89,7 +89,7 @@ public class OrgLevelDaoImpl implements OrgLevelDao {
 
     @Override
     public List<OrgLevel> queryUpdateOrgLevelList() {
-        String sql = "select l.name,l.code,l.description,m.id from (select * from THIRD_ORG_LEVEL where is_enable <>'0' or is_delete <>'1') l,M_ORG_LEVEL m where l.code=m.code and l.name<>m.name or l.code <>m.code or l.description <>m.description";
+        String sql = "select l.name,l.code,l.description,m.id from (select * from THIRD_ORG_LEVEL where is_enable <>'0' or is_delete <>'1') l,M_ORG_LEVEL m where l.code=m.code and (l.name<>m.name or l.code <>m.code or l.description <>m.description)";
         List<OrgLevel> levelList = new ArrayList<>();
         ResultSet rs = null;
         Connection connection = SyncConnectionInfoUtil.getMidConnection();
@@ -176,7 +176,6 @@ public class OrgLevelDaoImpl implements OrgLevelDao {
     @Override
     public void deleteOrglevel(List<OrgLevel> list) {
         CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
-        String sql = "delete from M_ORG_LEVEL where ";
         try {
             if (null != list && list.size() > 0) {
                 Map map = null;
@@ -184,14 +183,15 @@ public class OrgLevelDaoImpl implements OrgLevelDao {
                     map = new HashMap();
                     map.put("id", orgLevel.getLevelid());
                     map.put("enabled", false);
-
-                    JSONObject json = client.put("/orgLevel/" + orgLevel.getLevelid() + "/enabled/false", map, JSONObject.class);
+//                    JSONObject json = client.put("/orgLevel/" + orgLevel.getLevelid() + "/enabled/false", map, JSONObject.class);
+                    JSONObject json = client.delete("/orgLevel/" + orgLevel.getLevelid() , map, JSONObject.class);
+                    String sql = "delete from M_ORG_LEVEL where ";
                     if (null != json) {
                         if (json.getBoolean("success")) {
                             sql = sql.concat("id='" + orgLevel.getLevelid() + "'");
+                            SyncConnectionInfoUtil.insertResult(sql);
                         }
                     }
-                    SyncConnectionInfoUtil.insertResult(sql);
                 }
             }
         } catch (Exception e) {
