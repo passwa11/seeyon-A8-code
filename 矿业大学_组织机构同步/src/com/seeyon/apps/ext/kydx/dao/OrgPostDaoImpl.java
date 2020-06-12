@@ -63,6 +63,7 @@ public class OrgPostDaoImpl implements OrgPostDao {
                     map.put("code", orgPost.getPostcode());
                     map.put("name", orgPost.getPostname());
                     map.put("description", orgPost.getDescription());
+                    map.put("typeId", 4);
                     JSONObject json = client.post("/orgPost", map, JSONObject.class);
                     if (null != json) {
                         if (json.getBoolean("success")) {
