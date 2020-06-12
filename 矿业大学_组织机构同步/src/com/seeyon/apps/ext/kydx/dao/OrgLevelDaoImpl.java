@@ -89,7 +89,7 @@ public class OrgLevelDaoImpl implements OrgLevelDao {
 
     @Override
     public List<OrgLevel> queryUpdateOrgLevelList() {
-        String sql = "select l.name,l.code,l.description,m.id from (select * from THIRD_ORG_LEVEL where is_enable <>'0' or is_delete <>'1') l,M_ORG_LEVEL m where l.code=m.code and (l.name<>m.name or l.code <>m.code or l.description <>m.description)";
+        String sql = "select l.is_enable,l.name,l.code,l.description,m.id from (select * from THIRD_ORG_LEVEL where is_enable <>'0' or is_delete <>'1') l,M_ORG_LEVEL m where l.code=m.code and (l.is_enable<>m.IS_ENABLE or l.name<>m.name or l.code <>m.code or l.description <>m.description)";
         List<OrgLevel> levelList = new ArrayList<>();
         ResultSet rs = null;
         Connection connection = SyncConnectionInfoUtil.getMidConnection();
@@ -106,6 +106,7 @@ public class OrgLevelDaoImpl implements OrgLevelDao {
                 orgLevel.setLevelname(rs.getString("name"));
                 orgLevel.setDescription(rs.getString("description"));
                 orgLevel.setLevelid(rs.getString("id"));
+                orgLevel.setIsEnable(rs.getString("is_enable"));
                 levelList.add(orgLevel);
             }
         } catch (Exception e) {
@@ -130,12 +131,17 @@ public class OrgLevelDaoImpl implements OrgLevelDao {
                     map = new HashMap();
                     map.put("id", orgLevel.getLevelid());
                     map.put("name", orgLevel.getLevelname());
+                    if (orgLevel.getIsEnable().equals("0")) {
+                        map.put("enabled", false);
+                    } else {
+                        map.put("enabled", true);
+                    }
                     map.put("description", orgLevel.getDescription());
 
                     JSONObject json = client.put("/orgLevel", map, JSONObject.class);
                     if (null != json) {
                         if (json.getBoolean("success")) {
-                            sql = sql.concat("name='" + orgLevel.getLevelname() + "', description='" + orgLevel.getDescription() + "'  where id=" + orgLevel.getLevelid());
+                            sql = sql.concat("name='" + orgLevel.getLevelname() + "', description='" + orgLevel.getDescription() + "',IS_ENABLE='" + orgLevel.getIsEnable() + "'  where id=" + orgLevel.getLevelid());
                         }
                     }
                     SyncConnectionInfoUtil.insertResult(sql);
@@ -184,7 +190,7 @@ public class OrgLevelDaoImpl implements OrgLevelDao {
                     map.put("id", orgLevel.getLevelid());
                     map.put("enabled", false);
 //                    JSONObject json = client.put("/orgLevel/" + orgLevel.getLevelid() + "/enabled/false", map, JSONObject.class);
-                    JSONObject json = client.delete("/orgLevel/" + orgLevel.getLevelid() , map, JSONObject.class);
+                    JSONObject json = client.delete("/orgLevel/" + orgLevel.getLevelid(), map, JSONObject.class);
                     String sql = "delete from M_ORG_LEVEL where ";
                     if (null != json) {
                         if (json.getBoolean("success")) {

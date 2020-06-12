@@ -11,6 +11,15 @@ public class OrgLevel {
     private String description;
     private Integer levelno;
     private Integer sortId = 1;
+    private String isEnable;
+
+    public String getIsEnable() {
+        return isEnable;
+    }
+
+    public void setIsEnable(String isEnable) {
+        this.isEnable = isEnable;
+    }
 
     public OrgLevel() {
     }
