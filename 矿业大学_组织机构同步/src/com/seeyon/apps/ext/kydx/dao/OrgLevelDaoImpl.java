@@ -49,7 +49,7 @@ public class OrgLevelDaoImpl implements OrgLevelDao {
         CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
         Connection connection = null;
         PreparedStatement ps = null;
-        String insertSql = "insert into M_ORG_LEVEL(id,name,code,sort_id,description) values (?,?,?,?,?)";
+        String insertSql = "insert into M_ORG_LEVEL(id,name,code,sort_id,description,is_enable,is_delete) values (?,?,?,?,?,?,?)";
         try {
             connection = SyncConnectionInfoUtil.getMidConnection();
             connection.setAutoCommit(false);
@@ -72,6 +72,8 @@ public class OrgLevelDaoImpl implements OrgLevelDao {
                             ps.setString(3, orgLevel.getLevelcode());
                             ps.setString(4, ent.getString("sortId"));
                             ps.setString(5, orgLevel.getDescription());
+                            ps.setString(6, "1");
+                            ps.setString(7, "0");
                             ps.addBatch();
                         }
                     }
@@ -122,6 +124,7 @@ public class OrgLevelDaoImpl implements OrgLevelDao {
 
     @Override
     public void updateOrgLevel(List<OrgLevel> list) {
+
         CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
         String sql = "update M_ORG_LEVEL set ";
         try {
