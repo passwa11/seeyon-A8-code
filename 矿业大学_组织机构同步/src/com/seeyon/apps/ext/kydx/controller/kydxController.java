@@ -17,6 +17,8 @@ public class kydxController extends BaseController {
 
     private OrgPostManager postManager = new OrgPostManagerImpl();
 
+    private OrgMemberManager memberManager = new OrgMemberManagerImpl();
+
     @Override
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {
         return new ModelAndView("apps/ext/kydx/index");
@@ -38,7 +40,9 @@ public class kydxController extends BaseController {
 
 //            postManager.insertPost();
 //            postManager.updatePost();
-            postManager.deletePost();
+//            postManager.deletePost();
+            memberManager.insertMember();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
