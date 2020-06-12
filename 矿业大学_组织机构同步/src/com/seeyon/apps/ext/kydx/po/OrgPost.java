@@ -12,6 +12,16 @@ public class OrgPost {
     private String postcode;
     private Integer sortId;
 
+    private String isEnable;
+
+    public String getIsEnable() {
+        return isEnable;
+    }
+
+    public void setIsEnable(String isEnable) {
+        this.isEnable = isEnable;
+    }
+
     public OrgPost() {
     }
 

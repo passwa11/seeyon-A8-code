@@ -2,10 +2,7 @@ package com.seeyon.apps.ext.kydx.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.seeyon.apps.ext.kydx.manager.OrgDeptManager;
-import com.seeyon.apps.ext.kydx.manager.OrgDeptManagerImpl;
-import com.seeyon.apps.ext.kydx.manager.OrgLevelManager;
-import com.seeyon.apps.ext.kydx.manager.OrgLevelManagerImpl;
+import com.seeyon.apps.ext.kydx.manager.*;
 import com.seeyon.ctp.common.controller.BaseController;
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +14,8 @@ public class kydxController extends BaseController {
     private OrgDeptManager deptManager = new OrgDeptManagerImpl();
 
     private OrgLevelManager levelManager = new OrgLevelManagerImpl();
+
+    private OrgPostManager postManager = new OrgPostManagerImpl();
 
     @Override
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -34,8 +33,12 @@ public class kydxController extends BaseController {
 //            deptManager.deleteOrgDept();
 
 //            levelManager.insertOrgLevel();
-//            levelManager.updateOrgLevel();
-            levelManager.deleteOrgLevel();
+            levelManager.updateOrgLevel();
+//            levelManager.deleteOrgLevel();
+
+//            postManager.insertPost();
+//            postManager.updatePost();
+//            postManager.deletePost();
         } catch (Exception e) {
             e.printStackTrace();
         }
