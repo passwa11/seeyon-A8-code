@@ -109,19 +109,19 @@
             <div class="layui-form-item">
                 <div class="layui-row">
                     <div class="layui-col-md6">
-                        <label class="layui-form-label">拟稿人员</label>
+                        <label class="layui-form-label">发文人员</label>
                         <div class="layui-input-block">
                             <input type="tel" lay-verify="" autocomplete="off" class="layui-input" disabled
                                    value="${summary.createPerson}">
                         </div>
                     </div>
-                    <div class="layui-col-md6">
-                        <label class="layui-form-label">拟稿日期</label>
-                        <div class="layui-input-block">
-                            <input type="text" lay-verify="" autocomplete="off" class="layui-input" disabled
-                                   value="${createTime}">
-                        </div>
-                    </div>
+<%--                    <div class="layui-col-md6">--%>
+<%--                        <label class="layui-form-label">拟稿日期</label>--%>
+<%--                        <div class="layui-input-block">--%>
+<%--                            <input type="text" lay-verify="" autocomplete="off" class="layui-input" disabled--%>
+<%--                                   value="${createTime}">--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                 </div>
             </div>
             <div class="layui-form-item">
