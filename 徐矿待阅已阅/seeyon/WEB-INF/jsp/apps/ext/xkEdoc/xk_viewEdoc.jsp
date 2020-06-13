@@ -94,7 +94,7 @@
                     <div class="layui-col-md6">
                         <label class="layui-form-label">发文单位</label>
                         <div class="layui-input-block">
-                            <input type="tel" lay-verify="" autocomplete="off" class="layui-input" disabled value="${summary.sendUnit}">
+                            <input type="tel" lay-verify="" autocomplete="off" class="layui-input" disabled value="${summary.sendDepartment}">
                         </div>
                     </div>
                     <div class="layui-col-md6">
