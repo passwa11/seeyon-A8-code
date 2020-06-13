@@ -1,5 +1,9 @@
 package com.seeyon.apps.ext.xkEdoc.controller;
 
+import java.net.URLDecoder;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -16,6 +20,7 @@ import com.seeyon.ctp.common.filemanager.manager.AttachmentManagerImpl;
 import com.seeyon.ctp.common.filemanager.manager.FileManager;
 import com.seeyon.ctp.common.filemanager.manager.FileManagerImpl;
 import com.seeyon.ctp.common.po.filemanager.Attachment;
+import com.seeyon.ctp.util.JDBCAgent;
 import com.seeyon.v3x.edoc.domain.EdocBody;
 import com.seeyon.v3x.edoc.domain.EdocSummary;
 import com.seeyon.v3x.edoc.manager.EdocManager;
@@ -112,6 +117,34 @@ public class xkEdocController extends BaseController {
         if (s_summaryId != null && !s_summaryId.isEmpty()) {
             summaryId = Long.parseLong(s_summaryId);
         }
+        //start
+        String sql = "select filename from  CTP_file where id =(select attachment_id from XKJT_SUMMARY_ATTACHMENT where  summary_id ='" + s_summaryId + "')";
+        Connection connection = JDBCAgent.getRawConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String suffix = "";
+        try {
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String filename = rs.getString("filename");
+                suffix = filename.substring(filename.indexOf("."));
+                mav.addObject("suffix", suffix);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (null != rs) {
+                rs.close();
+            }
+            if (null != ps) {
+                ps.close();
+            }
+            if (null != connection) {
+                connection.close();
+            }
+        }
+        //end
         EdocSummary summary = edocManager.getEdocSummaryById(summaryId, true);
         User user = AppContext.getCurrentUser();
         long memberId = user.getId();
@@ -277,7 +310,13 @@ public class xkEdocController extends BaseController {
 
 
     public ModelAndView downloadfile(HttpServletRequest request, HttpServletResponse response) {
+
         String filename = request.getParameter("filename");
+        try {
+            filename = specialWord(URLDecoder.decode(filename, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         String fileId = request.getParameter("fileId");
         String createDate = request.getParameter("createDate");
         String type = request.getParameter("type");
@@ -357,6 +396,17 @@ public class xkEdocController extends BaseController {
         }
 
         return null;
+    }
+
+
+    public String specialWord(String info) {
+        String[] fbsArr = {"\t", "\n", "\b"};
+        for (String key : fbsArr) {
+            if (info.contains(key)) {
+                info = info.replace(key, "");
+            }
+        }
+        return info;
     }
 
     /**
