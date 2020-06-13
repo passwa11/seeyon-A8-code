@@ -62,6 +62,7 @@ public class Portal190724DaoImpl implements Portal190724Dao {
         } finally {
             try {
                 pst.close();
+                rs.close();
                 conn.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -98,6 +99,7 @@ public class Portal190724DaoImpl implements Portal190724Dao {
         } finally {
             try {
                 pst.close();
+                rs.close();
                 conn.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -110,7 +112,6 @@ public class Portal190724DaoImpl implements Portal190724Dao {
         String sql = "delete from CONTRACT where OAUSERID= ?";
         Connection conn = null;
         PreparedStatement pst = null;
-        ResultSet rs = null;
         try {
             Class.forName(driverClassName);
             conn = DriverManager.getConnection(url, username, password);
@@ -138,8 +139,6 @@ public class Portal190724DaoImpl implements Portal190724Dao {
         String sql = "update Law_Fox_Table lft set lft.law_state='1' where lft.id=?";// 用户已登录法律系统
         Connection conn = null;
         PreparedStatement pst = null;
-        ResultSet rs = null;
-
         try {
             Class.forName(driverClassName);
             conn = DriverManager.getConnection(url, username, password);
@@ -173,8 +172,6 @@ public class Portal190724DaoImpl implements Portal190724Dao {
         String sql = "update Law_Fox_Table lft set lft."+columnName+"='1' where lft.id=?";// 用户已登录法律系统
         Connection conn = null;
         PreparedStatement pst = null;
-        ResultSet rs = null;
-
         try {
             Class.forName(driverClassName);
             conn = DriverManager.getConnection(url, username, password);
