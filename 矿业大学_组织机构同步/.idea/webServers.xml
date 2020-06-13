@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="1278ff6b-1e93-4907-a3cd-699c97a54fd0" name="组织机构同步" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="F:\Seeyon\A871sp1_qiye\ApacheJetspeed\webapps\seeyon" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

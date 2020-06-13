@@ -19,7 +19,8 @@ public class OrgMemberManagerImpl implements OrgMemberManager {
 
     @Override
     public void updateMember() {
-
+        List<OrgMember> list = memberDao.queryUpdateMember();
+        memberDao.updateMember(list);
     }
 
     @Override

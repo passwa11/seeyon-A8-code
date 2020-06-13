@@ -41,7 +41,8 @@ public class kydxController extends BaseController {
 //            postManager.insertPost();
 //            postManager.updatePost();
 //            postManager.deletePost();
-            memberManager.insertMember();
+//            memberManager.insertMember();
+            memberManager.updateMember();
 
         } catch (Exception e) {
             e.printStackTrace();

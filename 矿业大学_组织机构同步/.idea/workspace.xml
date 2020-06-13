@@ -6,9 +6,10 @@
       <change afterPath="$PROJECT_DIR$/../kuangYe_sms/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../修改送文单单位名称/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../徐矿大学_单点登录/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/libraries/lib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../徐矿待阅已阅/lib/xkjt.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/xzyk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/xzyk.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kuangYe_sms/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../kuangYe_sms/.idea/webServers.xml" afterDir="false" />
@@ -17,16 +18,21 @@
       <change beforePath="$PROJECT_DIR$/../修改送文单单位名称/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../修改送文单单位名称/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../修改送文单单位名称/seeyon/WEB-INF/jsp/exchange/edoc/edoc_send_detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../修改送文单单位名称/seeyon/WEB-INF/jsp/exchange/edoc/edoc_send_detail.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/src/com/seeyon/apps/ext/DTdocument/manager/SyncOrgData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/办结-未办结-总包-2020-05-15.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿大学_单点登录/.idea/ssoLogin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿大学_单点登录/.idea/ssoLogin.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿大学_单点登录/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿大学_单点登录/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../徐矿待阅已阅/xkjt_edoc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿待阅已阅/xkjt_edoc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kydx.iml" beforeDir="false" afterPath="$PROJECT_DIR$/kydx.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/kydx/spring/spring-kydx-dao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/kydx/spring/spring-kydx-manager.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/controller/kydxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/controller/kydxController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/manager/OrgMemberManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/manager/OrgMemberManagerImpl.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,18 +40,52 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1d48JzzJVpD54l9tSMjuOgNxBxb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\a8_code\A-8-code\矿业大学_组织机构同步\sql" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.seeyon.apps.ext.kydx.util" />
+      <recent name="com.seeyon.apps.ext.kydx.dao" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\a8_code\A-8-code\矿业大学_组织机构同步\src\com\seeyon\apps\ext\kydx\po" />
+      <recent name="F:\a8_code\A-8-code\矿业大学_组织机构同步\src\config" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -59,6 +99,22 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Remote" nameIsGenerated="true">
+      <module name="kydx" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="8000" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="8000" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -69,8 +125,218 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1591672936216</updated>
-      <workItem from="1591672937837" duration="226000" />
+      <workItem from="1591672937837" duration="1204000" />
+      <workItem from="1591681847689" duration="1983000" />
+      <workItem from="1591768823449" duration="12395000" />
+      <workItem from="1591835194595" duration="21443000" />
+      <workItem from="1591922157760" duration="25929000" />
+      <workItem from="1592008035157" duration="780000" />
+      <workItem from="1592031941082" duration="2313000" />
     </task>
+    <task id="LOCAL-00001" summary="add">
+      <created>1591673222086</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1591673222086</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add">
+      <created>1591675950957</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1591675950957</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update">
+      <created>1591683636139</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1591683636139</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update">
+      <created>1591683779211</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1591683779211</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update">
+      <created>1591683850381</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1591683850381</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update">
+      <created>1591683912401</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1591683912401</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update">
+      <created>1591772320696</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1591772320696</updated>
+    </task>
+    <task id="LOCAL-00008" summary="update">
+      <created>1591774088587</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1591774088587</updated>
+    </task>
+    <task id="LOCAL-00009" summary="update">
+      <created>1591779151117</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1591779151117</updated>
+    </task>
+    <task id="LOCAL-00010" summary="update">
+      <created>1591779301437</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1591779301437</updated>
+    </task>
+    <task id="LOCAL-00011" summary="update">
+      <created>1591780237203</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1591780237204</updated>
+    </task>
+    <task id="LOCAL-00012" summary="update">
+      <created>1591781647210</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1591781647210</updated>
+    </task>
+    <task id="LOCAL-00013" summary="update">
+      <created>1591836130126</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1591836130126</updated>
+    </task>
+    <task id="LOCAL-00014" summary="update">
+      <created>1591845906590</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1591845906590</updated>
+    </task>
+    <task id="LOCAL-00015" summary="update">
+      <created>1591845927808</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1591845927808</updated>
+    </task>
+    <task id="LOCAL-00016" summary="update">
+      <created>1591853286358</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1591853286358</updated>
+    </task>
+    <task id="LOCAL-00017" summary="update">
+      <created>1591860819311</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1591860819311</updated>
+    </task>
+    <task id="LOCAL-00018" summary="update">
+      <created>1591861528189</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1591861528189</updated>
+    </task>
+    <task id="LOCAL-00019" summary="update">
+      <created>1591864649669</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1591864649669</updated>
+    </task>
+    <task id="LOCAL-00020" summary="update">
+      <created>1591864876447</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1591864876447</updated>
+    </task>
+    <task id="LOCAL-00021" summary="update">
+      <created>1591929625045</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1591929625045</updated>
+    </task>
+    <task id="LOCAL-00022" summary="update">
+      <created>1591941079035</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1591941079035</updated>
+    </task>
+    <task id="LOCAL-00023" summary="update">
+      <created>1591943478004</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1591943478004</updated>
+    </task>
+    <task id="LOCAL-00024" summary="update">
+      <created>1591943982705</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1591943982705</updated>
+    </task>
+    <task id="LOCAL-00025" summary="update">
+      <created>1591945088595</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1591945088595</updated>
+    </task>
+    <task id="LOCAL-00026" summary="update">
+      <created>1591945606289</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1591945606289</updated>
+    </task>
+    <task id="LOCAL-00027" summary="update">
+      <created>1591945657717</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1591945657717</updated>
+    </task>
+    <task id="LOCAL-00028" summary="update">
+      <created>1591952793680</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1591952793680</updated>
+    </task>
+    <task id="LOCAL-00029" summary="update">
+      <created>1592033070605</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1592033070605</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -81,10 +347,43 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/OrgDeptDaoImpl.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/OrgLevelDaoImpl.java</url>
+          <line>186</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/OrgLevelDaoImpl.java</url>
+          <line>127</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/OrgLevelDaoImpl.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
