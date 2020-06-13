@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ include file="/WEB-INF/jsp/common/common.jsp"%>
+<%@ include file="/WEB-INF/jsp/common/common.jsp" %>
 <%--<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>--%>
 <%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
 <%--<%@ taglib uri="http://v3x.seeyon.com/taglib/core" prefix="v3x" %>--%>
@@ -44,6 +44,7 @@
         <input id="time" type="hidden" value="${summary.createTime}">
         <input id="isQuickSend" type="hidden" value="${summary.isQuickSend}">
         <input id="suject" type="hidden" value="${summary.subject}">
+        <input id="suffix" type="hidden" value="${suffix}">
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
             <legend>文单信息</legend>
         </fieldset>
@@ -115,13 +116,13 @@
                                    value="${summary.createPerson}">
                         </div>
                     </div>
-<%--                    <div class="layui-col-md6">--%>
-<%--                        <label class="layui-form-label">拟稿日期</label>--%>
-<%--                        <div class="layui-input-block">--%>
-<%--                            <input type="text" lay-verify="" autocomplete="off" class="layui-input" disabled--%>
-<%--                                   value="${createTime}">--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
+                    <%--                    <div class="layui-col-md6">--%>
+                    <%--                        <label class="layui-form-label">拟稿日期</label>--%>
+                    <%--                        <div class="layui-input-block">--%>
+                    <%--                            <input type="text" lay-verify="" autocomplete="off" class="layui-input" disabled--%>
+                    <%--                                   value="${createTime}">--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
                 </div>
             </div>
             <div class="layui-form-item">
@@ -196,11 +197,11 @@
     var v3x = new V3X();
 
     var param = {
-        id:'${daiYueId}',
-        status:12
+        id: '${daiYueId}',
+        status: 12
     };
-    var dyId='${daiYueId}';
-    if(dyId!=''){
+    var dyId = '${daiYueId}';
+    if (dyId != '') {
         var requestCaller = new XMLHttpRequestCaller(this, "xkjtManager", "updateXkjtLeaderDaiYueByCondition", false);
         requestCaller.addParameter(1, "String", param.id);
         requestCaller.addParameter(2, "String", param.status);
@@ -224,7 +225,8 @@
         var fileName = $("#suject").val();
         var isQuickSend = $("#isQuickSend").val();
         var summaryId = $("#summaryId").val();
-        var url = "/seeyon/ext/xkEdoc.do?method=downloadfile&type=2&fileId=" + fileUrl + "&createDate=" + arr[0] + "&filename=" + encodeURI(fileName +".pdf")
+        var suffix = $("#suffix").val();
+        var url = "/seeyon/ext/xkEdoc.do?method=downloadfile&type=2&fileId=" + fileUrl + "&createDate=" + arr[0] + "&filename=" + encodeURI(fileName + suffix)
             + "&isQuickSend=" + isQuickSend + "&summaryId=" + summaryId;
         $("#downloadFileFrame").attr("src", url);
     }
@@ -275,7 +277,7 @@
             var summaryId = $("#summaryId").val();
             if (obj.event === 'downloadFile') {
                 var url = "/seeyon/ext/xkEdoc.do?method=downloadfile&type=1&fileId=" + fileUrl + "&createDate=" + uploadTime + "&filename=" + encodeURI(fileName)
-                    + "&isQuickSend=" + isQuickSend+ "&summaryId=" + summaryId;
+                    + "&isQuickSend=" + isQuickSend + "&summaryId=" + summaryId;
 
                 $("#downloadFileFrame").attr("src", url);
             }
