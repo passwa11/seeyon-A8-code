@@ -12,8 +12,8 @@
 <script type="text/javascript">
 $(function () {
         loadFileData();
-	document.getElementById("sendUnit").setAttribute("value",'${summary.sendUnit}' );
-	document.getElementById("sendUnitId").setAttribute("value",'${summary.sendUnitId}' );
+	document.getElementById("sendUnit").setAttribute("value",'${summary.sendDepartment}' );
+	document.getElementById("sendUnitId").setAttribute("value",'${summary.sendDepartmentId}' );
     });
     function loadFileData() {
         $.ajax({
@@ -61,7 +61,7 @@ $(function () {
     }
 
     function downloadfilez(fileUrl,createdate,filename,isQuickSend,summaryId) {
-		
+
         var time = new Date(parseInt(createdate));
         var year = time.getFullYear();
         var month = time.getMonth() + 1;
@@ -89,8 +89,8 @@ function openEdoc(){
 		dialogType:"open"
 	});
 }
-	
-//detailId -> 每一条交换回执记录的Id, sendRecordId -> 发送记录的Id 
+
+//detailId -> 每一条交换回执记录的Id, sendRecordId -> 发送记录的Id
 var _sendRecordId = "";
 var _detailId = "";
 var _accountId = "";
@@ -101,8 +101,8 @@ function withdraw(sendRecordId, detailId, accountId) {
 	_accountId = accountId;
 	//验证是否可撤销交换
 	var requestCaller = new XMLHttpRequestCaller(this, "ajaxEdocExchangeManager", "canWithdraw", false);
-  	requestCaller.addParameter(1, "String", sendRecordId);  
-  	requestCaller.addParameter(2, "String", detailId);  
+  	requestCaller.addParameter(1, "String", sendRecordId);
+  	requestCaller.addParameter(2, "String", detailId);
 	var bool = requestCaller.serviceRequest();
 	if(bool && bool == "false") {
 		alert(v3x.getMessage('ExchangeLang.exchange_send_withdraw_forbidden'));
@@ -127,7 +127,7 @@ var xkjtObj = {
 function withdrawAll() {
 	xkjtObj.xkjtCheckedArr = [];
 	var checkedIds = document.getElementsByName("xkjtId");
-	
+
 	for(var i = 0;i<checkedIds.length;i++){
 		//选择待签收  已签收  未阅  已阅数据
 		if(checkedIds[i].checked && (checkedIds[i].getAttribute("status")!=2 || checkedIds[i].getAttribute("status")!=3 || checkedIds[i].getAttribute("status")==13)){
@@ -155,22 +155,22 @@ function withdrawAll() {
 	        dialogType:"modal"
 		});
 	}
-	
-	
-	
+
+
+
 }
 
 function withdrawCallback(returnValues){
 	if(returnValues!=null && returnValues!=undefined) {
-		//确认是否撤销交换记录 
+		//确认是否撤销交换记录
 		if(!window.confirm(v3x.getMessage('ExchangeLang.exchange_send_withdraw'))) {
 			return;
 		}
 		if(xkjtObj.xkjtCheckedArr.length==0){
 			//撤销交换记录
 			var requestCaller = new XMLHttpRequestCaller(this, "ajaxEdocExchangeManager", "withdraw", false);
-			requestCaller.addParameter(1, "String", _sendRecordId);  
-			requestCaller.addParameter(2, "String", _detailId); 
+			requestCaller.addParameter(1, "String", _sendRecordId);
+			requestCaller.addParameter(2, "String", _detailId);
 			requestCaller.addParameter(3, "String", _accountId);
 			requestCaller.addParameter(4, "String", returnValues[0]);
 			var back = requestCaller.serviceRequest();
@@ -190,8 +190,8 @@ function withdrawCallback(returnValues){
 		}else{
 			//撤销交换记录
 			var requestCaller = new XMLHttpRequestCaller(this, "ajaxEdocExchangeManager", "withdrawAll", false);
-			requestCaller.addParameter(1, "String", JSON.stringify(xkjtObj));  
-			requestCaller.addParameter(2, "String", returnValues[0]);  
+			requestCaller.addParameter(1, "String", JSON.stringify(xkjtObj));
+			requestCaller.addParameter(2, "String", returnValues[0]);
 			var back = requestCaller.serviceRequest();
 			//撤销后刷新当前页面
 			var alertNote = '';
@@ -208,8 +208,8 @@ function withdrawCallback(returnValues){
 			location.reload();
 			xkjtObj.xkjtCheckedArr = [];
 		}
-		
-		
+
+
 	}
 }
 /* 客开：徐矿集团【验证是否可撤销交换】 chenqiang 2019年3月18日 end */
@@ -219,23 +219,23 @@ function setPeopleFields(elements) {
 	if(elements) {
 		//var obj1 = getNamesString(elements);
 		//var obj2 = getIdsString(elements,false);
-		
+
 		//document.getElementById("depart").value = getNamesString(elements);
 		//document.getElementById("depart").setAttribute("value", getNamesString(elements));
 		//setAttribute浏览器不兼容，在IE10下存在问题，不知为何将以前的方法调整成setAttribute，这里修改为用jquery方式来赋值
 		//$("#depart").attr("value",getNamesString(elements));
 		//document.getElementById("grantedDepartId").value = getIdsString(elements,true);
-		
+
         var _sq = v3x.getMessage("V3XLang.common_separator_label");//分隔符
         var departObj = document.getElementById("depart");
-        
+
         var srcVal = departObj.value;
-        
+
         var sendUnit = getNamesString(elements);
-        
+
         var newValue = _removeRepeat(srcVal, _lastSelectVal, _sq);
         newValue = _removeRepeat(newValue, sendUnit, _sq);
-        
+
         if(sendUnit){
             if(newValue == ""){
                 newValue = sendUnit;
@@ -243,13 +243,13 @@ function setPeopleFields(elements) {
                 newValue += _sq + sendUnit;
             }
         }
-		
+
 		_lastSelectVal = sendUnit;
-		
+
 		//$("#depart").val(sendUnit);
 		//OA-50892 公文收发员打开待发送公文单，添加送往单位时，送往单位选择框显示不出来刚选择的单位
 		departObj.value = newValue;
-		//OA-49069  在公文交换-待发送列表中填写了送往单位，点击打印，打印的时候显示不出来刚填写的送往单位 
+		//OA-49069  在公文交换-待发送列表中填写了送往单位，点击打印，打印的时候显示不出来刚填写的送往单位
 		departObj.setAttribute("value", newValue);
 		$("#grantedDepartId").val(getIdsString(elements,true));
 		allSelPerElements = elements;
@@ -293,7 +293,7 @@ function setPeopleFieldsZ(elements) {
 }
 
 function _removeRepeat(src, toCon, sq){
-    
+
     var ret = "";
     if(src && toCon){
         var srcArray = this.splitValue(src);
@@ -320,7 +320,7 @@ function _removeRepeat(src, toCon, sq){
     }else{
         ret = src;
     }
-    
+
     return ret;
 }
 //分隔符定义
@@ -349,7 +349,7 @@ function _checkInputIds(obj){
     var currentAccountId = document.getElementById("orgAccountId").value;
     var inputIdObj = document.getElementById("grantedDepartId");
     if(inputIdObj){
-        
+
         var objVal = obj.value;
         obj.setAttribute("value", objVal);//打印用
         if(typeof(allSelPerElements) == 'undefined'){
@@ -357,22 +357,22 @@ function _checkInputIds(obj){
         }
         var objEles = allSelPerElements;
         var objValus = this.splitValue(objVal);
-        
+
         if(objEles){
-            
+
             var newIds = "";
             var newEles = [];
             var newLastSel = "";
-            
+
             for(var i = 0; i < objEles.length; i++) {
-                
+
                 var tempName = objEles[i].name;
                 var departmentType = objEles[i].type;
                 var elementAccountId = objEles[i].accountId;
                 if(currentAccountId != elementAccountId && objEles[i].accountShortname != null && objEles[i].accountShortname != ""){
                 	tempName += "("+objEles[i].accountShortname+")";
                 }
-                
+
                 var toAdd = false;
                 for(var j = 0; j < objValus.length; j++) {
                 	if(departmentType == "Department"){
@@ -431,7 +431,7 @@ function initiate(modelType){
 		var depName = document.getElementById("depart");
 	}
 }
-	
+
 var isNeedCheckLevelScope_grantedDepartId=false;
 var showAccountShortname_grantedDepartId = "auto";
 
@@ -441,7 +441,7 @@ var isCanSelectGroupAccount_grantedDepartId=false;
 
 function openStepBackInfo(readOnly,accountId){
 	var exchangeSendEdocId = '${bean.id}';
-	
+
 	//这个回调为huituiCallback
 	getA8Top().win123 = getA8Top().v3x.openDialog({
 	      title:"<fmt:message key='exchange.stepBack'/>",
@@ -473,7 +473,7 @@ function openSendCancelInfo(readOnly, accountId) {
 
 var tempDetailId = "";
 function openCuiban(detailId){
-  
+
   //这个回调为withdrawCallback
   getA8Top().win123 = getA8Top().v3x.openDialog({
         title:"<fmt:message key='hasten.label' bundle='${edocI18N}'/>",
@@ -493,7 +493,7 @@ function openCuibanCallback(rv){
         if(1==rv[0]){
             var formObj = document.getElementById("detailForm");
             formObj.target = "";
-            
+
             var requestCaller = new XMLHttpRequestCaller(this, "edocExchangeManager", "cuiban", false);
             requestCaller.addParameter(1,'String',tempDetailId);
             requestCaller.addParameter(2,'String',rv[1]);
@@ -509,20 +509,20 @@ function openCuibanCallback(rv){
 }
 
 function sendPrint1(){
-    
-    
+
+
     //table组件高度设置
     var $gBodyEl = $("#bDivsendDetail");
     var gTempHeight = $gBodyEl.height();
-    
+
     $("#scrollListDiv").css("height", "");
     $gBodyEl.css("height", "");
-    
+
     var edocBody = document.getElementById("printDiv").innerHTML;
-    
+
     $("#scrollListDiv").css("height", "100%");
     $gBodyEl.height(gTempHeight);
-    
+
     var edocBodyFrag = new PrintFragment("交换单", edocBody);
 
 	var cssList = new ArrayList();
@@ -550,12 +550,12 @@ function sendPrint1(){
 		String browserString=BrowserEnum.valueOf1(request);
 		if (browserString.indexOf("IE") > -1) {
 	%>
-		width:99%;		
+		width:99%;
 	<%
 		} else {
 	%>
 		width:100%;
-	<%		
+	<%
 		}
 	%>
 }
@@ -606,7 +606,7 @@ function sendPrint1(){
 								</c:if>
 						</td>
 					</tr>
-					
+
 					<tr>
 						<%-- 标题--%>
 						<td style="HEIGHT: 32px;BORDER-left: none ;BORDER-RIGHT: #ff0000 1pt solid; PADDING-RIGHT: 20px; BORDER-TOP: #ff0000 1pt solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; VERTICAL-ALIGN: middle; PADDING-TOP: 1px; BORDER-BOTTOM: #ff0000 1pt solid">
@@ -619,7 +619,7 @@ function sendPrint1(){
 							${v3x:toHTML(bean.subject)}</div>
 						</td>
 					</tr>
-					
+
 					<tr>
 						<%-- 送往单位--%>
 						<td style="BORDER-left: none ;BORDER-RIGHT: #ff0000 1pt solid; PADDING-RIGHT: 1px; BORDER-TOP: #ff0000 1pt solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; VERTICAL-ALIGN: middle; PADDING-TOP: 1px; BORDER-BOTTOM: #ff0000 1pt solid" width="100%;" nowrap="nowrap">
@@ -632,22 +632,23 @@ function sendPrint1(){
 							<c:if test="${modelType=='toSend'}">
 								<input type="text" inputName="<fmt:message key="exchange.edoc.sendToNames" />" validate="notNull" id="depart" onkeyup="_checkInputIds(this)" name="depart" value="<%--${sendEntityName} --%>${sendEntityName!=null?fn:escapeXml(sendEntityName):(v3x:showOrgEntitiesOfTypeAndId(elements, pageContext))}">
 								<img id="grantedDepartIdImg" src="<%=SystemEnvironment.getContextPath()%>/apps_res/edoc/images/wordnochange.gif" onclick="selectPeopleFun_grantedDepartId()" title="点击选择"/>
-								<input type="hidden" id="grantedDepartId" name="grantedDepartId" value="${elements}">									
+								<input type="hidden" id="grantedDepartId" name="grantedDepartId" value="${elements}">
 							</c:if>
 							<c:if test="${modelType!='toSend'}">
                                   <%-- ${sendEntityName!=null?sendEntityName:(v3x:showOrgEntitiesOfTypeAndId(elements, pageContext))}--%>
                                   ${v3x:toHTML(sendEntityName)}
-							<input type="hidden" id="grantedDepartId" name="grantedDepartId" value="${elements}">									
+							<input type="hidden" id="grantedDepartId" name="grantedDepartId" value="${elements}">
 							</c:if>
 							</div>
 						</td>
-					</tr>						
-					
+					</tr>
+
 					<tr>
 						<%-- 送文人  --%>
 						<td style="HEIGHT: 35px;BORDER-left: none ;BORDER-RIGHT: #ff0000 1pt solid; PADDING-RIGHT: 10px; BORDER-TOP: #ff0000 1pt solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; VERTICAL-ALIGN: middle; PADDING-TOP: 1px; BORDER-BOTTOM: #ff0000 1pt solid" width="100%;"  nowrap="nowrap">
 							<div style="text-align: right;">
-								<font face="宋体" color="#ff0000" size="4"><fmt:message key="exchange.edoc.sendperson" /></font>
+<%--								<font face="宋体" color="#ff0000" size="4"><fmt:message key="exchange.edoc.sendperson" /></font>--%>
+								<font face="宋体" color="#ff0000" size="4">发文人</font>
 							</div>
 						</td>
 						<td style="BORDER-RIGHT: #ff0000 1pt solid; PADDING-RIGHT: 1px; BORDER-TOP: #ff0000 1pt solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; VERTICAL-ALIGN: middle; BORDER-LEFT: #ff0000 1pt solid; PADDING-TOP: 1px; BORDER-BOTTOM: #ff0000 1pt solid"><div>
@@ -668,7 +669,7 @@ function sendPrint1(){
 							</div>
 						</td>
 					</tr>
-					
+
 					<tr>
 						<%--  发文单位  --%>
 						<td style="HEIGHT: 35px;BORDER-left: none ;BORDER-RIGHT: #ff0000 1pt solid; PADDING-RIGHT: 10px; BORDER-TOP: #ff0000 1pt solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; VERTICAL-ALIGN: middle; PADDING-TOP: 1px; BORDER-BOTTOM: #ff0000 1pt solid" width="100%;" nowrap="nowrap">
@@ -680,9 +681,9 @@ function sendPrint1(){
 <%--							周刘成--%>
 <%--							<div id="sendUnit" name="sendUnit">${bean.sendUnit}--%>
 <%--								<c:if test="${modelType=='toSend'}">--%>
-									<input type="text"  style="width: 350px;"  inputName="<fmt:message key="exchange.edoc.sendToNames" />" validate="notNull" id="sendUnit" onkeyup="_checkInputIds(this)" name="sendUnit" value="<%--${sendEntityName} --%>${sendEntityName!=null?fn:escapeXml(sendEntityName):(v3x:showOrgEntitiesOfTypeAndId(elements, pageContext))}">
-									<img id="grantedDepartIdImg" src="<%=SystemEnvironment.getContextPath()%>/apps_res/edoc/images/wordnochange.gif" onclick="selectPeopleFun_sendUnitId()" title="点击选择"/>
-									<input type="hidden" id="sendUnitId" name="sendUnitId" value="${elements}">
+									<input type="text"  style="width: 350px;"  inputName="<fmt:message key="exchange.edoc.sendToNames" />" validate="notNull" id="sendUnit"  name="sendUnit" value="<%--${sendEntityName} --%>">
+<%--									<img id="grantedDepartIdImg" src="<%=SystemEnvironment.getContextPath()%>/apps_res/edoc/images/wordnochange.gif" onclick="selectPeopleFun_sendUnitId()" title="点击选择"/>--%>
+<%--									<input type="hidden" id="sendUnitId" name="sendUnitId" value="${elements}">--%>
 <%--								</c:if>--%>
 <%--								<c:if test="${modelType!='toSend'}">--%>
 									<%-- ${sendEntityName!=null?sendEntityName:(v3x:showOrgEntitiesOfTypeAndId(elements, pageContext))}--%>
@@ -704,8 +705,8 @@ function sendPrint1(){
 							</div>
 						</td>
 					</tr>
-					
-					
+
+
 					<tr>
 						<%-- 公文文号     --%>
 						<td style="HEIGHT: 35px;BORDER-left: none ;BORDER-RIGHT: #ff0000 1pt solid; PADDING-RIGHT: 10px; BORDER-TOP: #ff0000 1pt solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; VERTICAL-ALIGN: middle; PADDING-TOP: 1px; BORDER-BOTTOM: #ff0000 1pt solid" width="100%;" nowrap="nowrap">
@@ -717,7 +718,7 @@ function sendPrint1(){
 							<div id="docMark" name="docMark">
 								${v3x:toHTML(bean.docMark)}
 							</div>
-						</td>	
+						</td>
 						<%-- 公文种类      --%>
 						<td style="padding-right: 30px; border: 1pt solid rgb(255, 0, 0); vertical-align: middle;" width="100%;" nowrap="nowrap">
 							<div style="text-align: right;">
@@ -730,7 +731,7 @@ function sendPrint1(){
 							</div>
 						</td>
 					</tr>
-					
+
 					<c:if test="${bean.isTurnRec == 0 }">
 					<tr>
 						<%-- 签发人   --%>
@@ -757,8 +758,8 @@ function sendPrint1(){
 						</td>
 					</tr>
 					</c:if>
-					
-					
+
+
 					<tr>
 						<%-- 密级       --%>
 						<td style="HEIGHT: 37px;BORDER-left: none ;BORDER-RIGHT: #ff0000 1pt solid; PADDING-RIGHT: 20px; BORDER-TOP: #ff0000 1pt solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; VERTICAL-ALIGN: middle; PADDING-TOP: 1px; BORDER-BOTTOM: #ff0000 1pt solid" nowrap="nowrap">
@@ -781,14 +782,14 @@ function sendPrint1(){
 							<v3x:metadataItemLabel metadata="${colMetadata['edoc_urgent_level']}" value="${bean.urgentLevel}"/>
 						</td>
 					</tr>
-					
+
 					<tr>
 						<%-- 根据国家行政公文规范,去掉主题词
 						<td style="BORDER-left: none ;BORDER-RIGHT: #ff0000 1pt solid; PADDING-RIGHT: 1px; BORDER-TOP: #ff0000 1pt solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; VERTICAL-ALIGN: middle; PADDING-TOP: 1px; BORDER-BOTTOM: #ff0000 1pt solid">
 							<div>
 								<font face="宋体" color="#ff0000" size="2"><fmt:message key="edoc.element.keyword" bundle="${edocI18N}" /></font>
 							</div>
-						</td> 
+						</td>
 						<td style="BORDER-RIGHT: #ff0000 1pt solid; PADDING-RIGHT: 1px; BORDER-TOP: #ff0000 1pt solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; VERTICAL-ALIGN: middle; BORDER-LEFT: #ff0000 1pt solid; PADDING-TOP: 1px; BORDER-BOTTOM: #ff0000 1pt solid">
 							<div id="keywords" name="keywords">${v3x:toHTML(bean.keywords)}
 							</div>
@@ -832,7 +833,7 @@ function sendPrint1(){
 
             </tbody>
         </table>
-		
+
 		<c:if test="${bean.exchangeMode ne 1}">
 			<div id="sendButton" name="sendButton" class="" style="clear:both;">
 				<table border="0" width="60%">
@@ -843,13 +844,13 @@ function sendPrint1(){
 								<input id="internalExchange" type="checkbox" name="exchangeMode" value="0" checked="checked"><fmt:message key="edoc.exchangeInternal.input" /></input>   <%-- 交内部公文交换 --%>
 								<input id="sursenExchange" type="checkbox" name="exchangeMode" value="1" ><fmt:message key="edoc.exchangeSursen.input" /></input> <%-- 交书生公文交换 --%>
 							</td>
-						</c:if>	
-						
+						</c:if>
+
 						<td height="42" align="${!v3x:hasPlugin('sursenExchange')?'center':'left'}">
 						<input id="oprateBut" type="button" value="<fmt:message key='exchange.edoc.send' />" class="button-default_emphasize" onclick="oprateSubmit();" >
 						<input type="button" value="<fmt:message key='common.toolbar.print.label' bundle='${v3xCommonI18N}' />" class="button-default-2" onclick="sendPrint2();">
-						</td>				
-					</tr>					
+						</td>
+					</tr>
 				</table>
 			</div>
 			<div class="hidden" id="sent" name="sent" style="width: 100%">
@@ -889,17 +890,17 @@ function sendPrint1(){
 										<c:if test="${not empty detail.recOrgName}"><%--将bean.status==1条件 改为not empty detail.recOrgName，修复GOV-3319 --%>
 											<a style="color: #000" title="${detail.recOrgName}">${v3x:getLimitLengthString(detail.recOrgName,-1,"...")}</a>
 										</c:if>
-									</v3x:column>	
+									</v3x:column>
 									<v3x:column  width="13%" type="String" label="exchange.edoc.signingNo" alt="${detail.recNo}">
 	                                    <c:if test="${detail.status!=0}">
 											${v3x:toHTML(v3x:getLimitLengthString(detail.recNo,-1,"..."))}
-	                                    </c:if>    
+	                                    </c:if>
 									</v3x:column>
 									<v3x:column width="9%" type="String" label="exchange.edoc.receivedperson">
 	                                    <c:if test="${detail.status!=0}">
 										   <span style="font-size:12px">${detail.recUserName }</span>
 	                                    </c:if>
-	                                    
+
 	                                    <!-- 项目：徐州矿物集团【如果送往单位为个人，那么签收单位和签收人是同一条数据】 作者：wxt.xiangrui 时间：2019-6-3 start -->
 	                                    <c:if test="${detail.recUserName==null&&detail.recTime!=null}">
 										   <c:if test="${not empty detail.recOrgName}"><%--将bean.status==1条件 改为not empty detail.recOrgName，修复GOV-3319 --%>
@@ -907,7 +908,7 @@ function sendPrint1(){
 										   </c:if>
 	                                    </c:if>
 	                                    <!-- 项目：徐州矿物集团【如果送往单位为个人，那么签收单位和签收人是同一条数据】 作者：wxt.xiangrui 时间：2019-6-3 start -->
-	                                    
+
 									</v3x:column>
 									<v3x:column width="12%" type="Date" align="center" label="exchange.edoc.receiveddate">
 	                                    <c:if test="${detail.status!=0}">
@@ -938,37 +939,37 @@ function sendPrint1(){
 											<c:when test="${detail.status==12}">
 												<span style="font-size:12px">已阅</span>
 											</c:when>
-							
+
 										</c:choose>
 										<!-- 客开：徐矿集团【发给人时状态11为待签收12为已签收】 chenqiang 2019年4月4日  end -->
 									</v3x:column>
 	                                <c:if test="${bean.status!=0}">
 	                                    <v3x:column width="12%" type="String" align="center" label="hasten.label">
-	                                    	
-	    
-	                                       
-	                                        <%-- 项目：徐州矿物集团【待签收的可以催办】 作者：wxt.xiangrui 时间：2019-6-5 start --%> 
+
+
+
+	                                        <%-- 项目：徐州矿物集团【待签收的可以催办】 作者：wxt.xiangrui 时间：2019-6-5 start --%>
 	                                        <c:if test="${detail.status==0}">
 	                                         <a href="javascript:openCuiban('${detail.id }');"/><fmt:message key="hasten.label" bundle="${edocI18N}"/>（${detail.cuibanNum}<fmt:message key="edoc.supervise.count" bundle="${edocI18N}"/>）</a>
-	                                        </c:if> 
+	                                        </c:if>
 	                                        <%-- 项目：徐州矿物集团【待签收的可以催办】 作者：wxt.xiangrui 时间：2019-6-5 end --%>
 											<!-- 客开：徐矿集团【发给人时不显示催办】 chenqiang 2019年4月4日  start -->
 	                                        <c:choose>
 
 										        <c:when test="${detail.status==11 or detail.status==12 or detail.status==13 or detail.status==0}"></c:when>
-										
+
 										        <c:otherwise><span style="font-size:12px"><fmt:message key="hasten.label" bundle="${edocI18N}"/>（${detail.cuibanNum}<fmt:message key="edoc.supervise.count" bundle="${edocI18N}"/>）</span></c:otherwise>
-										
+
 											</c:choose>
 											<!-- 客开：徐矿集团【发给人时不显示催办】 chenqiang 2019年4月4日  end -->
 	                                    </v3x:column>
 	                                </c:if>
 									<v3x:column width="5%" align="center" label="exchange.send.withdraw">
-										<c:if test="${detail.status==0}"> 
+										<c:if test="${detail.status==0}">
 											<a href="javascript:withdraw('${bean.id}','${detail.id}','${detail.recOrgId}');" id="withdrawhref${detail.id}"/><fmt:message key='exchange.send.withdraw' /></a>
 										</c:if>
 										<!-- 客开：徐矿集团【发给人时显示撤销】 chenqiang 2019年4月4日  start -->
-										<c:if test="${detail.status==11}"> 
+										<c:if test="${detail.status==11}">
 											<a href="javascript:withdrawDaiyue('${detail.daiyueId}');" id="withdrawhref${detail.daiyueId}"/><fmt:message key='exchange.send.withdraw' /></a>
 										</c:if>
 										<!-- 客开：徐矿集团【发给人时显示撤销】 chenqiang 2019年4月4日  end -->
@@ -982,7 +983,7 @@ function sendPrint1(){
 			</div>
 		  </c:if>
 		</div>
-		
+
 		<div id="sendButton2" name="sendButton2" class="hidden">
 			<table border="0" width="20%" align="center">
 				<tr>
@@ -994,12 +995,12 @@ function sendPrint1(){
 						<input type="button" value="全部撤销" class="button-default-2" onclick="withdrawAll();">
 					</td>
 					<!-- 客开：徐矿集团【添加全部撤销按钮】 chenqiang 2019年3月18日  end -->
-				</tr>					
-			</table>								
+				</tr>
+			</table>
 		</div>
 	</form>
 	<iframe name="edocDetailIframe" frameborder="0" height="0" width="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-	
+
 <script type="text/javascript">
 	initiate('${modelType}');
 	/* 客开：徐矿集团【撤销领导人待阅】 chenqiang 2019年4月16日  start */
@@ -1009,11 +1010,11 @@ function sendPrint1(){
 				status:13
 		};
 		var requestCaller = new XMLHttpRequestCaller(this, "xkjtManager", "updateXkjtLeaderDaiYueByCondition", false);
-	  	requestCaller.addParameter(1, "String", param.id);  
+	  	requestCaller.addParameter(1, "String", param.id);
 	  	requestCaller.addParameter(2, "String", param.status);
 	  	var bool = requestCaller.serviceRequest();
 		document.location.reload();
 	}
-	
+
 	/* 客开：徐矿集团【撤销领导人待阅】 chenqiang 2019年4月16日  end */
 </script>
