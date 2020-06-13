@@ -681,7 +681,7 @@ function sendPrint1(){
 <%--							周刘成--%>
 <%--							<div id="sendUnit" name="sendUnit">${bean.sendUnit}--%>
 <%--								<c:if test="${modelType=='toSend'}">--%>
-									<input type="text"  style="width: 350px;"  inputName="<fmt:message key="exchange.edoc.sendToNames" />" validate="notNull" id="sendUnit"  name="sendUnit" value="<%--${sendEntityName} --%>">
+									<input type="text"  style="width: 350px;"  inputName="<fmt:message key="exchange.edoc.sendToNames" />" validate="notNull" id="sendUnit"  name="sendUnit" value="<%--${sendEntityName} --%>" readonly>
 <%--									<img id="grantedDepartIdImg" src="<%=SystemEnvironment.getContextPath()%>/apps_res/edoc/images/wordnochange.gif" onclick="selectPeopleFun_sendUnitId()" title="点击选择"/>--%>
 <%--									<input type="hidden" id="sendUnitId" name="sendUnitId" value="${elements}">--%>
 <%--								</c:if>--%>
