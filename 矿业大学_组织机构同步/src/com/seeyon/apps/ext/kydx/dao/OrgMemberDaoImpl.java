@@ -287,9 +287,9 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 }
 
                                 if (member.getDescription() != null && !"".equals(member.getDescription())) {
-                                    sql = sql + " description = '" + member.getDescription() + "', ";
+                                    sql = sql + " description = '" + member.getDescription() + "' ";
                                 } else {
-                                    sql = sql + " description = '', ";
+                                    sql = sql + " description = '' ";
                                 }
 
                                 sql = sql + " where id = '" + member.getId() + "' ";
