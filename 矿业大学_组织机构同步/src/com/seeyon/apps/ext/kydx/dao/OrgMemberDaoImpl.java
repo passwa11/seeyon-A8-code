@@ -311,11 +311,57 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryDeleteMember() {
-        return null;
+        String sql = "select m.id from THIRD_ORG_MEMBER t,M_ORG_MEMBER m where t.IS_DELETE ='1' and t.id=m.USERID union select m.id from M_ORG_MEMBER m where not EXISTS (select * from THIRD_ORG_MEMBER t where m.USERID=t.ID)";
+        List<OrgMember> memberList = new ArrayList<>();
+        Connection connection = SyncConnectionInfoUtil.getMidConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            OrgMember orgMember = null;
+            while (rs.next()) {
+                orgMember = new OrgMember();
+                orgMember.setId(rs.getString("id"));
+                memberList.add(orgMember);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            SyncConnectionInfoUtil.closeResultSet(rs);
+            SyncConnectionInfoUtil.closePrepareStatement(ps, null);
+            SyncConnectionInfoUtil.closeConnection(connection);
+        }
+        return memberList;
     }
 
     @Override
     public void deleteMember(List<OrgMember> list) {
-
+        CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
+        try {
+            if (null != list && list.size() > 0) {
+                Map map = null;
+                StringBuffer dsql = null;
+                dsql = new StringBuffer();
+                dsql.append("delete from M_ORG_MEMBER where id in (0 ");
+                for (OrgMember member : list) {
+                    map = new HashMap();
+                    map.put("id", member.getId());
+                    map.put("enabled", false);
+                    JSONObject jsonObject = client.put("/orgMember/" + member.getId() + "/enabled/false", map, JSONObject.class);
+                    if (null != jsonObject) {
+                        if (jsonObject.getBoolean("success")) {
+                            dsql.append(",'" + member.getId() + "'");
+                        }
+                    } else {
+                        dsql.append(",'" + member.getId() + "'");
+                    }
+                }
+                dsql.append(")");
+                SyncConnectionInfoUtil.insertResult(dsql.toString());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
