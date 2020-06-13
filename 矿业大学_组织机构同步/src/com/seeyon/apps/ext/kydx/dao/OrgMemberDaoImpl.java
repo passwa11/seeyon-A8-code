@@ -35,7 +35,11 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                 orgMember.setOrgAccountId(new OrgCommon().getOrgAccountId());
                 orgMember.setName(rs.getString("name"));
                 orgMember.setLoginname(rs.getString("loginname"));
-                orgMember.setOrgDepartmentId(rs.getString("org_department_id"));
+                if (null != rs.getString("org_department_id") && !"".equals(rs.getString("org_department_id"))) {
+                    orgMember.setOrgDepartmentId(rs.getString("org_department_id"));
+                } else {
+                    orgMember.setOrgDepartmentId(new OrgCommon().getOrgAccountId());
+                }
                 orgMember.setPostId(rs.getString("post_id"));
                 orgMember.setLevelId(rs.getString("level_id"));
                 orgMember.setPhone(rs.getString("phone"));
