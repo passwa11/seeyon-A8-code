@@ -25,6 +25,7 @@ public class OrgMemberManagerImpl implements OrgMemberManager {
 
     @Override
     public void deleteMember() {
-
+        List<OrgMember> list = memberDao.queryDeleteMember();
+        memberDao.deleteMember(list);
     }
 }
