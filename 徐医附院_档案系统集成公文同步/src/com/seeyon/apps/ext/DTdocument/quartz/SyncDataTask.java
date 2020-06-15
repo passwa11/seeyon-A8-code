@@ -1,5 +1,6 @@
 package com.seeyon.apps.ext.DTdocument.quartz;
 
+import com.seeyon.apps.ext.DTdocument.manager.ClearTemp40;
 import com.seeyon.apps.ext.DTdocument.manager.SyncOrgData;
 import com.seeyon.apps.ext.DTdocument.manager.WriteMiddleData;
 import org.slf4j.Logger;
@@ -22,6 +23,7 @@ public class SyncDataTask implements Runnable {
         try {
             SyncOrgData.getInstance().syncSummary();
             WriteMiddleData.getInstance().batchSqlByType();
+            ClearTemp40.getInstance().clearTableData();
         } catch (SQLException e) {
             e.printStackTrace();
         }
