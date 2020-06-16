@@ -105,17 +105,28 @@
 		<script type="text/javascript">
 		</script>
 		<%--zhou:2020-06-15 start--%>
-		<span class="hand left set_color_gray" id="downloadDetail">
+		<span class="hand left set_color_gray" id="downloadDetail" onclick="downloadDetail()">
 			<span class="ico16 download_16 margin_lr_5" title="文单下载"></span>
 			文单下载
 		</span>
 		<script>
-			$(function () {
-				var su='${summaryVO.summary.id}';
-				console.log(su);
-				$("#downloadDetail").click(function () {
-				});
-			});
+			<%--$(function () {--%>
+			<%--	var su='${summaryVO.summary.id}';--%>
+			<%--	var affair='${summaryVO.affairId}';--%>
+			<%--	console.log(affair);--%>
+			<%--	$("#downloadDetail").click(function () {--%>
+			<%--		$.post("/ext/downloadDetail.do?method=downloadfile",{affairId:affair},function () {--%>
+
+			<%--		});--%>
+			<%--	});--%>
+
+			<%--});--%>
+			function downloadDetail(){
+				var summaryId='${summaryVO.summary.id}';
+				var affair='${summaryVO.affairId}';
+				var url = "/seeyon/ext/downloadDetail.do?method=downloadfile&affairId=" + affair+"&summaryId="+summaryId+"&subject="+encodeURI(${summaryVO.affair.subject});
+				$("#downloadFileFrame").attr("src", url);
+			}
 
 		</script>
 		<%--zhou:2020-06-15 end--%>
