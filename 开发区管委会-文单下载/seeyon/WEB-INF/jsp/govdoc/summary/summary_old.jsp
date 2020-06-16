@@ -110,21 +110,10 @@
 			文单下载
 		</span>
 		<script>
-			<%--$(function () {--%>
-			<%--	var su='${summaryVO.summary.id}';--%>
-			<%--	var affair='${summaryVO.affairId}';--%>
-			<%--	console.log(affair);--%>
-			<%--	$("#downloadDetail").click(function () {--%>
-			<%--		$.post("/ext/downloadDetail.do?method=downloadfile",{affairId:affair},function () {--%>
-
-			<%--		});--%>
-			<%--	});--%>
-
-			<%--});--%>
 			function downloadDetail(){
 				var summaryId='${summaryVO.summary.id}';
 				var affair='${summaryVO.affairId}';
-				var url = "/seeyon/ext/downloadDetail.do?method=downloadfile&affairId=" + affair+"&summaryId="+summaryId+"&subject="+encodeURI(${summaryVO.affair.subject});
+				var url = "/seeyon/ext/downloadDetail.do?method=downLoadPdf&affairId=" + affair+"&summaryId="+summaryId+"&subject="+encodeURI(${summaryVO.affair.subject});
 				$("#downloadFileFrame").attr("src", url);
 			}
 
