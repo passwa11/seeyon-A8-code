@@ -2,6 +2,10 @@ package com.seeyon.apps.ext.downloadDetail.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.seeyon.ctp.common.controller.BaseController;
 
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +29,54 @@ public class downloadDetailController extends BaseController {
     private DocumentFactory df = new DocumentFactoryImpl();
     private TransformerFactory tFactory = TransformerFactory.newInstance();
 
+    public ModelAndView downLoadPdf(HttpServletRequest request, HttpServletResponse response) {
+        String affairId = request.getParameter("affairId");
+        String summaryId = request.getParameter("summaryId");
+        String subject = request.getParameter("subject");
+        String[] htmlContent = null;
+        String opinionSql = "select case attribute when 2 then '【'||'同意'||'】' when  3 then '【'||'不同意'||'】' else '' end attribute,policy,department_name,create_time,content,(select name from org_member where id= s.create_user_id) create_user_id from (select * from edoc_opinion where edoc_id=?) s";
+        try {
+            Connection connection = JDBCAgent.getRawConnection();
+            ResultSet opinionSet = null;
+            PreparedStatement opinionPs = null;
+
+            opinionPs = connection.prepareStatement(opinionSql);
+            opinionPs.setString(1, summaryId);
+            opinionSet = opinionPs.executeQuery();
+            String opinion = getJsString(opinionSet);
+            htmlContent = df.exportOfflineEdocModel(Long.parseLong(affairId));
+            String msg = htmlContent[1] + " " + opinion;
+
+            OutputStream fos = null;
+            String filename = toHandleSpecial(subject) + ".pdf";
+            try {
+                response.setContentType("application/octet-stream;charset=utf-8");
+                response.setHeader("Content-disposition", "attachment;filename=" + new String(filename.getBytes("UTF-8"), "UTF-8"));
+                fos = response.getOutputStream();
+
+                byte[] bytes = HtmlToPdf.toPdf(msg);
+
+                fos.write(bytes);
+                fos.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (null != fos) {
+                        fos.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (ServiceException ex) {
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
     public ModelAndView downloadfile(HttpServletRequest request, HttpServletResponse response) {
         String affairId = request.getParameter("affairId");
         String summaryId = request.getParameter("summaryId");
@@ -44,20 +96,29 @@ public class downloadDetailController extends BaseController {
             String msg = htmlContent[1] + " " + opinion;
 
             OutputStream fos = null;
-            String filename = toHandleSpecial(subject)+".html";
+            String filename = toHandleSpecial(subject) + ".pdf";
             try {
                 response.setContentType("application/octet-stream;charset=utf-8");
-                response.setHeader("Content-disposition", "attachment;filename=" + new String(filename.getBytes("GBK"), "iso-8859-1"));
-                //创建临时文件
-//                File file=File.createTempFile("",".html");
+                response.setHeader("Content-disposition", "attachment;filename=" + new String(filename.getBytes("UTF-8"), "UTF-8"));
                 fos = response.getOutputStream();
-                fos.write(msg.getBytes());
-                fos.flush();
+
+                Document document = new Document();
+                try {
+                    PdfWriter.getInstance(document, fos);
+                    document.open();
+                    document.add(new Paragraph(msg));
+                } catch (DocumentException e) {
+                    e.printStackTrace();
+                }
+//                fos.write(msg.getBytes());
+//                fos.flush();
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
                 try {
-                    fos.close();
+                    if (null != fos) {
+                        fos.close();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
