@@ -333,29 +333,31 @@ public class xkEdocController extends BaseController {
             String y = "";
             String hostFileUrl = "";
             if (type.equals("2")) {
-                if (null != isQuickSend && !"".equals(isQuickSend)) {
-                    if (("true").equals(isQuickSend)) {
-                        List<Map> listMap = xkjtSummaryAttManager.queryHostFile(summaryId);
-                        if (listMap.size() > 0) {
-                            for (Map map : listMap) {
-                                BigDecimal bigDecimal = (BigDecimal) map.get("attachment_id");
-                                hostFileUrl = bigDecimal.toString();
-                            }
-                        }
-                        if (hostFileUrl.equals("")) {
-                            y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + fileId;
-
-                        } else {
-                            y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + hostFileUrl;
-                        }
-                    } else {
-                        y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + fileId;
+//                if (null != isQuickSend && !"".equals(isQuickSend)) {
+//                    if (("true").equals(isQuickSend)) {
+                List<Map> listMap = xkjtSummaryAttManager.queryHostFile(summaryId);
+                if (listMap.size() > 0) {
+                    for (Map map : listMap) {
+                        BigDecimal bigDecimal = (BigDecimal) map.get("attachment_id");
+                        hostFileUrl = bigDecimal.toString();
                     }
-
                 }
-            } else {
-                y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + fileId;
+                if (hostFileUrl.equals("")) {
+                    y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + fileId;
+
+                } else {
+                    y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + hostFileUrl;
+                }
             }
+//            else {
+//                        y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + fileId;
+//                    }
+
+//                }
+//        }
+//        else{
+//            y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + fileId + hostFileUrl;
+//        }
 
             n = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + filename;
             File newFile = new File(n);
@@ -378,7 +380,8 @@ public class xkEdocController extends BaseController {
                 bos.write(buffer, 0, len);
             }
             bos.flush();
-        } catch (Exception e) {
+        } catch (
+                Exception e) {
             e.printStackTrace();
         } finally {
             try {
