@@ -35,7 +35,7 @@ public class SelectPeopleResources extends BaseResource {
 
     @POST
     @Produces({"application/json"})
-    @Path("backfillpeopleInfo2")
+    @Path("backfillpeopleInfo")
     public Response backfillpeopleInfo2(Map<String,Object> postMap) throws BusinessException {
         //fastjson 解析json字符串
         String masterId=(String) postMap.get("masterId");
