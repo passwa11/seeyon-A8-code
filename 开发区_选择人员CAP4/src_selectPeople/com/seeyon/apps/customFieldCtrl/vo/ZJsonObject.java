@@ -5,27 +5,14 @@ package com.seeyon.apps.customFieldCtrl.vo;
  */
 public class ZJsonObject {
 
-    private String field0001;//人员编号
-    private String field0003;//部门名称
-    private String field0004;//人员姓名
+    private String field0001;
+    private String field0002;
+    private String field0003;
+    private String field0004;
+    private String field0005;
     private String field0006;
-    private String zsort;
-
-    public String getZsort() {
-        return zsort;
-    }
-
-    public void setZsort(String zsort) {
-        this.zsort = zsort;
-    }
-
-    public String getField0006() {
-        return field0006;
-    }
-
-    public void setField0006(String field0006) {
-        this.field0006 = field0006;
-    }
+    private String field0007;
+    private String mval;
 
     public String getField0001() {
         return field0001;
@@ -33,6 +20,14 @@ public class ZJsonObject {
 
     public void setField0001(String field0001) {
         this.field0001 = field0001;
+    }
+
+    public String getField0002() {
+        return field0002;
+    }
+
+    public void setField0002(String field0002) {
+        this.field0002 = field0002;
     }
 
     public String getField0003() {
@@ -49,5 +44,37 @@ public class ZJsonObject {
 
     public void setField0004(String field0004) {
         this.field0004 = field0004;
+    }
+
+    public String getField0005() {
+        return field0005;
+    }
+
+    public void setField0005(String field0005) {
+        this.field0005 = field0005;
+    }
+
+    public String getField0006() {
+        return field0006;
+    }
+
+    public void setField0006(String field0006) {
+        this.field0006 = field0006;
+    }
+
+    public String getField0007() {
+        return field0007;
+    }
+
+    public void setField0007(String field0007) {
+        this.field0007 = field0007;
+    }
+
+    public String getMval() {
+        return mval;
+    }
+
+    public void setMval(String mval) {
+        this.mval = mval;
     }
 }
