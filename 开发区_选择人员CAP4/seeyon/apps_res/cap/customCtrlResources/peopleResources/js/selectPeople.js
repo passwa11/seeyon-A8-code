@@ -124,7 +124,9 @@
                         });
 
                         function addLineAndFilldata(content, adaptation, messageObj, privateId, datainfo, flag) {
+                            debugger;
                             flag--;
+                            // --flag;
                             var jsonAdd = {
                                 'masterId': content.contentDataId,
                                 'dataInfo': JSON.stringify(datainfo),
