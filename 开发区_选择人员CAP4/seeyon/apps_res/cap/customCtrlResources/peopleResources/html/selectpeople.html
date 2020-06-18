@@ -26,31 +26,24 @@
         function OK() {
             var peoples = new Array();
             $("dl").find('dd').each(function () {
-                // field0001: $(item).attr("lay-id"),
-                //     field0003: $(item).attr("lay-name"),
-                //     field0004: $(item).attr("lay-dept"),
-                //     field0005: $(item).attr("lay-bs"),
-                //     mval: $(item).attr("lay-bsname"),
-                //     field0007: $(item).attr("lay-zsort")
-
-                var v = $(this).attr("lay-value");
+                var id = $(this).attr("lay-id");
                 var name = $(this).attr("lay-name");
-                var dept = $(this).attr("lay-dept");
+                var tel = $(this).attr("lay-dept");
                 var flag = $(this).attr("lay-flag");
                 var bs = $(this).attr("lay-bs");
-                var id = $(this).attr("lay-id");
+                var bsname = $(this).attr("lay-bsname");
                 var zsort = $(this).attr("lay-zsort");
                 if (undefined == id) {
                     id = "";
                 }
                 var obj = {};//添加成员对象
-                obj["field0001"] = v;
-                obj["field0004"] = dept;
+                obj["field0001"] = id;
                 obj["field0003"] = name;
-                obj["field0006"] = bs;
+                obj["field0004"] = tel;
+                obj["field0005"] = bs;
+                obj["mval"] = bsname;
+                obj["field0007"] = zsort;
                 obj["flag"] = flag;
-                obj["id"] = id;
-                obj["zsort"] = zsort;
                 peoples.push(obj);
             });
             return {
