@@ -107,7 +107,7 @@
                         $.ajax({
                             type: 'post',
                             async: true,
-                            url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo2",
+                            url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo",
                             dataType: 'json',
                             data: JSON.stringify(jsonObj),
                             contentType: 'application/json',
@@ -133,7 +133,7 @@
                             $.ajax({
                                 type: 'post',
                                 async: true,
-                                url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo2",
+                                url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo",
                                 dataType: 'json',
                                 data: JSON.stringify(jsonAdd),
                                 contentType: 'application/json',
