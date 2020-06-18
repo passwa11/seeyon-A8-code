@@ -2,7 +2,6 @@ package com.seeyon.apps.ext.selectPeople.dao;
 
 
 import com.seeyon.apps.ext.selectPeople.po.Formson0174;
-import com.seeyon.apps.ext.selectPeople.po.JtldEntity;
 
 import java.util.List;
 import java.util.Map;
