@@ -15,7 +15,7 @@ public class HiddenFieldCtrl extends FormFieldCustomCtrl {
 	@Override
 	public String getKey() {
 		//www.seeyon.com.utils.UUIDUtil.getUUIDString()接口	生成一个uuid，将此Id作为控件的key
-		return "6571213415994281300";
+		return "6236329095672048597";
 	}
 
 	//重写canUse()方法， 使控件可以在客户端使用  ，具体能不能生效  我也不晓得

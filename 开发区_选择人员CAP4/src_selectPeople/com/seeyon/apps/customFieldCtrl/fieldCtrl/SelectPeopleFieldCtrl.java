@@ -10,7 +10,7 @@ public class SelectPeopleFieldCtrl extends FormFieldCustomCtrl{
 	@Override
 	public String getKey() {
 		//www.seeyon.com.utils.UUIDUtil.getUUIDString()接口	生成一个uuid，将此Id作为控件的key
-		return "6530795810723998937";
+		return "5461900594264253750";
 	}
 
 	//重写canUse()方法， 使控件可以在客户端使用  ，具体能不能生效  我也不晓得
@@ -61,7 +61,7 @@ public class SelectPeopleFieldCtrl extends FormFieldCustomCtrl{
 	public String getText() {
 		return "人员选择";
 	}
-	
-	
+
+
 
 }
