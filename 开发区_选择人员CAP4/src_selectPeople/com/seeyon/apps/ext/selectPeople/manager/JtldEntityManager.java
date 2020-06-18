@@ -1,6 +1,5 @@
 package com.seeyon.apps.ext.selectPeople.manager;
 
-import com.alibaba.fastjson.JSONArray;
 import com.seeyon.apps.ext.selectPeople.po.Formson0174;
 
 import java.util.List;
@@ -11,19 +10,21 @@ import java.util.Map;
  */
 public interface JtldEntityManager {
 
-    public List<Map<String,Object>> selectJtldEntity(String name);
+    //驻区单位
+    List<Map<String, Object>> selectZhuQu0032(String name);
 
-    public List<Map<String,Object>> selectFormmain0380(String name);
+    //镇办
+    List<Map<String, Object>> selectZhenBan0031(String name);
 
-    public List<Map<String,Object>> selectFormmain0148(String name);
+    //机关部门
+    List<Map<String, Object>> selectJiGuan0030(String name);
 
-    public List<Map<String,Object>> selectFormmain0106(String name);
+    //党政办人员
+    List<Map<String, Object>> selectDangZhengBan0029(String name);
 
-    public List<Map<String,Object>> selectFormmain0087(String name);
-    public List<Map<String,Object>> selectFormmain0323(String name);
 
-    public List<Map<String,Object>> selectDeskWork(String name);
-    public List<Map<String,Object>> selectPeopleByDeskWorkId(List<String> id);
+    public List<Map<String, Object>> selectJtldEntity(String name);
+
 
     public void insertFormson0174(List<Formson0174> formson0174);
 

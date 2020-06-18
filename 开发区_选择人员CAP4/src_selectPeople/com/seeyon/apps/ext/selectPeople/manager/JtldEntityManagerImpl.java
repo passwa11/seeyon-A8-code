@@ -1,10 +1,8 @@
 package com.seeyon.apps.ext.selectPeople.manager;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.seeyon.apps.ext.selectPeople.dao.JtldEntityDao;
+import com.seeyon.apps.ext.selectPeople.dao.JtldEntityDaoImpl;
 import com.seeyon.apps.ext.selectPeople.po.Formson0174;
-import com.seeyon.ctp.common.AppContext;
 
 import java.util.List;
 import java.util.Map;
@@ -14,68 +12,40 @@ import java.util.Map;
  */
 public class JtldEntityManagerImpl implements JtldEntityManager {
 
-    private JtldEntityDao jtldEntityDao;
+    private JtldEntityDao dao = new JtldEntityDaoImpl();
 
     @Override
-    public List<Map<String, Object>> selectPeopleByDeskWorkId(List<String> id) {
-        return jtldEntityDao.selectPeopleByDeskWorkId(id);
+    public List<Map<String, Object>> selectZhuQu0032(String name) {
+        return dao.selectZhuQu0032(name);
     }
 
     @Override
-    public List<Map<String, Object>> selectDeskWork(String name) {
-        return jtldEntityDao.selectDeskWork(name);
+    public List<Map<String, Object>> selectZhenBan0031(String name) {
+        return dao.selectZhenBan0031(name);
+    }
+
+    @Override
+    public List<Map<String, Object>> selectJiGuan0030(String name) {
+        return dao.selectJiGuan0030(name);
+    }
+
+    @Override
+    public List<Map<String, Object>> selectDangZhengBan0029(String name) {
+        return dao.selectDangZhengBan0029(name);
     }
 
     @Override
     public void insertFormson0174(List<Formson0174> formson0174) {
-        getJtldEntityDao().insertFormson0174(formson0174);
+        dao.insertFormson0174(formson0174);
     }
 
-    public JtldEntityDao getJtldEntityDao() {
-        if (jtldEntityDao == null) {
-            jtldEntityDao = (JtldEntityDao) AppContext.getBean("jtldEntityDao");
-        }
-        return jtldEntityDao;
-    }
 
     @Override
     public List<Map<String, Object>> selectJtldEntity(String name) {
-        List<Map<String, Object>> list = getJtldEntityDao().selectJtldEntity(name);
+        List<Map<String, Object>> list = dao.selectJtldEntity(name);
 //        JSONArray json = JSON.parseArray(JSON.toJSONString(list));
         return list;
     }
 
-    @Override
-    public List<Map<String, Object>> selectFormmain0380(String name) {
-        List<Map<String, Object>> list = getJtldEntityDao().selectFormmain0380(name);
-        return list;
-    }
 
-    @Override
-    public List<Map<String, Object>> selectFormmain0148(String name) {
-        List<Map<String, Object>> list = getJtldEntityDao().selectFormmain0148(name);
-//        JSONArray json = JSON.parseArray(JSON.toJSONString(list));
-
-        return list;
-    }
-
-    @Override
-    public List<Map<String, Object>> selectFormmain0106(String name) {
-        List<Map<String, Object>> list = getJtldEntityDao().selectFormmain0106(name);
-//        JSONArray json = JSON.parseArray(JSON.toJSONString(list));
-        return list;
-    }
-
-    @Override
-    public List<Map<String, Object>> selectFormmain0087(String name) {
-        List<Map<String, Object>> list = getJtldEntityDao().selectFormmain0087(name);
-//        JSONArray json = JSON.parseArray(JSON.toJSONString(list));
-        return list;
-    }
-
-    @Override
-    public List<Map<String, Object>> selectFormmain0323(String name) {
-        List<Map<String, Object>> list = getJtldEntityDao().selectFormmain0323(name);
-        return list;
-    }
 }
