@@ -92,9 +92,7 @@
                         //添加明细行并回填数据
                         var content = messageObj.formdata.content;
                         var num = peoples.data.length + 1;
-                        //2019-06-11
                         var arr = peoples.data;
-                        var conditionId = new Array();
                         var newPeople = new Array();
                         for (var i = 0; i < peoples.data.length; i++) {
                             var a = arr[i];
