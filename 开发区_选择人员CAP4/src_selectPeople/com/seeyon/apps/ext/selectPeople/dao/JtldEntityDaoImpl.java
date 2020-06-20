@@ -14,28 +14,28 @@ public class JtldEntityDaoImpl implements JtldEntityDao {
 
     @Override
     public List<Map<String, Object>> selectZhuQu0032(String name) {
-        String sql = "select f32.field0001,( select name from ORG_MEMBER where id =f32.field0001) field0003,f32.field0004,f32.field0005,(select showvalue from ctp_enum_item where id =f32.field0005) mval,f32.field0007 from formmain_0184 f32";
+        String sql = "select f32.field0001,( select name from ORG_MEMBER where id =f32.field0001) field0003,f32.field0004,f32.field0005,(select showvalue from ctp_enum_item where id =f32.field0005) mval,f32.field0007 from formmain_0032 f32";
         List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
         return list;
     }
 
     @Override
     public List<Map<String, Object>> selectZhenBan0031(String name) {
-        String sql = "select f.field0001,( select name from ORG_MEMBER where id =f.field0001) field0003,f.field0004,f.field0005,(select showvalue from ctp_enum_item where id =f.field0005) mval,f.field0007 from formmain_0183 f";
+        String sql = "select f.field0001,( select name from ORG_MEMBER where id =f.field0001) field0003,f.field0004,f.field0005,(select showvalue from ctp_enum_item where id =f.field0005) mval,f.field0007 from formmain_0031 f";
         List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
         return list;
     }
 
     @Override
     public List<Map<String, Object>> selectJiGuan0030(String name) {
-        String sql = "select f.field0001,( select name from ORG_MEMBER where id =f.field0001) field0003,f.field0004,f.field0005,(select showvalue from ctp_enum_item where id =f.field0005) mval,f.field0007 from formmain_0175 f";
+        String sql = "select f.field0001,( select name from ORG_MEMBER where id =f.field0001) field0003,f.field0004,f.field0005,(select showvalue from ctp_enum_item where id =f.field0005) mval,f.field0007 from formmain_0030 f";
         List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
         return list;
     }
 
     @Override
     public List<Map<String, Object>> selectDangZhengBan0029(String name) {
-        String sql = "select f.field0001,( select name from ORG_MEMBER where id =f.field0001) field0003,f.field0004,f.field0005,(select showvalue from ctp_enum_item where id =f.field0005) mval,f.field0007 from formmain_0174 f";
+        String sql = "select f.field0001,( select name from ORG_MEMBER where id =f.field0001) field0003,f.field0004,f.field0005,(select showvalue from ctp_enum_item where id =f.field0005) mval,f.field0007 from formmain_0029 f";
         List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
         return list;
     }
