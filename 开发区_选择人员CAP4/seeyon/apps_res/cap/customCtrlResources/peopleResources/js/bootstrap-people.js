@@ -134,7 +134,7 @@ function zhuqu32Table() {
         columns: [
             {checkbox: true, width: '5%'}
             , {
-                field: 'field0003',
+                field: 'field0001',
                 title: '接收对象',
                 width: '88%',
             }
@@ -161,9 +161,9 @@ function dangZhengBanSure() {
     for (var i = 0; i < arrJtld.length; i++) {
         var tr_obj = arrJtld[i];
         var obj = {};//添加成员对象
-        obj["value"] = tr_obj.field0001;
-        obj["text"] = tr_obj.field0003;
-        obj["dept"] = tr_obj.field0004;
+        obj["value"] = tr_obj.field0002;
+        obj["text"] = tr_obj.field0001;
+        obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
             var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0001 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="29" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").prepend(option);
@@ -215,9 +215,9 @@ function Sure30() {
     for (var i = 0; i < arrJtld.length; i++) {
         var tr_obj = arrJtld[i];
         var obj = {};//添加成员对象
-        obj["value"] = tr_obj.field0001;
-        obj["text"] = tr_obj.field0003;
-        obj["dept"] = tr_obj.field0004;
+        obj["value"] = tr_obj.field0002;
+        obj["text"] = tr_obj.field0001;
+        obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
             var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0001 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="30" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").prepend(option);
@@ -269,9 +269,9 @@ function Sure31() {
     for (var i = 0; i < arrJtld.length; i++) {
         var tr_obj = arrJtld[i];
         var obj = {};//添加成员对象
-        obj["value"] = tr_obj.field0001;
-        obj["text"] = tr_obj.field0003;
-        obj["dept"] = tr_obj.field0004;
+        obj["value"] = tr_obj.field0002;
+        obj["text"] = tr_obj.field0001;
+        obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
             var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0001 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="31" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").prepend(option);
@@ -323,9 +323,9 @@ function Sure32() {
     for (var i = 0; i < arrJtld.length; i++) {
         var tr_obj = arrJtld[i];
         var obj = {};//添加成员对象
-        obj["value"] = tr_obj.field0001;
-        obj["text"] = tr_obj.field0003;
-        obj["dept"] = tr_obj.field0004;
+        obj["value"] = tr_obj.field0002;
+        obj["text"] = tr_obj.field0001;
+        obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
             var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0001 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="32" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").prepend(option);
