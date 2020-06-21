@@ -161,7 +161,7 @@ function dangZhengBanSure() {
     for (var i = 0; i < arrJtld.length; i++) {
         var tr_obj = arrJtld[i];
         var obj = {};//添加成员对象
-        obj["value"] = tr_obj.field0002;
+        obj["value"] = tr_obj.id;
         obj["text"] = tr_obj.field0001;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
@@ -215,7 +215,7 @@ function Sure30() {
     for (var i = 0; i < arrJtld.length; i++) {
         var tr_obj = arrJtld[i];
         var obj = {};//添加成员对象
-        obj["value"] = tr_obj.field0002;
+        obj["value"] = tr_obj.id;
         obj["text"] = tr_obj.field0001;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
@@ -269,7 +269,7 @@ function Sure31() {
     for (var i = 0; i < arrJtld.length; i++) {
         var tr_obj = arrJtld[i];
         var obj = {};//添加成员对象
-        obj["value"] = tr_obj.field0002;
+        obj["value"] = tr_obj.id;
         obj["text"] = tr_obj.field0001;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
@@ -317,13 +317,14 @@ function Sure31() {
 }
 
 function Sure32() {
+    debugger;
     var $table = $('#zhuqu32');
     var rows = $table.bootstrapTable('getSelections');
     var arrJtld = rows;
     for (var i = 0; i < arrJtld.length; i++) {
         var tr_obj = arrJtld[i];
         var obj = {};//添加成员对象
-        obj["value"] = tr_obj.field0002;
+        obj["value"] = tr_obj.id;
         obj["text"] = tr_obj.field0001;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
