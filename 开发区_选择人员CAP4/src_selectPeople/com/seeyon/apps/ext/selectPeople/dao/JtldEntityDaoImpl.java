@@ -14,28 +14,37 @@ public class JtldEntityDaoImpl implements JtldEntityDao {
 
     @Override
     public List<Map<String, Object>> selectZhuQu0032(String name) {
-        String sql = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0032 ";
+        String sqltest = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0032 ";
+//        正式
+        String sql = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0184 ";
         List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
         return list;
     }
 
     @Override
     public List<Map<String, Object>> selectZhenBan0031(String name) {
-        String sql = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0031 ";
+        String sqltest = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0031 ";
+//        正式
+        String sql = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0183 ";
         List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
         return list;
     }
 
     @Override
     public List<Map<String, Object>> selectJiGuan0030(String name) {
-        String sql = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0030 ";
+        String sqltest = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0030 ";
+        //        正式
+        String sql = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0175 ";
+
         List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
         return list;
     }
 
     @Override
     public List<Map<String, Object>> selectDangZhengBan0029(String name) {
-        String sql = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0029 ";
+        String sqltest = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0029 ";
+        //        正式
+        String sql = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0174 ";
         List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
         return list;
     }
