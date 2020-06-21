@@ -165,7 +165,7 @@ function dangZhengBanSure() {
         obj["text"] = tr_obj.field0001;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="29" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="'+tr_obj.name+'" lay-flag="29" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -186,7 +186,7 @@ function dangZhengBanSure() {
                 return flag;
             }
             if (selected()) {
-                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="29"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="'+tr_obj.name+'"  lay-flag="29"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -219,7 +219,7 @@ function Sure30() {
         obj["text"] = tr_obj.field0001;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="30" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="'+tr_obj.name+'"  lay-flag="30" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -240,7 +240,7 @@ function Sure30() {
                 return flag;
             }
             if (selected()) {
-                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="30"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="'+tr_obj.name+'"  lay-flag="30"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -273,7 +273,7 @@ function Sure31() {
         obj["text"] = tr_obj.field0001;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="31" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="'+tr_obj.name+'" lay-flag="31" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -294,7 +294,7 @@ function Sure31() {
                 return flag;
             }
             if (selected()) {
-                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="31"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="'+tr_obj.name+'" lay-flag="31"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -327,7 +327,7 @@ function Sure32() {
         obj["text"] = tr_obj.field0001;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="32" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="'+tr_obj.name+'" lay-flag="32" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -348,7 +348,7 @@ function Sure32() {
                 return flag;
             }
             if (selected()) {
-                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="32"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="'+tr_obj.name+'"  lay-flag="32"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -379,9 +379,11 @@ function commonInfo(s) {
             $('#dzb29').bootstrapTable('insertRow', {
                 index: 0,
                 row: {
-                    field0001: $(item).attr("lay-id"),
-                    field0003: $(item).attr("lay-name"),
-                    field0004: $(item).attr("lay-dept"),
+                    id:$(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name:$(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
                     field0005: $(item).attr("lay-bs"),
                     mval: $(item).attr("lay-bsname"),
                     field0007: $(item).attr("lay-zsort")
@@ -392,9 +394,11 @@ function commonInfo(s) {
             $('#jiguan30').bootstrapTable('insertRow', {
                 index: 0,
                 row: {
-                    field0001: $(item).attr("lay-id"),
-                    field0003: $(item).attr("lay-name"),
-                    field0004: $(item).attr("lay-dept"),
+                    id:$(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name:$(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
                     field0005: $(item).attr("lay-bs"),
                     mval: $(item).attr("lay-bsname"),
                     field0007: $(item).attr("lay-zsort")
@@ -405,9 +409,11 @@ function commonInfo(s) {
             $('#zhenb31').bootstrapTable('insertRow', {
                 index: 0,
                 row: {
-                    field0001: $(item).attr("lay-id"),
-                    field0003: $(item).attr("lay-name"),
-                    field0004: $(item).attr("lay-dept"),
+                    id:$(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name:$(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
                     field0005: $(item).attr("lay-bs"),
                     mval: $(item).attr("lay-bsname"),
                     field0007: $(item).attr("lay-zsort")
@@ -418,9 +424,11 @@ function commonInfo(s) {
             $('#zhuqu32').bootstrapTable('insertRow', {
                 index: 0,
                 row: {
-                    field0001: $(item).attr("lay-id"),
-                    field0003: $(item).attr("lay-name"),
-                    field0004: $(item).attr("lay-dept"),
+                    id:$(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name:$(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
                     field0005: $(item).attr("lay-bs"),
                     mval: $(item).attr("lay-bsname"),
                     field0007: $(item).attr("lay-zsort")

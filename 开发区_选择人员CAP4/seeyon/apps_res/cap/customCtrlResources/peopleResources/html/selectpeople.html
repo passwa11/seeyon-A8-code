@@ -27,8 +27,10 @@
             var peoples = new Array();
             $("dl").find('dd').each(function () {
                 var id = $(this).attr("lay-id");
-                var name = $(this).attr("lay-name");
-                var tel = $(this).attr("lay-dept");
+                var field0001 = $(this).attr("lay-name");
+                var field0002 = $(this).attr("lay-value");
+                var field0003 =  $(item).attr("lay-dept");
+                var name = $(this).attr("lay-username");
                 var flag = $(this).attr("lay-flag");
                 var bs = $(this).attr("lay-bs");
                 var bsname = $(this).attr("lay-bsname");
@@ -37,9 +39,11 @@
                     id = "";
                 }
                 var obj = {};//添加成员对象
-                obj["field0001"] = id;
-                obj["field0003"] = name;
-                obj["field0004"] = tel;
+                obj["id"] = id;
+                obj["field0001"] = field0001;
+                obj["field0002"] = field0002;
+                obj["name"] = name;
+                obj["field0003"] = field0003;
                 obj["field0005"] = bs;
                 obj["mval"] = bsname;
                 obj["field0007"] = zsort;
