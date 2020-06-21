@@ -110,26 +110,31 @@ public class SelectPeopleResources extends BaseResource {
                     subTemp1.put("value", zJsonObject.getField0001());
 
                     Map<String, Object> subTemp2 = new HashMap<>();
-                    subTemp2.put("showValue", zJsonObject.getField0003());
-                    subTemp2.put("showValue2", zJsonObject.getField0003());
-                    subTemp2.put("value", zJsonObject.getField0003());
+                    subTemp2.put("showValue", zJsonObject.getField0002());
+                    subTemp2.put("showValue2", zJsonObject.getField0002());
+                    subTemp2.put("value", zJsonObject.getField0002());
 
                     Map<String, Object> subTemp3 = new HashMap<>();
-                    subTemp3.put("showValue", zJsonObject.getField0004());
-                    subTemp3.put("showValue2", zJsonObject.getField0004());
-                    subTemp3.put("value", zJsonObject.getField0004());
+                    subTemp3.put("showValue", zJsonObject.getName());
+                    subTemp3.put("showValue2", zJsonObject.getName());
+                    subTemp3.put("value", zJsonObject.getName());
 
                     Map<String, Object> subTemp4 = new HashMap<>();
+                    subTemp4.put("showValue", zJsonObject.getField0003());
+                    subTemp4.put("showValue2", zJsonObject.getField0003());
+                    subTemp4.put("value", zJsonObject.getField0003());
+
+                    Map<String, Object> subTemp5 = new HashMap<>();
                     subTemp4.put("showValue", zJsonObject.getField0005());
                     subTemp4.put("showValue2", zJsonObject.getField0005());
                     subTemp4.put("value", zJsonObject.getField0005());
 
-                    Map<String, Object> subTemp5 = new HashMap<>();
+                    Map<String, Object> subTemp6 = new HashMap<>();
                     subTemp5.put("showValue", zJsonObject.getMval());
                     subTemp5.put("showValue2", zJsonObject.getMval());
                     subTemp5.put("value", zJsonObject.getMval());
 
-                    Map<String, Object> subTemp6 = new HashMap<>();
+                    Map<String, Object> subTemp7 = new HashMap<>();
                     subTemp6.put("showValue", zJsonObject.getField0007());
                     subTemp6.put("showValue2", zJsonObject.getField0007());
                     subTemp6.put("value", zJsonObject.getField0007());
@@ -156,6 +161,9 @@ public class SelectPeopleResources extends BaseResource {
                                 }
                                 if (count == 6) {
                                     filldatas.put(key, subTemp6);
+                                }
+                                if (count == 7) {
+                                    filldatas.put(key, subTemp7);
                                 }
                                 count++;
                                 dataMap.put(masterMap.get("id") + "", filldatas);

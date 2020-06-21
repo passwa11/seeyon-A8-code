@@ -13,6 +13,15 @@ public class ZJsonObject {
     private String field0006;
     private String field0007;
     private String mval;
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getField0001() {
         return field0001;
