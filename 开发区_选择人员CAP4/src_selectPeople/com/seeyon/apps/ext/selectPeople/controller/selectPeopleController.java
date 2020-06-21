@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.selectPeople.manager.JtldEntityManager;
 import com.seeyon.apps.ext.selectPeople.manager.JtldEntityManagerImpl;
 import com.seeyon.apps.ext.selectPeople.po.Formson0174;
+import com.seeyon.apps.ext.selectPeople.util.JDBCUtil;
 import com.seeyon.ctp.common.controller.BaseController;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,6 +35,15 @@ public class selectPeopleController extends BaseController {
             List<Map<String, Object>> revoler = new ArrayList<>();
             if (type.equals("29")) {
                 list = manager.selectDangZhengBan0029(name);
+                for (int j = 0; j < list.size(); j++) {
+                    Map<String, Object> m = list.get(j);
+                    String userId = (String) m.get("field0002");
+                    String sql = "select WMSYS.WM_CONCAT(name) name from ORG_MEMBER where id in(" + userId + ")";
+                    List<Map<String, Object>> l = JDBCUtil.doQuery(sql);
+                    for (Map.Entry<String, Object> entry : l.get(0).entrySet()) {
+                        m.put(entry.getKey(), entry.getValue());
+                    }
+                }
                 for (int i = 0; i < list.size(); i++) {
                     Map<String, Object> m = new HashMap<>();
                     for (Map.Entry<String, Object> entry : list.get(i).entrySet()) {
@@ -44,6 +54,15 @@ public class selectPeopleController extends BaseController {
                 }
             } else if (type.equals("30")) {
                 list = manager.selectJiGuan0030(name);
+                for (int j = 0; j < list.size(); j++) {
+                    Map<String, Object> m = list.get(j);
+                    String userId = (String) m.get("field0002");
+                    String sql = "select WMSYS.WM_CONCAT(name) name from ORG_MEMBER where id in(" + userId + ")";
+                    List<Map<String, Object>> l = JDBCUtil.doQuery(sql);
+                    for (Map.Entry<String, Object> entry : l.get(0).entrySet()) {
+                        m.put(entry.getKey(), entry.getValue());
+                    }
+                }
                 for (int i = 0; i < list.size(); i++) {
                     Map<String, Object> m = new HashMap<>();
                     for (Map.Entry<String, Object> entry : list.get(i).entrySet()) {
@@ -54,6 +73,15 @@ public class selectPeopleController extends BaseController {
                 }
             } else if (type.equals("31")) {
                 list = manager.selectZhenBan0031(name);
+                for (int j = 0; j < list.size(); j++) {
+                    Map<String, Object> m = list.get(j);
+                    String userId = (String) m.get("field0002");
+                    String sql = "select WMSYS.WM_CONCAT(name) name from ORG_MEMBER where id in(" + userId + ")";
+                    List<Map<String, Object>> l = JDBCUtil.doQuery(sql);
+                    for (Map.Entry<String, Object> entry : l.get(0).entrySet()) {
+                        m.put(entry.getKey(), entry.getValue());
+                    }
+                }
                 for (int i = 0; i < list.size(); i++) {
                     Map<String, Object> m = new HashMap<>();
                     for (Map.Entry<String, Object> entry : list.get(i).entrySet()) {
@@ -64,6 +92,15 @@ public class selectPeopleController extends BaseController {
                 }
             } else if (type.equals("32")) {
                 list = manager.selectZhuQu0032(name);
+                for (int j = 0; j < list.size(); j++) {
+                    Map<String, Object> m = list.get(j);
+                    String userId = (String) m.get("field0002");
+                    String sql = "select WMSYS.WM_CONCAT(name) name from ORG_MEMBER where id in(" + userId + ")";
+                    List<Map<String, Object>> l = JDBCUtil.doQuery(sql);
+                    for (Map.Entry<String, Object> entry : l.get(0).entrySet()) {
+                        m.put(entry.getKey(), entry.getValue());
+                    }
+                }
                 for (int i = 0; i < list.size(); i++) {
                     Map<String, Object> m = new HashMap<>();
                     for (Map.Entry<String, Object> entry : list.get(i).entrySet()) {
