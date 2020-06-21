@@ -15,7 +15,7 @@ function dangZhengBanTable() {
         url: '/seeyon/ext/selectPeople.do?method=selectListData&type=29',
         queryParamsType: '',              //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
         queryParams: queryParams,
-        uniqueId: "field0001",
+        uniqueId: "id",
         method: "post",
         contentType: "application/x-www-form-urlencoded",
         undefinedText: "",//当数据为 undefined 时显示的字符
@@ -35,7 +35,7 @@ function dangZhengBanTable() {
         columns: [
             {checkbox: true, width: '5%'}
             , {
-                field: 'field0003',
+                field: 'field0001',
                 title: '接收对象',
                 width: '88%',
             }
@@ -48,7 +48,7 @@ function jiguan30Table() {
         url: '/seeyon/ext/selectPeople.do?method=selectListData&type=30',
         queryParamsType: '',              //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
         queryParams: queryParams,
-        uniqueId: "field0001",
+        uniqueId: "id",
         method: "post",
         contentType: "application/x-www-form-urlencoded",
         undefinedText: "",//当数据为 undefined 时显示的字符
@@ -68,7 +68,7 @@ function jiguan30Table() {
         columns: [
             {checkbox: true, width: '5%'}
             , {
-                field: 'field0003',
+                field: 'field0001',
                 title: '接收对象',
                 width: '88%',
             }
@@ -81,7 +81,7 @@ function zhenban31Table() {
         url: '/seeyon/ext/selectPeople.do?method=selectListData&type=31',
         queryParamsType: '',              //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
         queryParams: queryParams,
-        uniqueId: "field0001",
+        uniqueId: "id",
         method: "post",
         contentType: "application/x-www-form-urlencoded",
         undefinedText: "",//当数据为 undefined 时显示的字符
@@ -101,7 +101,7 @@ function zhenban31Table() {
         columns: [
             {checkbox: true, width: '5%'}
             , {
-                field: 'field0003',
+                field: 'field0001',
                 title: '接收对象',
                 width: '88%',
             }
@@ -114,7 +114,7 @@ function zhuqu32Table() {
         url: '/seeyon/ext/selectPeople.do?method=selectListData&type=32',
         queryParamsType: '',              //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
         queryParams: queryParams,
-        uniqueId: "field0001",
+        uniqueId: "id",
         method: "post",
         contentType: "application/x-www-form-urlencoded",
         undefinedText: "",//当数据为 undefined 时显示的字符
@@ -165,7 +165,7 @@ function dangZhengBanSure() {
         obj["text"] = tr_obj.field0001;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0001 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="29" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="29" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -186,7 +186,7 @@ function dangZhengBanSure() {
                 return flag;
             }
             if (selected()) {
-                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.field0001 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="29"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="29"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -200,10 +200,10 @@ function dangZhengBanSure() {
         }
     }
     var ids = $.map(rows, function (row) {
-        return row.field0001
+        return row.id
     });
     $table.bootstrapTable('remove', {
-        field: 'field0001',
+        field: 'id',
         values: ids
     });
 }
@@ -219,7 +219,7 @@ function Sure30() {
         obj["text"] = tr_obj.field0001;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0001 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="30" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="30" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -240,7 +240,7 @@ function Sure30() {
                 return flag;
             }
             if (selected()) {
-                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.field0001 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="30"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="30"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -254,10 +254,10 @@ function Sure30() {
         }
     }
     var ids = $.map(rows, function (row) {
-        return row.field0001
+        return row.id
     });
     $table.bootstrapTable('remove', {
-        field: 'field0001',
+        field: 'id',
         values: ids
     });
 }
@@ -273,7 +273,7 @@ function Sure31() {
         obj["text"] = tr_obj.field0001;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0001 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="31" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="31" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -294,7 +294,7 @@ function Sure31() {
                 return flag;
             }
             if (selected()) {
-                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.field0001 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="31"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="31"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -308,10 +308,10 @@ function Sure31() {
         }
     }
     var ids = $.map(rows, function (row) {
-        return row.field0001
+        return row.id
     });
     $table.bootstrapTable('remove', {
-        field: 'field0001',
+        field: 'id',
         values: ids
     });
 }
@@ -327,7 +327,7 @@ function Sure32() {
         obj["text"] = tr_obj.field0001;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0001 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="32" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+            var option = '<dd lay-bsname="' + tr_obj.mval + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="32" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -348,7 +348,7 @@ function Sure32() {
                 return flag;
             }
             if (selected()) {
-                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.field0001 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="32"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.field0002 + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-flag="32"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -362,10 +362,10 @@ function Sure32() {
         }
     }
     var ids = $.map(rows, function (row) {
-        return row.field0001
+        return row.id
     });
     $table.bootstrapTable('remove', {
-        field: 'field0001',
+        field: 'id',
         values: ids
     });
 }
