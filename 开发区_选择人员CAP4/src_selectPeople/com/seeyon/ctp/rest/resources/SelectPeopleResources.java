@@ -125,19 +125,19 @@ public class SelectPeopleResources extends BaseResource {
                     subTemp4.put("value", zJsonObject.getField0003());
 
                     Map<String, Object> subTemp5 = new HashMap<>();
-                    subTemp4.put("showValue", zJsonObject.getField0005());
-                    subTemp4.put("showValue2", zJsonObject.getField0005());
-                    subTemp4.put("value", zJsonObject.getField0005());
+                    subTemp5.put("showValue", zJsonObject.getField0005());
+                    subTemp5.put("showValue2", zJsonObject.getField0005());
+                    subTemp5.put("value", zJsonObject.getField0005());
 
                     Map<String, Object> subTemp6 = new HashMap<>();
-                    subTemp5.put("showValue", zJsonObject.getMval());
-                    subTemp5.put("showValue2", zJsonObject.getMval());
-                    subTemp5.put("value", zJsonObject.getMval());
+                    subTemp6.put("showValue", zJsonObject.getMval());
+                    subTemp6.put("showValue2", zJsonObject.getMval());
+                    subTemp6.put("value", zJsonObject.getMval());
 
                     Map<String, Object> subTemp7 = new HashMap<>();
-                    subTemp6.put("showValue", zJsonObject.getField0007());
-                    subTemp6.put("showValue2", zJsonObject.getField0007());
-                    subTemp6.put("value", zJsonObject.getField0007());
+                    subTemp7.put("showValue", zJsonObject.getField0007());
+                    subTemp7.put("showValue2", zJsonObject.getField0007());
+                    subTemp7.put("value", zJsonObject.getField0007());
                     int count = 1;
 
                     for (String key : masterMap.keySet()) {
