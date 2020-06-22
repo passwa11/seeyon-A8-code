@@ -47,7 +47,7 @@ public class selectPeopleController extends BaseController {
                 for (int i = 0; i < list.size(); i++) {
                     Map<String, Object> m = new HashMap<>();
                     for (Map.Entry<String, Object> entry : list.get(i).entrySet()) {
-                        m.put(entry.getKey(), entry.getValue());
+                        m.put(entry.getKey(), entry.getValue() + "");
                     }
                     m.put("flag", "dangzheng29");
                     revoler.add(m);
@@ -66,7 +66,7 @@ public class selectPeopleController extends BaseController {
                 for (int i = 0; i < list.size(); i++) {
                     Map<String, Object> m = new HashMap<>();
                     for (Map.Entry<String, Object> entry : list.get(i).entrySet()) {
-                        m.put(entry.getKey(), entry.getValue());
+                        m.put(entry.getKey(), entry.getValue() + "");
                     }
                     m.put("flag", "jiguan30");
                     revoler.add(m);
@@ -85,7 +85,7 @@ public class selectPeopleController extends BaseController {
                 for (int i = 0; i < list.size(); i++) {
                     Map<String, Object> m = new HashMap<>();
                     for (Map.Entry<String, Object> entry : list.get(i).entrySet()) {
-                        m.put(entry.getKey(), entry.getValue());
+                        m.put(entry.getKey(), entry.getValue() + "");
                     }
                     m.put("flag", "zhenban31");
                     revoler.add(m);
@@ -98,13 +98,13 @@ public class selectPeopleController extends BaseController {
                     String sql = "select WMSYS.WM_CONCAT(name) name from ORG_MEMBER where id in(" + userId + ")";
                     List<Map<String, Object>> l = JDBCUtil.doQuery(sql);
                     for (Map.Entry<String, Object> entry : l.get(0).entrySet()) {
-                        m.put(entry.getKey(), entry.getValue());
+                        m.put(entry.getKey(), entry.getValue() + "");
                     }
                 }
                 for (int i = 0; i < list.size(); i++) {
                     Map<String, Object> m = new HashMap<>();
                     for (Map.Entry<String, Object> entry : list.get(i).entrySet()) {
-                        m.put(entry.getKey(), entry.getValue());
+                        m.put(entry.getKey(), entry.getValue() + "");
                     }
                     m.put("flag", "zhuqu32");
                     revoler.add(m);
