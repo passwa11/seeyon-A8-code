@@ -129,10 +129,10 @@ public class SelectPeopleResources extends BaseResource {
                     subTemp5.put("showValue2", zJsonObject.getField0005());
                     subTemp5.put("value", zJsonObject.getField0005());
 
-                    Map<String, Object> subTemp6 = new HashMap<>();
-                    subTemp6.put("showValue", zJsonObject.getMval());
-                    subTemp6.put("showValue2", zJsonObject.getMval());
-                    subTemp6.put("value", zJsonObject.getMval());
+//                    Map<String, Object> subTemp6 = new HashMap<>();
+//                    subTemp6.put("showValue", zJsonObject.getMval());
+//                    subTemp6.put("showValue2", zJsonObject.getMval());
+//                    subTemp6.put("value", zJsonObject.getMval());
 
                     Map<String, Object> subTemp7 = new HashMap<>();
                     subTemp7.put("showValue", zJsonObject.getField0007());
@@ -160,11 +160,12 @@ public class SelectPeopleResources extends BaseResource {
                                     filldatas.put(key, subTemp5);
                                 }
                                 if (count == 6) {
-                                    filldatas.put(key, subTemp6);
-                                }
-                                if (count == 7) {
+//                                    filldatas.put(key, subTemp5);
                                     filldatas.put(key, subTemp7);
                                 }
+//                                if (count == 7) {
+//                                    filldatas.put(key, subTemp7);
+//                                }
                                 count++;
                                 dataMap.put(masterMap.get("id") + "", filldatas);
                             }
