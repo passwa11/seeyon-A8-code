@@ -89,7 +89,6 @@
                     text: "保存",
                     handler: function () {
                         var peoples = dialog.getReturnValue();
-                        console.log(peoples,'zhou');
                         //添加明细行并回填数据
                         var content = messageObj.formdata.content;
                         var num = peoples.data.length + 1;

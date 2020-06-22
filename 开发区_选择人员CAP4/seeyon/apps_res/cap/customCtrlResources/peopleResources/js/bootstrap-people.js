@@ -323,7 +323,6 @@ function Sure32() {
     var arrJtld = rows;
     for (var i = 0; i < arrJtld.length; i++) {
         var tr_obj = arrJtld[i];
-        console.log(tr_obj,'obj');
         var obj = {};//添加成员对象
         obj["value"] = tr_obj.id;
         obj["text"] = tr_obj.field0001;
