@@ -28,7 +28,7 @@
             $("dl").find('dd').each(function () {
                 var id = $(this).attr("lay-id");
                 var field0001 = $(this).attr("lay-name");
-                var field0002 = $(this).attr("lay-value");
+                var field0002 = $(this).attr("lay-field002");
                 var field0003 =  $(this).attr("lay-dept");
                 var name = $(this).attr("lay-username");
                 var flag = $(this).attr("lay-flag");
@@ -44,7 +44,7 @@
                 obj["field0002"] = field0002;
                 obj["name"] = name;
                 obj["field0003"] = field0003;
-                obj["field0005"] = bs;
+                obj["field0005"] = bs+'';
                 obj["mval"] = bsname;
                 obj["field0007"] = zsort;
                 obj["flag"] = flag;
