@@ -58,13 +58,21 @@ import com.seeyon.ctp.form.po.FormSerialCalculateRecord;
 import com.seeyon.ctp.monitor.perf.jdbcmonitor.proxyobj.JMTrackUtils;
 import com.seeyon.ctp.report.engine.api.manager.ReportApi;
 import com.seeyon.ctp.util.FlipInfo;
+import com.seeyon.ctp.util.JDBCAgent;
 import com.seeyon.ctp.util.Strings;
 import com.seeyon.ctp.workflow.simulation.api.SimulationApi;
+import com.seeyon.util.ReadConfigTools;
 import com.seeyon.v3x.common.security.AccessControlBean;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.logging.Log;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -350,7 +358,53 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                 try {
                     FormDataVO formDataVO = this.doCreateOrEditPackDataMap(contentAll, formDataParamBean, null);
 //                    zhou
+                    String id = formDataParamBean.getModuleId() + "";
+                    FormTableFormmainDataVO f = formDataVO.getTableInfo().getFormmain();
+                    String tableName = f.getTableName();
+                    ReadConfigTools configTools = new ReadConfigTools();
+                    String tableInfo = configTools.getString("table_info");
+                    if (tableInfo.equals(tableName)) {
+                        String columnName = configTools.getString("table_info_column");
+                        StringBuffer querySql = new StringBuffer();
+                        querySql.append(" select ");
+                        querySql.append(columnName + " from " + tableInfo + " where id= '" + id + "'");
 
+                        StringBuffer updateSql = new StringBuffer();
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                        String dateTime = LocalDateTime.now(ZoneOffset.of("+8")).format(dtf);
+                        updateSql.append("update " + tableInfo + " set " + columnName + " = to_date('" + dateTime + "','yyyy-MM-dd HH24:mi:ss')  where id ='" + id + "'");
+                        Connection connection = JDBCAgent.getRawConnection();
+                        PreparedStatement ps = null;
+                        PreparedStatement psInsert = null;
+                        ResultSet rs = null;
+                        try {
+                            ps = connection.prepareStatement(querySql.toString());
+                            rs = ps.executeQuery();
+                            while (rs.next()) {
+                                String val = rs.getString("field0020");
+                                if (null == val || "".equals(val) || "null".equals(val)) {
+                                    psInsert = connection.prepareStatement(updateSql.toString());
+                                    psInsert.executeUpdate();
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        } finally {
+                            if (null != rs) {
+                                rs.close();
+                            }
+                            if (null != psInsert) {
+                                psInsert.close();
+                            }
+                            if (null != ps) {
+                                ps.close();
+                            }
+                            if (null != connection) {
+                                connection.close();
+                            }
+                        }
+
+                    }
                     result.success(formDataVO);
                 } catch (FormDataBusinessException e) {
                     result.error(e.getCode(), e.getMessage());
@@ -932,7 +986,7 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                     if (formDataParamBean.getFormMasterId() == null) {
                         // 使用个人模板进入,个人模板不会存储附件
                         formDataMasterBean = capTransFormDataBeanManager.transFormDataBeanFromFormBean(formBean, contentAll.getContent(), formAuthViewBean);
-                        this.clearSelfTemplateData(formBean,formDataMasterBean,formAuthViewBean.getId());
+                        this.clearSelfTemplateData(formBean, formDataMasterBean, formAuthViewBean.getId());
                         formDataMasterBean.putExtraAttr("isNew", true);
                         formDataMasterBean.putExtraAttr(FormConstant.WAIT_SEND_BY_BACK_OR_REPEAL, true);
                     } else {
@@ -1542,39 +1596,39 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
 
     /**
      * 清空个人模板数据
-     * **/
-    private void clearSelfTemplateData(FormBean formBean,FormDataMasterBean formDataMasterBean,Long rightId) throws BusinessException{
-        Map<String, Map<String, Object>> fields = cap4FormDataManager.getClearFields(formBean,String.valueOf(rightId));
-        if(fields != null){
+     **/
+    private void clearSelfTemplateData(FormBean formBean, FormDataMasterBean formDataMasterBean, Long rightId) throws BusinessException {
+        Map<String, Map<String, Object>> fields = cap4FormDataManager.getClearFields(formBean, String.valueOf(rightId));
+        if (fields != null) {
             Map<String, CAPFormRelationRecord> capFormRelationRecordMap = formDataMasterBean.getRelationRecordMap();
             List<CAPFormRelationRecord> capFormRelationRecords = formDataMasterBean.getRelationRecords();
             //清空主表
             String masterTableName = formBean.getMasterTableBean().getTableName();
-            Map<String,Object> clearMasterFields = fields.get(masterTableName);
-            if(clearMasterFields != null){
+            Map<String, Object> clearMasterFields = fields.get(masterTableName);
+            if (clearMasterFields != null) {
                 Iterator<String> it = clearMasterFields.keySet().iterator();
-                while (it.hasNext()){
+                while (it.hasNext()) {
                     String key = it.next();
-                    formDataMasterBean.addFieldValue(key,clearMasterFields.get(key));
-                    if(capFormRelationRecordMap.get(key) != null){
+                    formDataMasterBean.addFieldValue(key, clearMasterFields.get(key));
+                    if (capFormRelationRecordMap.get(key) != null) {
                         capFormRelationRecords.remove(capFormRelationRecordMap.get(key));
                     }
                 }
             }
             //清空明细表
             List<FormTableBean> subTableBeans = formBean.getSubTableBean();
-            for(FormTableBean formTableBean:subTableBeans){
+            for (FormTableBean formTableBean : subTableBeans) {
                 String subTableName = formTableBean.getTableName();
-                Map<String,Object> clearSubFields = fields.get(subTableName);
-                if(clearSubFields != null){
+                Map<String, Object> clearSubFields = fields.get(subTableName);
+                if (clearSubFields != null) {
                     Iterator<String> it = clearSubFields.keySet().iterator();
                     List<FormDataSubBean> formDataSubBeans = formDataMasterBean.getSubData(subTableName);
-                    while (it.hasNext()){
+                    while (it.hasNext()) {
                         String key = it.next();
-                        for(FormDataSubBean formDataSubBean:formDataSubBeans){
-                            formDataSubBean.addFieldValue(key,clearSubFields.get(key));
-                            String key1 = key+FormConstant.DOWNLINE+formDataSubBean.getId();
-                            if(capFormRelationRecordMap.get(key1) != null){
+                        for (FormDataSubBean formDataSubBean : formDataSubBeans) {
+                            formDataSubBean.addFieldValue(key, clearSubFields.get(key));
+                            String key1 = key + FormConstant.DOWNLINE + formDataSubBean.getId();
+                            if (capFormRelationRecordMap.get(key1) != null) {
                                 capFormRelationRecords.remove(capFormRelationRecordMap.get(key1));
                             }
                         }
