@@ -204,6 +204,7 @@ public class downloadDetailController extends BaseController {
     }
 
     public String handlerToString(ResultSet set, String htmlContent) throws SQLException {
+        htmlContent=htmlContent.replaceAll("xdRichTextBox\\{","xdRichTextBox{color:#000000;");
         while (set.next()) {
             String attribute = set.getString("attribute");
             String content = set.getString("content");
