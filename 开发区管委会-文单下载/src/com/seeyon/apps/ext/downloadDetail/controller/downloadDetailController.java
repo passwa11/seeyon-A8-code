@@ -210,7 +210,7 @@ public class downloadDetailController extends BaseController {
             String deptName = set.getString("department_name");
             String userName = set.getString("create_user_id");
             String createTime = set.getString("create_time").substring(0, set.getString("create_time").lastIndexOf(":"));
-            String val = attribute + "  " + content + "  " + deptName + "  " + userName + "  " + createTime;
+            String val ="<span style='color:#000000'>"+ attribute + "  " + content + "  " + deptName + "  " + userName + "  " + createTime +"</span>";
             //切割符
             String splitStr = "id='" + set.getString("policy") + "'";
             String[] arr = htmlContent.split(splitStr);
