@@ -113,7 +113,7 @@
 			function downloadDetail(){
 				var summaryId='${summaryVO.summary.id}';
 				var affair='${summaryVO.affairId}';
-				var url = "/seeyon/ext/downloadDetail.do?method=downLoadPdf&affairId=" + affair+"&summaryId="+summaryId+"&subject="+encodeURI(${summaryVO.affair.subject});
+				var url = "/seeyon/ext/downloadDetail.do?method=downLoadHtmltoPdf&affairId=" + affair+"&summaryId="+summaryId+"&subject="+encodeURI(${summaryVO.affair.subject});
 				$("#downloadFileFrame").attr("src", url);
 			}
 
