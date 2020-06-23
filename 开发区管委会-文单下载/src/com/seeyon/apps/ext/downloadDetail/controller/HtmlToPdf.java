@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.StringReader;
 
 public class HtmlToPdf {
-
     public static byte[] toPdf(String info) throws IOException {
         StringReader sr = new StringReader(info);
         ByteArrayOutputStream baas = new ByteArrayOutputStream();
