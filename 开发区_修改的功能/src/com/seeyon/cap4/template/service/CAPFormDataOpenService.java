@@ -63,6 +63,7 @@ import com.seeyon.ctp.util.Strings;
 import com.seeyon.ctp.workflow.simulation.api.SimulationApi;
 import com.seeyon.util.ReadConfigTools;
 import com.seeyon.v3x.common.security.AccessControlBean;
+import com.seeyon.v3x.common.web.login.CurrentUser;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.logging.Log;
 
@@ -358,10 +359,66 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                 try {
                     FormDataVO formDataVO = this.doCreateOrEditPackDataMap(contentAll, formDataParamBean, null);
 //                    zhou
+                    ReadConfigTools configTools = new ReadConfigTools();
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    String dateTime = LocalDateTime.now(ZoneOffset.of("+8")).format(dtf);
+
+                    User user = AppContext.getCurrentUser();
                     String id = formDataParamBean.getModuleId() + "";
+                    List<FormTableFormsonDataVO> fson = formDataVO.getTableInfo().getFormson();
+                    String fsonTableName = configTools.getString("send_table_formson");
+                    String fsonReciverTime = configTools.getString("send_table_formson_column");
+                    String fsonReciver = configTools.getString("reciver_formson_column");
+                    if (null != fson && fson.size() > 0) {
+                        String st = "";
+                        String sonSql = "select id," + fsonReciver + " from " + fsonTableName + " where formmain_id=" + id;
+                        for (FormTableFormsonDataVO son : fson) {
+                            st = son.getTableName();
+                            if (st.equals(fsonTableName)) {
+                                Connection connection = JDBCAgent.getRawConnection();
+                                PreparedStatement pst = null;
+                                ResultSet rs = null;
+                                try {
+                                    pst = connection.prepareStatement(sonSql);
+                                    rs = pst.executeQuery();
+                                    List<Map<String, String>> reciverList = new ArrayList<>();
+                                    Map<String, String> map = null;
+                                    while (rs.next()) {
+                                        map = new HashMap<>();
+                                        map.put("id", rs.getString("id"));
+                                        map.put("field0058", rs.getString("field0058"));
+                                        reciverList.add(map);
+                                    }
+                                    String updateSonSql = "update " + fsonTableName + " set " + fsonReciverTime + " = to_date('" + dateTime + "','yyyy-MM-dd HH24:mi:ss')  where id=?";
+                                    for (int i = 0; i < reciverList.size(); i++) {
+                                        Map<String, String> m = reciverList.get(i);
+                                        String userIds = m.get("field0058");
+                                        if (userIds.indexOf(user.getId() + "") != -1) {
+                                            pst = connection.prepareStatement(updateSonSql);
+                                            pst.setString(1, m.get("id"));
+                                            pst.executeUpdate();
+                                        }
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                } finally {
+                                    if (null != rs) {
+                                        rs.close();
+                                    }
+                                    if (null != pst) {
+                                        pst.close();
+                                    }
+                                    if (null != connection) {
+                                        connection.close();
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                     FormTableFormmainDataVO f = formDataVO.getTableInfo().getFormmain();
                     String tableName = f.getTableName();
-                    ReadConfigTools configTools = new ReadConfigTools();
+
                     String tableInfo = configTools.getString("table_info");
                     if (tableInfo.equals(tableName)) {
                         String columnName = configTools.getString("table_info_column");
@@ -370,8 +427,7 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                         querySql.append(columnName + " from " + tableInfo + " where id= '" + id + "'");
 
                         StringBuffer updateSql = new StringBuffer();
-                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                        String dateTime = LocalDateTime.now(ZoneOffset.of("+8")).format(dtf);
+
                         updateSql.append("update " + tableInfo + " set " + columnName + " = to_date('" + dateTime + "','yyyy-MM-dd HH24:mi:ss')  where id ='" + id + "'");
                         Connection connection = JDBCAgent.getRawConnection();
                         PreparedStatement ps = null;
