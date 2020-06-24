@@ -363,62 +363,9 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                     String dateTime = LocalDateTime.now(ZoneOffset.of("+8")).format(dtf);
 
-                    User user = AppContext.getCurrentUser();
-                    String id = formDataParamBean.getModuleId() + "";
-                    List<FormTableFormsonDataVO> fson = formDataVO.getTableInfo().getFormson();
-                    String fsonTableName = configTools.getString("send_table_formson");
-                    String fsonReciverTime = configTools.getString("send_table_formson_column");
-                    String fsonReciver = configTools.getString("reciver_formson_column");
-                    if (null != fson && fson.size() > 0) {
-                        String st = "";
-                        String sonSql = "select id," + fsonReciver + " from " + fsonTableName + " where formmain_id=" + id;
-                        for (FormTableFormsonDataVO son : fson) {
-                            st = son.getTableName();
-                            if (st.equals(fsonTableName)) {
-                                Connection connection = JDBCAgent.getRawConnection();
-                                PreparedStatement pst = null;
-                                ResultSet rs = null;
-                                try {
-                                    pst = connection.prepareStatement(sonSql);
-                                    rs = pst.executeQuery();
-                                    List<Map<String, String>> reciverList = new ArrayList<>();
-                                    Map<String, String> map = null;
-                                    while (rs.next()) {
-                                        map = new HashMap<>();
-                                        map.put("id", rs.getString("id"));
-                                        map.put("field0058", rs.getString("field0058"));
-                                        reciverList.add(map);
-                                    }
-                                    String updateSonSql = "update " + fsonTableName + " set " + fsonReciverTime + " = to_date('" + dateTime + "','yyyy-MM-dd HH24:mi:ss')  where id=?";
-                                    for (int i = 0; i < reciverList.size(); i++) {
-                                        Map<String, String> m = reciverList.get(i);
-                                        String userIds = m.get("field0058");
-                                        if (userIds.indexOf(user.getId() + "") != -1) {
-                                            pst = connection.prepareStatement(updateSonSql);
-                                            pst.setString(1, m.get("id"));
-                                            pst.executeUpdate();
-                                        }
-                                    }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                } finally {
-                                    if (null != rs) {
-                                        rs.close();
-                                    }
-                                    if (null != pst) {
-                                        pst.close();
-                                    }
-                                    if (null != connection) {
-                                        connection.close();
-                                    }
-                                }
-                            }
-                        }
-                    }
-
                     FormTableFormmainDataVO f = formDataVO.getTableInfo().getFormmain();
                     String tableName = f.getTableName();
-
+                    String id = formDataParamBean.getModuleId() + "";
                     String tableInfo = configTools.getString("table_info");
                     if (tableInfo.equals(tableName)) {
                         String columnName = configTools.getString("table_info_column");
@@ -443,6 +390,30 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                                     psInsert.executeUpdate();
                                 }
                             }
+                            String queryReciverById = "select field0009,field0012 from " + tableInfo + " where id = " + id;
+                            ps = connection.prepareStatement(queryReciverById);
+                            rs = ps.executeQuery();
+                            String field0009 = "";
+                            String field0012 = "";
+                            while (rs.next()) {
+                                field0009 = rs.getString("field0009");
+                                field0012 = rs.getString("field0012");
+                            }
+                            String fu = configTools.getString("table_formmain_parent");
+                            String son = configTools.getString("table_formson_son");
+                            String formsonReciverTime = configTools.getString("formson_reciverTime");
+                            String formsonUserId = configTools.getString("formson_userId");
+                            String querySendSonId = "select f24.id from  " + fu + " f23," + son + " f24 where f23.id=f24.formmain_id and f23.field0014='" + field0012 + "' and f24." + formsonUserId + "='" + field0009 + "'";
+                            ps = connection.prepareStatement(querySendSonId);
+                            rs = ps.executeQuery();
+                            String updateSonSql = "update " + son + " set " + formsonReciverTime + " = to_date('" + dateTime + "','yyyy-MM-dd HH24:mi:ss')  where id=?";
+                            String sonId = "";
+                            while (rs.next()) {
+                                sonId = rs.getString("id");
+                            }
+                            ps=connection.prepareStatement(updateSonSql);
+                            ps.setString(1,sonId);
+                            ps.executeUpdate();
                         } catch (Exception e) {
                             e.printStackTrace();
                         } finally {
