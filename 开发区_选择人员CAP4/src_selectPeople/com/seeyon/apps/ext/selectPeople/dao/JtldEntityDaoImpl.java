@@ -44,7 +44,7 @@ public class JtldEntityDaoImpl implements JtldEntityDao {
     public List<Map<String, Object>> selectDangZhengBan0029(String name) {
         String sqltest = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0029  order by FIELD0007 asc";
         //        正式
-        String sql = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0174  order by FIELD0007 asc";
+        String sql = "select id,field0001 ,field0002,field0004 field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0174  order by FIELD0007 asc";
         List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
         return list;
     }
