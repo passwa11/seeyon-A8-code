@@ -247,7 +247,73 @@ function zhenban31Table() {
             }
         ]
         , onDblClickRow: function (row, $element, field) {
+            var tr_obj = row;
+            var obj = {};//添加成员对象
+            obj["value"] = tr_obj.id;
+            obj["text"] = tr_obj.field0001;
+            obj["dept"] = tr_obj.field0003;
+            if ($("dl.selected-info dd").length <= 0) {
+                var option = '<dd ondblclick="removeDdRow31(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="31" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                $("dl.selected-info").prepend(option);
+                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                    var index = $(this).attr("class").indexOf("selected-this");
+                    if (index == 0) {
+                        $(this).removeClass("selected-this");
+                    } else {
+                        $(this).addClass("selected-this");
+                    }
+                });
+            } else {
+                var selected = function () {//判断是否已选择了该人员
+                    var flag = true;
+                    $("dl.selected-info dd").each(function (i, item) {
+                        if ($(item).attr("lay-value") == obj.value) {
+                            flag = false;//已经选择
+                        }
+                    });
+                    return flag;
+                }
+                if (selected()) {
+                    var option = '<dd ondblclick="removeDdRow31(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="31"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                    $("dl.selected-info").prepend(option);
+                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                        var index = $(this).attr("class").indexOf("selected-this");
+                        if (index == 0) {
+                            $(this).removeClass("selected-this");
+                        } else {
+                            $(this).addClass("selected-this");
+                        }
+                    });
+                }
+            }
+            //
+            removeTableRow31(row);
+        }
+    });
+}
 
+function removeTableRow31(row) {
+    var ids = [];
+    ids.push(row.id);
+    $('#zhenb31').bootstrapTable('remove', {
+        field: 'id',
+        values: ids
+    });
+}
+
+function removeDdRow31(item) {
+    $(item).remove();
+    $('#zhenb31').bootstrapTable('insertRow', {
+        index: 0,
+        row: {
+            id: $(item).attr("lay-id"),
+            field0001: $(item).attr("lay-name"),
+            field0002: $(item).attr("lay-value"),
+            name: $(item).attr("lay-username"),
+            field0003: $(item).attr("lay-dept"),
+            field0005: $(item).attr("lay-bs"),
+            mval: $(item).attr("lay-bsname"),
+            field0007: $(item).attr("lay-zsort")
         }
     });
 }
@@ -419,7 +485,7 @@ function Sure31() {
         obj["text"] = tr_obj.field0001;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="31" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+            var option = '<dd  ondblclick="removeDdRow31(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="31" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").prepend(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -440,7 +506,7 @@ function Sure31() {
                 return flag;
             }
             if (selected()) {
-                var option = '<dd lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="31"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                var option = '<dd ondblclick="removeDdRow31(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="31"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
                 $("dl.selected-info").prepend(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
