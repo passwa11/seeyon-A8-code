@@ -388,32 +388,35 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                                 if (null == val || "".equals(val) || "null".equals(val)) {
                                     psInsert = connection.prepareStatement(updateSql.toString());
                                     psInsert.executeUpdate();
+
+//
+                                    String queryReciverById = "select field0009,field0012 from " + tableInfo + " where id = " + id;
+                                    ps = connection.prepareStatement(queryReciverById);
+                                    rs = ps.executeQuery();
+                                    String field0009 = "";
+                                    String field0012 = "";
+                                    while (rs.next()) {
+                                        field0009 = rs.getString("field0009");
+                                        field0012 = rs.getString("field0012");
+                                    }
+                                    String fu = configTools.getString("table_formmain_parent");
+                                    String son = configTools.getString("table_formson_son");
+                                    String formsonReciverTime = configTools.getString("formson_reciverTime");
+                                    String formsonUserId = configTools.getString("formson_userId");
+                                    String querySendSonId = "select f24.id from  " + fu + " f23," + son + " f24 where f23.id=f24.formmain_id and f23.field0014='" + field0012 + "' and f24." + formsonUserId + "='" + field0009 + "'";
+                                    ps = connection.prepareStatement(querySendSonId);
+                                    rs = ps.executeQuery();
+                                    String updateSonSql = "update " + son + " set " + formsonReciverTime + " = to_date('" + dateTime + "','yyyy-MM-dd HH24:mi:ss')  where id=?";
+                                    String sonId = "";
+                                    while (rs.next()) {
+                                        sonId = rs.getString("id");
+                                    }
+                                    ps=connection.prepareStatement(updateSonSql);
+                                    ps.setString(1,sonId);
+                                    ps.executeUpdate();
                                 }
                             }
-                            String queryReciverById = "select field0009,field0012 from " + tableInfo + " where id = " + id;
-                            ps = connection.prepareStatement(queryReciverById);
-                            rs = ps.executeQuery();
-                            String field0009 = "";
-                            String field0012 = "";
-                            while (rs.next()) {
-                                field0009 = rs.getString("field0009");
-                                field0012 = rs.getString("field0012");
-                            }
-                            String fu = configTools.getString("table_formmain_parent");
-                            String son = configTools.getString("table_formson_son");
-                            String formsonReciverTime = configTools.getString("formson_reciverTime");
-                            String formsonUserId = configTools.getString("formson_userId");
-                            String querySendSonId = "select f24.id from  " + fu + " f23," + son + " f24 where f23.id=f24.formmain_id and f23.field0014='" + field0012 + "' and f24." + formsonUserId + "='" + field0009 + "'";
-                            ps = connection.prepareStatement(querySendSonId);
-                            rs = ps.executeQuery();
-                            String updateSonSql = "update " + son + " set " + formsonReciverTime + " = to_date('" + dateTime + "','yyyy-MM-dd HH24:mi:ss')  where id=?";
-                            String sonId = "";
-                            while (rs.next()) {
-                                sonId = rs.getString("id");
-                            }
-                            ps=connection.prepareStatement(updateSonSql);
-                            ps.setString(1,sonId);
-                            ps.executeUpdate();
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         } finally {
