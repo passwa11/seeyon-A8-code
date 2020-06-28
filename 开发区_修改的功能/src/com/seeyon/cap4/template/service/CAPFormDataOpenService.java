@@ -406,7 +406,9 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                                     String querySendSonId = "select f24.id from  " + fu + " f23," + son + " f24 where f23.id=f24.formmain_id and f23.field0014='" + field0012 + "' and f24." + formsonUserId + "='" + field0009 + "'";
                                     ps = connection.prepareStatement(querySendSonId);
                                     rs = ps.executeQuery();
-                                    String updateSonSql = "update " + son + " set " + formsonReciverTime + " = to_date('" + dateTime + "','yyyy-MM-dd HH24:mi:ss')  where id=?";
+                                    String isRead=configTools.getString("isRead");
+                                    String sonIsRead=configTools.getString("formson_isRead");
+                                    String updateSonSql = "update " + son + " set " + formsonReciverTime + " = to_date('" + dateTime + "','yyyy-MM-dd HH24:mi:ss') ,"+sonIsRead+"='"+isRead+"' where id=?";
                                     String sonId = "";
                                     while (rs.next()) {
                                         sonId = rs.getString("id");
