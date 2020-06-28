@@ -56,20 +56,18 @@
     <table frame="below" style="margin-top: 40px;">
         <tr class="tr-height">
             <td width="129"><label>编号:</label></td>
-            <td width="216" class="tr-text"><span></span></td>
+            <td width="216" class="tr-text"><span>${entity.code}</span></td>
             <td width="129"><label>日期:</label></td>
-            <td width="216" class="tr-text"><span></span></td>
+            <td width="216" class="tr-text"><span>${entity.time}</span></td>
         </tr>
     </table>
     <table frame="below">
         <tr class="tr-height">
             <td width="129"><label>来文单位:</label></td>
-            <td width="216" class="tr-text"><span></span></td>
+            <td width="216" class="tr-text"><span>${entity.createUnit}</span></td>
             <td width="129"><label>来文号:</label></td>
             <td width="216" class="tr-text">
-                <span>
-
-                </span>
+                <span>${entity.edocMark}</span>
             </td>
         </tr>
     </table>
@@ -81,8 +79,7 @@
         </tr>
         <tr style="height: 35px;">
             <td class="tr-text-float">
-                <div style="float: left;">
-                </div>
+                <div style="float: left;">${entity.subject}</div>
             </td>
         </tr>
     </table>
