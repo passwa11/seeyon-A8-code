@@ -85,11 +85,19 @@
     </table>
     <table frame="below">
         <tr>
-            <td><label>拟办意见:</label></td>
+            <td width="100%"><label>拟办意见:</label></td>
         </tr>
         <tr style="height: 100px;">
-            <td class="tr-text-float">
+            <td class="tr-text-float" width="100%" colspan="4">
                 <div style="float: left;">
+                    <c:forEach items="${niban}" var="op">
+                        <div style="float: left;width: 700px;">
+                            <c:out value="${op.content}"/>
+                        </div>
+                        <div style="float:right;margin-right:20px;">
+                            <c:out value="${op.username}"/>&nbsp;&nbsp; <c:out value="${op.createTime}"/>
+                        </div>
+                    </c:forEach>
                 </div>
             </td>
         </tr>
@@ -101,6 +109,14 @@
         <tr style="height: 150px;">
             <td class="tr-text-float">
                 <div style="float: left;">
+                    <c:forEach items="${pishi}" var="op">
+                        <div style="float: left;width: 700px;">
+                            <c:out value="${op.content}"/>
+                        </div>
+                        <div style="float:right;margin-right:20px;">
+                            <c:out value="${op.username}"/>&nbsp;&nbsp; <c:out value="${op.createTime}"/>
+                        </div>
+                    </c:forEach>
                 </div>
             </td>
         </tr>
@@ -112,6 +128,14 @@
         <tr style="height: 150px;">
             <td class="tr-text-float">
                 <div style="float: left;">
+                    <c:forEach items="${banli}" var="op">
+                        <div style="float: left;width: 700px;">
+                            <c:out value="${op.content}"/>
+                        </div>
+                        <div style="float:right;margin-right:20px;">
+                            <c:out value="${op.username}"/>&nbsp;&nbsp; <c:out value="${op.createTime}"/>
+                        </div>
+                    </c:forEach>
                 </div>
             </td>
         </tr>
