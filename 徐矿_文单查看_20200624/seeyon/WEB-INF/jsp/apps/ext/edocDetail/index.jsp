@@ -47,6 +47,8 @@
 
         .span-left {
             float: left;
+            font-family: 黑体;
+            font-size: 14px;
         }
     </style>
 </head>
