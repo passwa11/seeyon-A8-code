@@ -36,7 +36,7 @@
         table {
             margin: auto;
             margin-top: 0px;
-            width: 680px;
+            width: 640px;
             table-layout: fixed;
         }
 
@@ -83,18 +83,18 @@
             </table>
             <table frame="below" style="margin-top: 40px;">
                 <tr class="tr-height">
-                    <td width="120"><label>编号:</label></td>
-                    <td width="210" class="tr-text"><span class="span-left">${entity.code}</span></td>
-                    <td width="120"><label>日期:</label></td>
-                    <td width="210" class="tr-text"><span class="span-left">${entity.time}</span></td>
+                    <td width="100"><label>编号:</label></td>
+                    <td width="180" class="tr-text"><span class="span-left">${entity.code}</span></td>
+                    <td width="100"><label>日期:</label></td>
+                    <td width="180" class="tr-text"><span class="span-left">${entity.time}</span></td>
                 </tr>
             </table>
             <table frame="below">
                 <tr class="tr-height">
-                    <td width="120"><label>来文单位:</label></td>
-                    <td width="210" class="tr-text"><span class="span-left">${entity.createUnit}</span></td>
-                    <td width="120"><label>来文号:</label></td>
-                    <td width="210" class="tr-text">
+                    <td width="100"><label>来文单位:</label></td>
+                    <td width="180" class="tr-text"><span class="span-left">${entity.createUnit}</span></td>
+                    <td width="100"><label>来文号:</label></td>
+                    <td width="180" class="tr-text">
                         <span class="span-left">${entity.edocMark}</span>
                     </td>
                 </tr>
@@ -119,14 +119,14 @@
                     <td class="tr-text-float" width="100%" colspan="4">
                         <div style="float: left;" class="font-s">
                             <c:forEach items="${niban}" var="op">
-                                <div style="float: left;width: 680px;">
+                                <div style="float: left;width: 640px;" class="font-s">
                                     <c:out value="${op.content}"/>
                                 </div>
-                                <div style="width: 680px;">
-                                    <div style="float: left;color: #006FF9;">
+                                <div style="width: 640px;">
+                                    <div style="float: left;color: #006FF9;" class="font-s">
                                         <c:out value="${op.filename}"/>
                                     </div>
-                                    <div style="float: right;margin-right: 30px;">
+                                    <div style="float: right;margin-right: 30px;" class="font-s">
                                         <c:out value="${op.username}"/>&nbsp;&nbsp; <c:out value="${op.createTime}"/>
                                     </div>
                                 </div>
@@ -143,14 +143,14 @@
                     <td class="tr-text-float">
                         <div style="float: left;" class="font-s">
                             <c:forEach items="${pishi}" var="op">
-                                <div style="float: left;width: 680px;">
+                                <div style="float: left;width: 640px;" class="font-s">
                                     <c:out value="${op.content}"/>
                                 </div>
-                                <div style="width: 680px;">
-                                    <div style="float: left;color: #006FF9;">
+                                <div style="width: 640px;">
+                                    <div style="float: left;color: #006FF9;" class="font-s">
                                         <c:out value="${op.filename}"/>
                                     </div>
-                                    <div style="float: right;margin-right: 30px;">
+                                    <div style="float: right;margin-right: 30px;" class="font-s">
                                         <c:out value="${op.username}"/>&nbsp;&nbsp; <c:out value="${op.createTime}"/>
                                     </div>
                                 </div>
@@ -167,14 +167,14 @@
                     <td class="tr-text-float">
                         <div style="float: left;" class="font-s">
                             <c:forEach items="${banli}" var="op">
-                                <div style="float: left;width: 680px;">
+                                <div style="float: left;width: 640px;" class="font-s">
                                     <c:out value="${op.content}"/>
                                 </div>
-                                <div style="width: 680px;">
-                                    <div style="float: left;color: #006FF9;">
+                                <div style="width: 640px;">
+                                    <div style="float: left;color: #006FF9;" class="font-s">
                                         <c:out value="${op.filename}"/>
                                     </div>
-                                    <div style="float: right;margin-right: 30px;">
+                                    <div style="float: right;margin-right: 30px;" class="font-s">
                                         <c:out value="${op.username}"/>&nbsp;&nbsp; <c:out value="${op.createTime}"/>
                                     </div>
                                 </div>
@@ -183,27 +183,20 @@
                     </td>
                 </tr>
             </table>
-        </div>
-        <div style="text-align: center;">
-            <table frame="below" style="text-align: center;">
+            <table frame="below">
                 <tr style="height: 60px;">
-                    <td width="129"><label>备注:</label></td>
+                    <td width="100"><label>备注:</label></td>
                     <td>
-                        <span class="span-left">${entity.text}</span>
+                        <span class="span-left" class="font-s">${entity.text}</span>
                     </td>
                 </tr>
             </table>
         </div>
+
     </div>
 </div>
 
 <script type="text/javascript">
-    $(function () {
-        // $("button").click(function () {
-        //
-        // });
-    });
-
     function printDetail() {
         if (getExplorer() == "IE") {
             pagesetup_null();
