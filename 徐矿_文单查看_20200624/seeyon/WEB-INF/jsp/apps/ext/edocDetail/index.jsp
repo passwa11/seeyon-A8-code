@@ -50,6 +50,10 @@
             font-family: 黑体;
             font-size: medium;
         }
+        .font-s{
+            font-family: 黑体;
+            font-size: medium;
+        }
     </style>
 </head>
 <body>
@@ -98,7 +102,7 @@
                 </tr>
                 <tr style="height: 35px;">
                     <td class="tr-text-float">
-                        <div style="float: left;">${entity.subject}</div>
+                        <div style="float: left;" class="font-s">${entity.subject}</div>
                     </td>
                 </tr>
             </table>
@@ -108,7 +112,7 @@
                 </tr>
                 <tr style="height: 100px;">
                     <td class="tr-text-float" width="100%" colspan="4">
-                        <div style="float: left;">
+                        <div style="float: left;"  class="font-s">
                             <c:forEach items="${niban}" var="op">
                                 <div style="float: left;width: 680px;">
                                     <c:out value="${op.content}"/>
@@ -132,7 +136,7 @@
                 </tr>
                 <tr style="height: 150px;">
                     <td class="tr-text-float">
-                        <div style="float: left;">
+                        <div style="float: left;" class="font-s">
                             <c:forEach items="${pishi}" var="op">
                                 <div style="float: left;width: 680px;">
                                     <c:out value="${op.content}"/>
@@ -156,7 +160,7 @@
                 </tr>
                 <tr style="height: 150px;">
                     <td class="tr-text-float">
-                        <div style="float: left;">
+                        <div style="float: left;" class="font-s">
                             <c:forEach items="${banli}" var="op">
                                 <div style="float: left;width: 680px;">
                                     <c:out value="${op.content}"/>
