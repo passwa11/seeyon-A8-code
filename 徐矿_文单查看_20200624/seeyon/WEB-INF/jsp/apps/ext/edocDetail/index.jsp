@@ -36,7 +36,7 @@
         table {
             margin: auto;
             margin-top: 0px;
-            width: 700px;
+            width: 680px;
             table-layout: fixed;
         }
 
@@ -74,18 +74,18 @@
             </table>
             <table frame="below" style="margin-top: 40px;">
                 <tr class="tr-height">
-                    <td width="129"><label>编号:</label></td>
-                    <td width="216" class="tr-text"><span class="span-left">${entity.code}</span></td>
-                    <td width="129"><label>日期:</label></td>
-                    <td width="216" class="tr-text"><span class="span-left">${entity.time}</span></td>
+                    <td width="120"><label>编号:</label></td>
+                    <td width="210" class="tr-text"><span class="span-left">${entity.code}</span></td>
+                    <td width="120"><label>日期:</label></td>
+                    <td width="210" class="tr-text"><span class="span-left">${entity.time}</span></td>
                 </tr>
             </table>
             <table frame="below">
                 <tr class="tr-height">
-                    <td width="129"><label>来文单位:</label></td>
-                    <td width="216" class="tr-text"><span class="span-left">${entity.createUnit}</span></td>
-                    <td width="129"><label>来文号:</label></td>
-                    <td width="216" class="tr-text">
+                    <td width="120"><label>来文单位:</label></td>
+                    <td width="210" class="tr-text"><span class="span-left">${entity.createUnit}</span></td>
+                    <td width="120"><label>来文号:</label></td>
+                    <td width="210" class="tr-text">
                         <span class="span-left">${entity.edocMark}</span>
                     </td>
                 </tr>
@@ -110,10 +110,10 @@
                     <td class="tr-text-float" width="100%" colspan="4">
                         <div style="float: left;">
                             <c:forEach items="${niban}" var="op">
-                                <div style="float: left;width: 700px;">
+                                <div style="float: left;width: 680px;">
                                     <c:out value="${op.content}"/>
                                 </div>
-                                <div style="width: 700px;">
+                                <div style="width: 680px;">
                                     <div style="float: left;color: #006FF9;">
                                         <c:out value="${op.filename}"/>
                                     </div>
@@ -134,10 +134,10 @@
                     <td class="tr-text-float">
                         <div style="float: left;">
                             <c:forEach items="${pishi}" var="op">
-                                <div style="float: left;width: 700px;">
+                                <div style="float: left;width: 680px;">
                                     <c:out value="${op.content}"/>
                                 </div>
-                                <div style="width: 700px;">
+                                <div style="width: 680px;">
                                     <div style="float: left;color: #006FF9;">
                                         <c:out value="${op.filename}"/>
                                     </div>
@@ -158,10 +158,10 @@
                     <td class="tr-text-float">
                         <div style="float: left;">
                             <c:forEach items="${banli}" var="op">
-                                <div style="float: left;width: 700px;">
+                                <div style="float: left;width: 680px;">
                                     <c:out value="${op.content}"/>
                                 </div>
-                                <div style="width: 700px;">
+                                <div style="width: 680px;">
                                     <div style="float: left;color: #006FF9;">
                                         <c:out value="${op.filename}"/>
                                     </div>
