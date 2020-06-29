@@ -41,11 +41,7 @@ public class JtldEntityManagerImpl implements JtldEntityManager {
 
 
     @Override
-    public List<Map<String, Object>> selectJtldEntity(String name) {
-        List<Map<String, Object>> list = dao.selectJtldEntity(name);
-//        JSONArray json = JSON.parseArray(JSON.toJSONString(list));
-        return list;
+    public List<Map<String, Object>> selectGonghui(String name) {
+        return dao.selectGonghui(name);
     }
-
-
 }

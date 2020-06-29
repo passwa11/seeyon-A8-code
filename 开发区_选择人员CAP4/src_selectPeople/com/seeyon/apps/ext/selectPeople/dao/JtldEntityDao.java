@@ -28,8 +28,8 @@ public interface JtldEntityDao {
     //党政办人员
     List<Map<String, Object>> selectDangZhengBan0029(String name);
 
-
-    public List<Map<String, Object>> selectJtldEntity(String name);
+    //总工会_人武部
+    List<Map<String, Object>> selectGonghui(String name);
 
     public void insertFormson0174(List<Formson0174> formson0174);
 }
