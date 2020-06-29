@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<%--    去掉页眉页脚及打印链接--%>
+    <%--    去掉页眉页脚及打印链接--%>
     <style media="print">
         @page {
             size: auto;
@@ -50,12 +50,14 @@
             font-family: 黑体;
             font-size: medium;
         }
-        .font-s{
+
+        .font-s {
             font-family: 黑体;
             font-size: medium;
         }
-        .tr-height{
-            height:50px;
+
+        .tr-height {
+            height: 50px;
         }
     </style>
 </head>
@@ -115,7 +117,7 @@
                 </tr>
                 <tr style="height: 100px;">
                     <td class="tr-text-float" width="100%" colspan="4">
-                        <div style="float: left;"  class="font-s">
+                        <div style="float: left;" class="font-s">
                             <c:forEach items="${niban}" var="op">
                                 <div style="float: left;width: 680px;">
                                     <c:out value="${op.content}"/>
@@ -181,13 +183,13 @@
                     </td>
                 </tr>
             </table>
-            <table frame="below">
+        </div>
+        <div style="text-align: center;">
+            <table frame="below" style="text-align: center;">
                 <tr style="height: 60px;">
                     <td width="129"><label>备注:</label></td>
-                    <td class="tr-text-float">
-                        <div style="float: right;" class="font-s">
-                            ${entity.text}
-                        </div>
+                    <td>
+                        <span class="span-left">${entity.text}</span>
                     </td>
                 </tr>
             </table>
@@ -202,7 +204,7 @@
         // });
     });
 
-    function printDetail(){
+    function printDetail() {
         if (getExplorer() == "IE") {
             pagesetup_null();
         }
