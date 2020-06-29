@@ -68,7 +68,7 @@
 <div style="clear: both;"></div>
 <div id="printDetail">
     <div>
-        <div style="text-align: center;margin-top: 60px;">
+        <div style="text-align: center;margin-top: 60px;margin-left: 30px;">
             <table>
                 <tr>
                     <td colspan="4">
@@ -100,7 +100,7 @@
                 </tr>
             </table>
         </div>
-        <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 20px;margin-left: 30px;">
             <table frame="below">
                 <tr>
                     <td><label>文件标题:</label></td>
