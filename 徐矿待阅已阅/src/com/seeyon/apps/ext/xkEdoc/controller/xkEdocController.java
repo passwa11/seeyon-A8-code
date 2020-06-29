@@ -332,23 +332,23 @@ public class xkEdocController extends BaseController {
             String p = spath.substring(0, spath.indexOf("upload") + 6);
             String y = "";
             String hostFileUrl = "";
-            if (type.equals("2")) {
+//            if (type.equals("2")) {
 //                if (null != isQuickSend && !"".equals(isQuickSend)) {
 //                    if (("true").equals(isQuickSend)) {
-                List<Map> listMap = xkjtSummaryAttManager.queryHostFile(summaryId);
-                if (listMap.size() > 0) {
-                    for (Map map : listMap) {
-                        BigDecimal bigDecimal = (BigDecimal) map.get("attachment_id");
-                        hostFileUrl = bigDecimal.toString();
-                    }
-                }
-                if (hostFileUrl.equals("")) {
-                    y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + fileId;
-
-                } else {
-                    y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + hostFileUrl;
+            List<Map> listMap = xkjtSummaryAttManager.queryHostFile(summaryId);
+            if (listMap.size() > 0) {
+                for (Map map : listMap) {
+                    BigDecimal bigDecimal = (BigDecimal) map.get("attachment_id");
+                    hostFileUrl = bigDecimal.toString();
                 }
             }
+            if (hostFileUrl.equals("")) {
+                y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + fileId;
+
+            } else {
+                y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + hostFileUrl;
+            }
+//            }
 //            else {
 //                        y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + fileId;
 //                    }
