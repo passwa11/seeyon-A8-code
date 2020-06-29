@@ -54,7 +54,7 @@ public class edocDetailController extends BaseController {
                 Opinion opinion = new Opinion();
                 opinion.setId(rs.getString("id"));
                 opinion.setContent(rs.getString("content"));
-                opinion.setCreateTime(rs.getString("create_time"));
+                opinion.setCreateTime(rs.getString("create_time").substring(0,10));
                 opinion.setUsername(rs.getString("username"));
                 opinion.setPolicy(rs.getString("policy"));
                 opinion.setFilename(rs.getString("filename"));
