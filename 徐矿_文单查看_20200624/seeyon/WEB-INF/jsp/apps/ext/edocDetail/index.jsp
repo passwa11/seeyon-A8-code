@@ -48,12 +48,12 @@
         .span-left {
             float: left;
             font-family: 黑体;
-            font-size: 14px;
+            font-size: medium;
         }
     </style>
 </head>
 <body>
-<button style="float: right;margin-right: 50px;margin-top: 20px;cursor: pointer;" class="common_button">
+<button style="float: right;margin-right: 50px;margin-top: 20px;cursor: pointer;" class="common_button" onclick="printDetail()">
     打印
 </button>
 <div style="clear: both;"></div>
@@ -189,21 +189,25 @@
 
 <script type="text/javascript">
     $(function () {
-        $("button").click(function () {
-            if (getExplorer() == "IE") {
-                pagesetup_null();
-            }
-            // 根据div标签ID拿到div中的局部内容
-            bdhtml = window.document.body.innerHTML;
-            var jubuData = document.getElementById("printDetail").innerHTML;
-            //把获取的 局部div内容赋给body标签, 相当于重置了 body里的内容
-            window.document.body.innerHTML = jubuData;
-            //调用打印功能
-            window.print();
-            window.document.body.innerHTML = bdhtml;//重新给页面内容赋值；
-            return false;
-        });
+        // $("button").click(function () {
+        //
+        // });
     });
+
+    function printDetail(){
+        if (getExplorer() == "IE") {
+            pagesetup_null();
+        }
+        // 根据div标签ID拿到div中的局部内容
+        bdhtml = window.document.body.innerHTML;
+        var jubuData = document.getElementById("printDetail").innerHTML;
+        //把获取的 局部div内容赋给body标签, 相当于重置了 body里的内容
+        window.document.body.innerHTML = jubuData;
+        //调用打印功能
+        window.print();
+        window.document.body.innerHTML = bdhtml;//重新给页面内容赋值；
+        return false;
+    }
 
     function pagesetup_null() {
         var hkey_root, hkey_path, hkey_key;
