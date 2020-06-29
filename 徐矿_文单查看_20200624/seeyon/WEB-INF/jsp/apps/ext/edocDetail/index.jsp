@@ -115,7 +115,7 @@
                 <tr>
                     <td width="100%"><label>拟办意见:</label></td>
                 </tr>
-                <tr style="height: 100px;">
+                <tr style="height: 70px;">
                     <td class="tr-text-float" width="100%" colspan="4">
                         <div style="float: left;" class="font-s">
                             <c:forEach items="${niban}" var="op">
@@ -139,7 +139,7 @@
                 <tr>
                     <td><label>批示意见:</label></td>
                 </tr>
-                <tr style="height: 150px;">
+                <tr style="height: 180px;">
                     <td class="tr-text-float">
                         <div style="float: left;" class="font-s">
                             <c:forEach items="${pishi}" var="op">
