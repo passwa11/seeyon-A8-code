@@ -68,7 +68,7 @@
 <div style="clear: both;"></div>
 <div id="printDetail">
     <div>
-        <div style="text-align: center;margin-top: 60px;margin-left: 30px;">
+        <div style="text-align: center;margin-top: 70px;margin-left: 30px;">
             <table>
                 <tr>
                     <td colspan="4">
