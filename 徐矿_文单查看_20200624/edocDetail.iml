@@ -3694,5 +3694,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.20" level="application_server_libraries" />
+    <orderEntry type="library" name="xkjt" level="project" />
+    <orderEntry type="library" name="xjkt-2" level="project" />
   </component>
 </module>

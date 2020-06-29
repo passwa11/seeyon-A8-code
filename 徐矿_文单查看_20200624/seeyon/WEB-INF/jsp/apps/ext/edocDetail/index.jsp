@@ -54,6 +54,9 @@
             font-family: 黑体;
             font-size: medium;
         }
+        .tr-height{
+            height:50px;
+        }
     </style>
 </head>
 <body>
@@ -179,10 +182,11 @@
                 </tr>
             </table>
             <table frame="below">
-                <tr style="height: 50px;">
+                <tr style="height: 60px;">
                     <td width="129"><label>备注:</label></td>
                     <td class="tr-text-float">
-                        <div style="float: right;">
+                        <div style="float: right;" class="font-s">
+                            ${entity.text}
                         </div>
                     </td>
                 </tr>

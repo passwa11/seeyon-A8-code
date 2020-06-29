@@ -23,7 +23,7 @@ public class edocDetailController extends BaseController {
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView modelAndView = new ModelAndView("apps/ext/edocDetail/index");
         String summaryId = request.getParameter("id");
-        String sql = "select s.id,s.send_unit,s.subject,s.doc_mark,e.avarchar1,s.create_time from EDOC_SUMMARY s,EDOC_SUMMARY_EXTEND e where s.id=e.SUMMARY_ID and s.id ='" + summaryId + "'";
+        String sql = "select s.id,s.send_unit,s.subject,s.doc_mark,e.avarchar1,s.create_time,e.text1 from EDOC_SUMMARY s,EDOC_SUMMARY_EXTEND e where s.id=e.SUMMARY_ID and s.id ='" + summaryId + "'";
         Connection connection = JDBCAgent.getRawConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -38,7 +38,7 @@ public class edocDetailController extends BaseController {
                 entity.setEdocMark(rs.getString("doc_mark"));
                 entity.setCreateUnit(rs.getString("send_unit"));
                 entity.setTime(rs.getString("create_time").substring(0, 10));
-
+                entity.setText(rs.getString("text1"));
             }
             modelAndView.addObject("entity", entity);
 
