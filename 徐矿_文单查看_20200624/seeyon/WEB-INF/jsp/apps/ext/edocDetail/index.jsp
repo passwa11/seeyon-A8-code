@@ -59,16 +59,16 @@
 <div style="clear: both;"></div>
 <div id="printDetail">
     <div>
-        <div style="text-align: center;margin-top: 20px;">
+        <div style="text-align: center;margin-top: 60px;">
             <table>
                 <tr>
                     <td colspan="4">
-                        <span style="color: #008000;font-size: 30px;">徐州矿务集团党政办公室请示办文单</span>
+                        <span style="color: #008000;font-size: 20px;">徐州矿务集团党政办公室</span>
                     </td>
                 </tr>
                 <tr style="color: #ff0000">
                     <td colspan="4">
-                        <span style="color: #008000;font-size: 30px;">请示办文单</span>
+                        <span style="color: #008000;font-size: 20px;">请示办文单</span>
                     </td>
                 </tr>
             </table>
