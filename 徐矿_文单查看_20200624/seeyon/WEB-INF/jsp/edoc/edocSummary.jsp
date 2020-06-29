@@ -1316,9 +1316,11 @@ var openFrom= "${param.openFrom}";
 		                           		<i class="icon-check-c"></i><font style="font-weight:bold;color:#000000">签批查看&nbsp;</font></a>--%>
 														<%--查看PDF文档--%>
 														<%--                            zhou:查看文单--%>
-														  <span  onclick="opentPdf('', '/seeyon/ext/edocDetail.do?method=index&id=${param.summaryId}&bodyContent=${summary.firstBody.content}');" class="cursor-hand" id='viewEdocDetail'	title="查看文单">
-															  <span class="ico16 print_16 margin_lr_5"></span> 查看文单
-														  </span>
+														<c:if test="${summary.formId==3312330994062151087 && summary.state == 3}">
+															<span  onclick="opentPdf('', '/seeyon/ext/edocDetail.do?method=index&id=${param.summaryId}&bodyContent=${summary.firstBody.content}');" class="cursor-hand" id='viewEdocDetail'	title="查看文单">
+																<span class="ico16 print_16 margin_lr_5"></span> 查看文单<c:out value="${}"/>
+															</span>
+														</c:if>
 														<%--                            zhou:查看文单--%>
 
 															<c:if test="${!empty firstPDFId}">
