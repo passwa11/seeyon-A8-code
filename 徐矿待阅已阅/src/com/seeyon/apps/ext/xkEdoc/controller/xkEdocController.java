@@ -197,6 +197,8 @@ public class xkEdocController extends BaseController {
                     attachmentEx.setFileUrl(attachment.getFileUrl());
                     attachmentEx.setFilename(attachment.getFilename());
                     attachmentEx.setSize(attachment.getSize());
+//                    20200629 为了区分是附件还是关联文档
+                    attachmentEx.setMimeType(attachment.getMimeType());
                     list.add(attachmentEx);
                 }
             }

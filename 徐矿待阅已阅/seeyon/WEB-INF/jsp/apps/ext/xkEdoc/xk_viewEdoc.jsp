@@ -275,10 +275,15 @@
             var isQuickSend = $("#isQuickSend").val();
             var summaryId = $("#summaryId").val();
             if (obj.event === 'downloadFile') {
-                var url = "/seeyon/ext/xkEdoc.do?method=downloadfile&type=1&fileId=" + fileUrl + "&createDate=" + uploadTime + "&filename=" + encodeURI(fileName)
-                    + "&isQuickSend=" + isQuickSend + "&summaryId=" + summaryId;
+                if (data.mimeType == 'edoc') {
+                    var url="/seeyon/edocController.do?method=detailIFrame&from=Done&affairId="+data.filepath+'';
+                    window.open(url,"_blank");
+                } else {
+                    var url = "/seeyon/ext/xkEdoc.do?method=downloadfile&type=1&fileId=" + fileUrl + "&createDate=" + uploadTime + "&filename=" + encodeURI(fileName)
+                        + "&isQuickSend=" + isQuickSend + "&summaryId=" + summaryId;
 
-                $("#downloadFileFrame").attr("src", url);
+                    $("#downloadFileFrame").attr("src", url);
+                }
             }
         });
     });
