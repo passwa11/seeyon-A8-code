@@ -130,14 +130,15 @@ public class SyncOrgData {
             String syear = Integer.toString(localDate.getYear());
             String p = classPath.substring(0, classPath.indexOf(syear));
 //            linux
-//            Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
-//            perms.add(PosixFilePermission.OWNER_READ);//设置所有者的读取权限
-//            perms.add(PosixFilePermission.OWNER_WRITE);//设置所有者的写权限
-//            perms.add(PosixFilePermission.OWNER_EXECUTE);//设置所有者的执行权限
-//            perms.add(PosixFilePermission.GROUP_READ);//设置组的读取权限
-//            perms.add(PosixFilePermission.GROUP_EXECUTE);//设置组的读取权限
-//            perms.add(PosixFilePermission.OTHERS_READ);//设置其他的读取权限
-//            perms.add(PosixFilePermission.OTHERS_EXECUTE);//设置其他的读取权限
+            Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
+            perms.add(PosixFilePermission.OWNER_READ);//设置所有者的读取权限
+            perms.add(PosixFilePermission.OWNER_WRITE);//设置所有者的写权限
+            perms.add(PosixFilePermission.OWNER_EXECUTE);//设置所有者的执行权限
+            perms.add(PosixFilePermission.GROUP_READ);//设置组的读取权限
+            perms.add(PosixFilePermission.GROUP_EXECUTE);//设置组的读取权限
+            perms.add(PosixFilePermission.OTHERS_READ);//设置其他的读取权限
+            perms.add(PosixFilePermission.OTHERS_EXECUTE);//设置其他的读取权限
+
             String insertSql = "insert into TEMP_NUMBER30(ID,C_MIDRECID,C_FILETITLE,C_FTPFILEPATH,C_TYPE,I_SIZE,META_TYPE,STATUS) values(?,?,?,?,?,?,?,?)";
             String opinionSql = "select case attribute when 2 then '【'||'同意'||'】' when  3 then '【'||'不同意'||'】' else '' end attribute,policy,department_name,create_time,content,(select name from org_member where id= s.create_user_id) create_user_id from (select * from edoc_opinion where edoc_id=?) s";
             ResultSet opinionSet = null;
@@ -154,10 +155,9 @@ public class SyncOrgData {
                 sPath = p + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + "";
                 File f = new File(sPath);
                 //linux设置文件和文件夹的权限
-//                Path pathParent = Paths.get(f.getParentFile().getAbsolutePath());
-//                Path pathDest = Paths.get(f.getAbsolutePath());
-//                Files.setPosixFilePermissions(pathParent, perms);//修改文件夹路径的权限
-//                Files.setPosixFilePermissions(pathDest, perms);//修改图片文件的权限
+                Path pathParent = Paths.get(f.getParentFile().getAbsolutePath());
+                Path pathDest = Paths.get(f.getAbsolutePath());
+                Files.setPosixFilePermissions(pathParent, perms);//修改文件夹路径的权限
 
                 File parentfile = f.getParentFile();
                 if (!parentfile.exists()) {
@@ -167,6 +167,9 @@ public class SyncOrgData {
                 if (!f.exists()) {
                     f.createNewFile();
                 }
+                //出错原因：下面这句话设置文件的权限必须在文件创建以后再修改权限，否则会报NoSuchFoundException
+                Files.setPosixFilePermissions(pathDest, perms);//修改图片文件的权限
+
                 FileOutputStream fos = null;
                 try {
                     fos = new FileOutputStream(f);
