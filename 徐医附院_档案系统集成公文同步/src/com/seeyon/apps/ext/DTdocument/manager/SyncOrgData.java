@@ -254,10 +254,10 @@ public class SyncOrgData {
         StringBuffer sb = new StringBuffer();
         sb.append("<script type=\"text/javascript\">");
         while (set.next()) {
-            String attribute = set.getString("attribute");
-            String content = set.getString("content");
-            String deptName = set.getString("department_name");
-            String userName = set.getString("create_user_id");
+            String attribute = set.getString("attribute")==null?"":set.getString("attribute");
+            String content = set.getString("content")==null?"":set.getString("content");
+            String deptName = set.getString("department_name")==null?"":set.getString("department_name");
+            String userName = set.getString("create_user_id")==null?"":set.getString("create_user_id");
             String createTime = set.getString("create_time").substring(0, set.getString("create_time").lastIndexOf(":"));
             String val = attribute + "  " + content + "  " + deptName + "  " + userName + "  " + createTime;
             sb.append("document.getElementById(\"" + set.getString("policy") + "\").innerHTML =\"" + val + "\";");
