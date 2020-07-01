@@ -7,6 +7,7 @@ create table TEMP_NUMBER10
 
 
 drop table TEMP_NUMBER20;
+-- pack_date字段的长度为30时报错  插入数据时字段长度过小，所以改成40
 create table TEMP_NUMBER20
 (
   id              VARCHAR2(200) not null,
@@ -14,9 +15,9 @@ create table TEMP_NUMBER20
   doc_mark        VARCHAR2(255),
   issuer          VARCHAR2(255),
   send_department VARCHAR2(255),
-  pack_date       VARCHAR2(30),
+  pack_date       VARCHAR2(40),
   status          VARCHAR2(6),
-  create_time     varchar2(30),
+  create_time     varchar2(40),
   year              varchar2(6),
   edoc_type       varchar2(20),
   organizer       varchar2(400)
