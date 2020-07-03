@@ -165,13 +165,11 @@ public class SyncOrgData {
                     parentfile.mkdirs();
                 }
                 parentfile.setWritable(true,false);
-                Runtime.getRuntime().exec("chmod 777 -R "+ parentfile);
 
                 if (!f.exists()) {
                     f.createNewFile();
                 }
                 f.setWritable(true,false);
-                Runtime.getRuntime().exec("chmod 777 -R "+ f);
 
 
                 //出错原因：下面这句话设置文件的权限必须在文件创建以后再修改权限，否则会报NoSuchFoundException
@@ -209,14 +207,12 @@ public class SyncOrgData {
                         parentfile2.mkdirs();
                     }
                     parentfile2.setWritable(true,false);
-                    Runtime.getRuntime().exec("chmod 777 -R "+ parentfile2);
 
 
                     if (!f2.exists()) {
                         f2.createNewFile();
                     }
                     f2.setWritable(true,false);
-                    Runtime.getRuntime().exec("chmod 777 -R "+ f2);
 
                     String content = getZwData(connection, rs.getString("edocSummaryId"));
                     FileOutputStream fos2 = null;
