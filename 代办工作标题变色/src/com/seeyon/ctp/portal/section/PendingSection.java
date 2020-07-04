@@ -34,7 +34,7 @@ public class PendingSection extends BaseSectionImpl {
 	private PendingManager pendingManager;
 	private Map<String,Integer> pendingCountCacheMaps = new ConcurrentHashMap<String,Integer>();
 	private PortalCacheManager portalCacheManager;
-	
+
     public void setPendingManager(PendingManager pendingManager) {
         this.pendingManager = pendingManager;
     }
@@ -46,16 +46,16 @@ public class PendingSection extends BaseSectionImpl {
             LOG.info("已经初始化待办数量，不再初始化");
         } else {
         	LOG.info("初始化待办栏目数量");
-        	
+
         	CacheAccessable cacheFactory = CacheFactory.getInstance(PendingSection.class);
         	pendingCountCacheMaps = cacheFactory.createLinkedMap("pendingCountCacheMaps");
         }*/
-        
-        
+
+
     	if (AppContext.hasPlugin("edoc")) {
     		return;
     	}
-    	
+
     	//不展示公文相关配置信息
     	List<SectionProperty> properties = this.getProperties();
     	for (SectionProperty sp : properties) {
@@ -63,7 +63,7 @@ public class PendingSection extends BaseSectionImpl {
     		for (SectionReference ref : references) {
     			if ("rowList".equals(ref.getName())) {
     				SectionReferenceValueRange[] valueRanges = ref.getValueRanges();
-    				List<SectionReferenceValueRange> result = new ArrayList<SectionReferenceValueRange>(); 
+    				List<SectionReferenceValueRange> result = new ArrayList<SectionReferenceValueRange>();
     				for (SectionReferenceValueRange val : valueRanges) {
     					if (!"edocMark".equals(val.getValue()) && !"sendUnit".equals(val.getValue())) {
     						result.add(val);
@@ -74,7 +74,7 @@ public class PendingSection extends BaseSectionImpl {
     		}
     	}
     }
-    
+
     @Override
 	public String getIcon() {
 		return "pending";
@@ -84,12 +84,13 @@ public class PendingSection extends BaseSectionImpl {
 	public String getId() {
 		return "pendingSection";
 	}
-	
+
 	@Override
     public boolean isAllowUsed() {
-        if (AppContext.isGroupAdmin()) {
-            return false;
-        }
+//        zhou 去除角色验证
+//        if (AppContext.isGroupAdmin()) {
+//            return false;
+//        }
         return true;
     }
 
@@ -124,12 +125,12 @@ public class PendingSection extends BaseSectionImpl {
         Long memberId = AppContext.currentUserId();
         Long fragmentId = Long.parseLong(preference.get(PropertyName.entityId.name()));
         String ordinal = preference.get(PropertyName.ordinal.name());
-        
+
         Integer total =  this.pendingManager.getPendingCount(memberId, fragmentId, ordinal);
         //将总数缓存
         String cacheKey = fragmentId + "_" + ordinal;
         pendingCountCacheMaps.put(cacheKey, total);
-        
+
         return total;
 	}
 	public Map<String,Integer> getPendingCountMaps () {
@@ -139,7 +140,7 @@ public class PendingSection extends BaseSectionImpl {
 		pendingCountCacheMaps.put(cacheKey, total);
 	}
     @Override
-    public BaseSectionTemplete projection(Map<String, String> preference) { 
+    public BaseSectionTemplete projection(Map<String, String> preference) {
     	MultiRowVariableColumnColTemplete c = new MultiRowVariableColumnColTemplete();
         User user = AppContext.getCurrentUser();
         String fragmentId = preference.get(PropertyName.entityId.name());
@@ -208,6 +209,21 @@ public class PendingSection extends BaseSectionImpl {
         }
 
         c = pendingManager.getTemplete(c,rowList, preference);
+//        zhou:Start
+        MultiRowVariableColumnColTemplete templete =  c;
+        List<MultiRowVariableColumnColTemplete.Row> listRows = templete.getRows();
+        if(null != listRows && listRows.size() > 0) {
+            for (int i = 0; i < listRows.size(); i++) {
+                MultiRowVariableColumnColTemplete.Row row = listRows.get(i);
+                List<MultiRowVariableColumnColTemplete.Cell> rowCells = row.getCells();
+                MultiRowVariableColumnColTemplete.Cell cell = rowCells.get(1);
+                String time = cell.getCellContentHTML();
+                if (time.indexOf("今日") != -1) {
+                    cell.setCellContentHTML(time.substring(0, 2));
+                }
+            }
+        }
+//        zhou:End
         c.setDataNum(pageSize);
         c.addBottomButton(BaseSectionTemplete.BOTTOM_BUTTON_LABEL_MORE,
                 "/collaboration/pending.do?method=morePendingCenter&fragmentId=" + preference.get(PropertyName.entityId.name()) + "&ordinal=" + preference.get(PropertyName.ordinal.name()) + "&currentPanel=" + currentPanel + "&rowStr=" + rowStr + "&columnsName=" + s + "&source=Common&section=All&spaceId="+preference.get(PropertyName.spaceId.name())+"&aiSortValue=" + aiSortValue+"&x="+x+"&y="+y, null, "sectionMoreIco");
@@ -228,9 +244,9 @@ public class PendingSection extends BaseSectionImpl {
         if (preference.get("panel") != null) {
             panels = preference.get("panel");
         }
-        
+
         preference.put("from", "Vjoin");//移动端只查询协同数据
-        
+
         String[] panelValues = panels.split(",");
         if (Strings.isBlank(currentPanel)) {
             currentPanel = panelValues[0];
@@ -275,9 +291,9 @@ public class PendingSection extends BaseSectionImpl {
 						row.setLink("noSupport");
 						break;
                 }
-        
+
                 //row.setLink(setMobileDetailLink(pendingRow));
-                
+
                 row.setCreateDate(MListTemplete.showDate(pendingRow.getCreateDate()));
                 row.setCreateMember(pendingRow.getCreateMemberName());
                 row.setReadFlag("true");
@@ -297,7 +313,7 @@ public class PendingSection extends BaseSectionImpl {
         } catch (UnsupportedEncodingException e) {
         	LOG.error("待办栏目名转url码异常!", e);
         }
-        
+
         String moreLink = "/seeyon/m3/apps/v5/portal/html/morePending.html?openFrom=listPending&entityId="+entityId+"&ordinal="+ordinal+"&columnsName="+columnsName+"&VJoinOpen=VJoin&r="
                 + System.currentTimeMillis();
         c.setMoreLink(moreLink);
@@ -313,13 +329,13 @@ public class PendingSection extends BaseSectionImpl {
 	public String getResolveFunction(Map<String, String> preference) {
 		return MultiRowVariableColumnColTemplete.RESOLVE_FUNCTION;
 	}
-	
+
 	@Override
 	public String getAiShort(Map<String, String> preference) {
 		boolean hasAIPlugin = AppContext.hasPlugin("ai");
 		return hasAIPlugin ? "1" : "0";
 	}
-	
+
 	@Override
 	public String getAiShortValue(Map<String, String> preference){
 		String aiSortValue= preference.get("aiSortValue");
@@ -328,7 +344,7 @@ public class PendingSection extends BaseSectionImpl {
 		}
 		return aiSortValue;
 	}
-	
+
 	@Override
 	public boolean isAllowMobileCustomSet() {
 	    return true;
