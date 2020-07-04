@@ -147,7 +147,7 @@
             	if(!sendDevelop){
             		return;
             	}
-            	
+
             	var process = new BatchProcess();
             	for(var i = 0 ; i < checkBoxs.length;i++){
             			var affairId = checkBoxs[i].id;
@@ -413,7 +413,7 @@
     	            }
 
                 }
-           		
+
            		// 	}
 
             //加载当前位置
@@ -439,7 +439,7 @@
                 }) ;
                 loadTitle(grid.p.total);
             },300);
-            
+
             //回掉函数
             function _gridCallback(total){
             	if("true" == hasMeetingPlug){
@@ -483,14 +483,14 @@
                 	//如果是代理要加粗显示
                 	data.subject = escapeStringToHTML(data.subject);
 					if("${param.from}" == "Agent" && data.subState == 11){
-						if(hour >24 && hour < 72){
-							txt = "<span class='font_bold' style='color:yellowgreen;'>"+txt+"</span>";
-						}else if(hour>72){
-							txt = "<span class='font_bold' style='color:red;'>"+txt+"</span>";
-						}else {
-							txt = "<span class='font_bold'>"+txt+"</span>";
-						}
-						// txt = "<span class='font_bold'>"+txt+"</span>";
+						// if(hour >24 && hour < 72){
+						// 	txt = "<span class='font_bold' style='color:yellowgreen;'>"+txt+"</span>";
+						// }else if(hour>72){
+						// 	txt = "<span class='font_bold' style='color:red;'>"+txt+"</span>";
+						// }else {
+						// 	txt = "<span class='font_bold'>"+txt+"</span>";
+						// }
+						txt = "<span class='font_bold'>"+txt+"</span>";
                 	}
                     //加图标
                     //重要程度

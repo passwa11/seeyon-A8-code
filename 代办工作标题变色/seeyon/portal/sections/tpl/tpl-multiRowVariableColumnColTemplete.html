@@ -6,87 +6,6 @@
         <div class="autoScroll" style="height:{{ _autoScrollHeight }}px">
             <table width="100%">
                 <tbody>
-                {{# var _flag = d.flag; }}
-                {{# if(_flag=="daiban"){}}
-                        <!--轮循所有的行col2-->
-                        {{# for(var i = 0, len1 = d.Data.rows.length; i < len1; i++){ }}
-                        {{# var flag=d.Data.rows[i].cells[1].className}}
-                        <tr>
-                            <!--轮循所有的列-->
-                            {{# for(var j = 0, len2 = d.Data.rows[i].cells.length; j < len2; j++){ }}
-                            {{# if(j==0){ }}
-                            <td width="100%" class="col_first"><!--第一列-->
-                                {{# var _currentRowColumn = d.Data.rows[i].cells[0]; }}
-                                {{# if(_currentRowColumn.className=="AlreadyReadByCurrentUser"){ }}
-                                <div class="colDiv AlreadyRead columnRowDiv">
-                                    {{# }else{ }}
-                                    <div class="colDiv columnRowDiv">
-                                        {{# } }}
-                                        {{# var _cellContentHTML = _currentRowColumn.cellContentHTML.escapeHTML(true)}}
-                                        <a class="cellContentText" onclick="javascript:vPortal.sectionHandler.multiRowVariableColumnColTemplete.checkAndOpenLink('{{ _currentRowColumn.linkURL }}','{{ _currentRowColumn.openType}}','{{ _currentRowColumn.id}}','{{ _currentRowColumn.app}}','{{ _currentRowColumn.subApp}}',this)" title="{{ _cellContentHTML }}">
-                                            <!-- 置顶 -->
-                                            {{# if(_currentRowColumn.top){ }}
-                                            <span class="isTop">[置顶]</span>
-                                            {{# } }}
-                                            <!-- 重要程度 -->
-                                            {{# if(_currentRowColumn.extPreClasses!=null){ }}
-                                            {{# for(var k = 0, len3 = _currentRowColumn.extPreClasses.length; k < len3; k++){ }}
-                                            <span class="vportal vp-{{_currentRowColumn.extPreClasses[k]}}"></span>
-                                            {{# } }}
-                                            {{# } }}
-
-                                            <!-- 标题 -->
-                                       <!--         {{# if(flag=="primary"){}}
-                                            <span class="titleText">{{ _cellContentHTML }} </span>
-                                                {{#}else if(flag=="yellow") {}}
-                                            <span class="titleText" style="color: #f8d714">{{ _cellContentHTML }} </span>
-                                                {{#}else if(flag=="red") {}}
-                                            <span class="titleText" style="color: #ff0024">{{ _cellContentHTML }} </span>
-                                                {{#}}}-->
-
-                                            <span class="titleText">{{ _cellContentHTML }} </span>
-
-                                            <!-- 正文类型 -->
-                                            {{# if(_currentRowColumn.extClasses!=null){ }}
-                                            {{# for(var l = 0, len4 = _currentRowColumn.extClasses.length; l < len4; l++){ }}
-                                            <span class="vportal vp-{{_currentRowColumn.extClasses[l]}}"></span>
-                                            {{# } }}
-                                            {{# } }}
-                                        </a>
-                                    </div>
-                            </td>
-                            <td class="setTopRow">
-                                <!-- 置顶功能 -->
-                                {{# if(!_currentRowColumn.top){ }}
-                                <div class="setTop" id="topStatus_{{ _currentRowColumn.id }}" onclick="javascript:vPortal.sectionHandler.multiRowVariableColumnColTemplete.setTop('{{ _currentRowColumn.id }}')" title="置顶"><i class="vportal vp-setTop"></i></div>
-                                {{# }else{ }}
-                                <div class="cancelTop" id="topStatus_{{ _currentRowColumn.id }}" onclick="javascript:vPortal.sectionHandler.multiRowVariableColumnColTemplete.cancelTop('{{ _currentRowColumn.id }}')" title="取消置顶"><i class="vportal vp-setTop"></i></div>
-                                {{# } }}
-                            </td>
-                            {{# }else{ }}
-                            {{# var _thisRowColumn = d.Data.rows[i].cells[j];}}
-                            {{# var reg = /<(\S*?)[^>]*>/ig; var titleText = _thisRowColumn.alt != null ? _thisRowColumn.alt.replace(reg,"") : _thisRowColumn.cellContentHTML.replace(reg,""); }}
-                            <td class="variableColumn columnRowDiv" title="{{ titleText }}" {{# if(j==1){ }} style="padding-left:5px;"{{# } }}><!--其它列-->
-                                {{# var _thisHandler = _thisRowColumn.handler; if(_thisHandler!=null){ }}
-                                <a
-                                        {{# if(_thisHandler.click != undefined && _thisHandler.click != null){ }} onclick="javascript:{{ _thisHandler.click.name }}('{{ _thisHandler.click.parameter }}','{{ _thisRowColumn.openType }}')" {{# } }}
-                                        {{# if(_thisRowColumn.app==6){ }} class="replyCard" id="replyCard{{ d._entityId }}_{{ _thisRowColumn.id }}" objectid="{{ _thisRowColumn.id }}"{{# } }}
-                                        {{# if(_thisHandler.mouseover != undefined && _thisHandler.mouseover != null){ }} onmouseenter="javascript:vPortal.sectionHandler.multiRowVariableColumnColTemplete.{{ _thisHandler.mouseover.name }}('{{ _thisRowColumn.id }}','replyCard{{ d._entityId }}_{{ _thisRowColumn.id }}','{{ d._entityId }}')" {{# } }}
-                                        {{# if(_thisHandler.mouseout != undefined && _thisHandler.mouseout != null){ }} onmouseleave="javascript:vPortal.sectionHandler.multiRowVariableColumnColTemplete.{{ _thisHandler.mouseout.name }}()" {{# } }}
-                                >
-                                    {{_thisRowColumn.cellContentHTML}}</a>
-                                {{# }else{ }}
-                                {{_thisRowColumn.cellContentHTML}}
-                                {{# }}}
-                                <!-- extClasses -->
-                                {{# if(_thisRowColumn.extClasses!=null){ }}
-                                {{# for(var m = 0, len5 = _thisRowColumn.extClasses.length; m < len5; m++){ }}
-                                <span title="{{_thisRowColumn.extClassesAlt[m]}}" class="vportal vp-{{_thisRowColumn.extClasses[m]}}"></span>
-                                {{# } }}{{# } }}
-                            </td>{{# } }}{{# } }}
-                        </tr>
-                        {{# } }}
-                {{#} else {}}
                     <!--轮循所有的行col2-->
                     {{# for(var i = 0, len1 = d.Data.rows.length; i < len1; i++){ }}
                     <tr>
@@ -154,8 +73,6 @@
                         </td>{{# } }}{{# } }}
                     </tr>
                     {{# } }}
-                {{#}}}
-
                 </tbody>
             </table>
         </div>

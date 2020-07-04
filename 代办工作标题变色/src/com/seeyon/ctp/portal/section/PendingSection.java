@@ -91,6 +91,7 @@ public class PendingSection extends BaseSectionImpl {
 //        if (AppContext.isGroupAdmin()) {
 //            return false;
 //        }
+
         return true;
     }
 
