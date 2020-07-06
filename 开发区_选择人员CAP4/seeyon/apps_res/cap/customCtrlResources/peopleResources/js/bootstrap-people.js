@@ -181,20 +181,19 @@ function gongHuiTable() {
                     });
                 }
             }
-            removeTableRowGH(row);
             dataSorting();
+            removeTableRowGH(row);
         }
     });
 
 }
 
-
+var idsgh = [];
 function removeTableRowGH(row) {
-    var ids = [];
-    ids.push(row.id);
+    idsgh.push(row.id);
     $('#gonghui').bootstrapTable('remove', {
         field: 'id',
-        values: ids
+        values: idsgh
     });
 }
 
@@ -213,6 +212,12 @@ function removeDdRowgh(item) {
             field0007: $(item).attr("lay-zsort")
         }
     });
+    for (var i = 0; i <idsgh.length ; i++) {
+        var index=idsgh.indexOf($(item).attr("lay-id"));
+        if(index>-1){
+            idsgh.splice(index,1);
+        }
+    }
 }
 
 function dangZhengBanTable() {
@@ -506,20 +511,18 @@ function zhenban31Table() {
                 }
             }
             //
-
-            removeTableRow31(row);
             dataSorting();
+            removeTableRow31(row);
 
         }
     });
 }
-
+var ids31 = [];
 function removeTableRow31(row) {
-    var ids = [];
-    ids.push(row.id);
+    ids31.push(row.id);
     $('#zhenb31').bootstrapTable('remove', {
         field: 'id',
-        values: ids
+        values: ids31
     });
 }
 
@@ -538,6 +541,13 @@ function removeDdRow31(item) {
             field0007: $(item).attr("lay-zsort")
         }
     });
+    for (var i = 0; i <ids31.length ; i++) {
+        var index=ids31.indexOf($(item).attr("lay-id"));
+        if(index>-1){
+            ids31.splice(index,1);
+        }
+    }
+
 }
 
 function zhuqu32Table() {
@@ -611,20 +621,18 @@ function zhuqu32Table() {
                 }
             }
             //
-
-            removeTableRow32(row);
             dataSorting();
+            removeTableRow32(row);
 
         }
     });
 }
-
+var ids32=[];
 function removeTableRow32(row) {
-    var ids = [];
-    ids.push(row.id);
+    ids32.push(row.id);
     $('#zhuqu32').bootstrapTable('remove', {
         field: 'id',
-        values: ids
+        values: ids32
     });
 }
 
@@ -643,6 +651,12 @@ function removeDdRow32(item) {
             field0007: $(item).attr("lay-zsort")
         }
     });
+    for (var i = 0; i <ids32.length ; i++) {
+        var index=ids32.indexOf($(item).attr("lay-id"));
+        if(index>-1){
+            ids32.splice(index,1);
+        }
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -651,8 +665,8 @@ function removeDdRow32(item) {
 function sureSelect() {
     dangZhengBanSure();
     Sure30();
-    // Sure31();
-    // Sure32();
+    Sure31();
+    Sure32();
     // SureGonghui();
 
 }
@@ -835,14 +849,23 @@ function Sure31() {
                 });
             }
         }
+        dataSorting();
     }
-    dataSorting();
-    var ids = $.map(rows, function (row) {
+    ids31= $.map(rows, function (row) {
         return row.id
+    });
+    $("dl").find('dd').each(function () {
+        var id = $(this).attr("lay-id");
+        var flag = $(this).attr("lay-flag");
+        if(flag=='31'){
+            if(undefined != id){
+                ids31.push(id);
+            }
+        }
     });
     $table.bootstrapTable('remove', {
         field: 'id',
-        values: ids
+        values: ids31
     });
 }
 
@@ -890,14 +913,23 @@ function Sure32() {
                 });
             }
         }
+        dataSorting();
     }
-    dataSorting();
-    var ids = $.map(rows, function (row) {
+    ids32 = $.map(rows, function (row) {
         return row.id
+    });
+    $("dl").find('dd').each(function () {
+        var id = $(this).attr("lay-id");
+        var flag = $(this).attr("lay-flag");
+        if(flag=='32'){
+            if(undefined != id){
+                ids32.push(id);
+            }
+        }
     });
     $table.bootstrapTable('remove', {
         field: 'id',
-        values: ids
+        values: ids32
     });
 }
 
@@ -945,14 +977,23 @@ function SureGonghui() {
                 });
             }
         }
+        dataSorting();
     }
-    dataSorting();
-    var ids = $.map(rows, function (row) {
+    idsgh = $.map(rows, function (row) {
         return row.id
+    });
+    $("dl").find('dd').each(function () {
+        var id = $(this).attr("lay-id");
+        var flag = $(this).attr("lay-flag");
+        if(flag=='gh'){
+            if(undefined != id){
+                idsgh.push(id);
+            }
+        }
     });
     $table.bootstrapTable('remove', {
         field: 'id',
-        values: ids
+        values: idsgh
     });
 }
 
