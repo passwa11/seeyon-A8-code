@@ -10,6 +10,109 @@ $(function () {
 
 });
 
+// 排序问题 对已选择人员进行部门排序
+function dataSorting() {
+    var arr29 = [];
+    var arr30 = [];
+    var arr31 = [];
+    var arr32 = [];
+    var arrGH = [];
+
+    $("dl").find('dd').each(function () {
+        var id = $(this).attr("lay-id");
+        var field0001 = $(this).attr("lay-name");
+        var field0002 = $(this).attr("lay-field002");
+        var field0003 = $(this).attr("lay-dept");
+        var name = $(this).attr("lay-username");
+        var flag = $(this).attr("lay-flag");
+        var bs = $(this).attr("lay-bs");
+        var bsname = $(this).attr("lay-bsname");
+        var zsort = $(this).attr("lay-zsort");
+        if (undefined == id) {
+            id = "";
+        }
+        var obj = {};//添加成员对象
+        obj["id"] = id;
+        obj["field0001"] = field0001;
+        obj["field0002"] = field0002;
+        obj["name"] = name;
+        obj["field0003"] = field0003;
+        obj["field0005"] = bs + '';
+        obj["mval"] = bsname;
+        obj["field0007"] = zsort;
+        obj["flag"] = flag;
+        if (flag == '29') {
+            arr29.push(obj);
+        } else if (flag == '30') {
+            arr30.push(obj);
+        } else if (flag == '31') {
+            arr31.push(obj);
+        } else if (flag == '32') {
+            arr32.push(obj);
+        } else if (flag == 'gh') {
+            arrGH.push(obj);
+        }
+    });
+    var l29 = arrsyDataSort(arr29);
+    var l30 = arrsyDataSort(arr30);
+    var l31 = arrsyDataSort(arr31);
+    var l32 = arrsyDataSort(arr32);
+    var lgh = arrsyDataSort(arrGH);
+    var option = "";
+    var html29 = '';
+    var html30 = '';
+    var html31 = '';
+    var html32 = '';
+    var htmlgh = '';
+    if (l29.length > 0) {
+        html29 = htmlShow(l29, '29');
+        option += html29;
+    }
+    if (l30.length > 0) {
+        html30 = htmlShow(l30, '30');
+        option += html30;
+    }
+    if (l31.length > 0) {
+        html31 = htmlShow(l31, '31');
+        option += html31;
+    }
+    if (l32.length > 0) {
+        html32 = htmlShow(l32, '32');
+        option += html32;
+    }
+    if (lgh.length > 0) {
+        htmlgh = htmlShow(lgh, 'gh');
+        option += htmlgh;
+    }
+    clearSelect();
+    $("dl.selected-info").append(option);
+}
+
+function htmlShow(data, flag) {
+    var html = "";
+    for (var i = 0; i < data.length; i++) {
+        html += '<dd ondblclick="removeDdRow'+flag+'(this)" lay-bsname="' + data[i].mval + '"  lay-field002="' + data[i].field0002 + '"  lay-zsort="' + data[i].field0007 + '" lay-id="' + data[i].id + '" lay-bs="' + data[i].field0005 + '"  lay-value="' + data[i].id + '" lay-username="' + data[i].name + '" lay-flag="' + flag + '" lay-name="' + data[i].field0001 + '" lay-dept="' + data[i].field0003 + '" class="">' + data[i].field0001 + '</dd>';
+    }
+    return html;
+}
+
+function arrsyDataSort(data) {
+    for (var i = 0; i < data.length - 1; i++) {
+        for (var j = 0; j < data.length - 1 - i; j++) {
+            if (data[j].field0007 > data[j + 1].field0007) {
+                var obj = data[j];
+                data[j] = data[j + 1];
+                data[j + 1] = obj;
+            }
+        }
+    }
+    return data;
+}
+
+
+//
+
+
 ////////////////////////////////////////////////////////////////////////////////////
 //工会
 function gongHuiTable() {
@@ -49,8 +152,8 @@ function gongHuiTable() {
             obj["text"] = tr_obj.field0001;
             obj["dept"] = tr_obj.field0003;
             if ($("dl.selected-info dd").length <= 0) {
-                var option = '<dd ondblclick="removeDdRowGh(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="gh" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").prepend(option);
+                var option = '<dd ondblclick="removeDdRowgh(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="gh" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                $("dl.selected-info").append(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
                     if (index == 0) {
@@ -70,8 +173,8 @@ function gongHuiTable() {
                     return flag;
                 }
                 if (selected()) {
-                    var option = '<dd ondblclick="removeDdRowGh(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="gh"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                    $("dl.selected-info").prepend(option);
+                    var option = '<dd ondblclick="removeDdRowgh(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="gh"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                    $("dl.selected-info").append(option);
                     $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                         var index = $(this).attr("class").indexOf("selected-this");
                         if (index == 0) {
@@ -82,6 +185,7 @@ function gongHuiTable() {
                     });
                 }
             }
+            dataSorting();
             removeTableRowGH(row);
         }
 
@@ -98,7 +202,7 @@ function removeTableRowGH(row) {
     });
 }
 
-function removeDdRowGh(item) {
+function removeDdRowgh(item) {
     $(item).remove();
     $('#gonghui').bootstrapTable('insertRow', {
         index: 0,
@@ -153,7 +257,7 @@ function dangZhengBanTable() {
             obj["dept"] = tr_obj.field0003;
             if ($("dl.selected-info dd").length <= 0) {
                 var option = '<dd ondblclick="removeDdRow29(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="29" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").prepend(option);
+                $("dl.selected-info").append(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
                     if (index == 0) {
@@ -174,7 +278,7 @@ function dangZhengBanTable() {
                 }
                 if (selected()) {
                     var option = '<dd ondblclick="removeDdRow29(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="29"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                    $("dl.selected-info").prepend(option);
+                    $("dl.selected-info").append(option);
                     $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                         var index = $(this).attr("class").indexOf("selected-this");
                         if (index == 0) {
@@ -185,6 +289,7 @@ function dangZhengBanTable() {
                     });
                 }
             }
+            dataSorting();
             removeTableRow29(row);
         }
 
@@ -256,7 +361,7 @@ function jiguan30Table() {
             obj["dept"] = tr_obj.field0003;
             if ($("dl.selected-info dd").length <= 0) {
                 var option = '<dd ondblclick="removeDdRow30(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="30" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").prepend(option);
+                $("dl.selected-info").append(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
                     if (index == 0) {
@@ -277,7 +382,7 @@ function jiguan30Table() {
                 }
                 if (selected()) {
                     var option = '<dd ondblclick="removeDdRow30(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="30"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                    $("dl.selected-info").prepend(option);
+                    $("dl.selected-info").append(option);
                     $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                         var index = $(this).attr("class").indexOf("selected-this");
                         if (index == 0) {
@@ -289,6 +394,7 @@ function jiguan30Table() {
                 }
             }
             //
+            dataSorting();
             removeTableRow30(row);
         }
     });
@@ -358,7 +464,7 @@ function zhenban31Table() {
             obj["dept"] = tr_obj.field0003;
             if ($("dl.selected-info dd").length <= 0) {
                 var option = '<dd ondblclick="removeDdRow31(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="31" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").prepend(option);
+                $("dl.selected-info").append(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
                     if (index == 0) {
@@ -379,7 +485,7 @@ function zhenban31Table() {
                 }
                 if (selected()) {
                     var option = '<dd ondblclick="removeDdRow31(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="31"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                    $("dl.selected-info").prepend(option);
+                    $("dl.selected-info").append(option);
                     $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                         var index = $(this).attr("class").indexOf("selected-this");
                         if (index == 0) {
@@ -391,6 +497,7 @@ function zhenban31Table() {
                 }
             }
             //
+            dataSorting();
             removeTableRow31(row);
         }
     });
@@ -460,7 +567,7 @@ function zhuqu32Table() {
             obj["dept"] = tr_obj.field0003;
             if ($("dl.selected-info dd").length <= 0) {
                 var option = '<dd ondblclick="removeDdRow32(this)" lay-bsname="' + tr_obj.mval + '" lay-field002="' + tr_obj.field0002 + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="32" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").prepend(option);
+                $("dl.selected-info").append(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
                     if (index == 0) {
@@ -481,7 +588,7 @@ function zhuqu32Table() {
                 }
                 if (selected()) {
                     var option = '<dd  ondblclick="removeDdRow32(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="32"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                    $("dl.selected-info").prepend(option);
+                    $("dl.selected-info").append(option);
                     $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                         var index = $(this).attr("class").indexOf("selected-this");
                         if (index == 0) {
@@ -493,6 +600,7 @@ function zhuqu32Table() {
                 }
             }
             //
+            dataSorting();
             removeTableRow32(row);
         }
     });
@@ -549,7 +657,7 @@ function dangZhengBanSure() {
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
             var option = '<dd  ondblclick="removeDdRow29(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="29" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-            $("dl.selected-info").prepend(option);
+            $("dl.selected-info").append(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
                 if (index == 0) {
@@ -570,7 +678,7 @@ function dangZhengBanSure() {
             }
             if (selected()) {
                 var option = '<dd  ondblclick="removeDdRow29(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="29"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").prepend(option);
+                $("dl.selected-info").append(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
                     if (index == 0) {
@@ -582,6 +690,7 @@ function dangZhengBanSure() {
             }
         }
     }
+    dataSorting();
     var ids = $.map(rows, function (row) {
         return row.id
     });
@@ -603,7 +712,7 @@ function Sure30() {
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
             var option = '<dd  ondblclick="removeDdRow30(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="30" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-            $("dl.selected-info").prepend(option);
+            $("dl.selected-info").append(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
                 if (index == 0) {
@@ -624,7 +733,7 @@ function Sure30() {
             }
             if (selected()) {
                 var option = '<dd ondblclick="removeDdRow30(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="30"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").prepend(option);
+                $("dl.selected-info").append(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
                     if (index == 0) {
@@ -636,6 +745,7 @@ function Sure30() {
             }
         }
     }
+    dataSorting();
     var ids = $.map(rows, function (row) {
         return row.id
     });
@@ -657,7 +767,7 @@ function Sure31() {
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
             var option = '<dd  ondblclick="removeDdRow31(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="31" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-            $("dl.selected-info").prepend(option);
+            $("dl.selected-info").append(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
                 if (index == 0) {
@@ -678,7 +788,7 @@ function Sure31() {
             }
             if (selected()) {
                 var option = '<dd ondblclick="removeDdRow31(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="31"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").prepend(option);
+                $("dl.selected-info").append(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
                     if (index == 0) {
@@ -690,6 +800,7 @@ function Sure31() {
             }
         }
     }
+    dataSorting();
     var ids = $.map(rows, function (row) {
         return row.id
     });
@@ -711,7 +822,7 @@ function Sure32() {
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
             var option = '<dd  ondblclick="removeDdRow32(this)"  lay-bsname="' + tr_obj.mval + '" lay-field002="' + tr_obj.field0002 + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="32" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-            $("dl.selected-info").prepend(option);
+            $("dl.selected-info").append(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
                 if (index == 0) {
@@ -732,7 +843,7 @@ function Sure32() {
             }
             if (selected()) {
                 var option = '<dd  ondblclick="removeDdRow32(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="32"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").prepend(option);
+                $("dl.selected-info").append(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
                     if (index == 0) {
@@ -744,6 +855,7 @@ function Sure32() {
             }
         }
     }
+    dataSorting();
     var ids = $.map(rows, function (row) {
         return row.id
     });
@@ -764,8 +876,8 @@ function SureGonghui() {
         obj["text"] = tr_obj.field0001;
         obj["dept"] = tr_obj.field0003;
         if ($("dl.selected-info dd").length <= 0) {
-            var option = '<dd  ondblclick="removeDdRowGh(this)"  lay-bsname="' + tr_obj.mval + '" lay-field002="' + tr_obj.field0002 + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="gh" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-            $("dl.selected-info").prepend(option);
+            var option = '<dd  ondblclick="removeDdRowgh(this)"  lay-bsname="' + tr_obj.mval + '" lay-field002="' + tr_obj.field0002 + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="gh" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+            $("dl.selected-info").append(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
                 if (index == 0) {
@@ -785,8 +897,8 @@ function SureGonghui() {
                 return flag;
             }
             if (selected()) {
-                var option = '<dd  ondblclick="removeDdRowGh(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="gh"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").prepend(option);
+                var option = '<dd  ondblclick="removeDdRowgh(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="gh"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                $("dl.selected-info").append(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
                     if (index == 0) {
@@ -798,6 +910,7 @@ function SureGonghui() {
             }
         }
     }
+    dataSorting();
     var ids = $.map(rows, function (row) {
         return row.id
     });
