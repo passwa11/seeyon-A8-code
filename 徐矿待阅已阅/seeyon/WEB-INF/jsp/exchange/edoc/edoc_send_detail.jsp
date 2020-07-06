@@ -31,7 +31,7 @@ $(function () {
 					for (var i = 0; i < list.length; i++) {
 						tmp += '<tr style="height: 35px;border-top: 1px solid red">';
 						tmp += '<td width="80%" style="border-top:  #ff0000 1pt solid;">' +
-								'<a href="javascript:void(0);" onclick="downloadfilez(\''+list[i].filepath+'\',\''+list[i].createdate+'\',\''+list[i].filename+'\',\'${summary.isQuickSend}\',\'${summary.id}\')">' + list[i].filename + '</a></td>';
+								'<a href="javascript:void(0);" onclick="downloadfilez(\'1\',\''+list[i].filepath+'\',\''+list[i].createdate+'\',\''+list[i].filename+'\',\'${summary.isQuickSend}\',\'${summary.id}\')">' + list[i].filename + '</a></td>';
 						// tmp += '<td width="auto" style="border-top:  #ff0000 1pt solid;">' + list[i].createdate + '</td>';
 						tmp += '</tr>';
 					}
@@ -44,7 +44,7 @@ $(function () {
 					for (var j = 0; j < mainlist.length; j++) {
 						maintmp += '<tr style="height: 35px;border-top: 1px solid red">';
 						maintmp += '<td width="80%" style="border-top:  #ff0000 1pt solid;">' +
-								'<a href="javascript:void(0);" onclick="downloadfilez(\''+mainlist[j].filepath+'\',\''+mainlist[j].createdate+'\',\''+mainlist[j].filename+'\',\'${summary.isQuickSend}\',\'${summary.id}\')">' + mainlist[j].filename + '</a></td>';
+								'<a href="javascript:void(0);" onclick="downloadfilez(\'2\',\''+mainlist[j].filepath+'\',\''+mainlist[j].createdate+'\',\''+mainlist[j].filename+'\',\'${summary.isQuickSend}\',\'${summary.id}\')">' + mainlist[j].filename + '</a></td>';
 						maintmp += '</tr>';
 					}
 				}else {
@@ -60,7 +60,7 @@ $(function () {
         });
     }
 
-    function downloadfilez(fileUrl,createdate,filename,isQuickSend,summaryId) {
+    function downloadfilez(type,fileUrl,createdate,filename,isQuickSend,summaryId) {
 
         var time = new Date(parseInt(createdate));
         var year = time.getFullYear();
@@ -74,8 +74,7 @@ $(function () {
             day = "0" + day;
         }
         var uploadTime = year + "-" + month + "-" + day;
-        // alert(uploadTime);
-        var url = "/seeyon/ext/xkEdoc.do?method=downloadfile&type=1&fileId=" + (fileUrl+'') + "&createDate=" + uploadTime + "&filename=" + encodeURI(filename)
+        var url = "/seeyon/ext/xkEdoc.do?method=downloadfile&type="+type+"&fileId=" + (fileUrl+'') + "&createDate=" + uploadTime + "&filename=" + encodeURI(filename)
             + "&isQuickSend=" + isQuickSend + "&summaryId=" + (summaryId+'');
         $("#downloadFileFrame").attr("src", url);
     }
