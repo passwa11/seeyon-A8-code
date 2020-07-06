@@ -1174,6 +1174,101 @@ function removeSelect() {
     commonInfo('.selected-this');
 }
 
+function clearSelect2(){
+
+    var list = $("dl").find("dd");
+    $.each(list, function (i, item) {
+        $(".selected-info dd[lay-value=" + $(item).attr('lay-value') + "]").remove();
+        var type = $(item).attr("lay-flag");
+        if (type == '29') {
+            $('#dzb29').bootstrapTable('insertRow', {
+                index: 0,
+                row: {
+                    id: $(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name: $(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
+                    field0005: $(item).attr("lay-bs"),
+                    mval: $(item).attr("lay-bsname"),
+                    field0007: $(item).attr("lay-zsort")
+                }
+            });
+
+        }
+        if (type == '30') {
+            $('#jiguan30').bootstrapTable('insertRow', {
+                index: 0,
+                row: {
+                    id: $(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name: $(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
+                    field0005: $(item).attr("lay-bs"),
+                    mval: $(item).attr("lay-bsname"),
+                    field0007: $(item).attr("lay-zsort")
+                }
+            });
+
+        }
+        if (type == '31') {
+            $('#zhenb31').bootstrapTable('insertRow', {
+                index: 0,
+                row: {
+                    id: $(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name: $(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
+                    field0005: $(item).attr("lay-bs"),
+                    mval: $(item).attr("lay-bsname"),
+                    field0007: $(item).attr("lay-zsort")
+                }
+            });
+
+        }
+        if (type == '32') {
+            $('#zhuqu32').bootstrapTable('insertRow', {
+                index: 0,
+                row: {
+                    id: $(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name: $(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
+                    field0005: $(item).attr("lay-bs"),
+                    mval: $(item).attr("lay-bsname"),
+                    field0007: $(item).attr("lay-zsort")
+                }
+            });
+
+        }
+        if (type == 'gh') {
+            $('#gonghui').bootstrapTable('insertRow', {
+                index: 0,
+                row: {
+                    id: $(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name: $(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
+                    field0005: $(item).attr("lay-bs"),
+                    mval: $(item).attr("lay-bsname"),
+                    field0007: $(item).attr("lay-zsort")
+                }
+            });
+
+        }
+
+    });
+    ids29=[];
+    ids30=[];
+    ids31=[];
+    ids32=[];
+    idsgh=[];
+}
+
 function clearSelect() {
     // commonInfo('');
     // ids29=[];

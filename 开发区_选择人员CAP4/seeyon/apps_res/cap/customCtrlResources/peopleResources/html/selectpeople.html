@@ -24,8 +24,8 @@
 
     <script type="text/javascript">
         function OK() {
-            var peoples = new Array();
-            $("dl").find('dd').each(function () {
+            var peoples = new Array();$("dl").find('dd').each(function () {
+
                 var id = $(this).attr("lay-id");
                 var field0001 = $(this).attr("lay-name");
                 var field0002 = $(this).attr("lay-field002");
@@ -106,11 +106,11 @@
                 </button>
                 <br>
                 <span>&nbsp;</span><br>
-                <button class="layui-btn layui-btn-radius  layui-btn-sm layui-btn-primary" onclick="removeSelect()">
-                    &nbsp;<i class="layui-icon layui-icon-prev"></i>
-                    <i class="fa fa-hand-o-left fa-5x"></i>
+<!--                <button class="layui-btn layui-btn-radius  layui-btn-sm layui-btn-primary" onclick="removeSelect()">-->
+<!--                    &nbsp;<i class="layui-icon layui-icon-prev"></i>-->
+<!--                    <i class="fa fa-hand-o-left fa-5x"></i>-->
 
-                </button>
+<!--                </button>-->
                 <br>
             </div>
         </div>
@@ -127,7 +127,8 @@
             <div style="text-align: center">
                 <div style="margin-top: 20px;"></div>
                 <div class="layui-input-inline">
-                    <button class="layui-btn layui-btn-primary layui-btn-radius" onclick="clearSelect()" id="selected_info_reset">清空</button>
+
+                    <button class="layui-btn layui-btn-primary layui-btn-radius" onclick="clearSelect2()" id="selected_info_reset">清空</button>
                     <div id="idInfo"></div>
                     <div id="nameInfo"></div>
                     <div id="deptInfo"></div>
