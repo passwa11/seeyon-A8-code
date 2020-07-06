@@ -66,25 +66,21 @@ function dataSorting() {
     var htmlgh = '';
     if (l29.length > 0) {
         html29 = htmlShow(l29, '29');
-        option += html29;
     }
     if (l30.length > 0) {
         html30 = htmlShow(l30, '30');
-        option += html30;
     }
     if (l31.length > 0) {
         html31 = htmlShow(l31, '31');
-        option += html31;
     }
     if (l32.length > 0) {
         html32 = htmlShow(l32, '32');
-        option += html32;
     }
     if (lgh.length > 0) {
         htmlgh = htmlShow(lgh, 'gh');
-        option += htmlgh;
     }
     clearSelect();
+    option += html29 + html30 + html31 + html32 + htmlgh;
     $("dl.selected-info").append(option);
 }
 
@@ -185,11 +181,11 @@ function gongHuiTable() {
                     });
                 }
             }
-            dataSorting();
             removeTableRowGH(row);
+            dataSorting();
         }
-
     });
+
 }
 
 
@@ -250,6 +246,7 @@ function dangZhengBanTable() {
             }
         ]
         , onDblClickRow: function (row, $element, field) {
+
             var tr_obj = row;
             var obj = {};//添加成员对象
             obj["value"] = tr_obj.id;
@@ -291,19 +288,19 @@ function dangZhengBanTable() {
             }
             dataSorting();
             removeTableRow29(row);
+
         }
 
     });
-
 }
-
+var ids29 = [];
 function removeTableRow29(row) {
-    var ids = [];
-    ids.push(row.id);
+    ids29.push(row.id);
     $('#dzb29').bootstrapTable('remove', {
         field: 'id',
-        values: ids
+        values: ids29
     });
+    console.log(ids29.toString())
 }
 
 function removeDdRow29(item) {
@@ -321,6 +318,13 @@ function removeDdRow29(item) {
             field0007: $(item).attr("lay-zsort")
         }
     });
+    for (var i = 0; i <ids29.length ; i++) {
+        var index=ids29.indexOf($(item).attr("lay-id"));
+        if(index>-1){
+            ids29.splice(index,1);
+        }
+    }
+    console.log(ids29);
 }
 
 function jiguan30Table() {
@@ -497,8 +501,10 @@ function zhenban31Table() {
                 }
             }
             //
-            dataSorting();
+
             removeTableRow31(row);
+            dataSorting();
+
         }
     });
 }
@@ -600,8 +606,10 @@ function zhuqu32Table() {
                 }
             }
             //
-            dataSorting();
+
             removeTableRow32(row);
+            dataSorting();
+
         }
     });
 }
@@ -637,10 +645,10 @@ function removeDdRow32(item) {
 
 function sureSelect() {
     dangZhengBanSure();
-    Sure30();
-    Sure31();
-    Sure32();
-    SureGonghui();
+    // Sure30();
+    // Sure31();
+    // Sure32();
+    // SureGonghui();
 
 }
 
@@ -649,6 +657,7 @@ function dangZhengBanSure() {
     var $table = $('#dzb29');
     var rows = $table.bootstrapTable('getSelections');
     var arrJtld = rows;
+
     for (var i = 0; i < arrJtld.length; i++) {
         var tr_obj = arrJtld[i];
         var obj = {};//添加成员对象
@@ -689,15 +698,27 @@ function dangZhengBanSure() {
                 });
             }
         }
+        dataSorting();
     }
-    dataSorting();
-    var ids = $.map(rows, function (row) {
+    ids29= $.map(rows, function (row) {
         return row.id
     });
+    $("dl").find('dd').each(function () {
+        var id = $(this).attr("lay-id");
+        var flag = $(this).attr("lay-flag");
+        if(flag=='29'){
+            if(undefined != id){
+                ids29.push(id);
+            }
+        }
+    });
+
     $table.bootstrapTable('remove', {
         field: 'id',
-        values: ids
+        values: ids29
     });
+    console.log(ids29);
+
 }
 
 function Sure30() {
