@@ -667,7 +667,7 @@ function sureSelect() {
     Sure30();
     Sure31();
     Sure32();
-    // SureGonghui();
+    SureGonghui();
 
 }
 
