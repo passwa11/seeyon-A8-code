@@ -64,6 +64,8 @@ function dataSorting() {
     var html31 = '';
     var html32 = '';
     var htmlgh = '';
+    clearSelect();
+
     if (l29.length > 0) {
         html29 = htmlShow(l29, '29');
     }
@@ -79,15 +81,21 @@ function dataSorting() {
     if (lgh.length > 0) {
         htmlgh = htmlShow(lgh, 'gh');
     }
-    clearSelect();
     option += html29 + html30 + html31 + html32 + htmlgh;
     $("dl.selected-info").append(option);
+    $(".selected-info dd").on('click', function () {
+        var index = $(this).attr("class").indexOf("selected-this");
+        if (index == 0) {
+            $(this).removeClass("selected-this");
+        } else {
+            $(this).addClass("selected-this");
+        }
+    });
 }
 
 function htmlShow(data, flag) {
     var html = "";
     for (var i = 0; i < data.length; i++) {
-
         html += '<dd ondblclick="removeDdRow' + flag + '(this)" lay-bsname="' + data[i].mval + '"  lay-field002="' + data[i].field0002 + '"  lay-zsort="' + data[i].field0007 + '" lay-id="' + data[i].id + '" lay-bs="' + data[i].field0005 + '"  lay-value="' + data[i].id + '" lay-username="' + data[i].name + '" lay-flag="' + flag + '" lay-name="' + data[i].field0001 + '" lay-dept="' + data[i].field0003 + '" class="">' + data[i].field0001 + '</dd>';
     }
     return html;
@@ -1270,12 +1278,6 @@ function clearSelect2(){
 }
 
 function clearSelect() {
-    // commonInfo('');
-    // ids29=[];
-    // ids30=[];
-    // ids31=[];
-    // ids32=[];
-    // idsgh=[];
     var list = $("dl").find("dd");
     $.each(list, function (i, item) {
         $(".selected-info dd[lay-value=" + $(item).attr('lay-value') + "]").remove();
