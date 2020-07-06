@@ -1054,6 +1054,7 @@ function commonInfo(s) {
                     field0007: $(item).attr("lay-zsort")
                 }
             });
+
         }
         if (type == '30') {
             $('#jiguan30').bootstrapTable('insertRow', {
@@ -1069,6 +1070,7 @@ function commonInfo(s) {
                     field0007: $(item).attr("lay-zsort")
                 }
             });
+
         }
         if (type == '31') {
             $('#zhenb31').bootstrapTable('insertRow', {
@@ -1084,6 +1086,7 @@ function commonInfo(s) {
                     field0007: $(item).attr("lay-zsort")
                 }
             });
+
         }
         if (type == '32') {
             $('#zhuqu32').bootstrapTable('insertRow', {
@@ -1099,6 +1102,7 @@ function commonInfo(s) {
                     field0007: $(item).attr("lay-zsort")
                 }
             });
+
         }
         if (type == 'gh') {
             $('#gonghui').bootstrapTable('insertRow', {
@@ -1114,9 +1118,15 @@ function commonInfo(s) {
                     field0007: $(item).attr("lay-zsort")
                 }
             });
+
         }
 
     });
+    idsgh=[];
+    ids29=[];
+    ids30=[];
+    ids31=[];
+    ids32=[];
 }
 
 function removeSelect() {
