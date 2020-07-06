@@ -403,13 +403,12 @@ function jiguan30Table() {
         }
     });
 }
-
+var ids30 = [];
 function removeTableRow30(row) {
-    var ids = [];
-    ids.push(row.id);
+    ids30.push(row.id);
     $('#jiguan30').bootstrapTable('remove', {
         field: 'id',
-        values: ids
+        values: ids30
     });
 }
 
@@ -428,6 +427,12 @@ function removeDdRow30(item) {
             field0007: $(item).attr("lay-zsort")
         }
     });
+    for (var i = 0; i <ids30.length ; i++) {
+        var index=ids30.indexOf($(item).attr("lay-id"));
+        if(index>-1){
+            ids29.splice(index,1);
+        }
+    }
 }
 
 function zhenban31Table() {
@@ -645,7 +650,7 @@ function removeDdRow32(item) {
 
 function sureSelect() {
     dangZhengBanSure();
-    // Sure30();
+    Sure30();
     // Sure31();
     // Sure32();
     // SureGonghui();
@@ -765,14 +770,24 @@ function Sure30() {
                 });
             }
         }
+        dataSorting();
     }
-    dataSorting();
-    var ids = $.map(rows, function (row) {
+
+    ids30 = $.map(rows, function (row) {
         return row.id
+    });
+    $("dl").find('dd').each(function () {
+        var id = $(this).attr("lay-id");
+        var flag = $(this).attr("lay-flag");
+        if(flag=='30'){
+            if(undefined != id){
+                ids30.push(id);
+            }
+        }
     });
     $table.bootstrapTable('remove', {
         field: 'id',
-        values: ids
+        values: ids30
     });
 }
 
