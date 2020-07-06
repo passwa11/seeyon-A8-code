@@ -148,7 +148,7 @@ function gongHuiTable() {
             obj["text"] = tr_obj.field0001;
             obj["dept"] = tr_obj.field0003;
             if ($("dl.selected-info dd").length <= 0) {
-                var option = '<dd ondblclick="removeDdRowgh(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="gh" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                var option = '<dd ondblclick="removeDdRowgh(this)"  onclick="addSelect(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="gh" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
                 $("dl.selected-info").append(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -169,7 +169,7 @@ function gongHuiTable() {
                     return flag;
                 }
                 if (selected()) {
-                    var option = '<dd ondblclick="removeDdRowgh(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="gh"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                    var option = '<dd ondblclick="removeDdRowgh(this)" onclick="addSelect(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="gh"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
                     $("dl.selected-info").append(option);
                     $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                         var index = $(this).attr("class").indexOf("selected-this");
@@ -182,10 +182,16 @@ function gongHuiTable() {
                 }
             }
             dataSorting();
+            revokeReuse();
+
             removeTableRowGH(row);
         }
     });
 
+}
+
+function addSelect(t){
+    alert(1);
 }
 
 var idsgh = [];
@@ -293,11 +299,45 @@ function dangZhengBanTable() {
                 }
             }
             dataSorting();
+            revokeReuse();
             removeTableRow29(row);
 
         }
 
     });
+}
+//解决冲突
+function revokeReuse() {
+    if (ids29.length > 0) {
+        $('#dzb29').bootstrapTable('remove', {
+            field: 'id',
+            values: ids29
+        });
+    }
+    if (ids30.length > 0) {
+        $('#jiguan30').bootstrapTable('remove', {
+            field: 'id',
+            values: ids30
+        });
+    }
+    if (ids31.length > 0) {
+        $('#zhenb31').bootstrapTable('remove', {
+            field: 'id',
+            values: ids31
+        });
+    }
+    if (ids32.length > 0) {
+        $('#zhuqu32').bootstrapTable('remove', {
+            field: 'id',
+            values: ids32
+        });
+    }
+    if (idsgh.length > 0) {
+        $('#gonghui').bootstrapTable('remove', {
+            field: 'id',
+            values: idsgh
+        });
+    }
 }
 
 var ids29 = [];
@@ -407,6 +447,8 @@ function jiguan30Table() {
             }
             //
             dataSorting();
+            revokeReuse();
+
             removeTableRow30(row);
         }
     });
@@ -517,6 +559,8 @@ function zhenban31Table() {
             }
             //
             dataSorting();
+            revokeReuse();
+
             removeTableRow31(row);
 
         }
@@ -618,6 +662,7 @@ function zhuqu32Table() {
                     var option = '<dd  ondblclick="removeDdRow32(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="32"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
                     $("dl.selected-info").append(option);
                     $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+
                         var index = $(this).attr("class").indexOf("selected-this");
                         if (index == 0) {
                             $(this).removeClass("selected-this");
@@ -1035,6 +1080,7 @@ function SureGonghui() {
     });
 }
 
+
 function commonInfo(s) {
     var list = $("dl").find("dd" + s);
     $.each(list, function (i, item) {
@@ -1122,11 +1168,6 @@ function commonInfo(s) {
         }
 
     });
-    idsgh=[];
-    ids29=[];
-    ids30=[];
-    ids31=[];
-    ids32=[];
 }
 
 function removeSelect() {
@@ -1134,7 +1175,98 @@ function removeSelect() {
 }
 
 function clearSelect() {
-    commonInfo('');
+    // commonInfo('');
+    // ids29=[];
+    // ids30=[];
+    // ids31=[];
+    // ids32=[];
+    // idsgh=[];
+    var list = $("dl").find("dd");
+    $.each(list, function (i, item) {
+        $(".selected-info dd[lay-value=" + $(item).attr('lay-value') + "]").remove();
+        var type = $(item).attr("lay-flag");
+        if (type == '29') {
+            $('#dzb29').bootstrapTable('insertRow', {
+                index: 0,
+                row: {
+                    id: $(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name: $(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
+                    field0005: $(item).attr("lay-bs"),
+                    mval: $(item).attr("lay-bsname"),
+                    field0007: $(item).attr("lay-zsort")
+                }
+            });
+
+        }
+        if (type == '30') {
+            $('#jiguan30').bootstrapTable('insertRow', {
+                index: 0,
+                row: {
+                    id: $(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name: $(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
+                    field0005: $(item).attr("lay-bs"),
+                    mval: $(item).attr("lay-bsname"),
+                    field0007: $(item).attr("lay-zsort")
+                }
+            });
+
+        }
+        if (type == '31') {
+            $('#zhenb31').bootstrapTable('insertRow', {
+                index: 0,
+                row: {
+                    id: $(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name: $(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
+                    field0005: $(item).attr("lay-bs"),
+                    mval: $(item).attr("lay-bsname"),
+                    field0007: $(item).attr("lay-zsort")
+                }
+            });
+
+        }
+        if (type == '32') {
+            $('#zhuqu32').bootstrapTable('insertRow', {
+                index: 0,
+                row: {
+                    id: $(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name: $(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
+                    field0005: $(item).attr("lay-bs"),
+                    mval: $(item).attr("lay-bsname"),
+                    field0007: $(item).attr("lay-zsort")
+                }
+            });
+
+        }
+        if (type == 'gh') {
+            $('#gonghui').bootstrapTable('insertRow', {
+                index: 0,
+                row: {
+                    id: $(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name: $(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
+                    field0005: $(item).attr("lay-bs"),
+                    mval: $(item).attr("lay-bsname"),
+                    field0007: $(item).attr("lay-zsort")
+                }
+            });
+
+        }
+
+    });
 }
 
 //查询条件
