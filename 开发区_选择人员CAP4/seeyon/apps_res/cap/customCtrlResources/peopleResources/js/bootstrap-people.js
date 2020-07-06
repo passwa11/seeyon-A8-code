@@ -87,7 +87,7 @@ function dataSorting() {
 function htmlShow(data, flag) {
     var html = "";
     for (var i = 0; i < data.length; i++) {
-        html += '<dd ondblclick="removeDdRow'+flag+'(this)" lay-bsname="' + data[i].mval + '"  lay-field002="' + data[i].field0002 + '"  lay-zsort="' + data[i].field0007 + '" lay-id="' + data[i].id + '" lay-bs="' + data[i].field0005 + '"  lay-value="' + data[i].id + '" lay-username="' + data[i].name + '" lay-flag="' + flag + '" lay-name="' + data[i].field0001 + '" lay-dept="' + data[i].field0003 + '" class="">' + data[i].field0001 + '</dd>';
+        html += '<dd ondblclick="removeDdRow' + flag + '(this)" lay-bsname="' + data[i].mval + '"  lay-field002="' + data[i].field0002 + '"  lay-zsort="' + data[i].field0007 + '" lay-id="' + data[i].id + '" lay-bs="' + data[i].field0005 + '"  lay-value="' + data[i].id + '" lay-username="' + data[i].name + '" lay-flag="' + flag + '" lay-name="' + data[i].field0001 + '" lay-dept="' + data[i].field0003 + '" class="">' + data[i].field0001 + '</dd>';
     }
     return html;
 }
@@ -189,6 +189,7 @@ function gongHuiTable() {
 }
 
 var idsgh = [];
+
 function removeTableRowGH(row) {
     idsgh.push(row.id);
     $('#gonghui').bootstrapTable('remove', {
@@ -212,10 +213,10 @@ function removeDdRowgh(item) {
             field0007: $(item).attr("lay-zsort")
         }
     });
-    for (var i = 0; i <idsgh.length ; i++) {
-        var index=idsgh.indexOf($(item).attr("lay-id"));
-        if(index>-1){
-            idsgh.splice(index,1);
+    for (var i = 0; i < idsgh.length; i++) {
+        var index = idsgh.indexOf($(item).attr("lay-id"));
+        if (index > -1) {
+            idsgh.splice(index, 1);
         }
     }
 }
@@ -298,7 +299,9 @@ function dangZhengBanTable() {
 
     });
 }
+
 var ids29 = [];
+
 function removeTableRow29(row) {
     ids29.push(row.id);
     $('#dzb29').bootstrapTable('remove', {
@@ -323,10 +326,10 @@ function removeDdRow29(item) {
             field0007: $(item).attr("lay-zsort")
         }
     });
-    for (var i = 0; i <ids29.length ; i++) {
-        var index=ids29.indexOf($(item).attr("lay-id"));
-        if(index>-1){
-            ids29.splice(index,1);
+    for (var i = 0; i < ids29.length; i++) {
+        var index = ids29.indexOf($(item).attr("lay-id"));
+        if (index > -1) {
+            ids29.splice(index, 1);
         }
     }
     console.log(ids29);
@@ -408,7 +411,9 @@ function jiguan30Table() {
         }
     });
 }
+
 var ids30 = [];
+
 function removeTableRow30(row) {
     ids30.push(row.id);
     $('#jiguan30').bootstrapTable('remove', {
@@ -432,10 +437,10 @@ function removeDdRow30(item) {
             field0007: $(item).attr("lay-zsort")
         }
     });
-    for (var i = 0; i <ids30.length ; i++) {
-        var index=ids30.indexOf($(item).attr("lay-id"));
-        if(index>-1){
-            ids29.splice(index,1);
+    for (var i = 0; i < ids30.length; i++) {
+        var index = ids30.indexOf($(item).attr("lay-id"));
+        if (index > -1) {
+            ids29.splice(index, 1);
         }
     }
 }
@@ -517,7 +522,9 @@ function zhenban31Table() {
         }
     });
 }
+
 var ids31 = [];
+
 function removeTableRow31(row) {
     ids31.push(row.id);
     $('#zhenb31').bootstrapTable('remove', {
@@ -541,10 +548,10 @@ function removeDdRow31(item) {
             field0007: $(item).attr("lay-zsort")
         }
     });
-    for (var i = 0; i <ids31.length ; i++) {
-        var index=ids31.indexOf($(item).attr("lay-id"));
-        if(index>-1){
-            ids31.splice(index,1);
+    for (var i = 0; i < ids31.length; i++) {
+        var index = ids31.indexOf($(item).attr("lay-id"));
+        if (index > -1) {
+            ids31.splice(index, 1);
         }
     }
 
@@ -627,7 +634,9 @@ function zhuqu32Table() {
         }
     });
 }
-var ids32=[];
+
+var ids32 = [];
+
 function removeTableRow32(row) {
     ids32.push(row.id);
     $('#zhuqu32').bootstrapTable('remove', {
@@ -651,10 +660,10 @@ function removeDdRow32(item) {
             field0007: $(item).attr("lay-zsort")
         }
     });
-    for (var i = 0; i <ids32.length ; i++) {
-        var index=ids32.indexOf($(item).attr("lay-id"));
-        if(index>-1){
-            ids32.splice(index,1);
+    for (var i = 0; i < ids32.length; i++) {
+        var index = ids32.indexOf($(item).attr("lay-id"));
+        if (index > -1) {
+            ids32.splice(index, 1);
         }
     }
 }
@@ -668,6 +677,36 @@ function sureSelect() {
     Sure31();
     Sure32();
     SureGonghui();
+    if (ids29.length > 0) {
+        $('#dzb29').bootstrapTable('remove', {
+            field: 'id',
+            values: ids29
+        });
+    }
+    if (ids30.length > 0) {
+        $('#jiguan30').bootstrapTable('remove', {
+            field: 'id',
+            values: ids30
+        });
+    }
+    if (ids31.length > 0) {
+        $('#zhenb31').bootstrapTable('remove', {
+            field: 'id',
+            values: ids31
+        });
+    }
+    if (ids32.length > 0) {
+        $('#zhuqu32').bootstrapTable('remove', {
+            field: 'id',
+            values: ids32
+        });
+    }
+    if (idsgh.length > 0) {
+        $('#gonghui').bootstrapTable('remove', {
+            field: 'id',
+            values: idsgh
+        });
+    }
 
 }
 
@@ -719,14 +758,14 @@ function dangZhengBanSure() {
         }
         dataSorting();
     }
-    ids29= $.map(rows, function (row) {
+    ids29 = $.map(rows, function (row) {
         return row.id
     });
     $("dl").find('dd').each(function () {
         var id = $(this).attr("lay-id");
         var flag = $(this).attr("lay-flag");
-        if(flag=='29'){
-            if(undefined != id){
+        if (flag == '29') {
+            if (undefined != id) {
                 ids29.push(id);
             }
         }
@@ -736,7 +775,6 @@ function dangZhengBanSure() {
         field: 'id',
         values: ids29
     });
-    console.log(ids29);
 
 }
 
@@ -793,8 +831,8 @@ function Sure30() {
     $("dl").find('dd').each(function () {
         var id = $(this).attr("lay-id");
         var flag = $(this).attr("lay-flag");
-        if(flag=='30'){
-            if(undefined != id){
+        if (flag == '30') {
+            if (undefined != id) {
                 ids30.push(id);
             }
         }
@@ -851,14 +889,14 @@ function Sure31() {
         }
         dataSorting();
     }
-    ids31= $.map(rows, function (row) {
+    ids31 = $.map(rows, function (row) {
         return row.id
     });
     $("dl").find('dd').each(function () {
         var id = $(this).attr("lay-id");
         var flag = $(this).attr("lay-flag");
-        if(flag=='31'){
-            if(undefined != id){
+        if (flag == '31') {
+            if (undefined != id) {
                 ids31.push(id);
             }
         }
@@ -921,8 +959,8 @@ function Sure32() {
     $("dl").find('dd').each(function () {
         var id = $(this).attr("lay-id");
         var flag = $(this).attr("lay-flag");
-        if(flag=='32'){
-            if(undefined != id){
+        if (flag == '32') {
+            if (undefined != id) {
                 ids32.push(id);
             }
         }
@@ -985,8 +1023,8 @@ function SureGonghui() {
     $("dl").find('dd').each(function () {
         var id = $(this).attr("lay-id");
         var flag = $(this).attr("lay-flag");
-        if(flag=='gh'){
-            if(undefined != id){
+        if (flag == 'gh') {
+            if (undefined != id) {
                 idsgh.push(id);
             }
         }
