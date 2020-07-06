@@ -149,7 +149,7 @@ function gongHuiTable() {
             obj["text"] = tr_obj.field0001;
             obj["dept"] = tr_obj.field0003;
             if ($("dl.selected-info dd").length <= 0) {
-                var option = '<dd ondblclick="removeDdRowgh(this)"  onclick="addSelect(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="gh" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                var option = '<dd ondblclick="removeDdRowgh(this)"    lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="gh" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
                 $("dl.selected-info").append(option);
                 $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                     var index = $(this).attr("class").indexOf("selected-this");
@@ -170,7 +170,7 @@ function gongHuiTable() {
                     return flag;
                 }
                 if (selected()) {
-                    var option = '<dd ondblclick="removeDdRowgh(this)" onclick="addSelect(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="gh"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                    var option = '<dd ondblclick="removeDdRowgh(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="gh"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
                     $("dl.selected-info").append(option);
                     $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                         var index = $(this).attr("class").indexOf("selected-this");
@@ -191,11 +191,10 @@ function gongHuiTable() {
 
 }
 
-function addSelect(t){
-    alert(1);
-}
+
 
 var idsgh = [];
+
 
 function removeTableRowGH(row) {
     idsgh.push(row.id);
