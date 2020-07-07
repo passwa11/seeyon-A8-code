@@ -159,10 +159,15 @@ public class EdocOpinionDisplayUtil {
      * @param hasSignature
      * @return
      */
-    public static Map<String, Object> convertOpinionToString(Map<String, EdocOpinionModel> map,
+    public static Map<String, Object> convertOpinionToString(Long formId, Map<String, EdocOpinionModel> map,
                                                              FormOpinionConfig displayConfig, CtpAffair currentAffair, boolean isFromPending,
                                                              List<V3xHtmDocumentSignature> signatuers) {
-        Map<String, Object> jsMap = _convertOpinionToString(map, displayConfig, currentAffair, isFromPending, signatuers, false, true);
+        Map<String, Object> jsMap = null;
+        if ("3312330994062151087".equals(Long.toString(formId))) {
+            jsMap = _convertOpinionToString2(formId, map, displayConfig, currentAffair, isFromPending, signatuers, false, true);
+        } else {
+            jsMap = _convertOpinionToString(map, displayConfig, currentAffair, isFromPending, signatuers, false, true);
+        }
         return jsMap;
     }
 
@@ -272,6 +277,77 @@ public class EdocOpinionDisplayUtil {
         return jsMap;
     }
 
+    public static Map<String, Object> _convertOpinionToString2(Long formId, Map<String, EdocOpinionModel> map,
+                                                               FormOpinionConfig displayConfig, CtpAffair currentAffair, boolean isFromPending,
+                                                               List<V3xHtmDocumentSignature> signatuers, boolean canSeeMyselfOpinion, boolean pcStyle) {
+        Map<Long, StringBuilder> senderAttMap = new HashMap<Long, StringBuilder>();
+        List<EdocOpinion> senderOpinions = new ArrayList<EdocOpinion>();
+
+        Map<String, Object> jsMap = new HashMap<String, Object>();
+        StringBuilder fileUrlStr = new StringBuilder();
+        for (Iterator<String> it = map.keySet().iterator(); it.hasNext(); ) {
+            //公文单上元素位置
+            String element = it.next();
+            EdocOpinionModel model = map.get(element);
+            List<EdocOpinion> opinions = model.getOpinions();
+            //公文单不显示暂存待办意见
+            StringBuilder sb = new StringBuilder();
+            sb.append("<table border=\"1\" cellspacing=\"0\"><tr height=\"35\"><th width=\"150\">环节</th><th width=\"150\">记录</th><th width=\"150\">人员</th><th width=\"150\">日期</th></tr>");
+
+            for (EdocOpinion opinion : opinions) {
+                //取回或者暂存待办的意见回写到意见框中，所以要跳过；其他情况下显示到意见区域
+                if (opinion.getOpinionType().intValue() == OpinionType.provisionalOpinoin.ordinal()
+                        || opinion.getOpinionType().intValue() == OpinionType.draftOpinion.ordinal()) {
+                    if (currentAffair != null && canSeeMyselfOpinion) {
+                        if (opinion.getAffairId() != currentAffair.getId()) {
+                            continue;
+                        }
+                    } else {
+                        continue;
+                    }
+                }
+
+
+
+                String value = (String) jsMap.get(element);
+                if (value != null) {
+                    sb.append(value);
+                }
+                boolean hasSignature = false;
+                if (signatuers != null && signatuers.size() > 0) {
+                    for (V3xHtmDocumentSignature signature : signatuers) {
+                        if (signature != null) {
+                            if (null != signature.getAffairId() && signature.getAffairId().equals(opinion.getAffairId())) {
+                                hasSignature = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                User user = AppContext.getCurrentUser();
+                if ("pc".equals(user.getUserAgentFrom()) || pcStyle) {
+                    sb.append(displayOpinionContent2(displayConfig, opinion, hasSignature, true));
+                } else {
+                    sb.append(displayOpinionContentM3(displayConfig, opinion, hasSignature, true));
+                }
+                sb.append("</table>");
+                jsMap.put(element, Strings.replaceNbspLO(sb.toString()));
+            }
+        }
+        if (fileUrlStr.length() > 0) {
+            fileUrlStr.deleteCharAt(fileUrlStr.length() - 1);
+        }
+        try {
+            AppContext.putRequestContext("fileUrlStr", fileUrlStr);
+        } catch (Exception e) {
+            //TODO REST接口调用进来没有注入request
+        }
+
+        jsMap.put("senderOpinionAttStr", senderAttMap);
+        jsMap.put("senderOpinionList", senderOpinions);
+        return jsMap;
+    }
+
     /**
      * @param src     : 需要替换的字符串
      * @param defualt : 如果字符串为null或为空时默认返回字符串
@@ -307,6 +383,51 @@ public class EdocOpinionDisplayUtil {
      * @return
      * @Date : 2015年5月19日下午5:48:53
      */
+    private static String displayOpinionContent2(FormOpinionConfig displayConfig, EdocOpinion opinion, boolean hasSignature, boolean popUserInfo) {
+
+        OrgManager orgManager = (OrgManager) AppContext.getBean("orgManager");
+
+        StringBuilder sb = new StringBuilder();
+
+        //显示内容：态度，用户名，意见类型，意见
+        String attribute = getAttitude(opinion.getOpinionType(), opinion.getAttribute());
+        String content = opinion.getContent();
+        sb.append("<tr>");
+
+//		boolean newLine = displayConfig.isInscriberNewLine();
+        sb.append("<td></td>");
+        //上报意见不显示态度
+        String attrStr = null;
+        attrStr = "【" + attribute + "】";
+//        sb.append(attrStr);
+        // 意见排序 ：【态度】 意见 部门 姓名 时间
+        sb.append("<td>").append((attribute == null ? "" : attrStr) + Strings.toHTML(content, false) + "</td>");
+        String defualt = "　　";//默认两个全角空格
+        attrStr = replaceStr2Blank(attrStr, defualt);
+        attrStr = Strings.toHTML(attrStr);
+        // 如果是管理员终止，不显示管理员名字及时间
+        V3xOrgMember member = getMember(opinion.getCreateUserId(), orgManager);
+
+        String userName = getOpinionUserName(opinion.getCreateUserId(), opinion.getProxyName(), orgManager, displayConfig, opinion, popUserInfo, attrStr, "PC");
+
+        if (!member.getIsAdmin()) {
+            String tempStr = "&nbsp;";
+            if (displayConfig.isNameAndDateNotInline()) {
+                tempStr += attrStr;
+            }
+            if (!(displayConfig.isHideInscriber() && hasSignature)) {
+                if (!displayConfig.isNameAndDateNotInline()) {
+                    sb.append(tempStr);
+                }
+                sb.append("<td>" + userName + "</td>");
+            }
+            sb.append("<td>" + Datetimes.formatDate(opinion.getCreateTime()) + "</td>");
+        }
+
+        sb.append("</tr>");
+        return sb.toString();
+    }
+
     private static String displayOpinionContent(FormOpinionConfig displayConfig, EdocOpinion opinion, boolean hasSignature, boolean popUserInfo) {
 
         OrgManager orgManager = (OrgManager) AppContext.getBean("orgManager");
