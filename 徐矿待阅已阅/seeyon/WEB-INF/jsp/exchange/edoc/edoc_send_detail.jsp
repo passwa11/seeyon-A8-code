@@ -19,11 +19,10 @@
         debugger;
         $.ajax({
             type: 'post',
-            async: false,
+            async: true,
             url: '/seeyon/ext/xkEdoc.do?method=sendFileList&summaryId=${summary.id}&isQuickSend=${summary.isQuickSend}',
             dataType: 'json',
             success: function (res) {
-                console.log(res);
                 var list = res.data;
                 var mainlist = res.main;
                 var tmp = '';
@@ -78,12 +77,9 @@
 
         //判断是否是关联文挡
         if (ztype == '2' || ztype == '4') {
-
-            $.ajaxSettings.async=false;
-            debugger;
             $.ajax({
                 type: 'post',
-                async: false,
+                async: true,
                 url: '/seeyon/ext/xkEdoc.do?method=toAnalyzeFileIsOpenOrUpload&summaryId='+(summaryId + '')+'&filename='+encodeURI(filename)+'&createDate='+uploadTime+'&fileId='+(fileUrl + ''),
                 dataType: 'json',
                 success: function (res) {
@@ -100,7 +96,6 @@
                 }, error: function (res) {
                 }
             });
-            $.ajaxSettings.async=true;
 
         } else {
             var url = "/seeyon/ext/xkEdoc.do?method=downloadfile&type=" + type + "&fileId=" + (fileUrl + '') + "&createDate=" + uploadTime + "&filename=" + encodeURI(filename)
