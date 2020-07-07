@@ -238,13 +238,10 @@
 
         table.render({
             id: 'fileListId'
-            ,
-            elem: '#fileList'
-            ,
-            url: '/seeyon/ext/xkEdoc.do?method=getFileList&summaryId=' + $("#summaryId").val()
+            , elem: '#fileList'
+            , url: '/seeyon/ext/xkEdoc.do?method=getFileList&summaryId=' + $("#summaryId").val()
             // , height: 400
-            ,
-            page: false //开启分页
+            , page: false //开启分页
             ,
             cols: [[ //表头
                 // {type: 'checkbox'},
@@ -275,15 +272,34 @@
             var isQuickSend = $("#isQuickSend").val();
             var summaryId = $("#summaryId").val();
             if (obj.event === 'downloadFile') {
-                if (data.mimeType == 'edoc') {
-                    var url="/seeyon/edocController.do?method=detailIFrame&from=Done&affairId="+data.filepath+'';
-                    window.open(url,"_blank");
-                } else {
+                if (data.type == '2' || data.type == '4') {
+                    $.ajax({
+                        type: 'post',
+                        async: false,
+                        url: '/seeyon/ext/xkEdoc.do?method=toAnalyzeFileIsOpenOrUpload&filename=&createDate='+uploadTime+'&fileId='+(fileUrl + ''),
+                        dataType: 'json',
+                        success: function (res) {
+                            if (res.isExist == 'true') {
+                                var url = "/seeyon/ext/xkEdoc.do?method=downloadfile&type=" + data.type + "&fileId=" + (fileUrl + '') + "&createDate=" + uploadTime + "&filename=" + encodeURI(filename)
+                                    + "&isQuickSend=" + isQuickSend + "&summaryId=" + (summaryId + '');
+                                $("#downloadFileFrame").attr("src", url);
+                            } else {
+                                var url="/seeyon/edocController.do?method=detailIFrame&from=Done&affairId="+data.filepath ;
+                                window.open(url,"_blank");
+                            }
+                        }, error: function (res) {
+                        }
+                    });
+                }else {
                     var url = "/seeyon/ext/xkEdoc.do?method=downloadfile&type=1&fileId=" + fileUrl + "&createDate=" + uploadTime + "&filename=" + encodeURI(fileName)
                         + "&isQuickSend=" + isQuickSend + "&summaryId=" + summaryId;
-
                     $("#downloadFileFrame").attr("src", url);
+
                 }
+                // if (data.type == 'edoc') {
+                //     var url = "/seeyon/edocController.do?method=detailIFrame&from=Done&affairId=" + data.filepath + '';
+                //     window.open(url, "_blank");
+                // }
             }
         });
     });

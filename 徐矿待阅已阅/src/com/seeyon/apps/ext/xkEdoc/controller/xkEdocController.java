@@ -15,6 +15,7 @@ import com.seeyon.apps.xkjt.po.XkjtLeaderDaiYue;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.authenticate.domain.User;
 import com.seeyon.ctp.common.controller.BaseController;
+import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.common.filemanager.manager.AttachmentManager;
 import com.seeyon.ctp.common.filemanager.manager.AttachmentManagerImpl;
 import com.seeyon.ctp.common.filemanager.manager.FileManager;
@@ -197,8 +198,8 @@ public class xkEdocController extends BaseController {
                     attachmentEx.setFileUrl(attachment.getFileUrl());
                     attachmentEx.setFilename(attachment.getFilename());
                     attachmentEx.setSize(attachment.getSize());
-//                    20200629 为了区分是附件还是关联文档
-                    attachmentEx.setMimeType(attachment.getMimeType());
+                    //用于区分是不是关联文档
+                    attachmentEx.setType(attachment.getType());
                     list.add(attachmentEx);
                 }
             }
@@ -215,6 +216,7 @@ public class xkEdocController extends BaseController {
         }
         return null;
     }
+
 
     /**
      * 发文单上获取附件列表
@@ -252,6 +254,9 @@ public class xkEdocController extends BaseController {
                     attachmentEx.setFileUrl(attachment.getFileUrl());
                     attachmentEx.setFilename(attachment.getFilename());
                     attachmentEx.setSize(attachment.getSize());
+//                    用于区分是不是关联文档
+                    attachmentEx.setType(attachment.getType());
+                    attachmentEx.setCategory(attachment.getCategory());
                     if (!hostFileUrl.equals(fileUrl)) {
                         list.add(attachmentEx);
                     } else {
@@ -310,6 +315,41 @@ public class xkEdocController extends BaseController {
 
     }
 
+    /**
+     * 用于判断关联文档是文单 还是其他附件
+     * @param request
+     * @param response
+     * @return
+     * @throws BusinessException
+     */
+    public ModelAndView toAnalyzeFileIsOpenOrUpload(HttpServletRequest request, HttpServletResponse response) throws BusinessException {
+        //获取系统路径
+        String filename = request.getParameter("filename");
+        String fileId = request.getParameter("fileId");
+        String createDate = request.getParameter("createDate");
+        String summaryId = request.getParameter("summaryId");
+        String y = "";
+        try {
+            String spath = fileManager.getFolder(new Date(), false);
+            String[] arrs = createDate.split("\\-");
+            String p = spath.substring(0, spath.indexOf("upload") + 6);
+            y = p.concat(File.separator + arrs[0]).concat(File.separator + arrs[1]).concat(File.separator + arrs[2]) + File.separator + fileId;
+            File file = new File(y);
+            Map<String, Object> map = new HashMap<>();
+            if (file.exists()) {
+                map.put("isExist", "true");
+            } else {
+                map.put("isExist", "false");
+            }
+            JSONObject json = new JSONObject(map);
+            render(response, json.toJSONString());
+        } catch (BusinessException bus) {
+            bus.printStackTrace();
+            logger.error(bus);
+        }
+
+        return null;
+    }
 
     public ModelAndView downloadfile(HttpServletRequest request, HttpServletResponse response) {
 
