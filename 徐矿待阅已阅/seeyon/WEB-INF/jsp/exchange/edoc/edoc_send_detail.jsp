@@ -16,7 +16,6 @@
     });
 
     function loadFileData() {
-        debugger;
         $.ajax({
             type: 'post',
             async: true,
@@ -61,7 +60,6 @@
     }
 
     function downloadfilez(ztype, type, fileUrl, createdate, filename, isQuickSend, summaryId) {
-        console.log(ztype,'ztype');
         var time = new Date(parseInt(createdate));
         var year = time.getFullYear();
         var month = time.getMonth() + 1;
@@ -83,8 +81,6 @@
                 url: '/seeyon/ext/xkEdoc.do?method=toAnalyzeFileIsOpenOrUpload&summaryId='+(summaryId + '')+'&filename='+encodeURI(filename)+'&createDate='+uploadTime+'&fileId='+(fileUrl + ''),
                 dataType: 'json',
                 success: function (res) {
-                    console.log(res, 'res');
-                    console.log(res.isExist, 'isExist');
                     if (res.isExist == 'true') {
                         var url = "/seeyon/ext/xkEdoc.do?method=downloadfile&type=" + type + "&fileId=" + (fileUrl + '') + "&createDate=" + uploadTime + "&filename=" + encodeURI(filename)
                             + "&isQuickSend=" + isQuickSend + "&summaryId=" + (summaryId + '');
