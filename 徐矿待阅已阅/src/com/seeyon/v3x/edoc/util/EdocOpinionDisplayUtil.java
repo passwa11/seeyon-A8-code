@@ -164,9 +164,9 @@ public class EdocOpinionDisplayUtil {
                                                              FormOpinionConfig displayConfig, CtpAffair currentAffair, boolean isFromPending,
                                                              List<V3xHtmDocumentSignature> signatuers) {
         Map<String, Object> jsMap = null;
-//        if ("3312330994062151087".equals(Long.toString(formId))) {
+        if ("3312330994062151087".equals(Long.toString(formId))) {
 //        正式
-        if ("-7646251176412886019".equals(Long.toString(formId))) {
+//        if ("-7646251176412886019".equals(Long.toString(formId))) {
             jsMap = _convertOpinionToString2(formId, map, displayConfig, currentAffair, isFromPending, signatuers, false, true);
         } else {
             jsMap = _convertOpinionToString(map, displayConfig, currentAffair, isFromPending, signatuers, false, true);
@@ -298,7 +298,7 @@ public class EdocOpinionDisplayUtil {
                 User user = AppContext.getCurrentUser();
                 if ("pc".equals(user.getUserAgentFrom()) || pcStyle) {
                     StringBuilder sb = new StringBuilder();
-                    sb.append("<table width=\"100%\" id=\"tableId\" border=\"0px;\" cellpadding=\"6\"  style=\"margin-top:0px;border-color: #586EA1;border-collapse:collapse;\" cellspacing=\"0\"><tr bgcolor=\"#9FE1E2\" height=\"37\"><th width=\"20%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">环节</th><th width=\"35%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">记录</th><th width=\"15%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">人员</th><th width=\"15%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">日期</th><th width=\"15%\" style=\"border-right:none;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">结果</th></tr>");
+                    sb.append("<table width=\"100%\" id=\"tableId\" border=\"0px;\" cellpadding=\"6\"  style=\"margin-top:0px;border-color: #586EA1;border-collapse:collapse;\" cellspacing=\"0\"><tr bgcolor=\"#EDEDEE\" height=\"37\"><td width=\"20%\" style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">环节</td><td width=\"35%\" style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">记录</td><td width=\"15%\" style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">人员</td><td width=\"15%\" style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">日期</td><td width=\"15%\" style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:none;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">结果</td></tr>");
                     StringBuffer sbuffer = new StringBuffer();
                     for (EdocOpinion opinion : opinions) {
                         //取回或者暂存待办的意见回写到意见框中，所以要跳过；其他情况下显示到意见区域
@@ -587,13 +587,13 @@ public class EdocOpinionDisplayUtil {
 
 //		boolean newLine = displayConfig.isInscriberNewLine();
         if ("拟办".equals(opinion.getPolicy())) {
-            sb.append("<td style=\"text-align: center;font-size:14px;border-right:#586EA1 solid 1px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">集团公司党政办领导</td>");
+            sb.append("<td style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">集团公司党政办领导</td>");
         } else if ("批示".equals(opinion.getPolicy())) {
-            sb.append("<td style=\"text-align: center;font-size:14px;border-right:#586EA1 solid 1px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">集团公司领导批阅</td>");
+            sb.append("<td style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">集团公司领导批阅</td>");
         } else if ("办理".equals(opinion.getPolicy())) {
-            sb.append("<td style=\"text-align: center;font-size:14px;border-right:#586EA1 solid 1px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">相关部门批阅</td>");
+            sb.append("<td style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">相关部门批阅</td>");
         } else {
-            sb.append("<td style=\"text-align: center;border-right:#586EA1 solid 1px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\"></td>");
+            sb.append("<td style=\"text-align: center;font-family: 微软雅黑;border-right:#586EA1 solid 1px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\"></td>");
 
         }
         //上报意见不显示态度
@@ -603,7 +603,7 @@ public class EdocOpinionDisplayUtil {
 
 
         // 意见排序 ：【态度】 意见 部门 姓名 时间
-        sb.append("<td style=\"line-height:30px;border-right:#586EA1 solid 1px;font-size:14px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">").append((attribute == null ? "" : attrStr) + Strings.toHTML(content, false) + sbuild + "</td>");
+        sb.append("<td style=\"font-family: 微软雅黑;line-height:30px;border-right:#586EA1 solid 1px;font-size:16px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">").append((attribute == null ? "" : attrStr) + Strings.toHTML(content, false) + sbuild + "</td>");
         String defualt = "　　";//默认两个全角空格
         attrStr = replaceStr2Blank(attrStr, defualt);
         attrStr = Strings.toHTML(attrStr);
@@ -621,13 +621,13 @@ public class EdocOpinionDisplayUtil {
                 if (!displayConfig.isNameAndDateNotInline()) {
                     sb.append(tempStr);
                 }
-                sb.append("<td style=\"text-align: center;font-size:14px;border-right:#586EA1 solid 1px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">" + userName + "</td>");
+                sb.append("<td style=\"font-family: 微软雅黑;text-align: center;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">" + userName + "</td>");
             }
-            sb.append("<td style=\"text-align: center;font-size:14px;border-right:#586EA1 solid 1px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">" + Datetimes.formatDate(opinion.getCreateTime()) + "</td>");
+            sb.append("<td style=\"font-family: 微软雅黑;text-align: center;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">" + Datetimes.formatDate(opinion.getCreateTime()) + "</td>");
             if (null != attribute && !"".equals(attribute)) {
-                sb.append("<td style=\"text-align: center;font-size:14px;border-right:none;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">" + attrStr + "</td>");
+                sb.append("<td style=\"font-family: 微软雅黑;text-align: center;font-size:16px;border-right:none;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">" + attrStr + "</td>");
             } else {
-                sb.append("<td style=\"text-align: center;font-size:14px;border-right:none;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\"></td>");
+                sb.append("<td style=\"font-family: 微软雅黑;text-align: center;font-size:16px;border-right:none;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\"></td>");
             }
         }
 
