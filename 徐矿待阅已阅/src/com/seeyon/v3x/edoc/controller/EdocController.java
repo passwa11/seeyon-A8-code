@@ -11770,7 +11770,7 @@ public class EdocController extends BaseController {
 		boolean isFromPending = "Pending".equals(request.getParameter("from"));
 		List<V3xHtmDocumentSignature> signatuers = htmSignetManager.findBySummaryIdAndType(summary.getId(),
 				V3xHtmSignatureEnum.HTML_SIGNATURE_DOCUMENT.getKey());
-		Map<String, Object> strMap = EdocOpinionDisplayUtil.convertOpinionToString(map, displayConfig, affair,
+		Map<String, Object> strMap = EdocOpinionDisplayUtil.convertOpinionToString(summary.getFormId(),map, displayConfig, affair,
 				isFromPending, signatuers);
 		modelAndView.addObject("opinionsJs", EdocOpinionDisplayUtil.optionToJs(strMap));
 		// 发起人意见
