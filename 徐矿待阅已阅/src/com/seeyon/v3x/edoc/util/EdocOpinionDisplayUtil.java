@@ -164,9 +164,9 @@ public class EdocOpinionDisplayUtil {
                                                              FormOpinionConfig displayConfig, CtpAffair currentAffair, boolean isFromPending,
                                                              List<V3xHtmDocumentSignature> signatuers) {
         Map<String, Object> jsMap = null;
-//        if ("3312330994062151087".equals(Long.toString(formId))) {
+        if ("3312330994062151087".equals(Long.toString(formId))) {
 //        正式
-        if ("-7646251176412886019".equals(Long.toString(formId))) {
+//        if ("-7646251176412886019".equals(Long.toString(formId))) {
             jsMap = _convertOpinionToString2(formId, map, displayConfig, currentAffair, isFromPending, signatuers, false, true);
         } else {
             jsMap = _convertOpinionToString(map, displayConfig, currentAffair, isFromPending, signatuers, false, true);
@@ -294,8 +294,8 @@ public class EdocOpinionDisplayUtil {
             EdocOpinionModel model = map.get(element);
             List<EdocOpinion> opinions = model.getOpinions();
             //公文单不显示暂存待办意见
-            StringBuilder sb = new StringBuilder();
             if(element.equals("opinion2")){
+                StringBuilder sb = new StringBuilder();
                 sb.append("<table width=\"100%\" id=\"tableId\" border=\"0px;\"   style=\"margin-top:0px;border-color: #586EA1;border-collapse:collapse;\" cellspacing=\"0\"><tr bgcolor=\"#9FE1E2\" height=\"35\"><th width=\"20%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">环节</th><th width=\"35%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">记录</th><th width=\"15%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">人员</th><th width=\"15%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">日期</th><th width=\"15%\" style=\"border-right:none;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">结果</th></tr>");
                 StringBuffer sbuffer = new StringBuffer();
                 for (EdocOpinion opinion : opinions) {
@@ -339,6 +339,8 @@ public class EdocOpinionDisplayUtil {
                 jsMap.put(element, Strings.replaceNbspLO(sb.toString()));
             }else if (element.equals("otherOpinion")){
                 for (EdocOpinion opinion : opinions) {
+                    StringBuilder sb = new StringBuilder();
+
                     //取回或者暂存待办的意见回写到意见框中，所以要跳过；其他情况下显示到意见区域
                     if (opinion.getOpinionType().intValue() == OpinionType.provisionalOpinoin.ordinal()
                             || opinion.getOpinionType().intValue() == OpinionType.draftOpinion.ordinal()) {
