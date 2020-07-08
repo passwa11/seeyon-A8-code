@@ -328,7 +328,36 @@ public class EdocOpinionDisplayUtil {
                     }
                     User user = AppContext.getCurrentUser();
                     if ("pc".equals(user.getUserAgentFrom()) || pcStyle) {
-                        String html = displayOpinionContent2(displayConfig, opinion, hasSignature, true);
+                        //附件显示
+                        StringBuilder attSb = new StringBuilder();
+                        List<Attachment> tempAtts = null;
+                        if (null != opinion.getPolicy() && opinion.getPolicy().equals(EdocOpinion.FEED_BACK)) {
+                            Long subOpinionId = opinion.getSubOpinionId();
+                            if (subOpinionId != null) {
+                                tempAtts = EdocHelper.getOpinionAttachmentsNotRelationDoc(opinion.getSubEdocId(), subOpinionId);
+                            }
+                        } else {
+                            tempAtts = opinion.getOpinionAttachments();
+                        }
+                        if (tempAtts != null) {
+                            attSb.append("<div style='clear:both;word-wrap:break-word;'>");
+                            for (Attachment att : tempAtts) {
+                                // 不管文件名有多长，显示整体的文件名。yangzd
+                                //sb.append("<br>");//前端附件使用的是DIV，会自动换行
+                                fileUrlStr.append(att.getFileUrl());
+                                fileUrlStr.append(",");
+                                String s = com.seeyon.ctp.common.filemanager.manager.Util.AttachmentToHtmlWithShowAllFileName(att, true, false);
+//                                sb.append(s);
+                                attSb.append(s);
+                            }
+                            attSb.append("</div>");
+
+                            if ("senderOpinion".equals(element)) {
+                                senderAttMap.put(opinion.getId(), attSb);
+                            }
+                        }
+
+                        String html = displayOpinionContent2(attSb,displayConfig, opinion, hasSignature, true);
                         sbuffer.append(html);
                     } else {
                         sbuffer.append(displayOpinionContentM3(displayConfig, opinion, hasSignature, true));
@@ -466,7 +495,7 @@ public class EdocOpinionDisplayUtil {
      * @return
      * @Date : 2015年5月19日下午5:48:53
      */
-    private static String displayOpinionContent2(FormOpinionConfig displayConfig, EdocOpinion opinion, boolean hasSignature, boolean popUserInfo) {
+    private static String displayOpinionContent2(StringBuilder sbuild,FormOpinionConfig displayConfig, EdocOpinion opinion, boolean hasSignature, boolean popUserInfo) {
 
         OrgManager orgManager = (OrgManager) AppContext.getBean("orgManager");
 
@@ -492,8 +521,10 @@ public class EdocOpinionDisplayUtil {
         String attrStr = null;
         attrStr = "【" + attribute + "】";
 //        sb.append(attrStr);
+
+
         // 意见排序 ：【态度】 意见 部门 姓名 时间
-        sb.append("<td style=\"border-right:#586EA1 solid 1px;font-size:14px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">").append((attribute == null ? "" : attrStr) + Strings.toHTML(content, false) + "</td>");
+        sb.append("<td style=\"border-right:#586EA1 solid 1px;font-size:14px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">").append((attribute == null ? "" : attrStr) + Strings.toHTML(content, false) +sbuild+ "</td>");
         String defualt = "　　";//默认两个全角空格
         attrStr = replaceStr2Blank(attrStr, defualt);
         attrStr = Strings.toHTML(attrStr);
