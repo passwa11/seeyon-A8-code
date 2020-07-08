@@ -298,7 +298,7 @@ public class EdocOpinionDisplayUtil {
                 User user = AppContext.getCurrentUser();
                 if ("pc".equals(user.getUserAgentFrom()) || pcStyle) {
                     StringBuilder sb = new StringBuilder();
-                    sb.append("<table width=\"100%\" id=\"tableId\" border=\"0px;\"   style=\"margin-top:0px;border-color: #586EA1;border-collapse:collapse;\" cellspacing=\"0\"><tr bgcolor=\"#9FE1E2\" height=\"35\"><th width=\"20%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">环节</th><th width=\"35%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">记录</th><th width=\"15%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">人员</th><th width=\"15%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">日期</th><th width=\"15%\" style=\"border-right:none;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">结果</th></tr>");
+                    sb.append("<table width=\"100%\" id=\"tableId\" border=\"0px;\" cellpadding=\"8\"  style=\"margin-top:0px;border-color: #586EA1;border-collapse:collapse;\" cellspacing=\"0\"><tr bgcolor=\"#9FE1E2\" height=\"35\"><th width=\"20%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">环节</th><th width=\"35%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">记录</th><th width=\"15%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">人员</th><th width=\"15%\" style=\"border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">日期</th><th width=\"15%\" style=\"border-right:none;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">结果</th></tr>");
                     StringBuffer sbuffer = new StringBuffer();
                     for (EdocOpinion opinion : opinions) {
                         //取回或者暂存待办的意见回写到意见框中，所以要跳过；其他情况下显示到意见区域
@@ -603,7 +603,7 @@ public class EdocOpinionDisplayUtil {
 
 
         // 意见排序 ：【态度】 意见 部门 姓名 时间
-        sb.append("<td style=\"border-right:#586EA1 solid 1px;font-size:14px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">").append((attribute == null ? "" : attrStr) + Strings.toHTML(content, false) + sbuild + "</td>");
+        sb.append("<td style=\"line-height:30px;border-right:#586EA1 solid 1px;font-size:14px;border-left:none;border-top:none;border-bottom:#586EA1 solid 1px;\">").append((attribute == null ? "" : attrStr) + Strings.toHTML(content, false) + sbuild + "</td>");
         String defualt = "　　";//默认两个全角空格
         attrStr = replaceStr2Blank(attrStr, defualt);
         attrStr = Strings.toHTML(attrStr);
