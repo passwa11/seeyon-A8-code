@@ -75,7 +75,7 @@ public class SyncOrgData {
                     "(select s.* from (select * from EDOC_SUMMARY where has_archive=1) s,TEMP_NUMBER40 a where s.id=a.MODULE_ID and a.CONTENT_TYPE in (41,42,43,44,45)   " +
                     ") E WHERE c.OBJECT_ID = E . ID AND c.ARCHIVE_ID IS NOT NULL   " +
                     "AND E .has_archive = 1) c  " +
-                    ") A WHERE A .has_archive = 1 ) ss where exists (SELECT * FROM TEMP_NUMBER10 t where STATUS=0 and SS.EDOCSUMMARYID=t.ID)";
+                    ") A WHERE A .has_archive = 1 ) ss where exists (SELECT * FROM TEMP_NUMBER10 t where 1=1 and SS.EDOCSUMMARYID=t.ID)";
             executeJdbc(connection, "3", sql41);
 
 
@@ -87,7 +87,7 @@ public class SyncOrgData {
                     "(select s.* from (select * from EDOC_SUMMARY where has_archive=1) s,TEMP_NUMBER40 a where s.id=a.MODULE_ID and a.CONTENT_TYPE in (10,20) " +
                     ") E WHERE c.OBJECT_ID = E . ID AND c.ARCHIVE_ID IS NOT NULL   " +
                     "AND E .has_archive = 1) c  " +
-                    ") A WHERE A .has_archive = 1 ) ss where exists (SELECT * FROM TEMP_NUMBER10 t where STATUS=0 and SS.EDOCSUMMARYID=t.ID)";
+                    ") A WHERE A .has_archive = 1 ) ss where exists (SELECT * FROM TEMP_NUMBER10 t where 1=1 and SS.EDOCSUMMARYID=t.ID)";
             executeJdbc(connection, "4", sql10);
         } catch (Exception e) {
             logger.info("同步公文出错了：" + e.getMessage());
