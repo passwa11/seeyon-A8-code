@@ -12,6 +12,7 @@ $(function () {
 
 
 function dbSelectedToSortData() {
+
     var arr29 = [];
     var arr30 = [];
     var arr31 = [];
@@ -53,6 +54,7 @@ function dbSelectedToSortData() {
             arrGH.push(obj);
         }
     });
+    var l29=[];
     if (arr29.length > 0) {
         l29 = arrsyDataSort(arr29);
     }
@@ -114,7 +116,7 @@ function dbSelectedToSortData() {
 
 // 排序问题 对已选择人员进行部门排序
 function dataSorting(arr290, arr300, arr310, arr320, arrGH0) {
-    debugger;
+
     var arr29 = [];
     var arr30 = [];
     var arr31 = [];
@@ -217,8 +219,8 @@ function dataSorting(arr290, arr300, arr310, arr320, arrGH0) {
     var html31 = '';
     var html32 = '';
     var htmlgh = '';
-    clearSelect();
-
+    // clearSelect();
+    $(".selected-info").html("");
     if (l29.length > 0) {
         html29 = htmlShow(l29, '29');
     }
@@ -343,7 +345,7 @@ function gongHuiTable() {
                     });
                 }
             }
-            dataSorting();
+            dbSelectedToSortData();
             revokeReuse();
 
             removeTableRowGH(row);
@@ -606,7 +608,7 @@ function jiguan30Table() {
                 }
             }
             //
-            dataSorting();
+            dbSelectedToSortData();
             revokeReuse();
 
             removeTableRow30(row);
@@ -718,7 +720,7 @@ function zhenban31Table() {
                 }
             }
             //
-            dataSorting();
+            dbSelectedToSortData();
             revokeReuse();
 
             removeTableRow31(row);
@@ -833,7 +835,8 @@ function zhuqu32Table() {
                 }
             }
             //
-            dataSorting();
+            dbSelectedToSortData();
+            revokeReuse();
             removeTableRow32(row);
 
         }
@@ -1089,7 +1092,7 @@ function Sure32($table, rows) {
 }
 
 function SureGonghui($table, rows) {
-    debugger;
+
     var arrJtld = rows;
 
     dataSorting(null, null, null, null, rows);
@@ -1114,7 +1117,9 @@ function SureGonghui($table, rows) {
 
 
 function commonInfo(s) {
+    debugger;
     var list = $("dl").find("dd" + s);
+    console.log(list)
     $.each(list, function (i, item) {
         $(".selected-info dd[lay-value=" + $(item).attr('lay-value') + "]").remove();
         var type = $(item).attr("lay-flag");
@@ -1132,7 +1137,12 @@ function commonInfo(s) {
                     field0007: $(item).attr("lay-zsort")
                 }
             });
-
+            for (var i = 0; i < ids29.length; i++) {
+                var index = ids29.indexOf($(item).attr("lay-id"));
+                if (index > -1) {
+                    ids29.splice(index, 1);
+                }
+            }
         }
         if (type == '30') {
             $('#jiguan30').bootstrapTable('insertRow', {
@@ -1148,7 +1158,12 @@ function commonInfo(s) {
                     field0007: $(item).attr("lay-zsort")
                 }
             });
-
+            for (var i = 0; i < ids30.length; i++) {
+                var index = ids30.indexOf($(item).attr("lay-id"));
+                if (index > -1) {
+                    ids30.splice(index, 1);
+                }
+            }
         }
         if (type == '31') {
             $('#zhenb31').bootstrapTable('insertRow', {
@@ -1164,6 +1179,12 @@ function commonInfo(s) {
                     field0007: $(item).attr("lay-zsort")
                 }
             });
+            for (var i = 0; i < ids31.length; i++) {
+                var index = ids31.indexOf($(item).attr("lay-id"));
+                if (index > -1) {
+                    ids31.splice(index, 1);
+                }
+            }
 
         }
         if (type == '32') {
@@ -1180,7 +1201,12 @@ function commonInfo(s) {
                     field0007: $(item).attr("lay-zsort")
                 }
             });
-
+            for (var i = 0; i < ids32.length; i++) {
+                var index = ids32.indexOf($(item).attr("lay-id"));
+                if (index > -1) {
+                    ids32.splice(index, 1);
+                }
+            }
         }
         if (type == 'gh') {
             $('#gonghui').bootstrapTable('insertRow', {
@@ -1196,7 +1222,12 @@ function commonInfo(s) {
                     field0007: $(item).attr("lay-zsort")
                 }
             });
-
+            for (var i = 0; i < idsgh.length; i++) {
+                var index = idsgh.indexOf($(item).attr("lay-id"));
+                if (index > -1) {
+                    idsgh.splice(index, 1);
+                }
+            }
         }
 
     });
