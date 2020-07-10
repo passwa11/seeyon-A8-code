@@ -82,7 +82,7 @@ function dbSelectedToSortData() {
     var html31 = '';
     var html32 = '';
     var htmlgh = '';
-    clearSelect();
+    // clearSelect();
 
     if (l29.length > 0) {
         html29 = htmlShow(l29, '29');
@@ -99,7 +99,7 @@ function dbSelectedToSortData() {
     if (lgh.length > 0) {
         htmlgh = htmlShow(lgh, 'gh');
     }
-    clearSelect();
+    $(".selected-info").html("");
     option += html29 + html30 + html31 + html32 + htmlgh;
     $("dl.selected-info").append(option);
     $(".selected-info dd").on('click', function () {
