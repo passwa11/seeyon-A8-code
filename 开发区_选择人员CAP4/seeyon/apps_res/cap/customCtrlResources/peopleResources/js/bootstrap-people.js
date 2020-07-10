@@ -53,11 +53,29 @@ function dbSelectedToSortData() {
             arrGH.push(obj);
         }
     });
-    var l29 = arrsyDataSort(arr29);
-    var l30 = arrsyDataSort(arr30);
-    var l31 = arrsyDataSort(arr31);
-    var l32 = arrsyDataSort(arr32);
-    var lgh = arrsyDataSort(arrGH);
+    if (arr29.length > 0) {
+        l29 = arrsyDataSort(arr29);
+    }
+
+    var l30 = [];
+    if (arr30.length > 0) {
+        l30 = arrsyDataSort(arr30);
+    }
+
+    var l31 = [];
+    if (arr31.length > 0) {
+        l31 = arrsyDataSort(arr31);
+    }
+
+    var l32 = [];
+    if (arr32.length > 0) {
+        l32 = arrsyDataSort(arr32);
+    }
+
+    var lgh = [];
+    if (arrGH.length > 0) {
+        lgh = arrsyDataSort(arrGH);
+    }
     var option = "";
     var html29 = '';
     var html30 = '';
@@ -139,48 +157,58 @@ function dataSorting(arr290, arr300, arr310, arr320, arrGH0) {
         }
     });
     var l29 = [];
-    if (arr29.length > 0) {
-        if(arr290!=null){
+    if (arr290 != null) {
+        if (arr29 != null) {
             l29 = arrsyDataSort(arr29.concat(arr290));
-        }else {
-            l29 = arrsyDataSort(arr29);
+        } else {
+            l29 = arrsyDataSort(arr290);
         }
+    } else {
+        l29 = arrsyDataSort(arr29);
     }
 
     var l30 = [];
-    if (arr30.length > 0) {
-        if(arr300!=null){
+    if (arr300 != null) {
+        if (arr30 != null) {
             l30 = arrsyDataSort(arr30.concat(arr300));
-        }else {
-            l30 = arrsyDataSort(arr30);
+        } else {
+            l30 = arrsyDataSort(arr300);
         }
+    } else {
+        l30 = arrsyDataSort(arr30);
     }
 
     var l31 = [];
-    if (arr31.length > 0) {
-        if(arr310!=null){
+    if (arr310 != null) {
+        if (arr31 != null) {
             l31 = arrsyDataSort(arr31.concat(arr310));
-        }else {
-            l31 = arrsyDataSort(arr31);
+        } else {
+            l31 = arrsyDataSort(arr310);
         }
+    } else {
+        l31 = arrsyDataSort(arr31);
     }
 
     var l32 = [];
-    if (arr32.length > 0) {
-        if(arr320!=null){
+    if (arr320 != null) {
+        if (arr32 != null) {
             l32 = arrsyDataSort(arr32.concat(arr320));
-        }else {
-            l32 = arrsyDataSort(arr32);
+        } else {
+            l32 = arrsyDataSort(arr320);
         }
+    } else {
+        l32 = arrsyDataSort(arr32);
     }
 
     var lgh = [];
-    if (arrGH.length > 0) {
-        if(arrGH0!=null){
+    if (arrGH0 != null) {
+        if (arrGH != null) {
             lgh = arrsyDataSort(arrGH.concat(arrGH0));
-        }else {
-            lgh = arrsyDataSort(arrGH);
+        } else {
+            lgh = arrsyDataSort(arrGH0);
         }
+    } else {
+        lgh = arrsyDataSort(arrGH);
     }
 
     var option = "";
