@@ -10,40 +10,175 @@ $(function () {
 
 });
 
+
+function dbSelectedToSortData() {
+    var arr29 = [];
+    var arr30 = [];
+    var arr31 = [];
+    var arr32 = [];
+    var arrGH = [];
+
+    $("dl").find('dd').each(function () {
+        var id = $(this).attr("lay-id");
+        var field0001 = $(this).attr("lay-name");
+        var field0002 = $(this).attr("lay-field002");
+        var field0003 = $(this).attr("lay-dept");
+        var name = $(this).attr("lay-username");
+        var flag = $(this).attr("lay-flag");
+        var bs = $(this).attr("lay-bs");
+        var bsname = $(this).attr("lay-bsname");
+        var zsort = $(this).attr("lay-zsort");
+        if (undefined == id) {
+            id = "";
+        }
+        var obj = {};//添加成员对象
+        obj["id"] = id;
+        obj["field0001"] = field0001;
+        obj["field0002"] = field0002;
+        obj["name"] = name;
+        obj["field0003"] = field0003;
+        obj["field0005"] = bs + '';
+        obj["mval"] = bsname;
+        obj["field0007"] = zsort;
+        obj["flag"] = flag;
+        if (flag == '29') {
+            arr29.push(obj);
+        } else if (flag == '30') {
+            arr30.push(obj);
+        } else if (flag == '31') {
+            arr31.push(obj);
+        } else if (flag == '32') {
+            arr32.push(obj);
+        } else if (flag == 'gh') {
+            arrGH.push(obj);
+        }
+    });
+    var l29 = arrsyDataSort(arr29);
+    var l30 = arrsyDataSort(arr30);
+    var l31 = arrsyDataSort(arr31);
+    var l32 = arrsyDataSort(arr32);
+    var lgh = arrsyDataSort(arrGH);
+    var option = "";
+    var html29 = '';
+    var html30 = '';
+    var html31 = '';
+    var html32 = '';
+    var htmlgh = '';
+    clearSelect();
+
+    if (l29.length > 0) {
+        html29 = htmlShow(l29, '29');
+    }
+    if (l30.length > 0) {
+        html30 = htmlShow(l30, '30');
+    }
+    if (l31.length > 0) {
+        html31 = htmlShow(l31, '31');
+    }
+    if (l32.length > 0) {
+        html32 = htmlShow(l32, '32');
+    }
+    if (lgh.length > 0) {
+        htmlgh = htmlShow(lgh, 'gh');
+    }
+    clearSelect();
+    option += html29 + html30 + html31 + html32 + htmlgh;
+    $("dl.selected-info").append(option);
+    $(".selected-info dd").on('click', function () {
+        var index = $(this).attr("class").indexOf("selected-this");
+        if (index == 0) {
+            $(this).removeClass("selected-this");
+        } else {
+            $(this).addClass("selected-this");
+        }
+    });
+}
+
 // 排序问题 对已选择人员进行部门排序
-function dataSorting(arr29,arr30,arr31,arr32,arrGH) {
+function dataSorting(arr290, arr300, arr310, arr320, arrGH0) {
     debugger;
+    var arr29 = [];
+    var arr30 = [];
+    var arr31 = [];
+    var arr32 = [];
+    var arrGH = [];
+
+    $("dl").find('dd').each(function () {
+        var id = $(this).attr("lay-id");
+        var field0001 = $(this).attr("lay-name");
+        var field0002 = $(this).attr("lay-field002");
+        var field0003 = $(this).attr("lay-dept");
+        var name = $(this).attr("lay-username");
+        var flag = $(this).attr("lay-flag");
+        var bs = $(this).attr("lay-bs");
+        var bsname = $(this).attr("lay-bsname");
+        var zsort = $(this).attr("lay-zsort");
+        if (undefined == id) {
+            id = "";
+        }
+        var obj = {};//添加成员对象
+        obj["id"] = id;
+        obj["field0001"] = field0001;
+        obj["field0002"] = field0002;
+        obj["name"] = name;
+        obj["field0003"] = field0003;
+        obj["field0005"] = bs + '';
+        obj["mval"] = bsname;
+        obj["field0007"] = zsort;
+        obj["flag"] = flag;
+        if (flag == '29') {
+            arr29.push(obj);
+        } else if (flag == '30') {
+            arr30.push(obj);
+        } else if (flag == '31') {
+            arr31.push(obj);
+        } else if (flag == '32') {
+            arr32.push(obj);
+        } else if (flag == 'gh') {
+            arrGH.push(obj);
+        }
+    });
     var l29 = [];
-    if(arr29!=null){
-        if(arr29.length>0){
-            l29=arrsyDataSort(arr29);
+    if (arr29.length > 0) {
+        if(arr290!=null){
+            l29 = arrsyDataSort(arr29.concat(arr290));
+        }else {
+            l29 = arrsyDataSort(arr29);
         }
     }
 
     var l30 = [];
-    if(arr30 !=null){
-        if(arr30.length>0){
-            l30=arrsyDataSort(arr30);
+    if (arr30.length > 0) {
+        if(arr300!=null){
+            l30 = arrsyDataSort(arr30.concat(arr300));
+        }else {
+            l30 = arrsyDataSort(arr30);
         }
     }
 
     var l31 = [];
-    if(arr31!=null){
-        if(arr31.length>0){
-            l31=arrsyDataSort(arr31);
+    if (arr31.length > 0) {
+        if(arr310!=null){
+            l31 = arrsyDataSort(arr31.concat(arr310));
+        }else {
+            l31 = arrsyDataSort(arr31);
         }
     }
 
     var l32 = [];
-    if(arr32!=null){
-        if(arr32.length>0) {
+    if (arr32.length > 0) {
+        if(arr320!=null){
+            l32 = arrsyDataSort(arr32.concat(arr320));
+        }else {
             l32 = arrsyDataSort(arr32);
         }
     }
 
     var lgh = [];
-    if(arrGH!=null){
-        if(arrGH.length>0) {
+    if (arrGH.length > 0) {
+        if(arrGH0!=null){
+            lgh = arrsyDataSort(arrGH.concat(arrGH0));
+        }else {
             lgh = arrsyDataSort(arrGH);
         }
     }
@@ -294,7 +429,7 @@ function dangZhengBanTable() {
                     });
                 }
             }
-            dataSorting();
+            dbSelectedToSortData();
             revokeReuse();
             removeTableRow29(row);
 
@@ -302,6 +437,7 @@ function dangZhengBanTable() {
 
     });
 }
+
 //解决冲突
 function revokeReuse() {
     if (ids29.length > 0) {
@@ -715,40 +851,40 @@ function removeDdRow32(item) {
 function sureSelect() {
     var $table29 = $('#dzb29');
     var rows29 = $table29.bootstrapTable('getSelections');
-    if(rows29!=null){
-        if(rows29.length>0){
-            dangZhengBanSure($table29,rows29);
+    if (rows29 != null) {
+        if (rows29.length > 0) {
+            dangZhengBanSure($table29, rows29);
         }
     }
     var $table30 = $('#jiguan30');
     var rows30 = $table30.bootstrapTable('getSelections');
-    if(rows30!=null){
-        if(rows30.length>0){
-            Sure30($table30,rows30);
+    if (rows30 != null) {
+        if (rows30.length > 0) {
+            Sure30($table30, rows30);
         }
     }
     var $table31 = $('#zhenb31');
     var rows31 = $table31.bootstrapTable('getSelections');
 
-    if(rows31!=null){
-        if(rows31.length>0){
-            Sure31($table31,rows31);
+    if (rows31 != null) {
+        if (rows31.length > 0) {
+            Sure31($table31, rows31);
         }
     }
 
     var $table32 = $('#zhuqu32');
     var rows32 = $table32.bootstrapTable('getSelections');
-    if(rows32!=null){
-        if(rows32.length>0){
-            Sure32($table32,rows32);
+    if (rows32 != null) {
+        if (rows32.length > 0) {
+            Sure32($table32, rows32);
         }
     }
 
     var $tableGh = $('#gonghui');
     var rowsGh = $tableGh.bootstrapTable('getSelections');
-    if(rowsGh !=null){
-        if(rowsGh.length>0){
-            SureGonghui($tableGh,rowsGh);
+    if (rowsGh != null) {
+        if (rowsGh.length > 0) {
+            SureGonghui($tableGh, rowsGh);
         }
     }
 
@@ -786,7 +922,7 @@ function sureSelect() {
 }
 
 //确认 党政办人员
-function dangZhengBanSure($table,rows) {
+function dangZhengBanSure($table, rows) {
 
     var arrJtld = rows;
 
@@ -831,7 +967,7 @@ function dangZhengBanSure($table,rows) {
     //         }
     //     }
     // }
-    dataSorting(rows,null,null,null,null);
+    dataSorting(rows, null, null, null, null);
 
     ids29 = $.map(rows, function (row) {
         return row.id
@@ -853,10 +989,10 @@ function dangZhengBanSure($table,rows) {
 
 }
 
-function Sure30($table,rows) {
+function Sure30($table, rows) {
 
     var arrJtld = rows;
-    dataSorting(null,rows,null,null,null);
+    dataSorting(null, rows, null, null, null);
 
     ids30 = $.map(rows, function (row) {
         return row.id
@@ -876,11 +1012,11 @@ function Sure30($table,rows) {
     });
 }
 
-function Sure31($table,rows) {
+function Sure31($table, rows) {
 
     var arrJtld = rows;
 
-    dataSorting(null,null,rows,null,null);
+    dataSorting(null, null, rows, null, null);
 
     ids31 = $.map(rows, function (row) {
         return row.id
@@ -900,11 +1036,11 @@ function Sure31($table,rows) {
     });
 }
 
-function Sure32($table,rows) {
+function Sure32($table, rows) {
 
     var arrJtld = rows;
 
-    dataSorting(null,null,null,rows,null);
+    dataSorting(null, null, null, rows, null);
 
     ids32 = $.map(rows, function (row) {
         return row.id
@@ -924,11 +1060,11 @@ function Sure32($table,rows) {
     });
 }
 
-function SureGonghui($table,rows) {
+function SureGonghui($table, rows) {
     debugger;
     var arrJtld = rows;
 
-    dataSorting(null,null,null,null,rows);
+    dataSorting(null, null, null, null, rows);
 
     idsgh = $.map(rows, function (row) {
         return row.id
@@ -1042,7 +1178,7 @@ function removeSelect() {
     commonInfo('.selected-this');
 }
 
-function clearSelect2(){
+function clearSelect2() {
 
     var list = $("dl").find("dd");
     $.each(list, function (i, item) {
@@ -1130,11 +1266,11 @@ function clearSelect2(){
         }
 
     });
-    ids29=[];
-    ids30=[];
-    ids31=[];
-    ids32=[];
-    idsgh=[];
+    ids29 = [];
+    ids30 = [];
+    ids31 = [];
+    ids32 = [];
+    idsgh = [];
 }
 
 function clearSelect() {
