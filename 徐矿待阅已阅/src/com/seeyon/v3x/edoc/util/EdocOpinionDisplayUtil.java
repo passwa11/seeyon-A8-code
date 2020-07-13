@@ -157,7 +157,6 @@ public class EdocOpinionDisplayUtil {
      *
      * @param map
      * @param signatuers
-     * @param hasSignature
      * @return
      */
     public static Map<String, Object> convertOpinionToString(Long formId, Map<String, EdocOpinionModel> map,
@@ -296,154 +295,80 @@ public class EdocOpinionDisplayUtil {
             //公文单不显示暂存待办意见
             if (element.equals("opinion2")) {
                 User user = AppContext.getCurrentUser();
-                if ("pc".equals(user.getUserAgentFrom()) || pcStyle) {
-                    StringBuilder sb = new StringBuilder();
-                    sb.append("<table width=\"100%\" id=\"tableId\" border=\"0px;\" cellpadding=\"6\"  style=\"margin-top:0px;border-color: #586EA1;border-collapse:collapse;\" cellspacing=\"0\"><tr bgcolor=\"#EDEDEE\" height=\"37\"><td width=\"20%\" style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">环节</td><td width=\"35%\" style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">记录</td><td width=\"15%\" style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">人员</td><td width=\"15%\" style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">日期</td><td width=\"15%\" style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:none;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">结果</td></tr>");
-                    StringBuffer sbuffer = new StringBuffer();
-                    for (EdocOpinion opinion : opinions) {
-                        //取回或者暂存待办的意见回写到意见框中，所以要跳过；其他情况下显示到意见区域
-                        if (opinion.getOpinionType().intValue() == OpinionType.provisionalOpinoin.ordinal()
-                                || opinion.getOpinionType().intValue() == OpinionType.draftOpinion.ordinal()) {
-                            if (currentAffair != null && canSeeMyselfOpinion) {
-                                if (opinion.getAffairId() != currentAffair.getId()) {
-                                    continue;
-                                }
-                            } else {
+//                if ("pc".equals(user.getUserAgentFrom()) || pcStyle) {
+                StringBuilder sb = new StringBuilder();
+                sb.append("<table width=\"100%\" id=\"tableId\" border=\"0px;\" cellpadding=\"6\"  style=\"margin-top:0px;border-color: #586EA1;border-collapse:collapse;\" cellspacing=\"0\"><tr bgcolor=\"#EDEDEE\" height=\"37\"><td width=\"20%\" style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">环节</td><td width=\"35%\" style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">记录</td><td width=\"15%\" style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">人员</td><td width=\"15%\" style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:#586EA1 solid 1px;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">日期</td><td width=\"15%\" style=\"text-align: center;font-family: 微软雅黑;font-size:16px;border-right:none;border-left:none;border-top:#586EA1 solid 1px;border-bottom:#586EA1 solid 1px;\">结果</td></tr>");
+                StringBuffer sbuffer = new StringBuffer();
+                for (EdocOpinion opinion : opinions) {
+                    //取回或者暂存待办的意见回写到意见框中，所以要跳过；其他情况下显示到意见区域
+                    if (opinion.getOpinionType().intValue() == OpinionType.provisionalOpinoin.ordinal()
+                            || opinion.getOpinionType().intValue() == OpinionType.draftOpinion.ordinal()) {
+                        if (currentAffair != null && canSeeMyselfOpinion) {
+                            if (opinion.getAffairId() != currentAffair.getId()) {
                                 continue;
                             }
+                        } else {
+                            continue;
                         }
+                    }
 
-                        String value = (String) jsMap.get(element);
-                        if (value != null) {
-                            sb.append(value);
-                        }
-                        boolean hasSignature = false;
-                        if (signatuers != null && signatuers.size() > 0) {
-                            for (V3xHtmDocumentSignature signature : signatuers) {
-                                if (signature != null) {
-                                    if (null != signature.getAffairId() && signature.getAffairId().equals(opinion.getAffairId())) {
-                                        hasSignature = true;
-                                        break;
-                                    }
+                    String value = (String) jsMap.get(element);
+                    if (value != null) {
+                        sb.append(value);
+                    }
+                    boolean hasSignature = false;
+                    if (signatuers != null && signatuers.size() > 0) {
+                        for (V3xHtmDocumentSignature signature : signatuers) {
+                            if (signature != null) {
+                                if (null != signature.getAffairId() && signature.getAffairId().equals(opinion.getAffairId())) {
+                                    hasSignature = true;
+                                    break;
                                 }
                             }
                         }
+                    }
 //                        User user = AppContext.getCurrentUser();
 //                        if ("pc".equals(user.getUserAgentFrom()) || pcStyle) {
-                        //附件显示
-                        StringBuilder attSb = new StringBuilder();
-                        List<Attachment> tempAtts = null;
-                        if (null != opinion.getPolicy() && opinion.getPolicy().equals(EdocOpinion.FEED_BACK)) {
-                            Long subOpinionId = opinion.getSubOpinionId();
-                            if (subOpinionId != null) {
-                                tempAtts = EdocHelper.getOpinionAttachmentsNotRelationDoc(opinion.getSubEdocId(), subOpinionId);
-                            }
-                        } else {
-                            tempAtts = opinion.getOpinionAttachments();
+                    //附件显示
+                    StringBuilder attSb = new StringBuilder();
+                    List<Attachment> tempAtts = null;
+                    if (null != opinion.getPolicy() && opinion.getPolicy().equals(EdocOpinion.FEED_BACK)) {
+                        Long subOpinionId = opinion.getSubOpinionId();
+                        if (subOpinionId != null) {
+                            tempAtts = EdocHelper.getOpinionAttachmentsNotRelationDoc(opinion.getSubEdocId(), subOpinionId);
                         }
-                        if (tempAtts != null) {
-                            attSb.append("<div style='clear:both;word-wrap:break-word;'>");
-                            for (Attachment att : tempAtts) {
-                                // 不管文件名有多长，显示整体的文件名。yangzd
-                                //sb.append("<br>");//前端附件使用的是DIV，会自动换行
-                                fileUrlStr.append(att.getFileUrl());
-                                fileUrlStr.append(",");
-                                String s = com.seeyon.ctp.common.filemanager.manager.Util.AttachmentToHtmlWithShowAllFileName(att, true, false);
+                    } else {
+                        tempAtts = opinion.getOpinionAttachments();
+                    }
+                    if (tempAtts != null) {
+                        attSb.append("<div style='clear:both;word-wrap:break-word;'>");
+                        for (Attachment att : tempAtts) {
+                            // 不管文件名有多长，显示整体的文件名。yangzd
+                            //sb.append("<br>");//前端附件使用的是DIV，会自动换行
+                            fileUrlStr.append(att.getFileUrl());
+                            fileUrlStr.append(",");
+                            String s = com.seeyon.ctp.common.filemanager.manager.Util.AttachmentToHtmlWithShowAllFileName(att, true, false);
 //                                sb.append(s);
-                                attSb.append(s);
-                            }
-                            attSb.append("</div>");
-
-                            if ("senderOpinion".equals(element)) {
-                                senderAttMap.put(opinion.getId(), attSb);
-                            }
+                            attSb.append(s);
                         }
+                        attSb.append("</div>");
 
-                        String html = displayOpinionContent2(attSb, displayConfig, opinion, hasSignature, true);
-                        sbuffer.append(html);
+                        if ("senderOpinion".equals(element)) {
+                            senderAttMap.put(opinion.getId(), attSb);
+                        }
+                    }
+
+                    String html = displayOpinionContent2(attSb, displayConfig, opinion, hasSignature, true);
+                    sbuffer.append(html);
 //                        }
 //                    else {
 //                        sbuffer.append(displayOpinionContentM3(displayConfig, opinion, hasSignature, true));
 
 //                        }
-                    }
-                    sb.append(sbuffer);
-                    sb.append("</table>");
-                    jsMap.put(element, Strings.replaceNbspLO(sb.toString()));
-                } else {
-                    for (EdocOpinion opinion : opinions) {
-                        StringBuilder sb = new StringBuilder();
-                        //取回或者暂存待办的意见回写到意见框中，所以要跳过；其他情况下显示到意见区域
-                        if (opinion.getOpinionType().intValue() == OpinionType.provisionalOpinoin.ordinal()
-                                || opinion.getOpinionType().intValue() == OpinionType.draftOpinion.ordinal()) {
-                            if (currentAffair != null && canSeeMyselfOpinion) {
-                                if (opinion.getAffairId() != currentAffair.getId()) {
-                                    continue;
-                                }
-                            } else {
-                                continue;
-                            }
-                        }
-                        //公文单不显示暂存待办意见
-                        String value = (String) jsMap.get(element);
-                        if (value != null) {
-                            sb.append(value);
-                        }
-                        //BUG_OA-69755_普通_V5_V5.1sp1_南宁明和信息技术有限公司_公文单中，意见之间的间隔较大_20141105004371_2014-11-11
-                        //if(sb.length()>0){
-                        //	sb.append("<br>");
-                        //}
-                        boolean hasSignature = false;
-                        if (signatuers != null && signatuers.size() > 0) {
-                            for (V3xHtmDocumentSignature signature : signatuers) {
-                                if (signature != null) {
-                                    if (null != signature.getAffairId() && signature.getAffairId().equals(opinion.getAffairId())) {
-                                        hasSignature = true;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                        sb.append(displayOpinionContentM3(displayConfig, opinion, hasSignature, true));
-                        //附件显示
-                        List<Attachment> tempAtts = null;
-                        if (null != opinion.getPolicy() && opinion.getPolicy().equals(EdocOpinion.FEED_BACK)) {
-                            Long subOpinionId = opinion.getSubOpinionId();
-                            if (subOpinionId != null) {
-                                tempAtts = EdocHelper.getOpinionAttachmentsNotRelationDoc(opinion.getSubEdocId(), subOpinionId);
-                            }
-                        } else {
-                            tempAtts = opinion.getOpinionAttachments();
-                        }
-                        if (tempAtts != null) {
-                            StringBuilder attSb = new StringBuilder();
-                            attSb.append("<div style='clear:both;word-wrap:break-word;'>");
-                            for (Attachment att : tempAtts) {
-                                // 不管文件名有多长，显示整体的文件名。yangzd
-                                //sb.append("<br>");//前端附件使用的是DIV，会自动换行
-                                fileUrlStr.append(att.getFileUrl());
-                                fileUrlStr.append(",");
-                                String s = com.seeyon.ctp.common.filemanager.manager.Util.AttachmentToHtmlWithShowAllFileName(att, true, false);
-                                sb.append(s);
-                                attSb.append(s);
-                            }
-                            attSb.append("</div>");
-
-                            if ("senderOpinion".equals(element)) {
-                                senderAttMap.put(opinion.getId(), attSb);
-                            }
-                        }
-
-                        //发起人附言如果没有绑定不向前台显示。前台页面通过下面的对象，有代码+标签的形式展示。
-                        if ("senderOpinion".equals(element)) {
-                            senderOpinions.add(opinion);
-                            continue;
-                        }
-
-                        jsMap.put(element, Strings.replaceNbspLO(sb.toString()));
-                    }
-
                 }
+                sb.append(sbuffer);
+                sb.append("</table>");
+                jsMap.put(element, Strings.replaceNbspLO(sb.toString()));
 
             } else if (element.equals("otherOpinion")) {
                 for (EdocOpinion opinion : opinions) {
