@@ -117,28 +117,8 @@
                                     $.alert(res.message);
                                     return;
                                 }
-                                // var dataCount = res.data.dataCount + 1;
-                                // addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, dataCount);
-                                var dataList = res.data.data;
-                                console.log(dataList);
-                                if (null != dataList && dataList != '') {
-                                    for (var i = 0; i < dataList.length; i++) {
-                                        var addLineParam = {};
-                                        addLineParam.tableName = res.data.tableName;
-                                        addLineParam.isFormRecords = true;
-                                        addLineParam.callbackFn = function () {
-                                            // addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, flag);
-                                        }
-                                        window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
-                                        var backfill = {};
-                                        backfill.tableName = res.data.tableName;
-                                        backfill.tableCategory = "formson";
-                                        backfill.updateData = dataList[i][dataList[i].recordId];
-                                        backfill.updateRecordId = dataList[i].recordId;
-                                        adaptation.backfillFormControlData(backfill, privateId);
-
-                                    }
-                                }
+                                var dataCount = res.data.dataCount + 1;
+                                addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, dataCount);
                             }, error: function (res) {
                             }
                         });
