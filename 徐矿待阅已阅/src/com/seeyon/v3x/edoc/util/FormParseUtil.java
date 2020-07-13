@@ -515,7 +515,10 @@ public class FormParseUtil {
         Map<String, EdocOpinionModel> field2OptionMap = edocManager.getEdocOpinion(summary, displayConfig);
 //        开始_zhou 2020-07-13:根据表单的id判断是否使用table表显示处理意见
         Map<String, Object> optionMap=null;
-        if ("3312330994062151087".equals(Long.toString(summary.getFormId()))) {
+//        本地环境
+//        if ("3312330994062151087".equals(Long.toString(summary.getFormId()))) {
+            //        正式
+        if ("-7646251176412886019".equals(Long.toString(summary.getFormId()))) {
             optionMap = EdocOpinionDisplayUtil._convertOpinionToString2(summary.getFormId(),field2OptionMap, displayConfig,
                     affair, false, handWrites,canSeeMyselfOpinion, true);
         }else {
