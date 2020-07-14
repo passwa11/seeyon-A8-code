@@ -79,12 +79,12 @@ import com.seeyon.v3x.mobile.message.manager.MobileMessageManager;
 
 
 /**
- * 
+ *
  * @author 唐桂林
  *
  */
 public class MeetingRoomController extends BaseController {
-	
+
 	private static final Log LOGGER = LogFactory.getLog(MeetingRoomController.class);
 
 	private MeetingRoomManager meetingRoomManager;
@@ -103,7 +103,7 @@ public class MeetingRoomController extends BaseController {
 
 
 	private final Lock LOCK = new ReentrantLock();
-	
+
 	/**
 	 * 进入创建会议室
 	 * @param request
@@ -117,14 +117,14 @@ public class MeetingRoomController extends BaseController {
 		if (!isAdmin && !isAccountAdmin) {
 			return refreshWorkspace();
 		}
-		
+
 		Long roomId = Strings.isBlank(request.getParameter("id")) ? -1L : Long.parseLong(request.getParameter("id"));
 		String flag = request.getParameter("flag");
-		
+
 		User currentUser = AppContext.getCurrentUser();
-		
+
 		MeetingRoomVO roomVo = new MeetingRoomVO();
-		
+
 		if("register".equals(flag)) {
 			// 单位管理员创建会议室不显示自己，因为单位管理员不是会议室管理员
 			if (!isAccountAdmin) {
@@ -137,28 +137,28 @@ public class MeetingRoomController extends BaseController {
 			if(room == null) {
 				return refreshWorkspace();
 			}
-			
+
 			//过滤当前会议室管理员
 			roomVo = MeetingRoomHelper.convertToVO(roomVo, room);
-			
+
 			//获取当前会议室所属管理员
 			String[] admins = MeetingRoomAdminUtil.getRoomAdmins(room);
 			roomVo.setAdminIds(admins[0]);
 			roomVo.setAdminNames(admins[1]);
 			//设置已有的会议室管理员
 			roomVo.setAdminMembers(admins[2]);
-			
+
 			//获取当前会议室管理范围
 			roomVo.setMngdepId(room.getMngdepId());
 			roomVo.setMngdepName(MeetingRoomUtil.getMeetingRoomMngdepNames(room.getMngdepId()));
-			
+
 			//获取当前会议室制度附件
 			List<Attachment> attatchmentsC = this.attachmentManager.getByReference(room.getId(), RoomAttEnum.attachment.key());
 			if (attatchmentsC.size() > 0) {
 				roomVo.setAttatchments(attatchmentsC);
 				roomVo.setAttObj(attatchmentsC.get(0));
 			}
-			
+
 			//获取当前会议室图片附件
 			List<Attachment> attatchmentsI = this.attachmentManager.getByReference(room.getId(), RoomAttEnum.image.key());
 			if (attatchmentsI.size() > 0) {
@@ -175,22 +175,22 @@ public class MeetingRoomController extends BaseController {
 				roomVo.setShortUrl(room.getShortUrl());
 			}
 		}
-			
+
 		roomVo.setRoomAdminList(MeetingRoomRoleUtil.getMeetingRoomAdminList(AppContext.currentAccountId()));
-		
+
 		ModelAndView mav = new ModelAndView("meetingroom/createadd");
 		mav.addObject("bean", roomVo);
 		MeetingScreenSet set = meetingSettingManager.getMeetingScreenSet(AppContext.currentAccountId());
 		mav.addObject("screenEnable",set == null ? 0 : set.getScreenEnable());
 		mav.addObject("qrcodeEnable",set == null ? 0 : set.getQrcodeEnable());
-		
+
 		//会议室短URL
 		if(Strings.isNotBlank(roomVo.getShortUrl())){
 			//本地服务器地址
 			String localUrl = Strings.getBaseContext(request) + "/g/" + roomVo.getShortUrl();
 			mav.addObject("localUrl", localUrl);
 			mav.addObject("intranetTips", ResourceUtil.getString("mr.label.shorturl.realtips", request.getServerName() + ":" +request.getServerPort()));
-			
+
 			//若微协同配置了外网地址
 			/*ConfigItem configItem = configManager.getConfigItem("wechat_switch", "oa_url");
 			if (configItem != null && Strings.isNotBlank(configItem.getConfigValue())) {
@@ -199,13 +199,13 @@ public class MeetingRoomController extends BaseController {
 				mav.addObject("remoteUrl", SystemEnvironment.getInternetSiteURL() + "/g/" + roomVo.getShortUrl());
 			}*/
 		}
-		
+
 		return mav;
 	}
-	
+
 	/**
 	 * 执行新建会议室操作
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @return null,刷新add.jsp页面
@@ -215,7 +215,7 @@ public class MeetingRoomController extends BaseController {
 	public ModelAndView execAdd(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		StringBuilder buffer = new StringBuilder();
 		String msgType = "success";
-		
+
 		User currentUser = AppContext.getCurrentUser();
 		Long roomId = Strings.isBlank(request.getParameter("id")) ? -1L : Long.parseLong(request.getParameter("id"));
 		String roomName = request.getParameter("name");
@@ -229,9 +229,9 @@ public class MeetingRoomController extends BaseController {
 
 		String _content = request.getParameter("filenameContent");
 		boolean hasMeetingRoomApp = Strings.isBlank(request.getParameter("hasMeetingRoomApp")) ? false : Boolean.parseBoolean(request.getParameter("hasMeetingRoomApp"));
-		
+
 		if(!MeetingUtil.isIdNull(roomId)) {
-			
+
 			boolean isAdmin = MeetingRoomRoleUtil.isMeetingRoomAdminRole();
 			//若会议室有有效会议室管理员，并且不是本人，且不是单位管理员，则不能修改
 			List<Long> roleAdminList = MeetingRoomAdminUtil.getRoomAdminIdList(roomId);
@@ -245,8 +245,8 @@ public class MeetingRoomController extends BaseController {
 				rendJavaScript(response, buffer.toString());
 				return null;
 			}
-		}		
-		
+		}
+
 		MeetingRoom repeatRoom = this.meetingValidationManager.checkRoomNameRepeat(roomId, roomName);
 		if (repeatRoom != null) {
 			msgType = "isRepeat";
@@ -258,7 +258,7 @@ public class MeetingRoomController extends BaseController {
 			rendJavaScript(response, buffer.toString());
 			return null;
 		}
-		
+
 		MeetingRoomVO roomVo = new MeetingRoomVO();
 		roomVo.setId(roomId);
 		roomVo.setRoomId(roomId);
@@ -280,12 +280,12 @@ public class MeetingRoomController extends BaseController {
 		} else {
 			roomVo.setNeedApp(needApp);
 		}
-		
-		
+
+
 		if(roomVo.isNew()) {
 			roomVo.setIdIfNew();
 		}
-		
+
 		try {
 			// 编辑时，先删除会议图片和会议制度
 			this.attachmentManager.deleteByReference(roomVo.getId(),RoomAttEnum.attachment.key());
@@ -331,7 +331,7 @@ public class MeetingRoomController extends BaseController {
 			}else{
 				roomVo.setImage("");
 			}
-			
+
 			if(!Strings.isBlank(_content)) {
 				editHelper.setSubReference(Long.parseLong(_content));
 				//记录操作日志
@@ -349,11 +349,11 @@ public class MeetingRoomController extends BaseController {
 					}
 				}
 			}
-			
+
 			if(Strings.isNotEmpty(attList)) {
 				attachmentManager.create(attList);
 			}
-			
+
 			boolean ok = this.meetingRoomManager.transAdd(roomVo);
 			if(!ok) {
 				msgType = "failure";
@@ -364,13 +364,13 @@ public class MeetingRoomController extends BaseController {
 		}
 		buffer.append("parent._submitCallback('" + msgType + "');");
 		rendJavaScript(response, buffer.toString());
-		
+
 		return null;
 	}
 
 
 	/**
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @return
@@ -379,10 +379,10 @@ public class MeetingRoomController extends BaseController {
 	@CheckRoleAccess(roleTypes = {Role_NAME.MeetingRoomAdmin,Role_NAME.AccountAdministrator})
 	public ModelAndView execDelRoom(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String[] ids = request.getParameterValues("id");
-		
+
 		Map<String, Object> parameterMap = new HashMap<String, Object>();
         parameterMap.put("idList", MeetingUtil.getIdList(ids));
-        
+
         try {
         	this.meetingRoomManager.transDelRoom(parameterMap);
         } catch(Exception e) {
@@ -403,14 +403,14 @@ public class MeetingRoomController extends BaseController {
         	buffer.append("parent._submitCallback('"+parameterMap.get("msgType")+"', '"+parameterMap.get("msg")+"')");
         }
         rendJavaScript(response, buffer.toString());
-        
+
         return null;
 	}
-	
-	
+
+
 	/**
 	 * 申请会议室页面，弹出页面
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @return 弹出createapp.jsp页面
@@ -418,9 +418,9 @@ public class MeetingRoomController extends BaseController {
 	 */
 	public ModelAndView createApp(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView("meetingroom/createapp");
-		
+
 		User currentUser = AppContext.getCurrentUser();
-		
+
 		V3xOrgMember v3xOrgMember = this.orgManager.getMemberById(currentUser.getId());
 		Long deptId = null;
 		if(currentUser.getLoginAccount().longValue() != currentUser.getAccountId().longValue()) {
@@ -434,9 +434,9 @@ public class MeetingRoomController extends BaseController {
 				}
 			}
 		} else {
-			deptId = v3xOrgMember.getOrgDepartmentId();	
+			deptId = v3xOrgMember.getOrgDepartmentId();
 		}
-		
+
 		Long roomId = MeetingUtil.getLong(request, "id", Constants.GLOBAL_NULL_ID);
 		MeetingRoom room = this.meetingRoomManager.getRoomById(roomId);
 		if(room != null) {
@@ -454,10 +454,10 @@ public class MeetingRoomController extends BaseController {
 		mav.addObject("meetingRoomAdmin", MeetingRoomRoleUtil.isMeetingRoomAdminRole());
 		return mav;
 	}
-	
+
 	/**
 	 * 执行会议室申请操作
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @return null，关闭弹出窗口
@@ -471,7 +471,13 @@ public class MeetingRoomController extends BaseController {
 		parameterMap.put("description", request.getParameter("description"));
 		parameterMap.put("startDatetime", request.getParameter("startDatetime"));
 		parameterMap.put("endDatetime", request.getParameter("endDatetime"));
-		
+//		zhou:2020-07-14
+		parameterMap.put("sqrdh", request.getParameter("sqrdh"));
+		parameterMap.put("sfygwhldcj", request.getParameter("sfygwhldcj"));
+		parameterMap.put("hcyq", request.getParameter("hcyq"));
+
+//		zhou:2020-07-14
+
 		MeetingRoomAppVO appVo = new MeetingRoomAppVO();
 		appVo.setAction(MeetingActionEnum.apply.name());
 		appVo.setParameterMap(parameterMap);
@@ -504,10 +510,10 @@ public class MeetingRoomController extends BaseController {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * 执行会议室申请操作
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @return null，关闭弹出窗口
@@ -515,7 +521,7 @@ public class MeetingRoomController extends BaseController {
 	 */
 	public ModelAndView addRoomAppDesc(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Long roomAppId = Strings.isBlank(request.getParameter("roomAppId")) ? Constants.GLOBAL_NULL_ID : Long.parseLong(request.getParameter("roomAppId"));
-		
+
 		MeetingRoomAppVO appVo = new MeetingRoomAppVO();
 		try {
 			appVo.setRoomAppId(roomAppId);
@@ -524,19 +530,19 @@ public class MeetingRoomController extends BaseController {
 		} catch(Exception e) {
 			logger.error("会议室申请添加用途失败", e);
 		}
-		
+
 		StringBuilder buffer = new StringBuilder();
 		buffer.append("if(parent._submitCallback) {");
 		buffer.append("  parent._submitCallback('" + appVo.getMsg() + "');");
 		buffer.append("}");
 		rendJavaScript(response, buffer.toString());
-		return null; 
+		return null;
 	}
-	
+
 	public ModelAndView execCancel(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		StringBuilder buffer = new StringBuilder();
 		String msgType = "success";
-		
+
 		String[] ids = request.getParameterValues("id");
 		if (ids != null && ids.length > 0) {
 			Map<String, Object> parameterMap = new HashMap<String, Object>();
@@ -546,32 +552,32 @@ public class MeetingRoomController extends BaseController {
 			parameterMap.put("action", MeetingActionEnum.cancelRoomApp.name());
 			try {
 				boolean result = this.meetingRoomManager.transCancelRoomApp(parameterMap);
-				
+
 				if(!result) {
-					msgType = "failure"; 
+					msgType = "failure";
 				}
 			} catch(Exception e) {
 				LOGGER.error("撤销会议室申请出错", e);
 				msgType = "failure";
 			}
-			
+
 			if(Strings.isBlank(request.getParameter("linkSectionId"))) {
 				buffer.append("if(parent._submitCallback) {");
 				buffer.append("  parent._submitCallback('" + msgType + "');");
 				buffer.append("}");
 			}
 		}
-		
+
 		rendJavaScript(response, buffer.toString());
 		return null;
 	}
-	
+
 	public ModelAndView execClearPerm(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		StringBuilder buffer = new StringBuilder();
 		String msgType = "success";
-		
+
 		String[] ids = request.getParameterValues("id");
-		
+
 		if (ids != null && ids.length > 0) {
 			Map<String, Object> parameterMap = new HashMap<String, Object>();
 			parameterMap.put("roomAppIdList", MeetingUtil.getIdList(ids));
@@ -580,31 +586,31 @@ public class MeetingRoomController extends BaseController {
 			parameterMap.put("action", MeetingActionEnum.cancelRoomApp.name());
 			try {
 				boolean result = this.meetingRoomManager.transClearRoomPerm(parameterMap);
-				
+
 				if(!result) {
-					msgType = "failure"; 
+					msgType = "failure";
 				}
 			} catch(Exception e) {
 				LOGGER.error("撤销会议室申请出错", e);
 				msgType = "failure";
 			}
-			
+
 			if(Strings.isBlank(request.getParameter("linkSectionId"))) {
 				buffer.append("if(parent._submitCallback) {");
 				buffer.append("  parent._submitCallback('" + msgType + "');");
 				buffer.append("}");
 			}
-			
+
 		}
 		rendJavaScript(response, buffer.toString());
 		return null;
 	}
 
-	
+
 	public ModelAndView execFinish(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		StringBuilder buffer = new StringBuilder();
 		String msgType = "success";
-		
+
 		String[] ids = request.getParameterValues("id");
 		if(ids!=null && ids.length>0) {
 			Map<String, Object> parameterMap = new HashMap<String, Object>();
@@ -615,9 +621,9 @@ public class MeetingRoomController extends BaseController {
 			parameterMap.put("isContainMeeting", request.getParameter("isContainMeeting"));
 			try {
 				boolean result = this.meetingRoomManager.transFinishAdvanceRoomApp(parameterMap);
-				
+
 				if(!result) {
-					msgType = "failure"; 
+					msgType = "failure";
 				}
 			} catch(Exception e) {
 				LOGGER.error("提前结束会议室申请出错", e);
@@ -626,22 +632,22 @@ public class MeetingRoomController extends BaseController {
 		} else {
 			msgType = "failure";
 		}
-		
+
 		if(Strings.isBlank(request.getParameter("linkSectionId"))) {
 			buffer.append("if(parent._submitCallback) {");
 			buffer.append("  parent._submitCallback('" + msgType + "');");
 			buffer.append("}");
 		} else {
-			
+
 		}
-		
+
 		rendJavaScript(response, buffer.toString());
 		return null;
 	}
-	
+
 	/**
 	 * 会议室审批页面
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @return 转到createperm.jsp页面或者弹出createpermopen.jsp页面
@@ -651,24 +657,24 @@ public class MeetingRoomController extends BaseController {
 		Long roomAppId = ReqUtil.getLong(request, "id", Constants.GLOBAL_NULL_ID);
 		Long affairId = Strings.isBlank(request.getParameter("affairId"))?-1:Long.parseLong(request.getParameter("affairId"));
 		String proxy = request.getParameter("proxy");
-		
+
 		String openWin = request.getParameter("openWin");
 		String view = "meetingroom/createperm";
 		if ("1".equals(openWin)) {//1 这里1只是起着标示的作用，没有什么特殊的意义(消息打开连接)
 			view = "meetingroom/createpermopen";
 		}
 		ModelAndView mav = new ModelAndView(view);
-		
+
 		CtpAffair currentAffair = null;
-		
+
 		int confereeCount = 0;//参会人数
-		
+
 		MeetingRoomAppVO appVo = new MeetingRoomAppVO();
 		MeetingRoomApp roomApp = null;
 		boolean isReadOnly = true;
 		try {
 			roomApp = this.meetingRoomManager.getRoomAppById(roomAppId);
-			
+
 			if(roomApp == null) {
 				StringBuilder buffer = new StringBuilder();
 				String msg = ResourceUtil.getString("meeting.room.app.cancel");
@@ -678,7 +684,7 @@ public class MeetingRoomController extends BaseController {
 				super.rendJavaScript(response, buffer.toString());
 				return null;
 			}
-			
+
 			if (roomApp.getStatus()!=null && Integer.valueOf(RoomAppStateEnum.wait.key()).equals(roomApp.getStatus())) {
 				isReadOnly = false;
 			}
@@ -722,7 +728,7 @@ public class MeetingRoomController extends BaseController {
 					MeetingTemplate template = meetingManager.getTemplateById(roomApp.getTemplateId());
 					if(template != null) {
 						appVo.setMeetingName(template.getTitle());
-						
+
 						String conferees = template.getConferees();
 						if(Strings.isNotBlank(conferees)){
 							//通过类型计算人员数量
@@ -739,18 +745,18 @@ public class MeetingRoomController extends BaseController {
 						}
 					}
 				}
-				
+
 				appVo.setRoomId(roomApp.getRoomId());
 				appVo.setRoomAppId(roomApp.getId());
 				appVo.setMeetingRoomApp(roomApp);
-				
-				
+
+
 				MeetingRoomPerm roomPerm = this.meetingRoomManager.getRoomPermByAppId(roomAppId);
 				if(roomPerm != null) {
 					appVo.setMeetingRoomPerm(roomPerm);
 					appVo.setRoomPermId(roomPerm.getId());
 				}
-				
+
 				List<CtpAffair> list = this.affairManager.getAffairs(ApplicationCategoryEnum.meetingroom, roomApp.getId());
 			    if(Strings.isNotEmpty(list)) {
 			        currentAffair = list.get(0);
@@ -761,15 +767,15 @@ public class MeetingRoomController extends BaseController {
 				    if(member != null) {
 				    	 mav.addObject("proxyName", member.getName());
 				    }
-				}			    
-			}			
+				}
+			}
 		} catch (Exception e) {
 			LOGGER.error("通过id获取会议室申请对象报错!",e);
 		}
 
 		MeetingRoom room = this.meetingRoomManager.getRoomById(appVo.getRoomId());
 		appVo.setMeetingRoom(room);
-		
+
 		List<Attachment> attatchmentsC = this.attachmentManager.getByReference(appVo.getRoomId(), RoomAttEnum.attachment.key());
 		if(attatchmentsC.size()>0){
 			mav.addObject("attatchments", attatchmentsC);
@@ -793,7 +799,7 @@ public class MeetingRoomController extends BaseController {
 		}
 		mav.addObject("count", confereeCount);//参会人数
 		mav.addObject("proxy", "1".equals(proxy));
-		
+
 		mav.addObject("bean", appVo);
 		mav.addObject("affairId", affairId);
 		mav.addObject("isReadOnly", isReadOnly);
@@ -807,7 +813,7 @@ public class MeetingRoomController extends BaseController {
 			resourcesNames = meetingResourcesManager.getResourceNamesByMeetingId(meetingId);
 		}
 		mav.addObject("resourcesName", resourcesNames);
-		
+
 		// 谁审核的 原逻辑取的是perid,现在的逻辑是在perm表中添加审核人字段，如果审核人为空，取会议室的全部管理员
 		if (appVo.getMeetingRoomApp().getAuditingId() != null) {
 			mav.addObject("peradmin", appVo.getMeetingRoomApp().getAuditingId());
@@ -815,16 +821,16 @@ public class MeetingRoomController extends BaseController {
 			String adminformat = MeetingRoomAdminUtil.getRoomAdmins(appVo.getMeetingRoom())[2];
 			mav.addObject("peradmin",Strings.isNotBlank(adminformat)? adminformat.replaceAll("Member[|]", ""):adminformat);
 		}
-		
+
 		//checkAuditRight = !checkAuditRight ? "1".equals(openWin) : true;//打开窗口和管理员待办内嵌页面都进行权限验证
-		
+
 		mav.addObject("isPeriodicity", !MeetingUtil.isIdBlank(request.getParameter("periodicityInfoId")));
 		return mav;
 	}
-	
-	
+
+
 	/**
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @return
@@ -839,7 +845,7 @@ public class MeetingRoomController extends BaseController {
         Long roomAppId = Strings.isBlank(request.getParameter("id")) ? -1 : Long.parseLong(request.getParameter("id"));
         Long affairId = Strings.isBlank(request.getParameter("affairId")) ? -1 : Long.parseLong(request.getParameter("affairId"));
         String[] roomAppIds = request.getParameterValues("roomAppId");
-        
+
         MeetingRoomAppVO appVo = new MeetingRoomAppVO();
 		appVo.setRoomAppId(roomAppId);
 		appVo.setDescription(request.getParameter("description"));
@@ -880,7 +886,7 @@ public class MeetingRoomController extends BaseController {
 			}
 			rendJavaScript(response, buffer.toString());
 		}
-		
+
 		return null;
 	}
 
@@ -903,11 +909,11 @@ public class MeetingRoomController extends BaseController {
 		String appType = request.getParameter("appType");
 		String meetingBeginDate = request.getParameter("meetingBeginDate");
 		String meetingEndDate = request.getParameter("meetingEndDate");
-		
+
 		List<MeetingRoomApp> appedList = new ArrayList<MeetingRoomApp>();
-		
+
 		User currentUser = AppContext.getCurrentUser();
-		
+
 		List<MeetingRoom> list = this.meetingRoomManager.getMyCanAppRoomList(currentUser, sortType, null, null);
 		if(Strings.isNotEmpty(list)) {
 			List<Long> meetingroomList = new ArrayList<Long>();
@@ -917,19 +923,19 @@ public class MeetingRoomController extends BaseController {
 			appedList = this.meetingRoomManager.getUsedRoomAppListByDate(DateUtil.parse(timepams), meetingroomList);
 		}
 		String mtRoom = MeetingRoomHelper.meetingroomToJson(list);
-		
+
 		String jsonMt = MeetingRoomHelper.meetingroomAppToJson(appedList, meetingId, AppContext.currentUserId(), action);
-		
+
 		String returnMr = "null";
 		String oldRoomAppId = "null";
 		String[] returnMrs = Strings.isBlank(returnMrStr) ? null : returnMrStr.split(",",-1);//全部被分割成数组
 		if(returnMrs!=null && returnMrs.length > 3 && Strings.isNotBlank(returnMrs[1]) && Strings.isNotBlank(returnMrs[2])) {
-			oldRoomAppId = "\""+returnMrs[3] + "\""; 
-			
+			oldRoomAppId = "\""+returnMrs[3] + "\"";
+
 			mav.addObject("meetingRoom", returnMrs[0]);
 			mav.addObject("startDate", returnMrs[1]);
 			mav.addObject("endDate", returnMrs[2]);
-			
+
 			StringBuilder buffer = new StringBuilder();
 			buffer.append("[");
 			buffer.append("{");
@@ -941,7 +947,7 @@ public class MeetingRoomController extends BaseController {
 			buffer.append("]");
 			returnMr = buffer.toString();
 		}
-		
+
 		mav.addObject("mtRoom", mtRoom);
 		mav.addObject("jsonMt", jsonMt);
 		mav.addObject("needApp", needApp);
@@ -951,35 +957,35 @@ public class MeetingRoomController extends BaseController {
 		mav.addObject("meetId", meetingId);
 		mav.addObject("appType", appType);
 		mav.addObject("periodicityId", periodicityId);
-		
+
 		//<会议室ID,名称+是否需要审核>(表单触发会议，选择会议室时，需要获取到会议室名称）
 		Map<String, String> meetingRoomNameList = new HashMap<String, String>();
 		for (MeetingRoom mt : list){
 			meetingRoomNameList.put(String.valueOf(mt.getId()), mt.getName() + "," + mt.getNeedApp());
 		}
 		mav.addObject("meetingRoomNameList", JSONUtil.toJSONString(meetingRoomNameList));
-		
+
 		//这个日期字符串，需要在jsp中转为js日期对象(注意这里的格式：yyyy/MM/dd HH:mm，这样js通过 new Date(str)才能转成功)
 		mav.addObject("newDate", Datetimes.format(new Date(),DateFormatEnum.yyyyMMddHHmm2.key()));
 		//传递会议室看板中开始结束时间
 		mav.addObject("meetingBeginDate", meetingBeginDate);
 		mav.addObject("meetingEndDate", meetingEndDate);
-		
+
 		return mav;
 	}
-	
+
 	public ModelAndView mtroomAjax(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView("meetingroom/mtroom");
 		String action = Strings.toHTML(request.getParameter("action"));//判断是增加还是修改(create新增,edit修改)
-		Long meetingId = Strings.isBlank(request.getParameter("meetingId")) ? -1L : Long.parseLong(Strings.toHTML(request.getParameter("meetingId"))); 
+		Long meetingId = Strings.isBlank(request.getParameter("meetingId")) ? -1L : Long.parseLong(Strings.toHTML(request.getParameter("meetingId")));
 		if("edit".equals(action)) {//如果是修改,则获取会议的ID
 			mav.addObject("meetId", meetingId);
 		}
 		int sortType = Strings.isBlank(request.getParameter("sort")) ? RoomSortByEnum.name.key() : Integer.parseInt(Strings.escapeJavascript(request.getParameter("needApp")));
 		String timepams = Strings.isBlank(request.getParameter("timepams")) ? DateUtil.get19DateAndTime() : Strings.escapeJavascript(request.getParameter("timepams"));
-		
+
 		List<MeetingRoomApp> appedList = new ArrayList<MeetingRoomApp>();
-		
+
 		List<MeetingRoom> list = this.meetingRoomManager.getMyCanAppRoomList(AppContext.getCurrentUser(), sortType, null, null);
 		if(Strings.isNotEmpty(list)) {
 			List<Long> meetingroomList = new ArrayList<Long>();
@@ -988,12 +994,12 @@ public class MeetingRoomController extends BaseController {
 			}
 			appedList = this.meetingRoomManager.getUsedRoomAppListByDate(DateUtil.parse(timepams), meetingroomList);
 		}
-		
+
 		String jsonMt = MeetingRoomHelper.meetingroomAppToJson(appedList, meetingId, AppContext.currentUserId(), action);
-		
+
 		//json字符串中文乱码
-		response.setHeader("Cache-Control", "no-cache"); 
-		response.setContentType("text/json;charset=UTF-8"); 
+		response.setHeader("Cache-Control", "no-cache");
+		response.setContentType("text/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println(jsonMt);
 		out.close();
@@ -1013,34 +1019,34 @@ public class MeetingRoomController extends BaseController {
 		String meetingBeginDate = request.getParameter("meetingBeginDate");
 		String meetingEndDate = request.getParameter("meetingEndDate");
 		String returnMrStr = request.getParameter("returnMr");//获取返回的记录
-		
+
 		MeetingVideoManager meetingVideoManager = meetingApplicationHandler.getMeetingVideoHandler();
 		if(meetingVideoManager!=null) {
 			Map<String,Object> param = new HashMap<String,Object>();
 			param.put("bmTime", DateUtil.toDate(timepams, DateFormatEnum.yyyyMMdd.key()).getTime());
-			
+
 			List<Map<String, Object>> videoRoomDetail = meetingVideoManager.getVideoInfo(param);
-			
+
 			String mtRoom = meetingApplicationHandler.meetingroomToJson(videoRoomDetail);
 			String jsonMt = meetingApplicationHandler.meetingroomAppToJson(videoRoomDetail);
-			
+
 			Map<String, String> meetingRoomNameList = meetingApplicationHandler.getMeetingroomName(videoRoomDetail);
-			
+
 			mav.addObject("mtRoom", mtRoom);
 			mav.addObject("jsonMt", jsonMt);
 			mav.addObject("meetingRoomNameList", JSONUtil.toJSONString(meetingRoomNameList));
 		}
-		
+
 		String returnMr = "null";
 		String oldRoomAppId = "null";//视频会议室申请ID
 		String[] returnMrs = Strings.isBlank(returnMrStr) ? null : returnMrStr.split(",",-1);//全部被分割成数组
 		if(returnMrs!=null && returnMrs.length > 3 && Strings.isNotBlank(returnMrs[1]) && Strings.isNotBlank(returnMrs[2])) {
-			oldRoomAppId = "\""+returnMrs[3] + "\""; 
-			
+			oldRoomAppId = "\""+returnMrs[3] + "\"";
+
 			mav.addObject("meetingRoom", returnMrs[0]);
 			mav.addObject("startDate", returnMrs[1]);
 			mav.addObject("endDate", returnMrs[2]);
-			
+
 			StringBuilder buffer = new StringBuilder();
 			buffer.append("[");
 			buffer.append("{");
@@ -1052,7 +1058,7 @@ public class MeetingRoomController extends BaseController {
 			buffer.append("]");
 			returnMr = buffer.toString();
 		}
-		
+
 		mav.addObject("needApp", needApp);
 		mav.addObject("action", action);
 		mav.addObject("meetId", meetingId);
@@ -1063,40 +1069,40 @@ public class MeetingRoomController extends BaseController {
 			oldRoomAppId = "-1";
 		}
 		mav.addObject("oldRoomAppId", oldRoomAppId);
-		
+
 		//这个日期字符串，需要在jsp中转为js日期对象(注意这里的格式：yyyy/MM/dd HH:mm，这样js通过 new Date(str)才能转成功)
 		mav.addObject("newDate", Datetimes.format(new Date(),DateFormatEnum.yyyyMMddHHmm2.key()));
 		//传递会议室看板中开始结束时间
 		mav.addObject("meetingBeginDate", meetingBeginDate);
 		mav.addObject("meetingEndDate", meetingEndDate);
-		
+
 		return mav;
 	}
-	
+
 	public ModelAndView videoMtroomAjax(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView("meetingroom/mtroom");
 		String action = Strings.toHTML(request.getParameter("action"));//判断是增加还是修改(create新增,edit修改)
-		Long meetingId = Strings.isBlank(request.getParameter("meetingId")) ? -1L : Long.parseLong(Strings.toHTML(request.getParameter("meetingId"))); 
+		Long meetingId = Strings.isBlank(request.getParameter("meetingId")) ? -1L : Long.parseLong(Strings.toHTML(request.getParameter("meetingId")));
 		if("edit".equals(action)) {//如果是修改,则获取会议的ID
 			mav.addObject("meetId", meetingId);
 		}
 		int sortType = Strings.isBlank(request.getParameter("sort")) ? RoomSortByEnum.name.key() : Integer.parseInt(Strings.escapeJavascript(request.getParameter("needApp")));
 		String timepams = Strings.isBlank(request.getParameter("timepams")) ? DateUtil.get19DateAndTime() : Strings.escapeJavascript(request.getParameter("timepams"));
-		
+
 		String jsonMt = "";
 		MeetingVideoManager meetingVideoManager = meetingApplicationHandler.getMeetingVideoHandler();
 		if(meetingVideoManager!=null) {
 			Map<String,Object> param = new HashMap<String,Object>();
 			param.put("bmTime", DateUtil.toDate(timepams, DateFormatEnum.yyyyMMdd.key()).getTime());
-			
+
 			List<Map<String, Object>> videoRoomDetail = meetingVideoManager.getVideoInfo(param);
-			
+
 			jsonMt = meetingApplicationHandler.meetingroomAppToJson(videoRoomDetail);
-			
+
 		}
 		//json字符串中文乱码
-		response.setHeader("Cache-Control", "no-cache"); 
-		response.setContentType("text/json;charset=UTF-8"); 
+		response.setHeader("Cache-Control", "no-cache");
+		response.setContentType("text/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println(jsonMt);
 		out.close();
@@ -1104,7 +1110,7 @@ public class MeetingRoomController extends BaseController {
 	}
 	public ModelAndView checkVideoRoomUsed(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String flag = "y";
-		
+
 		String roomId = Strings.isBlank(request.getParameter("roomId")) ? "-1" : request.getParameter("roomId");
 		String oldRoomAppId = Strings.isBlank(request.getParameter("oldRoomAppId")) ? "-1" : request.getParameter("oldRoomAppId");
 		String sDate = request.getParameter("startDate");
@@ -1115,18 +1121,18 @@ public class MeetingRoomController extends BaseController {
 		if(Strings.isNotBlank(eDate) && eDate.length() < 17) {
 			eDate += ":00";
 		}
-		
+
 		MeetingVideoManager meetingVideoManager = meetingApplicationHandler.getMeetingVideoHandler();
 		if(meetingVideoManager!=null) {
 			Long startDate = DateUtil.toDate(sDate, DateFormatEnum.yyyyMMddHHmmss.key()).getTime();
 			Long endDate = DateUtil.toDate(eDate, DateFormatEnum.yyyyMMddHHmmss.key()).getTime();
-			
+
 			Map<String,Object> param = new HashMap<String,Object>();
 			param.put("key", oldRoomAppId);
 			param.put("bmAccount", roomId);
 			param.put("startTime", startDate);
 			param.put("endTime", endDate);
-			
+
 			boolean isRepeat = meetingVideoManager.checkTimeStatus(param);
 			if (!isRepeat) {
 				flag = "n";
@@ -1135,10 +1141,10 @@ public class MeetingRoomController extends BaseController {
 		PrintWriter out = response.getWriter();
 		out.println(flag);
 		out.close();
-		
+
 		return null;
 	}
-	
+
 	/**
 	 * ajax方式获取会议室
 	 * @param request
@@ -1149,24 +1155,24 @@ public class MeetingRoomController extends BaseController {
 	public ModelAndView getAllMeetingRoomAjax(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//RoomSortByEnum {createTime(1),name(2);}
 		int sortType = Integer.valueOf(Strings.toHTML(request.getParameter("sort")));
-		
+
 		User currentUser = AppContext.getCurrentUser();
 		request.setCharacterEncoding("UTF-8");
-		
+
 		String roomName = request.getParameter("roomName");
 		List<MeetingRoom> list = this.meetingRoomManager.getMyCanAppRoomList(currentUser, sortType, roomName, null);
 
 		String mtRoom = MeetingRoomHelper.meetingroomToJson(list);
-		
+
 		response.setContentType("application/text;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
 	    PrintWriter out = response.getWriter();
         out.println(mtRoom);
         out.close();
-        
+
         return null;
 	}
-	
+
 	/**
 	 * 点击会议室获取会议室信息
 	 * @param request
@@ -1177,7 +1183,7 @@ public class MeetingRoomController extends BaseController {
 	public ModelAndView getMeetingRoomById(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView("meetingroom/mtroominfo");
 		Long roomId = Strings.isBlank(request.getParameter("roomId")) ? -1L : Long.parseLong(request.getParameter("roomId"));
-		
+
 		MeetingRoom meetingRoom = meetingRoomManager.getRoomById(roomId);
 		List<Attachment> attatchmentsC = attachmentManager.getByReference(meetingRoom.getId(), RoomAttEnum.attachment.key());
 		if(attatchmentsC.size()>0){
@@ -1193,7 +1199,7 @@ public class MeetingRoomController extends BaseController {
 		mav.addObject("meetingRoom", meetingRoom);
 		return mav;
 	}
-	
+
 	/**
 	 * 点击确定时将ID值转化成会议室名称
 	 * @param request
@@ -1202,25 +1208,25 @@ public class MeetingRoomController extends BaseController {
 	 * @throws Exception
 	 */
 	public ModelAndView getMeetingRoomByIdAjax(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        
+
 		Long roomId = Strings.isBlank(request.getParameter("roomId")) ? -1L : Long.parseLong(Strings.toHTML(request.getParameter("roomId")));
 		MeetingRoom room = this.meetingRoomManager.getRoomById(roomId);
 		String mtRoom = null;
 		if (room != null) {
 			mtRoom = room.getId() + "," + room.getName()+","+room.getNeedApp();
 		}
-		
+
 		response.setCharacterEncoding("UTF-8");
-		PrintWriter out = response.getWriter(); 
+		PrintWriter out = response.getWriter();
 		out.println(mtRoom);
 		out.close();
-		
+
 		return null;
 	}
-	
+
 	public ModelAndView checkRoomUsed(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String flag = "y";
-		
+
 		Long roomId = Strings.isBlank(request.getParameter("roomId")) ? -1L : Long.parseLong(request.getParameter("roomId"));
 		Long meetingId = Strings.isBlank(request.getParameter("meetingId")) ? -1L : Long.parseLong(request.getParameter("meetingId"));
 		Long periodicityId = Strings.isBlank(request.getParameter("periodicityId")) ? -1L : Long.parseLong(request.getParameter("periodicityId"));
@@ -1234,22 +1240,22 @@ public class MeetingRoomController extends BaseController {
 		}
 		Date startDate = DateUtil.parse(sDate, DateFormatEnum.yyyyMMddHHmmss.key());
 		Date endDate = DateUtil.parse(eDate, DateFormatEnum.yyyyMMddHHmmss.key());
-		
+
 		boolean isRepeat = this.meetingValidationManager.checkRoomUsed(roomId, startDate, endDate, meetingId, null, periodicityId);
 		if (!isRepeat) {
 			flag = "n";
 		}
-		
+
 		PrintWriter out = response.getWriter();
 		out.println(flag);
 		out.close();
-		
+
 		return null;
 	}
-	
+
 	/**
 	 * 会议室管理主框架页面
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @return 转到index.jsp页面
@@ -1261,7 +1267,7 @@ public class MeetingRoomController extends BaseController {
 			return refreshWorkspace();
 		}
 		boolean isAdmin = MeetingRoomRoleUtil.isMeetingRoomAdminRole();
-		
+
 		ModelAndView mav = new ModelAndView("meetingroom/index");
 		mav.addObject("isAdmin", isAdmin);
 		if (isAdmin) {
@@ -1269,7 +1275,7 @@ public class MeetingRoomController extends BaseController {
 		} else {
 			mav.addObject("top", 1);
 		}
-		
+
 		//这一段是给报表的，进入时默认回填值
 		Date now = Datetimes.getTodayLastTime();
 		Date firstDay = Datetimes.getFirstDayInYear(now);
@@ -1277,13 +1283,13 @@ public class MeetingRoomController extends BaseController {
 		Map<String, Object> defaultMap = new HashMap<String, Object>();
 		defaultMap.put("meeting_room_app.startDatetime", defaultValues);
 		mav.addObject("reportFilterValue", URLEncoder.encode(JSONUtil.toJSONString(defaultMap), "utf-8"));
-		
+
 		return mav;
 	}
 
 	/**
 	 * 新建会议室主框架页面
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @return 转到add.jsp页面
@@ -1297,7 +1303,7 @@ public class MeetingRoomController extends BaseController {
 
 	/**
 	 * 会议室管理的左侧页面
-	 * 
+	 *
 	 * @return 转到meetListLeft.jsp页面
 	 * @throws Exception
 	 */
@@ -1311,7 +1317,7 @@ public class MeetingRoomController extends BaseController {
 
 	/**
 	 * 会议室申请主框架页面
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @return 转到app.jsp页面
@@ -1324,7 +1330,7 @@ public class MeetingRoomController extends BaseController {
 
 	/**
 	 * 会议室审批主框架页面
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @return 转到perm.jsp页面
@@ -1338,7 +1344,7 @@ public class MeetingRoomController extends BaseController {
 
 	/**
 	 * 会议室预定撤销主框架页面
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @return 转到cancel.jsp页面
@@ -1355,7 +1361,7 @@ public class MeetingRoomController extends BaseController {
 
 	/**
 	 * 会议室统计主框架页面
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @return 转到total.jsp页面
@@ -1368,7 +1374,7 @@ public class MeetingRoomController extends BaseController {
 
 	/**
 	 * 会议室使用情况查看主框架页面
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 * @return 转到view.jsp页面
@@ -1378,7 +1384,7 @@ public class MeetingRoomController extends BaseController {
 		ModelAndView mav = new ModelAndView("meetingroom/view");
 		return mav;
 	}
-	
+
 	private String getCloseWindowFunction() {
 		StringBuilder buffer = new StringBuilder();
 		buffer.append("function closeWindow() {");
@@ -1400,7 +1406,7 @@ public class MeetingRoomController extends BaseController {
         buffer.append("}");
 		return buffer.toString();
 	}
-	
+
 	/****************************** 依赖注入 **********************************/
 	public void setMeetingRoomManager(MeetingRoomManager meetingRoomManager) {
 		this.meetingRoomManager = meetingRoomManager;
@@ -1421,11 +1427,11 @@ public class MeetingRoomController extends BaseController {
 	public void setMeetingManager(MeetingManager meetingManager) {
 		this.meetingManager = meetingManager;
 	}
-	
+
     public void setMobileMessageManager(MobileMessageManager mobileMessageManager) {
 		this.mobileMessageManager = mobileMessageManager;
 	}
-    
+
 	public MeetingResourcesManager getMeetingResourcesManager() {
 		return meetingResourcesManager;
 	}
@@ -1433,7 +1439,7 @@ public class MeetingRoomController extends BaseController {
 	public void setMeetingResourcesManager(MeetingResourcesManager meetingResourcesManager) {
 		this.meetingResourcesManager = meetingResourcesManager;
 	}
-	
+
 	public MeetingLockManager getMeetingLockManager() {
 		return meetingLockManager;
 	}
@@ -1457,7 +1463,7 @@ public class MeetingRoomController extends BaseController {
 	public void setFileManager(FileManager fileManager) {
 		this.fileManager = fileManager;
 	}
-	
+
 	public void setConfigManager(ConfigManager configManager) {
 		this.configManager = configManager;
 	}
@@ -1489,7 +1495,7 @@ public class MeetingRoomController extends BaseController {
 		mav.addObject("userList", userList);
 		return mav;
 	}
-	
+
 	/**
 	 * 执行会议室申请催办
 	 * @param request
@@ -1504,7 +1510,7 @@ public class MeetingRoomController extends BaseController {
 		for (String memberId : memberIdArrays) {
 			memberIds.add(Long.parseLong(memberId));
 		}
-		
+
 		String content = request.getParameter("remindContent");
 		String sendPhoneMessage = request.getParameter("sendPhoneMessage");
 		String roomAppId = request.getParameter("roomAppId");

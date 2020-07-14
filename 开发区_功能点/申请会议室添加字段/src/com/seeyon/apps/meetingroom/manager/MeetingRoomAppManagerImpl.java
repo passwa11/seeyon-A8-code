@@ -98,10 +98,17 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
 		roomApp.setUsedStatus(RoomAppUsedStateEnum.normal.key());
 		roomApp.setAuditingId(auditingId);
 		roomApp.setIdIfNew();
+//		zhou
+		roomApp.setSqrdh(appVo.getParameterMap().get("sqrdh"));
+		roomApp.setSfygwhldcj(Integer.parseInt(appVo.getParameterMap().get("sfygwhldcj")));
+		roomApp.setHcyq(appVo.getParameterMap().get("hcyq"));
+//		zhou
+
 		if(roomApp.getPerId() == null) {
 			roomApp.setPerId(currentUser.getId());
 			roomApp.setDepartmentId(currentUser.getDepartmentId());
 		}
+
 		appVo.setMeetingRoomApp(roomApp);
 
 		/** 7、保存会议室申请记录  */
