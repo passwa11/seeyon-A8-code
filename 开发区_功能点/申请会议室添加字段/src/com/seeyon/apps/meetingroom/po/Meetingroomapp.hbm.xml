@@ -51,5 +51,14 @@
         <property name="appDatetime" type="java.util.Date">
             <column name="appDatetime" length="0" />
         </property>
+        <property name="sqrdh" type="java.lang.String">
+            <column name="sqrdh"  />
+        </property>
+        <property name="sfygwhldcj" type="java.lang.Integer">
+            <column name="sfygwhldcj"  />
+        </property>
+        <property name="hcyq" type="java.lang.String">
+            <column name="hcyq"  />
+        </property>
     </class>
 </hibernate-mapping>

@@ -16,6 +16,12 @@ public class MeetingRoomApp extends BasePO implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = -7889117136357249812L;
 
+	//	zhou:添加
+	private String sqrdh;
+	private Integer sfygwhldcj;
+	private String hcyq;
+	//	zhou:添加
+
 	/** 数据库主键UUID */
     private Long id;
 
@@ -76,6 +82,30 @@ public class MeetingRoomApp extends BasePO implements java.io.Serializable {
     private String proxyName;
 
     private boolean isFirstNotDisplay = false; //是否首页不显示(周期性会议只显示其中最近的一次会议)
+
+	public String getSqrdh() {
+		return sqrdh;
+	}
+
+	public void setSqrdh(String sqrdh) {
+		this.sqrdh = sqrdh;
+	}
+
+	public Integer getSfygwhldcj() {
+		return sfygwhldcj;
+	}
+
+	public void setSfygwhldcj(Integer sfygwhldcj) {
+		this.sfygwhldcj = sfygwhldcj;
+	}
+
+	public String getHcyq() {
+		return hcyq;
+	}
+
+	public void setHcyq(String hcyq) {
+		this.hcyq = hcyq;
+	}
 
 	public Long getId() {
 		return id;
