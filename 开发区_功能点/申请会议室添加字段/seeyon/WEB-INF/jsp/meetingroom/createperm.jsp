@@ -158,7 +158,22 @@ function _submitCallback(errorMsg) {
 		<input type="text" name="asset_name" inputName="<fmt:message key='mr.label.appDept'/>" class="input-300px" value="${v3x:toHTML(departmentName) }" readonly />
 	</td>
 </tr>
-
+	<tr>
+		<td width="12%" nowrap="nowrap" class="bg-gray">申请人电话:</td>
+		<c:set var="isProxy" value="${proxy?'proxy-true':'' }"/>
+		<td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
+			<input type="text" name="asset_name" inputName="申请人电话" class="input-300px" value="${v3x:toHTML(v3x:showMemberNameOnly(bean.meetingRoomApp.sqrdh))}" readonly />
+		</td>
+		<td width="12%" nowrap="nowrap" class="bg-gray">是否有管委会领导参加:</td>
+		<td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
+			<div class="common_radio_box clearfix">
+				<label for="radio11" class="margin_r_10 hand">
+					<input type="radio" value="1" id="radio11" name="sfygwhldcj" class="radio_com" ${bean.meetingRoomApp.sfygwhldcj==1?'checked':''} disabled>是</label>
+				<label for="radio22" class="margin_r_10 hand">
+					<input type="radio" value="0" id="radio22" name="sfygwhldcj" class="radio_com" ${bean.meetingRoomApp.sfygwhldcj==0?'checked':''} disabled>否</label>
+			</div>
+		</td>
+	</tr>
 <tr>
 	<td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.startDatetime'/>:</td>
 	<td width="35%" nowrap="nowrap" class="new-column">
