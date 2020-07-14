@@ -1443,7 +1443,7 @@
                     </td>
                     <td><fmt:message key='mt.label.booked'/></td>
                     <td width="55">
-                        <div style="width:20px;height:20px;margin:0 10px 0 25px; top:6px; background-color:#66CFBE; border:1px solid #000;"></div>
+                        <div style="width:20px;height:20px;margin:0 10px 0 25px; top:6px; background-color:#34f4ab; border:1px solid #34f4ab;"></div>
                     </td>
                     <td><fmt:message key='mt.label.application'/></td>
                 </tr>
