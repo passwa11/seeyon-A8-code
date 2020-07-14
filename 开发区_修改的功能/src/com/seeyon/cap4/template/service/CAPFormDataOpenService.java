@@ -366,6 +366,47 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                     FormTableFormmainDataVO f = formDataVO.getTableInfo().getFormmain();
                     String tableName = f.getTableName();
                     String id = formDataParamBean.getModuleId() + "";
+                    String fu = configTools.getString("table_formmain_parent");
+                    String isRead = configTools.getString("isRead");
+
+                    String fuCol = configTools.getString("table_formmain_readColumn");
+//                    当点击会务通知列表是修改会务通知主表阅读字段的状态为已读
+                    String huiWu = "select " + fuCol + " from " + fu + " where id=" + id;
+                    if (fu.equals(tableName)) {
+                        Connection connection = JDBCAgent.getRawConnection();
+                        PreparedStatement ps = null;
+                        ResultSet rs = null;
+                        try {
+                            ps = connection.prepareStatement(huiWu);
+                            rs = ps.executeQuery();
+                            while (rs.next()) {
+                                String fieldVal = rs.getString(fuCol);
+                                String updateSql = "update " + fu + " set " + fuCol + " = " + isRead + " where id= " + id;
+                                if (null == fieldVal) {
+                                    ps = connection.prepareStatement(updateSql);
+                                    ps.executeUpdate();
+                                } else {
+                                    if (!fieldVal.equals(isRead)) {
+                                        ps = connection.prepareStatement(updateSql);
+                                        ps.executeUpdate();
+                                    }
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        } finally {
+                            if (null != ps) {
+                                ps.close();
+                            }
+                            if (null != rs) {
+                                rs.close();
+                            }
+                            if (null != connection) {
+                                connection.close();
+                            }
+                        }
+                    }
+
                     String tableInfo = configTools.getString("table_info");
                     if (tableInfo.equals(tableName)) {
                         String columnName = configTools.getString("table_info_column");
@@ -399,22 +440,21 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                                         field0009 = rs.getString("field0009");
                                         field0012 = rs.getString("field0012");
                                     }
-                                    String fu = configTools.getString("table_formmain_parent");
+
                                     String son = configTools.getString("table_formson_son");
                                     String formsonReciverTime = configTools.getString("formson_reciverTime");
                                     String formsonUserId = configTools.getString("formson_userId");
                                     String querySendSonId = "select f24.id from  " + fu + " f23," + son + " f24 where f23.id=f24.formmain_id and f23.field0014='" + field0012 + "' and f24." + formsonUserId + "='" + field0009 + "'";
                                     ps = connection.prepareStatement(querySendSonId);
                                     rs = ps.executeQuery();
-                                    String isRead=configTools.getString("isRead");
-                                    String sonIsRead=configTools.getString("formson_isRead");
-                                    String updateSonSql = "update " + son + " set " + formsonReciverTime + " = to_date('" + dateTime + "','yyyy-MM-dd HH24:mi:ss') ,"+sonIsRead+"='"+isRead+"' where id=?";
+                                    String sonIsRead = configTools.getString("formson_isRead");
+                                    String updateSonSql = "update " + son + " set " + formsonReciverTime + " = to_date('" + dateTime + "','yyyy-MM-dd HH24:mi:ss') ," + sonIsRead + "='" + isRead + "' where id=?";
                                     String sonId = "";
                                     while (rs.next()) {
                                         sonId = rs.getString("id");
                                     }
-                                    ps=connection.prepareStatement(updateSonSql);
-                                    ps.setString(1,sonId);
+                                    ps = connection.prepareStatement(updateSonSql);
+                                    ps.setString(1, sonId);
                                     ps.executeUpdate();
                                 }
                             }
