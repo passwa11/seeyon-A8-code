@@ -6269,7 +6269,9 @@ ul.help-content{
 	background: url(../images/glossy/dhx_cal_event_line_bg.png) left top repeat-x;
 }
 .dhx_cal_event_line1{
-	background: url(../images/glossy/dhx_cal_event_line1_bg.png) repeat-x;
+	/*zhou:申请中改为绿色*/
+	/*background: url(../images/glossy/dhx_cal_event_line1_bg.png) repeat-x;*/
+	background: url(../images/glossy/dhx_cal_event_line1_b_green.png) repeat-x;
 }
 .dhx_cal_event_line2{
 	/*zhou:时间占用背景改成红色背景*/
