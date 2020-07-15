@@ -166,7 +166,7 @@
                 <td width="12%" nowrap="nowrap" class="bg-gray">申请人电话:</td>
                 <c:set var="isProxy" value="${proxy?'proxy-true':'' }"/>
                 <td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
-                    <input type="text" name="asset_name" inputName="申请人电话" class="input-300px" value="${v3x:toHTML(v3x:showMemberNameOnly(bean.meetingRoomApp.sqrdh))}" readonly/>
+                    <input type="text" name="asset_name" inputName="申请人电话" class="input-300px" value="${bean.meetingRoomApp.sqrdh}" readonly/>
                 </td>
                 <td width="12%" nowrap="nowrap" class="bg-gray">是否有管委会领导参加:</td>
                 <td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
