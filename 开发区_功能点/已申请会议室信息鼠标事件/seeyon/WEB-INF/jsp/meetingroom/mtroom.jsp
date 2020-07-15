@@ -167,10 +167,12 @@
         }
 
         /******************************** 初始化数据 start **************************************/
+        //zhou
         function testzfun(a){
             var b=$(a).attr("id");
-            
-            $("#"+b).html("ooooooooooooooo");
+            var a=b.split('_')[1];
+            $("#"+b).html("<span style='color: blue;'>ooooooooooooooo"+a+"</span>");
+
         }
 
         function init() {
