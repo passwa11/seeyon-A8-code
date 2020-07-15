@@ -37,7 +37,6 @@
 	}
 	var selectedDate = "";
 	function C(a) {
-		//zhou
 		//吧已经勾选好的保持起来，等渲染完后恢复
 		var _rooms = document.getElementsByName("autoSelectRoom");
 		var _selecedRoom;
@@ -83,7 +82,6 @@
 			}
 			scheduler._merge(h, {tr_className:"", style_height:"height:" + h.height + "px;", style_width:"width:" + (this.dx - 3) + "px;", td_className:"dhx_matrix_scell" + (scheduler.templates[this.name + "_scaley_class"](this.y_unit[e].key, this.y_unit[e].label, this) ? " " + scheduler.templates[this.name + "_scaley_class"](this.y_unit[e].key, this.y_unit[e].label, this) : ""), td_content:scheduler.templates[this.name + "_scale_label"](this.y_unit[e].key, this.y_unit[e].label, this.y_unit[e]), summ_width:"width:" + g + "px;", table_className:""});
 			var o = "";
-			//zhou
 			if (c[e] && this.render != "cell") {
 				c[e].sort(function (a, d) {
 					return a.start_date > d.start_date ? 1 : -1;
