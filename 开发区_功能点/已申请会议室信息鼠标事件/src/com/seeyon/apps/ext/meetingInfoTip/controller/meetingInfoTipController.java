@@ -28,14 +28,16 @@ public class meetingInfoTipController extends BaseController {
             ps = connection.prepareStatement(sql);
             ps.setString(1, id);
             rs = ps.executeQuery();
-            Map<String, String> m = new HashMap<>(16);
+            Map<String, String> m = new HashMap<>();
             while (rs.next()) {
                 m.put("sqr", rs.getString("username"));
                 m.put("deptname", rs.getString("deptname"));
-                String s = rs.getString("startdatetime");
-                String start = s.split(" ")[1].substring(0, s.lastIndexOf(":"));
-                String e = rs.getString("enddatetime");
-                String end = e.split(" ")[1].substring(0, e.lastIndexOf(":"));
+                String s1 = rs.getString("startdatetime");
+                String s = s1.split(" ")[1];
+                String start = s.substring(0, s.lastIndexOf(":"));
+                String e1 = rs.getString("enddatetime");
+                String e = e1.split(" ")[1];
+                String end = e.substring(0, e.lastIndexOf(":"));
                 m.put("time", start + "-" + end);
                 m.put("description", rs.getString("description"));
                 m.put("sqrdh", rs.getString("sqrdh"));
