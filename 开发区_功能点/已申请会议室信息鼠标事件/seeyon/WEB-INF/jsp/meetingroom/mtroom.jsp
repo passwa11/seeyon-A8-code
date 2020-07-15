@@ -168,11 +168,23 @@
 
         /******************************** 初始化数据 start **************************************/
         //zhou
-        function testzfun(a){
-            var b=$(a).attr("id");
-            var a=b.split('_')[1];
-            $("#"+b).html("<span style='color: blue;'>ooooooooooooooo"+a+"</span>");
-
+        function testzfun(a) {
+            var b = $(a).attr("id");
+            var ab = b.split('_')[1];
+            $.ajax({
+                type: "POST",
+                url: "/seeyon/ext/meetingInfoTip.do?method=index",
+                data: {id:ab+''},
+                dataType: "json",
+                success: function(res){
+                    var m=res.data;
+                    var b1 = $(a).attr("id");
+                    var html="";
+                    html += "申请人："+m.sqr+"；申请人电话："+ m.sqrdh+"；申请部门："+m.deptname+"；会议时间："+m.time+"；用途："+m.description;
+                    // $("#" + b1).html('<span style=\'color: blue;font-size: 14px;\'>' + html + '</span>');
+                    $("#" + b1).html('<p style=\'color: blue;font-size: 14px;\'>' + html + '</p>');
+                }
+            });
         }
 
         function init() {
@@ -468,9 +480,9 @@
 
             //鼠标放在上边提示的信息
             scheduler.templates.tooltip_text = function (b, d, c) {
-                console.log(b,'b');
-                console.log(d,'d');
-                console.log(c,'c');
+                console.log(b, 'b');
+                console.log(d, 'd');
+                console.log(c, 'c');
                 <%--var status = c.status;//鼠标放在上边就为隐藏表单赋值--%>
                 <%--if (status == 2 || status == null || "" == status || "undefined" == status) {--%>
                 <%--    //这里赋值是为了区分在删除的时候,是删除数据库还是删除刚新建的会议室--%>
@@ -1177,6 +1189,7 @@
                 /*
                 if(periodicityDates==""){
                     alert("
+
                 <fmt:message key='mt.alert.startTimeError'/>!");//开始时间不能小于系统当前时间
 			obj.checked = false;
 		    return false;
@@ -1450,7 +1463,7 @@
                     </td>
                     <td><fmt:message key='mt.label.leisure'/></td>
                     <td width="55">
-<%--                        zhou:已预订改成红色--%>
+                        <%--                        zhou:已预订改成红色--%>
                         <div style="width:20px;height:20px;margin:0 10px 0 25px; top:6px; background-color:#eb231b; border:1px solid #eb231b;"></div>
                     </td>
                     <td><fmt:message key='mt.label.booked'/></td>
