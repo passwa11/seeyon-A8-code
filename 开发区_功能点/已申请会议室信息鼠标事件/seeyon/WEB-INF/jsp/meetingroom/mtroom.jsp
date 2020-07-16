@@ -167,38 +167,6 @@
         }
 
         /******************************** 初始化数据 start **************************************/
-        //zhou
-        // function leaveFunc(a,w,le) {
-        //     var b1 = $(a).attr("id");
-        //     $("#" + b1).html('');
-        //     // var w = Number($(a).css('width').substr(0, $(a).css('width').indexOf('px'))) - 200;
-        //     // var left = Number($(a).css('left').substr(0, $(a).css('left').indexOf('px'))) + 100;
-        //     // $(a).css({'width': w + 'px'});
-        //     // $(a).css({'left': left + 'px'});
-        // }
-
-        // function testzfun(a) {
-        //     var b = $(a).attr("id");
-        //     var ab = b.split('_')[1];
-        //     $.ajax({
-        //         type: "POST",
-        //         url: "/seeyon/ext/meetingInfoTip.do?method=index",
-        //         data: {id: ab + ''},
-        //         dataType: "json",
-        //         success: function (res) {
-        //             var m = res.data;
-        //             var b1 = $(a).attr("id");
-        //             var html = "";
-        //             html += "申请人：" + m.sqr + "；申请人电话：" + m.sqrdh + "；申请部门：" + m.deptname + "；会议时间：" + m.time + "；用途：" + m.description;
-        //             // var w = Number($(a).css('width').substr(0, $(a).css('width').indexOf('px'))) + 200;
-        //             // var left = Number($(a).css('left').substr(0, $(a).css('left').indexOf('px'))) - 100;
-        //             // $(a).css({'width': w + 'px'});
-        //             // $(a).css({'left': left + 'px'});
-        //             $("#" + b1).html('<span style=\'color: blue;font-size: 14px;\'>' + html + '</span>');
-        //         }
-        //     });
-        // }
-
         function init() {
             if (sections == "1") {
                 //alert("<fmt:message key='mr.alert.addroom'/>!");
