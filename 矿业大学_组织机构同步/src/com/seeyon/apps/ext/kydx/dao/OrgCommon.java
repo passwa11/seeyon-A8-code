@@ -12,6 +12,7 @@ public class OrgCommon {
 
     private String orgAccountId = "";
     private String orgPostId = "";
+    private String orgLevelId = "";
 
     private String durl = "";
     private String dusername = "";
@@ -27,6 +28,7 @@ public class OrgCommon {
         configTools = new ReadConfigTools();
         orgAccountId = configTools.getString("orgAccountId");
         orgPostId = configTools.getString("orgPostId");
+        orgLevelId = configTools.getString("orgLevelId");
 
         durl = configTools.getString("midDataLink.url");
         dusername = configTools.getString("midDataLink.username");
@@ -37,6 +39,14 @@ public class OrgCommon {
         restUsername = configTools.getString("restInfo.username");
         restPwd = configTools.getString("restInfo.password");
 
+    }
+
+    public String getOrgLevelId() {
+        return orgLevelId;
+    }
+
+    public void setOrgLevelId(String orgLevelId) {
+        this.orgLevelId = orgLevelId;
     }
 
     public String getRestUrl() {
