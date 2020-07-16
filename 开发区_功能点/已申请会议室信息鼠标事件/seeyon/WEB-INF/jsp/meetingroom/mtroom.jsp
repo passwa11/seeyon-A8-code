@@ -168,24 +168,36 @@
 
         /******************************** 初始化数据 start **************************************/
         //zhou
-        function testzfun(a) {
-            var b = $(a).attr("id");
-            var ab = b.split('_')[1];
-            $.ajax({
-                type: "POST",
-                url: "/seeyon/ext/meetingInfoTip.do?method=index",
-                data: {id:ab+''},
-                dataType: "json",
-                success: function(res){
-                    var m=res.data;
-                    var b1 = $(a).attr("id");
-                    var html="";
-                    html += "申请人："+m.sqr+"；申请人电话："+ m.sqrdh+"；申请部门："+m.deptname+"；会议时间："+m.time+"；用途："+m.description;
-                    // $("#" + b1).html('<span style=\'color: blue;font-size: 14px;\'>' + html + '</span>');
-                    $("#" + b1).html('<p style=\'color: blue;font-size: 14px;\'>' + html + '</p>');
-                }
-            });
-        }
+        // function leaveFunc(a,w,le) {
+        //     var b1 = $(a).attr("id");
+        //     $("#" + b1).html('');
+        //     // var w = Number($(a).css('width').substr(0, $(a).css('width').indexOf('px'))) - 200;
+        //     // var left = Number($(a).css('left').substr(0, $(a).css('left').indexOf('px'))) + 100;
+        //     // $(a).css({'width': w + 'px'});
+        //     // $(a).css({'left': left + 'px'});
+        // }
+
+        // function testzfun(a) {
+        //     var b = $(a).attr("id");
+        //     var ab = b.split('_')[1];
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "/seeyon/ext/meetingInfoTip.do?method=index",
+        //         data: {id: ab + ''},
+        //         dataType: "json",
+        //         success: function (res) {
+        //             var m = res.data;
+        //             var b1 = $(a).attr("id");
+        //             var html = "";
+        //             html += "申请人：" + m.sqr + "；申请人电话：" + m.sqrdh + "；申请部门：" + m.deptname + "；会议时间：" + m.time + "；用途：" + m.description;
+        //             // var w = Number($(a).css('width').substr(0, $(a).css('width').indexOf('px'))) + 200;
+        //             // var left = Number($(a).css('left').substr(0, $(a).css('left').indexOf('px'))) - 100;
+        //             // $(a).css({'width': w + 'px'});
+        //             // $(a).css({'left': left + 'px'});
+        //             $("#" + b1).html('<span style=\'color: blue;font-size: 14px;\'>' + html + '</span>');
+        //         }
+        //     });
+        // }
 
         function init() {
             if (sections == "1") {
@@ -480,35 +492,35 @@
 
             //鼠标放在上边提示的信息
             scheduler.templates.tooltip_text = function (b, d, c) {
-                console.log(b, 'b');
-                console.log(d, 'd');
-                console.log(c, 'c');
-                <%--var status = c.status;//鼠标放在上边就为隐藏表单赋值--%>
-                <%--if (status == 2 || status == null || "" == status || "undefined" == status) {--%>
-                <%--    //这里赋值是为了区分在删除的时候,是删除数据库还是删除刚新建的会议室--%>
-                <%--    document.getElementById("mtid").value = c.mtappid;--%>
-                <%--    document.getElementById("boxid").value = c.id;--%>
-                <%--}--%>
-                <%--var startdate = scheduler.templates.tooltip_date_format(b);--%>
-                <%--var enddate = scheduler.templates.tooltip_date_format(d);--%>
-                <%--var startdates = startdate.split(" ");--%>
-                <%--var enddates = enddate.split(" ");--%>
-                <%--var time = '';--%>
-                <%--if (startdates[0] == enddates[0]) {--%>
-                <%--    time = startdates[1] + "—" + enddates[1];--%>
-                <%--} else {--%>
-                <%--    time = startdate + "—" + enddate;--%>
-                <%--}--%>
-                <%--var text = c.text_hid;--%>
-                <%--var tooltipMsg = "<p class='tooltip_title'><fmt:message key='mt.meetingRoom.useinfo'/></p><div>";--%>
-                <%--if (null != c.createUserName && "" != c.createUserName && "undefined" != c.createUserName) {--%>
-                <%--    tooltipMsg += '<div class="tooltip_line"><b><fmt:message key="mt.mtMeeting.app.createUser"/>:</b>&nbsp;&nbsp;<span onclick="showV3XMemberCardWithOutButton(\'' + c.perId + '\')" >' + c.createUserName + '</span></div>';--%>
-                <%--}--%>
-                <%--tooltipMsg += "<div class='tooltip_line'><b><fmt:message key='mt.label.meetingtime'/>:</b> " + time + "</div>";--%>
+                var status = c.status;//鼠标放在上边就为隐藏表单赋值
+                if (status == 2 || status == null || "" == status || "undefined" == status) {
+                    //这里赋值是为了区分在删除的时候,是删除数据库还是删除刚新建的会议室
+                    document.getElementById("mtid").value = c.mtappid;
+                    document.getElementById("boxid").value = c.id;
+                }
+                var startdate = scheduler.templates.tooltip_date_format(b);
+                var enddate = scheduler.templates.tooltip_date_format(d);
+                var startdates = startdate.split(" ");
+                var enddates = enddate.split(" ");
+                var time = '';
+                if (startdates[0] == enddates[0]) {
+                    time = startdates[1] + "—" + enddates[1];
+                } else {
+                    time = startdate + "—" + enddate;
+                }
+                var text = c.text_hid;
+                var tooltipMsg = "<p class='tooltip_title'><fmt:message key='mt.meetingRoom.useinfo'/></p><div>";
+                if (null != c.createUserName && "" != c.createUserName && "undefined" != c.createUserName) {
+                    tooltipMsg += '<div class="tooltip_line"><b><fmt:message key="mt.mtMeeting.app.createUser"/>:</b>&nbsp;&nbsp;<span onclick="showV3XMemberCardWithOutButton(\'' + c.perId + '\')" >' + c.createUserName + '</span></div>';
+                }
+                //zhou
+                tooltipMsg += "<div class='tooltip_line'><b>申请部门:</b> " + c.sqDeptname + "</div>";
+                tooltipMsg += "<div class='tooltip_line'><b>联系电话:</b> " + c.sqrdh + "</div>";
+                tooltipMsg += "<div class='tooltip_line'><b><fmt:message key='mt.label.meetingtime'/>:</b> " + time + "</div>";
 
-                <%--var description = c.description != undefined ? c.description : "";--%>
-                <%--tooltipMsg += "<div class='tooltip_line' style='margin-top:5px;line-height:1.5;height:auto'><b><fmt:message key='mr.label.usefor'/>:</b> " + description + "</div></div>";--%>
-                <%--return tooltipMsg;--%>
+                var description = c.description != undefined ? c.description : "";
+                tooltipMsg += "<div class='tooltip_line' style='margin-top:5px;line-height:1.5;height:auto'><b><fmt:message key='mr.label.usefor'/>:</b> " + description + "</div></div>";
+                return tooltipMsg;
             };
 
             //添加排序  6.1已更改为  添加时间选择控件
@@ -1189,6 +1201,7 @@
                 /*
                 if(periodicityDates==""){
                     alert("
+
 
                 <fmt:message key='mt.alert.startTimeError'/>!");//开始时间不能小于系统当前时间
 			obj.checked = false;

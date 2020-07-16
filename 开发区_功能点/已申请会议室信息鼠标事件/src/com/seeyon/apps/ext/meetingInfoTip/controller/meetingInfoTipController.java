@@ -49,6 +49,16 @@ public class meetingInfoTipController extends BaseController {
             render(response, json.toJSONString());
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (null != rs) {
+                rs.close();
+            }
+            if (null != ps) {
+                ps.close();
+            }
+            if (null != connection) {
+                connection.close();
+            }
         }
         return null;
 

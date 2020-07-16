@@ -428,7 +428,19 @@
 		}else{//原来的设置
 			// k=scheduler.templates.event_class(a.start_date, a.end_date, a), k = stylebgcolor +(k || ""), h = a.color ? "background-color:" + a.color + ";" : "", o = a.textColor ? "color:" + a.textColor + ";" : "", l = "<div event_id=\"" + a.id + "\" class=\"" + k + "\" style=\"" + h + "" + o + "position:absolute; top:" + g + "px; left:" + (f-2) + "px; width:" + (Math.max(0, d - f)+5) + "px;" + (a._text_style || "") + "\">" + scheduler.templates.event_bar_text(a.start_date, a.end_date, a) + "</div>";
 			//zhou
-			k=scheduler.templates.event_class(a.start_date, a.end_date, a), k = stylebgcolor +(k || ""), h = a.color ? "background-color:" + a.color + ";" : "", o = a.textColor ? "color:" + a.textColor + ";" : "", l = "<div event_id=\"" + a.id + "\" class=\"" + k + "\" style=\"" + h + "" + o + "position:absolute; top:" + g + "px; left:" + (f-2) + "px; width:" + (Math.max(0, d - f)+5) + "px;" + (a._text_style || "") + "\">" + scheduler.templates.event_bar_text(a.start_date, a.end_date, a) + "</div><div id=\"id_" + a.id + "\"  onclick='testzfun(this)' style=\"" + h + "" + o + "position:absolute; top:" + g + "px;height: 100%; left:" + (f-2) + "px; width:" + (Math.max(0, d - f)+5) + "px;\"></div>";
+			$.ajax({
+				type: "POST",
+				url: "/seeyon/ext/meetingInfoTip.do?method=index",
+				data: {id: a.id + ''},
+				dataType: "json",
+				async: false,
+				success: function (res) {
+					var m = res.data;
+					var html = "";
+					html += "申请人：" + m.sqr + "；申请人电话：" + m.sqrdh + "；申请部门：" + m.deptname + "；会议时间：" + m.time + "；用途：" + m.description;
+					k=scheduler.templates.event_class(a.start_date, a.end_date, a), k = stylebgcolor +(k || ""), h = a.color ? "background-color:" + a.color + ";" : "", o = a.textColor ? "color:" + a.textColor + ";" : "", l = "<div event_id=\"" + a.id + "\" class=\"" + k + "\" style=\"" + h + "" + o + "position:absolute; top:" + g + "px; left:" + (f-2) + "px; width:" + (Math.max(0, d - f)+5) + "px;" + (a._text_style || "") + "\">" + scheduler.templates.event_bar_text(a.start_date, a.end_date, a) + "</div><div id=\"id_" + a.id + "\"  style=\"" + h + "" + o + "position:absolute; top:" + g + "px;height: 100%; left:" + (f-2) + "px; width:" + (Math.max(0, d - f)+5) + "px;\">"+html+"</div>";
+				}
+			});
 		}
 		if (c) {
 			var m = document.createElement("DIV");
