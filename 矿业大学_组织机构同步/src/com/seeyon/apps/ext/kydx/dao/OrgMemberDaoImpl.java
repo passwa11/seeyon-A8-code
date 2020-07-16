@@ -18,8 +18,9 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
     public List<OrgMember> queryInsertMember() {
         String sql = "select * from (select member.id,member.name,member.code,member.loginname," +
                 "(select u.id from M_ORG_UNIT u where u.CODE=member.ORG_DEPARTMENT_ID) org_department_id, " +
-                "(select m.id from m_org_post m where m.CODE=member.POST_ID) post_id , " +
-                "(select ml.id from M_ORG_LEVEL ml where ml.code=member.level_id) level_id,phone,tel,email,is_enable,description from THIRD_ORG_MEMBER member where IS_ENABLE ='1' and IS_DELETE='0' ) " +
+//                "(select m.id from m_org_post m where m.CODE=member.POST_ID) post_id , " +
+//                "(select ml.id from M_ORG_LEVEL ml where ml.code=member.level_id) level_id, " +
+                " phone,tel,email,is_enable,description from THIRD_ORG_MEMBER member where IS_ENABLE ='1' and IS_DELETE='0' ) " +
                 " tmember where not exists (select * from M_ORG_MEMBER mm where TMEMBER.id=mm.userid)";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection = SyncConnectionInfoUtil.getMidConnection();

@@ -15,6 +15,34 @@ public class OrgDept {
     private String deptParentId;
     private String orgAccountId;
 
+    private String shortName;
+    private String dwid;
+    private String oaParentId;
+
+    public String getOaParentId() {
+        return oaParentId;
+    }
+
+    public void setOaParentId(String oaParentId) {
+        this.oaParentId = oaParentId;
+    }
+
+    public String getDwid() {
+        return dwid;
+    }
+
+    public void setDwid(String dwid) {
+        this.dwid = dwid;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
     private String parentId;
 
     private List<OrgDept> list;

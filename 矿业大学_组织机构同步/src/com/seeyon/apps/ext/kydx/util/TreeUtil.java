@@ -34,7 +34,7 @@ public class TreeUtil {
     public static List<OrgDept> getChildList(String parentId, List<OrgDept> list) {
         List<OrgDept> child = new ArrayList<>();
         for (OrgDept m : list) {
-            if (null != m.getDeptParentId() && m.getDeptParentId() != "0") {
+            if (null != m.getDeptParentId() && m.getDeptParentId() != "000000") {
                 if (m.getDeptParentId().equals(parentId)) {
                     child.add(m);
                 }

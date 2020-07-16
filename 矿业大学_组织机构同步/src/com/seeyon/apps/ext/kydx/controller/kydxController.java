@@ -26,13 +26,13 @@ public class kydxController extends BaseController {
 
     public ModelAndView syncData(HttpServletRequest request, HttpServletResponse response) {
         try {
-//            deptManager.insertOrgDept();
-//
-//            deptManager.insertOtherOrgDept();
-//
-//            deptManager.updateOrgDept();
-//
-//            deptManager.deleteOrgDept();
+            deptManager.insertOrgDept();
+
+            deptManager.insertOtherOrgDept();
+
+            deptManager.updateOrgDept();
+
+            deptManager.deleteOrgDept();
 
 //            levelManager.insertOrgLevel();
 //            levelManager.updateOrgLevel();
@@ -42,8 +42,8 @@ public class kydxController extends BaseController {
 
 //            postManager.updatePost();
 //            postManager.deletePost();
-//            memberManager.insertMember();
-//            memberManager.updateMember();
+            memberManager.insertMember();
+            memberManager.updateMember();
             memberManager.deleteMember();
 
         } catch (Exception e) {
