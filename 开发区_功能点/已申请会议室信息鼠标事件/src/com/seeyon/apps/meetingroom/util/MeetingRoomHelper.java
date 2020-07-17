@@ -165,6 +165,7 @@ public class MeetingRoomHelper {
         ResultSet rs = null;
         String sql = "select (select name from org_member o where o.id=m.perid ) username,(select name from org_unit u where u.id=m.departmentid) deptname,startdatetime,enddatetime,description,sqrdh from meeting_room_app m where id=?";
         try {
+
             connection = JDBCAgent.getRawConnection();
             ps = connection.prepareStatement(sql);
             for (MeetingRoomApp bean : list) {
@@ -233,8 +234,9 @@ public class MeetingRoomHelper {
                     rs.close();
                 }
                 if (null != ps) {
-                    rs.close();
+                    ps.close();
                 }
+
                 if (null != connection) {
                     connection.close();
                 }
