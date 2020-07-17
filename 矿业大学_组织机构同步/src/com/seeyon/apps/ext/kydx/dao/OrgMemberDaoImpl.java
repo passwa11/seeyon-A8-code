@@ -107,7 +107,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 orgUser.setId(Long.parseLong(userid));
                                 orgUser.setType("ldap.member.openLdap");
                                 orgUser.setLoginName(ent.getString("loginName"));
-                                orgUser.setExLoginName(member.getLoginname());
+                                orgUser.setExLoginName(member.getCode());
                                 orgUser.setExPassword("1");
                                 orgUser.setExId(member.getId());
                                 orgUser.setExUserId(member.getId());
