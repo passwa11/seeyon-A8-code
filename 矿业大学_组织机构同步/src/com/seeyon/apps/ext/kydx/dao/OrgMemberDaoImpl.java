@@ -294,7 +294,8 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryDeleteMember() {
-        String sql = "select m.id from THIRD_ORG_MEMBER t,M_ORG_MEMBER m where t.IS_DELETE ='1' and t.id=m.USERID union select m.id from M_ORG_MEMBER m where not EXISTS (select * from THIRD_ORG_MEMBER t where m.USERID=t.ID)";
+//        String sql = "select m.id from THIRD_ORG_MEMBER t,M_ORG_MEMBER m where t.IS_DELETE ='1' and t.id=m.USERID union select m.id from M_ORG_MEMBER m where not EXISTS (select * from THIRD_ORG_MEMBER t where m.USERID=t.ID)";
+        String sql = "select m.memberId from m_org_member m where not exists(select * from seeyon_oa_jzgjbxx j where j.gh=m.gh)";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection = SyncConnectionInfoUtil.getMidConnection();
         PreparedStatement ps = null;
@@ -305,7 +306,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
             OrgMember orgMember = null;
             while (rs.next()) {
                 orgMember = new OrgMember();
-                orgMember.setId(rs.getString("id"));
+                orgMember.setId(rs.getString("memberId"));
                 memberList.add(orgMember);
             }
         } catch (Exception e) {
@@ -326,12 +327,13 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                 Map map = null;
                 StringBuffer dsql = null;
                 dsql = new StringBuffer();
-                dsql.append("delete from M_ORG_MEMBER where id in (0 ");
+                dsql.append("delete from M_ORG_MEMBER where memberId in (0 ");
                 for (OrgMember member : list) {
                     map = new HashMap();
                     map.put("id", member.getId());
-                    map.put("enabled", false);
-                    JSONObject jsonObject = client.put("/orgMember/" + member.getId() + "/enabled/false", map, JSONObject.class);
+//                    map.put("enabled", false);
+//                    JSONObject jsonObject = client.put("/orgMember/" + member.getId() + "/enabled/false", map, JSONObject.class);
+                    JSONObject jsonObject = client.delete("/orgMember/" + member.getId(), map, JSONObject.class);
                     if (null != jsonObject) {
                         if (jsonObject.getBoolean("success")) {
                             dsql.append(",'" + member.getId() + "'");
