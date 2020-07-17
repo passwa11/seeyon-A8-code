@@ -482,12 +482,15 @@
                     tooltipMsg += '<div class="tooltip_line"><b><fmt:message key="mt.mtMeeting.app.createUser"/>:</b>&nbsp;&nbsp;<span onclick="showV3XMemberCardWithOutButton(\'' + c.perId + '\')" >' + c.createUserName + '</span></div>';
                 }
                 //zhou
-                tooltipMsg += "<div class='tooltip_line'><b>申请部门:</b> " + c.sqDeptname + "</div>";
-                tooltipMsg += "<div class='tooltip_line'><b>联系电话:</b> " + c.sqrdh + "</div>";
+                // tooltipMsg += "<div class='tooltip_line'><b>申请部门:</b> " + (undefined==c.sqDeptname?"":c.sqDeptname) + "</div>";
+                // tooltipMsg += "<div class='tooltip_line'><b>联系电话:</b> " + (undefined==c.sqrdh?"":c.sqrdh) + "</div>";
+                tooltipMsg += "<div class='tooltip_line'><b>申请部门:</b> " + (undefined==c.sqDeptname?"":c.sqDeptname) + "</div>";
+                tooltipMsg += "<div class='tooltip_line'><b>联系电话:</b> " + (typeof (c.sqrdh)!='undefined' && c.sqrdh!=0?c.sqrdh:'') + "</div>";
                 tooltipMsg += "<div class='tooltip_line'><b><fmt:message key='mt.label.meetingtime'/>:</b> " + time + "</div>";
 
                 var description = c.description != undefined ? c.description : "";
                 tooltipMsg += "<div class='tooltip_line' style='margin-top:5px;line-height:1.5;height:auto'><b><fmt:message key='mr.label.usefor'/>:</b> " + description + "</div></div>";
+                tooltipMsg += "<div class='tooltip_line'><b>会场要求:</b> " + (typeof (c.hcyq)!='undefined' && c.hcyq!=0?c.hcyq:'') + "</div>";
                 return tooltipMsg;
             };
 

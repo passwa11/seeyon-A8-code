@@ -27,6 +27,15 @@ public class MeetingJsonVO implements Serializable {
 //zhou
 	private String sqrdh;
 	private String sqDeptname;
+	private String hcyq;
+
+	public String getHcyq() {
+		return hcyq;
+	}
+
+	public void setHcyq(String hcyq) {
+		this.hcyq = hcyq;
+	}
 
 	public String getSqrdh() {
 		return sqrdh;

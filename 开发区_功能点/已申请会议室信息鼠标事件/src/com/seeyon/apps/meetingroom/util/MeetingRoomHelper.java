@@ -163,7 +163,7 @@ public class MeetingRoomHelper {
         Connection connection = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select (select name from org_member o where o.id=m.perid ) username,(select name from org_unit u where u.id=m.departmentid) deptname,startdatetime,enddatetime,description,sqrdh from meeting_room_app m where id=?";
+        String sql = "select (select name from org_member o where o.id=m.perid ) username,(select name from org_unit u where u.id=m.departmentid) deptname,startdatetime,enddatetime,description,sqrdh,hcyq from meeting_room_app m where id=?";
         try {
 
             connection = JDBCAgent.getRawConnection();
@@ -190,6 +190,7 @@ public class MeetingRoomHelper {
                 rs = ps.executeQuery();
                 while (rs.next()) {
                     mtApp2JSON.setSqDeptname(rs.getString("deptname"));
+                    mtApp2JSON.setHcyq(rs.getString("hcyq"));
                 }
                 V3xOrgMember vom = null;
                 if (bean.getPerId() != null) {
@@ -236,7 +237,6 @@ public class MeetingRoomHelper {
                 if (null != ps) {
                     ps.close();
                 }
-
                 if (null != connection) {
                     connection.close();
                 }
