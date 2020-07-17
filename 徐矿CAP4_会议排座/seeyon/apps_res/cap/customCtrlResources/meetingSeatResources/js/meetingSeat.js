@@ -101,7 +101,7 @@
                         });
                         var interval = setInterval(function() {
                             // 验证canvas是否绘制完毕
-                            if(dialog.getReturnValue().data.valid) {   
+                            if(dialog.getReturnValue().data.valid) {
                             	var returnData = dialog.getReturnValue();
                                 $.ajax({
                                     type: 'post',
@@ -116,8 +116,6 @@
                                         res.data.attachment.id = res.data.id;
                                         var arr = [];
                                         arr.push(res.data.attachment);
-                                        console.log(arr,'arr');
-                                        console.log(self.formMessage,'self.formMessage');
                                         for(var i = 0; i < arr.length; i++) {
                                             if(arr [i]) {
                                                 arr[i].size = arr[i].size.toString();
@@ -131,12 +129,10 @@
                                             fieldName : 'field0051',    // 回填控件对应的field_id
                                             addAttchmentData : arr      // 数组格式的附件信息
                                         };
-                                        console.log(attachment,'attachment');
-                                        console.log(self,'self');
                                         adaptation.backfillFormAttachment(attachment, self.privateId);
                                     }
                                 });
-                                
+
                                 clearInterval(interval);
                                 process.close();
                                 dialog.close();
