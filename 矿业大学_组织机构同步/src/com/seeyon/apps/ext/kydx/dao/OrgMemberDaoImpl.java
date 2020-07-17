@@ -16,12 +16,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryInsertMember() {
-        String sql = "select * from (select member.id,member.name,member.code,member.loginname," +
-                "(select u.id from M_ORG_UNIT u where u.CODE=member.ORG_DEPARTMENT_ID) org_department_id, " +
-//                "(select m.id from m_org_post m where m.CODE=member.POST_ID) post_id , " +
-//                "(select ml.id from M_ORG_LEVEL ml where ml.code=member.level_id) level_id, " +
-                " phone,tel,email,is_enable,description from THIRD_ORG_MEMBER member where IS_ENABLE ='1' and IS_DELETE='0' ) " +
-                " tmember where not exists (select * from M_ORG_MEMBER mm where TMEMBER.id=mm.userid)";
+        String sql = "select * from (select u.jzgid,u.xm,u.gh,u.yddh,u.bglxdh,u.dzxx,u.grjj,(select m.oaid from m_org_unit m where m.dwh=u.dwh) oaUnitId from (select * from seeyon_oa_jzgjbxx where dwh is not null)  u) w where not exists (select * from m_org_member m where w.jzgid=m.jzgid)";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection = SyncConnectionInfoUtil.getMidConnection();
         PreparedStatement ps = null;
@@ -32,23 +27,23 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
             OrgMember orgMember = null;
             while (rs.next()) {
                 orgMember = new OrgMember();
-                orgMember.setId(rs.getString("id"));
+                orgMember.setId(rs.getString("jzgid"));
                 orgMember.setOrgAccountId(new OrgCommon().getOrgAccountId());
-                orgMember.setName(rs.getString("name"));
-                orgMember.setLoginname(rs.getString("loginname"));
-                if (null != rs.getString("org_department_id") && !"".equals(rs.getString("org_department_id"))) {
-                    orgMember.setOrgDepartmentId(rs.getString("org_department_id"));
+                orgMember.setName(rs.getString("xm"));
+//                orgMember.setLoginname(rs.getString("loginname"));
+                if (null != rs.getString("oaUnitId") && !"".equals(rs.getString("oaUnitId"))) {
+                    orgMember.setOrgDepartmentId(rs.getString("oaUnitId"));
                 } else {
                     orgMember.setOrgDepartmentId(new OrgCommon().getOrgAccountId());
                 }
-                orgMember.setPostId(rs.getString("post_id"));
-                orgMember.setLevelId(rs.getString("level_id"));
-                orgMember.setPhone(rs.getString("phone"));
-                orgMember.setTel(rs.getString("tel"));
-                orgMember.setEmail(rs.getString("email"));
-                orgMember.setIsEnable(rs.getString("is_enable"));
-                orgMember.setCode(rs.getString("code"));
-                orgMember.setDescription(rs.getString("description"));
+                orgMember.setPostId(new OrgCommon().getOrgPostId());
+                orgMember.setLevelId(new OrgCommon().getOrgLevelId());
+                orgMember.setPhone(rs.getString("yddh"));
+                orgMember.setTel(rs.getString("bglxdh"));
+                orgMember.setEmail(rs.getString("dzxx"));
+//                orgMember.setIsEnable(rs.getString("is_enable"));
+                orgMember.setCode(rs.getString("gh"));
+                orgMember.setDescription(rs.getString("grjj"));
                 memberList.add(orgMember);
             }
         } catch (Exception e) {
@@ -67,8 +62,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
         CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
         Connection connection = null;
         PreparedStatement ps = null;
-        String insertSql = "insert into m_org_member (id, userid, name, loginname, org_department_id, post_id, level_id, phone, tel, email, is_enable, is_delete,code,description) " +
-                "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String insertSql = "insert into m_org_member (memberId,jzgid,xm,gh,yddh,bglxdh,dzxx,grjj,oaUnitId) values(?,?,?,?,?,?,?,?,?)";
         try {
             connection = SyncConnectionInfoUtil.getMidConnection();
             connection.setAutoCommit(false);
@@ -79,18 +73,19 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                 for (OrgMember member : list) {
                     memberMap = new HashMap();
                     memberMap.put("name", member.getName());
-                    memberMap.put("loginName", member.getLoginname());
+                    memberMap.put("loginName", member.getCode());
                     memberMap.put("orgAccountId", member.getOrgAccountId());
                     memberMap.put("orgLevelId", member.getLevelId());
                     memberMap.put("orgPostId", member.getPostId());
                     memberMap.put("orgDepartmentId", member.getOrgDepartmentId());
                     memberMap.put("code", member.getCode());
-                    memberMap.put("enabled", member.getIsEnable());
-                    memberMap.put("telNumber", member.getPhone());
-                    memberMap.put("officeNum", member.getTel());
-                    memberMap.put("description", member.getDescription());
+//                    memberMap.put("enabled", member.getIsEnable());
+                    memberMap.put("telNumber", null == member.getPhone() ? "" : member.getPhone());
+                    memberMap.put("officeNum", null == member.getTel() ? "" : member.getTel());
 
-                    JSONObject memberJson = client.get("/orgMember?loginName=" + member.getLoginname(), JSONObject.class);
+                    memberMap.put("description", null == member.getDescription() ? "" : member.getDescription());
+
+                    JSONObject memberJson = client.get("/orgMember?loginName=" + member.getCode(), JSONObject.class);
                     if (null == memberJson) {
                         JSONObject json = client.post("/orgMember", memberMap, JSONObject.class);
                         if (null != json) {
@@ -100,17 +95,12 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 ps.setString(1, userid);
                                 ps.setString(2, member.getId());
                                 ps.setString(3, member.getName());
-                                ps.setString(4, member.getLoginname());
-                                ps.setString(5, member.getOrgDepartmentId());
-                                ps.setString(6, member.getPostId());
-                                ps.setString(7, member.getLevelId());
-                                ps.setString(8, member.getPhone());
-                                ps.setString(9, member.getTel());
-                                ps.setString(10, member.getEmail());
-                                ps.setString(11, member.getIsEnable());
-                                ps.setString(12, member.getIsDelete());
-                                ps.setString(13, member.getCode());
-                                ps.setString(14, member.getDescription());
+                                ps.setString(4, member.getCode());
+                                ps.setString(5, member.getPhone());
+                                ps.setString(6, member.getTel());
+                                ps.setString(7, member.getEmail());
+                                ps.setString(8, member.getDescription());
+                                ps.setString(9, member.getOrgDepartmentId());
                                 ps.addBatch();
 
                                 CtpOrgUser orgUser = new CtpOrgUser();
@@ -133,18 +123,12 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                         ps.setString(1, userid);
                         ps.setString(2, member.getId());
                         ps.setString(3, member.getName());
-                        ps.setString(4, member.getLoginname());
-                        ps.setString(5, member.getOrgDepartmentId());
-                        ps.setString(6, member.getPostId());
-                        ps.setString(7, member.getLevelId());
-                        ps.setString(8, member.getPhone());
-                        ps.setString(9, member.getTel());
-                        ps.setString(10, member.getEmail());
-                        ps.setString(11, member.getIsEnable());
-                        ps.setString(12, member.getIsDelete());
-                        ps.setString(13, member.getCode());
-                        ps.setString(14, member.getDescription());
-
+                        ps.setString(4, member.getCode());
+                        ps.setString(5, member.getPhone());
+                        ps.setString(6, member.getTel());
+                        ps.setString(7, member.getEmail());
+                        ps.setString(8, member.getDescription());
+                        ps.setString(9, member.getOrgDepartmentId());
                         ps.addBatch();
                         ps.executeBatch();
                         connection.commit();
@@ -152,6 +136,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
                 }
             }
+
             ps.executeBatch();
             connection.commit();
         } catch (Exception e) {
