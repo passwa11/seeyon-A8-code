@@ -1,0 +1,7 @@
+
+
+第一步：在中间数据中创建两张表（m_org_unit、m_org_member）sql语句请看矿大.sql
+第二步：在文件夹seeyon\WEB-INF\classes\config下有一个config.properties文件，请将文件中的内容改成正式环境的。
+第三部：将解压包部署到项目中，重启项目。使用system账号登陆创建关联系统：
+  地址为：
+	 http://ip:port/seeyon/ext/kydx.do?method=syncData

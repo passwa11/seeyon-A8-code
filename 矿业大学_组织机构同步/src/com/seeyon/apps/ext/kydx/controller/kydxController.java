@@ -34,14 +34,7 @@ public class kydxController extends BaseController {
 
             deptManager.deleteOrgDept();
 
-//            levelManager.insertOrgLevel();
-//            levelManager.updateOrgLevel();
-//            levelManager.deleteOrgLevel();
 
-//            postManager.insertPost();
-
-//            postManager.updatePost();
-//            postManager.deletePost();
             memberManager.insertMember();
             memberManager.updateMember();
             memberManager.deleteMember();
