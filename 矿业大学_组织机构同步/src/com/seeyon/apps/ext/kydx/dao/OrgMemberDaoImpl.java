@@ -165,19 +165,20 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
             OrgMember orgMember = null;
             while (rs.next()) {
                 orgMember = new OrgMember();
-                orgMember.setId(rs.getString("id"));
+                orgMember.setId(rs.getString("memberId"));
                 orgMember.setOrgAccountId(new OrgCommon().getOrgAccountId());
-                orgMember.setName(rs.getString("name"));
-                orgMember.setLoginname(rs.getString("loginname"));
-                orgMember.setOrgDepartmentId(rs.getString("org_department_id"));
-                orgMember.setPostId(rs.getString("post_id"));
-                orgMember.setLevelId(rs.getString("level_id"));
-                orgMember.setPhone(rs.getString("phone"));
-                orgMember.setTel(rs.getString("tel"));
-                orgMember.setEmail(rs.getString("email"));
-                orgMember.setIsEnable(rs.getString("is_enable"));
-                orgMember.setCode(rs.getString("code"));
-                orgMember.setDescription(rs.getString("description"));
+                orgMember.setName(rs.getString("xm"));
+                orgMember.setLoginname(rs.getString("gh"));
+                orgMember.setOrgDepartmentId(rs.getString("unitId"));
+                orgMember.setPostId(new OrgCommon().getOrgPostId());
+                orgMember.setLevelId(new OrgCommon().getOrgLevelId());
+                orgMember.setPhone(rs.getString("yddh"));
+                orgMember.setTel(rs.getString("bglxdh"));
+                orgMember.setEmail(rs.getString("dzxx"));
+//                orgMember.setIsEnable(rs.getString("is_enable"));
+                orgMember.setCode(rs.getString("gh"));
+                orgMember.setDescription(rs.getString("grjj"));
+                orgMember.setSubDepartmentId(rs.getString("dwh"));
                 memberList.add(orgMember);
             }
         } catch (Exception e) {
@@ -217,73 +218,68 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                         JSONObject json = client.put("/orgMember", memberMap, JSONObject.class);
                         if (null != json) {
                             if (json.getBoolean("success")) {
-                                String sql = "update M_ORG_MEMBER set ";
+                                String sql = "update m_org_member set ";
                                 if (member.getName() != null && !"".equals(member.getName())) {
-                                    sql = sql + " name = '" + member.getName() + "', ";
+                                    sql = sql + " xm = '" + member.getName() + "', ";
                                 } else {
-                                    sql = sql + " name = '', ";
+                                    sql = sql + " xm = '', ";
                                 }
 
-                                if (member.getCode() != null && !"".equals(member.getCode())) {
-                                    sql = sql + " code = '" + member.getCode() + "', ";
-                                } else {
-                                    sql = sql + " code = '', ";
-                                }
+//                                if (member.getCode() != null && !"".equals(member.getCode())) {
+//                                    sql = sql + " code = '" + member.getCode() + "', ";
+//                                } else {
+//                                    sql = sql + " code = '', ";
+//                                }
 
-                                if (member.getLoginname() != null && !"".equals(member.getLoginname())) {
-                                    sql = sql + " loginname = '" + member.getLoginname() + "', ";
-                                } else {
-                                    sql = sql + " loginname = '', ";
-                                }
-
-                                if (member.getOrgDepartmentId() != null && !"".equals(member.getOrgDepartmentId())) {
-                                    sql = sql + " org_department_id = '" + member.getOrgDepartmentId() + "', ";
-                                } else {
-                                    sql = sql + " org_department_id = '', ";
-                                }
-
-                                if (member.getPostId() != null && !"".equals(member.getPostId())) {
-                                    sql = sql + " post_id = '" + member.getPostId() + "', ";
-                                } else {
-                                    sql = sql + " post_id = '', ";
-                                }
-
-                                if (member.getLevelId() != null && !"".equals(member.getLevelId())) {
-                                    sql = sql + " level_id = '" + member.getLevelId() + "', ";
-                                } else {
-                                    sql = sql + " level_id = '', ";
-                                }
+//                                if (member.getLoginname() != null && !"".equals(member.getLoginname())) {
+//                                    sql = sql + " loginname = '" + member.getLoginname() + "', ";
+//                                } else {
+//                                    sql = sql + " loginname = '', ";
+//                                }
 
                                 if (member.getPhone() != null && !"".equals(member.getPhone())) {
-                                    sql = sql + " phone = '" + member.getPhone() + "', ";
+                                    sql = sql + " yddh = '" + member.getPhone() + "', ";
                                 } else {
-                                    sql = sql + " phone = '', ";
+                                    sql = sql + " yddh = '', ";
                                 }
 
                                 if (member.getTel() != null && !"".equals(member.getTel())) {
-                                    sql = sql + " tel = '" + member.getTel() + "', ";
+                                    sql = sql + " bglxdh = '" + member.getTel() + "', ";
                                 } else {
-                                    sql = sql + " tel = '', ";
-                                }
-                                if (member.getEmail() != null && !"".equals(member.getEmail())) {
-                                    sql = sql + " email = '" + member.getEmail() + "', ";
-                                } else {
-                                    sql = sql + " email = '', ";
+                                    sql = sql + " bglxdh = '', ";
                                 }
 
-                                if (member.getIsEnable() != null && !"".equals(member.getIsEnable())) {
-                                    sql = sql + " is_enable = '" + member.getIsEnable() + "', ";
+                                if (member.getEmail() != null && !"".equals(member.getEmail())) {
+                                    sql = sql + " dzxx = '" + member.getEmail() + "', ";
                                 } else {
-                                    sql = sql + " is_enable = '', ";
+                                    sql = sql + " dzxx = '', ";
                                 }
+
+//                                if (member.getIsEnable() != null && !"".equals(member.getIsEnable())) {
+//                                    sql = sql + " is_enable = '" + member.getIsEnable() + "', ";
+//                                } else {
+//                                    sql = sql + " is_enable = '', ";
+//                                }
 
                                 if (member.getDescription() != null && !"".equals(member.getDescription())) {
-                                    sql = sql + " description = '" + member.getDescription() + "' ";
+                                    sql = sql + " grjj = '" + member.getDescription() + "' ,";
                                 } else {
-                                    sql = sql + " description = '' ";
+                                    sql = sql + " grjj = '', ";
                                 }
 
-                                sql = sql + " where id = '" + member.getId() + "' ";
+                                if (member.getOrgDepartmentId() != null && !"".equals(member.getOrgDepartmentId())) {
+                                    sql = sql + " oaUnitId = '" + member.getOrgDepartmentId() + "' ,";
+                                } else {
+                                    sql = sql + " oaUnitId = '', ";
+                                }
+
+                                if (member.getSubDepartmentId() != null && !"".equals(member.getSubDepartmentId())) {
+                                    sql = sql + " dwh = '" + member.getSubDepartmentId() + "' ";
+                                } else {
+                                    sql = sql + " dwh = '' ";
+                                }
+
+                                sql = sql + " where memberId = '" + member.getId() + "' ";
 
                                 SyncConnectionInfoUtil.insertResult(sql);
                             }
