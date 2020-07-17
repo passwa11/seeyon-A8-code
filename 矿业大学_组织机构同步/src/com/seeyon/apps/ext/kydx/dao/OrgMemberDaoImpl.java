@@ -16,7 +16,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryInsertMember() {
-        String sql = "select * from (select u.jzgid,u.xm,u.gh,u.yddh,u.bglxdh,u.dzxx,u.grjj,(select m.oaid from m_org_unit m where m.dwh=u.dwh) oaUnitId from (select * from seeyon_oa_jzgjbxx where dwh is not null)  u) w where not exists (select * from m_org_member m where w.jzgid=m.jzgid)";
+        String sql = "select * from (select u.jzgid,u.xm,u.gh,u.yddh,u.bglxdh,u.dzxx,u.grjj,(select m.oaid from m_org_unit m where m.dwh=u.dwh) oaUnitId,u.dwh from (select * from seeyon_oa_jzgjbxx where dwh is not null)  u) w where not exists (select * from m_org_member m where w.jzgid=m.jzgid)";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection = SyncConnectionInfoUtil.getMidConnection();
         PreparedStatement ps = null;
@@ -44,6 +44,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 //                orgMember.setIsEnable(rs.getString("is_enable"));
                 orgMember.setCode(rs.getString("gh"));
                 orgMember.setDescription(rs.getString("grjj"));
+                orgMember.setSubDepartmentId(rs.getString("dwh"));
                 memberList.add(orgMember);
             }
         } catch (Exception e) {
@@ -62,7 +63,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
         CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
         Connection connection = null;
         PreparedStatement ps = null;
-        String insertSql = "insert into m_org_member (memberId,jzgid,xm,gh,yddh,bglxdh,dzxx,grjj,oaUnitId) values(?,?,?,?,?,?,?,?,?)";
+        String insertSql = "insert into m_org_member (memberId,jzgid,xm,gh,yddh,bglxdh,dzxx,grjj,oaUnitId,dwh) values(?,?,?,?,?,?,?,?,?,?)";
         try {
             connection = SyncConnectionInfoUtil.getMidConnection();
             connection.setAutoCommit(false);
@@ -101,6 +102,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 ps.setString(7, member.getEmail());
                                 ps.setString(8, member.getDescription());
                                 ps.setString(9, member.getOrgDepartmentId());
+                                ps.setString(10, member.getSubDepartmentId());
                                 ps.addBatch();
 
                                 CtpOrgUser orgUser = new CtpOrgUser();
@@ -129,6 +131,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                         ps.setString(7, member.getEmail());
                         ps.setString(8, member.getDescription());
                         ps.setString(9, member.getOrgDepartmentId());
+                        ps.setString(10, member.getSubDepartmentId());
                         ps.addBatch();
                         ps.executeBatch();
                         connection.commit();
@@ -149,11 +152,9 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryUpdateMember() {
-        String sql = "select MO.id,TM.name,TM.code,tm.loginname,TM.org_department_id,TM.post_id,TM.level_id,TM.PHONE,TM.TEL,TM.EMAIL,TM.IS_ENABLE,TM.DESCRIPTION from (select member.id,member.name,member.code,member.loginname,(select u.id from M_ORG_UNIT u where u.CODE=member.ORG_DEPARTMENT_ID) org_department_id,  " +
-                "(select m.id from m_org_post m where m.CODE=member.POST_ID) post_id , (select ml.id from M_ORG_LEVEL ml where ml.code=member.level_id) level_id,phone,tel,email,is_enable,description  " +
-                "from THIRD_ORG_MEMBER member where IS_DELETE='0' ) tm ,M_ORG_MEMBER mo where tm.id=MO.USERID and  " +
-                "(tm.name<> MO.name or tm.LOGINNAME<> MO.LOGINNAME or TM.org_department_id<>MO.org_department_id or TM.post_id<>MO.POST_ID or TM.level_id<>MO.LEVEL_ID  " +
-                "or TM.PHONE<>MO.PHONE or TM.tel<>MO.TEL or TM.EMAIL <> MO.EMAIL or TM.IS_ENABLE <> MO.IS_ENABLE or tm.code<>MO.CODE or TM.DESCRIPTION<>MO.DESCRIPTION)";
+        String sql = "select j.jzgid,j.xm,j.gh,j.dwh,j.yddh,j.bglxdh,j.dzxx,j.grjj,m.memberId,(select u.oaid from m_org_unit u where u.dwh=j.dwh) unitId from " +
+                "(select oa.* from seeyon_oa_jzgjbxx oa where oa.dwh is not null) j,m_org_member m " +
+                "where j.gh=m.gh and (j.xm <> m.xm or j.dwh<>m.dwh  or j.yddh <>m.yddh or j.bglxdh <>m.bglxdh or j.dzxx<>m.dzxx or j.grjj<>m.grjj)";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection = SyncConnectionInfoUtil.getMidConnection();
         PreparedStatement ps = null;
