@@ -798,9 +798,9 @@ public class ExchangeEdocController extends BaseController {
             // 开始：zhou 2019-06-17 修改发文单位
             String sendUnit = request.getParameter("sendUnit");
             String sendUnitId = request.getParameter("sendUnitId");
-            String summaryId = request.getParameter("summaryId");
+            String summaryIdz = request.getParameter("summaryId");
 
-            EdocSummary edocSummaryZ = edocManager.getEdocSummaryById(Long.parseLong(summaryId), true);
+            EdocSummary edocSummaryZ = edocManager.getEdocSummaryById(Long.parseLong(summaryIdz), true);
             edocSummaryZ.setSendUnit(sendUnit);
             edocSummaryZ.setSendUnitId(sendUnitId);
             edocManager.update(edocSummaryZ);
