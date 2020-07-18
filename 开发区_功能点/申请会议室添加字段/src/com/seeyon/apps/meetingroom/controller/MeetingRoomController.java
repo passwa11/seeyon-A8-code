@@ -884,12 +884,13 @@ public class MeetingRoomController extends BaseController {
                  * zhou:会议室审核通过，发送消息通知
                  */
                 AuthorityService authorityService = new AuthorityServiceImpl();
-                UserToken userToken = authorityService.authenticate("service-admin", ReadConfigTools.getInstance().getString("passwordOfWebservice"));
+                String pass=new ReadConfigTools().getString("passwordOfWebservice");
+                UserToken userToken = authorityService.authenticate("service-admin", pass);
                 String tokenId = userToken.getId();
                 MessageService messageService = new MessageServiceImpl();
                 User user = AppContext.getCurrentUser();
                 String[] urls = {"/seeyon/meetingroom.do?method=createPerm&openWin=1&id=" + request.getParameter("id") + "&affairId="};
-                String[] loginNames = ReadConfigTools.getInstance().getString("loginNameOfReciver").split(",");
+                String[] loginNames = new ReadConfigTools().getString("loginNameOfReciver").split(",");
 
                 String sql = "select (select r.name from MEETING_room r where r.id =m.meetingroomid) meetingname,(select name from org_member o where o.id=m.perid ) username,(select name from org_unit u where u.id=m.departmentid) deptname from meeting_room_app m where m.id=?";
                 Connection connection = JDBCAgent.getRawConnection();
@@ -898,10 +899,13 @@ public class MeetingRoomController extends BaseController {
                 StringBuffer sb = new StringBuffer();
                 try {
                     ps = connection.prepareStatement(sql);
+                    ps.setString(1,request.getParameter("id"));
                     rs = ps.executeQuery();
                     while (rs.next()) {
                         sb.append(rs.getString("username")+"【"+rs.getString("deptname")+"】申请了会议室："+rs.getString("meetingname"));
                     }
+                    ServiceResponse serviceResponse = messageService.sendMessageByLoginName(tokenId, loginNames, sb.toString(), urls);
+                    serviceResponse.getResult();
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
@@ -915,8 +919,7 @@ public class MeetingRoomController extends BaseController {
                         connection.close();
                     }
                 }
-                ServiceResponse serviceResponse = messageService.sendMessageByLoginName(tokenId, loginNames, sb.toString(), urls);
-                serviceResponse.getResult();
+
             } else {
                 if (appVo.getMeetingRoomApp() != null) {
                     buffer.append(appVo.getMeetingRoomApp().getId() + "|" + appVo.getMsg());
