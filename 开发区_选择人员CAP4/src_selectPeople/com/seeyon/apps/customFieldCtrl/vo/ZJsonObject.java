@@ -5,6 +5,7 @@ package com.seeyon.apps.customFieldCtrl.vo;
  */
 public class ZJsonObject {
 
+    private String id;
     private String field0001;
     private String field0002;
     private String field0003;
@@ -14,6 +15,14 @@ public class ZJsonObject {
     private String field0007;
     private String mval;
     private String name;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
