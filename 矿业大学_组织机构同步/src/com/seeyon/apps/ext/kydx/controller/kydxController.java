@@ -2,6 +2,7 @@ package com.seeyon.apps.ext.kydx.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.seeyon.apps.ext.kydx.dao.MidData;
 import com.seeyon.apps.ext.kydx.manager.*;
 import com.seeyon.ctp.common.controller.BaseController;
 
@@ -26,6 +27,11 @@ public class kydxController extends BaseController {
 
     public ModelAndView syncData(HttpServletRequest request, HttpServletResponse response) {
         try {
+
+            new MidData().insertDwToOa();
+            new MidData().insertAccountToOa();
+
+
             deptManager.insertOrgDept();
 
             deptManager.insertOtherOrgDept();

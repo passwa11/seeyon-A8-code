@@ -2,6 +2,7 @@ package com.seeyon.apps.ext.kydx.util;
 
 import com.seeyon.client.CTPRestClient;
 import com.seeyon.client.CTPServiceClientManager;
+import com.seeyon.ctp.util.JDBCAgent;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -55,7 +56,7 @@ public class SyncConnectionInfoUtil {
     }
 
     public static int insertResult(String sql) throws Exception {
-        Connection connection = getMidConnection();
+        Connection connection = JDBCAgent.getRawConnection();
         Statement statement = null;
         int result = 0;
         try {

@@ -5,6 +5,7 @@ import com.seeyon.apps.ext.kydx.po.OrgMember;
 import com.seeyon.apps.ext.kydx.util.SyncConnectionInfoUtil;
 import com.seeyon.client.CTPRestClient;
 import com.seeyon.ctp.util.DBAgent;
+import com.seeyon.ctp.util.JDBCAgent;
 import net.sf.json.JSONObject;
 
 import java.sql.Connection;
@@ -18,10 +19,11 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
     public List<OrgMember> queryInsertMember() {
         String sql = "select * from (select u.jzgid,u.xm,u.gh,u.yddh,u.bglxdh,u.dzxx,u.grjj,(select m.oaid from m_org_unit m where m.dwh=u.dwh) oaUnitId,u.dwh from (select * from seeyon_oa_jzgjbxx where dwh is not null)  u) w where not exists (select * from m_org_member m where w.jzgid=m.jzgid)";
         List<OrgMember> memberList = new ArrayList<>();
-        Connection connection = SyncConnectionInfoUtil.getMidConnection();
+        Connection connection =null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
+            connection= JDBCAgent.getRawConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             OrgMember orgMember = null;
@@ -65,7 +67,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
         PreparedStatement ps = null;
         String insertSql = "insert into m_org_member (memberId,jzgid,xm,gh,yddh,bglxdh,dzxx,grjj,oaUnitId,dwh) values(?,?,?,?,?,?,?,?,?,?)";
         try {
-            connection = SyncConnectionInfoUtil.getMidConnection();
+            connection = JDBCAgent.getRawConnection();
             connection.setAutoCommit(false);
             ps = connection.prepareStatement(insertSql);
 
@@ -156,10 +158,11 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                 "(select oa.* from seeyon_oa_jzgjbxx oa where oa.dwh is not null) j,m_org_member m " +
                 "where j.gh=m.gh and (j.xm <> m.xm or j.dwh<>m.dwh  or j.yddh <>m.yddh or j.bglxdh <>m.bglxdh or j.dzxx<>m.dzxx or j.grjj<>m.grjj)";
         List<OrgMember> memberList = new ArrayList<>();
-        Connection connection = SyncConnectionInfoUtil.getMidConnection();
+        Connection connection = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
+            connection=JDBCAgent.getRawConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             OrgMember orgMember = null;
@@ -294,13 +297,13 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryDeleteMember() {
-//        String sql = "select m.id from THIRD_ORG_MEMBER t,M_ORG_MEMBER m where t.IS_DELETE ='1' and t.id=m.USERID union select m.id from M_ORG_MEMBER m where not EXISTS (select * from THIRD_ORG_MEMBER t where m.USERID=t.ID)";
         String sql = "select m.memberId from m_org_member m where not exists(select * from seeyon_oa_jzgjbxx j where j.gh=m.gh)";
         List<OrgMember> memberList = new ArrayList<>();
-        Connection connection = SyncConnectionInfoUtil.getMidConnection();
+        Connection connection = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
+            connection=JDBCAgent.getRawConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             OrgMember orgMember = null;

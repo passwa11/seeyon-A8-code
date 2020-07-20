@@ -5,6 +5,7 @@ import com.seeyon.apps.ext.kydx.po.OrgDept;
 import com.seeyon.apps.ext.kydx.util.SyncConnectionInfoUtil;
 import com.seeyon.apps.ext.kydx.util.TreeUtil;
 import com.seeyon.client.CTPRestClient;
+import com.seeyon.ctp.util.JDBCAgent;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +31,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
         StringBuffer sb = new StringBuffer();
         sb.append("delete from m_org_unit where oaid in (0");
         try {
-            connection = SyncConnectionInfoUtil.getMidConnection();
+            connection = JDBCAgent.getRawConnection();
             //获取需要删除的部门
             String qSql = "select oaid from m_org_unit u where not exists(select * from seeyon_oa_dw d where d.dwid=u.dwid)";
             ps = connection.prepareStatement(qSql);
@@ -79,7 +80,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
         PreparedStatement ps = null;
         ResultSet res = null;
         try {
-            connection = SyncConnectionInfoUtil.getMidConnection();
+            connection =JDBCAgent.getRawConnection();
             ps = connection.prepareStatement(sql);
             res = ps.executeQuery();
             List<OrgDept> deptList = new ArrayList<>();
@@ -159,11 +160,12 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
     public List<OrgDept> queryFirstOrgDept() {
 //        String sql = "select tou.code,tou.name,tou.unit,tou.is_enable from  (select * from THIRD_ORG_UNIT where is_delete <> '1' and unit is not null and unit ='0' ) tou where  not exists (select * from M_ORG_UNIT m where m.code = tou.code)";
         String sql = "select * from (select dwid,dwmc,dwjc,lsdwh,dwh from seeyon_oa_dw where LSDWH ='000000') d where not EXISTS (select * from m_org_unit u where u.dwid=d.dwid)";
-        Connection connection = SyncConnectionInfoUtil.getMidConnection();
+        Connection connection=null;
         Statement statement = null;
         ResultSet rs = null;
         List<OrgDept> orgDeptList = new ArrayList<>();
         try {
+            connection = JDBCAgent.getRawConnection();
             statement = connection.createStatement();
             rs = statement.executeQuery(sql);
             OrgDept orgDept = null;
@@ -198,7 +200,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
         String insertSql = "insert into m_org_unit(oaid,dwid,dwmc,dwjc,dwh,lsdwh) values (?,?,?,?,?,?)";
         try {
             if (null != list && list.size() > 0) {
-                connection = SyncConnectionInfoUtil.getMidConnection();
+                connection = JDBCAgent.getRawConnection();
                 connection.setAutoCommit(false);
                 ps = connection.prepareStatement(insertSql);
                 for (OrgDept dept : list) {
@@ -267,10 +269,11 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
         List<OrgDept> firstDeptList = new ArrayList<>();
 //        String sql = "select tou.code,tou.name,tou.is_enable,(select m.id from M_ORG_UNIT m where m.code= tou.UNIT) parent,tou.unit from  (select * from THIRD_ORG_UNIT where is_delete <> '1' and unit is not null and unit <>'0' ) tou where  not exists (select * from M_ORG_UNIT m where m.code = tou.code)";
         String sql = "select dwid,dwmc,dwjc,lsdwh,dwh,(select oaid from m_org_unit u where u.dwh=d.LSDWH) oaParentId from (select * from seeyon_oa_dw where lsdwh <>'000000') d where not exists (select * from m_org_unit mu where mu.dwid=d.dwid)";
-        Connection connection = SyncConnectionInfoUtil.getMidConnection();
+        Connection connection=null;
         PreparedStatement prep = null;
         ResultSet res = null;
         try {
+            connection = JDBCAgent.getRawConnection();
             prep = connection.prepareStatement(sql);
             res = prep.executeQuery();
             OrgDept orgDept = null;
@@ -306,7 +309,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
         String insertSql = "insert into m_org_unit(oaid,dwid,dwmc,dwjc,dwh,lsdwh) values (?,?,?,?,?,?)";
         try {
             if (null != list && list.size() > 0) {
-                connection = SyncConnectionInfoUtil.getMidConnection();
+                connection = JDBCAgent.getRawConnection();
                 ps = connection.prepareStatement(insertSql);
                 try {
                     for (int i = 0; i < list.size(); i++) {

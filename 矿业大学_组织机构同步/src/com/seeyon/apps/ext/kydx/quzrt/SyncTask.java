@@ -1,5 +1,6 @@
 package com.seeyon.apps.ext.kydx.quzrt;
 
+import com.seeyon.apps.ext.kydx.dao.MidData;
 import com.seeyon.apps.ext.kydx.dao.OrgCommon;
 import com.seeyon.apps.ext.kydx.manager.*;
 import org.slf4j.Logger;
@@ -26,6 +27,10 @@ public class SyncTask implements Runnable {
     @Override
     public void run() {
         logger.info("==============================同步组织信息执行了吗？======================================");
+
+        new MidData().insertDwToOa();
+        new MidData().insertAccountToOa();
+
         deptManager.insertOrgDept();
         deptManager.insertOtherOrgDept();
         deptManager.updateOrgDept();
