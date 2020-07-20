@@ -370,6 +370,7 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                     String isRead = configTools.getString("isRead");
 
                     String fuCol = configTools.getString("table_formmain_readColumn");
+                    String blankVal= configTools.getString("table_formmain_readColumn_val");
 //                    当点击会务通知列表是修改会务通知主表阅读字段的状态为已读
                     String huiWu = "select " + fuCol + " from " + fu + " where id=" + id;
                     if (fu.equals(tableName)) {
@@ -381,7 +382,7 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                             rs = ps.executeQuery();
                             while (rs.next()) {
                                 String fieldVal = rs.getString(fuCol);
-                                String updateSql = "update " + fu + " set " + fuCol + " = " + isRead + " where id= " + id;
+                                String updateSql = "update " + fu + " set " + fuCol + " = " + blankVal + " where id= " + id;
                                 if (null == fieldVal) {
                                     ps = connection.prepareStatement(updateSql);
                                     ps.executeUpdate();
