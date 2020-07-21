@@ -140,7 +140,7 @@ function dbSelectedToSortData(flag) {
 
 // 排序问题 对已选择人员进行部门排序
 function dataSorting(arr290, arr300, arr310, arr320, arrGH0) {
-
+    debugger;
     var arr29 = [];
     var arr30 = [];
     var arr31 = [];
@@ -186,55 +186,82 @@ function dataSorting(arr290, arr300, arr310, arr320, arrGH0) {
     if (arr290 != null) {
         if (arr29 != null) {
             l29 = arrsyDataSort(arr29.concat(arr290));
+            // l29 = arr29.concat(arr290);
         } else {
             l29 = arrsyDataSort(arr290);
         }
     } else {
-        l29 = arrsyDataSort(arr29);
+        if (arr29 != null) {
+            l29 = arr29;
+        } else {
+            l29 = arrsyDataSort(arr29);
+
+        }
     }
 
     var l30 = [];
     if (arr300 != null) {
         if (arr30 != null) {
             l30 = arrsyDataSort(arr30.concat(arr300));
+            // l30 = arr30.concat(arr300);
         } else {
             l30 = arrsyDataSort(arr300);
         }
     } else {
-        l30 = arrsyDataSort(arr30);
+        if (arr30 != null) {
+            l30 = arr30;
+        } else {
+            l30 = arrsyDataSort(arr30);
+
+        }
     }
 
     var l31 = [];
     if (arr310 != null) {
         if (arr31 != null) {
             l31 = arrsyDataSort(arr31.concat(arr310));
+            // l31 = arr31.concat(arr310);
         } else {
             l31 = arrsyDataSort(arr310);
         }
     } else {
-        l31 = arrsyDataSort(arr31);
+        if (arr31 != null) {
+            l31 = arr31;
+        } else {
+            l31 = arrsyDataSort(arr31);
+        }
     }
 
     var l32 = [];
     if (arr320 != null) {
         if (arr32 != null) {
             l32 = arrsyDataSort(arr32.concat(arr320));
+            // l32 = arr32.concat(arr320);
         } else {
             l32 = arrsyDataSort(arr320);
         }
     } else {
-        l32 = arrsyDataSort(arr32);
+        if (arr32 != null) {
+            l32 = arr32;
+        } else {
+            l32 = arrsyDataSort(arr32);
+        }
     }
 
     var lgh = [];
     if (arrGH0 != null) {
         if (arrGH != null) {
             lgh = arrsyDataSort(arrGH.concat(arrGH0));
+            // lgh = arrGH.concat(arrGH0);
         } else {
             lgh = arrsyDataSort(arrGH0);
         }
     } else {
-        lgh = arrsyDataSort(arrGH);
+        if (arrGH != null) {
+            lgh = arrGH;
+        } else {
+            lgh = arrsyDataSort(arrGH);
+        }
     }
 
     var option = "";
