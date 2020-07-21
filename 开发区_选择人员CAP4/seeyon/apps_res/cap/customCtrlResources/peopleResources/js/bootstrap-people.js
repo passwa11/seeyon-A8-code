@@ -11,7 +11,7 @@ $(function () {
 });
 
 
-function dbSelectedToSortData() {
+function dbSelectedToSortData(flag) {
 
     var arr29 = [];
     var arr30 = [];
@@ -54,30 +54,54 @@ function dbSelectedToSortData() {
             arrGH.push(obj);
         }
     });
-    var l29=[];
-    if (arr29.length > 0) {
-        l29 = arrsyDataSort(arr29);
+    var l29 = [];
+    if (flag == 'check') {
+        l29 = arr29;
+    } else {
+        if (arr29.length > 0) {
+            l29 = arrsyDataSort(arr29);
+        }
     }
+
 
     var l30 = [];
-    if (arr30.length > 0) {
-        l30 = arrsyDataSort(arr30);
+    if (flag == 'check') {
+        l30 = arr30;
+    } else {
+        if (arr30.length > 0) {
+            l30 = arrsyDataSort(arr30);
+        }
     }
 
+
     var l31 = [];
-    if (arr31.length > 0) {
-        l31 = arrsyDataSort(arr31);
+    if (flag == 'check') {
+        l31 = arr31;
+    } else {
+        if (arr31.length > 0) {
+            l31 = arrsyDataSort(arr31);
+        }
     }
 
     var l32 = [];
-    if (arr32.length > 0) {
-        l32 = arrsyDataSort(arr32);
+    if (flag == 'check') {
+        l32 = arr32;
+    } else {
+        if (arr32.length > 0) {
+            l32 = arrsyDataSort(arr32);
+        }
     }
 
+
     var lgh = [];
-    if (arrGH.length > 0) {
-        lgh = arrsyDataSort(arrGH);
+    if (flag == 'check') {
+        lgh = arrGH;
+    } else {
+        if (arrGH.length > 0) {
+            lgh = arrsyDataSort(arrGH);
+        }
     }
+
     var option = "";
     var html29 = '';
     var html30 = '';
@@ -345,7 +369,7 @@ function gongHuiTable() {
                     });
                 }
             }
-            dbSelectedToSortData();
+            dbSelectedToSortData('check');
             revokeReuse();
 
             removeTableRowGH(row);
@@ -463,7 +487,7 @@ function dangZhengBanTable() {
                 width: '88%',
             }
         ],
-        onCheck:function (row, $element) {
+        onCheck: function (row, $element) {
 
             var tr_obj = row;
             var obj = {};//添加成员对象
@@ -504,57 +528,12 @@ function dangZhengBanTable() {
                     });
                 }
             }
-            dbSelectedToSortData();
+            dbSelectedToSortData('check');
             revokeReuse();
             removeTableRow29(row);
 
         }
-        ,onCheck : function(row, $element){
 
-            var tr_obj = row;
-            var obj = {};//添加成员对象
-            obj["value"] = tr_obj.id;
-            obj["text"] = tr_obj.field0001;
-            obj["dept"] = tr_obj.field0003;
-            if ($("dl.selected-info dd").length <= 0) {
-                var option = '<dd ondblclick="removeDdRow29(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="29" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").append(option);
-                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-                    var index = $(this).attr("class").indexOf("selected-this");
-                    if (index == 0) {
-                        $(this).removeClass("selected-this");
-                    } else {
-                        $(this).addClass("selected-this");
-                    }
-                });
-            } else {
-                var selected = function () {//判断是否已选择了该人员
-                    var flag = true;
-                    $("dl.selected-info dd").each(function (i, item) {
-                        if ($(item).attr("lay-value") == obj.value) {
-                            flag = false;//已经选择
-                        }
-                    });
-                    return flag;
-                }
-                if (selected()) {
-                    var option = '<dd ondblclick="removeDdRow29(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="29"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                    $("dl.selected-info").append(option);
-                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-                        var index = $(this).attr("class").indexOf("selected-this");
-                        if (index == 0) {
-                            $(this).removeClass("selected-this");
-                        } else {
-                            $(this).addClass("selected-this");
-                        }
-                    });
-                }
-            }
-            dbSelectedToSortData();
-            revokeReuse();
-            removeTableRow29(row);
-
-        }
         // , onDblClickRow: function (row, $element, field) {
         //
         //     var tr_obj = row;
@@ -704,7 +683,7 @@ function jiguan30Table() {
                 width: '88%',
             }
         ]
-        ,onCheck:function (row, $element) {
+        , onCheck: function (row, $element) {
             var tr_obj = row;
             var obj = {};//添加成员对象
             obj["value"] = tr_obj.id;
@@ -745,7 +724,7 @@ function jiguan30Table() {
                 }
             }
             //
-            dbSelectedToSortData();
+            dbSelectedToSortData('check');
             revokeReuse();
 
             removeTableRow30(row);
@@ -904,7 +883,7 @@ function zhenban31Table() {
                 }
             }
             //
-            dbSelectedToSortData();
+            dbSelectedToSortData('check');
             revokeReuse();
 
             removeTableRow31(row);
@@ -1066,7 +1045,7 @@ function zhuqu32Table() {
                 }
             }
             //
-            dbSelectedToSortData();
+            dbSelectedToSortData('check');
             revokeReuse();
             removeTableRow32(row);
 
