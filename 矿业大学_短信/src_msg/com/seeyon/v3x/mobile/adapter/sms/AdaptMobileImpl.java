@@ -107,7 +107,8 @@ public class AdaptMobileImpl implements AdapterMobileMessageManger {
             post.addParameter("LoginName", PropertiesUtil.getLoginName());
             post.addParameter("Password", PropertiesUtil.getPassword());
 //            "您好%s您有%s条待办事项%s请及时处理%sOA%s";
-            post.addParameter("MessageContent", String.format(PropertiesUtil.getTemplate(),",","1", content,"!!","代办"));
+            String msg=String.format(PropertiesUtil.getTemplate(),"!","1", ",","[","]");
+            post.addParameter("MessageContent", msg);
 //            post.addParameter("MessageContent", String.format(PropertiesUtil.getTemplate(), ((int)((Math.random()*9+1)*100000))+""));
             post.addParameter("UserNumber", destPhone);
             post.addParameter("SerialNumber", "");
