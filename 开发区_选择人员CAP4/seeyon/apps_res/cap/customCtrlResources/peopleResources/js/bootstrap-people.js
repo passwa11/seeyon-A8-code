@@ -19,41 +19,71 @@ function dbSelectedToSortData(flag) {
     var arr32 = [];
     var arrGH = [];
 
-    $("dl").find('dd').each(function () {
-        var id = $(this).attr("lay-id");
-        var field0001 = $(this).attr("lay-name");
-        var field0002 = $(this).attr("lay-field002");
-        var field0003 = $(this).attr("lay-dept");
-        var name = $(this).attr("lay-username");
-        var flag = $(this).attr("lay-flag");
-        var bs = $(this).attr("lay-bs");
-        var bsname = $(this).attr("lay-bsname");
-        var zsort = $(this).attr("lay-zsort");
-        if (undefined == id) {
-            id = "";
-        }
-        var obj = {};//添加成员对象
-        obj["id"] = id;
-        obj["field0001"] = field0001;
-        obj["field0002"] = field0002;
-        obj["name"] = name;
-        obj["field0003"] = field0003;
-        obj["field0005"] = bs + '';
-        obj["mval"] = bsname;
-        obj["field0007"] = zsort;
-        obj["flag"] = flag;
-        if (flag == '29') {
-            arr29.push(obj);
-        } else if (flag == '30') {
-            arr30.push(obj);
-        } else if (flag == '31') {
-            arr31.push(obj);
-        } else if (flag == '32') {
-            arr32.push(obj);
-        } else if (flag == 'gh') {
-            arrGH.push(obj);
-        }
-    });
+    var allData = [];
+    if (flag == 'check') {
+        $("dl").find('dd').each(function () {
+            var id = $(this).attr("lay-id");
+            var field0001 = $(this).attr("lay-name");
+            var field0002 = $(this).attr("lay-field002");
+            var field0003 = $(this).attr("lay-dept");
+            var name = $(this).attr("lay-username");
+            var flag = $(this).attr("lay-flag");
+            var bs = $(this).attr("lay-bs");
+            var bsname = $(this).attr("lay-bsname");
+            var zsort = $(this).attr("lay-zsort");
+            if (undefined == id) {
+                id = "";
+            }
+            var obj = {};//添加成员对象
+            obj["id"] = id;
+            obj["field0001"] = field0001;
+            obj["field0002"] = field0002;
+            obj["name"] = name;
+            obj["field0003"] = field0003;
+            obj["field0005"] = bs + '';
+            obj["mval"] = bsname;
+            obj["field0007"] = zsort;
+            obj["flag"] = flag;
+            allData.push(obj);
+        });
+    } else {
+        $("dl").find('dd').each(function () {
+            var id = $(this).attr("lay-id");
+            var field0001 = $(this).attr("lay-name");
+            var field0002 = $(this).attr("lay-field002");
+            var field0003 = $(this).attr("lay-dept");
+            var name = $(this).attr("lay-username");
+            var flag = $(this).attr("lay-flag");
+            var bs = $(this).attr("lay-bs");
+            var bsname = $(this).attr("lay-bsname");
+            var zsort = $(this).attr("lay-zsort");
+            if (undefined == id) {
+                id = "";
+            }
+            var obj = {};//添加成员对象
+            obj["id"] = id;
+            obj["field0001"] = field0001;
+            obj["field0002"] = field0002;
+            obj["name"] = name;
+            obj["field0003"] = field0003;
+            obj["field0005"] = bs + '';
+            obj["mval"] = bsname;
+            obj["field0007"] = zsort;
+            obj["flag"] = flag;
+            if (flag == '29') {
+                arr29.push(obj);
+            } else if (flag == '30') {
+                arr30.push(obj);
+            } else if (flag == '31') {
+                arr31.push(obj);
+            } else if (flag == '32') {
+                arr32.push(obj);
+            } else if (flag == 'gh') {
+                arrGH.push(obj);
+            }
+        });
+    }
+
     var l29 = [];
     if (flag == 'check') {
         l29 = arr29;
@@ -108,25 +138,32 @@ function dbSelectedToSortData(flag) {
     var html31 = '';
     var html32 = '';
     var htmlgh = '';
-    // clearSelect();
 
-    if (l29.length > 0) {
-        html29 = htmlShow(l29, '29');
+    var allhtml = '';
+    if (flag == 'check') {
+        allhtml = AllhtmlShow(allData);
+        $(".selected-info").html("");
+        option += allhtml;
+    } else {
+        if (l29.length > 0) {
+            html29 = htmlShow(l29, '29');
+        }
+        if (l30.length > 0) {
+            html30 = htmlShow(l30, '30');
+        }
+        if (l31.length > 0) {
+            html31 = htmlShow(l31, '31');
+        }
+        if (l32.length > 0) {
+            html32 = htmlShow(l32, '32');
+        }
+        if (lgh.length > 0) {
+            htmlgh = htmlShow(lgh, 'gh');
+        }
+        $(".selected-info").html("");
+        option += html29 + html30 + html31 + html32 + htmlgh;
     }
-    if (l30.length > 0) {
-        html30 = htmlShow(l30, '30');
-    }
-    if (l31.length > 0) {
-        html31 = htmlShow(l31, '31');
-    }
-    if (l32.length > 0) {
-        html32 = htmlShow(l32, '32');
-    }
-    if (lgh.length > 0) {
-        htmlgh = htmlShow(lgh, 'gh');
-    }
-    $(".selected-info").html("");
-    option += html29 + html30 + html31 + html32 + htmlgh;
+
     $("dl.selected-info").append(option);
     $(".selected-info dd").on('click', function () {
         var index = $(this).attr("class").indexOf("selected-this");
@@ -297,6 +334,26 @@ function dataSorting(arr290, arr300, arr310, arr320, arrGH0) {
             $(this).addClass("selected-this");
         }
     });
+}
+
+function AllhtmlShow(data) {
+    var html = "";
+    for (var i = 0; i < data.length; i++) {
+        var flag = '';
+        if ((data[i].flag).indexOf("29") != -1) {
+            flag = '29';
+        } else if ((data[i].flag).indexOf("30") != -1) {
+            flag = '30';
+        } else if ((data[i].flag).indexOf("31") != -1) {
+            flag = '31';
+        } else if ((data[i].flag).indexOf("32") != -1) {
+            flag = '32';
+        } else if ((data[i].flag).indexOf("gonghui") != -1) {
+            flag = 'gh';
+        }
+        html += '<dd ondblclick="removeDdRow' + flag + '(this)" lay-bsname="' + data[i].mval + '"  lay-field002="' + data[i].field0002 + '"  lay-zsort="' + data[i].field0007 + '" lay-id="' + data[i].id + '" lay-bs="' + data[i].field0005 + '"  lay-value="' + data[i].id + '" lay-username="' + data[i].name + '" lay-flag="' + flag + '" lay-name="' + data[i].field0001 + '" lay-dept="' + data[i].field0003 + '" class="">' + data[i].field0001 + '</dd>';
+    }
+    return html;
 }
 
 function htmlShow(data, flag) {
