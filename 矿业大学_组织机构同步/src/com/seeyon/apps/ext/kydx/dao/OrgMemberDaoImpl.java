@@ -17,7 +17,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryInsertMember() {
-        String sql = "select * from (select u.jzgid,u.xm,u.gh,u.yddh,u.bglxdh,u.dzxx,u.grjj,(select m.oaid from m_org_unit m where m.dwh=u.dwh) oaUnitId,u.dwh from (select * from seeyon_oa_jzgjbxx where dwh is not null)  u) w where not exists (select * from m_org_member m where w.jzgid=m.jzgid)";
+        String sql = "select * from (select u.jzgid,u.xm,u.gh,u.yddh,u.bglxdh,u.dzxx,u.grjj,u.yrfsdm,(select m.oaid from m_org_unit m where m.dwh=u.dwh) oaUnitId,u.dwh from (select * from seeyon_oa_jzgjbxx where dwh is not null)  u) w where not exists (select * from m_org_member m where w.jzgid=m.jzgid)";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection =null;
         PreparedStatement ps = null;
@@ -47,6 +47,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                 orgMember.setCode(rs.getString("gh"));
                 orgMember.setDescription(rs.getString("grjj"));
                 orgMember.setSubDepartmentId(rs.getString("dwh"));
+                orgMember.setYrfsdm(rs.getString("yrfsdm"));
                 memberList.add(orgMember);
             }
         } catch (Exception e) {
@@ -65,7 +66,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
         CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
         Connection connection = null;
         PreparedStatement ps = null;
-        String insertSql = "insert into m_org_member (memberId,jzgid,xm,gh,yddh,bglxdh,dzxx,grjj,oaUnitId,dwh) values(?,?,?,?,?,?,?,?,?,?)";
+        String insertSql = "insert into m_org_member (memberId,jzgid,xm,gh,yddh,bglxdh,dzxx,grjj,oaUnitId,dwh,yrfsdm) values(?,?,?,?,?,?,?,?,?,?,?)";
         try {
             connection = JDBCAgent.getRawConnection();
             connection.setAutoCommit(false);
@@ -105,6 +106,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 ps.setString(8, member.getDescription());
                                 ps.setString(9, member.getOrgDepartmentId());
                                 ps.setString(10, member.getSubDepartmentId());
+                                ps.setString(11, member.getYrfsdm());
                                 ps.addBatch();
 
                                 CtpOrgUser orgUser = new CtpOrgUser();
@@ -118,7 +120,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 orgUser.setMemberId(Long.parseLong(userid));
                                 orgUser.setActionTime(new Date());
                                 orgUser.setDescription("");
-                                orgUser.setExUnitCode("uid=" + ent.getString("loginName"));
+                                orgUser.setExUnitCode("uid=" + ent.getString("loginName")+",ou="+member.getYrfsdm());
                                 DBAgent.save(orgUser);
                             }
                         }
@@ -134,6 +136,8 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                         ps.setString(8, member.getDescription());
                         ps.setString(9, member.getOrgDepartmentId());
                         ps.setString(10, member.getSubDepartmentId());
+                        ps.setString(11, member.getYrfsdm());
+
                         ps.addBatch();
                         ps.executeBatch();
                         connection.commit();
@@ -154,9 +158,9 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryUpdateMember() {
-        String sql = "select j.jzgid,j.xm,j.gh,j.dwh,j.yddh,j.bglxdh,j.dzxx,j.grjj,m.memberId,(select u.oaid from m_org_unit u where u.dwh=j.dwh) unitId from " +
+        String sql = "select j.yrfsdm,j.jzgid,j.xm,j.gh,j.dwh,j.yddh,j.bglxdh,j.dzxx,j.grjj,m.memberId,(select u.oaid from m_org_unit u where u.dwh=j.dwh) unitId from " +
                 "(select oa.* from seeyon_oa_jzgjbxx oa where oa.dwh is not null) j,m_org_member m " +
-                "where j.gh=m.gh and (j.xm <> m.xm or j.dwh<>m.dwh  or j.yddh <>m.yddh or j.bglxdh <>m.bglxdh or j.dzxx<>m.dzxx or j.grjj<>m.grjj)";
+                "where j.gh=m.gh and (j.xm <> m.xm or j.dwh<>m.dwh  or j.yddh <>m.yddh or j.bglxdh <>m.bglxdh or j.dzxx<>m.dzxx or j.grjj<>m.grjj or j.yrfsdm<>m.yrfsdm) ";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection = null;
         PreparedStatement ps = null;
@@ -182,6 +186,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                 orgMember.setCode(rs.getString("gh"));
                 orgMember.setDescription(rs.getString("grjj"));
                 orgMember.setSubDepartmentId(rs.getString("dwh"));
+                orgMember.setYrfsdm(rs.getString("yrfsdm"));
                 memberList.add(orgMember);
             }
         } catch (Exception e) {
@@ -257,12 +262,6 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 } else {
                                     sql = sql + " dzxx = '', ";
                                 }
-
-//                                if (member.getIsEnable() != null && !"".equals(member.getIsEnable())) {
-//                                    sql = sql + " is_enable = '" + member.getIsEnable() + "', ";
-//                                } else {
-//                                    sql = sql + " is_enable = '', ";
-//                                }
 
                                 if (member.getDescription() != null && !"".equals(member.getDescription())) {
                                     sql = sql + " grjj = '" + member.getDescription() + "' ,";
