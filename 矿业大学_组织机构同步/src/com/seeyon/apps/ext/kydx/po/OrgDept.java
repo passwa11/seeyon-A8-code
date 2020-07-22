@@ -18,6 +18,25 @@ public class OrgDept {
     private String shortName;
     private String dwid;
     private String oaParentId;
+//新加字段
+    private String isUse;
+    private String param1;
+
+    public String getParam1() {
+        return param1;
+    }
+
+    public void setParam1(String param1) {
+        this.param1 = param1;
+    }
+
+    public String getIsUse() {
+        return isUse;
+    }
+
+    public void setIsUse(String isUse) {
+        this.isUse = isUse;
+    }
 
     public String getOaParentId() {
         return oaParentId;
