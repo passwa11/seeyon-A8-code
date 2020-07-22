@@ -74,7 +74,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
     public void updateOrgDept() {
         OrgCommon orgCommon = new OrgCommon();
 //        String sql = " select m.id,t.name,t.code,t.unit,(select mo.id from m_org_unit mo where MO.code=t.unit) parentOaId,t.is_enable from (select * from third_org_unit where is_delete <>'1' ) t,m_org_unit m where t.code=m.code and (t.name <> m.name or t.unit <> m.unit)";
-        String sql = "select d.dwmc,d.dwjc,d.dwh,d.lsdwh,u.oaid,(select mu.oaid from m_org_unit mu where mu.dwh=d.lsdwh) oaParentId from seeyon_oa_dw d,m_org_unit u where d.dwid=u.dwid and (d.dwmc <>u.dwmc or d.DWJC<>u.dwjc or d.dwh<>u.dwh or d.lsdwh<>u.lsdwh) ";
+        String sql = "select d.dwmc,d.dwjc,d.dwh,d.lsdwh,u.oaid,(select mu.oaid from m_org_unit mu where mu.dwh=d.lsdwh) oaParentId ,d.dz_dqzyjg from seeyon_oa_dw d,m_org_unit u where d.dwid=u.dwid and (d.dwmc <>u.dwmc or d.DWJC<>u.dwjc or d.dwh<>u.dwh or d.lsdwh<>u.lsdwh or d.DZ_DQZYJG != u.dz_dqzyjg) ";
         CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
         Connection connection = null;
         PreparedStatement ps = null;
@@ -96,7 +96,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                 if (null != res.getString("oaParentId") && !"".equals(res.getString("oaParentId"))) {
                     orgDept.setParentId(res.getString("oaParentId"));
                 }
-
+                orgDept.setIsUse(res.getString("dz_dqzyjg"));
                 orgDept.setDeptEnable(true);
                 deptList.add(orgDept);
             }
@@ -108,7 +108,11 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                     deptMap.put("code", dept.getDeptCode());
                     deptMap.put("name", dept.getDeptName());
                     deptMap.put("superior", dept.getParentId());
-                    deptMap.put("enabled", dept.isDeptEnable());
+                    if(null !=dept.getIsUse() && !"".equals(dept.getIsUse()) && "0".equals(dept.getIsUse())){
+                        deptMap.put("enabled", false);
+                    }else {
+                        deptMap.put("enabled", true);
+                    }
                     deptMap.put("shortName", dept.getShortName());
                     list.add(deptMap);
                     JSONObject deptJson = JSONObject.fromObject(deptMap);
@@ -127,6 +131,12 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                                 updateSql.append(" dwjc = '" + dept.getShortName() + "',");
                             } else {
                                 updateSql.append(" dwjc = '',");
+                            }
+
+                            if (null != dept.getIsUse() && !"".equals(dept.getIsUse())) {
+                                updateSql.append(" dz_dqzyjg = '" + dept.getIsUse() + "', ");
+                            } else {
+                                updateSql.append(" dz_dqzyjg = '', ");
                             }
 
                             if (null != dept.getDeptParentId() && !"".equals(dept.getDeptParentId())) {
@@ -159,7 +169,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
     @Override
     public List<OrgDept> queryFirstOrgDept() {
 //        String sql = "select tou.code,tou.name,tou.unit,tou.is_enable from  (select * from THIRD_ORG_UNIT where is_delete <> '1' and unit is not null and unit ='0' ) tou where  not exists (select * from M_ORG_UNIT m where m.code = tou.code)";
-        String sql = "select * from (select dwid,dwmc,dwjc,lsdwh,dwh from seeyon_oa_dw where LSDWH ='000000') d where not EXISTS (select * from m_org_unit u where u.dwid=d.dwid)";
+        String sql = "select * from (select dwid,dwmc,dwjc,lsdwh,dwh,sfsy,dz_dqzyjg from seeyon_oa_dw where ifnull(dz_dqzyjg,'1')!='0' and LSDWH ='000000' ) d where not EXISTS (select * from m_org_unit u where u.dwid=d.dwid)";
         Connection connection=null;
         Statement statement = null;
         ResultSet rs = null;
@@ -177,6 +187,8 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                 orgDept.setDeptParentId(rs.getString("lsdwh"));
                 orgDept.setDwid(rs.getString("dwid"));
                 orgDept.setOrgAccountId(new OrgCommon().getOrgAccountId());
+                orgDept.setIsUse(rs.getString("dz_dqzyjg"));
+                orgDept.setParam1(rs.getString("sfsy"));
                 orgDeptList.add(orgDept);
             }
 
@@ -197,7 +209,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
         CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
         Connection connection = null;
         PreparedStatement ps = null;
-        String insertSql = "insert into m_org_unit(oaid,dwid,dwmc,dwjc,dwh,lsdwh) values (?,?,?,?,?,?)";
+        String insertSql = "insert into m_org_unit(oaid,dwid,dwmc,dwjc,dwh,lsdwh,sfsy,dz_dqzyjg) values (?,?,?,?,?,?,?,?)";
         try {
             if (null != list && list.size() > 0) {
                 connection = JDBCAgent.getRawConnection();
@@ -228,6 +240,8 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                                 ps.setString(5, dept.getDeptCode() != null && !"".equals(dept.getDeptCode()) ? dept.getDeptCode() : "");
                                 boolean flag = dept.getDeptParentId() != null && !"".equals(dept.getDeptParentId()) && !dept.getDeptParentId().equals(dept.getOrgAccountId());
                                 ps.setString(6, flag ? dept.getDeptParentId() : "");
+                                ps.setString(7, dept.getParam1());
+                                ps.setString(8, dept.getIsUse());
                                 ps.addBatch();
                             }
                         }
@@ -242,6 +256,8 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                         ps.setString(5, dept.getDeptCode() != null && !"".equals(dept.getDeptCode()) ? dept.getDeptCode() : "");
                         boolean flag = dept.getDeptParentId() != null && !"".equals(dept.getDeptParentId());
                         ps.setString(6, flag ? dept.getDeptParentId() : "");
+                        ps.setString(7, dept.getParam1());
+                        ps.setString(8, dept.getIsUse());
                         ps.addBatch();
                         ps.executeBatch();
                         connection.commit();//执行
@@ -268,7 +284,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
     public List<OrgDept> queryOtherOrgDept() {
         List<OrgDept> firstDeptList = new ArrayList<>();
 //        String sql = "select tou.code,tou.name,tou.is_enable,(select m.id from M_ORG_UNIT m where m.code= tou.UNIT) parent,tou.unit from  (select * from THIRD_ORG_UNIT where is_delete <> '1' and unit is not null and unit <>'0' ) tou where  not exists (select * from M_ORG_UNIT m where m.code = tou.code)";
-        String sql = "select dwid,dwmc,dwjc,lsdwh,dwh,(select oaid from m_org_unit u where u.dwh=d.LSDWH) oaParentId from (select * from seeyon_oa_dw where lsdwh <>'000000') d where not exists (select * from m_org_unit mu where mu.dwid=d.dwid)";
+        String sql = "select dwid,dwmc,dwjc,lsdwh,dwh,(select oaid from m_org_unit u where u.dwh=d.LSDWH) oaParentId,sfsy,dz_dqzyjg from (select * from seeyon_oa_dw where ifnull(dz_dqzyjg,'1')!='0' and lsdwh <>'000000') d where not exists (select * from m_org_unit mu where mu.dwid=d.dwid)";
         Connection connection=null;
         PreparedStatement prep = null;
         ResultSet res = null;
@@ -286,6 +302,8 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                 orgDept.setShortName(res.getString("dwjc"));
                 orgDept.setDeptParentId(res.getString("lsdwh"));
                 orgDept.setParentId(res.getString("oaParentId"));
+                orgDept.setParam1(res.getString("sfsy"));
+                orgDept.setIsUse(res.getString("dz_dqzyjg"));
 
                 firstDeptList.add(orgDept);
             }
@@ -306,7 +324,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
         CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
         Connection connection = null;
         PreparedStatement ps = null;
-        String insertSql = "insert into m_org_unit(oaid,dwid,dwmc,dwjc,dwh,lsdwh) values (?,?,?,?,?,?)";
+        String insertSql = "insert into m_org_unit(oaid,dwid,dwmc,dwjc,dwh,lsdwh,sfsy,dz_dqzyjg) values (?,?,?,?,?,?,?,?)";
         try {
             if (null != list && list.size() > 0) {
                 connection = JDBCAgent.getRawConnection();
@@ -362,6 +380,8 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                         ps.setString(5, dept.getDeptCode() != null && !"".equals(dept.getDeptCode()) ? dept.getDeptCode() : "");
                         boolean flag = dept.getDeptParentId() != null && !"".equals(dept.getDeptParentId());
                         ps.setString(6, flag ? dept.getDeptParentId() : "");
+                        ps.setString(7, dept.getParam1());
+                        ps.setString(8, dept.getIsUse());
 
                         ps.executeUpdate();
                     }
@@ -377,6 +397,8 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                 boolean flag = dept.getDeptParentId() != null && !"".equals(dept.getDeptParentId());
                 ps.setString(5, isExist.getString("code"));
                 ps.setString(6, flag ? dept.getDeptParentId() : "");
+                ps.setString(7, dept.getParam1());
+                ps.setString(8, dept.getIsUse());
                 ps.executeUpdate();
             }
         }
