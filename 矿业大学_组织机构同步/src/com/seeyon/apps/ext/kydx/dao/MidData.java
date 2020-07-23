@@ -22,7 +22,7 @@ public class MidData {
         Connection connection = SyncConnectionInfoUtil.getMidConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select dwid,dwmc,dwjc,lsdwh,dwh,sfsy from seeyon_oa_dw";
+        String sql = "select dwid,dwmc,dwjc,lsdwh,dwh,sfsy,dz_dqzyjg from seeyon_oa_dw";
         try {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -35,6 +35,7 @@ public class MidData {
                 map.put("lsdwh", rs.getString("lsdwh"));
                 map.put("dwh", rs.getString("dwh"));
                 map.put("sfsy", rs.getString("sfsy"));
+                map.put("dz_dqzyjg", rs.getString("dz_dqzyjg"));
                 list.add(map);
             }
 
@@ -90,7 +91,7 @@ public class MidData {
         List<Map<String, String>> list = this.queryDwData();
         Connection connection = null;
         PreparedStatement ps = null;
-        String insertSql = "insert into seeyon_oa_dw(dwid,dwmc,dwjc,lsdwh,dwh,sfsy) values (?,?,?,?,?,?)";
+        String insertSql = "insert into seeyon_oa_dw(dwid,dwmc,dwjc,lsdwh,dwh,sfsy,dz_dqzyjg) values (?,?,?,?,?,?,?)";
         try {
             connection = JDBCAgent.getRawConnection();
             connection.setAutoCommit(false);
@@ -102,6 +103,7 @@ public class MidData {
                 ps.setString(4, list.get(i).get("lsdwh"));
                 ps.setString(5, list.get(i).get("dwh"));
                 ps.setString(6, list.get(i).get("sfsy"));
+                ps.setString(7, list.get(i).get("dz_dqzyjg"));
                 ps.addBatch();
             }
             ps.executeBatch();
@@ -127,7 +129,7 @@ public class MidData {
         Connection connection = SyncConnectionInfoUtil.getMidConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select zwjbm,jzgid,xm,gh,dwh,dzzw,yddh,bglxdh,dzxx,grjj from seeyon_oa_jzgjbxx";
+        String sql = "select zwjbm,jzgid,xm,gh,dwh,dzzw,yddh,bglxdh,dzxx,grjj,yrfsdm from seeyon_oa_jzgjbxx";
         try {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -144,6 +146,7 @@ public class MidData {
                 map.put("bglxdh", rs.getString("bglxdh"));
                 map.put("dzxx", rs.getString("dzxx"));
                 map.put("grjj", rs.getString("grjj"));
+                map.put("yrfsdm", rs.getString("yrfsdm"));
                 list.add(map);
             }
 
@@ -175,7 +178,7 @@ public class MidData {
         List<Map<String, String>> list = this.queryAccountData();
         Connection connection = null;
         PreparedStatement ps = null;
-        String insertSql = "insert into seeyon_oa_jzgjbxx(zwjbm,jzgid,xm,gh,dwh,dzzw,yddh,bglxdh,dzxx,grjj) values (?,?,?,?,?,?,?,?,?,?)";
+        String insertSql = "insert into seeyon_oa_jzgjbxx(zwjbm,jzgid,xm,gh,dwh,dzzw,yddh,bglxdh,dzxx,grjj,yrfsdm) values (?,?,?,?,?,?,?,?,?,?,?)";
         try {
             connection = JDBCAgent.getRawConnection();
             connection.setAutoCommit(false);
@@ -191,6 +194,7 @@ public class MidData {
                 ps.setString(8, list.get(i).get("bglxdh"));
                 ps.setString(9, list.get(i).get("dzxx"));
                 ps.setString(10, list.get(i).get("grjj"));
+                ps.setString(11, list.get(i).get("yrfsdm"));
                 ps.addBatch();
             }
             ps.executeBatch();
