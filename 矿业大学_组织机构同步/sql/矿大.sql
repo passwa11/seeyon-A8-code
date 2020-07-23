@@ -9,7 +9,8 @@ dwmc varchar(600),
 dwjc varchar(180),
 lsdwh varchar(10),
 dwh varchar(10),
-sfsy varchar(1)
+sfsy varchar(1),
+dz_dqzyjg varchar (50)
 );
 
 create table seeyon_oa_jzgjbxx(
@@ -22,7 +23,8 @@ dzzw varchar(90),
 yddh varchar(30),
 bglxdh varchar(30),
 dzxx varchar(40),
-grjj longtext
+grjj longtext,
+yrfsdm varchar(10)
 );
 
 
@@ -33,7 +35,8 @@ dwmc varchar(100),
 dwjc varchar(100),
 dwh varchar(20),
 lsdwh varchar(20),
-sfsy varchar(1)
+sfsy varchar(1),
+dz_dqzyjg varchar (50)
 );
 
 create table m_org_member(
@@ -45,5 +48,7 @@ yddh VARCHAR(50),
 bglxdh varchar(50),
 dzxx varchar(50),
 grjj VARCHAR(4000),
-oaUnitId varchar(50)
+oaUnitId varchar(50),
+dwh varchar(50),
+yrfsdm varchar(10)
 );
