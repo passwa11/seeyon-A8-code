@@ -34,24 +34,11 @@ public class SyncTask implements Runnable {
         deptManager.insertOrgDept();
         deptManager.insertOtherOrgDept();
         deptManager.updateOrgDept();
-
-
-//        levelManager.insertOrgLevel();
-//        levelManager.updateOrgLevel();
-
-
-//        postManager.insertPost();
-//        postManager.updatePost();
+        deptManager.deleteOrgDept();
 
         memberManager.insertMember();
         memberManager.updateMember();
-
-//        levelManager.deleteOrgLevel();
-//        postManager.deletePost();
         memberManager.deleteMember();
-        deptManager.deleteOrgDept();
-
-
 
     }
 
