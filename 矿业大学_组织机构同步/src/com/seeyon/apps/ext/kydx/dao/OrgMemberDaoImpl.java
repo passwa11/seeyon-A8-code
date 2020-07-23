@@ -86,6 +86,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 //                    memberMap.put("enabled", member.getIsEnable());
                     memberMap.put("telNumber", null == member.getPhone() ? "" : member.getPhone());
                     memberMap.put("officeNum", null == member.getTel() ? "" : member.getTel());
+                    memberMap.put("emailAddress", null == member.getEmail() ? "" : member.getEmail());
 
                     memberMap.put("description", null == member.getDescription() ? "" : member.getDescription());
 
@@ -125,22 +126,56 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                             }
                         }
                     } else {
-                        String userid = memberJson.getString("id");
-                        ps.setString(1, userid);
-                        ps.setString(2, member.getId());
-                        ps.setString(3, member.getName());
-                        ps.setString(4, member.getCode());
-                        ps.setString(5, member.getPhone());
-                        ps.setString(6, member.getTel());
-                        ps.setString(7, member.getEmail());
-                        ps.setString(8, member.getDescription());
-                        ps.setString(9, member.getOrgDepartmentId());
-                        ps.setString(10, member.getSubDepartmentId());
-                        ps.setString(11, member.getYrfsdm());
 
-                        ps.addBatch();
-                        ps.executeBatch();
-                        connection.commit();
+                        //在这里做个修改操作
+                        Map updatememberMap=new HashMap<>();
+                        updatememberMap.put("id", memberJson.getString("id"));
+                        updatememberMap.put("orgAccountId", member.getOrgAccountId());
+                        updatememberMap.put("telNumber", member.getPhone());
+                        updatememberMap.put("officeNum", member.getTel());
+                        updatememberMap.put("emailAddress", null == member.getEmail() ? "" : member.getEmail());
+                        updatememberMap.put("description", member.getDescription());
+                        JSONObject json = client.put("/orgMember", updatememberMap, JSONObject.class);
+                        if (null != json) {
+                            if (json.getBoolean("success")) {
+                                JSONObject ent = json.getJSONArray("successMsgs").getJSONObject(0).getJSONObject("ent");
+                                String meberId=ent.getString("id");
+                                Map params=new HashMap();
+                                params.put("memberId",meberId);
+                                List mapperList=DBAgent.find("from CtpOrgUser where member_id = :memberId ",params);
+                                if(mapperList.size()==0){
+                                    String userid = memberJson.getString("id");
+                                    CtpOrgUser orgUser = new CtpOrgUser();
+                                    orgUser.setId(Long.parseLong(userid));
+                                    orgUser.setType("ldap.member.openLdap");
+                                    orgUser.setLoginName(ent.getString("loginName"));
+                                    orgUser.setExLoginName(member.getCode());
+                                    orgUser.setExPassword("1");
+                                    orgUser.setExId(member.getId());
+                                    orgUser.setExUserId(member.getId());
+                                    orgUser.setMemberId(Long.parseLong(userid));
+                                    orgUser.setActionTime(new Date());
+                                    orgUser.setDescription("");
+                                    orgUser.setExUnitCode("uid=" + ent.getString("loginName")+",ou="+member.getYrfsdm());
+                                    DBAgent.save(orgUser);
+                                }
+
+                                ps.setString(1, ent.getString("id"));
+                                ps.setString(2, member.getId());
+                                ps.setString(3, member.getName());
+                                ps.setString(4, member.getCode());
+                                ps.setString(5, member.getPhone());
+                                ps.setString(6, member.getTel());
+                                ps.setString(7, member.getEmail());
+                                ps.setString(8, member.getDescription());
+                                ps.setString(9, member.getOrgDepartmentId());
+                                ps.setString(10, member.getSubDepartmentId());
+                                ps.setString(11, member.getYrfsdm());
+                                ps.addBatch();
+                                ps.executeBatch();
+                                connection.commit();
+                            }
+                        }
                     }
 
                 }
@@ -219,6 +254,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                     memberMap.put("enabled", member.getIsEnable());
                     memberMap.put("telNumber", member.getPhone());
                     memberMap.put("officeNum", member.getTel());
+                    memberMap.put("emailAddress", null == member.getEmail() ? "" : member.getEmail());
                     memberMap.put("description", member.getDescription());
 
                     JSONObject memberJson = client.get("/orgMember/" + member.getId(), JSONObject.class);
