@@ -28,22 +28,18 @@ public class kydxController extends BaseController {
     public ModelAndView syncData(HttpServletRequest request, HttpServletResponse response) {
         try {
 
-            new MidData().insertDwToOa();
-            new MidData().insertAccountToOa();
+//            new MidData().insertDwToOa();
+//            new MidData().insertAccountToOa();
 
 
             deptManager.insertOrgDept();
-
             deptManager.insertOtherOrgDept();
-
             deptManager.updateOrgDept();
+//            deptManager.deleteOrgDept();
 
-            deptManager.deleteOrgDept();
-
-
-            memberManager.insertMember();
-            memberManager.updateMember();
-            memberManager.deleteMember();
+//            memberManager.insertMember();
+//            memberManager.updateMember();
+//            memberManager.deleteMember();
 
         } catch (Exception e) {
             e.printStackTrace();
