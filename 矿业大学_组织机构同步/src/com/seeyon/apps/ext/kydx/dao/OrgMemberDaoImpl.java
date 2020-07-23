@@ -226,6 +226,21 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                         JSONObject json = client.put("/orgMember", memberMap, JSONObject.class);
                         if (null != json) {
                             if (json.getBoolean("success")) {
+
+                                CtpOrgUser orgUser = new CtpOrgUser();
+                                orgUser.setId(Long.parseLong(member.getId()));
+                                orgUser.setType("ldap.member.openLdap");
+                                orgUser.setLoginName(member.getLoginname());
+                                orgUser.setExLoginName(member.getCode());
+                                orgUser.setExPassword("1");
+                                orgUser.setExId(member.getId());
+                                orgUser.setExUserId(member.getId());
+                                orgUser.setMemberId(Long.parseLong(member.getId()));
+                                orgUser.setActionTime(new Date());
+                                orgUser.setDescription("");
+                                orgUser.setExUnitCode("uid=" + member.getLoginname() +",ou="+member.getYrfsdm());
+                                DBAgent.update(orgUser);
+
                                 String sql = "update m_org_member set ";
                                 if (member.getName() != null && !"".equals(member.getName())) {
                                     sql = sql + " xm = '" + member.getName() + "', ";
@@ -239,11 +254,11 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 //                                    sql = sql + " code = '', ";
 //                                }
 
-//                                if (member.getLoginname() != null && !"".equals(member.getLoginname())) {
-//                                    sql = sql + " loginname = '" + member.getLoginname() + "', ";
-//                                } else {
-//                                    sql = sql + " loginname = '', ";
-//                                }
+                                if (member.getYrfsdm() != null && !"".equals(member.getYrfsdm())) {
+                                    sql = sql + " yrfsdm = '" + member.getYrfsdm() + "', ";
+                                } else {
+                                    sql = sql + " yrfsdm = '', ";
+                                }
 
                                 if (member.getPhone() != null && !"".equals(member.getPhone())) {
                                     sql = sql + " yddh = '" + member.getPhone() + "', ";
