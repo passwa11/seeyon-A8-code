@@ -19,6 +19,15 @@ public class OrgMember {
 
     private String code;
 
+    private String yrfsdm;
+
+    public String getYrfsdm() {
+        return yrfsdm;
+    }
+
+    public void setYrfsdm(String yrfsdm) {
+        this.yrfsdm = yrfsdm;
+    }
 
     private String orgAccountId;
 
