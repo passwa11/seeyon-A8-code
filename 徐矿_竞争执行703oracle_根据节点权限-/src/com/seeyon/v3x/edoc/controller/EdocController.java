@@ -12858,8 +12858,6 @@ public class EdocController extends BaseController {
                     summaryList.add(summary);
 
 
-
-
                 }
             }
             if (info.length() > 0) {
@@ -12904,10 +12902,10 @@ public class EdocController extends BaseController {
                 String pquanxian = affair.getNodePolicy();
                 String nquanxian = "";
 
-            if (pquanxian.equals("转送")) {
-                nquanxian = "批示";
-            }
-            if (nquanxian.equals("批示")) {
+                if (pquanxian.equals("转送")) {
+                    nquanxian = "批示,办理";
+                }
+                if (nquanxian.indexOf("批示")!=-1) {
 
                     List<CtpAffair> plist = new ArrayList<CtpAffair>();
                     List<CtpAffair> clist = new ArrayList<CtpAffair>();
