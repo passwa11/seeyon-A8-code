@@ -3223,10 +3223,10 @@ public class ColManagerImpl implements ColManager {
         String nquanxian = "";
 
         Long childactivityID = 0L;
-        if (pquanxian.equals("xxxxxxx")) {
-            nquanxian = "xxxxxx";
+        if (pquanxian.equals("转送")) {
+            nquanxian = "批示";
         }
-        if (nquanxian.equals("xxxxxx")) {
+        if (nquanxian.equals("批示")) {
 
             List<CtpAffair> plist = new ArrayList<CtpAffair>();
             List<CtpAffair> clist = new ArrayList<CtpAffair>();

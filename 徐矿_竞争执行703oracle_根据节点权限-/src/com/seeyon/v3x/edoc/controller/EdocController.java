@@ -10142,6 +10142,12 @@ public class EdocController extends BaseController {
             if ("true".equals(request.getParameter("openEdocByForward"))) {
                 showType = true;
             }
+//			zhou开始:关联文档打开是否需要验证
+            if ("true".equals(request.getParameter("xkFlag"))) {
+                showType = true;
+            }
+//			zhou结束:关联文档打开是否需要验证
+
             if (!showType && !"transEvent".equals(isTransFrom)) {
                 if (!SecurityCheck.isLicit(request, response, ApplicationCategoryEnum.edoc, user, summaryId, affair,
                         null)) {
@@ -11800,7 +11806,8 @@ public class EdocController extends BaseController {
         boolean isFromPending = "Pending".equals(request.getParameter("from"));
         List<V3xHtmDocumentSignature> signatuers = htmSignetManager.findBySummaryIdAndType(summary.getId(),
                 V3xHtmSignatureEnum.HTML_SIGNATURE_DOCUMENT.getKey());
-        Map<String, Object> strMap = EdocOpinionDisplayUtil.convertOpinionToString(map, displayConfig, affair,
+//        zhou
+        Map<String, Object> strMap = EdocOpinionDisplayUtil.convertOpinionToString(summary.getFormId(), map, displayConfig, affair,
                 isFromPending, signatuers);
         modelAndView.addObject("opinionsJs", EdocOpinionDisplayUtil.optionToJs(strMap));
         // 发起人意见
@@ -12855,10 +12862,10 @@ public class EdocController extends BaseController {
                     String pquanxian = affair.getNodePolicy();
                     String nquanxian = "";
 
-                    if (pquanxian.equals("xxxxx")) {
-                        nquanxian = "xxxxx";
+                    if (pquanxian.equals("转送")) {
+                        nquanxian = "批示";
                     }
-                    if (nquanxian.equals("xxxxxx")) {
+                    if (nquanxian.equals("批示")) {
 
                         List<CtpAffair> plist = new ArrayList<CtpAffair>();
                         List<CtpAffair> clist = new ArrayList<CtpAffair>();
@@ -13449,6 +13456,7 @@ public class EdocController extends BaseController {
                 List<Attachment> oldAtts = attachmentManager.getByReference(summary.getId(), summary.getId());
                 List<Long> oldAttIds = new ArrayList<Long>();
                 Map<Long, Long> oldIds = new HashMap<Long, Long>();
+                Map<Long, Attachment> oldAttsMap = new HashMap<Long, Attachment>();
                 //需要新增的附件
                 List<Attachment> addAtts = new ArrayList<Attachment>();
 
@@ -13457,7 +13465,6 @@ public class EdocController extends BaseController {
                     importAttsMap.put(att.getFileUrl(), att);
                 }
                 int maxSort = 0;
-                Map<Long, Attachment> oldAttsMap=new HashMap<>();
                 for (Attachment att : oldAtts) {
                     oldAttIds.add(att.getFileUrl());
                     oldIds.put(att.getFileUrl(), att.getId());
