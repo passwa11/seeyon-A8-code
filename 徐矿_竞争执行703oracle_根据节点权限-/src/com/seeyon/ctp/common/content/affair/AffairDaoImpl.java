@@ -67,7 +67,7 @@ import com.seeyon.ctp.util.Strings;
  * <p>
  * Company: seeyon.com
  * </p>
- * 
+ *
  * @since CTP2.0
  */
 public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements AffairDao {
@@ -84,11 +84,11 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	public CtpAffair get(Long id){
 	   return DBAgent.get(CtpAffair.class,id);
 	}
-	  
+
 	public CtpAffair getByHis(Long id) throws BusinessException{
 	  return super.get(id);
 	}
-	
+
 
 	@Override
 	public void update(CtpAffair affair) throws BusinessException {
@@ -154,7 +154,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	    }
 	    return senderAffair;
 	  }
-	
+
 	 /**
 	 * IDX_REF_A_O(ObjectId)
 	 * IDX_AFFAIR_APP(APP)
@@ -183,7 +183,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		map.put("isDelete", true);
 		DBAgent.bulkUpdate(hql, map);
 	}
-	
+
 	/**
      * IDX_REF_A_O  (ObjectId)
      * IDX_AFFAIR_STATE  (State)
@@ -192,23 +192,23 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	@Override
 	public List<Long> getMemberIdListByAppAndObjectId(ApplicationCategoryEnum app, Long id) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		
+
 		List<Integer> states = new ArrayList<Integer>();
         states.add(StateEnum.col_pending.key());
         states.add(StateEnum.col_done.key());
         states.add(StateEnum.col_sent.key());
-        
+
         StringBuilder sb = new StringBuilder();
-        
+
         sb.append("select a.memberId from CtpAffair as a where a.objectId=:objectId and a.state in(:state)");
-    	
+
         if(ApplicationCategoryEnum.edoc.equals(app)){
-        	
+
 			List<Integer> apps = new ArrayList<Integer>();
 			apps.add(ApplicationCategoryEnum.edocSend.key());
 			apps.add(ApplicationCategoryEnum.edocRec.key());
 			apps.add(ApplicationCategoryEnum.edocSign.key());
-			
+
 			sb.append(" and app in (:apps) " );
 			map.put("apps", apps);
 		} else if(ApplicationCategoryEnum.meeting.equals(app)) {
@@ -218,58 +218,58 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 			sb.append(" and a.app = :app ");
 			map.put("app", app.key());
 		}
-        
+
         map.put("objectId", id);
         map.put("state", states);
-        
+
         return DBAgent.find(sb.toString(),map);
     }
-	
-	
+
+
 	/**
      * IDX_REF_A_O  (ObjectId)
      * IDX_AFFAIR_STATE  (State)
      * IDX_AFFAIR_APP   (APP)
      */
-	
+
 	@Override
 	public List<Long> getMemberIdListByAppAndObjectIdHis(ApplicationCategoryEnum app, Long id) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		
+
 		List<Integer> states = new ArrayList<Integer>();
         states.add(StateEnum.col_pending.key());
         states.add(StateEnum.col_done.key());
         states.add(StateEnum.col_sent.key());
-        
+
         StringBuilder sb = new StringBuilder();
-        
+
         sb.append("select a.memberId from CtpAffair as a where a.objectId=:objectId and a.state in(:state)");
-    	
+
         if(ApplicationCategoryEnum.edoc.equals(app)){
-        	
+
 			List<Integer> apps = new ArrayList<Integer>();
 			apps.add(ApplicationCategoryEnum.edocSend.key());
 			apps.add(ApplicationCategoryEnum.edocRec.key());
 			apps.add(ApplicationCategoryEnum.edocSign.key());
-			
+
 			sb.append(" and app in (:apps) " );
 			map.put("apps", apps);
-			
+
 		} else if(ApplicationCategoryEnum.meeting.equals(app)) {
 			states.add(StateEnum.mt_attend.key());
 			states.add(StateEnum.mt_unAttend.key());
 		} else {
 			sb.append(" and a.app = :app ");
 			map.put("app", app.key());
-			
+
 		}
-        
+
         map.put("objectId", id);
         map.put("state", states);
-        
+
         return super.find(sb.toString(), -1, -1, map);
     }
-	
+
 	/**
      * IDX_REF_A_O  (ObjectId)
      * IDX_AFFAIR_STATE  (State)
@@ -277,11 +277,11 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	@Override
 	public List<Long> findMembers(ApplicationCategoryEnum category, Long objectId,
             List<StateEnum> states, FlipInfo flp) throws BusinessException{
-	    
+
 	    StringBuilder hql= new StringBuilder("select a.memberId ")
 	            .append(" from CtpAffair as a ")
                 .append(" where a.objectId=:objectId ");
-	    
+
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("objectId", objectId);
         if(Strings.isNotEmpty(states)){
@@ -293,7 +293,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
             map.put("state", _states);
         }
         hql.append(" order by a.receiveTime asc");
-        
+
         List<Long> memberIds = DBAgent.find(hql.toString(), map);
         List<Long> ret = new ArrayList<Long>();
         if(Strings.isNotEmpty(memberIds)){
@@ -303,14 +303,14 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
                 }
             }
         }
-        
+
         if(flp != null){
             ret = DBAgent.memoryPaging(ret, flp);
         }
-        
+
         return ret;
 	}
-	
+
 	@Override
 	public void delete(Long id) throws BusinessException {
 		String hql = "update CtpAffair as affair set affair.delete=:isDelete where affair.id=:id ";
@@ -325,23 +325,23 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         map.put("id", id);
         DBAgent.bulkUpdate(hql, map);
 	}
-	
+
 	/**
      * IDX_REF_A_O  (ObjectId)
      */
-	
+
 	public void deletePhysicalByObjectId(Long objectId)throws BusinessException {
         String hql = "delete from CtpAffair as affair where affair.objectId=:objectId ";
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("objectId", objectId);
         DBAgent.bulkUpdate(hql, map);
     }
-	
+
 	/**
      * IDX_REF_A_O  (ObjectId)
      * NO  (MemberId)
      */
-	
+
 	public void deletePhysicalByObjectIdAndMemberId(Long objectId, Long memberId)throws BusinessException {
 	    String hql = "delete from CtpAffair as affair where affair.objectId=:objectId and affair.memberId=:memberId";
 	    Map<String, Object> map = new HashMap<String, Object>();
@@ -349,7 +349,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	    map.put("memberId", memberId);
 	    DBAgent.bulkUpdate(hql, map);
 	}
-	
+
 	/**
      * IDX_REF_A_O  (ObjectId)
      * NO  (MemberId)
@@ -364,16 +364,16 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	    DBAgent.bulkUpdate(hql, map);
 	}
 
-	
+
 
 	/**
 	 * yangwulin 提供F111接口
 	 * @param flipInfo 分页对象
 	 * @param params  需要设置的参数 memberId、senderId
-	 * 
-	 * 
+	 *
+	 *
 	 * IDX_TT1(MEMBER_ID, STATE, APP, SENDER_ID, IS_DELETE, CREATE_DATE)
-	 * 
+	 *
 	 * @return
 	 */
     public List<CtpAffair> getSenderOrMemberColAndEdocList(FlipInfo flipInfo, Map params) throws BusinessException {
@@ -387,17 +387,17 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         	sb.append(" and a.delete = false ");
         }
         sb.append(" order by a.createDate desc");
-        
+
         Map<String, Object> map = new HashMap<String, Object>();
 
         map.put("memberId", Long.parseLong(String.valueOf(params.get("memberId"))));
         map.put("senderId", Long.parseLong(String.valueOf(params.get("senderId"))));
-        
+
         return DBAgent.find(sb.toString(), map,flipInfo);
     }
-    
+
     /**
-	 * 
+	 *
 	 * @param flipInfo 分页对象
 	 * @param params  需要设置的参数 memberId、senderId
 	 * @return
@@ -405,14 +405,14 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
     public List<CtpAffair> getSenderColAndEdocList(FlipInfo flipInfo, Map params) throws BusinessException {
         return this.getSenderOrMemberColAndEdocList(flipInfo, params);
     }
-    
+
     /**
      * yangwulin  提供给F111接口
      * @param flipInfo 分页对象
      * @param params 需要设置的参数 memberId、senderId
-     * 
+     *
      * IDX_TT1(MEMBER_ID, STATE, APP, SENDER_ID, IS_DELETE, CREATE_DATE)
-     * 
+     *
      * @return List<CtpAffair>
      * @throws BusinessException
      */
@@ -424,7 +424,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         sb.append(" and a.senderId=:senderId");
         sb.append(" and a.delete=:delete ");
         sb.append(" order by a.createDate desc");
-        
+
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("memberId", Long.parseLong(String.valueOf(params.get("memberId"))));
         map.put("meeting", ApplicationCategoryEnum.meeting.getKey());
@@ -432,22 +432,22 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         map.put("delete", Boolean.FALSE);
         return DBAgent.find(sb.toString(), map,flipInfo);
     }
-	
+
     @SuppressWarnings("unchecked")
 	public List<CtpAffair> getByConditions(FlipInfo flipInfo, Map conditions)throws BusinessException {
 		List<CtpAffair> affairs = getByConditions(flipInfo, conditions, false).getData();
 		return affairs;
 	}
-    
+
     @Override
     public int getCountByConditions(Map conditions) throws BusinessException{
         return getByConditions(null, conditions, true).getTotal();
     }
-    
+
     /**
-     * 
+     *
      * 重载getByConditions， 支持只获取数量
-     * 
+     *
      * @param flipInfo
      * @param conditions
      * @param onlyCount
@@ -460,12 +460,12 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
      */
     private FlipInfo getByConditions(FlipInfo flipInfo, Map conditions, boolean onlyCount)throws BusinessException{
         FlipInfo ret = flipInfo;
-        
+
         Map<String, Object> param = new HashMap<String, Object>();
-        
+
         StringBuffer sb = new StringBuffer(" from");
         sb.append(" CtpAffair a where 1=1");
-        
+
         String notInform = (String)conditions.get("notInform");
     	if(Strings.isNotBlank(notInform)){//更新当前待办人时，查询非知会节点的数据
     		List<String> nodePolicy = new ArrayList<String>();
@@ -474,24 +474,24 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
     		sb.append(" and a.nodePolicy not in(:nodePolicy)");
     		param.put("nodePolicy", nodePolicy);
     	}
-    	
+
         Iterator<Map.Entry> iter = conditions.entrySet().iterator();
         while (iter.hasNext()) {
             Map.Entry entry = iter.next();
             String key = (String) entry.getKey();
-            
+
             if("receiveTimeAscOrDesc".equals(key)){
                 continue;
             }
-            
+
             if("notInform".equals(key)){
             	continue;
             }
-            
+
             if("sortWeightNotNull".equals(key)) {
             	continue;
             }
-            
+
             Object value = entry.getValue();
             if (value instanceof List) {
             	sb.append(" and a." + key + " in (:" + key +")");
@@ -502,15 +502,15 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
             }
             param.put(key, value);
         }
-        
+
         //放到后面，避免前面的索引失效
         String sortWeightNotNull = (String)conditions.get("sortWeightNotNull");
     	if(Strings.isNotBlank(sortWeightNotNull)) {
     		sb.append(" and a.sortWeight is null ");
     	}
-        
+
         String asc = (String)conditions.get("receiveTimeAscOrDesc");
-        
+
         List<CtpAffair> affairs = null;
         if(ret == null){
             ret = new FlipInfo();
@@ -532,14 +532,14 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
             	}
                 sb.append(orderBy);
             	flipInfo.setPagination();
-            	
+
                 affairs = super.find(sb.toString(), param);
                 flipInfo.setData(affairs);
             }
         }
         return ret;
     }
-    
+
 	public List<CtpAffair> getAffairsAll() throws BusinessException {
 		StringBuilder hql = new StringBuilder("from "
 				+ CtpAffair.class.getName() + " a  order by a.createDate");
@@ -548,7 +548,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	@Override
 	public List<CtpAffair> getAffairsByAppAndObjectId(
@@ -560,7 +560,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		map.put("objectId", summaryId);
 		return DBAgent.find(hql, map);
 	}
-	
+
 	@Override
 	public List<CtpAffair> getAffairsByObjectId(long summaryId) throws BusinessException {
 		String hql = "from CtpAffair as affair where affair.objectId = :objectId ";
@@ -568,7 +568,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		map.put("objectId", summaryId);
 		return DBAgent.find(hql, map);
 	}
-	
+
 	public List<CtpAffair> getAffairsByAppAndObjectIdHis(ApplicationCategoryEnum collaboration, long summaryId)
 			throws BusinessException {
 		String hql = "from CtpAffair as affair where affair.objectId = :objectId and affair.app=:app ";
@@ -607,13 +607,13 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		state.add(StateEnum.col_waitSend.key());
 		map.put("track", l);
 		map.put("state", state);
-		
+
 		List<Object[]> temp = DBAgent.find(hql, map);
-		
+
 		List<CtpAffair> result = new ArrayList<CtpAffair>(temp.size());
 		for (Object[] objects : temp) {
 		    int n = 0;
-		    
+
 		    CtpAffair a = new CtpAffair();
 		    a.setId((Long)objects[n++]);
 		    a.setSenderId((Long)objects[n++]);
@@ -623,10 +623,10 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		    a.setForwardMember((String)objects[n++]);
 		    a.setTransactorId((Long)objects[n++]);
 		    a.setDelete((Boolean)objects[n++]);
-		    
+
 		    result.add(a);
         }
-		
+
 		return result;
 	}
 
@@ -646,7 +646,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	@Override
 	public List<CtpAffair> getAvailabilityAffairsByAppAndObjectId(ApplicationCategoryEnum appEnum, Long objectId)
 			throws BusinessException {
-		
+
 	    return getAvailabilityAffairsByAppAndObjectId(appEnum, objectId, false);
 	}
 
@@ -656,10 +656,10 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
             throws BusinessException{
 	    return getAvailabilityAffairsByAppAndObjectId(appEnum, objectId, true);
 	}
-	
+
 	/**
 	 * 重构 {@link #getAvailabilityAffairsByAppAndObjectId(ApplicationCategoryEnum, Long)}
-	 * 
+	 *
 	 * @param appEnum
 	 * @param objectId
 	 * @param isHis
@@ -667,7 +667,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	 *
 	 */
 	private List<CtpAffair> getAvailabilityAffairsByAppAndObjectId(ApplicationCategoryEnum appEnum, Long objectId, boolean isHis){
-	    
+
 	    String hql = "from CtpAffair as affair where affair.objectId=:objectId and affair.state in (:state) and affair.app=:app ";
 
         Map<String, Object> map = new HashMap<String, Object>();
@@ -683,14 +683,14 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         map.put("objectId", objectId);
         map.put("app", appEnum.key());
         map.put("state", state);
-        
+
         if(isHis){
             return super.find(hql, -1, -1, map);
         }else {
             return DBAgent.find(hql, map);
         }
 	}
-	
+
 	@Override
 	public CtpAffair getAffairBySubObjectId(Long subObjectId)
 			throws BusinessException {
@@ -710,7 +710,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 			throws BusinessException {
 	    return getAffairsByObjectIdAndSubObjectIdAndUserId(app, summaryId, null, memberId, false);
 	}
-	
+
 	@Override
 	public List<CtpAffair> getAffairsByObjectIdAndUserIdHis(
             ApplicationCategoryEnum appEnum, Long objectId, Long userId)
@@ -723,10 +723,10 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
             Long subObjectId, Long memberId) throws BusinessException {
         return getAffairsByObjectIdAndSubObjectIdAndUserId(appEnum, objectId, subObjectId, memberId, false);
     }
-    
+
     /**
      * {@link #getAffairsByObjectIdAndSubObjectIdAndUserId(ApplicationCategoryEnum, Long, Long, Long)}
-     * 
+     *
      * @param appEnum
      * @param objectId
      * @param subObjectId
@@ -738,7 +738,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
     private List<CtpAffair> getAffairsByObjectIdAndSubObjectIdAndUserId(ApplicationCategoryEnum appEnum, Long objectId,
             Long subObjectId, Long memberId, boolean isHis) throws BusinessException {
         Map<String, Object> params = new HashMap<String, Object>();
-        
+
         StringBuffer hql = new StringBuffer();
 		hql.append(" from CtpAffair as affair where affair.objectId=:objectId");
 		hql.append(" and affair.state in (:state)");
@@ -748,7 +748,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 			hql.append(" and affair.subObjectId = :subObjectId");
 			params.put("subObjectId", subObjectId);
 		}
-		
+
 		List<Integer> apps = new ArrayList<Integer>();
         if (appEnum == ApplicationCategoryEnum.edoc) {
             apps.add(ApplicationCategoryEnum.edoc.key());
@@ -762,21 +762,21 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         } else {
             apps.add(appEnum.key());
         }
-		
+
 		List<Integer> state = new ArrayList<Integer>();
 		state.add(StateEnum.col_sent.key());
 		state.add(StateEnum.col_waitSend.key());
 		state.add(StateEnum.col_done.key());
 		state.add(StateEnum.col_pending.key());
-		
+
 		params.put("memberId", memberId);
 		params.put("objectId", objectId);
 		params.put("app", apps);
 		params.put("state", state);
-		
+
 		return super.find(hql.toString(), params);
     }
-	
+
 	@Override
 	public void updatePendingAndDoneAffairsByObjectIdAndSubObjectIds(
 			StateEnum stateEnum, SubStateEnum subStateEnum, Long objectId,
@@ -792,7 +792,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		map.put("objectId", objectId);
 		map.put("subObjectIds", subObjectIds);
 		DBAgent.bulkUpdate(hql.toString(), map);
-		
+
 	}
 
 
@@ -817,7 +817,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		map.put("state", state.key());
 		return DBAgent.find(hql.toString(), map);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<CtpAffair> getAffairs(Long objectId,StateEnum state,SubStateEnum subState){
 		StringBuffer hql = new StringBuffer();
@@ -848,7 +848,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		//Object[] values = new Object[columns.size() + w.length];
 
 		Map<String,Object> params = new HashMap<String,Object>();
-		
+
 		Set<String> keys = columns.keySet();
 
 		int len = keys.size();
@@ -856,7 +856,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		int i = 0;
 		for (String key : keys) {
 			sb.append("a." + key + "= :"+key);
-			
+
 			if (i < len - 1) {
 				sb.append(", ");
 			}
@@ -872,7 +872,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 			for (Object[] key : w) {
 				if(key[1] instanceof List){
 					if(((List)key[1]).size() >1 ){
-						
+
 						sb.append("(a." + key[0] + " in (:wh"+key[0]+"))");  //加wh前缀，避免update字段和where字段相同的情况
 					}
 					else {
@@ -882,13 +882,13 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 				else{
 					sb.append("(a." + key[0] + " = :wh"+key[0]+")");
 				}
-				
+
 				if (j < len - 1) {
 					sb.append(" and ");
 				}
 				j++;
 
-				
+
 				params.put((String)("wh"+key[0]), key[1]);
 			}
 		}
@@ -913,7 +913,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
     	setHqlAndParams(hql, params, true, memberId, tempIds);
     	return DBAgent.count(hql.toString(), params);
 	}
-	
+
 	private void setHqlAndParams(StringBuffer hql, Map<String, Object> params, boolean queryCount, Long memberId, List<Long> tempIds) {
 	    hql.append(" select a ");
 		hql.append(" from CtpAffair as a, ColSummary as c where ");
@@ -1027,11 +1027,11 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
             hql = hql + " and affair.app = :app ";
             map.put("app", Integer.valueOf(params.get("app").toString()));
         }
-        
+
         hql = hql +" order by affair.state desc, affair.receiveTime desc ,affair.subObjectId asc ";
         if(flipInfo == null){
             return DBAgent.find(hql, map);
-        }else { 
+        }else {
         	flipInfo.setPagination();
         	List find = super.find(hql, map);
         	flipInfo.setTotal(Pagination.getRowCount(false));
@@ -1043,7 +1043,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         	return find;
         }
     }
-    
+
     public Map<Long,Integer>  getOverNodeCount(
             Long templeteId,
             Long accountId,
@@ -1051,7 +1051,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
             List<Integer> states,
             Date startDate,
             Date endDate){
-        
+
         final StringBuilder sb = new StringBuilder();
         sb.append(" select ");
         sb.append(" affair.activityId");
@@ -1070,14 +1070,14 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         sb.append(" and affair.createDate between :startDate and :endDate ");
         sb.append(" and affair.state in (:state) ");
         sb.append(" group by affair.activityId,affair.objectId ");
-    
+
         final Map<String,Object> parameter = new HashMap<String,Object>();
         parameter.put("templeteId", templeteId);
         parameter.put("startDate", startDate);
         parameter.put("endDate", endDate);
         parameter.put("accountId", accountId);
         parameter.put("state", states);
-        
+
         Map<Long,Integer> m = new HashMap<Long,Integer>();
         List l = DBAgent.find(sb.toString(), parameter);
         for(Object o :l){
@@ -1100,7 +1100,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
             List<Integer> states,
             Date startDate,
             Date endDate){
-        
+
         final StringBuilder sb = new StringBuilder();
         sb.append(" select ");
         sb.append(" affair.activityId ,");
@@ -1119,24 +1119,24 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         sb.append(" and affair.createDate between :startDate and :endDate ");
         sb.append(" and affair.state in (:state) ");
         sb.append(" group by affair.activityId,affair.objectId ");
-    
+
         final Map<String,Object> parameter = new HashMap<String,Object>();
         parameter.put("templeteId", templeteId);
         parameter.put("startDate", startDate);
         parameter.put("endDate", endDate);
         parameter.put("accountId", accountId);
         parameter.put("state", states);
-        
+
         List l = DBAgent.find(sb.toString(), parameter);
         Map<Long,String> map = new HashMap<Long,String>();
         Map<Long,Integer> cm = new HashMap<Long,Integer>();
         Map<Long,Long>  sm = new HashMap<Long,Long>();
         for(Object o :l){
             Object[] arr =(Object[])o;
-            
+
             int count = 0;
             Long sumRum = 0l;
-            
+
             Long activityId = 0L;
             if(arr[0]!=null){
                 activityId = ((Number)arr[0]).longValue();
@@ -1145,14 +1145,14 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
             if(arr[1] != null){
                 time = ((Number)arr[1]).longValue();
             }
-        
+
             if(cm.get(activityId) == null){
                 count = 1;
             }else{
                 count = cm.get(activityId)+1;
             }
             cm.put(activityId, count);
-            
+
             if(sm.get(activityId)==null){
                 sumRum = time;
             }else{
@@ -1160,12 +1160,12 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
             }
             sm.put(activityId, sumRum);
         }
-        
+
         for(Iterator<Long> it = cm.keySet().iterator();it.hasNext();){
             Long activityId = it.next();
             map.put(activityId,cm.get(activityId)+"_"+sm.get(activityId));
         }
-        
+
         return map;
     }
     public List<CtpAffair> getAffairByActivityId(
@@ -1193,7 +1193,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         sb.append(" and affair.createDate between :startDate and :endDate ");
         sb.append(" and affair.delete = :isDelete ");
         sb.append(" and affair.state in (:state) ");
-        
+
         Map<String,Object> map =new HashMap<String,Object>();
         map.put("templeteId", templeteId);
         map.put("accountId", orgAccountId);
@@ -1203,7 +1203,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         map.put("isDelete", Boolean.FALSE);
         map.put("state", states);
         return DBAgent.find(sb.toString(), map);
-    } 
+    }
     public Map<Long,String> getStaticsByActivityId(
             Long templeteId,
             Long orgAccountId,
@@ -1233,7 +1233,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         sb.append(" and affair.delete = :isDelete ");
         sb.append(" and affair.state in (:state) ");
         sb.append(" group by affair.memberId ");
-        
+
         Map<String,Object> map =new HashMap<String,Object>();
         map.put("templeteId", templeteId);
         map.put("accountId", orgAccountId);
@@ -1242,7 +1242,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         map.put("endDate", endDate);
         map.put("isDelete", Boolean.FALSE);
         map.put("state", states);
-        
+
         Map<Long,String> m = new HashMap<Long,String>();
         List l = DBAgent.find(sb.toString(),map);
         if(l!=null && l.size()!=0){
@@ -1257,7 +1257,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
             }
         }
         return m;
-    } 
+    }
     public Map<Long,Integer> getOverCountByMember(
             Long templeteId,
             Long orgAccountId,
@@ -1286,7 +1286,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         sb.append(" and affair.overWorktime>0 ");
         sb.append(" and affair.state in (:state) ");
         sb.append(" group by affair.memberId ");
-        
+
         Map<String,Object> map =new HashMap<String,Object>();
         map.put("templeteId", templeteId);
         map.put("accountId", orgAccountId);
@@ -1296,9 +1296,9 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
       //  map.put("isDelete", Boolean.FALSE);
         map.put("state", states);
         List l =  DBAgent.find(sb.toString(), map);
-        
+
         Map<Long,Integer> m = new HashMap<Long,Integer>();
-        
+
         if(l!=null && l.size()!=0){
             for(Object o :l){
                 Object[] a = (Object[])o;
@@ -1318,9 +1318,9 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         map.put("subObjectId", subObjectId);
         map.put("isDelete", true);
         DBAgent.bulkUpdate(hql, map);
-        
-    } 
-    
+
+    }
+
     public Date getMinStartTimePending(Long memberId) throws BusinessException {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("memberId", memberId);
@@ -1333,7 +1333,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         }
         return null;
     }
-    
+
 
 	@Override
 	public void updateAffairByActivity(Long objectId, List<Long> activities,
@@ -1355,7 +1355,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 
 	@Override
 	public void updateAffairsStateAndUpdateDate(Long objectId) throws BusinessException {
-		
+
 		Timestamp now = new Timestamp(System.currentTimeMillis());
 		StringBuffer hql = new StringBuffer();
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -1365,8 +1365,8 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		states.add(StateEnum.col_pending.key());
 		states.add(StateEnum.col_done.key());
 		states.add(StateEnum.col_pending_repeat_auto_deal.key());
-		
-		
+
+
 		map.put("state", StateEnum.col_cancel.key());
 		map.put("subState", SubStateEnum.col_normal.key());
 		map.put("updateDate", now);
@@ -1376,7 +1376,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	}
 
 	public List<CtpAffair> getTrackingAndPendingAffairBySummaryId(Long summaryId,int app){
-	   
+
 	    DetachedCriteria criteria = DetachedCriteria.forClass(CtpAffair.class)
         .add(Expression.eq("objectId", summaryId))
         .add(Expression.eq("app", app))
@@ -1405,9 +1405,9 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
      */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Object getAffairListBySender(final String sql, final Map<String, Object> parameter, final boolean onlyCount, final FlipInfo fi,final String... groupByPropertyName) {
-    	
+
 		return (Object) super.getHibernateTemplate().execute(new HibernateCallback() {
-			
+
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				boolean isNeedCount = onlyCount || (fi != null && fi.isNeedTotal());
 				int count = 0;
@@ -1432,7 +1432,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 						count = r == null ? 0 : (Integer)r;
 					}
 				}
-				
+
 				if(onlyCount){
 					return count;
 				}
@@ -1457,25 +1457,25 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
                     }
 					SQLQuery query = session.createSQLQuery(s);
 					setParameter(parameter, query);
-					
+
 					query.addEntity(CtpAffair.class);
-					
+
 					query.setFirstResult(fi.getStartAt());
 					query.setMaxResults(fi.getSize());
-					
+
 					List list = query.list();
-					
+
 					fi.setData(list);
 					fi.setTotal(count);
-					
+
 					return list;
 				}
-				
+
 				return null;
 			}
 		});
 	}
-	
+
 	private static void setParameter(Map<String, Object> parameter, Query query){
 		if (parameter != null) {
 			Set<Map.Entry<String, Object>> entries = parameter.entrySet();
@@ -1527,7 +1527,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         }
         return ((Number)results.get(0)).longValue() > 0;
     }
-	
+
 	public List<CtpAffair> getAffairsByActivityId(Long objectId,Long activityId) throws BusinessException{
         String hql="from CtpAffair as a where a.activityId= :activityId and a.objectId=:objectId  and a.delete = :isDelete and a.state in(:state) order by a.completeTime desc ";
         Map<String, Object> map = new HashMap<String, Object>();
@@ -1540,7 +1540,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
         states.add(StateEnum.col_stepStop.getKey());
         states.add(StateEnum.col_pending_repeat_auto_deal.getKey());
         map.put("state", states);
-      
+
         return super.find(hql,-1,-1, map);
     }
 	  /**
@@ -1558,28 +1558,28 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
                        new Object[] { StateEnum.col_sent.key(),
                                StateEnum.col_waitSend.key() }));
        List<CtpAffair> list = DBAgent.findByCriteria(criteria);
-       
+
        CtpAffair senderAffair = null;
        if (Strings.isNotEmpty(list)) {
            senderAffair = list.get(0);
        }
        return senderAffair;
    }
-   
+
    @Override
    public int getCountAffairsByAppsAndStatesAndMemberId(List<ApplicationCategoryEnum> appEnums,List<StateEnum> statesEnums,Long memberId){
        return getAffairsByAppsAndStatesAndMemberId(null, appEnums, statesEnums, memberId, true).getTotal();
    }
-   
+
    @Override
    public List<CtpAffair> getAffairsByAppsAndStatesAndMemberId(FlipInfo flipInfo,List<ApplicationCategoryEnum> appEnums,List<StateEnum> statesEnums,Long memberId){
        return getAffairsByAppsAndStatesAndMemberId(flipInfo, appEnums, statesEnums, memberId, false).getData();
    }
-   
+
    /**
-    * 
+    *
     * 重构getCountAffairsByAppsAndStatesAndMemberId 方法
-    * 
+    *
     * @param flipInfo
     * @param appEnums
     * @param statesEnums
@@ -1594,29 +1594,29 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
     */
    private FlipInfo getAffairsByAppsAndStatesAndMemberId(FlipInfo flipInfo,List<ApplicationCategoryEnum> appEnums,
            List<StateEnum> statesEnums,Long memberId, boolean onlyCount){
-       
+
        String hql="from CtpAffair as a where a.memberId = :memberId and a.app in (:app) and a.delete = :isDelete and a.state in(:state)";
-       
+
        Map<String, Object> map = new HashMap<String, Object>();
        map.put("memberId",memberId);
-      
+
        map.put("isDelete", Boolean.FALSE);
        List<Integer> apps= new ArrayList<Integer>();
        for(ApplicationCategoryEnum app : appEnums){
            apps.add(app.getKey());
        }
        map.put("app", apps);
-       
+
        List<Integer> states= new ArrayList<Integer>();
        for(StateEnum se : statesEnums){
            states.add(se.getKey());
        }
        map.put("state", states);
-       
+
        //作为复合对象传递出去
        FlipInfo f = new FlipInfo();
        f.setNeedTotal(false);
-       
+
        if(onlyCount){
            int count = DBAgent.count(hql, map);
            f.setTotal(count);;
@@ -1626,9 +1626,9 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
        }
        return f;
    }
-   
-   
-   
+
+
+
    @SuppressWarnings("unchecked")
 	public CtpAffair getSimpleAffair(Long id) throws BusinessException{
 	   	StringBuilder sb = new StringBuilder();
@@ -1648,17 +1648,17 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	   	sb.append(" CtpAffair as affair ");
 	   	sb.append(" WHERE ");
 	   	sb.append(" affair.id = :id ");
-	   	
+
 		Map parameterMap = new HashMap();
 		parameterMap.put("id", id);
-	
+
 		List list =  super.find(sb.toString(), -1, -1, parameterMap);
-		
+
 		CtpAffair affair = null;
 		if(Strings.isNotEmpty(list)){
 			Object[] p = (Object[]) list.get(0);
 			affair = new CtpAffair();
-			
+
 			affair.setId((Long)p[0]);
 			affair.setApp((Integer)p[1]);
 			affair.setSubject((String)p[2]);
@@ -1678,7 +1678,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 
    @Override
 	public Object getAffairListBySender(PortalQueryParam portalQueryParam) {
-		
+
 		Long memberId = portalQueryParam.getMemberId();
 		String orgStr = portalQueryParam.getOrgStr();
 		AffairCondition condition = portalQueryParam.getCondition();
@@ -1687,7 +1687,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		List<Integer> appEnum = portalQueryParam.getAppEnum();
 		boolean isGroupBy = portalQueryParam.isGroupBy();
 		String[] groupByPropertyName = portalQueryParam.getGroupByPropertyName();
-		
+
 		if(orgStr == null||"".equals(orgStr)) return new ArrayList<CtpAffair>();
 	   	String [] types = orgStr.split("[,]");
 	   	boolean isAccount  = false;
@@ -1738,15 +1738,15 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	   	}
 	   	final StringBuilder hql = new StringBuilder();
 	   	final Map<String,Object> parameter = new HashMap<String,Object>();
-	     	
-	
+
+
 	   	StateEnum stateEnum = null;
 	       if(condition.getState() == null){
 	           stateEnum = StateEnum.col_pending;
 	       }else{
 	           stateEnum = condition.getState();
 	       }
-	       
+
 	   	if (!isGroupBy) {
 	   	    hql.append("from ctp_affair affair ");
 	   	}
@@ -1765,12 +1765,12 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	   		hql.append(" affair.app in (:appEnum) and ");
 	   		parameter.put("appEnum",appEnum);
 	   	}
-	
+
 	   	hql.append(" affair.member_id = :memberId ");
-	
+
 	   	hql.append(" and affair.sub_state != :substate  ");
 	   	parameter.put("substate",SubStateEnum.meeting_pending_periodicity.getKey());
-	 
+
 	       //当查已办affair时，还需要加上complete_time不为空的条件
 	       if(stateEnum.key() == StateEnum.col_done.key()){
 	           hql.append(" and affair.complete_time is not null ");
@@ -1805,7 +1805,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	           //当查待办和已办affair时先直接设置外面传来的stateEnum
 	           parameter.put("state", stateEnum.key());
 	       }
-	       
+
 	   	hql.append(" and affair.is_delete = :isDelete ");
 	   	parameter.put("memberId",memberId);
 	   	parameter.put("isDelete", false);
@@ -1911,10 +1911,10 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	   			hql.append(" m.org_post_id = :orgPostId ");
 	   			parameter.put("orgPostId", postIds.get(0));
 	   		}
-	
+
 	   		hasCondition = true;
 	   	}
-	   	
+
 	   	if(isTeam) {
 	   		if(hasCondition){
 	   			hql.append(" or ");
@@ -1937,7 +1937,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	   	    sbHql.append(" and affair.complete_time in (select max(complete_time) from ctp_affair affair ");
 	   	    sbHql.append(hql);
 	           sbHql.append(" group by affair.object_id ) ");
-	           
+
 	       } else {
 	           sbHql.append(hql);
 	       }
@@ -1953,21 +1953,21 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		map.put("state", states);
 		map.put("delete", false);
 		List<Object[]> temp = DBAgent.find(hql, map, flipInfo);
-		
+
 		List<CtpAffair> result = new ArrayList<CtpAffair>(temp.size());
         for (Object[] objects : temp) {
             int n = 0;
-            
+
             CtpAffair a = new CtpAffair();
             a.setId((Long)objects[n++]);
             a.setSenderId((Long)objects[n++]);
             a.setMemberId((Long)objects[n++]);
             a.setState((Integer)objects[n++]);
             a.setNodePolicy((String)objects[n++]);
-            
+
             result.add(a);
         }
-        
+
         return result;
 	}
 
@@ -1979,15 +1979,15 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		String hql = "from CtpAffair ";
 		return super.count(hql.toString(), null);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public Object getDeduplicationAffairList(final String sql,final Map<String, Object> parameter, final boolean onlyCount, final FlipInfo fi,final String orderBySql)
 			throws BusinessException {
 		CTPHibernateDaoSupport s = (CTPHibernateDaoSupport) AppContext.getThreadContext(GlobalNames.SPRING_HIBERNATE_DAO_SUPPORT);
-		
+
 		return (Object) s.getHibernateTemplate().execute(new HibernateCallback() {
-			
+
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				boolean isNeedCount = onlyCount || (fi != null && fi.isNeedTotal());
 				int count = 0;
@@ -2014,12 +2014,12 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 					fi.setTotal(count);
 					return list;
 				}
-				
+
 				return null;
 			}
 		});
 	}
-	
+
 	@Override
 	public void updateFormCollSubject(Long summaryId, String newSubject) throws BusinessException {
 		String hql = "update CtpAffair as affair set affair.subject=:newSubject where affair.objectId=:objectId ";
@@ -2057,19 +2057,19 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	 */
 	@Override
 	public Integer getStartAffairStateByObjectId(Long objectId) throws BusinessException {
-		
+
 		List<Integer> states = new ArrayList<Integer>();
 		states.add(StateEnum.col_sent.key());
 		states.add(StateEnum.col_waitSend.key());
-		
-		
+
+
 		String hql="select a.state,a.delete from CtpAffair as a where a.objectId= :summaryId and a.state in(:state) ";
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("summaryId",objectId);
 		map.put("state", states);
 		List<Object[]> list = DBAgent.find(hql, map);
-		
-	
+
+
 		CtpAffair senderAffair = null;
 		Integer state = null;
 		if (Strings.isNotEmpty(list)) {
@@ -2088,7 +2088,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		}
 		return state;
 	}
-	
+
 	@Override
 	public void updateAffairSummaryState(Long objectId, Integer summaryState) throws BusinessException {
 		StringBuffer hql = new StringBuffer();
@@ -2105,11 +2105,11 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 			Map<String, Object> map) throws BusinessException {
 		String hql="select a.id,a.senderId,a.memberId,a.state,a.nodePolicy,a.subState from CtpAffair as a where a.objectId= :objectId and a.state in(:state)  and a.delete =:delete and a.nodePolicy <>:nodePolicy ";
 		List<Object[]> temp = DBAgent.find(hql, map, flipInfo);
-		
+
 		List<CtpAffair> result = new ArrayList<CtpAffair>(temp.size());
         for (Object[] objects : temp) {
             int n = 0;
-            
+
             CtpAffair a = new CtpAffair();
             a.setId((Long)objects[n++]);
             a.setSenderId((Long)objects[n++]);
@@ -2117,10 +2117,10 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
             a.setState((Integer)objects[n++]);
             a.setNodePolicy((String)objects[n++]);
             a.setSubState((Integer)objects[n++]);
-            
+
             result.add(a);
         }
-        
+
         return result;
 	}
 
@@ -2128,7 +2128,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
     public Integer countPendingAffairs(Map<String, Object> param) throws BusinessException {
 		StringBuilder hql= new StringBuilder();
 		Map<String, Object> map = new HashMap<String, Object>();
-		
+
 		hql.append("select count(*) from CtpAffair as affair where affair.delete = :delete ");
 
 		map.put("delete", Boolean.FALSE);
@@ -2137,7 +2137,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		if(memberId != null){
 			hql.append(" and (affair.memberId = :memberId ");
 			map.put("memberId", memberId);
-			
+
 			String appStr = (String)param.get("app");
 			Integer app = Integer.valueOf(appStr);
 			if (appStr != null) {
@@ -2146,7 +2146,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		    	int index = 0;
 				for (AgentModel agent : agentModelList) {
 					boolean hasAgent = false;
-					
+
 					if (app.equals(ApplicationCategoryEnum.edoc.getKey())) {
 						hasAgent = agent.isHasEdoc();
 					} else if (app.equals(ApplicationCategoryEnum.collaboration.getKey())) {
@@ -2157,9 +2157,9 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 					if (hasAgent && agent.getStartDate().before(new Date())
 							&& agent.getEndDate().after(new Date())) {
 						index++;
-						
+
 						hql.append(" OR (");
-						
+
 						hql.append("affair.memberId=:memId" + index + " AND ").append("affair.receiveTime>=:startDate" + index);
 						map.put("memId" + index, agent.getAgentToId());
 						map.put("startDate" + index, agent.getStartDate());
@@ -2191,15 +2191,21 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 						hql.append(")");
 					}
 				}
-				
+
 				hql.append(" ) ");
 			}
-		
+
 			List<Integer> apps = new ArrayList<Integer>();
 			if (app.equals(ApplicationCategoryEnum.edoc.getKey())) {
 				apps.add(ApplicationCategoryEnum.edocSend.getKey());//发文 19
     			apps.add(ApplicationCategoryEnum.edocRec.getKey());//收文 20
-    			apps.add(ApplicationCategoryEnum.edocSign.getKey());//签报21
+
+    			// best 查询接口添加标识用于过滤签报数据 start
+    			if (param.get("flag") == null) {
+    				apps.add(ApplicationCategoryEnum.edocSign.getKey());//签报21
+    			}
+    			// best 查询接口添加标识用于过滤签报数据 end
+
 			} else {
 				apps.add(app);
 			}
@@ -2209,7 +2215,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 				hql.append(" and affair.app in (:apps) ");
 			}
     		map.put("apps", apps);
-    		
+
 			if(app.equals(ApplicationCategoryEnum.meeting.getKey())) {
 				List<Integer> states = new ArrayList<Integer>();
 				states.add(StateEnum.col_pending.key());
@@ -2227,11 +2233,11 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		}
 
 		List list = DBAgent.find(hql.toString(), map);
-		
+
 		if(Strings.isNotEmpty(list) && ((Long)list.get(0))>0) {
 			return Integer.valueOf(list.get(0) + "");
 		}
- 		
+
 		return 0;
     }
 
@@ -2246,7 +2252,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		map.put("endDate", endTime);
 		return DBAgent.find(hql,map);
 	}
-	
+
 	public List<CtpAffair> getAffairListByMemberIdBodyTypeAndState(Long memberId,List<String> bodyTypeList,StateEnum state)
 			throws BusinessException {
 		String hql="select affair from CtpAffair as affair,CtpTemplate as template where affair.memberId= :memberId and "
@@ -2291,7 +2297,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	@Override
 	public List<CtpAffair> getAffairsByAppAndReceivetimeAndState(ApplicationCategoryEnum appEnum,Date beginTime, Date endTime,StateEnum stateEnum) throws BusinessException {
 		String hql="from CtpAffair where app = :app and state = :state and ";
-		
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("app", appEnum.getKey());
 		map.put("state", stateEnum.getKey());
@@ -2313,7 +2319,7 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 		map.put("sortWeight", sortWeight);
 		DBAgent.bulkUpdate(hql, map);
 	}
-	
+
 	/**
 	 * 根据节点权限获取affairs
 	 * add by shenwei
@@ -2322,15 +2328,15 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	 * @return
 	 */
 	@Override
-	public List<CtpAffair> getAffairsByNodePolicy(String nodePolicy) throws BusinessException 
+	public List<CtpAffair> getAffairsByNodePolicy(String nodePolicy) throws BusinessException
 	{
 		String hql="from CtpAffair where nodePolicy = :nodePolicy ";
-		
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("nodePolicy", nodePolicy);
-		
+
 		return DBAgent.find(hql.toString(), map);
 	}
-	
-	
+
+
 }

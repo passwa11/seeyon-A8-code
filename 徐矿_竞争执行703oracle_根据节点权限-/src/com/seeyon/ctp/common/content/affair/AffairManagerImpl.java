@@ -27,7 +27,10 @@ import com.seeyon.apps.agent.bo.AgentModel;
 import com.seeyon.apps.agent.utils.AgentUtil;
 import com.seeyon.apps.collaboration.bo.WorkflowAnalysisParam;
 import com.seeyon.apps.meeting.api.MeetingApi;
+import com.seeyon.apps.xkjt.dao.XkjtDao;
+import com.seeyon.apps.xkjt.po.XkjtOpenMode;
 import com.seeyon.ctp.common.AppContext;
+import com.seeyon.ctp.common.authenticate.domain.User;
 import com.seeyon.ctp.common.constants.ApplicationCategoryEnum;
 import com.seeyon.ctp.common.constants.ApplicationSubCategoryEnum;
 import com.seeyon.ctp.common.content.affair.AffairCondition.SearchModel;
@@ -36,9 +39,12 @@ import com.seeyon.ctp.common.content.affair.constants.SubStateEnum;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.common.i18n.ResourceUtil;
 import com.seeyon.ctp.common.po.affair.CtpAffair;
+import com.seeyon.ctp.organization.bo.MemberRole;
 import com.seeyon.ctp.organization.bo.V3xOrgAccount;
 import com.seeyon.ctp.organization.bo.V3xOrgDepartment;
+import com.seeyon.ctp.organization.bo.V3xOrgRole;
 import com.seeyon.ctp.organization.manager.OrgManager;
+import com.seeyon.ctp.organization.manager.RoleManager;
 import com.seeyon.ctp.util.DBAgent;
 import com.seeyon.ctp.util.Datetimes;
 import com.seeyon.ctp.util.FlipInfo;
@@ -65,7 +71,7 @@ import com.seeyon.v3x.worktimeset.manager.WorkTimeManager;
  * <p>
  * Company: seeyon.com
  * </p>
- * 
+ *
  * @since CTP2.0
  */
 public class AffairManagerImpl implements AffairManager {
@@ -74,7 +80,25 @@ public class AffairManagerImpl implements AffairManager {
 	private OrgManager orgManager;
 	private WorkTimeManager workTimeManager;
 	private MeetingApi meetingApi;
-	
+	private RoleManager roleManager;
+	private XkjtDao xkjtDao;
+
+	public XkjtDao getXkjtDao() {
+		return xkjtDao;
+	}
+
+	public void setXkjtDao(XkjtDao xkjtDao) {
+		this.xkjtDao = xkjtDao;
+	}
+
+	public RoleManager getRoleManager() {
+		return roleManager;
+	}
+
+	public void setRoleManager(RoleManager roleManager) {
+		this.roleManager = roleManager;
+	}
+
 	public void setMeetingApi(MeetingApi meetingApi) {
 		this.meetingApi = meetingApi;
 	}
@@ -94,7 +118,7 @@ public class AffairManagerImpl implements AffairManager {
 	public OrgManager getOrgManager() {
 		return orgManager;
 	}
-	
+
 
 	public void setOrgManager(OrgManager orgManager) {
 		this.orgManager = orgManager;
@@ -115,7 +139,7 @@ public class AffairManagerImpl implements AffairManager {
 	        return null;
 	    }
 		CtpAffair affair = affairDao.get(id);
-		
+
 		return affair;
 	}
 	public CtpAffair getByHis(Long id) throws BusinessException {
@@ -126,7 +150,7 @@ public class AffairManagerImpl implements AffairManager {
 		}else{
 			LOGGER.error("______________________fkdao is null!");
 		}
-		
+
 		return affair;
 	}
 	public CtpAffair getSenderAffair(Long summaryId) throws BusinessException {
@@ -162,12 +186,12 @@ public class AffairManagerImpl implements AffairManager {
 	public List<CtpAffair> getByConditions(FlipInfo flipInfo , Map conditions) throws BusinessException {
 		return affairDao.getByConditions(flipInfo,conditions);
 	}
-	
+
 	@Override
 	public int getCountByConditions(Map conditions)throws BusinessException{
 	    return affairDao.getCountByConditions(conditions);
 	}
-	
+
 	@Override
 	public int getCountByConditionsHis(Map conditions)throws BusinessException{
 		AffairDao affairDaoFK = (AffairDao)AppContext.getBean("affairDaoFK");
@@ -179,10 +203,10 @@ public class AffairManagerImpl implements AffairManager {
 
 	@Override
 	public List<CtpAffair> getAffairs(ApplicationCategoryEnum collaboration, Long summaryId) throws BusinessException {
-	    
+
 		return affairDao.getAffairsByAppAndObjectId(collaboration, summaryId);
 	}
-	
+
 	public List<CtpAffair> getAffairsHis(ApplicationCategoryEnum collaboration, Long summaryId)
       throws BusinessException {
 	  AffairDao affairDaoFK = (AffairDao)AppContext.getBean("affairDaoFK");
@@ -209,13 +233,13 @@ public class AffairManagerImpl implements AffairManager {
 	    }
 	    return affairs;
 	}
-	
+
 	@Override
     public List<CtpAffair> getAffairs(ApplicationCategoryEnum appEnum, Long objectId, Long userId)
             throws BusinessException {
         return affairDao.getAffairsByObjectIdAndUserId(appEnum, objectId, userId);
     }
-	
+
 	@Override
 	public void deleteAffair(Long id) throws BusinessException {
 		affairDao.delete(id);
@@ -232,7 +256,7 @@ public class AffairManagerImpl implements AffairManager {
 	public void deletePhysical(ApplicationCategoryEnum app, Long objectId, Long memberId)throws BusinessException {
 	    affairDao.deletePhysicalByAppAndObjectIdAndMemberId(app, objectId, memberId);
 	}
-	
+
 
 	@Override
 	public void deleteAffair(Long objectId, Long memberId)
@@ -260,7 +284,7 @@ public class AffairManagerImpl implements AffairManager {
 	}
 	@Override
 	public List<CtpAffair> getValidAffairsHis(ApplicationCategoryEnum appEnum, Long objectId)throws BusinessException {
-		
+
 		List<CtpAffair> list = new ArrayList<CtpAffair>();
 		if(AppContext.hasPlugin("fk")){
 		    AffairDao affairDaoFK = (AffairDao)AppContext.getBean("affairDaoFK");
@@ -270,9 +294,9 @@ public class AffairManagerImpl implements AffairManager {
 		}
 		return list;
 	}
-	
-	
-	
+
+
+
 	@Override
 	public List<CtpAffair> getValidTrackAffairs(Long objectId) throws BusinessException {
 		return affairDao.getAvailabilityTrackingAffairsBySummaryId(objectId);
@@ -302,7 +326,7 @@ public class AffairManagerImpl implements AffairManager {
 	public List<CtpAffair> getAffairs(Long objectId,StateEnum state) throws BusinessException {
 		return affairDao.getAffairsByObjectIdAndState(objectId, state);
 	}
-	
+
 	public List<CtpAffair> getAffairs(Long objectId,StateEnum state,SubStateEnum subState) throws BusinessException{
 		return affairDao.getAffairs(objectId, state,subState);
 	}
@@ -353,11 +377,11 @@ public class AffairManagerImpl implements AffairManager {
 
     @Override
     public List<CtpAffair> getValidAffairs(FlipInfo flipInfo, Map params) throws BusinessException {
-    	
+
     	return this.affairDao.getALLAvailabilityAffairList(flipInfo,params);
-    	
+
     }
-    
+
     @Override
     public List<CtpAffair> getValidAffairsHis(FlipInfo flipInfo,Map<String,Object> params) throws BusinessException{
     	AffairDao affairDaoFK = (AffairDao)AppContext.getBean("affairDaoFK");
@@ -383,9 +407,9 @@ public class AffairManagerImpl implements AffairManager {
     	}
         return listCtpAffair;
     }
-    
-    
-    
+
+
+
     /**
      * yangwulin  提供给F111接口
      * @param flipInfo 分页对象
@@ -397,32 +421,32 @@ public class AffairManagerImpl implements AffairManager {
         List<CtpAffair> listCtpAffair = this.affairDao.getSenderOrMemberMtList(flipInfo,params);
         return listCtpAffair;
     }
-    
+
     public Map<Long,Integer>  getOverNodeCount(WorkflowAnalysisParam param){
-    	
+
     	Long templateId = param.getTempleteId();
     	Long accountId = param.getOrgAccountId();
     	boolean isCol =  param.isCol() ;
     	List<Integer> states = param.getWorkFlowStates();
     	Date startDate = param.getStartDate();
     	Date endDate = param.getEndDate();
-        
+
     	return this.affairDao.getOverNodeCount(templateId, accountId, isCol, states, startDate, endDate);
     }
     public Map<Long,String>  getNodeCountAndSumRunTime(WorkflowAnalysisParam param){
-     
+
     	Long templateId = param.getTempleteId();
     	Long accountId = param.getOrgAccountId();
     	boolean isCol =  param.isCol() ;
     	List<Integer> states = param.getWorkFlowStates();
     	Date startDate = param.getStartDate();
     	Date endDate = param.getEndDate();
-    	
+
     	return this.affairDao.getNodeCountAndSumRunTime(templateId, accountId, isCol, states, startDate, endDate);
     }
-    
+
     public List<CtpAffair> getAffairByActivityId(WorkflowAnalysisParam param){
-        
+
     	Long templateId = param.getTempleteId();
     	Long accountId = param.getOrgAccountId();
     	boolean isCol =  param.isCol() ;
@@ -430,12 +454,12 @@ public class AffairManagerImpl implements AffairManager {
     	Date startDate = param.getStartDate();
     	Date endDate = param.getEndDate();
     	Long activityId = param.getActivityId();
-    	
+
     	return this.affairDao.getAffairByActivityId(templateId, accountId, isCol, states, activityId, startDate, endDate);
     }
-    
+
     public Map<Long,String> getStaticsByActivityId(WorkflowAnalysisParam param){
-        
+
     	Long templateId = param.getTempleteId();
     	Long accountId = param.getOrgAccountId();
     	boolean isCol =  param.isCol() ;
@@ -443,12 +467,12 @@ public class AffairManagerImpl implements AffairManager {
     	Date startDate = param.getStartDate();
     	Date endDate = param.getEndDate();
     	Long activityId = param.getActivityId();
-    	
+
     	return this.affairDao.getStaticsByActivityId(templateId, accountId, isCol, states, activityId, startDate, endDate);
     }
-    
+
     public Map<Long,Integer> getOverCountByMember(WorkflowAnalysisParam param){
-        
+
     	Long templateId = param.getTempleteId();
     	Long accountId = param.getOrgAccountId();
     	boolean isCol =  param.isCol() ;
@@ -456,22 +480,22 @@ public class AffairManagerImpl implements AffairManager {
     	Date startDate = param.getStartDate();
     	Date endDate = param.getEndDate();
     	Long activityId = param.getActivityId();
-    	
+
     	return this.affairDao.getOverCountByMember(templateId, accountId, isCol, states, activityId, startDate, endDate);
     }
-    
-	
+
+
     /**
      * IDX_REF_A_O(ObjectID)
      * IDX_AFFAIR_STATE(State)
      */
-	
+
 	public void updateSentPigeonholeInfo(Long summaryId, Long archiveId) {
         String hql = "update " + CtpAffair.class.getName() + " a set a.archiveId=? where a.objectId=? and a.state=?";
         Object[] values = {archiveId, summaryId, StateEnum.col_sent.key()};//协同待办
         DBAgent.bulkUpdate(hql, values);
     }
-	
+
 	/**
 	 * IDX_REF_A_O(ObjectID)
 	 */
@@ -480,7 +504,7 @@ public class AffairManagerImpl implements AffairManager {
         Object[] values = {archiveId, summaryId};//协同待办
         DBAgent.bulkUpdate(hql, values);
     }
-	
+
 	public List<Long> getAffairMemberIds(ApplicationCategoryEnum app, Long id) {
 		List<Long> memberIds = affairDao.getMemberIdListByAppAndObjectId(app, id);
 		if(memberIds == null || memberIds.size() == 0){
@@ -491,13 +515,13 @@ public class AffairManagerImpl implements AffairManager {
 		}
 	    return memberIds;
 	}
-	
+
 	@Override
 	public List<Long> findMembers(ApplicationCategoryEnum category, Long objectId,
             List<StateEnum> states, FlipInfo flp) throws BusinessException{
 	    return affairDao.findMembers(category, objectId, states, flp);
 	}
-	
+
 	public List<CtpAffair> getPendingAffairs(Long summaryId, List<Long> nodeIds) throws BusinessException{
 	    return affairDao.getPendingAffairListByNodes(summaryId,nodeIds);
 	}
@@ -511,8 +535,8 @@ public class AffairManagerImpl implements AffairManager {
 			Long objectId, Map<String, Object> parameter){
 		affairDao.updateAllAvailabilityAffair(appEnum,objectId,parameter);
 	}
-	
-	
+
+
 	 public List<CtpAffair> getAffairsHis(Long objectId, Long activityId) throws BusinessException{
 	   AffairDao affairDaoFK = (AffairDao)AppContext.getBean("affairDaoFK");
 	    if(affairDaoFK !=null) {
@@ -521,12 +545,12 @@ public class AffairManagerImpl implements AffairManager {
 	    	LOGGER.error("______________________fkdao is null!");
 	      return null;
 	    }
-    
+
 }
-	
+
     public  CtpAffair getEdocSenderAffair(Long objectId) throws BusinessException {
     	CtpAffair affair = affairDao.getEdocSenderAffair(objectId);
-		
+
 		return affair;
     }
 
@@ -534,7 +558,7 @@ public class AffairManagerImpl implements AffairManager {
     public List<CtpAffair> getAffairs(ApplicationCategoryEnum appEnum, Long objectId,Long subObjectId, Long memberId) throws BusinessException {
         return affairDao.getAffairsByObjectIdAndSubObjectIdAndUserId(appEnum, objectId, subObjectId, memberId);
     }
-    
+
     public int getCountAffairsByAppsAndStatesAndMemberId(List<ApplicationCategoryEnum> appEnums,List<StateEnum> statesEnums,Long memberId){
     	 return affairDao.getCountAffairsByAppsAndStatesAndMemberId(appEnums,statesEnums,memberId);
     }
@@ -555,10 +579,10 @@ public class AffairManagerImpl implements AffairManager {
         	AffairDao affairDaoFK = (AffairDao)AppContext.getBean("affairDaoFK");
         	list = affairDaoFK.getAffairsByObjectIdAndStates(objectId, _states);
       	}
-	    
+
 		return list;
 	}
-	
+
 	@Override
 	public String getErrorMsgByAffair(CtpAffair affair) throws BusinessException{
 
@@ -615,9 +639,9 @@ public class AffairManagerImpl implements AffairManager {
 			msg = ResourceUtil.getString("collaboration.state.inexistence.alert", state);
 		}
     	return msg;
-	
+
 	}
-	
+
 	 public int getAgentPendingCount(Long memberId) throws BusinessException{
         Object[] agentObj = AgentUtil.getUserAgentToMap(memberId);
         boolean agentToFlag = (Boolean)agentObj[0];
@@ -627,17 +651,17 @@ public class AffairManagerImpl implements AffairManager {
         condition.setAgent(agentToFlag, ma);
         return condition.getAgentPendingCount();
     }
-	
+
 	@Override
 	public void updateAffairReaded(CtpAffair affair) throws BusinessException{
-		
+
 		Integer sub_state = affair.getSubState();
         if (sub_state == null || sub_state.intValue() == SubStateEnum.col_pending_unRead.key()) {
-           
+
             Map<String,Object> map = new HashMap<String,Object>();
             map.put("subState", SubStateEnum.col_pending_read.key());
             update(affair.getId(), map);
-            
+
             //要把已读状态写写进流程
             if (affair.getSubObjectId() != null) {
                 try {
@@ -764,7 +788,7 @@ public class AffairManagerImpl implements AffairManager {
         }
         final StringBuilder hql = new StringBuilder();
         final Map<String,Object> parameter = new HashMap<String,Object>();
-        
+
 
         StateEnum stateEnum = null;
         if(condition.getState() == null){
@@ -772,7 +796,7 @@ public class AffairManagerImpl implements AffairManager {
         }else{
             stateEnum = condition.getState();
         }
-        
+
         if (!isGroupBy) {
             hql.append("from ctp_affair affair ");
         }
@@ -803,7 +827,7 @@ public class AffairManagerImpl implements AffairManager {
         		appList.add(ApplicationCategoryEnum.exchange.key());
         		appList.add(ApplicationCategoryEnum.exSend.key());
         		appList.add(ApplicationCategoryEnum.exSign.key());
-        		
+
         		hql.append(" affair.app in (:appEnum) and ");
         		parameter.put("appEnum", appList);
         	} else {
@@ -816,7 +840,7 @@ public class AffairManagerImpl implements AffairManager {
 
         hql.append(" and affair.sub_state != :substate  ");
         parameter.put("substate",SubStateEnum.meeting_pending_periodicity.getKey());
-  
+
         //当查已办affair时，还需要加上complete_time不为空的条件
         if(stateEnum.key() == StateEnum.col_done.key()){
             hql.append(" and affair.complete_time is not null ");
@@ -858,9 +882,9 @@ public class AffairManagerImpl implements AffairManager {
             	parameter.put("subState", sub_State);
             }
         }
-        
-        
-        
+
+
+
         hql.append(" and affair.is_delete = :isDelete ");
         parameter.put("memberId",memberId);
         parameter.put("isDelete", false);
@@ -933,7 +957,7 @@ public class AffairManagerImpl implements AffairManager {
 
             hasCondition = true;
         }
-        
+
         if(isTeam) {
             if(hasCondition){
                 hql.append(" or ");
@@ -956,7 +980,7 @@ public class AffairManagerImpl implements AffairManager {
             sbHql.append(" and affair.complete_time in (select max(complete_time) from ctp_affair affair ");
             sbHql.append(hql);
             sbHql.append(" group by affair.object_id ) ");
-            
+
         } else {
             sbHql.append(hql);
         }
@@ -972,29 +996,29 @@ public class AffairManagerImpl implements AffairManager {
       	}
     	return affair;
 	}
-	
+
 	public void updateSignleViewTimes(List<Map<String, String>> viewRecordMaps) throws BusinessException{
 	    List<List> affairDatas = new ArrayList<List>(viewRecordMaps.size());
-	    
+
 	    for (Map<String, String> viewRecordMap : viewRecordMaps) {
 	        if(viewRecordMap != null && viewRecordMap.size() > 0){
 	            try {
 	                String viewPeriod = viewRecordMap.get("signleViewPeriod");
 	                String _firstViewTime = viewRecordMap.get("firstViewTime");
-	                
+
 	                if(Strings.isBlank(viewPeriod) && Strings.isNotBlank(_firstViewTime)){
-	                    
+
 	                    String _affairId = viewRecordMap.get("affairId");
 	                    String _accountId = viewRecordMap.get("accountId");
-	                    
+
 	                    Long affairId = Long.valueOf(_affairId);
 	                    Long accountId = Long.valueOf(_accountId);
 	                    Long firstViewTime = Long.valueOf(_firstViewTime);
-	                    
+
 	                    Date viewTime = new Date(firstViewTime);
 	                    Date nowTime = new Date();
 	                    long t = workTimeManager.getDealWithTimeValue(viewTime, nowTime, accountId);
-	                    
+
 	                    affairDatas.add(Strings.newArrayList(affairId, t));
 	                }
 	            }
@@ -1003,7 +1027,7 @@ public class AffairManagerImpl implements AffairManager {
 	            }
 	        }
         }
-	    
+
         JDBCAgent jdbcAgent = new JDBCAgent(true);
         try{
             jdbcAgent.batch1Prepare("update ctp_affair set signleview_period=? where id=?");
@@ -1019,31 +1043,31 @@ public class AffairManagerImpl implements AffairManager {
             jdbcAgent.close();
         }
 	}
-	
+
     public void updateSignleViewTime(Map<String, String> viewRecordMap) throws BusinessException{
-        
+
         if(viewRecordMap != null && viewRecordMap.size() > 0){
             try {
-                
+
                 String viewPeriod = viewRecordMap.get("signleViewPeriod");
                 String _firstViewTime = viewRecordMap.get("firstViewTime");
-                
+
                 if(Strings.isBlank(viewPeriod) && Strings.isNotBlank(_firstViewTime)){
-                    
+
                     //怕事务出事，还是更新单个字段
                     Map<String,Object> m = new HashMap<String,Object>();
-                    
+
                     String _affairId = viewRecordMap.get("affairId");
                     String _accountId = viewRecordMap.get("accountId");
-                    
+
                     Long affairId = Long.valueOf(_affairId);
                     Long accountId = Long.valueOf(_accountId);
                     Long firstViewTime = Long.valueOf(_firstViewTime);
-                    
+
                     Date viewTime = new Date(firstViewTime);
                     Date nowTime = new Date();
                     long t = workTimeManager.getDealWithTimeValue(viewTime, nowTime, accountId);
-                    
+
                     m.put("signleViewPeriod", t);
                     this.update(affairId, m);
                 }
@@ -1052,28 +1076,28 @@ public class AffairManagerImpl implements AffairManager {
             }
         }
     }
-	
+
 	@Override
     public void updateSignleViewTime(CtpAffair affair) throws BusinessException{
-        
+
         if(affair != null){
-            
+
             Map<String, String> viewRecordMap = new HashMap<String, String>();
             viewRecordMap.put("affairId", affair.getId().toString());
             viewRecordMap.put("accountId", affair.getOrgAccountId().toString());
-            
+
             if(affair.getFirstViewDate() != null){
                 viewRecordMap.put("firstViewTime", String.valueOf(affair.getFirstViewDate().getTime()));
             }
-            
+
             if(affair.getSignleViewPeriod() != null){
                 viewRecordMap.put("signleViewPeriod", affair.getSignleViewPeriod().toString());
             }
-            
+
             updateSignleViewTime(viewRecordMap);
         }
     }
-	
+
 	@Override
     public void updateAffairAnalyzeData(CtpAffair affair) throws BusinessException{
         Map<String,Object> updateMap = new HashMap<String,Object>();
@@ -1083,11 +1107,11 @@ public class AffairManagerImpl implements AffairManager {
             long viewTime = workTimeManager.getDealWithTimeValue(affair.getFirstViewDate(), nowTime, affair.getOrgAccountId());
             updateMap.put("signleViewPeriod", viewTime);
         }
-        
+
       //回退，记录第一次操作时间
         if(affair.getFirstResponsePeriod() == null){
             long responseTime = workTimeManager.getDealWithTimeValue(affair.getReceiveTime(), nowTime, affair.getOrgAccountId());
-            
+
             //前面的事物没有提交，只能通过修改单独的字段进行更新
             updateMap.put("firstResponsePeriod", responseTime);
         }
@@ -1100,15 +1124,15 @@ public class AffairManagerImpl implements AffairManager {
 	public List<CtpAffair> getAffairsByObjectIdAndStates(FlipInfo flipInfo, Long objectId,List<Integer> states) throws BusinessException {
 		return affairDao.getAffairsByObjectIdAndStates(flipInfo, objectId, states);
 	}
-	
-	
+
+
 
 	@Override
 	public Object getDeduplicationAffairs(Long memberId,AffairCondition condition, boolean onlyCount, FlipInfo fi) throws BusinessException {
 
     	final StringBuilder hql = new StringBuilder();
     	final Map<String,Object> parameter = new HashMap<String,Object>();
-      	
+
 
     	StateEnum stateEnum = null;
         if(condition.getState() == null){
@@ -1116,7 +1140,7 @@ public class AffairManagerImpl implements AffairManager {
         }else{
             stateEnum = condition.getState();
         }
-        
+
         hql.append(" from ctp_affair affair,");
         hql.append(" (select max(affair2.id) id from ctp_affair affair2 where affair2.member_id = :memberId and affair2.state = :state");
         hql.append(" and affair2.is_delete = :isDelete ");
@@ -1125,22 +1149,22 @@ public class AffairManagerImpl implements AffairManager {
         parameter.put("state", StateEnum.col_done.getKey());
         parameter.put("isDelete", false);
         parameter.put("collaborationApp", ApplicationCategoryEnum.collaboration.getKey());
-        
-        List<Integer> notInApp = new ArrayList<Integer>(); 
+
+        List<Integer> notInApp = new ArrayList<Integer>();
         notInApp.add(Integer.valueOf(ApplicationCategoryEnum.collaboration.getKey()));
         notInApp.add(Integer.valueOf(ApplicationCategoryEnum.edocRegister.key()));
         notInApp.add(Integer.valueOf(ApplicationCategoryEnum.edocRecDistribute.getKey()));
         parameter.put("notInApp", notInApp);
         Boolean isSourcesRelationOr = condition.getIsSourcesRelationOr();
-        
+
         if (condition.getVjoin()) {
         	hql.append(" and affair.app = :vjoinApp");
         	parameter.put("vjoinApp", ApplicationCategoryEnum.collaboration.key());
     	}
-        
+
         Set<SearchModel> searchList = condition.getSearchList();
-        StringBuilder searchHql = new StringBuilder(); 
-        StringBuilder portalSearchHql = new StringBuilder(); 
+        StringBuilder searchHql = new StringBuilder();
+        StringBuilder portalSearchHql = new StringBuilder();
         if(searchList != null && !searchList.isEmpty()){
 			for(SearchModel model : searchList){
 				boolean isPortalMore = model.isMorePageSearch();
@@ -1169,7 +1193,7 @@ public class AffairManagerImpl implements AffairManager {
 					break;
 				case importLevel:
 					if(Strings.isNotBlank(model.getSearchValue1())){
-						StringBuilder importLevelHql = new StringBuilder(); 
+						StringBuilder importLevelHql = new StringBuilder();
 						String [] imps = model.getSearchValue1().split("[,]");
 						List<Integer> importantList = new ArrayList<Integer>();
 						List<Integer> newList = new ArrayList<Integer>();
@@ -1237,19 +1261,19 @@ public class AffairManagerImpl implements AffairManager {
 									subState=ApplicationSubCategoryEnum.inquiry_write.key();
 								}
 								Strings.addToMap(app2SubApp, ApplicationCategoryEnum.inquiry.key(), subState);
-							
+
 							}else if(ApplicationCategoryEnum.news.key() ==Integer.parseInt(app)){
 								//为新闻的时候为综合信息审批，包含待审批的调查，不包括待填写的。
 								appList.add(ApplicationCategoryEnum.bulletin.key());
 								appList.add(ApplicationCategoryEnum.news.key());
-								
+
 								Strings.addToMap(app2SubApp, ApplicationCategoryEnum.inquiry.key(), ApplicationSubCategoryEnum.inquiry_audit.key());
-							
+
 							}else{
 							    appList.add(Integer.parseInt(app));
 							}
 						}
-						StringBuilder applicationEnumHql = new StringBuilder(); 
+						StringBuilder applicationEnumHql = new StringBuilder();
 						if(appList.size() > 1){
 							applicationEnumHql.append(" affair2.app in(:applicationEnum) ");
 							parameter.put("applicationEnum", appList);
@@ -1263,7 +1287,7 @@ public class AffairManagerImpl implements AffairManager {
                             for (Iterator<Map.Entry<Integer, List<Integer>>> iterator = app2SubApp.entrySet().iterator(); iterator.hasNext();) {
                                 Map.Entry<Integer, List<Integer>> entry = iterator.next();
                                 if (!entry.getValue().isEmpty()) {
-                                	
+
                                 	applicationEnumHql.append(" and ( affair2.app = :").append("app").append(index).append(" and affair2.subApp in(:").append("subApp").append(index).append("))");
                                 	parameter.put("app"+index, entry.getKey());
                                 	parameter.put("subApp"+index, entry.getValue());
@@ -1281,7 +1305,7 @@ public class AffairManagerImpl implements AffairManager {
 				case nodePerm:
 					if(Strings.isNotBlank(model.getSearchValue1())){
 						if("audit".equals(model.getSearchValue1())){
-							StringBuilder nodePermAuditHql = new StringBuilder(); 
+							StringBuilder nodePermAuditHql = new StringBuilder();
 							nodePermAuditHql.append(" affair2.node_policy in (:auditPopedom) or affair2.app in(:auditPopedomApp)");
 							List<Integer> listApps = new ArrayList<Integer>();
 							listApps.add(ApplicationCategoryEnum.bulletin.key());
@@ -1295,7 +1319,7 @@ public class AffairManagerImpl implements AffairManager {
 								searchHql.append(" ").append(isSourcesRelationOr.toString()).append(" (").append(nodePermAuditHql).append(")");
 							}
 						}else if("read".equals(model.getSearchValue1())){
-							StringBuilder nodePermReadHql = new StringBuilder(); 
+							StringBuilder nodePermReadHql = new StringBuilder();
 							nodePermReadHql.append(" affair2.node_policy in (:auditPopedom)");
 							parameter.put("auditPopedom", condition.getAuditPopedom());
 							if(isPortalMore){
@@ -1308,7 +1332,7 @@ public class AffairManagerImpl implements AffairManager {
 					break;
 				case sender:
 					if(Strings.isNotBlank(model.getSearchValue1())){
-						
+
 						StringBuilder senderHql = new StringBuilder(" exists (select id from org_member where id=affair2.sender_id and name like :senderName) ");
 						parameter.put("senderName","%" + SQLWildcardUtil.escape(model.getSearchValue1())+"%");
 						if(isPortalMore){
@@ -1319,7 +1343,7 @@ public class AffairManagerImpl implements AffairManager {
 					}
 					break;
 				case createDate:
-					StringBuilder createDateHql = new StringBuilder(); 
+					StringBuilder createDateHql = new StringBuilder();
 					if(Strings.isNotBlank(model.getSearchValue1())){
 						Date startDate = Datetimes.parseDatetime(model.getSearchValue1());
 						createDateHql.append(" affair2.create_date>:createDate1");
@@ -1338,7 +1362,7 @@ public class AffairManagerImpl implements AffairManager {
 					}
 					break;
                 case receiveDate:
-                	StringBuilder receiveDateHql = new StringBuilder(); 
+                	StringBuilder receiveDateHql = new StringBuilder();
                     if(Strings.isNotBlank(model.getSearchValue1())){
                         Date startDate = Datetimes.parseDatetime(model.getSearchValue1());
                         receiveDateHql.append(" affair2.receive_time>:receiveTime1");
@@ -1355,9 +1379,9 @@ public class AffairManagerImpl implements AffairManager {
 					}else{
 						appendHql(searchHql,isSourcesRelationOr,receiveDateHql);
 					}
-                    break;			
+                    break;
                 case dealDate:
-                	StringBuilder dealDateHql = new StringBuilder(); 
+                	StringBuilder dealDateHql = new StringBuilder();
                     if(Strings.isNotBlank(model.getSearchValue1())){
                         Date startDate = Datetimes.parseDatetime(model.getSearchValue1());
                         dealDateHql.append(" affair2.update_date>:updateDate1");
@@ -1374,12 +1398,12 @@ public class AffairManagerImpl implements AffairManager {
 					}else{
 						appendHql(searchHql,isSourcesRelationOr,dealDateHql);
 					}
-                    break;                    
+                    break;
 				case subState:
 				    String subState = model.getSearchValue1();
 			          if (Strings.isNotBlank(subState)) {
 			            if (subState.length() == 1 && NumberUtils.isNumber(subState)) {
-			
+
 			              if (String.valueOf(SubStateEnum.col_waitSend_stepBack.getKey()).equals(subState)
 			                  || String.valueOf(SubStateEnum.col_waitSend_sendBack.getKey()).equals(subState)) {
 			            	StringBuilder subStateWaitSendHql = new StringBuilder();
@@ -1399,9 +1423,9 @@ public class AffairManagerImpl implements AffairManager {
 			            	  subStateOtherHql.append("affair2.sub_state = :subState ");
 				              parameter.put("subState", subState);
 			                if (isPortalMore) {
-			                	appendHql(portalSearchHql, false, subStateOtherHql); 
+			                	appendHql(portalSearchHql, false, subStateOtherHql);
 			                } else {
-			                	appendHql(searchHql, isSourcesRelationOr, subStateOtherHql); 
+			                	appendHql(searchHql, isSourcesRelationOr, subStateOtherHql);
 			                }
 			              }
 			              //指定回退
@@ -1415,7 +1439,7 @@ public class AffairManagerImpl implements AffairManager {
 			              subStateList.add(SubStateEnum.col_pending_specialBackToSenderReGo.getKey());
 			              parameter.put("subState", subStateList);
 			              if (isPortalMore) {
-			            	  appendHql(portalSearchHql, false, subStateStepBackHql); 
+			            	  appendHql(portalSearchHql, false, subStateStepBackHql);
 			              }
 			              //已读
 			            }else if(String.valueOf(SubStateEnum.col_pending_read.getKey()).equals(subState)){
@@ -1427,7 +1451,7 @@ public class AffairManagerImpl implements AffairManager {
 			              subStateReadHql.append("affair2.sub_state in (:subState) ");
 			              parameter.put("subState", subStateList);
 			              if (isPortalMore) {
-			            	  appendHql(portalSearchHql, false, subStateReadHql); 
+			            	  appendHql(portalSearchHql, false, subStateReadHql);
 			              }
 			            } else {
 			              String[] subStates = subState.split("[,]");
@@ -1441,21 +1465,21 @@ public class AffairManagerImpl implements AffairManager {
 				              subStateReadHql.append("affair2.sub_state in (:subState) or affair2.back_from_id is not null");
 				              parameter.put("subState", subStateList);
 			                if (isPortalMore) {
-			                	appendHql(portalSearchHql, false, subStateReadHql); 
+			                	appendHql(portalSearchHql, false, subStateReadHql);
 			                } else {
-			                	appendHql(searchHql, isSourcesRelationOr, subStateReadHql); 
+			                	appendHql(searchHql, isSourcesRelationOr, subStateReadHql);
 			                }
 			              } else {
 			            	  StringBuilder subStateReadHql = new StringBuilder();
 				              subStateReadHql.append("affair2.sub_state in (:subState) ");
 				              parameter.put("subState", subStateList);
 			                if (isPortalMore) {
-			                	appendHql(portalSearchHql, false, subStateReadHql); 
+			                	appendHql(portalSearchHql, false, subStateReadHql);
 			                } else {
-			                	appendHql(searchHql, isSourcesRelationOr, subStateReadHql); 
+			                	appendHql(searchHql, isSourcesRelationOr, subStateReadHql);
 			                }
 			              }
-			
+
 			            }
 			          }
 					break;
@@ -1478,7 +1502,7 @@ public class AffairManagerImpl implements AffairManager {
 										Long id=Long.valueOf(tempId);
 										tempIdList.add(id);
 									}
-									
+
 								}
 							}
 						}
@@ -1505,7 +1529,7 @@ public class AffairManagerImpl implements AffairManager {
 						}else{
 							appendHql(searchHql, isSourcesRelationOr, templateHql);
 						}
-						
+
 					}
 					break;
 				case overTime:
@@ -1564,7 +1588,7 @@ public class AffairManagerImpl implements AffairManager {
 						    	parameter.put("catagoryEdocApp", keys);
 							}else if("catagory_meet".equals(s)){
 							    //已召开会议
-							    //TODO 
+							    //TODO
 							    List<Integer> keys = new ArrayList<Integer>();
 							    keys.add(ApplicationCategoryEnum.meeting.key());
 							    keys.add(ApplicationCategoryEnum.meetingroom.key());
@@ -1608,7 +1632,7 @@ public class AffairManagerImpl implements AffairManager {
 							if(Strings.isBlank(str)){
 								continue;
 							}
-							
+
 							String[] poli = str.split("___");
 							if(poli[0] != null){
 								if(poli.length == 2){
@@ -1651,11 +1675,11 @@ public class AffairManagerImpl implements AffairManager {
 												if(AffairCondition.isOpenRegister()){
 													//G6版本,在开启了收文登记的情况下，查询收文待登记的数据
 													category.add(ApplicationCategoryEnum.edocRegister.getKey());
-												}	
-												
+												}
+
 												//是V5-G6版本,则登记查询待分发的数据
 												category.add(ApplicationCategoryEnum.edocRecDistribute.getKey());
-											
+
 											}else{
 												category.add(ApplicationCategoryEnum.edocRegister.getKey());
 											}
@@ -1669,7 +1693,7 @@ public class AffairManagerImpl implements AffairManager {
 										else if (Integer.parseInt(poli[1]) == 7 || Integer.parseInt(poli[1]) == 8 || Integer.parseInt(poli[1]) == 10) {
 												category.add(7);
 												category.add(8);
-												
+
 												Strings.addToMap(app2SubApp, ApplicationCategoryEnum.inquiry.key(), ApplicationSubCategoryEnum.inquiry_audit.key());
 //											}
 										}
@@ -1738,12 +1762,12 @@ public class AffairManagerImpl implements AffairManager {
 							poliHql.append(" affair2.app in(:policy4PortalApp)");
 							parameter.put("policy4PortalApp", category);
 						}
-						
+
 						if(!policy.isEmpty()){
-							
+
 							/**
 							 * 1.Restrictions.and(Restrictions.eq("app", key)
-							 * 2.nodepolicy : 
+							 * 2.nodepolicy :
 							 * 	 a.阅文，办文替换前缀
 							 *   b.只会的时候需要兼容inform,zhihui
 							 *   c.原生的，直接取传递过来的
@@ -1756,7 +1780,7 @@ public class AffairManagerImpl implements AffairManager {
 								if (!policy.get(key).isEmpty()) {
 									List<String> policys = policy.get(key);
 									for(String pol:policys){
-										
+
 										StringBuilder policyHql = new StringBuilder();
 										//登记节点需要单独处理
 										if("regist".equals(pol) || "dengji".equals(pol)){
@@ -1792,7 +1816,7 @@ public class AffairManagerImpl implements AffairManager {
                                                 policyHql.append(" and  affair2.app = :").append(paramName);
                                                 parameter.put(paramName,subapp);
 											}
-											
+
 											if("zhihui".equals(pol)){
 											    String paramName = "nodepolicy_policy4Portal_"+parmIdex++;
 											    String paramName1 = "nodepolicy_policy4Portal_"+parmIdex++;
@@ -1800,7 +1824,7 @@ public class AffairManagerImpl implements AffairManager {
                                                 parameter.put(paramName,"zhihui");
                                                 parameter.put(paramName1,"inform");
 											}else{
-												
+
 												String paramName = "nodepolicy_policy4Portal_"+parmIdex++;
                                                 policyHql.append(" and affair2.node_policy = :").append(paramName);
                                                 parameter.put(paramName,pol);
@@ -1822,7 +1846,7 @@ public class AffairManagerImpl implements AffairManager {
 						if(!subAppPolicy.isEmpty()){
 							for (Iterator<Integer> iterator = subAppPolicy.keySet().iterator(); iterator.hasNext();) {
 								key = iterator.next();
-								
+
 								list = subAppPolicy.get(key);
 								if (!list.isEmpty()) {
 									if(list.contains("all")){
@@ -1839,7 +1863,7 @@ public class AffairManagerImpl implements AffairManager {
 							}
 						}
 						//wangjingjing end
-						
+
 						if(!app2SubApp.isEmpty()){
 							for (Iterator<Map.Entry<Integer, List<Integer>>> iterator = app2SubApp.entrySet().iterator(); iterator.hasNext();) {
 								Map.Entry<Integer, List<Integer>> entry = iterator.next();
@@ -1879,7 +1903,7 @@ public class AffairManagerImpl implements AffairManager {
 					}
 					break;
 				//case 自由协同:
-				//	break; 
+				//	break;
 				//case 其他:
 				//	break;
 				}
@@ -1888,12 +1912,16 @@ public class AffairManagerImpl implements AffairManager {
         appendHql(hql,false,searchHql);
         appendHql(hql,false,portalSearchHql);
         hql.append("  GROUP BY affair2.object_id ) taffair where taffair.id = affair.id");
+        /**徐矿集团【已办公文首页栏目只显示已处理但流程未结束的公文】 wxt.dulong 2019-5-28 start*/
+        hql.append("  and summary_state = 0");
+        hql.append("  and node_policy <> 'fengfa'");
+        /**徐矿集团【已办公文首页栏目只显示已处理但流程未结束的公文】 wxt.dulong 2019-5-28 end*/
         String orderBySql = "  order by affair.complete_time desc";
-    	
+
 		return affairDao.getDeduplicationAffairList(hql.toString(), parameter, onlyCount, fi,orderBySql);
-	
+
 	}
-	
+
 	private void appendHql(StringBuilder hql,Boolean isSourcesRelationOr,StringBuilder addHql ){
 		if(Strings.isNotBlank(hql.toString()) &&  Strings.isNotBlank(addHql.toString())){
 			hql.append(" ").append(isSourcesRelationOr ? "or" : "and ").append(" (").append(addHql).append(")");
@@ -1902,7 +1930,7 @@ public class AffairManagerImpl implements AffairManager {
 				hql.append(" ").append(" (").append(addHql).append(")");
 			}
 		}
-		 
+
 	}
 
 	@Override
@@ -1933,7 +1961,7 @@ public class AffairManagerImpl implements AffairManager {
 	public Integer getStartAffairStateByObjectId(Long objectId) throws BusinessException {
 		return affairDao.getStartAffairStateByObjectId(objectId);
 	}
-	
+
 	public void updateAffairSummaryState(Long objectId, Integer summaryState) throws BusinessException{
 		affairDao.updateAffairSummaryState(objectId, summaryState);
 	}
@@ -1941,41 +1969,60 @@ public class AffairManagerImpl implements AffairManager {
 	@Override
 	public List<CtpAffair> getAffairsForCurrentUsers(FlipInfo flipInfo,
 			Map<String, Object> map) throws BusinessException {
-		
+
 		return affairDao.getAffairsForCurrentUsers(flipInfo, map);
 	}
 
     @Override
     public Map<String, Integer> countPendingAffairs(long memberId,String[] appKeys) throws BusinessException {
     	Map<String, Integer> map = new HashMap<String, Integer>();
-    	
+
     	for (int i=0; i<appKeys.length; i++) {
-    		Map<String, Object> param = new HashMap<String, Object>();
-    		param.put("app", appKeys[i]);
-    		param.put("memberId", memberId);
-    		
-    		Integer count = 0;
-    		if (!Integer.valueOf(appKeys[i]).equals(ApplicationCategoryEnum.meeting.getKey())) {
-    			count = affairDao.countPendingAffairs(param);
-    		} else {//会议待开列表数据查询比较复杂,直接调用会议模块查询
-    			if (meetingApi!=null) {
-    				count = meetingApi.getPortleMeetingDataCount();
-    			}
-    		}
-    		map.put(appKeys[i], count);
+    		if ("999".equals(appKeys[i])) {
+				// best 如果是需要显示所有则需要显示公文和协同 start
+				Integer count = 0;
+				Map<String, Object> param = new HashMap<String, Object>();
+				// 先查询公文的
+				param.put("app", "4");
+				param.put("memberId", memberId);
+				param.put("flag", true); // 用作过滤签报
+				count = affairDao.countPendingAffairs(param);
+				// 再查询协同的
+				param.clear();
+				param.put("app", "1");
+				param.put("memberId", memberId);
+				count += affairDao.countPendingAffairs(param);
+				map.put("3003", count);
+				// best 如果是需要显示所有则需要显示公文和协同 end
+
+			} else {
+	    		Map<String, Object> param = new HashMap<String, Object>();
+	    		param.put("app", appKeys[i]);
+	    		param.put("memberId", memberId);
+
+	    		Integer count = 0;
+	    		if (!Integer.valueOf(appKeys[i]).equals(ApplicationCategoryEnum.meeting.getKey())) {
+	    			count = affairDao.countPendingAffairs(param);
+	    		} else {//会议待开列表数据查询比较复杂,直接调用会议模块查询
+	    			if (meetingApi!=null) {
+	    				count = meetingApi.getPortleMeetingDataCount();
+	    			}
+	    		}
+	    		map.put(appKeys[i], count);
+			}
     	}
-    	
+
         return map;
     }
     @Override
     public StringBuilder getCondition4Agent(AffairCondition condition, Map<String,Object> parameter, boolean isHQL){
     	StringBuilder hql = new StringBuilder();
-    	
+
     	int len = condition.getApps().size();
         if(len>0){
             hql.append("(");
         }
-    	
+
     	if(!condition.getShowAgentAffair()){
     		int count = 0;
     		for(ApplicationCategoryEnum app : condition.getApps()){
@@ -1997,7 +2044,7 @@ public class AffairManagerImpl implements AffairManager {
     				break;
     			case edoc:
     			case meeting:
-    			case meetingroom:   
+    			case meetingroom:
     			case bulletin:
     			case news:
     			case inquiry:
@@ -2015,7 +2062,7 @@ public class AffairManagerImpl implements AffairManager {
     	if(len>0){
     		hql.append(")");
     	}
-    	
+
     	return hql;
     }
 
@@ -2051,9 +2098,9 @@ public class AffairManagerImpl implements AffairManager {
 	public void updateSortWeight(int sortWeight, List<Long> affairIdList)  throws BusinessException{
 		affairDao.updateSortWeight(sortWeight, affairIdList);
 	}
-	
+
 	public boolean isAddNodeAffair(CtpAffair affair){
-	        
+
 	        boolean add = false;
 	        if(affair.getFromType() != null){
 	            boolean addNode  = Integer.valueOf(ChangeType.AddNode.getKey()).equals(affair.getFromType());
@@ -2063,16 +2110,40 @@ public class AffairManagerImpl implements AffairManager {
                 boolean assign  = Integer.valueOf(ChangeType.Assign.getKey()).equals(affair.getFromType());
 
                 boolean multistageAsign  = Integer.valueOf(ChangeType.MultistageAsign.getKey()).equals(affair.getFromType());
-                
+
                 boolean passRead  = Integer.valueOf(ChangeType.PassRead.getKey()).equals(affair.getFromType());
-                
+
                 if(addNode || addInform || assign  || multistageAsign  || passRead){
-                    add = true; 
+                    add = true;
                 }
 	        }
 	        return add;
 	    }
-	
+
+	@Override
+	public boolean isOpen(Long nodeId, Long affairId)  throws BusinessException{
+
+		User user = AppContext.getCurrentUser();
+		List<MemberRole> roles = orgManager.getMemberRoles(user.getId(), user.getAccountId());
+		CtpAffair affair = this.get(affairId);
+		if(affair.isFinish() || affair.getState() == 3) {
+			return true;
+		}
+		List<XkjtOpenMode> openModes = xkjtDao.findOpenModeByNodeId(nodeId);
+		if(openModes.size() == 0) {
+			return true;
+		}else {
+			XkjtOpenMode openMode = openModes.get(0);
+			for(MemberRole memberRole : roles) {
+				V3xOrgRole role = memberRole.getRole();
+				if(openMode.getRoleIds().indexOf(String.valueOf(role.getId())) != -1) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 	/**
 	 * 根据节点权限获取affairs
 	 * add by shenwei
@@ -2080,9 +2151,10 @@ public class AffairManagerImpl implements AffairManager {
 	 * @param a
 	 * @return
 	 */
+	@Override
 	public List<CtpAffair> getAffairsByNodePolicy(String pquanxian) throws BusinessException
 	{
 		return affairDao.getAffairsByNodePolicy(pquanxian);
 	}
-	
+
 }
