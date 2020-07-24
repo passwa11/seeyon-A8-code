@@ -11,55 +11,50 @@ import com.seeyon.ctp.util.annotation.ListenEvent;
 
 
 public class TijiaoListener {
-	
-	/**
-	 * 监听提交操作 
-	 * 客开
-	 * @author shenwei
-	 * 2020年4月23日
-	 * @param event
-	 */
-	@ListenEvent(event = CollaborationAffairsAssignedEvent.class,async=true)
-	public void doLog(CollaborationAffairsAssignedEvent event) {
-		
-		System.out.println("进来了");
-		
-		List<CtpAffair> list=event.getAffairs();
-		if(list.size()>0)
-		{
-			Long nowactivityId=list.get(0).getActivityId();
-			Long parentactivityId=0L;
-			if(nowactivityId.longValue()==15953982664850L)
-			{
-				parentactivityId=15953010698571L;
-			}
-			if(parentactivityId.longValue()!=0L)
-			{
-				//父节点是固定的竞争执行节点时走新的竞争执行流程
-				AffairManager affairManager=(AffairManager)AppContext.getBean("affairManager");
-				List<CtpAffair> plist=affairManager.getAffairsByNodeId(parentactivityId);
-				if(plist.size()>0)
-				{
-					for (CtpAffair ctpAffair : plist) 
-					{
-						if(list.get(0).getObjectId().longValue()==ctpAffair.getObjectId().longValue())
-						{
-							ctpAffair.setState(4);
-							ctpAffair.setSubState(0);
-							try {
-								affairManager.updateAffair(ctpAffair);
-							} catch (BusinessException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
-					}
-				}
-			}
-		}
+
+    /**
+     * 监听提交操作
+     * 客开
+     *
+     * @param event
+     * @author shenwei
+     * 2020年4月23日
+     */
+    @ListenEvent(event = CollaborationAffairsAssignedEvent.class, async = true)
+    public void doLog(CollaborationAffairsAssignedEvent event) {
+
+        System.out.println("进来了");
+
+        List<CtpAffair> list = event.getAffairs();
+        if (list.size() > 0) {
+            Long nowactivityId = list.get(0).getActivityId();
+            Long parentactivityId = 0L;
+            if (nowactivityId.longValue() == 15953982664850L) {
+                parentactivityId = 15953010698571L;
+            }
+            if (parentactivityId.longValue() != 0L) {
+                //父节点是固定的竞争执行节点时走新的竞争执行流程
+                AffairManager affairManager = (AffairManager) AppContext.getBean("affairManager");
+                List<CtpAffair> plist = affairManager.getAffairsByNodeId(parentactivityId);
+                if (plist.size() > 0) {
+                    for (CtpAffair ctpAffair : plist) {
+                        if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
+                            ctpAffair.setState(4);
+                            ctpAffair.setSubState(0);
+                            try {
+                                affairManager.updateAffair(ctpAffair);
+                            } catch (BusinessException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+            }
+        }
 //		MobileMessageManager mobileMessageManager = (MobileMessageManager) AppContext.getBean("mobileMessageManager");
 //		OrgManager orgManager =(OrgManager) AppContext.getBean("orgManager");
-//		
+//
 //		for (CtpAffair ctpAffair : list) {
 //			if(ctpAffair.getTempleteId().longValue()==-8179706758891550586L||ctpAffair.getTempleteId().longValue()==-2753664714455955870L||ctpAffair.getTempleteId().longValue()==-5239532817707808301L||ctpAffair.getTempleteId().longValue()==3870101960471038245L)
 //			{
@@ -71,7 +66,7 @@ public class TijiaoListener {
 //						if (member != null) {
 //		                       if (Strings.isNotBlank(member.getTelNumber())) {
 //		                           legitimacyReceiverIdsList.add(ctpAffair.getMemberId());
-//		                       } 
+//		                       }
 //		                }
 //						if(legitimacyReceiverIdsList.size()>0)
 //						{
@@ -84,7 +79,7 @@ public class TijiaoListener {
 //							System.out.println("params="+params);
 //							String result = HttpService.doPost("http://32.114.72.6:8001/ESBService/JSON/JsonProxyService", params);
 //							System.out.println("result="+result);
-//							
+//
 //						}
 //				}
 //				catch (Exception e) {
@@ -93,9 +88,9 @@ public class TijiaoListener {
 //				}
 //			}
 //		}
-		
-		
-	}
-	
-	
+
+
+    }
+
+
 }
