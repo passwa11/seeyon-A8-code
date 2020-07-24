@@ -12857,55 +12857,7 @@ public class EdocController extends BaseController {
 
                     summaryList.add(summary);
 
-                    //新竞争执行 shenwei
 
-                    String pquanxian = affair.getNodePolicy();
-                    String nquanxian = "";
-
-                    if (pquanxian.equals("转送")) {
-                        nquanxian = "批示";
-                    }
-                    if (nquanxian.equals("批示")) {
-
-                        List<CtpAffair> plist = new ArrayList<CtpAffair>();
-                        List<CtpAffair> clist = new ArrayList<CtpAffair>();
-                        try {
-                            plist = affairManager.getAffairsByNodePolicy(pquanxian);
-                            clist = affairManager.getAffairsByNodePolicy(nquanxian);
-                        } catch (BusinessException e1) {
-                            // TODO Auto-generated catch block
-                            e1.printStackTrace();
-                        }
-                        if (plist.size() > 0) {
-                            for (CtpAffair ctpAffair : plist) {
-                                if (affair.getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
-                                    ctpAffair.setState(3);
-                                    ctpAffair.setSubState(6);
-                                    try {
-                                        affairManager.updateAffair(ctpAffair);
-                                    } catch (BusinessException e) {
-                                        // TODO Auto-generated catch block
-                                        e.printStackTrace();
-                                    }
-                                }
-                            }
-
-                            if (clist.size() > 0) {
-                                for (CtpAffair cctpAffair : clist) {
-                                    if (affair.getObjectId().longValue() == cctpAffair.getObjectId().longValue()) {
-                                        cctpAffair.setState(7);
-                                        cctpAffair.setSubState(0);
-                                        try {
-                                            affairManager.updateAffair(cctpAffair);
-                                        } catch (BusinessException e) {
-                                            // TODO Auto-generated catch block
-                                            e.printStackTrace();
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
 
 
                 }
@@ -12940,6 +12892,61 @@ public class EdocController extends BaseController {
                     }
                 } catch (Exception e) {
                     LOGGER.error("解锁正文文单抛出异常：", e);
+                }
+            }
+
+            //新竞争执行 shenwei
+
+            for (String affairId : affairIds) {
+                Long _affairId = Long.valueOf(affairId);
+
+                CtpAffair affair = affairManager.get(_affairId);
+                String pquanxian = affair.getNodePolicy();
+                String nquanxian = "";
+
+            if (pquanxian.equals("转送")) {
+                nquanxian = "批示";
+            }
+            if (nquanxian.equals("批示")) {
+
+                    List<CtpAffair> plist = new ArrayList<CtpAffair>();
+                    List<CtpAffair> clist = new ArrayList<CtpAffair>();
+                    try {
+                        plist = affairManager.getAffairsByNodePolicy(pquanxian);
+                        clist = affairManager.getAffairsByNodePolicy(nquanxian);
+                    } catch (BusinessException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+                    if (plist.size() > 0) {
+                        for (CtpAffair ctpAffair : plist) {
+                            if (affair.getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
+                                ctpAffair.setState(3);
+                                ctpAffair.setSubState(6);
+                                try {
+                                    affairManager.updateAffair(ctpAffair);
+                                } catch (BusinessException e) {
+                                    // TODO Auto-generated catch block
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+
+                        if (clist.size() > 0) {
+                            for (CtpAffair cctpAffair : clist) {
+                                if (affair.getObjectId().longValue() == cctpAffair.getObjectId().longValue()) {
+                                    cctpAffair.setState(7);
+                                    cctpAffair.setSubState(0);
+                                    try {
+                                        affairManager.updateAffair(cctpAffair);
+                                    } catch (BusinessException e) {
+                                        // TODO Auto-generated catch block
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
