@@ -3221,12 +3221,12 @@ public class ColManagerImpl implements ColManager {
         //新竞争执行 shenwei
         String pquanxian = affair.getNodePolicy();
         String nquanxian = "";
-
+        Date date=affair.getUpdateDate();
         Long childactivityID = 0L;
-        if (pquanxian.equals("转送")) {
-            nquanxian = "批示";
+        if (pquanxian.equals("请假转送")) {
+            nquanxian = "请假集团领导";
         }
-        if (nquanxian.equals("批示")) {
+        if (nquanxian.equals("请假集团领导")) {
 
             List<CtpAffair> plist = new ArrayList<CtpAffair>();
             List<CtpAffair> clist = new ArrayList<CtpAffair>();
@@ -3243,6 +3243,7 @@ public class ColManagerImpl implements ColManager {
                     if (affair.getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
                         ctpAffair.setState(3);
                         ctpAffair.setSubState(6);
+                        ctpAffair.setUpdateDate(date);
                         try {
                             affairManager.updateAffair(ctpAffair);
                         } catch (BusinessException e) {
@@ -3257,6 +3258,7 @@ public class ColManagerImpl implements ColManager {
                         if (affair.getObjectId().longValue() == cctpAffair.getObjectId().longValue()) {
                             cctpAffair.setState(7);
                             cctpAffair.setSubState(0);
+                            cctpAffair.setUpdateDate(date);
                             try {
                                 affairManager.updateAffair(cctpAffair);
                             } catch (BusinessException e) {

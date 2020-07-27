@@ -12901,7 +12901,7 @@ public class EdocController extends BaseController {
                 CtpAffair affair = affairManager.get(_affairId);
                 String pquanxian = affair.getNodePolicy();
                 String nquanxian = "";
-
+                Date date=affair.getUpdateDate();
                 if (pquanxian.equals("转送")) {
                     nquanxian = "批示,办理";
                 }
@@ -12921,6 +12921,7 @@ public class EdocController extends BaseController {
                             if (affair.getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
                                 ctpAffair.setState(3);
                                 ctpAffair.setSubState(6);
+                                ctpAffair.setUpdateDate(date);
                                 try {
                                     affairManager.updateAffair(ctpAffair);
                                 } catch (BusinessException e) {

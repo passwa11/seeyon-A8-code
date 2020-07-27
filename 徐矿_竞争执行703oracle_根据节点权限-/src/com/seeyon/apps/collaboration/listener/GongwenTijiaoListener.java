@@ -1,15 +1,18 @@
 package com.seeyon.apps.collaboration.listener;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import com.seeyon.apps.collaboration.event.CollaborationAffairsAssignedEvent;
 import com.seeyon.apps.edoc.event.EdocAffairsAssignedEvent;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.content.affair.AffairManager;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.common.po.affair.CtpAffair;
 import com.seeyon.ctp.util.annotation.ListenEvent;
+import com.seeyon.v3x.edoc.domain.EdocSummary;
+import com.seeyon.v3x.edoc.manager.EdocSummaryManager;
 
 
 public class GongwenTijiaoListener {
@@ -24,13 +27,13 @@ public class GongwenTijiaoListener {
      */
     @ListenEvent(event = EdocAffairsAssignedEvent.class, async = true)
     public void doLog(EdocAffairsAssignedEvent event) {
-
         System.out.println("进来了");
 
         List<CtpAffair> list = event.getAffairs();
         if (list.size() > 0) {
             String nowquanxian = list.get(0).getNodePolicy();
             String pquanxian = "";
+            Date date=list.get(0).getUpdateDate();
             if (nowquanxian.equals("批示")|| nowquanxian.equals("办理") ) {
                 pquanxian = "转送";
             }
@@ -38,6 +41,7 @@ public class GongwenTijiaoListener {
             if (pquanxian.equals("转送")) {
                 //父节点是固定的竞争执行节点时走新的竞争执行流程
                 AffairManager affairManager = (AffairManager) AppContext.getBean("affairManager");
+                EdocSummaryManager edocSummaryManager=(EdocSummaryManager)AppContext.getBean("edocSummaryManager");
                 List<CtpAffair> plist = new ArrayList<CtpAffair>();
                 try {
                     plist = affairManager.getAffairsByNodePolicy(pquanxian);
@@ -50,6 +54,21 @@ public class GongwenTijiaoListener {
                         if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
                             ctpAffair.setState(4);
                             ctpAffair.setSubState(0);
+                            ctpAffair.setUpdateDate(date);
+//                            EdocSummary edoc=edocSummaryManager.findById(ctpAffair.getObjectId().longValue());
+//                            if(null !=edoc){
+//                                EdocSummary edocSummary=new EdocSummary();
+//                                edocSummary.setId(edoc.getId());
+//                                Timestamp timestamp=new Timestamp(System.currentTimeMillis());
+//                                edocSummary.setUpdateTime(timestamp);
+//                                edocSummary.setCreateTime(edoc.getCreateTime());
+//                                edocSummary.setEdocType(edoc.getEdocType());
+//                                edocSummary.setCanTrack(edoc.getCanTrack());
+//                                edocSummary.setState(edoc.getState());
+//                                edocSummary.setSubject(edoc.getSubject());
+//                                edocSummaryManager.updateEdocSummary(edocSummary);
+//                            }
+
                             try {
                                 affairManager.updateAffair(ctpAffair);
                             } catch (BusinessException e) {

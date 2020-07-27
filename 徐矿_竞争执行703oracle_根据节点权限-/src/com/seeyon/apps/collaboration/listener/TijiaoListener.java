@@ -1,6 +1,7 @@
 package com.seeyon.apps.collaboration.listener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.seeyon.apps.collaboration.event.CollaborationAffairsAssignedEvent;
@@ -28,37 +29,41 @@ public class TijiaoListener {
 
         List<CtpAffair> list = event.getAffairs();
         if (list.size() > 0) {
-
-            String nowquanxian = list.get(0).getNodePolicy();
-            String pquanxian = "";
-            if (nowquanxian.equals("批示") || nowquanxian.equals("办理") ) {
-                pquanxian = "转送";
-            }
-            if (pquanxian.equals("转送")) {
-                //父节点是固定的竞争执行节点时走新的竞争执行流程
-                AffairManager affairManager = (AffairManager) AppContext.getBean("affairManager");
-                List<CtpAffair> plist = new ArrayList<CtpAffair>();
-                try {
-                    plist = affairManager.getAffairsByNodePolicy(pquanxian);
-                } catch (BusinessException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
+            for (int i = 0; i < list.size(); i++) {
+                String nowquanxian = list.get(i).getNodePolicy();
+                String pquanxian = "";
+                Date updateTime=list.get(i).getUpdateDate();
+                if (nowquanxian.equals("请假集团领导")) {
+                    pquanxian = "请假转送";
                 }
-                if (plist.size() > 0) {
-                    for (CtpAffair ctpAffair : plist) {
-                        if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
-                            ctpAffair.setState(4);
-                            ctpAffair.setSubState(0);
-                            try {
-                                affairManager.updateAffair(ctpAffair);
-                            } catch (BusinessException e) {
-                                // TODO Auto-generated catch block
-                                e.printStackTrace();
+                if (pquanxian.equals("请假转送")) {
+                    //父节点是固定的竞争执行节点时走新的竞争执行流程
+                    AffairManager affairManager = (AffairManager) AppContext.getBean("affairManager");
+                    List<CtpAffair> plist = new ArrayList<CtpAffair>();
+                    try {
+                        plist = affairManager.getAffairsByNodePolicy(pquanxian);
+                    } catch (BusinessException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+                    if (plist.size() > 0) {
+                        for (CtpAffair ctpAffair : plist) {
+                            if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
+                                ctpAffair.setState(4);
+                                ctpAffair.setSubState(0);
+                                ctpAffair.setUpdateDate(updateTime);
+                                try {
+                                    affairManager.updateAffair(ctpAffair);
+                                } catch (BusinessException e) {
+                                    // TODO Auto-generated catch block
+                                    e.printStackTrace();
+                                }
                             }
                         }
                     }
                 }
             }
+
         }
 //		MobileMessageManager mobileMessageManager = (MobileMessageManager) AppContext.getBean("mobileMessageManager");
 //		OrgManager orgManager =(OrgManager) AppContext.getBean("orgManager");

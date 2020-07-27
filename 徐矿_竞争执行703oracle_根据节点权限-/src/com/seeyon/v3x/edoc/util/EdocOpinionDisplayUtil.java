@@ -156,9 +156,9 @@ public class EdocOpinionDisplayUtil {
                                                              FormOpinionConfig displayConfig, CtpAffair currentAffair, boolean isFromPending,
                                                              List<V3xHtmDocumentSignature> signatuers) {
         Map<String, Object> jsMap = null;
-//        if ("3312330994062151087".equals(Long.toString(formId))) {
+        if ("3312330994062151087".equals(Long.toString(formId))) {
 //        正式
-        if ("-7646251176412886019".equals(Long.toString(formId))) {
+//        if ("-7646251176412886019".equals(Long.toString(formId))) {
             jsMap = _convertOpinionToString2(formId, map, displayConfig, currentAffair, isFromPending, signatuers, false, true);
         } else {
             jsMap = _convertOpinionToString(map, displayConfig, currentAffair, isFromPending, signatuers, false, true);
