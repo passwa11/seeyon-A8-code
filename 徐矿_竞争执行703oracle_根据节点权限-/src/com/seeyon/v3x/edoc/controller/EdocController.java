@@ -12876,71 +12876,75 @@ public class EdocController extends BaseController {
             // 目前
             if (isRelieveLock) {
                 // 解锁正文文单
-                wapi.releaseWorkFlowProcessLock(processId, String.valueOf(AppContext.currentUserId()));
-                for (int i = 0; i < summaryIds.length; i++) {
-                    wapi.releaseWorkFlowProcessLock(summaryIds[i], String.valueOf(AppContext.currentUserId()));
-                }
-                try {
-                    User user = AppContext.getCurrentUser();
-                    if (Strings.isNotEmpty(summaryList)) {
-                        for (EdocSummary summary : summaryList) {
-                            // 解锁正文文单
-                            unLock(user.getId(), summary);
-                        }
+                if(null != summaryIds){
+                    wapi.releaseWorkFlowProcessLock(processId, String.valueOf(AppContext.currentUserId()));
+                    for (int i = 0; i < summaryIds.length; i++) {
+                        wapi.releaseWorkFlowProcessLock(summaryIds[i], String.valueOf(AppContext.currentUserId()));
                     }
-                } catch (Exception e) {
-                    LOGGER.error("解锁正文文单抛出异常：", e);
+                    try {
+                        User user = AppContext.getCurrentUser();
+                        if (Strings.isNotEmpty(summaryList)) {
+                            for (EdocSummary summary : summaryList) {
+                                // 解锁正文文单
+                                unLock(user.getId(), summary);
+                            }
+                        }
+                    } catch (Exception e) {
+                        LOGGER.error("解锁正文文单抛出异常：", e);
+                    }
                 }
+
             }
 
             //新竞争执行 shenwei
+            if(null != affairIds){
+                for (String affairId : affairIds) {
+                    Long _affairId = Long.valueOf(affairId);
 
-            for (String affairId : affairIds) {
-                Long _affairId = Long.valueOf(affairId);
-
-                CtpAffair affair = affairManager.get(_affairId);
-                String pquanxian = affair.getNodePolicy();
-                String nquanxian = "";
-                Date date=affair.getUpdateDate();
-                if (pquanxian.equals("转送")) {
-                    nquanxian = "批示,办理";
-                }
-                if (nquanxian.indexOf("批示")!=-1) {
-
-                    List<CtpAffair> plist = new ArrayList<CtpAffair>();
-                    List<CtpAffair> clist = new ArrayList<CtpAffair>();
-                    try {
-                        plist = affairManager.getAffairsByNodePolicy(pquanxian);
-                        clist = affairManager.getAffairsByNodePolicy(nquanxian);
-                    } catch (BusinessException e1) {
-                        // TODO Auto-generated catch block
-                        e1.printStackTrace();
+                    CtpAffair affair = affairManager.get(_affairId);
+                    String pquanxian = affair.getNodePolicy();
+                    String nquanxian = "";
+                    Date date=affair.getUpdateDate();
+                    if (pquanxian.equals("转送")) {
+                        nquanxian = "批示,办理";
                     }
-                    if (plist.size() > 0) {
-                        for (CtpAffair ctpAffair : plist) {
-                            if (affair.getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
-                                ctpAffair.setState(3);
-                                ctpAffair.setSubState(6);
-                                ctpAffair.setUpdateDate(date);
-                                try {
-                                    affairManager.updateAffair(ctpAffair);
-                                } catch (BusinessException e) {
-                                    // TODO Auto-generated catch block
-                                    e.printStackTrace();
-                                }
-                            }
-                        }
+                    if (nquanxian.indexOf("批示")!=-1) {
 
-                        if (clist.size() > 0) {
-                            for (CtpAffair cctpAffair : clist) {
-                                if (affair.getObjectId().longValue() == cctpAffair.getObjectId().longValue()) {
-                                    cctpAffair.setState(7);
-                                    cctpAffair.setSubState(0);
+                        List<CtpAffair> plist = new ArrayList<CtpAffair>();
+                        List<CtpAffair> clist = new ArrayList<CtpAffair>();
+                        try {
+                            plist = affairManager.getAffairsByNodePolicy(pquanxian);
+                            clist = affairManager.getAffairsByNodePolicy(nquanxian);
+                        } catch (BusinessException e1) {
+                            // TODO Auto-generated catch block
+                            e1.printStackTrace();
+                        }
+                        if (plist.size() > 0) {
+                            for (CtpAffair ctpAffair : plist) {
+                                if (affair.getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
+                                    ctpAffair.setState(3);
+                                    ctpAffair.setSubState(6);
+                                    ctpAffair.setUpdateDate(date);
                                     try {
-                                        affairManager.updateAffair(cctpAffair);
+                                        affairManager.updateAffair(ctpAffair);
                                     } catch (BusinessException e) {
                                         // TODO Auto-generated catch block
                                         e.printStackTrace();
+                                    }
+                                }
+                            }
+
+                            if (clist.size() > 0) {
+                                for (CtpAffair cctpAffair : clist) {
+                                    if (affair.getObjectId().longValue() == cctpAffair.getObjectId().longValue()) {
+                                        cctpAffair.setState(7);
+                                        cctpAffair.setSubState(0);
+                                        try {
+                                            affairManager.updateAffair(cctpAffair);
+                                        } catch (BusinessException e) {
+                                            // TODO Auto-generated catch block
+                                            e.printStackTrace();
+                                        }
                                     }
                                 }
                             }
