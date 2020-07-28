@@ -55,19 +55,7 @@ public class GongwenTijiaoListener {
                             ctpAffair.setState(4);
                             ctpAffair.setSubState(0);
                             ctpAffair.setUpdateDate(date);
-//                            EdocSummary edoc=edocSummaryManager.findById(ctpAffair.getObjectId().longValue());
-//                            if(null !=edoc){
-//                                EdocSummary edocSummary=new EdocSummary();
-//                                edocSummary.setId(edoc.getId());
-//                                Timestamp timestamp=new Timestamp(System.currentTimeMillis());
-//                                edocSummary.setUpdateTime(timestamp);
-//                                edocSummary.setCreateTime(edoc.getCreateTime());
-//                                edocSummary.setEdocType(edoc.getEdocType());
-//                                edocSummary.setCanTrack(edoc.getCanTrack());
-//                                edocSummary.setState(edoc.getState());
-//                                edocSummary.setSubject(edoc.getSubject());
-//                                edocSummaryManager.updateEdocSummary(edocSummary);
-//                            }
+
 
                             try {
                                 affairManager.updateAffair(ctpAffair);
