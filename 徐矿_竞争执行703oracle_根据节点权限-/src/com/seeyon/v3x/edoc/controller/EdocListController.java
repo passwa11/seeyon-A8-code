@@ -314,7 +314,7 @@ public class EdocListController extends BaseController {
 		EdocSummaryModel temp=null;
 		for (int i = 0; i < queryList.size()-1; i++) {
 			for (int j = 0; j < queryList.size()-1-i; j++) {
-				boolean flag=queryList.get(j).getDealTime().before(queryList.get(j+1).getDealTime());
+				boolean flag=(null==queryList.get(j).getDealTime()?new Date():queryList.get(j).getDealTime()).before(null==queryList.get(j+1).getDealTime()?new Date():queryList.get(j+1).getDealTime());
 				if(flag){
 					temp=queryList.get(j);
 					queryList.set(j,queryList.get(j+1));
