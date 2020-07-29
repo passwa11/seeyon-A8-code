@@ -12,7 +12,7 @@
     <!-- ==================== 单点登录开始 ================ -->
     <context-param>
         <param-name>casServerLogoutUrl</param-name>
-        <param-value>http://ids.cumt.edu.cn/authserver/logout</param-value>
+        <param-value>http://authserver.cumt.edu.cn/authserver/logout</param-value>
     </context-param>
 
     <!-- 认证过滤器 -->
@@ -21,12 +21,12 @@
         <filter-class>org.jasig.cas.client.authentication.AuthenticationFilter</filter-class>
         <init-param>
             <param-name>casServerLoginUrl</param-name>
-            <param-value>http://ids.cumt.edu.cn/authserver/login</param-value>
+            <param-value>http://authserver.cumt.edu.cn/authserver/login</param-value>
         </init-param>
         <init-param>
             <param-name>serverName</param-name>
             <!--            <param-value>http://219.219.55.69:8080</param-value>-->
-            <param-value>http://219.219.50.8</param-value>
+            <param-value>http://219.219.50.11</param-value>
         </init-param>
     </filter>
 
@@ -36,12 +36,12 @@
         <filter-class>org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter</filter-class>
         <init-param>
             <param-name>casServerUrlPrefix</param-name>
-            <param-value>http://ids.cumt.edu.cn/authserver</param-value>
+            <param-value>http://authserver.cumt.edu.cn/authserver</param-value>
         </init-param>
         <init-param>
             <param-name>serverName</param-name>
             <!--            <param-value>http://219.219.55.69:8080</param-value>-->
-            <param-value>http://219.219.50.8</param-value>
+            <param-value>http://219.219.50.11</param-value>
 
         </init-param>
         <init-param>
