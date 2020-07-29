@@ -12921,16 +12921,29 @@ public class EdocController extends BaseController {
                         }
                         if (plist.size() > 0) {
                             for (CtpAffair ctpAffair : plist) {
-                                if (affair.getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
-                                    ctpAffair.setState(3);
-                                    ctpAffair.setSubState(6);
-                                    ctpAffair.setUpdateDate(date);
+//                                zhou:根据取回数据的affairid
+                                String hql="update CtpAffair a set a.state=:state ,a.subState=:subState where  a.activityId=:activityId";
+                                if (affair.getId().longValue() == ctpAffair.getId().longValue()) {
+                                    Map<String,Object> params=new HashMap<>();
+                                    params.put("state",3);
+                                    params.put("subState",6);
+                                    params.put("activityId",affair.getActivityId().longValue());
                                     try {
-                                        affairManager.updateAffair(ctpAffair);
+                                          affairManager.update(hql,params);
                                     } catch (BusinessException e) {
-                                        // TODO Auto-generated catch block
                                         e.printStackTrace();
+                                        System.out.println("取回时修改状态值的hql语句出错了："+e.getMessage());
                                     }
+//                                    ctpAffair.setState(3);
+//                                    ctpAffair.setSubState(6);
+//                                    ctpAffair.setUpdateDate(date);
+//                                    try {
+//                                        affairManager.updateAffair(ctpAffair);
+//                                    } catch (BusinessException e) {
+//                                        // TODO Auto-generated catch block
+//                                        e.printStackTrace();
+//                                    }
+
                                 }
                             }
 
