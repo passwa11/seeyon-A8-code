@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.seeyon.apps.meetingroom.po.MeetingRoomApp" table="meeting_room_app">
+        <id name="id" type="java.lang.Long">
+            <column name="id" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="roomId" type="java.lang.Long">
+            <column name="meetingroomId" not-null="true" />
+        </property>
+        <property name="perId" type="java.lang.Long">
+            <column name="perId" not-null="true" />
+        </property>
+        <property name="auditingId" type="java.lang.Long">
+            <column name="auditing_id" />
+        </property>
+         <property name="departmentId" type="java.lang.Long">
+            <column name="departmentId" not-null="true" />
+        </property>
+        <property name="accountId" type="java.lang.Long">
+            <column name="account_id" not-null="false" />
+        </property>
+        <property name="startDatetime" type="java.util.Date">
+            <column name="startDatetime" length="0" not-null="true" />
+        </property>
+        <property name="endDatetime" type="java.util.Date">
+            <column name="endDatetime" length="0" not-null="true" />
+        </property>
+        <property name="timeDiff" type="java.lang.Integer">
+            <column name="time_diff" />
+        </property>
+        <property name="meetingId" type="java.lang.Long">
+            <column name="meetingId" />
+        </property>
+        <property name="templateId" type="java.lang.Long">
+            <column name="template_id" />
+        </property>
+        <property name="periodicityId" type="java.lang.Long">
+            <column name="periodicity_id" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="description" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status" not-null="true" />
+        </property>
+        <property name="usedStatus" type="java.lang.Integer">
+            <column name="used_status" not-null="true" />
+        </property>
+        <property name="appDatetime" type="java.util.Date">
+            <column name="appDatetime" length="0" />
+        </property>
+        <property name="sqrdh" type="java.lang.String">
+            <column name="sqrdh"  />
+        </property>
+        <property name="sfygwhldcj" type="java.lang.Integer">
+            <column name="sfygwhldcj"  />
+        </property>
+        <property name="hcyq" type="java.lang.String">
+            <column name="hcyq"  />
+        </property>
+    </class>
+</hibernate-mapping>
