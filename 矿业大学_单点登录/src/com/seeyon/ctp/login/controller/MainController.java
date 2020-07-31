@@ -120,6 +120,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -2175,8 +2176,10 @@ public class MainController extends BaseController {
                     }
                 }
             }
+//            zhou
+            session.invalidate();
             String servername = request.getServerName();
-            response.sendRedirect("http://authserver.cumt.edu.cn/authserver/login?service=http://" + servername + "/seeyon/caslogin/cumt");
+            response.sendRedirect("http://authserver.cumt.edu.cn/authserver/logout?service="+ URLEncoder.encode("http://" + servername + "/seeyon/caslogin/cumt"));
 //            response.sendRedirect(SystemEnvironment.getContextPath() + destination);
         }
 
