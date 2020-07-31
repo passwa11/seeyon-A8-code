@@ -169,6 +169,16 @@ function loadSearch() {
 		value : 'docMark',
 		maxLength : 100
 	});
+	//zhou
+	conditionArray.push({// 发文单位
+		id : 'sendUnit',
+		name : 'sendUnit',
+		type : 'input',
+		text : $.i18n("govdoc.exchange.sendAccount.label"),
+		value : 'sendUnit',
+		maxLength : 100
+	});
+	//zhou
 	if(listType == "listExchangeFallback") {
 		conditionArray.push({// 发文单位
 			id : 'exchangeSendUnitName',
@@ -304,7 +314,11 @@ function getConditionObj() {
 	} else if (choose === 'exchangeSendUnitName') {//流程状态
 		o.exchangeSendUnitName = $('#exchangeSendUnitName').val();
 	}else if(choose === 'hasArchive'){//公文归档
-		o.hasArchive = $('#hasArchive').val();;
+		o.hasArchive = $('#hasArchive').val();
+	}
+	//zhou
+	else if(choose === 'sendUnit'){
+		o.sendUnit = $('#sendUnit').val();
 	}
 	o.condition = "choose";
     o.dumpData = dataType;
