@@ -98,14 +98,14 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
         roomApp.setAuditingId(auditingId);
         roomApp.setIdIfNew();
 //		zhou
-        roomApp.setSqrdh(null==appVo.getParameterMap().get("sqrdh")?"":appVo.getParameterMap().get("sqrdh"));
+        roomApp.setSqrdh(null == appVo.getParameterMap().get("sqrdh") ? "" : appVo.getParameterMap().get("sqrdh"));
         String is = appVo.getParameterMap().get("sfygwhldcj");
         if (null != is && !"".equals(is)) {
             roomApp.setSfygwhldcj(Integer.parseInt(is));
         } else {
-			roomApp.setSfygwhldcj(0);
+            roomApp.setSfygwhldcj(0);
         }
-        roomApp.setHcyq(null ==appVo.getParameterMap().get("hcyq")?"":appVo.getParameterMap().get("hcyq"));
+        roomApp.setHcyq(null == appVo.getParameterMap().get("hcyq") ? "" : appVo.getParameterMap().get("hcyq"));
 //		zhou
 
         if (roomApp.getPerId() == null) {
