@@ -2176,6 +2176,7 @@ public class MainController extends BaseController {
                     }
                 }
             }
+
 //            zhou
             session.invalidate();
             String servername = request.getServerName();
