@@ -1723,10 +1723,10 @@ public class GovdocListDao extends BaseHibernateDao{
 				paramMap.put("serialNo", "%" + GovdocUtil.convertSpecialChat(params.get("serialNo")) + "%");
 			}
 //			zhou
-//			if(Strings.isNotBlank(params.get("sendUnit"))) {//按内部文号查询
-//				buffer.append(" and summary.sendUnit like :sendUnit");
-//				paramMap.put("sendUnit", "%" + GovdocUtil.convertSpecialChat(params.get("sendUnit")) + "%");
-//			}
+			if(Strings.isNotBlank(params.get("sendUnit"))) {//按内部文号查询
+				buffer.append(" and summary.sendUnit like :sendUnit");
+				paramMap.put("sendUnit", "%" + GovdocUtil.convertSpecialChat(params.get("sendUnit")) + "%");
+			}
 			if(Strings.isNotBlank(params.get("hasArchive"))){//按是否归档查询
 				buffer.append(" and summary.hasArchive = :hasArchive");
 				String hasArchive = params.get("hasArchive").toString();
