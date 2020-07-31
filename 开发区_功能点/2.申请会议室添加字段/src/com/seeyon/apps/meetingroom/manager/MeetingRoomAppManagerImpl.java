@@ -103,8 +103,9 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
         if (null != is && !"".equals(is)) {
             roomApp.setSfygwhldcj(Integer.parseInt(is));
         } else {
-            roomApp.setSfygwhldcj(null);
+//            roomApp.setSfygwhldcj(null);
         }
+
         roomApp.setHcyq(null == appVo.getParameterMap().get("hcyq") ? "" : appVo.getParameterMap().get("hcyq"));
 //		zhou
 
