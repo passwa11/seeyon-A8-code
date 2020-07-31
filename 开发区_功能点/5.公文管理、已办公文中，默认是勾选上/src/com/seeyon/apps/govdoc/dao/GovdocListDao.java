@@ -132,7 +132,7 @@ public class GovdocListDao extends BaseHibernateDao{
 		    "affair.backFromId,"+
 		    "affair.preApprover,"+
 		    "affair.proxyMemberId,"+
-		    "affair.transactorId";
+		    "affair.transactorId,"+"affair.senderId";
 
 	//公文登记列表主表字段Hql(非Clob)
 	private static final String RegSummaryHql = "summary.id"
@@ -1405,6 +1405,11 @@ public class GovdocListDao extends BaseHibernateDao{
 					paramMap.put("summaryState", flowStateList);
 				}
 			}
+
+			if (GovdocListTypeEnum.listSent.getKey().equals(listType)) {
+				buffer.append(" and (summary.exchangeType is null or summary.exchangeType <> :exchangeType)");
+				paramMap.put("exchangeType", 1);
+			}
 		} else {
 			List<Integer> flowStateList = new ArrayList<Integer>();
 			flowStateList.add(EdocConstant.flowState.run.ordinal());
@@ -1717,6 +1722,11 @@ public class GovdocListDao extends BaseHibernateDao{
 				buffer.append(" and summary.serialNo like :serialNo");
 				paramMap.put("serialNo", "%" + GovdocUtil.convertSpecialChat(params.get("serialNo")) + "%");
 			}
+//			zhou
+//			if(Strings.isNotBlank(params.get("sendUnit"))) {//按内部文号查询
+//				buffer.append(" and summary.sendUnit like :sendUnit");
+//				paramMap.put("sendUnit", "%" + GovdocUtil.convertSpecialChat(params.get("sendUnit")) + "%");
+//			}
 			if(Strings.isNotBlank(params.get("hasArchive"))){//按是否归档查询
 				buffer.append(" and summary.hasArchive = :hasArchive");
 				String hasArchive = params.get("hasArchive").toString();
@@ -1830,6 +1840,21 @@ public class GovdocListDao extends BaseHibernateDao{
 					paramMap.put("startTimeE", Datetimes.getTodayLastTime(times[1]));
 				}
 			}
+//			zhou
+			if (Strings.isNotBlank((String)params.get("summaryDeadLine"))) {
+				String time = ((String)params.get("summaryDeadLine")).toString();
+				String[] times = time.split("#");
+				if (times.length > 0 && Strings.isNotBlank(times[0]) && !",".equals(time)) {
+					buffer.append(" and summary.deadlineDatetime >= :startTimeS");
+					paramMap.put("startTimeS", Datetimes.getTodayFirstTime(times[0]));
+				}
+
+				if (times.length > 1 && Strings.isNotBlank(times[1])) {
+					buffer.append(" and summary.deadlineDatetime <= :startTimeE");
+					paramMap.put("startTimeE", Datetimes.getTodayLastTime(times[1]));
+				}
+			}
+
 			if(Strings.isNotBlank(params.get("packTime"))) {//按分送日期查询
 				String time = params.get("packTime").toString();
 				String[] times = time.split("#");
