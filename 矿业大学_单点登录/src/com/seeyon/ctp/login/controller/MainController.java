@@ -2179,7 +2179,7 @@ public class MainController extends BaseController {
 //            zhou
             session.invalidate();
             String servername = request.getServerName();
-            response.sendRedirect("http://authserver.cumt.edu.cn/authserver/logout?service="+ URLEncoder.encode("http://" + servername + "/seeyon/caslogin/cumt"));
+            response.sendRedirect("http://authserver.cumt.edu.cn/authserver/logout?service="+ URLEncoder.encode("http://" + servername + "/seeyon/main.do"));
 //            response.sendRedirect(SystemEnvironment.getContextPath() + destination);
         }
 
