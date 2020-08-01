@@ -66,7 +66,7 @@ public class downloadDetailController extends BaseController {
             String filename = toHandleSpecial(subject) + ".pdf";
             try {
                 response.setContentType("application/octet-stream;charset=utf-8");
-                response.setHeader("Content-disposition", "attachment;filename=" + new String(filename.getBytes("UTF-8"), "UTF-8"));
+                response.setHeader("Content-disposition", "attachment;filename=" + new String(filename.getBytes("gbk"), "iso8859-1"));
                 fos = response.getOutputStream();
                 ConverterProperties props = new ConverterProperties();
                 DefaultFontProvider defaultFontProvider = new DefaultFontProvider(false, false, false);
@@ -75,7 +75,12 @@ public class downloadDetailController extends BaseController {
                 PdfWriter writer = new PdfWriter(fos);
                 PdfDocument pdf = new PdfDocument(writer);
                 pdf.setDefaultPageSize(new PageSize(595.0F, 842.0F));
-                Document document = HtmlConverter.convertToDocument(msg, pdf, props);
+                Document document = null;
+                try {
+                    document = HtmlConverter.convertToDocument(msg, pdf, props);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 document.close();
                 pdf.close();
                 fos.flush();
