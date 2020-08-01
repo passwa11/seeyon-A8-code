@@ -366,11 +366,11 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                     FormTableFormmainDataVO f = formDataVO.getTableInfo().getFormmain();
                     String tableName = f.getTableName();
                     String id = formDataParamBean.getModuleId() + "";
-                    String fu = configTools.getString("table_formmain_parent");
-                    String isRead = configTools.getString("isRead");
+                    String fu = configTools.getString("table_formmain_parent").trim();
+                    String isRead = configTools.getString("isRead").trim();
 
-                    String fuCol = configTools.getString("table_formmain_readColumn");
-                    String blankVal= configTools.getString("table_formmain_readColumn_val");
+                    String fuCol = configTools.getString("table_formmain_readColumn").trim();
+                    String blankVal= configTools.getString("table_formmain_readColumn_val").trim();
 //                    当点击会务通知列表是修改会务通知主表阅读字段的状态为已读
                     String huiWu = "select " + fuCol + " from " + fu + " where id=" + id;
                     if (fu.equals(tableName)) {
@@ -408,9 +408,9 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                         }
                     }
 
-                    String tableInfo = configTools.getString("table_info");
+                    String tableInfo = configTools.getString("table_info").trim();
                     if (tableInfo.equals(tableName)) {
-                        String columnName = configTools.getString("table_info_column");
+                        String columnName = configTools.getString("table_info_column").trim();
                         StringBuffer querySql = new StringBuffer();
                         querySql.append(" select ");
                         querySql.append(columnName + " from " + tableInfo + " where id= '" + id + "'");
