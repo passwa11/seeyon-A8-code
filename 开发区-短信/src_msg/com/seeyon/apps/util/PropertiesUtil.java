@@ -17,6 +17,7 @@ public class PropertiesUtil {
 
     private static String template;
     private static Properties prop;
+    private static String  action;
 
     static {
         try {
@@ -27,8 +28,7 @@ public class PropertiesUtil {
             SpCode = (String) prop.get("sms.SpCode");
             LoginName = (String) prop.get("sms.LoginName");
             Password = (String) prop.get("sms.Password");
-            template = (String) prop.get("sms.templet");
-            f = (String) prop.get("sms.f");
+            action = (String) prop.get("sms.action");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,5 +60,9 @@ public class PropertiesUtil {
 
     public static String getTemplate() {
         return template;
+    }
+
+    public static String getAction() {
+        return action;
     }
 }

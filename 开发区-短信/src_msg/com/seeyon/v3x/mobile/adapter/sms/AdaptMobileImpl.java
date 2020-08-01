@@ -98,8 +98,6 @@ public class AdaptMobileImpl implements AdapterMobileMessageManger {
 
     @Override
     public boolean sendMessage(Long messageId, String srcPhone, String destPhone, String content) {
-        HttpClient httpclient = new HttpClient();
-
         try {
             String result = "";
             result = this.send();
@@ -128,14 +126,14 @@ public class AdaptMobileImpl implements AdapterMobileMessageManger {
      */
     public String send() {
         //请求地址
-        String url = "http://180.101.185.166:7862/sms?action=send";
+        String url = PropertiesUtil.getUrl();
         //请求参数
-        String action = "send";
-        String account = "922553";
-        String password = "7bE8Sx";
+        String action = PropertiesUtil.getAction();
+        String account = PropertiesUtil.getLoginName();
+        String password = PropertiesUtil.getPassword();
         String mobile = "18136001664";
         String content = "【短信签名】短信内容";
-        String extno = "106901553";//接入码
+        String extno = PropertiesUtil.getSpCode();//接入码
         String rt = "json";
         Map<String, String> requestMap = new HashMap<String, String>();
         requestMap.put("action", action);
