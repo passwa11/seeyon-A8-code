@@ -100,7 +100,7 @@ public class AdaptMobileImpl implements AdapterMobileMessageManger {
     public boolean sendMessage(Long messageId, String srcPhone, String destPhone, String content) {
         try {
             String result = "";
-            result = this.send();
+            result = this.send(destPhone,content);
             System.out.println(result);
 //            if (null != result) {
 //                String[] arr = result.split("&");
@@ -124,23 +124,24 @@ public class AdaptMobileImpl implements AdapterMobileMessageManger {
      *
      * @return
      */
-    public String send() {
+    public String send(String mobile,String content) {
         //请求地址
         String url = PropertiesUtil.getUrl();
         //请求参数
         String action = PropertiesUtil.getAction();
         String account = PropertiesUtil.getLoginName();
         String password = PropertiesUtil.getPassword();
-        String mobile = "18136001664";
-        String content = "【短信签名】短信内容";
+        String mobile2 = "18136001664";
+        String content2 = "【待办工作】ttttttttttttttttttt";
         String extno = PropertiesUtil.getSpCode();//接入码
         String rt = "json";
         Map<String, String> requestMap = new HashMap<String, String>();
         requestMap.put("action", action);
         requestMap.put("account", account);
-        requestMap.put("password", md5Encrypt(password + extno + content + mobile)); //MD5加密
+        String msg=content2.concat(content);
+        requestMap.put("password", md5Encrypt(password + extno + content2 + mobile)); //MD5加密
         requestMap.put("mobile", mobile);
-        requestMap.put("content", content);
+        requestMap.put("content", content2);
         requestMap.put("extno", extno);
         requestMap.put("rt", rt);
         //返回JSON字符串
