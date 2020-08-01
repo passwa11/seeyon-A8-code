@@ -10,6 +10,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.common.kit.JsonKit;
 import com.seeyon.apps.util.HttpclientUtil;
 import com.seeyon.apps.util.NetServiceException;
@@ -100,18 +102,18 @@ public class AdaptMobileImpl implements AdapterMobileMessageManger {
     public boolean sendMessage(Long messageId, String srcPhone, String destPhone, String content) {
         try {
             String result = "";
-            result = this.send(destPhone,content);
-            System.out.println(result);
-//            if (null != result) {
-//                String[] arr = result.split("&");
-//                String code = arr[0].split("=")[1];
-//                if (code.equals("0")) {
-//                    return true;
-//                } else {
-//                    return false;
-//                }
-//            }
-
+            result = this.send(destPhone, content);
+            JSONObject json = JSON.parseObject(result);
+            JSONArray list = (JSONArray) json.get("list");
+            for (int i = 0; i < list.size(); i++) {
+                JSONObject object = (JSONObject) list.get(i);
+                Integer state = (Integer) object.get("result");
+                if (state.intValue() == 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -124,24 +126,22 @@ public class AdaptMobileImpl implements AdapterMobileMessageManger {
      *
      * @return
      */
-    public String send(String mobile,String content) {
+    public String send(String mobile, String content) {
         //请求地址
         String url = PropertiesUtil.getUrl();
         //请求参数
         String action = PropertiesUtil.getAction();
         String account = PropertiesUtil.getLoginName();
         String password = PropertiesUtil.getPassword();
-        String mobile2 = "18136001664";
-        String content2 = "【待办工作】ttttttttttttttttttt";
         String extno = PropertiesUtil.getSpCode();//接入码
         String rt = "json";
         Map<String, String> requestMap = new HashMap<String, String>();
         requestMap.put("action", action);
         requestMap.put("account", account);
-        String msg=content2.concat(content);
-        requestMap.put("password", md5Encrypt(password + extno + content2 + mobile)); //MD5加密
+        requestMap.put("password", md5Encrypt(password + extno + content + mobile)); //MD5加密
         requestMap.put("mobile", mobile);
-        requestMap.put("content", content2);
+        requestMap.put("content", content);
+
         requestMap.put("extno", extno);
         requestMap.put("rt", rt);
         //返回JSON字符串
