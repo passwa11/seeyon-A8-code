@@ -51,7 +51,7 @@ public class TijiaoListener {
                             if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
                                 ctpAffair.setState(4);
                                 ctpAffair.setSubState(0);
-                                ctpAffair.setUpdateDate(updateTime);
+                                ctpAffair.setCompleteTime(new Date());
                                 try {
                                     affairManager.updateAffair(ctpAffair);
                                 } catch (BusinessException e) {

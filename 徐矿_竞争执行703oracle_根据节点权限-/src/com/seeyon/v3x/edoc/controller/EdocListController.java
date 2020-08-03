@@ -311,17 +311,17 @@ public class EdocListController extends BaseController {
         }
 //        zhou:当 张三处理时在李四的已办中可以看到张三处理的数据，但是因为不是李四处理的所以处理时间为null,在已办中的数据顺序是乱的，所以加了一层排序处理
 //		在EdocListManagerImpl.java 文件中的437行有"zhou"标记的地方加了判断给处理时间字段赋值。
-		EdocSummaryModel temp=null;
-		for (int i = 0; i < queryList.size()-1; i++) {
-			for (int j = 0; j < queryList.size()-1-i; j++) {
-				boolean flag=(null==queryList.get(j).getDealTime()?new Date():queryList.get(j).getDealTime()).before(null==queryList.get(j+1).getDealTime()?new Date():queryList.get(j+1).getDealTime());
-				if(flag){
-					temp=queryList.get(j);
-					queryList.set(j,queryList.get(j+1));
-					queryList.set(j+1,temp);
-				}
-			}
-		}
+//		EdocSummaryModel temp=null;
+//		for (int i = 0; i < queryList.size()-1; i++) {
+//			for (int j = 0; j < queryList.size()-1-i; j++) {
+//				boolean flag=(null==queryList.get(j).getDealTime()?new Date():queryList.get(j).getDealTime()).before(null==queryList.get(j+1).getDealTime()?new Date():queryList.get(j+1).getDealTime());
+//				if(flag){
+//					temp=queryList.get(j);
+//					queryList.set(j,queryList.get(j+1));
+//					queryList.set(j+1,temp);
+//				}
+//			}
+//		}
         return listEdoc(request, response, modelAndView, queryList, condition);
     }
 
