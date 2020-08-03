@@ -60,7 +60,7 @@ public class downloadDetailController extends BaseController {
             opinionPs.setString(1, summaryId);
             opinionSet = opinionPs.executeQuery();
             htmlContent = df.exportOfflineEdocModel(Long.parseLong(affairId));
-            String head = "<!DOCTYPE html><head><meta charset=\"Gbk\"></head>";
+            String head = "<!DOCTYPE html><head><meta charset=\"utf-8\"></head>";
             String msg = handlerToString(opinionSet, head + htmlContent[1]);
             OutputStream fos = null;
             String filename = toHandleSpecial(subject) + ".pdf";
@@ -104,6 +104,7 @@ public class downloadDetailController extends BaseController {
     }
 
     public String handlerToString(ResultSet set, String htmlContent) throws SQLException {
+//        com.itextpdf.licensekey.LicenseKey
         htmlContent=htmlContent.replaceAll("xdRichTextBox\\{","xdRichTextBox{color:#000000;");
         while (set.next()) {
             String attribute = set.getString("attribute");
