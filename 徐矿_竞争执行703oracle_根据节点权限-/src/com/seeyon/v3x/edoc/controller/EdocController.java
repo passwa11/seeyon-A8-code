@@ -12962,7 +12962,7 @@ public class EdocController extends BaseController {
 
                             if (clist.size() > 0) {
                                 for (CtpAffair cctpAffair : clist) {
-                                    if (affair.getObjectId().longValue() == cctpAffair.getObjectId().longValue()) {
+                                    if (affair.getId().longValue() == cctpAffair.getId().longValue()) {
                                         cctpAffair.setState(7);
                                         cctpAffair.setSubState(0);
                                         try {
