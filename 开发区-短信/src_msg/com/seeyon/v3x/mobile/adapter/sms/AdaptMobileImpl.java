@@ -109,6 +109,31 @@ public class AdaptMobileImpl implements AdapterMobileMessageManger {
                 JSONObject object = (JSONObject) list.get(i);
                 Integer state = (Integer) object.get("result");
                 if (state.intValue() == 0) {
+
+//                    String url = PropertiesUtil.getUrl();
+//                    //请求参数
+//                    String action = "report";
+//                    String account = PropertiesUtil.getLoginName();
+//                    String password = PropertiesUtil.getPassword();
+//                    String size = "100";//接入码
+//                    String rt = "json";
+//                    Map<String, String> requestMap = new HashMap<String, String>();
+//                    requestMap.put("action", action);
+//                    requestMap.put("account", account);
+//                    requestMap.put("password", md5Encrypt(password)); //MD5加密
+//                    requestMap.put("size", size);
+//                    requestMap.put("rt", rt);
+////返回JSON字符串
+//                    String requestResult = null;
+//                    try {
+//                        //发送请求
+//                        requestResult = HttpclientUtil.post(url+"?action="+action, requestMap, "UTF-8");
+//                    } catch (NetServiceException e) {
+//                        e.printStackTrace();
+//                    }
+//                    JSONObject report = JSON.parseObject(requestResult);
+//                    JSONArray listreport = (JSONArray) json.get("list");
+
                     return true;
                 } else {
                     return false;
@@ -138,10 +163,10 @@ public class AdaptMobileImpl implements AdapterMobileMessageManger {
         Map<String, String> requestMap = new HashMap<String, String>();
         requestMap.put("action", action);
         requestMap.put("account", account);
-        requestMap.put("password", md5Encrypt(password + extno + content + mobile)); //MD5加密
+        String msg="【协同办公系统】"+content;
+        requestMap.put("password", md5Encrypt(password + extno + msg + mobile)); //MD5加密
         requestMap.put("mobile", mobile);
-        requestMap.put("content", content);
-
+        requestMap.put("content", msg);
         requestMap.put("extno", extno);
         requestMap.put("rt", rt);
         //返回JSON字符串
