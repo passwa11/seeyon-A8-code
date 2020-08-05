@@ -70,7 +70,7 @@ function showSingImg(summaryId){
 				hwObj.src = webRoot+"/signatPicController.do?method=writeGIF&RECORDID="+param.recordId+"&FIELDNAME="+ encodeURIComponent(param.objName || "")
 				  +"&isNewImg=true&affairId="+param.affairId+"&r="+Math.random();
 				//zhou:签批图片比列缩放
-				hwObj.style.maxWidth="40%";
+				hwObj.style.maxWidth="30%";
 				divObj[0].style.height="auto"||"100%";
 			}
 		}
