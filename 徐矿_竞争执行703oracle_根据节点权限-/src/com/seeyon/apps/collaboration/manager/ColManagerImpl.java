@@ -3231,8 +3231,8 @@ public class ColManagerImpl implements ColManager {
             List<CtpAffair> plist = new ArrayList<CtpAffair>();
             List<CtpAffair> clist = new ArrayList<CtpAffair>();
             try {
-                plist = affairManager.getAffairsByNodePolicy(pquanxian);
-                clist = affairManager.getAffairsByNodePolicy(nquanxian);
+                plist = affairManager.getAffairsByNodePolicy(pquanxian,affair.getObjectId().longValue());
+                clist = affairManager.getAffairsByNodePolicy(nquanxian,affair.getObjectId().longValue());
             } catch (BusinessException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();

@@ -9587,8 +9587,6 @@ public class EdocController extends BaseController {
      * @throws Exception
      */
     public ModelAndView finishWorkItem(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-
         User user = AppContext.getCurrentUser();
         boolean isRelieveLock = true;
         EdocSummary summary = null;
@@ -9649,6 +9647,21 @@ public class EdocController extends BaseController {
             } catch (Exception e) {
                 LOGGER.error("解锁正文文单抛出异常：", e);
             }
+//          开始： zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
+            String hql="update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
+            Map<String,Object> params=new HashMap<>();
+            params.put("state",4);
+            params.put("subState",0);
+            params.put("completeTime",new Date());
+            params.put("activityId",affair.getActivityId().longValue());
+            params.put("objectId",affair.getObjectId().longValue());
+            try {
+                affairManager.update(hql,params);
+            } catch (BusinessException e) {
+                e.printStackTrace();
+                System.out.println("取回时修改状态值的hql语句出错了："+e.getMessage());
+            }
+//          结束： zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
         }
         return null;
     }
@@ -12913,10 +12926,9 @@ public class EdocController extends BaseController {
                         List<CtpAffair> plist = new ArrayList<CtpAffair>();
                         List<CtpAffair> clist = new ArrayList<CtpAffair>();
                         try {
-                            plist = affairManager.getAffairsByNodePolicy(pquanxian);
-                            clist = affairManager.getAffairsByNodePolicy(nquanxian);
+                            plist = affairManager.getAffairsByNodePolicy(pquanxian,affair.getObjectId().longValue());
+                            clist = affairManager.getAffairsByNodePolicy(nquanxian,affair.getObjectId().longValue());
                         } catch (BusinessException e1) {
-                            // TODO Auto-generated catch block
                             e1.printStackTrace();
                         }
                         if (plist.size() > 0) {

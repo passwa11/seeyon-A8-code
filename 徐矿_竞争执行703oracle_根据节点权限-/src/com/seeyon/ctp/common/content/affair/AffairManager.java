@@ -768,5 +768,5 @@ public interface AffairManager {
 	 * @return
 	 * @throws BusinessException
 	 */
-	public List<CtpAffair> getAffairsByNodePolicy(String a) throws BusinessException;
+	public List<CtpAffair> getAffairsByNodePolicy(String a,Long b) throws BusinessException;
 }

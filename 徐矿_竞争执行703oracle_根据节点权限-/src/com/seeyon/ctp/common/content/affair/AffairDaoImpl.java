@@ -2328,12 +2328,13 @@ public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements Affai
 	 * @return
 	 */
 	@Override
-	public List<CtpAffair> getAffairsByNodePolicy(String nodePolicy) throws BusinessException
+	public List<CtpAffair> getAffairsByNodePolicy(String nodePolicy,Long objectId) throws BusinessException
 	{
-		String hql="from CtpAffair where nodePolicy = :nodePolicy ";
+		String hql="from CtpAffair where nodePolicy = :nodePolicy and objectId = :objectId ";
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("nodePolicy", nodePolicy);
+		map.put("objectId", objectId);
 
 		return DBAgent.find(hql.toString(), map);
 	}

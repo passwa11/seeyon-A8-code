@@ -2152,9 +2152,9 @@ public class AffairManagerImpl implements AffairManager {
 	 * @return
 	 */
 	@Override
-	public List<CtpAffair> getAffairsByNodePolicy(String pquanxian) throws BusinessException
+	public List<CtpAffair> getAffairsByNodePolicy(String pquanxian,Long objectId) throws BusinessException
 	{
-		return affairDao.getAffairsByNodePolicy(pquanxian);
+		return affairDao.getAffairsByNodePolicy(pquanxian,objectId);
 	}
 
 }

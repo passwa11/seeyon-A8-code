@@ -41,7 +41,7 @@ public class TijiaoListener {
                     AffairManager affairManager = (AffairManager) AppContext.getBean("affairManager");
                     List<CtpAffair> plist = new ArrayList<CtpAffair>();
                     try {
-                        plist = affairManager.getAffairsByNodePolicy(pquanxian);
+                        plist = affairManager.getAffairsByNodePolicy(pquanxian,list.get(0).getObjectId().longValue());
                     } catch (BusinessException e1) {
                         // TODO Auto-generated catch block
                         e1.printStackTrace();
@@ -51,7 +51,7 @@ public class TijiaoListener {
                             if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
                                 ctpAffair.setState(4);
                                 ctpAffair.setSubState(0);
-                                ctpAffair.setCompleteTime(new Date());
+//                                ctpAffair.setCompleteTime(new Date());
                                 try {
                                     affairManager.updateAffair(ctpAffair);
                                 } catch (BusinessException e) {
