@@ -1,0 +1,18 @@
+#签章涉及的表：
+    SIGNET_HTM_DOCUMENT
+#涉及的类文件：
+    ImageController.java
+    MainbodyController.java
+    SignatPicController.java
+    FormParseUtil.java
+#涉及到的jsp页面：
+    componentPage.jsp
+    content.jsp
+    include_mainbody.jsp
+    
+    
+
+
+
+
+

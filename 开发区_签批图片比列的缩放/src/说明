@@ -1,0 +1,14 @@
+签批图片比例缩放：没有修改类文件，只修改了一个jsp（include_mainbody.jsp）文件
+#签章涉及的表：
+    SIGNET_HTM_DOCUMENT
+#涉及的类文件：
+    ImageController.java
+    MainbodyController.java
+    SignatPicController.java
+    FormParseUtil.java
+    
+
+
+
+
+
