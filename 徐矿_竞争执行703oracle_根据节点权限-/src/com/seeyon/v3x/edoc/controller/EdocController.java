@@ -12968,7 +12968,6 @@ public class EdocController extends BaseController {
                                         try {
                                             affairManager.updateAffair(cctpAffair);
                                         } catch (BusinessException e) {
-                                            // TODO Auto-generated catch block
                                             e.printStackTrace();
                                         }
                                     }
