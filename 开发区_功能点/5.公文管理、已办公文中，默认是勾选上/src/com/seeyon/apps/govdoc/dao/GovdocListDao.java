@@ -261,8 +261,11 @@ public class GovdocListDao extends BaseHibernateDao{
 		}
 
 		if(hasDeduplication) {
-			buffer.append(" and affair.id = (");
-			buffer.append(" 	select max(affair2.id) from CtpAffair affair2");
+//			buffer.append(" and affair.id = (");
+//			zhou
+			buffer.append(" and affair.completeTime = (");
+//			zhou:修改获取处理时间最大的数据
+			buffer.append(" 	select max(affair2.completeTime) from CtpAffair affair2");
 			buffer.append("  	where affair2.objectId = summary.id");
 			buffer.append("  	and affair2.subApp = affair.subApp");
 			//公文处理人员过滤(包括代理人)
