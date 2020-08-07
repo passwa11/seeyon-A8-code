@@ -288,6 +288,7 @@ public class GovdocListManagerImpl implements GovdocListManager {
 			if(Strings.isBlank(condition.get("deduplication"))) {
 //				zhou:修改默认就是显示一条
 				condition.put("deduplication", "true");
+//				condition.put("deduplication", "false");
 			}
 		}
 
