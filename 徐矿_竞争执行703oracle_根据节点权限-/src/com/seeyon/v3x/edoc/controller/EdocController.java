@@ -12934,13 +12934,14 @@ public class EdocController extends BaseController {
                         if (plist.size() > 0) {
                             for (CtpAffair ctpAffair : plist) {
 //                                zhou:根据取回数据的affairid
-                                String hql="update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId";
+                                String hql="update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
                                 if (affair.getId().longValue() == ctpAffair.getId().longValue()) {
                                     Map<String,Object> params=new HashMap<>();
                                     params.put("state",3);
                                     params.put("subState",6);
                                     params.put("activityId",affair.getActivityId().longValue());
                                     params.put("completeTime",new Date());
+                                    params.put("objectId",affair.getObjectId().longValue());
                                     try {
                                           affairManager.update(hql,params);
                                     } catch (BusinessException e) {
@@ -12960,19 +12961,19 @@ public class EdocController extends BaseController {
                                 }
                             }
 
-                            if (clist.size() > 0) {
-                                for (CtpAffair cctpAffair : clist) {
-                                    if (affair.getId().longValue() == cctpAffair.getId().longValue()) {
-                                        cctpAffair.setState(7);
-                                        cctpAffair.setSubState(0);
-                                        try {
-                                            affairManager.updateAffair(cctpAffair);
-                                        } catch (BusinessException e) {
-                                            e.printStackTrace();
-                                        }
-                                    }
-                                }
-                            }
+//                            if (clist.size() > 0) {
+//                                for (CtpAffair cctpAffair : clist) {
+//                                    if (affair.getId().longValue() == cctpAffair.getId().longValue()) {
+//                                        cctpAffair.setState(7);
+//                                        cctpAffair.setSubState(0);
+//                                        try {
+//                                            affairManager.updateAffair(cctpAffair);
+//                                        } catch (BusinessException e) {
+//                                            e.printStackTrace();
+//                                        }
+//                                    }
+//                                }
+//                            }
                         }
                     }
                 }

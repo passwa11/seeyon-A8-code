@@ -3241,13 +3241,14 @@ public class ColManagerImpl implements ColManager {
             if (plist.size() > 0) {
                 for (CtpAffair ctpAffair : plist) {
 //                    zhou:修改
-                    String hql="update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId";
+                    String hql="update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
                     if (affair.getId().longValue() == ctpAffair.getId().longValue()) {
                         Map<String,Object> params=new HashMap<>();
                         params.put("state",3);
                         params.put("subState",6);
                         params.put("activityId",affair.getActivityId().longValue());
                         params.put("completeTime",new Date());
+                        params.put("objectId",affair.getObjectId().longValue());
                         try {
                             affairManager.update(hql,params);
                         } catch (BusinessException e) {
