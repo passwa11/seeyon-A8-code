@@ -30,5 +30,7 @@
 		<property name="defaultPublish" column="default_publish" type="boolean" length="1" />
 		<property name="finalPublish" column="final_publish" type="integer" length="1" />
 		<property name="writePermit" column="write_permit" type="boolean" length="1" />
+		<property name="sendArrangeId" column="send_arrange_id" type="string" />
+		<property name="sendArrangeName" column="send_arrange_name" type="string" />
 	</class>
 </hibernate-mapping>

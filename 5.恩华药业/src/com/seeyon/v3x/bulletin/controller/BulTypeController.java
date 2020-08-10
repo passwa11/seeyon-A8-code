@@ -318,7 +318,7 @@ public class BulTypeController extends BaseController {
                 bean.setAccountId(Long.parseLong(spaceId));
                 bean.setSpaceType(Integer.parseInt(spaceType));
             }
-            bulTypeManager.save(bean);
+            BulType type= bulTypeManager.save(bean);
             User user = AppContext.getCurrentUser();
 
             String roleName4Admin = "";

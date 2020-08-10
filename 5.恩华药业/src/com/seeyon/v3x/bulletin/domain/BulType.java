@@ -35,6 +35,26 @@ public class BulType extends BasePO implements Serializable, Comparable<BulType>
 	private Boolean 			 defaultPublish   = false;				//默认显示发布人勾选
     private Integer 		     finalPublish	  = 0;				    //最终显示发布人控制 0、发布人，1、发起人，2、审核人
     private Boolean 			 writePermit     = false;				//是否允许手动输入发布人
+//zhou start
+	private String sendArrangeId;
+	private String sendArrangeName;
+
+	public String getSendArrangeId() {
+		return sendArrangeId;
+	}
+
+	public void setSendArrangeId(String sendArrangeId) {
+		this.sendArrangeId = sendArrangeId;
+	}
+
+	public String getSendArrangeName() {
+		return sendArrangeName;
+	}
+
+	public void setSendArrangeName(String sendArrangeName) {
+		this.sendArrangeName = sendArrangeName;
+	}
+	//	zhou end
 
 	public Boolean getWritePermit() {
         return writePermit;
