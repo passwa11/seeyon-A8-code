@@ -331,6 +331,7 @@ cursor: hand;
               </fmt:message>
                 <input type="hidden" id="publishScopeId" name="publishScope" value="${spaceType == '18'||spaceType == '17'||spaceType == '4' ? DEPARTMENTissueArea : bean.publishScope}"/>
                 <input type="hidden" id="publishInput" value="${v3x:showOrgEntitiesOfTypeAndId(bean.publishScope, pageContext)}">
+<%--                zhou--%>
                 <c:choose>
                     <c:when test="${spaceType == '18'||spaceType == '17'||spaceType == '4'}">
                       <input id="issueAreaName" type="text" value="${issueAreaName}"
