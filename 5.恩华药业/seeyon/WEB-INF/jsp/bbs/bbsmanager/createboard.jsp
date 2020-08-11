@@ -18,10 +18,10 @@
 			return;
 		}
 		document.fm.bbsBoardAdmin.value=getIdsString(elements, false);
-		document.fm.bbsBoardAdminName.value=getNamesString(elements);	
+		document.fm.bbsBoardAdminName.value=getNamesString(elements);
 		hasIssueArea = true;
 	}
-	
+
 	function submitForm(){
 		var theForm = document.getElementsByName("fm")[0];
 		if (!theForm) {
@@ -46,11 +46,11 @@
 		    document.fm.name.value = document.fm.name.value.trim();
             document.getElementById("b1").disabled = true;
             document.getElementById("b2").disabled = true;
-            
+
         	theForm.submit();
    	 	}
 	}
-	
+
 	//管理员是否为空
 	function checkSelectWF() {
 	    if (!hasIssueArea) {
@@ -92,22 +92,30 @@ var includeElements_wf = "${v3x:parseElementsOfTypeAndId(entity)}";
 //-->
 </script>
 <v3x:selectPeople id="wf" panels="Department,Post,Level,Team" selectType="Member" jsFunction="setPeopleFields(elements)" maxSize="50" />
-			                 
+
 </head>
 <body scroll="no" style="overflow: no; text-align:center">
 <form name="fm" method="post" action="" onsubmit="return checkForm(this)">
 <input type="hidden" value="${newId}" name="newId" />
+    <%--恩华药业:start--%>
+    <c:set value="${v3x:parseElementsOfTypeAndId(DEPARTMENTissueArea)}" var="org"/>
+    <c:set var="issueAreaName" value="${v3x:showOrgEntitiesOfTypeAndId(DEPARTMENTissueArea, pageContext)}"/>
+    <v3x:selectPeople id="spGroup" originalElements="${v3x:escapeJavascript(org)}"
+                      panels="Account,Department,Team,Post,Level,JoinOrganization,JoinAccountTag,JoinPost,Guest,BusinessDepartment"
+                      selectType="Member,Department,Account,Post,Level,Team,JoinAccountTag,Guest,BusinessAccount,BusinessDepartment"
+                      departmentId="" jsFunction="setIssueAreaPeopleFields(elements)"/>
+    <%--恩华药业:end--%>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" align="center" class="">
     <tr>
         <td  valign="top">
-           
+
             <div id="cenner" style="overflow: auto;">
 
             <table border="0" cellpadding="0" cellspacing="0" height="100%" align="center">
                 <tr>
                     <td class="bg-gray , bbs-tb-padding-topAndBottom" width="25%" nowrap>
                         <font color="red">*</font>&nbsp;<fmt:message key="bbs.type.typeName"/>:
-                    </td>       
+                    </td>
                     <td class="new-column , bbs-tb-padding-topAndBottom" width="75%" colspan="3">
                         <fmt:message key="common.default.name.value" var="defName" bundle="${v3xCommonI18N}" />
                         <input name="name" type="text" id="name" class="input-100per" deaultValue="${defName}"
@@ -125,13 +133,42 @@ var includeElements_wf = "${v3x:parseElementsOfTypeAndId(entity)}";
                     <td class="new-column , bbs-tb-padding-topAndBottom" colspan="3" nowrap>
                         <fmt:message key="common.default.selectPeople.value" var="defaultSP" bundle="${v3xCommonI18N}"/>
                         <fmt:message key="bbs.type.managerUsers" var="_myLabel"/>
-                        <input type="hidden" value="" name="bbsBoardAdmin"> 
+                        <input type="hidden" value="" name="bbsBoardAdmin">
                         <input type="text" name='bbsBoardAdminName'
                             value="${defaultSP}" inputName="${_myLabel}" validate="notNull,isDefaultValue"
-                            readonly class="cursor-hand input-100per" onclick="selectBoardAdmin()" 
+                            readonly class="cursor-hand input-100per" onclick="selectBoardAdmin()"
                             deaultValue="${defaultSP}">
                     </td>
                 </tr>
+                <%--恩华药业  发送范围  zhou--%>
+                <tr>
+                    <td class="bg-gray" width="25%" nowrap>
+                        发布范围:
+                    </td>
+                    <td class="new-column" width="75%">
+                        <input type="hidden" id="issueArea" name="sendArrangeId" value="<c:out value="${range.rangeId}" /> ">
+                        <input type="text" readonly="true" id="issueAreaName" name="sendArrangeName" deaultValue="${defScope}" class="cursor-hand input-250px"
+                               value="<c:out value="${range.rangeName}" escapeXml="true" default="${defScope}" />"
+                               onclick="selectIssueArea()"
+                               <c:if test="${param.isDetail=='readOnly' }">disabled</c:if> placeholder="<点击选择发布范围>"/>
+                    </td>
+                </tr>
+                <script type="text/javascript">
+                    //恩华药业 zhou Start
+                    function selectIssueArea() {
+                        selectPeopleFun_spGroup();
+                    }
+                    function setIssueAreaPeopleFields(elements) {
+                        if (!elements) {
+                            return;
+                        }
+                        document.getElementById("issueArea").value = getIdsString(elements);
+                        document.getElementById("issueAreaName").value = getNamesString(elements);
+                        hasIssueArea = true;
+                    }
+                    //恩华药业 zhou end
+                </script>
+                <%--恩华药业 zhou 添加发布范围 end--%>
                 <tr>
                     <td class="bg-gray , bbs-tb-padding-topAndBottom" nowrap>
                         <fmt:message key="bbs.type.usedFlagState" />:
@@ -169,7 +206,7 @@ var includeElements_wf = "${v3x:parseElementsOfTypeAndId(entity)}";
                         </label>
                     </td>
                 </tr>
-                
+
                 <tr>
                     <td class="bg-gray , bbs-tb-padding-topAndBottom" nowrap>
                         <fmt:message key="bbs.allow.anonymous.reply.label" />:
@@ -183,7 +220,7 @@ var includeElements_wf = "${v3x:parseElementsOfTypeAndId(entity)}";
                         </label>
                     </td>
                 </tr>
-                
+
                 <tr>
                     <td class="bg-gray , bbs-tb-padding-topAndBottom" nowrap>
                         <fmt:message key="bbs.topnumber.label" />:
@@ -199,7 +236,7 @@ var includeElements_wf = "${v3x:parseElementsOfTypeAndId(entity)}";
                         </select>
                     </td>
                 </tr>
-                
+
                 <tr>
                     <td valign="top" class="bg-gray , bbs-tb-padding-topAndBottom" nowrap>
                         <fmt:message key="common.description.label"  bundle="${v3xCommonI18N}" />:
@@ -224,13 +261,13 @@ var includeElements_wf = "${v3x:parseElementsOfTypeAndId(entity)}";
             </table>
 
             </div>
-           
-           
+
+
         </td>
     </tr>
     <tr>
         <td height="50" align="center" class="bg-advance-bottom button_container">
-                
+
             <input type="button" id="b1" onclick="submitForm()" value="<fmt:message key='common.button.ok.label' bundle="${v3xCommonI18N}" />" class="button-default-2 button-default_emphasize">&nbsp;
             <input type="button" id="b2" value="<fmt:message key='common.button.cancel.label' bundle="${v3xCommonI18N}" />" class="button-default-2" onclick="parent.parent.document.location.reload();">
 
