@@ -355,7 +355,7 @@
                             <c:choose>
                                 <c:when test="${spaceType == '18'||spaceType == '17'||spaceType == '4'}">
                                     <input id="issueAreaName" type="text" value="${issueAreaName}"
-                                        <%--                        onclick="javascript:selectPeopleFun_spCustomSpace();"--%>
+                                                                onclick="javascript:selectPeopleFun_spCustomSpace();"
                                            readonly="readonly"
                                            class="titleInput sendArea"
                                            value="<c:out value="${_myLabelDefaultScope}" default="${_myLabelDefaultScope}" escapeXml="true" />"
