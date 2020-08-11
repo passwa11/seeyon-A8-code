@@ -26,10 +26,12 @@ public class EhSendRangeController extends BaseController {
         try {
             String moduleId=request.getParameter("id");
             Map param=new HashMap();
-            param.put("moduleId",moduleId);
+            param.put("moduleId",Long.parseLong(moduleId));
             List<EhSendRange> ehSendRanges=sendRangeManager.findEhSendRangeByCondition(param);
             if(ehSendRanges.size()>0){
                 map.put("data",ehSendRanges.get(0));
+            }else {
+                map.put("data",null);
             }
             map.put("code",0);
         }catch (Exception e){

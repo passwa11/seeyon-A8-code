@@ -17,6 +17,8 @@
     </title>
     <link rel="stylesheet" type="text/css" href="${path}/skin/dist/modules/bulletin.css${v3x:resSuffix()}"/>
     <script type="text/javascript" src="${path}/apps_res/bulletin/js/bulEdit.js${v3x:resSuffix()}"></script>
+    <%--    zhou--%>
+    <script type="text/javascript" src="${path}/common/jquery/jquery.js"></script>
     <script type="text/javascript">
         var _path = '${path}';
         var alert_noNull = "<fmt:message key='bul.alert.newsType.is.noNull' />";
@@ -136,6 +138,7 @@
                 // pdf 控制参数
             }
         });
+
     </script>
     <style type="text/css">
         .hand {
@@ -308,7 +311,7 @@
                         <td width="30%" style="padding-left:10px;">
                             <input type="hidden" name="typeName" id="typeName" value="${v3x:toHTML(bean.type.typeName)}"/>
                             <input type="hidden" name="typeId" id="typeId" value="${bean.type.id}"/>
-                            <select id="typeList_id" class="titleInput input-99per" onchange="changeCheckBox();" ${param.isAuditEdit eq 'true'?'disabled':''}>
+                            <select id="typeList_id" class="titleInput input-99per" onchange="changeCheckBox(),changSendRang();" ${param.isAuditEdit eq 'true'?'disabled':''}>
                                 <c:if test="${bean.type.spaceType == 1}">
                                     <c:forEach items="${deptSpaceModels}" var="deptSpace">
                                         <option id="boardOpt_${deptSpace.getEntityId()}" class="titleInput choice right" value="${deptSpace.getEntityId()}">${v3x:toHTML(deptSpace.getSpacename())}</option>
@@ -353,27 +356,31 @@
                             <input type="hidden" id="publishInput" value="${v3x:showOrgEntitiesOfTypeAndId(bean.publishScope, pageContext)}">
                             <%--                zhou--%>
                             <script type="text/javascript">
-                                function changSendRang(){
-                                    var typeID=document.getElementById("typeId").value;
+                                //    zhou
+                                function changSendRang() {
+                                    var typeID = document.getElementById("typeId").value;
                                     $.ajax({
-                                        url:'/seeyon/ehSendRangeController.do?method=getSendRange',
-                                        type:'POST',
-                                        dataType:'json',
-                                        data:{id:typeID},
-                                        success:function (result) {
-                                            if(result.code==0){
-                                                var range=result.data;
-                                                console.log(range);
+                                        url: '/seeyon/ehSendRangeController.do?method=getSendRange',
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        data: {id: typeID},
+                                        success: function (result) {
+                                            if (result.code == 0) {
+                                                var range = result.data;
+                                                if(range!=null){
+                                                    $("#publishScopeId").val(range.rangeId);
+                                                    $("#publishInput").val(range.rangeName);
+                                                    $("#issueAreaName").val(range.rangeName);
+                                                }
                                             }
                                         }
                                     });
                                 }
-
                             </script>
                             <c:choose>
                                 <c:when test="${spaceType == '18'||spaceType == '17'||spaceType == '4'}">
                                     <input id="issueAreaName" type="text" value="${issueAreaName}"
-                                                                onclick="javascript:selectPeopleFun_spCustomSpace();"
+                                           onclick="javascript:selectPeopleFun_spCustomSpace();"
                                            readonly="readonly"
                                            class="titleInput sendArea"
                                            value="<c:out value="${_myLabelDefaultScope}" default="${_myLabelDefaultScope}" escapeXml="true" />"
