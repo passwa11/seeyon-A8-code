@@ -352,6 +352,24 @@
                             <input type="hidden" id="publishScopeId" name="publishScope" value="${spaceType == '18'||spaceType == '17'||spaceType == '4' ? DEPARTMENTissueArea : bean.publishScope}"/>
                             <input type="hidden" id="publishInput" value="${v3x:showOrgEntitiesOfTypeAndId(bean.publishScope, pageContext)}">
                             <%--                zhou--%>
+                            <script type="text/javascript">
+                                function changSendRang(){
+                                    var typeID=document.getElementById("typeId").value;
+                                    $.ajax({
+                                        url:'/seeyon/ehSendRangeController.do?method=getSendRange',
+                                        type:'POST',
+                                        dataType:'json',
+                                        data:{id:typeID},
+                                        success:function (result) {
+                                            if(result.code==0){
+                                                var range=result.data;
+                                                console.log(range);
+                                            }
+                                        }
+                                    });
+                                }
+
+                            </script>
                             <c:choose>
                                 <c:when test="${spaceType == '18'||spaceType == '17'||spaceType == '4'}">
                                     <input id="issueAreaName" type="text" value="${issueAreaName}"

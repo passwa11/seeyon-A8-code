@@ -24,6 +24,8 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.seeyon.v3x.bulletin.domain.*;
+import com.seeyon.v3x.bulletin.manager.*;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
@@ -98,15 +100,6 @@ import com.seeyon.ctp.util.Strings;
 import com.seeyon.ctp.util.UUIDLong;
 import com.seeyon.ctp.util.UniqueList;
 import com.seeyon.ctp.util.json.JSONUtil;
-import com.seeyon.v3x.bulletin.domain.BulBody;
-import com.seeyon.v3x.bulletin.domain.BulData;
-import com.seeyon.v3x.bulletin.domain.BulRead;
-import com.seeyon.v3x.bulletin.domain.BulType;
-import com.seeyon.v3x.bulletin.domain.BulTypeManagers;
-import com.seeyon.v3x.bulletin.manager.BulDataManager;
-import com.seeyon.v3x.bulletin.manager.BulIssueManager;
-import com.seeyon.v3x.bulletin.manager.BulReadManager;
-import com.seeyon.v3x.bulletin.manager.BulTypeManager;
 import com.seeyon.v3x.bulletin.util.BulConstants;
 import com.seeyon.v3x.bulletin.util.BulDataLock;
 import com.seeyon.v3x.bulletin.util.BulDataLockAction;
@@ -123,17 +116,17 @@ import com.seeyon.v3x.contentTemplate.manager.ContentTemplateManager;
  * <b>1.普通用户：</b><br>
  * 1.1访问单位公告首页、集团公告首页、单位最新公告更多页面、集团最新公告更多页面、部门公告更多页面、某一特定板块公告更多页面；<br>
  * 1.2在以上各种页面按照公告发起者、公告标题及公告发布日期进行查询；<br>
- * 1.3用户点击已经发布的公告进行阅读（满足条件时也可查看该公告的阅读情况）。<br> 
+ * 1.3用户点击已经发布的公告进行阅读（满足条件时也可查看该公告的阅读情况）。<br>
  * <b>2.公告发起者：</b><br>
  * 2.1点击"发布公告"按钮进入查看自己发起的全部公告；<br>
- * 2.2新建公告、编辑公告、保存公告、发布审核通过的公告、删除公告（已发布或未发布的、真实删除）。<br> 
+ * 2.2新建公告、编辑公告、保存公告、发布审核通过的公告、删除公告（已发布或未发布的、真实删除）。<br>
  * <b>3.公告审核员：</b><br>
  * 3.1在单位空间或集团空间中点击公共信息管理，进入其要审核的公告列表页面；<br>
  * 3.2查看待审核的公告详细信息、进行审核操作（直接发布、审核通过、审核不通过）、将审核通过的公告取消审核<br>
  * <b>4.公告管理员：</b><br>
  * 4.1点击"板块管理"按钮进入查看该板块下已发布的全部公告；<br>
  * 4.2对已发布的公告进行：置顶、取消发布、删除（逻辑删除）、归档、授权（发起公告权限）、统计（根据阅读次数、发起者、发起月份和状态（发布或已归档）进行统计）<br>。
- * @author wolf -- Edited by Rookie Young from 2009-04-08 on 
+ * @author wolf -- Edited by Rookie Young from 2009-04-08 on
  */
 public class BulDataController extends BaseController {
 	private static String 		   splitFlg = "&";
@@ -144,7 +137,7 @@ public class BulDataController extends BaseController {
     private BulReadManager               bulReadManager;
     private AffairManager                affairManager;
     private AppLogManager                appLogManager;
-    private DocApi docApi;	
+    private DocApi docApi;
     private PortalApi portalApi;                                    //部门空间的访问者
     private ContentTemplateManager       contentTemplateManager;                          //公告格式，可以由单位管理员或集团管理员制定
     private UserMessageManager           userMessageManager;
@@ -157,7 +150,7 @@ public class BulDataController extends BaseController {
     private FileToExcelManager           fileToExcelManager;
     private ETagCacheManager             eTagCacheManager;
     private FileManager                  fileManager;
-    
+
     public void seteTagCacheManager(ETagCacheManager eTagCacheManager) {
         this.eTagCacheManager = eTagCacheManager;
     }
@@ -330,7 +323,7 @@ public class BulDataController extends BaseController {
         //处理跨单位兼职情况
         String[][] bulAuditIds = Strings.getSelectPeopleElements(publishScope);
         for (String[] typeAndId : bulAuditIds) {
-            if (typeAndId[0].equals(V3xOrgEntity.ORGENT_TYPE_TEAM)) {//发布范围为组时,单位公告不可以给组中外单位人员发送消息 
+            if (typeAndId[0].equals(V3xOrgEntity.ORGENT_TYPE_TEAM)) {//发布范围为组时,单位公告不可以给组中外单位人员发送消息
                 V3xOrgTeam team = orgManager.getTeamById(Long.valueOf(typeAndId[1]));
                 // 剔除非本单位人员
                 boolean needFilterOthers = team != null && (bean.getType().getSpaceType() == SpaceType.department.ordinal() && bean.getType().getSpaceType() == SpaceType.corporation.ordinal());
@@ -376,7 +369,7 @@ public class BulDataController extends BaseController {
     private void setBulDataReadInfo(BulData bean, ModelAndView mav, String deptId) throws Exception {
         List<BulRead> readList = this.bulDataManager.getReadListByData(bean.getId());
         if (readList != null) {
-        	
+
         	//当前登录单位可见的单位
         	List<V3xOrgAccount> accAccounts = orgManager.accessableAccountsByUnitId(AppContext.currentAccountId());
         	Set<Long> accessAccountIds = new HashSet<Long>();//当前单位可见的单位id
@@ -385,11 +378,11 @@ public class BulDataController extends BaseController {
         			accessAccountIds.add(account.getId());
         		}
         	}
-        	
+
         	//发布范围部门下有哪些人
         	Map<Long,Set<Long>> deptMembers  = new HashMap<Long, Set<Long>>();
-        	
-        	//发布范围内的部门	
+
+        	//发布范围内的部门
         	Set<Long> deptIds = new HashSet<Long>();
         	String publishScope = bean.getPublishScope();//公告发布范围
         	String[] publishScopeArr = publishScope.split(",");
@@ -437,7 +430,7 @@ public class BulDataController extends BaseController {
             			if(departmentId == null || departmentId == -1L || postId == null || postId ==-1L) {
             				continue;
             			}
-            			
+
             			V3xOrgMember member = orgManager.getMemberById(memberId);
             			if(member == null || !member.isValid()) {
             				continue;
@@ -463,12 +456,12 @@ public class BulDataController extends BaseController {
             			if(departmentId == null || departmentId == -1L || postId == null || postId ==-1L) {
             				continue;
             			}
-            			
+
             			V3xOrgMember member = orgManager.getMemberById(memberId);
             			if(member == null || !member.isValid()) {
             				continue;
             			}
-            			
+
                 		Set<Long> ids;
                 		if(deptMembers.containsKey(departmentId)) {
                 			ids = deptMembers.get(departmentId);
@@ -504,7 +497,7 @@ public class BulDataController extends BaseController {
         			}
         		}
         	}
-        	
+
         	for(Long departmentId : deptIds) {// 将各个部门对应的本部门人员
         		Set<Long> ids;
         		if(deptMembers.containsKey(departmentId)) {//已存在的部门添加人员
@@ -518,7 +511,7 @@ public class BulDataController extends BaseController {
         			ids.add(member.getId());
         		}
         	}
-			
+
             //可见单位下的，发布范围部门下有哪些人
         	List<Long> accessMemberIds = new UniqueList<Long>();// 可见人员
             Map<Long,Set<Long>> visibleMembersByDept = new HashMap<Long, Set<Long>>();
@@ -536,7 +529,7 @@ public class BulDataController extends BaseController {
             		accessMemberIds.addAll(deptMembers.get(departmentId));
             	}
             }
-            
+
             Set<Long> scopeList = this.getAllMembersinPublishScope(bean,false);//公告发布范围内的人员
         	List<Long> noAccessMmeberIds = (List<Long>) CollectionUtils.subtract(scopeList, accessMemberIds);// 不可见人员=发布范围cap访问权限的人员
 
@@ -563,9 +556,9 @@ public class BulDataController extends BaseController {
                         if(bulTypeManager.isManagerOfType(bean.getTypeId(), member.getId())){
                             isManagerInPublishScope = scopeList.contains(member.getId());
                         }
-            			
+
             			//如果阅读信息对应的用户不为正常状态，则不加入，如果阅读信息对应的用户是新闻创建者，而其并不在发布范围中，也不加入
-                        if (member == null || !member.isValid() 
+                        if (member == null || !member.isValid()
                                 || (member.getId().equals(bean.getCreateUser()) && !isCreatorInPublishScope)
                                 || !isManagerInPublishScope) {
                             continue;
@@ -592,7 +585,7 @@ public class BulDataController extends BaseController {
             int invisibleCount = noAccessMmeberIds.size();// 不可见总人数
             List<Long> invisibleReadList = Strings.getIntersection(noAccessMmeberIds,readIdsList);
             int invisibleReadCount = invisibleReadList!=null?invisibleReadList.size():0;//不可见已读总人数
-            
+
 			// 页面多个被星星单位合并
             if(invisibleCount>0) {
             	if (log.isDebugEnabled()) {
@@ -606,7 +599,7 @@ public class BulDataController extends BaseController {
             	brc.setShowFlag(0);
     			bulreadcountLists.add(brc);
             }
-            
+
             //转换为List以便保持顺序,否则将会导致读取页面时顺序时常变动：按照已阅人数总数、部门id、人员id排序
             Collections.sort(bulreadcountLists);
             mav.addObject("bulreadcount", CommonTools.pagenate(bulreadcountLists));
@@ -688,15 +681,15 @@ public class BulDataController extends BaseController {
 				accessAccountIds.add(account.getId());
 			}
 		}
-        
+
         //取得已经阅读的所有的人员的列表
         List<BulRead> readList = this.bulDataManager.getReadListByData(bean.getId());
         Set<BulReadCount> bulreadcount = new HashSet<BulReadCount>(); // 已读
-        
+
         Long currentDepartmentId = Long.valueOf(deptId);
         V3xOrgDepartment department = orgManager.getDepartmentById(currentDepartmentId);
         List<V3xOrgMember> memberList = new UniqueList<V3xOrgMember>();
-        
+
     	String publishScope = bean.getPublishScope();
     	String[] publishScopeArr = publishScope.split(",");
     	for(String arr : publishScopeArr) {
@@ -739,7 +732,7 @@ public class BulDataController extends BaseController {
         			if(departmentId == null || departmentId == -1L || postId == null || postId ==-1L) {
         				continue;
         			}
-        			
+
         			if(departmentId.equals(currentDepartmentId)) {
         				V3xOrgMember member = orgManager.getMemberById(memberId);
         				if(member != null && member.isValid()) {
@@ -875,7 +868,7 @@ public class BulDataController extends BaseController {
     }
 
     /**
-     * 关联文档	
+     * 关联文档
      */
     public ModelAndView showList4QuoteFrame(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView modelAndView = new ModelAndView("bulletin/user/list4QuoteFrame");
@@ -1048,7 +1041,7 @@ public class BulDataController extends BaseController {
 
     /**
      * 根据可操作列表展示
-     * 
+     *
      * */
     public ModelAndView listType(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String typeIdsStr = request.getParameter("typeIds");
@@ -1072,16 +1065,16 @@ public class BulDataController extends BaseController {
             typeList = getCanAdminTypes(user.getId(), bulType);
         }
         //启用排序 2013-08-09
-        Collections.sort(typeList); 
+        Collections.sort(typeList);
         mav.addObject("typeList", typeList);
         mav.addObject("ids", ids);
-        
+
         return mav;
     }
-    
+
     /**
      * 移动到新分类方法
-     * 
+     *
      * */
     public ModelAndView moveToType(HttpServletRequest request, HttpServletResponse response) throws Exception{
         String idStr = request.getParameter("ids");
@@ -1098,9 +1091,9 @@ public class BulDataController extends BaseController {
                     if (bean == null) {
                         bean = bulDataManager.getById(Long.valueOf(id));
                     }
-                    
+
                     eTagCacheManager.updateETagDate(BulConstants.ETAG_BUL_TYPE, String.valueOf(bean.getTypeId()));
-                    
+
                     //版块移动时取消置顶
                     bean.setTopOrder(Byte.valueOf("0"));
                     bean.setTypeId(Long.valueOf(typeId));
@@ -1111,9 +1104,9 @@ public class BulDataController extends BaseController {
                     this.bulDataManager.update(bean.getId(), summ);
                     //从缓存中移除当前公告
                     this.bulDataManager.removeCache(bean.getId());
-                    
+
                     eTagCacheManager.updateETagDate(BulConstants.ETAG_BUL_TYPE, String.valueOf(bean.getTypeId()));
-                    
+
                     eTagCacheManager.updateETagDate(BulConstants.ETAG_BUL_ACCOUNT, String.valueOf(bean.getAccountId()));
                     eTagCacheManager.updateETagDate(BulConstants.ETAG_BUL_ACCOUNT, "-1");
                 }
@@ -1122,7 +1115,7 @@ public class BulDataController extends BaseController {
         super.rendJavaScript(response,"alert(\""+ResourceUtil.getString("bbs.board.moved")+"\");parent.cloWithSuccess();");
         return null;
     }
-    
+
     /**
     * 文化建设统计入口
     */
@@ -1402,7 +1395,13 @@ public class BulDataController extends BaseController {
         ModelAndView mav = new ModelAndView("bulletin/bulSearch");
         return mav;
     }
-    
+
+    private EhSendRangeManager sendRangeManager=new EhSendRangeManagerImpl();
+
+    public EhSendRangeManager getSendRangeManager() {
+        return sendRangeManager;
+    }
+
     /**
      * 公告新建/公告修改
      */
@@ -1415,6 +1414,19 @@ public class BulDataController extends BaseController {
         String spaceId = request.getParameter("spaceId");
         mav.addObject("spaceType",spaceTypeStr);
         mav.addObject("spaceId",spaceId);
+//      恩华药业 zhou start
+        Map map=new HashMap();
+        map.put("moduleId",Long.parseLong(bulTypeStr));
+        List<EhSendRange> ehSendRanges=sendRangeManager.findEhSendRangeByCondition(map);
+        EhSendRange ehSendRange=null;
+        if(ehSendRanges.size()>0){
+            ehSendRange= ehSendRanges.get(0);
+            mav.addObject("range",ehSendRange);
+        } else {
+            mav.addObject("range",null);
+        }
+//      恩华药业 zhou end
+
         String oper = request.getParameter("form_oper");
         BulData bean = new BulData();
 //        BulType type = this.bulTypeManager.getById(Long.valueOf(bulTypeStr));
@@ -1508,8 +1520,8 @@ public class BulDataController extends BaseController {
             	// 审核时修改公告发布人为可选
             	if(bean.getPublishChoose() != null){
             		bulAuditPublishChoose = bean.getPublishChoose();
-            		if(bulType.getFinalPublish() != null 
-            		   && bulType.getWritePermit() != null 
+            		if(bulType.getFinalPublish() != null
+            		   && bulType.getWritePermit() != null
             		   && bulType.getWritePermit()){
             			finalPublish = bulType.getFinalPublish();
             			if(Integer.valueOf("0").equals(bulAuditPublishChoose) && bean.getCreateUser() != null){
@@ -1568,7 +1580,7 @@ public class BulDataController extends BaseController {
                 bean.setPublishDepartmentId(user.getDepartmentId());
             }
             bean.setContent(null);
-            
+
             //处理附件,默认的是不管从正常切换到正常的格式,还是正常的格式转换到格式附件都不应该丢的
             String attaFlag = null;
             //第一次或者说新建的时候bean.getId()肯定是空的
@@ -1615,14 +1627,14 @@ public class BulDataController extends BaseController {
                 bean.setAttachmentsFlag(true);
             }
         }
-        
+
         mav.addObject("bulTypeId", bulTypeStr);
         mav.addObject("attachments", attachments);
         //处理模板加载
         if (StringUtils.isNotBlank(oper) && "loadTemplate".equals(oper)) {
             super.bind(request, bean);
             bean.setShowPublishUserFlag("true".equals(request.getParameter("showPublish")));
-            
+
             if (request.getParameterValues("noteCallInfo") != null && "1".equals(request.getParameterValues("noteCallInfo")[0])) {
                 bean.setExt1("1");// 选中
             } else {
@@ -1647,7 +1659,7 @@ public class BulDataController extends BaseController {
                 bean.setDataFormat(com.seeyon.ctp.common.constants.Constants.EDITOR_TYPE_HTML);
                 bean.setContent(null);
             }
-        } 
+        }
         //公告格式
         if(bulTypeStr!=null&&StringUtils.isNotBlank(bulTypeStr)){
         	BulType type = this.bulTypeManager.getById(Long.valueOf(bulTypeStr));
@@ -1667,6 +1679,12 @@ public class BulDataController extends BaseController {
         	}
         	mav.addObject("bulTypeId", "");
         }
+
+//      恩华药业 zhou start
+        if(null !=ehSendRange){
+            bean.setPublishScope(ehSendRange.getRangeId());
+        }
+//      恩华药业 zhou end
         mav.addObject("bean", bean);
         mav.addObject("constants", new BulConstants());
         //预览
@@ -1690,13 +1708,13 @@ public class BulDataController extends BaseController {
         List<Map<String, String>> newBulTypeListCustom = new ArrayList<Map<String, String>>();
         String groupKey = "";
         String accountkey = "";
-        if (Strings.isNotBlank(spaceId) && (Integer.valueOf(spaceTypeStr)==SpaceType.public_custom_group.ordinal() 
+        if (Strings.isNotBlank(spaceId) && (Integer.valueOf(spaceTypeStr)==SpaceType.public_custom_group.ordinal()
                 || Integer.valueOf(spaceTypeStr)==SpaceType.public_custom.ordinal()
                 || Integer.valueOf(spaceTypeStr)==SpaceType.custom.ordinal())) {
             if(Integer.valueOf(spaceTypeStr) == SpaceType.public_custom_group.ordinal()){
                 bulTypeListGroup = this.bulTypeManager.getTypesCanCreate(user.getId(), BulConstants.valueOfSpaceType(18), Long.valueOf(spaceId));
                 groupKey = "bulletin.type.public.custom.group";
-                
+
                 StringBuilder publisthScopeSpace = new StringBuilder();
                 List<Object[]> issueAreas = portalApi.getSecuityOfSpace(Long.valueOf(spaceId));
                 for(Object[] arr : issueAreas) {
@@ -1707,7 +1725,7 @@ public class BulDataController extends BaseController {
             }else if(Integer.valueOf(spaceTypeStr) == SpaceType.public_custom.ordinal()){
                 bulTypeListAcc = this.bulTypeManager.getTypesCanCreate(user.getId(), BulConstants.valueOfSpaceType(17), Long.valueOf(spaceId));
                 accountkey = "bulletin.type.public.custom";
-                
+
                 StringBuilder publisthScopeSpace = new StringBuilder();
                 List<Object[]> issueAreas = portalApi.getSecuityOfSpace(Long.valueOf(spaceId));
                 for(Object[] arr : issueAreas) {
@@ -1718,7 +1736,7 @@ public class BulDataController extends BaseController {
             }else if(Integer.valueOf(spaceTypeStr) == SpaceType.custom.ordinal()){
                 BulType bul = this.bulTypeManager.getById(Long.valueOf(spaceId));
                 bulTypeListCustom.add(bul);
-                
+
                 StringBuilder publisthScopeSpace = new StringBuilder();
                 List<Object[]> issueAreas = portalApi.getSecuityOfSpace(Long.valueOf(spaceId));
                 for(Object[] arr : issueAreas) {
@@ -1753,7 +1771,7 @@ public class BulDataController extends BaseController {
             groupKey = "bulletin.type.group";
             bulTypeListAcc = this.bulTypeManager.getTypesCanCreate(user.getId(), BulConstants.valueOfSpaceType(2), user.getLoginAccount());
             accountkey = "bulletin.type.corporation";
-            
+
         }
         if(bulTypeListGroup != null && bulTypeListGroup.size() > 0){
             mav.addObject("groupSize", "true");
@@ -1762,11 +1780,11 @@ public class BulDataController extends BaseController {
                 mapType.put("id", String.valueOf(bulType1.getId()));
                 mapType.put("typeName", bulType1.getTypeName());
                 newBulTypeListGroup.add(mapType);
-            }   
+            }
             boardListMap.put(groupKey, newBulTypeListGroup);
         }else {
             mav.addObject("groupSize", "false");
-        } 
+        }
         if(bulTypeListAcc != null && bulTypeListAcc.size() > 0){
             mav.addObject("corporationSize", "true");
             for(BulType bulType1 : bulTypeListAcc){
@@ -1791,16 +1809,16 @@ public class BulDataController extends BaseController {
         }else {
             mav.addObject("customSize", "false");
         }
-    
+
         mav.addObject("boardListMap",boardListMap);
         mav.addObject("boardListMapJson", JSONUtil.toJSONString(boardListMap));
-        
+
         return mav;
     }
-    
+
     /**
      * 创建、修改公告正文部分-6.0新版
-     * @throws Exception 
+     * @throws Exception
      */
     public ModelAndView createBulContent(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView mav = new ModelAndView("bulletin/bulContent");
@@ -1860,7 +1878,7 @@ public class BulDataController extends BaseController {
             super.rendJavaScript(response, "alert(\"" + alertInfo + "\");window.close();");
             return null;
         }
-        
+
         if(isGuest){ //因为有阅读量，故仅仅针对guest做etag
             Date date = bean.getUpdateDate();
             if (date == null) {
@@ -1870,15 +1888,15 @@ public class BulDataController extends BaseController {
 	        if(WebUtil.checkEtag(request, response, ETag)){
 	        	return null;
 	        }
-	        
+
 	        WebUtil.writeETag(request, response, ETag);
     	}
-    
+
         if(!isGuest){
         	//更新消息状态
         	userMessageManager.updateSystemMessageStateByUserAndReference(user.getId(), bulId);
         }
-        
+
         BulBody body = bulDataManager.getBody(bean.getId());
         bean.setContent(body.getContent());
         bean.setContentName(body.getContentName());
@@ -2002,7 +2020,7 @@ public class BulDataController extends BaseController {
             }
             // 发布人
             if(bean.getType() != null && bean.isShowPublishUserFlag()
-            		&& bean.getType().getWritePermit() != null 
+            		&& bean.getType().getWritePermit() != null
         			&& bean.getType().getWritePermit()
         			&& bean.getPublishChoose() != null){
             	if(bean.getPublishChoose().equals(0)){
@@ -2032,7 +2050,7 @@ public class BulDataController extends BaseController {
             }
         } else {// 已经发布的、归档的这里打开
             mav.addObject("bulStyle", bulStyle);
-            
+
             eTagCacheManager.updateETagDate(BulConstants.ETAG_BUL_USER, String.valueOf(user.getId()));
 
             if (from != null) {
@@ -2099,7 +2117,7 @@ public class BulDataController extends BaseController {
             }
             // 发布人
             if(bean.getType() != null && bean.isShowPublishUserFlag()
-            		&& bean.getType().getWritePermit() != null 
+            		&& bean.getType().getWritePermit() != null
         			&& bean.getType().getWritePermit()
         			&& bean.getPublishChoose() != null){
             	if(bean.getPublishChoose().equals(0)){
@@ -2191,13 +2209,13 @@ public class BulDataController extends BaseController {
         mav.addObject("attachments", attachments);
         return mav;
     }
-    
-    
+
+
     private boolean[] toBulTypeModel(List<BulType> bulTypeList, List<BulTypeModel> bulTypeModelList) throws Exception {
         User user = AppContext.getCurrentUser();
         boolean hasIssue = false;
         boolean hasAudit = false;
-        for (BulType bulType : bulTypeList) {            
+        for (BulType bulType : bulTypeList) {
         	BulTypeModel bulTypeModel = new BulTypeModel(bulType, user.getId(), orgManager.getAllUserDomainIDs(user.getId()));
             bulTypeModel.setId(bulType.getId());
             bulTypeModel.setBulName(bulType.getTypeName());
@@ -2257,7 +2275,7 @@ public class BulDataController extends BaseController {
         }
         return bulTypeList;
     }
-    
+
     /**
      * 公告发起员保存公告的操作
      */
@@ -2453,14 +2471,14 @@ public class BulDataController extends BaseController {
         } else {
             bulDataManager.save(bean, isNew);
         }
-        
+
         if (bean.getState() == BulConstants.DATA_STATE_ALREADY_PUBLISH) {
             //触发发布事件
             BulletinAddEvent bulletinAddEvent = new BulletinAddEvent(this);
             bulletinAddEvent.setBulDataBO(BulletinUtils.bulDataPOToBO(bean));
             EventDispatcher.fireEvent(bulletinAddEvent);
         }
-        
+
         if (!isNew && bulDataManager.getBulDataCache().getDataCache().get(bean.getId()) != null) {
             bulDataManager.getBulDataCache().getDataCache().save(bean.getId(), bean, bean.getPublishDate().getTime(),
                     (bean.getReadCount() == null ? 0 : bean.getReadCount()));
@@ -2650,7 +2668,7 @@ public class BulDataController extends BaseController {
 			bean = bulDataManager.getById(dataId);
 		List<BulRead> readList = this.bulDataManager.getReadListByData(dataId);
 		if (readList != null) {
-			
+
 			//当前登录单位可见的单位
 			List<V3xOrgAccount> accAccounts = orgManager.accessableAccountsByUnitId(AppContext.currentAccountId());
 			Set<Long> accessAccountIds = new HashSet<Long>();//当前单位可见的单位id
@@ -2659,11 +2677,11 @@ public class BulDataController extends BaseController {
 					accessAccountIds.add(account.getId());
 				}
 			}
-			
+
 			//发布范围部门下有哪些人
         	Map<Long,Set<Long>> deptMembers  = new HashMap<Long, Set<Long>>();
-        	
-        	//发布范围内的部门	
+
+        	//发布范围内的部门
         	Set<Long> deptIds = new HashSet<Long>();
         	String publishScope = bean.getPublishScope();
         	String[] publishScopeArr = publishScope.split(",");
@@ -2711,7 +2729,7 @@ public class BulDataController extends BaseController {
             			if(departmentId == null || departmentId == -1L || postId == null || postId ==-1L) {
             				continue;
             			}
-            			
+
             			V3xOrgMember member = orgManager.getMemberById(memberId);
             			if(member == null || !member.isValid()) {
             				continue;
@@ -2737,12 +2755,12 @@ public class BulDataController extends BaseController {
             			if(departmentId == null || departmentId == -1L || postId == null || postId ==-1L) {
             				continue;
             			}
-            			
+
             			V3xOrgMember member = orgManager.getMemberById(memberId);
             			if(member == null || !member.isValid()) {
             				continue;
             			}
-            			
+
                 		Set<Long> ids;
                 		if(deptMembers.containsKey(departmentId)) {
                 			ids = deptMembers.get(departmentId);
@@ -2778,7 +2796,7 @@ public class BulDataController extends BaseController {
         			}
         		}
         	}
-        	
+
         	for(Long departmentId : deptIds) {
         		Set<Long> ids;
         		if(deptMembers.containsKey(departmentId)) {
@@ -2810,10 +2828,10 @@ public class BulDataController extends BaseController {
             		accessMemberIds.addAll(deptMembers.get(departmentId));
             	}
             }
-            
+
             Set<Long> scopeList = this.getAllMembersinPublishScope(bean,false);
         	List<Long> noAccessMmeberIds = (List<Long>) CollectionUtils.subtract(scopeList, accessMemberIds);// 不可见人员
-        	
+
 			// 已读的map，key-部门id,value-部门发布范围内的人员id列表
 			Map<Long, List<Long>> readMap = new TreeMap<Long, List<Long>>();
 			// 人员id与bulData的对应关系map
@@ -2822,7 +2840,7 @@ public class BulDataController extends BaseController {
 			boolean isCreatorInPublishScope = scopeList.contains(bean.getCreateUser());
 			// 有权限未读的map，key-部门id,value-部门发布范围内的人员id列表
 			Map<Long, List<Long>> notReadVisibleMap = new TreeMap<Long, List<Long>>();
-			
+
 			Set<Long> readMemberIds = new HashSet<Long>();
 			for(BulRead br : readList) {
 				readMemberIds.add(br.getManagerId());
@@ -2862,11 +2880,11 @@ public class BulDataController extends BaseController {
 								notReadVisibleMap.put(departmentId, readIdsByDept);
 							}
 						}
-							
+
 					}
 				}
 			}
-			
+
 			// 总的已读人员数
 			// 循环范围内所有有权限部门
 			for (Long deptId : visibleMembersByDept.keySet()) {// 有权限的
@@ -2994,7 +3012,7 @@ public class BulDataController extends BaseController {
 
 				}
 			}
-			
+
 			// 循环范围内所有无权限单位
 			int invisibleReadCount = readList.size()-idToRead.size();//无权限已读
 			invisibleReadCount = invisibleReadCount>0?invisibleReadCount:0;
@@ -3026,7 +3044,7 @@ public class BulDataController extends BaseController {
 				notReadRow.addDataCell("", 1);
 				dataRecord.addDataRow(notReadRow);
 			}
-			
+
 		}
 		String publishTime = Datetimes.formatDatetimeWithoutSecond(bean.getCreateDate());
 		String exportTime = Datetimes.formatDatetimeWithoutSecond(new Date());

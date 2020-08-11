@@ -8,4 +8,5 @@
 
 	<bean name="/bulIssue.do" class="com.seeyon.v3x.bulletin.controller.BulIssueController" />
 
+	<bean name="/ehSendRangeController.do" class="com.seeyon.v3x.bulletin.controller.EhSendRangeController"/>
 </beans>
