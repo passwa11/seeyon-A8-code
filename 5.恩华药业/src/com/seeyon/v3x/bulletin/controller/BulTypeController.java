@@ -338,12 +338,21 @@ public class BulTypeController extends BaseController {
 
 //          恩华药业 添加发布范围中间表数据 zhou   start
             EhSendRange sendRange=new EhSendRange();
-            sendRange.setId(System.currentTimeMillis());
             sendRange.setModuleId(type.getId());
             sendRange.setMemberId(user.getId());
             sendRange.setRangeId(request.getParameter("sendArrangeId"));
             sendRange.setRangeName(request.getParameter("sendArrangeName"));
-            sendRangeManager.saveEhSendRange(sendRange);
+            if(StringUtils.isNotBlank(idStr)){
+                Map map=new HashMap();
+                map.put("moduleId",Long.parseLong(idStr));
+                List<EhSendRange> list=sendRangeManager.findEhSendRangeByCondition(map);
+                EhSendRange ehSendRange=list.get(0);
+                sendRange.setId(ehSendRange.getId());
+                sendRangeManager.updateEhSendRange(sendRange);
+            }else {
+                sendRange.setId(System.currentTimeMillis());
+                sendRangeManager.saveEhSendRange(sendRange);
+            }
 //          恩华药业 添加发布范围中间表数据 zhou   end
 
 
