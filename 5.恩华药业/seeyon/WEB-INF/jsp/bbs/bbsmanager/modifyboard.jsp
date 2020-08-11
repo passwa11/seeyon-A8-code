@@ -10,7 +10,7 @@
 <script type="text/javascript">
 	//是否选择管理员判断，修改页面肯定有管理员，而且不能取消人员 ，现在由false改true,解决点击修改后，不做人员变动会谈提示。
 	var hasIssueArea = true;
-	
+
 	function selectBoardAdmin(){
 		selectPeopleFun_wf();
 	}
@@ -23,7 +23,7 @@
 		document.fm.bbsBoardAdminName.value=getNamesString(elements);
 		hasIssueArea = true;
 	}
-	
+
 	function submitForm(){
 		var theForm = document.getElementsByName("fm")[0];
 		if (!theForm) {
@@ -64,7 +64,7 @@
 	         }
    	 	}
 	}
-	
+
 	function checkSelectWF() {
 	    if (!hasIssueArea) {
 	        alert(v3x.getMessage("BBSLang.bbs_bbsmanage_createboard_choice"));
@@ -73,7 +73,7 @@
 	    }
 	    return true;
 	}
-	
+
   <c:if test="${!isGroup&&spaceType!=18&&spaceType!=17}">
    var onlyLoginAccount_wf = true;
   </c:if>
@@ -90,7 +90,7 @@
 	         });
 	      }catch(e){}
 	}
-	
+
 	function headImgCuttingCallBack (retValue) {
 	    var value_id= retValue.toString().substr(0,retValue.indexOf("&"));
 	    getA8Top().headImgCuttingWin.close();
@@ -98,7 +98,7 @@
 	        document.getElementById("coverImage").setAttribute("src", "${pageContext.request.contextPath}/fileUpload.do?method=showRTE&fileId=" + retValue + "&type=image${ctp:csrfSuffix()}");
 	        document.getElementById("imageId").value=value_id;
 	    }
-	}  
+	}
 </script>
 </head>
 <body scroll="no" style="overflow: no">
@@ -108,18 +108,25 @@
 <c:set var="dis" value="${v3x:outConditionExpression(readOnly, 'disabled', '')}" />
 <c:set value="${v3x:joinDirectWithSpecialSeparator(bbsBoard.admins, ',')}" var="adminId"/>
 <c:set value="${v3x:showOrgEntitiesOfIds(adminId, 'Member', pageContext)}" var="adminName"/>
-
+    <%--恩华药业:start zhou--%>
+    <c:set value="${v3x:parseElementsOfTypeAndId(DEPARTMENTissueArea)}" var="org"/>
+    <c:set var="issueAreaName" value="${v3x:showOrgEntitiesOfTypeAndId(DEPARTMENTissueArea, pageContext)}"/>
+    <v3x:selectPeople id="spGroup" originalElements="${v3x:escapeJavascript(org)}"
+                      panels="Account,Department,Team,Post,Level,JoinOrganization,JoinAccountTag,JoinPost,Guest,BusinessDepartment"
+                      selectType="Member,Department,Account,Post,Level,Team,JoinAccountTag,Guest,BusinessAccount,BusinessDepartment"
+                      departmentId="" jsFunction="setIssueAreaPeopleFields(elements)"/>
+    <%--恩华药业:end--%>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" align="center" class="">
     <tr>
         <td>
-           
+
             <div id="connect" class="scrollList">
 
                 <table width="500" border="0" cellspacing="0" cellpadding="0" align="center">
                     <tr>
                         <td class="bg-gray , bbs-tb-padding-topAndBottom" width="25%" nowrap>
                             <font color="red">*</font>&nbsp;<fmt:message key="bbs.type.typeName"/>:
-                        </td>                   
+                        </td>
                         <td class="new-column , bbs-tb-padding-topAndBottom" width="75%">
                             <fmt:message key="common.default.name.value" var="defName" bundle="${v3xCommonI18N}" />
                             <input name="name" type="text" id="name" class="input-100per" deaultValue="${defName}" ${dis}
@@ -138,16 +145,46 @@
                             var includeElements_wf = "${v3x:parseElementsOfTypeAndId(entity)}";
                             //-->
                             </script>
-                            
+
                              <v3x:selectPeople id="wf" panels="Department,Post,Level,Team" selectType="Member"
                                 jsFunction="setPeopleFields(elements)" maxSize="50" originalElements="${v3x:parseElementsOfIds(adminId, 'Member')}"/>
-			                    
+
                             <fmt:message key="common.default.selectPeople.value" var="defaultSP" bundle="${v3xCommonI18N}"/>
-                            <input type="hidden" value="${adminId}" name="bbsBoardAdmin" > 
-                            <input type="text" name='bbsBoardAdminName' id='bbsBoardAdminName' value="<c:out value='${adminName}' default='${defaultSP}' escapeXml='true' />"  
+                            <input type="hidden" value="${adminId}" name="bbsBoardAdmin" >
+                            <input type="text" name='bbsBoardAdminName' id='bbsBoardAdminName' value="<c:out value='${adminName}' default='${defaultSP}' escapeXml='true' />"
                                 readonly class="cursor-hand input-100per" onclick="selectBoardAdmin()" deaultValue="${defaultSP}" ${dis} >
                         </td>
                     </tr>
+                    <%--恩华药业  发送范围  zhou--%>
+                    <tr>
+                        <td class="bg-gray" width="25%" nowrap>
+                            发布范围:
+                        </td>
+                        <td class="new-column" width="75%">
+                            <input type="hidden" id="issueArea" name="sendArrangeId" value="<c:out value="${range.rangeId}" /> ">
+                            <input type="text" readonly="true" id="issueAreaName" name="sendArrangeName" deaultValue="${defScope}" class="cursor-hand input-250px"
+                                   value="<c:out value="${range.rangeName}" escapeXml="true" default="${defScope}" />"
+                                   onclick="selectIssueArea()"
+                                   <c:if test="${param.isDetail=='readOnly' }">disabled</c:if> placeholder="<点击选择发布范围>"/>
+                        </td>
+                    </tr>
+                    <script type="text/javascript">
+                        //恩华药业 zhou Start
+                        function selectIssueArea() {
+                            selectPeopleFun_spGroup();
+                        }
+                        function setIssueAreaPeopleFields(elements) {
+                            if (!elements) {
+                                return;
+                            }
+                            document.getElementById("issueArea").value = getIdsString(elements);
+                            document.getElementById("issueAreaName").value = getNamesString(elements);
+                            hasIssueArea = true;
+                        }
+                        //恩华药业 zhou end
+                    </script>
+                    <%--恩华药业 zhou 添加发布范围 end--%>
+
                     <tr>
                         <td class="bg-gray , bbs-tb-padding-topAndBottom" nowrap>
                             <fmt:message key="bbs.type.usedFlagState" />:
@@ -169,9 +206,9 @@
                         </td>
                         <td class="new-column , bbs-tb-padding-topAndBottom" nowrap ${dis}>
                                 <select  name="orderFlag"  class="condition" style="height: 23; width: 80" ${dis}>
-                            <option  value="0" 
+                            <option  value="0"
                                 <c:if test="${bbsBoard.orderFlag==0}">selected</c:if>><fmt:message key="bbs.sort.asc" /></option>
-                            <option  value="1" 
+                            <option  value="1"
                                 <c:if test="${bbsBoard.orderFlag==1}">selected</c:if>><fmt:message key="bbs.sort.desc"/></option>
                           </select>
                         </td>
@@ -182,11 +219,11 @@
                         </td>
                         <td class="new-column , bbs-tb-padding-topAndBottom" nowrap ${dis}>
                             <label for="anonymous_true">
-                                <input type="radio"  id="anonymous_true" name="anonymousFlag" value="0" 
+                                <input type="radio"  id="anonymous_true" name="anonymousFlag" value="0"
                                     <c:if test="${bbsBoard.anonymousFlag==0}">checked</c:if> ${dis} /><fmt:message key="common.yes" bundle="${v3xCommonI18N}" />
                             </label>
                             <label for="anonymous_false">
-                                <input type="radio" name="anonymousFlag"  id="anonymous_false" value="1" 
+                                <input type="radio" name="anonymousFlag"  id="anonymous_false" value="1"
                                     <c:if test="${bbsBoard.anonymousFlag==1}">checked</c:if> ${dis} /><fmt:message key="common.no" bundle="${v3xCommonI18N}" />
                             </label>
                          </td>
@@ -197,11 +234,11 @@
                         </td>
                         <td class="new-column , bbs-tb-padding-topAndBottom" nowrap ${dis}>
                             <label for="a">
-                                <input type="radio"  id="a" name="anonymousReplyFlag" value="0" 
+                                <input type="radio"  id="a" name="anonymousReplyFlag" value="0"
                                     <c:if test="${bbsBoard.anonymousReplyFlag==0}">checked</c:if> ${dis} /><fmt:message key="common.yes" bundle="${v3xCommonI18N}" />
                             </label>
                             <label for="b">
-                                <input type="radio" name="anonymousReplyFlag"  id="b" value="1" 
+                                <input type="radio" name="anonymousReplyFlag"  id="b" value="1"
                                     <c:if test="${bbsBoard.anonymousReplyFlag==1}">checked</c:if> ${dis} /><fmt:message key="common.no" bundle="${v3xCommonI18N}" />
                             </label>
                          </td>
@@ -258,14 +295,14 @@
                 </table>
 
             </div>
-           
-           
+
+
         </td>
     </tr>
     <c:if test="${!readOnly}">
     <tr>
         <td height="50" align="center" class="bg-advance-bottom button_container">
-                
+
 			<input type="button" onclick="submitForm()" value="<fmt:message key='common.button.ok.label' bundle="${v3xCommonI18N}" />" class="button-default-2 button-default_emphasize">&nbsp;
 			<input type="button" onclick="parent.parent.document.location.reload();" value="<fmt:message key='common.button.cancel.label' bundle="${v3xCommonI18N}" />" class="button-default-2">
 

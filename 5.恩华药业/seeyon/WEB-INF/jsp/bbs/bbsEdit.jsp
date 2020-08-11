@@ -68,7 +68,9 @@
     <input type="hidden" name="boardType" id="boardType" value="${boardType }">
     <input type="hidden" name="boardName" id="boardName" value="${ctp:toHTML(boardName)}">
     <input type="hidden" name="boardInfo" id="boardInfo" value="${ctp:toHTML(boardMapJson)} ">
-    <input type="hidden" id="issueArea" value="${empty issueArea ? entity : issueArea}" name="issueArea">
+<%--    <input type="hidden" id="issueArea" value="${empty issueArea ? entity : issueArea}" name="issueArea">--%>
+<%--    zhou--%>
+    <input type="hidden" id="issueArea" value="${empty range ? "" : range.rangeId}" name="issueArea">
     <c:set value = "${article.id != null ? 'disabled' : ''}" var="disabledFlag"/>
     <c:set value = "${isVjoinMember ? 'disabled' : ''}" var="lockAccount"/>
     <c:set value="${v3x:parseElementsOfTypeAndId(empty issueArea ? entity : issueArea)}" var="org" />
@@ -134,17 +136,22 @@
         </div>
         <div class="dialog_content_bottom margin_t_10 margin_b_10">
           <c:choose>
+<%--            zhou--%>
             <c:when test="${spaceType == '18'||spaceType == '17'||spaceType == '4'}">
-              <input id="issueAreaName" type="text" readonly="readonly" value="${issueAreaName}" class="issue_area margin_r_10" onclick="javascript:selectIssueArea('space');">
+<%--              <input id="issueAreaName" type="text" readonly="readonly" value="${issueAreaName}" class="issue_area margin_r_10" onclick="javascript:selectIssueArea('space');">--%>
+              <input id="issueAreaName" type="text" readonly="readonly" value="<c:out value="${empty range ? '' : range.rangeName}"/>" class="issue_area margin_r_10" onclick="javascript:selectIssueArea('space');">
             </c:when>
             <c:when test="${spaceType == '1'}">
-              <input id="issueAreaName" type="text" readonly="readonly" value="${issueAreaName}" class="issue_area margin_r_10" onclick="javascript:selectIssueArea('dept');">
+<%--              <input id="issueAreaName" type="text" readonly="readonly" value="${issueAreaName}" class="issue_area margin_r_10" onclick="javascript:selectIssueArea('dept');">--%>
+              <input id="issueAreaName" type="text" readonly="readonly" value="<c:out value="${empty range ? '' : range.rangeName}"/>" class="issue_area margin_r_10" onclick="javascript:selectIssueArea('dept');">
             </c:when>
             <c:when test="${spaceType == '12'}">
-              <input id="issueAreaName" type="text" readonly="readonly" value="${issueAreaName}" disabled class="issue_area margin_r_10">
+<%--              <input id="issueAreaName" type="text" readonly="readonly" value="${issueAreaName}" disabled class="issue_area margin_r_10">--%>
+              <input id="issueAreaName" type="text" readonly="readonly" value="<c:out value="${empty range ? '' : range.rangeName}"/>" disabled class="issue_area margin_r_10">
             </c:when>
             <c:otherwise>
-              <input id="issueAreaName" type="text" readonly="readonly" value="${issueAreaName}" class="issue_area margin_r_10">
+<%--              <input id="issueAreaName" type="text" readonly="readonly" value="${issueAreaName}" class="issue_area margin_r_10">--%>
+              <input id="issueAreaName" type="text" readonly="readonly" value="<c:out value="${empty range ? '' : range.rangeName}"/>" class="issue_area margin_r_10">
             </c:otherwise>
           </c:choose>
           <span style="margin-right: 20px;" class="font12">

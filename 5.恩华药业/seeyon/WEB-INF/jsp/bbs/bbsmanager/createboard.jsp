@@ -97,7 +97,7 @@ var includeElements_wf = "${v3x:parseElementsOfTypeAndId(entity)}";
 <body scroll="no" style="overflow: no; text-align:center">
 <form name="fm" method="post" action="" onsubmit="return checkForm(this)">
 <input type="hidden" value="${newId}" name="newId" />
-    <%--恩华药业:start--%>
+    <%--恩华药业:start zhou--%>
     <c:set value="${v3x:parseElementsOfTypeAndId(DEPARTMENTissueArea)}" var="org"/>
     <c:set var="issueAreaName" value="${v3x:showOrgEntitiesOfTypeAndId(DEPARTMENTissueArea, pageContext)}"/>
     <v3x:selectPeople id="spGroup" originalElements="${v3x:escapeJavascript(org)}"

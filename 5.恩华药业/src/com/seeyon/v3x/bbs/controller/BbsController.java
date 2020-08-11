@@ -18,6 +18,9 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.seeyon.v3x.bulletin.domain.EhSendRange;
+import com.seeyon.v3x.bulletin.manager.EhSendRangeManager;
+import com.seeyon.v3x.bulletin.manager.EhSendRangeManagerImpl;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
@@ -106,7 +109,7 @@ public class BbsController extends BaseController {
     private BbsReadManager     bbsReadManager;
     private ETagCacheManager   eTagCacheManager;
     private FileManager fileManager;
-    
+
     public void seteTagCacheManager(ETagCacheManager eTagCacheManager) {
         this.eTagCacheManager = eTagCacheManager;
     }
@@ -246,6 +249,11 @@ public class BbsController extends BaseController {
         mav.addObject("newId", UUIDLong.longUUID());
         return mav;
     }
+    private EhSendRangeManager sendRangeManager=new EhSendRangeManagerImpl();
+
+    public EhSendRangeManager getSendRangeManager() {
+        return sendRangeManager;
+    }
 
     // 新增版块信息
     @CheckRoleAccess(roleTypes = { Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator }, extendRoles = { "SpaceManager" })
@@ -268,6 +276,17 @@ public class BbsController extends BaseController {
         // 快速需求(Fast Demand): 板块可以停用，这里不在初始化默认值
         //bbsBoard.setFlag(BbsConstants.FLAG_NORMAL);
         this.bbsBoardManager.createBbsBoard(bbsBoard, request.getParameter("bbsBoardAdmin"));
+
+//       恩华药业 zhou start
+        EhSendRange sendRange=new EhSendRange();
+        sendRange.setId(System.currentTimeMillis());
+        sendRange.setModuleId(bbsBoard.getId());
+        String rangeId=request.getParameter("sendArrangeId");
+        String rangeName=request.getParameter("sendArrangeName");
+        sendRange.setRangeId(rangeId);
+        sendRange.setRangeName(rangeName);
+        sendRangeManager.saveEhSendRange(sendRange);
+//       恩华药业 zhou end
 
         this.saveRoleInfo(request.getParameter("bbsBoardAdmin"));
 
@@ -314,6 +333,17 @@ public class BbsController extends BaseController {
         boolean showVjoin = bbsBoard.getAffiliateroomFlag() == 2 && bbsBoard.getAccountId().equals(vJoinAllowAccount);
         mav.addObject("showVjoin", showVjoin);
         mav.addObject("bbsBoard", bbsBoard);
+//      恩华药业  zhou start
+        Map map=new HashMap();
+        map.put("moduleId",bbsBoard.getId());
+        List<EhSendRange> ehSendRanges=sendRangeManager.findEhSendRangeByCondition(map);
+        if(ehSendRanges.size()>0){
+            mav.addObject("range", ehSendRanges.get(0));
+        }else {
+            mav.addObject("range", null);
+        }
+//      恩华药业  zhou end
+
         mav.addObject("authPost", bbsBoard.getAuthInfo(BbsConstants.AUTH_TO_POST));
         mav.addObject("forbiddenReply", bbsBoard.getAuthInfo(BbsConstants.FORBIDDEN_TO_REPLY));
         if (Strings.isNotBlank(spaceId)) {
@@ -359,6 +389,29 @@ public class BbsController extends BaseController {
 
         List<Long> auth = CommonTools.parseStr2Ids(request, "bbsBoardAdmin");
         this.bbsBoardManager.updateV3xBbsBoard(bbsBoard, auth);
+
+//        恩华药业 zhou start
+        Map map=new HashMap();
+        map.put("moduleId",bbsBoard.getId());
+        List<EhSendRange> ehSendRanges=sendRangeManager.findEhSendRangeByCondition(map);
+        if(ehSendRanges.size()>0){
+            EhSendRange ehSendRange=ehSendRanges.get(0);
+            String rangeId=request.getParameter("sendArrangeId");
+            String rangeName=request.getParameter("sendArrangeName");
+            ehSendRange.setRangeId(rangeId);
+            ehSendRange.setRangeName(rangeName);
+            sendRangeManager.updateEhSendRange(ehSendRange);
+        }else {
+            EhSendRange ehSendRange=new EhSendRange();
+            String rangeId=request.getParameter("sendArrangeId");
+            String rangeName=request.getParameter("sendArrangeName");
+            ehSendRange.setRangeId(rangeId);
+            ehSendRange.setRangeName(rangeName);
+            ehSendRange.setModuleId(bbsBoard.getId());
+            ehSendRange.setId(System.currentTimeMillis());
+            sendRangeManager.saveEhSendRange(ehSendRange);
+        }
+//        恩华药业 zhou end
 
         this.saveRoleInfo(request.getParameter("bbsBoardAdmin"));
 
@@ -1383,11 +1436,11 @@ public class BbsController extends BaseController {
             }
             return null;
         }
-        
+
         //更新消息状态
         userMessageManager.updateSystemMessageStateByUserAndReference(userId, articleId);
         bbsReadManager.save(userId, articleId);
-        
+
         //需要更新栏目中的点击数，所以不能按人
         eTagCacheManager.updateETagDate(BbsConstants.ETAG_BBS_USER, "-1");
 
@@ -1545,13 +1598,13 @@ public class BbsController extends BaseController {
         }
         return mav;
     }
-    
+
     private boolean inIssueArea(String issueArea) throws BusinessException {
         List<Long> areaIds = CommonTools.parseTypeAndIdStr2Ids(issueArea);
         List<Long> domainIds = orgManager.getAllUserDomainIDs(AppContext.currentUserId());
         return CollectionUtils.isNotEmpty(Strings.getIntersection(areaIds, domainIds));
     }
-    
+
     /**
      * 预览
      * @param request
@@ -1744,7 +1797,7 @@ public class BbsController extends BaseController {
 
     /**
      * 创建新讨论-6.0新版
-     * @throws Exception 
+     * @throws Exception
      */
     public ModelAndView createArticleEditor(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView mav = new ModelAndView("bbs/bbsEditor");
@@ -1994,7 +2047,7 @@ public class BbsController extends BaseController {
      * 我发起的-- 1
      * 我回复的---2
      * 我收藏的---3
-     * @throws Exception 
+     * @throws Exception
      */
     public ModelAndView myArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView mav = new ModelAndView("bbs/bbsMyArticles");
@@ -2056,7 +2109,7 @@ public class BbsController extends BaseController {
         Long accountId = AppContext.currentAccountId();
         int spaceType = NumberUtils.toInt(request.getParameter("spaceType"));
         Long spaceId = NumberUtils.toLong(request.getParameter("spaceId"));
-        
+
         String articleId = request.getParameter("articleId");
         String boardId = request.getParameter("boardId");
         V3xBbsArticle article = new V3xBbsArticle();
@@ -2065,7 +2118,7 @@ public class BbsController extends BaseController {
         if (Strings.isNotBlank(articleId)) {
             article = this.getArticleFromCacheOrDB(Long.parseLong(articleId));
             //帖子被删除
-            if (article == null || article.getState() == BbsConstants.BBS_ARTICLE_ISNOT_ACTIVE 
+            if (article == null || article.getState() == BbsConstants.BBS_ARTICLE_ISNOT_ACTIVE
                     || article.getState() == BbsConstants.BBS_ARTICLE_PIGEONHOLE) {
                 super.rendJavaScript(response, "alert('" + ResourceUtil.getString("bbs.article.delorcanceled.js") + "');" + jsAction);
                 return null;
