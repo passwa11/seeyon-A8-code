@@ -10,6 +10,8 @@
 </c:if>
 <link rel="stylesheet" type="text/css" href="${path}/skin/dist/modules/bbs.css${v3x:resSuffix()}" />
 <script src="${path}/apps_res/bbs/js/bbsEdit.js${v3x:resSuffix()}"></script>
+    <%--    zhou--%>
+<%--    <script type="text/javascript" src="${path}/common/jquery/jquery.js"></script>--%>
 <script type="text/javascript">
 
   var ajax_bbsArticleManager = new bbsArticleManager();
@@ -131,27 +133,50 @@
               </c:when>
             </c:choose>
           </select>
-          <select class="active_select font12" id="boardSelect" name="boardSelect" onchange="${article.id != null ? '' : 'changeCheckBox()' } ">
+<%--              zhou--%>
+          <select class="active_select font12" id="boardSelect" name="boardSelect" onchange="${article.id != null ? '' : 'changeCheckBox(),changSendRang()' } ">
           </select>
+              <%--                zhou--%>
+              <script type="text/javascript">
+                  //    zhou
+                  function changSendRang() {
+                      var typeID = $("#boardSelect option:selected").val();
+                      $.ajax({
+                          url: '/seeyon/ehSendRangeController.do?method=getSendRange',
+                          type: 'POST',
+                          dataType: 'json',
+                          data: {id: typeID+''},
+                          success: function (result) {
+                              if (result.code == 0) {
+                                  var range = result.data;
+                                  if(range!=null){
+                                      $("#issueArea").val(range.rangeId);
+                                      $("#issueAreaName").val(range.rangeName);
+                                  }
+                              }
+                          }
+                      });
+                  }
+              </script>
         </div>
         <div class="dialog_content_bottom margin_t_10 margin_b_10">
           <c:choose>
 <%--            zhou--%>
             <c:when test="${spaceType == '18'||spaceType == '17'||spaceType == '4'}">
 <%--              <input id="issueAreaName" type="text" readonly="readonly" value="${issueAreaName}" class="issue_area margin_r_10" onclick="javascript:selectIssueArea('space');">--%>
-              <input id="issueAreaName" type="text" readonly="readonly" value="<c:out value="${empty range ? '' : range.rangeName}"/>" class="issue_area margin_r_10" onclick="javascript:selectIssueArea('space');">
+              <input id="issueAreaName" type="text" readonly="readonly" value="${range.rangeName}" class="issue_area margin_r_10" onclick="javascript:selectIssueArea('space');">
             </c:when>
             <c:when test="${spaceType == '1'}">
 <%--              <input id="issueAreaName" type="text" readonly="readonly" value="${issueAreaName}" class="issue_area margin_r_10" onclick="javascript:selectIssueArea('dept');">--%>
-              <input id="issueAreaName" type="text" readonly="readonly" value="<c:out value="${empty range ? '' : range.rangeName}"/>" class="issue_area margin_r_10" onclick="javascript:selectIssueArea('dept');">
+              <input id="issueAreaName" type="text" readonly="readonly" value="${range.rangeName}" class="issue_area margin_r_10" onclick="javascript:selectIssueArea('dept');">
             </c:when>
             <c:when test="${spaceType == '12'}">
 <%--              <input id="issueAreaName" type="text" readonly="readonly" value="${issueAreaName}" disabled class="issue_area margin_r_10">--%>
-              <input id="issueAreaName" type="text" readonly="readonly" value="<c:out value="${empty range ? '' : range.rangeName}"/>" disabled class="issue_area margin_r_10">
+              <input id="issueAreaName" type="text" readonly="readonly" value="${range.rangeName}" disabled class="issue_area margin_r_10">
             </c:when>
             <c:otherwise>
 <%--              <input id="issueAreaName" type="text" readonly="readonly" value="${issueAreaName}" class="issue_area margin_r_10">--%>
-              <input id="issueAreaName" type="text" readonly="readonly" value="<c:out value="${empty range ? '' : range.rangeName}"/>" class="issue_area margin_r_10">
+              <input id="issueAreaName" type="text" readonly="readonly" value="${range.rangeName}" class="issue_area margin_r_10">
             </c:otherwise>
           </c:choose>
           <span style="margin-right: 20px;" class="font12">
