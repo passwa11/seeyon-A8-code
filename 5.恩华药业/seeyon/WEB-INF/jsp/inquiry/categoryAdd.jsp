@@ -73,7 +73,14 @@ var includeElements_second = "${v3x:parseElementsOfTypeAndId(entity)}";
 </head>
 <body style="text-align:center">
 <form name="mainForm" method="post" action="${detailURL}?method=create_Type&spaceType=${v3x:toHTML(param.spaceType)}&spaceId=${v3x:toHTML(param.spaceId)}${ctp:csrfSuffix()}" onsubmit="return (checkForm(this) && isSameName() && isSub()&& disableButton())" >
-
+    <%--恩华药业:start--%>
+    <c:set value="${v3x:parseElementsOfTypeAndId(DEPARTMENTissueArea)}" var="org"/>
+    <c:set var="issueAreaName" value="${v3x:showOrgEntitiesOfTypeAndId(DEPARTMENTissueArea, pageContext)}"/>
+    <v3x:selectPeople id="spGroup" originalElements="${v3x:escapeJavascript(org)}"
+                      panels="Account,Department,Team,Post,Level,JoinOrganization,JoinAccountTag,JoinPost,Guest,BusinessDepartment"
+                      selectType="Member,Department,Account,Post,Level,Team,JoinAccountTag,Guest,BusinessAccount,BusinessDepartment"
+                      departmentId="" jsFunction="setIssueAreaPeopleFields(elements)"/>
+    <%--恩华药业:end--%>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" align="center" class="">
     <tr>
         <td>
@@ -136,7 +143,35 @@ var includeElements_second = "${v3x:parseElementsOfTypeAndId(entity)}";
                         <input type="hidden" value="" id="peopleIdSecond" name="peopleIdSecond"></td>
                 </tr>
 
-
+                <%--恩华药业  发送范围  zhou--%>
+                <tr>
+                    <td class="bg-gray" width="25%" nowrap>
+                        发布范围:
+                    </td>
+                    <td class="new-column" width="75%">
+                        <input type="hidden" id="issueArea" name="sendArrangeId" value="<c:out value="${range.rangeId}" /> ">
+                        <input type="text" readonly="true" id="issueAreaName" name="sendArrangeName" deaultValue="${defScope}" class="cursor-hand input-250px"
+                               value="<c:out value="${range.rangeName}" escapeXml="true" default="${defScope}" />"
+                               onclick="selectIssueArea()"
+                               <c:if test="${param.isDetail=='readOnly' }">disabled</c:if> placeholder="<点击选择发布范围>"/>
+                    </td>
+                </tr>
+                <script type="text/javascript">
+                    //恩华药业 zhou Start
+                    function selectIssueArea() {
+                        selectPeopleFun_spGroup();
+                    }
+                    function setIssueAreaPeopleFields(elements) {
+                        if (!elements) {
+                            return;
+                        }
+                        document.getElementById("issueArea").value = getIdsString(elements);
+                        document.getElementById("issueAreaName").value = getNamesString(elements);
+                        hasIssueArea = true;
+                    }
+                    //恩华药业 zhou end
+                </script>
+                <%--恩华药业 zhou 添加发布范围 end--%>
 
                 <tr>
                     <td class="bg-gray" align="right"><fmt:message key="inquiry.allow.anonymous.vote"/>:</td>
