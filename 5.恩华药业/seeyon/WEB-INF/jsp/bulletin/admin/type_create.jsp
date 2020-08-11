@@ -221,9 +221,9 @@
                                 发布范围:
                             </td>
                             <td class="new-column" width="75%">
-                                <input type="hidden" id="issueArea" name="sendArrangeId" value="${bean.sendArrangeId}">
+                                <input type="hidden" id="issueArea" name="sendArrangeId" value="<c:out value="${range.rangeId}" /> ">
                                 <input type="text" readonly="true" id="issueAreaName" name="sendArrangeName" deaultValue="${defScope}" class="cursor-hand input-250px"
-                                       value="<c:out value="${bean.sendArrangeName}" escapeXml="true" default="${defScope}" />"
+                                       value="<c:out value="${range.rangeName}" escapeXml="true" default="${defScope}" />"
                                        onclick="selectIssueArea()"
                                        <c:if test="${param.isDetail=='readOnly' }">disabled</c:if> placeholder="<点击选择发布范围>"/>
                             </td>

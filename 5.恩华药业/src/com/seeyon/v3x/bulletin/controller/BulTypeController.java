@@ -1,14 +1,13 @@
 package com.seeyon.v3x.bulletin.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.seeyon.v3x.bulletin.domain.EhSendRange;
+import com.seeyon.v3x.bulletin.manager.EhSendRangeManager;
+import com.seeyon.v3x.bulletin.manager.EhSendRangeManagerImpl;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.servlet.ModelAndView;
@@ -179,6 +178,16 @@ public class BulTypeController extends BaseController {
 			bean.setWritePermit(false);
 		}
         mav.addObject("bean", bean);
+//		恩华药业 zhou start
+        Map map=new HashMap();
+        map.put("moduleId",bean.getId());
+        List<EhSendRange> sendRanges=sendRangeManager.findEhSendRangeByCondition(map);
+        if(sendRanges.size()>0){
+            mav.addObject("range", sendRanges.get(0));
+        }else {
+            mav.addObject("range","");
+        }
+//		恩华药业 zhou end
         mav.addObject("readOnly", "readOnly".equals(request.getParameter("isDetail")));
 
         boolean hasPending = false;
@@ -268,6 +277,12 @@ public class BulTypeController extends BaseController {
         return flag;
     }
 
+    private EhSendRangeManager sendRangeManager=new EhSendRangeManagerImpl();
+
+    public EhSendRangeManager getSendRangeManager() {
+        return sendRangeManager;
+    }
+
     public ModelAndView save(HttpServletRequest request, HttpServletResponse response) throws Exception {
         BulType bean = null;
         String idStr = request.getParameter("id"); //id：指板块的id
@@ -310,7 +325,7 @@ public class BulTypeController extends BaseController {
             bean.setUpdateUser(AppContext.getCurrentUser().getId());
 
             if (!bean.isAuditFlag()) {
-                bean.setAuditUser(0l);
+                bean.setAuditUser(0L);
                 //不审核时，默认设置显示发起人
                 bean.setFinalPublish(1);
             }
@@ -320,6 +335,17 @@ public class BulTypeController extends BaseController {
             }
             BulType type= bulTypeManager.save(bean);
             User user = AppContext.getCurrentUser();
+
+//          恩华药业 添加发布范围中间表数据 zhou   start
+            EhSendRange sendRange=new EhSendRange();
+            sendRange.setId(System.currentTimeMillis());
+            sendRange.setModuleId(type.getId());
+            sendRange.setMemberId(user.getId());
+            sendRange.setRangeId(request.getParameter("sendArrangeId"));
+            sendRange.setRangeName(request.getParameter("sendArrangeName"));
+            sendRangeManager.saveEhSendRange(sendRange);
+//          恩华药业 添加发布范围中间表数据 zhou   end
+
 
             String roleName4Admin = "";
             String roleName4Auditor = "";
