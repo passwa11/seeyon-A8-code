@@ -879,8 +879,8 @@ function changeBoard(key){
       includeElements_spAccount="";
       elements_spAccount="";
       //zhou
-      $("#issueArea").val("");
-      $("#inquiryScope").val("");
+      // $("#issueArea").val("");
+      // $("#inquiryScope").val("");
       $("#inquiryVoteType1").removeAttr("checked");
 	  $("#inquiryVoteType2").attr("checked",true).removeAttr("disabled");
 	  $("#backDoor").show();

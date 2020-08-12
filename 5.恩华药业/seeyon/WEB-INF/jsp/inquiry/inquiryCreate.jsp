@@ -263,7 +263,6 @@
 							<c:set value="${v3x:parseElementsOfTypeAndId(DEPARTMENTissueArea)}" var="org"/>
                             <c:set var="issueAreaName" value="${v3x:showOrgEntitiesOfTypeAndId(DEPARTMENTissueArea, pageContext)}" />
 							<%--集团选人spGroup的panels增加Account可选全集团 --%>
-<%--									zhou--%>
 							<v3x:selectPeople id="spGroup"  originalElements="${org}"
 											  panels="Account,Department,Team,Post,Level,BusinessDepartment" selectType="Member,Department,Account,Post,Level,Team,BusinessAccount,BusinessDepartment"
 											  departmentId="" jsFunction="setPeopleFields(elements)" />
@@ -290,7 +289,7 @@
                                 showAllOuterDepartment_spCustomSpace = true;
                             }
                             </script>
-<%--									zhou--%>
+<%--							恩华药业		zhou--%>
 							<input type="hidden" id="issueArea"
                                 value="${spaceType == '18'||spaceType == '17'||spaceType == '4' ? DEPARTMENTissueArea : range.rangeId}"
                                 name="issueArea"><%-- 选人信息 --%>
@@ -316,11 +315,34 @@
 									</span>
 									<span class="margin_right_span">
 										<label>${ctp:i18n('inquiry.create.inquirytype')}:</label><%--调查版块--%>
-										<select class="step_3_select" id="boardList" name="boardList" onchange="changeBoard();">
+<%--									恩华药业	zhou--%>
+										<select class="step_3_select" id="boardList" name="boardList" onchange="changeBoard(),changSendRang();">
 											<c:forEach items="${customInquiryTypeList}" var="inquiryBoard">
 												<option value="${inquiryBoard.inquirySurveytype.id}" bType="custom" isAuth="${inquiryBoard.inquirySurveytype.censorDesc}" title="${ctp:toHTML(inquiryBoard.inquirySurveytype.typeName)}">${ctp:toHTML(v3x:getLimitLengthString(inquiryBoard.inquirySurveytype.typeName,24,"..."))}</option>
 											</c:forEach>
 										</select>
+										<%--恩华药业                zhou--%>
+								  <script type="text/javascript">
+									  // 恩华药业   zhou
+									  function changSendRang() {
+										  var typeID = $("#boardList option:selected").val();
+										  $.ajax({
+											  url: '/seeyon/ehSendRangeController.do?method=getSendRange',
+											  type: 'POST',
+											  dataType: 'json',
+											  data: {id: typeID+''},
+											  success: function (result) {
+												  if (result.code == 0) {
+													  var range = result.data;
+													  if(range!=null){
+														  $("#issueArea").val(range.rangeId);
+														  $("#inquiryScope").val(range.rangeName);
+													  }
+												  }
+											  }
+										  });
+									  }
+								  </script>
 									</span>
 									<span class="margin_right_span" style="">
 										<label>${ctp:i18n('inquiry.create.startdept')}:</label><%--发起部门--%>
@@ -335,12 +357,14 @@
 								<li>
 									<span class="margin_right_span">
 										<label>${ctp:i18n('inquiry.meta.scope')}:</label><%--发布范围--%>
-<%--										zhou--%>
+<%--									恩华药业	zhou--%>
                                         <c:choose>
                                             <c:when test="${spaceType == '18'||spaceType == '17'||spaceType == '4'}">
-          								      <input id="inquiryScope" name="inquiryScope" type="text" value="${issueAreaName}" onclick="javascript:selectIssueArea('custom');" class="step_3_input" readonly>
+<%--          								      <input id="inquiryScope" name="inquiryScope" type="text" value="${issueAreaName}" onclick="javascript:selectIssueArea('custom');" class="step_3_input" readonly>--%>
+          								      <input id="inquiryScope" name="inquiryScope" type="text" value="${issueAreaName}"  class="step_3_input" readonly>
                                             </c:when>
                                             <c:otherwise>
+<%--												zhou 修改了id --%>
           								      <input id="inquiryScope"  name="inquiryScope" type="text" value="${range.rangeName}" class="step_3_input" readonly>
                                             </c:otherwise>
                                         </c:choose>
