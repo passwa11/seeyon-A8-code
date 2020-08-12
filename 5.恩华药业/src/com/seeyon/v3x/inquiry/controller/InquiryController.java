@@ -11,6 +11,9 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.seeyon.v3x.bulletin.domain.EhSendRange;
+import com.seeyon.v3x.bulletin.manager.EhSendRangeManager;
+import com.seeyon.v3x.bulletin.manager.EhSendRangeManagerImpl;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
@@ -47,14 +50,14 @@ import com.seeyon.v3x.inquiry.domain.InquirySurveytypeextend;
 import com.seeyon.v3x.inquiry.manager.InquiryManager;
 import com.seeyon.v3x.inquiry.vo.SurveyTypeCompose;
 
-@CheckRoleAccess(roleTypes = { Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator }, extendRoles = { "SpaceManager" })
+@CheckRoleAccess(roleTypes = {Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator}, extendRoles = {"SpaceManager"})
 public class InquiryController extends BaseController {
 
-    private InquiryManager     inquiryManager;
-    private OrgManager         orgManager;
-    private AppLogManager      appLogManager;
-    private PortalApi          portalApi;
-    private RoleManager        roleManager;
+    private InquiryManager inquiryManager;
+    private OrgManager orgManager;
+    private AppLogManager appLogManager;
+    private PortalApi portalApi;
+    private RoleManager roleManager;
     private FileToExcelManager fileToExcelManager;
 
     public void setInquiryManager(InquiryManager inquiryManager) {
@@ -101,14 +104,14 @@ public class InquiryController extends BaseController {
             typelist = inquiryManager.getInquiryList(user);// 获取调查类型列表
         }
         typelist = CommonTools.pagenate(typelist);
-        if(Strings.isNotEmpty(typelist)){
-            for(SurveyTypeCompose inquiryType:typelist){
-                if(Strings.isNotEmpty(inquiryType.getManagers())){
+        if (Strings.isNotEmpty(typelist)) {
+            for (SurveyTypeCompose inquiryType : typelist) {
+                if (Strings.isNotEmpty(inquiryType.getManagers())) {
                     String memberIds = "";
-                    for(Long id : inquiryType.getManagers()){
+                    for (Long id : inquiryType.getManagers()) {
                         memberIds += id + ",";
                     }
-                    memberIds = memberIds.substring(0,memberIds.length()-1);
+                    memberIds = memberIds.substring(0, memberIds.length() - 1);
                     inquiryType.setManagerIds(memberIds);
                 }
             }
@@ -153,6 +156,12 @@ public class InquiryController extends BaseController {
             mav.addObject("typeNameList", inquiryManager.getTypeNameList(isGroup, user.getLoginAccount()));//已创建调查类型列表
         }
         return mav;
+    }
+
+    private EhSendRangeManager sendRangeManager = new EhSendRangeManagerImpl();
+
+    public EhSendRangeManager getSendRangeManager() {
+        return sendRangeManager;
     }
 
     public ModelAndView create_Type(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -232,6 +241,17 @@ public class InquiryController extends BaseController {
         surveytype.setAuthType(InquiryConstants.AUTHTYPE_ALL);
         inquiryManager.saveInquiryType(surveytype);// 保存调查类型
 
+//      恩华药业 zhou start
+        EhSendRange ehSendRange = new EhSendRange();
+        ehSendRange.setId(System.currentTimeMillis());
+        ehSendRange.setModuleId(surveytype.getId());
+        String rangeId = request.getParameter("sendArrangeId");
+        String rangeName = request.getParameter("sendArrangeName");
+        ehSendRange.setRangeId(rangeId);
+        ehSendRange.setRangeName(rangeName);
+        sendRangeManager.saveEhSendRange(ehSendRange);
+//      恩华药业 zhou end
+
         //对管理员、审核员设定记录应用日志
         this.saveManagersChangeLog(surveytype, true);
         super.rendJavaScript(response, "parent.parent.location.href=parent.parent.location;");
@@ -247,13 +267,25 @@ public class InquiryController extends BaseController {
     public ModelAndView categoryModify(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String type_id = request.getParameter("id");
         ModelAndView mav = new ModelAndView("inquiry/categoryModify");
+
+//      恩华药业 zhou start
+        Map map = new HashMap();
+        map.put("moduleId", Long.parseLong(type_id));
+        List<EhSendRange> ehSendRangeList = sendRangeManager.findEhSendRangeByCondition(map);
+        if (ehSendRangeList.size() > 0) {
+            mav.addObject("range", ehSendRangeList.get(0));
+        } else {
+            mav.addObject("range", null);
+        }
+//      恩华药业 zhou end
+//
         SurveyTypeCompose surveycompose = Strings.isNotBlank(type_id) ? inquiryManager.getSurveyTypeComposeBYID(Long.parseLong(type_id)) : null;
-        if(Strings.isNotEmpty(surveycompose.getManagers())){
+        if (Strings.isNotEmpty(surveycompose.getManagers())) {
             String memberIds = "";
-            for(Long id : surveycompose.getManagers()){
+            for (Long id : surveycompose.getManagers()) {
                 memberIds += id + ",";
             }
-            memberIds = memberIds.substring(0,memberIds.length()-1);
+            memberIds = memberIds.substring(0, memberIds.length() - 1);
             surveycompose.setManagerIds(memberIds);
         }
         mav.addObject("surveytype", surveycompose);
@@ -326,8 +358,8 @@ public class InquiryController extends BaseController {
     public ModelAndView update_Type(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String type_id = request.getParameter("id");
         InquirySurveytype surveytype = inquiryManager.getSurveyTypeById(Long.parseLong(type_id));
-        String type_name = request.getParameter("typename");// 调查类型名称       
-        String survey_desc = request.getParameter("surveydesc");// 调查类型描述       
+        String type_name = request.getParameter("typename");// 调查类型名称
+        String survey_desc = request.getParameter("surveydesc");// 调查类型描述
         // 评审标记 1:需要评审 0：不需要评审
         String censor_desc = request.getParameter("censordesc");
         // 是否允许匿名投票 0:允许 1：不允许
@@ -385,6 +417,27 @@ public class InquiryController extends BaseController {
         if (Strings.isNotBlank(checker)) {
         }
         inquiryManager.updateInquiryType(surveytype, managerSet);// 保存调查类型
+
+//       恩华药业 zhou start
+        Map map=new HashMap();
+        map.put("moduleId",Long.parseLong(type_id));
+        List<EhSendRange> ehSendRanges=sendRangeManager.findEhSendRangeByCondition(map);
+        String rangeId = request.getParameter("sendArrangeId");
+        String rangeName = request.getParameter("sendArrangeName");
+        if(ehSendRanges.size()>0){
+            EhSendRange ehSendRange=ehSendRanges.get(0);
+            ehSendRange.setRangeId(rangeId);
+            ehSendRange.setRangeName(rangeName);
+            sendRangeManager.updateEhSendRange(ehSendRange);
+        }else{
+            EhSendRange ehSendRange=new EhSendRange();
+            ehSendRange.setId(System.currentTimeMillis());
+            ehSendRange.setModuleId(Long.parseLong(type_id));
+            ehSendRange.setRangeId(rangeId);
+            ehSendRange.setRangeName(rangeName);
+            sendRangeManager.saveEhSendRange(ehSendRange);
+        }
+//       恩华药业 zhou end
 
         //对管理员、审核员设定记录应用日志
         this.saveManagersChangeLog(surveytype, false);
@@ -560,7 +613,7 @@ public class InquiryController extends BaseController {
         return null;
     }
 
-    @CheckRoleAccess(roleTypes = { Role_NAME.NULL })
+    @CheckRoleAccess(roleTypes = {Role_NAME.NULL})
     public ModelAndView showDesignated(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView mav = new ModelAndView("news/user/showDesignated");
         User user = AppContext.getCurrentUser();
@@ -590,9 +643,9 @@ public class InquiryController extends BaseController {
     }
 
     /**
-    * 文化建设统计入口
-    */
-    @CheckRoleAccess(roleTypes = { Role_NAME.NULL })
+     * 文化建设统计入口
+     */
+    @CheckRoleAccess(roleTypes = {Role_NAME.NULL})
     public ModelAndView publishInfoStc(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView mav = new ModelAndView("stc/publishInfoStc");
         int year = DateUtil.getYear();
@@ -619,10 +672,10 @@ public class InquiryController extends BaseController {
     }
 
     /**
-    * 统计导出
-    */
+     * 统计导出
+     */
     @SuppressWarnings("unchecked")
-    @CheckRoleAccess(roleTypes = { Role_NAME.NULL })
+    @CheckRoleAccess(roleTypes = {Role_NAME.NULL})
     public ModelAndView stcExpToXls(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Map<String, Object> param = ParamUtil.getJsonParams();
         DataRecord record = inquiryManager.expStcToXls(param);

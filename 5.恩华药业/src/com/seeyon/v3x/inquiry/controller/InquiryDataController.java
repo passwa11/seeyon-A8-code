@@ -15,6 +15,9 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.seeyon.v3x.bulletin.domain.EhSendRange;
+import com.seeyon.v3x.bulletin.manager.EhSendRangeManager;
+import com.seeyon.v3x.bulletin.manager.EhSendRangeManagerImpl;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.commons.logging.Log;
@@ -97,11 +100,11 @@ public class InquiryDataController extends BaseController{
     private ChartRender         chartRender;
     private  ShowApi			showApi;
     private ETagCacheManager    eTagCacheManager;
-    
+
     public void seteTagCacheManager(ETagCacheManager eTagCacheManager) {
         this.eTagCacheManager = eTagCacheManager;
     }
-    	
+
 	public void setShowApi(ShowApi showApi) {
 		this.showApi = showApi;
 	}
@@ -178,10 +181,10 @@ public class InquiryDataController extends BaseController{
 	    int spaceType = NumberUtils.toInt(request.getParameter("spaceType"));
         Long spaceId = NumberUtils.toLong(request.getParameter("spaceId"));
     	ModelAndView mav = new ModelAndView("inquiry/inquiryIndex");
-        
+
         String accountName = orgManager.getAccountById(AppContext.getCurrentUser().getLoginAccount()).getShortName();
         String groupName = orgManager.getRootAccount().getShortName();
-        
+
         mav.addObject("accountName", accountName);
         mav.addObject("groupName", groupName);
         //授权范围  自定义空间使用权限
@@ -197,14 +200,14 @@ public class InquiryDataController extends BaseController{
             mav.addObject("entity", entity);
         }
         mav = inquiryMavData(mav,"index",null,spaceType, spaceId);
-        
+
         /**秀吧最热列表*/
         if(AppContext.hasResourceCode("F05_show")){
         	List<ShowbarInfoBO> showbarHotList = showApi.findShowbarHotList(5);
         	mav.addObject("showbarHotList", showbarHotList);
         }
-        
-        
+
+
         return mav;
     }
 
@@ -219,17 +222,17 @@ public class InquiryDataController extends BaseController{
     	ModelAndView mav = new ModelAndView("inquiry/inquiryBoardIndex");
     	String manageMode = request.getParameter("manageMode");
     	String boardType = request.getParameter("boardType");
-    	
+
     	int spaceType = NumberUtils.toInt(request.getParameter("spaceType"));
         Long spaceId = NumberUtils.toLong(request.getParameter("spaceId"));
-    	
+
         List<SurveyTypeCompose> inquiryTypeList = new ArrayList<SurveyTypeCompose>(); // 调查类型列表
         List<SurveyTypeCompose> groupInquiryTypeList = null; // 调查类型列表
         List<SurveyTypeCompose> accountInquiryTypeList = null; // 调查类型列表
         List<SurveyTypeCompose> customInquiryTypeList = null; // 自定义团队 调查类型列表
         User user = AppContext.getCurrentUser();
         Long inquiryBoardId = Long.parseLong(request.getParameter("boardId"));
-        
+
         String accountName = orgManager.getAccountById(AppContext.getCurrentUser().getLoginAccount()).getShortName();
         String groupName = orgManager.getRootAccount().getShortName();
         boolean hasIssue = false;
@@ -259,7 +262,7 @@ public class InquiryDataController extends BaseController{
         }
         List<Long> typeIdsList = new ArrayList<Long>();
         typeIdsList.add(inquiryBoardId);
-        
+
         List<Long> typeIdsList1 = new ArrayList<Long>();
         for (SurveyTypeCompose type : inquiryTypeList) {
         	typeIdsList1.add(type.getInquirySurveytype().getId());
@@ -298,7 +301,7 @@ public class InquiryDataController extends BaseController{
         			manageNum++;
         		}
         	}
-            
+
         }
         if("account".equals(boardType)){
         	for(SurveyTypeCompose s: accountInquiryTypeList){
@@ -314,7 +317,7 @@ public class InquiryDataController extends BaseController{
                 }
             }
         }
-        
+
         mav.addObject("accountName", accountName);
         mav.addObject("groupName", groupName);
         mav.addObject("typeList", inquiryTypeList);
@@ -340,8 +343,8 @@ public class InquiryDataController extends BaseController{
 
     /**
      * 板块授权设置
-     * @throws Exception 
-     * 
+     * @throws Exception
+     *
      * */
     public ModelAndView inquiryTypeAuthSet(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView mav = new ModelAndView("inquiry/inquiryTypeAuthSet");
@@ -371,7 +374,7 @@ public class InquiryDataController extends BaseController{
         if (Strings.isNotBlank(auList)) {
             auListEntity = orgManager.getEntities(auList.substring(0, auList.length() - 1));
         }
-        
+
         if (Strings.isNotBlank(spaceId)) {
             List<Object[]> entityObj = portalApi.getSecuityOfSpace(Long.parseLong(spaceId));
             String entity = "";
@@ -382,8 +385,8 @@ public class InquiryDataController extends BaseController{
                 entity = entity.substring(0, entity.length() - 1);
             }
             mav.addObject("entity", entity);
-        } 
-        
+        }
+
         mav.addObject("auListEntity", auListEntity);
         return mav;
     }
@@ -393,7 +396,7 @@ public class InquiryDataController extends BaseController{
      * @param request
      * @param response
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
     public ModelAndView modifyTypeAauth(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String surveytype_id = request.getParameter("typeId");
@@ -461,14 +464,14 @@ public class InquiryDataController extends BaseController{
             }
         }
 
-        
-        
+
+
         return super.refreshWindow("parent");
     }
 
     /**
      * 根据可操作列表展示
-     * 
+     *
      * */
     public ModelAndView listType(HttpServletRequest request, HttpServletResponse response) throws Exception {
     	ModelAndView mav = new ModelAndView("inquiry/inquiryMove");
@@ -509,7 +512,7 @@ public class InquiryDataController extends BaseController{
         Collections.sort(typeList, comp);
         mav.addObject("typeList", typeList);
         mav.addObject("ids", ids);
-        
+
         return mav;
     }
     /**
@@ -551,7 +554,7 @@ public class InquiryDataController extends BaseController{
      * @param mav
      * @param pageType 页面类型—— index调查首页 boardIndex版块首页 iStart我发起的 iAuth我调查的
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
     private ModelAndView inquiryMavData(ModelAndView mav,String pageType,Long boardId, int spaceType, Long spaceId) throws Exception{
     	List<SurveyTypeCompose> inquiryTypeList = new ArrayList<SurveyTypeCompose>(); // 调查类型列表
@@ -603,7 +606,7 @@ public class InquiryDataController extends BaseController{
             }
         }
 
-        
+
         //1.我能查看的所有调查的数量，其中我能填写的调查数量-所有版块
         //mav.addObject("basicSize", totalSize);
         //mav.addObject("allSize", totalSize);
@@ -637,6 +640,12 @@ public class InquiryDataController extends BaseController{
      * @return
      * @throws Exception
      */
+    private EhSendRangeManager sendRangeManager=new EhSendRangeManagerImpl();
+
+    public EhSendRangeManager getSendRangeManager() {
+        return sendRangeManager;
+    }
+
     public ModelAndView inquiryCreate(HttpServletRequest request, HttpServletResponse response) throws Exception{
     	ModelAndView mav = new ModelAndView("inquiry/inquiryCreate");
     	String inquiryId = request.getParameter("inquiryId");
@@ -648,6 +657,16 @@ public class InquiryDataController extends BaseController{
         mav.addObject("spaceId",spaceId);
     	InquirySurveybasic inquiry = new InquirySurveybasic();
 
+//    	恩华药业 zhou  start
+        Map map=new HashMap();
+        map.put("moduleId",Long.parseLong(typeId));
+        List<EhSendRange> ehSendRanges=sendRangeManager.findEhSendRangeByCondition(map);
+        if(ehSendRanges.size()>0){
+            mav.addObject("range",ehSendRanges.get(0));
+        }else{
+            mav.addObject("range",null);
+        }
+//    	恩华药业 zhou  end
     	if(inquiryId!=null){
     		inquiry.setId(Long.parseLong(inquiryId));
             SurveyBasicCompose temp = inquiryManager.getInquiryBasic(inquiryId);
@@ -680,14 +699,14 @@ public class InquiryDataController extends BaseController{
     		InquirySurveytype inquiryType = inquiryManager.getSurveyTypeById(Long.parseLong(typeId));
     		mav.addObject("inquiryTypeId",typeId);
     		mav.addObject("inquiryTypeOf",inquiryType.getSpaceType());
-    	}    	
+    	}
     	//版块信息
     	List<SurveyTypeCompose> groupInquiryTypeList = null; // 调查类型列表
         List<SurveyTypeCompose> accountInquiryTypeList = null; // 调查类型列表
         List<SurveyTypeCompose> customInquiryTypeList = null; // 调查类型列表
         if (spaceType == SpaceType.public_custom.ordinal()) {// 自定义单位版块
             accountInquiryTypeList = inquiryManager.getUserIndexInquiryList(spaceId, spaceType, false);
-            
+
             StringBuilder publisthScopeSpace = new StringBuilder();
             List<Object[]> issueAreas = portalApi.getSecuityOfSpace(spaceId);
             for(Object[] arr : issueAreas) {
@@ -697,7 +716,7 @@ public class InquiryDataController extends BaseController{
             mav.addObject("DEPARTMENTissueArea", publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1));
         }else if(spaceType == SpaceType.public_custom_group.ordinal()){// 自定义集团版块
             groupInquiryTypeList = inquiryManager.getUserIndexInquiryList(spaceId, spaceType, false);
-            
+
             StringBuilder publisthScopeSpace = new StringBuilder();
             List<Object[]> issueAreas = portalApi.getSecuityOfSpace(spaceId);
             for(Object[] arr : issueAreas) {
@@ -707,7 +726,7 @@ public class InquiryDataController extends BaseController{
             mav.addObject("DEPARTMENTissueArea", publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1));
         }else if(spaceType == SpaceType.custom.ordinal()){// 自定义团队版块直接进入版块首页
             customInquiryTypeList = inquiryManager.getUserIndexInquiryList(spaceId, spaceType, false);
-            
+
             StringBuilder publisthScopeSpace = new StringBuilder();
             List<Object[]> issueAreas = portalApi.getSecuityOfSpace(spaceId);
             for(Object[] arr : issueAreas) {
@@ -733,7 +752,7 @@ public class InquiryDataController extends BaseController{
         List<SurveyTypeCompose> groupTypeList = new ArrayList<SurveyTypeCompose>(); // 调查类型列表
         List<SurveyTypeCompose> accountTypeList =new ArrayList<SurveyTypeCompose>(); // 调查类型列表
         List<SurveyTypeCompose> customTypeList =new ArrayList<SurveyTypeCompose>(); // 调查类型列表
-        
+
         if(groupInquiryTypeList!=null){
         	groupInquiryTypeList = inquiryManager.complateMangerRelation(groupInquiryTypeList);
         	for (SurveyTypeCompose bt : groupInquiryTypeList) {
@@ -758,7 +777,7 @@ public class InquiryDataController extends BaseController{
                 }
             }
         }
-        
+
         User member = AppContext.getCurrentUser();
         V3xOrgDepartment department=new V3xOrgDepartment();
         // 登录人员在兼职单位
@@ -772,7 +791,7 @@ public class InquiryDataController extends BaseController{
             // 如果没有兼职信息，设置发布部门为当前用户登录单位所在的部门
             long departmentid = member.getDepartmentId(); // 当前用户的部门ID
             department = this.orgManager.getEntityById(V3xOrgDepartment.class, departmentid); // 获取发布部门
-        }    	
+        }
         //定位初始在第一步
     	mav.addObject("step","1");
     	mav.addObject("isEdit",request.getParameter("isEdit"));
@@ -916,10 +935,10 @@ public class InquiryDataController extends BaseController{
                 }
                 return null;
             }
-            
+
             //更新消息状态
             userMessageManager.updateSystemMessageStateByUserAndReference(userId, inquiry.getId());
-            
+
             Map<String,String> inquiryInfo = new HashMap<String,String>();
             List<InquiryScope> scopeList = inquiryManager.getAllScopeForInquiry(inquiry.getId());
 
@@ -1050,7 +1069,7 @@ public class InquiryDataController extends BaseController{
 	    	senderInfo.put("senderId", senderId);
 	    	senderInfo.put("senderName", senderName);
 	    	senderInfo.put("senderImgUrl", senderImgUrl);
-	    	
+
 	    	inquiryInfo.put("startDeptId", inquiry.getDepartmentId().toString());
 	    	inquiryInfo.put("startDeptName", inquiry.getDepartmentName());
 	    	inquiryInfo.put("inquiryScope", scope_range.substring(0, scope_range.length() - 1));

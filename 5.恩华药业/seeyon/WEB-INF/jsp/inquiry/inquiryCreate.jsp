@@ -263,6 +263,7 @@
 							<c:set value="${v3x:parseElementsOfTypeAndId(DEPARTMENTissueArea)}" var="org"/>
                             <c:set var="issueAreaName" value="${v3x:showOrgEntitiesOfTypeAndId(DEPARTMENTissueArea, pageContext)}" />
 							<%--集团选人spGroup的panels增加Account可选全集团 --%>
+<%--									zhou--%>
 							<v3x:selectPeople id="spGroup"  originalElements="${org}"
 											  panels="Account,Department,Team,Post,Level,BusinessDepartment" selectType="Member,Department,Account,Post,Level,Team,BusinessAccount,BusinessDepartment"
 											  departmentId="" jsFunction="setPeopleFields(elements)" />
@@ -276,7 +277,7 @@
                                includeElements_spCustomSpace = "${v3x:parseElementsOfTypeAndId(entity)}";
                               //-->
                             </script>
-                            <v3x:selectPeople id="spCustomSpace" 
+                            <v3x:selectPeople id="spCustomSpace"
                                               originalElements="${org}"
                                               panels="Department,Team,Post,Level,Outworker"
                                               selectType="Member,Department,Account,Post,Level,Team"
@@ -289,8 +290,9 @@
                                 showAllOuterDepartment_spCustomSpace = true;
                             }
                             </script>
+<%--									zhou--%>
 							<input type="hidden" id="issueArea"
-                                value="${spaceType == '18'||spaceType == '17'||spaceType == '4' ? DEPARTMENTissueArea : ''}"
+                                value="${spaceType == '18'||spaceType == '17'||spaceType == '4' ? DEPARTMENTissueArea : range.rangeId}"
                                 name="issueArea"><%-- 选人信息 --%>
 							<ul>
 								<li>
@@ -333,12 +335,13 @@
 								<li>
 									<span class="margin_right_span">
 										<label>${ctp:i18n('inquiry.meta.scope')}:</label><%--发布范围--%>
+<%--										zhou--%>
                                         <c:choose>
                                             <c:when test="${spaceType == '18'||spaceType == '17'||spaceType == '4'}">
           								      <input id="inquiryScope" name="inquiryScope" type="text" value="${issueAreaName}" onclick="javascript:selectIssueArea('custom');" class="step_3_input" readonly>
                                             </c:when>
                                             <c:otherwise>
-          								      <input id="inquiryScope"  name="inquiryScope" type="text" class="step_3_input" readonly>
+          								      <input id="inquiryScope"  name="inquiryScope" type="text" value="${range.rangeName}" class="step_3_input" readonly>
                                             </c:otherwise>
                                         </c:choose>
 									</span>

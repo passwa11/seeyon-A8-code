@@ -9,19 +9,19 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/portal/management/css/iconfont.css${v3x:resSuffix()}" />">
 <script type="text/javascript">
    var nameList = new Array();
-   
+
    <c:forEach var="tname" items="${typeNameList}">
          nameList.push("${v3x:escapeJavascript(tname)}");//初始化调查类型名称列表
    </c:forEach>
-   
+
    var onlyLoginAccount_per = false;
    var onlyLoginAccount_second = false;
-   
+
    <c:if test="${!isGroup&&spaceType!=18&&spaceType!=17}">
     onlyLoginAccount_per = true;
     onlyLoginAccount_second =true;
 </c:if>
-   
+
    //判断当前调查类型名称是否存在
    function isSameName(){
        var theNewName = document.getElementById("typename");
@@ -42,7 +42,7 @@
 	   }
 	   return true;
   }
-   
+
   function disableSub(){
 	document.getElementById("submit").disabled = true;
 	return true;
@@ -50,7 +50,7 @@
   function getList(){
       parent.parent.document.location.reload();
   }
-  
+
   function selectChecker(){
   	if("${hasNoCheck}"=='true'){
   		alert(v3x.getMessage("InquiryLang.inquiry_has_noCheck"));
@@ -100,11 +100,18 @@ var includeElements_second = "${v3x:parseElementsOfTypeAndId(entity)}";
 <input type="hidden" name="oldCheckerId" value="${oldCheckerId}" />
 <c:set var="ro" value="${v3x:outConditionExpression(readOnly, 'readonly', '')}" />
 <c:set var="dis" value="${v3x:outConditionExpression(readOnly, 'disabled', '')}" />
-
+    <%--恩华药业:start--%>
+    <c:set value="${v3x:parseElementsOfTypeAndId(DEPARTMENTissueArea)}" var="org"/>
+    <c:set var="issueAreaName" value="${v3x:showOrgEntitiesOfTypeAndId(DEPARTMENTissueArea, pageContext)}"/>
+    <v3x:selectPeople id="spGroup" originalElements="${v3x:escapeJavascript(org)}"
+                      panels="Account,Department,Team,Post,Level,JoinOrganization,JoinAccountTag,JoinPost,Guest,BusinessDepartment"
+                      selectType="Member,Department,Account,Post,Level,Team,JoinAccountTag,Guest,BusinessAccount,BusinessDepartment"
+                      departmentId="" jsFunction="setIssueAreaPeopleFields(elements)"/>
+    <%--恩华药业:end--%>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" align="center" class="">
     <tr>
         <td>
-           
+
             <div id="docLibBody">
 
                 <table width="600px" cellpadding="2" cellspacing="0" border="0" align="center">
@@ -126,6 +133,36 @@ var includeElements_second = "${v3x:parseElementsOfTypeAndId(entity)}";
                             <input type="hidden" id="peopleId" name="peopleId" value="${v3x:joinWithSpecialSeparator(surveytype.managers, 'id', ',')}">
                         </td>
                     </tr>
+                    <%--恩华药业  发送范围  zhou--%>
+                    <tr>
+                        <td class="bg-gray" width="25%" nowrap>
+                            发布范围:
+                        </td>
+                        <td class="new-column" width="75%">
+                            <input type="hidden" id="issueArea" name="sendArrangeId" value="<c:out value="${range.rangeId}" /> ">
+                            <input type="text" readonly="true" id="issueAreaName" name="sendArrangeName" deaultValue="${defScope}" class="cursor-hand input-250px"
+                                   value="<c:out value="${range.rangeName}" escapeXml="true" default="${defScope}" />"
+                                   onclick="selectIssueArea()"
+                                   <c:if test="${param.isDetail=='readOnly' }">disabled</c:if> placeholder="<点击选择发布范围>"/>
+                        </td>
+                    </tr>
+                    <script type="text/javascript">
+                        //恩华药业 zhou Start
+                        function selectIssueArea() {
+                            selectPeopleFun_spGroup();
+                        }
+                        function setIssueAreaPeopleFields(elements) {
+                            if (!elements) {
+                                return;
+                            }
+                            document.getElementById("issueArea").value = getIdsString(elements);
+                            document.getElementById("issueAreaName").value = getNamesString(elements);
+                            hasIssueArea = true;
+                        }
+                        //恩华药业 zhou end
+                    </script>
+                    <%--恩华药业 zhou 添加发布范围 end--%>
+
                     <tr>
                         <td align="right" class="bg-gray"><fmt:message key='inquiry.audit.label' />:</td>
                         <td>
@@ -143,13 +180,13 @@ var includeElements_second = "${v3x:parseElementsOfTypeAndId(entity)}";
                         <i class="iconfont1 icon-help" style="margin: 5px;font-size: 14px;color:#ff3544;position: relative" title="<fmt:message key='inquiry.manager.help.audit' bundle='${v3xCommonI18N}' />"></i>
                         </td>
                     </tr>
-          
+
                     <tr id="selectpersonTag" style="display:${ surveytype.inquirySurveytype.censorDesc==0 ? '' : 'none'}">
                         <td align="right" class="bg-gray">
                             <fmt:message key='inquiry.auditor.label' />:
                         </td>
                         <fmt:message key="common.default.selectPeople.value"  bundle="${v3xCommonI18N}" var="dfSubject"/>
-                        <td>                    
+                        <td>
                             <c:set value="${valid=='true' ? v3x:showMemberName(surveytype.checker.id) : dfSubject}" var="auditorName" />
                             <input ${dis} type="text" id="peopleValueSecond" value="<c:out value='${auditorName}' default='${dfSubject}'/>"  deaultValue="${dfSubject}"
                             inputName="<fmt:message key='inquiry.auditor.label' />" name="peopleValueSecond"
@@ -179,15 +216,15 @@ var includeElements_second = "${v3x:parseElementsOfTypeAndId(entity)}";
                 </table>
 
             </div>
-           
-           
+
+
         </td>
     </tr>
     <c:if test="${update=='update'}">
     <c:if test="${!readOnly}">
     <tr>
         <td height="50" align="center" class="bg-advance-bottom button_container">
-                
+
 			<input type="hidden" value="${surveytype.inquirySurveytype.id}" name="id">
 			<input type="hidden" value="${v3x:toHTML(surveytype.inquirySurveytype.typeName)}" id="theOldName"/>
 			<input type="submit" id="submit" value="<fmt:message key='common.button.ok.label' bundle='${v3xCommonI18N}' />" name="B1" class="button-default-2 button-default_emphasize">&nbsp;&nbsp;
