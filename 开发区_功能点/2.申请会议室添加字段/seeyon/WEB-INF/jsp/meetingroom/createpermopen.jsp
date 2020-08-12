@@ -192,7 +192,15 @@
 					</div>
 				</td>
 			</tr>
-
+<%--            zhou--%>
+            <tr>
+                <td width="12%" nowrap="nowrap" class="bg-gray">参会领导:</td>
+                <c:set var="isProxy" value="${proxy?'proxy-true':'' }"/>
+                <td width="82%" nowrap="nowrap" class="new-column ${isProxy }" colspan="3">
+                    <input type="hidden" name="ldid" inputName="参会领导" class="input-300px" value="${bean.meetingRoomApp.ldid}" />
+                    <input type="text" name="ldname" inputName="参会领导" style="width:100%;" value="${bean.meetingRoomApp.ldname}" readonly/>
+                </td>
+            </tr>
             <c:choose>
                 <c:when test="${periodicityRoomAppList!=null && fn:length(periodicityRoomAppList)>0 }">
                     <tr>

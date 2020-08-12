@@ -162,6 +162,7 @@
                     <input type="text" name="asset_name" inputName="<fmt:message key='mr.label.appDept'/>" class="input-300px" value="${v3x:toHTML(departmentName) }" readonly/>
                 </td>
             </tr>
+<%--            zhou--%>
             <tr>
                 <td width="12%" nowrap="nowrap" class="bg-gray">申请人电话:</td>
                 <c:set var="isProxy" value="${proxy?'proxy-true':'' }"/>
@@ -176,6 +177,15 @@
                         <label for="radio22" class="margin_r_10 hand">
                             <input type="radio" value="0" id="radio22" name="sfygwhldcj" class="radio_com" ${bean.meetingRoomApp.sfygwhldcj==0?'checked':''} disabled>否</label>
                     </div>
+                </td>
+            </tr>
+<%--            zhou--%>
+            <tr>
+                <td width="12%" nowrap="nowrap" class="bg-gray">参会领导:</td>
+                <c:set var="isProxy" value="${proxy?'proxy-true':'' }"/>
+                <td width="82%" nowrap="nowrap" class="new-column ${isProxy }" colspan="3">
+                    <input type="hidden" name="ldid" inputName="参会领导" class="input-300px" value="${bean.meetingRoomApp.ldid}" />
+                    <input type="text" name="ldname" inputName="参会领导" style="width:100%;" value="${bean.meetingRoomApp.ldname}" readonly/>
                 </td>
             </tr>
             <tr>
