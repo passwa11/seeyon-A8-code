@@ -185,7 +185,7 @@ public class BulTypeController extends BaseController {
         if(sendRanges.size()>0){
             mav.addObject("range", sendRanges.get(0));
         }else {
-            mav.addObject("range","");
+            mav.addObject("range",null);
         }
 //		恩华药业 zhou end
         mav.addObject("readOnly", "readOnly".equals(request.getParameter("isDetail")));
