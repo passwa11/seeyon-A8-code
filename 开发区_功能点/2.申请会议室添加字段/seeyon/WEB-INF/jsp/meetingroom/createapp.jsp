@@ -362,8 +362,7 @@
                                     <td nowrap="nowrap" class="new-column">
                                         <input type="hidden" id="ldid" name="ldid" value=""/>
                                         <input type="text" id="ldname" name="ldname" onclick="selectLeader()" class="input-100per"
-                                               inputName="<fmt:message key="mr.label.appDept"/>" deaultValue="<<fmt:message key="mr.alert.clickToSelectDept"/>>" validate="notNull,isDeaultValue"
-                                               value="${v3x:toHTML(v3xOrgDepartment.name)}" />
+                                               inputName="参会领导" deaultValue="<请选择参会领导>" value="" />
                                     </td>
                                 </tr>
 
