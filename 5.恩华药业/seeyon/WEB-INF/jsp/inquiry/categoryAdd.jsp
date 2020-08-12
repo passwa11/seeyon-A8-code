@@ -117,31 +117,6 @@ var includeElements_second = "${v3x:parseElementsOfTypeAndId(entity)}";
                         onblur="checkDefSubject(this, false)" readonly> <input
                         type="hidden" id="peopleId" name="peopleId"></td>
                 </tr>
-                <tr>
-                    <td class="bg-gray" align="right"><fmt:message key='inquiry.audit.label' />:</td>
-                    <td class="new-column">
-                    <label for="censordesc1">
-                        <input type="radio" ${ isGroup ? 'checked' : '' } value="0" id="censordesc1" name="censordesc"
-                        onclick="selectPersonA()"><fmt:message key='common.true'
-                        bundle='${v3xCommonI18N}' /></label>
-                        <label for="censordesc2">
-                        <input type="radio" value="1" id="censordesc2"
-                        name="censordesc" ${ isGroup ? '' : 'checked' } onclick="selectPersonB()"><fmt:message
-                        key='common.false' bundle='${v3xCommonI18N}' /></label>
-                    </td>
-                </tr>
-
-                <tr class="bg-gray" id="selectpersonTag" style="display:${ isGroup ? '' : 'none' }">
-                    <td align="right"><fmt:message key='inquiry.auditor.label' />: </td>
-                    <td class="new-column"><input type="text" id="peopleValueSecond"
-                        onfocus='checkSubject(this, true)'
-                        onblur="checkSubject(this, false)" deaultvalue="${dfSubject}"
-                        value="${dfSubject}"
-                        inputName="<fmt:message key='inquiry.auditor.label' />" name="T6"
-                        readonly size="20" onclick="selectPeopleFun_second()"
-                        class="input-300px cursor-hand">
-                        <input type="hidden" value="" id="peopleIdSecond" name="peopleIdSecond"></td>
-                </tr>
 
                 <%--恩华药业  发送范围  zhou--%>
                 <tr>
@@ -172,6 +147,33 @@ var includeElements_second = "${v3x:parseElementsOfTypeAndId(entity)}";
                     //恩华药业 zhou end
                 </script>
                 <%--恩华药业 zhou 添加发布范围 end--%>
+                <tr>
+                    <td class="bg-gray" align="right"><fmt:message key='inquiry.audit.label' />:</td>
+                    <td class="new-column">
+                    <label for="censordesc1">
+                        <input type="radio" ${ isGroup ? 'checked' : '' } value="0" id="censordesc1" name="censordesc"
+                        onclick="selectPersonA()"><fmt:message key='common.true'
+                        bundle='${v3xCommonI18N}' /></label>
+                        <label for="censordesc2">
+                        <input type="radio" value="1" id="censordesc2"
+                        name="censordesc" ${ isGroup ? '' : 'checked' } onclick="selectPersonB()"><fmt:message
+                        key='common.false' bundle='${v3xCommonI18N}' /></label>
+                    </td>
+                </tr>
+
+                <tr class="bg-gray" id="selectpersonTag" style="display:${ isGroup ? '' : 'none' }">
+                    <td align="right"><fmt:message key='inquiry.auditor.label' />: </td>
+                    <td class="new-column"><input type="text" id="peopleValueSecond"
+                        onfocus='checkSubject(this, true)'
+                        onblur="checkSubject(this, false)" deaultvalue="${dfSubject}"
+                        value="${dfSubject}"
+                        inputName="<fmt:message key='inquiry.auditor.label' />" name="T6"
+                        readonly size="20" onclick="selectPeopleFun_second()"
+                        class="input-300px cursor-hand">
+                        <input type="hidden" value="" id="peopleIdSecond" name="peopleIdSecond"></td>
+                </tr>
+
+
 
                 <tr>
                     <td class="bg-gray" align="right"><fmt:message key="inquiry.allow.anonymous.vote"/>:</td>
