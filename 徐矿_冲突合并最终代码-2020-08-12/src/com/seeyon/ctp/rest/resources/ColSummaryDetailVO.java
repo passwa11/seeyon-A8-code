@@ -30,103 +30,103 @@ public class ColSummaryDetailVO {
 
     /* 协同 ID */
     private Long id = null;
-    
+
     /* 标题 */
     private String subject = null;
-    
+
     /* 发起人名称 */
     private String startMemberName = null;
-    
+
     /* 创建时间 */
     private String createDate = null;
-    
+
     /* 重要程度 */
     private Integer importantLevel = null;
-    
+
     /* 附件 */
     private List<Attachment> attachments = null;
-    
+
     /* affair状态 */
     private Integer affairState = null;
-    
+
     /* affair二级状态 */
     private Integer affairSubState = null;
-    
+
     /* 跟踪状态 */
     private Integer affairTrack = null;
-    
+
     /*流程的Workitem Id*/
     private Long affairWorkitemId = null;
-    
+
     /*affair Id*/
     private Long affairId = null;
 
     /*流程ID*/
     private String processId = null;
-    
+
     /*流程实例ID*/
     private Long caseId = null;
-    
+
     /*当前节点id*/
     private Long activityId = null;
-    
+
     /* 是否结束 */
     private boolean finished = false;
-    
+
     /*状态*/
     private Integer state = null;
-    
+
     /*模板流程id*/
     private Long templateProcessId = null;
-    
+
     /*发起人id*/
     private Long startMemberId = null;
-    
+
     /** 数据关联DR **/
     private String dr = null;
-    
+
     /** 表单ID **/
     private Long formAppid = null;
-    
+
     /** 表单操作权限ID **/
     private String formViewOperation = null;
-    
+
     /** 父表单参数 **/
     private Long formParentid = null;
-    
+
     /* 表单主表ID */
     private Long formRecordId = null;
-    
+
     private Long formAppId = null;
-    
+
     private String rightId = null;
-    
+
     private String nodePolicy = null;
-    
+
     private Boolean affairReadOnly = Boolean.FALSE;
-    
+
     /*模板ID*/
     private Long templateId = null;
-    
+
     /*正文类型*/
     private String bodyType = "10";//默认为HTML
-    
+
     private boolean isSystemTemplate = false;
-    
+
     private Long accountId;
-    
+
     private String  processDeadLineName;  //流程期限
-    
-    private Integer newflowType;//新流程类型 
-    
+
+    private Integer newflowType;//新流程类型
+
     private Integer processTermType;
-    
+
     private Long remindInterval;
-    
+
     private String mergeDealType;
-    
+
     private boolean isProcessTemplate = false; //是否为有流程的模板
-    
+
     public Integer getProcessTermType() {
 		return processTermType;
 	}
@@ -136,56 +136,65 @@ public class ColSummaryDetailVO {
 	}
 
 	private String canForward = "1";
-    
+
     private String canModify = "1";
-    
+
     private String canEdit = "1";
-    
+
     private boolean affairIsDelete;
-    
-    
-    
+
+
+
     private String canEditAttachment = "1";
-    
+
     private String canArchive = "1";
-    
+
     private String canMergeDeal = "0";
-    
+
     private String canAnyMerge = "0";
-    
+
     private String canScanCode = "0";
-    
+
     private String canSetSupervise = "1";
-    
+
     private Long projectId;
-    
+
     private Long archiveId;
-    
+
     private Long advanceRemind;
-    
+
     private Long deadline;
-    
+
     private String deadlineDatetime;
-    
+
     private String advancePigeonhole;
-    
+
     private String archiveName;
-    
+
     private String archiveAllName;
-    
+
     private String listType;
     private Boolean isCanComment;
-    
+
     private boolean canPraise = true;
-    
+
     private Long attachmentArchiveId;
-    
+
     private String hasFavorite;
-    
+
     /** 是否在指定回退状态 **/
     private boolean specialStepback = false;
 
     private boolean hasWorkFlowAdvance = false;
+    private boolean shield;
+
+    public boolean isShield() {
+        return shield;
+    }
+
+    public void setShield(boolean shield) {
+        this.shield = shield;
+    }
 
     public boolean isHasWorkFlowAdvance() {
         return hasWorkFlowAdvance;
@@ -224,7 +233,7 @@ public class ColSummaryDetailVO {
 		this.deadlineDatetime = deadlineDatetime;
 	}
 
-	
+
     public String getArchiveAllName() {
 		return archiveAllName;
 	}
@@ -386,9 +395,9 @@ public class ColSummaryDetailVO {
 
 
 	public static ColSummaryDetailVO valueOf(ColSummary summary){
-        
+
         ColSummaryDetailVO vo = new ColSummaryDetailVO();
-        
+
         vo.setId(summary.getId());
         vo.setSubject(ColUtil.showSubjectOfSummary(summary, false, -1, null).replaceAll("\r\n", "").replaceAll("\n", ""));
         vo.setStartMemberName(Functions.showMemberNameOnly(summary.getStartMemberId()));
@@ -415,59 +424,59 @@ public class ColSummaryDetailVO {
         vo.setFormAppId(summary.getFormAppid());
         return vo;
     }
-    
-    
+
+
     public void setImportantLevel(Integer importantLevel) {
         this.importantLevel = importantLevel;
     }
-    
+
     public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
-    
+
     public void setStartMemberName(String startMemberName) {
         this.startMemberName = startMemberName;
     }
-    
+
     public void setSubject(String subject) {
         this.subject = subject;
     }
-    
+
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     /* 协同ID */
     public Long getId(){
         return id;
     }
-    
+
     /* 协同标题 */
     public String getSubject(){
         return subject;
     }
-    
+
     /* 发起人名称 */
     public String getStartMemberName(){
         return startMemberName;
     }
-    
+
     /* 创建时间 */
     public String getCreateDate(){
         return createDate;
     }
-    
+
     /* 重要程度 */
     public Integer getImportantLevel(){
         return importantLevel;
     }
-    
-    
+
+
     /* 附件  */
     public List<Attachment> getAttachments(){
         return this.attachments;
     }
-    
+
     /* 附件数量 */
     public int getAttachmentCount(){
         int ret = 0;
@@ -476,12 +485,12 @@ public class ColSummaryDetailVO {
         }
         return ret;
     }
-    
+
     /** 获取实体附件数量  **/
     public int getFileAttachmentCount(){
-        
+
         int ret = 0;
-        
+
         if(Strings.isNotEmpty(this.attachments)){
             for(Attachment a : this.attachments){
               //添加附件到对象中，附件的type为0，关联文档的type为2（不显示关联文档在附件列表中）
@@ -490,17 +499,17 @@ public class ColSummaryDetailVO {
                 }
             }
         }
-        
+
         return ret;
     }
-    
+
     /** 获取关联文档附件数量  **/
     public int getAssAttachmentCount(){
-        
+
         return getAttachmentCount() - getFileAttachmentCount();
     }
-    
-    
+
+
     public void setAttachments(List<Attachment> attachments) {
         this.attachments = attachments;
     }
@@ -830,5 +839,5 @@ public class ColSummaryDetailVO {
 		this.isProcessTemplate = isProcessTemplate;
 	}
 
-	
+
 }
