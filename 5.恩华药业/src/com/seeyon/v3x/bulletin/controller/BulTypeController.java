@@ -346,9 +346,14 @@ public class BulTypeController extends BaseController {
                 Map map=new HashMap();
                 map.put("moduleId",Long.parseLong(idStr));
                 List<EhSendRange> list=sendRangeManager.findEhSendRangeByCondition(map);
-                EhSendRange ehSendRange=list.get(0);
-                sendRange.setId(ehSendRange.getId());
-                sendRangeManager.updateEhSendRange(sendRange);
+                if(list.size()>0){
+                    EhSendRange ehSendRange=list.get(0);
+                    sendRange.setId(ehSendRange.getId());
+                    sendRangeManager.updateEhSendRange(sendRange);
+                }else {
+                    sendRange.setId(System.currentTimeMillis());
+                    sendRangeManager.saveEhSendRange(sendRange);
+                }
             }else {
                 sendRange.setId(System.currentTimeMillis());
                 sendRangeManager.saveEhSendRange(sendRange);
