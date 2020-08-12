@@ -107,6 +107,8 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
         }
 
         roomApp.setHcyq(null == appVo.getParameterMap().get("hcyq") ? "" : appVo.getParameterMap().get("hcyq"));
+        roomApp.setLdid(null == appVo.getParameterMap().get("ldid") ? "" : appVo.getParameterMap().get("ldid"));
+        roomApp.setLdname(null == appVo.getParameterMap().get("ldname") ? "" : appVo.getParameterMap().get("ldname"));
 //		zhou
 
         if (roomApp.getPerId() == null) {
@@ -417,7 +419,6 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
     /**
      * 新建会议时申请会议室
      *
-     * @param parameMap
      * @return
      * @throws BusinessException
      */
@@ -497,6 +498,7 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
      * @return
      * @throws BusinessException
      */
+    @Override
     @SuppressWarnings("unchecked")
     public boolean transCancelRoomApp(Map<String, Object> parameterMap) throws BusinessException {
         boolean isBatch = parameterMap.get("isBatch") == null ? false : (Boolean) parameterMap.get("isBatch");
@@ -736,10 +738,6 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
     /**
      * 激活会议时修改会议室申请数据
      *
-     * @param periodicityId
-     * @param beginDate
-     * @param meetingId
-     * @param isSingleEdit
      * @return
      * @throws BusinessException
      */
@@ -795,6 +793,7 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
      * @param po
      * @throws BusinessException
      */
+    @Override
     public void saveOrUpdate(MeetingRoomApp po) throws BusinessException {
         //本次会议耗时(单位分钟)
         Long timeDiff = (po.getEndDatetime().getTime() - po.getStartDatetime().getTime()) / 1000 / 60;
@@ -818,7 +817,6 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
     /**
      * 申请会议室(包括会议室申请记录)
      *
-     * @param poList
      * @throws BusinessException
      */
     private void saveRoomApp(MeetingRoomApp roomApp) throws BusinessException {
@@ -860,6 +858,7 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
      * @param poList
      * @throws BusinessException
      */
+    @Override
     public void updateRoomApp(List<MeetingRoomApp> poList) throws BusinessException {
         if (Strings.isNotEmpty(poList)) {
             for (MeetingRoomApp po : poList) {
@@ -874,7 +873,6 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
     /**
      * 批量删除会议室申请
      *
-     * @param idList
      * @throws BusinessException
      */
     private void deleteRoomApp(Long roomAppId) throws BusinessException {
@@ -1058,6 +1056,7 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
      * @return
      * @throws BusinessException
      */
+    @Override
     public MeetingRoomApp getRoomAppById(Long roomAppId) throws BusinessException {
         return meetingRoomAppDao.getRoomAppById(roomAppId);
     }
@@ -1069,6 +1068,7 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
      * @return
      * @throws BusinessException
      */
+    @Override
     public MeetingRoomApp getRoomAppByMeetingId(Long meetingId) throws BusinessException {
         return meetingRoomAppDao.getRoomAppByMeetingId(meetingId);
     }
@@ -1081,6 +1081,7 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
      * @return
      * @throws BusinessException
      */
+    @Override
     public MeetingRoomApp getRoomAppByRoomAndMeetingId(Long roomId, Long meetingId) throws BusinessException {
         return meetingRoomAppDao.getRoomAppByRoomAndMeetingId(roomId, meetingId);
     }
@@ -1116,6 +1117,7 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
      * @return
      * @throws BusinessException
      */
+    @Override
     public List<MeetingRoomApp> getRoomAppListByPeriodicityId(Long periodicityId) throws BusinessException {
         return meetingRoomAppDao.getRoomAppListByPeriodicityId(periodicityId);
     }
@@ -1127,6 +1129,7 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
      * @return
      * @throws BusinessException
      */
+    @Override
     public List<MeetingRoomApp> getWaitRoomAppListByPeriodicityId(Long periodicityId) throws BusinessException {
         return meetingRoomAppDao.getWaitRoomAppListByPeriodicityId(periodicityId);
     }
@@ -1139,6 +1142,7 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
      * @return
      * @throws BusinessException
      */
+    @Override
     public MeetingRoomApp getNextRoomAppByPeriodicityId(Long periodicityId, Date beginDate) throws BusinessException {
         return meetingRoomAppDao.getNextRoomAppByPeriodicityId(periodicityId, beginDate);
     }
@@ -1159,7 +1163,6 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
     /**
      * 获取某时间段占用的会议室申请
      *
-     * @param datetime
      * @param roomIdList
      * @param include    是否包含临界值
      * @return

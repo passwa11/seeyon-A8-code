@@ -478,6 +478,8 @@ public class MeetingRoomController extends BaseController {
         parameterMap.put("sqrdh", request.getParameter("sqrdh"));
         parameterMap.put("sfygwhldcj", request.getParameter("sfygwhldcj"));
         parameterMap.put("hcyq", request.getParameter("hcyq"));
+        parameterMap.put("ldid", request.getParameter("ldid"));
+        parameterMap.put("ldname", request.getParameter("ldname"));
 
 //		zhou:2020-07-14
 

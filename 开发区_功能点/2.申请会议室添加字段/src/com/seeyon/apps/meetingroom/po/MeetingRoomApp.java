@@ -20,6 +20,25 @@ public class MeetingRoomApp extends BasePO implements java.io.Serializable {
 	private String sqrdh;
 	private Integer sfygwhldcj;
 	private String hcyq;
+	private String ldid;
+	private String ldname;
+
+	public String getLdid() {
+		return ldid;
+	}
+
+	public void setLdid(String ldid) {
+		this.ldid = ldid;
+	}
+
+	public String getLdname() {
+		return ldname;
+	}
+
+	public void setLdname(String ldname) {
+		this.ldname = ldname;
+	}
+
 	//	zhou:添加
 
 	/** 数据库主键UUID */

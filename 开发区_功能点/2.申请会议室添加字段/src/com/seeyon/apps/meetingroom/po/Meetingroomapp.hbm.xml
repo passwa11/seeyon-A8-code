@@ -60,5 +60,11 @@
         <property name="hcyq" type="java.lang.String">
             <column name="hcyq"  />
         </property>
+        <property name="ldid" type="java.lang.String">
+            <column name="ldid"  />
+        </property>
+        <property name="ldname" type="java.lang.String">
+            <column name="ldname"  />
+        </property>
     </class>
 </hibernate-mapping>
