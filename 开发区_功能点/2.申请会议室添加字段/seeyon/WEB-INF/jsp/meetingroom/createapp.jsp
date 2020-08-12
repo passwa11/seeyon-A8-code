@@ -256,13 +256,38 @@
         }
 
     </style>
+<%--    zhou--%>
+    <script type="text/javascript" charset="UTF-8" src="<c:url value='/common/js/jquery.js' />"></script>
+    <script type="text/javascript">
+        function selectLeader(){
+            selectPeopleFun_leaderSelect();
+        }
+        //zhou 这个是选择人员控件，确定按钮触发的函数，也就是数据回填
+        function setLeaderPeopleFields(elements){
+            if (!elements) {
+                return;
+            }
+            document.getElementById("ldid").value = getIdsString(elements);
+            document.getElementById("ldname").value = getNamesString(elements);
+            hasIssueArea = true;
+        }
+
+    </script>
 </head>
 
 <body scroll='no' bgcolor="#4D4D4D" onload="init()" onunload="leave()">
 
 <v3x:selectPeople id="per" panels="Department" selectType="Member" jsFunction="setBulPeopleFields(elements);" minSize="1" maxSize="1" originalElements="${v3x:parseElementsOfIds(user.id,'Member')}"/>
 <v3x:selectPeople id="dep" panels="Department" selectType="Department" jsFunction="setBulDepartFields(elements);" minSize="1" maxSize="1" originalElements="${v3x:parseElementsOfIds(v3xOrgDepartment.id,'Department')}"/>
-
+<%--zhou:添加领导人选择框--%>
+<v3x:selectPeople id="leaderSelect"
+                  panels="Department,Post,Team"
+                  selectType="Department,Member,Post,Team"
+                  departmentId="${sessionScope['com.seeyon.current_user'].departmentId}"
+                  jsFunction="setLeaderPeopleFields(elements)"
+                  viewPage=""
+                  minSize="0"
+/>
 <form name="myForm" id="myForm" action="meetingroom.do?method=execApp" method="post" target="hiddenIframe" class="h100b">
     <input type="hidden" name="id" id="id" value="${bean.id }"/>
     <input type="hidden" name="meetingId" id="meetingId" value=""/>
@@ -313,13 +338,14 @@
                                                value="${v3x:toHTML(v3xOrgDepartment.name)}" disabled/>
                                     </td>
                                 </tr>
-
+<%--zhou--%>
                                 <tr>
                                     <td nowrap="nowrap" class="bg-gray" style="padding:6px"><font color="red">*</font>申请人电话:</td>
                                     <td class="new-column" style="padding:6px">
                                         <input type="text" name="sqrdh" id="sqrdh" inputName="申请人电话" validate="notNull" maxSize="20" class="input-100per"/>
                                     </td>
                                 </tr>
+<%--                                zhou--%>
                                 <tr>
                                     <td nowrap="nowrap" class="bg-gray" style="padding:6px"><font color="red">*</font>是否有管委会领导参加:</td>
                                     <td class="new-column" style="padding:6px">
@@ -331,6 +357,16 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td nowrap="nowrap" class="bg-gray" style="padding:6px">参会领导:</td>
+                                    <td nowrap="nowrap" class="new-column">
+                                        <input type="hidden" id="ldid" name="ldid" value=""/>
+                                        <input type="text" id="ldname" name="ldname" onclick="selectLeader()" class="input-100per"
+                                               inputName="<fmt:message key="mr.label.appDept"/>" deaultValue="<<fmt:message key="mr.alert.clickToSelectDept"/>>" validate="notNull,isDeaultValue"
+                                               value="${v3x:toHTML(v3xOrgDepartment.name)}" />
+                                    </td>
+                                </tr>
+
                                 <tr>
                                     <td nowrap="nowrap" class="bg-gray" style="padding:6px"><font color="red">*</font><fmt:message key='mr.label.startDatetime'/>:</td>
                                     <td nowrap="nowrap" class="new-column">
@@ -349,7 +385,7 @@
                                         <textarea style="height: 60px;" id="description" name="description" inputName="<fmt:message key='mr.label.usefor'/>" validate="maxLength" maxSize="80" class="input-100per"></textarea>
                                     </td>
                                 </tr>
-
+<%--zhou--%>
                                 <tr>
                                     <td nowrap="nowrap" class="bg-gray" style="padding:6px">会场要求:</td>
                                     <td class="new-column" style="padding:6px">
