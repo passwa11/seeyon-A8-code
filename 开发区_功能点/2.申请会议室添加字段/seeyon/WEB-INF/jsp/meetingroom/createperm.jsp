@@ -120,6 +120,11 @@
                 }
             }
         }
+        function changRoomUserNum(){
+            var val= $("#roomList option:selected").val();
+            var seatCount=$("#roomList option:selected").attr("userNum");
+            $("#seatCount").val(seatCount);
+        }
 
     </script>
     <link rel="stylesheet" type="text/css" href="<c:url value="/common/css/layout.css${v3x:resSuffix()}" />">
@@ -137,8 +142,20 @@
 
             <tr>
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.meetingroomname'/>:</td>
-                <td width="200" nowrap="nowrap" class="new-column" style="table-layout:fixed;word-break:break-all">
-                    <c:out value="${v3x:escapeJavascript(bean.meetingRoom.name) }"></c:out>
+                <td width="35%" nowrap="nowrap" class="new-column" style="table-layout:fixed;word-break:break-all">
+                    <%--                    <c:out value="${v3x:escapeJavascript(bean.meetingRoom.name) }"></c:out>--%>
+                    <select id="roomList" onclick="changRoomUserNum()" class="titleInput input-99per" style="width: 300px;">
+                        <c:forEach items="${rooms}" var="room">
+                            <c:choose>
+                                <c:when test="${bean.meetingRoom.id == room.id}">
+                                    <option userNum="${room.seatCount}" class="titleInput choice right" value="${room.id}" selected="selected">${room.name}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option userNum="${room.seatCount}" class="titleInput choice right" value="${room.id}">${room.name}</option>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </select>
                 </td>
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.meetName'/>:</td>
                 <td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
@@ -162,7 +179,7 @@
                     <input type="text" name="asset_name" inputName="<fmt:message key='mr.label.appDept'/>" class="input-300px" value="${v3x:toHTML(departmentName) }" readonly/>
                 </td>
             </tr>
-<%--            zhou--%>
+            <%--            zhou--%>
             <tr>
                 <td width="12%" nowrap="nowrap" class="bg-gray">申请人电话:</td>
                 <c:set var="isProxy" value="${proxy?'proxy-true':'' }"/>
@@ -179,12 +196,12 @@
                     </div>
                 </td>
             </tr>
-<%--            zhou--%>
+            <%--            zhou--%>
             <tr>
                 <td width="12%" nowrap="nowrap" class="bg-gray">参会领导:</td>
                 <c:set var="isProxy" value="${proxy?'proxy-true':'' }"/>
                 <td width="82%" nowrap="nowrap" class="new-column ${isProxy }" colspan="3">
-                    <input type="hidden" name="ldid" inputName="参会领导" class="input-300px" value="${bean.meetingRoomApp.ldid}" />
+                    <input type="hidden" name="ldid" inputName="参会领导" class="input-300px" value="${bean.meetingRoomApp.ldid}"/>
                     <input type="text" name="ldname" inputName="参会领导" style="width:100%;" value="${bean.meetingRoomApp.ldname}" readonly/>
                 </td>
             </tr>
@@ -203,7 +220,7 @@
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.seatCount'/>:</td>
                 <c:set var="isProxy" value="${proxy?'proxy-true':'' }"/>
                 <td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
-                    <input type="text" name="asset_name" inputName="<fmt:message key='mr.label.seatCount'/>" class="input-300px" value="${bean.meetingRoom.seatCount}" readonly/>
+                    <input type="text"  id="seatCount"  name="asset_name" inputName="<fmt:message key='mr.label.seatCount'/>" class="input-300px" value="${bean.meetingRoom.seatCount}" readonly/>
                 </td>
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.eqdescription'/>:</td>
                 <td width="35%" nowrap="nowrap" class="new-column ${isProxy }">

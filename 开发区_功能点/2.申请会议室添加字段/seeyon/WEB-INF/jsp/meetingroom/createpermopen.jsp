@@ -133,6 +133,11 @@
                 }
             }
         }
+        function changRoomUserNum(){
+           var val= $("#roomList option:selected").val();
+           var seatCount=$("#roomList option:selected").attr("userNum");
+           $("#seatCount").val(seatCount);
+        }
 
     </script>
 </head>
@@ -151,8 +156,20 @@
 
             <tr>
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.meetingroomname'/>:</td>
-                <td width="200" nowrap="nowrap" class="new-column" style="table-layout:fixed;word-break:break-all">
-                    <c:out value="${v3x:escapeJavascript(bean.meetingRoom.name) }"></c:out>
+                <td width="35%" nowrap="nowrap" class="new-column" style="table-layout:fixed;word-break:break-all">
+                    <%--                    <c:out value="${v3x:escapeJavascript(bean.meetingRoom.name) }"></c:out>--%>
+                    <select id="roomList" class="titleInput input-99per" onclick="changRoomUserNum()" style="width: 300px;">
+                        <c:forEach items="${rooms}" var="room">
+                            <c:choose>
+                                <c:when test="${bean.meetingRoom.id == room.id}">
+                                    <option userNum="${room.seatCount}" class="titleInput choice right" value="${room.id}" selected="selected">${room.name}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option userNum="${room.seatCount}" class="titleInput choice right" value="${room.id}">${room.name}</option>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </select>
                 </td>
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.meetName'/>:</td>
                 <td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
@@ -176,28 +193,28 @@
                     <input type="text" name="asset_name" inputName="<fmt:message key='mr.label.appDept'/>" class="input-300px" value="${v3x:toHTML(departmentName) }" readonly/>
                 </td>
             </tr>
-			<tr>
-				<td width="12%" nowrap="nowrap" class="bg-gray">申请人电话:</td>
-				<c:set var="isProxy" value="${proxy?'proxy-true':'' }"/>
-				<td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
-					<input type="text" name="asset_name" inputName="申请人电话" class="input-300px" value="${bean.meetingRoomApp.sqrdh}" readonly/>
-				</td>
-				<td width="12%" nowrap="nowrap" class="bg-gray">是否有管委会领导参加:</td>
-				<td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
-					<div class="common_radio_box clearfix">
-						<label for="radio11" class="margin_r_10 hand">
-							<input type="radio" value="1" id="radio11" name="sfygwhldcj" class="radio_com" ${bean.meetingRoomApp.sfygwhldcj==1?'checked':''} disabled>是</label>
-						<label for="radio22" class="margin_r_10 hand">
-							<input type="radio" value="0" id="radio22" name="sfygwhldcj" class="radio_com" ${bean.meetingRoomApp.sfygwhldcj==0?'checked':''} disabled>否</label>
-					</div>
-				</td>
-			</tr>
-<%--            zhou--%>
+            <tr>
+                <td width="12%" nowrap="nowrap" class="bg-gray">申请人电话:</td>
+                <c:set var="isProxy" value="${proxy?'proxy-true':'' }"/>
+                <td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
+                    <input type="text" name="asset_name" inputName="申请人电话" class="input-300px" value="${bean.meetingRoomApp.sqrdh}" readonly/>
+                </td>
+                <td width="12%" nowrap="nowrap" class="bg-gray">是否有管委会领导参加:</td>
+                <td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
+                    <div class="common_radio_box clearfix">
+                        <label for="radio11" class="margin_r_10 hand">
+                            <input type="radio" value="1" id="radio11" name="sfygwhldcj" class="radio_com" ${bean.meetingRoomApp.sfygwhldcj==1?'checked':''} disabled>是</label>
+                        <label for="radio22" class="margin_r_10 hand">
+                            <input type="radio" value="0" id="radio22" name="sfygwhldcj" class="radio_com" ${bean.meetingRoomApp.sfygwhldcj==0?'checked':''} disabled>否</label>
+                    </div>
+                </td>
+            </tr>
+            <%--            zhou--%>
             <tr>
                 <td width="12%" nowrap="nowrap" class="bg-gray">参会领导:</td>
                 <c:set var="isProxy" value="${proxy?'proxy-true':'' }"/>
                 <td width="82%" nowrap="nowrap" class="new-column ${isProxy }" colspan="3">
-                    <input type="hidden" name="ldid" inputName="参会领导" class="input-300px" value="${bean.meetingRoomApp.ldid}" />
+                    <input type="hidden" name="ldid" inputName="参会领导" class="input-300px" value="${bean.meetingRoomApp.ldid}"/>
                     <input type="text" name="ldname" inputName="参会领导" style="width:100%;" value="${bean.meetingRoomApp.ldname}" readonly/>
                 </td>
             </tr>
@@ -244,7 +261,7 @@
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.seatCount'/>:</td>
                 <c:set var="isProxy" value="${proxy?'proxy-true':'' }"/>
                 <td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
-                    <input type="text" name="asset_name" inputName="<fmt:message key='mr.label.seatCount'/>" class="input-300px" value="${bean.meetingRoom.seatCount}" readonly/>
+                    <input type="text" id="seatCount" name="asset_name" inputName="<fmt:message key='mr.label.seatCount'/>" class="input-300px" value="${bean.meetingRoom.seatCount}" readonly/>
                 </td>
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.eqdescription'/>:</td>
                 <td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
@@ -272,12 +289,12 @@
                     <input type="text" name="asset_name" inputName="<fmt:message key='mr.label.place'/>" class="input-300px" value="${v3x:toHTML(bean.meetingRoom.place)}" readonly/>
                 </td>
             </tr>
-			<tr>
-				<td width="12%" nowrap="nowrap" class="bg-gray">会场要求:</td>
-				<td width="82%" nowrap="nowrap" class="new-column ${isProxy }" style="height:40px;" colspan="3">
-					<textarea rows="4" cols="" name="app_description" style="width:100%;" readonly>${bean.meetingRoomApp.hcyq}</textarea>
-				</td>
-			</tr>
+            <tr>
+                <td width="12%" nowrap="nowrap" class="bg-gray">会场要求:</td>
+                <td width="82%" nowrap="nowrap" class="new-column ${isProxy }" style="height:40px;" colspan="3">
+                    <textarea rows="4" cols="" name="app_description" style="width:100%;" readonly>${bean.meetingRoomApp.hcyq}</textarea>
+                </td>
+            </tr>
 
             <tr>
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key="mr.label.room.photo"/>:</td>

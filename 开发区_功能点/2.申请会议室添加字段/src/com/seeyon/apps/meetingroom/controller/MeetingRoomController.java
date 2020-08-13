@@ -13,6 +13,9 @@ import java.util.concurrent.locks.ReentrantLock;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.seeyon.apps.meetingroom.manager.KfqMeetingRoomManager;
+import com.seeyon.apps.meetingroom.manager.KfqMeetingRoomManagerImpl;
+import com.seeyon.apps.meetingroom.manager.MeetingRoomManagerImpl;
 import com.seeyon.ctp.common.filemanager.manager.FileManager;
 import com.seeyon.ctp.common.usermessage.MessageContent;
 import com.seeyon.ctp.common.usermessage.MessageReceiver;
@@ -650,6 +653,12 @@ public class MeetingRoomController extends BaseController {
         return null;
     }
 
+    private KfqMeetingRoomManager kfqMeetingRoomManager = new KfqMeetingRoomManagerImpl();
+
+    public KfqMeetingRoomManager getKfqMeetingRoomManager() {
+        return kfqMeetingRoomManager;
+    }
+
     /**
      * 会议室审批页面
      *
@@ -829,6 +838,10 @@ public class MeetingRoomController extends BaseController {
 
         //checkAuditRight = !checkAuditRight ? "1".equals(openWin) : true;//打开窗口和管理员待办内嵌页面都进行权限验证
 
+//      [开发区会议管理]  zhou start
+        List<MeetingRoom> rooms = kfqMeetingRoomManager.findAllMeetingRoom();
+        mav.addObject("rooms",rooms);
+//      [开发区会议管理]  zhou end
         mav.addObject("isPeriodicity", !MeetingUtil.isIdBlank(request.getParameter("periodicityInfoId")));
         return mav;
     }
@@ -886,7 +899,7 @@ public class MeetingRoomController extends BaseController {
                  * zhou:会议室审核通过，发送消息通知
                  */
                 AuthorityService authorityService = new AuthorityServiceImpl();
-                String pass=new ReadConfigTools().getString("passwordOfWebservice");
+                String pass = new ReadConfigTools().getString("passwordOfWebservice");
                 UserToken userToken = authorityService.authenticate("service-admin", pass);
                 String tokenId = userToken.getId();
                 MessageService messageService = new MessageServiceImpl();
@@ -901,10 +914,10 @@ public class MeetingRoomController extends BaseController {
                 StringBuffer sb = new StringBuffer();
                 try {
                     ps = connection.prepareStatement(sql);
-                    ps.setString(1,request.getParameter("id"));
+                    ps.setString(1, request.getParameter("id"));
                     rs = ps.executeQuery();
                     while (rs.next()) {
-                        sb.append(rs.getString("username")+"【"+rs.getString("deptname")+"】申请了会议室："+rs.getString("meetingname")+"，时间为："+rs.getString("startdatetime")+"至"+rs.getString("enddatetime")+"。请提前安排！");
+                        sb.append(rs.getString("username") + "【" + rs.getString("deptname") + "】申请了会议室：" + rs.getString("meetingname") + "，时间为：" + rs.getString("startdatetime") + "至" + rs.getString("enddatetime") + "。请提前安排！");
                     }
                     ServiceResponse serviceResponse = messageService.sendMessageByLoginName(tokenId, loginNames, sb.toString(), urls);
                     serviceResponse.getResult();
