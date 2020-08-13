@@ -897,6 +897,8 @@ public class MeetingRoomController extends BaseController {
                 Connection connection = JDBCAgent.getRawConnection();
 //              会议管理员在审批的时候可以修改会议室，在此更新会议室申请信息   zhou start
                 String updateSql = "update MEETING_ROOM_APP set MEETINGROOMID=? where ID=?";
+                String updateRoomPerm="update MEETING_ROOM_PERM set meeting_room_id=? where appid=?";
+                String updateRoomRecord="update MEETING_ROOM_RECORD set meetingroomid=? where appid=?";
                 PreparedStatement psUpdate = null;
                 try {
                     String roomId = request.getParameter("roomId");
@@ -904,6 +906,19 @@ public class MeetingRoomController extends BaseController {
                     psUpdate.setLong(1, Long.parseLong(roomId));
                     psUpdate.setLong(2, roomAppId);
                     psUpdate.executeUpdate();
+
+//                  修改会议审批记录中会议室信息
+                    psUpdate = connection.prepareStatement(updateRoomPerm);
+                    psUpdate.setLong(1,Long.parseLong(roomId));
+                    psUpdate.setLong(2,roomAppId);
+                    psUpdate.executeUpdate();
+
+//                  修改会议室申请记录
+                    psUpdate = connection.prepareStatement(updateRoomRecord);
+                    psUpdate.setLong(1,Long.parseLong(roomId));
+                    psUpdate.setLong(2,roomAppId);
+                    psUpdate.executeUpdate();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
