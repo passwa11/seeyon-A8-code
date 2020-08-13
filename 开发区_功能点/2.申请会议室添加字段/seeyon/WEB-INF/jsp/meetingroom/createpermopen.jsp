@@ -158,7 +158,7 @@
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.meetingroomname'/>:</td>
                 <td width="35%" nowrap="nowrap" class="new-column" style="table-layout:fixed;word-break:break-all">
                     <%--                    <c:out value="${v3x:escapeJavascript(bean.meetingRoom.name) }"></c:out>--%>
-                    <select id="roomList" class="titleInput input-99per" onclick="changRoomUserNum()" style="width: 300px;">
+                    <select id="roomList" name="roomId" class="titleInput input-99per" onclick="changRoomUserNum()" style="width: 300px;">
                         <c:forEach items="${rooms}" var="room">
                             <c:choose>
                                 <c:when test="${bean.meetingRoom.id == room.id}">

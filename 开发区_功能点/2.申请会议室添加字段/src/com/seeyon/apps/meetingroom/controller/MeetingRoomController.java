@@ -840,7 +840,7 @@ public class MeetingRoomController extends BaseController {
 
 //      [开发区会议管理]  zhou start
         List<MeetingRoom> rooms = kfqMeetingRoomManager.findAllMeetingRoom();
-        mav.addObject("rooms",rooms);
+        mav.addObject("rooms", rooms);
 //      [开发区会议管理]  zhou end
         mav.addObject("isPeriodicity", !MeetingUtil.isIdBlank(request.getParameter("periodicityInfoId")));
         return mav;
@@ -894,6 +894,25 @@ public class MeetingRoomController extends BaseController {
                 buffer.append("if(parent._submitCallback) {");
                 buffer.append("  parent._submitCallback('" + appVo.getMsg() + "');");
                 buffer.append("}");
+                Connection connection = JDBCAgent.getRawConnection();
+//              会议管理员在审批的时候可以修改会议室，在此更新会议室申请信息   zhou start
+                String updateSql = "update MEETING_ROOM_APP set MEETINGROOMID=? where ID=?";
+                PreparedStatement psUpdate = null;
+                try {
+                    String roomId = request.getParameter("roomId");
+                    psUpdate = connection.prepareStatement(updateSql);
+                    psUpdate.setLong(1, Long.parseLong(roomId));
+                    psUpdate.setLong(2, roomAppId);
+                    psUpdate.executeUpdate();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (null != psUpdate) {
+                        psUpdate.close();
+                    }
+                }
+//              会议管理员在审批的时候可以修改会议室，在此更新会议室申请信息   zhou end
+
 
                 /**
                  * zhou:会议室审核通过，发送消息通知
@@ -908,7 +927,6 @@ public class MeetingRoomController extends BaseController {
                 String[] loginNames = new ReadConfigTools().getString("loginNameOfReciver").split(",");
 
                 String sql = "select startdatetime,enddatetime,(select r.name from MEETING_room r where r.id =m.meetingroomid) meetingname,(select name from org_member o where o.id=m.perid ) username,(select name from org_unit u where u.id=m.departmentid) deptname from meeting_room_app m where m.id=?";
-                Connection connection = JDBCAgent.getRawConnection();
                 PreparedStatement ps = null;
                 ResultSet rs = null;
                 StringBuffer sb = new StringBuffer();
@@ -921,6 +939,8 @@ public class MeetingRoomController extends BaseController {
                     }
                     ServiceResponse serviceResponse = messageService.sendMessageByLoginName(tokenId, loginNames, sb.toString(), urls);
                     serviceResponse.getResult();
+
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
