@@ -33,6 +33,7 @@ import com.seeyon.ctp.util.FlipInfo;
 import com.seeyon.ctp.util.Strings;
 import com.seeyon.v3x.meeting.domain.MtMeeting;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -613,36 +614,43 @@ public class MeetingRoomAppManagerImpl implements MeetingRoomAppManager {
                 createUser = bean.getPerId();
                 roomName = room == null ? "" : room.getName();
             }
-
-            if (roomAppId == null) {
-                roomAppId = roomAppList.get(0).getId();
-            }
-
-            //给会议室管理员发送撤销消息
-            List<Long> memberIdList = new ArrayList<Long>();
-            List<CtpAffair> affairList = affairManager.getAffairs(roomAppId);
-            for (CtpAffair affair : affairList) {
-                memberIdList.add(affair.getMemberId());
-            }
-            if (Strings.isNotEmpty(memberIdList)) {
-                Map<String, Object> messageMap = new HashMap<String, Object>();
-                messageMap.put("roomAppId", roomAppId);
-                messageMap.put("roomName", roomName);
-                messageMap.put("createUser", createUser);
-                messageMap.put("cancelContent", parameterMap.get("cancelContent"));
-                messageMap.put("memberIdList", memberIdList);
-                if (createUser.longValue() != currentUser.getId().longValue()) {
-                    if (memberIdList.contains(currentUser.getId())) {
-                        memberIdList.add(createUser);
-                        messageMap.put("toCreateUser", createUser);
-                        messageMap.put("createUser", currentUser.getId());
-                        messageMap.put("memberIdList", memberIdList);
-                    }
+//zhou   这里执行批量撤销的时源码中只取了集合中的第一个元素来发送通知，不知道为啥这样做。不懂，在此加for循环遍历发送
+            for (int i = 0; i < roomAppList.size(); i++) {
+//                if (roomAppId == null) {
+                roomAppId = roomAppList.get(i).getId();
+//                }
+                //给会议室管理员发送撤销消息
+                List<Long> memberIdList = new ArrayList<Long>();
+                List<CtpAffair> affairList = affairManager.getAffairs(roomAppId);
+                for (CtpAffair affair : affairList) {
+                    memberIdList.add(affair.getMemberId());
                 }
-                meetingMessageManager.sendRoomAppCancelMessage(messageMap);
+                if (Strings.isNotEmpty(memberIdList)) {
+                    Map<String, Object> messageMap = new HashMap<String, Object>();
+                    messageMap.put("roomAppId", roomAppId);
+                    messageMap.put("roomName", roomName);
+                    messageMap.put("createUser", createUser);
+                    messageMap.put("cancelContent", parameterMap.get("cancelContent"));
+                    messageMap.put("memberIdList", memberIdList);
+                    //        zhou 开发区撤销会议通知在消息体重添加会议具体时间
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                    messageMap.put("startTime", sdf.format(roomAppList.get(i).getStartDatetime()));
+                    messageMap.put("endTime", sdf.format(roomAppList.get(i).getEndDatetime()));
+//                   zhou添加会议时间 end
+                    if (createUser.longValue() != currentUser.getId().longValue()) {
+                        if (memberIdList.contains(currentUser.getId())) {
+                            memberIdList.add(createUser);
+                            messageMap.put("toCreateUser", createUser);
+                            messageMap.put("createUser", currentUser.getId());
+                            messageMap.put("memberIdList", memberIdList);
+                        }
+                    }
+                    meetingMessageManager.sendRoomAppCancelMessage(messageMap);
+                }
+                //删除管理员的待办
+                affairManager.deletePhysicalByObjectId(roomAppId);
             }
-            //删除管理员的待办
-            affairManager.deletePhysicalByObjectId(roomAppId);
+
 
             if (Strings.isNotEmpty(roomAppIdList)) {
                 meetingRoomAppDao.deleteRoomApp(roomAppIdList);

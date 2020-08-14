@@ -5,6 +5,8 @@ import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -13,9 +15,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.seeyon.apps.meetingroom.manager.KfqMeetingRoomManager;
-import com.seeyon.apps.meetingroom.manager.KfqMeetingRoomManagerImpl;
-import com.seeyon.apps.meetingroom.manager.MeetingRoomManagerImpl;
+import com.seeyon.apps.meetingroom.manager.*;
 import com.seeyon.ctp.common.filemanager.manager.FileManager;
 import com.seeyon.ctp.common.usermessage.MessageContent;
 import com.seeyon.ctp.common.usermessage.MessageReceiver;
@@ -49,7 +49,6 @@ import com.seeyon.apps.meeting.manager.MeetingValidationManager;
 import com.seeyon.apps.meeting.po.MeetingScreenSet;
 import com.seeyon.apps.meeting.po.MeetingTemplate;
 import com.seeyon.apps.meeting.util.MeetingUtil;
-import com.seeyon.apps.meetingroom.manager.MeetingRoomManager;
 import com.seeyon.apps.meetingroom.po.MeetingRoom;
 import com.seeyon.apps.meetingroom.po.MeetingRoomApp;
 import com.seeyon.apps.meetingroom.po.MeetingRoomPerm;
@@ -547,6 +546,8 @@ public class MeetingRoomController extends BaseController {
         return null;
     }
 
+    private MeetingRoomAppManager appManager=(MeetingRoomAppManager)AppContext.getBean("meetingRoomAppManager");
+
     public ModelAndView execCancel(HttpServletRequest request, HttpServletResponse response) throws Exception {
         StringBuilder buffer = new StringBuilder();
         String msgType = "success";
@@ -564,6 +565,7 @@ public class MeetingRoomController extends BaseController {
                 if (!result) {
                     msgType = "failure";
                 }
+
             } catch (Exception e) {
                 LOGGER.error("撤销会议室申请出错", e);
                 msgType = "failure";

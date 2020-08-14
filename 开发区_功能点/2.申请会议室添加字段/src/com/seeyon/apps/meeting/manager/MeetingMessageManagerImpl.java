@@ -412,7 +412,7 @@ public class MeetingMessageManagerImpl implements MeetingMessageManager {
     /**
      * 会议撤销消息
      *
-     * @param parameterMap
+     * @param messageMap
      * @throws BusinessException
      */
     @Override
@@ -508,7 +508,7 @@ public class MeetingMessageManagerImpl implements MeetingMessageManager {
     /**
      * 回执消息
      *
-     * @param parameterMap
+     * @param messageMap
      * @throws BusinessException
      */
     @Override
@@ -601,7 +601,7 @@ public class MeetingMessageManagerImpl implements MeetingMessageManager {
     /**
      * 提前结束消息
      *
-     * @param parameterMap
+     * @param messageMap
      * @throws BusinessException
      */
     @Override
@@ -914,6 +914,11 @@ public class MeetingMessageManagerImpl implements MeetingMessageManager {
         Long roomAppId = (Long) messageMap.get("roomAppId");
         List<Long> memberIdList = (List<Long>) messageMap.get("memberIdList");
 
+//        zhou 开发区撤销会议通知在消息体重添加会议具体时间
+        String startTime = (String) messageMap.get("startTime");
+        String endTime = (String) messageMap.get("endTime");
+//        zhou
+
         String msgKey = "meeting.msg.room.app.cancel";
         if (toCreateUser != null && toCreateUser.longValue() != createUser.longValue()) {
             msgKey = "meeting.msg.room.app.admin.cancel";
@@ -923,7 +928,7 @@ public class MeetingMessageManagerImpl implements MeetingMessageManager {
         if (memberIdList.contains(createUser)) {
             memberIdList.remove(createUser);
         }
-        MessageContent msgContent = MessageContent.get(msgKey, createUserName, roomName, Strings.isBlank(cancelContent) ? 0 : 1, cancelContent);
+        MessageContent msgContent = MessageContent.get(msgKey, createUserName, roomName, Strings.isBlank(cancelContent) ? 0 : 1, cancelContent, startTime, endTime);
         Collection<MessageReceiver> receivers = MessageReceiver.get(roomAppId, memberIdList);
         userMessageManager.sendSystemMessage(msgContent, ApplicationCategoryEnum.meeting, createUser, receivers, MeetingMessageTypeEnum.Meeting_RoomCheck.key());
     }
