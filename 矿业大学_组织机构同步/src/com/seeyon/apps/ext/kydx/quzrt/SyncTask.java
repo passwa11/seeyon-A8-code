@@ -30,6 +30,8 @@ public class SyncTask implements Runnable {
 
         new MidData().insertDwToOa();
         new MidData().insertAccountToOa();
+        new MidData().updateAccount();
+
 
         deptManager.insertOrgDept();
         deptManager.insertOtherOrgDept();

@@ -227,5 +227,41 @@ public class MidData {
         }
     }
 
+    public void updateAccount(){
+        Connection connection = null;
+        PreparedStatement ps = null;
+        String update = "update m_org_member set dqztm =?,dqzt=? where gh=?";
+        List<Map<String, String>> list = this.queryAccountData();
+        try {
+            connection = JDBCAgent.getRawConnection();
+            connection.setAutoCommit(false);
+            ps = connection.prepareStatement(update);
+            if(list.size()>0){
+                for (int i = 0; i < list.size(); i++) {
+                    ps.setString(1, list.get(i).get("dqztm"));
+                    ps.setString(2, list.get(i).get("dqzt"));
+                    ps.setString(3, list.get(i).get("gh"));
+                    ps.addBatch();
+                }
+                ps.executeBatch();
+                connection.commit();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (null != ps) {
+                    ps.close();
+                }
+                if (null != connection) {
+                    connection.close();
+                }
+            } catch (SQLException sq) {
+                sq.printStackTrace();
+            }
+        }
+    }
+
 
 }

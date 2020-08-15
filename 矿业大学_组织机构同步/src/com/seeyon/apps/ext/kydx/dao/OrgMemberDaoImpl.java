@@ -69,11 +69,13 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
         Connection connection = null;
         PreparedStatement ps = null;
         String insertSql = "insert into m_org_member (memberId,jzgid,xm,gh,yddh,bglxdh,dzxx,grjj,oaUnitId,dwh,yrfsdm,dqztm,dqzt) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String queryM="select memberId,jzgid,xm,gh,yddh,bglxdh,dzxx,grjj,oaUnitId,dwh,yrfsdm,dqztm,dqzt from m_org_member where memberId=?";
+        PreparedStatement psQuery=null;
         try {
             connection = JDBCAgent.getRawConnection();
             connection.setAutoCommit(false);
             ps = connection.prepareStatement(insertSql);
-
+            psQuery=connection.prepareStatement(queryM);
             if (null != list && list.size() > 0) {
                 Map memberMap = null;
                 for (OrgMember member : list) {
