@@ -203,7 +203,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
     public List<OrgMember> queryUpdateMember() {
         String sql = "select j.yrfsdm,j.jzgid,j.xm,j.gh,j.dwh,j.yddh,j.bglxdh,j.dzxx,j.grjj,j.dqztm,j.dqzt,m.memberId,(select u.oaid from m_org_unit u where u.dwh=j.dwh) unitId from " +
                 "(select oa.* from seeyon_oa_jzgjbxx oa where oa.dwh is not null ) j,m_org_member m " +
-                "where j.gh=m.gh and (j.xm <> m.xm or j.dwh<>m.dwh  or j.yddh <>m.yddh or j.bglxdh <>m.bglxdh or j.dzxx<>m.dzxx or j.grjj<>m.grjj or j.yrfsdm<>m.yrfsdm) ";
+                "where j.gh=m.gh and (j.dqztm<>m.dqztm or j.xm <> m.xm or j.dwh<>m.dwh  or j.yddh <>m.yddh or j.bglxdh <>m.bglxdh or j.dzxx<>m.dzxx or j.grjj<>m.grjj or j.yrfsdm<>m.yrfsdm) ";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection = null;
         PreparedStatement ps = null;
