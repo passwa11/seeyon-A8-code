@@ -2,6 +2,9 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans default-autowire="byName">
 
+<!--    zhou-->
+    <bean id ="roomHistoryManager" class="com.seeyon.apps.meetingroom.manager.MeetingRoomHistoryManagerImpl"></bean>
+
     <bean id="replyManager" class="com.seeyon.v3x.meeting.manager.MtReplyManagerImpl"/>
     <bean id="mtMeetingManager" class="com.seeyon.v3x.meeting.manager.MtMeetingManagerImpl"/>
 
@@ -43,7 +46,7 @@
     <bean id="meetingM1Manager" class="com.seeyon.apps.meeting.outer.MeetingM1ManagerImpl"/>
     <bean id="meetingIndexImpl" class="com.seeyon.apps.meeting.outer.MeetingIndexImpl"/>
     <bean id="meetingFilingEnableImpl" class="com.seeyon.apps.meeting.outer.MeetingFilingEnableImpl"/>
-    
+
     <bean id="meetingManager4ISearch" class="com.seeyon.apps.meeting.outer.MeetingManager4ISearch" init-method="init"/>
 
     <bean id="meetingPortlet" class="com.seeyon.ctp.portal.portlet.MeetingPortlet"/>
@@ -79,11 +82,11 @@
 
     <!--会议二维码生成接口-->
     <bean id="meetingQrCodeDataManager" class="com.seeyon.ctp.common.publicqrcode.manager.MeetingQrCodeDataManagerImpl"/>
-    
+
     <!--离职交接接口-->
     <bean id="memberLeaveClearItemMeeting" class="com.seeyon.apps.meeting.manager.memberLeave.MemberLeaveClearItemMeetingImpl"/>
-    
+
     <!--会议角色变更校验-->
     <bean id="meetingCheckPrivUpdate" class="com.seeyon.apps.meeting.manager.MeetingCheckPrivUpdate"/>
-    
+
 </beans>

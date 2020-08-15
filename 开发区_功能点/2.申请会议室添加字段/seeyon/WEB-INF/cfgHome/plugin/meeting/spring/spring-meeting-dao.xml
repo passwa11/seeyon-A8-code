@@ -27,6 +27,6 @@
     <bean id="meetingScreenDao" class="com.seeyon.apps.meeting.dao.MeetingScreenDao"></bean>
     <bean id="meetingQrcodeSignDao" class="com.seeyon.apps.meeting.dao.MeetingQrcodeSignDaoImpl"></bean>
     <bean id="meetingPanelDao" class="com.seeyon.apps.meeting.dao.MeetingPanelDaoImpl"></bean>
-
+    <!--    zhou-->
     <bean id="meetingRoomHistoryDao" class="com.seeyon.apps.meetingroom.dao.MeetingRoomHistoryDaoImpl"></bean>
 </beans>

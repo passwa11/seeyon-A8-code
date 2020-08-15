@@ -2,6 +2,13 @@ var ajaxUrl = "/seeyon/ajax.do?method=ajaxAction&managerName=";var autoInspectio
 jsonGateway:ajaxUrl+"autoInspectionManager",deleteByIds:function(){return this.c(arguments,"deleteByIds");},find:function(){return this.c(arguments,"find");},findById:function(){return this.c(arguments,"findById");},findByInspectionDates:function(){return this.c(arguments,"findByInspectionDates");},save:function(){return this.c(arguments,"save");},update:function(){return this.c(arguments,"update");}});
 var wechatAccountAuthManager=RJS.extend({
 jsonGateway:ajaxUrl+"wechatAccountAuthManager",getAuthByWechatAccountId:function(){return this.c(arguments,"getAuthByWechatAccountId");}});
+
+//zhou 开发区添加会议撤销记录 start
+var roomHistoryManager=RJS.extend({
+    jsonGateway:ajaxUrl+"roomHistoryManager",findPageByCondition:function(){return this.c(arguments,"findPageByCondition");}
+});
+//zhou 开发区添加会议撤销记录 end
+
 var barCodeManager=RJS.extend({
 jsonGateway:ajaxUrl+"barCodeManager",decodeBarCode:function(){return this.c(arguments,"decodeBarCode");},deleteBarCode:function(){return this.c(arguments,"deleteBarCode");},getBarCode:function(){return this.c(arguments,"getBarCode");},getBarCodeAttachment:function(){return this.c(arguments,"getBarCodeAttachment");},getBarCodeFile:function(){return this.c(arguments,"getBarCodeFile");}});
 var messageOrPendingConfigManager=RJS.extend({
