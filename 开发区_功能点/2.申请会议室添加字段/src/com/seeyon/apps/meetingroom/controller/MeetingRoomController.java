@@ -109,6 +109,11 @@ public class MeetingRoomController extends BaseController {
 
     private final Lock LOCK = new ReentrantLock();
 
+    public ModelAndView toMeetingCancelHistoryPage(HttpServletResponse response, HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView("meetingroom/meetingRoomCancelHistory");
+        return modelAndView;
+    }
+
     /**
      * 进入创建会议室
      *
