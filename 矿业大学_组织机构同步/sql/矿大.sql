@@ -24,7 +24,9 @@ yddh varchar(30),
 bglxdh varchar(30),
 dzxx varchar(40),
 grjj longtext,
-yrfsdm varchar(10)
+yrfsdm varchar(10),
+dqztm varchar(35),
+dqzt varchar(6)
 );
 
 
@@ -50,5 +52,7 @@ dzxx varchar(50),
 grjj VARCHAR(4000),
 oaUnitId varchar(50),
 dwh varchar(50),
-yrfsdm varchar(10)
+yrfsdm varchar(10),
+dqztm varchar(35),
+dqzt varchar(6)
 );
