@@ -99,7 +99,7 @@ function setDefaultTab_MeetingRoom(pos) {
 <%--		撤销记录	zhou--%>
 			<span class="resCode">
 					<div class="tab-tag-left"></div>
-					<div class="tab-tag-middel" style="border-bottom:0px;" onclick="javascript:changeMenuTab(this);" url="${pageContext.request.contextPath}/report4Result.do?method=showResult&filterValue=${reportFilterValue}&designId=3702223525420024918${ctp:csrfSuffix()}">撤销记录</div>
+					<div class="tab-tag-middel" style="border-bottom:0px;" onclick="javascript:changeMenuTab(this);" url="/seeyon/meetingRoomHistory.do?method=toMeetingCancelHistoryPage">撤销记录</div>
 					<div class="tab-tag-right"></div>
 					<div class="tab-separator"></div>
 				</span>
