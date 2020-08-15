@@ -17,7 +17,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryInsertMember() {
-        String sql = "select * from (select u.jzgid,u.xm,u.gh,u.yddh,u.bglxdh,u.dzxx,u.grjj,u.yrfsdm,(select m.oaid from m_org_unit m where m.dwh=u.dwh) oaUnitId,u.dwh from (select * from seeyon_oa_jzgjbxx where dwh is not null)  u) w where not exists (select * from m_org_member m where w.jzgid=m.jzgid)";
+        String sql = "select * from (select u.jzgid,u.xm,u.gh,u.yddh,u.bglxdh,u.dzxx,u.grjj,u.yrfsdm,u.dqztm,u.dqzt,(select m.oaid from m_org_unit m where m.dwh=u.dwh) oaUnitId,u.dwh from (select * from seeyon_oa_jzgjbxx where dwh is not null  and dqztm in ('22','01'))  u) w where not exists (select * from m_org_member m where w.jzgid=m.jzgid)";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection =null;
         PreparedStatement ps = null;
@@ -48,6 +48,8 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                 orgMember.setDescription(rs.getString("grjj"));
                 orgMember.setSubDepartmentId(rs.getString("dwh"));
                 orgMember.setYrfsdm(rs.getString("yrfsdm"));
+                orgMember.setDqztm(rs.getString("dqztm"));
+                orgMember.setDqzt(rs.getString("dqzt"));
                 memberList.add(orgMember);
             }
         } catch (Exception e) {
@@ -66,7 +68,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
         CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
         Connection connection = null;
         PreparedStatement ps = null;
-        String insertSql = "insert into m_org_member (memberId,jzgid,xm,gh,yddh,bglxdh,dzxx,grjj,oaUnitId,dwh,yrfsdm) values(?,?,?,?,?,?,?,?,?,?,?)";
+        String insertSql = "insert into m_org_member (memberId,jzgid,xm,gh,yddh,bglxdh,dzxx,grjj,oaUnitId,dwh,yrfsdm,dqztm,dqzt) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
             connection = JDBCAgent.getRawConnection();
             connection.setAutoCommit(false);
@@ -108,6 +110,8 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 ps.setString(9, member.getOrgDepartmentId());
                                 ps.setString(10, member.getSubDepartmentId());
                                 ps.setString(11, member.getYrfsdm());
+                                ps.setString(12, member.getDqztm());
+                                ps.setString(13, member.getDqzt());
                                 ps.addBatch();
 
                                 CtpOrgUser orgUser = new CtpOrgUser();
@@ -171,6 +175,8 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 ps.setString(9, member.getOrgDepartmentId());
                                 ps.setString(10, member.getSubDepartmentId());
                                 ps.setString(11, member.getYrfsdm());
+                                ps.setString(12, member.getDqztm());
+                                ps.setString(13, member.getDqzt());
                                 ps.addBatch();
                                 ps.executeBatch();
                                 connection.commit();
@@ -193,8 +199,8 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryUpdateMember() {
-        String sql = "select j.yrfsdm,j.jzgid,j.xm,j.gh,j.dwh,j.yddh,j.bglxdh,j.dzxx,j.grjj,m.memberId,(select u.oaid from m_org_unit u where u.dwh=j.dwh) unitId from " +
-                "(select oa.* from seeyon_oa_jzgjbxx oa where oa.dwh is not null) j,m_org_member m " +
+        String sql = "select j.yrfsdm,j.jzgid,j.xm,j.gh,j.dwh,j.yddh,j.bglxdh,j.dzxx,j.grjj,j.dqztm,j.dqzt,m.memberId,(select u.oaid from m_org_unit u where u.dwh=j.dwh) unitId from " +
+                "(select oa.* from seeyon_oa_jzgjbxx oa where oa.dwh is not null ) j,m_org_member m " +
                 "where j.gh=m.gh and (j.xm <> m.xm or j.dwh<>m.dwh  or j.yddh <>m.yddh or j.bglxdh <>m.bglxdh or j.dzxx<>m.dzxx or j.grjj<>m.grjj or j.yrfsdm<>m.yrfsdm) ";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection = null;
@@ -222,6 +228,8 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                 orgMember.setDescription(rs.getString("grjj"));
                 orgMember.setSubDepartmentId(rs.getString("dwh"));
                 orgMember.setYrfsdm(rs.getString("yrfsdm"));
+                orgMember.setDqztm(rs.getString("dqztm"));
+                orgMember.setDqzt(rs.getString("dqzt"));
                 memberList.add(orgMember);
             }
         } catch (Exception e) {
@@ -262,7 +270,6 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                         JSONObject json = client.put("/orgMember", memberMap, JSONObject.class);
                         if (null != json) {
                             if (json.getBoolean("success")) {
-
                                 CtpOrgUser orgUser = new CtpOrgUser();
                                 orgUser.setId(Long.parseLong(member.getId()));
                                 orgUser.setType("ldap.member.openLdap");
@@ -283,12 +290,6 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 } else {
                                     sql = sql + " xm = '', ";
                                 }
-
-//                                if (member.getCode() != null && !"".equals(member.getCode())) {
-//                                    sql = sql + " code = '" + member.getCode() + "', ";
-//                                } else {
-//                                    sql = sql + " code = '', ";
-//                                }
 
                                 if (member.getYrfsdm() != null && !"".equals(member.getYrfsdm())) {
                                     sql = sql + " yrfsdm = '" + member.getYrfsdm() + "', ";
@@ -325,6 +326,16 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 } else {
                                     sql = sql + " oaUnitId = '', ";
                                 }
+                                if (member.getDqztm() != null && !"".equals(member.getDqztm())) {
+                                    sql = sql + " dqztm = '" + member.getDqztm() + "' ,";
+                                } else {
+                                    sql = sql + " dqztm = '', ";
+                                }
+                                if (member.getDqzt() != null && !"".equals(member.getDqzt())) {
+                                    sql = sql + " dqzt = '" + member.getDqzt() + "' ,";
+                                } else {
+                                    sql = sql + " dqzt = '', ";
+                                }
 
                                 if (member.getSubDepartmentId() != null && !"".equals(member.getSubDepartmentId())) {
                                     sql = sql + " dwh = '" + member.getSubDepartmentId() + "' ";
@@ -347,7 +358,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryDeleteMember() {
-        String sql = "select m.memberId from m_org_member m where not exists(select * from seeyon_oa_jzgjbxx j where j.gh=m.gh)";
+        String sql = "select m.memberId from m_org_member m where not exists(select * from seeyon_oa_jzgjbxx j where j.gh=m.gh) union select  m.memberId from m_org_member m where m.dqztm not in ('22','01')";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection = null;
         PreparedStatement ps = null;

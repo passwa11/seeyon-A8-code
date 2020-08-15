@@ -21,6 +21,25 @@ public class OrgMember {
 
     private String yrfsdm;
 
+    private String dqztm;
+    private String dqzt;
+
+    public String getDqztm() {
+        return dqztm;
+    }
+
+    public void setDqztm(String dqztm) {
+        this.dqztm = dqztm;
+    }
+
+    public String getDqzt() {
+        return dqzt;
+    }
+
+    public void setDqzt(String dqzt) {
+        this.dqzt = dqzt;
+    }
+
     public String getYrfsdm() {
         return yrfsdm;
     }

@@ -321,10 +321,9 @@
       <change beforePath="$PROJECT_DIR$/../矿业大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/util/StringHandle.class" beforeDir="false" afterPath="$PROJECT_DIR$/../矿业大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/util/StringHandle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../矿业大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/ctp/common/web/filter/JSPAuthenticator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../矿业大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/ctp/common/web/filter/JSPAuthenticator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../矿业大学_短信/矿业大学-短信集成.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/矿大.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/矿大.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/MidData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/MidData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/OrgMemberDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/OrgMemberDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/po/OrgMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/po/OrgMember.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../落款靠右/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../落款靠右/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -450,14 +449,7 @@
       <workItem from="1595844240210" duration="720000" />
       <workItem from="1596264535889" duration="116000" />
       <workItem from="1597455619293" duration="947000" />
-      <workItem from="1597469803127" duration="564000" />
-    </task>
-    <task id="LOCAL-00020" summary="update">
-      <created>1591864876447</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1591864876447</updated>
+      <workItem from="1597469803127" duration="3320000" />
     </task>
     <task id="LOCAL-00021" summary="update">
       <created>1591929625045</created>
@@ -795,7 +787,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597456496516</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="update">
+      <created>1597470397800</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1597470397801</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -851,12 +850,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/OrgMemberDaoImpl.java</url>
-          <line>376</line>
+          <line>387</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/OrgMemberDaoImpl.java</url>
-          <line>397</line>
+          <line>408</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -876,7 +875,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/OrgMemberDaoImpl.java</url>
-          <line>93</line>
+          <line>95</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -891,7 +890,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/OrgMemberDaoImpl.java</url>
-          <line>140</line>
+          <line>144</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
