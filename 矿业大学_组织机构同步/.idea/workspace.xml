@@ -322,10 +322,7 @@
       <change beforePath="$PROJECT_DIR$/../矿业大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/ctp/common/web/filter/JSPAuthenticator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../矿业大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/ctp/common/web/filter/JSPAuthenticator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../矿业大学_短信/矿业大学-短信集成.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/controller/kydxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/controller/kydxController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/MidData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/MidData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/OrgMemberDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/dao/OrgMemberDaoImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/quzrt/SyncTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/kydx/quzrt/SyncTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../落款靠右/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../落款靠右/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -359,7 +356,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../4.组织机构同步-医科大" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -451,21 +448,7 @@
       <workItem from="1595844240210" duration="720000" />
       <workItem from="1596264535889" duration="116000" />
       <workItem from="1597455619293" duration="947000" />
-      <workItem from="1597469803127" duration="6165000" />
-    </task>
-    <task id="LOCAL-00022" summary="update">
-      <created>1591941079035</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1591941079035</updated>
-    </task>
-    <task id="LOCAL-00023" summary="update">
-      <created>1591943478004</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1591943478004</updated>
+      <workItem from="1597469803127" duration="8256000" />
     </task>
     <task id="LOCAL-00024" summary="update">
       <created>1591943982705</created>
@@ -796,7 +779,21 @@
       <option name="project" value="LOCAL" />
       <updated>1597473263522</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="update">
+      <created>1597476036830</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1597476036830</updated>
+    </task>
+    <task id="LOCAL-00072" summary="update">
+      <created>1597476762319</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1597476762319</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

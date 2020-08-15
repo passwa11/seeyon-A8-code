@@ -397,9 +397,9 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                 for (OrgMember member : list) {
                     map = new HashMap();
                     map.put("id", member.getId());
-//                    map.put("enabled", false);
-//                    JSONObject jsonObject = client.put("/orgMember/" + member.getId() + "/enabled/false", map, JSONObject.class);
-                    JSONObject jsonObject = client.delete("/orgMember/" + member.getId(), map, JSONObject.class);
+                    map.put("enabled", false);
+                    JSONObject jsonObject = client.put("/orgMember/" + member.getId() + "/enabled/false", map, JSONObject.class);
+//                    JSONObject jsonObject = client.delete("/orgMember/" + member.getId(), map, JSONObject.class);
                     if (null != jsonObject) {
                         if (jsonObject.getBoolean("success")) {
                             dsql.append(",'" + member.getId() + "'");
