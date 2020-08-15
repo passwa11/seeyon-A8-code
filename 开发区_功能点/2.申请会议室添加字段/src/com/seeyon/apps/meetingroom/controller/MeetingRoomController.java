@@ -109,9 +109,11 @@ public class MeetingRoomController extends BaseController {
 
     private final Lock LOCK = new ReentrantLock();
 
-    public ModelAndView toMeetingCancelHistoryPage(HttpServletResponse response, HttpServletRequest request){
-        ModelAndView modelAndView = new ModelAndView("meetingroom/meetingRoomCancelHistory");
-        return modelAndView;
+    //@CheckRoleAccess(roleTypes={Role_NAME.MeetingRoomAdmin})
+    public ModelAndView toMeetingCancelHistoryPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//        zhou
+        ModelAndView mav = new ModelAndView("meetingroom/meetingRoomCancelHistory");
+        return mav;
     }
 
     /**
