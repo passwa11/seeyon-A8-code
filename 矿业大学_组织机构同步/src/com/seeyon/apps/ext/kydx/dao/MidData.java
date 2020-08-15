@@ -86,7 +86,6 @@ public class MidData {
     public void insertDwToOa() {
 
         String clearTable = "delete from seeyon_oa_dw where 1=1";
-        this.cleanTableData(clearTable);
 
         List<Map<String, String>> list = this.queryDwData();
         Connection connection = null;
@@ -96,18 +95,23 @@ public class MidData {
             connection = JDBCAgent.getRawConnection();
             connection.setAutoCommit(false);
             ps = connection.prepareStatement(insertSql);
-            for (int i = 0; i < list.size(); i++) {
-                ps.setString(1, list.get(i).get("dwid"));
-                ps.setString(2, list.get(i).get("dwmc"));
-                ps.setString(3, list.get(i).get("dwjc"));
-                ps.setString(4, list.get(i).get("lsdwh"));
-                ps.setString(5, list.get(i).get("dwh"));
-                ps.setString(6, list.get(i).get("sfsy"));
-                ps.setString(7, list.get(i).get("dz_dqzyjg"));
-                ps.addBatch();
+            if(list.size()>0){
+                this.cleanTableData(clearTable);
+
+                for (int i = 0; i < list.size(); i++) {
+                    ps.setString(1, list.get(i).get("dwid"));
+                    ps.setString(2, list.get(i).get("dwmc"));
+                    ps.setString(3, list.get(i).get("dwjc"));
+                    ps.setString(4, list.get(i).get("lsdwh"));
+                    ps.setString(5, list.get(i).get("dwh"));
+                    ps.setString(6, list.get(i).get("sfsy"));
+                    ps.setString(7, list.get(i).get("dz_dqzyjg"));
+                    ps.addBatch();
+                }
+                ps.executeBatch();
+                connection.commit();
             }
-            ps.executeBatch();
-            connection.commit();
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -174,7 +178,6 @@ public class MidData {
 
     public void insertAccountToOa(){
         String  sql="delete from seeyon_oa_jzgjbxx where 1=1";
-        this.cleanTableData(sql);
         List<Map<String, String>> list = this.queryAccountData();
         Connection connection = null;
         PreparedStatement ps = null;
@@ -183,22 +186,27 @@ public class MidData {
             connection = JDBCAgent.getRawConnection();
             connection.setAutoCommit(false);
             ps = connection.prepareStatement(insertSql);
-            for (int i = 0; i < list.size(); i++) {
-                ps.setString(1, list.get(i).get("zwjbm"));
-                ps.setString(2, list.get(i).get("jzgid"));
-                ps.setString(3, list.get(i).get("xm"));
-                ps.setString(4, list.get(i).get("gh"));
-                ps.setString(5, list.get(i).get("dwh"));
-                ps.setString(6, list.get(i).get("dzzw"));
-                ps.setString(7, list.get(i).get("yddh"));
-                ps.setString(8, list.get(i).get("bglxdh"));
-                ps.setString(9, list.get(i).get("dzxx"));
-                ps.setString(10, list.get(i).get("grjj"));
-                ps.setString(11, list.get(i).get("yrfsdm"));
-                ps.addBatch();
+            if(list.size()>0){
+                this.cleanTableData(sql);
+
+                for (int i = 0; i < list.size(); i++) {
+                    ps.setString(1, list.get(i).get("zwjbm"));
+                    ps.setString(2, list.get(i).get("jzgid"));
+                    ps.setString(3, list.get(i).get("xm"));
+                    ps.setString(4, list.get(i).get("gh"));
+                    ps.setString(5, list.get(i).get("dwh"));
+                    ps.setString(6, list.get(i).get("dzzw"));
+                    ps.setString(7, list.get(i).get("yddh"));
+                    ps.setString(8, list.get(i).get("bglxdh"));
+                    ps.setString(9, list.get(i).get("dzxx"));
+                    ps.setString(10, list.get(i).get("grjj"));
+                    ps.setString(11, list.get(i).get("yrfsdm"));
+                    ps.addBatch();
+                }
+                ps.executeBatch();
+                connection.commit();
             }
-            ps.executeBatch();
-            connection.commit();
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
