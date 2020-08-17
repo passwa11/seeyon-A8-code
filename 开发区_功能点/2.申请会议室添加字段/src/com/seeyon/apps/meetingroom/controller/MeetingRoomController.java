@@ -13,6 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.seeyon.apps.ext.meetingInfoTip.po.MeetingAppHistory;
 import com.seeyon.apps.meetingroom.manager.*;
 import com.seeyon.ctp.common.filemanager.manager.FileManager;
 import com.seeyon.ctp.services.ServiceResponse;
@@ -563,20 +564,48 @@ public class MeetingRoomController extends BaseController {
             parameterMap.put("cancelContent", request.getParameter("cancelContent"));
             parameterMap.put("action", MeetingActionEnum.cancelRoomApp.name());
             try {
+//                zhou start
+                List<MeetingRoomApp> list = new ArrayList<>();
+                for (int i = 0; i < ids.length; i++) {
+                    MeetingRoomApp roomApp = appManager.getRoomAppById(Long.parseLong(ids[i]));
+                    list.add(roomApp);
+                }
+//                zhou end
+
                 boolean result = this.meetingRoomManager.transCancelRoomApp(parameterMap);
-//                List<MeetingRoomApp> list = new ArrayList<>();
-//                for (int i = 0; i < ids.length; i++) {
-//                    MeetingRoomApp roomApp = appManager.getRoomAppById(Long.parseLong(ids[i]));
-//                    list.add(roomApp);
-//                }
+
                 if (!result) {
                     msgType = "failure";
                 } else {
 //                  开发区执行预定撤销操作时，记录被撤销的数据  zhou
-//                    for (MeetingRoomApp app : list) {
-//                        MeetingRoomAppHistory history = (MeetingRoomAppHistory) app;
-//                        roomHistoryManager.saveRoomappHistory(history);
-//                    }
+                    for (MeetingRoomApp app : list) {
+                        MeetingAppHistory h = new MeetingAppHistory();
+                        h.setId(app.getId());
+                        h.setRoomId(app.getRoomId());
+                        h.setMeetingId(app.getMeetingId());
+                        h.setTemplateId(app.getTemplateId());
+                        h.setPeriodicityId(app.getPeriodicityId());
+                        h.setStartDatetime(app.getStartDatetime());
+                        h.setEndDatetime(app.getEndDatetime());
+                        h.setTimeDiff(app.getTimeDiff());
+                        h.setDescription(app.getDescription());
+                        h.setStatus(app.getStatus());
+                        h.setUsedStatus(app.getUsedStatus());
+                        h.setAppDatetime(app.getAppDatetime());
+                        h.setDepartmentId(app.getDepartmentId());
+                        h.setAccountId(app.getAccountId());
+                        h.setPerId(app.getPerId());
+                        h.setAuditingId(app.getAuditingId());
+                        h.setRoomAdmin(app.getRoomAdmin());
+                        h.setProxyId(app.getProxyId());
+                        h.setProxyName(app.getProxyName());
+                        h.setSqrdh(app.getSqrdh());
+                        h.setSfygwhldcj(app.getSfygwhldcj());
+                        h.setHcyq(app.getHcyq());
+                        h.setLdid(app.getLdid());
+                        h.setLdname(app.getLdname());
+                        roomHistoryManager.saveRoomappHistory(h);
+                    }
                 }
 
             } catch (Exception e) {

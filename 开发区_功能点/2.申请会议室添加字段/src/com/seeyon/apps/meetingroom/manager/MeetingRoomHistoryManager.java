@@ -1,6 +1,6 @@
 package com.seeyon.apps.meetingroom.manager;
 
-//import com.seeyon.apps.meetingroom.po.MeetingRoomAppHistory;
+import com.seeyon.apps.ext.meetingInfoTip.po.MeetingAppHistory;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.util.FlipInfo;
 
@@ -9,7 +9,7 @@ import java.util.Map;
 
 public interface MeetingRoomHistoryManager {
 
-//    void saveRoomappHistory(MeetingRoomAppHistory history);
+    void saveRoomappHistory(MeetingAppHistory history);
 
     FlipInfo findPageByCondition(FlipInfo flipInfo,Map<String, Object> map) throws SQLException, BusinessException;
 
