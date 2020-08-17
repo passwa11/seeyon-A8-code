@@ -1,6 +1,5 @@
 package com.seeyon.apps.meetingroom.dao;
 
-import com.seeyon.apps.meetingroom.po.MeetingRoomAppHistory;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.util.FlipInfo;
 import com.seeyon.ctp.util.JDBCAgent;
