@@ -8,6 +8,6 @@ import java.util.Map;
 
 public interface MeetingRoomHistoryManager {
 
-    FlipInfo findPageByCondition(Map<String, Object> map, FlipInfo flipInfo) throws SQLException, BusinessException;
+    FlipInfo findPageByCondition(FlipInfo flipInfo,Map<String, Object> map) throws SQLException, BusinessException;
 
 }

@@ -17,7 +17,7 @@ public class MeetingRoomHistoryManagerImpl implements MeetingRoomHistoryManager 
 
     @AjaxAccess
     @Override
-    public FlipInfo findPageByCondition(Map<String, Object> map, FlipInfo flipInfo) throws SQLException, BusinessException {
+    public FlipInfo findPageByCondition(FlipInfo flipInfo,Map<String, Object> map) throws SQLException, BusinessException {
         User user = AppContext.getCurrentUser();
         map.put("memberId", user.getId());
         this.historyDao.findPageByCondition(map,flipInfo);
