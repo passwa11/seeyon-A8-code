@@ -17,7 +17,6 @@
                 //点搜索按钮取值
                 searchHandler: function () {
                     var params = searchobj.g.getReturnValue();
-                    console.log(params,'params');
                     if (params != null) {
                         o = {};
                         if (params.condition == 'meetingname') {
@@ -32,8 +31,7 @@
                             }
                         }
                     }
-                    console.log(o, 'zhou')
-                    $('#mtAppHistory').ajaxgridLoad(o);
+                    $('#mtAppHistoryzhou').ajaxgridLoad(o);
                 },
                 conditions: [{
                     id: 'meetingname',
@@ -53,7 +51,7 @@
                 }]
             });
             //列表
-            var grid = $("#mtAppHistory").ajaxgrid({
+            var grid = $("#mtAppHistoryzhou").ajaxgrid({
                 gridType: 'autoGrid',
                 colModel: [
                     //     {
@@ -110,7 +108,7 @@
                 managerMethod: "findPageByCondition",
 
             });
-            $('#mtAppHistory').ajaxgridLoad(o);
+            $('#mtAppHistoryzhou').ajaxgridLoad(o);
 
         });
     </script>
@@ -130,7 +128,7 @@
         </div>
     </div>
     <div class="layout_center over_hidden" id="center">
-        <table id="mtAppHistory" class="flexme3" style="display: none;"></table>
+        <table id="mtAppHistoryzhou" class="flexme3" style="display: none;"></table>
     </div>
 </div>
 </body>

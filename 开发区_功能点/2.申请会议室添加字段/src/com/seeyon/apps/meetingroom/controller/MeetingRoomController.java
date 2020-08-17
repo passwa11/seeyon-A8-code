@@ -5,8 +5,6 @@ import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -16,11 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.seeyon.apps.meetingroom.manager.*;
-import com.seeyon.apps.meetingroom.po.MeetingRoomAppHistory;
 import com.seeyon.ctp.common.filemanager.manager.FileManager;
-import com.seeyon.ctp.common.usermessage.MessageContent;
-import com.seeyon.ctp.common.usermessage.MessageReceiver;
-import com.seeyon.ctp.common.usermessage.UserMessageManager;
 import com.seeyon.ctp.services.ServiceResponse;
 import com.seeyon.ctp.services.UserToken;
 import com.seeyon.ctp.util.*;
@@ -570,19 +564,19 @@ public class MeetingRoomController extends BaseController {
             parameterMap.put("action", MeetingActionEnum.cancelRoomApp.name());
             try {
                 boolean result = this.meetingRoomManager.transCancelRoomApp(parameterMap);
-                List<MeetingRoomApp> list = new ArrayList<>();
-                for (int i = 0; i < ids.length; i++) {
-                    MeetingRoomApp roomApp = appManager.getRoomAppById(Long.parseLong(ids[i]));
-                    list.add(roomApp);
-                }
+//                List<MeetingRoomApp> list = new ArrayList<>();
+//                for (int i = 0; i < ids.length; i++) {
+//                    MeetingRoomApp roomApp = appManager.getRoomAppById(Long.parseLong(ids[i]));
+//                    list.add(roomApp);
+//                }
                 if (!result) {
                     msgType = "failure";
                 } else {
 //                  开发区执行预定撤销操作时，记录被撤销的数据  zhou
-                    for (MeetingRoomApp app : list) {
-                        MeetingRoomAppHistory history = (MeetingRoomAppHistory) app;
-                        roomHistoryManager.saveRoomappHistory(history);
-                    }
+//                    for (MeetingRoomApp app : list) {
+//                        MeetingRoomAppHistory history = (MeetingRoomAppHistory) app;
+//                        roomHistoryManager.saveRoomappHistory(history);
+//                    }
                 }
 
             } catch (Exception e) {

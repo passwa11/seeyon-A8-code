@@ -1,6 +1,5 @@
 package com.seeyon.apps.meetingroom.dao;
 
-import com.seeyon.apps.meetingroom.po.MeetingRoomAppHistory;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.util.DBAgent;
 import com.seeyon.ctp.util.FlipInfo;
@@ -12,10 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 public class MeetingRoomHistoryDaoImpl implements MeetingRoomHistoryDao {
-    @Override
-    public void saveRoomapp(MeetingRoomAppHistory roomApp) {
-        DBAgent.save(roomApp);
-    }
+//    @Override
+//    public void saveRoomapp(MeetingRoomAppHistory roomApp) {
+//        DBAgent.save(roomApp);
+//    }
 
     @Override
     public FlipInfo findPageByCondition(Map<String, Object> map, FlipInfo flipInfo) throws SQLException, BusinessException {

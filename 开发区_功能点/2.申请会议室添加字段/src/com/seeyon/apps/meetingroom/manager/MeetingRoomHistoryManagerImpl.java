@@ -2,7 +2,7 @@ package com.seeyon.apps.meetingroom.manager;
 
 import com.seeyon.apps.meetingroom.dao.MeetingRoomHistoryDao;
 import com.seeyon.apps.meetingroom.dao.MeetingRoomHistoryDaoImpl;
-import com.seeyon.apps.meetingroom.po.MeetingRoomAppHistory;
+//import com.seeyon.apps.meetingroom.po.MeetingRoomAppHistory;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.authenticate.domain.User;
 import com.seeyon.ctp.common.exceptions.BusinessException;
@@ -25,10 +25,10 @@ public class MeetingRoomHistoryManagerImpl implements MeetingRoomHistoryManager 
         return flipInfo;
     }
 
-    @Override
-    public void saveRoomappHistory(MeetingRoomAppHistory history) {
-        this.historyDao.saveRoomapp(history);
-    }
+//    @Override
+//    public void saveRoomappHistory(MeetingRoomAppHistory history) {
+//        this.historyDao.saveRoomapp(history);
+//    }
 
     public MeetingRoomHistoryDao getHistoryDao() {
         return historyDao;
