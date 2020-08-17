@@ -13,13 +13,14 @@ import java.util.Map;
 public class MeetingRoomHistoryDaoImpl implements MeetingRoomHistoryDao {
     @Override
     public FlipInfo findPageByCondition(Map<String, Object> map, FlipInfo flipInfo) throws SQLException, BusinessException {
-        List<MeetingRoomAppHistory> appHistories = new ArrayList<>();
+        List<Object> appHistories = new ArrayList<>();
         StringBuffer sb = new StringBuffer();
-        String hql = "from MeetingRoomAppHistory where 1=1 and ";
-        sb.append(hql);
-        JDBCAgent jdbcAgent = new JDBCAgent(true, true);
+        String sql = "select id, (select name from meeting_room where id=meetingroomid) meetingName, (select name from ORG_MEMBER where id =perid) perName, (select name from ORG_UNIT where id =departmentid) deptName, startdatetime, enddatetime, meetingid, description, status, appdatetime, auditing_id, template_id, periodicity_id, used_status, time_diff, account_id, sqrdh, sfygwhldcj, hcyq, ldid, ldname from " +
+                "meeting_room_app_history where 1=1  ";
+        sb.append(sql);
+        JDBCAgent jdbcAgent = new JDBCAgent(true, false);
         if(null !=map.get("memberId")){
-            sb.append(" perId="+map.get("memberId"));
+//            sb.append(" perId="+map.get("memberId"));
         }
         try {
             jdbcAgent.execute(sb.toString());
