@@ -351,9 +351,9 @@
                                     <td class="new-column" style="padding:6px">
                                         <div class="common_radio_box clearfix">
                                             <label for="radio11" class="margin_r_10 hand">
-                                                <input type="radio" value="1" id="radio11" name="sfygwhldcj" class="radio_com" checked>是</label>
+                                                <input type="radio" value="1" id="radio11" name="sfygwhldcj" class="radio_com" >是</label>
                                             <label for="radio22" class="margin_r_10 hand">
-                                                <input type="radio" value="0" id="radio22" name="sfygwhldcj" class="radio_com">否</label>
+                                                <input type="radio" value="0" id="radio22" name="sfygwhldcj" class="radio_com" checked>否</label>
                                         </div>
                                     </td>
                                 </tr>
