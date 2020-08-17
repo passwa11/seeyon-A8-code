@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.seeyon.apps.meetingroom.manager.*;
+import com.seeyon.apps.meetingroom.po.MeetingRoomAppHistory;
 import com.seeyon.ctp.common.filemanager.manager.FileManager;
 import com.seeyon.ctp.common.usermessage.MessageContent;
 import com.seeyon.ctp.common.usermessage.MessageReceiver;
@@ -553,7 +554,8 @@ public class MeetingRoomController extends BaseController {
         return null;
     }
 
-    private MeetingRoomAppManager appManager=(MeetingRoomAppManager)AppContext.getBean("meetingRoomAppManager");
+    private MeetingRoomAppManager appManager = (MeetingRoomAppManager) AppContext.getBean("meetingRoomAppManager");
+    private MeetingRoomHistoryManager roomHistoryManager = (MeetingRoomHistoryManager) AppContext.getBean("roomHistoryManager");
 
     public ModelAndView execCancel(HttpServletRequest request, HttpServletResponse response) throws Exception {
         StringBuilder buffer = new StringBuilder();
@@ -568,9 +570,19 @@ public class MeetingRoomController extends BaseController {
             parameterMap.put("action", MeetingActionEnum.cancelRoomApp.name());
             try {
                 boolean result = this.meetingRoomManager.transCancelRoomApp(parameterMap);
-
+                List<MeetingRoomApp> list = new ArrayList<>();
+                for (int i = 0; i < ids.length; i++) {
+                    MeetingRoomApp roomApp = appManager.getRoomAppById(Long.parseLong(ids[i]));
+                    list.add(roomApp);
+                }
                 if (!result) {
                     msgType = "failure";
+                } else {
+//                  开发区执行预定撤销操作时，记录被撤销的数据  zhou
+                    for (MeetingRoomApp app : list) {
+                        MeetingRoomAppHistory history = (MeetingRoomAppHistory) app;
+                        roomHistoryManager.saveRoomappHistory(history);
+                    }
                 }
 
             } catch (Exception e) {
