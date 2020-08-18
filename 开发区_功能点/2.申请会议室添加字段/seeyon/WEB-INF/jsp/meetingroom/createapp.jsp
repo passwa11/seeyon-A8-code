@@ -286,13 +286,15 @@
             document.getElementById("ldname").value = getNamesString(elements);
             hasIssueArea = true;
         }
-
+        //zhou
         function changeRadio(a) {
             var flag = $(a).val();
             if (flag == 1) {
                 $("#trID").show();
             } else {
                 $("#trID").hide();
+                $("#ldid").val("");
+                $("#ldname").val("");
             }
         }
     </script>
