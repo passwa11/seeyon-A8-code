@@ -52,7 +52,7 @@
             });
             //列表
             var grid = $("#mtAppHistoryzhou").ajaxgrid({
-                gridType: 'autoGrid',
+                // gridType: 'autoGrid',
                 colModel: [
                     //     {
                     //     display: 'id',
