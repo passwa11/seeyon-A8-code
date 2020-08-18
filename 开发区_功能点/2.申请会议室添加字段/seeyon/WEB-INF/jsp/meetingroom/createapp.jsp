@@ -382,7 +382,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr id="trID">
+                                <tr id="trID"  style="display: none">
                                     <td nowrap="nowrap" class="bg-gray" style="padding:6px">参会领导:</td>
                                     <td nowrap="nowrap" class="new-column">
                                         <input type="hidden" id="ldid" name="ldid" value=""/>
