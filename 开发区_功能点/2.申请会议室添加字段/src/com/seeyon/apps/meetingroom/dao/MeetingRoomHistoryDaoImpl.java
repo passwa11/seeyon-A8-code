@@ -21,12 +21,15 @@ public class MeetingRoomHistoryDaoImpl implements MeetingRoomHistoryDao {
     public FlipInfo findPageByCondition(Map<String, Object> map, FlipInfo flipInfo) throws SQLException, BusinessException {
         List<Object> appHistories = new ArrayList<>();
         StringBuffer sb = new StringBuffer();
-        String sql = "select * from (select id, (select name from meeting_room where id=meetingroomid) meetingName, (select name from ORG_MEMBER where id =perid) perName,perid, (select name from ORG_UNIT where id =departmentid) deptName, startdatetime, enddatetime, meetingid, description, status, appdatetime, auditing_id, template_id, periodicity_id, used_status, time_diff, account_id, sqrdh, sfygwhldcj, hcyq, ldid, ldname from meeting_room_app_history) h where 1=1  ";
+        String sql = "select * from ( " +
+                "select * from (select id, (select name from meeting_room where id=meetingroomid) meetingName,meetingroomid, (select name from ORG_MEMBER where id =perid) perName,perid, (select name from ORG_UNIT where id =departmentid) deptName, startdatetime, enddatetime, meetingid, description, status, appdatetime, auditing_id, template_id, periodicity_id, used_status, time_diff, account_id, sqrdh, sfygwhldcj, hcyq, ldid, ldname " +
+                "from meeting_room_app_history)  where  meetingroomid in (select id from meeting_room where OFF_ADMIN ="+map.get("memberId")+") " +
+                "union " +
+                "select * from (select id, (select name from meeting_room where id=meetingroomid) meetingName,meetingroomid, (select name from ORG_MEMBER where id =perid) perName,perid, (select name from ORG_UNIT where id =departmentid) deptName, startdatetime, enddatetime, meetingid, description, status, appdatetime, auditing_id, template_id, periodicity_id, used_status, time_diff, account_id, sqrdh, sfygwhldcj, hcyq, ldid, ldname " +
+                "from meeting_room_app_history)  where perid="+map.get("memberId")+") h where 1=1 ";
         sb.append(sql);
         JDBCAgent jdbcAgent = new JDBCAgent(true, false);
-        if (null != map.get("memberId")) {
-            sb.append(" and h.perid=" + map.get("memberId"));
-        }
+
         if (null != map.get("meetingname")) {
             sb.append(" and h.meetingName like " + "'%" + map.get("meetingname") + "%'");
         }
