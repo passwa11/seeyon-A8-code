@@ -159,15 +159,15 @@
                 return;
             }
             //zhou
-            var checked=-1;
-            var chk=document.getElementsByName("sfygwhldcj");
-            for (var i =0;i < chk.length;i++){
-                if(chk[i].checked){
-                    checked=i;
+            var checked = -1;
+            var chk = document.getElementsByName("sfygwhldcj");
+            for (var i = 0; i < chk.length; i++) {
+                if (chk[i].checked) {
+                    checked = i;
                     break;
                 }
             }
-            if(checked==-1){
+            if (checked == -1) {
                 alert("是否有领导参加不能为空！");
                 appDoSubmiting = false;
                 return;
@@ -270,14 +270,15 @@
         }
 
     </style>
-<%--    zhou--%>
+    <%--    zhou--%>
     <script type="text/javascript" charset="UTF-8" src="<c:url value='/common/js/jquery.js' />"></script>
     <script type="text/javascript">
-        function selectLeader(){
+        function selectLeader() {
             selectPeopleFun_leaderSelect();
         }
+
         //zhou 这个是选择人员控件，确定按钮触发的函数，也就是数据回填
-        function setLeaderPeopleFields(elements){
+        function setLeaderPeopleFields(elements) {
             if (!elements) {
                 return;
             }
@@ -286,6 +287,14 @@
             hasIssueArea = true;
         }
 
+        function changeRadio(a) {
+            var flag = $(a).val();
+            if (flag == 1) {
+                $("#trID").show();
+            } else {
+                $("#trID").hide();
+            }
+        }
     </script>
 </head>
 
@@ -352,31 +361,31 @@
                                                value="${v3x:toHTML(v3xOrgDepartment.name)}" disabled/>
                                     </td>
                                 </tr>
-<%--zhou--%>
+                                <%--zhou--%>
                                 <tr>
                                     <td nowrap="nowrap" class="bg-gray" style="padding:6px"><font color="red">*</font>申请人电话:</td>
                                     <td class="new-column" style="padding:6px">
                                         <input type="text" name="sqrdh" id="sqrdh" inputName="申请人电话" validate="notNull" maxSize="20" class="input-100per"/>
                                     </td>
                                 </tr>
-<%--                                zhou--%>
+                                <%--                                zhou--%>
                                 <tr>
                                     <td nowrap="nowrap" class="bg-gray" style="padding:6px"><font color="red">*</font>是否有管委会领导参加:</td>
                                     <td class="new-column" style="padding:6px">
                                         <div class="common_radio_box clearfix">
                                             <label for="radio11" class="margin_r_10 hand">
-                                                <input type="radio" value="1" id="radio11" name="sfygwhldcj" class="radio_com" >是</label>
+                                                <input type="radio" value="1" id="radio11" onclick="changeRadio(this)" name="sfygwhldcj" class="radio_com">是</label>
                                             <label for="radio22" class="margin_r_10 hand">
-                                                <input type="radio" value="0" id="radio22" name="sfygwhldcj" class="radio_com" >否</label>
+                                                <input type="radio" value="0" id="radio22" onclick="changeRadio(this)" name="sfygwhldcj" class="radio_com">否</label>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr id="trID">
                                     <td nowrap="nowrap" class="bg-gray" style="padding:6px">参会领导:</td>
                                     <td nowrap="nowrap" class="new-column">
                                         <input type="hidden" id="ldid" name="ldid" value=""/>
                                         <input type="text" id="ldname" name="ldname" onclick="selectLeader()" class="input-100per"
-                                               inputName="参会领导" deaultValue="<请选择参会领导>" value="" />
+                                               inputName="参会领导" deaultValue="<请选择参会领导>" value=""/>
                                     </td>
                                 </tr>
 
@@ -398,7 +407,7 @@
                                         <textarea style="height: 60px;" id="description" name="description" inputName="<fmt:message key='mr.label.usefor'/>" validate="maxLength" maxSize="80" class="input-100per"></textarea>
                                     </td>
                                 </tr>
-<%--zhou--%>
+                                <%--zhou--%>
                                 <tr>
                                     <td nowrap="nowrap" class="bg-gray" style="padding:6px">会场要求:</td>
                                     <td class="new-column" style="padding:6px">
