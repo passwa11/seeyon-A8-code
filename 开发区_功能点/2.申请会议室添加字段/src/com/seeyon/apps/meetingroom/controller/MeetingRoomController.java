@@ -5,6 +5,7 @@ import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -882,8 +883,17 @@ public class MeetingRoomController extends BaseController {
 
         //checkAuditRight = !checkAuditRight ? "1".equals(openWin) : true;//打开窗口和管理员待办内嵌页面都进行权限验证
 
-//      [开发区会议管理]  zhou start
-        List<MeetingRoom> rooms = kfqMeetingRoomManager.findAllMeetingRoom();
+//      [开发区会议管理,获取会议室管理员可以修改的会议室名称]  zhou start
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String[] dateRange=simpleDateFormat.format(appVo.getStartDatetime()).split(" ");
+        User user=AppContext.getCurrentUser();
+        Map<String,Object> map=new HashMap<>();
+        map.put("dateRange",dateRange[0]);
+        map.put("appId",appVo.getRoomAppId());
+        map.put("starttime",simpleDateFormat.format(appVo.getStartDatetime()));
+        map.put("endtime",simpleDateFormat.format(appVo.getEndDatetime()));
+        map.put("userId",user.getId());
+        List<MeetingRoom> rooms = kfqMeetingRoomManager.findAllMeetingRoom(map);
         mav.addObject("rooms", rooms);
 //      [开发区会议管理]  zhou end
         mav.addObject("isPeriodicity", !MeetingUtil.isIdBlank(request.getParameter("periodicityInfoId")));
@@ -938,6 +948,9 @@ public class MeetingRoomController extends BaseController {
             if (null != psUpdate) {
                 psUpdate.close();
             }
+            if (null != connection) {
+                connection.close();
+            }
         }
 //              会议管理员在审批的时候可以修改会议室，在此更新会议室申请信息   zhou end
         MeetingRoomAppVO appVo = new MeetingRoomAppVO();
@@ -976,43 +989,43 @@ public class MeetingRoomController extends BaseController {
                 /**
                  * zhou:会议室审核通过，发送消息通知
                  */
-                AuthorityService authorityService = new AuthorityServiceImpl();
-                String pass = new ReadConfigTools().getString("passwordOfWebservice");
-                UserToken userToken = authorityService.authenticate("service-admin", pass);
-                String tokenId = userToken.getId();
-                MessageService messageService = new MessageServiceImpl();
-                User user = AppContext.getCurrentUser();
-                String[] urls = {"/seeyon/meetingroom.do?method=createPerm&openWin=1&id=" + request.getParameter("id") + "&affairId="};
-                String[] loginNames = new ReadConfigTools().getString("loginNameOfReciver").split(",");
-
-                String sql = "select startdatetime,enddatetime,(select r.name from MEETING_room r where r.id =m.meetingroomid) meetingname,(select name from org_member o where o.id=m.perid ) username,(select name from org_unit u where u.id=m.departmentid) deptname from meeting_room_app m where m.id=?";
-                PreparedStatement ps = null;
-                ResultSet rs = null;
-                StringBuffer sb = new StringBuffer();
-                try {
-                    ps = connection.prepareStatement(sql);
-                    ps.setString(1, request.getParameter("id"));
-                    rs = ps.executeQuery();
-                    while (rs.next()) {
-                        sb.append(rs.getString("username") + "【" + rs.getString("deptname") + "】申请了会议室：" + rs.getString("meetingname") + "，时间为：" + rs.getString("startdatetime") + "至" + rs.getString("enddatetime") + "。请提前安排！");
-                    }
-                    ServiceResponse serviceResponse = messageService.sendMessageByLoginName(tokenId, loginNames, sb.toString(), urls);
-                    serviceResponse.getResult();
-
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    if (null != rs) {
-                        rs.close();
-                    }
-                    if (null != ps) {
-                        ps.close();
-                    }
-                    if (null != connection) {
-                        connection.close();
-                    }
-                }
+//                AuthorityService authorityService = new AuthorityServiceImpl();
+//                String pass = new ReadConfigTools().getString("passwordOfWebservice");
+//                UserToken userToken = authorityService.authenticate("service-admin", pass);
+//                String tokenId = userToken.getId();
+//                MessageService messageService = new MessageServiceImpl();
+//                User user = AppContext.getCurrentUser();
+//                String[] urls = {"/seeyon/meetingroom.do?method=createPerm&openWin=1&id=" + request.getParameter("id") + "&affairId="};
+//                String[] loginNames = new ReadConfigTools().getString("loginNameOfReciver").split(",");
+//
+//                String sql = "select startdatetime,enddatetime,(select r.name from MEETING_room r where r.id =m.meetingroomid) meetingname,(select name from org_member o where o.id=m.perid ) username,(select name from org_unit u where u.id=m.departmentid) deptname from meeting_room_app m where m.id=?";
+//                PreparedStatement ps = null;
+//                ResultSet rs = null;
+//                StringBuffer sb = new StringBuffer();
+//                try {
+//                    ps = connection.prepareStatement(sql);
+//                    ps.setString(1, request.getParameter("id"));
+//                    rs = ps.executeQuery();
+//                    while (rs.next()) {
+//                        sb.append(rs.getString("username") + "【" + rs.getString("deptname") + "】申请了会议室：" + rs.getString("meetingname") + "，时间为：" + rs.getString("startdatetime") + "至" + rs.getString("enddatetime") + "。请提前安排！");
+//                    }
+//                    ServiceResponse serviceResponse = messageService.sendMessageByLoginName(tokenId, loginNames, sb.toString(), urls);
+//                    serviceResponse.getResult();
+//
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                } finally {
+//                    if (null != rs) {
+//                        rs.close();
+//                    }
+//                    if (null != ps) {
+//                        ps.close();
+//                    }
+//                    if (null != connection) {
+//                        connection.close();
+//                    }
+//                }
 
             } else {
                 if (appVo.getMeetingRoomApp() != null) {
