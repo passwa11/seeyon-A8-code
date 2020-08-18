@@ -28,7 +28,7 @@ public class KfqMeetingRoomDaoImpl implements KfqMeetingRoomDao {
             ps.setLong(2, (Long) map.get("appId"));
             ps.setString(3, (String) map.get("starttime"));
             ps.setString(4, (String) map.get("endtime"));
-            ps.setLong(5, (Long)map.get("userId"));
+            ps.setString(5, Long.toString((Long) map.get("userId")));
             rs = ps.executeQuery();
             MeetingRoom room = null;
             while (rs.next()) {
