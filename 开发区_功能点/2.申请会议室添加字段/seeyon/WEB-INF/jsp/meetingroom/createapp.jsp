@@ -158,6 +158,20 @@
                 appDoSubmiting = false;
                 return;
             }
+            //zhou
+            var checked=-1;
+            var chk=document.getElementsByName("sfygwhldcj");
+            for (var i =0;i < chk.length;i++){
+                if(chk[i].checked){
+                    checked=i;
+                    break;
+                }
+            }
+            if(checked==-1){
+                alert("是否有领导参加不能为空！");
+                appDoSubmiting = false;
+                return;
+            }
             if (checkForm(document.getElementById("myForm"))) {
                 document.getElementById("myForm").action = "meetingroom.do?method=execApp" + getA8Top().CsrfGuard.getUrlSurffix();
                 document.getElementById("myForm").submit();
