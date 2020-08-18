@@ -885,13 +885,13 @@ public class MeetingRoomController extends BaseController {
 
 //      [开发区会议管理,获取会议室管理员可以修改的会议室名称]  zhou start
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String[] dateRange=simpleDateFormat.format(appVo.getStartDatetime()).split(" ");
+        String[] dateRange=simpleDateFormat.format(appVo.getMeetingRoomApp().getStartDatetime()).split(" ");
         User user=AppContext.getCurrentUser();
         Map<String,Object> map=new HashMap<>();
         map.put("dateRange",dateRange[0]);
-        map.put("appId",appVo.getRoomAppId());
-        map.put("starttime",simpleDateFormat.format(appVo.getStartDatetime()));
-        map.put("endtime",simpleDateFormat.format(appVo.getEndDatetime()));
+        map.put("appId",appVo.getMeetingRoomApp().getId());
+        map.put("starttime",simpleDateFormat.format(appVo.getMeetingRoomApp().getStartDatetime()));
+        map.put("endtime",simpleDateFormat.format(appVo.getMeetingRoomApp().getEndDatetime()));
         map.put("userId",user.getId());
         List<MeetingRoom> rooms = kfqMeetingRoomManager.findAllMeetingRoom(map);
         mav.addObject("rooms", rooms);
