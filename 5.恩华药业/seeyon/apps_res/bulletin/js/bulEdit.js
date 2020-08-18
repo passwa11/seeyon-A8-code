@@ -159,6 +159,26 @@ jQuery(function($) {
   initColor(document.getElementById('issueAreaName'));
 });
 
+//zhou
+function changSendRang() {
+  var typeID = document.getElementById("typeId").value;
+  $.ajax({
+    url: '/seeyon/ehSendRangeController.do?method=getSendRange',
+    type: 'POST',
+    dataType: 'json',
+    data: {id: typeID},
+    success: function (result) {
+      if (result.code == 0) {
+        var range = result.data;
+        if(range!=null){
+          $("#publishScopeId").val(range.rangeId);
+          $("#publishInput").val(range.rangeName);
+          $("#issueAreaName").val(range.rangeName);
+        }
+      }
+    }
+  });
+}
 function myCheckForm(form) {
   if (form.typeList_id.value == null || form.typeList_id.value == "") {
     alert(alert_noNull);

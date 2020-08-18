@@ -17,8 +17,6 @@
     </title>
     <link rel="stylesheet" type="text/css" href="${path}/skin/dist/modules/bulletin.css${v3x:resSuffix()}"/>
     <script type="text/javascript" src="${path}/apps_res/bulletin/js/bulEdit.js${v3x:resSuffix()}"></script>
-    <%--    zhou--%>
-    <script type="text/javascript" src="${path}/common/jquery/jquery.js"></script>
     <script type="text/javascript">
         var _path = '${path}';
         var alert_noNull = "<fmt:message key='bul.alert.newsType.is.noNull' />";
@@ -354,29 +352,7 @@
                             </fmt:message>
                             <input type="hidden" id="publishScopeId" name="publishScope" value="${spaceType == '18'||spaceType == '17'||spaceType == '4' ? DEPARTMENTissueArea : bean.publishScope}"/>
                             <input type="hidden" id="publishInput" value="${v3x:showOrgEntitiesOfTypeAndId(bean.publishScope, pageContext)}">
-                            <%--                zhou--%>
-                            <script type="text/javascript">
-                                //    zhou
-                                function changSendRang() {
-                                    var typeID = document.getElementById("typeId").value;
-                                    $.ajax({
-                                        url: '/seeyon/ehSendRangeController.do?method=getSendRange',
-                                        type: 'POST',
-                                        dataType: 'json',
-                                        data: {id: typeID},
-                                        success: function (result) {
-                                            if (result.code == 0) {
-                                                var range = result.data;
-                                                if(range!=null){
-                                                    $("#publishScopeId").val(range.rangeId);
-                                                    $("#publishInput").val(range.rangeName);
-                                                    $("#issueAreaName").val(range.rangeName);
-                                                }
-                                            }
-                                        }
-                                    });
-                                }
-                            </script>
+
                             <c:choose>
                                 <c:when test="${spaceType == '18'||spaceType == '17'||spaceType == '4'}">
                                     <input id="issueAreaName" type="text" value="${issueAreaName}"
