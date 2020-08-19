@@ -889,10 +889,11 @@ public class MeetingRoomController extends BaseController {
         User user=AppContext.getCurrentUser();
         Map<String,Object> map=new HashMap<>();
         map.put("dateRange",dateRange[0]);
-        map.put("appId",appVo.getMeetingRoomApp().getId());
+
+        map.put("appId",Long.toString(appVo.getMeetingRoomApp().getId()));
         map.put("starttime",simpleDateFormat.format(appVo.getMeetingRoomApp().getStartDatetime()));
         map.put("endtime",simpleDateFormat.format(appVo.getMeetingRoomApp().getEndDatetime()));
-        map.put("userId",user.getId());
+        map.put("userId",Long.toString(user.getId()));
         List<MeetingRoom> rooms = kfqMeetingRoomManager.findAllMeetingRoom(map);
         mav.addObject("rooms", rooms);
 //      [开发区会议管理]  zhou end

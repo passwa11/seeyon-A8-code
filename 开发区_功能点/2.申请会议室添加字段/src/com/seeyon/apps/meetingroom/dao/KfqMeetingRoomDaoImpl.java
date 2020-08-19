@@ -24,11 +24,11 @@ public class KfqMeetingRoomDaoImpl implements KfqMeetingRoomDao {
         List<MeetingRoom> list = new ArrayList<>();
         try {
             ps = connection.prepareStatement(sql);
-            ps.setString(1, (String) map.get("dateRange"));
-            ps.setLong(2, (Long) map.get("appId"));
-            ps.setString(3, (String) map.get("starttime"));
-            ps.setString(4, (String) map.get("endtime"));
-            ps.setString(5, Long.toString((Long) map.get("userId")));
+            ps.setString(1, map.get("dateRange").toString());
+            ps.setLong(2, Long.parseLong(map.get("appId").toString()));
+            ps.setString(3, map.get("starttime").toString());
+            ps.setString(4, map.get("endtime").toString());
+            ps.setString(5, map.get("userId").toString());
             rs = ps.executeQuery();
             MeetingRoom room = null;
             while (rs.next()) {
