@@ -1954,7 +1954,7 @@ function checkSearchAlt(checkEmpty) {
  * ??????
  */
 function showList1(type, showMode) {
-    debugger;
+
     clearList2();
 
     if (nowSelectedList1Item != null) {
@@ -2046,7 +2046,7 @@ var zid;
 function showList2(type, id, area2Type, keyword) {
     ztype = type;
     zid = id;
-    debugger;
+
     clearList2();
     if (type == Constants_Account) {
         if (!area2Type) {
@@ -3350,7 +3350,8 @@ function getTeamListHTMLStr(keyword) {
                 showText += typeName;
                 showText = showText.toString().replace("\|,", " ");
                 if (v3x.getBrowserFlag('selectPeopleShowType')) {
-                    html.append("<option title=\"" + item.name.escapeHTML(true) + "\" value=\"").append(item.id).append("\" type=\"Team\" accountId=\"").append(item.accountId).append("\">").append((showText.escapeHTML(true)).replace(new RegExp("&nbsp;", 'g'), "&ensp;")).append("</option>");
+                    //zhou
+                    html.append("<option ondblclick=\"dbClickDeptSelectedMember()\" title=\"" + item.name.escapeHTML(true) + "\" value=\"").append(item.id).append("\" type=\"Team\" accountId=\"").append(item.accountId).append("\">").append((showText.escapeHTML(true)).replace(new RegExp("&nbsp;", 'g'), "&ensp;")).append("</option>");
                 } else {
                     html.append("<div  class='member-list-div' seleted='false' ondblclick=\"selectOne('" + Constants_Team + "',this,'" + id + "')\"  onclick=\"selectList1ItemDiv('" + Constants_Team + "','" + id + "',this)\"  title=\"" + item.name.escapeHTML(true) + "\" value=\"").append(item.id).append("\" type=\"Team\" accountId=\"").append(item.accountId).append("\">").append((showText.escapeHTML(true)).replace(new RegExp("&nbsp;", 'g'), "&ensp;")).append("</div>");
                 }
@@ -3369,6 +3370,8 @@ function getTeamListHTMLStr(keyword) {
 
     return html.toString().replace("\|,", " ");
 }
+
+
 
 function getOrgRecentHTMLStr(keyword, selectAccountId) {
     var id = Constants_OrgRecent + "DataBody";
@@ -3785,7 +3788,7 @@ function reArea_1_2() {
 }
 
 function getMembersHTML(type, id, keyword, fullWin) {
-    debugger;
+
     var _getMembersFun = null;
 
     var selectHTML = new StringBuffer();
@@ -3975,7 +3978,7 @@ function getBusinessMembersHTML(type, id, keyword, fullWin) {
  * 显示人员
  */
 function showMember(type, id, keyword) {
-    debugger;
+
     if ((tempNowPanel.type != Constants_OrgTeam && !checkCanSelectMember()) || (tempNowPanel.type == Constants_OrgTeam && !checkCanSelectOrgTeam())) {
         return;
     }
@@ -4311,6 +4314,7 @@ function addMember(type, entity, member, fullWin, shadowMembers) {
  * 添加组的成员到List2
  */
 function addTeamMember2List2(id, keyword) {
+
     var team = topWindow.getObject(Constants_Team, id);
     if (!team) { //个人组不管
         return;
@@ -4497,16 +4501,25 @@ function initBusinessorganization(currentAccountId, selectBusinessAccountId) {
 
 //zhou:开发区双击部门选择人员信息
 function dbClickDeptSelectedMember() {
-    console.log(ztype, zid);
-    var _getMembersFun = null;
-    var entity = topWindow.getObject(ztype, zid);
-    if (!entity || (ztype == Constants_Department && entity.externalType == '1')) {
-        return selectHTML;
+    var entity = null;
+    if (Constants_Department == ztype) {
+        var _getMembersFun = null;
+        entity = topWindow.getObject(ztype, zid);
+        if (!entity || (ztype == Constants_Department && entity.externalType == '1')) {
+            return selectHTML;
+        }
+        _getMembersFun = Constants_Panels.get(ztype).getMembersFun;
+        var __members = eval("entity." + _getMembersFun + "()");
+        selectedListMemberData(__members);
+    } else if (Constants_Team == ztype) {
+        var team = topWindow.getObject(Constants_Team, zid);
+        selectedListMemberData(team.getLeaders());
+        selectedListMemberData(team.getMembers());
     }
-    _getMembersFun = Constants_Panels.get(ztype).getMembersFun;
-    var __members = eval("entity." + _getMembersFun + "()");
-    console.log(__members);
-    console.log(__members.size());
+}
+
+//zhou:公共的方法
+function selectedListMemberData(__members) {
     var element = null;
     for (var i = 0; i < __members.size(); i++) {
         element = __members.get(i);
@@ -4518,12 +4531,13 @@ function dbClickDeptSelectedMember() {
     }
 }
 
+
 /**
  * 显示树形结构
  */
 function initTree(type, selectAccountId, selectBusinessAccountId) {
     tree = new WebFXTree();
-    debugger;
+
     var root = null;
     var allRoots = [];
     var allAccountRoots = [];
@@ -4987,7 +5001,7 @@ function selectList1Item(type, objTD) {
  * ??????
  */
 function selectOneMember(selectObj) {
-    debugger;
+
     if (!selectObj || selectObj.selectedIndex < 0) {
         return;
     }
@@ -5343,7 +5357,7 @@ function checkEmptyMemberWithoutChildDept(type, id) {
  * tempNowSelect ArrayList<Element>
  */
 function selectOne(type, objTD) {
-    debugger;
+
     var flag = false;
     if (type && objTD) {
         tempNowSelected.clear();
