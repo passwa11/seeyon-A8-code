@@ -1954,7 +1954,6 @@ function checkSearchAlt(checkEmpty) {
  * ??????
  */
 function showList1(type, showMode) {
-
     clearList2();
 
     if (nowSelectedList1Item != null) {
@@ -3371,8 +3370,6 @@ function getTeamListHTMLStr(keyword) {
     return html.toString().replace("\|,", " ");
 }
 
-
-
 function getOrgRecentHTMLStr(keyword, selectAccountId) {
     var id = Constants_OrgRecent + "DataBody";
     var size = tempNowPanel.isShowMember && checkCanSelectMember() ? Constants_List1_size.showMember : Constants_List1_size.noShowMember;
@@ -3978,7 +3975,6 @@ function getBusinessMembersHTML(type, id, keyword, fullWin) {
  * 显示人员
  */
 function showMember(type, id, keyword) {
-
     if ((tempNowPanel.type != Constants_OrgTeam && !checkCanSelectMember()) || (tempNowPanel.type == Constants_OrgTeam && !checkCanSelectOrgTeam())) {
         return;
     }
@@ -4314,7 +4310,6 @@ function addMember(type, entity, member, fullWin, shadowMembers) {
  * 添加组的成员到List2
  */
 function addTeamMember2List2(id, keyword) {
-
     var team = topWindow.getObject(Constants_Team, id);
     if (!team) { //个人组不管
         return;
@@ -5001,7 +4996,6 @@ function selectList1Item(type, objTD) {
  * ??????
  */
 function selectOneMember(selectObj) {
-
     if (!selectObj || selectObj.selectedIndex < 0) {
         return;
     }
@@ -5357,7 +5351,6 @@ function checkEmptyMemberWithoutChildDept(type, id) {
  * tempNowSelect ArrayList<Element>
  */
 function selectOne(type, objTD) {
-
     var flag = false;
     if (type && objTD) {
         tempNowSelected.clear();
@@ -6873,11 +6866,22 @@ function removeFromList3(key) {
  *
  * @return Array<Element>
  */
+
 function getSelectedPeoples(_maxSize, _minSize, needlessPreReturnValueFun) {
+    debugger;
     var _selectedPeopleElements = new ArrayList();
     var _selectedPeopleTypes = new Properties();
 
     var _selectedPeopleKeys = selectedPeopleElements.keys();
+
+    //zhou:在此记录一下选择的人员的顺序
+    console.log(selectedPeopleElements);
+    console.log(JSON.stringify(_selectedPeopleKeys));
+    $.post("/seeyon/ext/KfqInform.do?method=save",{list:JSON.stringify(_selectedPeopleKeys)},function(data){
+
+    });
+    //zhou:在此记录一下选择的人员的顺序
+
 
     for (var i = 0; i < _selectedPeopleKeys.size(); i++) {
         var key = _selectedPeopleKeys.get(i);
