@@ -33,6 +33,9 @@ public class MeetingRoomHistoryDaoImpl implements MeetingRoomHistoryDao {
         if (null != map.get("meetingname")) {
             sb.append(" and h.meetingName like " + "'%" + map.get("meetingname") + "%'");
         }
+        if (null != map.get("perName")) {
+            sb.append(" and h.perName like " + "'%" + map.get("perName") + "%'");
+        }
         if (null != map.get("beginTime")) {
             sb.append(" and h.startdatetime > to_date('" + map.get("beginTime") + "','yyyy-MM-dd')");
         }

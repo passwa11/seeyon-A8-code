@@ -22,6 +22,9 @@
                         if (params.condition == 'meetingname') {
                             o.meetingname = params.value;
                         }
+                        if (params.condition == 'perName') {
+                            o.perName = params.value;
+                        }
                         if (params.condition == 'starttime') {
                             if (params.value[0] != "") {
                                 o.beginTime = params.value[0];
@@ -41,6 +44,13 @@
                     value: 'meetingname',
                     maxLength: 100
                 }, {
+                    id: 'perName',
+                    name: 'perName',
+                    type: 'input',
+                    text: "申请人",
+                    value: 'perName',
+                    maxLength: 100
+                },{
                     id: 'starttime',
                     name: 'starttime',
                     type: 'datemulti',
