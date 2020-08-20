@@ -9,6 +9,9 @@ public interface KfqInformDao {
 
     void saveInform(KfqInform inform);
 
+    void updateInform(List<KfqInform> inform);
+
     List<KfqInform> findInformbyUserid(Map map);
+    List<KfqInform> findInformbySummaryid(Map map);
 
 }

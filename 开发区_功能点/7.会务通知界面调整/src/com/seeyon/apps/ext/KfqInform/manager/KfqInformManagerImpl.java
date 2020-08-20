@@ -25,6 +25,16 @@ public class KfqInformManagerImpl implements KfqInformManager {
         return getKfqInformDao().findInformbyUserid(map);
     }
 
+    @Override
+    public void updateInform(List<KfqInform> inform) {
+        getKfqInformDao().updateInform(inform);
+    }
+
+    @Override
+    public List<KfqInform> findInformbySummaryid(Map map) {
+        return getKfqInformDao().findInformbySummaryid(map);
+    }
+
     public KfqInformDao getKfqInformDao() {
         if (demoDao == null) {
             demoDao = (KfqInformDao) AppContext.getBean("KfqInformDaoDemo");

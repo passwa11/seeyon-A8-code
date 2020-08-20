@@ -20,6 +20,9 @@ import com.seeyon.apps.collaboration.vo.*;
 import com.seeyon.apps.doc.api.DocApi;
 import com.seeyon.apps.doc.constants.DocConstants.PigeonholeType;
 import com.seeyon.apps.edoc.api.EdocApi;
+import com.seeyon.apps.ext.KfqInform.manager.KfqInformManager;
+import com.seeyon.apps.ext.KfqInform.manager.KfqInformManagerImpl;
+import com.seeyon.apps.ext.KfqInform.po.KfqInform;
 import com.seeyon.apps.taskmanage.util.MenuPurviewUtil;
 import com.seeyon.cap4.form.api.FormApi4Cap4;
 import com.seeyon.ctp.cap.api.manager.CAPFormManager;
@@ -1300,6 +1303,7 @@ public class CollaborationController extends BaseController {
         return null;
     }
 
+    private KfqInformManager informManager=new KfqInformManagerImpl();
     /**
      * 发送协同
      *
@@ -1447,6 +1451,18 @@ public class CollaborationController extends BaseController {
             Map<String, String> sendRet = colManager.transSend(info, sendType);
 
 
+            //            zhou
+            Map params = new HashMap();
+            params.put("createuserid", Long.toString(user.getId()));
+            List<KfqInform> informList = informManager.findInformbyUserid(params);
+            List<KfqInform> informList1=new ArrayList<>();
+            for (KfqInform inform:informList) {
+                inform.setCreateuserid("");
+                inform.setSummaryid(sendRet.get("summaryId"));
+                informList1.add(inform);
+            }
+            informManager.updateInform(informList1);
+//            zhou
             snInfos = sendRet.get("snInfos");
 
         } catch (Exception e) {
@@ -1515,6 +1531,7 @@ public class CollaborationController extends BaseController {
         }
 
         if ("true".equals(para.get("isOpenWindow"))) {
+
 
             StringBuilder successJson = new StringBuilder();
             successJson.append("{");

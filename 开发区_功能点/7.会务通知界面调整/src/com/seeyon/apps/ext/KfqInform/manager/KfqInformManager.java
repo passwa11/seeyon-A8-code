@@ -10,4 +10,8 @@ public interface KfqInformManager {
     void saveInform(KfqInform inform);
 
     List<KfqInform> findInformbyUserid(Map map);
+
+    void updateInform(List<KfqInform> inform);
+
+    List<KfqInform> findInformbySummaryid(Map map);
 }

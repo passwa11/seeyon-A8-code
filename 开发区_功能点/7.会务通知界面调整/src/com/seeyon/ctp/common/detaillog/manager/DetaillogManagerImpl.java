@@ -284,10 +284,9 @@ public class DetaillogManagerImpl implements DetaillogManager {
         affairVOList = ctpAffair2ctpAffairVO(affairList, affairVOList);
         List<FlowNodeDetailAffairVO> list = commonCtpAffairVO(affairVOList);
 //        zhou
-        User user = AppContext.getCurrentUser();
         Map params = new HashMap();
-        params.put("createuserid", Long.toString(user.getId()));
-        List<KfqInform> informList = informManager.findInformbyUserid(params);
+        params.put("summaryid", query.get("objectId").toString());
+        List<KfqInform> informList = informManager.findInformbySummaryid(params);
         List<FlowNodeDetailAffairVO> newList = new ArrayList<>();
         for (int i = 0; i < informList.size(); i++) {
             String userId = informList.get(i).getMemberid();
