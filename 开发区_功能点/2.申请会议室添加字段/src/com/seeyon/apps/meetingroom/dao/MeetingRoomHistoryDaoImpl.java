@@ -23,7 +23,7 @@ public class MeetingRoomHistoryDaoImpl implements MeetingRoomHistoryDao {
         StringBuffer sb = new StringBuffer();
         String sql = "select * from ( " +
                 "select * from (select id, (select name from meeting_room where id=meetingroomid) meetingName,meetingroomid, (select name from ORG_MEMBER where id =perid) perName,perid, (select name from ORG_UNIT where id =departmentid) deptName, startdatetime, enddatetime, meetingid, description, status, appdatetime, auditing_id, template_id, periodicity_id, used_status, time_diff, account_id, sqrdh, sfygwhldcj, hcyq, ldid, ldname " +
-                "from meeting_room_app_history)  where  meetingroomid in (select id from meeting_room where OFF_ADMIN ='"+map.get("memberId")+"') " +
+                "from meeting_room_app_history)  where  meetingroomid in (select id from meeting_room where  instr(off_admin,'"+map.get("memberId")+"')>0)" +
                 "union " +
                 "select * from (select id, (select name from meeting_room where id=meetingroomid) meetingName,meetingroomid, (select name from ORG_MEMBER where id =perid) perName,perid, (select name from ORG_UNIT where id =departmentid) deptName, startdatetime, enddatetime, meetingid, description, status, appdatetime, auditing_id, template_id, periodicity_id, used_status, time_diff, account_id, sqrdh, sfygwhldcj, hcyq, ldid, ldname " +
                 "from meeting_room_app_history)  where perid='"+map.get("memberId")+"') h where 1=1 ";
