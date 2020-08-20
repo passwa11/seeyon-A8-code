@@ -1,4 +1,4 @@
-package com.seeyon.util;
+package com.seeyon.apps.meetingroom.util;
 
 import java.io.InputStream;
 import java.util.Properties;
@@ -6,22 +6,22 @@ import java.util.Properties;
 /**
  * 周刘成   2019/7/24
  */
-public class ReadConfigTools {
+public class MeetingReadConfigTools {
     private Properties properties;
 
 
-    public static ReadConfigTools readConfigTools;
+    public static MeetingReadConfigTools readConfigTools;
 
-    public static ReadConfigTools getInstance() {
+    public static MeetingReadConfigTools getInstance() {
         if (null != readConfigTools) {
-            readConfigTools = new ReadConfigTools();
+            readConfigTools = new MeetingReadConfigTools();
         }
         return readConfigTools;
     }
 
 
-    public ReadConfigTools() {
-        InputStream inputStream = ReadConfigTools.class.getClassLoader().getResourceAsStream("config/meeting.properties");
+    public MeetingReadConfigTools() {
+        InputStream inputStream = MeetingReadConfigTools.class.getClassLoader().getResourceAsStream("config/meeting.properties");
 
         this.properties = new Properties();
         try {

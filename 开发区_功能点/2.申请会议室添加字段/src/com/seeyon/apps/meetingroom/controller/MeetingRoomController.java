@@ -16,11 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.seeyon.apps.ext.meetingInfoTip.po.MeetingAppHistory;
 import com.seeyon.apps.meetingroom.manager.*;
+import com.seeyon.apps.meetingroom.util.*;
 import com.seeyon.ctp.common.filemanager.manager.FileManager;
 import com.seeyon.ctp.services.ServiceResponse;
 import com.seeyon.ctp.services.UserToken;
 import com.seeyon.ctp.util.*;
-import com.seeyon.util.ReadConfigTools;
 import com.seeyon.v3x.services.AuthorityService;
 import com.seeyon.v3x.services.impl.AuthorityServiceImpl;
 import com.seeyon.v3x.services.message.MessageService;
@@ -49,10 +49,6 @@ import com.seeyon.apps.meeting.util.MeetingUtil;
 import com.seeyon.apps.meetingroom.po.MeetingRoom;
 import com.seeyon.apps.meetingroom.po.MeetingRoomApp;
 import com.seeyon.apps.meetingroom.po.MeetingRoomPerm;
-import com.seeyon.apps.meetingroom.util.MeetingRoomAdminUtil;
-import com.seeyon.apps.meetingroom.util.MeetingRoomHelper;
-import com.seeyon.apps.meetingroom.util.MeetingRoomRoleUtil;
-import com.seeyon.apps.meetingroom.util.MeetingRoomUtil;
 import com.seeyon.apps.meetingroom.vo.MeetingRoomAppVO;
 import com.seeyon.apps.meetingroom.vo.MeetingRoomVO;
 import com.seeyon.ctp.common.AppContext;
@@ -68,7 +64,6 @@ import com.seeyon.ctp.common.filemanager.manager.AttachmentEditHelper;
 import com.seeyon.ctp.common.filemanager.manager.AttachmentManager;
 import com.seeyon.ctp.common.i18n.ResourceUtil;
 import com.seeyon.ctp.common.po.affair.CtpAffair;
-import com.seeyon.ctp.common.po.config.ConfigItem;
 import com.seeyon.ctp.common.po.filemanager.Attachment;
 import com.seeyon.ctp.organization.OrgConstants.MemberPostType;
 import com.seeyon.ctp.organization.OrgConstants.Role_NAME;
@@ -990,43 +985,43 @@ public class MeetingRoomController extends BaseController {
                 /**
                  * zhou:会议室审核通过，发送消息通知
                  */
-//                AuthorityService authorityService = new AuthorityServiceImpl();
-//                String pass = new ReadConfigTools().getString("passwordOfWebservice");
-//                UserToken userToken = authorityService.authenticate("service-admin", pass);
-//                String tokenId = userToken.getId();
-//                MessageService messageService = new MessageServiceImpl();
-//                User user = AppContext.getCurrentUser();
-//                String[] urls = {"/seeyon/meetingroom.do?method=createPerm&openWin=1&id=" + request.getParameter("id") + "&affairId="};
-//                String[] loginNames = new ReadConfigTools().getString("loginNameOfReciver").split(",");
-//
-//                String sql = "select startdatetime,enddatetime,(select r.name from MEETING_room r where r.id =m.meetingroomid) meetingname,(select name from org_member o where o.id=m.perid ) username,(select name from org_unit u where u.id=m.departmentid) deptname from meeting_room_app m where m.id=?";
-//                PreparedStatement ps = null;
-//                ResultSet rs = null;
-//                StringBuffer sb = new StringBuffer();
-//                try {
-//                    ps = connection.prepareStatement(sql);
-//                    ps.setString(1, request.getParameter("id"));
-//                    rs = ps.executeQuery();
-//                    while (rs.next()) {
-//                        sb.append(rs.getString("username") + "【" + rs.getString("deptname") + "】申请了会议室：" + rs.getString("meetingname") + "，时间为：" + rs.getString("startdatetime") + "至" + rs.getString("enddatetime") + "。请提前安排！");
-//                    }
-//                    ServiceResponse serviceResponse = messageService.sendMessageByLoginName(tokenId, loginNames, sb.toString(), urls);
-//                    serviceResponse.getResult();
-//
-//
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                } finally {
-//                    if (null != rs) {
-//                        rs.close();
-//                    }
-//                    if (null != ps) {
-//                        ps.close();
-//                    }
-//                    if (null != connection) {
-//                        connection.close();
-//                    }
-//                }
+                AuthorityService authorityService = new AuthorityServiceImpl();
+                String pass = new MeetingReadConfigTools().getString("passwordOfWebservice");
+                UserToken userToken = authorityService.authenticate("service-admin", pass);
+                String tokenId = userToken.getId();
+                MessageService messageService = new MessageServiceImpl();
+                User user = AppContext.getCurrentUser();
+                String[] urls = {"/seeyon/meetingroom.do?method=createPerm&openWin=1&id=" + request.getParameter("id") + "&affairId="};
+                String[] loginNames = new MeetingReadConfigTools().getString("loginNameOfReciver").split(",");
+
+                String sql = "select startdatetime,enddatetime,(select r.name from MEETING_room r where r.id =m.meetingroomid) meetingname,(select name from org_member o where o.id=m.perid ) username,(select name from org_unit u where u.id=m.departmentid) deptname from meeting_room_app m where m.id=?";
+                PreparedStatement ps = null;
+                ResultSet rs = null;
+                StringBuffer sb = new StringBuffer();
+                try {
+                    ps = connection.prepareStatement(sql);
+                    ps.setString(1, request.getParameter("id"));
+                    rs = ps.executeQuery();
+                    while (rs.next()) {
+                        sb.append(rs.getString("username") + "【" + rs.getString("deptname") + "】申请了会议室：" + rs.getString("meetingname") + "，时间为：" + rs.getString("startdatetime") + "至" + rs.getString("enddatetime") + "。请提前安排！");
+                    }
+                    ServiceResponse serviceResponse = messageService.sendMessageByLoginName(tokenId, loginNames, sb.toString(), urls);
+                    serviceResponse.getResult();
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (null != rs) {
+                        rs.close();
+                    }
+                    if (null != ps) {
+                        ps.close();
+                    }
+                    if (null != connection) {
+                        connection.close();
+                    }
+                }
 
             } else {
                 if (appVo.getMeetingRoomApp() != null) {
