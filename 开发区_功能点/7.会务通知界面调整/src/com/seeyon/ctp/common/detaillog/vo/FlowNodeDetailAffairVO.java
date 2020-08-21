@@ -19,6 +19,11 @@ import java.util.Date;
  *
  */
 public class FlowNodeDetailAffairVO {
+
+    /**
+     * zhou 部门名称
+     */
+    private String deptName;
 	/**
 	 * affairId
 	 */
@@ -260,7 +265,15 @@ public class FlowNodeDetailAffairVO {
 	//回退人的id
 	private Long backFromId;
 
-	/**
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
+
+    /**
 	 * 回退人的id
 	 * @return
 	 */

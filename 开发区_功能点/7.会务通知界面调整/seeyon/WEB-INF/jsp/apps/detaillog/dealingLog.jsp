@@ -25,7 +25,13 @@
                                sortname : 'affair.memberId',
                                sortable : true,
                                width: '10%'
-                           }, {
+                           },{
+                                display: "所属单位",//所属单位
+                                name: 'deptName',
+                                sortname : 'affair.memberId',
+                                sortable : true,
+                                width: '10%'
+                            }, {
                                display: "${ctp:i18n('common.workflow.policy')}",//节点权限
                                name: 'policyName',
                                sortname : 'affair.nodePolicy',
@@ -42,19 +48,19 @@
                                name: 'createDate',
                                sortname : 'affair.createDate',
                                sortable : true,
-                               width: '14%'
+                               width: '10%'
                            }, {
                                display: "${ctp:i18n('common.workflow.first.view.date')}",//首次查看时间
                                name: 'firstViewDate',
                                sortname : 'affair.firstViewDate',
                                sortable : true,
-                               width: '14%'
+                               width: '10%'
                            }, {
                                display: "${ctp:i18n('common.workflow.finish.date')}",//处理时间
                                name: 'finishDate',
                                sortname : 'affair.completeTime',
                                sortable : true,
-                               width: '14%'
+                               width: '12%'
                            }, {
                                display: "${ctp:i18n('common.workflow.dealTime.date')}",//处理时长
                                name: 'dealTime',
