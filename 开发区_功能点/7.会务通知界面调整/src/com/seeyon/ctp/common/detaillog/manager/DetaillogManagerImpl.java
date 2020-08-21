@@ -293,85 +293,97 @@ public class DetaillogManagerImpl implements DetaillogManager {
         Map params = new HashMap();
         params.put("summaryid", query.get("objectId").toString());
         List<KfqInform> informList = informManager.findInformbySummaryid(params);
+        Connection connection = null;
         List<FlowNodeDetailAffairVO> newList = new ArrayList<>();
-        Connection connection=null;
-        try {
-            connection=JDBCAgent.getRawConnection();
-            for (int i = 0; i < informList.size(); i++) {
-                String userId = informList.get(i).getMemberid();
-                for (FlowNodeDetailAffairVO vo : list) {
-                    if (Long.toString(vo.getMemberId()).equals(userId)) {
-                        String deptname=getParentDept(userId, connection, mapList);
-                        vo.setDeptName(deptname);
-                        newList.add(vo);
+        if (informList.size() > 0) {
+            try {
+                connection = JDBCAgent.getRawConnection();
+                for (int i = 0; i < informList.size(); i++) {
+                    String userId = informList.get(i).getMemberid();
+                    for (FlowNodeDetailAffairVO vo : list) {
+                        if (Long.toString(vo.getMemberId()).equals(userId)) {
+                            String deptname = getParentDept(userId, connection, mapList);
+                            vo.setDeptName(deptname);
+                            newList.add(vo);
+                        }
                     }
                 }
+            } catch (Exception e) {
             }
-        }catch (Exception e){
-        }finally {
-            if(null !=connection){
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+        } else {
+            try {
+                connection = JDBCAgent.getRawConnection();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            for (FlowNodeDetailAffairVO vo : list) {
+                String deptname = getParentDept(Long.toString(vo.getMemberId()), connection, mapList);
+                vo.setDeptName(deptname);
+                newList.add(vo);
             }
         }
-
+        if (null != connection) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
 //        zhou
 
         flipInfo.setNeedTotal(false);
         flipInfo.setData(newList);
+
 //        if(list != null && list.size() > 0){
 //        	DBAgent.memoryPaging(list, flipInfo);
 //        }
         return flipInfo;
     }
 
-//zhou Start
-public String getParentDept(String memberId, Connection connection, List<Map<String, Object>> mapList) {
-    PreparedStatement ps = null;
-    ResultSet rs = null;
-    StringBuffer result = new StringBuffer();
-    String sql = "select ORG_DEPARTMENT_ID from ORG_MEMBER where id ='" + memberId + "'";
-    try {
-        ps = connection.prepareStatement(sql);
-        rs = ps.executeQuery();
-        String departmentId = "";
-        while (rs.next()) {
-            departmentId = rs.getString(1);
-        }
+    //zhou Start
+    public String getParentDept(String memberId, Connection connection, List<Map<String, Object>> mapList) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        StringBuffer result = new StringBuffer();
+        String sql = "select ORG_DEPARTMENT_ID from ORG_MEMBER where id ='" + memberId + "'";
+        try {
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            String departmentId = "";
+            while (rs.next()) {
+                departmentId = rs.getString(1);
+            }
 
-        for (int i = 0; i < mapList.size(); i++) {
-            if ((mapList.get(i).get("id").toString()).equals(departmentId)) {
-                String path = (mapList.get(i).get("path")).toString();
-                String p12 = path.substring(0, 12);
-                result.append("/");
-                result.append(getUnitName(p12, mapList));
-                if (path.length() >= 16) {
-                    String p16 = path.substring(0, 16);
+            for (int i = 0; i < mapList.size(); i++) {
+                if ((mapList.get(i).get("id").toString()).equals(departmentId)) {
+                    String path = (mapList.get(i).get("path")).toString();
+                    String p12 = path.substring(0, 12);
                     result.append("/");
-                    result.append(getUnitName(p16, mapList));
+                    result.append(getUnitName(p12, mapList));
+                    if (path.length() >= 16) {
+                        String p16 = path.substring(0, 16);
+                        result.append("/");
+                        result.append(getUnitName(p16, mapList));
+                    }
                 }
             }
-        }
 
-    } catch (Exception e) {
-        e.printStackTrace();
-    } finally {
-        try {
-            if (null != rs) {
-                rs.close();
-            }
-            if (null != ps) {
-                ps.close();
-            }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (null != rs) {
+                    rs.close();
+                }
+                if (null != ps) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+        return result.toString();
     }
-    return result.toString();
-}
 
     public String getUnitName(String path, List<Map<String, Object>> mapList) {
         String name = "";
