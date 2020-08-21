@@ -133,10 +133,11 @@
                 }
             }
         }
-        function changRoomUserNum(){
-           var val= $("#roomList option:selected").val();
-           var seatCount=$("#roomList option:selected").attr("userNum");
-           $("#seatCount").val(seatCount);
+
+        function changRoomUserNum() {
+            var val = $("#roomList option:selected").val();
+            var seatCount = $("#roomList option:selected").attr("userNum");
+            $("#seatCount").val(seatCount);
         }
 
     </script>
@@ -158,18 +159,26 @@
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.meetingroomname'/>:</td>
                 <td width="35%" nowrap="nowrap" class="new-column" style="table-layout:fixed;word-break:break-all">
                     <%--                    <c:out value="${v3x:escapeJavascript(bean.meetingRoom.name) }"></c:out>--%>
-                    <select id="roomList" name="roomId" class="titleInput input-99per" onclick="changRoomUserNum()" style="width: 300px;">
-                        <c:forEach items="${rooms}" var="room">
-                            <c:choose>
-                                <c:when test="${bean.meetingRoom.id == room.id}">
-                                    <option userNum="${room.seatCount}" class="titleInput choice right" value="${room.id}" selected="selected">${room.name}</option>
-                                </c:when>
-                                <c:otherwise>
-                                    <option userNum="${room.seatCount}" class="titleInput choice right" value="${room.id}">${room.name}</option>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
-                    </select>
+                    <%--                    zhou--%>
+                    <c:choose>
+                        <c:when test="${kfqread == true}">
+                            <c:out value="${v3x:escapeJavascript(bean.meetingRoom.name) }"></c:out>
+                        </c:when>
+                        <c:otherwise>
+                            <select id="roomList" name="roomId" class="titleInput input-99per" onclick="changRoomUserNum()" style="width: 300px;">
+                                <c:forEach items="${rooms}" var="room">
+                                    <c:choose>
+                                        <c:when test="${bean.meetingRoom.id == room.id}">
+                                            <option userNum="${room.seatCount}" class="titleInput choice right" value="${room.id}" selected="selected">${room.name}</option>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option userNum="${room.seatCount}" class="titleInput choice right" value="${room.id}">${room.name}</option>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                            </select>
+                        </c:otherwise>
+                    </c:choose>
                 </td>
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.meetName'/>:</td>
                 <td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
