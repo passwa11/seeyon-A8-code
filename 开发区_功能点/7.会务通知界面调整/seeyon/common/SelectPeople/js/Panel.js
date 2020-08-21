@@ -4508,8 +4508,29 @@ function dbClickDeptSelectedMember() {
         selectedListMemberData(__members);
     } else if (Constants_Team == ztype) {
         var team = topWindow.getObject(Constants_Team, zid);
-        selectedListMemberData(team.getLeaders());
-        selectedListMemberData(team.getMembers());
+        var leaders=team.getLeaders();
+        if(leaders.size()>0){
+            var n_leaders=new ArrayList();
+            for (var i = 0; i < leaders.size(); i++) {
+                var obj=leaders.get(i);
+                var o=obj['id'].split("_")[1];
+                obj['id']=o;
+                n_leaders.add(obj);
+            }
+            selectedListMemberData(n_leaders);
+
+        }
+        var mem=team.getMembers();
+        if(mem.size()>0){
+            var n_member=new ArrayList();
+            for (var i = 0; i < mem.size(); i++) {
+                var obj=mem.get(i);
+                var o=obj['id'].split("_")[1];
+                obj['id']=o;
+                n_member.add(obj);
+            }
+            selectedListMemberData(n_member);
+        }
     }
 }
 
