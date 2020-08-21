@@ -4508,34 +4508,50 @@ function dbClickDeptSelectedMember() {
         selectedListMemberData(__members);
     } else if (Constants_Team == ztype) {
         var team = topWindow.getObject(Constants_Team, zid);
-        var leaders=team.getLeaders();
-        if(leaders.size()>0){
-            var n_leaders=new ArrayList();
+        let leaders = null;
+        leaders = team.getLeaders();
+        if (leaders.size() > 0) {
+            let n_leaders = new ArrayList();
             for (var i = 0; i < leaders.size(); i++) {
-                var obj=leaders.get(i);
-                var o=obj['id'].split("_")[1];
-                obj['id']=o;
-                n_leaders.add(obj);
+                let obj = leaders.get(i);
+                if(obj['id'].indexOf("_")!=-1){
+                    let o = obj['id'].split("_")[1];
+                    obj['id'] = o;
+                    n_leaders.add(obj);
+                }
             }
-            selectedListMemberData(n_leaders);
+            if(n_leaders.size()>0){
+                selectedListMemberData(n_leaders);
+            }else{
+                selectedListMemberData(leaders);
+            }
 
         }
-        var mem=team.getMembers();
-        if(mem.size()>0){
-            var n_member=new ArrayList();
+        let mem = null;
+        mem = team.getMembers();
+        if (mem.size() > 0) {
+
+            let n_member = new ArrayList();
             for (var i = 0; i < mem.size(); i++) {
-                var obj=mem.get(i);
-                var o=obj['id'].split("_")[1];
-                obj['id']=o;
-                n_member.add(obj);
+                let obj = mem.get(i);
+                if(obj['id'].indexOf("_")!=-1) {
+                    let o = obj['id'].split("_")[1];
+                    obj['id'] = o;
+                    n_member.add(obj);
+                }
             }
-            selectedListMemberData(n_member);
+            if(n_member.size()>0){
+                selectedListMemberData(n_member);
+            }else {
+                selectedListMemberData(mem);
+            }
         }
     }
 }
 
 //zhou:公共的方法
 function selectedListMemberData(__members) {
+    debugger;
     var element = null;
     for (var i = 0; i < __members.size(); i++) {
         element = __members.get(i);
@@ -6896,7 +6912,7 @@ function getSelectedPeoples(_maxSize, _minSize, needlessPreReturnValueFun) {
     var _selectedPeopleKeys = selectedPeopleElements.keys();
 
     //zhou:在此记录一下选择的人员的顺序
-    $.post("/seeyon/ext/KfqInform.do?method=save",{list:JSON.stringify(_selectedPeopleKeys)},function(data){
+    $.post("/seeyon/ext/KfqInform.do?method=save", {list: JSON.stringify(_selectedPeopleKeys)}, function (data) {
 
     });
     //zhou:在此记录一下选择的人员的顺序
