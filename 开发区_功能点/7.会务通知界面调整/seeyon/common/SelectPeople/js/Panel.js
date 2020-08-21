@@ -6875,8 +6875,6 @@ function getSelectedPeoples(_maxSize, _minSize, needlessPreReturnValueFun) {
     var _selectedPeopleKeys = selectedPeopleElements.keys();
 
     //zhou:在此记录一下选择的人员的顺序
-    console.log(selectedPeopleElements);
-    console.log(JSON.stringify(_selectedPeopleKeys));
     $.post("/seeyon/ext/KfqInform.do?method=save",{list:JSON.stringify(_selectedPeopleKeys)},function(data){
 
     });
