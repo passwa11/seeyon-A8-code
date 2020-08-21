@@ -148,7 +148,7 @@
                     <%--                    <c:out value="${v3x:escapeJavascript(bean.meetingRoom.name) }"></c:out>--%>
                     <%--                    zhou--%>
                     <c:choose>
-                        <c:when test="${isReadOnly == true}">
+                        <c:when test="${kfqread == true}">
                             <c:out value="${v3x:escapeJavascript(bean.meetingRoom.name) }"></c:out>
                         </c:when>
                         <c:otherwise>

@@ -879,18 +879,25 @@ public class MeetingRoomController extends BaseController {
         //checkAuditRight = !checkAuditRight ? "1".equals(openWin) : true;//打开窗口和管理员待办内嵌页面都进行权限验证
 
 //      [开发区会议管理,获取会议室管理员可以修改的会议室名称]  zhou start
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String[] dateRange=simpleDateFormat.format(appVo.getMeetingRoomApp().getStartDatetime()).split(" ");
-        User user=AppContext.getCurrentUser();
-        Map<String,Object> map=new HashMap<>();
-        map.put("dateRange",dateRange[0]);
+        String kfqread = request.getParameter("kfqRead");
+        if (null != kfqread && kfqread.equals("false")) {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String[] dateRange = simpleDateFormat.format(appVo.getMeetingRoomApp().getStartDatetime()).split(" ");
+            User user = AppContext.getCurrentUser();
+            Map<String, Object> map = new HashMap<>();
+            map.put("dateRange", dateRange[0]);
 
-        map.put("appId",Long.toString(appVo.getMeetingRoomApp().getId()));
-        map.put("starttime",simpleDateFormat.format(appVo.getMeetingRoomApp().getStartDatetime()));
-        map.put("endtime",simpleDateFormat.format(appVo.getMeetingRoomApp().getEndDatetime()));
-        map.put("userId",Long.toString(user.getId()));
-        List<MeetingRoom> rooms = kfqMeetingRoomManager.findAllMeetingRoom(map);
-        mav.addObject("rooms", rooms);
+            map.put("appId", Long.toString(appVo.getMeetingRoomApp().getId()));
+            map.put("starttime", simpleDateFormat.format(appVo.getMeetingRoomApp().getStartDatetime()));
+            map.put("endtime", simpleDateFormat.format(appVo.getMeetingRoomApp().getEndDatetime()));
+            map.put("userId", Long.toString(user.getId()));
+            List<MeetingRoom> rooms = kfqMeetingRoomManager.findAllMeetingRoom(map);
+            mav.addObject("rooms", rooms);
+            mav.addObject("kfqread", false);
+        } else {
+            mav.addObject("kfqread", true);
+        }
+
 //      [开发区会议管理]  zhou end
         mav.addObject("isPeriodicity", !MeetingUtil.isIdBlank(request.getParameter("periodicityInfoId")));
         return mav;
