@@ -31,10 +31,10 @@ $(function() {
 		}
 	}, 100);
 });
-
+//zhou:这是预定撤销列表，添加一个参数kfqRead=true
 function showDetail(id) {
-	var url = "meetingroom.do?method=createPerm&id="+id+"&readOnly=true&openWin=openWin&flag=${v3x:escapeJavascript(param.flag)}&listType=listmyapp&from=yesApp";
-	parent.detailFrame.location = url; 
+	var url = "meetingroom.do?method=createPerm&kfqRead=true&id="+id+"&readOnly=true&openWin=openWin&flag=${v3x:escapeJavascript(param.flag)}&listType=listmyapp&from=yesApp";
+	parent.detailFrame.location = url;
 }
 
 function checkMoreSelect(formNode) {
@@ -49,7 +49,7 @@ function checkMoreSelect(formNode) {
 		ids = ids.substring(0,ids.length-1);
 		return ids;
 	}
-	
+
 	return "";
 }
 
@@ -71,32 +71,32 @@ function doCancel() {
 		alert("<fmt:message key='mr.alert.pleaseselecttocancel'/>！");
 		return false;
 	}
-	
+
 	var currentDate = new Date();
 	currentDate = currentDate.format("yyyy-MM-dd HH:mm");
 	var currentDatetime = Date.parse(currentDate.replace(/\-/g,"/"));
-	
+
 	var meetingName = "";
-	
+
 	for(var i=0; i<checkedBoxs.length; i++) {
 		var checkedBox = checkedBoxs[i];
-		
+
 		var roomAppStartDate = checkedBox.getAttribute("startDatetime");
 		var roomAppStartDatetime = Date.parse(roomAppStartDate.replace(/\-/g,"/"));
-		
+
 		var roomAppEndDate = checkedBox.getAttribute("endDatetime");
 		var roomAppEndDatetime = Date.parse(roomAppEndDate.replace(/\-/g,"/"));
-		
+
 		if(checkedBox.getAttribute("usedStatusDisplay") == "1") {//使用中
 			alert("${ctp:i18n('meeting.alert.meetingRoomNoCancle1')}");//该会议室正在使用中，不允许撤销!
 			return ;
 		}
-		
+
 		if(currentDatetime > roomAppEndDatetime) {
 			alert("${ctp:i18n('meeting.alert.meetingRoomNoCancle2')}");//会议室使用时间已过，不允许撤销会议室！
 			return ;
 		}
-		
+
 		if(meetingName != "") {
 			meetingName += "、";
 		}
@@ -104,7 +104,7 @@ function doCancel() {
 			meetingName += "《" + checkedBox.getAttribute("meetingName") + "》";
 		}
 	}
-	
+
 	var cancelMsg = "<fmt:message key='mr.alert.confirmcancel'/>";
 	if(meetingName != "") {
 		cancelMsg = "<fmt:message key='mr.alert.meetingRoomCancle1'/>"+meetingName+"<fmt:message key='mr.alert.meetingRoomCancle2'/>";
@@ -115,7 +115,7 @@ function doCancel() {
 			document.listForm["cancelContent"].value = rv;
 			document.listForm.action = "meetingroom.do?method=execCancel${ctp:csrfSuffix()}";
 			document.listForm.submit();
-		});	
+		});
 	}
 }
 
@@ -142,7 +142,7 @@ function doFinish() {
 		alert("${ctp:i18n('meeting.alert.meetingroom.UseEndToEnd')}");//该会议室已结束使用，不允许提前结束！
 		return;
 	}
-	
+
 	if(meetingName != "") {
 		var message = "${ctp:i18n('meeting.alert.meetingRoomEnd1')}" + meetingName + "${ctp:i18n('meeting.alert.meetingRoomEnd2')}";
 		if(confirm(message)) {//该会议室安排了会议《" + meetingName + "》，您确定提前结束该会议室和会议吗？
@@ -179,7 +179,7 @@ function doFinish() {
             });
 		}
 	}
-	
+
 }
 
 function setBulPeopleFields(elements){
@@ -250,10 +250,10 @@ function ChangeEvent(o){
     if(beginDate != null && endDate != null){
 		beginDate.value = "";
     	endDate.value = "";
-    } 
+    }
   	showCondition(o);
 }
-			
+
 //isValid 人员是否是有效的，换句话说就是是否已经离职，离职不允许弹出人员卡片
 function displayPeopleCard(memberId, isValid){
 	if(!isValid || isValid == "false"){
@@ -284,16 +284,16 @@ function doReminders(){
 		return false;
 	}else{
 		var checkedBox=checkedBoxs[0];//只能单条催办
-		
+
 		var currentDate=new Date();
 		currentDate=currentDate.format("yyyy-MM-dd HH:mm");
 		var currentDatetime=Date.parse(currentDate.replace(/\-/g,"/"));
-		
+
 		var roomAppEndDate=checkedBox.getAttribute("endDatetime");
 		var roomAppEndDatetime=Date.parse(roomAppEndDate.replace(/\-/g,"/"));
-		
+
 		var appStatus=checkedBox.getAttribute("status");
-		
+
 		if(currentDatetime>roomAppEndDatetime) {
 			alert("${ctp:i18n('meeting.alert.meetingRoomNoReminders1')}");//会议室使用时间已过，不允许催办！
 			return;
@@ -366,7 +366,7 @@ function submitok(result,roomAppId){
 </head>
 
 <body style="overflow: auto" style="padding: 0px" onload="">
-	
+
 <div class="main_div_row2">
 
 <div class="right_div_row2">
@@ -391,13 +391,13 @@ function submitok(result,roomAppId){
 			document.close();
 		</script>
 	</td>
-	
+
 	<td class="webfx-menu-bar">
 		<form action="" name="searchForm" id="searchForm" method="post" onsubmit="return false" style="margin: 0px">
 			<input type="hidden" name="flag" value="${v3x:toHTML(flag)}"/>
 			<input type="hidden" name="method" value="listMyApplication"/>
 			<input type="hidden" name="CSRFTOKEN" value="${sessionScope['CSRFTOKEN']}" />
-		
+
 			<div class="div-float-right condition-search-div">
 				<div class="div-float">
 					<select id="condition" name="condition" onChange="ChangeEvent(this)" class="condition" >
@@ -411,8 +411,8 @@ function submitok(result,roomAppId){
 					<input type="text" name="textfield" class="textfield" />
 				</div>
 				<div id="2Div" class="div-float hidden">
-					<input type="text" name="textfield" id="fromDate" class="input-date cursor-hand" onclick="whenstart('${pageContext.request.contextPath}',this,575,140);" readonly /> 
-					- 
+					<input type="text" name="textfield" id="fromDate" class="input-date cursor-hand" onclick="whenstart('${pageContext.request.contextPath}',this,575,140);" readonly />
+					-
 					<input type="text" name="textfield1" id="toDate" class="input-date cursor-hand" onclick="whenstart('${pageContext.request.contextPath}',this,575,140);" readonly />
 				</div>
 				<div id="3Div" class="div-float hidden">
@@ -454,8 +454,8 @@ function submitok(result,roomAppId){
 		<c:set value="${v3x:getMember(admin).isValid}" var="memberIsValid"></c:set>
 		<a class="click-link"  href="javascript:displayPeopleCard('${admin}', '${memberIsValid }')"><c:out value="${v3x:showOrgEntitiesOfIds(admin, 'Member', '')}"/></a>
 	</c:forEach>
-</v3x:column>	
-	
+</v3x:column>
+
 <v3x:column width="12%" type="String" onClick="showDetail('${vo.roomAppId }')" label="mr.label.meetName" className="cursor-hand sort" alt="${vo.meetingName}">
 	<c:out value="${vo.meetingName }" />
 </v3x:column>
@@ -479,7 +479,7 @@ function submitok(result,roomAppId){
 <v3x:column width="8%" type="String" onClick="showDetail('${vo.roomAppId }')" label="meeting.room.used.status" className="cursor-hand sort" alt="${vo.usedStatusName }">
 	<c:out value="${vo.usedStatusName }" />
 </v3x:column>
-	
+
 </v3x:table>
 
 </form>
