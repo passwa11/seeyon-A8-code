@@ -1,6 +1,7 @@
 <%@ page isELIgnored="false" import="com.seeyon.ctp.common.AppContext,java.util.Locale" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.seeyon.com/ctp" prefix="ctp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,9 +121,10 @@
                 }
             }
         }
-        function changRoomUserNum(){
-            var val= $("#roomList option:selected").val();
-            var seatCount=$("#roomList option:selected").attr("userNum");
+
+        function changRoomUserNum() {
+            var val = $("#roomList option:selected").val();
+            var seatCount = $("#roomList option:selected").attr("userNum");
             $("#seatCount").val(seatCount);
         }
 
@@ -144,18 +146,27 @@
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.meetingroomname'/>:</td>
                 <td width="35%" nowrap="nowrap" class="new-column" style="table-layout:fixed;word-break:break-all">
                     <%--                    <c:out value="${v3x:escapeJavascript(bean.meetingRoom.name) }"></c:out>--%>
-                    <select id="roomList"  name="roomId"  onclick="changRoomUserNum()" class="titleInput input-99per" style="width: 300px;">
-                        <c:forEach items="${rooms}" var="room">
-                            <c:choose>
-                                <c:when test="${bean.meetingRoom.id == room.id}">
-                                    <option userNum="${room.seatCount}" class="titleInput choice right" value="${room.id}" selected="selected">${room.name}</option>
-                                </c:when>
-                                <c:otherwise>
-                                    <option userNum="${room.seatCount}" class="titleInput choice right" value="${room.id}">${room.name}</option>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
-                    </select>
+                    <%--                    zhou--%>
+                    <c:choose>
+                        <c:when test="${isReadOnly == true}">
+                            <c:out value="${v3x:escapeJavascript(bean.meetingRoom.name) }"></c:out>
+                        </c:when>
+                        <c:otherwise>
+                            <select id="roomList" name="roomId" onclick="changRoomUserNum()" class="titleInput input-99per" style="width: 300px;">
+                                <c:forEach items="${rooms}" var="room">
+                                    <c:choose>
+                                        <c:when test="${bean.meetingRoom.id == room.id}">
+                                            <option userNum="${room.seatCount}" class="titleInput choice right" value="${room.id}" selected="selected">${room.name}</option>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option userNum="${room.seatCount}" class="titleInput choice right" value="${room.id}">${room.name}</option>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                            </select>
+                        </c:otherwise>
+                    </c:choose>
+
                 </td>
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.meetName'/>:</td>
                 <td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
@@ -220,7 +231,7 @@
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.seatCount'/>:</td>
                 <c:set var="isProxy" value="${proxy?'proxy-true':'' }"/>
                 <td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
-                    <input type="text"  id="seatCount"  name="asset_name" inputName="<fmt:message key='mr.label.seatCount'/>" class="input-300px" value="${bean.meetingRoom.seatCount}" readonly/>
+                    <input type="text" id="seatCount" name="asset_name" inputName="<fmt:message key='mr.label.seatCount'/>" class="input-300px" value="${bean.meetingRoom.seatCount}" readonly/>
                 </td>
                 <td width="12%" nowrap="nowrap" class="bg-gray"><fmt:message key='mr.label.eqdescription'/>:</td>
                 <td width="35%" nowrap="nowrap" class="new-column ${isProxy }">
