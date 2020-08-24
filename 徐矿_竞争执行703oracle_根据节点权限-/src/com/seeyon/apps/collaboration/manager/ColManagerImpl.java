@@ -2112,6 +2112,24 @@ public class ColManagerImpl implements ColManager {
         }
         //同步消息
         userMessageManager.updateSystemMessageStateByUserAndReference(AppContext.currentUserId(), affair.getId());
+
+//      [徐矿竞争执行，更新处理时间问题。] zhou start
+        //多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
+        String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
+        Map<String, Object> params2 = new HashMap<>();
+        params2.put("state", 4);
+        params2.put("subState", 0);
+        params2.put("completeTime", new Date());
+        params2.put("activityId", affair.getActivityId().longValue());
+        params2.put("objectId", affair.getObjectId().longValue());
+        try {
+            affairManager.update(hql, params2);
+        } catch (BusinessException e) {
+            e.printStackTrace();
+            System.out.println("取回时修改状态值的hql语句出错了：" + e.getMessage());
+        }
+//      多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
+//      [徐矿竞争执行，更新处理时间问题。] zhou end
     }
 
     private void updateAffairAttribute(CtpAffair affair, ColSummary summary, String subState) throws BusinessException {
