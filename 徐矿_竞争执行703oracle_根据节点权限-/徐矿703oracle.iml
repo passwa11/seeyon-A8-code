@@ -29,5 +29,7 @@
         <jarDirectory url="file://F:/Seeyonxkjt/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="xjkt-2" level="project" />
+    <orderEntry type="library" name="xkjt" level="project" />
   </component>
 </module>

@@ -9474,9 +9474,21 @@ public class ColManagerImpl implements ColManager {
         // allCommentCount数量
         List<Comment> comments = new ArrayList<Comment>();
         if (commentList != null) {
-            comments = xkjtManager.getOpenOpinions(commentList, 2);
-            commentList = new ArrayList<Comment>();
-            commentList = comments;
+            /**项目：徐矿集团 【当前节点为待办可以看到所有】 作者：jiangchenxi 时间：2020年8月5日 start*/
+            //当前affairId
+            String string = params.get("affairId");
+            if (Strings.isNotBlank(string)) {
+                Long affairId = Long.valueOf(params.get("affairId"));
+                List<CtpAffair> affairs = affairManager.getAffairs(moduleId);
+                boolean open = xkjtManager.isOpen(affairId);
+                if (!open) {
+                    comments = xkjtManager.getOpenOpinions1(commentList, affairId, 2);
+                    commentList = new ArrayList<Comment>();
+                    commentList = comments;
+                }
+
+            }
+            /**项目：徐矿集团 【当前节点为待办可以看到所有】 作者：jiangchenxi 时间：2020年8月5日 end*/
             allCommentCount.put(0, commentList.size());
         }
         /**项目：徐矿集团  【协同处理意见】 作者：jiangchenxi 时间：2019年3月11日 end*/

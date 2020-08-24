@@ -1,6 +1,15 @@
 package com.seeyon.v3x.edoc.controller;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -9587,6 +9596,8 @@ public class EdocController extends BaseController {
      * @throws Exception
      */
     public ModelAndView finishWorkItem(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+
         User user = AppContext.getCurrentUser();
         boolean isRelieveLock = true;
         EdocSummary summary = null;
@@ -9619,6 +9630,8 @@ public class EdocController extends BaseController {
 
             edocManager.transFinishWorkItem(affair, params);
 
+            // 解锁时使用
+            summary = edocManager.getEdocSummaryById(affair.getObjectId(), true);
             // 添加最近处理模板
             if (affair.getTempleteId() != null) {
                 templeteManager.addRecentTemplete(affair.getMemberId(), ModuleType.collaboration.getKey(),
@@ -9630,18 +9643,18 @@ public class EdocController extends BaseController {
             rendJavaScript(response, sb.toString());
 
 //          开始： zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
-            String hql="update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
-            Map<String,Object> params2=new HashMap<>();
-            params2.put("state",4);
-            params2.put("subState",0);
-            params2.put("completeTime",new Date());
-            params2.put("activityId",affair.getActivityId().longValue());
-            params2.put("objectId",affair.getObjectId().longValue());
+            String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
+            Map<String, Object> params2 = new HashMap<>();
+            params2.put("state", 4);
+            params2.put("subState", 0);
+            params2.put("completeTime", new Date());
+            params2.put("activityId", affair.getActivityId().longValue());
+            params2.put("objectId", affair.getObjectId().longValue());
             try {
-                affairManager.update(hql,params2);
+                affairManager.update(hql, params2);
             } catch (BusinessException e) {
                 e.printStackTrace();
-                System.out.println("取回时修改状态值的hql语句出错了："+e.getMessage());
+                System.out.println("取回时修改状态值的hql语句出错了：" + e.getMessage());
             }
 //          结束： zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
             return null;
@@ -11793,7 +11806,9 @@ public class EdocController extends BaseController {
         //项目：修复公文待办指定公开无法看到意见 zelda 2019年12月21日16:36:53 start
         summary.setAffairId(affair.getId());
         //项目：修复公文待办指定公开无法看到意见 zelda 2019年12月21日16:36:53 end
-        Map<String, EdocOpinionModel> map = edocManager.getEdocOpinion(summary, displayConfig);
+        /**项目：徐矿集团 【当前节点为待办可以看到所有】 作者：jiangchenxi 时间：2020年8月5日 start*/
+        Map<String, EdocOpinionModel> map = edocManager.getEdocOpinion1(summary, Long.parseLong(_affairId), displayConfig);
+        /**项目：徐矿集团 【当前节点为待办可以看到所有】 作者：jiangchenxi 时间：2020年8月5日 end*/
         List<EdocFormFlowPermBound> policyList = edocFormManager.findBoundByFormId(summary.getFormId(), flowPermAccout,
                 nodePermissionPolicy);
         String policy = "";
@@ -12890,7 +12905,7 @@ public class EdocController extends BaseController {
             // 目前
             if (isRelieveLock) {
                 // 解锁正文文单
-                if(null != summaryIds){
+                if (null != summaryIds) {
                     wapi.releaseWorkFlowProcessLock(processId, String.valueOf(AppContext.currentUserId()));
                     for (int i = 0; i < summaryIds.length; i++) {
                         wapi.releaseWorkFlowProcessLock(summaryIds[i], String.valueOf(AppContext.currentUserId()));
@@ -12911,43 +12926,43 @@ public class EdocController extends BaseController {
             }
 
             //新竞争执行 shenwei
-            if(null != affairIds){
+            if (null != affairIds) {
                 for (String affairId : affairIds) {
                     Long _affairId = Long.valueOf(affairId);
 
                     CtpAffair affair = affairManager.get(_affairId);
                     String pquanxian = affair.getNodePolicy();
                     String nquanxian = "";
-                    Date date=affair.getUpdateDate();
+                    Date date = affair.getUpdateDate();
                     if (pquanxian.equals("转送")) {
                         nquanxian = "批示,办理";
                     }
-                    if (nquanxian.indexOf("批示")!=-1) {
+                    if (nquanxian.indexOf("批示") != -1) {
 
                         List<CtpAffair> plist = new ArrayList<CtpAffair>();
                         List<CtpAffair> clist = new ArrayList<CtpAffair>();
                         try {
-                            plist = affairManager.getAffairsByNodePolicy(pquanxian,affair.getObjectId().longValue());
-                            clist = affairManager.getAffairsByNodePolicy(nquanxian,affair.getObjectId().longValue());
+                            plist = affairManager.getAffairsByNodePolicy(pquanxian, affair.getObjectId().longValue());
+                            clist = affairManager.getAffairsByNodePolicy(nquanxian, affair.getObjectId().longValue());
                         } catch (BusinessException e1) {
                             e1.printStackTrace();
                         }
                         if (plist.size() > 0) {
                             for (CtpAffair ctpAffair : plist) {
 //                                zhou:根据取回数据的affairid
-                                String hql="update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
+                                String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
                                 if (affair.getId().longValue() == ctpAffair.getId().longValue()) {
-                                    Map<String,Object> params=new HashMap<>();
-                                    params.put("state",3);
-                                    params.put("subState",6);
-                                    params.put("activityId",affair.getActivityId().longValue());
-                                    params.put("completeTime",new Date());
-                                    params.put("objectId",affair.getObjectId().longValue());
+                                    Map<String, Object> params = new HashMap<>();
+                                    params.put("state", 3);
+                                    params.put("subState", 6);
+                                    params.put("activityId", affair.getActivityId().longValue());
+                                    params.put("completeTime", new Date());
+                                    params.put("objectId", affair.getObjectId().longValue());
                                     try {
-                                          affairManager.update(hql,params);
+                                        affairManager.update(hql, params);
                                     } catch (BusinessException e) {
                                         e.printStackTrace();
-                                        System.out.println("取回时修改状态值的hql语句出错了："+e.getMessage());
+                                        System.out.println("取回时修改状态值的hql语句出错了：" + e.getMessage());
                                     }
 //                                    ctpAffair.setState(3);
 //                                    ctpAffair.setSubState(6);
