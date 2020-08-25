@@ -2112,16 +2112,7 @@ public class BbsController extends BaseController {
 
         String articleId = request.getParameter("articleId");
         String boardId = request.getParameter("boardId");
-//      恩华药业 zhou start
-        Map map=new HashMap();
-        map.put("moduleId",Long.parseLong(boardId));
-        List<EhSendRange> ehSendRangeList=sendRangeManager.findEhSendRangeByCondition(map);
-        if(ehSendRangeList.size()>0){
-            mav.addObject("range", ehSendRangeList.get(0));
-        } else {
-            mav.addObject("range", null);
-        }
-//      恩华药业 zhou end
+
         V3xBbsArticle article = new V3xBbsArticle();
         V3xBbsBoard board = null;
         int boardType = 2;
@@ -2222,6 +2213,17 @@ public class BbsController extends BaseController {
         boardMap.put("dept", deptmentBoard);
         boardMap.put("custom", customBoard);
         boardMap.put("project", projectBoard);
+
+        //      恩华药业 zhou start
+        Map map=new HashMap();
+        map.put("moduleId",Long.parseLong(boardId));
+        List<EhSendRange> ehSendRangeList=sendRangeManager.findEhSendRangeByCondition(map);
+        if(ehSendRangeList.size()>0){
+            mav.addObject("range", ehSendRangeList.get(0));
+        } else {
+            mav.addObject("range", null);
+        }
+//      恩华药业 zhou end
 
         Long vJoinAllowAccount = OrgHelper.getVJoinAllowAccount();
         boolean showVjoin = false;
