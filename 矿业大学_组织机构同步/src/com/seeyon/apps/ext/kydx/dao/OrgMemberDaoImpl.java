@@ -19,11 +19,11 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
     public List<OrgMember> queryInsertMember() {
         String sql = "select * from (select u.jzgid,u.xm,u.gh,u.yddh,u.bglxdh,u.dzxx,u.grjj,u.yrfsdm,u.dqztm,u.dqzt,(select m.oaid from m_org_unit m where m.dwh=u.dwh) oaUnitId,u.dwh from (select * from seeyon_oa_jzgjbxx where dwh is not null  and dqztm in ('22','01'))  u) w where not exists (select * from m_org_member m where w.jzgid=m.jzgid)";
         List<OrgMember> memberList = new ArrayList<>();
-        Connection connection =null;
+        Connection connection = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            connection= JDBCAgent.getRawConnection();
+            connection = JDBCAgent.getRawConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             OrgMember orgMember = null;
@@ -69,13 +69,13 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
         Connection connection = null;
         PreparedStatement ps = null;
         String insertSql = "insert into m_org_member (memberId,jzgid,xm,gh,yddh,bglxdh,dzxx,grjj,oaUnitId,dwh,yrfsdm,dqztm,dqzt) values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        String queryM="select memberId,jzgid,xm,gh,yddh,bglxdh,dzxx,grjj,oaUnitId,dwh,yrfsdm,dqztm,dqzt from m_org_member where memberId=?";
-        PreparedStatement psQuery=null;
+        String queryM = "select memberId,jzgid,xm,gh,yddh,bglxdh,dzxx,grjj,oaUnitId,dwh,yrfsdm,dqztm,dqzt from m_org_member where memberId=?";
+        PreparedStatement psQuery = null;
         try {
             connection = JDBCAgent.getRawConnection();
             connection.setAutoCommit(false);
             ps = connection.prepareStatement(insertSql);
-            psQuery=connection.prepareStatement(queryM);
+            psQuery = connection.prepareStatement(queryM);
             if (null != list && list.size() > 0) {
                 Map memberMap = null;
                 for (OrgMember member : list) {
@@ -127,14 +127,13 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 orgUser.setMemberId(Long.parseLong(userid));
                                 orgUser.setActionTime(new Date());
                                 orgUser.setDescription("");
-                                orgUser.setExUnitCode("uid=" + ent.getString("loginName")+",ou="+member.getYrfsdm());
+                                orgUser.setExUnitCode("uid=" + ent.getString("loginName") + ",ou=" + member.getYrfsdm());
                                 DBAgent.save(orgUser);
                             }
                         }
                     } else {
-
                         //在这里做个修改操作
-                        Map updatememberMap=new HashMap<>();
+                        Map updatememberMap = new HashMap<>();
                         updatememberMap.put("id", memberJson.getString("id"));
                         updatememberMap.put("orgAccountId", member.getOrgAccountId());
                         updatememberMap.put("telNumber", member.getPhone());
@@ -145,11 +144,11 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                         if (null != json) {
                             if (json.getBoolean("success")) {
                                 JSONObject ent = json.getJSONArray("successMsgs").getJSONObject(0).getJSONObject("ent");
-                                String meberId=ent.getString("id");
-                                Map params=new HashMap();
-                                params.put("memberId",meberId);
-                                List mapperList=DBAgent.find("from CtpOrgUser where member_id = :memberId ",params);
-                                if(mapperList.size()==0){
+                                String meberId = ent.getString("id");
+                                Map params = new HashMap();
+                                params.put("memberId", meberId);
+                                List mapperList = DBAgent.find("from CtpOrgUser where member_id = :memberId ", params);
+                                if (mapperList.size() == 0) {
                                     String userid = memberJson.getString("id");
                                     CtpOrgUser orgUser = new CtpOrgUser();
                                     orgUser.setId(Long.parseLong(userid));
@@ -162,8 +161,13 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                     orgUser.setMemberId(Long.parseLong(userid));
                                     orgUser.setActionTime(new Date());
                                     orgUser.setDescription("");
-                                    orgUser.setExUnitCode("uid=" + ent.getString("loginName")+",ou="+member.getYrfsdm());
+                                    orgUser.setExUnitCode("uid=" + ent.getString("loginName") + ",ou=" + member.getYrfsdm());
                                     DBAgent.save(orgUser);
+                                } else {
+                                    //zhou:新加如果账户在oa中存在，并且ldap也存在，进行ldap修改操作。
+                                    CtpOrgUser orgUser = (CtpOrgUser) mapperList.get(0);
+                                    orgUser.setExUnitCode("uid=" + ent.getString("loginName") + ",ou=" + member.getYrfsdm());
+                                    DBAgent.update(orgUser);
                                 }
 
                                 ps.setString(1, ent.getString("id"));
@@ -184,6 +188,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 connection.commit();
                             }
                         }
+
                     }
 
                 }
@@ -209,7 +214,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            connection=JDBCAgent.getRawConnection();
+            connection = JDBCAgent.getRawConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             OrgMember orgMember = null;
@@ -283,7 +288,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 orgUser.setMemberId(Long.parseLong(member.getId()));
                                 orgUser.setActionTime(new Date());
                                 orgUser.setDescription("");
-                                orgUser.setExUnitCode("uid=" + member.getLoginname() +",ou="+member.getYrfsdm());
+                                orgUser.setExUnitCode("uid=" + member.getLoginname() + ",ou=" + member.getYrfsdm());
                                 DBAgent.update(orgUser);
 
                                 String sql = "update m_org_member set ";
@@ -366,7 +371,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            connection=JDBCAgent.getRawConnection();
+            connection = JDBCAgent.getRawConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             OrgMember orgMember = null;
