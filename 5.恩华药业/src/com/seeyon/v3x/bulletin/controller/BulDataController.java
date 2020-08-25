@@ -126,30 +126,31 @@ import com.seeyon.v3x.contentTemplate.manager.ContentTemplateManager;
  * <b>4.公告管理员：</b><br>
  * 4.1点击"板块管理"按钮进入查看该板块下已发布的全部公告；<br>
  * 4.2对已发布的公告进行：置顶、取消发布、删除（逻辑删除）、归档、授权（发起公告权限）、统计（根据阅读次数、发起者、发起月份和状态（发布或已归档）进行统计）<br>。
+ *
  * @author wolf -- Edited by Rookie Young from 2009-04-08 on
  */
 public class BulDataController extends BaseController {
-	private static String 		   splitFlg = "&";
-    private BulDataManager               bulDataManager;
-    private AttachmentManager            attachmentManager;
-    private OrgManager                   orgManager;
-    private IndexApi                     indexApi;
-    private BulReadManager               bulReadManager;
-    private AffairManager                affairManager;
-    private AppLogManager                appLogManager;
+    private static String splitFlg = "&";
+    private BulDataManager bulDataManager;
+    private AttachmentManager attachmentManager;
+    private OrgManager orgManager;
+    private IndexApi indexApi;
+    private BulReadManager bulReadManager;
+    private AffairManager affairManager;
+    private AppLogManager appLogManager;
     private DocApi docApi;
     private PortalApi portalApi;                                    //部门空间的访问者
-    private ContentTemplateManager       contentTemplateManager;                          //公告格式，可以由单位管理员或集团管理员制定
-    private UserMessageManager           userMessageManager;
-    private BulTypeManager               bulTypeManager;
-    private BulletinUtils 				 bulletinUtils;
-	private static final Log             log = LogFactory.getLog(BulDataController.class);
-    private CollaborationApi                   collaborationApi;
-    private MainbodyManager              ctpMainbodyManager;
-    private BulIssueManager              bulIssueManager;
-    private FileToExcelManager           fileToExcelManager;
-    private ETagCacheManager             eTagCacheManager;
-    private FileManager                  fileManager;
+    private ContentTemplateManager contentTemplateManager;                          //公告格式，可以由单位管理员或集团管理员制定
+    private UserMessageManager userMessageManager;
+    private BulTypeManager bulTypeManager;
+    private BulletinUtils bulletinUtils;
+    private static final Log log = LogFactory.getLog(BulDataController.class);
+    private CollaborationApi collaborationApi;
+    private MainbodyManager ctpMainbodyManager;
+    private BulIssueManager bulIssueManager;
+    private FileToExcelManager fileToExcelManager;
+    private ETagCacheManager eTagCacheManager;
+    private FileManager fileManager;
 
     public void seteTagCacheManager(ETagCacheManager eTagCacheManager) {
         this.eTagCacheManager = eTagCacheManager;
@@ -213,7 +214,9 @@ public class BulDataController extends BaseController {
         return convertFormFileUrl(sb.toString());
     }
 
-    /** 显示阅读信息的列表，与查看公告基本信息分离开来，避免因为阅读信息过多导致公告查看产生性能问题  */
+    /**
+     * 显示阅读信息的列表，与查看公告基本信息分离开来，避免因为阅读信息过多导致公告查看产生性能问题
+     */
     public ModelAndView showReadList(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView mav = new ModelAndView("bulletin/user/data_read_view");
         Long dataId = NumberUtils.toLong(request.getParameter("id"));
@@ -233,7 +236,7 @@ public class BulDataController extends BaseController {
     public void recordBulRead(long dataId, BulData bean, boolean hasCache, User user) {
         this.bulReadManager.setReadState(bean, user.getId());
         if (hasCache) {
-        	bulDataManager.clickCache(dataId, AppContext.getCurrentUser().getId());
+            bulDataManager.clickCache(dataId, AppContext.getCurrentUser().getId());
         } else {
             BulBody body = bulDataManager.getBody(bean.getId());
             bean.setContent(body.getContent());
@@ -254,8 +257,8 @@ public class BulDataController extends BaseController {
     public boolean check(Long spaceId, Long auditId) throws BusinessException {
         boolean flag = true;
         List<Object[]> entityObj = portalApi.getSecuityOfSpace(spaceId);
-        if(CollectionUtils.isEmpty(entityObj)){
-            entityObj=portalApi.getSecuityOfDepartment(spaceId);
+        if (CollectionUtils.isEmpty(entityObj)) {
+            entityObj = portalApi.getSecuityOfDepartment(spaceId);
         }
         Set<Long> entityIds = new HashSet<Long>(); //取当前空间使用范围内的所有人员
         String scopeStr = "";
@@ -277,8 +280,9 @@ public class BulDataController extends BaseController {
 
     /**
      * 发布公告时，发送消息对象中加入当前公告板块的管理员
-     * @param receivers   发布范围内的消息接受对象
-     * @param bulData	  所发布的公告
+     *
+     * @param receivers 发布范围内的消息接受对象
+     * @param bulData   所发布的公告
      */
     private void addAdmins2MsgReceivers(Collection<Long> receivers, BulData bulData) {
         BulType bulType = this.bulTypeManager.getById(bulData.getTypeId());
@@ -287,8 +291,9 @@ public class BulDataController extends BaseController {
 
     /**
      * 发布公告时，发送消息对象中加入当前公告板块的管理员
-     * @param receivers   发布范围内的消息接受对象
-     * @param bulType	  所发布的公告所在的公告板块
+     *
+     * @param receivers 发布范围内的消息接受对象
+     * @param bulType   所发布的公告所在的公告板块
      */
     private void addAdmins2MsgReceivers(Collection<Long> receivers, BulType bulType) {
         String managerIds = bulType.getManagerUserIds();
@@ -345,9 +350,9 @@ public class BulDataController extends BaseController {
             } else if (typeAndId[0].equals(V3xOrgEntity.ORGENT_TYPE_ACCOUNT)) {//仅当发送范围为单位时,才将兼职人员悉数加入,在发布范围为其他类型时,兼职人员已包含在范围内
                 Map<Long, List<V3xOrgMember>> accJian = orgManager.getConcurentPostByAccount(Long.valueOf(typeAndId[1]));
                 Set<Entry<Long, List<V3xOrgMember>>> accSet = accJian.entrySet();
-                for (Iterator<Entry<Long, List<V3xOrgMember>>> iter = accSet.iterator(); iter.hasNext();) {
+                for (Iterator<Entry<Long, List<V3xOrgMember>>> iter = accSet.iterator(); iter.hasNext(); ) {
                     Map.Entry<Long, List<V3xOrgMember>> ele = (Entry<Long, List<V3xOrgMember>>) iter.next();
-                    for (Iterator<V3xOrgMember> iterator = ele.getValue().iterator(); iterator.hasNext();) {
+                    for (Iterator<V3xOrgMember> iterator = ele.getValue().iterator(); iterator.hasNext(); ) {
                         V3xOrgMember mem = (V3xOrgMember) iterator.next();
                         if (!memberIdsInScope.contains(mem.getId())) {
                             memberIdsInScope.add(mem.getId());
@@ -360,8 +365,9 @@ public class BulDataController extends BaseController {
     }
 
     /**
-     *	 辅助方法：获取公告的阅读信息并加入到ModelAndView中进行下一步的数据传输，用于查看公告和查看公告阅读情况时使用
-     * @param bean 发布的公告
+     * 辅助方法：获取公告的阅读信息并加入到ModelAndView中进行下一步的数据传输，用于查看公告和查看公告阅读情况时使用
+     *
+     * @param bean   发布的公告
      * @param deptId 只显示一个部门的已阅未读情况时，该值不为空，否则为空
      * @see #userView   查看公告时，发起者或管理员查看阅读信息时的展现：部门   已阅总数   未阅总数
      * @see #bulReadIframe  在查看公告页面点击某一部门查看该部门的阅读详细情况：已阅人群（总数）|未阅人群（总数）；每一条阅读信息：（部门、人员姓名、阅读时间）
@@ -370,168 +376,168 @@ public class BulDataController extends BaseController {
         List<BulRead> readList = this.bulDataManager.getReadListByData(bean.getId());
         if (readList != null) {
 
-        	//当前登录单位可见的单位
-        	List<V3xOrgAccount> accAccounts = orgManager.accessableAccountsByUnitId(AppContext.currentAccountId());
-        	Set<Long> accessAccountIds = new HashSet<Long>();//当前单位可见的单位id
-        	for(V3xOrgAccount account : accAccounts) {
-        		if(!account.getIsGroup()) {
-        			accessAccountIds.add(account.getId());
-        		}
-        	}
-
-        	//发布范围部门下有哪些人
-        	Map<Long,Set<Long>> deptMembers  = new HashMap<Long, Set<Long>>();
-
-        	//发布范围内的部门
-        	Set<Long> deptIds = new HashSet<Long>();
-        	String publishScope = bean.getPublishScope();//公告发布范围
-        	String[] publishScopeArr = publishScope.split(",");
-        	for(String arr : publishScopeArr) {
-        		String[] entity = arr.split("\\|");
-        		String type = entity[0];
-        		String id = entity[1];
-        		if(OrgConstants.ORGENT_TYPE.Department.name().equals(type)) {
-        			Long departmentId = Long.valueOf(id);
-        			deptIds.add(departmentId);
-        			List<V3xOrgDepartment> childDepts = orgManager.getChildDepartments(departmentId, false);
-        			for(V3xOrgDepartment dept : childDepts) {
-        				deptIds.add(dept.getId());
-        			}
-        		}else if(OrgConstants.ORGENT_TYPE.Account.name().equals(type)){//发布范围里含有单位(集团)
-        			if(OrgConstants.GROUPID.toString().equals(id)) {// 发布范围里含有集团
-        				List<V3xOrgAccount> accounts = orgManager.getAllAccounts();
-        				for(V3xOrgAccount account : accounts) {
-        					List<V3xOrgDepartment> departments = orgManager.getAllDepartments(account.getId());
-        					for(V3xOrgDepartment department : departments) {
-        						if(department.getIsInternal()) {
-        							deptIds.add(department.getId());
-        						}
-        					}
-        				}
-        				break;
-        			} else {// 发布范围里含有单位
-        				List<V3xOrgDepartment> depts = orgManager.getAllDepartments(Long.valueOf(id));
-            			for(V3xOrgDepartment dept : depts) {
-            				if(dept.getIsInternal()) {
-            					Long departmentId = dept.getId();
-            					deptIds.add(departmentId);
-            				}
-            			}
-        			}
-        		}else if(OrgConstants.ORGENT_TYPE.Post.name().equals(type)){//发布范围里含有岗位
-    		        EnumMap<RelationshipObjectiveName, Object> enummap = new EnumMap<RelationshipObjectiveName, Object>(RelationshipObjectiveName.class);
-    		        enummap.put(OrgConstants.RelationshipObjectiveName.objective1Id, Long.valueOf(id));
-    				List<V3xOrgRelationship> memberPostRels = orgManager.getV3xOrgRelationship(OrgConstants.RelationshipType.Member_Post, null, null, enummap);
-            		for(V3xOrgRelationship rel : memberPostRels) {
-            			Long memberId = rel.getSourceId();
-            			Long departmentId = rel.getObjective0Id();
-            			Long postId = rel.getObjective1Id();
-            			//部门岗位信息不完整
-            			if(departmentId == null || departmentId == -1L || postId == null || postId ==-1L) {
-            				continue;
-            			}
-
-            			V3xOrgMember member = orgManager.getMemberById(memberId);
-            			if(member == null || !member.isValid()) {
-            				continue;
-            			}
-                		Set<Long> ids;
-                		if(deptMembers.containsKey(departmentId)) {
-                			ids = deptMembers.get(departmentId);
-                		}else {
-                			ids = new HashSet<Long>();
-                			deptMembers.put(departmentId, ids);
-                		}
-                		ids.add(memberId);
-            		}
-        		}else if(OrgConstants.ORGENT_TYPE.Level.name().equals(type)){//发布范围里含有职务级别
-    		        EnumMap<RelationshipObjectiveName, Object> enummap = new EnumMap<RelationshipObjectiveName, Object>(RelationshipObjectiveName.class);
-    		        enummap.put(OrgConstants.RelationshipObjectiveName.objective2Id, Long.valueOf(id));
-    				List<V3xOrgRelationship> memberPostRels = orgManager.getV3xOrgRelationship(OrgConstants.RelationshipType.Member_Post, null, null, enummap);
-            		for(V3xOrgRelationship rel : memberPostRels) {
-            			Long memberId = rel.getSourceId();
-            			Long departmentId = rel.getObjective0Id();
-            			Long postId = rel.getObjective1Id();
-            			//部门岗位信息不完整
-            			if(departmentId == null || departmentId == -1L || postId == null || postId ==-1L) {
-            				continue;
-            			}
-
-            			V3xOrgMember member = orgManager.getMemberById(memberId);
-            			if(member == null || !member.isValid()) {
-            				continue;
-            			}
-
-                		Set<Long> ids;
-                		if(deptMembers.containsKey(departmentId)) {
-                			ids = deptMembers.get(departmentId);
-                		}else {
-                			ids = new HashSet<Long>();
-                			deptMembers.put(departmentId, ids);
-                		}
-                		ids.add(memberId);
-            		}
-        		}else{//发布范围里含有直接选的人
-        			Set<V3xOrgMember> members = orgManager.getMembersByTypeAndIds(arr);
-        			for(V3xOrgMember member : members) {
-        				List<MemberPost> memberPostList = orgManager.getMemberPosts(null, member.getId());
-        				for(MemberPost mp : memberPostList) {
-        					Long departmentId = mp.getDepId();
-        					Long postId = mp.getPostId();
-        					Long accountId = mp.getOrgAccountId();
-        					if(!accessAccountIds.contains(accountId)) {
-        						continue;
-        					}
-        					if(departmentId == null || postId == null) {
-        						continue;
-        					}
-                    		Set<Long> ids;
-                    		if(deptMembers.containsKey(departmentId)) {
-                    			ids = deptMembers.get(departmentId);
-                    		}else {
-                    			ids = new HashSet<Long>();
-                    			deptMembers.put(departmentId, ids);
-                    		}
-                    		ids.add(mp.getMemberId());
-        				}
-        			}
-        		}
-        	}
-
-        	for(Long departmentId : deptIds) {// 将各个部门对应的本部门人员
-        		Set<Long> ids;
-        		if(deptMembers.containsKey(departmentId)) {//已存在的部门添加人员
-        			ids = deptMembers.get(departmentId);
-        		}else {//不存在的部门创建
-        			ids = new HashSet<Long>();
-        			deptMembers.put(departmentId, ids);
-        		}
-        		List<V3xOrgMember> members = orgManager.getMembersByDepartment(departmentId, true);
-        		for(V3xOrgMember member : members) {
-        			ids.add(member.getId());
-        		}
-        	}
-
-            //可见单位下的，发布范围部门下有哪些人
-        	List<Long> accessMemberIds = new UniqueList<Long>();// 可见人员
-            Map<Long,Set<Long>> visibleMembersByDept = new HashMap<Long, Set<Long>>();
-            for(Long departmentId : deptMembers.keySet()) {
-            	V3xOrgDepartment dept = orgManager.getDepartmentById(departmentId);
-            	if(accessAccountIds.contains(dept.getOrgAccountId())) {
-            		Set<Long> memberSet;
-            		if(visibleMembersByDept.containsKey(departmentId)) {
-            			memberSet = visibleMembersByDept.get(departmentId);
-            		}else {
-            			memberSet = new HashSet<Long>();
-            			visibleMembersByDept.put(departmentId, memberSet);
-            		}
-            		memberSet.addAll(deptMembers.get(departmentId));
-            		accessMemberIds.addAll(deptMembers.get(departmentId));
-            	}
+            //当前登录单位可见的单位
+            List<V3xOrgAccount> accAccounts = orgManager.accessableAccountsByUnitId(AppContext.currentAccountId());
+            Set<Long> accessAccountIds = new HashSet<Long>();//当前单位可见的单位id
+            for (V3xOrgAccount account : accAccounts) {
+                if (!account.getIsGroup()) {
+                    accessAccountIds.add(account.getId());
+                }
             }
 
-            Set<Long> scopeList = this.getAllMembersinPublishScope(bean,false);//公告发布范围内的人员
-        	List<Long> noAccessMmeberIds = (List<Long>) CollectionUtils.subtract(scopeList, accessMemberIds);// 不可见人员=发布范围cap访问权限的人员
+            //发布范围部门下有哪些人
+            Map<Long, Set<Long>> deptMembers = new HashMap<Long, Set<Long>>();
+
+            //发布范围内的部门
+            Set<Long> deptIds = new HashSet<Long>();
+            String publishScope = bean.getPublishScope();//公告发布范围
+            String[] publishScopeArr = publishScope.split(",");
+            for (String arr : publishScopeArr) {
+                String[] entity = arr.split("\\|");
+                String type = entity[0];
+                String id = entity[1];
+                if (OrgConstants.ORGENT_TYPE.Department.name().equals(type)) {
+                    Long departmentId = Long.valueOf(id);
+                    deptIds.add(departmentId);
+                    List<V3xOrgDepartment> childDepts = orgManager.getChildDepartments(departmentId, false);
+                    for (V3xOrgDepartment dept : childDepts) {
+                        deptIds.add(dept.getId());
+                    }
+                } else if (OrgConstants.ORGENT_TYPE.Account.name().equals(type)) {//发布范围里含有单位(集团)
+                    if (OrgConstants.GROUPID.toString().equals(id)) {// 发布范围里含有集团
+                        List<V3xOrgAccount> accounts = orgManager.getAllAccounts();
+                        for (V3xOrgAccount account : accounts) {
+                            List<V3xOrgDepartment> departments = orgManager.getAllDepartments(account.getId());
+                            for (V3xOrgDepartment department : departments) {
+                                if (department.getIsInternal()) {
+                                    deptIds.add(department.getId());
+                                }
+                            }
+                        }
+                        break;
+                    } else {// 发布范围里含有单位
+                        List<V3xOrgDepartment> depts = orgManager.getAllDepartments(Long.valueOf(id));
+                        for (V3xOrgDepartment dept : depts) {
+                            if (dept.getIsInternal()) {
+                                Long departmentId = dept.getId();
+                                deptIds.add(departmentId);
+                            }
+                        }
+                    }
+                } else if (OrgConstants.ORGENT_TYPE.Post.name().equals(type)) {//发布范围里含有岗位
+                    EnumMap<RelationshipObjectiveName, Object> enummap = new EnumMap<RelationshipObjectiveName, Object>(RelationshipObjectiveName.class);
+                    enummap.put(OrgConstants.RelationshipObjectiveName.objective1Id, Long.valueOf(id));
+                    List<V3xOrgRelationship> memberPostRels = orgManager.getV3xOrgRelationship(OrgConstants.RelationshipType.Member_Post, null, null, enummap);
+                    for (V3xOrgRelationship rel : memberPostRels) {
+                        Long memberId = rel.getSourceId();
+                        Long departmentId = rel.getObjective0Id();
+                        Long postId = rel.getObjective1Id();
+                        //部门岗位信息不完整
+                        if (departmentId == null || departmentId == -1L || postId == null || postId == -1L) {
+                            continue;
+                        }
+
+                        V3xOrgMember member = orgManager.getMemberById(memberId);
+                        if (member == null || !member.isValid()) {
+                            continue;
+                        }
+                        Set<Long> ids;
+                        if (deptMembers.containsKey(departmentId)) {
+                            ids = deptMembers.get(departmentId);
+                        } else {
+                            ids = new HashSet<Long>();
+                            deptMembers.put(departmentId, ids);
+                        }
+                        ids.add(memberId);
+                    }
+                } else if (OrgConstants.ORGENT_TYPE.Level.name().equals(type)) {//发布范围里含有职务级别
+                    EnumMap<RelationshipObjectiveName, Object> enummap = new EnumMap<RelationshipObjectiveName, Object>(RelationshipObjectiveName.class);
+                    enummap.put(OrgConstants.RelationshipObjectiveName.objective2Id, Long.valueOf(id));
+                    List<V3xOrgRelationship> memberPostRels = orgManager.getV3xOrgRelationship(OrgConstants.RelationshipType.Member_Post, null, null, enummap);
+                    for (V3xOrgRelationship rel : memberPostRels) {
+                        Long memberId = rel.getSourceId();
+                        Long departmentId = rel.getObjective0Id();
+                        Long postId = rel.getObjective1Id();
+                        //部门岗位信息不完整
+                        if (departmentId == null || departmentId == -1L || postId == null || postId == -1L) {
+                            continue;
+                        }
+
+                        V3xOrgMember member = orgManager.getMemberById(memberId);
+                        if (member == null || !member.isValid()) {
+                            continue;
+                        }
+
+                        Set<Long> ids;
+                        if (deptMembers.containsKey(departmentId)) {
+                            ids = deptMembers.get(departmentId);
+                        } else {
+                            ids = new HashSet<Long>();
+                            deptMembers.put(departmentId, ids);
+                        }
+                        ids.add(memberId);
+                    }
+                } else {//发布范围里含有直接选的人
+                    Set<V3xOrgMember> members = orgManager.getMembersByTypeAndIds(arr);
+                    for (V3xOrgMember member : members) {
+                        List<MemberPost> memberPostList = orgManager.getMemberPosts(null, member.getId());
+                        for (MemberPost mp : memberPostList) {
+                            Long departmentId = mp.getDepId();
+                            Long postId = mp.getPostId();
+                            Long accountId = mp.getOrgAccountId();
+                            if (!accessAccountIds.contains(accountId)) {
+                                continue;
+                            }
+                            if (departmentId == null || postId == null) {
+                                continue;
+                            }
+                            Set<Long> ids;
+                            if (deptMembers.containsKey(departmentId)) {
+                                ids = deptMembers.get(departmentId);
+                            } else {
+                                ids = new HashSet<Long>();
+                                deptMembers.put(departmentId, ids);
+                            }
+                            ids.add(mp.getMemberId());
+                        }
+                    }
+                }
+            }
+
+            for (Long departmentId : deptIds) {// 将各个部门对应的本部门人员
+                Set<Long> ids;
+                if (deptMembers.containsKey(departmentId)) {//已存在的部门添加人员
+                    ids = deptMembers.get(departmentId);
+                } else {//不存在的部门创建
+                    ids = new HashSet<Long>();
+                    deptMembers.put(departmentId, ids);
+                }
+                List<V3xOrgMember> members = orgManager.getMembersByDepartment(departmentId, true);
+                for (V3xOrgMember member : members) {
+                    ids.add(member.getId());
+                }
+            }
+
+            //可见单位下的，发布范围部门下有哪些人
+            List<Long> accessMemberIds = new UniqueList<Long>();// 可见人员
+            Map<Long, Set<Long>> visibleMembersByDept = new HashMap<Long, Set<Long>>();
+            for (Long departmentId : deptMembers.keySet()) {
+                V3xOrgDepartment dept = orgManager.getDepartmentById(departmentId);
+                if (accessAccountIds.contains(dept.getOrgAccountId())) {
+                    Set<Long> memberSet;
+                    if (visibleMembersByDept.containsKey(departmentId)) {
+                        memberSet = visibleMembersByDept.get(departmentId);
+                    } else {
+                        memberSet = new HashSet<Long>();
+                        visibleMembersByDept.put(departmentId, memberSet);
+                    }
+                    memberSet.addAll(deptMembers.get(departmentId));
+                    accessMemberIds.addAll(deptMembers.get(departmentId));
+                }
+            }
+
+            Set<Long> scopeList = this.getAllMembersinPublishScope(bean, false);//公告发布范围内的人员
+            List<Long> noAccessMmeberIds = (List<Long>) CollectionUtils.subtract(scopeList, accessMemberIds);// 不可见人员=发布范围cap访问权限的人员
 
             //新闻发起人是否包含在发布范围中(发起人即便不在发布范围中，仍可以阅读新闻并生成阅读记录)
             boolean isCreatorInPublishScope = scopeList.contains(bean.getCreateUser());
@@ -540,64 +546,64 @@ public class BulDataController extends BaseController {
             List<BulReadCount> bulreadcountList = new UniqueList<BulReadCount>();
             int visibleReadCount = 0;// 可见已读总人数
             List<Long> readIdsList = new UniqueList<Long>();
-            for(Long readDeptId :visibleMembersByDept.keySet()) {
-            	if(visibleMembersByDept.get(readDeptId).size()==0) {
-            		continue;
-            	}
-            	BulReadCount brcount = new BulReadCount();
-            	brcount.setMemberCount(visibleMembersByDept.get(readDeptId).size());
-            	brcount.setDeptId(readDeptId);
-            	int readCountByDept = 0;
-            	for(Long readMemId : visibleMembersByDept.get(readDeptId)) {
-            		for (BulRead br : readList) {
-            			readIdsList.add(br.getManagerId());
-            			V3xOrgMember member = orgManager.getMemberById(br.getManagerId());
-            			boolean isManagerInPublishScope = true;
-                        if(bulTypeManager.isManagerOfType(bean.getTypeId(), member.getId())){
+            for (Long readDeptId : visibleMembersByDept.keySet()) {
+                if (visibleMembersByDept.get(readDeptId).size() == 0) {
+                    continue;
+                }
+                BulReadCount brcount = new BulReadCount();
+                brcount.setMemberCount(visibleMembersByDept.get(readDeptId).size());
+                brcount.setDeptId(readDeptId);
+                int readCountByDept = 0;
+                for (Long readMemId : visibleMembersByDept.get(readDeptId)) {
+                    for (BulRead br : readList) {
+                        readIdsList.add(br.getManagerId());
+                        V3xOrgMember member = orgManager.getMemberById(br.getManagerId());
+                        boolean isManagerInPublishScope = true;
+                        if (bulTypeManager.isManagerOfType(bean.getTypeId(), member.getId())) {
                             isManagerInPublishScope = scopeList.contains(member.getId());
                         }
 
-            			//如果阅读信息对应的用户不为正常状态，则不加入，如果阅读信息对应的用户是新闻创建者，而其并不在发布范围中，也不加入
+                        //如果阅读信息对应的用户不为正常状态，则不加入，如果阅读信息对应的用户是新闻创建者，而其并不在发布范围中，也不加入
                         if (member == null || !member.isValid()
                                 || (member.getId().equals(bean.getCreateUser()) && !isCreatorInPublishScope)
                                 || !isManagerInPublishScope) {
                             continue;
                         }
-                		if(readMemId.equals(br.getManagerId())) {
-                			readCountByDept++;
-                			visibleReadCount++;
-                		}
-                	}
-            	}
-            	brcount.setEndReadCount(readCountByDept);
-        		brcount.setShowFlag(1);
-            	brcount.setEndReadCount(readCountByDept);
-            	if (brcount.getDeptId().toString().equals(deptId)) {
+                        if (readMemId.equals(br.getManagerId())) {
+                            readCountByDept++;
+                            visibleReadCount++;
+                        }
+                    }
+                }
+                brcount.setEndReadCount(readCountByDept);
+                brcount.setShowFlag(1);
+                brcount.setEndReadCount(readCountByDept);
+                if (brcount.getDeptId().toString().equals(deptId)) {
                     mav.addObject("brc", brcount);
                 }
-            	brcount.setNotReadCount(visibleMembersByDept.get(readDeptId).size()-readCountByDept);
-            	bulreadcountList.add(brcount);
+                brcount.setNotReadCount(visibleMembersByDept.get(readDeptId).size() - readCountByDept);
+                bulreadcountList.add(brcount);
             }
             if (log.isDebugEnabled()) {
-            	log.debug("visibleReadCount: "+visibleReadCount);
+                log.debug("visibleReadCount: " + visibleReadCount);
             }
             List<BulReadCount> bulreadcountLists = bulreadcountList;
             int invisibleCount = noAccessMmeberIds.size();// 不可见总人数
-            List<Long> invisibleReadList = Strings.getIntersection(noAccessMmeberIds,readIdsList);
-            int invisibleReadCount = invisibleReadList!=null?invisibleReadList.size():0;//不可见已读总人数
+            List<Long> invisibleReadList = Strings.getIntersection(noAccessMmeberIds, readIdsList);
+            int invisibleReadCount = invisibleReadList != null ? invisibleReadList.size() : 0;//不可见已读总人数
 
-			// 页面多个被星星单位合并
-            if(invisibleCount>0) {
-            	if (log.isDebugEnabled()) {
-            		logger.debug("noAccessMmeberIds0:"+noAccessMmeberIds.get(0));
-            	}
-            	BulReadCount brc = new BulReadCount();
-            	brc.setDeptId(0l);
-            	brc.setMemberCount(invisibleReadCount);
-            	brc.setNotReadCount(invisibleCount-invisibleReadCount>0?invisibleCount-invisibleReadCount:0);
-            	brc.setEndReadCount(invisibleReadCount);
-            	brc.setShowFlag(0);
-    			bulreadcountLists.add(brc);
+            // 页面多个被星星单位合并
+            if (invisibleCount > 0) {
+                if (log.isDebugEnabled()) {
+                    logger.debug("noAccessMmeberIds0:" + noAccessMmeberIds.get(0));
+                }
+                BulReadCount brc = new BulReadCount();
+                brc.setDeptId(0l);
+                brc.setMemberCount(invisibleReadCount);
+                brc.setNotReadCount(invisibleCount - invisibleReadCount > 0 ? invisibleCount - invisibleReadCount : 0);
+                brc.setEndReadCount(invisibleReadCount);
+                brc.setShowFlag(0);
+                bulreadcountLists.add(brc);
             }
 
             //转换为List以便保持顺序,否则将会导致读取页面时顺序时常变动：按照已阅人数总数、部门id、人员id排序
@@ -614,15 +620,15 @@ public class BulDataController extends BaseController {
 //            if(isGroup){//集团版
 //            }else{//企业版
 //        	  }
-         // 处理是否有查看阅读信息权限
+            // 处理是否有查看阅读信息权限
             Boolean readRecord = false;
-            if(bean.getExt1() != null
-            		&& "1".equals(bean.getExt1())
-            		&& (bean.getCreateUser() != null && bean.getCreateUser() == AppContext.getCurrentUser().getId())
+            if (bean.getExt1() != null
+                    && "1".equals(bean.getExt1())
+                    && (bean.getCreateUser() != null && bean.getCreateUser() == AppContext.getCurrentUser().getId())
 //            		&& !isGuest
-            		&& !orgManager.getMemberById(AppContext.getCurrentUser().getId()).isVJoinExternal()){
-    			readRecord = true;
-    		}
+                    && !orgManager.getMemberById(AppContext.getCurrentUser().getId()).isVJoinExternal()) {
+                readRecord = true;
+            }
             // 判断是否是板块管理员
             boolean isManager = false;
             if (Integer.parseInt(bean.getExt1()) == 1) {
@@ -647,6 +653,7 @@ public class BulDataController extends BaseController {
 
     /**
      * 公告阅读页面点击部门查看，其页面结构是显示上方的已读和未读页签及切换部门下拉选框，下方有一个iframe指向:
+     *
      * @see #bulReadProperty
      */
     public ModelAndView bulReadIframe(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -674,13 +681,13 @@ public class BulDataController extends BaseController {
         BulData bean = Strings.isBlank(beanId) ? new BulData() : bulDataManager.getById(Long.valueOf(beanId));
 
         //当前登录单位可见的单位
-		List<V3xOrgAccount> accAccounts = orgManager.accessableAccountsByUnitId(AppContext.currentAccountId());
-		Set<Long> accessAccountIds = new HashSet<Long>();//当前单位可见的单位id
-		for(V3xOrgAccount account : accAccounts) {
-			if(!account.getIsGroup()) {
-				accessAccountIds.add(account.getId());
-			}
-		}
+        List<V3xOrgAccount> accAccounts = orgManager.accessableAccountsByUnitId(AppContext.currentAccountId());
+        Set<Long> accessAccountIds = new HashSet<Long>();//当前单位可见的单位id
+        for (V3xOrgAccount account : accAccounts) {
+            if (!account.getIsGroup()) {
+                accessAccountIds.add(account.getId());
+            }
+        }
 
         //取得已经阅读的所有的人员的列表
         List<BulRead> readList = this.bulDataManager.getReadListByData(bean.getId());
@@ -690,125 +697,125 @@ public class BulDataController extends BaseController {
         V3xOrgDepartment department = orgManager.getDepartmentById(currentDepartmentId);
         List<V3xOrgMember> memberList = new UniqueList<V3xOrgMember>();
 
-    	String publishScope = bean.getPublishScope();
-    	String[] publishScopeArr = publishScope.split(",");
-    	for(String arr : publishScopeArr) {
-    		String[] entity = arr.split("\\|");
-    		String type = entity[0];
-    		String id = entity[1];
-    		if(OrgConstants.ORGENT_TYPE.Department.name().equals(type)) {
-    			Long departmentId = Long.valueOf(id);
-    			if(departmentId.equals(currentDepartmentId)) {
-    				memberList = orgManager.getMembersByDepartment(currentDepartmentId, true);
-    				break;
-    			}else {
-    				List<V3xOrgDepartment> childDepts = orgManager.getChildDepartments(departmentId, false);
-    				for(V3xOrgDepartment dept : childDepts) {
-    					if(dept.getId().equals(currentDepartmentId)) {
-    	    				memberList = orgManager.getMembersByDepartment(currentDepartmentId, true);
-    	    				break;
-    					}
-    				}
-    			}
-    		}else if(OrgConstants.ORGENT_TYPE.Account.name().equals(type)){
-    			if(OrgConstants.GROUPID.equals(Long.valueOf(id))) {
-    				memberList = orgManager.getMembersByDepartment(currentDepartmentId, true);
-    				break;
-    			} else {
-    				if(Long.valueOf(id).equals(department.getOrgAccountId())) {
-        				memberList = orgManager.getMembersByDepartment(currentDepartmentId, true);
-        				break;
-    				}
-    			}
-    		}else if(OrgConstants.ORGENT_TYPE.Post.name().equals(type)){
-		        EnumMap<RelationshipObjectiveName, Object> enummap = new EnumMap<RelationshipObjectiveName, Object>(RelationshipObjectiveName.class);
-		        enummap.put(OrgConstants.RelationshipObjectiveName.objective1Id, Long.valueOf(id));
-				List<V3xOrgRelationship> memberPostRels = orgManager.getV3xOrgRelationship(OrgConstants.RelationshipType.Member_Post, null, null, enummap);
-        		for(V3xOrgRelationship rel : memberPostRels) {
-        			Long memberId = rel.getSourceId();
-        			Long departmentId = rel.getObjective0Id();
-        			Long postId = rel.getObjective1Id();
-        			//部门岗位信息不完整
-        			if(departmentId == null || departmentId == -1L || postId == null || postId ==-1L) {
-        				continue;
-        			}
+        String publishScope = bean.getPublishScope();
+        String[] publishScopeArr = publishScope.split(",");
+        for (String arr : publishScopeArr) {
+            String[] entity = arr.split("\\|");
+            String type = entity[0];
+            String id = entity[1];
+            if (OrgConstants.ORGENT_TYPE.Department.name().equals(type)) {
+                Long departmentId = Long.valueOf(id);
+                if (departmentId.equals(currentDepartmentId)) {
+                    memberList = orgManager.getMembersByDepartment(currentDepartmentId, true);
+                    break;
+                } else {
+                    List<V3xOrgDepartment> childDepts = orgManager.getChildDepartments(departmentId, false);
+                    for (V3xOrgDepartment dept : childDepts) {
+                        if (dept.getId().equals(currentDepartmentId)) {
+                            memberList = orgManager.getMembersByDepartment(currentDepartmentId, true);
+                            break;
+                        }
+                    }
+                }
+            } else if (OrgConstants.ORGENT_TYPE.Account.name().equals(type)) {
+                if (OrgConstants.GROUPID.equals(Long.valueOf(id))) {
+                    memberList = orgManager.getMembersByDepartment(currentDepartmentId, true);
+                    break;
+                } else {
+                    if (Long.valueOf(id).equals(department.getOrgAccountId())) {
+                        memberList = orgManager.getMembersByDepartment(currentDepartmentId, true);
+                        break;
+                    }
+                }
+            } else if (OrgConstants.ORGENT_TYPE.Post.name().equals(type)) {
+                EnumMap<RelationshipObjectiveName, Object> enummap = new EnumMap<RelationshipObjectiveName, Object>(RelationshipObjectiveName.class);
+                enummap.put(OrgConstants.RelationshipObjectiveName.objective1Id, Long.valueOf(id));
+                List<V3xOrgRelationship> memberPostRels = orgManager.getV3xOrgRelationship(OrgConstants.RelationshipType.Member_Post, null, null, enummap);
+                for (V3xOrgRelationship rel : memberPostRels) {
+                    Long memberId = rel.getSourceId();
+                    Long departmentId = rel.getObjective0Id();
+                    Long postId = rel.getObjective1Id();
+                    //部门岗位信息不完整
+                    if (departmentId == null || departmentId == -1L || postId == null || postId == -1L) {
+                        continue;
+                    }
 
-        			if(departmentId.equals(currentDepartmentId)) {
-        				V3xOrgMember member = orgManager.getMemberById(memberId);
-        				if(member != null && member.isValid()) {
-        					memberList.add(member);
-        				}
-        			}
-        		}
-    		}else if(OrgConstants.ORGENT_TYPE.Level.name().equals(type)){
-		        EnumMap<RelationshipObjectiveName, Object> enummap = new EnumMap<RelationshipObjectiveName, Object>(RelationshipObjectiveName.class);
-		        enummap.put(OrgConstants.RelationshipObjectiveName.objective2Id, Long.valueOf(id));
-				List<V3xOrgRelationship> memberPostRels = orgManager.getV3xOrgRelationship(OrgConstants.RelationshipType.Member_Post, null, null, enummap);
-        		for(V3xOrgRelationship rel : memberPostRels) {
-        			Long memberId = rel.getSourceId();
-        			Long departmentId = rel.getObjective0Id();
-        			Long postId = rel.getObjective1Id();
-        			//部门岗位信息不完整
-        			if(departmentId == null || departmentId == -1L || postId == null || postId ==-1L) {
-        				continue;
-        			}
-        			if(departmentId.equals(currentDepartmentId)) {
-        				V3xOrgMember member = orgManager.getMemberById(memberId);
-        				if(member != null && member.isValid()) {
-        					memberList.add(member);
-        				}
-        			}
-        		}
-    		}else{
-    			Set<V3xOrgMember> members = orgManager.getMembersByTypeAndIds(arr);
-    			for(V3xOrgMember member : members) {
-    				List<MemberPost> memberPostList = orgManager.getMemberPosts(null, member.getId());
-    				for(MemberPost mp : memberPostList) {
-    					Long departmentId = mp.getDepId();
-    					Long postId = mp.getPostId();
-    					Long accountId = mp.getOrgAccountId();
-    					if(!accessAccountIds.contains(accountId)) {
-    						continue;
-    					}
-    					if(departmentId == null || postId == null) {
-    						continue;
-    					}
-            			if(departmentId.equals(currentDepartmentId)) {
-            				if(member != null && member.isValid()) {
-            					memberList.add(member);
-            				}
-            			}
-    				}
-    			}
-    		}
-    	}
+                    if (departmentId.equals(currentDepartmentId)) {
+                        V3xOrgMember member = orgManager.getMemberById(memberId);
+                        if (member != null && member.isValid()) {
+                            memberList.add(member);
+                        }
+                    }
+                }
+            } else if (OrgConstants.ORGENT_TYPE.Level.name().equals(type)) {
+                EnumMap<RelationshipObjectiveName, Object> enummap = new EnumMap<RelationshipObjectiveName, Object>(RelationshipObjectiveName.class);
+                enummap.put(OrgConstants.RelationshipObjectiveName.objective2Id, Long.valueOf(id));
+                List<V3xOrgRelationship> memberPostRels = orgManager.getV3xOrgRelationship(OrgConstants.RelationshipType.Member_Post, null, null, enummap);
+                for (V3xOrgRelationship rel : memberPostRels) {
+                    Long memberId = rel.getSourceId();
+                    Long departmentId = rel.getObjective0Id();
+                    Long postId = rel.getObjective1Id();
+                    //部门岗位信息不完整
+                    if (departmentId == null || departmentId == -1L || postId == null || postId == -1L) {
+                        continue;
+                    }
+                    if (departmentId.equals(currentDepartmentId)) {
+                        V3xOrgMember member = orgManager.getMemberById(memberId);
+                        if (member != null && member.isValid()) {
+                            memberList.add(member);
+                        }
+                    }
+                }
+            } else {
+                Set<V3xOrgMember> members = orgManager.getMembersByTypeAndIds(arr);
+                for (V3xOrgMember member : members) {
+                    List<MemberPost> memberPostList = orgManager.getMemberPosts(null, member.getId());
+                    for (MemberPost mp : memberPostList) {
+                        Long departmentId = mp.getDepId();
+                        Long postId = mp.getPostId();
+                        Long accountId = mp.getOrgAccountId();
+                        if (!accessAccountIds.contains(accountId)) {
+                            continue;
+                        }
+                        if (departmentId == null || postId == null) {
+                            continue;
+                        }
+                        if (departmentId.equals(currentDepartmentId)) {
+                            if (member != null && member.isValid()) {
+                                memberList.add(member);
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         ArrayList<BulReadCount> noRead = new ArrayList<BulReadCount>();
         for (V3xOrgMember vm : memberList) { //遍历里面的人和已经阅读的人的ID 是否相等
-        	BulReadCount brcnot = new BulReadCount(); // 未读
-        	BulReadCount brc = new BulReadCount(); // 已读
+            BulReadCount brcnot = new BulReadCount(); // 未读
+            BulReadCount brc = new BulReadCount(); // 已读
             int readFlagNum = 0;
             for (BulRead nr : readList) {
                 V3xOrgMember member = orgManager.getMemberById(nr.getManagerId());
                 if (member.getId().equals(vm.getId())) {// 已读--取已读人的信息
-                	brc.setDeptId(currentDepartmentId);
-                	brc.setUserId(member.getId());
-                	brc.setReadDate(brc.getReadDate());
-                	bulreadcount.add(brc);
+                    brc.setDeptId(currentDepartmentId);
+                    brc.setUserId(member.getId());
+                    brc.setReadDate(brc.getReadDate());
+                    bulreadcount.add(brc);
                     readFlagNum++;
                 }
             }
             //此人未读，加入到未读群中
             if (readFlagNum == 0) {
-            	brcnot.setDeptId(currentDepartmentId);
-            	brcnot.setUserId(vm.getId());
+                brcnot.setDeptId(currentDepartmentId);
+                brcnot.setUserId(vm.getId());
                 noRead.add(brcnot);
             }
         }
-        mav.addObject("mode",mode);
-        if("normal".equals(mode)){
+        mav.addObject("mode", mode);
+        if ("normal".equals(mode)) {
             mav.addObject("bulreadcount", CommonTools.pagenate(this.convert2OrderedList(bulreadcount)));
-        }else{
+        } else {
 
             mav.addObject("bulnotreadcount", CommonTools.pagenate(noRead));
         }
@@ -827,6 +834,7 @@ public class BulDataController extends BaseController {
 
     /**
      * 将无序的集合转换为有序排列，以便前端展现
+     *
      * @param bulreadcount
      */
     private List<BulReadCount> convert2OrderedList(Set<BulReadCount> bulreadcount) {
@@ -1041,8 +1049,7 @@ public class BulDataController extends BaseController {
 
     /**
      * 根据可操作列表展示
-     *
-     * */
+     */
     public ModelAndView listType(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String typeIdsStr = request.getParameter("typeIds");
         String ids = request.getParameter("ids");
@@ -1051,15 +1058,15 @@ public class BulDataController extends BaseController {
         BulType type = null;
         List<BulType> typeList = new ArrayList<BulType>();
         if (Strings.isNotEmpty(typeIdsStr)) {
-        	String[] str = typeIdsStr.split(",");
-	        for (int i=0;i<str.length;i++){
-	        	type=bulTypeManager.getById(Long.valueOf(str[i]));
-	        	if(type != null){
-	        		typeList.add(type);
-	        	}
-	        }
-        } else{
-        	String typeId = request.getParameter("typeId");
+            String[] str = typeIdsStr.split(",");
+            for (int i = 0; i < str.length; i++) {
+                type = bulTypeManager.getById(Long.valueOf(str[i]));
+                if (type != null) {
+                    typeList.add(type);
+                }
+            }
+        } else {
+            String typeId = request.getParameter("typeId");
             User user = AppContext.getCurrentUser();
             BulType bulType = bulTypeManager.getById(Long.valueOf(typeId));
             typeList = getCanAdminTypes(user.getId(), bulType);
@@ -1074,15 +1081,14 @@ public class BulDataController extends BaseController {
 
     /**
      * 移动到新分类方法
-     *
-     * */
-    public ModelAndView moveToType(HttpServletRequest request, HttpServletResponse response) throws Exception{
+     */
+    public ModelAndView moveToType(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String idStr = request.getParameter("ids");
         String typeId = request.getParameter("typeId");
         BulData bean = null;
         if (StringUtils.isBlank(idStr)) {
             throw new Exception("bbs_not_exists");
-        }else {
+        } else {
             String[] ids = idStr.split(",");
             Map<String, Object> summ = new HashMap<String, Object>();
             for (String id : ids) {
@@ -1112,13 +1118,13 @@ public class BulDataController extends BaseController {
                 }
             }
         }
-        super.rendJavaScript(response,"alert(\""+ResourceUtil.getString("bbs.board.moved")+"\");parent.cloWithSuccess();");
+        super.rendJavaScript(response, "alert(\"" + ResourceUtil.getString("bbs.board.moved") + "\");parent.cloWithSuccess();");
         return null;
     }
 
     /**
-    * 文化建设统计入口
-    */
+     * 文化建设统计入口
+     */
     public ModelAndView publishInfoStc(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView mav = new ModelAndView("stc/publishInfoStc");
         int year = DateUtil.getYear();
@@ -1145,8 +1151,8 @@ public class BulDataController extends BaseController {
     }
 
     /**
-    * 统计导出
-    */
+     * 统计导出
+     */
     @SuppressWarnings("unchecked")
     public ModelAndView stcExpToXls(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Map<String, Object> param = ParamUtil.getJsonParams();
@@ -1160,12 +1166,12 @@ public class BulDataController extends BaseController {
     }
 
     public BulletinUtils getBulletinUtils() {
-		return bulletinUtils;
-	}
+        return bulletinUtils;
+    }
 
-	public void setBulletinUtils(BulletinUtils bulletinUtils) {
-		this.bulletinUtils = bulletinUtils;
-	}
+    public void setBulletinUtils(BulletinUtils bulletinUtils) {
+        this.bulletinUtils = bulletinUtils;
+    }
 
     public void setCollaborationApi(CollaborationApi collaborationApi) {
         this.collaborationApi = collaborationApi;
@@ -1201,17 +1207,17 @@ public class BulDataController extends BaseController {
      * 公告首页/版块首页
      */
     public ModelAndView bulIndex(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView mav = new ModelAndView("bulletin/bulIndex");
-		User user = AppContext.getCurrentUser();
-		int spaceType = NumberUtils.toInt(request.getParameter("spaceType"));
-		Long spaceId = NumberUtils.toLong(request.getParameter("spaceId"));
-		String typeIds = request.getParameter("typeId");
+        ModelAndView mav = new ModelAndView("bulletin/bulIndex");
+        User user = AppContext.getCurrentUser();
+        int spaceType = NumberUtils.toInt(request.getParameter("spaceType"));
+        Long spaceId = NumberUtils.toLong(request.getParameter("spaceId"));
+        String typeIds = request.getParameter("typeId");
 
         // 版块首页
         if (Strings.isNotBlank(typeIds)) {
             BulType bulType = bulTypeManager.getById(Long.valueOf(typeIds));
-            if(bulType == null){
-                super.rendJavaScript(response, "alert('"+ResourceUtil.getString("bultype.deleted.label")+"');window.close()");
+            if (bulType == null) {
+                super.rendJavaScript(response, "alert('" + ResourceUtil.getString("bultype.deleted.label") + "');window.close()");
                 return null;
             }
             BulTypeModel bulTypeModel = new BulTypeModel(bulType, user.getId(), orgManager.getAllUserDomainIDs(user.getId()));
@@ -1288,86 +1294,86 @@ public class BulDataController extends BaseController {
         } else {
             myBulTypeIds = bulDataManager.getMyBulTypeIds(spaceType, spaceId);
         }
-		// 我发布的，我收藏的，公告审核
-		mav.addObject("myIssueCount", bulDataManager.getMyIssueCount(user.getId(), myBulTypeIds));
-		if (AppContext.hasPlugin("doc")) {
-		    mav.addObject("myCollectCount", bulDataManager.getMyCollectCount(user.getId(), myBulTypeIds));
-		}
-		mav.addObject("myAuditCount", bulDataManager.getMyAuditCount(user.getId(), myBulTypeIds));
-		// 是否允许发布公告
-		boolean hasIssue = false;
-		// 判断是否是公告审核员
-		boolean auditManager = false;
-		Map<String, List<BulTypeModel>> bulTypeModelMap = new LinkedHashMap<String, List<BulTypeModel>>();
-		if (spaceType == SpaceType.public_custom.ordinal()) {// 自定义单位版块
-			List<BulType> customBulTypeList = bulTypeManager.customAccBoardAllBySpaceId(spaceId, spaceType);
-			List<BulTypeModel> customBulTypeModelList = new ArrayList<BulTypeModel>();
-			boolean[] _per = this.toBulTypeModel(customBulTypeList, customBulTypeModelList);
-			hasIssue = _per[0];
-			auditManager = _per[1];
-			bulTypeModelMap.put("bulletin.type.public.custom", customBulTypeModelList);
-		} else if (spaceType == SpaceType.public_custom_group.ordinal()) {// 自定义集团版块
-			List<BulType> customBulTypeList = bulTypeManager.customAccBoardAllBySpaceId(spaceId, spaceType);
-			List<BulTypeModel> customBulTypeModelList = new ArrayList<BulTypeModel>();
-			boolean[] _per = this.toBulTypeModel(customBulTypeList, customBulTypeModelList);
-			hasIssue = _per[0];
-			auditManager = _per[1];
-			bulTypeModelMap.put("bulletin.type.public.custom.group", customBulTypeModelList);
-		} else if (spaceType == SpaceType.custom.ordinal()) {// 自定义团队版块
-			List<BulType> customBulTypeList = bulTypeManager.customAccBoardAllBySpaceId(spaceId, spaceType);
-			List<BulTypeModel> customBulTypeModelList = new ArrayList<BulTypeModel>();
-			boolean[] _per = this.toBulTypeModel(customBulTypeList, customBulTypeModelList);
-			hasIssue = _per[0];
-			auditManager = _per[1];
-			bulTypeModelMap.put("bulletin.type.custom", customBulTypeModelList);
-		} else if (spaceType == SpaceType.department.ordinal()) {// 部门版块
-			List<PortalSpaceFix> deptSpaces = new ArrayList<PortalSpaceFix>();
-			PortalSpaceFix Spaces = portalApi.getDeptSpaceIdByDeptId(spaceId);
-			deptSpaces.add(Spaces);
-			List<BulTypeModel> deptBoardModelList = new ArrayList<BulTypeModel>();
-			boolean[] _per = this.getDeptBulModelList(deptSpaces, user.getId(), deptBoardModelList);
-			hasIssue = _per[0];
-			auditManager = _per[1];
-			bulTypeModelMap.put("bulletin.type.department", deptBoardModelList);
-		} else {
-			// 集团版块
-			boolean hasGroupIssue = false;
-			boolean hasGroupAudit = false;
-			if ((Boolean) (SysFlag.sys_isGroupVer.getFlag()) && user.isInternal()) {
-				List<BulType> groupBulTypeList = bulTypeManager.groupFindAll();
-				List<BulTypeModel> groupBulTypeModelList = new ArrayList<BulTypeModel>();
-				boolean[] _perGroup = this.toBulTypeModel(groupBulTypeList, groupBulTypeModelList);
-				hasGroupIssue = _perGroup[0];
-				hasGroupAudit = _perGroup[1];
-				bulTypeModelMap.put("bulletin.type.group", groupBulTypeModelList);
-			}
+        // 我发布的，我收藏的，公告审核
+        mav.addObject("myIssueCount", bulDataManager.getMyIssueCount(user.getId(), myBulTypeIds));
+        if (AppContext.hasPlugin("doc")) {
+            mav.addObject("myCollectCount", bulDataManager.getMyCollectCount(user.getId(), myBulTypeIds));
+        }
+        mav.addObject("myAuditCount", bulDataManager.getMyAuditCount(user.getId(), myBulTypeIds));
+        // 是否允许发布公告
+        boolean hasIssue = false;
+        // 判断是否是公告审核员
+        boolean auditManager = false;
+        Map<String, List<BulTypeModel>> bulTypeModelMap = new LinkedHashMap<String, List<BulTypeModel>>();
+        if (spaceType == SpaceType.public_custom.ordinal()) {// 自定义单位版块
+            List<BulType> customBulTypeList = bulTypeManager.customAccBoardAllBySpaceId(spaceId, spaceType);
+            List<BulTypeModel> customBulTypeModelList = new ArrayList<BulTypeModel>();
+            boolean[] _per = this.toBulTypeModel(customBulTypeList, customBulTypeModelList);
+            hasIssue = _per[0];
+            auditManager = _per[1];
+            bulTypeModelMap.put("bulletin.type.public.custom", customBulTypeModelList);
+        } else if (spaceType == SpaceType.public_custom_group.ordinal()) {// 自定义集团版块
+            List<BulType> customBulTypeList = bulTypeManager.customAccBoardAllBySpaceId(spaceId, spaceType);
+            List<BulTypeModel> customBulTypeModelList = new ArrayList<BulTypeModel>();
+            boolean[] _per = this.toBulTypeModel(customBulTypeList, customBulTypeModelList);
+            hasIssue = _per[0];
+            auditManager = _per[1];
+            bulTypeModelMap.put("bulletin.type.public.custom.group", customBulTypeModelList);
+        } else if (spaceType == SpaceType.custom.ordinal()) {// 自定义团队版块
+            List<BulType> customBulTypeList = bulTypeManager.customAccBoardAllBySpaceId(spaceId, spaceType);
+            List<BulTypeModel> customBulTypeModelList = new ArrayList<BulTypeModel>();
+            boolean[] _per = this.toBulTypeModel(customBulTypeList, customBulTypeModelList);
+            hasIssue = _per[0];
+            auditManager = _per[1];
+            bulTypeModelMap.put("bulletin.type.custom", customBulTypeModelList);
+        } else if (spaceType == SpaceType.department.ordinal()) {// 部门版块
+            List<PortalSpaceFix> deptSpaces = new ArrayList<PortalSpaceFix>();
+            PortalSpaceFix Spaces = portalApi.getDeptSpaceIdByDeptId(spaceId);
+            deptSpaces.add(Spaces);
+            List<BulTypeModel> deptBoardModelList = new ArrayList<BulTypeModel>();
+            boolean[] _per = this.getDeptBulModelList(deptSpaces, user.getId(), deptBoardModelList);
+            hasIssue = _per[0];
+            auditManager = _per[1];
+            bulTypeModelMap.put("bulletin.type.department", deptBoardModelList);
+        } else {
+            // 集团版块
+            boolean hasGroupIssue = false;
+            boolean hasGroupAudit = false;
+            if ((Boolean) (SysFlag.sys_isGroupVer.getFlag()) && user.isInternal()) {
+                List<BulType> groupBulTypeList = bulTypeManager.groupFindAll();
+                List<BulTypeModel> groupBulTypeModelList = new ArrayList<BulTypeModel>();
+                boolean[] _perGroup = this.toBulTypeModel(groupBulTypeList, groupBulTypeModelList);
+                hasGroupIssue = _perGroup[0];
+                hasGroupAudit = _perGroup[1];
+                bulTypeModelMap.put("bulletin.type.group", groupBulTypeModelList);
+            }
 
-			// 单位版块
-			boolean hasAccountIssue = false;
-			boolean hasAccountAudit = false;
-			List<BulType> accountBulTypeList = bulTypeManager.boardFindAllByAccountId(user.getLoginAccount());
-			List<BulTypeModel> accountNewsTypeModelList = new ArrayList<BulTypeModel>();
-			boolean[] _perAccount = this.toBulTypeModel(accountBulTypeList, accountNewsTypeModelList);
-			hasAccountIssue = _perAccount[0];
-			hasAccountAudit = _perAccount[1];
-			bulTypeModelMap.put("bulletin.type.corporation", accountNewsTypeModelList);
+            // 单位版块
+            boolean hasAccountIssue = false;
+            boolean hasAccountAudit = false;
+            List<BulType> accountBulTypeList = bulTypeManager.boardFindAllByAccountId(user.getLoginAccount());
+            List<BulTypeModel> accountNewsTypeModelList = new ArrayList<BulTypeModel>();
+            boolean[] _perAccount = this.toBulTypeModel(accountBulTypeList, accountNewsTypeModelList);
+            hasAccountIssue = _perAccount[0];
+            hasAccountAudit = _perAccount[1];
+            bulTypeModelMap.put("bulletin.type.corporation", accountNewsTypeModelList);
 
-			hasIssue = hasGroupIssue || hasAccountIssue;
-			auditManager = hasGroupAudit || hasAccountAudit;
-		}
+            hasIssue = hasGroupIssue || hasAccountIssue;
+            auditManager = hasGroupAudit || hasAccountAudit;
+        }
 
-		mav.addObject("bulTypeModelMap", bulTypeModelMap);
-		mav.addObject("hasIssue", hasIssue);
-		mav.addObject("auditManager", auditManager);
-		return mav;
-	}
+        mav.addObject("bulTypeModelMap", bulTypeModelMap);
+        mav.addObject("hasIssue", hasIssue);
+        mav.addObject("auditManager", auditManager);
+        return mav;
+    }
 
     /**
      * 我发布的/我收藏的/公告审核
      */
     public ModelAndView bulMyInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView mav = new ModelAndView("bulletin/bulMyInfo");
-        User user= AppContext.getCurrentUser();
+        User user = AppContext.getCurrentUser();
         int spaceType = NumberUtils.toInt(request.getParameter("spaceType"));
         Long spaceId = NumberUtils.toLong(request.getParameter("spaceId"));
         List<Long> myBulTypeIds = null;
@@ -1376,15 +1382,15 @@ public class BulDataController extends BaseController {
         } else {
             myBulTypeIds = bulDataManager.getMyBulTypeIds(spaceType, spaceId);
         }
-        mav.addObject("type",request.getParameter("type"));
+        mav.addObject("type", request.getParameter("type"));
         boolean hasIssue = bulDataManager.hasPermission(spaceType, spaceId, user)[0];
-        mav.addObject("hasIssue",hasIssue);
-        mav.addObject("auditManager",bulTypeManager.isAuditorOfBul(user.getId()));
-        mav.addObject("myIssueCount", bulDataManager.getMyIssueCount(user.getId(),myBulTypeIds));
+        mav.addObject("hasIssue", hasIssue);
+        mav.addObject("auditManager", bulTypeManager.isAuditorOfBul(user.getId()));
+        mav.addObject("myIssueCount", bulDataManager.getMyIssueCount(user.getId(), myBulTypeIds));
         if (AppContext.hasPlugin("doc")) {
-            mav.addObject("myCollectCount", bulDataManager.getMyCollectCount(user.getId(),myBulTypeIds));
+            mav.addObject("myCollectCount", bulDataManager.getMyCollectCount(user.getId(), myBulTypeIds));
         }
-        mav.addObject("myAuditCount", bulDataManager.getMyAuditCount(user.getId(),myBulTypeIds));
+        mav.addObject("myAuditCount", bulDataManager.getMyAuditCount(user.getId(), myBulTypeIds));
         return mav;
     }
 
@@ -1396,7 +1402,7 @@ public class BulDataController extends BaseController {
         return mav;
     }
 
-    private EhSendRangeManager sendRangeManager=new EhSendRangeManagerImpl();
+    private EhSendRangeManager sendRangeManager = new EhSendRangeManagerImpl();
 
     public EhSendRangeManager getSendRangeManager() {
         return sendRangeManager;
@@ -1412,20 +1418,9 @@ public class BulDataController extends BaseController {
         String bulId = request.getParameter("bulId");
         String spaceTypeStr = request.getParameter("spaceType");
         String spaceId = request.getParameter("spaceId");
-        mav.addObject("spaceType",spaceTypeStr);
-        mav.addObject("spaceId",spaceId);
-//      恩华药业 zhou start
-        Map map=new HashMap();
-        map.put("moduleId",Long.parseLong(bulTypeStr));
-        List<EhSendRange> ehSendRanges=sendRangeManager.findEhSendRangeByCondition(map);
-        EhSendRange ehSendRange=null;
-        if(ehSendRanges.size()>0){
-            ehSendRange= ehSendRanges.get(0);
-            mav.addObject("range",ehSendRange);
-        } else {
-            mav.addObject("range",null);
-        }
-//      恩华药业 zhou end
+        mav.addObject("spaceType", spaceTypeStr);
+        mav.addObject("spaceId", spaceId);
+
 
         String oper = request.getParameter("form_oper");
         BulData bean = new BulData();
@@ -1435,23 +1430,24 @@ public class BulDataController extends BaseController {
         int spaceTypeInt = SpaceType.corporation.ordinal();
         if (Strings.isNotBlank(spaceTypeStr)) {
             spaceTypeInt = Integer.valueOf(spaceTypeStr);
-        }else if(Strings.isNotBlank(bulTypeStr)){//如果类型不是空
-       	 	BulType bulType1 = bulTypeManager.getById(Long.valueOf(bulTypeStr));
-       	 	if(bulType1 != null && bulType1.getSpaceType() != null){
-                mav.addObject("spaceType",String.valueOf(bulType1.getSpaceType()));
-       	 	}
-       }
+        } else if (Strings.isNotBlank(bulTypeStr)) {//如果类型不是空
+            BulType bulType1 = bulTypeManager.getById(Long.valueOf(bulTypeStr));
+            if (bulType1 != null && bulType1.getSpaceType() != null) {
+                mav.addObject("spaceType", String.valueOf(bulType1.getSpaceType()));
+            }
+        }
         List<Attachment> attachments = null;
         String bul_id = request.getParameter("id");
-        if(Strings.isBlank(bulId) && Strings.isNotBlank(bul_id)){
+        if (Strings.isBlank(bulId) && Strings.isNotBlank(bul_id)) {
             bulId = bul_id;
         }
         if (Strings.isNotBlank(bulId)) {
-        	Long bulDataId = NumberUtils.toLong(bulId);
-        	bean = bulDataManager.getBulDataCache().getDataCache().get(bulDataId);
-        	if(bean == null){
-        		bean = bulDataManager.getById(bulDataId);
-        	}
+            Long bulDataId = NumberUtils.toLong(bulId);
+            bean = bulDataManager.getBulDataCache().getDataCache().get(bulDataId);
+            if (bean == null) {
+                bean = bulDataManager.getById(bulDataId);
+            }
+
             //如果管理员已将公告删除
             if (bean == null || bean.isDeletedFlag()) {
                 super.rendJavaScript(response,
@@ -1486,7 +1482,7 @@ public class BulDataController extends BaseController {
             bean.setContent(bulDataManager.getBody(bulDataId).getContent());
             attachments = attachmentManager.getByReference(bean.getId(), bean.getId());
             boolean isAduit = false;
-            if(null != bean.getAuditUserId() && 0 != bean.getAuditUserId()){
+            if (null != bean.getAuditUserId() && 0 != bean.getAuditUserId()) {
                 isAduit = true;
             }
             mav.addObject("isAduit", isAduit);
@@ -1495,70 +1491,70 @@ public class BulDataController extends BaseController {
             Integer finalPublish = null;
             String showPublisherName = null;
             String isAuditEdit = request.getParameter("isAuditEdit");
-            if(isAuditEdit != null && "true".equals(isAuditEdit)){
-                mav.addObject("isAuditEdit","true");
-            	Map<String , String> option = new HashMap<String, String>();
-            	option.put("1", bulType.getId().toString());
-            	option.put("2", bulType.getTypeName());
-            	String spaceTypeName ="";
-            	if("1".equals(bulType.getSpaceType().toString())){
-            		spaceTypeName = ResourceUtil.getString("bulletin.type.department");
-            	}else if("2".equals(bulType.getSpaceType().toString())){
-            		spaceTypeName = ResourceUtil.getString("bulletin.type.corporation");
-            	}else if("3".equals(bulType.getSpaceType().toString())){
-            		spaceTypeName = ResourceUtil.getString("bulletin.type.group");
-            	}else if("4".equals(bulType.getSpaceType().toString())){
-            		spaceTypeName = ResourceUtil.getString("bulletin.type.custom");
-            	}else if("17".equals(bulType.getSpaceType().toString())){
-            		spaceTypeName = ResourceUtil.getString("bulletin.type.public.custom");
-            	}else if("18".equals(bulType.getSpaceType().toString())){
-            		spaceTypeName = ResourceUtil.getString("bulletin.type.public.custom.group");
-            	}
-            	option.put("3", bulType.getSpaceType().toString());
-            	option.put("4", spaceTypeName);
-            	mav.addObject("option", JSONUtil.toJSONString(option));
-            	// 审核时修改公告发布人为可选
-            	if(bean.getPublishChoose() != null){
-            		bulAuditPublishChoose = bean.getPublishChoose();
-            		if(bulType.getFinalPublish() != null
-            		   && bulType.getWritePermit() != null
-            		   && bulType.getWritePermit()){
-            			finalPublish = bulType.getFinalPublish();
-            			if(Integer.valueOf("0").equals(bulAuditPublishChoose) && bean.getCreateUser() != null){
-            				if(Integer.valueOf("0").equals(finalPublish)){
-            					showPublisherName = orgManager.getMemberById(bean.getCreateUser()).getName();
-            				} else if(Integer.valueOf("1").equals(finalPublish) && bean.getCreateUser() != null){
-            					showPublisherName = orgManager.getMemberById(bean.getCreateUser()).getName();
-            				} else if(Integer.valueOf("2").equals(finalPublish) && bean.getAuditUserId() != null){
-            					showPublisherName = orgManager.getMemberById(bean.getAuditUserId()).getName();
-            				}
-            			} else if(Integer.valueOf("1").equals(finalPublish) && bean.getWritePublish() != null && Strings.isDigits(bean.getWritePublish())){
-        					showPublisherName = orgManager.getMemberById(Long.valueOf(bean.getWritePublish())).getName();
-        				} else if(Integer.valueOf("2").equals(finalPublish) && bean.getWritePublish() != null){
-        					showPublisherName = bean.getWritePublish();
-        				}
-            		} else if(Integer.valueOf("1").equals(bulAuditPublishChoose) && bean.getWritePublish() != null && Strings.isDigits(bean.getWritePublish())){
-    					showPublisherName = orgManager.getMemberById(Long.valueOf(bean.getWritePublish())).getName();
-    				} else if(Integer.valueOf("2").equals(bulAuditPublishChoose) && bean.getWritePublish() != null){
-    					showPublisherName = bean.getWritePublish();
-    				}
-            	}
+            if (isAuditEdit != null && "true".equals(isAuditEdit)) {
+                mav.addObject("isAuditEdit", "true");
+                Map<String, String> option = new HashMap<String, String>();
+                option.put("1", bulType.getId().toString());
+                option.put("2", bulType.getTypeName());
+                String spaceTypeName = "";
+                if ("1".equals(bulType.getSpaceType().toString())) {
+                    spaceTypeName = ResourceUtil.getString("bulletin.type.department");
+                } else if ("2".equals(bulType.getSpaceType().toString())) {
+                    spaceTypeName = ResourceUtil.getString("bulletin.type.corporation");
+                } else if ("3".equals(bulType.getSpaceType().toString())) {
+                    spaceTypeName = ResourceUtil.getString("bulletin.type.group");
+                } else if ("4".equals(bulType.getSpaceType().toString())) {
+                    spaceTypeName = ResourceUtil.getString("bulletin.type.custom");
+                } else if ("17".equals(bulType.getSpaceType().toString())) {
+                    spaceTypeName = ResourceUtil.getString("bulletin.type.public.custom");
+                } else if ("18".equals(bulType.getSpaceType().toString())) {
+                    spaceTypeName = ResourceUtil.getString("bulletin.type.public.custom.group");
+                }
+                option.put("3", bulType.getSpaceType().toString());
+                option.put("4", spaceTypeName);
+                mav.addObject("option", JSONUtil.toJSONString(option));
+                // 审核时修改公告发布人为可选
+                if (bean.getPublishChoose() != null) {
+                    bulAuditPublishChoose = bean.getPublishChoose();
+                    if (bulType.getFinalPublish() != null
+                            && bulType.getWritePermit() != null
+                            && bulType.getWritePermit()) {
+                        finalPublish = bulType.getFinalPublish();
+                        if (Integer.valueOf("0").equals(bulAuditPublishChoose) && bean.getCreateUser() != null) {
+                            if (Integer.valueOf("0").equals(finalPublish)) {
+                                showPublisherName = orgManager.getMemberById(bean.getCreateUser()).getName();
+                            } else if (Integer.valueOf("1").equals(finalPublish) && bean.getCreateUser() != null) {
+                                showPublisherName = orgManager.getMemberById(bean.getCreateUser()).getName();
+                            } else if (Integer.valueOf("2").equals(finalPublish) && bean.getAuditUserId() != null) {
+                                showPublisherName = orgManager.getMemberById(bean.getAuditUserId()).getName();
+                            }
+                        } else if (Integer.valueOf("1").equals(finalPublish) && bean.getWritePublish() != null && Strings.isDigits(bean.getWritePublish())) {
+                            showPublisherName = orgManager.getMemberById(Long.valueOf(bean.getWritePublish())).getName();
+                        } else if (Integer.valueOf("2").equals(finalPublish) && bean.getWritePublish() != null) {
+                            showPublisherName = bean.getWritePublish();
+                        }
+                    } else if (Integer.valueOf("1").equals(bulAuditPublishChoose) && bean.getWritePublish() != null && Strings.isDigits(bean.getWritePublish())) {
+                        showPublisherName = orgManager.getMemberById(Long.valueOf(bean.getWritePublish())).getName();
+                    } else if (Integer.valueOf("2").equals(bulAuditPublishChoose) && bean.getWritePublish() != null) {
+                        showPublisherName = bean.getWritePublish();
+                    }
+                }
             }
             mav.addObject("writePermit", bulType.getWritePermit());
             mav.addObject("finalPublish", finalPublish);
             mav.addObject("bulAuditPublishChoose", bulAuditPublishChoose);
             mav.addObject("showPublisherName", showPublisherName);
-            mav.addObject("DEPARTMENTissueArea",bean.getPublishScope());
+            mav.addObject("DEPARTMENTissueArea", bean.getPublishScope());
             String isBulEdit = request.getParameter("isBulEdit");//OA-188898
-            if(Strings.isNotBlank(isBulEdit) && "isBulEdit".equals(isBulEdit)) {
-            	mav.addObject("spaceType", request.getParameter("spaceType"));
-            }else {
-            	mav.addObject("spaceType", bean.getSpaceType().toString());
+            if (Strings.isNotBlank(isBulEdit) && "isBulEdit".equals(isBulEdit)) {
+                mav.addObject("spaceType", request.getParameter("spaceType"));
+            } else {
+                mav.addObject("spaceType", bean.getSpaceType().toString());
             }
             //添加发布人的各种控制，这里处理手动输入发布人或者选择发布人情况
-            if(bean.isShowPublishUserFlag() && bean.getPublishChoose() == 1){
-            	bean.setChoosePublshId(bean.getWritePublish());
-            	bean.setWritePublish(null);
+            if (bean.isShowPublishUserFlag() && bean.getPublishChoose() == 1) {
+                bean.setChoosePublshId(bean.getWritePublish());
+                bean.setWritePublish(null);
             }
         } else {
             bean.setCreateDate(new Timestamp(System.currentTimeMillis()));
@@ -1576,7 +1572,7 @@ public class BulDataController extends BaseController {
                     bean.setPublishDepartmentId(memberPostList.get(0).getDepId());
                 }
             } else {
-            	// 如果没有兼职信息，设置发布部门为当前用户登录单位所在的部门
+                // 如果没有兼职信息，设置发布部门为当前用户登录单位所在的部门
                 bean.setPublishDepartmentId(user.getDepartmentId());
             }
             bean.setContent(null);
@@ -1603,7 +1599,7 @@ public class BulDataController extends BaseController {
                 attachments = attachmentManager.getByReference(bean.getId(), bean.getId());
                 mav.addObject("attachments", attachments);
             } else {
-            	if (attFlag) {
+                if (attFlag) {
                     //第一次切换时执行以下方法
                     Long newId = UUIDLong.longUUID();
                     attaFlag = attachmentManager.create(ApplicationCategoryEnum.bulletin, newId, newId, request);
@@ -1661,24 +1657,42 @@ public class BulDataController extends BaseController {
             }
         }
         //公告格式
-        if(bulTypeStr!=null&&StringUtils.isNotBlank(bulTypeStr)){
-        	BulType type = this.bulTypeManager.getById(Long.valueOf(bulTypeStr));
-        	bean.setType(type);
-        	bean.setTypeId(Long.valueOf(bulTypeStr));
+        if (bulTypeStr != null && StringUtils.isNotBlank(bulTypeStr)) {
+            BulType type = this.bulTypeManager.getById(Long.valueOf(bulTypeStr));
+            bean.setType(type);
+            bean.setTypeId(Long.valueOf(bulTypeStr));
         }
         //切换集团、单位版块数据保留
         String spaceType_change = request.getParameter("spaceType_change");
-        if(Strings.isNotBlank(spaceType_change)&&"1".equals(spaceType_change)){
-        	Long publistDepartIdDef = bean.getPublishDepartmentId();
-        	super.bind(request, bean);
-        	bean.setPublishDepartmentId(publistDepartIdDef);
-        	bean.setPublishScope(null);
-        	if(StringUtils.isNotBlank(request.getParameter("bulTempl"))){
-        		bean.setDataFormat(com.seeyon.ctp.common.constants.Constants.EDITOR_TYPE_HTML);
+        if (Strings.isNotBlank(spaceType_change) && "1".equals(spaceType_change)) {
+            Long publistDepartIdDef = bean.getPublishDepartmentId();
+            super.bind(request, bean);
+            bean.setPublishDepartmentId(publistDepartIdDef);
+            bean.setPublishScope(null);
+            if (StringUtils.isNotBlank(request.getParameter("bulTempl"))) {
+                bean.setDataFormat(com.seeyon.ctp.common.constants.Constants.EDITOR_TYPE_HTML);
                 bean.setContent(null);
-        	}
-        	mav.addObject("bulTypeId", "");
+            }
+            mav.addObject("bulTypeId", "");
         }
+
+        //      恩华药业 zhou start
+        Map map = new HashMap();
+        if (null != bulTypeStr && !"".equals(bulTypeStr)) {
+            map.put("moduleId", Long.parseLong(bulTypeStr));
+        } else {
+            map.put("moduleId", bean.getTypeId());
+        }
+
+        List<EhSendRange> ehSendRanges=sendRangeManager.findEhSendRangeByCondition(map);
+        EhSendRange ehSendRange=null;
+        if(ehSendRanges.size()>0){
+            ehSendRange= ehSendRanges.get(0);
+            mav.addObject("range",ehSendRange);
+        } else {
+            mav.addObject("range",null);
+        }
+//      恩华药业 zhou end
 
 //      恩华药业 zhou start
         if(null !=ehSendRange){
@@ -1688,13 +1702,13 @@ public class BulDataController extends BaseController {
         mav.addObject("bean", bean);
         mav.addObject("constants", new BulConstants());
         //预览
-        String bulPreview =request.getParameter("bulPreview");
-        if(StringUtils.isNotBlank(bulPreview) && "bulPreview".equals(bulPreview)){
-        	String bulSyle=bean.getType().getExt1();
-        	ModelAndView mavPre = new ModelAndView("bulletin/bulView_detail"+Integer.valueOf(bulSyle));
-        	mavPre.addObject("bean", bean);
-        	mavPre.addObject("attachments", attachments);
-        	return mavPre;
+        String bulPreview = request.getParameter("bulPreview");
+        if (StringUtils.isNotBlank(bulPreview) && "bulPreview".equals(bulPreview)) {
+            String bulSyle = bean.getType().getExt1();
+            ModelAndView mavPre = new ModelAndView("bulletin/bulView_detail" + Integer.valueOf(bulSyle));
+            mavPre.addObject("bean", bean);
+            mavPre.addObject("attachments", attachments);
+            return mavPre;
         }
 
         //版块
@@ -1708,55 +1722,55 @@ public class BulDataController extends BaseController {
         List<Map<String, String>> newBulTypeListCustom = new ArrayList<Map<String, String>>();
         String groupKey = "";
         String accountkey = "";
-        if (Strings.isNotBlank(spaceId) && (Integer.valueOf(spaceTypeStr)==SpaceType.public_custom_group.ordinal()
-                || Integer.valueOf(spaceTypeStr)==SpaceType.public_custom.ordinal()
-                || Integer.valueOf(spaceTypeStr)==SpaceType.custom.ordinal())) {
-            if(Integer.valueOf(spaceTypeStr) == SpaceType.public_custom_group.ordinal()){
+        if (Strings.isNotBlank(spaceId) && (Integer.valueOf(spaceTypeStr) == SpaceType.public_custom_group.ordinal()
+                || Integer.valueOf(spaceTypeStr) == SpaceType.public_custom.ordinal()
+                || Integer.valueOf(spaceTypeStr) == SpaceType.custom.ordinal())) {
+            if (Integer.valueOf(spaceTypeStr) == SpaceType.public_custom_group.ordinal()) {
                 bulTypeListGroup = this.bulTypeManager.getTypesCanCreate(user.getId(), BulConstants.valueOfSpaceType(18), Long.valueOf(spaceId));
                 groupKey = "bulletin.type.public.custom.group";
 
                 StringBuilder publisthScopeSpace = new StringBuilder();
                 List<Object[]> issueAreas = portalApi.getSecuityOfSpace(Long.valueOf(spaceId));
-                for(Object[] arr : issueAreas) {
+                for (Object[] arr : issueAreas) {
                     publisthScopeSpace.append(StringUtils.join(arr, "|") + ",");
                 }
-                mav.addObject("entity",publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1));
+                mav.addObject("entity", publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1));
                 mav.addObject("DEPARTMENTissueArea", publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1));
-            }else if(Integer.valueOf(spaceTypeStr) == SpaceType.public_custom.ordinal()){
+            } else if (Integer.valueOf(spaceTypeStr) == SpaceType.public_custom.ordinal()) {
                 bulTypeListAcc = this.bulTypeManager.getTypesCanCreate(user.getId(), BulConstants.valueOfSpaceType(17), Long.valueOf(spaceId));
                 accountkey = "bulletin.type.public.custom";
 
                 StringBuilder publisthScopeSpace = new StringBuilder();
                 List<Object[]> issueAreas = portalApi.getSecuityOfSpace(Long.valueOf(spaceId));
-                for(Object[] arr : issueAreas) {
+                for (Object[] arr : issueAreas) {
                     publisthScopeSpace.append(StringUtils.join(arr, "|") + ",");
                 }
-                mav.addObject("entity",publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1));
+                mav.addObject("entity", publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1));
                 mav.addObject("DEPARTMENTissueArea", publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1));
-            }else if(Integer.valueOf(spaceTypeStr) == SpaceType.custom.ordinal()){
+            } else if (Integer.valueOf(spaceTypeStr) == SpaceType.custom.ordinal()) {
                 BulType bul = this.bulTypeManager.getById(Long.valueOf(spaceId));
                 bulTypeListCustom.add(bul);
 
                 StringBuilder publisthScopeSpace = new StringBuilder();
                 List<Object[]> issueAreas = portalApi.getSecuityOfSpace(Long.valueOf(spaceId));
-                for(Object[] arr : issueAreas) {
+                for (Object[] arr : issueAreas) {
                     publisthScopeSpace.append(StringUtils.join(arr, "|") + ",");
                 }
-                if(publisthScopeSpace.length() > 0){
+                if (publisthScopeSpace.length() > 0) {
                     publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1);
                 }
-                List<Object[]> entityObj= portalApi.getSecuityOfSpace(Long.valueOf(spaceId));
-                String entity="";
+                List<Object[]> entityObj = portalApi.getSecuityOfSpace(Long.valueOf(spaceId));
+                String entity = "";
                 for (Object[] obj : entityObj) {
-                    entity+=obj[0]+"|"+obj[1]+",";
+                    entity += obj[0] + "|" + obj[1] + ",";
                 }
-                if(!"".equals(entity)){
-                    entity=entity.substring(0, entity.length()-1);
+                if (!"".equals(entity)) {
+                    entity = entity.substring(0, entity.length() - 1);
                 }
-                mav.addObject("entity",entity);
+                mav.addObject("entity", entity);
                 mav.addObject("DEPARTMENTissueArea", publisthScopeSpace);
             }
-        }else if (spaceTypeInt == SpaceType.department.ordinal()) {
+        } else if (spaceTypeInt == SpaceType.department.ordinal()) {
             List<PortalSpaceFix> deptSpaceModels = new ArrayList<PortalSpaceFix>();
             PortalSpaceFix departSpace = portalApi.getDeptSpaceIdByDeptId(Long.valueOf(spaceId));
             departSpace.setSpacename(ResourceUtil.getString(departSpace.getSpacename()));
@@ -1764,53 +1778,53 @@ public class BulDataController extends BaseController {
             //bean.setPublishDepartmentId(Long.valueOf(bulTypeIds));
             mav.addObject("deptSpaceModels", deptSpaceModels);
             mav.addObject("deptSpaceModelsLength", deptSpaceModels.size());
-            mav.addObject("DEPARTMENTissueArea","Department|"+bulTypeStr);
-            mav.addObject("ChildDeptissueArea","Department|"+bulTypeStr);
-        }else{
+            mav.addObject("DEPARTMENTissueArea", "Department|" + bulTypeStr);
+            mav.addObject("ChildDeptissueArea", "Department|" + bulTypeStr);
+        } else {
             bulTypeListGroup = this.bulTypeManager.getTypesCanCreate(user.getId(), BulConstants.valueOfSpaceType(3), user.getLoginAccount());
             groupKey = "bulletin.type.group";
             bulTypeListAcc = this.bulTypeManager.getTypesCanCreate(user.getId(), BulConstants.valueOfSpaceType(2), user.getLoginAccount());
             accountkey = "bulletin.type.corporation";
 
         }
-        if(bulTypeListGroup != null && bulTypeListGroup.size() > 0){
+        if (bulTypeListGroup != null && bulTypeListGroup.size() > 0) {
             mav.addObject("groupSize", "true");
-            for(BulType bulType1 : bulTypeListGroup){
-                Map<String , String> mapType= new HashMap<String, String>();
+            for (BulType bulType1 : bulTypeListGroup) {
+                Map<String, String> mapType = new HashMap<String, String>();
                 mapType.put("id", String.valueOf(bulType1.getId()));
                 mapType.put("typeName", bulType1.getTypeName());
                 newBulTypeListGroup.add(mapType);
             }
             boardListMap.put(groupKey, newBulTypeListGroup);
-        }else {
+        } else {
             mav.addObject("groupSize", "false");
         }
-        if(bulTypeListAcc != null && bulTypeListAcc.size() > 0){
+        if (bulTypeListAcc != null && bulTypeListAcc.size() > 0) {
             mav.addObject("corporationSize", "true");
-            for(BulType bulType1 : bulTypeListAcc){
-                Map<String , String> mapType= new HashMap<String, String>();
+            for (BulType bulType1 : bulTypeListAcc) {
+                Map<String, String> mapType = new HashMap<String, String>();
                 mapType.put("id", String.valueOf(bulType1.getId()));
                 mapType.put("typeName", bulType1.getTypeName());
                 newBulTypeListAcc.add(mapType);
             }
             boardListMap.put(accountkey, newBulTypeListAcc);
-        }else {
+        } else {
             mav.addObject("corporationSize", "false");
         }
-        if(bulTypeListCustom != null && bulTypeListCustom.size() > 0){
+        if (bulTypeListCustom != null && bulTypeListCustom.size() > 0) {
             mav.addObject("customSize", "true");
-            for(BulType bulType1 : bulTypeListCustom){
-                Map<String , String> mapType= new HashMap<String, String>();
+            for (BulType bulType1 : bulTypeListCustom) {
+                Map<String, String> mapType = new HashMap<String, String>();
                 mapType.put("id", String.valueOf(bulType1.getId()));
                 mapType.put("typeName", bulType1.getTypeName());
                 newBulTypeListCustom.add(mapType);
             }
             boardListMap.put("bulletin.type.custom", newBulTypeListCustom);
-        }else {
+        } else {
             mav.addObject("customSize", "false");
         }
 
-        mav.addObject("boardListMap",boardListMap);
+        mav.addObject("boardListMap", boardListMap);
         mav.addObject("boardListMapJson", JSONUtil.toJSONString(boardListMap));
 
         return mav;
@@ -1818,22 +1832,23 @@ public class BulDataController extends BaseController {
 
     /**
      * 创建、修改公告正文部分-6.0新版
+     *
      * @throws Exception
      */
     public ModelAndView createBulContent(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView mav = new ModelAndView("bulletin/bulContent");
         String idStr = request.getParameter("bulId");
         String content = request.getParameter("content");
-        if(!Strings.isBlank(idStr)){
-        	Long bulId = Long.parseLong(idStr);
-        	//V3xBbsArticle article = bbsArticleManager.getArticleById(articleId);
-        	BulBody body = bulDataManager.getBody(bulId);
-        	if(body!=null){
-        		content = body.getContent();
-        		mav.addObject("body",body);
-        	}
+        if (!Strings.isBlank(idStr)) {
+            Long bulId = Long.parseLong(idStr);
+            //V3xBbsArticle article = bbsArticleManager.getArticleById(articleId);
+            BulBody body = bulDataManager.getBody(bulId);
+            if (body != null) {
+                content = body.getContent();
+                mav.addObject("body", body);
+            }
         }
-        mav.addObject("content",content);
+        mav.addObject("content", content);
         return mav;
     }
 
@@ -1863,7 +1878,7 @@ public class BulDataController extends BaseController {
         }
         User user = AppContext.getCurrentUser();
         boolean isGuest = user.isDefaultGuest() || user.isScreenGuest(); //Guest帐号
-        mav.addObject("isGuest",isGuest);
+        mav.addObject("isGuest", isGuest);
         String idStr = request.getParameter("bulId");
         Long bulId = Long.valueOf(idStr);
         BulData bean = bulDataManager.getBulDataCache().getDataCache().get(bulId);
@@ -1879,37 +1894,37 @@ public class BulDataController extends BaseController {
             return null;
         }
 
-        if(isGuest){ //因为有阅读量，故仅仅针对guest做etag
+        if (isGuest) { //因为有阅读量，故仅仅针对guest做etag
             Date date = bean.getUpdateDate();
             if (date == null) {
                 date = bean.getCreateDate();
             }
-	        String ETag = String.valueOf(date.getTime());
-	        if(WebUtil.checkEtag(request, response, ETag)){
-	        	return null;
-	        }
+            String ETag = String.valueOf(date.getTime());
+            if (WebUtil.checkEtag(request, response, ETag)) {
+                return null;
+            }
 
-	        WebUtil.writeETag(request, response, ETag);
-    	}
+            WebUtil.writeETag(request, response, ETag);
+        }
 
-        if(!isGuest){
-        	//更新消息状态
-        	userMessageManager.updateSystemMessageStateByUserAndReference(user.getId(), bulId);
+        if (!isGuest) {
+            //更新消息状态
+            userMessageManager.updateSystemMessageStateByUserAndReference(user.getId(), bulId);
         }
 
         BulBody body = bulDataManager.getBody(bean.getId());
         bean.setContent(body.getContent());
         bean.setContentName(body.getContentName());
         this.getBulletinUtils().initData(bean);
-		// V6.1发布人版块控制管理
-        if(bean.getType() != null && bean.isShowPublishUserFlag()){
-        	if(Strings.isNotBlank(bean.getWritePublish()) && bean.getPublishChoose() != 0){
-        		if(bean.getPublishChoose() == 1){
-        			bean.setPublishMemberName(Functions.showMemberName(Long.valueOf(bean.getWritePublish())));
-        		} else if(bean.getPublishChoose() == 2) {
-        			bean.setPublishMemberName(bean.getWritePublish());
-        		}
-        	} else if(bean.getPublishUserId()!=null){
+        // V6.1发布人版块控制管理
+        if (bean.getType() != null && bean.isShowPublishUserFlag()) {
+            if (Strings.isNotBlank(bean.getWritePublish()) && bean.getPublishChoose() != 0) {
+                if (bean.getPublishChoose() == 1) {
+                    bean.setPublishMemberName(Functions.showMemberName(Long.valueOf(bean.getWritePublish())));
+                } else if (bean.getPublishChoose() == 2) {
+                    bean.setPublishMemberName(bean.getWritePublish());
+                }
+            } else if (bean.getPublishUserId() != null) {
 //        		if (bean.getType().isAuditFlag()) {
 //    				if (bean.getType().getFinalPublish() == 0 && bean.getPublishUserId() != null) {
 //    					bean.setPublishMemberName(orgManager.getMemberById(bean.getPublishUserId()).getName());
@@ -1925,10 +1940,10 @@ public class BulDataController extends BaseController {
 //    			} else {
 //    				bean.setPublishMemberName(orgManager.getMemberById(bean.getCreateUser()).getName());
 //    			}
-        		bean.setPublishMemberName(Functions.showMemberName(bean.getPublishUserId()));
-        	} else {
-        		bean.setPublishMemberName(Functions.showMemberName(bean.getCreateUser()));
-        	}
+                bean.setPublishMemberName(Functions.showMemberName(bean.getPublishUserId()));
+            } else {
+                bean.setPublishMemberName(Functions.showMemberName(bean.getCreateUser()));
+            }
         }
 //        mav.addObject("bean", bean);
         if (bean.getAttachmentsFlag()) {
@@ -1936,7 +1951,7 @@ public class BulDataController extends BaseController {
             String attListJSON = attachmentManager.getAttListJSON(attachments);
             mav.addObject("attListJSON", attListJSON);
         } else {
-        	mav.addObject("attListJSON", "");
+            mav.addObject("attListJSON", "");
         }
 
         //发布状态以及归档以外详情页面打开
@@ -1948,7 +1963,7 @@ public class BulDataController extends BaseController {
         String bulStyle = bean.getType().getExt1();
         String showPublishName = ""; // 发布人
         if (state_noPublish) {
-        	mav.setViewName("bulletin/bulView_detail" + Integer.valueOf(bulStyle));
+            mav.setViewName("bulletin/bulView_detail" + Integer.valueOf(bulStyle));
             if ("list".equals(from) || "myCollect".equals(from) || ("message".equals(from) && bean.getState().intValue() == BulConstants.DATA_STATE_NO_SUBMIT)) {
                 super.rendJavaScript(response, "alert('" + alertInfo + "');window.close();");
                 return null;
@@ -1987,7 +2002,7 @@ public class BulDataController extends BaseController {
             boolean auditerFlag = (("message".equals(from)
                     && bean.getState().intValue() == BulConstants.DATA_STATE_ALREADY_CREATE)
                     || ("message".equals(from) && (bean.getState().intValue() == BulConstants.DATA_STATE_ALREADY_AUDIT
-                            || bean.getState().intValue() == BulConstants.DATA_STATE_NOPASS_AUDIT)))
+                    || bean.getState().intValue() == BulConstants.DATA_STATE_NOPASS_AUDIT)))
                     && ((user.getId()).equals(bean.getType().getAuditUser()) || (user.getId()).equals(agentId));
             //发起人从消息进入到审核
             boolean createrFlag = "message".equals(from) && (bean.getCreateUser()).equals(user.getId());
@@ -2019,34 +2034,34 @@ public class BulDataController extends BaseController {
                 }
             }
             // 发布人
-            if(bean.getType() != null && bean.isShowPublishUserFlag()
-            		&& bean.getType().getWritePermit() != null
-        			&& bean.getType().getWritePermit()
-        			&& bean.getPublishChoose() != null){
-            	if(bean.getPublishChoose().equals(0)){
-            		if(bean.getType().getFinalPublish() != null){
-            			Integer finalPublish = bean.getType().getFinalPublish();
-            			if(finalPublish.equals(0) && bean.getPublishUserId() != 0){
-            				showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
-            			} else if(finalPublish.equals(1) && bean.getCreateUser() != null){
-            				showPublishName = orgManager.getMemberById(bean.getCreateUser()).getName();
-            			} else if(finalPublish.equals(2) && bean.getAuditUserId() != null){
-            				showPublishName = orgManager.getMemberById(bean.getAuditUserId()).getName();
-            			} else if(bean.getPublishUserId()!=null){
-            				showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
-            			}
-            		}
-            	} else if(bean.getPublishChoose().equals(1)){
-            		if(bean.getPublishUserId() != null){
-            			showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
-            		} else if(Strings.isNotBlank(bean.getWritePublish()) && Strings.isDigits(bean.getWritePublish())){
-            			showPublishName = orgManager.getMemberById(Long.valueOf(bean.getWritePublish())).getName();
-            		}
-            	} else if(bean.getPublishChoose().equals(2) && Strings.isNotBlank(bean.getWritePublish())) {
-            		showPublishName =  bean.getWritePublish();
-            	} else if(bean.getPublishUserId()!=null){
-            		showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
-    			}
+            if (bean.getType() != null && bean.isShowPublishUserFlag()
+                    && bean.getType().getWritePermit() != null
+                    && bean.getType().getWritePermit()
+                    && bean.getPublishChoose() != null) {
+                if (bean.getPublishChoose().equals(0)) {
+                    if (bean.getType().getFinalPublish() != null) {
+                        Integer finalPublish = bean.getType().getFinalPublish();
+                        if (finalPublish.equals(0) && bean.getPublishUserId() != 0) {
+                            showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
+                        } else if (finalPublish.equals(1) && bean.getCreateUser() != null) {
+                            showPublishName = orgManager.getMemberById(bean.getCreateUser()).getName();
+                        } else if (finalPublish.equals(2) && bean.getAuditUserId() != null) {
+                            showPublishName = orgManager.getMemberById(bean.getAuditUserId()).getName();
+                        } else if (bean.getPublishUserId() != null) {
+                            showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
+                        }
+                    }
+                } else if (bean.getPublishChoose().equals(1)) {
+                    if (bean.getPublishUserId() != null) {
+                        showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
+                    } else if (Strings.isNotBlank(bean.getWritePublish()) && Strings.isDigits(bean.getWritePublish())) {
+                        showPublishName = orgManager.getMemberById(Long.valueOf(bean.getWritePublish())).getName();
+                    }
+                } else if (bean.getPublishChoose().equals(2) && Strings.isNotBlank(bean.getWritePublish())) {
+                    showPublishName = bean.getWritePublish();
+                } else if (bean.getPublishUserId() != null) {
+                    showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
+                }
             }
         } else {// 已经发布的、归档的这里打开
             mav.addObject("bulStyle", bulStyle);
@@ -2094,16 +2109,16 @@ public class BulDataController extends BaseController {
             Long userId = AppContext.getCurrentUser().getId();
             Boolean isManager = this.bulTypeManager.isManagerOfType(bean.getTypeId(), userId);
             Boolean readRecord = false;
-            if(bean.getOpenRecordRead() != null && bean.getOpenRecordRead() == 1 && user.isV5Member()){
-            	readRecord = true;
-    		} else if(Strings.isNotBlank(bean.getExt1()) && "1".equals(bean.getExt1()) && user.isV5Member() && (isManager || userId.longValue() == bean.getCreateUser().longValue())) {
-    			readRecord = true;
-    		}
-        	if (bean.getCreateUser() != null && userId.longValue() == bean.getCreateUser().longValue() && user.isV5Member()) {
+            if (bean.getOpenRecordRead() != null && bean.getOpenRecordRead() == 1 && user.isV5Member()) {
+                readRecord = true;
+            } else if (Strings.isNotBlank(bean.getExt1()) && "1".equals(bean.getExt1()) && user.isV5Member() && (isManager || userId.longValue() == bean.getCreateUser().longValue())) {
+                readRecord = true;
+            }
+            if (bean.getCreateUser() != null && userId.longValue() == bean.getCreateUser().longValue() && user.isV5Member()) {
                 isManager = true;
             }
             mav.addObject("isManager", isManager);
-            mav.addObject("readRecord",readRecord);
+            mav.addObject("readRecord", readRecord);
             if (AppContext.hasPlugin("doc")) {
                 String collectFlag = SystemProperties.getInstance().getProperty("doc.collectFlag");
                 if ("true".equals(collectFlag)) {
@@ -2116,34 +2131,34 @@ public class BulDataController extends BaseController {
                 mav.addObject("docCollectFlag", collectFlag);
             }
             // 发布人
-            if(bean.getType() != null && bean.isShowPublishUserFlag()
-            		&& bean.getType().getWritePermit() != null
-        			&& bean.getType().getWritePermit()
-        			&& bean.getPublishChoose() != null){
-            	if(bean.getPublishChoose().equals(0)){
-            		if(bean.getType().getFinalPublish() != null){
-            			Integer finalPublish = bean.getType().getFinalPublish();
-            			if(finalPublish.equals(0) && bean.getPublishUserId() != 0){
-            				showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
-            			} else if(finalPublish.equals(1) && bean.getCreateUser() != null){
-            				showPublishName = orgManager.getMemberById(bean.getCreateUser()).getName();
-            			} else if(finalPublish.equals(2) && bean.getAuditUserId() != null){
-            				showPublishName = orgManager.getMemberById(bean.getAuditUserId()).getName();
-            			} else if(bean.getPublishUserId()!=null){
-            				showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
-            			}
-            		}
-            	} else if(bean.getPublishChoose().equals(1)){
-            		if(bean.getPublishUserId() != null){
-            			showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
-            		} else if(Strings.isNotBlank(bean.getWritePublish()) && Strings.isDigits(bean.getWritePublish())){
-            			showPublishName = orgManager.getMemberById(Long.valueOf(bean.getWritePublish())).getName();
-            		}
-            	} else if(bean.getPublishChoose().equals(2) && Strings.isNotBlank(bean.getWritePublish())) {
-            		showPublishName =  bean.getWritePublish();
-            	} else if(bean.getPublishUserId()!=null){
-            		showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
-    			}
+            if (bean.getType() != null && bean.isShowPublishUserFlag()
+                    && bean.getType().getWritePermit() != null
+                    && bean.getType().getWritePermit()
+                    && bean.getPublishChoose() != null) {
+                if (bean.getPublishChoose().equals(0)) {
+                    if (bean.getType().getFinalPublish() != null) {
+                        Integer finalPublish = bean.getType().getFinalPublish();
+                        if (finalPublish.equals(0) && bean.getPublishUserId() != 0) {
+                            showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
+                        } else if (finalPublish.equals(1) && bean.getCreateUser() != null) {
+                            showPublishName = orgManager.getMemberById(bean.getCreateUser()).getName();
+                        } else if (finalPublish.equals(2) && bean.getAuditUserId() != null) {
+                            showPublishName = orgManager.getMemberById(bean.getAuditUserId()).getName();
+                        } else if (bean.getPublishUserId() != null) {
+                            showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
+                        }
+                    }
+                } else if (bean.getPublishChoose().equals(1)) {
+                    if (bean.getPublishUserId() != null) {
+                        showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
+                    } else if (Strings.isNotBlank(bean.getWritePublish()) && Strings.isDigits(bean.getWritePublish())) {
+                        showPublishName = orgManager.getMemberById(Long.valueOf(bean.getWritePublish())).getName();
+                    }
+                } else if (bean.getPublishChoose().equals(2) && Strings.isNotBlank(bean.getWritePublish())) {
+                    showPublishName = bean.getWritePublish();
+                } else if (bean.getPublishUserId() != null) {
+                    showPublishName = orgManager.getMemberById(bean.getPublishUserId()).getName();
+                }
             }
         }
         bean.setShowPublishName(showPublishName);
@@ -2154,13 +2169,14 @@ public class BulDataController extends BaseController {
 
     /**
      * 公告预览
+     *
      * @param request
      * @param response
      * @return
      * @throws Exception
      */
     public ModelAndView bulPreview(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	BulData bean = new BulData();
+        BulData bean = new BulData();
         String title = request.getParameter("previewTitle");
         String createUserId = request.getParameter("createUser");
         String publishChoose = request.getParameter("publishChoose");
@@ -2175,35 +2191,35 @@ public class BulDataController extends BaseController {
         bean.setType(type);
         bean.setTitle(title);
         String bulStyle = bean.getType().getExt1();
-        ModelAndView mav = new ModelAndView("bulletin/bulView_detail"+Integer.valueOf(bulStyle));
+        ModelAndView mav = new ModelAndView("bulletin/bulView_detail" + Integer.valueOf(bulStyle));
         Long newId = UUIDLong.longUUID();
         Long attRefId = newId;
         List<Attachment> attachments = attachmentManager.getByReference(attRefId, attRefId);
         bean.setReadCount(0);
         bean.setId(attRefId);
-        if(Strings.isNotBlank(createUserId)){
-        	bean.setCreateUser(Long.valueOf(createUserId));
-        }else {
-        	bean.setCreateUser(AppContext.currentUserId());
+        if (Strings.isNotBlank(createUserId)) {
+            bean.setCreateUser(Long.valueOf(createUserId));
+        } else {
+            bean.setCreateUser(AppContext.currentUserId());
         }
         bean.setPublishDeptName(request.getParameter("publishDepartmentName"));
-        if(Strings.isNotBlank(publishChoose)){
-        	if("0".equals(publishChoose) && type.getFinalPublish() != null){
-        		Integer finalPublish = type.getFinalPublish();
-        		if(finalPublish.intValue() == 0){
-        			bean.setShowPublishName(AppContext.getCurrentUser().getName());
-        		} else if(finalPublish.intValue() == 1 && bean.getCreateUser() != null){
-        			bean.setShowPublishName(orgManager.getMemberById(bean.getCreateUser()).getName());
-        		} else if(finalPublish.intValue() == 2 && type.getAuditUserName()!= null){
-        			bean.setShowPublishName(type.getAuditUserName());
-        		}
-        	} else if("1".equals(publishChoose) && Strings.isNotBlank(choosePublshId)){
-        		bean.setShowPublishName(orgManager.getMemberById(Long.parseLong(choosePublshId)).getName());
-        	} else if("2".equals(publishChoose) && Strings.isNotBlank(writePublish)){
-        		bean.setShowPublishName(writePublish);
-        	}
+        if (Strings.isNotBlank(publishChoose)) {
+            if ("0".equals(publishChoose) && type.getFinalPublish() != null) {
+                Integer finalPublish = type.getFinalPublish();
+                if (finalPublish.intValue() == 0) {
+                    bean.setShowPublishName(AppContext.getCurrentUser().getName());
+                } else if (finalPublish.intValue() == 1 && bean.getCreateUser() != null) {
+                    bean.setShowPublishName(orgManager.getMemberById(bean.getCreateUser()).getName());
+                } else if (finalPublish.intValue() == 2 && type.getAuditUserName() != null) {
+                    bean.setShowPublishName(type.getAuditUserName());
+                }
+            } else if ("1".equals(publishChoose) && Strings.isNotBlank(choosePublshId)) {
+                bean.setShowPublishName(orgManager.getMemberById(Long.parseLong(choosePublshId)).getName());
+            } else if ("2".equals(publishChoose) && Strings.isNotBlank(writePublish)) {
+                bean.setShowPublishName(writePublish);
+            }
         } else {
-        	bean.setShowPublishName("");
+            bean.setShowPublishName("");
         }
         mav.addObject("bean", bean);
         mav.addObject("attachments", attachments);
@@ -2216,19 +2232,19 @@ public class BulDataController extends BaseController {
         boolean hasIssue = false;
         boolean hasAudit = false;
         for (BulType bulType : bulTypeList) {
-        	BulTypeModel bulTypeModel = new BulTypeModel(bulType, user.getId(), orgManager.getAllUserDomainIDs(user.getId()));
+            BulTypeModel bulTypeModel = new BulTypeModel(bulType, user.getId(), orgManager.getAllUserDomainIDs(user.getId()));
             bulTypeModel.setId(bulType.getId());
             bulTypeModel.setBulName(bulType.getTypeName());
-        	if (bulTypeModel.getCanNewOfCurrent()) {
+            if (bulTypeModel.getCanNewOfCurrent()) {
                 hasIssue = true;
             }
-        	if (bulTypeModel.isCanAuditOfCurrent()) {
-        	    hasAudit = true;
-        	}
-        	bulTypeModel.setFlag(true);
+            if (bulTypeModel.isCanAuditOfCurrent()) {
+                hasAudit = true;
+            }
+            bulTypeModel.setFlag(true);
             bulTypeModelList.add(bulTypeModel);
         }
-        return new boolean[]{hasIssue,hasAudit};
+        return new boolean[]{hasIssue, hasAudit};
     }
 
     private boolean[] getDeptBulModelList(List<PortalSpaceFix> spaces, Long userId, List<BulTypeModel> bulModelList) throws Exception {
@@ -2254,24 +2270,24 @@ public class BulDataController extends BaseController {
             }
             bulModelList.add(bulModel);
         }
-        return new boolean[] { hasIssue, hasAudit };
+        return new boolean[]{hasIssue, hasAudit};
     }
 
-    public List<BulType> getCanAdminTypes(Long memberId, BulType bulType){
+    public List<BulType> getCanAdminTypes(Long memberId, BulType bulType) {
         Integer spaceType = bulType.getSpaceType();
         Long accountId = bulType.getAccountId();
         List<BulType> bulTypeList = new ArrayList<BulType>();
         if (spaceType == SpaceType.public_custom.ordinal()) {// 自定义单位版块
-        	bulTypeList = bulTypeManager.getManagerTypeByMember(memberId, SpaceType.public_custom, accountId);
+            bulTypeList = bulTypeManager.getManagerTypeByMember(memberId, SpaceType.public_custom, accountId);
         } else if (spaceType == SpaceType.public_custom_group.ordinal()) {// 自定义集团版块
-        	bulTypeList = bulTypeManager.getManagerTypeByMember(memberId, SpaceType.public_custom_group, accountId);
+            bulTypeList = bulTypeManager.getManagerTypeByMember(memberId, SpaceType.public_custom_group, accountId);
         } else if (spaceType == SpaceType.group.ordinal()) {// 集团版块
-        	bulTypeList = bulTypeManager.getManagerTypeByMember(memberId, SpaceType.group, accountId);
+            bulTypeList = bulTypeManager.getManagerTypeByMember(memberId, SpaceType.group, accountId);
         } else if (spaceType == SpaceType.corporation.ordinal()) {// 单位版块
-        	bulTypeList = bulTypeManager.getManagerTypeByMember(memberId, SpaceType.corporation, accountId);
+            bulTypeList = bulTypeManager.getManagerTypeByMember(memberId, SpaceType.corporation, accountId);
         }
         if (Strings.isNotEmpty(bulTypeList)) {
-        	bulTypeList.remove(bulType);
+            bulTypeList.remove(bulType);
         }
         return bulTypeList;
     }
@@ -2322,33 +2338,33 @@ public class BulDataController extends BaseController {
         ReplaceBase64Result result = fileManager.replaceBase64Image(bean.getContent());
         bean.setContent(result.getHtml());
 
-        if("true".equals(bean.getShowPublishName()) && bean.getPublishChoose() == 1 && Strings.isNotBlank(bean.getChoosePublshId())){
-        	bean.setWritePublish(bean.getChoosePublshId());
+        if ("true".equals(bean.getShowPublishName()) && bean.getPublishChoose() == 1 && Strings.isNotBlank(bean.getChoosePublshId())) {
+            bean.setWritePublish(bean.getChoosePublshId());
         }
         Long typeId = bean.getTypeId();
         boolean flag = (Strings.isNotBlank(spaceId) && bean.getAccountId() == null);
         BulType type = this.bulTypeManager.getById(typeId);
         bean.setType(type);
         String spaceType = request.getParameter("spaceType");
-        if(Strings.isNotBlank(spaceType)) {
-        	bean.setSpaceType(Integer.parseInt(spaceType));
+        if (Strings.isNotBlank(spaceType)) {
+            bean.setSpaceType(Integer.parseInt(spaceType));
         } else {
-        	bean.setSpaceType(type.getSpaceType());
+            bean.setSpaceType(type.getSpaceType());
         }
         bean.setAccountId(type.getAccountId());
         bean.setTitle(title);
         String form_oper = request.getParameter("form_oper");
         if (StringUtils.isNotBlank(form_oper)) {
-            if ("draft".equals(form_oper)){
-            	  bean.setState(BulConstants.DATA_STATE_NO_SUBMIT);
-                  bean.setState(BulConstants.DATA_STATE_NO_SUBMIT);
-                  bean.setAuditAdvice(null);
-                  bean.setPublishDate(null);
-                  bean.setPublishUserId(null);
-                  bean.setReadCount(0);
-                  bean.setUpdateDate(null);
-                  bean.setUpdateUser(null);
-            }else if ("submit".equals(form_oper)) {
+            if ("draft".equals(form_oper)) {
+                bean.setState(BulConstants.DATA_STATE_NO_SUBMIT);
+                bean.setState(BulConstants.DATA_STATE_NO_SUBMIT);
+                bean.setAuditAdvice(null);
+                bean.setPublishDate(null);
+                bean.setPublishUserId(null);
+                bean.setReadCount(0);
+                bean.setUpdateDate(null);
+                bean.setUpdateUser(null);
+            } else if ("submit".equals(form_oper)) {
                 //如当前公告类型有审核员，用户点击"发送"按钮时，公告状态设定为"已经提交，还未审核"
                 if (type.isAuditFlag()) {
                     bean.setState(BulConstants.DATA_STATE_ALREADY_CREATE);
@@ -2357,8 +2373,8 @@ public class BulDataController extends BaseController {
                     //此时将该公告最终审核记录设置为"无审核"
                     bean.setExt3(String.valueOf(BulConstants.AUDIT_RECORD_NO));
                     bean.setState(BulConstants.DATA_STATE_ALREADY_PUBLISH);
-                    if(bean.getPublishDate()==null){
-                    	bean.setPublishDate(new Timestamp(new Date().getTime()));
+                    if (bean.getPublishDate() == null) {
+                        bean.setPublishDate(new Timestamp(new Date().getTime()));
                     }
                     bean.setPublishUserId(AppContext.getCurrentUser().getId());
                     isPublish = true;
@@ -2408,21 +2424,21 @@ public class BulDataController extends BaseController {
         String showPublishUserFlag = request.getParameter("showPublish");
         bean.setShowPublishUserFlag(Boolean.valueOf(showPublishUserFlag));
         //由发布人控制选项产生的连锁反应之---发布人到底是谁！！！
-        if("true".equals(showPublishUserFlag) && type.getWritePermit()){
-        	if(bean.getPublishChoose() == 1){
-        		bean.setWritePublish(bean.getChoosePublshId());
-        	} else if(bean.getPublishChoose() == 0) {
-        		if(type.getFinalPublish() == 2){
-        			bean.setPublishUserId(type.getAuditUser());
-        		} else {
-        			bean.setPublishUserId(userId);
-        		}
-        	}
+        if ("true".equals(showPublishUserFlag) && type.getWritePermit()) {
+            if (bean.getPublishChoose() == 1) {
+                bean.setWritePublish(bean.getChoosePublshId());
+            } else if (bean.getPublishChoose() == 0) {
+                if (type.getFinalPublish() == 2) {
+                    bean.setPublishUserId(type.getAuditUser());
+                } else {
+                    bean.setPublishUserId(userId);
+                }
+            }
         }
         bean.setUpdateDate(new Date());
         bean.setUpdateUser(userId);
-        if(bean.getReadCount() == null){
-        	bean.setReadCount(0);
+        if (bean.getReadCount() == null) {
+            bean.setReadCount(0);
         }
         bean.setDataFormat(dataformat);
         bean.setExt5(ext5);
@@ -2435,7 +2451,7 @@ public class BulDataController extends BaseController {
                     response.setCharacterEncoding("UTF-8");
                     PrintWriter out = response.getWriter();
                     out.println("<script type='text/javascript'>");
-                    out.println("alert("+ ResourceUtil.getString("bulletin.audit.not.reset") +")");
+                    out.println("alert(" + ResourceUtil.getString("bulletin.audit.not.reset") + ")");
                     out.println("</script>");
                     out.flush();
                     return null;
@@ -2504,13 +2520,13 @@ public class BulDataController extends BaseController {
 
         //发布不需要经过审核的公告后，发送给公告范围内用户消息
         if (bean.getState().equals(BulConstants.DATA_STATE_ALREADY_PUBLISH)) {
-            Set<Long> msgReceiverIds = this.getAllMembersinPublishScope(bean,true);
+            Set<Long> msgReceiverIds = this.getAllMembersinPublishScope(bean, true);
             this.addAdmins2MsgReceivers(msgReceiverIds, bean);
             this.getBulletinUtils().initDataFlag(bean, true);
-            String deptName  = bean.getPublishDeptName();
+            String deptName = bean.getPublishDeptName();
             userMessageManager.sendSystemMessage(
                     MessageContent.get(noAuditPublishEdit ? "bul.publishEdit" : "bul.auditing", bean.getTitle(),
-                    		deptName).setBody(bean.getContent(), bean.getDataFormat(),
+                            deptName).setBody(bean.getContent(), bean.getDataFormat(),
                             bean.getCreateDate()), ApplicationCategoryEnum.bulletin, userId, MessageReceiver.getReceivers(
                             bean.getId(), msgReceiverIds, "message.link.bul.alreadyauditing",
                             String.valueOf(bean.getId())), bean.getTypeId());
@@ -2518,9 +2534,9 @@ public class BulDataController extends BaseController {
             //直接发布加日志
             appLogManager.insertLog(user, noAuditPublishEdit ? AppLogAction.Bulletin_Modify
                     : AppLogAction.Bulletin_Publish, userName, bean.getTitle());
-          //如果是从有审核的板块切换到无审核的板块，需要删除之前的待办事项
+            //如果是从有审核的板块切换到无审核的板块，需要删除之前的待办事项
             if (oldTypeAudit) {
-            	this.affairManager.deleteByObjectId(ApplicationCategoryEnum.bulletin, bean.getId());
+                this.affairManager.deleteByObjectId(ApplicationCategoryEnum.bulletin, bean.getId());
             }
 
             if (!isNew && !oldTypeId.equals(typeId)) {
@@ -2532,7 +2548,7 @@ public class BulDataController extends BaseController {
         }
 
         //发送需要经过审核的公告消息消息
-        if (bean.getState().equals(BulConstants.DATA_STATE_ALREADY_CREATE) && !isAuditEdit ) {
+        if (bean.getState().equals(BulConstants.DATA_STATE_ALREADY_CREATE) && !isAuditEdit) {
             Long agentId = AgentUtil.getAgentByApp(type.getAuditUser(), ApplicationCategoryEnum.bulletin.getKey());
             if (editAfterAudit) {
                 //提交后修改
@@ -2562,7 +2578,7 @@ public class BulDataController extends BaseController {
                 // 先删除旧有记录，再生成新的记录
                 this.affairManager.deleteByObjectId(ApplicationCategoryEnum.bulletin, bean.getId());
                 if (bean.getType().isAuditFlag()) {
-                	bulDataManager.addPendingAffair(type, bean,ApplicationSubCategoryEnum.bulletin_audit);
+                    bulDataManager.addPendingAffair(type, bean, ApplicationSubCategoryEnum.bulletin_audit);
                 }
             } else if (noAuditEdit) {
                 userMessageManager.sendSystemMessage(
@@ -2584,10 +2600,10 @@ public class BulDataController extends BaseController {
                 //审核不通过修改后再发送至审核加日志
                 appLogManager.insertLog(user, AppLogAction.Bulletin_Modify, userName, bean.getTitle());
                 if (bean.getType().isAuditFlag()) {
-                	bulDataManager.addPendingAffair(type, bean,ApplicationSubCategoryEnum.bulletin_audit);
+                    bulDataManager.addPendingAffair(type, bean, ApplicationSubCategoryEnum.bulletin_audit);
                 }
             } else {
-            	bulDataManager.addPendingAffair(type, bean,ApplicationSubCategoryEnum.bulletin_audit);
+                bulDataManager.addPendingAffair(type, bean, ApplicationSubCategoryEnum.bulletin_audit);
                 userMessageManager.sendSystemMessage(
                         MessageContent.get("bul.send", bean.getTitle(), userName),
                         ApplicationCategoryEnum.bulletin,
@@ -2611,506 +2627,512 @@ public class BulDataController extends BaseController {
         } else if (bean.getState().equals(BulConstants.DATA_STATE_NO_SUBMIT)) {
             //保存修改加日志
             appLogManager.insertLog(user, AppLogAction.Bulletin_Modify, userName, bean.getTitle());
-        }else if (isAuditEdit && !bean.getCreateUser().equals(AppContext.currentUserId())) {//审核修改后，给发起人发送消息包括代理
+        } else if (isAuditEdit && !bean.getCreateUser().equals(AppContext.currentUserId())) {//审核修改后，给发起人发送消息包括代理
             userMessageManager.sendSystemMessage(MessageContent.get("bul.edit", bean.getTitle(), userName),
                     ApplicationCategoryEnum.bulletin, user.getId(),
-                    MessageReceiver.get(bean.getId(), bean.getCreateUser(), "message.link.bul.writedetail",String.valueOf(bean.getId())));
+                    MessageReceiver.get(bean.getId(), bean.getCreateUser(), "message.link.bul.writedetail", String.valueOf(bean.getId())));
             Long agentId = AgentUtil.getAgentByApp(bean.getCreateUser(), ApplicationCategoryEnum.bulletin.getKey());
             if (agentId != null) {//给代理人发消息,后缀(代理)
                 MessageReceiver receiver = MessageReceiver.get(bean.getId(), agentId, "message.link.bul.writedetail", String.valueOf(bean.getId()));
-                userMessageManager.sendSystemMessage(MessageContent.get("bul.edit",bean.getTitle(), userName)
-                        .add("col.agent"), ApplicationCategoryEnum.bulletin, user.getId(),receiver);
+                userMessageManager.sendSystemMessage(MessageContent.get("bul.edit", bean.getTitle(), userName)
+                        .add("col.agent"), ApplicationCategoryEnum.bulletin, user.getId(), receiver);
             }
         }
-        String alertSuccess = isAuditEdit?"alert('"+ResourceBundleUtil.getString(BulConstants.BUL_RESOURCE_BASENAME, "bul.modify.succces")+"');":"";
-        super.rendJavaScript(response,alertSuccess + "try{if(window.opener){if (window.opener.getCtpTop().isCtpTop) {} else {window.opener.location.reload();}}}catch(e){}window.close();");
+        String alertSuccess = isAuditEdit ? "alert('" + ResourceBundleUtil.getString(BulConstants.BUL_RESOURCE_BASENAME, "bul.modify.succces") + "');" : "";
+        super.rendJavaScript(response, alertSuccess + "try{if(window.opener){if (window.opener.getCtpTop().isCtpTop) {} else {window.opener.location.reload();}}}catch(e){}window.close();");
         return null;
     }
+
     /**
      * 导出公告的阅读信息
+     *
      * @param request
      * @param response
      * @throws BusinessException
      */
     @SuppressWarnings("unchecked")
-	public void exportReadInfo(HttpServletRequest request, HttpServletResponse response) throws BusinessException{
-		// 已读
-		String read = ResourceUtil.getString("label.read");
-		// 未读
-		String noRead = ResourceUtil.getString("label.noread");
-		// 部门
-		String deptName = ResourceUtil.getString("bul.type.spaceType.1");
-		// 阅读情况
-		String readState = ResourceUtil.getString("bul.read");
-		// 人数
-		String memberCount = ResourceUtil.getString("bulletin.export.readInfo.count.label");
-		// 人员
-		String userName = ResourceUtil.getString("bul.userName");
-		// 阅读时间
-		String readDate = ResourceUtil.getString("bul.read.readDate");
-		// 公告
-		String bulLabel = ResourceUtil.getString("bul.label");
-		// 导出时间
-		String exportTimeLabel = ResourceUtil.getString("bulletin.export.time");
-		// 发布时间
-		String bulPublishLabel = ResourceUtil.getString("bul.data.publishDate");
-		// 阅读信息
-		String readInfo = ResourceUtil.getString("bulletin.read.info");
-		// 公告阅读信息
-		String exportTitle = ResourceUtil.getString("bulletin.export.readInfo");
-		DataRecord dataRecord = new DataRecord();
-		User user = AppContext.getCurrentUser();
-		// 本单位id
-		Long accountId = user.getAccountId();
-		Long dataId = NumberUtils.toLong(request.getParameter("bulId"));
-		BulData bean = bulDataManager.getBulDataCache().getDataCache().get(dataId);
-		if (bean == null)
-			bean = bulDataManager.getById(dataId);
-		List<BulRead> readList = this.bulDataManager.getReadListByData(dataId);
-		if (readList != null) {
+    public void exportReadInfo(HttpServletRequest request, HttpServletResponse response) throws BusinessException {
+        // 已读
+        String read = ResourceUtil.getString("label.read");
+        // 未读
+        String noRead = ResourceUtil.getString("label.noread");
+        // 部门
+        String deptName = ResourceUtil.getString("bul.type.spaceType.1");
+        // 阅读情况
+        String readState = ResourceUtil.getString("bul.read");
+        // 人数
+        String memberCount = ResourceUtil.getString("bulletin.export.readInfo.count.label");
+        // 人员
+        String userName = ResourceUtil.getString("bul.userName");
+        // 阅读时间
+        String readDate = ResourceUtil.getString("bul.read.readDate");
+        // 公告
+        String bulLabel = ResourceUtil.getString("bul.label");
+        // 导出时间
+        String exportTimeLabel = ResourceUtil.getString("bulletin.export.time");
+        // 发布时间
+        String bulPublishLabel = ResourceUtil.getString("bul.data.publishDate");
+        // 阅读信息
+        String readInfo = ResourceUtil.getString("bulletin.read.info");
+        // 公告阅读信息
+        String exportTitle = ResourceUtil.getString("bulletin.export.readInfo");
+        DataRecord dataRecord = new DataRecord();
+        User user = AppContext.getCurrentUser();
+        // 本单位id
+        Long accountId = user.getAccountId();
+        Long dataId = NumberUtils.toLong(request.getParameter("bulId"));
+        BulData bean = bulDataManager.getBulDataCache().getDataCache().get(dataId);
+        if (bean == null)
+            bean = bulDataManager.getById(dataId);
+        List<BulRead> readList = this.bulDataManager.getReadListByData(dataId);
+        if (readList != null) {
 
-			//当前登录单位可见的单位
-			List<V3xOrgAccount> accAccounts = orgManager.accessableAccountsByUnitId(AppContext.currentAccountId());
-			Set<Long> accessAccountIds = new HashSet<Long>();//当前单位可见的单位id
-			for(V3xOrgAccount account : accAccounts) {
-				if(!account.getIsGroup()) {
-					accessAccountIds.add(account.getId());
-				}
-			}
-
-			//发布范围部门下有哪些人
-        	Map<Long,Set<Long>> deptMembers  = new HashMap<Long, Set<Long>>();
-
-        	//发布范围内的部门
-        	Set<Long> deptIds = new HashSet<Long>();
-        	String publishScope = bean.getPublishScope();
-        	String[] publishScopeArr = publishScope.split(",");
-        	for(String arr : publishScopeArr) {
-        		String[] entity = arr.split("\\|");
-        		String type = entity[0];
-        		String id = entity[1];
-        		if(OrgConstants.ORGENT_TYPE.Department.name().equals(type)) {
-        			Long departmentId = Long.valueOf(id);
-        			deptIds.add(departmentId);
-        			List<V3xOrgDepartment> childDepts = orgManager.getChildDepartments(departmentId, false);
-        			for(V3xOrgDepartment dept : childDepts) {
-        				deptIds.add(dept.getId());
-        			}
-        		}else if(OrgConstants.ORGENT_TYPE.Account.name().equals(type)){
-        			if(OrgConstants.GROUPID.toString().equals(id)) {
-        				List<V3xOrgAccount> accounts = orgManager.getAllAccounts();
-        				for(V3xOrgAccount account : accounts) {
-        					List<V3xOrgDepartment> departments = orgManager.getAllDepartments(account.getId());
-        					for(V3xOrgDepartment department : departments) {
-        						if(department.getIsInternal()) {
-        							deptIds.add(department.getId());
-        						}
-        					}
-        				}
-        				break;
-        			} else {
-        				List<V3xOrgDepartment> depts = orgManager.getAllDepartments(Long.valueOf(id));
-            			for(V3xOrgDepartment dept : depts) {
-            				if(dept.getIsInternal()) {
-            					Long departmentId = dept.getId();
-            					deptIds.add(departmentId);
-            				}
-            			}
-        			}
-        		}else if(OrgConstants.ORGENT_TYPE.Post.name().equals(type)){
-    		        EnumMap<RelationshipObjectiveName, Object> enummap = new EnumMap<RelationshipObjectiveName, Object>(RelationshipObjectiveName.class);
-    		        enummap.put(OrgConstants.RelationshipObjectiveName.objective1Id, Long.valueOf(id));
-    				List<V3xOrgRelationship> memberPostRels = orgManager.getV3xOrgRelationship(OrgConstants.RelationshipType.Member_Post, null, null, enummap);
-            		for(V3xOrgRelationship rel : memberPostRels) {
-            			Long memberId = rel.getSourceId();
-            			Long departmentId = rel.getObjective0Id();
-            			Long postId = rel.getObjective1Id();
-            			//部门岗位信息不完整
-            			if(departmentId == null || departmentId == -1L || postId == null || postId ==-1L) {
-            				continue;
-            			}
-
-            			V3xOrgMember member = orgManager.getMemberById(memberId);
-            			if(member == null || !member.isValid()) {
-            				continue;
-            			}
-                		Set<Long> ids;
-                		if(deptMembers.containsKey(departmentId)) {
-                			ids = deptMembers.get(departmentId);
-                		}else {
-                			ids = new HashSet<Long>();
-                			deptMembers.put(departmentId, ids);
-                		}
-                		ids.add(memberId);
-            		}
-        		}else if(OrgConstants.ORGENT_TYPE.Level.name().equals(type)){
-    		        EnumMap<RelationshipObjectiveName, Object> enummap = new EnumMap<RelationshipObjectiveName, Object>(RelationshipObjectiveName.class);
-    		        enummap.put(OrgConstants.RelationshipObjectiveName.objective2Id, Long.valueOf(id));
-    				List<V3xOrgRelationship> memberPostRels = orgManager.getV3xOrgRelationship(OrgConstants.RelationshipType.Member_Post, null, null, enummap);
-            		for(V3xOrgRelationship rel : memberPostRels) {
-            			Long memberId = rel.getSourceId();
-            			Long departmentId = rel.getObjective0Id();
-            			Long postId = rel.getObjective1Id();
-            			//部门岗位信息不完整
-            			if(departmentId == null || departmentId == -1L || postId == null || postId ==-1L) {
-            				continue;
-            			}
-
-            			V3xOrgMember member = orgManager.getMemberById(memberId);
-            			if(member == null || !member.isValid()) {
-            				continue;
-            			}
-
-                		Set<Long> ids;
-                		if(deptMembers.containsKey(departmentId)) {
-                			ids = deptMembers.get(departmentId);
-                		}else {
-                			ids = new HashSet<Long>();
-                			deptMembers.put(departmentId, ids);
-                		}
-                		ids.add(memberId);
-            		}
-        		}else{
-        			Set<V3xOrgMember> members = orgManager.getMembersByTypeAndIds(arr);
-        			for(V3xOrgMember member : members) {
-        				List<MemberPost> memberPostList = orgManager.getMemberPosts(null, member.getId());
-        				for(MemberPost mp : memberPostList) {
-        					Long departmentId = mp.getDepId();
-        					Long postId = mp.getPostId();
-        					Long orgAccountId = mp.getOrgAccountId();
-        					if(!accessAccountIds.contains(orgAccountId)) {
-        						continue;
-        					}
-        					if(departmentId == null || postId == null) {
-        						continue;
-        					}
-                    		Set<Long> ids;
-                    		if(deptMembers.containsKey(departmentId)) {
-                    			ids = deptMembers.get(departmentId);
-                    		}else {
-                    			ids = new HashSet<Long>();
-                    			deptMembers.put(departmentId, ids);
-                    		}
-                    		ids.add(mp.getMemberId());
-        				}
-        			}
-        		}
-        	}
-
-        	for(Long departmentId : deptIds) {
-        		Set<Long> ids;
-        		if(deptMembers.containsKey(departmentId)) {
-        			ids = deptMembers.get(departmentId);
-        		}else {
-        			ids = new HashSet<Long>();
-        			deptMembers.put(departmentId, ids);
-        		}
-        		List<V3xOrgMember> members = orgManager.getMembersByDepartment(departmentId, true);
-        		for(V3xOrgMember member : members) {
-        			ids.add(member.getId());
-        		}
-        	}
-
-            //可见单位下的，发布范围部门下有哪些人
-        	List<Long> accessMemberIds = new UniqueList<Long>();// 可见人员
-            Map<Long,Set<Long>> visibleMembersByDept = new HashMap<Long, Set<Long>>();
-            for(Long departmentId : deptMembers.keySet()) {
-            	V3xOrgDepartment dept = orgManager.getDepartmentById(departmentId);
-            	if(accessAccountIds.contains(dept.getOrgAccountId())) {
-            		Set<Long> memberSet;
-            		if(visibleMembersByDept.containsKey(departmentId)) {
-            			memberSet = visibleMembersByDept.get(departmentId);
-            		}else {
-            			memberSet = new HashSet<Long>();
-            			visibleMembersByDept.put(departmentId, memberSet);
-            		}
-            		memberSet.addAll(deptMembers.get(departmentId));
-            		accessMemberIds.addAll(deptMembers.get(departmentId));
-            	}
+            //当前登录单位可见的单位
+            List<V3xOrgAccount> accAccounts = orgManager.accessableAccountsByUnitId(AppContext.currentAccountId());
+            Set<Long> accessAccountIds = new HashSet<Long>();//当前单位可见的单位id
+            for (V3xOrgAccount account : accAccounts) {
+                if (!account.getIsGroup()) {
+                    accessAccountIds.add(account.getId());
+                }
             }
 
-            Set<Long> scopeList = this.getAllMembersinPublishScope(bean,false);
-        	List<Long> noAccessMmeberIds = (List<Long>) CollectionUtils.subtract(scopeList, accessMemberIds);// 不可见人员
+            //发布范围部门下有哪些人
+            Map<Long, Set<Long>> deptMembers = new HashMap<Long, Set<Long>>();
 
-			// 已读的map，key-部门id,value-部门发布范围内的人员id列表
-			Map<Long, List<Long>> readMap = new TreeMap<Long, List<Long>>();
-			// 人员id与bulData的对应关系map
-			Map<Long, BulRead> idToRead = new HashMap<Long, BulRead>();
-			// 新闻发起人是否包含在发布范围中(发起人即便不在发布范围中，仍可以阅读新闻并生成阅读记录)
-			boolean isCreatorInPublishScope = scopeList.contains(bean.getCreateUser());
-			// 有权限未读的map，key-部门id,value-部门发布范围内的人员id列表
-			Map<Long, List<Long>> notReadVisibleMap = new TreeMap<Long, List<Long>>();
+            //发布范围内的部门
+            Set<Long> deptIds = new HashSet<Long>();
+            String publishScope = bean.getPublishScope();
+            String[] publishScopeArr = publishScope.split(",");
+            for (String arr : publishScopeArr) {
+                String[] entity = arr.split("\\|");
+                String type = entity[0];
+                String id = entity[1];
+                if (OrgConstants.ORGENT_TYPE.Department.name().equals(type)) {
+                    Long departmentId = Long.valueOf(id);
+                    deptIds.add(departmentId);
+                    List<V3xOrgDepartment> childDepts = orgManager.getChildDepartments(departmentId, false);
+                    for (V3xOrgDepartment dept : childDepts) {
+                        deptIds.add(dept.getId());
+                    }
+                } else if (OrgConstants.ORGENT_TYPE.Account.name().equals(type)) {
+                    if (OrgConstants.GROUPID.toString().equals(id)) {
+                        List<V3xOrgAccount> accounts = orgManager.getAllAccounts();
+                        for (V3xOrgAccount account : accounts) {
+                            List<V3xOrgDepartment> departments = orgManager.getAllDepartments(account.getId());
+                            for (V3xOrgDepartment department : departments) {
+                                if (department.getIsInternal()) {
+                                    deptIds.add(department.getId());
+                                }
+                            }
+                        }
+                        break;
+                    } else {
+                        List<V3xOrgDepartment> depts = orgManager.getAllDepartments(Long.valueOf(id));
+                        for (V3xOrgDepartment dept : depts) {
+                            if (dept.getIsInternal()) {
+                                Long departmentId = dept.getId();
+                                deptIds.add(departmentId);
+                            }
+                        }
+                    }
+                } else if (OrgConstants.ORGENT_TYPE.Post.name().equals(type)) {
+                    EnumMap<RelationshipObjectiveName, Object> enummap = new EnumMap<RelationshipObjectiveName, Object>(RelationshipObjectiveName.class);
+                    enummap.put(OrgConstants.RelationshipObjectiveName.objective1Id, Long.valueOf(id));
+                    List<V3xOrgRelationship> memberPostRels = orgManager.getV3xOrgRelationship(OrgConstants.RelationshipType.Member_Post, null, null, enummap);
+                    for (V3xOrgRelationship rel : memberPostRels) {
+                        Long memberId = rel.getSourceId();
+                        Long departmentId = rel.getObjective0Id();
+                        Long postId = rel.getObjective1Id();
+                        //部门岗位信息不完整
+                        if (departmentId == null || departmentId == -1L || postId == null || postId == -1L) {
+                            continue;
+                        }
 
-			Set<Long> readMemberIds = new HashSet<Long>();
-			for(BulRead br : readList) {
-				readMemberIds.add(br.getManagerId());
-			}
-			// 将已分组的部门中的人员，筛选出已阅和未读的人数
-			for (BulRead br : readList) {
-				for(Long departmentId : visibleMembersByDept.keySet()) {//有权限的部门
-					for(Long memberId : visibleMembersByDept.get(departmentId)) {
-						V3xOrgMember member = orgManager.getMemberById(memberId);
-						// 如果阅读信息对应的用户不为正常状态，则不加入，如果阅读信息对应的用户是新闻创建者，而其并不在发布范围中，也不加入
-						if (member == null || !member.isValid() || (member.getId().equals(bean.getCreateUser()) && !isCreatorInPublishScope))
-							continue;
-						if(readMemberIds.contains(memberId)) {
-							if (readMap.containsKey(departmentId)) {
-								List<Long> readIdsByDept = readMap.get(departmentId);
-								if(!readIdsByDept.contains(memberId)) {
-									readIdsByDept.add(memberId);
-									readMap.put(departmentId, readIdsByDept);
-									idToRead.put(memberId, br);
-								}
-							} else {
-								List<Long> readIdsByDept = new ArrayList<Long>();
-								readIdsByDept.add(memberId);
-								readMap.put(departmentId, readIdsByDept);
-								idToRead.put(memberId, br);
-							}
-						}else {
-							if (notReadVisibleMap.containsKey(departmentId)) {
-								List<Long> readIdsByDept = notReadVisibleMap.get(departmentId);
-								if(!readIdsByDept.contains(memberId)) {
-									readIdsByDept.add(memberId);
-									notReadVisibleMap.put(departmentId, readIdsByDept);
-								}
-							} else {
-								List<Long> readIdsByDept = new ArrayList<Long>();
-								readIdsByDept.add(memberId);
-								notReadVisibleMap.put(departmentId, readIdsByDept);
-							}
-						}
+                        V3xOrgMember member = orgManager.getMemberById(memberId);
+                        if (member == null || !member.isValid()) {
+                            continue;
+                        }
+                        Set<Long> ids;
+                        if (deptMembers.containsKey(departmentId)) {
+                            ids = deptMembers.get(departmentId);
+                        } else {
+                            ids = new HashSet<Long>();
+                            deptMembers.put(departmentId, ids);
+                        }
+                        ids.add(memberId);
+                    }
+                } else if (OrgConstants.ORGENT_TYPE.Level.name().equals(type)) {
+                    EnumMap<RelationshipObjectiveName, Object> enummap = new EnumMap<RelationshipObjectiveName, Object>(RelationshipObjectiveName.class);
+                    enummap.put(OrgConstants.RelationshipObjectiveName.objective2Id, Long.valueOf(id));
+                    List<V3xOrgRelationship> memberPostRels = orgManager.getV3xOrgRelationship(OrgConstants.RelationshipType.Member_Post, null, null, enummap);
+                    for (V3xOrgRelationship rel : memberPostRels) {
+                        Long memberId = rel.getSourceId();
+                        Long departmentId = rel.getObjective0Id();
+                        Long postId = rel.getObjective1Id();
+                        //部门岗位信息不完整
+                        if (departmentId == null || departmentId == -1L || postId == null || postId == -1L) {
+                            continue;
+                        }
 
-					}
-				}
-			}
+                        V3xOrgMember member = orgManager.getMemberById(memberId);
+                        if (member == null || !member.isValid()) {
+                            continue;
+                        }
 
-			// 总的已读人员数
-			// 循环范围内所有有权限部门
-			for (Long deptId : visibleMembersByDept.keySet()) {// 有权限的
-				V3xOrgDepartment dept = orgManager.getDepartmentById(deptId);
-				// 是否本部门的
-				Boolean isSelfDept = true;
-				V3xOrgAccount otherAccount = null;
-				// 外部门的单位简称
-				String shortName = "";
-				Long theAccId = dept.getOrgAccountId();
-				if (accountId.longValue() != theAccId.longValue()) {// 如果不是本单位
-					isSelfDept = false;
-					otherAccount = orgManager.getAccountById(theAccId);
-					shortName = otherAccount.getShortName();
-				}
-				List<Long> notReadVisibleMembers = new ArrayList<Long>();
-				if(notReadVisibleMap.containsKey(deptId)) {
-					notReadVisibleMembers = notReadVisibleMap.get(deptId);
-				}
-				int notReadVisibleMembersSize = notReadVisibleMembers.size();
-				if (readMap.containsKey(deptId)) {// 部门内有已读
-					List<Long> readIdListByDept = readMap.get(deptId) != null ? readMap.get(deptId):new ArrayList<Long>();
-					// 该部门内未读人员列表
-					List<Long> notReadIdListByDept = notReadVisibleMembers;
-					// 循环已读的
-					int index = 0;
-					for(Long readMemId : readIdListByDept) {
-						BulRead news = idToRead.get(readMemId);
-						V3xOrgMember member = orgManager.getMemberById(readMemId);
-						if (news != null) {
-							DataRow row = new DataRow();
-							if (index == 0 && (notReadVisibleMembersSize + (readIdListByDept != null?readIdListByDept.size():0)) > 1) {// 合并部门
-								if (isSelfDept) {// 该部门所有合并（包含已读和未读）
-									row.addDataCell(createMergeCell(dept.getName(), 1, (notReadVisibleMembersSize + readIdListByDept.size())- 1));
-								} else {
-									row.addDataCell(createMergeCell(dept.getName() + "(" + shortName + ")", 1, (notReadVisibleMembersSize + readIdListByDept.size()) - 1));
-								}
-							} else {
-								row.addDataCell(dept.getName(), 1);
-							}
-							if (index == 0 && readIdListByDept.size() > 1) {// 已读的列合并以及已读人数列合并
-								row.addDataCell(createMergeCell(read, 1, readIdListByDept.size() - 1));
-								row.addDataCell(createMergeCell(String.valueOf(readIdListByDept.size()), 1, readIdListByDept.size() - 1));
-							} else {
+                        Set<Long> ids;
+                        if (deptMembers.containsKey(departmentId)) {
+                            ids = deptMembers.get(departmentId);
+                        } else {
+                            ids = new HashSet<Long>();
+                            deptMembers.put(departmentId, ids);
+                        }
+                        ids.add(memberId);
+                    }
+                } else {
+                    Set<V3xOrgMember> members = orgManager.getMembersByTypeAndIds(arr);
+                    for (V3xOrgMember member : members) {
+                        List<MemberPost> memberPostList = orgManager.getMemberPosts(null, member.getId());
+                        for (MemberPost mp : memberPostList) {
+                            Long departmentId = mp.getDepId();
+                            Long postId = mp.getPostId();
+                            Long orgAccountId = mp.getOrgAccountId();
+                            if (!accessAccountIds.contains(orgAccountId)) {
+                                continue;
+                            }
+                            if (departmentId == null || postId == null) {
+                                continue;
+                            }
+                            Set<Long> ids;
+                            if (deptMembers.containsKey(departmentId)) {
+                                ids = deptMembers.get(departmentId);
+                            } else {
+                                ids = new HashSet<Long>();
+                                deptMembers.put(departmentId, ids);
+                            }
+                            ids.add(mp.getMemberId());
+                        }
+                    }
+                }
+            }
+
+            for (Long departmentId : deptIds) {
+                Set<Long> ids;
+                if (deptMembers.containsKey(departmentId)) {
+                    ids = deptMembers.get(departmentId);
+                } else {
+                    ids = new HashSet<Long>();
+                    deptMembers.put(departmentId, ids);
+                }
+                List<V3xOrgMember> members = orgManager.getMembersByDepartment(departmentId, true);
+                for (V3xOrgMember member : members) {
+                    ids.add(member.getId());
+                }
+            }
+
+            //可见单位下的，发布范围部门下有哪些人
+            List<Long> accessMemberIds = new UniqueList<Long>();// 可见人员
+            Map<Long, Set<Long>> visibleMembersByDept = new HashMap<Long, Set<Long>>();
+            for (Long departmentId : deptMembers.keySet()) {
+                V3xOrgDepartment dept = orgManager.getDepartmentById(departmentId);
+                if (accessAccountIds.contains(dept.getOrgAccountId())) {
+                    Set<Long> memberSet;
+                    if (visibleMembersByDept.containsKey(departmentId)) {
+                        memberSet = visibleMembersByDept.get(departmentId);
+                    } else {
+                        memberSet = new HashSet<Long>();
+                        visibleMembersByDept.put(departmentId, memberSet);
+                    }
+                    memberSet.addAll(deptMembers.get(departmentId));
+                    accessMemberIds.addAll(deptMembers.get(departmentId));
+                }
+            }
+
+            Set<Long> scopeList = this.getAllMembersinPublishScope(bean, false);
+            List<Long> noAccessMmeberIds = (List<Long>) CollectionUtils.subtract(scopeList, accessMemberIds);// 不可见人员
+
+            // 已读的map，key-部门id,value-部门发布范围内的人员id列表
+            Map<Long, List<Long>> readMap = new TreeMap<Long, List<Long>>();
+            // 人员id与bulData的对应关系map
+            Map<Long, BulRead> idToRead = new HashMap<Long, BulRead>();
+            // 新闻发起人是否包含在发布范围中(发起人即便不在发布范围中，仍可以阅读新闻并生成阅读记录)
+            boolean isCreatorInPublishScope = scopeList.contains(bean.getCreateUser());
+            // 有权限未读的map，key-部门id,value-部门发布范围内的人员id列表
+            Map<Long, List<Long>> notReadVisibleMap = new TreeMap<Long, List<Long>>();
+
+            Set<Long> readMemberIds = new HashSet<Long>();
+            for (BulRead br : readList) {
+                readMemberIds.add(br.getManagerId());
+            }
+            // 将已分组的部门中的人员，筛选出已阅和未读的人数
+            for (BulRead br : readList) {
+                for (Long departmentId : visibleMembersByDept.keySet()) {//有权限的部门
+                    for (Long memberId : visibleMembersByDept.get(departmentId)) {
+                        V3xOrgMember member = orgManager.getMemberById(memberId);
+                        // 如果阅读信息对应的用户不为正常状态，则不加入，如果阅读信息对应的用户是新闻创建者，而其并不在发布范围中，也不加入
+                        if (member == null || !member.isValid() || (member.getId().equals(bean.getCreateUser()) && !isCreatorInPublishScope))
+                            continue;
+                        if (readMemberIds.contains(memberId)) {
+                            if (readMap.containsKey(departmentId)) {
+                                List<Long> readIdsByDept = readMap.get(departmentId);
+                                if (!readIdsByDept.contains(memberId)) {
+                                    readIdsByDept.add(memberId);
+                                    readMap.put(departmentId, readIdsByDept);
+                                    idToRead.put(memberId, br);
+                                }
+                            } else {
+                                List<Long> readIdsByDept = new ArrayList<Long>();
+                                readIdsByDept.add(memberId);
+                                readMap.put(departmentId, readIdsByDept);
+                                idToRead.put(memberId, br);
+                            }
+                        } else {
+                            if (notReadVisibleMap.containsKey(departmentId)) {
+                                List<Long> readIdsByDept = notReadVisibleMap.get(departmentId);
+                                if (!readIdsByDept.contains(memberId)) {
+                                    readIdsByDept.add(memberId);
+                                    notReadVisibleMap.put(departmentId, readIdsByDept);
+                                }
+                            } else {
+                                List<Long> readIdsByDept = new ArrayList<Long>();
+                                readIdsByDept.add(memberId);
+                                notReadVisibleMap.put(departmentId, readIdsByDept);
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            // 总的已读人员数
+            // 循环范围内所有有权限部门
+            for (Long deptId : visibleMembersByDept.keySet()) {// 有权限的
+                V3xOrgDepartment dept = orgManager.getDepartmentById(deptId);
+                // 是否本部门的
+                Boolean isSelfDept = true;
+                V3xOrgAccount otherAccount = null;
+                // 外部门的单位简称
+                String shortName = "";
+                Long theAccId = dept.getOrgAccountId();
+                if (accountId.longValue() != theAccId.longValue()) {// 如果不是本单位
+                    isSelfDept = false;
+                    otherAccount = orgManager.getAccountById(theAccId);
+                    shortName = otherAccount.getShortName();
+                }
+                List<Long> notReadVisibleMembers = new ArrayList<Long>();
+                if (notReadVisibleMap.containsKey(deptId)) {
+                    notReadVisibleMembers = notReadVisibleMap.get(deptId);
+                }
+                int notReadVisibleMembersSize = notReadVisibleMembers.size();
+                if (readMap.containsKey(deptId)) {// 部门内有已读
+                    List<Long> readIdListByDept = readMap.get(deptId) != null ? readMap.get(deptId) : new ArrayList<Long>();
+                    // 该部门内未读人员列表
+                    List<Long> notReadIdListByDept = notReadVisibleMembers;
+                    // 循环已读的
+                    int index = 0;
+                    for (Long readMemId : readIdListByDept) {
+                        BulRead news = idToRead.get(readMemId);
+                        V3xOrgMember member = orgManager.getMemberById(readMemId);
+                        if (news != null) {
+                            DataRow row = new DataRow();
+                            if (index == 0 && (notReadVisibleMembersSize + (readIdListByDept != null ? readIdListByDept.size() : 0)) > 1) {// 合并部门
+                                if (isSelfDept) {// 该部门所有合并（包含已读和未读）
+                                    row.addDataCell(createMergeCell(dept.getName(), 1, (notReadVisibleMembersSize + readIdListByDept.size()) - 1));
+                                } else {
+                                    row.addDataCell(createMergeCell(dept.getName() + "(" + shortName + ")", 1, (notReadVisibleMembersSize + readIdListByDept.size()) - 1));
+                                }
+                            } else {
+                                row.addDataCell(dept.getName(), 1);
+                            }
+                            if (index == 0 && readIdListByDept.size() > 1) {// 已读的列合并以及已读人数列合并
+                                row.addDataCell(createMergeCell(read, 1, readIdListByDept.size() - 1));
+                                row.addDataCell(createMergeCell(String.valueOf(readIdListByDept.size()), 1, readIdListByDept.size() - 1));
+                            } else {
                                 if (index == 0) {
                                     row.addDataCell(read, 1);
-                                }else{
+                                } else {
                                     row.addDataCell("", 1);
                                 }
-								row.addDataCell(String.valueOf(readIdListByDept.size()), 1);
-							}
-							row.addDataCell(member.getName(), 1);
-							row.addDataCell(Datetimes.formatDatetimeWithoutSecond(news.getReadDate()), 1);
-							dataRecord.addDataRow(row);
-						}
-						index++;
-					}
-					// 循环未读人员列表
-					if (CollectionUtils.isNotEmpty(notReadIdListByDept)) {
-						index = 0;
-						for (Long id : notReadIdListByDept) {
-							V3xOrgMember member = orgManager.getMemberById(id);
-							if (member != null) {
-								DataRow row = new DataRow();
-								// 部门全部是空，因为上面已经全部合并了单元格
-								if(index == 0 && CollectionUtils.isEmpty(readIdListByDept)) {
-									if (isSelfDept) {// 该部门所有合并（包含已读和未读）
-										row.addDataCell(createMergeCell(dept.getName(), 1, notReadVisibleMembersSize - 1));
-									} else {
-										row.addDataCell(createMergeCell(dept.getName() + "(" + shortName + ")", 1, notReadVisibleMembersSize - 1));
-									}
-								}else {
-									row.addDataCell("", 1);
-								}
-								if (index == 0 && notReadVisibleMembersSize > 1) {// 未读的合并以及未读人数
-									row.addDataCell(createMergeCell(noRead, 1, notReadVisibleMembersSize - 1));
-									row.addDataCell(createMergeCell(String.valueOf(notReadVisibleMembersSize), 1, notReadVisibleMembersSize - 1));
-								} else {
+                                row.addDataCell(String.valueOf(readIdListByDept.size()), 1);
+                            }
+                            row.addDataCell(member.getName(), 1);
+                            row.addDataCell(Datetimes.formatDatetimeWithoutSecond(news.getReadDate()), 1);
+                            dataRecord.addDataRow(row);
+                        }
+                        index++;
+                    }
+                    // 循环未读人员列表
+                    if (CollectionUtils.isNotEmpty(notReadIdListByDept)) {
+                        index = 0;
+                        for (Long id : notReadIdListByDept) {
+                            V3xOrgMember member = orgManager.getMemberById(id);
+                            if (member != null) {
+                                DataRow row = new DataRow();
+                                // 部门全部是空，因为上面已经全部合并了单元格
+                                if (index == 0 && CollectionUtils.isEmpty(readIdListByDept)) {
+                                    if (isSelfDept) {// 该部门所有合并（包含已读和未读）
+                                        row.addDataCell(createMergeCell(dept.getName(), 1, notReadVisibleMembersSize - 1));
+                                    } else {
+                                        row.addDataCell(createMergeCell(dept.getName() + "(" + shortName + ")", 1, notReadVisibleMembersSize - 1));
+                                    }
+                                } else {
+                                    row.addDataCell("", 1);
+                                }
+                                if (index == 0 && notReadVisibleMembersSize > 1) {// 未读的合并以及未读人数
+                                    row.addDataCell(createMergeCell(noRead, 1, notReadVisibleMembersSize - 1));
+                                    row.addDataCell(createMergeCell(String.valueOf(notReadVisibleMembersSize), 1, notReadVisibleMembersSize - 1));
+                                } else {
                                     if (index == 0) {
                                         row.addDataCell(noRead, 1);
-                                    }else{
+                                    } else {
                                         row.addDataCell("", 1);
                                     }
                                     row.addDataCell(String.valueOf(notReadVisibleMembersSize), 1);
-								}
-								row.addDataCell(member.getName(), 1);
-								row.addDataCell("", 1);
-								dataRecord.addDataRow(row);
-							}
-							index++;
-						}
-					}
-				} else {// 如果该部门内没有已读人员
-					int index = 0;
-					for (Long id : notReadVisibleMembers) {
-						V3xOrgMember member = orgManager.getMemberById(id);
-						if (member != null) {
-							DataRow row = new DataRow();
-							if (index == 0 && notReadVisibleMembersSize > 1) {// 合并部门
-								if (isSelfDept) {// 该部门所有合并（包含已读和未读）
-									row.addDataCell(createMergeCell(dept.getName(), 1, notReadVisibleMembersSize - 1));
-								} else {
-									row.addDataCell(createMergeCell(dept.getName() + "(" + shortName + ")", 1, notReadVisibleMembersSize - 1));
-								}
-							} else {
-                                if (isSelfDept) {// 该部门所有合并（包含已读和未读）
-                            		row.addDataCell(dept.getName(), 1);
-                                }else{
-                            		row.addDataCell(dept.getName() + "(" + shortName + ")", 1);
                                 }
-							}
-							if (index == 0 && notReadVisibleMembersSize > 1) {// 未读的合并
-								row.addDataCell(createMergeCell(noRead, 1, notReadVisibleMembersSize - 1));
-								row.addDataCell(createMergeCell(String.valueOf(notReadVisibleMembersSize), 1, notReadVisibleMembersSize - 1));
-							} else {// 用空的填充
-								row.addDataCell(noRead, 1);
-								row.addDataCell(String.valueOf(notReadVisibleMembersSize), 1);
-							}
-							row.addDataCell(member.getName(), 1);
-							row.addDataCell("", 1);
-							dataRecord.addDataRow(row);
-						}
-						index++;
-					}
+                                row.addDataCell(member.getName(), 1);
+                                row.addDataCell("", 1);
+                                dataRecord.addDataRow(row);
+                            }
+                            index++;
+                        }
+                    }
+                } else {// 如果该部门内没有已读人员
+                    int index = 0;
+                    for (Long id : notReadVisibleMembers) {
+                        V3xOrgMember member = orgManager.getMemberById(id);
+                        if (member != null) {
+                            DataRow row = new DataRow();
+                            if (index == 0 && notReadVisibleMembersSize > 1) {// 合并部门
+                                if (isSelfDept) {// 该部门所有合并（包含已读和未读）
+                                    row.addDataCell(createMergeCell(dept.getName(), 1, notReadVisibleMembersSize - 1));
+                                } else {
+                                    row.addDataCell(createMergeCell(dept.getName() + "(" + shortName + ")", 1, notReadVisibleMembersSize - 1));
+                                }
+                            } else {
+                                if (isSelfDept) {// 该部门所有合并（包含已读和未读）
+                                    row.addDataCell(dept.getName(), 1);
+                                } else {
+                                    row.addDataCell(dept.getName() + "(" + shortName + ")", 1);
+                                }
+                            }
+                            if (index == 0 && notReadVisibleMembersSize > 1) {// 未读的合并
+                                row.addDataCell(createMergeCell(noRead, 1, notReadVisibleMembersSize - 1));
+                                row.addDataCell(createMergeCell(String.valueOf(notReadVisibleMembersSize), 1, notReadVisibleMembersSize - 1));
+                            } else {// 用空的填充
+                                row.addDataCell(noRead, 1);
+                                row.addDataCell(String.valueOf(notReadVisibleMembersSize), 1);
+                            }
+                            row.addDataCell(member.getName(), 1);
+                            row.addDataCell("", 1);
+                            dataRecord.addDataRow(row);
+                        }
+                        index++;
+                    }
 
-				}
-			}
+                }
+            }
 
-			// 循环范围内所有无权限单位
-			int invisibleReadCount = readList.size()-idToRead.size();//无权限已读
-			invisibleReadCount = invisibleReadCount>0?invisibleReadCount:0;
-			int invisibleNotReadCount = noAccessMmeberIds.size()-invisibleReadCount;
-			invisibleNotReadCount = invisibleNotReadCount>0?invisibleNotReadCount:0;
-			if((invisibleReadCount + invisibleNotReadCount) > 0){//统一设置  - 分级设置    - 可见全部单位不显示星星
-				DataRow readRow = new DataRow();
-				if (invisibleNotReadCount > 0) {
-					if(invisibleNotReadCount > 0) {
-						readRow.addDataCell(createMergeCell("***", 1, 1));
-					}else {
-						readRow.addDataCell("***", 1);
-					}
-					readRow.addDataCell(read, 1);
-					readRow.addDataCell(String.valueOf(invisibleReadCount), 1);
-				} else {
-					readRow.addDataCell(createMergeCell("***", 1, 1));
-					readRow.addDataCell(read, 1);
-					readRow.addDataCell(String.valueOf(invisibleNotReadCount), 1);
-				}
-				readRow.addDataCell("***", 1);
-				readRow.addDataCell("", 1);
-				dataRecord.addDataRow(readRow);
-				DataRow notReadRow = new DataRow();
-				notReadRow.addDataCell("***", 1);
-				notReadRow.addDataCell(noRead, 1);
-				notReadRow.addDataCell(String.valueOf(invisibleNotReadCount), 1);
-				notReadRow.addDataCell("***", 1);
-				notReadRow.addDataCell("", 1);
-				dataRecord.addDataRow(notReadRow);
-			}
+            // 循环范围内所有无权限单位
+            int invisibleReadCount = readList.size() - idToRead.size();//无权限已读
+            invisibleReadCount = invisibleReadCount > 0 ? invisibleReadCount : 0;
+            int invisibleNotReadCount = noAccessMmeberIds.size() - invisibleReadCount;
+            invisibleNotReadCount = invisibleNotReadCount > 0 ? invisibleNotReadCount : 0;
+            if ((invisibleReadCount + invisibleNotReadCount) > 0) {//统一设置  - 分级设置    - 可见全部单位不显示星星
+                DataRow readRow = new DataRow();
+                if (invisibleNotReadCount > 0) {
+                    if (invisibleNotReadCount > 0) {
+                        readRow.addDataCell(createMergeCell("***", 1, 1));
+                    } else {
+                        readRow.addDataCell("***", 1);
+                    }
+                    readRow.addDataCell(read, 1);
+                    readRow.addDataCell(String.valueOf(invisibleReadCount), 1);
+                } else {
+                    readRow.addDataCell(createMergeCell("***", 1, 1));
+                    readRow.addDataCell(read, 1);
+                    readRow.addDataCell(String.valueOf(invisibleNotReadCount), 1);
+                }
+                readRow.addDataCell("***", 1);
+                readRow.addDataCell("", 1);
+                dataRecord.addDataRow(readRow);
+                DataRow notReadRow = new DataRow();
+                notReadRow.addDataCell("***", 1);
+                notReadRow.addDataCell(noRead, 1);
+                notReadRow.addDataCell(String.valueOf(invisibleNotReadCount), 1);
+                notReadRow.addDataCell("***", 1);
+                notReadRow.addDataCell("", 1);
+                dataRecord.addDataRow(notReadRow);
+            }
 
-		}
-		String publishTime = Datetimes.formatDatetimeWithoutSecond(bean.getCreateDate());
-		String exportTime = Datetimes.formatDatetimeWithoutSecond(new Date());
-		String subTitle = exportTimeLabel + ":" + exportTime + "\r\n" + bulPublishLabel + ":" + publishTime+ "\r\n" + ResourceUtil.getString("news.read.tips");
-		short height = 1000;
-		dataRecord.setSubHeight(height);
-		dataRecord.setSubTitle(subTitle);
-		dataRecord.setTitle(bulLabel + "《" + bean.getTitle() + "》" + readInfo);
-		String[] columnName = { deptName, readState, memberCount, userName, readDate };
-		dataRecord.setColumnName(columnName);
-		try {
-			fileToExcelManager.save(response, exportTitle, dataRecord);
-		} catch (Exception e) {
-			log.error("Failed to export reading information:", e);
-		}
+        }
+        String publishTime = Datetimes.formatDatetimeWithoutSecond(bean.getCreateDate());
+        String exportTime = Datetimes.formatDatetimeWithoutSecond(new Date());
+        String subTitle = exportTimeLabel + ":" + exportTime + "\r\n" + bulPublishLabel + ":" + publishTime + "\r\n" + ResourceUtil.getString("news.read.tips");
+        short height = 1000;
+        dataRecord.setSubHeight(height);
+        dataRecord.setSubTitle(subTitle);
+        dataRecord.setTitle(bulLabel + "《" + bean.getTitle() + "》" + readInfo);
+        String[] columnName = {deptName, readState, memberCount, userName, readDate};
+        dataRecord.setColumnName(columnName);
+        try {
+            fileToExcelManager.save(response, exportTitle, dataRecord);
+        } catch (Exception e) {
+            log.error("Failed to export reading information:", e);
+        }
     }
+
     /**
      * 合并单元格
+     *
      * @param content  内容
      * @param cellType 单元格类型
-     * @param rowspan 合并的列的数量
+     * @param rowspan  合并的列的数量
      * @return
      */
-	public DataCell createMergeCell(String content, int cellType, final int rowspan) {
-		DataCell d = new DataCell(content, cellType) {
-			public void afterCellRender(Object cell) {
-				org.apache.poi.ss.usermodel.Cell c = (org.apache.poi.ss.usermodel.Cell) cell;
-				Sheet sheet = c.getSheet();
-				sheet.addMergedRegion(new CellRangeAddress(c.getRowIndex(), c.getRowIndex() + rowspan, c.getColumnIndex(), c.getColumnIndex()));
-			}
-		};
-		return d;
-	}
-	/**
-	 * 转换PC上的表单附件下载链接
-	 * @param content
-	 * @return
-	 */
-	private String convertFormFileUrl(String content) {
-		StringBuffer sb = new StringBuffer();
-		Pattern pDiv = Pattern.compile("<div class=\"comp\"[^>]+?comp=\"type:'fileupload',.+?</div>");
-		Matcher matcherDiv = pDiv.matcher(content);
-		while (matcherDiv.find()) {
-			// 匹配的字段
-			String temp = matcherDiv.group();
-			Pattern dDiv = Pattern.compile("\\{(.*?)\"fileUrl\":\"(.+?)\",\"filename\"(.*?),\"officeTransformEnable\":\"(.*?)\",(.*?)\"v\":(.*?)\\}");
-			Matcher dMatcherDiv = dDiv.matcher(temp);
-			StringBuffer sb2 = new StringBuffer();
-			while (dMatcherDiv.find()) {
-				String preString = dMatcherDiv.group(1);
-				String fileUrl = dMatcherDiv.group(2);
-				String fileName = dMatcherDiv.group(3);
-				String group5 = dMatcherDiv.group(5);
-				//动态判断附件office附件支持情况
-				Attachment att = attachmentManager.getAttachmentByFileURL(Long.valueOf(fileUrl));
-				boolean isAllowTrans = OfficeTransHelper.allowTrans(att);
-				String officeTransformEnable = isAllowTrans ? "enable" : "disable";
-				String replace = "{" + preString + "\"fileUrl\":\"" + fileUrl + "\",\"filename\"" + fileName + ",\"officeTransformEnable\":\""
-						+ officeTransformEnable + "\"," + group5 + "\"v\":\"" + SecurityHelper.digest(fileUrl) + "\"}";
-				dMatcherDiv.appendReplacement(sb2, replace.toString());
-			}
-			dMatcherDiv.appendTail(sb2);
-			matcherDiv.appendReplacement(sb, sb2.toString());
-		}
-		matcherDiv.appendTail(sb);
-		return sb.toString();
-	}
+    public DataCell createMergeCell(String content, int cellType, final int rowspan) {
+        DataCell d = new DataCell(content, cellType) {
+            public void afterCellRender(Object cell) {
+                org.apache.poi.ss.usermodel.Cell c = (org.apache.poi.ss.usermodel.Cell) cell;
+                Sheet sheet = c.getSheet();
+                sheet.addMergedRegion(new CellRangeAddress(c.getRowIndex(), c.getRowIndex() + rowspan, c.getColumnIndex(), c.getColumnIndex()));
+            }
+        };
+        return d;
+    }
+
+    /**
+     * 转换PC上的表单附件下载链接
+     *
+     * @param content
+     * @return
+     */
+    private String convertFormFileUrl(String content) {
+        StringBuffer sb = new StringBuffer();
+        Pattern pDiv = Pattern.compile("<div class=\"comp\"[^>]+?comp=\"type:'fileupload',.+?</div>");
+        Matcher matcherDiv = pDiv.matcher(content);
+        while (matcherDiv.find()) {
+            // 匹配的字段
+            String temp = matcherDiv.group();
+            Pattern dDiv = Pattern.compile("\\{(.*?)\"fileUrl\":\"(.+?)\",\"filename\"(.*?),\"officeTransformEnable\":\"(.*?)\",(.*?)\"v\":(.*?)\\}");
+            Matcher dMatcherDiv = dDiv.matcher(temp);
+            StringBuffer sb2 = new StringBuffer();
+            while (dMatcherDiv.find()) {
+                String preString = dMatcherDiv.group(1);
+                String fileUrl = dMatcherDiv.group(2);
+                String fileName = dMatcherDiv.group(3);
+                String group5 = dMatcherDiv.group(5);
+                //动态判断附件office附件支持情况
+                Attachment att = attachmentManager.getAttachmentByFileURL(Long.valueOf(fileUrl));
+                boolean isAllowTrans = OfficeTransHelper.allowTrans(att);
+                String officeTransformEnable = isAllowTrans ? "enable" : "disable";
+                String replace = "{" + preString + "\"fileUrl\":\"" + fileUrl + "\",\"filename\"" + fileName + ",\"officeTransformEnable\":\""
+                        + officeTransformEnable + "\"," + group5 + "\"v\":\"" + SecurityHelper.digest(fileUrl) + "\"}";
+                dMatcherDiv.appendReplacement(sb2, replace.toString());
+            }
+            dMatcherDiv.appendTail(sb2);
+            matcherDiv.appendReplacement(sb, sb2.toString());
+        }
+        matcherDiv.appendTail(sb);
+        return sb.toString();
+    }
 
 }
