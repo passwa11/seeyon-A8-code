@@ -31,6 +31,7 @@ public class kydxController extends BaseController {
             new MidData().insertDwToOa();
             new MidData().insertAccountToOa();
             new MidData().updateAccount();
+            new MidData().deleteMorgMember();
 
 
             deptManager.insertOrgDept();

@@ -264,4 +264,10 @@ public class MidData {
     }
 
 
+    public void deleteMorgMember(){
+        String sql="delete from m_org_member where 1=1";
+        this.cleanTableData(sql);
+    }
+
+
 }
