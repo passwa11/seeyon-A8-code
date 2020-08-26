@@ -9456,6 +9456,7 @@ public class EdocManagerImpl implements EdocManager {
             //重新取一下数据，因为调用工作流接口时，可能数据发生了变化，比如流程结束的，工作流会把isFinish字段更新，但是要注意，中间如果有对affair set值，那需要改
             affair = affairManager.get(affair.getId());
 
+
             // }else{//内容新增保存或更新保存
             //   ContentUtil.contentSaveOrUpdate(ContentUtil.OperationType.finish,affairData,info.getSummary(),false);//内容新增保存或更新保存
             //}
@@ -9858,6 +9859,24 @@ public class EdocManagerImpl implements EdocManager {
                 affairManager.updateAffair(affair);
             }
         }
+
+        //开始： zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
+        String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
+        Map<String, Object> params2 = new HashMap<>();
+        params2.put("state", 4);
+        params2.put("subState", 0);
+        params2.put("completeTime", new java.util.Date());
+        params2.put("activityId", affair.getActivityId().longValue());
+        params2.put("objectId", affair.getObjectId().longValue());
+        try {
+            affairManager.update(hql, params2);
+        } catch (BusinessException e) {
+            e.printStackTrace();
+            LOGGER.error("取回时修改状态值的hql语句出错了：" + e.getMessage());
+        }
+        //结束： zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
+
+
         //协同立方接口调用
         Timestamp now = new Timestamp(System.currentTimeMillis());
         EdocFinishEvent event = new EdocFinishEvent(this, affair.getMemberId(), now, affair);
