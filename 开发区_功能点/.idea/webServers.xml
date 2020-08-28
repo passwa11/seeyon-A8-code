@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="2cbfcd6f-4dad-425d-9eb0-293e2995c522" name="已预订背景色" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="F:\Seeyon\A87.1_sp1_202002\ApacheJetspeed\webapps\seeyon" accessType="MOUNT" />
+      </webServer>
+      <webServer id="cecc06be-b17f-44d8-a8f8-fd7ec590d147" name="会议室申请添加字段" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="F:\Seeyon\A87.1_sp1_202002\ApacheJetspeed\webapps\seeyon" accessType="MOUNT" />
+      </webServer>
+      <webServer id="128e9484-feaa-4076-863c-dc4784a2e036" name="鼠标事件" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="F:\Seeyon\A87.1_sp1_202002\ApacheJetspeed\webapps\seeyon" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="xkjt">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/xkjt.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
