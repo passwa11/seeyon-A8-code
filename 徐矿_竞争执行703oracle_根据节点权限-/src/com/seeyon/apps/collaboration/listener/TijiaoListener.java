@@ -49,14 +49,16 @@ public class TijiaoListener {
                     if (plist.size() > 0) {
                         for (CtpAffair ctpAffair : plist) {
                             if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
-                                ctpAffair.setState(4);
-                                ctpAffair.setSubState(0);
+                                if(ctpAffair.getState()!=6){
+                                    ctpAffair.setState(4);
+                                    ctpAffair.setSubState(0);
 //                                ctpAffair.setCompleteTime(new Date());
-                                try {
-                                    affairManager.updateAffair(ctpAffair);
-                                } catch (BusinessException e) {
-                                    // TODO Auto-generated catch block
-                                    e.printStackTrace();
+                                    try {
+                                        affairManager.updateAffair(ctpAffair);
+                                    } catch (BusinessException e) {
+                                        // TODO Auto-generated catch block
+                                        e.printStackTrace();
+                                    }
                                 }
                             }
                         }

@@ -52,14 +52,17 @@ public class GongwenTijiaoListener {
                 if (plist.size() > 0) {
                     for (CtpAffair ctpAffair : plist) {
                         if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
-                            ctpAffair.setState(4);
-                            ctpAffair.setSubState(0);
-                            try {
-                                affairManager.updateAffair(ctpAffair);
-                            } catch (BusinessException e) {
-                                // TODO Auto-generated catch block
-                                e.printStackTrace();
+                            if(ctpAffair.getState()!=6){
+                                ctpAffair.setState(4);
+                                ctpAffair.setSubState(0);
+                                try {
+                                    affairManager.updateAffair(ctpAffair);
+                                } catch (BusinessException e) {
+                                    // TODO Auto-generated catch block
+                                    e.printStackTrace();
+                                }
                             }
+
                         }
                     }
                 }
