@@ -59,8 +59,9 @@ public class SyncOrgData {
      */
     public void syncSummary() throws SQLException {
         //获取系统路径
+        String spath = "";
         try {
-            String spath = fileManager.getFolder(new Date(), false);
+            spath = fileManager.getFolder(new Date(), false);
             System.out.println(spath);
         } catch (BusinessException e) {
             e.printStackTrace();
@@ -76,7 +77,7 @@ public class SyncOrgData {
                     ") E WHERE c.OBJECT_ID = E . ID AND c.ARCHIVE_ID IS NOT NULL   " +
                     "AND E .has_archive = 1) c  " +
                     ") A WHERE A .has_archive = 1 ) ss where exists (SELECT * FROM TEMP_NUMBER10 t where 1=1 and SS.EDOCSUMMARYID=t.ID)";
-            executeJdbc(connection, "3", sql41);
+            executeJdbc(connection, "3", sql41, spath);
 
 
             String sql10 = "select id,edocSummaryId,subject,YEAR,MONTH,DAY from (SELECT A . affairId AS ID,A.edocSummaryId,A .subject AS subject,  " +
@@ -88,7 +89,7 @@ public class SyncOrgData {
                     ") E WHERE c.OBJECT_ID = E . ID AND c.ARCHIVE_ID IS NOT NULL   " +
                     "AND E .has_archive = 1) c  " +
                     ") A WHERE A .has_archive = 1 ) ss where exists (SELECT * FROM TEMP_NUMBER10 t where 1=1 and SS.EDOCSUMMARYID=t.ID)";
-            executeJdbc(connection, "4", sql10);
+            executeJdbc(connection, "4", sql10, spath);
         } catch (Exception e) {
             logger.info("同步公文出错了：" + e.getMessage());
             e.printStackTrace();
@@ -102,7 +103,7 @@ public class SyncOrgData {
     }
 
 
-    public void executeJdbc(Connection connection, String type, String sql) {
+    public void executeJdbc(Connection connection, String type, String sql, String classPath) {
         Statement statement = null;
         ResultSet rs = null;
         PreparedStatement ps = null;
@@ -125,7 +126,6 @@ public class SyncOrgData {
 
             String[] htmlContent = null;
             String sPath = "";
-            String classPath = fileManager.getFolder(new Date(), false);
             LocalDate localDate = LocalDate.now();
             String syear = Integer.toString(localDate.getYear());
             String p = classPath.substring(0, classPath.indexOf(syear));
@@ -164,12 +164,12 @@ public class SyncOrgData {
                 if (!parentfile.exists()) {
                     parentfile.mkdirs();
                 }
-                parentfile.setWritable(true,false);
+                parentfile.setWritable(true, false);
 
                 if (!f.exists()) {
                     f.createNewFile();
                 }
-                f.setWritable(true,false);
+                f.setWritable(true, false);
 
 
                 //出错原因：下面这句话设置文件的权限必须在文件创建以后再修改权限，否则会报NoSuchFoundException
@@ -206,13 +206,13 @@ public class SyncOrgData {
                     if (!parentfile2.exists()) {
                         parentfile2.mkdirs();
                     }
-                    parentfile2.setWritable(true,false);
+                    parentfile2.setWritable(true, false);
 
 
                     if (!f2.exists()) {
                         f2.createNewFile();
                     }
-                    f2.setWritable(true,false);
+                    f2.setWritable(true, false);
 
                     String content = getZwData(connection, rs.getString("edocSummaryId"));
                     FileOutputStream fos2 = null;
@@ -237,7 +237,7 @@ public class SyncOrgData {
                 }
 
             }
-        } catch (SQLException | BusinessException | ServiceException | IOException sbsi) {
+        } catch (SQLException | ServiceException | IOException sbsi) {
             sbsi.printStackTrace();
             logger.info("同步公文sql出错了：" + sbsi.getMessage());
         } catch (Exception e) {
@@ -264,10 +264,10 @@ public class SyncOrgData {
         StringBuffer sb = new StringBuffer();
         sb.append("<script type=\"text/javascript\">");
         while (set.next()) {
-            String attribute = set.getString("attribute")==null?"":set.getString("attribute");
-            String content = set.getString("content")==null?"":set.getString("content");
-            String deptName = set.getString("department_name")==null?"":set.getString("department_name");
-            String userName = set.getString("create_user_id")==null?"":set.getString("create_user_id");
+            String attribute = set.getString("attribute") == null ? "" : set.getString("attribute");
+            String content = set.getString("content") == null ? "" : set.getString("content");
+            String deptName = set.getString("department_name") == null ? "" : set.getString("department_name");
+            String userName = set.getString("create_user_id") == null ? "" : set.getString("create_user_id");
             String createTime = set.getString("create_time").substring(0, set.getString("create_time").lastIndexOf(":"));
             String val = attribute + "  " + content + "  " + deptName + "  " + userName + "  " + createTime;
             sb.append("document.getElementById(\"" + set.getString("policy") + "\").innerHTML =\"" + val + "\";");
