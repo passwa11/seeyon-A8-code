@@ -9812,7 +9812,7 @@ public class EdocManagerImpl implements EdocManager {
 
             /************处理后修改当前待办人**************/
             //开始：写在这个位置的原因是：当取回后再去转送，显示的当前代办人是查询ctp_affair state=3的数据。zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
-            String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
+            String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId and a.state<>6";
             Map<String, Object> params2 = new HashMap<>();
             params2.put("state", 4);
             params2.put("subState", 0);
