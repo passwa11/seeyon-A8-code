@@ -26,40 +26,41 @@ select max(sort) sort,module_id from (select module_id,sort from CTP_CONTENT_ALL
     elsif (flag = 2) then
         --公文信息表
         begin
-              --发文
+              --发文、收文、签报
                 insert into TEMP_NUMBER20
-                 select id,subject,doc_mark,issuer,send_department,pack_date,val,create_time,year,edoc_type,org from (
-select A.id,subject,doc_mark, issuer,A.send_department,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,'' org
-from edoc_summary A, (
-SELECT  zall.* FROM  (select * from TEMP_NUMBER40 where CONTENT_TYPE in (10,30) ) zall
-) b where A.has_archive = 1
-and a.id = b.MODULE_ID
- and a.EDOC_TYPE =0) cd where  exists(select * from temp_number10 t where t.status='0' and cd.id=t.id);
-
-
-
-              --收文
-              insert into TEMP_NUMBER20
-
-                 select id,subject,doc_mark,issuer,send_department,pack_date,val,create_time,year,edoc_type,org from (
-select A.id,subject,doc_mark, issuer,A.send_department,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,'' org
-from edoc_summary A, (
-SELECT  zall.* FROM  (select * from TEMP_NUMBER40 where CONTENT_TYPE in (10,30) ) zall
-) b where A.has_archive = 1
-and a.id = b.MODULE_ID
- and a.EDOC_TYPE =1) cd where  exists(select * from temp_number10 t where t.status='0' and cd.id=t.id);
-
-
-
-              --签报
-              insert into TEMP_NUMBER20
                  select id,subject,doc_mark,issuer,send_department,pack_date,val,create_time,year,edoc_type,org from (
                 select A.id,subject,doc_mark, issuer,A.send_department,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,'' org
                 from edoc_summary A, (
                 SELECT  zall.* FROM  (select * from TEMP_NUMBER40 where CONTENT_TYPE in (10,30) ) zall
                 ) b where A.has_archive = 1
                 and a.id = b.MODULE_ID
-                 and a.EDOC_TYPE =2) cd where  exists(select * from temp_number10 t where t.status='0' and cd.id=t.id);
+--                  and a.EDOC_TYPE =0
+                 ) cd where  exists(select * from temp_number10 t where t.status='0' and cd.id=t.id);
+
+
+
+              --收文
+--               insert into TEMP_NUMBER20
+--
+--                  select id,subject,doc_mark,issuer,send_department,pack_date,val,create_time,year,edoc_type,org from (
+-- select A.id,subject,doc_mark, issuer,A.send_department,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,'' org
+-- from edoc_summary A, (
+-- SELECT  zall.* FROM  (select * from TEMP_NUMBER40 where CONTENT_TYPE in (10,30) ) zall
+-- ) b where A.has_archive = 1
+-- and a.id = b.MODULE_ID
+--  and a.EDOC_TYPE =1) cd where  exists(select * from temp_number10 t where t.status='0' and cd.id=t.id);
+
+
+
+              --签报
+--               insert into TEMP_NUMBER20
+--                  select id,subject,doc_mark,issuer,send_department,pack_date,val,create_time,year,edoc_type,org from (
+--                 select A.id,subject,doc_mark, issuer,A.send_department,A.pack_date, 0 val,to_char(a.create_time,'yyyyMMdd') create_time,to_char(a.create_time,'yyyy') year,  CASE A .EDOC_TYPE WHEN 0 THEN  '发文' WHEN 1 THEN  '收文' ELSE  '签报' END EDOC_TYPE,'' org
+--                 from edoc_summary A, (
+--                 SELECT  zall.* FROM  (select * from TEMP_NUMBER40 where CONTENT_TYPE in (10,30) ) zall
+--                 ) b where A.has_archive = 1
+--                 and a.id = b.MODULE_ID
+--                  and a.EDOC_TYPE =2) cd where  exists(select * from temp_number10 t where t.status='0' and cd.id=t.id);
         exception
             when others then
                 ROLLBACK;
