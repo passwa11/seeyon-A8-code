@@ -28,4 +28,10 @@ public class OrgMemberManagerImpl implements OrgMemberManager {
         List<OrgMember> list = memberDao.queryDeleteMember();
         memberDao.deleteMember(list);
     }
+
+    @Override
+    public void updateLdap() {
+        List<OrgMember> list = memberDao.queryMiddleMember();
+        memberDao.checkOaLdap(list);
+    }
 }

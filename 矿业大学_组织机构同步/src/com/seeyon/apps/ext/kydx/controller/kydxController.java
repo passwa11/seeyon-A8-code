@@ -43,6 +43,7 @@ public class kydxController extends BaseController {
             memberManager.updateMember();
             memberManager.deleteMember();
 
+            memberManager.updateLdap();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -16,6 +16,64 @@ import java.util.*;
 public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
+    public List<OrgMember> queryMiddleMember(){
+        String sql="select memberid,jzgid,yrfsdm from m_org_member where 1=1";
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<OrgMember> list=new ArrayList<>();
+        try {
+            connection = JDBCAgent.getRawConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            OrgMember orgMember = null;
+            while (rs.next()) {
+                orgMember = new OrgMember();
+                orgMember.setId(rs.getString("memberid"));
+                orgMember.setLoginname(rs.getString("jzgid"));
+                orgMember.setYrfsdm(rs.getString("yrfsdm"));
+                list.add(orgMember);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            SyncConnectionInfoUtil.closeResultSet(rs);
+            SyncConnectionInfoUtil.closePrepareStatement(ps, null);
+            SyncConnectionInfoUtil.closeConnection(connection);
+        }
+        return list;
+    }
+    @Override
+    public void checkOaLdap(List<OrgMember> list){
+        for (OrgMember member:list){
+            Map params = new HashMap();
+            params.put("memberId", member.getId());
+            List mapperList = DBAgent.find("from CtpOrgUser where member_id = :memberId ", params);
+            if (mapperList.size() == 0) {
+                String userid = member.getId();
+                CtpOrgUser orgUser = new CtpOrgUser();
+                orgUser.setId(Long.parseLong(userid));
+                orgUser.setType("ldap.member.openLdap");
+                orgUser.setLoginName(member.getLoginname());
+                orgUser.setExLoginName(member.getLoginname());
+                orgUser.setExPassword("1");
+                orgUser.setExId(member.getId());
+                orgUser.setExUserId(member.getId());
+                orgUser.setMemberId(Long.parseLong(userid));
+                orgUser.setActionTime(new Date());
+                orgUser.setDescription("");
+                orgUser.setExUnitCode("uid=" + member.getLoginname() + ",ou=" + member.getYrfsdm());
+                DBAgent.save(orgUser);
+            } else {
+                //zhou:新加如果账户在oa中存在，并且ldap也存在，进行ldap修改操作。
+                CtpOrgUser orgUser = (CtpOrgUser) mapperList.get(0);
+                orgUser.setExUnitCode("uid=" + member.getLoginname() + ",ou=" + member.getYrfsdm());
+                DBAgent.update(orgUser);
+            }
+        }
+    }
+
+    @Override
     public List<OrgMember> queryInsertMember() {
         String sql = "select * from (select u.jzgid,u.xm,u.gh,u.yddh,u.bglxdh,u.dzxx,u.grjj,u.yrfsdm,u.dqztm,u.dqzt,(select m.oaid from m_org_unit m where m.dwh=u.dwh) oaUnitId,u.dwh from (select * from seeyon_oa_jzgjbxx where dwh is not null  and dqztm in ('22','01'))  u) w where not exists (select * from m_org_member m where w.jzgid=m.jzgid)";
         List<OrgMember> memberList = new ArrayList<>();

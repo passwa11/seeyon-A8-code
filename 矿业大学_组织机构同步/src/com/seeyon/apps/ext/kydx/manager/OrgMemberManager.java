@@ -7,4 +7,6 @@ public interface OrgMemberManager {
     void updateMember();
 
     void deleteMember();
+
+    void updateLdap();
 }

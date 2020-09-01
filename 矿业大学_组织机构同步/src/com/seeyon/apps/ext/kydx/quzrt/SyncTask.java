@@ -43,6 +43,7 @@ public class SyncTask implements Runnable {
         memberManager.updateMember();
         memberManager.deleteMember();
 
+        memberManager.updateLdap();
     }
 
 
