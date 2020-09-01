@@ -75,7 +75,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryInsertMember() {
-        String sql = "select * from (select u.jzgid,u.xm,u.gh,u.yddh,u.bglxdh,u.dzxx,u.grjj,u.yrfsdm,u.dqztm,u.dqzt,(select m.oaid from m_org_unit m where m.dwh=u.dwh) oaUnitId,u.dwh from (select * from seeyon_oa_jzgjbxx where dwh is not null  and dqztm in ('22','01'))  u) w where not exists (select * from m_org_member m where w.jzgid=m.jzgid)";
+        String sql = "select * from (select u.jzgid,u.xm,u.gh,u.yddh,u.bglxdh,u.dzxx,u.grjj,u.yrfsdm,u.dqztm,u.dqzt,(select m.oaid from m_org_unit m where m.dwh=u.dwh) oaUnitId,u.dwh from (select * from seeyon_oa_jzgjbxx where dwh is not null  and ((DQZTM=22 and YRFSDM=101) or (DQZTM=201 and YRFSDM=204) or (DQZTM=301 and YRFSDM=204)))  u) w where not exists (select * from m_org_member m where w.jzgid=m.jzgid)";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection = null;
         PreparedStatement ps = null;
@@ -423,7 +423,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryDeleteMember() {
-        String sql = "select m.memberId from m_org_member m where not exists(select * from seeyon_oa_jzgjbxx j where j.gh=m.gh) union select  m.memberId from m_org_member m where m.dqztm not in ('22','01')";
+        String sql = "select m.memberId from m_org_member m where not exists(select * from seeyon_oa_jzgjbxx j where j.gh=m.gh) union select  m.memberId from m_org_member m where (m.DQZTM!='22' and m.YRFSDM!='101') and (m.DQZTM!='201' and m.YRFSDM!='204') and (m.DQZTM!='301' and m.YRFSDM!='204')";
         List<OrgMember> memberList = new ArrayList<>();
         Connection connection = null;
         PreparedStatement ps = null;
