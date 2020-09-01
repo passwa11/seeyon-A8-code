@@ -16,12 +16,49 @@ import java.util.*;
 public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
-    public List<OrgMember> queryMiddleMember(){
-        String sql="select memberid,jzgid,yrfsdm from m_org_member where 1=1";
+    public void queryDeleteMemberByGh() {
+        CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
+        String sql = "select j.gh from seeyon_oa_jzgjbxx j where j.gh not in (select gh from m_org_member)";
         Connection connection = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<OrgMember> list=new ArrayList<>();
+        try {
+            connection = JDBCAgent.getRawConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            String loginName = "";
+            Map<String,Object> map=null;
+            while (rs.next()) {
+                loginName = rs.getString("gh");
+                JSONObject memberJson = client.get("/orgMember?loginName=" + loginName, JSONObject.class);
+                if (null != memberJson) {
+                    if (memberJson.getBoolean("success")) {
+                        JSONObject ent = memberJson.getJSONArray("successMsgs").getJSONObject(0).getJSONObject("ent");
+                        String userid = ent.getString("id");
+                        map = new HashMap();
+                        map.put("id", userid);
+                        map.put("enabled", false);
+                        JSONObject jsonObject = client.put("/orgMember/" + userid + "/enabled/false", map, JSONObject.class);
+
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            SyncConnectionInfoUtil.closeResultSet(rs);
+            SyncConnectionInfoUtil.closePrepareStatement(ps, null);
+            SyncConnectionInfoUtil.closeConnection(connection);
+        }
+    }
+
+    @Override
+    public List<OrgMember> queryMiddleMember() {
+        String sql = "select memberid,jzgid,yrfsdm from m_org_member where 1=1";
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<OrgMember> list = new ArrayList<>();
         try {
             connection = JDBCAgent.getRawConnection();
             ps = connection.prepareStatement(sql);
@@ -34,18 +71,19 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                 orgMember.setYrfsdm(rs.getString("yrfsdm"));
                 list.add(orgMember);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             SyncConnectionInfoUtil.closeResultSet(rs);
             SyncConnectionInfoUtil.closePrepareStatement(ps, null);
             SyncConnectionInfoUtil.closeConnection(connection);
         }
         return list;
     }
+
     @Override
-    public void checkOaLdap(List<OrgMember> list){
-        for (OrgMember member:list){
+    public void checkOaLdap(List<OrgMember> list) {
+        for (OrgMember member : list) {
             Map params = new HashMap();
             params.put("memberId", member.getId());
             List mapperList = DBAgent.find("from CtpOrgUser where member_id = :memberId ", params);
@@ -420,6 +458,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
             e.printStackTrace();
         }
     }
+
 
     @Override
     public List<OrgMember> queryDeleteMember() {

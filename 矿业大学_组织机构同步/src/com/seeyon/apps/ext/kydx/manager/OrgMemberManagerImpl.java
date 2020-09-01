@@ -11,6 +11,12 @@ public class OrgMemberManagerImpl implements OrgMemberManager {
 
     private OrgMemberDao memberDao = new OrgMemberDaoImpl();
 
+
+    @Override
+    public void queryDeleteMemberByGh() {
+        memberDao.queryDeleteMemberByGh();
+    }
+
     @Override
     public void insertMember() {
         List<OrgMember> list = memberDao.queryInsertMember();

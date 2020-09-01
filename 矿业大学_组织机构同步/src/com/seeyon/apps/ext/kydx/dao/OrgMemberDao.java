@@ -21,4 +21,6 @@ public interface OrgMemberDao {
     List<OrgMember> queryMiddleMember();
 
     void checkOaLdap(List<OrgMember> list);
+
+    void queryDeleteMemberByGh();
 }

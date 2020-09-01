@@ -9,4 +9,5 @@ public interface OrgMemberManager {
     void deleteMember();
 
     void updateLdap();
+    void queryDeleteMemberByGh();
 }
