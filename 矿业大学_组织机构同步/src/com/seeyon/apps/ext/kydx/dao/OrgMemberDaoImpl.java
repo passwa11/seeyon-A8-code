@@ -32,9 +32,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                 loginName = rs.getString("gh");
                 JSONObject memberJson = client.get("/orgMember?loginName=" + loginName, JSONObject.class);
                 if (null != memberJson) {
-                    if (memberJson.getBoolean("success")) {
-                        JSONObject ent = memberJson.getJSONArray("successMsgs").getJSONObject(0).getJSONObject("ent");
-                        String userid = ent.getString("id");
+                        String userid = memberJson.getString("id");
                         map = new HashMap();
                         map.put("id", userid);
                         map.put("enabled", false);
@@ -42,7 +40,6 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
                     }
                 }
-            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
