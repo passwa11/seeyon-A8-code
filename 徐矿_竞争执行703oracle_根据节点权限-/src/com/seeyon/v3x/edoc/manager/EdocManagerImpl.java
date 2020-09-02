@@ -4650,7 +4650,7 @@ public class EdocManagerImpl implements EdocManager {
             map6.put("objectId", affair.getObjectId());
             String hql = "from CtpAffair where state=6 and nodePolicy='转送' and  activityId=:activityId and objectId=:objectId ";
 
-            List<CtpAffair> list6 = affairManager.findState6(hql,map6);
+            List<CtpAffair> list6 = affairManager.findState6(hql, map6);
             XkjtTemp temp = null;
             if (list6.size() > 0) {
                 for (CtpAffair a : list6) {
@@ -9928,18 +9928,22 @@ public class EdocManagerImpl implements EdocManager {
                     phql = new HashMap<>();
                     if (stringList.size() > 0) {
                         if (!stringList.contains(Long.toString(af.getId()))) {
+                            if (af.getState() != 8) {
+                                phql.put("state", 4);
+                                phql.put("subState", 0);
+                                phql.put("completeTime", new java.util.Date());
+                                phql.put("id", af.getId());
+                                affairManager.update(hqlz, phql);
+                            }
+                        }
+                    } else {
+                        if (af.getState() != 8) {
                             phql.put("state", 4);
                             phql.put("subState", 0);
                             phql.put("completeTime", new java.util.Date());
                             phql.put("id", af.getId());
                             affairManager.update(hqlz, phql);
                         }
-                    } else {
-                        phql.put("state", 4);
-                        phql.put("subState", 0);
-                        phql.put("completeTime", new java.util.Date());
-                        phql.put("id", af.getId());
-                        affairManager.update(hqlz, phql);
                     }
                 }
             }
