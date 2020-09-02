@@ -125,6 +125,16 @@ public class AffairManagerImpl implements AffairManager {
 	}
 
 	@Override
+	public List<CtpAffair> findState6(Map<String, Object> map) {
+		return affairDao.findState6(map);
+	}
+
+	@Override
+	public List<CtpAffair> findBycondition(Map<String, Object> map) {
+		return affairDao.findByCondition(map);
+	}
+
+	@Override
 	public void save(CtpAffair affair) throws BusinessException {
 		affairDao.save(affair);
 	}

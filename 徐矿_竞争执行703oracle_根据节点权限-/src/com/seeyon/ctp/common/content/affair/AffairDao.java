@@ -40,6 +40,14 @@ import com.seeyon.ctp.util.FlipInfo;
  * @since CTP2.0
  */
 public interface AffairDao {
+
+	/**
+	 * zhou
+	 * @param map
+	 * @return
+	 */
+	List<CtpAffair> findByCondition(Map<String,Object> map);
+	List<CtpAffair> findState6(Map<String,Object> map);
 	/**
 	 * 保存
 	 *

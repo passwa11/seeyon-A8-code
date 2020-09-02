@@ -22,6 +22,9 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.seeyon.apps.ext.temp.manager.XkjtTempManager;
+import com.seeyon.apps.ext.temp.manager.XkjtTempManagerImpl;
+import com.seeyon.apps.ext.temp.po.XkjtTemp;
 import com.seeyon.v3x.edoc.domain.EdocSummaryExtend;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -9055,52 +9058,73 @@ public class EdocManagerImpl implements EdocManager {
      *
      * @param affair 处理的事项对象
      * @param params <pre>
-     *                                {
-     *                                   <b>必须的参数:</b>
-     *                                   params.userId | Long 当前用户的Id
+     *                                                                                        {
+     *                                                                                           <b>必须的参数:</b>
+     *                                                                                           params.userId | Long 当前用户的Id
      *
-     *                                   <b>非必要的参数:</b>
-     *                                   params.isHidden | String    意见-是否隐藏
-     *                                   params.attitude | String    意见-态度
-     *                                   params.contentOP | String   意见-内容
-     *                                   params.opinion | EdocOpinion对象          意见对象
-     *                                   params.optionWay | String  意见-覆盖的方式
-     *                                   params.oldOpinionId | String 旧意见ID
+     *                                                                                           <b>非必要的参数:</b>
+     *                                                                                           params.isHidden | String    意见-是否隐藏
+     *                                                                                           params.attitude | String    意见-态度
+     *                                                                                           params.contentOP | String   意见-内容
+     *                                                                                           params.opinion | EdocOpinion对象          意见对象
+     *                                                                                           params.optionWay | String  意见-覆盖的方式
+     *                                                                                           params.oldOpinionId | String 旧意见ID
      *
-     *                                   params.afterSign | String   ?
-     *                                   params.trackMembers | String 跟踪人员
-     *                                   params.trackRange | String 跟踪范围
-     *                                   pushMsgMemberList
+     *                                                                                           params.afterSign | String   ?
+     *                                                                                           params.trackMembers | String 跟踪人员
+     *                                                                                           params.trackRange | String 跟踪范围
+     *                                                                                           pushMsgMemberList
      *
-     *                                   params.edocExchangeType | String 公文交换的类型
-     *                                   params.returnDeptId | String  公文交换  - 部门交换的时候选择的部门Id
-     *                                   exchangeMemberId | String 公文交换  - 单位交换的时候选择的具体的公文收发员
-     *                                   params.docMark | String 公文文号
-     *                                   params.serialNo | String 内部文号
-     *                                   params.isConvertPdf | 是否需要Word转PDF
-     *                                   params.archiveId | String 归档ID
-     *                                   params.optionType | String ？
-     *                                   params.supervisorId | String
-     *                                   params.awakeDate | String
-     *                                   params.supervisors | String
-     *                                   params.superviseTitle | String
-     *                                   isDeleteSupervisior
+     *                                                                                           params.edocExchangeType | String 公文交换的类型
+     *                                                                                           params.returnDeptId | String  公文交换  - 部门交换的时候选择的部门Id
+     *                                                                                           exchangeMemberId | String 公文交换  - 单位交换的时候选择的具体的公文收发员
+     *                                                                                           params.docMark | String 公文文号
+     *                                                                                           params.serialNo | String 内部文号
+     *                                                                                           params.isConvertPdf | 是否需要Word转PDF
+     *                                                                                           params.archiveId | String 归档ID
+     *                                                                                           params.optionType | String ？
+     *                                                                                           params.supervisorId | String
+     *                                                                                           params.awakeDate | String
+     *                                                                                           params.supervisors | String
+     *                                                                                           params.superviseTitle | String
+     *                                                                                           isDeleteSupervisior
      *
-     *                                   params.process_xml | String
-     *                                   readyObjectJSON | String
-     *                                   workflow_node_peoples_input | String
-     *                                   workflow_node_condition_input | String
-     *                                   process_message_data | String
-     *                                   processChangeMessage | String
+     *                                                                                           params.process_xml | String
+     *                                                                                           readyObjectJSON | String
+     *                                                                                           workflow_node_peoples_input | String
+     *                                                                                           workflow_node_condition_input | String
+     *                                                                                           process_message_data | String
+     *                                                                                           processChangeMessage | String
      *
-     *                                   signing_date | String
-     *                                   signingDate | String
-     *                             }
-     *                             </pre>
+     *                                                                                           signing_date | String
+     *                                                                                           signingDate | String
+     *                                                                                     }
+     *                                                                                     </pre>
      * @throws Exception
      */
+    private XkjtTempManager tempManager = new XkjtTempManagerImpl();
+
+    public XkjtTempManager getTempManager() {
+        return tempManager;
+    }
+
     @Override
     public void transFinishWorkItem(CtpAffair affair, Map<String, Object> params) throws Exception {
+//     获取回退state=6的数据   zhou start
+        Map<String, Object> map6 = new HashMap<>();
+        map6.put("activityId", affair.getActivityId());
+        map6.put("objectId", affair.getObjectId());
+        List<CtpAffair> list6 = affairManager.findState6(map6);
+        XkjtTemp temp = null;
+        if(list6.size()>0){
+            for (CtpAffair a : list6) {
+                temp = new XkjtTemp();
+                temp.setId(Long.toString(a.getId()));
+                temp.setSummaryId(Long.toString(a.getObjectId()));
+                tempManager.saveXkjtTemp(temp);
+            }
+        }
+//     获取回退state=6的数据   zhou end
 
         String attitude = (String) params.get("attitude");
         String content = (String) params.get("contentOP");
@@ -9811,21 +9835,7 @@ public class EdocManagerImpl implements EdocManager {
 
 
             /************处理后修改当前待办人**************/
-            //开始：写在这个位置的原因是：当取回后再去转送，显示的当前代办人是查询ctp_affair state=3的数据。zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
-            String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId and a.state<>6";
-            Map<String, Object> params2 = new HashMap<>();
-            params2.put("state", 4);
-            params2.put("subState", 0);
-            params2.put("completeTime", new java.util.Date());
-            params2.put("activityId", affair.getActivityId().longValue());
-            params2.put("objectId", affair.getObjectId().longValue());
-            try {
-                affairManager.update(hql, params2);
-            } catch (BusinessException e) {
-                e.printStackTrace();
-                LOGGER.error("取回时修改状态值的hql语句出错了：" + e.getMessage());
-            }
-            //结束： zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
+
             try {
                 EdocHelper.updateCurrentNodesInfo(summary, false);
             } catch (Exception e1) {
@@ -9873,6 +9883,45 @@ public class EdocManagerImpl implements EdocManager {
                 //处理完成后一定更affair
                 affairManager.updateAffair(affair);
             }
+
+            //开始：写在这个位置的原因是：当取回后再去转送，显示的当前代办人是查询ctp_affair state=3的数据。zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
+            Map<String, Object> pMap = new HashMap<>();
+            pMap.put("activityId", affair.getActivityId().longValue());
+            pMap.put("objectId", affair.getObjectId().longValue());
+            List<CtpAffair> affairList = affairManager.findBycondition(pMap);
+            String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where id=:id";
+            Map<String,Object> tp=new HashMap<>();
+            tp.put("summaryId",Long.toString(affair.getObjectId().longValue()));
+            List<XkjtTemp> temps = tempManager.findXkjtTemp(tp);
+            List<String> stringList = new ArrayList<>();
+            if (temps.size() > 0) {
+                for (XkjtTemp t : temps) {
+                    stringList.add(t.getId());
+                }
+            }
+
+            if (affairList.size() > 0) {
+                Map<String, Object> phql = null;
+                for (CtpAffair af : affairList) {
+                    phql = new HashMap<>();
+                    if (stringList.size() > 0) {
+                        if (!stringList.contains(Long.toString(af.getId()))) {
+                            phql.put("state", 4);
+                            phql.put("subState", 0);
+                            phql.put("completeTime", new java.util.Date());
+                            phql.put("id", af.getId());
+                            affairManager.update(hql, phql);
+                        }
+                    } else {
+                        phql.put("state", 4);
+                        phql.put("subState", 0);
+                        phql.put("completeTime", new java.util.Date());
+                        phql.put("id", af.getId());
+                        affairManager.update(hql, phql);
+                    }
+                }
+            }
+            //结束： zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
         }
 
 

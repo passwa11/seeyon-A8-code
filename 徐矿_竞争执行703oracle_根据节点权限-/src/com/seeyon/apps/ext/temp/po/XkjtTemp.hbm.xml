@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.apps.ext.temp.po">
+    <!--  -->
+    <class name="XkjtTemp" table="XKJT_TEMP">
+        <id name="id" type="string" column="ID">
+            <generator class="assigned"/>
+        </id>
+        <property name="summaryId" type="string" column="summary_id"></property>
+    </class>
+</hibernate-mapping>

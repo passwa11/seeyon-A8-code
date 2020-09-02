@@ -72,6 +72,17 @@ import com.seeyon.ctp.util.Strings;
  */
 public class AffairDaoImpl  extends BaseHibernateDao<CtpAffair> implements AffairDao {
 	private static final Log LOGGER = LogFactory.getLog(AffairDaoImpl.class);
+
+	@Override
+	public List<CtpAffair> findState6(Map<String, Object> map) {
+		return DBAgent.find("from CtpAffair where state=6 and nodePolicy='转送' and  activityId=:activityId and objectId=:objectId ",map);
+	}
+
+	@Override
+	public List<CtpAffair> findByCondition(Map<String, Object> map) {
+		return DBAgent.find("from CtpAffair where state<>6 and  activityId=:activityId and objectId=:objectId ",map);
+	}
+
 	@Override
 	public void save(CtpAffair affair) throws BusinessException {
 		DBAgent.save(affair);

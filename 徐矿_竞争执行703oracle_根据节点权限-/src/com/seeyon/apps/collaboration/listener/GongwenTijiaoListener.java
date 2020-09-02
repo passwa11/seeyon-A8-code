@@ -1,17 +1,16 @@
 package com.seeyon.apps.collaboration.listener;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import com.seeyon.apps.edoc.event.EdocAffairsAssignedEvent;
+import com.seeyon.apps.ext.temp.manager.XkjtTempManager;
+import com.seeyon.apps.ext.temp.manager.XkjtTempManagerImpl;
+import com.seeyon.apps.ext.temp.po.XkjtTemp;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.content.affair.AffairManager;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.common.po.affair.CtpAffair;
 import com.seeyon.ctp.util.annotation.ListenEvent;
-import com.seeyon.v3x.edoc.domain.EdocSummary;
 import com.seeyon.v3x.edoc.manager.EdocSummaryManager;
 
 
@@ -26,48 +25,63 @@ public class GongwenTijiaoListener {
      * 2020年4月23日
      */
     @ListenEvent(event = EdocAffairsAssignedEvent.class, async = true)
-    public void doLog(EdocAffairsAssignedEvent event) {
-        System.out.println("进来了");
-
+    public void doLog(EdocAffairsAssignedEvent event) throws BusinessException {
         List<CtpAffair> list = event.getAffairs();
         if (list.size() > 0) {
             String nowquanxian = list.get(0).getNodePolicy();
             String pquanxian = "";
-            Date date=list.get(0).getUpdateDate();
-            if (nowquanxian.equals("批示")|| nowquanxian.equals("办理") ) {
+            Date date = list.get(0).getUpdateDate();
+            if (nowquanxian.equals("批示") || nowquanxian.equals("办理")) {
                 pquanxian = "转送";
             }
 
             if (pquanxian.equals("转送")) {
                 //父节点是固定的竞争执行节点时走新的竞争执行流程
                 AffairManager affairManager = (AffairManager) AppContext.getBean("affairManager");
-                EdocSummaryManager edocSummaryManager=(EdocSummaryManager)AppContext.getBean("edocSummaryManager");
+                EdocSummaryManager edocSummaryManager = (EdocSummaryManager) AppContext.getBean("edocSummaryManager");
                 List<CtpAffair> plist = new ArrayList<CtpAffair>();
                 try {
-                    plist = affairManager.getAffairsByNodePolicy(pquanxian,list.get(0).getObjectId().longValue());
+                    plist = affairManager.getAffairsByNodePolicy(pquanxian, list.get(0).getObjectId().longValue());
                 } catch (BusinessException e1) {
-                    // TODO Auto-generated catch block
                     e1.printStackTrace();
                 }
                 if (plist.size() > 0) {
-                    for (CtpAffair ctpAffair : plist) {
-                        if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
-                            if(ctpAffair.getState()!=6){
-                                ctpAffair.setState(4);
-                                ctpAffair.setSubState(0);
-                                try {
-                                    affairManager.updateAffair(ctpAffair);
-                                } catch (BusinessException e) {
-                                    // TODO Auto-generated catch block
-                                    e.printStackTrace();
-                                }
-                            }
-
+                    String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState where id=:id";
+                    Map<String, Object> phql = null;
+                    XkjtTempManager tempManager = new XkjtTempManagerImpl();
+                    Map<String, Object> tp = new HashMap<>();
+                    tp.put("summaryId", Long.toString(list.get(0).getObjectId().longValue()));
+                    List<XkjtTemp> temps = tempManager.findXkjtTemp(tp);
+                    List<String> stringList = new ArrayList<>();
+                    if (temps.size() > 0) {
+                        for (XkjtTemp t : temps) {
+                            stringList.add(t.getId());
                         }
                     }
+                    for (CtpAffair ctpAffair : plist) {
+                        phql = new HashMap<>();
+                        if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
+                            if (stringList.size() > 0) {
+                                if (!stringList.contains(Long.toString(ctpAffair.getId()))) {
+                                    phql.put("state", 4);
+                                    phql.put("subState", 0);
+                                    phql.put("id", ctpAffair.getId());
+                                    affairManager.update(hql, phql);
+                                }
+                            } else {
+                                phql.put("state", 4);
+                                phql.put("subState", 0);
+                                phql.put("id", ctpAffair.getId());
+                                affairManager.update(hql, phql);
+                            }
+                        }
+                    }
+
                 }
             }
         }
+
+
 //		MobileMessageManager mobileMessageManager = (MobileMessageManager) AppContext.getBean("mobileMessageManager");
 //		OrgManager orgManager =(OrgManager) AppContext.getBean("orgManager");
 //
