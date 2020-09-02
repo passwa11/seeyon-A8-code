@@ -76,7 +76,7 @@ public class GongwenTijiaoListener {
                             }
                         }
                     }
-
+                    tempManager.deleteXkjtTemp(temps);
                 }
             }
         }
