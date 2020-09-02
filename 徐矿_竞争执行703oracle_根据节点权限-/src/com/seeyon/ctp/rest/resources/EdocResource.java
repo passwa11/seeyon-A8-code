@@ -947,7 +947,8 @@ public class EdocResource extends BaseResource {
         Map<String, Object> map6 = new HashMap<>();
         map6.put("activityId", affair.getActivityId());
         map6.put("objectId", affair.getObjectId());
-        List<CtpAffair> list6 = affairManager.findState6(map6);
+        String hql6 = "from CtpAffair where state=6 and nodePolicy='转送' and  activityId=:activityId and objectId=:objectId ";
+        List<CtpAffair> list6 = affairManager.findState6(hql6,map6);
         XkjtTemp temp = null;
         if (list6.size() > 0) {
             for (CtpAffair a : list6) {

@@ -125,8 +125,8 @@ public class AffairManagerImpl implements AffairManager {
     }
 
     @Override
-    public List<CtpAffair> findState6(Map<String, Object> map) {
-        return affairDao.findState6(map);
+    public List<CtpAffair> findState6(String hql,Map<String, Object> map) {
+        return affairDao.findState6(hql,map);
     }
 
     @Override

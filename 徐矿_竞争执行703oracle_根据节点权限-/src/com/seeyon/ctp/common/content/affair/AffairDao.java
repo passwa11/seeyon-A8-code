@@ -48,7 +48,7 @@ public interface AffairDao {
      */
     List<CtpAffair> findByCondition(Map<String, Object> map);
 
-    List<CtpAffair> findState6(Map<String, Object> map);
+    List<CtpAffair> findState6(String hql,Map<String, Object> map);
 
     /**
      * 保存

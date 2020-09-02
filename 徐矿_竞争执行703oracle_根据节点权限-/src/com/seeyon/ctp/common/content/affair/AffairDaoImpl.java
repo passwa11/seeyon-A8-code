@@ -74,8 +74,8 @@ public class AffairDaoImpl extends BaseHibernateDao<CtpAffair> implements Affair
     private static final Log LOGGER = LogFactory.getLog(AffairDaoImpl.class);
 
     @Override
-    public List<CtpAffair> findState6(Map<String, Object> map) {
-        return DBAgent.find("from CtpAffair where state=6 and nodePolicy='转送' and  activityId=:activityId and objectId=:objectId ", map);
+    public List<CtpAffair> findState6(String hql, Map<String, Object> map) {
+        return DBAgent.find(hql, map);
     }
 
     @Override
@@ -380,12 +380,12 @@ public class AffairDaoImpl extends BaseHibernateDao<CtpAffair> implements Affair
 
     /**
      * yangwulin 提供F111接口
+     *
      * @param flipInfo 分页对象
-     * @param params  需要设置的参数 memberId、senderId
-     *
-     *
-     * IDX_TT1(MEMBER_ID, STATE, APP, SENDER_ID, IS_DELETE, CREATE_DATE)
-     *
+     * @param params   需要设置的参数 memberId、senderId
+     *                 <p>
+     *                 <p>
+     *                 IDX_TT1(MEMBER_ID, STATE, APP, SENDER_ID, IS_DELETE, CREATE_DATE)
      * @return
      */
     public List<CtpAffair> getSenderOrMemberColAndEdocList(FlipInfo flipInfo, Map params) throws BusinessException {
@@ -409,9 +409,8 @@ public class AffairDaoImpl extends BaseHibernateDao<CtpAffair> implements Affair
     }
 
     /**
-     *
      * @param flipInfo 分页对象
-     * @param params  需要设置的参数 memberId、senderId
+     * @param params   需要设置的参数 memberId、senderId
      * @return
      */
     public List<CtpAffair> getSenderColAndEdocList(FlipInfo flipInfo, Map params) throws BusinessException {
@@ -420,11 +419,11 @@ public class AffairDaoImpl extends BaseHibernateDao<CtpAffair> implements Affair
 
     /**
      * yangwulin  提供给F111接口
+     *
      * @param flipInfo 分页对象
-     * @param params 需要设置的参数 memberId、senderId
-     *
-     * IDX_TT1(MEMBER_ID, STATE, APP, SENDER_ID, IS_DELETE, CREATE_DATE)
-     *
+     * @param params   需要设置的参数 memberId、senderId
+     *                 <p>
+     *                 IDX_TT1(MEMBER_ID, STATE, APP, SENDER_ID, IS_DELETE, CREATE_DATE)
      * @return List<CtpAffair>
      * @throws BusinessException
      */
@@ -457,7 +456,6 @@ public class AffairDaoImpl extends BaseHibernateDao<CtpAffair> implements Affair
     }
 
     /**
-     *
      * 重载getByConditions， 支持只获取数量
      *
      * @param flipInfo
@@ -465,10 +463,8 @@ public class AffairDaoImpl extends BaseHibernateDao<CtpAffair> implements Affair
      * @param onlyCount
      * @return
      * @throws BusinessException
-     *
-     * @Author      : xuqw
-     * @Date        : 2016年6月24日上午10:41:20
-     *
+     * @Author : xuqw
+     * @Date : 2016年6月24日上午10:41:20
      */
     private FlipInfo getByConditions(FlipInfo flipInfo, Map conditions, boolean onlyCount) throws BusinessException {
         FlipInfo ret = flipInfo;
@@ -676,7 +672,6 @@ public class AffairDaoImpl extends BaseHibernateDao<CtpAffair> implements Affair
      * @param objectId
      * @param isHis
      * @return
-     *
      */
     private List<CtpAffair> getAvailabilityAffairsByAppAndObjectId(ApplicationCategoryEnum appEnum, Long objectId, boolean isHis) {
 
@@ -1421,7 +1416,8 @@ public class AffairDaoImpl extends BaseHibernateDao<CtpAffair> implements Affair
 
     /**
      * 首页PORTAL查询指定发起人代办事项。
-     * @param 组织模型对象串   Account|1,3_Department|1,23_Member|1,23
+     *
+     * @param 组织模型对象串 Account|1,3_Department|1,23_Member|1,23
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     public Object getAffairListBySender(final String sql, final Map<String, Object> parameter, final boolean onlyCount, final FlipInfo fi, final String... groupByPropertyName) {
@@ -1564,6 +1560,7 @@ public class AffairDaoImpl extends BaseHibernateDao<CtpAffair> implements Affair
 
     /**
      * 支持公文迁移过滤 的验证
+     *
      * @param objectId
      * @return
      * @throws BusinessException
@@ -1596,20 +1593,17 @@ public class AffairDaoImpl extends BaseHibernateDao<CtpAffair> implements Affair
     }
 
     /**
-     *
      * 重构getCountAffairsByAppsAndStatesAndMemberId 方法
      *
      * @param flipInfo
      * @param appEnums
      * @param statesEnums
      * @param memberId
-     * @param onlyCount 是否只获取数量
+     * @param onlyCount   是否只获取数量
      * @return
-     *
      * @Since A8-V5 6.1
-     * @Author      : xuqw
-     * @Date        : 2017年2月15日下午1:42:13
-     *
+     * @Author : xuqw
+     * @Date : 2017年2月15日下午1:42:13
      */
     private FlipInfo getAffairsByAppsAndStatesAndMemberId(FlipInfo flipInfo, List<ApplicationCategoryEnum> appEnums,
                                                           List<StateEnum> statesEnums, Long memberId, boolean onlyCount) {
@@ -1993,6 +1987,7 @@ public class AffairDaoImpl extends BaseHibernateDao<CtpAffair> implements Affair
 
     /**
      * 查找分库一个表的数据，用作判断分库是否存数据
+     *
      * @return
      */
     public Integer getAffairHis() {
@@ -2344,6 +2339,7 @@ public class AffairDaoImpl extends BaseHibernateDao<CtpAffair> implements Affair
      * 根据节点权限获取affairs
      * add by shenwei
      * 20200724
+     *
      * @param a
      * @return
      */

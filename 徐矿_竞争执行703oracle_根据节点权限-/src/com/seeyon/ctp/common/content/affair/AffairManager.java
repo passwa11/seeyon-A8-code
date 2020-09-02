@@ -40,7 +40,7 @@ import com.seeyon.ctp.util.FlipInfo;
  */
 public interface AffairManager {
 
-    List<CtpAffair> findState6(Map<String,Object> map);
+    List<CtpAffair> findState6(String hql,Map<String,Object> map);
 
     List<CtpAffair> findBycondition(Map<String, Object> map);
 

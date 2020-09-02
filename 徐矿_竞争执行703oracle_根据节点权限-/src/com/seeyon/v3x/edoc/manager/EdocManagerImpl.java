@@ -4479,7 +4479,6 @@ public class EdocManagerImpl implements EdocManager {
         }
 
 
-
         Long _workitemId = affair.getSubObjectId();
         Long caseId = summary.getCaseId();
 
@@ -4649,9 +4648,11 @@ public class EdocManagerImpl implements EdocManager {
             Map<String, Object> map6 = new HashMap<>();
             map6.put("activityId", affair.getActivityId());
             map6.put("objectId", affair.getObjectId());
-            List<CtpAffair> list6 = affairManager.findState6(map6);
+            String hql = "from CtpAffair where state=6 and nodePolicy='转送' and  activityId=:activityId and objectId=:objectId ";
+
+            List<CtpAffair> list6 = affairManager.findState6(hql,map6);
             XkjtTemp temp = null;
-            if(list6.size()>0){
+            if (list6.size() > 0) {
                 for (CtpAffair a : list6) {
                     temp = new XkjtTemp();
                     temp.setId(Long.toString(a.getId()));
@@ -9134,9 +9135,10 @@ public class EdocManagerImpl implements EdocManager {
         Map<String, Object> map6 = new HashMap<>();
         map6.put("activityId", affair.getActivityId());
         map6.put("objectId", affair.getObjectId());
-        List<CtpAffair> list6 = affairManager.findState6(map6);
+        String hql = "from CtpAffair where state=6 and nodePolicy='转送' and  activityId=:activityId and objectId=:objectId ";
+        List<CtpAffair> list6 = affairManager.findState6(hql, map6);
         XkjtTemp temp = null;
-        if(list6.size()>0){
+        if (list6.size() > 0) {
             for (CtpAffair a : list6) {
                 temp = new XkjtTemp();
                 temp.setId(Long.toString(a.getId()));
@@ -9909,9 +9911,9 @@ public class EdocManagerImpl implements EdocManager {
             pMap.put("activityId", affair.getActivityId().longValue());
             pMap.put("objectId", affair.getObjectId().longValue());
             List<CtpAffair> affairList = affairManager.findBycondition(pMap);
-            String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where id=:id";
-            Map<String,Object> tp=new HashMap<>();
-            tp.put("summaryId",Long.toString(affair.getObjectId().longValue()));
+            String hqlz = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where id=:id";
+            Map<String, Object> tp = new HashMap<>();
+            tp.put("summaryId", Long.toString(affair.getObjectId().longValue()));
             List<XkjtTemp> temps = tempManager.findXkjtTemp(tp);
             List<String> stringList = new ArrayList<>();
             if (temps.size() > 0) {
@@ -9930,14 +9932,14 @@ public class EdocManagerImpl implements EdocManager {
                             phql.put("subState", 0);
                             phql.put("completeTime", new java.util.Date());
                             phql.put("id", af.getId());
-                            affairManager.update(hql, phql);
+                            affairManager.update(hqlz, phql);
                         }
                     } else {
                         phql.put("state", 4);
                         phql.put("subState", 0);
                         phql.put("completeTime", new java.util.Date());
                         phql.put("id", af.getId());
-                        affairManager.update(hql, phql);
+                        affairManager.update(hqlz, phql);
                     }
                 }
             }

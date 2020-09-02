@@ -32,6 +32,9 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.seeyon.apps.ext.temp.manager.XkjtTempManager;
+import com.seeyon.apps.ext.temp.manager.XkjtTempManagerImpl;
+import com.seeyon.apps.ext.temp.po.XkjtTemp;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.converters.SqlTimestampConverter;
@@ -12836,6 +12839,8 @@ public class EdocController extends BaseController {
 
     }
 
+    private XkjtTempManager tempManager = new XkjtTempManagerImpl();
+
     // 取回
     public ModelAndView takeBack(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -12911,11 +12916,29 @@ public class EdocController extends BaseController {
             }
 
             //新竞争执行 zhou
+
             if (null != affairIds) {
                 for (String affairId : affairIds) {
                     Long _affairId = Long.valueOf(affairId);
-
                     CtpAffair affair = affairManager.get(_affairId);
+
+//                    在这里记录被取回的数据的ctpaffair的id startd
+                    Map<String, Object> map6 = new HashMap<>();
+                    map6.put("activityId", affair.getActivityId());
+                    map6.put("objectId", affair.getObjectId());
+                    String hql3 = "from CtpAffair where state=3 and nodePolicy='转送' and  activityId=:activityId and objectId=:objectId ";
+                    List<CtpAffair> list3 = affairManager.findState6(hql3, map6);
+                    XkjtTemp temp = null;
+                    if (list3.size() > 0) {
+                        for (CtpAffair a : list3) {
+                            temp = new XkjtTemp();
+                            temp.setId(Long.toString(a.getId()));
+                            temp.setSummaryId(Long.toString(a.getObjectId()));
+                            tempManager.saveXkjtTemp(temp);
+                        }
+                    }
+//                    在这里记录被取回的数据的ctpaffair的id end
+
                     String pquanxian = affair.getNodePolicy();
                     String nquanxian = "";
                     Date date = affair.getUpdateDate();
