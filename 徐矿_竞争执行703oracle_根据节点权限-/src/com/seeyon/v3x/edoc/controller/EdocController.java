@@ -12928,7 +12928,7 @@ public class EdocController extends BaseController {
                         List<CtpAffair> clist = new ArrayList<CtpAffair>();
                         try {
                             plist = affairManager.getAffairsByNodePolicy(pquanxian, affair.getObjectId().longValue());
-                            clist = affairManager.getAffairsByNodePolicy(nquanxian, affair.getObjectId().longValue());
+//                            clist = affairManager.getAffairsByNodePolicy(nquanxian, affair.getObjectId().longValue());
                         } catch (BusinessException e1) {
                             e1.printStackTrace();
                         }
@@ -12949,32 +12949,8 @@ public class EdocController extends BaseController {
                                         e.printStackTrace();
                                         System.out.println("取回时修改状态值的hql语句出错了：" + e.getMessage());
                                     }
-//                                    ctpAffair.setState(3);
-//                                    ctpAffair.setSubState(6);
-//                                    ctpAffair.setUpdateDate(date);
-//                                    try {
-//                                        affairManager.updateAffair(ctpAffair);
-//                                    } catch (BusinessException e) {
-//                                        // TODO Auto-generated catch block
-//                                        e.printStackTrace();
-//                                    }
-
                                 }
                             }
-
-//                            if (clist.size() > 0) {
-//                                for (CtpAffair cctpAffair : clist) {
-//                                    if (affair.getId().longValue() == cctpAffair.getId().longValue()) {
-//                                        cctpAffair.setState(7);
-//                                        cctpAffair.setSubState(0);
-//                                        try {
-//                                            affairManager.updateAffair(cctpAffair);
-//                                        } catch (BusinessException e) {
-//                                            e.printStackTrace();
-//                                        }
-//                                    }
-//                                }
-//                            }
                         }
                     }
                 }

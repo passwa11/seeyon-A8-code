@@ -14,6 +14,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.seeyon.apps.ext.temp.manager.XkjtTempManager;
+import com.seeyon.apps.ext.temp.manager.XkjtTempManagerImpl;
+import com.seeyon.apps.ext.temp.po.XkjtTemp;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 
@@ -606,6 +609,8 @@ public class EdocResource extends BaseResource {
      *                           </pre>
      * @return Boolean true:处理成功 ，false:处理失败
      */
+
+    private XkjtTempManager tempManager=new XkjtTempManagerImpl();
     @SuppressWarnings("unchecked")
     @POST
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -614,6 +619,30 @@ public class EdocResource extends BaseResource {
         User user = AppContext.getCurrentUser();
         long summaryId = ParamUtil.getLong(param, "summaryId", -1L);
         Long affairId = ParamUtil.getLong(param, "affairId", -1L);
+
+        CtpAffair affair = null;
+        try {
+            affair = affairManager.get(affairId);
+        } catch (BusinessException e) {
+            e.printStackTrace();
+        }
+
+        //获取回退state=6的数据   zhou start
+        Map<String, Object> map6 = new HashMap<>();
+        map6.put("activityId", affair.getActivityId());
+        map6.put("objectId", affair.getObjectId());
+        List<CtpAffair> list6 = affairManager.findState6(map6);
+        XkjtTemp temp = null;
+        if(list6.size()>0){
+            for (CtpAffair a : list6) {
+                temp = new XkjtTemp();
+                temp.setId(Long.toString(a.getId()));
+                temp.setSummaryId(Long.toString(a.getObjectId()));
+                tempManager.saveXkjtTemp(temp);
+            }
+        }
+//     获取回退state=6的数据   zhou end
+
         String opinionContent = ParamUtil.getString(param, "opinionContent");
         if (Strings.isNotBlank(opinionContent)) {
             opinionContent = Strings.removeEmoji(opinionContent);
@@ -667,15 +696,42 @@ public class EdocResource extends BaseResource {
         }
 //        [徐矿集团，账号竞争执行，m3提交事件] zhou start
         try {
-            CtpAffair affair = affairManager.get(affairId);
-            String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
-            Map<String, Object> params2 = new HashMap<>();
-            params2.put("state", 4);
-            params2.put("subState", 0);
-            params2.put("completeTime", new Date());
-            params2.put("activityId", affair.getActivityId().longValue());
-            params2.put("objectId", affair.getObjectId().longValue());
-            affairManager.update(hql, params2);
+            Map<String, Object> pMap = new HashMap<>();
+            pMap.put("activityId", affair.getActivityId().longValue());
+            pMap.put("objectId", affair.getObjectId().longValue());
+            List<CtpAffair> affairList = affairManager.findBycondition(pMap);
+            String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where id=:id";
+            Map<String,Object> tp=new HashMap<>();
+            tp.put("summaryId",Long.toString(affair.getObjectId().longValue()));
+            List<XkjtTemp> temps = tempManager.findXkjtTemp(tp);
+            List<String> stringList = new ArrayList<>();
+            if (temps.size() > 0) {
+                for (XkjtTemp t : temps) {
+                    stringList.add(t.getId());
+                }
+            }
+
+            if (affairList.size() > 0) {
+                Map<String, Object> phql = null;
+                for (CtpAffair af : affairList) {
+                    phql = new HashMap<>();
+                    if (stringList.size() > 0) {
+                        if (!stringList.contains(Long.toString(af.getId()))) {
+                            phql.put("state", 4);
+                            phql.put("subState", 0);
+                            phql.put("completeTime", new java.util.Date());
+                            phql.put("id", af.getId());
+                            affairManager.update(hql, phql);
+                        }
+                    } else {
+                        phql.put("state", 4);
+                        phql.put("subState", 0);
+                        phql.put("completeTime", new java.util.Date());
+                        phql.put("id", af.getId());
+                        affairManager.update(hql, phql);
+                    }
+                }
+            }
         } catch (BusinessException e) {
             e.printStackTrace();
         }
@@ -837,8 +893,9 @@ public class EdocResource extends BaseResource {
         Map<String, Object> returnMap = new HashMap<String, Object>();
         String returnValue = "true";
         String errMsg = "";
+        CtpAffair affair = null;
         try {
-            CtpAffair affair = affairManager.get(affairId);
+            affair = affairManager.get(affairId);
             if (affair != null) {
                 signOpinion.setNodeId(affair.getActivityId());
                 signOpinion.setPolicy(affair.getNodePolicy());
@@ -884,6 +941,23 @@ public class EdocResource extends BaseResource {
             edocManager.unlockEdocAll(summaryId, null);
         }
         returnMap.put("returnValue", returnValue);
+
+        //      回退记录  zhou start
+        Map<String, Object> map6 = new HashMap<>();
+        map6.put("activityId", affair.getActivityId());
+        map6.put("objectId", affair.getObjectId());
+        List<CtpAffair> list6 = affairManager.findState6(map6);
+        XkjtTemp temp = null;
+        if(list6.size()>0){
+            for (CtpAffair a : list6) {
+                temp = new XkjtTemp();
+                temp.setId(Long.toString(a.getId()));
+                temp.setSummaryId(Long.toString(a.getObjectId()));
+                tempManager.saveXkjtTemp(temp);
+            }
+        }
+        //      回退记录  zhou end
+
         return getResponse(returnMap);
     }
 
