@@ -12939,18 +12939,16 @@ public class EdocController extends BaseController {
                             for (CtpAffair ctpAffair : plist) {
 //                                zhou:根据取回数据的affairid
                                 String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.id=:id";
-                                if (affair.getId().longValue() == ctpAffair.getId().longValue()) {
-                                    Map<String, Object> params = new HashMap<>();
-                                    params.put("state", 3);
-                                    params.put("subState", 6);
-                                    params.put("completeTime", new Date());
-                                    params.put("id", ctpAffair.getId().longValue());
-                                    try {
-                                        affairManager.update(hql, params);
-                                    } catch (BusinessException e) {
-                                        e.printStackTrace();
-                                        System.out.println("取回时修改状态值的hql语句出错了：" + e.getMessage());
-                                    }
+                                Map<String, Object> params = new HashMap<>();
+                                params.put("state", 3);
+                                params.put("subState", 6);
+                                params.put("completeTime", new Date());
+                                params.put("id", ctpAffair.getId().longValue());
+                                try {
+                                    affairManager.update(hql, params);
+                                } catch (BusinessException e) {
+                                    e.printStackTrace();
+                                    System.out.println("取回时修改状态值的hql语句出错了：" + e.getMessage());
                                 }
                             }
                         }

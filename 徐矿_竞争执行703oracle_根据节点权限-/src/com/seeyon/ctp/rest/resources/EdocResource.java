@@ -323,26 +323,26 @@ public class EdocResource extends BaseResource {
      *
      * @param params 获取公文列表的参数
      *               <pre>
-     *                             类型             名称                   必填           备注
-     *                             int	 edocType     N       公文类型
-     *                                <pre>
-     *                                   0 发文
-     *                                   1 收文
-     *                                   2 签报
-     *                                </pre>
-     *                             String listType   Y 打开来源
-     *                                <pre>
-     *                                   listPending  待办
-     *                                   listSent     已发
-     *                                   listWaitSend 待发
-     *                                   listDoneAll  已办
-     *                                </pre>
-     *                             String conditionKey  Y 搜索条件
-     *                             String textfield     Y 搜索传值
-     *                             String textfield1    N 搜索传值
-     *                             String pageNo        Y 第几页（大于1的整数）
-     *                             String pageSize      Y 每页多少条数据(大于1的整数)
-     *                             </pre>
+     *                                           类型             名称                   必填           备注
+     *                                           int	 edocType     N       公文类型
+     *                                              <pre>
+     *                                                 0 发文
+     *                                                 1 收文
+     *                                                 2 签报
+     *                                              </pre>
+     *                                           String listType   Y 打开来源
+     *                                              <pre>
+     *                                                 listPending  待办
+     *                                                 listSent     已发
+     *                                                 listWaitSend 待发
+     *                                                 listDoneAll  已办
+     *                                              </pre>
+     *                                           String conditionKey  Y 搜索条件
+     *                                           String textfield     Y 搜索传值
+     *                                           String textfield1    N 搜索传值
+     *                                           String pageNo        Y 第几页（大于1的整数）
+     *                                           String pageSize      Y 每页多少条数据(大于1的整数)
+     *                                           </pre>
      * @return FlipInfo
      * @throws BusinessException
      */
@@ -398,23 +398,23 @@ public class EdocResource extends BaseResource {
      *
      * @param params 公文详情的参数
      *               <pre>
-     *                             类型             名称                       必填           备注
-     *                             Long    affairId     Y     事项ID
-     *                             Long    summaryId    Y     协同ID
-     *                             String  openFrom     N     打开来源（默认值：listDoneAll）
-     *                                <pre>
-     *                                   listPending  待办
-     *                                   listSent     已发
-     *                                   listWaitSend 待发
-     *                                   listDoneAll  已办
-     *                                   glwd         关联文档
-     *                                   docLib       文档中心
-     *                                   lenPotent    借阅
-     *                                </pre>
-     *                             String baseObjectId  N 关联文档属于的数据ID
-     *                             String baseApp  N 关联文档属于的数据所在的模块
-     *                             String docResId  N 文档ID，用于权限验证
-     *                             </pre>
+     *                                           类型             名称                       必填           备注
+     *                                           Long    affairId     Y     事项ID
+     *                                           Long    summaryId    Y     协同ID
+     *                                           String  openFrom     N     打开来源（默认值：listDoneAll）
+     *                                              <pre>
+     *                                                 listPending  待办
+     *                                                 listSent     已发
+     *                                                 listWaitSend 待发
+     *                                                 listDoneAll  已办
+     *                                                 glwd         关联文档
+     *                                                 docLib       文档中心
+     *                                                 lenPotent    借阅
+     *                                              </pre>
+     *                                           String baseObjectId  N 关联文档属于的数据ID
+     *                                           String baseApp  N 关联文档属于的数据所在的模块
+     *                                           String docResId  N 文档ID，用于权限验证
+     *                                           </pre>
      * @return EdocSummaryBO
      */
     @POST
@@ -535,8 +535,8 @@ public class EdocResource extends BaseResource {
      *                      String  policyName  		Y    节点名称
      *                      Long    orgAccountId   	Y    单位Id
      *                      <pre>
-     *                                              类型 如 ：协同（collaboration）、表单(form)、发文(sendEdoc||edocSend)、收文(recEdoc||edocRec)、签报(edocSign||signReport)、信息报送(sendInfo)
-     *                                           </pre>
+     *                                                                   类型 如 ：协同（collaboration）、表单(form)、发文(sendEdoc||edocSend)、收文(recEdoc||edocRec)、签报(edocSign||signReport)、信息报送(sendInfo)
+     *                                                                </pre>
      * @return List<Permission>
      * @throws BusinessException
      */
@@ -588,7 +588,7 @@ public class EdocResource extends BaseResource {
      * url: edocResource/submit
      *
      * @param param 处理参数
-     *              <pre>
+     * <pre>
      *                           	类型                 名称                                 必填           备注
      *                           	long     summaryId        Y 		协同ID
      *                           	Long     affairId         Y 		事项ID
@@ -610,7 +610,8 @@ public class EdocResource extends BaseResource {
      * @return Boolean true:处理成功 ，false:处理失败
      */
 
-    private XkjtTempManager tempManager=new XkjtTempManagerImpl();
+    private XkjtTempManager tempManager = new XkjtTempManagerImpl();
+
     @SuppressWarnings("unchecked")
     @POST
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -633,7 +634,7 @@ public class EdocResource extends BaseResource {
         map6.put("objectId", affair.getObjectId());
         List<CtpAffair> list6 = affairManager.findState6(map6);
         XkjtTemp temp = null;
-        if(list6.size()>0){
+        if (list6.size() > 0) {
             for (CtpAffair a : list6) {
                 temp = new XkjtTemp();
                 temp.setId(Long.toString(a.getId()));
@@ -701,8 +702,8 @@ public class EdocResource extends BaseResource {
             pMap.put("objectId", affair.getObjectId().longValue());
             List<CtpAffair> affairList = affairManager.findBycondition(pMap);
             String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where id=:id";
-            Map<String,Object> tp=new HashMap<>();
-            tp.put("summaryId",Long.toString(affair.getObjectId().longValue()));
+            Map<String, Object> tp = new HashMap<>();
+            tp.put("summaryId", Long.toString(affair.getObjectId().longValue()));
             List<XkjtTemp> temps = tempManager.findXkjtTemp(tp);
             List<String> stringList = new ArrayList<>();
             if (temps.size() > 0) {
@@ -765,24 +766,24 @@ public class EdocResource extends BaseResource {
      *
      * @param param 暂存待办参数
      *              <pre>
-     *                           	类型                 名称                                 	      必填           备注
-     *                            long      summaryId   			Y 	协同ID
-     *                            Long      affairId    			Y 	事项ID
-     *                            String    opinionContent    	Y 	处理意见
-     *                            Integer   opinionAttibute   	Y 	处理态度
-     *                             			 -1 （没有录入态度时的默认值）
-     *                             			  1  已阅
-     *                              			  2  同意
-     *                              			  3  不同意
-     *                            Integer   isTrack      		    Y 	跟踪
-     *                              			  1  跟踪
-     *                                 	      2  不跟踪
-     *                            boolean   isNewImg              Y 	是否有文单签批
-     *                            String    processChangeMessage  Y 	流程改变信息
-     *                            Map       workflow_definition   Y 	流程相关数据
-     *                            String    fileJson              N 	附件信息串
-     *                            String    oldOpinionIdStr       Y  	之前的意见记录
-     *                           </pre>
+     *                                        	类型                 名称                                 	      必填           备注
+     *                                         long      summaryId   			Y 	协同ID
+     *                                         Long      affairId    			Y 	事项ID
+     *                                         String    opinionContent    	Y 	处理意见
+     *                                         Integer   opinionAttibute   	Y 	处理态度
+     *                                          			 -1 （没有录入态度时的默认值）
+     *                                          			  1  已阅
+     *                                           			  2  同意
+     *                                           			  3  不同意
+     *                                         Integer   isTrack      		    Y 	跟踪
+     *                                           			  1  跟踪
+     *                                              	      2  不跟踪
+     *                                         boolean   isNewImg              Y 	是否有文单签批
+     *                                         String    processChangeMessage  Y 	流程改变信息
+     *                                         Map       workflow_definition   Y 	流程相关数据
+     *                                         String    fileJson              N 	附件信息串
+     *                                         String    oldOpinionIdStr       Y  	之前的意见记录
+     *                                        </pre>
      * @return Boolean true:暂存待办成功 ，false:暂存待办失败
      */
     @SuppressWarnings("unchecked")
@@ -845,22 +846,22 @@ public class EdocResource extends BaseResource {
      *
      * @param param 回退参数
      *              <pre>
-     *                           	类型                  		名称                                 	 必填           备注
-     *                            long 			summaryId   		 Y 		协同ID
-     *                            Long 			affairId    		 Y 		事项ID
-     *                            String 			opinionContent   	 Y 		处理意见
-     *                            Integer 		opinionAttibute  	 Y 		处理态度
-     *                             					-1 （没有录入态度时的默认值）
-     *                              					1  已阅
-     *                             				 	2  同意
-     *                              					3  不同意
-     *                            Integer         isTrack      		 N 		跟踪
-     *                              					1  跟踪
-     *                              					2  不跟踪
-     *                            boolean         isNewImg             Y      是否有文单签批
-     *                            String        processChangeMessage   Y 		流程改变信息
-     *                            String             policy            N      节点权限
-     *                           </pre>
+     *                                        	类型                  		名称                                 	 必填           备注
+     *                                         long 			summaryId   		 Y 		协同ID
+     *                                         Long 			affairId    		 Y 		事项ID
+     *                                         String 			opinionContent   	 Y 		处理意见
+     *                                         Integer 		opinionAttibute  	 Y 		处理态度
+     *                                          					-1 （没有录入态度时的默认值）
+     *                                           					1  已阅
+     *                                          				 	2  同意
+     *                                           					3  不同意
+     *                                         Integer         isTrack      		 N 		跟踪
+     *                                           					1  跟踪
+     *                                           					2  不跟踪
+     *                                         boolean         isNewImg             Y      是否有文单签批
+     *                                         String        processChangeMessage   Y 		流程改变信息
+     *                                         String             policy            N      节点权限
+     *                                        </pre>
      * @return String true:回退成功 ，false:回退失败
      */
     @POST
@@ -948,7 +949,7 @@ public class EdocResource extends BaseResource {
         map6.put("objectId", affair.getObjectId());
         List<CtpAffair> list6 = affairManager.findState6(map6);
         XkjtTemp temp = null;
-        if(list6.size()>0){
+        if (list6.size() > 0) {
             for (CtpAffair a : list6) {
                 temp = new XkjtTemp();
                 temp.setId(Long.toString(a.getId()));
@@ -967,9 +968,9 @@ public class EdocResource extends BaseResource {
      *
      * @param param 回退参数
      *              <pre>
-     *                           	类型                  		名称                                 	 必填           备注
-     *                            Long 			affairId    		 Y 		事项ID
-     *                           </pre>
+     *                                        	类型                  		名称                                 	 必填           备注
+     *                                         Long 			affairId    		 Y 		事项ID
+     *                                        </pre>
      * @return Map
      * map.canStepBack true:可以回退 ，false:不可以回退
      * map.error_msg    不可以回退是返回不可回退的信息，可以回退时返回空
@@ -1005,22 +1006,22 @@ public class EdocResource extends BaseResource {
      *
      * @param param 撤销参数
      *              <pre>
-     *                           	类型                  		名称                                 	 必填           备注
-     *                            long            summaryId  			Y 		协同ID
-     *                            Long            affairId    		Y 		事项ID
-     *                            String          opinionContent    	Y 		处理意见
-     *                            Integer         opinionAttibute  	Y	 	处理态度
-     *                              				-1 （没有录入态度时的默认值）
-     *                              				1  已阅
-     *                              				2  同意
-     *                              				3  不同意
-     *                            Integer         isTrack      		N 		跟踪
-     *                              				1  跟踪
-     *                             			    2  不跟踪
-     *                            boolean         isNewImg     		Y		 是否有文单签批
-     *                            String      processChangeMessage    Y 		流程改变信息
-     *                            String          policy      		N 		节点权限
-     *                           </pre>
+     *                                        	类型                  		名称                                 	 必填           备注
+     *                                         long            summaryId  			Y 		协同ID
+     *                                         Long            affairId    		Y 		事项ID
+     *                                         String          opinionContent    	Y 		处理意见
+     *                                         Integer         opinionAttibute  	Y	 	处理态度
+     *                                           				-1 （没有录入态度时的默认值）
+     *                                           				1  已阅
+     *                                           				2  同意
+     *                                           				3  不同意
+     *                                         Integer         isTrack      		N 		跟踪
+     *                                           				1  跟踪
+     *                                          			    2  不跟踪
+     *                                         boolean         isNewImg     		Y		 是否有文单签批
+     *                                         String      processChangeMessage    Y 		流程改变信息
+     *                                         String          policy      		N 		节点权限
+     *                                        </pre>
      * @return map
      * <pre>
      * 				成功{returnValue : true}
@@ -1124,10 +1125,10 @@ public class EdocResource extends BaseResource {
      *
      * @param param 取回参数
      *              <pre>
-     *                           	类型                  		名称                                 	 必填           备注
-     *                            long            summaryId  			Y 		协同ID
-     *                            Long            affairId    		Y 		事项ID
-     *                           </pre>
+     *                                        	类型                  		名称                                 	 必填           备注
+     *                                         long            summaryId  			Y 		协同ID
+     *                                         Long            affairId    		Y 		事项ID
+     *                                        </pre>
      * @return String 0:取回成功，15:取回失败
      * @throws BusinessException
      */
@@ -1189,18 +1190,16 @@ public class EdocResource extends BaseResource {
                                 for (CtpAffair ctpAffair : plist) {
 //                                zhou:根据取回数据的affairid
                                     String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.id=:id ";
-                                    if (affair.getId().longValue() == ctpAffair.getId().longValue()) {
-                                        Map<String, Object> p = new HashMap<>();
-                                        p.put("state", 3);
-                                        p.put("subState", 6);
-                                        p.put("completeTime", new Date());
-                                        p.put("id", ctpAffair.getId().longValue());
-                                        try {
-                                            affairManager.update(hql, p);
-                                        } catch (BusinessException e) {
-                                            e.printStackTrace();
-                                            System.out.println("取回时修改状态值的hql语句出错了：" + e.getMessage());
-                                        }
+                                    Map<String, Object> p = new HashMap<>();
+                                    p.put("state", 3);
+                                    p.put("subState", 6);
+                                    p.put("completeTime", new Date());
+                                    p.put("id", ctpAffair.getId().longValue());
+                                    try {
+                                        affairManager.update(hql, p);
+                                    } catch (BusinessException e) {
+                                        e.printStackTrace();
+                                        System.out.println("取回时修改状态值的hql语句出错了：" + e.getMessage());
                                     }
                                 }
                             }
@@ -1223,18 +1222,18 @@ public class EdocResource extends BaseResource {
      *
      * @param param 取回参数
      *              <pre>
-     *                           	类型                  		名称                                 	 必填           备注
-     *                            long            summaryId  			Y 		协同ID
-     *                            Long            affairId    		Y 		事项ID
-     *                            String			opinionContent      Y 		处理意见
-     *                            String          afterSign           Y 		处理态度
-     *                              				-1 （没有录入态度时的默认值）
-     *                              				1  已阅
-     *                              				2  同意
-     *                              				3  不同意
-     *                            String          isHidden          	N 		是否隐藏
-     *                            String          policy      		N 		节点权限
-     *                           </pre>
+     *                                        	类型                  		名称                                 	 必填           备注
+     *                                         long            summaryId  			Y 		协同ID
+     *                                         Long            affairId    		Y 		事项ID
+     *                                         String			opinionContent      Y 		处理意见
+     *                                         String          afterSign           Y 		处理态度
+     *                                           				-1 （没有录入态度时的默认值）
+     *                                           				1  已阅
+     *                                           				2  同意
+     *                                           				3  不同意
+     *                                         String          isHidden          	N 		是否隐藏
+     *                                         String          policy      		N 		节点权限
+     *                                        </pre>
      * @return true:终止成功
      * null:终止失败
      * @throws BusinessException
@@ -1340,10 +1339,10 @@ public class EdocResource extends BaseResource {
      * url: edocResource/checkAffairValid
      *
      * @param 处理时验证，非查看校验参数 <pre>
-     *                                           		类型                  		名称                                 	 必填           备注
-     *                                            	String            affairId    		Y 		事项ID
-     *                                                String 			  pageNodePolicy    Y       页面的节点权限id
-     *                                            </pre>
+     *                                                                		类型                  		名称                                 	 必填           备注
+     *                                                                 	String            affairId    		Y 		事项ID
+     *                                                                     String 			  pageNodePolicy    Y       页面的节点权限id
+     *                                                                 </pre>
      * @return Map<String, String>
      * <pre>
      * 							正常：返回值 {isOnlyView:false}
@@ -1373,9 +1372,9 @@ public class EdocResource extends BaseResource {
      * url: edocResource/checkCanTakeBack
      *
      * @param 验证公文是否已交换参数 <pre>
-     *                                       		类型                  		    名称                                 	 必填           备注
-     *                                        	String            summaryId    		 Y 		协同ID
-     *                                        </pre>
+     *                                                          		类型                  		    名称                                 	 必填           备注
+     *                                                           	String            summaryId    		 Y 		协同ID
+     *                                                           </pre>
      * @return boolean true:未交换，false:已交换
      * @throws BusinessException
      */
@@ -1396,11 +1395,11 @@ public class EdocResource extends BaseResource {
      * url: edocResource/checkEdocMarkIsUsed
      *
      * @param 校验公文文号参数 <pre>
-     *                                 		类型                  		    名称                                 	 必填           备注
-     *                                  	String            summaryId    		 Y 		协同ID
-     *                                      String			  docMark            Y      公文文号
-     *                                      String			  orgAccountId       Y      单位ID
-     *                                  </pre>
+     *                                                 		类型                  		    名称                                 	 必填           备注
+     *                                                  	String            summaryId    		 Y 		协同ID
+     *                                                      String			  docMark            Y      公文文号
+     *                                                      String			  orgAccountId       Y      单位ID
+     *                                                  </pre>
      * @return boolean true:成功，false:失败
      * @throws BusinessException
      */
@@ -1417,9 +1416,9 @@ public class EdocResource extends BaseResource {
      * url: edocResource/checkTakeBack
      *
      * @param 校验公文能否取回参数 <pre>
-     *                                     		类型                  		    名称                                 	 必填           备注
-     *                                      	String            affairId    		 Y 		事项ID
-     *                                      </pre>
+     *                                                       		类型                  		    名称                                 	 必填           备注
+     *                                                        	String            affairId    		 Y 		事项ID
+     *                                                        </pre>
      * @return String
      * <pre>
      * 						-1  :  表示程序或数据发生异常,不可以取回
@@ -1466,9 +1465,9 @@ public class EdocResource extends BaseResource {
      * url: edocResource/unlockEdocAll
      *
      * @param 解全部锁参数 <pre>
-     *                             		类型                  		    名称                                 	 必填           备注
-     *                              	String            summaryId    		 Y 		协同ID
-     *                              </pre>
+     *                                           		类型                  		    名称                                 	 必填           备注
+     *                                            	String            summaryId    		 Y 		协同ID
+     *                                            </pre>
      * @return String true:成功解全部锁
      * @throws BusinessException
      */
@@ -1527,9 +1526,9 @@ public class EdocResource extends BaseResource {
      * url: edocResource/signed
      *
      * @param 公文待签收数据列表参数 <pre>
-     *                                       		类型                  		    名称                                 	 必填           备注
-     *                                        	Long            memberId    		 Y 		人员ID
-     *                                        </pre>
+     *                                                          		类型                  		    名称                                 	 必填           备注
+     *                                                           	Long            memberId    		 Y 		人员ID
+     *                                                           </pre>
      * @return List
      * @throws BusinessException
      */
@@ -1559,9 +1558,9 @@ public class EdocResource extends BaseResource {
      * url: edocResource/registered
      *
      * @param 公文待登记数据列表参数 <pre>
-     *                                       		类型                  		    名称                                 	 必填           备注
-     *                                        	Long            memberId    		 Y 		人员ID
-     *                                        </pre>
+     *                                                          		类型                  		    名称                                 	 必填           备注
+     *                                                           	Long            memberId    		 Y 		人员ID
+     *                                                           </pre>
      * @return List<EdocRegister>
      * @throws BusinessException
      */
@@ -1629,9 +1628,9 @@ public class EdocResource extends BaseResource {
      * url: edocResource/qianpiLock
      *
      * @param 文单签批--加锁参数 <pre>
-     *                                     		类型                  		    名称                                 	 必填           备注
-     *                                      	String            summaryId    		 Y 		协同ID
-     *                                      </pre>
+     *                                                       		类型                  		    名称                                 	 必填           备注
+     *                                                        	String            summaryId    		 Y 		协同ID
+     *                                                        </pre>
      * @return UserUpdateObject
      * @throws BusinessException
      */
@@ -1652,18 +1651,18 @@ public class EdocResource extends BaseResource {
      *
      * @param params Map<String, Object> | 必填  | 其他参数
      *               <pre>
-     *                             summaryId     String  |  必填       |  公文ID
-     *                             folder        String  |  必填       |  输出的目录
-     *                             exportType    String  |  非必输   |  导出的类型
-     *                                           0-全部；1-文单；2-正文(含花脸)
-     *                                           不输入默认导出全部
-     *                             </pre>
+     *                                           summaryId     String  |  必填       |  公文ID
+     *                                           folder        String  |  必填       |  输出的目录
+     *                                           exportType    String  |  非必输   |  导出的类型
+     *                                                         0-全部；1-文单；2-正文(含花脸)
+     *                                                         不输入默认导出全部
+     *                                           </pre>
      *               <pre>
-     *                             @return Map<String, String>
-     *                             			<pre>
-     *                             				success: false 失败，true 成功
-     *                             				msg:结果描述
-     *                             			</pre>
+     *                                           @return Map<String, String>
+     *                                           			<pre>
+     *                                           				success: false 失败，true 成功
+     *                                           				msg:结果描述
+     *                                           			</pre>
      * @throws BusinessException
      */
     @POST
