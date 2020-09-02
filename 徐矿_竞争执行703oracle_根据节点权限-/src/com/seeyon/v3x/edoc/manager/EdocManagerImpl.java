@@ -4478,6 +4478,8 @@ public class EdocManagerImpl implements EdocManager {
             return false;
         }
 
+
+
         Long _workitemId = affair.getSubObjectId();
         Long caseId = summary.getCaseId();
 
@@ -4601,6 +4603,7 @@ public class EdocManagerImpl implements EdocManager {
             }
             _result = 0;
         }
+
         if (_result == 0) {//退回到普通节点
             try {
                 List<CtpAffair> trackingAffairLists = affairManager.getValidTrackAffairs(summaryId);
@@ -4641,10 +4644,27 @@ public class EdocManagerImpl implements EdocManager {
             //触发回退事件
             EdocStepBackEvent event = new EdocStepBackEvent(this, affair);
             EventDispatcher.fireEvent(event);
+
+            //      回退记录  zhou start
+            Map<String, Object> map6 = new HashMap<>();
+            map6.put("activityId", affair.getActivityId());
+            map6.put("objectId", affair.getObjectId());
+            List<CtpAffair> list6 = affairManager.findState6(map6);
+            XkjtTemp temp = null;
+            if(list6.size()>0){
+                for (CtpAffair a : list6) {
+                    temp = new XkjtTemp();
+                    temp.setId(Long.toString(a.getId()));
+                    temp.setSummaryId(Long.toString(a.getObjectId()));
+                    tempManager.saveXkjtTemp(temp);
+                }
+            }
+            //      回退记录  zhou end
             return true;
         } else {
             return false;
         }
+
     }
 
     private Map<String, Object> createRepealData2BeginNode(EdocSummary summary, CtpAffair affair, List<CtpAffair> allAvailabilityAffairList, String traceFlag) throws BusinessException {
