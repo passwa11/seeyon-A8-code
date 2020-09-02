@@ -80,7 +80,7 @@ public class AffairDaoImpl extends BaseHibernateDao<CtpAffair> implements Affair
 
     @Override
     public List<CtpAffair> findByCondition(Map<String, Object> map) {
-        return DBAgent.find("from CtpAffair where state<>6 and  activityId=:activityId and objectId=:objectId ", map);
+        return DBAgent.find("from CtpAffair where state not in(6,8) and  activityId=:activityId and objectId=:objectId ", map);
     }
 
     @Override
