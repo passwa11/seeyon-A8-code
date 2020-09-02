@@ -12925,7 +12925,6 @@ public class EdocController extends BaseController {
                     if (nquanxian.indexOf("批示") != -1) {
 
                         List<CtpAffair> plist = new ArrayList<CtpAffair>();
-                        List<CtpAffair> clist = new ArrayList<CtpAffair>();
                         try {
                             String hql = "from CtpAffair where state=4 and  nodePolicy = :nodePolicy and objectId = :objectId ";
                             Map<String, Object> map = new HashMap<String, Object>();
@@ -12939,14 +12938,13 @@ public class EdocController extends BaseController {
                         if (plist.size() > 0) {
                             for (CtpAffair ctpAffair : plist) {
 //                                zhou:根据取回数据的affairid
-                                String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
+                                String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.id=:id";
                                 if (affair.getId().longValue() == ctpAffair.getId().longValue()) {
                                     Map<String, Object> params = new HashMap<>();
                                     params.put("state", 3);
                                     params.put("subState", 6);
-                                    params.put("activityId", affair.getActivityId().longValue());
                                     params.put("completeTime", new Date());
-                                    params.put("objectId", affair.getObjectId().longValue());
+                                    params.put("id", ctpAffair.getId().longValue());
                                     try {
                                         affairManager.update(hql, params);
                                     } catch (BusinessException e) {

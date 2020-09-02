@@ -1188,14 +1188,13 @@ public class EdocResource extends BaseResource {
                             if (plist.size() > 0) {
                                 for (CtpAffair ctpAffair : plist) {
 //                                zhou:根据取回数据的affairid
-                                    String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
+                                    String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.id=:id ";
                                     if (affair.getId().longValue() == ctpAffair.getId().longValue()) {
                                         Map<String, Object> p = new HashMap<>();
                                         p.put("state", 3);
                                         p.put("subState", 6);
-                                        p.put("activityId", affair.getActivityId().longValue());
                                         p.put("completeTime", new Date());
-                                        p.put("objectId", affair.getObjectId().longValue());
+                                        p.put("id", ctpAffair.getId().longValue());
                                         try {
                                             affairManager.update(hql, p);
                                         } catch (BusinessException e) {
