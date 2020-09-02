@@ -63,16 +63,20 @@ public class GongwenTijiaoListener {
                         if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
                             if (stringList.size() > 0) {
                                 if (!stringList.contains(Long.toString(ctpAffair.getId()))) {
+                                    if(ctpAffair.getState()!=8){
+                                        phql.put("state", 4);
+                                        phql.put("subState", 0);
+                                        phql.put("id", ctpAffair.getId());
+                                        affairManager.update(hql, phql);
+                                    }
+                                }
+                            } else {
+                                if(ctpAffair.getState()!=8) {
                                     phql.put("state", 4);
                                     phql.put("subState", 0);
                                     phql.put("id", ctpAffair.getId());
                                     affairManager.update(hql, phql);
                                 }
-                            } else {
-                                phql.put("state", 4);
-                                phql.put("subState", 0);
-                                phql.put("id", ctpAffair.getId());
-                                affairManager.update(hql, phql);
                             }
                         }
                     }
