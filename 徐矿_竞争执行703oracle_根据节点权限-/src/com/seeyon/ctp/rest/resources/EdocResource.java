@@ -1177,9 +1177,10 @@ public class EdocResource extends BaseResource {
 
                             List<CtpAffair> plist = new ArrayList<CtpAffair>();
                             try {
-                                String hql = "from CtpAffair where state=4 and  nodePolicy = :nodePolicy and objectId = :objectId ";
+                                String hql = "from CtpAffair where state=4 and activityId=:activityId and   nodePolicy = :nodePolicy and objectId = :objectId ";
                                 Map<String, Object> map = new HashMap<String, Object>();
                                 map.put("nodePolicy", pquanxian);
+                                map.put("activityId", affair.getActivityId().longValue());
                                 map.put("objectId", affair.getObjectId().longValue());
 
                                 plist = affairManager.getAffairsByNodePolicyAndState(hql, map);
