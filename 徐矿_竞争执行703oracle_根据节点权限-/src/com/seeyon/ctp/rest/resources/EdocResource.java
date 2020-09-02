@@ -629,19 +629,19 @@ public class EdocResource extends BaseResource {
         }
 
         //获取回退state=6的数据   zhou start
-        Map<String, Object> map6 = new HashMap<>();
-        map6.put("activityId", affair.getActivityId());
-        map6.put("objectId", affair.getObjectId());
-        List<CtpAffair> list6 = affairManager.findState6(map6);
-        XkjtTemp temp = null;
-        if (list6.size() > 0) {
-            for (CtpAffair a : list6) {
-                temp = new XkjtTemp();
-                temp.setId(Long.toString(a.getId()));
-                temp.setSummaryId(Long.toString(a.getObjectId()));
-                tempManager.saveXkjtTemp(temp);
-            }
-        }
+//        Map<String, Object> map6 = new HashMap<>();
+//        map6.put("activityId", affair.getActivityId());
+//        map6.put("objectId", affair.getObjectId());
+//        List<CtpAffair> list6 = affairManager.findState6(map6);
+//        XkjtTemp temp = null;
+//        if (list6.size() > 0) {
+//            for (CtpAffair a : list6) {
+//                temp = new XkjtTemp();
+//                temp.setId(Long.toString(a.getId()));
+//                temp.setSummaryId(Long.toString(a.getObjectId()));
+//                tempManager.saveXkjtTemp(temp);
+//            }
+//        }
 //     获取回退state=6的数据   zhou end
 
         String opinionContent = ParamUtil.getString(param, "opinionContent");
