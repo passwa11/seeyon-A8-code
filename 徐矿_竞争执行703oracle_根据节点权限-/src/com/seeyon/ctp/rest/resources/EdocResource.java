@@ -1175,10 +1175,13 @@ public class EdocResource extends BaseResource {
                         if (nquanxian.indexOf("批示") != -1) {
 
                             List<CtpAffair> plist = new ArrayList<CtpAffair>();
-                            List<CtpAffair> clist = new ArrayList<CtpAffair>();
                             try {
-                                plist = affairManager.getAffairsByNodePolicy(pquanxian, affair.getObjectId().longValue());
-                                clist = affairManager.getAffairsByNodePolicy(nquanxian, affair.getObjectId().longValue());
+                                String hql = "from CtpAffair where state=4 and  nodePolicy = :nodePolicy and objectId = :objectId ";
+                                Map<String, Object> map = new HashMap<String, Object>();
+                                map.put("nodePolicy", pquanxian);
+                                map.put("objectId", affair.getObjectId().longValue());
+
+                                plist = affairManager.getAffairsByNodePolicyAndState(hql, map);
                             } catch (BusinessException e1) {
                                 e1.printStackTrace();
                             }

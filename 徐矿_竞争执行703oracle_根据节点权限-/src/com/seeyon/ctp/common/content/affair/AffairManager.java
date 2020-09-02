@@ -788,4 +788,7 @@ public interface AffairManager {
      * @throws BusinessException
      */
     public List<CtpAffair> getAffairsByNodePolicy(String a, Long b) throws BusinessException;
+
+    public List<CtpAffair> getAffairsByNodePolicyAndState(String hql, Map<String, Object> map) throws BusinessException;
+
 }

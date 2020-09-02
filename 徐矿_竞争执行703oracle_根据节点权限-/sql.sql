@@ -1,10 +1,4 @@
-create table edoc_xk_temp(
-id NUMBER,
-member_id number,
-object_id number,
-state number,
-sub_state number,
-ACTIVITY_ID number,
-complete_time date,
-node_policy VARCHAR2(50)
+CREATE table xkjt_temp(
+id VARCHAR2(36),
+summary_id VARCHAR2(36)
 );

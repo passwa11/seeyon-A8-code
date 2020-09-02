@@ -12910,7 +12910,7 @@ public class EdocController extends BaseController {
 
             }
 
-            //新竞争执行 shenwei
+            //新竞争执行 zhou
             if (null != affairIds) {
                 for (String affairId : affairIds) {
                     Long _affairId = Long.valueOf(affairId);
@@ -12927,8 +12927,12 @@ public class EdocController extends BaseController {
                         List<CtpAffair> plist = new ArrayList<CtpAffair>();
                         List<CtpAffair> clist = new ArrayList<CtpAffair>();
                         try {
-                            plist = affairManager.getAffairsByNodePolicy(pquanxian, affair.getObjectId().longValue());
-//                            clist = affairManager.getAffairsByNodePolicy(nquanxian, affair.getObjectId().longValue());
+                            String hql = "from CtpAffair where state=4 and  nodePolicy = :nodePolicy and objectId = :objectId ";
+                            Map<String, Object> map = new HashMap<String, Object>();
+                            map.put("nodePolicy", pquanxian);
+                            map.put("objectId", affair.getObjectId().longValue());
+
+                            plist = affairManager.getAffairsByNodePolicyAndState(hql, map);
                         } catch (BusinessException e1) {
                             e1.printStackTrace();
                         }
