@@ -9856,7 +9856,7 @@ public class EdocManagerImpl implements EdocManager {
             addPdfBodyToCurrentSummary(summary);
 
             /************处理后修改当前待办人**************/
-//开始：写在这个位置的原因是：当取回后再去转送，显示的当前代办人是查询ctp_affair state=3的数据。zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
+//开始：zhou写在这个位置的原因是：当取回后再去转送，显示的当前代办人是查询ctp_affair state=3的数据。zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
             Map<String, Object> pMap = new HashMap<>();
             pMap.put("activityId", affair.getActivityId().longValue());
             pMap.put("objectId", affair.getObjectId().longValue());
