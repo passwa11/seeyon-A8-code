@@ -10,5 +10,6 @@
             <generator class="assigned"/>
         </id>
         <property name="summaryId" type="string" column="summary_id"></property>
+        <property name="flag" type="string" column="flag"></property>
     </class>
 </hibernate-mapping>

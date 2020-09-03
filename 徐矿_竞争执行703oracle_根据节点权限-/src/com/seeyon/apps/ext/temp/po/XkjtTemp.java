@@ -6,6 +6,15 @@ public class XkjtTemp implements Serializable {
 
     private String id;
     private String summaryId;
+    private String flag;
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
 
     public String getId() {
         return id;
@@ -29,5 +38,11 @@ public class XkjtTemp implements Serializable {
     public XkjtTemp(String id, String summaryId) {
         this.id = id;
         this.summaryId = summaryId;
+    }
+
+    public XkjtTemp(String id, String summaryId, String flag) {
+        this.id = id;
+        this.summaryId = summaryId;
+        this.flag = flag;
     }
 }

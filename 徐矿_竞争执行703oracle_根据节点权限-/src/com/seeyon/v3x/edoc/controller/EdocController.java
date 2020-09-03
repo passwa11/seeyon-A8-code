@@ -12961,7 +12961,6 @@ public class EdocController extends BaseController {
                                 }
                             }
                         }
-
                         //                    在这里记录被取回的数据的ctpaffair的id startd
                         Map<String, Object> map6 = new HashMap<>();
                         map6.put("activityId", affair.getActivityId());
