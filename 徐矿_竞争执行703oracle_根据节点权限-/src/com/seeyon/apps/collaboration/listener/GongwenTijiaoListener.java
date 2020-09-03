@@ -53,25 +53,35 @@ public class GongwenTijiaoListener {
                     tp.put("summaryId", Long.toString(list.get(0).getObjectId().longValue()));
                     List<XkjtTemp> temps = tempManager.findXkjtTemp(tp);
                     List<String> stringList = new ArrayList<>();
+                    List<String> backList = new ArrayList<>();//取回的数据的集合
                     if (temps.size() > 0) {
                         for (XkjtTemp t : temps) {
-                            stringList.add(t.getId());
+                            if (null != t.getFlag() && !"".equals(t.getFlag())) {
+                                backList.add(t.getId());
+                            } else {
+                                stringList.add(t.getId());
+                            }
                         }
                     }
+
                     for (CtpAffair ctpAffair : plist) {
                         phql = new HashMap<>();
                         if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
                             if (stringList.size() > 0) {
                                 if (!stringList.contains(Long.toString(ctpAffair.getId()))) {
-                                    if(ctpAffair.getState()!=8){
-                                        phql.put("state", 4);
-                                        phql.put("subState", 0);
-                                        phql.put("id", ctpAffair.getId());
-                                        affairManager.update(hql, phql);
-                                    }
+                                    phql.put("state", 4);
+                                    phql.put("subState", 0);
+                                    phql.put("id", ctpAffair.getId());
+                                    affairManager.update(hql, phql);
                                 }
                             } else {
-                                if(ctpAffair.getState()!=8) {
+                                if(backList.contains(Long.toString(ctpAffair.getId()))){
+                                    phql.put("state", 4);
+                                    phql.put("subState", 0);
+                                    phql.put("id", ctpAffair.getId());
+                                    affairManager.update(hql, phql);
+                                    continue;
+                                }else {
                                     phql.put("state", 4);
                                     phql.put("subState", 0);
                                     phql.put("id", ctpAffair.getId());
