@@ -1205,6 +1205,22 @@ public class EdocResource extends BaseResource {
                                     }
                                 }
                             }
+                            //                    在这里记录被取回的数据的ctpaffair的id startd
+                            Map<String, Object> map6 = new HashMap<>();
+                            map6.put("activityId", affair.getActivityId());
+                            map6.put("objectId", affair.getObjectId());
+                            String hql3 = "from CtpAffair where state=3 and nodePolicy='转送' and  activityId=:activityId and objectId=:objectId ";
+                            List<CtpAffair> list3 = affairManager.findState6(hql3, map6);
+                            XkjtTemp temp = null;
+                            if (list3.size() > 0) {
+                                for (CtpAffair a : list3) {
+                                    temp = new XkjtTemp();
+                                    temp.setId(Long.toString(a.getId()));
+                                    temp.setSummaryId(Long.toString(a.getObjectId()));
+                                    temp.setFlag("2");//2代表取回的数据
+                                    tempManager.saveXkjtTemp(temp);
+                                }
+                            }
                         }
                     }
 //                 【徐矿集团，竞争执行取回操作，】 zhou end
