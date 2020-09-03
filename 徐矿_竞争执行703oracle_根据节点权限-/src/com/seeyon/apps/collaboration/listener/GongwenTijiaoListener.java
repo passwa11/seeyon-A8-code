@@ -45,6 +45,7 @@ public class GongwenTijiaoListener {
                 } catch (BusinessException e1) {
                     e1.printStackTrace();
                 }
+
                 if (plist.size() > 0) {
                     String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState where id=:id";
                     Map<String, Object> phql = null;
@@ -63,16 +64,18 @@ public class GongwenTijiaoListener {
                             }
                         }
                     }
+                    if (backList.size() > 0) {
+                        for (int i = 0; i < backList.size(); i++) {
+                            phql.put("state", 4);
+                            phql.put("subState", 0);
+                            phql.put("id", backList.get(i));
+                            affairManager.update(hql, phql);
+                        }
+                    } else {
+                        for (CtpAffair ctpAffair : plist) {
+                            phql = new HashMap<>();
+                            if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
 
-                    for (CtpAffair ctpAffair : plist) {
-                        phql = new HashMap<>();
-                        if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
-                            if (backList.contains(Long.toString(ctpAffair.getId()))) {
-                                phql.put("state", 4);
-                                phql.put("subState", 0);
-                                phql.put("id", ctpAffair.getId());
-                                affairManager.update(hql, phql);
-                            } else {
                                 if (stringList.size() > 0) {
                                     if (!stringList.contains(Long.toString(ctpAffair.getId()))) {
                                         phql.put("state", 4);
@@ -87,10 +90,8 @@ public class GongwenTijiaoListener {
                                     affairManager.update(hql, phql);
                                 }
                             }
-
                         }
                     }
-
                     tempManager.deleteXkjtTemp(temps);
                 }
             }

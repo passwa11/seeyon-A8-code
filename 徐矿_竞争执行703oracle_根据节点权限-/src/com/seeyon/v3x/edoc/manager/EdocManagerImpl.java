@@ -9857,7 +9857,63 @@ public class EdocManagerImpl implements EdocManager {
 
 
             /************处理后修改当前待办人**************/
+//开始：写在这个位置的原因是：当取回后再去转送，显示的当前代办人是查询ctp_affair state=3的数据。zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
+            Map<String, Object> pMap = new HashMap<>();
+            pMap.put("activityId", affair.getActivityId().longValue());
+            pMap.put("objectId", affair.getObjectId().longValue());
+            List<CtpAffair> affairList = affairManager.findBycondition(pMap);
+            String hqlz = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where id=:id";
+            Map<String, Object> tp = new HashMap<>();
+            tp.put("summaryId", Long.toString(affair.getObjectId().longValue()));
+            List<XkjtTemp> temps = tempManager.findXkjtTemp(tp);
+            List<String> stringList = new ArrayList<>();
+            List<String> backList = new ArrayList<>();//取回的数据的集合
+            if (temps.size() > 0) {
+                for (XkjtTemp t : temps) {
+                    if (null != t.getFlag() && !"".equals(t.getFlag())) {
+                        backList.add(t.getId());
+                    } else {
+                        stringList.add(t.getId());
+                    }
+                }
+            }
+            Map<String, Object> phql = null;
+            if (backList.size() > 0) {
+                for (int i = 0; i < backList.size(); i++) {
+                    phql.put("state", 4);
+                    phql.put("subState", 0);
+                    phql.put("completeTime", new java.util.Date());
+                    phql.put("id", backList.get(i));
+                    affairManager.update(hql, phql);
+                }
+            } else {
+                if (affairList.size() > 0) {
+                    for (CtpAffair af : affairList) {
+                        phql = new HashMap<>();
+                        if (stringList.size() > 0) {
+                            if (!stringList.contains(Long.toString(af.getId()))) {
+                                if (af.getState() != 8) {
+                                    phql.put("state", 4);
+                                    phql.put("subState", 0);
+                                    phql.put("completeTime", new java.util.Date());
+                                    phql.put("id", af.getId());
+                                    affairManager.update(hqlz, phql);
+                                }
+                            }
+                        } else {
+                            if (af.getState() != 8) {
+                                phql.put("state", 4);
+                                phql.put("subState", 0);
+                                phql.put("completeTime", new java.util.Date());
+                                phql.put("id", af.getId());
+                                affairManager.update(hqlz, phql);
+                            }
+                        }
+                    }
+                }
+            }
 
+            //结束： zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
             try {
                 EdocHelper.updateCurrentNodesInfo(summary, false);
             } catch (Exception e1) {
@@ -9906,48 +9962,7 @@ public class EdocManagerImpl implements EdocManager {
                 affairManager.updateAffair(affair);
             }
 
-            //开始：写在这个位置的原因是：当取回后再去转送，显示的当前代办人是查询ctp_affair state=3的数据。zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
-            Map<String, Object> pMap = new HashMap<>();
-            pMap.put("activityId", affair.getActivityId().longValue());
-            pMap.put("objectId", affair.getObjectId().longValue());
-            List<CtpAffair> affairList = affairManager.findBycondition(pMap);
-            String hqlz = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where id=:id";
-            Map<String, Object> tp = new HashMap<>();
-            tp.put("summaryId", Long.toString(affair.getObjectId().longValue()));
-            List<XkjtTemp> temps = tempManager.findXkjtTemp(tp);
-            List<String> stringList = new ArrayList<>();
-            if (temps.size() > 0) {
-                for (XkjtTemp t : temps) {
-                    stringList.add(t.getId());
-                }
-            }
 
-            if (affairList.size() > 0) {
-                Map<String, Object> phql = null;
-                for (CtpAffair af : affairList) {
-                    phql = new HashMap<>();
-                    if (stringList.size() > 0) {
-                        if (!stringList.contains(Long.toString(af.getId()))) {
-                            if (af.getState() != 8) {
-                                phql.put("state", 4);
-                                phql.put("subState", 0);
-                                phql.put("completeTime", new java.util.Date());
-                                phql.put("id", af.getId());
-                                affairManager.update(hqlz, phql);
-                            }
-                        }
-                    } else {
-                        if (af.getState() != 8) {
-                            phql.put("state", 4);
-                            phql.put("subState", 0);
-                            phql.put("completeTime", new java.util.Date());
-                            phql.put("id", af.getId());
-                            affairManager.update(hqlz, phql);
-                        }
-                    }
-                }
-            }
-            //结束： zhou_2020-08-05:多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
         }
 
 
