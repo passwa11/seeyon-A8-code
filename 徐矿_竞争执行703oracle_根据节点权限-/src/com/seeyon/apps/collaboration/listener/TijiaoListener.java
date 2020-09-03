@@ -1,10 +1,11 @@
 package com.seeyon.apps.collaboration.listener;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import com.seeyon.apps.collaboration.event.CollaborationAffairsAssignedEvent;
+import com.seeyon.apps.ext.temp.manager.XkjtTempManager;
+import com.seeyon.apps.ext.temp.manager.XkjtTempManagerImpl;
+import com.seeyon.apps.ext.temp.po.XkjtTemp;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.content.affair.AffairManager;
 import com.seeyon.ctp.common.exceptions.BusinessException;
@@ -23,7 +24,7 @@ public class TijiaoListener {
      * 2020年4月23日
      */
     @ListenEvent(event = CollaborationAffairsAssignedEvent.class, async = true)
-    public void doLog(CollaborationAffairsAssignedEvent event) {
+    public void doLog(CollaborationAffairsAssignedEvent event) throws BusinessException {
 
         System.out.println("进来了");
 
@@ -43,21 +44,49 @@ public class TijiaoListener {
                     try {
                         plist = affairManager.getAffairsByNodePolicy(pquanxian,list.get(0).getObjectId().longValue());
                     } catch (BusinessException e1) {
-                        // TODO Auto-generated catch block
                         e1.printStackTrace();
                     }
                     if (plist.size() > 0) {
-                        for (CtpAffair ctpAffair : plist) {
-                            if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
-                                if(ctpAffair.getState()!=6){
-                                    ctpAffair.setState(4);
-                                    ctpAffair.setSubState(0);
-//                                ctpAffair.setCompleteTime(new Date());
-                                    try {
-                                        affairManager.updateAffair(ctpAffair);
-                                    } catch (BusinessException e) {
-                                        // TODO Auto-generated catch block
-                                        e.printStackTrace();
+                        String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState where id=:id";
+                        Map<String, Object> phql = null;
+                        XkjtTempManager tempManager = new XkjtTempManagerImpl();
+                        Map<String, Object> tp = new HashMap<>();
+                        tp.put("summaryId", Long.toString(list.get(0).getObjectId().longValue()));
+                        List<XkjtTemp> temps = tempManager.findXkjtTemp(tp);
+                        List<String> stringList = new ArrayList<>();
+                        List<String> backList = new ArrayList<>();//取回的数据的集合
+                        if (temps.size() > 0) {
+                            for (XkjtTemp t : temps) {
+                                if (null != t.getFlag() && !"".equals(t.getFlag())) {
+                                    backList.add(t.getId());
+                                } else {
+                                    stringList.add(t.getId());
+                                }
+                            }
+                        }
+                        if (backList.size() > 0) {
+                            for (int j = 0; i < backList.size(); j++) {
+                                phql = new HashMap<>();
+                                phql.put("state", 4);
+                                phql.put("subState", 0);
+                                phql.put("id", Long.parseLong(backList.get(j)));
+                                affairManager.update(hql, phql);
+                            }
+                        } else {
+                            for (CtpAffair ctpAffair : plist) {
+                                if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
+                                    if (stringList.size() > 0) {
+                                        if (!stringList.contains(Long.toString(ctpAffair.getId()))) {
+                                            phql.put("state", 4);
+                                            phql.put("subState", 0);
+                                            phql.put("id", ctpAffair.getId());
+                                            affairManager.update(hql, phql);
+                                        }
+                                    } else {
+                                        phql.put("state", 4);
+                                        phql.put("subState", 0);
+                                        phql.put("id", ctpAffair.getId());
+                                        affairManager.update(hql, phql);
                                     }
                                 }
                             }
