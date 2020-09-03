@@ -6000,7 +6000,23 @@ public class ColManagerImpl implements ColManager {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("array", arr);
         map.put(WorkFlowEventListener.BUSINESS_DATA, context.getBusinessData());
+//      回退记录  zhou start
+        Map<String, Object> map6 = new HashMap<>();
+        map6.put("activityId", affair.getActivityId());
+        map6.put("objectId", affair.getObjectId());
+        String hql = "from CtpAffair where state=6 and nodePolicy='转送' and  activityId=:activityId and objectId=:objectId ";
 
+        List<CtpAffair> list6 = affairManager.findState6(hql, map6);
+        XkjtTemp temp = null;
+        if (list6.size() > 0) {
+            for (CtpAffair a : list6) {
+                temp = new XkjtTemp();
+                temp.setId(Long.toString(a.getId()));
+                temp.setSummaryId(Long.toString(a.getObjectId()));
+                tempManager.saveXkjtTemp(temp);
+            }
+        }
+        //      回退记录  zhou end
         return map;
     }
 
