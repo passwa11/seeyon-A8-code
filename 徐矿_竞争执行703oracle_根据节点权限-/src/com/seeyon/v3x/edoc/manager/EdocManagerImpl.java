@@ -9883,8 +9883,12 @@ public class EdocManagerImpl implements EdocManager {
                     phql.put("state", 4);
                     phql.put("subState", 0);
                     phql.put("completeTime", new java.util.Date());
-                    phql.put("id", backList.get(i));
-                    affairManager.update(hqlz, phql);
+                    phql.put("id", Long.parseLong(backList.get(i)));
+                    try {
+                        affairManager.update(hqlz, phql);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                 }
             } else {
                 if (affairList.size() > 0) {

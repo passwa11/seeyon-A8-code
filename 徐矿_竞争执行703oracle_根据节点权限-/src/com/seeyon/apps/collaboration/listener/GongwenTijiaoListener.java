@@ -68,7 +68,7 @@ public class GongwenTijiaoListener {
                             phql = new HashMap<>();
                             phql.put("state", 4);
                             phql.put("subState", 0);
-                            phql.put("id", backList.get(i));
+                            phql.put("id", Long.parseLong(backList.get(i)));
                             affairManager.update(hql, phql);
                         }
                     } else {
