@@ -12973,6 +12973,7 @@ public class EdocController extends BaseController {
                                 temp = new XkjtTemp();
                                 temp.setId(Long.toString(a.getId()));
                                 temp.setSummaryId(Long.toString(a.getObjectId()));
+                                temp.setFlag("2");//2代表取回的数据
                                 tempManager.saveXkjtTemp(temp);
                             }
                         }
