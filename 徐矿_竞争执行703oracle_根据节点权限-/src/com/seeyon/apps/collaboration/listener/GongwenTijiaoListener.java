@@ -67,27 +67,27 @@ public class GongwenTijiaoListener {
                     for (CtpAffair ctpAffair : plist) {
                         phql = new HashMap<>();
                         if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
-                            if (stringList.size() > 0) {
-                                if (!stringList.contains(Long.toString(ctpAffair.getId()))) {
-                                    phql.put("state", 4);
-                                    phql.put("subState", 0);
-                                    phql.put("id", ctpAffair.getId());
-                                    affairManager.update(hql, phql);
-                                }
+                            if (backList.contains(Long.toString(ctpAffair.getId()))) {
+                                phql.put("state", 4);
+                                phql.put("subState", 0);
+                                phql.put("id", ctpAffair.getId());
+                                affairManager.update(hql, phql);
                             } else {
-                                if(backList.contains(Long.toString(ctpAffair.getId()))){
-                                    phql.put("state", 4);
-                                    phql.put("subState", 0);
-                                    phql.put("id", ctpAffair.getId());
-                                    affairManager.update(hql, phql);
-                                    continue;
-                                }else {
+                                if (stringList.size() > 0) {
+                                    if (!stringList.contains(Long.toString(ctpAffair.getId()))) {
+                                        phql.put("state", 4);
+                                        phql.put("subState", 0);
+                                        phql.put("id", ctpAffair.getId());
+                                        affairManager.update(hql, phql);
+                                    }
+                                } else {
                                     phql.put("state", 4);
                                     phql.put("subState", 0);
                                     phql.put("id", ctpAffair.getId());
                                     affairManager.update(hql, phql);
                                 }
                             }
+
                         }
                     }
 
