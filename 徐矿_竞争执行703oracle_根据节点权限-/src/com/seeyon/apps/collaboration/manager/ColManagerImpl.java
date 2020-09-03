@@ -21,6 +21,9 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.seeyon.apps.ext.temp.manager.XkjtTempManager;
+import com.seeyon.apps.ext.temp.manager.XkjtTempManagerImpl;
+import com.seeyon.apps.ext.temp.po.XkjtTemp;
 import com.seeyon.apps.xkjt.manager.XkjtManager;
 import com.seeyon.ctp.rest.util.CtpAffairUntil;
 
@@ -1875,10 +1878,26 @@ public class ColManagerImpl implements ColManager {
      * @throws BusinessException
      */
     @SuppressWarnings("unchecked")
+    private XkjtTempManager tempManager=new XkjtTempManagerImpl();
     private void transFinishAndZcdb(CtpAffair affair, ColSummary summary, Comment comment, ColHandleType handleType, Map<String, Object> params) throws BusinessException {
 
         User user = AppContext.getCurrentUser();
-
+//     获取回退state=6的数据   zhou start
+        Map<String, Object> map6 = new HashMap<>();
+        map6.put("activityId", affair.getActivityId());
+        map6.put("objectId", affair.getObjectId());
+        String hql = "from CtpAffair where state=6 and nodePolicy='请假转送' and  activityId=:activityId and objectId=:objectId ";
+        List<CtpAffair> list6 = affairManager.findState6(hql, map6);
+        XkjtTemp xktemp = null;
+        if (list6.size() > 0) {
+            for (CtpAffair a : list6) {
+                xktemp = new XkjtTemp();
+                xktemp.setId(Long.toString(a.getId()));
+                xktemp.setSummaryId(Long.toString(a.getObjectId()));
+                tempManager.saveXkjtTemp(xktemp);
+            }
+        }
+//     获取回退state=6的数据   zhou end
         //保存附件
         Map<String, String> colSummaryDomian = (Map<String, String>) ParamUtil.getJsonDomain("colSummaryData");
         String _flowPermAccountId = colSummaryDomian.get("flowPermAccountId");
@@ -2115,19 +2134,78 @@ public class ColManagerImpl implements ColManager {
 
 //      [徐矿竞争执行，更新处理时间问题。] zhou start
         //多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
-        String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
-        Map<String, Object> params2 = new HashMap<>();
-        params2.put("state", 4);
-        params2.put("subState", 0);
-        params2.put("completeTime", new Date());
-        params2.put("activityId", affair.getActivityId().longValue());
-        params2.put("objectId", affair.getObjectId().longValue());
-        try {
-            affairManager.update(hql, params2);
-        } catch (BusinessException e) {
-            e.printStackTrace();
-            System.out.println("取回时修改状态值的hql语句出错了：" + e.getMessage());
+        Map<String, Object> pMap = new HashMap<>();
+        pMap.put("activityId", affair.getActivityId().longValue());
+        pMap.put("objectId", affair.getObjectId().longValue());
+        List<CtpAffair> affairList = affairManager.findBycondition(pMap);
+        String hqlz = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where id=:id";
+        Map<String, Object> tp = new HashMap<>();
+        tp.put("summaryId", Long.toString(affair.getObjectId().longValue()));
+        List<XkjtTemp> temps = tempManager.findXkjtTemp(tp);
+        List<String> stringList = new ArrayList<>();
+        List<String> backList = new ArrayList<>();//取回的数据的集合
+        if (temps.size() > 0) {
+            for (XkjtTemp tx : temps) {
+                if (null != tx.getFlag() && !"".equals(tx.getFlag())) {
+                    backList.add(tx.getId());
+                } else {
+                    stringList.add(tx.getId());
+                }
+            }
         }
+        Map<String, Object> phql = null;
+        if (backList.size() > 0) {
+            for (int i = 0; i < backList.size(); i++) {
+                phql=new HashMap<>();
+                phql.put("state", 4);
+                phql.put("subState", 0);
+                phql.put("completeTime", new java.util.Date());
+                phql.put("id", Long.parseLong(backList.get(i)));
+                try {
+                    affairManager.update(hqlz, phql);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            if (affairList.size() > 0) {
+                for (CtpAffair af : affairList) {
+                    phql = new HashMap<>();
+                    if (stringList.size() > 0) {
+                        if (!stringList.contains(Long.toString(af.getId()))) {
+                            if (af.getState() != 8) {
+                                phql.put("state", 4);
+                                phql.put("subState", 0);
+                                phql.put("completeTime", new java.util.Date());
+                                phql.put("id", af.getId());
+                                affairManager.update(hqlz, phql);
+                            }
+                        }
+                    } else {
+                        if (af.getState() != 8) {
+                            phql.put("state", 4);
+                            phql.put("subState", 0);
+                            phql.put("completeTime", new java.util.Date());
+                            phql.put("id", af.getId());
+                            affairManager.update(hqlz, phql);
+                        }
+                    }
+                }
+            }
+        }
+//        String hql2 = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
+//        Map<String, Object> params2 = new HashMap<>();
+//        params2.put("state", 4);
+//        params2.put("subState", 0);
+//        params2.put("completeTime", new Date());
+//        params2.put("activityId", affair.getActivityId().longValue());
+//        params2.put("objectId", affair.getObjectId().longValue());
+//        try {
+//            affairManager.update(hql2, params2);
+//        } catch (BusinessException e) {
+//            e.printStackTrace();
+//            System.out.println("取回时修改状态值的hql语句出错了：" + e.getMessage());
+//        }
 //      多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
 //      [徐矿竞争执行，更新处理时间问题。] zhou end
     }
@@ -3247,10 +3325,14 @@ public class ColManagerImpl implements ColManager {
         if (nquanxian.equals("请假集团领导")) {
 
             List<CtpAffair> plist = new ArrayList<CtpAffair>();
-            List<CtpAffair> clist = new ArrayList<CtpAffair>();
             try {
-                plist = affairManager.getAffairsByNodePolicy(pquanxian,affair.getObjectId().longValue());
-                clist = affairManager.getAffairsByNodePolicy(nquanxian,affair.getObjectId().longValue());
+                String hql = "from CtpAffair where state=4 and activityId=:activityId and   nodePolicy = :nodePolicy and objectId = :objectId ";
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put("nodePolicy", pquanxian);
+                map.put("activityId", affair.getActivityId().longValue());
+                map.put("objectId", affair.getObjectId().longValue());
+
+                plist = affairManager.getAffairsByNodePolicyAndState(hql, map);
             } catch (BusinessException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
@@ -3259,50 +3341,38 @@ public class ColManagerImpl implements ColManager {
             if (plist.size() > 0) {
                 for (CtpAffair ctpAffair : plist) {
 //                    zhou:修改
-                    String hql="update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
-                    if (affair.getId().longValue() == ctpAffair.getId().longValue()) {
-                        Map<String,Object> params=new HashMap<>();
-                        params.put("state",3);
-                        params.put("subState",6);
-                        params.put("activityId",affair.getActivityId().longValue());
-                        params.put("completeTime",new Date());
-                        params.put("objectId",affair.getObjectId().longValue());
-                        try {
-                            affairManager.update(hql,params);
-                        } catch (BusinessException e) {
-                            e.printStackTrace();
-                            System.out.println("取回时修改状态值的hql语句出错了："+e.getMessage());
-                        }
-                    }
-//                    if (affair.getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
-//                        ctpAffair.setState(3);
-//                        ctpAffair.setSubState(6);
-//                        ctpAffair.setUpdateDate(date);
-//                        try {
-//                            affairManager.updateAffair(ctpAffair);
-//                        } catch (BusinessException e) {
-//                            // TODO Auto-generated catch block
-//                            e.printStackTrace();
-//                        }
-//                    }
-                }
-
-                if (clist.size() > 0) {
-                    for (CtpAffair cctpAffair : clist) {
-                        if (affair.getObjectId().longValue() == cctpAffair.getObjectId().longValue()) {
-                            cctpAffair.setState(7);
-                            cctpAffair.setSubState(0);
-                            cctpAffair.setUpdateDate(date);
-                            try {
-                                affairManager.updateAffair(cctpAffair);
-                            } catch (BusinessException e) {
-                                // TODO Auto-generated catch block
-                                e.printStackTrace();
-                            }
-                        }
+                    String hql = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.id=:id";
+                    Map<String, Object> params = new HashMap<>();
+                    params.put("state", 3);
+                    params.put("subState", 6);
+                    params.put("completeTime", new Date());
+                    params.put("id", ctpAffair.getId().longValue());
+                    try {
+                        affairManager.update(hql, params);
+                    } catch (BusinessException e) {
+                        e.printStackTrace();
+                        System.out.println("取回时修改状态值的hql语句出错了：" + e.getMessage());
                     }
                 }
+//                    在这里记录被取回的数据的ctpaffair的id startd
+                Map<String, Object> map6 = new HashMap<>();
+                map6.put("activityId", affair.getActivityId());
+                map6.put("objectId", affair.getObjectId());
+                String hql3 = "from CtpAffair where state=3 and nodePolicy='请假转送' and  activityId=:activityId and objectId=:objectId ";
+                List<CtpAffair> list3 = affairManager.findState6(hql3, map6);
+                XkjtTemp temp = null;
+                if (list3.size() > 0) {
+                    for (CtpAffair a : list3) {
+                        temp = new XkjtTemp();
+                        temp.setId(Long.toString(a.getId()));
+                        temp.setSummaryId(Long.toString(a.getObjectId()));
+                        temp.setFlag("2");//2代表取回的数据
+                        tempManager.saveXkjtTemp(temp);
+                    }
+                }
+//                    在这里记录被取回的数据的ctpaffair的id end
             }
+
         }
         return msg;
     }
