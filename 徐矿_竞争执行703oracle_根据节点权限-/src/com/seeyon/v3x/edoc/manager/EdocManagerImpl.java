@@ -9879,6 +9879,7 @@ public class EdocManagerImpl implements EdocManager {
             Map<String, Object> phql = null;
             if (backList.size() > 0) {
                 for (int i = 0; i < backList.size(); i++) {
+                    phql=new HashMap<>();
                     phql.put("state", 4);
                     phql.put("subState", 0);
                     phql.put("completeTime", new java.util.Date());
