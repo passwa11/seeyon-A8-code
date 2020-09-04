@@ -31,7 +31,7 @@ public class TijiaoListener {
             for (int i = 0; i < list.size(); i++) {
                 String nowquanxian = list.get(i).getNodePolicy();
                 String pquanxian = "";
-                Date updateTime=list.get(i).getUpdateDate();
+                Date updateTime = list.get(i).getUpdateDate();
                 if (nowquanxian.equals("请假集团领导")) {
                     pquanxian = "请假转送";
                 }
@@ -40,7 +40,7 @@ public class TijiaoListener {
                     AffairManager affairManager = (AffairManager) AppContext.getBean("affairManager");
                     List<CtpAffair> plist = new ArrayList<CtpAffair>();
                     try {
-                        plist = affairManager.getAffairsByNodePolicy(pquanxian,list.get(0).getObjectId().longValue());
+                        plist = affairManager.getAffairsByNodePolicy(pquanxian, list.get(0).getObjectId().longValue());
                     } catch (BusinessException e1) {
                         e1.printStackTrace();
                     }
@@ -71,17 +71,17 @@ public class TijiaoListener {
                                 affairManager.update(hql, phql);
                             }
                         } else {
-                            for (CtpAffair ctpAffair : plist) {
-                                if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
-                                    phql = new HashMap<>();
-                                    if (stringList.size() > 0) {
-                                        if (!stringList.contains(Long.toString(ctpAffair.getId()))) {
-                                            phql.put("state", 4);
-                                            phql.put("subState", 0);
-                                            phql.put("id", ctpAffair.getId());
-                                            affairManager.update(hql, phql);
-                                        }
-                                    } else {
+                            if (stringList.size() > 0) {
+                                for (int k = 0; k < stringList.size(); k++) {
+                                    phql.put("state", 4);
+                                    phql.put("subState", 0);
+                                    phql.put("id", Long.parseLong(stringList.get(k)));
+                                    affairManager.update(hql, phql);
+                                }
+                            } else {
+                                for (CtpAffair ctpAffair : plist) {
+                                    if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
+                                        phql = new HashMap<>();
                                         phql.put("state", 4);
                                         phql.put("subState", 0);
                                         phql.put("id", ctpAffair.getId());
@@ -89,9 +89,9 @@ public class TijiaoListener {
                                     }
                                 }
                             }
+
                         }
                         tempManager.deleteXkjtTemp(temps);
-
                     }
                 }
             }
