@@ -73,6 +73,7 @@ public class TijiaoListener {
                         } else {
                             if (stringList.size() > 0) {
                                 for (int k = 0; k < stringList.size(); k++) {
+                                    phql = new HashMap<>();
                                     phql.put("state", 4);
                                     phql.put("subState", 0);
                                     phql.put("id", Long.parseLong(stringList.get(k)));
