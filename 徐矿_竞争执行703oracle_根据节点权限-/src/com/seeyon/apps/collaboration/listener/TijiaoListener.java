@@ -26,8 +26,6 @@ public class TijiaoListener {
     @ListenEvent(event = CollaborationAffairsAssignedEvent.class, async = true)
     public void doLog(CollaborationAffairsAssignedEvent event) throws BusinessException {
 
-        System.out.println("进来了");
-
         List<CtpAffair> list = event.getAffairs();
         if (list.size() > 0) {
             for (int i = 0; i < list.size(); i++) {
@@ -75,6 +73,7 @@ public class TijiaoListener {
                         } else {
                             for (CtpAffair ctpAffair : plist) {
                                 if (list.get(0).getObjectId().longValue() == ctpAffair.getObjectId().longValue()) {
+                                    phql = new HashMap<>();
                                     if (stringList.size() > 0) {
                                         if (!stringList.contains(Long.toString(ctpAffair.getId()))) {
                                             phql.put("state", 4);
