@@ -90,12 +90,114 @@ public class SyncOrgData {
                     "AND E .has_archive = 1) c  " +
                     ") A WHERE A .has_archive = 1 ) ss where exists (SELECT * FROM TEMP_NUMBER10 t where 1=1 and SS.EDOCSUMMARYID=t.ID)";
             executeJdbc(connection, "4", sql10, spath);
+
+            restartWriteHtml(connection, spath);
         } catch (Exception e) {
             logger.info("同步公文出错了：" + e.getMessage());
             e.printStackTrace();
         } finally {
             try {
                 connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void restartWriteHtml(Connection connection, String classpath) {
+        String sql = "select id,edocSummaryId,subject,YEAR,MONTH,DAY from (SELECT A . affairId AS ID,A.edocSummaryId,A .subject AS subject,  " +
+                "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),0,4) YEAR,  " +
+                "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),6,2) MONTH,  " +
+                "SUBSTR (TO_CHAR (A .create_time, 'yyyy-mm-dd'),9,2) DAY FROM (  " +
+                "select * from (SELECT c.ID affairId,E.ID edocSummaryId,E.SUBJECT,E.create_time,E .has_archive FROM CTP_AFFAIR c,  " +
+                "(select s.* from (select * from EDOC_SUMMARY where has_archive=1) s  " +
+                ") E WHERE c.OBJECT_ID = E . ID AND c.ARCHIVE_ID IS NOT NULL   " +
+                "AND E .has_archive = 1) c ) A WHERE A .has_archive = 1 ) ss";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            String[] htmlContent = null;
+            String sPath = "";
+            LocalDate localDate = LocalDate.now();
+            String syear = Integer.toString(localDate.getYear());
+            String p = classpath.substring(0, classpath.indexOf(syear));
+//            linux
+            Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
+            perms.add(PosixFilePermission.OWNER_READ);//设置所有者的读取权限
+            perms.add(PosixFilePermission.OWNER_WRITE);//设置所有者的写权限
+            perms.add(PosixFilePermission.OWNER_EXECUTE);//设置所有者的执行权限
+            perms.add(PosixFilePermission.GROUP_READ);//设置组的读取权限
+            perms.add(PosixFilePermission.GROUP_EXECUTE);//设置组的读取权限
+            perms.add(PosixFilePermission.OTHERS_READ);//设置其他的读取权限
+            perms.add(PosixFilePermission.OTHERS_EXECUTE);//设置其他的读取权限
+
+            String opinionSql = "select case attribute when 2 then '【'||'同意'||'】' when  3 then '【'||'不同意'||'】' else '' end attribute,policy,department_name,create_time,content,(select name from org_member where id= s.create_user_id) create_user_id from (select * from edoc_opinion where edoc_id=?) s";
+            ResultSet opinionSet = null;
+            PreparedStatement opinionPs = null;
+
+            DocumentFactory df = new DocumentFactoryImpl();
+            while (rs.next()) {
+                opinionPs = connection.prepareStatement(opinionSql);
+                opinionPs.setString(1, rs.getString("edocSummaryId"));
+                opinionSet = opinionPs.executeQuery();
+                String opinion = getJsString(opinionSet);
+
+                htmlContent = df.exportOfflineEdocModel(Long.parseLong(rs.getString("id")));
+
+                sPath = p + rs.getString("year") + File.separator + rs.getString("month") + File.separator + rs.getString("day") + File.separator + rs.getString("edocSummaryId") + "";
+                File f = new File(sPath);
+                //linux设置文件和文件夹的权限
+                Path pathParent = Paths.get(f.getParentFile().getAbsolutePath());
+                Path pathDest = Paths.get(f.getAbsolutePath());
+                Files.setPosixFilePermissions(pathParent, perms);//修改文件夹路径的权限
+
+                File parentfile = f.getParentFile();
+//                设置此抽象路径名的所有者或每个人的写入权限
+                if (!parentfile.exists()) {
+                    parentfile.mkdirs();
+                }
+                parentfile.setWritable(true, false);
+
+                if (!f.exists()) {
+                    f.createNewFile();
+                }
+                f.setWritable(true, false);
+
+
+                //出错原因：下面这句话设置文件的权限必须在文件创建以后再修改权限，否则会报NoSuchFoundException
+                Files.setPosixFilePermissions(pathDest, perms);//修改图片文件的权限
+
+                FileOutputStream fos = null;
+                try {
+                    fos = new FileOutputStream(f);
+                    String msg = htmlContent[1] + " " + opinion;
+                    fos.write(msg.getBytes());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    logger.info("向文件中写入内容出错了:" + e.getMessage());
+                } finally {
+                    fos.close();
+                    if (null != opinionSet) {
+                        opinionSet.close();
+                    }
+                    if (null != opinionPs) {
+                        opinionPs.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (null != rs) {
+                    rs.close();
+                }
+                if (null != ps) {
+                    ps.close();
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
