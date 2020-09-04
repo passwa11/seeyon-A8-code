@@ -43,7 +43,7 @@ public class SyncOrgData {
 
     public static SyncOrgData syncOrgData;
 
-    private DocumentFactory df = new DocumentFactoryImpl();
+
     private TransformerFactory tFactory = TransformerFactory.newInstance();
     private EdocSummaryManagerImpl edocSummaryManager = (EdocSummaryManagerImpl) AppContext.getBean("edocSummaryManager");
 
@@ -143,6 +143,8 @@ public class SyncOrgData {
             String opinionSql = "select case attribute when 2 then '【'||'同意'||'】' when  3 then '【'||'不同意'||'】' else '' end attribute,policy,department_name,create_time,content,(select name from org_member where id= s.create_user_id) create_user_id from (select * from edoc_opinion where edoc_id=?) s";
             ResultSet opinionSet = null;
             PreparedStatement opinionPs = null;
+
+            DocumentFactory df = new DocumentFactoryImpl();
 
             while (rs.next()) {
                 opinionPs = connection.prepareStatement(opinionSql);
@@ -244,13 +246,13 @@ public class SyncOrgData {
             e.printStackTrace();
         } finally {
             try {
-                if (rs != null) {
+                if (null != rs) {
                     rs.close();
                 }
-                if (statement != null) {
+                if (null != statement) {
                     statement.close();
                 }
-                if (ps != null) {
+                if (null != ps) {
                     ps.close();
                 }
             } catch (SQLException e) {
@@ -301,13 +303,15 @@ public class SyncOrgData {
             e.printStackTrace();
         } finally {
             try {
-                if (resultSet != null) {
+                if (null != resultSet) {
                     resultSet.close();
                 }
-                if (statement != null) {
+                if (null != statement) {
                     statement.close();
                 }
-                reader.close();
+                if (null != reader) {
+                    reader.close();
+                }
             } catch (SQLException | IOException sq) {
                 sq.printStackTrace();
             }
