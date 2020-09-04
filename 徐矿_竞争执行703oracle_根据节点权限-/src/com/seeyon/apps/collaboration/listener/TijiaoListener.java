@@ -63,7 +63,7 @@ public class TijiaoListener {
                             }
                         }
                         if (backList.size() > 0) {
-                            for (int j = 0; i < backList.size(); j++) {
+                            for (int j = 0; j < backList.size(); j++) {
                                 phql = new HashMap<>();
                                 phql.put("state", 4);
                                 phql.put("subState", 0);
