@@ -1884,20 +1884,20 @@ public class ColManagerImpl implements ColManager {
 
         User user = AppContext.getCurrentUser();
 //     获取回退state=6的数据   zhou start
-        Map<String, Object> map6 = new HashMap<>();
-        map6.put("activityId", affair.getActivityId());
-        map6.put("objectId", affair.getObjectId());
-        String hql = "from CtpAffair where state=6 and nodePolicy='请假转送' and  activityId=:activityId and objectId=:objectId ";
-        List<CtpAffair> list6 = affairManager.findState6(hql, map6);
-        XkjtTemp xktemp = null;
-        if (list6.size() > 0) {
-            for (CtpAffair a : list6) {
-                xktemp = new XkjtTemp();
-                xktemp.setId(Long.toString(a.getId()));
-                xktemp.setSummaryId(Long.toString(a.getObjectId()));
-                tempManager.saveXkjtTemp(xktemp);
-            }
-        }
+//        Map<String, Object> map6 = new HashMap<>();
+//        map6.put("activityId", affair.getActivityId());
+//        map6.put("objectId", affair.getObjectId());
+//        String hql = "from CtpAffair where state=6 and nodePolicy='请假转送' and  activityId=:activityId and objectId=:objectId ";
+//        List<CtpAffair> list6 = affairManager.findState6(hql, map6);
+//        XkjtTemp xktemp = null;
+//        if (list6.size() > 0) {
+//            for (CtpAffair a : list6) {
+//                xktemp = new XkjtTemp();
+//                xktemp.setId(Long.toString(a.getId()));
+//                xktemp.setSummaryId(Long.toString(a.getObjectId()));
+//                tempManager.saveXkjtTemp(xktemp);
+//            }
+//        }
 //     获取回退state=6的数据   zhou end
         //保存附件
         Map<String, String> colSummaryDomian = (Map<String, String>) ParamUtil.getJsonDomain("colSummaryData");
@@ -5997,23 +5997,7 @@ public class ColManagerImpl implements ColManager {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("array", arr);
         map.put(WorkFlowEventListener.BUSINESS_DATA, context.getBusinessData());
-//      回退记录  zhou start
-        Map<String, Object> map6 = new HashMap<>();
-        map6.put("activityId", affair.getActivityId());
-        map6.put("objectId", affair.getObjectId());
-        String hql = "from CtpAffair where state=6 and nodePolicy='请假转送' and  activityId=:activityId and objectId=:objectId ";
 
-        List<CtpAffair> list6 = affairManager.findState6(hql, map6);
-        XkjtTemp temp = null;
-        if (list6.size() > 0) {
-            for (CtpAffair a : list6) {
-                temp = new XkjtTemp();
-                temp.setId(Long.toString(a.getId()));
-                temp.setSummaryId(Long.toString(a.getObjectId()));
-                tempManager.saveXkjtTemp(temp);
-            }
-        }
-        //      回退记录  zhou end
         return map;
     }
 
@@ -6193,6 +6177,25 @@ public class ColManagerImpl implements ColManager {
                     }
                 }
             }
+//            zhou回退
+            //      回退记录  zhou start
+            Map<String, Object> map6 = new HashMap<>();
+//            map6.put("activityId", affair.getActivityId());
+            map6.put("objectId", affair.getObjectId());
+            String hql = "from CtpAffair where state=3 and nodePolicy='请假转送' and  objectId=:objectId ";
+
+            List<CtpAffair> list6 = affairManager.findState6(hql, map6);
+            XkjtTemp temp = null;
+            if (list6.size() > 0) {
+                for (CtpAffair a : list6) {
+                    temp = new XkjtTemp();
+                    temp.setId(Long.toString(a.getId()));
+                    temp.setSummaryId(Long.toString(a.getObjectId()));
+                    tempManager.saveXkjtTemp(temp);
+                }
+            }
+            //      回退记录  zhou end
+
             ret.put("msg", null);
             ret.put("targetActivityIds", result[3]);
             return ret;
