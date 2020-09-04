@@ -1728,11 +1728,11 @@ public class ColManagerImpl implements ColManager {
      *
      * @param affair
      * @param params <pre>
-     *                                            {String} [isTrack] 是否跟踪， 1 - 跟踪， 其他-不跟踪
-     *                                            {String} [trackRange_members] 跟踪指定人，在[isTrack]为1的前提下生效 , 0 - 跟踪指定人, 其他-跟踪全部
-     *                                            {String} [trackRange_all] 跟踪全部，在[isTrack]为1的前提下 生效, 值为 1
-     *                                            {String} [zdgzry] 跟踪指定人的ID
-     *                                           </pre>
+     *                                                                                      {String} [isTrack] 是否跟踪， 1 - 跟踪， 其他-不跟踪
+     *                                                                                      {String} [trackRange_members] 跟踪指定人，在[isTrack]为1的前提下生效 , 0 - 跟踪指定人, 其他-跟踪全部
+     *                                                                                      {String} [trackRange_all] 跟踪全部，在[isTrack]为1的前提下 生效, 值为 1
+     *                                                                                      {String} [zdgzry] 跟踪指定人的ID
+     *                                                                                     </pre>
      * @return
      * @throws BusinessException
      */
@@ -1883,22 +1883,6 @@ public class ColManagerImpl implements ColManager {
     private void transFinishAndZcdb(CtpAffair affair, ColSummary summary, Comment comment, ColHandleType handleType, Map<String, Object> params) throws BusinessException {
 
         User user = AppContext.getCurrentUser();
-//     获取回退state=6的数据   zhou start
-//        Map<String, Object> map6 = new HashMap<>();
-//        map6.put("activityId", affair.getActivityId());
-//        map6.put("objectId", affair.getObjectId());
-//        String hql = "from CtpAffair where state=6 and nodePolicy='请假转送' and  activityId=:activityId and objectId=:objectId ";
-//        List<CtpAffair> list6 = affairManager.findState6(hql, map6);
-//        XkjtTemp xktemp = null;
-//        if (list6.size() > 0) {
-//            for (CtpAffair a : list6) {
-//                xktemp = new XkjtTemp();
-//                xktemp.setId(Long.toString(a.getId()));
-//                xktemp.setSummaryId(Long.toString(a.getObjectId()));
-//                tempManager.saveXkjtTemp(xktemp);
-//            }
-//        }
-//     获取回退state=6的数据   zhou end
         //保存附件
         Map<String, String> colSummaryDomian = (Map<String, String>) ParamUtil.getJsonDomain("colSummaryData");
         String _flowPermAccountId = colSummaryDomian.get("flowPermAccountId");
@@ -2169,18 +2153,19 @@ public class ColManagerImpl implements ColManager {
                 }
             }
         } else {
-            if (affairList.size() > 0) {
-                for (CtpAffair af : affairList) {
+            if (stringList.size() > 0) {
+                for (int k = 0; k < stringList.size(); k++) {
                     phql = new HashMap<>();
-                    if (stringList.size() > 0) {
-                        if (!stringList.contains(Long.toString(af.getId()))) {
-                            phql.put("state", 4);
-                            phql.put("subState", 0);
-                            phql.put("completeTime", new java.util.Date());
-                            phql.put("id", af.getId());
-                            affairManager.update(hqlz, phql);
-                        }
-                    } else {
+                    phql.put("state", 4);
+                    phql.put("subState", 0);
+                    phql.put("completeTime", new java.util.Date());
+                    phql.put("id", Long.parseLong(stringList.get(k)));
+                    affairManager.update(hqlz, phql);
+                }
+            } else {
+                if (affairList.size() > 0) {
+                    for (CtpAffair af : affairList) {
+                        phql = new HashMap<>();
                         phql.put("state", 4);
                         phql.put("subState", 0);
                         phql.put("completeTime", new java.util.Date());
@@ -2189,6 +2174,7 @@ public class ColManagerImpl implements ColManager {
                     }
                 }
             }
+
         }
 //        String hql2 = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
 //        Map<String, Object> params2 = new HashMap<>();

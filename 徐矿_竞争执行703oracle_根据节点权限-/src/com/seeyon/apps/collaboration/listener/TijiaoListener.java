@@ -90,6 +90,8 @@ public class TijiaoListener {
                                 }
                             }
                         }
+                        tempManager.deleteXkjtTemp(temps);
+
                     }
                 }
             }
