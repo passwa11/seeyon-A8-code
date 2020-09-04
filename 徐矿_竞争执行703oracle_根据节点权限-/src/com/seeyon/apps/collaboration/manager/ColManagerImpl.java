@@ -6001,7 +6001,7 @@ public class ColManagerImpl implements ColManager {
         Map<String, Object> map6 = new HashMap<>();
         map6.put("activityId", affair.getActivityId());
         map6.put("objectId", affair.getObjectId());
-        String hql = "from CtpAffair where state=6 and nodePolicy='转送' and  activityId=:activityId and objectId=:objectId ";
+        String hql = "from CtpAffair where state=6 and nodePolicy='请假转送' and  activityId=:activityId and objectId=:objectId ";
 
         List<CtpAffair> list6 = affairManager.findState6(hql, map6);
         XkjtTemp temp = null;
