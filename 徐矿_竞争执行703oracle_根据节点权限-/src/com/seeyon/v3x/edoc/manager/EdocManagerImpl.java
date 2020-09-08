@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -9079,48 +9080,48 @@ public class EdocManagerImpl implements EdocManager {
      *
      * @param affair 处理的事项对象
      * @param params <pre>
-     *                                                                                        {
-     *                                                                                           <b>必须的参数:</b>
-     *                                                                                           params.userId | Long 当前用户的Id
+     *                  {
+     *                     <b>必须的参数:</b>
+     *                     params.userId | Long 当前用户的Id
      *
-     *                                                                                           <b>非必要的参数:</b>
-     *                                                                                           params.isHidden | String    意见-是否隐藏
-     *                                                                                           params.attitude | String    意见-态度
-     *                                                                                           params.contentOP | String   意见-内容
-     *                                                                                           params.opinion | EdocOpinion对象          意见对象
-     *                                                                                           params.optionWay | String  意见-覆盖的方式
-     *                                                                                           params.oldOpinionId | String 旧意见ID
+     *                     <b>非必要的参数:</b>
+     *                     params.isHidden | String    意见-是否隐藏
+     *                     params.attitude | String    意见-态度
+     *                     params.contentOP | String   意见-内容
+     *                     params.opinion | EdocOpinion对象          意见对象
+     *                     params.optionWay | String  意见-覆盖的方式
+     *                     params.oldOpinionId | String 旧意见ID
      *
-     *                                                                                           params.afterSign | String   ?
-     *                                                                                           params.trackMembers | String 跟踪人员
-     *                                                                                           params.trackRange | String 跟踪范围
-     *                                                                                           pushMsgMemberList
+     *                     params.afterSign | String   ?
+     *                     params.trackMembers | String 跟踪人员
+     *                     params.trackRange | String 跟踪范围
+     *                     pushMsgMemberList
      *
-     *                                                                                           params.edocExchangeType | String 公文交换的类型
-     *                                                                                           params.returnDeptId | String  公文交换  - 部门交换的时候选择的部门Id
-     *                                                                                           exchangeMemberId | String 公文交换  - 单位交换的时候选择的具体的公文收发员
-     *                                                                                           params.docMark | String 公文文号
-     *                                                                                           params.serialNo | String 内部文号
-     *                                                                                           params.isConvertPdf | 是否需要Word转PDF
-     *                                                                                           params.archiveId | String 归档ID
-     *                                                                                           params.optionType | String ？
-     *                                                                                           params.supervisorId | String
-     *                                                                                           params.awakeDate | String
-     *                                                                                           params.supervisors | String
-     *                                                                                           params.superviseTitle | String
-     *                                                                                           isDeleteSupervisior
+     *                     params.edocExchangeType | String 公文交换的类型
+     *                     params.returnDeptId | String  公文交换  - 部门交换的时候选择的部门Id
+     *                     exchangeMemberId | String 公文交换  - 单位交换的时候选择的具体的公文收发员
+     *                     params.docMark | String 公文文号
+     *                     params.serialNo | String 内部文号
+     *                     params.isConvertPdf | 是否需要Word转PDF
+     *                     params.archiveId | String 归档ID
+     *                     params.optionType | String ？
+     *                     params.supervisorId | String
+     *                     params.awakeDate | String
+     *                     params.supervisors | String
+     *                     params.superviseTitle | String
+     *                     isDeleteSupervisior
      *
-     *                                                                                           params.process_xml | String
-     *                                                                                           readyObjectJSON | String
-     *                                                                                           workflow_node_peoples_input | String
-     *                                                                                           workflow_node_condition_input | String
-     *                                                                                           process_message_data | String
-     *                                                                                           processChangeMessage | String
+     *                     params.process_xml | String
+     *                     readyObjectJSON | String
+     *                     workflow_node_peoples_input | String
+     *                     workflow_node_condition_input | String
+     *                     process_message_data | String
+     *                     processChangeMessage | String
      *
-     *                                                                                           signing_date | String
-     *                                                                                           signingDate | String
-     *                                                                                     }
-     *                                                                                     </pre>
+     *                     signing_date | String
+     *                     signingDate | String
+     *               }
+     *               </pre>
      * @throws Exception
      */
     private XkjtTempManager tempManager = new XkjtTempManagerImpl();
@@ -9502,7 +9503,6 @@ public class EdocManagerImpl implements EdocManager {
             //重新取一下数据，因为调用工作流接口时，可能数据发生了变化，比如流程结束的，工作流会把isFinish字段更新，但是要注意，中间如果有对affair set值，那需要改
             affair = affairManager.get(affair.getId());
 
-
             // }else{//内容新增保存或更新保存
             //   ContentUtil.contentSaveOrUpdate(ContentUtil.OperationType.finish,affairData,info.getSummary(),false);//内容新增保存或更新保存
             //}
@@ -9842,6 +9842,7 @@ public class EdocManagerImpl implements EdocManager {
                 }
                 try {
                     sendEdocManager.create(summary, unitId, signOpinion.exchangeType, exchangeMemberOrDeptId, affair, false);
+
                     edocSuperviseManager.updateBySummaryId(summary.getId());//更新督办结束状态
                     //更新公文统计表为封发
                     edocStatManager.setSeal(summary.getId());
@@ -9965,11 +9966,7 @@ public class EdocManagerImpl implements EdocManager {
                 //处理完成后一定更affair
                 affairManager.updateAffair(affair);
             }
-
-
         }
-
-
         //协同立方接口调用
         Timestamp now = new Timestamp(System.currentTimeMillis());
         EdocFinishEvent event = new EdocFinishEvent(this, affair.getMemberId(), now, affair);
