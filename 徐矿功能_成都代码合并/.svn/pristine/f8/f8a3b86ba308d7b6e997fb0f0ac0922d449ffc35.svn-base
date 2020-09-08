@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ctpConfig>
+	<xkjt>
+		<openRole  mark="{VE}" desc="●移动端制动公开角色名称">集团公文流程查看</openRole>
+	</xkjt>
+</ctpConfig>

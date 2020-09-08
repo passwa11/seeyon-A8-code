@@ -1,0 +1,37 @@
+
+weakpwd.jsp.main.jsptitle                              = \u5f31\u53e3\u4ee4\u68c0\u6d4b
+weakpwd.jsp.main.jspcontent1                           = \u5f31\u53e3\u4ee4\u6307\u7684\u662f\u4ec5\u5305\u542b\u7b80\u5355\u6570\u5b57\u548c\u5b57\u6bcd\u7684\u53e3\u4ee4\uff0c\u4f8b\u5982\u201c\u0031\u0032\u0033\u0034\u0035\u0036\u201d\u3001\u201c\u0061\u0062\u0063\u0064\u0065\u0066\u201d\u7b49\uff0c\u56e0\u4e3a\u8fd9\u6837\u7684\u53e3\u4ee4\u5f88\u5bb9\u6613\u88ab\u522b\u4eba\u7834\u89e3\uff0c\u4ece\u800c\u4f7f\u7528\u6237\u7684\u8ba1\u7b97\u673a\u9762\u4e34\u98ce\u9669\uff0c\u56e0\u6b64\u4e0d\u63a8\u8350\u7528\u6237\u4f7f\u7528\u3002
+weakpwd.jsp.main.jspcontent2                           = \u901a\u5e38\u7cfb\u7edf\u5f31\u53e3\u4ee4\u7684\u6cbb\u7406\u65b9\u6848\uff1a
+weakpwd.jsp.main.jspcontent3                           = \u0031\u002e\u5bc6\u7801\u8981\u7b26\u5408\u4e00\u5b9a\u7684\u5f3a\u5ea6
+weakpwd.jsp.main.jspcontent4                           = \u0032\u002e\u5bc6\u7801\u5b9a\u671f\u4fee\u6539
+weakpwd.jsp.main.jspcontent5                           = \u0033\u002e\u9632\u6b62\u66b4\u529b\u7834\u89e3
+weakpwd.jsp.main.jspcontent6                           = \u81f4\u8fdc\u0056\u0035\u4ea7\u54c1\u63d0\u4f9b\u4ee5\u4e0b\u529f\u80fd\uff0c\u89e3\u51b3\u5f31\u53e3\u4ee4\u95ee\u9898\uff1a
+weakpwd.jsp.main.jspbutton1                            = \u5bc6\u7801\u5b89\u5168\u8bbe\u7f6e
+weakpwd.jsp.main.jspbutton2                            = \u7cfb\u7edf\u8d26\u53f7\u5f31\u53e3\u4ee4\u626b\u63cf
+
+weakpwd.jsp.grid.jsptitle                              = \u7cfb\u7edf\u8d26\u53f7\u5f31\u53e3\u4ee4\u626b\u63cf
+weakpwd.jsp.grid.jspcontent1                           = \u5168\u7cfb\u7edf\u5171\u8ba1
+weakpwd.jsp.grid.jspcontent2                           = \u4e2a\u8d26\u53f7\uff0c\u5176\u4e2d\u5b58\u5728\u5f31\u53e3\u4ee4\u7684\u8d26\u53f7\u6709
+weakpwd.jsp.grid.jspcontent3                           = \u4e2a
+
+weakpwd.jsp.grid.column1.js                            = \u59d3\u540d
+weakpwd.jsp.grid.column2.js                            = \u6240\u5c5e\u5355\u4f4d
+weakpwd.jsp.grid.column3.js                            = \u90e8\u95e8\u540d\u79f0
+weakpwd.jsp.grid.column4.js                            = \u7535\u5b50\u90ae\u4ef6
+
+weakpwd.jsp.grid.button1.js                            = \u5bfc\u51fa\u0045\u0078\u0063\u0065\u006c
+weakpwd.jsp.grid.button2.js                            = \u6d88\u606f\u901a\u77e5\u6240\u9009
+weakpwd.jsp.grid.button3.js                            = \u6d88\u606f\u901a\u77e5\u5168\u90e8
+
+weakpwd.jsp.grid.title.js                              = \u7cfb\u7edf\u8d26\u53f7\u5f31\u53e3\u4ee4\u626b\u63cf
+
+weakpwd.jsp.grid.button1.alert.noneselected.js         = \u8bf7\u9009\u62e9\u901a\u77e5\u4eba\u5458\uff01
+weakpwd.jsp.grid.button2.alert.noneselected.js         = \u65e0\u901a\u77e5\u4eba\u5458\uff01
+weakpwd.jsp.grid.alert.notice.content.title.js         = \u6d88\u606f\u901a\u77e5\u5185\u5bb9
+weakpwd.jsp.grid.alert.notice.button.ok.js             = \u786e\u5b9a
+weakpwd.jsp.grid.alert.notice.button.cancel.js         = \u53d6\u6d88
+weakpwd.jsp.grid.alert.notice.success.js               = \u6d88\u606f\u901a\u77e5\u6210\u529f
+weakpwd.jsp.grid.alert.notice.failure.js               = \u6d88\u606f\u901a\u77e5\u5931\u8d25
+weakpwd.jsp.grid.alert.notice.nonecontent.js           = \u6d88\u606f\u901a\u77e5\u5931\u8d25\uff0c\u65e0\u901a\u77e5\u5185\u5bb9
+weakpwd.jsp.grid.alert.notice.content                  = \u4f60\u7684\u5bc6\u7801\u8fc7\u4e8e\u7b80\u5355\uff0c\u53ef\u80fd\u5b58\u5728\u98ce\u9669\uff0c\u8bf7\u52a1\u5fc5\u53ca\u65f6\u4fee\u6539\u3002
+

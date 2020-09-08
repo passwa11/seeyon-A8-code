@@ -1,0 +1,10 @@
+
+appLog.action.1401     = {0} Export process knowledge
+appLog.action.1402     = {0} create new authority {1} to manage {2}
+appLog.action.1403     = {0} update authority {1} to manage {2} to authority {3} to manage {4}
+appLog.action.1404     = {0} delete authority {1} to manage {2}
+appLog.actionType.1401 = Process knowledge center - export Excel
+appLog.actionType.1402 = Process knowledge center - create
+appLog.actionType.1403 = Process knowledge center - update
+appLog.actionType.1404 = Process knowledge center - delete
+appLog.moduleName.1400 = Process knowledge center

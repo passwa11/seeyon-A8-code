@@ -1,0 +1,1373 @@
+
+AccountAdmin = Org Admin
+
+ServerState.comment.label              = Comment
+ServerState.description.autoExit.label = Auto Shutdown Service After Warning Notice Time Elapses
+ServerState.description.label          = 1. Prior to the shutdown of the server, there is a warning notice sent to all users such that the users can have a period of time (called Warning Notice Time) to save their data to avoid losing their work before the server shutdown. During this period, the server will not allow new login. <br>2.All users will be forced to logout when the defined time elapses.\r\n\r\n
+ServerState.forecastTime.label         = Warning Notice Time Before Shutdown
+ServerState.minute.label               = Minutes
+ServerState.shutdown                   = The application server is going to stop. For the data integrality, all operations are forbidding. Please wait for a moment to login.\r\nAdministrator postscript:{0}\r\n
+ServerState.shutdown.warn              = The application server will be stopped after {0} minutes {1} seconds; please save your data and then logout\r\nAdministrator postscript:{2}
+
+StoreRule.checkForm.confirm.0     = Please confirm whether the data dump:\r\n1. The data dump from collaborative initiator matters to handle those matters have been organized for removal; not be counted in the work management, process management;\r\n2. Data dump, the data can not be undone; can view from the integrated query;\r\n3. Form (3) The following functions are not affected statistical query penetration, the history of news, full text search, but can not handle.
+StoreRule.checkForm.confirm.2     = Please confirm whether the data dump, this action can not be restored!
+StoreRule.dataScorp.0.label       = Unrestricted Collaboration
+StoreRule.dataScorp.1.label       = Template Collaboration
+StoreRule.dateScorp.label         = Collaboration time range
+StoreRule.description.label       = 1. The data dump, from the co-initiator of the matter has been made \u200B\u200Bto deal with those matters that have to do to clear; in work management, process management are not statistics;<br>\r\n2. The data dump, the data can not be restored; can see from the integrated query;<br>\r\n3. The following functions are not affected through the query form statistics, history, news, full-text search, but can not handle.
+StoreRule.flowState.0.label       = Running
+StoreRule.flowState.1.label       = End
+StoreRule.flowState.label         = Process state
+StoreRule.new.label               = New Rule
+StoreRule.result.label            = Dump results
+StoreRule.result.r.label          = Has {0} data dump
+StoreRule.runtime.label           = Running time
+StoreRule.runtime.perday.label    = Per Day
+StoreRule.runtime.starttime.label = Start time
+StoreRule.runtime.stoptime.label  = Pause time
+StoreRule.state.0.label           = Processing...
+StoreRule.state.1.label           = Completed.
+
+add.partition.createok        = Success!
+add.partition.encrypt         = Encryption select
+add.partition.endtime         = End time
+add.partition.fileSharePath   = File Service Mapping Path
+add.partition.hightencrypt    = High intensity encryption
+add.partition.indexServerPath = Search the full text of the corresponding server path
+add.partition.lowencrypt      = Low intensity encryption
+add.partition.notencrypt      = No encryption
+add.partition.oldlist         = System Initial Catelogue
+add.partition.partitionname   = Subarea Name
+add.partition.partitionpath   = Path of Subarea
+add.partition.partitionstate  = Subarea Status
+add.partition.shareName       = Partition Share Name
+add.partition.sharePath       = Index Service Mapping Path
+
+advance.search.label = advance
+
+appLog.excel.count.title       = AppLog List
+appLog.excel.download.fileName = app Log File
+
+application.0.label      = Global
+application.1.1.label    = Unrestricted Collaboration
+application.1.2.label    = form/template col
+application.1.label      = Collaboration
+application.10.label     = Inquiry
+application.101.label    = NC Plugin
+application.11.label     = Calendar
+application.12.label     = Mail
+application.12111.label  = neigou benefit plugin
+application.13.label     = Organization model
+application.14.label     = Project
+application.15.label     = Co-worker
+application.16.label     = Official Doc exchange
+application.17.label     = HR
+application.18.label     = Blog
+application.19.label     = Dispatch
+application.2.label      = Form
+application.20.label     = Receive
+application.21.label     = Sign Receipt
+application.22.GOV.label = To Be Sent
+application.22.label     = To Be Sent
+application.23.GOV.label = To Be Signed
+application.23.label     = To Be Signed
+application.24.GOV.label = To Be Registered
+application.24.label     = To Be Registered
+application.25.label     = Communication
+application.26.0.label   = Car
+application.26.1.label   = Supplies
+application.26.2.label   = Equipment
+application.26.3.label   = Book
+application.26.4.label   = MeetingRoom
+application.26.label     = Office
+application.27.label     = Proxy establishment
+application.28           = Password
+application.28.label     = Password
+application.29.label     = Meetingroom
+application.3.label      = Knowledge Community
+application.3.label.GOV  = Document Management
+application.30.label     = Work Task
+application.31.label     = leave word
+application.32.label     = Info
+application.33.label     = Info report to statistics
+application.34.label     = Distribution
+application.35.label     = Notice
+application.36.label     = Attendance
+application.38.label     = SAP Plugin
+application.39.label     = Integrated platform message
+application.4.label      = Official document
+application.40.label     = Bigshow
+application.41.label     = workflow analysis
+application.42.label     = Behavior Performance
+application.5.label      = Plan
+application.6.label      = Meeting
+application.64.label     = Status remind
+application.66.label     = cap4Form
+application.69.label     = excel report
+application.7.label      = Bulletin
+application.70.label     = Report Center
+application.71.label     = Memorabilia
+application.72.label     = AI Push
+application.8.label      = News
+application.9.label      = Discussion
+application.90.label     = new
+application.91.label     = lock
+application.92.label     = modify
+application.93.label     = unlock
+application.94.label     = delete
+application.95.label     = import excel
+application.96.label     = export excel
+application.99.label     = External system
+application.public.label = Public Information
+application.type.label   = Type
+
+assdoc.choose.atleastone.mesg = Please select the associated documentation.
+assdoc.isdeletesomeone.mesg   = Are you sure that you no longer associated "{0}" ?
+
+assdocapplication.1.label = Collaboration
+assdocapplication.3.label = Documents
+assdocapplication.4.label = Official document
+assdocapplication.6.label = Meeting
+
+assistantSetup.cert.label                          = Root Certificate
+assistantSetup.description.Cert                    = Dear user: <br> \r\n     Root certificate is to protect the client and server OA transmission between security (https) on the premise that you follow these steps to install: <br> \r\n     1, <A HREF="{0}" target="certDownHelper"> <B> download a certificate file (ca.crt) </B> </A>; <br> \r\n     2, <B> double-click </B> the documents or certificates to select right-click the file <b> 'installation certificate' </b>, in the pop-up dialog box, choose to install <b> certificate </b>; <br> \r\n     3, in accordance with the 'Certificate Import Wizard' prompts to import certificate; <br> \r\n     4, click on 'completed' after 'warning', choose 'is', prompted the Certificate Import Wizard' into success'.
+assistantSetup.description.IE                      = \    In order to remove the influence that interceptive window impact on our system, please operate the following items: <br>\r\n    1.Please <A HREF="{0}"><B>Download</B></A>Registration table file;<br>\r\n    2.<B>Double click to operate) <B> this registration table file<b>,</b>successfully import information into registration table ;<br>\r\n    3.<B>Restart IE browser.\r\n\r\n\r\n\r\n
+assistantSetup.description.IE.title                = IE/Windows user's notice
+assistantSetup.description.Notice                  = IE configuration notice
+assistantSetup.description.Notice.title            = Respectable users :<br>\r\n\r\n      1\u3001Please do not set in Internet <font color='red'>Accessibility</font>   --> <font color='red'>Do not use the designated color of the page</font> To check. This will result in loss of the background color of the system, causing confusion in the page display.<br>\r\n   2\u3001IE7 and above the Open for the pop-up window\uFF0CInternet settings<font color='red'>Conventional</font>  --> Tab<font color='red'> Set up</font>  --> Encounter pop-up window: We recommend you check<font color='red'>Decide how to open the IE pop-up window.<br>\r\n\r\n<br>\r\n  Thank you for your cooperation. Enjoy your work!
+assistantSetup.description.USBKey                  = \    In order to successfully use the client-authentication plug-dog\uFF0CPlease follow these steps to install this driver\uFF1A<br>\r\n    1\u3001Please<A HREF="{0}"><B>Download Authentication Plug-dog driver</B></A>\uFF1B<br>\r\n    2\u3001Click OK to execute the installation file, the driver is installed on your computer\uFF1B<br>\r\n    3\u3001Restart IE browser, insert your authentication dog test.
+assistantSetup.description.USBKey.label            = Authentication plug-drive dog
+assistantSetup.description.end                     = \    Thank you for your cooperation. Enjoy your work!
+assistantSetup.description.flash                   = \    In order to successfully install the Flash Player plug-in, to ensure that the workflow can be displayed properly, please operate according to the following\uFF1A<br>\r\n    1\u3001Please<A HREF="{0}"><B>download</B></A> Adobe Flash Player Plugins\uFF1B<br>\r\n    2\u3001Click<B>Run </B>Implementation of the installation files<b>,</b>The plug-in installed in your browser\uFF1B<br>\r\n    3\u3001<B>Restart</B>IE browser\uFF1B<br>\r\n<hr size="1">\r\n    If you have access to external networks, it can be<A HREF="{1}" target="_blank"> <B>Flash Official site</B></A> Download and install the latest version of Flash Player plug-in.
+assistantSetup.description.genius                  = \        A8-m Wizard feature for you\uFF1ALogin automatically\u3001System Interface Minimize\u3001Front-end message reminding\u3001Fast Forwarding and upload office Documents and outlook Mail\uFF0CAnd to provide local file bulk upload.<br><br>\r\n    Please <A HREF="{0}"><B>Download</B></A>A8-m Wizard Client Control\uFF1B<br>\r\n    <b>Notes:</b><br>\r\n    Please see the online help in "the standard application--A8-m Wizard -- Install"
+assistantSetup.description.genius.title            = A8-m Wizard Client Control
+assistantSetup.description.head                    = Respectable users :<br>\r\n    Seeyon A8-m Collaborative Management Software will offers the following auxiliary programs :
+assistantSetup.description.head.NC                 = Respectable users :<br>\r\n   UFIDA NC Collaboration -OA will offers the following auxiliary programs :
+assistantSetup.description.li.IE7                  = <li>IE/Windows controller. to release our system from the impact of  IE interception window .<br></li>\r\n
+assistantSetup.description.li.USBKey               = <li>Client ID authentication token plug-in driver: Please install this driver if you are using a USB deveice to login.<br></li>
+assistantSetup.description.li.cert                 = <li>Root certification: Installation of root certification is the precondition to ensure safety transmission between client-side and OA server.<br></li>
+assistantSetup.description.li.flash                = <li>Flash player plug-in: Please install this plug-in if your browser cannot display video stream properly.<br></li>
+assistantSetup.description.li.notice               = <li> IE to install indication: The client is given prompt IE settings, individual settings so as not to affect the page display. <br> </li>
+assistantSetup.description.li.office               = <li>Office plug-in controller: To support handwritten note and electronic-stamper scanner software. <br></li>
+assistantSetup.description.nc.genius               = Dear users\uFF1A<br>\r\n    NC Cooperative-OA Wizard feature for you\uFF1ALogin automatically\u3001System Interface Minimize\u3001Front-end message reminding\u3001Fast Forwarding and upload office Documents and outlook Mail\uFF0CAnd to provide local file bulk upload.<br><br>\r\n    Please <A HREF="{0}"><B>Download</B></A>NC Cooperative-OA Wizard Client Control\uFF1B<br>\r\n    <b>Notes:</b><br>\r\n    Please see the online help in "the standard application--NC Cooperative-OA Wizard -- Install"<br><br>\r\n    Thank you for your cooperation and wish you a happy work\uFF01
+assistantSetup.description.nc.genius.title         = NC Cooperative-OA Wizard Client Control
+assistantSetup.description.office.alert            = It is the advanced edition of Office plug-in package (handwritten annotations) that you choose at present click confirm to install,while click cancel to give up .
+assistantSetup.description.office.download.label   = Download
+assistantSetup.description.office.false            = Fail
+assistantSetup.description.office.info             = The professional of electronic-seal software
+assistantSetup.description.office.label1           = Honorific customer: \r\n
+assistantSetup.description.office.label2           = Wait to confirm instaltion as it is downloading the procedure!
+assistantSetup.description.office.label3           = (handwritten annotations) customer program\r\n
+assistantSetup.description.office.label4           = The advanced edition (handwritten annotations), customer program installs
+assistantSetup.description.office.label5           = Handmade Install,please click
+assistantSetup.description.office.label6           = Please decompress after download , then carry out Setup.exe procedure to install
+assistantSetup.description.office.setup.label      = Install
+assistantSetup.description.office.title            = Advanced edition of Office plug-in(handwritten annotations ) client Controls
+assistantSetup.description.successful.office.label = Success
+assistantSetup.description.title                   = install explanation for auxiliary program
+assistantSetup.flash.label                         = Flash Player
+assistantSetup.office.label                        = Office Controllor
+assistantSetup.select.label                        = Please Select
+assistantSetup.title                               = Auxiliary Programs
+assistantSetup.vista.label                         = IE/Windows Controllor
+
+attachment.count = Items
+attachment.label = Attachment
+
+audit.back       = NoPass
+audit.pass.issus = PassAndIssus
+
+batch.title = Batch Process
+
+body.type.html.label        = Content
+body.type.label             = Content Type
+body.type.officeexcel.label = Excel Text
+body.type.officeword.label  = Office Text
+
+bulletionaudit.space = Bulletion Space
+
+calculator.addStore.label        = Add
+calculator.and.label             = AND
+calculator.angle.label           = Degree
+calculator.backspace.label       = Back
+calculator.binary.label          = Binary
+calculator.clear.label           = CS
+calculator.clearAll.label        = C All
+calculator.clearStore.label      = CS
+calculator.crackajack.label      = Upper Fun
+calculator.cumulationStore.label = ACC
+calculator.decimalist.label      = Decimal
+calculator.getInteger.label      = Round
+calculator.getResidual.label     = Res
+calculator.getStore.label        = Get
+calculator.hex.label             = Hexadecimal
+calculator.hyperbola.label       = Hyp
+calculator.moveToLeft.label      = Left
+calculator.not.label             = NOT
+calculator.notSame.label         = XOR
+calculator.octal.label           = Octal
+calculator.or.label              = OR
+calculator.radian.label          = Radian
+calculator.store.label           = Store
+calculator.title                 = Calculator
+
+calendar.other.label            = Commissioned by the incident
+calendar.other1.label           = Other arrangements / commissioning
+calendar.personl.label          = The personal Things
+calendar.personl1.label         = I create
+
+calendarEvent.more.event        = Event
+calendarEvent.more.leader       = Higher authorities' schedule
+calendarEvent.more.person       = My Event
+calendarEvent.more.project      = Project events
+calendarEvent.more.relateMember = Other People's Event
+
+cannel.app.label                              = app
+cannel.background.image                       = Background Image
+cannel.background.image.displayStyle          = Display Style
+cannel.background.notile                      = No Repeat
+cannel.background.tile                        = Tile
+cannel.bbs.lable                              = Bbs source
+cannel.bulletin.lable                         = Notice the source
+cannel.calendar.lable                         = Schedule source
+cannel.data.backgroundColor                   = backgroundColor
+cannel.data.category                          = Category of Show
+cannel.data.content                           = Content
+cannel.data.count                             = Count of Show
+cannel.data.countRows                         = Rows of Show
+cannel.data.fontColor                         = Font Color
+cannel.data.fontSize                          = Font Size
+cannel.data.fontStyle                         = Font Style
+cannel.data.height                            = Height
+cannel.data.style                             = Style of Show
+cannel.data.word                              = Word
+cannel.date.label                             = end date
+cannel.display.column.category.label          = Category
+cannel.display.column.createDate.label        = Create Date
+cannel.display.column.deadLine.label          = Process Expiry Time
+cannel.display.column.deadlineName.label      = Flow Expiry Time
+cannel.display.column.doneTime.label          = Done Time
+cannel.display.column.finishRate.label        = Completion rate
+cannel.display.column.frName.label            = Doc Name
+cannel.display.column.label                   = Display field
+cannel.display.column.lastUpdate.label        = Last Update
+cannel.display.column.lastUserId.label        = Last User
+cannel.display.column.people.label            = People belong
+cannel.display.column.policy.label            = Policy
+cannel.display.column.preApprover.label       = Approver Of Previous Node
+cannel.display.column.preApprover.label2      = Previous Approver(collaboration/edoc)
+cannel.display.column.publisher.label         = Publisher
+cannel.display.column.publishuserordept.label = Publisher / publishing sector
+cannel.display.column.receiveTime.label       = Time Received
+cannel.display.column.sendUser.label          = Sender
+cannel.display.column.startTime.label         = StartTime
+cannel.display.column.state.label             = Status
+cannel.display.column.subject.label           = Subject
+cannel.display.column.time.label              = Time
+cannel.height.label                           = Height
+cannel.image.height.label                     = image height
+cannel.image.width.label                      = image width
+cannel.name.label                             = Columns Display Name
+cannel.base.name.label                        = Columns Name
+cannel.newest.news.label                      = Latest News
+cannel.news.lable                             = News sources
+cannel.panel.label                            = Data Sources
+cannel.panel.templ.label                      = Templete
+cannel.panelevent.label                       = Matter sources
+cannel.pic.charttype.label                    = Chart Type
+cannel.pic.height.label                       = Picture Height
+cannel.pic.width.label                        = Picture Width
+cannel.picture.panel.label                    = Add Panel
+cannel.plan.lable                             = Program source
+cannel.result.label                           = Content
+cannel.showName.label                         = show name
+cannel.style.iconLeft.label                   = Left right
+cannel.style.iconTop.label                    = Above the picture below
+cannel.style.label                            = Local Style
+cannel.templete.label                         = Flow Template
+cannel.wordstyle.label                        = Word Style
+
+charttype.bar.label  = Bar
+charttype.line.label = Line
+charttype.pie.label  = Pie
+
+click.choice                     = Click to select
+click.competition.rectify.people = Click Input Rectify People
+click.multiple.rectify.people    = Click Input Rectify People
+click.single.rectify.people      = Click CheckBox Rectify People
+
+cnt.show1                       = \u25CFMany members to one part-time organization.
+cnt.show2                       = \u25CFOne member to many part-time organization.
+
+cntPost.add.label               = Add New Part-time Worker's Info
+cntPost.body.account.label      = Former Org
+cntPost.body.auth.label         = Part-time Author
+cntPost.body.cntDeptPost.label  = Part-time Department & Post
+cntPost.body.cntaccount.label   = Part-time Org
+cntPost.body.cntdept.label      = Part-time Department
+cntPost.body.cntpost.label      = Part-time Job Position
+cntPost.body.level.label        = Part-time Level
+cntPost.body.level.label.GOV    = Part-time
+cntPost.body.membername.label   = Personnel name
+cntPost.body.number.label       = Part-time num
+cntPost.body.post.label         = post
+cntPost.body.startDate.label    = Starting Date
+cntPost.body.startendcode.label = Start part-time code
+cntPost.cntPost.repeated        = Part-time info of personnel existed!
+cntPost.detail.label            = Detailed part-time info
+cntPost.num.exist               = num existed!
+cntPost.org.post                = Job Position
+cntPost.update.label            = Update part-time info
+
+comm.sign.introduce.label          = Seal contains three functions: electronic seal, handwriting signature, character approve; not permitted to modify the text after seal.
+
+common.pending.RemindCount         = Being hired: {0} times
+common.pending.detailNoOvertime    = There are still {0} from the expiration
+common.pending.detailOvertime      = {0} have expired
+common.pending.meetingCountJoin    = {0} People Participate
+common.pending.meetingCountNoJoin  = {0} Do Not Join
+common.pending.meetingCountPending = {0}People To Be Taken
+common.pending.replyCount          = {0} Replies
+common.pending.replyCountNoData    = No Replies
+common.pending.top                 = TOP
+
+config_category.metadata.label        = dispose type
+config_category.metadata_item.mapping = Operate and shine upon with coordination recorded
+config_category.metadata_item.popedom = authority tactics
+
+content.switchtype.message = The content in the editor will lose while switch content type, still continue?
+
+corporation.config.banner           = Background image of banner
+corporation.config.hiddenLogo       = Hidden Logo
+corporation.config.hiddenName       = Hidden Org name
+corporation.config.imageSize        = Size of image(width * height)
+corporation.config.imageSize.height = Size of image(height)
+corporation.config.logo             = Org LOGO
+corporation.config.tileBanner       = Tile
+corporation.config.title            = Setting of Org LOGO, background image of banner
+corporation.config.uploadImage      = Upload image
+corporation.group.logo              = Group LOGO
+corporation.group.logo.GOV          = Organizations Logo
+
+ctp.select2.account.placeholder = please select the account
+ctp.select2.depart.placeholder  = please select the depart
+ctp.select2.leave.placeholder   = please select the leave
+ctp.select2.people.deactivate   = deactivate
+ctp.select2.people.departure    = departure
+ctp.select2.people.placeholder  = please select the people
+ctp.select2.post.placeholder    = please select the post
+ctp.select2.team.placeholder    = please select the team
+
+current.online.state = current online state
+
+data_null_warning = There are no any data to display
+
+dataseparator.conf.label        = Separate Config
+dataseparator.createscbtn.label = CreateScript
+dataseparator.date.label        = Separate Date
+dataseparator.mesg.warning      = Please in strict accordance with the script execution sequence.To separate the data for the selected date,does not contain the selected date.
+
+deeSection.source.label      = Data Exchange Sources
+deeSection.source.pageHeight = Page Height
+
+department.bbs.label      = {0} BBS
+department.bulletin.label = {0} Bulletin
+department.switch.label   = Change Department
+
+doc.learning.enter.label = Enter
+doc.learning.label       = Learning Column
+
+download.description.IESet       = \    Level of browser security restrictions, you can not load the installer, please operate the following items: <br>\r\n    1, please <A HREF= "{0}" onclick = "{1}" ><B> download </B></A> controls installed gadget; <br>\r\n 2, Decompression and implementation of the "INSTALL.BAT" program; <br>\r\n 3, <b> re start browser </B>IE.
+download.description.IESet.label = Auto Install
+
+edition.a6.development              = A6+ Enterprise Development Edition
+edition.a6.product                  = A6+ Enterprise Edition
+edition.a6p.product                 = A6+
+edition.a6s.development             = A6-S Enterprise Development Edition
+edition.a6s.product                 = A6-S
+edition.enterprise.development      = A8+ Enterprise Development Edition
+edition.enterprise.product          = A8+ Enterprise Edition
+edition.entgroup.development        = A8+ Group Development Edition
+edition.entgroup.product            = A8+ Group Edition
+edition.government.development      = G6 Single-Account Development Edition
+edition.government.product          = G6 Single-Account Edition
+edition.governmentgroup.development = G6 Multi-Accounts Development Edition
+edition.governmentgroup.product     = G6 Multi-Accounts Edition
+edition.ufidanc.A6.product          = U8+OA Enterprise Edition
+edition.ufidanc.A8.product          = U8+OA Enterprise Edition
+edition.ufidanc.development         = Group Edition(Demo)
+edition.ufidanc.product             = Group Edition
+
+enu.group.bmpost.manage = Posts
+
+error.detail.label       = Error detail:
+error.info               = Sorry, the page that you visit is not available. Please <a class='link-blue' onClick={0}>Exit</a> or <a class='link-blue' onClick={1}> Back. </a>
+error.info.browser       = Sorry, your browser does not support the body type! Please
+error.info.socketTimeout = Network connection timed out, please check the network, Please <a class='link-blue' onClick={0}>Exit</a> or <a class='link-blue' onClick={1}> Back. </a>
+error.label              = Error occured:
+error.lookLog.label      = Copy the wrong log
+error.message.label      = Note:
+
+event.antipodean = Antipodean Day
+event.late       = Late
+event.old        = Old
+event.today      = Today
+event.tomorrow   = Tomorrow
+
+export.batch.desc.1.js = Once you exported data too much,need to batch export
+export.batch.desc.2.js = Each derived {0}, {1} data, {2} number for export
+export.batch.desc.3.js = Now the {0} batch export
+export.batch.title.js  = export
+
+file.upload.browse                      = browse
+
+fileUpdate.page.about   = About Modifying Your Attachment
+fileUpdate.page.about.0 = Add, modify, and delete attachments to the list
+fileUpdate.page.about.1 = 1.Click the button "insert attachment", "associated documents" to add attachments
+fileUpdate.page.about.2 = 2.Click the button "delete" to delete the current list of attachments
+fileUpdate.page.about.3 = 3.Click on the attachment list in the annex to the title, can be online editing
+fileUpdate.page.about.4 = Note: only support for OFFICE/WPS types of attachments and need to meet two conditions: 1, the need for local installation of office/wps software; 2, in the product home - to install the auxiliary installation of office controls
+fileUpdate.page.title   = Update Attachment
+
+fileuoload.downoad.exceedConnection = Exceeded max number of allowed download connections({0}),please try again later.
+
+fileupload.addfile.label                = File
+fileupload.document.Exception           = Exception of file downloaded
+fileupload.document.FileNoFound         = File not exist
+fileupload.document.nosuchpartition     = Point-in-time [{0,date,yyyy-MM-dd}] of the partition does not exist.
+fileupload.edocform.rec                 = Upload Receive Official Document File
+fileupload.edocform.send                = Upload Dispatch Official Document File
+fileupload.edocform.sign                = Upload Sign Official Document File
+fileupload.edoctemplate.script          = Upload Template File
+fileupload.edoctemplate.text            = Upload Template File
+fileupload.exception.MaxSize            = File size is over size defined by sys. Maximum:{0}
+fileupload.exception.UnallowedExtension = Unsupported filename extension. Support : {0}
+fileupload.exception.unknown            = File uploaded failed:{0}
+fileupload.imgcut                       = Upload Your Image
+fileupload.infoform.send                = Upload submit a single
+fileupload.page.add                     = Add
+fileupload.page.cover                   = Cover
+fileupload.page.repeat                  = When importing data duplication
+fileupload.page.skip                    = Skip
+fileupload.page.title                   = Upload Files
+fileupload.selectfile.label             = Please select the file for upload (once  maximum {0})
+fileupload.uploading                    = {0}KB has been uploaded. The total file size is {1}KB
+fileupload.uploading.attachment_delete  = delete
+fileupload.uploading.error              = Upload failed due to network instability or network being disconnected! Please check the network and click OK to upload again
+fileupload.uploading.label              = Uploading
+fileupload.uploading.upload_alert_exist = You select the file already exists!
+fileupload.uploading.upload_alert_limit = You can only select {0} files!
+
+flowperm.auth.isenabled = Enable status\r\n
+flowperm.auth.isref     = Refer status\r\n
+flowperm.edoc.type      = Right category
+
+fontColor.0.label  = Standard
+fontColor.1.label  = Red
+fontColor.10.label = Navy
+fontColor.2.label  = Orange
+fontColor.3.label  = Brown
+fontColor.4.label  = Yellow
+fontColor.5.label  = Green
+fontColor.6.label  = Blue
+fontColor.7.label  = Purple
+fontColor.8.label  = Gray
+fontColor.9.label  = Black
+
+fontSize.0.label = Small
+fontSize.1.label = Smaller
+fontSize.2.label = Medium
+fontSize.3.label = Larger
+fontSize.4.label = Large
+
+fontStyle.0.label = Standard
+fontStyle.1.label = Bold
+
+function.switch = function switch
+
+fundia.plan.data               = Search Date
+fundia.plan.data.month.1       = Jan.
+fundia.plan.data.month.10      = Oct.
+fundia.plan.data.month.11      = Nov.
+fundia.plan.data.month.12      = Dec.
+fundia.plan.data.month.2       = Feb.
+fundia.plan.data.month.3       = Mar.
+fundia.plan.data.month.4       = Apr.
+fundia.plan.data.month.5       = May
+fundia.plan.data.month.6       = June
+fundia.plan.data.month.7       = July
+fundia.plan.data.month.8       = Agu.
+fundia.plan.data.month.9       = Sep.
+fundia.plan.data.year          = Year
+fundia.plan.data.year.next     = Next year
+fundia.plan.data.year.previous = Previous Year
+
+group.config.hiddenName            = Group names do not show
+group.config.hiddenName.GOV        = is Hidden Org Name
+group.name                         = Group Admin
+group.name.GOV                     = Organization Administrator
+
+groupSpace.menu.bbs.issue        = Issue of Discussion
+groupSpace.menu.bbs.manage       = Management of Discussion
+groupSpace.menu.bulletin.issue   = Issue of Bulletin
+groupSpace.menu.bulletin.manage  = Management of Bulletin
+groupSpace.menu.doc.manage       = Management of Common Doc
+groupSpace.menu.docLeaner.manage = Management of Learning Column
+groupSpace.menu.inquiry.issue    = Issue Of Survey
+groupSpace.menu.inquiry.manage   = Management Of Survey
+groupSpace.menu.news.issue       = Issue of News
+groupSpace.menu.news.manage      = Management of News
+
+groupadmin.help.message.label      = Note: This [group manager of space] is the role of space in the group [group study areas], and [knowledge of the Group documents] administrator.
+groupadmin.help.message.label.GOV  = Note: This [manager of public space] is the role of space in the public [Organizations study areas], and [knowledge documents] administrator.
+groupadmin.member.role.label       = The following personnel are appointed as group Admin
+groupadmin.member.role.label.GOV   = The following personnel are appointed as public space Admin
+groupadmin.role.tomember.label     = Setting of role of group Admin
+groupadmin.role.tomember.label.GOV = Setting of role of public space Admin
+groupadmin.update.label            = Please select whether to modify Admin info
+
+identificationConfig.IPAddress.label       = IP Address
+identificationConfig.IPSetting.description = <b>Instruction:</b>\r\n<li>Support the IP address of the IPV4, IPV6 protocol. Among them, the IPV4 protocol can be used as a wildcard for a segment of IP address, and the IPV6 protocol needs to input a complete IP address.</li>\r\n\r\n\r\n\r\n\r\n
+identificationConfig.IPSetting.label       = Exception: Users with the following IP addresses
+identificationConfig.mustUseDogLogin.tip   = <b> Important reminder: </b> 'to use a dog login' valid for all users, including administrators. So make sure you check before making a pass to the dog or immediately after filling out the exception check IP segment to ensure that the administrator account can log in normally.
+
+im_leave = Leave
+
+im_online = Online
+
+imagenews.calendar.label        = Calendar
+imagenews.card.label            = Card
+imagenews.classify.label        = Classification
+imagenews.head.label            = Avatar
+imagenews.image.3.label         = 3 drawings
+imagenews.image.7.label         = 7 drawings
+imagenews.image.label           = Slideshow
+imagenews.image.multi.label     = Multi-Image
+imagenews.image.multi1.label    = Multi-tiled Image1
+imagenews.image.multi2.label    = Multi-tiled Image2
+imagenews.image.rotation.label  = Multi Image Carousel
+imagenews.image.rotation1.label = Multi Image Carousel-1
+imagenews.image.rotation2.label = Multi Image Carousel-2
+imagenews.imageLeft.label       = Picture Left Scrolling
+imagenews.imageandlist.label    = Abstract + list of headlines picture
+imagenews.imageandtitle.label   = Photo + Title Summary
+imagenews.imagetitle.label      = Image+Title
+imagenews.list.label            = List
+imagenews.move.label            = Scroll List
+imagenews.picture.label         = Picture
+imagenews.publishDate.label     = Published
+imagenews.titleandsummary.label = Title Summary
+imagenews.type.label            = Categories
+
+imo.login.value = Login A8
+
+info.journals.published    = Journals to be published
+info.pending.information   = Pending Information
+info.pending.journal       = Pending journal
+
+infoOpen.description.label = 1. Open debugging, can be {0}/seeyon/management/ get the current running parameters of products<br>\r\n2. Open debugging, can be {0}/seeyon/logs/ access a running log of the current product
+infoOpen.enabled.label     = Open Debug
+infoOpen.endTime.label     = End time
+infoOpen.password.label    = Password
+
+initiator.respective.department    = Respective Department
+initiator.with.accountordepartment = Initiating Object
+
+issus.scope = Issus Scope
+
+kick.off.fail    = kick off fail
+kick.off.label   = kick off
+kick.off.success = kick off success
+
+leavemessage.reply.page.at.label = the<input type="text" id="nowPage" maxlength="10" value="{0}" onkeydown="changePage()" style="width: 30px">page
+leavemessage.reply.page.label    = <input type="text" id="pageSize" maxlength="3" value="{1}" onkeydown="changePage()" style="width: 30px"> every page {0} pages in total
+
+left.history.message.lable = Message
+left.message.count         = Message Statistics
+left.nav.pane.label        = Navigation Pane
+left.pane.close.label      = Close the Left Panel
+left.pane.open.label       = Open the Left Panel
+left.tools.card.lable      = My Attendance
+left.tools.panel.label     = Toolbar
+left.tools.workManager     = Work Management
+
+listSearch.common.expressionType           = --Select search conditions--
+listSearch.concurrent.code                 = Code
+listSearch.concurrent.concurrent.account   = \u517C\u804C\u5355\u4F4D
+listSearch.concurrent.concurrent.post      = \u517C\u804C\u5C97\u4F4D
+listSearch.concurrent.originalUnit.account = Former Org
+listSearch.concurrent.originalUnit.post    = Post of Former Org
+listSearch.concurrent.ourUnit.account      = Our Org
+listSearch.concurrent.ourUnit.post         = Post
+listSearch.flowperm.auth.name              = Name of node right
+listSearch.member.groupLevel               = Group Level
+listSearch.member.groupPost                = Group Post
+listSearch.member.level                    = Level
+listSearch.member.level.GOV                = Level
+listSearch.member.mobilePhone              = Mobile Phone
+listSearch.member.name                     = Name
+listSearch.member.post                     = Post
+listSearch.member.telNumber                = Company Tel
+listSearch.team.level                      = Team Nature
+listSearch.team.name                       = Team name
+listSearch.team.state                      = Status
+
+lockUser.query.loginName.label = Search by login name
+
+login.button.label                   = Login
+login.error.1                        = Invalid user name or password
+login.language.label                 = Language
+login.password.label                 = Password
+login.prompt.administrator           = \u7BA1\u7406\u5458\u4E0D\u80FD\u8BBF\u95EE\u79FB\u52A8\u5E94\u7528\uFF01
+login.prompt.currentUserIsNull       = Can not access the current user information,Please login again.
+login.prompt.noWapPlugin             = No Wap Plugin.
+login.prompt.notEnabledWap           = Can not visit a Wap!
+login.prompt.thisAccountCannotUseWap = Sorry, the unit can not visit a Wap!
+login.rememberName.label             = Keep Login Info
+login.rememberPwd.label              = Keep Password
+login.title.label                    = A8 Coll Management
+login.title.label.NC                 = UFIDA NC Collaboration Suite
+login.username.label                 = UserName
+
+loginUserState.adminKickoff      = You are forced to be offline by Admin. {0, choice, 0# |1#Postscript:\r\n{1}}
+loginUserState.changePassword    = Password changed {0},please login again.
+loginUserState.hasLogout         = Have logged out!
+loginUserState.invailable        = Invailable account.
+loginUserState.invailableAccount = The user {0} unit do not exist.
+loginUserState.kickOff           = Your account has been offline!
+loginUserState.loginAnotherone   = Your session is forced to logout, because another session using the same account logins from another location.
+loginUserState.networkOff        = Network failure, you are forced to be offline
+loginUserState.notTheSameOne     = The current Login '{0}' is not consistent with the previous Login '{1}', please log in again!
+loginUserState.unknown           = You are forced to be offline, reason: lose to connect with server
+loginUserState.wuquanfangwen     = <div class="error_box"><div class="error_box_img_box"><em class="error_box_img"></em><span class="error_box_img_line font_size12 color_gray2 margin_l_10">Sory, you do't have enough privilege!</span></div><div class="font_size12 color_gray2 error_box_line"><span>You can:</span><span class="margin_l_10">Return previous page</span><span class="margin_l_10">|</span><span class="margin_l_10">Contact administrator to authorize</span></div></div>
+
+logon.clear.begin                  = clear log
+logon.detailSearch.label           = Detailed Search
+logon.logonSearch.label            = line Search
+logon.member.delete                = *Gray said that the staff set has been deleted
+logon.noLogRecord                  = no record
+logon.onlineTimeStat.label         = \ Covered Period
+logon.org.leave                    = org Leave
+logon.org.post                     = post
+logon.performanceClear.label       = Clear Properties
+logon.period.1                     = one month ago
+logon.period.12                    = one year ago
+logon.period.120                   = 10 Yeras Ago
+logon.period.2                     = two months ago
+logon.period.24                    = 2 Years Ago
+logon.period.3                     = three months ago
+logon.period.36                    = 3 Years Ago
+logon.period.6                     = six months ago
+logon.period.60                    = 5 Years Ago
+logon.period.84                    = 7 Years Ago
+logon.period.9                     = 9 Months Ago
+logon.search.from                  = from
+logon.search.ip                    = IP
+logon.search.label                 = input query condition
+logon.search.lasLogonTime          = last logon time
+logon.search.logonTime             = logon time
+logon.search.logoutNoError         = logout
+logon.search.logoutTime            = logout time
+logon.search.logoutWithError       = logout with error
+logon.search.online                = Online
+logon.search.onlineTime            = online time
+logon.search.order                 = order
+logon.search.order.max             = max time
+logon.search.order.min             = min time
+logon.search.remark                = remark
+logon.search.selectPeople          = select person
+logon.search.selectTime            = select date
+logon.search.to                    = to
+logon.search.user.state            = member state
+logon.selectClearDate.label        = Select the time period to clean up
+logon.selectClearDate.tip          = The period of time before the deadline to save the log will be deleted, the operation can not be restored, make sure that you want to remove and make a backup of the data has been exported.
+logon.stat.account                 = Login Account
+logon.stat.avgAccess               = From {0} To {1} Average Daily Visits
+logon.stat.beginTime               = Statistic Start Time
+logon.stat.detail.label            = detail
+logon.stat.maxAccess               = Maximum Number of Visits
+logon.stat.onlineTime              = total online time
+logon.stat.person                  = person
+logon.stat.totalAcess              = Total Number of Visits
+logon.stat.totalDay                = Total Days After Start
+logon.stat.viewDetail              = view detail
+logon.summaryStat.label            = Statistic Summary
+logon.templete.branch.search.label = Search condition
+logon.unlogonSearch.label          = Off-line Search
+logon.user.state.1                 = on job
+logon.user.state.2                 = leave office
+
+logonLog.excel.count.title = Logon Logs
+
+mail.read.alert.ExceedMaxLoginNumber = Maximum number of login people is exceeded
+mail.read.alert.exists               = The current browser other users have logged in, you can not re-sign.
+mail.read.alert.guoqi                = Link expired.
+mail.read.alert.noUser               = The user does not exist.
+mail.read.alert.wuxiao               = Invalid link.
+
+manager.countersign.setup         = Administrator Setting
+manager.formerpassword.notnull    = Old Password
+manager.manager                   = Message management
+manager.member.vaildate.length    = Password 6-50 characters in length, to distinguish between the English case, the system pre-unification password: 123456
+manager.name.notnull              = Login Name
+manager.oldword                   = Please input right former password
+manager.oldword.rep               = The password you entered is incorrect, please re-enter!
+manager.password.notnull          = New Password
+manager.proxy                     = Personal agent
+manager.pwdModify.notequal        = The new password can not be the same as the original password!
+manager.pwdStrength.best          = Password strength requirements must be the best!
+manager.pwdStrength.bestrule      = best:by numbers,letters,characters,more than 14 bits.
+manager.pwdStrength.medium        = Password strength requirements must be above!
+manager.pwdStrength.mediumrule    = medium:two kinds of numbers,letters,characters,6~8 bits.
+manager.pwdStrength.require       = Password does not meet the strength requirements, please timely modification!
+manager.pwdStrength.strong        = Password strength requirements must be stronger than!
+manager.pwdStrength.strongrule    = strong:by numbers,letters,characters, 8~14 bits.
+manager.pwdStrength.weakrule      = Weak: by single digits, letters, characters.
+manager.system.email              = Email Address
+manager.system.name               = Admin Name
+manager.system.phone              = Telephone Number
+manager.vaildate.length.rep       = Login password
+manager.vaildate.length.rep.lable = Password length of 6 to 50, the letters are case-sensitive
+manager.vaildate.length1          = Login password (6-50 characters, case sensitive)
+manager.validate.notnull          = Confirm Password
+manager.vialdateword              = The new passwords entered conflict!
+
+memorabilia.category.set       = Category setting
+memorabilia.edit.issue.content = Edit and publish content
+memorabilia.issue.content      = Publish content
+memorabilia.name               = Memorabilia
+memorabilia.style.1            = Horizontal version
+memorabilia.style.2            = Vertical version
+memorabilia.things             = Memorabilia details
+memorabilia.time.axis.color    = Time axis color
+memorabilia.title              = Memorabilia headlines
+
+message.setting.type.wechat = Wechat message settings
+
+mobile.SMS.label                         = SMS
+mobile.SMS.label.section                 = SMS count(section)
+mobile.SMS.suffix.label                  = SMS Suffix
+mobile.WapPush.label                     = WapPush message
+mobile.accountPopedom.label              = Org Authorization
+mobile.appName.label                     = Application
+mobile.appSetting.label                  = Configurate mobile application
+mobile.count.queryByDept.label           = Query
+mobile.count.queryByMonth.label          = Query
+mobile.count.selectDate.label            = Select Date
+mobile.count.sum.label                   = Sum
+mobile.count.usedInfo.label              = SMS Use Count
+mobile.default.SMS.suffix                = [OA]
+mobile.device.keep.online.label          = keep 
+mobile.device.login.alert.label          = Your account in the {0} mobile terminal login, whether to allow online at the same time??
+mobile.device.offline.label              = offline it
+mobile.device.online.label               = mobile device online
+mobile.isCanUseSMS.label                 = Allow Send and Receive Short Messages
+mobile.isCanUseWap.label                 = Allow Access From WAP Devices
+mobile.isCanUseWappush.label             = Allow Send and Receive WapPush Link Message
+mobile.memberPopedom.label               = Mobile authorization
+mobile.messageCount.label                = Message stat.
+mobile.messagePopedom.label              = Message authorization
+mobile.mobileView.label                  = Visit by WAP phone
+mobile.msgGateManage.explain.label       = Recieve on-line means if send message to mobile phone while user has already logon A8 system.
+mobile.msgGateManage.label               = Message Gateway Setting
+mobile.onlineRec.label                   = Recieve on-line
+mobile.popedomManage.label               = Access Management for Mobile Devices
+mobile.popedomMember.recMsg.description  = <b>Note:</b><li>Above authorized users can recieve SMS alert from OA system.</li>
+mobile.popedomMember.recMsg.label        = Allow the following users to recieve SMS
+mobile.popedomMember.sendSMS.description = <b>Note:</b><li>Above authorized users can send SMS in A8 system.</li>
+mobile.popedomMember.sendSMS.label       = Allow the following users to send SMS
+mobile.preferred.label                   = Preferred
+mobile.stateQuery.label                  = Search mobile state
+
+mytemplate.body.name.label      = Name of template
+mytemplate.body.type.label      = Type of template
+mytemplate.rename.label         = Rename
+mytemplate.rename.new           = New name
+mytemplate.toolbar.rename.label = Rename
+mytemplate.type.col             = Template of collaboration
+mytemplate.type.info            = Info Template
+mytemplate.type.inquiry         = Template of investigation
+mytemplate.type.meeting         = Template of meeting
+
+nc.user.mapper = NC User map
+
+news.link.inner  = Inner link
+news.link.outer  = Outer link
+news.move.speed  = move speed
+news.move.speed1 = fast
+news.move.speed2 = normal
+news.move.speed3 = slow
+
+newsaudit.space = News Space
+
+no.alert.next.time         = no alert next time
+
+node.all.mode              = All execution
+node.competition.mode      = competited execution
+node.isovertoptime.label   = Passed Time Limit
+node.matchScope            = Match Scope
+node.matchScope.1          = Sender Account
+node.matchScope.1.A        = Account
+node.matchScope.2          = All Accounts
+node.matchScope.2.GOV      = All Accounts
+node.matchScope.3          = Sender's Dept
+node.matchScope.4          = form control decide:
+node.matchScope.4.1        = form control decide
+node.matchScope.4.A        = Please select data
+node.matchScope.5          = sponsor's above organization
+node.multiple.mode         = Executed By Multiple Staff
+node.policy.Sign.label     = Signature
+node.policy.approve        = Approve
+node.policy.banli          = Process
+node.policy.bulletionaudit = Bulletion Approve
+node.policy.caibian        = CaiBian
+node.policy.chengban       = Undertake
+node.policy.chuanyue       = Circulate
+node.policy.collaboration  = Collaboration
+node.policy.dengji         = Register
+node.policy.fengfa         = Dispatch
+node.policy.formaudit      = Form audit
+node.policy.fuhe           = Reaudit
+node.policy.huiqian        = Countersign
+node.policy.inform         = Notify
+node.policy.jieshou        = JieShou
+node.policy.newsaudit      = News Approve
+node.policy.niban          = Contemplate
+node.policy.niwen          = Draft
+node.policy.pishi          = Instruct
+node.policy.qianfa         = QianFa
+node.policy.read           = Read
+node.policy.shangbao       = Report
+node.policy.shenhe         = ShenHe
+node.policy.shenpi         = Approve
+node.policy.vouch          = vouch
+node.policy.wenshuguanli   = doc manager
+node.policy.yuedu          = Read
+node.policy.zhihui         = Notify
+node.process.mode          = Execute Mode
+node.single.mode           = Executed by Single Staff
+
+notepager.button.saveas    = Export notepaper
+notepager.content.label    = Notepager Content
+notepager.descripton.label = The content of your notepad will be saved automatically. Maximum{0} characters.<br>
+notepager.save.filename    = My notepaper
+notepager.title            = Scratchpad
+
+notice.label = Notice
+
+ocx.alert.openfail.label    = Open failed
+ocx.alert.opensucceed.label = Open succeeded
+ocx.alert.pwderr.label      = Password error
+ocx.alert.savefail.label    = Save failed
+ocx.alert.savesucceed.label = Save succeeded
+ocx.clientip.label          = Client IP
+ocx.serialnumber.label      = Serial number
+ocx.signname.label          = Seal name
+ocx.signtime.label          = Signature time
+ocx.signuser.label          = Sealed by
+
+office.apply.label.1             = To use the application {0}
+office.apply.label.2             = Borrow to apply for {0}
+office.apply.label.3             = Recipients apply for {0}
+office.selectPeople.extend       = office extend
+
+officeTrans.download2local.label = Download
+officeTrans.error.msg1           = File browsing online is not successful, please download!
+officeTrans.error.reason1        = 1. The file has password
+officeTrans.error.reason2        = 2. Officetrans service stops work!
+officeTrans.error.reason3        = 3. Office file has a special content, cannot be converted into other
+officeTrans.error.reason4        = 4. unknown reason
+officeTrans.error.reasonall      = Cannot convert the reasons for the success are
+officeTrans.service.wuxiao.label = Cannot access Office file-conversion service, please wait later or contact the system administrator.
+officeTrans.view.label           = View
+officeTrans.wait.label           = Are transferring, wait a moment please...
+
+online.date.label                = date
+online.device.manage             = online device manage
+online.loginType.androidpad      = Android
+online.loginType.androidphone    = Android
+online.loginType.ipad            = iPad
+online.loginType.iphone          = iPhone
+online.loginType.mobile          = Mobil telephone
+online.loginType.other           = Other
+online.loginType.pc              = PC
+online.loginType.ucpc            = Zhixin
+online.loginType.vjoin           = V-Join
+online.loginType.weixin          = Wechat
+online.selectall.label           = select all
+online.time.day.before.yesterday = the day before yesterday
+online.time.today                = today
+online.time.yesterday            = yesterday
+
+oper.archive       = Archive
+oper.auth          = Authorized Sponsor
+oper.close         = Close
+oper.delete        = Delete
+oper.edit          = Edit
+oper.insert        = Attachment
+oper.live          = Live meeting
+oper.new           = New
+oper.openjoin      = OpenAndJoin
+oper.print         = Print
+oper.refresh       = Refresh
+oper.return        = Return
+oper.rework        = Modify
+oper.save          = Save
+oper.select.people = Select Person
+oper.send          = Send
+oper.submit        = Submit
+oper.video         = Video conference
+
+org.JoinAccount.label       = External unit
+org.JoinAccountTag.label    = External unit label
+org.JoinMember.label        = External staff
+org.JoinOrganization.label  = External org
+org.JoinPost.label          = External post
+org.RelatePeople.label      = Related Contacts
+org.account.label           = Company
+org.accountName.label       = Former Org
+org.admin.label             = Administrator
+org.department.label        = Department
+org.exchangeAccount.label   = External Org
+org.guest.label             = Special account
+org.level.label             = Service grade
+org.level.label.GOV         = Post
+org.member.label            = Personnel
+org.member.name.title       = Name
+org.node.label              = Rel-Role
+org.orgTeam.label           = OrgTeam
+org.outworker.label         = External personnel
+org.post.label              = Post
+org.role.label              = Role
+org.secondPost.label        = Second post
+org.team.label              = Group
+org.team.showRelative.label = Show groups related-person
+org.telNumber.label         = Phone
+
+partion.variable.description         = represents the folder path which is got automatically  when the software is being installed and is uneditable.
+partion.variable.description.NC      = represents the folder path which is got automatically  when the software is being installed and is uneditable.
+partion.variable.description.title   = Description
+partion.variable.fileSharePath       = File Service Network or Mapping path, for some special needs of distributed applications, through the A8 or the exclusive directory on the server set up regional networks to share so as to achieve direct access to file service to share this area directory of resources. \r\r\nFormat:"\\\\shared computer IP\\shared directory"
+partion.variable.fileSharePath.title = Description of "File Service Network or Mapping path"
+partion.variable.sharePath           = Index Service Network or Mapping path, for some special needs of distributed applications, through the A8 or the exclusive directory on the server set up regional networks to share so as to achieve direct access to index service to share this area directory of resources. \r\r\nFormat:"\\\\shared computer IP\\shared directory"
+partion.variable.sharePath.title     = Description of "Index Service Network or Mapping path"
+
+partition.fieldname.choice        = Selected
+partition.fieldname.endtime       = End time
+partition.fieldname.names         = Name
+partition.fieldname.path          = Path
+partition.fieldname.starttime     = Started time
+partition.fieldname.state         = State
+partition.fieldname.whether       = Whether to upload
+partition.menu.addpratiton        = Add subarea
+partition.menu.clearpartition     = Data purging
+partition.menu.findpartition      = view log
+partition.menu.modifypratiton     = Modify subarea
+partition.menu.removepratiton     = Unload subarea
+partition.menu.splitpratiton      = Split subarea
+partition.split                   = Subarea point not at the scope of subarea
+partition.split.newname           = Name of new subarea
+partition.split.newpath           = Path of new suarea
+partition.split.split             = Split subarea
+partition.split.split.must        = Required field
+partition.split.splittime         = Spilt time<br>(New subarea's started time)
+partition.split.splittime.notnull = Spilt time (New subarea's started time)
+partition.start                   = Startup
+partition.stop                    = Please unload after "{0}" disabled
+
+pending.check.param.error           = check param error;
+pending.collaboration.label         = Collaboration
+pending.deadlineDate.label          = Process Expiry Time
+pending.edoc.label                  = Correspondence
+pending.edocRec.label               = Receive
+pending.edocRegister.label          = To Be Registered
+pending.edocSend.label              = Dispatch
+pending.edocSign.label              = Sign Receipt
+pending.exSend.label                = Wait Send
+pending.exSign.label                = To Be Signed
+pending.exSign.label.1              = Signed
+pending.exchange.label              = Official Doc exchange
+pending.meeting.label               = Meeting
+pending.meetingroom.label           = Meeting Room
+pending.overtop.false.label         = Unexceed the time limit
+pending.overtop.true.label          = Exceed the time limit
+pending.panel.all.label             = All Pending
+pending.panel.catagory.label        = Categroy
+pending.panel.catagorywf.label      = workflow category
+pending.panel.col.label             = Unrestricted Collaboration
+pending.panel.importlevel.label     = import level
+pending.panel.overTime.label        = OverTime Pending
+pending.panel.policy.label          = Policy
+pending.panel.policy.or.other.label = Apps or Node permissions
+pending.panel.read.label            = Read/Inform
+pending.panel.sender.label          = start user
+pending.panel.shenpi.label          = Approval Pending
+pending.panel.templete.label        = Templete Pending
+pending.protal.more.pending.label   = Pending Center
+pending.public.label                = Public Message
+pending.top.error                   = Up to only allow top 5 data, top failure!
+
+phrase.edit.help.label     = <b>Instruction: </b><br> common phrase can not exceed 80 words
+phrase.help.label          = Click to refer to common phrase
+phrase.label               = Common phrase
+phrase.system.label        = Common phrase of sys
+phrase.title.content.label = Content
+phrase.title.delete.label  = Delete
+phrase.title.edit.label    = Modify
+
+picture.move.lable              = Auto Move
+picture.move.lable.false        = NO
+picture.move.lable.true         = Yes
+picture.move.num.lable          = The Num Move
+picture.move.num.lable.all      = ALL
+picture.move.num.lable.newEight = The Eight
+
+planManage.main.label = The Main Send
+planManage.next.label = The plan next to send
+planManage.tell.label = The plan to tell
+
+plurality.selectpost = <Chick here to select post>
+plurality.showmeg    = <Click here to complete serial number>
+
+post.must    = Required field
+post.new     = Add management post
+post.preview = Preview post info
+
+product.about.title         = About
+product.category            = Type
+product.copyright           = Copyright (C) {0} Beijing Seeyon Internet Software CO.LTD All rights reserved
+product.customerInfo.label  = User Info
+product.info.label          = Product Info
+product.maxOnline           = <b>{0}</b> Users
+product.maxOnline.M1.label  = M1 Maximum
+product.maxOnline.label     = A8 Maximum Users
+product.maxOnline.label.0   = A6+ Maximum
+product.maxOnline.label.1   = A8 Maximum
+product.maxOnline.label.12  = A6+
+product.maxOnline.label.2   = A8 Maximum
+product.maxOnline.label.3   = G6 Maximum
+product.maxOnline.label.4   = G6 Maximum
+product.maxOnline.label.5   = NC Maximum
+product.maxOnline.label.6   = U8 Maximum
+product.maxOnline.label.7   = A6-S Maximum
+product.maxOnline.label.GOV = G6 Maximum Concurrent Users
+product.maxOnline.label.NC  = NC-OA Maximum
+product.maxOnline.label1    = Register Users
+product.maxOnline.label2    = Concurrent Users
+product.series.label        = ID Number
+product.version.label       = Edition
+product.version_sp.label    = Update edition
+product.vestIn              = Right to use this software belong to
+
+project.nameandphase.label            = Name + Stage
+project.nameandphaseandprogress.label = Stage + Name + Progress
+project.panel.label                   = Project Source
+
+protal.pendingsection.sender.remark = Note: The selected object does not contain the part-time staff of other units
+
+proxy.already.1      = {0} has selected {1} as agent, please reselect!
+proxy.already.2      = {1} which is disabled to be selected as agent again has been selected as agent of {0}. Please select again!
+proxy.cancel.label   = Cancel the agent
+proxy.name.choice    = Select your agent
+proxy.name.extru     = Quit
+proxy.name.notset    = unset
+proxy.name.passivity = You have been selected as agent
+proxy.name.value     = <Please select agent>
+proxy.name.youproxy  = Your agent
+proxy.not.exist      = Gets no Principal''s ID
+
+publicManager.info.menu.manager    = publicManager
+publicManager.select               = Please select managed board
+publicManager.select.menu.bss      = Discussion management
+publicManager.select.menu.bulletin = Bulletin management
+publicManager.select.menu.header   = Please select managed board
+publicManager.select.menu.inquiry  = Survey management
+publicManager.select.menu.manager  = publicManager
+publicManager.select.menu.news     = News management
+
+relate.panel.label               = Sources of personnel
+relate.system.panel.common.label = Favorite Link
+relate.system.panel.in.label     = INTER SYS
+relate.system.panel.out.label    = EXT SYS
+relate.system.panel.set          = Related Set
+
+relatedproject.standby.label = Standby RelatedProject
+
+relatedsystem.standby.label = Standby RelatedSystem
+
+role.oper.create      = New
+role.oper.delete      = Delete
+role.oper.edit        = Edit
+role.security.warning = You are trying to visit the page that you don't have permission and your unlawfully action has been recorded.YOU SHOULD NOT TRY AGAIN!
+
+sap.org.synchLog.data   = data
+sap.org.synchLog.desc   = Desc
+sap.org.synchLog.option = Option
+
+section.app.collaboration.label          = collaboration
+section.app.edoc.label                   = edoc
+section.app.form.label                   = form
+section.description.iframeSection        = <li> page section integrated directly embedded without external authentication login page. </li>
+section.description.ssoIframeSection     = <li>Functional operational sections are required to use embedded Iframe authentication system registry pages, single sign-required combination of interrelated systems.</li>
+section.description.ssoWebcontentSection = <li> data integration-type columns are linked through the user-configured systems to server-side certification, directly shows the data collected. Columns of this type the security level high, but not as good as the functional operation operable type columns. </li> \r\n<li> columns of this type of certification requires a combination of interconnected systems, and provide necessary data extraction page address. </li>
+section.name.banner.background           = Setting Background
+section.name.banner.image                = Image
+section.name.banner.image.image          = Background Image
+section.name.banner.image.image.notnull  = Background image can not be empty!
+section.name.banner.image.max            = Photos can not be more than five!
+section.name.banner.image.title          = Image Title
+section.name.banner.image.url            = Link Address
+section.name.banner.showSearch           = Show Search?
+section.name.default.slogan              = Slogan
+section.panel.all.label                  = All
+section.style.blue.line                  = blue
+section.style.red.line                   = red
+section.template.recent.use.count        = Template Recent Use Count
+section.templete.all.label               = all templete
+section.templete.category.label          = Process Classification
+section.templete.choose.label            = choose templete
+
+security.switch = security switch
+
+seeyon.alert.hasAgent                          = You set {0} as agent currently
+seeyon.link.label                              = Turbo channel
+seeyon.top.Default_custom.space.label          = The Default custom Space
+seeyon.top.Default_department.space.label      = Default Department Space
+seeyon.top.Default_out_personal.space.label    = Outsiders space
+seeyon.top.Default_personal.space.label        = Personal Space
+seeyon.top.Default_personal_custom.space.label = Custom Space
+seeyon.top.a8.alt                              = A8 spirit
+seeyon.top.aboutA8.alt                         = About A8
+seeyon.top.aboutA8.alt.NC                      = about NC System-OA
+seeyon.top.back.alt                            = Back off
+seeyon.top.close.alt                           = Logout
+seeyon.top.collaboration.space.label           = Collaboration Space
+seeyon.top.collapse.alt                        = Pull Back
+seeyon.top.corporation.space.label             = Org space
+seeyon.top.custom.space.label                  = Custom Space
+seeyon.top.default.alt                         = Homepage
+seeyon.top.default_leader.space.label          = The leader space
+seeyon.top.department.space.label              = Dept. space
+seeyon.top.deptManager.space.label             = Director of space
+seeyon.top.download.alt                        = download
+seeyon.top.forward.alt                         = Forward
+seeyon.top.group.space.label                   = Group space
+seeyon.top.help.alt                            = Help
+seeyon.top.home.alt                            = Back to homepage
+seeyon.top.leader.space.label                  = The leader space
+seeyon.top.nowLocation.label                   = Current Location:
+seeyon.top.online.label                        = online
+seeyon.top.onlineNum.label                     = Online Number
+seeyon.top.onlineNumber.label                  = <span id="onlineNum">{0}</span> user
+seeyon.top.other.space.label                   = Other space
+seeyon.top.personal.space.label                = My space
+seeyon.top.productview.alt                     = Product View
+seeyon.top.public_.space.label                 = Account Space
+seeyon.top.public_.space.label.group           = Group Space
+seeyon.top.public_custom.space.label           = Custom Space
+seeyon.top.public_custom_group.space.label     = Custom Space
+seeyon.top.reload.alt                          = Refresh
+seeyon.top.search.alt                          = Search
+seeyon.top.system.space.label                  = Sys Info
+seeyon.top.tools.space.label                   = Common tools
+seeyon.top.unfold.alt                          = Unfold
+
+select.condition.search   = Please use the query view!
+select.space.type         = Select Space
+
+selectKeyword.hidden.tree = Maximize display of keyword list
+
+self.device = local machine
+
+shortcut.alert.successful  = Setting of shortcut and tools succeeded.
+shortcut.all.label         = Prepare to select
+shortcut.jykhr.label       = \u91D1\u76CA\u5EB7HR
+shortcut.ncsso.login       = NC login access
+shortcut.ncsso.login.info  = Connection failed, disabled to log on.
+shortcut.ncsso.login.title = Logging on NC, please wait for a moment\u2026
+shortcut.set.title         = Setting of Panel
+
+signet.alert.selectcondition     = Search
+signet.edit.limit                = Seal file can not exceed 5M,Resolution:96dpi(Image must be *.jpg,*.bmp)
+signet.edit.signetfile           = Seal file
+signet.edit.userword             = password
+signet.edit.validateword         = Confirm password
+signet.menu.leveluser            = authorize user
+signet.menu.look                 = Preview
+signet.menu.looksignet           = Preview seal
+signet.menu.signetname           = Seal name
+signet.menu.type                 = Seal type
+signet.menu.type.list            = Type
+signet.modify.ok                 = Please select a record to be operated!
+signet.number                    = Seal password(Between 6 and 16 characters)
+signet.password.choscesign       = Select seal
+signet.password.choscesign.title = Select seal
+signet.password.sign             = Management of seal password
+signet.type.sig                  = Seal
+signet.type.underwrite           = Signature
+signet.warrant.user              = <Please select authorization user>
+
+sms.config.error = SMS plug-in is not configured, you can not use!
+
+space.department.manager.label     = Dept.Manager
+space.department.member.label      = Dept.Member ({0})
+space.name                         = Space Name
+space.section.deeSection           = Data Exchange Engine Section
+space.section.iframe               = Page Integrated Section
+space.section.iframe1              = Common Link Page Integrated Section
+space.section.newLinkSystemSection = Associated System
+space.section.ssoIframe            = Functional Operation Section
+space.section.ssoIframe1           = Link System Functional Operation Section
+space.section.ssoWebcontent        = Data Integrated Section
+space.section.ssoWebcontent1       = Link System Data Integrated Section
+space.standby.label                = Standby Space
+
+supervise.manager.label             = supervise affair
+
+superviseThings.collaboration.label = Supervise collaboration
+superviseThings.edoc.label          = Supervise Receipt
+
+system.weixin.ApplicationMeetingRoom = Conference room application
+system.weixin.FormTemplete           = Form template
+system.weixin.HrSalary               = Salary bar
+system.weixin.NewTask                = New task
+system.weixin.WorkTask               = Task
+
+taglib.list.table.page.current     = the
+taglib.list.table.page.first.label = First
+taglib.list.table.page.html        = {0} every page/{2} records in total<span class='hole_count'>{1} pages in total</span><span class='sepreat'>|</span>{3}<span class='sepreat'>|</span>the{4}page
+taglib.list.table.page.last.label  = Last
+taglib.list.table.page.next.label  = Next
+taglib.list.table.page.prev.label  = Previous
+taglib.list.table.page.total       = page
+
+task.column.begintime  = Begin Time
+task.column.finishRate = Finish Rate
+task.column.managers   = Managers
+task.column.status     = Status
+task.column.subject    = Subject
+task.source            = Task Category
+task.source.personal   = Personal Task
+task.source.related    = Related Task
+task.source.sent       = Assigned Task
+
+template.recently.used.count = Recently used templates
+
+templete.category.type.0  = Collaboration Panel
+templete.category.type.1  = Official doc template
+templete.category.type.19 = Issued template
+templete.category.type.20 = Receive template
+templete.category.type.21 = Signed template
+templete.category.type.4  = Form template
+templete.personal.label   = Personal Templates
+templete.public.label     = Public Templates
+templete.text.label       = Format Template
+templete.workflow.label   = Flow Template
+
+timesort.asc.label  = asc
+timesort.desc.label = desc
+
+timezone.alert.noequal = The preferred time zone is not consistent with the local time zone. Please confirm the change!
+timezone.alert.noset   = Not set the preferred time zone, set in the personal information!
+timezone.msg.preferred = Preferred timeZone 
+
+top.alt.sendMobileMsg   = Send mobile message
+top.alt.sendOnlineMsg   = Send online message
+top.datetime.pattern    = {0,date, MM dd, yyyy EEE}
+top.switchAccount.label = Change Account
+
+track.button.cancel.label = Cancel tracking
+
+unit.role.description.label = Units of the role
+
+weather.city.label            = Weather forecast of city
+weather.countrywide.label     = National weather forecast
+weather.service.isOffer.label = Confirm to startup weather forecast service
+weather.setServiceWeb.label   = Set service website of weather forecast
+weather.update.ok             = Setting of weather forecast succeeded!
+
+welcome.label = Welcome, {0}.
+
+window.already.exit.js = window already exit!
+window.exit.isClose    = There are not yet closed, the task window is closed?
+window.max.length.js   = Can not be more than 10 Windows!
+
+work.area                   = &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Working Range Settings
+work.area.choice            = Set Working Range
+work.area.label             = Working Range Settings
+work.area.level             = Service grade
+work.area.notlimit          = No restriction
+work.area.number            = Serial num of level
+work.area.option            = Confirm to conduct save operation
+work.area.setup             = Working environment sSetting
+work.area.setup.common      = Rub. Resources
+work.area.setup.eumitosis   = Phrases
+work.area.setup.metadata    = Metadata Manage
+work.area.setup.project     = Project Application
+work.area.setup.roleManager = Role Setting
+work.area.setup.signet      = Electronic Seal
+work.area.setup.workControl = Scope of Work
+work.area.up                = Upper Level Access Range
+work.area.visit             = Addressable service grade
+work.area.yes               = Setting of working range succeeded!
+work.show                   = \ instruction: \r\n
+work.show1                  = 1.Restrict lower ranking personnel to send collaboration to higher ranking personnel, through setting the Upper Level Access Range.
+work.show2                  = 2.Upper Level Access Range means 'the highest level to which a lower level personnel can make access'. For example, when the Upper Level Access Range is 3, a 5th level person can make access to 3 levels higher (i.e., the 4th, 3rd and 2nd Level), in addition to the peoples at the peer level.
+work.show3                  = 3.A higher level personnel can make access to any lower level personnel without any restriction.
+work.show4                  = 4.Though restricted by the settings of his Working Range, the person can still access other persons beyong his access range by way of creation of groups.
+work.show5                  = 5.Peoples in the same deparatment are not restricted by the Upper Level Access Range.
+
+workflow.information.list = Flow Inf List
+
+workflowdata.null.warning = no acl or no data
+
+onlineCustomerService.tips.not.purchased = You have not purchased the operation and maintenance service, unable to connect online customer service, and use it immediately after purchase.
+onlineCustomerService.tips.expire   = Your operation and maintenance service has expired, unable to connect online customer service, and then use it immediately after renewal of service charge.
+onlineCustomerService.tips.expire.level2.15     = Your operation and maintenance service has expired,VIP\u2605\u2605 card,it will be extended for 15 days, and then will not be able to use,and then use it immediately after renewal of service charge.
+onlineCustomerService.tips.expire.level3.30     = Your operation and maintenance service has expired,VIP\u2605\u2605\u2605 card,it will be extended for 15 days, and then will not be able to use,and then use it immediately after renewal of service charge.
+onlineCustomerService.tips.nomal                = Operation and maintenance service is normal
+onlineCustomerService.tips.unnomal              = Online customer service function is not available, please try again later!
+onlineCustomerService.service.level.non.vip     = Non star card customer
+onlineCustomerService.service.level1            = VIP\u2605 card
+onlineCustomerService.service.level2            = VIP\u2605\u2605 card
+onlineCustomerService.service.level3            = VIP\u2605\u2605\u2605 card
+onlineCustomerService.service.zhibao			= Quality assurance card
+onlineCustomerService.service.cika				= Frequency card
+onlineCustomerService.service.level.other		= VIP{0}\u2605card
+onlineCustomerService.service.expire.date	    = expire date is {0}
+onlineCustomerService.title.unpurchase          = You have not purchased the operation and maintenance service
+onlineCustomerService.title.header			    = Your service message is:
+onlineCustomerService.tips.header				= tips:
+onlineCustomerService.management.description    = <li>1.This function is used to authorize  users to use online customer service.</li>\r\n<li>2.There is no online customer service for the Frequency card customers.The Quality assurance card  can authorize one user.VIP star card can authorize one user for one star,etc.</li>\r\n<li>3.Authorize the user to log on to the system, and consult with the technical engineer for products.</li>
+onlineCustomerService.management.authorized.people.label = Authorized people:
+onlineCustomerService.management.protocol.fail		      = Please read and agree with the license agreement!
+onlineCustomerService.management.label.protocolcheckbox   = I have read and agree
+onlineCustomerService.management.label.protocol            = "License Agreement"
+onlineCustomerService.network.error							   = Network connection error, please check the network
+portal.form.button.indicators = Choice of secondary indicators
+portal.form.button.remove 	  = remove
+
+hr.staffInfo.male.label                                   = Male
+hr.staffInfo.female.label                                 = Female
+hr.staffInfo.othersex.label                               = no recorid
+hr.staffInfo.edulevel.1                                   = Junior
+hr.staffInfo.edulevel.10                                  = Technical school
+hr.staffInfo.edulevel.2                                   = High
+hr.staffInfo.edulevel.3                                   = University Specialist
+hr.staffInfo.edulevel.4                                   = Undergraduate
+hr.staffInfo.edulevel.5                                   = Master
+hr.staffInfo.edulevel.6                                   = Ph.D.
+hr.staffInfo.edulevel.7                                   = Other
+hr.staffInfo.edulevel.8                                   = Couse
+hr.staffInfo.edulevel.9                                   = Secondary
+hr.staffInfo.edulevel.label                               = Highest Education
+hr.staffInfo.marriage.1                                   = Unmarried
+hr.staffInfo.marriage.2                                   = Married
+hr.staffInfo.marriage.3                                   = Divorced
+hr.staffInfo.marriage.4                                   = Widowed
+hr.staffInfo.marriage.label                               = Marital status
+hr.staffInfo.position.1                                   = CCP
+hr.staffInfo.position.2                                   = Other
+hr.staffInfo.position.3                                   = Komsomolets
+hr.staffInfo.position.4                                   = Democratic parties
+hr.staffInfo.position.label                               = Political status
