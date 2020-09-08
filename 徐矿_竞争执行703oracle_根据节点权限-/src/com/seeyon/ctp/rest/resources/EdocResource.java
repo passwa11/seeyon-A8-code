@@ -1,7 +1,10 @@
 package com.seeyon.ctp.rest.resources;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.*;
 
 import javax.ws.rs.Consumes;
@@ -19,11 +22,14 @@ import com.seeyon.apps.ext.temp.manager.XkjtTempManagerImpl;
 import com.seeyon.apps.ext.temp.po.XkjtTemp;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import com.seeyon.apps.collaboration.enums.CollaborationEnum;
 import com.seeyon.apps.collaboration.vo.PermissionMiniVO;
 import com.seeyon.apps.doc.api.DocApi;
 import com.seeyon.apps.edoc.enums.EdocEnum;
+import com.seeyon.apps.xkjt.manager.XkjtManager;
+import com.seeyon.apps.xkjt.po.XkjtLeaderDaiYue;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.authenticate.domain.User;
 import com.seeyon.ctp.common.constants.ApplicationCategoryEnum;
@@ -56,6 +62,7 @@ import com.seeyon.ctp.common.track.manager.CtpTrackMemberManager;
 import com.seeyon.ctp.common.usermessage.UserMessageManager;
 import com.seeyon.ctp.organization.bo.V3xOrgMember;
 import com.seeyon.ctp.organization.manager.OrgManager;
+import com.seeyon.ctp.util.DBAgent;
 import com.seeyon.ctp.util.DateUtil;
 import com.seeyon.ctp.util.FlipInfo;
 import com.seeyon.ctp.util.ParamUtil;
@@ -64,12 +71,15 @@ import com.seeyon.ctp.util.annotation.RestInterfaceAnnotation;
 import com.seeyon.ctp.util.json.JSONUtil;
 import com.seeyon.ctp.workflow.wapi.WorkflowApiManager;
 import com.seeyon.v3x.edoc.constants.EdocNavigationEnum;
+import com.seeyon.v3x.edoc.domain.CtpPdfSavepath;
 import com.seeyon.v3x.edoc.domain.EdocBody;
 import com.seeyon.v3x.edoc.domain.EdocManagerModel;
 import com.seeyon.v3x.edoc.domain.EdocOpinion;
 import com.seeyon.v3x.edoc.domain.EdocOpinion.OpinionType;
 import com.seeyon.v3x.edoc.domain.EdocRegister;
 import com.seeyon.v3x.edoc.domain.EdocSummary;
+import com.seeyon.v3x.edoc.manager.CtpPdfSavepathManager;
+import com.seeyon.v3x.edoc.manager.CtpPdfSavepathManagerImpl;
 import com.seeyon.v3x.edoc.manager.EdocFormManager;
 import com.seeyon.v3x.edoc.manager.EdocH5Manager;
 import com.seeyon.v3x.edoc.manager.EdocHelper;
@@ -85,6 +95,7 @@ import com.seeyon.v3x.edoc.util.EdocOpenFromUtil.EdocSummaryType;
 import com.seeyon.v3x.edoc.webmodel.EdocSummaryBO;
 import com.seeyon.v3x.edoc.webmodel.EdocSummaryCountVO;
 import com.seeyon.v3x.edoc.webmodel.EdocSummaryModel;
+import com.seeyon.v3x.exchange.domain.EdocRecieveRecord;
 import com.seeyon.v3x.exchange.manager.EdocExchangeManager;
 import com.seeyon.v3x.system.signet.domain.V3xHtmDocumentSignature;
 import com.seeyon.v3x.system.signet.enums.V3xHtmSignatureEnum;
@@ -119,10 +130,136 @@ public class EdocResource extends BaseResource {
     private EdocIndexEnableImpl edocIndexEnable = (EdocIndexEnableImpl) AppContext.getBean("edocIndexEnable");
     private OfficeBakFileManager officeBakFileManager = (OfficeBakFileManager) AppContext.getBean("officeBakFileManager");
     private AttachmentManager attachmentManager = (AttachmentManager) AppContext.getBean("attachmentManager");
-    ;
     private UserMessageManager userMessageManager = (UserMessageManager) AppContext.getBean("userMessageManager");
     private EdocStatManager edocStatManager = (EdocStatManager) AppContext.getBean("edocStatManager");
     private EdocMarkManager edocMarkManager = (EdocMarkManager) AppContext.getBean("edocMarkManager");
+
+    private CtpPdfSavepathManager ctpPdfSavepathManager = new CtpPdfSavepathManagerImpl();
+    private XkjtManager xkjtManager = (XkjtManager) AppContext.getBean("xkjtManager");
+
+    /**
+     * pdf文件上传接口
+     *
+     * @param edocSummaryId
+     * @return
+     */
+    @POST
+    @Consumes({MediaType.MULTIPART_FORM_DATA})
+    @Path("uploadPdf")
+    public Response uploadPdf(@QueryParam("edocSummaryId") String edocSummaryId, @FormDataParam("upload_file") InputStream file) {
+        Map map = new HashMap();
+        OutputStream os = null;
+        try {
+            CtpPdfSavepath ctpPdfSavepath = ctpPdfSavepathManager.selectCtpPdfSavepathBySummaryId(edocSummaryId);
+            String spath = ctpPdfSavepath.getSavepath();
+            String path = spath + File.separator;
+            System.out.println("文件路径：" + path);
+            File outFile = new File(path + edocSummaryId + ".pdf");
+            File parentFile = outFile.getParentFile();
+            if (!parentFile.exists()) {
+                parentFile.mkdirs();
+            }
+            if (!outFile.exists()) {
+                outFile.createNewFile();
+            }
+            int len = 0;
+            byte[] bytes = new byte[1024];
+            os = new FileOutputStream(outFile);
+            while ((len = file.read(bytes)) != -1) {
+                os.write(bytes, 0, len);
+            }
+            map.put("result", "success!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            map.put("result", "error!");
+        } finally {
+            try {
+                if (null != os) {
+                    os.close();
+                }
+            } catch (IOException io) {
+                io.printStackTrace();
+            }
+        }
+        return ok(map);
+    }
+
+    /**
+     * 返回json   返回图片流
+     *
+     * @param edocSummaryId
+     * @return
+     */
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("getPdfFileStream")
+    public Response getPdfFileStream(@QueryParam("edocSummaryId") String edocSummaryId) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        try {
+            //pdf文件名称
+            String fileName = edocSummaryId.concat(".pdf");
+            CtpPdfSavepath ctpPdfSavepath = ctpPdfSavepathManager.selectCtpPdfSavepathBySummaryId(edocSummaryId);
+            //获取系统路径
+            String spath = ctpPdfSavepath.getSavepath();
+            //pdf文件在服务器上的完整路径
+            String realPath = spath + fileName;
+
+            String sPath = realPath.substring(realPath.indexOf("/seeyon"));
+
+            File file = new File(realPath);
+            String md5Flag = MD5Utils.getFileMD5(file);
+            if (file.exists()) {
+                map.put("result", "success!");
+                map.put("data", sPath);
+                map.put("md5", md5Flag);
+            } else {
+                map.put("result", "请求的文件不存在！~m~");
+                map.put("data", null);
+                map.put("md5", null);
+            }
+
+//            //以流的形式返回
+//            File f = new File(realPath);
+//            if (!f.exists()) {
+//                error(new Throwable("PDF文档不存在！"));
+//            }
+
+//            FileInputStream fis = null;
+//            ByteArrayOutputStream baos = null;
+//            byte[] data = null;
+//            try {
+//                fis = new FileInputStream(f);
+//                baos = new ByteArrayOutputStream((int) f.length());
+//                byte[] buf = new byte[1024];
+//                int len = 0;
+//                while ((len = fis.read(buf)) != -1) {
+//                    baos.write(buf, 0, len);
+//                }
+//                data = baos.toByteArray();
+//                String json=new String(com.seeyon.ctp.util.Base64.encodeString(data));
+//                map.put("result", "success!");
+//                map.put("data", json);
+//                map.put("md5", md5Flag);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }finally {
+//                try {
+//                    if (fis != null) {
+//                        fis.close();
+//                    }
+//                    baos.close() ;
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            map.put("result", "error!");
+            map.put("data", null);
+            map.put("md5", null);
+        }
+        return ok(map);
+    }
 
     /**
      * 公文事项设置是否跟踪
@@ -323,26 +460,27 @@ public class EdocResource extends BaseResource {
      *
      * @param params 获取公文列表的参数
      *               <pre>
-     *                                           类型             名称                   必填           备注
-     *                                           int	 edocType     N       公文类型
-     *                                              <pre>
-     *                                                 0 发文
-     *                                                 1 收文
-     *                                                 2 签报
-     *                                              </pre>
-     *                                           String listType   Y 打开来源
-     *                                              <pre>
-     *                                                 listPending  待办
-     *                                                 listSent     已发
-     *                                                 listWaitSend 待发
-     *                                                 listDoneAll  已办
-     *                                              </pre>
-     *                                           String conditionKey  Y 搜索条件
-     *                                           String textfield     Y 搜索传值
-     *                                           String textfield1    N 搜索传值
-     *                                           String pageNo        Y 第几页（大于1的整数）
-     *                                           String pageSize      Y 每页多少条数据(大于1的整数)
-     *                                           </pre>
+     *               类型             名称                   必填           备注
+     *               int	 edocType     N       公文类型
+     *                  <pre>
+     *                     0 发文
+     *                     1 收文
+     *                     2 签报
+     *                  </pre>
+     *               String listType   Y 打开来源
+     *                  <pre>
+     *                     listPending  待办
+     *                     listSent     已发
+     *                     listWaitSend 待发
+     *                     listDoneAll  已办
+     *                     listOver     办结
+     *                  </pre>
+     *               String conditionKey  Y 搜索条件
+     *               String textfield     Y 搜索传值
+     *               String textfield1    N 搜索传值
+     *               String pageNo        Y 第几页（大于1的整数）
+     *               String pageSize      Y 每页多少条数据(大于1的整数)
+     *               </pre>
      * @return FlipInfo
      * @throws BusinessException
      */
@@ -351,6 +489,14 @@ public class EdocResource extends BaseResource {
     @Path("getSummaryListByEdocTypeAndListType")
     public Response getSummaryListByEdocTypeAndListType(Map<String, String> params) {
         int edocType = ParamUtil.getInt(params, "edocType");
+
+        // best 新增的栏目，如果是需要显示所有则需要显示收文和发文 start
+        String showAllEdocType = ParamUtil.getString(params, "showAllEdocType");
+        if ("true".equals(showAllEdocType)) {
+            edocType = 999; // 如果是999证明是前端传递的查询条件
+        }
+        // best 新增的栏目，如果是需要显示所有则需要显示收文和发文 end
+
         String listType = ParamUtil.getString(params, "listType");
         String conditionKey = ParamUtil.getString(params, "conditionKey");
         String textfield = ParamUtil.getString(params, "textfield");
@@ -380,6 +526,11 @@ public class EdocResource extends BaseResource {
                 if ("listDoneAll".equals(listType)) {
                     listTypeInt = EdocNavigationEnum.LIST_TYPE_DONE;
                 }
+                /**徐矿集团【新增办结数据获取接口】 wxt.dulong 2019-5-24 start*/
+                if ("listOver".equals(listType)) {
+                    listTypeInt = EdocNavigationEnum.LIST_TYPE_OVER;
+                }
+                /**徐矿集团【新增办结数据获取接口】 wxt.dulong 2019-5-24 end*/
                 summarys = edocListManager.findEdocPendingList(listTypeInt, condition);
                 //处理名称
                 dealReturnInfo(summarys);
@@ -398,30 +549,34 @@ public class EdocResource extends BaseResource {
      *
      * @param params 公文详情的参数
      *               <pre>
-     *                                           类型             名称                       必填           备注
-     *                                           Long    affairId     Y     事项ID
-     *                                           Long    summaryId    Y     协同ID
-     *                                           String  openFrom     N     打开来源（默认值：listDoneAll）
-     *                                              <pre>
-     *                                                 listPending  待办
-     *                                                 listSent     已发
-     *                                                 listWaitSend 待发
-     *                                                 listDoneAll  已办
-     *                                                 glwd         关联文档
-     *                                                 docLib       文档中心
-     *                                                 lenPotent    借阅
-     *                                              </pre>
-     *                                           String baseObjectId  N 关联文档属于的数据ID
-     *                                           String baseApp  N 关联文档属于的数据所在的模块
-     *                                           String docResId  N 文档ID，用于权限验证
-     *                                           </pre>
+     *               类型             名称                       必填           备注
+     *               Long    affairId     Y     事项ID
+     *               Long    summaryId    Y     协同ID
+     *               String  openFrom     N     打开来源（默认值：listDoneAll）
+     *                  <pre>
+     *                     listPending  待办
+     *                     listSent     已发
+     *                     listWaitSend 待发
+     *                     listDoneAll  已办
+     *                     glwd         关联文档
+     *                     docLib       文档中心
+     *                     lenPotent    借阅
+     *                  </pre>
+     *               String baseObjectId  N 关联文档属于的数据ID
+     *               String baseApp  N 关联文档属于的数据所在的模块
+     *               String docResId  N 文档ID，用于权限验证
+     *               </pre>
      * @return EdocSummaryBO
      */
     @POST
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     @Path("edocSummary")
     public Response edocSummary(Map<String, Object> params) {
-
+        /**徐矿集团【修复移动端办结页签中的公文点击查看详情出错的bug】 wxt.dulong 2019-5-29 start*/
+        if ("listOver".equals(params.get("openFrom"))) {
+            params.put("openFrom", "listDoneAll");
+        }
+        /**徐矿集团【修复移动端办结页签中的公文点击查看详情出错的bug】 wxt.dulong 2019-5-29 end*/
         User user = AppContext.getCurrentUser();
 
         Long affairId = ParamUtil.getLong(params, "affairId", -1L);
@@ -451,9 +606,10 @@ public class EdocResource extends BaseResource {
         }
 
         EdocSummaryBO edocSummaryVo = new EdocSummaryBO();
+
+        String HTML = "<div align='center'><table class='xdFormLayout' style='BORDER-TOP-STYLE: none; WORD-WRAP: break-word; BORDER-LEFT-STYLE: none; BORDER-COLLAPSE: collapse; TABLE-LAYOUT: fixed; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 629px'><colgroup><col style='WIDTH: 629px'/></colgroup><tbody><tr class='xdTableContentRow'><td style='BORDER-RIGHT: #bfbfbf 1pt; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #bfbfbf 1pt; BORDER-LEFT: #bfbfbf 1pt' class='xdTableContentCell'><div align='center'><table class='xdLayout' style='WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-COLLAPSE: collapse; TABLE-LAYOUT: fixed; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; WIDTH: 627px' borderColor='buttontext' border='1'><colgroup><col style='WIDTH: 627px'/></colgroup><tbody vAlign='top'><tr style='MIN-HEIGHT: 66px'><td style='VERTICAL-ALIGN: middle; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; PADDING-RIGHT: 1px'><div align='center'><font color='#ff0000' size='6' face='SimSun'><strong>公文签收单</strong></font></div></td></tr></tbody></table></div><div><table class='xdLayout' style='WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-COLLAPSE: collapse; TABLE-LAYOUT: fixed; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; WIDTH: 627px' borderColor='buttontext' border='1'><colgroup><col style='WIDTH: 104px'/><col style='WIDTH: 105px'/><col style='WIDTH: 104px'/><col style='WIDTH: 105px'/><col style='WIDTH: 104px'/><col style='WIDTH: 105px'/></colgroup><tbody vAlign='top'><tr style='MIN-HEIGHT: 48px'><td style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 5px'><div align='right'><font color='#ff0000' size='4' face='宋体'><strong>标题</strong></font></div></td><td colSpan='5' style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 1px'><font color='#ff0000' size='4' face='宋体'><div align='left'><div _nodeType='_formFieldNode_'  id='my:send_unit'  style='FONT-SIZE: medium; HEIGHT: 48px; FONT-FAMILY: 宋体; WIDTH: 307px;overflow-x:hidden;overflow-y:auto;white-space:normal;word-break: break-word;word-wrap: break-word;border:0px;height:auto;min-height:48px;'  class='xdTextBox'  access='edit'  required='false' >{subject}</div></div></font></td></tr><tr style='MIN-HEIGHT: 48px'><td style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 5px'><div align='right'><font color='#ff0000' size='4' face='宋体'><strong>发文单位</strong></font></div></td><td colSpan='5' style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 1px'><font color='#ff0000' size='4' face='宋体'><div align='left'><div _nodeType='_formFieldNode_'  id='my:send_unit'  style='FONT-SIZE: medium; HEIGHT: 48px; FONT-FAMILY: 宋体; WIDTH: 307px;overflow-x:hidden;overflow-y:auto;white-space:normal;word-break: break-word;word-wrap: break-word;border:0px;height:auto;min-height:48px;'  class='xdTextBox'  access='edit'  required='false' >{sendUnit}</div></div></font></td></tr><tr style='MIN-HEIGHT: 48px'><td style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 5px'><div align='right'> <font color='#ff0000' size='4' face='宋体'><strong>发文人员</strong></font> </div></td> <td colSpan='5' style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 1px'> <font color='#ff0000' size='4' face='宋体'> <div align='left'><div _nodeType='_formFieldNode_'  id='my:subject'  style='FONT-SIZE: medium; HEIGHT: 48px; FONT-FAMILY: 宋体; WIDTH: 517px;overflow-x:hidden;overflow-y:auto;white-space:normal;word-break: break-word;word-wrap: break-word;border:0px;height:auto;min-height:48px;'  class='xdTextBox'  access='edit'  required='false' >{sender}</div></div></font></td></tr><tr style='MIN-HEIGHT: 48px'><td style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 5px'><div align='right'> <font color='#ff0000' size='4' face='宋体'><strong>送文日期</strong></font> </div></td> <td colSpan='5' style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 1px'> <font color='#ff0000' size='4' face='宋体'> <div align='left'><div _nodeType='_formFieldNode_'  id='my:subject'  style='FONT-SIZE: medium; HEIGHT: 48px; FONT-FAMILY: 宋体; WIDTH: 517px;overflow-x:hidden;overflow-y:auto;white-space:normal;word-break: break-word;word-wrap: break-word;border:0px;height:auto;min-height:48px;'  class='xdTextBox'  access='edit'  required='false' >{sendTime}</div></div></font></td></tr><tr style='MIN-HEIGHT: 48px'><td style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 5px'><div align='right'> <font color='#ff0000' size='4' face='宋体'><strong>送文文号</strong></font> </div></td> <td colSpan='5' style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 1px'> <font color='#ff0000' size='4' face='宋体'> <div align='left'><div _nodeType='_formFieldNode_'  id='my:subject'  style='FONT-SIZE: medium; HEIGHT: 48px; FONT-FAMILY: 宋体; WIDTH: 517px;overflow-x:hidden;overflow-y:auto;white-space:normal;word-break: break-word;word-wrap: break-word;border:0px;height:auto;min-height:48px;'  class='xdTextBox'  access='edit'  required='false' >{edocMark}</div></div></font></td></tr></tbody></table></div></td></tr></tbody></table></div><div align='center'>&nbsp;</div><div style='display:none;'>formStyleHasUpgrade</div>";
         try {
             edocSummaryVo = edocH5Manager.getEdocSummaryBO(summaryId, affairId, openFrom, params);
-
             if (edocSummaryVo.getErrorRet().size() > 0) {
                 return ok(edocSummaryVo.getErrorRet());
             }
@@ -468,6 +624,36 @@ public class EdocResource extends BaseResource {
 
                 //Office正文M3端缓存设置
                 if (Strings.isNotEmpty(summary.getEdocBodies())) {
+                    // 如果是待签收数据并且存在双正文，那就只显示pdf正文 mxs
+                    Set<EdocBody> newBodis = new HashSet<EdocBody>();
+                    if (ApplicationCategoryEnum.exSign.getKey() == affair.getApp()) {
+                        String subject = summary.getSubject();
+                        String sendUnit = summary.getSendDepartment();//summary.getSendUnit();
+                        EdocRecieveRecord recieveRecord = edocExchangeManager.getReceivedRecord(affair.getSubObjectId());
+                        String sender = recieveRecord.getSender();
+                        String sendTime = DateUtil.format(recieveRecord.getCreateTime(), "yyyy年MM月dd日 HH:mm");
+                        String edocMark = summary.getDocMark();
+
+                        HTML = HTML.replace("{subject}", subject == null ? "" : subject);
+                        HTML = HTML.replace("{sendUnit}", sendUnit == null ? "" : sendUnit);
+                        HTML = HTML.replace("{sender}", sender == null ? "" : sender);
+                        HTML = HTML.replace("{sendTime}", sendTime == null ? "" : sendTime);
+                        HTML = HTML.replace("{edocMark}", edocMark == null ? "" : edocMark);
+                        edocSummaryVo.setEdocFormContent(HTML);
+                        if (summary.getEdocBodies().size() > 1) {
+                            boolean hasPdf = false;
+                            for (EdocBody body : summary.getEdocBodies()) {
+                                if ("Pdf".equals(body.getContentType())) {
+                                    hasPdf = true;
+                                    newBodis.add(body);
+                                    break;
+                                }
+                            }
+                            if (hasPdf) {
+                                summary.setEdocBodies(newBodis);
+                            }
+                        }
+                    }
                     EdocBody b = summary.getEdocBodies().iterator().next();
                     if (!com.seeyon.ctp.common.constants.Constants.EDITOR_TYPE_HTML.equals(b.getContentType())
                             && Strings.isNotBlank(b.getContent())) {
@@ -515,7 +701,10 @@ public class EdocResource extends BaseResource {
 
                 edocSummaryVo.setNodePolicy(affair.getNodePolicy());
             }
-
+            /**项目：徐矿集团 【判断当前是否屏蔽流程按钮】 作者：jiangchenxi 时间：2019年3月13日 start*/
+            boolean open = xkjtManager.isOpen(affairId);
+            edocSummaryVo.setShield(open);
+            /**项目：徐矿集团 【判断当前是否屏蔽流程按钮】 作者：jiangchenxi 时间：2019年3月13日 end*/
             /*************************************M3文单签批结束******************************************/
         } catch (BusinessException e) {
             LOGGER.error("", e);
@@ -535,8 +724,8 @@ public class EdocResource extends BaseResource {
      *                      String  policyName  		Y    节点名称
      *                      Long    orgAccountId   	Y    单位Id
      *                      <pre>
-     *                                                                   类型 如 ：协同（collaboration）、表单(form)、发文(sendEdoc||edocSend)、收文(recEdoc||edocRec)、签报(edocSign||signReport)、信息报送(sendInfo)
-     *                                                                </pre>
+     *                         类型 如 ：协同（collaboration）、表单(form)、发文(sendEdoc||edocSend)、收文(recEdoc||edocRec)、签报(edocSign||signReport)、信息报送(sendInfo)
+     *                      </pre>
      * @return List<Permission>
      * @throws BusinessException
      */
@@ -588,25 +777,25 @@ public class EdocResource extends BaseResource {
      * url: edocResource/submit
      *
      * @param param 处理参数
-     * <pre>
-     *                           	类型                 名称                                 必填           备注
-     *                           	long     summaryId        Y 		协同ID
-     *                           	Long     affairId         Y 		事项ID
-     *                           	String   opinionContent   Y 		处理意见
-     *                           	Integer  opinionAttibute  Y 		处理态度
-     *                              				-1 （没有录入态度时的默认值）
-     *                              				 1  已阅
-     *                             				 2  同意
-     *                              				 3  不同意
-     *                           	String    disPosition   	 N 		当前节点   转收文使用，当"report".equals(disPosition) 为下级单位公文向上级汇报意见
-     *                           	Integer   isTrack      	 Y 		跟踪
-     *                              				 1  跟踪
-     *                              				 2  不跟踪
-     *                           	boolean   isNewImg             Y 是否有文单签批
-     *                           	Map       workflow_definition  Y 流程相关数据
-     *                           	String    fileJson             N 附件信息串
-     *                           	String    oldOpinionIdStr      Y 之前的意见记录
-     *                           </pre>
+     *              <pre>
+     *              	类型                 名称                                 必填           备注
+     *              	long     summaryId        Y 		协同ID
+     *              	Long     affairId         Y 		事项ID
+     *              	String   opinionContent   Y 		处理意见
+     *              	Integer  opinionAttibute  Y 		处理态度
+     *                 				-1 （没有录入态度时的默认值）
+     *                 				 1  已阅
+     *                				 2  同意
+     *                 				 3  不同意
+     *              	String    disPosition   	 N 		当前节点   转收文使用，当"report".equals(disPosition) 为下级单位公文向上级汇报意见
+     *              	Integer   isTrack      	 Y 		跟踪
+     *                 				 1  跟踪
+     *                 				 2  不跟踪
+     *              	boolean   isNewImg             Y 是否有文单签批
+     *              	Map       workflow_definition  Y 流程相关数据
+     *              	String    fileJson             N 附件信息串
+     *              	String    oldOpinionIdStr      Y 之前的意见记录
+     *              </pre>
      * @return Boolean true:处理成功 ，false:处理失败
      */
 
@@ -766,24 +955,24 @@ public class EdocResource extends BaseResource {
      *
      * @param param 暂存待办参数
      *              <pre>
-     *                                        	类型                 名称                                 	      必填           备注
-     *                                         long      summaryId   			Y 	协同ID
-     *                                         Long      affairId    			Y 	事项ID
-     *                                         String    opinionContent    	Y 	处理意见
-     *                                         Integer   opinionAttibute   	Y 	处理态度
-     *                                          			 -1 （没有录入态度时的默认值）
-     *                                          			  1  已阅
-     *                                           			  2  同意
-     *                                           			  3  不同意
-     *                                         Integer   isTrack      		    Y 	跟踪
-     *                                           			  1  跟踪
-     *                                              	      2  不跟踪
-     *                                         boolean   isNewImg              Y 	是否有文单签批
-     *                                         String    processChangeMessage  Y 	流程改变信息
-     *                                         Map       workflow_definition   Y 	流程相关数据
-     *                                         String    fileJson              N 	附件信息串
-     *                                         String    oldOpinionIdStr       Y  	之前的意见记录
-     *                                        </pre>
+     *              	类型                 名称                                 	      必填           备注
+     *               long      summaryId   			Y 	协同ID
+     *               Long      affairId    			Y 	事项ID
+     *               String    opinionContent    	Y 	处理意见
+     *               Integer   opinionAttibute   	Y 	处理态度
+     *                			 -1 （没有录入态度时的默认值）
+     *                			  1  已阅
+     *                 			  2  同意
+     *                 			  3  不同意
+     *               Integer   isTrack      		    Y 	跟踪
+     *                 			  1  跟踪
+     *                    	      2  不跟踪
+     *               boolean   isNewImg              Y 	是否有文单签批
+     *               String    processChangeMessage  Y 	流程改变信息
+     *               Map       workflow_definition   Y 	流程相关数据
+     *               String    fileJson              N 	附件信息串
+     *               String    oldOpinionIdStr       Y  	之前的意见记录
+     *              </pre>
      * @return Boolean true:暂存待办成功 ，false:暂存待办失败
      */
     @SuppressWarnings("unchecked")
@@ -846,22 +1035,22 @@ public class EdocResource extends BaseResource {
      *
      * @param param 回退参数
      *              <pre>
-     *                                        	类型                  		名称                                 	 必填           备注
-     *                                         long 			summaryId   		 Y 		协同ID
-     *                                         Long 			affairId    		 Y 		事项ID
-     *                                         String 			opinionContent   	 Y 		处理意见
-     *                                         Integer 		opinionAttibute  	 Y 		处理态度
-     *                                          					-1 （没有录入态度时的默认值）
-     *                                           					1  已阅
-     *                                          				 	2  同意
-     *                                           					3  不同意
-     *                                         Integer         isTrack      		 N 		跟踪
-     *                                           					1  跟踪
-     *                                           					2  不跟踪
-     *                                         boolean         isNewImg             Y      是否有文单签批
-     *                                         String        processChangeMessage   Y 		流程改变信息
-     *                                         String             policy            N      节点权限
-     *                                        </pre>
+     *              	类型                  		名称                                 	 必填           备注
+     *               long 			summaryId   		 Y 		协同ID
+     *               Long 			affairId    		 Y 		事项ID
+     *               String 			opinionContent   	 Y 		处理意见
+     *               Integer 		opinionAttibute  	 Y 		处理态度
+     *                					-1 （没有录入态度时的默认值）
+     *                 					1  已阅
+     *                				 	2  同意
+     *                 					3  不同意
+     *               Integer         isTrack      		 N 		跟踪
+     *                 					1  跟踪
+     *                 					2  不跟踪
+     *               boolean         isNewImg             Y      是否有文单签批
+     *               String        processChangeMessage   Y 		流程改变信息
+     *               String             policy            N      节点权限
+     *              </pre>
      * @return String true:回退成功 ，false:回退失败
      */
     @POST
@@ -969,9 +1158,9 @@ public class EdocResource extends BaseResource {
      *
      * @param param 回退参数
      *              <pre>
-     *                                        	类型                  		名称                                 	 必填           备注
-     *                                         Long 			affairId    		 Y 		事项ID
-     *                                        </pre>
+     *              	类型                  		名称                                 	 必填           备注
+     *               Long 			affairId    		 Y 		事项ID
+     *              </pre>
      * @return Map
      * map.canStepBack true:可以回退 ，false:不可以回退
      * map.error_msg    不可以回退是返回不可回退的信息，可以回退时返回空
@@ -1007,22 +1196,22 @@ public class EdocResource extends BaseResource {
      *
      * @param param 撤销参数
      *              <pre>
-     *                                        	类型                  		名称                                 	 必填           备注
-     *                                         long            summaryId  			Y 		协同ID
-     *                                         Long            affairId    		Y 		事项ID
-     *                                         String          opinionContent    	Y 		处理意见
-     *                                         Integer         opinionAttibute  	Y	 	处理态度
-     *                                           				-1 （没有录入态度时的默认值）
-     *                                           				1  已阅
-     *                                           				2  同意
-     *                                           				3  不同意
-     *                                         Integer         isTrack      		N 		跟踪
-     *                                           				1  跟踪
-     *                                          			    2  不跟踪
-     *                                         boolean         isNewImg     		Y		 是否有文单签批
-     *                                         String      processChangeMessage    Y 		流程改变信息
-     *                                         String          policy      		N 		节点权限
-     *                                        </pre>
+     *              	类型                  		名称                                 	 必填           备注
+     *               long            summaryId  			Y 		协同ID
+     *               Long            affairId    		Y 		事项ID
+     *               String          opinionContent    	Y 		处理意见
+     *               Integer         opinionAttibute  	Y	 	处理态度
+     *                 				-1 （没有录入态度时的默认值）
+     *                 				1  已阅
+     *                 				2  同意
+     *                 				3  不同意
+     *               Integer         isTrack      		N 		跟踪
+     *                 				1  跟踪
+     *                			    2  不跟踪
+     *               boolean         isNewImg     		Y		 是否有文单签批
+     *               String      processChangeMessage    Y 		流程改变信息
+     *               String          policy      		N 		节点权限
+     *              </pre>
      * @return map
      * <pre>
      * 				成功{returnValue : true}
@@ -1126,10 +1315,10 @@ public class EdocResource extends BaseResource {
      *
      * @param param 取回参数
      *              <pre>
-     *                                        	类型                  		名称                                 	 必填           备注
-     *                                         long            summaryId  			Y 		协同ID
-     *                                         Long            affairId    		Y 		事项ID
-     *                                        </pre>
+     *              	类型                  		名称                                 	 必填           备注
+     *               long            summaryId  			Y 		协同ID
+     *               Long            affairId    		Y 		事项ID
+     *              </pre>
      * @return String 0:取回成功，15:取回失败
      * @throws BusinessException
      */
@@ -1240,18 +1429,18 @@ public class EdocResource extends BaseResource {
      *
      * @param param 取回参数
      *              <pre>
-     *                                        	类型                  		名称                                 	 必填           备注
-     *                                         long            summaryId  			Y 		协同ID
-     *                                         Long            affairId    		Y 		事项ID
-     *                                         String			opinionContent      Y 		处理意见
-     *                                         String          afterSign           Y 		处理态度
-     *                                           				-1 （没有录入态度时的默认值）
-     *                                           				1  已阅
-     *                                           				2  同意
-     *                                           				3  不同意
-     *                                         String          isHidden          	N 		是否隐藏
-     *                                         String          policy      		N 		节点权限
-     *                                        </pre>
+     *              	类型                  		名称                                 	 必填           备注
+     *               long            summaryId  			Y 		协同ID
+     *               Long            affairId    		Y 		事项ID
+     *               String			opinionContent      Y 		处理意见
+     *               String          afterSign           Y 		处理态度
+     *                 				-1 （没有录入态度时的默认值）
+     *                 				1  已阅
+     *                 				2  同意
+     *                 				3  不同意
+     *               String          isHidden          	N 		是否隐藏
+     *               String          policy      		N 		节点权限
+     *              </pre>
      * @return true:终止成功
      * null:终止失败
      * @throws BusinessException
@@ -1357,10 +1546,10 @@ public class EdocResource extends BaseResource {
      * url: edocResource/checkAffairValid
      *
      * @param 处理时验证，非查看校验参数 <pre>
-     *                                                                		类型                  		名称                                 	 必填           备注
-     *                                                                 	String            affairId    		Y 		事项ID
-     *                                                                     String 			  pageNodePolicy    Y       页面的节点权限id
-     *                                                                 </pre>
+     *                      		类型                  		名称                                 	 必填           备注
+     *                       	String            affairId    		Y 		事项ID
+     *                           String 			  pageNodePolicy    Y       页面的节点权限id
+     *                       </pre>
      * @return Map<String, String>
      * <pre>
      * 							正常：返回值 {isOnlyView:false}
@@ -1390,9 +1579,9 @@ public class EdocResource extends BaseResource {
      * url: edocResource/checkCanTakeBack
      *
      * @param 验证公文是否已交换参数 <pre>
-     *                                                          		类型                  		    名称                                 	 必填           备注
-     *                                                           	String            summaryId    		 Y 		协同ID
-     *                                                           </pre>
+     *                    		类型                  		    名称                                 	 必填           备注
+     *                     	String            summaryId    		 Y 		协同ID
+     *                     </pre>
      * @return boolean true:未交换，false:已交换
      * @throws BusinessException
      */
@@ -1413,11 +1602,11 @@ public class EdocResource extends BaseResource {
      * url: edocResource/checkEdocMarkIsUsed
      *
      * @param 校验公文文号参数 <pre>
-     *                                                 		类型                  		    名称                                 	 必填           备注
-     *                                                  	String            summaryId    		 Y 		协同ID
-     *                                                      String			  docMark            Y      公文文号
-     *                                                      String			  orgAccountId       Y      单位ID
-     *                                                  </pre>
+     *                 		类型                  		    名称                                 	 必填           备注
+     *                  	String            summaryId    		 Y 		协同ID
+     *                      String			  docMark            Y      公文文号
+     *                      String			  orgAccountId       Y      单位ID
+     *                  </pre>
      * @return boolean true:成功，false:失败
      * @throws BusinessException
      */
@@ -1434,9 +1623,9 @@ public class EdocResource extends BaseResource {
      * url: edocResource/checkTakeBack
      *
      * @param 校验公文能否取回参数 <pre>
-     *                                                       		类型                  		    名称                                 	 必填           备注
-     *                                                        	String            affairId    		 Y 		事项ID
-     *                                                        </pre>
+     *                   		类型                  		    名称                                 	 必填           备注
+     *                    	String            affairId    		 Y 		事项ID
+     *                    </pre>
      * @return String
      * <pre>
      * 						-1  :  表示程序或数据发生异常,不可以取回
@@ -1483,9 +1672,9 @@ public class EdocResource extends BaseResource {
      * url: edocResource/unlockEdocAll
      *
      * @param 解全部锁参数 <pre>
-     *                                           		类型                  		    名称                                 	 必填           备注
-     *                                            	String            summaryId    		 Y 		协同ID
-     *                                            </pre>
+     *               		类型                  		    名称                                 	 必填           备注
+     *                	String            summaryId    		 Y 		协同ID
+     *                </pre>
      * @return String true:成功解全部锁
      * @throws BusinessException
      */
@@ -1544,9 +1733,9 @@ public class EdocResource extends BaseResource {
      * url: edocResource/signed
      *
      * @param 公文待签收数据列表参数 <pre>
-     *                                                          		类型                  		    名称                                 	 必填           备注
-     *                                                           	Long            memberId    		 Y 		人员ID
-     *                                                           </pre>
+     *                    		类型                  		    名称                                 	 必填           备注
+     *                     	Long            memberId    		 Y 		人员ID
+     *                     </pre>
      * @return List
      * @throws BusinessException
      */
@@ -1576,9 +1765,9 @@ public class EdocResource extends BaseResource {
      * url: edocResource/registered
      *
      * @param 公文待登记数据列表参数 <pre>
-     *                                                          		类型                  		    名称                                 	 必填           备注
-     *                                                           	Long            memberId    		 Y 		人员ID
-     *                                                           </pre>
+     *                    		类型                  		    名称                                 	 必填           备注
+     *                     	Long            memberId    		 Y 		人员ID
+     *                     </pre>
      * @return List<EdocRegister>
      * @throws BusinessException
      */
@@ -1646,9 +1835,9 @@ public class EdocResource extends BaseResource {
      * url: edocResource/qianpiLock
      *
      * @param 文单签批--加锁参数 <pre>
-     *                                                       		类型                  		    名称                                 	 必填           备注
-     *                                                        	String            summaryId    		 Y 		协同ID
-     *                                                        </pre>
+     *                   		类型                  		    名称                                 	 必填           备注
+     *                    	String            summaryId    		 Y 		协同ID
+     *                    </pre>
      * @return UserUpdateObject
      * @throws BusinessException
      */
@@ -1667,20 +1856,20 @@ public class EdocResource extends BaseResource {
     /**
      * 根据公文id及导出类型导出公文到指定目录
      *
-     * @param params Map<String, Object> | 必填  | 其他参数
+     * @param param Map<String, Object> | 必填  | 其他参数
      *               <pre>
-     *                                           summaryId     String  |  必填       |  公文ID
-     *                                           folder        String  |  必填       |  输出的目录
-     *                                           exportType    String  |  非必输   |  导出的类型
-     *                                                         0-全部；1-文单；2-正文(含花脸)
-     *                                                         不输入默认导出全部
-     *                                           </pre>
+     *               summaryId     String  |  必填       |  公文ID
+     *               folder        String  |  必填       |  输出的目录
+     *               exportType    String  |  非必输   |  导出的类型
+     *                             0-全部；1-文单；2-正文(含花脸)
+     *                             不输入默认导出全部
+     *               </pre>
      *               <pre>
-     *                                           @return Map<String, String>
-     *                                           			<pre>
-     *                                           				success: false 失败，true 成功
-     *                                           				msg:结果描述
-     *                                           			</pre>
+     *               @return Map<String, String>
+     *               			<pre>
+     *               				success: false 失败，true 成功
+     *               				msg:结果描述
+     *               			</pre>
      * @throws BusinessException
      */
     @POST
@@ -1803,7 +1992,7 @@ public class EdocResource extends BaseResource {
      * 输出文件
      *
      * @param summaryId   公文ID
-     * @param fileIds     正文及花脸ID集合
+     * @param fileId     正文及花脸ID集合
      * @param summaryRoot 输出的文件夹目录
      * @return
      */
@@ -1920,7 +2109,7 @@ public class EdocResource extends BaseResource {
     /**
      * 移交功能
      *
-     * @param params Map<String,Object> | 必填 | 其它参数
+     * @param param Map<String,Object> | 必填 | 其它参数
      * @return response
      * @throws BusinessException
      */
@@ -1993,7 +2182,7 @@ public class EdocResource extends BaseResource {
     /**
      * 指定回退功能
      *
-     * @param params Map<String,Object> | 必填 | 其它参数
+     * @param param Map<String,Object> | 必填 | 其它参数
      * @return response
      * @throws BusinessException
      */
@@ -2105,5 +2294,68 @@ public class EdocResource extends BaseResource {
 
     }
 
+    /**
+     * 获取待阅/已阅的公文
+     *
+     * @param type
+     * @param page
+     * @param size
+     * @return
+     * @throws BusinessException
+     */
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("getReadEdoc")
+    public Response getReadEdoc(@QueryParam("type") int type, @QueryParam("page") int page, @QueryParam("size") int size, @QueryParam("title") String title) throws BusinessException {
+        User user = AppContext.getCurrentUser();
+        FlipInfo fi = new FlipInfo(page, size);
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("leaderId", user.getId());
+        if (Strings.isNotBlank(title)) {
+            params.put("title", "%" + title + "%");
+        }
+        if (1 == type) {// 待阅数据返回
+            fi = xkjtManager.findMoreXkjtLeaderDaiYue(fi, params);
+        } else {
+            fi = xkjtManager.findMoreXkjtLeaderYiYue(fi, params);
+        }
+        return getResponse(fi);
+    }
+
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("updateReadEdoc")
+    public Response updateReadEdoc(@QueryParam("id") String id) throws BusinessException {
+        xkjtManager.updateXkjtLeaderDaiYueByCondition(id, "12");
+        return ok(true);
+    }
+
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("readDetail")
+    public Response readDetail(@QueryParam("edocId") String edocId, @QueryParam("id") String id) throws BusinessException {
+        //edocId = -1108774113485372730L;
+
+        EdocSummary edocSummary = edocManager.getEdocSummaryById(Long.parseLong(edocId), true);
+        List<Attachment> atts = attachmentManager.getByReference(Long.parseLong(edocId));
+        String HTML = "<div align='center'><table class='xdFormLayout' style='BORDER-TOP-STYLE: none; WORD-WRAP: break-word; BORDER-LEFT-STYLE: none; BORDER-COLLAPSE: collapse; TABLE-LAYOUT: fixed; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; WIDTH: 629px'><colgroup><col style='WIDTH: 629px'/></colgroup><tbody><tr class='xdTableContentRow'><td style='BORDER-RIGHT: #bfbfbf 1pt; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #bfbfbf 1pt; BORDER-LEFT: #bfbfbf 1pt' class='xdTableContentCell'><div align='center'><table class='xdLayout' style='WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-COLLAPSE: collapse; TABLE-LAYOUT: fixed; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; WIDTH: 627px' borderColor='buttontext' border='1'><colgroup><col style='WIDTH: 627px'/></colgroup><tbody vAlign='top'><tr style='MIN-HEIGHT: 66px'><td style='VERTICAL-ALIGN: middle; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; PADDING-RIGHT: 1px'><div align='center'><font color='#ff0000' size='6' face='SimSun'><strong>文单信息</strong></font></div></td></tr></tbody></table></div><div><table class='xdLayout' style='WORD-WRAP: break-word; BORDER-TOP: medium none; BORDER-RIGHT: medium none; BORDER-COLLAPSE: collapse; TABLE-LAYOUT: fixed; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; WIDTH: 627px' borderColor='buttontext' border='1'><colgroup><col style='WIDTH: 104px'/><col style='WIDTH: 105px'/><col style='WIDTH: 104px'/><col style='WIDTH: 105px'/><col style='WIDTH: 104px'/><col style='WIDTH: 105px'/></colgroup><tbody vAlign='top'><tr style='MIN-HEIGHT: 48px'><td style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 5px'><div align='right'><font color='#ff0000' size='4' face='宋体'><strong>标题</strong></font></div></td><td colSpan='5' style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 1px'><font color='#ff0000' size='4' face='宋体'><div align='left'><div _nodeType='_formFieldNode_'  id='my:send_unit'  style='FONT-SIZE: medium; HEIGHT: 48px; FONT-FAMILY: 宋体; WIDTH: 307px;overflow-x:hidden;overflow-y:auto;white-space:normal;word-break: break-word;word-wrap: break-word;border:0px;height:auto;min-height:48px;'  class='xdTextBox'  access='edit'  required='false' >{subject}</div></div></font></td></tr><tr style='MIN-HEIGHT: 48px'><td style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 5px'><div align='right'><font color='#ff0000' size='4' face='宋体'><strong>发文单位</strong></font></div></td><td colSpan='5' style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 1px'><font color='#ff0000' size='4' face='宋体'><div align='left'><div _nodeType='_formFieldNode_'  id='my:send_unit'  style='FONT-SIZE: medium; HEIGHT: 48px; FONT-FAMILY: 宋体; WIDTH: 307px;overflow-x:hidden;overflow-y:auto;white-space:normal;word-break: break-word;word-wrap: break-word;border:0px;height:auto;min-height:48px;'  class='xdTextBox'  access='edit'  required='false' >{sendUnit}</div></div></font></td></tr><tr style='MIN-HEIGHT: 48px'><td style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 5px'><div align='right'> <font color='#ff0000' size='4' face='宋体'><strong>发文人员</strong></font> </div></td> <td colSpan='5' style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 1px'> <font color='#ff0000' size='4' face='宋体'> <div align='left'><div _nodeType='_formFieldNode_'  id='my:subject'  style='FONT-SIZE: medium; HEIGHT: 48px; FONT-FAMILY: 宋体; WIDTH: 517px;overflow-x:hidden;overflow-y:auto;white-space:normal;word-break: break-word;word-wrap: break-word;border:0px;height:auto;min-height:48px;'  class='xdTextBox'  access='edit'  required='false' >{sender}</div></div></font></td></tr><tr style='MIN-HEIGHT: 48px'><td style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 5px'><div align='right'> <font color='#ff0000' size='4' face='宋体'><strong>送文日期</strong></font> </div></td> <td colSpan='5' style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 1px'> <font color='#ff0000' size='4' face='宋体'> <div align='left'><div _nodeType='_formFieldNode_'  id='my:subject'  style='FONT-SIZE: medium; HEIGHT: 48px; FONT-FAMILY: 宋体; WIDTH: 517px;overflow-x:hidden;overflow-y:auto;white-space:normal;word-break: break-word;word-wrap: break-word;border:0px;height:auto;min-height:48px;'  class='xdTextBox'  access='edit'  required='false' >{sendTime}</div></div></font></td></tr><tr style='MIN-HEIGHT: 48px'><td style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 5px'><div align='right'> <font color='#ff0000' size='4' face='宋体'><strong>送文文号</strong></font> </div></td> <td colSpan='5' style='BORDER-TOP: #ff0000 1pt solid; BORDER-RIGHT: #ff0000 1pt solid; VERTICAL-ALIGN: middle; BORDER-BOTTOM: #ff0000 1pt solid; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; PADDING-LEFT: 1px; BORDER-LEFT: #ff0000 1pt solid; PADDING-RIGHT: 1px'> <font color='#ff0000' size='4' face='宋体'> <div align='left'><div _nodeType='_formFieldNode_'  id='my:subject'  style='FONT-SIZE: medium; HEIGHT: 48px; FONT-FAMILY: 宋体; WIDTH: 517px;overflow-x:hidden;overflow-y:auto;white-space:normal;word-break: break-word;word-wrap: break-word;border:0px;height:auto;min-height:48px;'  class='xdTextBox'  access='edit'  required='false' >{edocMark}</div></div></font></td></tr></tbody></table></div></td></tr></tbody></table></div><div align='center'>&nbsp;</div><div style='display:none;'>formStyleHasUpgrade</div>";
+        String subject = edocSummary.getSubject();
+        String sendUnit = edocSummary.getSendDepartment();//edocSummary.getSendUnit();
+        XkjtLeaderDaiYue daiYue = DBAgent.get(XkjtLeaderDaiYue.class, Long.parseLong(id));
+        String sender = daiYue.getSenderName();
+        String sendTime = DateUtil.format(daiYue.getSendDate(), "yyyy年MM月dd日 HH:mm");
+        String edocMark = edocSummary.getDocMark();
+
+        HTML = HTML.replace("{subject}", subject == null ? "" : subject);
+        HTML = HTML.replace("{sendUnit}", sendUnit == null ? "" : sendUnit);
+        HTML = HTML.replace("{sender}", sender == null ? "" : sender);
+        HTML = HTML.replace("{sendTime}", sendTime == null ? "" : sendTime);
+        HTML = HTML.replace("{edocMark}", edocMark == null ? "" : edocMark);
+        Map<String, Object> ret = new HashMap<String, Object>();
+        ret.put("edocSummary", edocSummary);
+        ret.put("atts", atts);
+        ret.put("HTML", HTML);
+        return getResponse(ret);
+    }
 
 }
