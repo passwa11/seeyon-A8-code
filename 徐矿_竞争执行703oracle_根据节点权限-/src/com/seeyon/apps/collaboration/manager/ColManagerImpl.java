@@ -87,6 +87,7 @@ import com.seeyon.apps.index.util.Convertor;
 import com.seeyon.apps.project.api.ProjectApi;
 import com.seeyon.apps.project.bo.ProjectBO;
 import com.seeyon.apps.webmail.api.WebmailApi;
+import com.seeyon.apps.xkjt.manager.XkjtManager;
 import com.seeyon.ctp.cap.api.manager.CAPFormManager;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.GlobalNames;
@@ -957,7 +958,6 @@ public class ColManagerImpl implements ColManager {
             }
             boolean open = xkjtManager.isOpen(colListSimpleVO.getAffairId());
             if (!open) {
-                colListSimpleVO.setProcessId("");
                 colListSimpleVO.setCurrentNodesInfo("");
             }
         }
@@ -1728,11 +1728,11 @@ public class ColManagerImpl implements ColManager {
      *
      * @param affair
      * @param params <pre>
-     *                                                                                      {String} [isTrack] 是否跟踪， 1 - 跟踪， 其他-不跟踪
-     *                                                                                      {String} [trackRange_members] 跟踪指定人，在[isTrack]为1的前提下生效 , 0 - 跟踪指定人, 其他-跟踪全部
-     *                                                                                      {String} [trackRange_all] 跟踪全部，在[isTrack]为1的前提下 生效, 值为 1
-     *                                                                                      {String} [zdgzry] 跟踪指定人的ID
-     *                                                                                     </pre>
+     *                {String} [isTrack] 是否跟踪， 1 - 跟踪， 其他-不跟踪
+     *                {String} [trackRange_members] 跟踪指定人，在[isTrack]为1的前提下生效 , 0 - 跟踪指定人, 其他-跟踪全部
+     *                {String} [trackRange_all] 跟踪全部，在[isTrack]为1的前提下 生效, 值为 1
+     *                {String} [zdgzry] 跟踪指定人的ID
+     *               </pre>
      * @return
      * @throws BusinessException
      */
@@ -1871,7 +1871,7 @@ public class ColManagerImpl implements ColManager {
      * @param comment
      * @param handleType
      * @param params     其他参数，例如跟踪，等等
-     * <pre>
+     *                   <pre>
      *                      跟踪相关参数
      *                      {Map<String, String>} [trackParam] 跟踪相关参数，{@link #saveTrackInfo}
      *                   </pre>
@@ -1883,6 +1883,7 @@ public class ColManagerImpl implements ColManager {
     private void transFinishAndZcdb(CtpAffair affair, ColSummary summary, Comment comment, ColHandleType handleType, Map<String, Object> params) throws BusinessException {
 
         User user = AppContext.getCurrentUser();
+
         //保存附件
         Map<String, String> colSummaryDomian = (Map<String, String>) ParamUtil.getJsonDomain("colSummaryData");
         String _flowPermAccountId = colSummaryDomian.get("flowPermAccountId");
