@@ -9645,7 +9645,6 @@ public class EdocController extends BaseController {
             sb.append("parent.doEndSign_pending('" + affairId + "');");
             rendJavaScript(response, sb.toString());
 
-
             return null;
         } catch (Exception e) {
             LOGGER.error("处理公文抛出异常：", e);
@@ -12875,8 +12874,6 @@ public class EdocController extends BaseController {
                     EdocHelper.updateCurrentNodesInfo(summary, true);
 
                     summaryList.add(summary);
-
-
                 }
             }
             if (info.length() > 0) {
