@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <distributable />
+    <display-name>SEEYON CTP</display-name>
+
+    <filter>
+        <filter-name>spring-session</filter-name>
+        <filter-class>org.springframework.session.web.http.CTPDelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>springSessionRepositoryFilter</param-value>
+        </init-param>
+    </filter>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/spring.xml</param-value>
+    </context-param>
+    <filter-mapping>
+        <filter-name>spring-session</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- 
+<listener>
+    <listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>
+</listener>
+<filter>
+    <filter-name>CAS Single Sign Out Filter</filter-name>
+    <filter-class>org.jasig.cas.client.session.CipSingleSignOutFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>CAS Single Sign Out Filter</filter-name>
+    <url-pattern>/caslogin/sso/*</url-pattern>
+</filter-mapping>
+<filter>
+    <filter-name>CAS Authentication Filter</filter-name>
+    <filter-class>org.jasig.cas.client.authentication.CipAuthenticationFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>CAS Authentication Filter</filter-name>
+    <url-pattern>/caslogin/sso/*</url-pattern>
+</filter-mapping>
+<filter>
+    <filter-name>CAS Validation Filter</filter-name>
+    <filter-class>org.jasig.cas.client.validation.CipCas20ProxyReceivingTicketValidationFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>CAS Validation Filter</filter-name>
+    <url-pattern>/caslogin/sso/*</url-pattern>
+</filter-mapping>
+
+<filter>
+    <filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
+    <filter-class>org.jasig.cas.client.util.HttpServletRequestWrapperFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
+    <url-pattern>/caslogin/sso/*</url-pattern>
+</filter-mapping>
+<servlet>
+    <servlet-name>CASLoginServlet</servlet-name>
+    <servlet-class>com.seeyon.apps.cip.login.cas.sso.CASLoginServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>CASLoginServlet</servlet-name>
+    <url-pattern>/caslogin/sso</url-pattern>
+</servlet-mapping>
+ -->
+
+    <listener>
+        <display-name>ImageIO service provider loader/unloader</display-name>
+        <listener-class>com.twelvemonkeys.servlet.image.IIOProviderContextListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.seeyon.ctp.common.web.filter.CTPCsrfGuardServletContextListener</listener-class>
+    </listener>
+    <filter>
+        <filter-name>CSRFGuard</filter-name>
+        <filter-class>com.seeyon.ctp.common.web.filter.CTPCsrfGuardFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CSRFGuard</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>CSRFGuard</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>SecurityFilter</filter-name>
+        <filter-class>com.seeyon.ctp.common.web.filter.CTPSecurityFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+     <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/rest/*</url-pattern>
+    </filter-mapping> 
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/services/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>*.psml</url-pattern>
+    </filter-mapping>     
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/getAjaxDataServlet</url-pattern>
+    </filter-mapping>     
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/getAJAXMessageServlet</url-pattern>
+    </filter-mapping>     
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/getAJAXOnlineServlet</url-pattern>
+    </filter-mapping>     
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/htmlofficeservlet</url-pattern>
+    </filter-mapping>     
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/isignaturehtmlH5servlet</url-pattern>
+    </filter-mapping>     
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/isignaturehtmlservlet</url-pattern>
+    </filter-mapping>     
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/login/sso</url-pattern>
+    </filter-mapping>     
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/login/ssologout</url-pattern>
+    </filter-mapping>     
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/m-signature/*</url-pattern>
+    </filter-mapping>     
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/ofdServlet</url-pattern>
+    </filter-mapping>     
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/office/cache/*</url-pattern>
+    </filter-mapping>     
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/officeservlet</url-pattern>
+    </filter-mapping>     
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/pdfservlet</url-pattern>
+    </filter-mapping>     
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/sursenServlet</url-pattern>
+    </filter-mapping>     
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/verifyCodeImage.jpg</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>com.seeyon.ctp.common.web.filter.CharacterEncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    <filter>
+        <display-name>GenericFilter</display-name>
+        <filter-name>GenericFilter</filter-name>
+        <filter-class>com.seeyon.ctp.common.web.GenericFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>GenericFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>GenericFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>GenericFilter</filter-name>
+        <url-pattern>/office/cache/*</url-pattern>
+    </filter-mapping>
+
+	    <!-- m1 isignaturePhone Start-->
+	<filter>
+		<filter-name>global</filter-name>
+		<filter-class>com.kg.web.GlobalFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>global</filter-name>
+		<url-pattern>/m-signature/*</url-pattern>
+	</filter-mapping>
+
+    <filter>
+        <filter-name>restFilter</filter-name>
+        <filter-class>com.seeyon.ctp.common.web.filter.RestFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>restFilter</filter-name>
+        <url-pattern>/rest/authentication/ucpcLogin/*</url-pattern>
+    </filter-mapping>
+	<!--
+    <filter>
+       <filter-name>ExpiresFilter</filter-name>
+       <filter-class>com.seeyon.ctp.common.web.filter.ExpiresFilter</filter-class>
+       <init-param>
+          <param-name>ExpiresByType image</param-name>
+          <param-value>access plus 10 minutes</param-value>
+       </init-param>
+       <init-param>
+          <param-name>ExpiresByType text/css</param-name>
+          <param-value>access plus 10 minutes</param-value>
+       </init-param>
+       <init-param>
+          <param-name>ExpiresByType application/javascript</param-name>
+          <param-value>access plus 10 minutes</param-value>
+       </init-param>
+    </filter>
+    <filter-mapping>
+       <filter-name>ExpiresFilter</filter-name>
+       <url-pattern>*.js</url-pattern>
+       <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+       <filter-name>ExpiresFilter</filter-name>
+       <url-pattern>*.css</url-pattern>
+       <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+       <filter-name>ExpiresFilter</filter-name>
+       <url-pattern>*.png</url-pattern>
+       <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+       <filter-name>ExpiresFilter</filter-name>
+       <url-pattern>*.jpg</url-pattern>
+       <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+       <filter-name>ExpiresFilter</filter-name>
+       <url-pattern>*.gif</url-pattern>
+       <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+	  -->
+
+    <filter>
+    <filter-name>kgh5filter</filter-name>
+    <filter-class>com.seeyon.apps.common.isignaturehtml.filter.IsignatureFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>kgh5filter</filter-name>
+    <url-pattern>/isignaturehtmlH5servlet</url-pattern>
+</filter-mapping>
+<filter>
+    <filter-name>LoginIndependentPageURLFilter</filter-name>
+    <filter-class>com.seeyon.ctp.login.controller.LoginPageURLFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>LoginIndependentPageURLFilter</filter-name>
+    <url-pattern>/org/*</url-pattern>
+</filter-mapping>
+<servlet>
+    <servlet-name>AJAXOnlineServlet</servlet-name>
+    <servlet-class>com.seeyon.ctp.common.ajax.AJAXOnlineServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>AJAXOnlineServlet</servlet-name>
+    <url-pattern>/getAJAXOnlineServlet</url-pattern>
+</servlet-mapping>
+    <servlet>
+    <servlet-name>AJAXMessageServlet</servlet-name>
+    <servlet-class>com.seeyon.ctp.common.ajax.AJAXMessageServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>AJAXMessageServlet</servlet-name>
+    <url-pattern>/getAJAXMessageServlet</url-pattern>
+</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ActionServlet</servlet-name>
+		<servlet-class>com.kg.web.servlet.ActionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ActionServlet</servlet-name>
+		<url-pattern>/m-signature/*</url-pattern>
+	</servlet-mapping>
+	<!-- m1 isignaturePhone End-->
+    <servlet>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.CTPDispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>DUMMY</param-value>
+        </init-param>
+        <init-param>
+            <param-name>contextClass</param-name>
+            <param-value>org.springframework.web.context.support.CTPWebApplicationContext</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>PortalServlet</servlet-name>
+        <servlet-class>com.seeyon.ctp.portal.space.servlet.PortalServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PortalServlet</servlet-name>
+        <url-pattern>*.psml</url-pattern>
+    </servlet-mapping>
+    <!--  v3x  -->
+    <servlet>
+        <servlet-name>SSOLoginServlet</servlet-name>
+        <servlet-class>com.seeyon.ctp.portal.sso.SSOLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SSOLoginServlet</servlet-name>
+        <url-pattern>/login/sso</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SSOLogoutServlet</servlet-name>
+        <servlet-class>com.seeyon.ctp.portal.sso.SSOLogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SSOLogoutServlet</servlet-name>
+        <url-pattern>/login/ssologout</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AJAXDataServlet</servlet-name>
+        <servlet-class>
+            com.seeyon.v3x.common.ajax.AJAXDataServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AJAXDataServlet</servlet-name>
+        <url-pattern>/getAjaxDataServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>officeservlet</servlet-name>
+        <servlet-class>
+            com.seeyon.ctp.common.office.OfficeServlet
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>pdfservlet</servlet-name>
+        <servlet-class>
+            com.seeyon.ctp.common.office.PdfServlet
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ofdServlet</servlet-name>
+        <servlet-class>
+            com.seeyon.ctp.common.office.OfdServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>htmlofficeservlet</servlet-name>
+        <servlet-class>
+            com.seeyon.ctp.common.office.HtmlOfficeServlet
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>isignaturehtml</servlet-name>
+        <servlet-class>
+            com.seeyon.apps.common.isignaturehtml.servlet.ISignatureHtmlServlet
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>isignaturehtml5</servlet-name>
+        <servlet-class>
+            com.seeyon.apps.common.isignaturehtml.servlet.KGHTML5Servlet
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>verifyCodeImage</servlet-name>
+        <servlet-class>
+            com.seeyon.ctp.login.VerifyCodeImageServlet
+        </servlet-class>
+    </servlet>
+	<!-- <servlet>
+        <servlet-name>sursenServlet</servlet-name>
+        <servlet-class>com.seeyon.ctp.common.sursen.servlet.SursenServlet</servlet-class>
+    </servlet> -->
+    <!-- REST web service -->
+    <servlet>
+        <servlet-name>rest</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>
+                com.seeyon.ctp.rest.resources,com.fasterxml.jackson.jaxrs,com.fasterxml.jackson.jaxrs.json,com.fasterxml.jackson.jaxrs.xml,com.seeyon.ctp.rest.filter
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>jersey.config.server.provider.classnames</param-name>
+            <param-value>com.seeyon.ctp.rest.filter.AuthorizationRequestFilter,com.seeyon.ctp.rest.filter.ResponseFilter,org.glassfish.jersey.media.multipart.MultiPartFeature</param-value>
+        </init-param>
+        <init-param>
+            <param-name>jersey.config.server.provider.scanning.recursive</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <load-on-startup>4</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>rest</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>All Access</web-resource-name>
+            <url-pattern>/rest/*</url-pattern>
+            <http-method>DELETE</http-method>
+            <http-method>PUT</http-method>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    <!-- web service -->
+    <servlet>
+        <servlet-name>axis2</servlet-name>
+        <servlet-class>com.seeyon.ctp.common.ws.CtpAxis2Servlet</servlet-class>
+        <!-- <load-on-startup>1</load-on-startup> -->
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>axis2</servlet-name>
+        <url-pattern>/axis2/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>axis2</servlet-name>
+        <url-pattern>/services/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>downloadService</servlet-name>
+        <servlet-class>com.seeyon.ctp.services.FileOutputService</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>downloadService</servlet-name>
+        <url-pattern>/services/downloadService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>officeservlet</servlet-name>
+        <url-pattern>/officeservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>pdfservlet</servlet-name>
+        <url-pattern>/pdfservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ofdServlet</servlet-name>
+        <url-pattern>/ofdServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>htmlofficeservlet</servlet-name>
+        <url-pattern>/htmlofficeservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>isignaturehtml</servlet-name>
+        <url-pattern>/isignaturehtmlservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>isignaturehtml5</servlet-name>
+        <url-pattern>/isignaturehtmlH5servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>verifyCodeImage</servlet-name>
+        <url-pattern>/verifyCodeImage.jpg</url-pattern>
+    </servlet-mapping>
+	<!-- <servlet-mapping>
+        <servlet-name>sursenServlet</servlet-name>
+        <url-pattern>/sursenServlet</url-pattern>
+    </servlet-mapping> -->
+
+   	<servlet>
+		<servlet-name>URLShortenerServlet</servlet-name>
+		<servlet-class>com.seeyon.ctp.common.urlshortener.URLShortenerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>URLShortenerServlet</servlet-name>
+		<url-pattern>/g/*</url-pattern>
+	</servlet-mapping>
+
+    <servlet>
+        <servlet-name>ConfigObtainServlet</servlet-name>
+        <servlet-class>com.seeyon.ctp.common.servlet.ConfigObtainServlet</servlet-class>
+        <load-on-startup>5</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConfigObtainServlet</servlet-name>
+        <url-pattern>/configObtain</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+		<cookie-config>
+		  <http-only>true</http-only>
+		</cookie-config>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+	<error-page>
+		<error-code>400</error-code>
+		<location>/common/error.htm</location>
+	</error-page>    
+   
+	<error-page>
+		<error-code>401</error-code>
+		<location>/common/error.htm</location>
+	</error-page>
+	<error-page>
+        <error-code>403</error-code>
+        <location>/common/error.htm</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/common/error.htm</location>
+    </error-page>
+    <error-page>
+        <error-code>405</error-code>
+        <location>/WEB-INF/jsp/common/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>418</error-code>
+        <location>/WEB-INF/jsp/common/error_s_unavailable.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/jsp/common/error.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>com.seeyon.ctp.common.rate.SeeyonRateLimitException</exception-type>
+        <location>/WEB-INF/jsp/common/rate_limit.jsp</location>
+    </error-page>
+	<jsp-config>
+	    <taglib>
+	        <taglib-uri>http://www.seeyon.com/ctp</taglib-uri>
+	        <taglib-location>/WEB-INF/tld/ctp.tld</taglib-location>
+	    </taglib>
+	    <taglib>
+	        <taglib-uri>http://v3x.seeyon.com/taglib/core</taglib-uri>
+	        <taglib-location>/WEB-INF/tld/v3x.tld</taglib-location>
+	    </taglib>
+	    <taglib>
+	        <taglib-uri>http://v3x.seeyon.com/bridges/spring-portlet-html</taglib-uri>
+	        <taglib-location>/WEB-INF/tld/spring-portlet-html.tld</taglib-location>
+	    </taglib>
+
+	    <jsp-property-group>
+	        <url-pattern>*.jsp</url-pattern>
+	    <el-ignored>false</el-ignored>
+
+	    </jsp-property-group>
+	</jsp-config>
+    <!-- JNDI Db resource -->
+    <resource-ref>
+        <description>DB Connection</description>
+        <res-ref-name>jdbc/ctpDataSource</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+</web-app>
