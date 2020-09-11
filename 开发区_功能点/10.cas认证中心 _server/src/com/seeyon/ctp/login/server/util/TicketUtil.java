@@ -6,8 +6,6 @@ import java.util.Map;
 /**
  * @Title:TicketUtil
  * @Description:令牌缓存
- * @author 张颖辉
- * @date 2017年9月8日上午10:12:09
  * @version 1.0
  */
 public class TicketUtil {

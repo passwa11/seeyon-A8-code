@@ -13,8 +13,6 @@ import java.util.Map.Entry;
 public class HttpUtil {
 	/**
 	 * @Description:HTTP请求post
-	 * @author 张颖辉
-	 * @date 2017年9月5日上午10:42:33
 	 * @param url
 	 * @param params
 	 * @return
@@ -26,8 +24,6 @@ public class HttpUtil {
 	/**
 	 * @Title:函数
 	 * @Description:可以指定类型的http请求
-	 * @author 张颖辉
-	 * @date 2017年9月8日上午10:11:40
 	 * @param method
 	 * @param url
 	 * @param params
