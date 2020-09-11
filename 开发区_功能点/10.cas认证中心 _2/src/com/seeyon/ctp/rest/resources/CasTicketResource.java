@@ -46,7 +46,7 @@ public class CasTicketResource extends BaseResource {
             // 返回数据
             map.put("code", Constant.CODE_SUCCESS);
             map.put("msg", "令牌认证成功!");
-            //map.put("globalSessionId", globalSessionId);// 应用发送给SSO退出请求时使用(应该无需返回)，之前登录生成令牌回调已经发送了全局会话id
+            map.put("globalSessionId", globalSessionId);// 应用发送给SSO退出请求时使用(应该无需返回)，之前登录生成令牌回调已经发送了全局会话id
             map.put("account", account);
         } else {
             map.put("code", Constant.CODE_FAIL);
