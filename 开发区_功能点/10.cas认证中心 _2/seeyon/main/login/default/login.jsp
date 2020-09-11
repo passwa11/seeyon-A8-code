@@ -32,6 +32,9 @@
                        	<input id="province" type="hidden" name="province" value=""/>
                        	<input id="city" type="hidden" name="city" value=""/>
                        	<input id="rectangle" type="hidden" name="rectangle" value=""/>
+<%--                        zhou:add--%>
+                       	<input id="ssoService" type="hidden" name="ssoService" value="${ssoService}"/>
+<%--                        zhou:add--%>
                         <div id="login_area_div" class="login_area_${layout}">
                             <c:if test="${ctp:getSystemProperty('portal.favicon')!='U8'&&(showQr==null?true:showQr)}">
                                 <div class="qrCodeBtn"></div>

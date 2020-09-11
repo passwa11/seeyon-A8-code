@@ -1,23 +1,27 @@
 package com.seeyon.ctp.login.controller;
 
 import bsh.StringUtil;
+import com.alibaba.fastjson.JSONObject;
 import com.seeyon.ctp.common.controller.BaseController;
 import com.seeyon.ctp.login.server.listener.GlobalSessions;
 import com.seeyon.ctp.login.server.util.Constant;
 import com.seeyon.ctp.login.server.util.StringUtilSso;
 import com.seeyon.ctp.login.server.util.TicketUtil;
+import com.seeyon.ctp.util.annotation.NeedlessCheckLogin;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class TicketController extends BaseController {
 
-
+    @NeedlessCheckLogin
     public ModelAndView verify(String ticket, String localSessionId, String localLoginOutUrl,
-                               String globalSessionId, HttpServletRequest request) {
+                               String globalSessionId, HttpServletRequest request,HttpServletResponse response) {
         Map<String, Object> map = new HashMap<>();
         String account = TicketUtil.get(ticket);
         TicketUtil.remove(ticket);
@@ -43,7 +47,19 @@ public class TicketController extends BaseController {
             map.put("code", Constant.CODE_FAIL);
             map.put("msg", "令牌认证失败");
         }
+        JSONObject json = new JSONObject(map);
+        render(response, json.toJSONString());
         return null;
+    }
+
+    private void render(HttpServletResponse response, String text) {
+        response.setContentType("application/json;charset=UTF-8");
+        try {
+            response.setContentLength(text.getBytes("UTF-8").length);
+            response.getWriter().write(text);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
