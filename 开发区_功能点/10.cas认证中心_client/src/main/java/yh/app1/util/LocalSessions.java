@@ -7,8 +7,6 @@ import javax.servlet.http.HttpSession;
 /**
  * @Title:LocalSessions
  * @Description:本地会话缓存，保存所有用户与本服务器的会话id和会话关系
- * @author 张颖辉
- * @date 2017年9月8日上午10:04:26
  * @version 1.0
  */
 public class LocalSessions {

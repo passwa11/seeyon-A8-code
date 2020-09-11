@@ -22,8 +22,6 @@ import org.slf4j.LoggerFactory;
 /**
  * @Title:UrlFilter
  * @Description:跟踪请求的内容和消耗时间
- * @author 张颖辉
- * @date 2017年9月8日上午10:05:58
  * @version 1.0
  */
 //登陆状态验证控制过滤器

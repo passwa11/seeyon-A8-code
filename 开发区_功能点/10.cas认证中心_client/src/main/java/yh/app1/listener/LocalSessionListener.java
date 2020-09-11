@@ -9,8 +9,6 @@ import yh.app1.util.LocalSessions;
 /**
  * @Title:GlobalSessionListener
  * @Description:会话监听器，监听会话的创建和销毁
- * @author 张颖辉
- * @date 2017年9月4日下午9:43:31
  * @version 1.0
  */
 public class LocalSessionListener implements HttpSessionListener {

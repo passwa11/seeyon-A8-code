@@ -8,11 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @author 张颖辉
  * @version 1.0
  * @Title:MainServlet
  * @Description:代表需要登录授权才能访问的页面
- * @date 2017年9月8日上午10:03:39
  */
 public class MainServlet extends HttpServlet {
     private static final long serialVersionUID = 3615122544373006252L;

@@ -37,11 +37,9 @@ import yh.app1.util.StringUtil;
 import yh.app1.util.TokenUtil;
 
 /**
- * @author 张颖辉
  * @version 1.0
  * @Title:SSOClientFilter SSO客户端过滤器
  * @Description:应用服务器必须添加的过滤器
- * @date 2017年9月8日上午10:06:39
  */
 public class SSOClientFilter implements Filter {
     private Logger logger = LoggerFactory.getLogger(this.getClass());

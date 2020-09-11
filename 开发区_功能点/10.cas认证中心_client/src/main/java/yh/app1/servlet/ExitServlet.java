@@ -17,8 +17,6 @@ import yh.app1.util.StringUtil;
 /**
  * @Title:ExitServlet
  * @Description:退出接口，应用服务器需要实现类似的退出接口，为了简易这里使用servlet
- * @author 张颖辉
- * @date 2017年9月8日上午10:01:56
  * @version 1.0
  */
 public class ExitServlet extends HttpServlet {
