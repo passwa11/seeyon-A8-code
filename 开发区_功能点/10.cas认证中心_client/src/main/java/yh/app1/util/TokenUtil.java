@@ -43,27 +43,6 @@ public class TokenUtil {
         return token;
     }
 
-    public static String doPost(String name,String pwd,String token) throws IOException {
-        CloseableHttpClient client = HttpClients.createDefault();
-        HttpPost post = new HttpPost("http://127.0.0.1:80/seeyon/rest/verifyLogin/login");
-        Map<String, Object> map = new HashMap<>();
-        map.put("loginName", name);
-        map.put("pwd", pwd);
-        String pairs=JSON.toJSONString(map);
-        StringEntity formEntity = new StringEntity(pairs, "UTF-8");
-        post.setHeader("Content-Type", "application/json;charset=utf-8");
-        //设置post请求头
-        post.addHeader("token",token);
-        post.setEntity(formEntity);
-        // 使用HttpClient发起请求，返回response
-        CloseableHttpResponse response = client.execute(post);
-        response.setHeader("Cache-Control", "no-cache");
-        String resultString = "";
-        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-            resultString = EntityUtils.toString(response.getEntity(), "utf-8").replaceAll(" ", "");
-        }
 
-        return resultString;
-    }
 
 }
