@@ -9,6 +9,7 @@ import com.seeyon.ctp.organization.manager.MemberManager;
 import com.seeyon.ctp.organization.manager.MemberManagerImpl;
 import com.seeyon.ctp.util.JDBCAgent;
 import com.seeyon.ctp.util.StringUtil;
+import com.seeyon.ctp.util.annotation.NeedlessCheckLogin;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
@@ -26,6 +27,7 @@ import java.util.Map;
 
 public class AuthController extends BaseController {
 
+    @NeedlessCheckLogin
     public ModelAndView loginOut(String server, HttpServletRequest request, HttpServletResponse response) {
         HttpSession httpSession = request.getSession();
         ModelAndView modelAndView=null;
