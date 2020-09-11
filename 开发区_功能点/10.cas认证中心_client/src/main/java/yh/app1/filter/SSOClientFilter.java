@@ -97,11 +97,11 @@ public class SSOClientFilter implements Filter {
                             + request.getServerPort() + request.getContextPath() + "/";
                     map.put("localLoginOutUrl", basePath + localExitUrl);
                     map.put("localSessionId", session.getId());
-                    String pairs= JSON.toJSONString(map);
+                    String pairs = JSON.toJSONString(map);
                     StringEntity formEntity = new StringEntity(pairs, "UTF-8");
                     post.setHeader("Content-Type", "application/json;charset=utf-8");
                     //设置post请求头
-                    String tokenu=TokenUtil.getToken(restToken);
+                    String tokenu = TokenUtil.getToken(restToken);
                     post.addHeader("token", tokenu);
                     post.setEntity(formEntity);
                     try {
@@ -110,16 +110,22 @@ public class SSOClientFilter implements Filter {
                         String resultString = "";
                         if (closeresponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                             resultString = EntityUtils.toString(closeresponse.getEntity(), "utf-8").replaceAll(" ", "");
-                            Map<String,Object> objectMap=(Map<String,Object>)JSONObject.parse(resultString);
-                            username = (String) objectMap.get("account");
-                            session.setAttribute("username", username);
-                            session.setAttribute("globalSessionId", globalSessionId);// 等退出全局登录时使用
+                            Map<String, Object> objectMap = (Map<String, Object>) JSONObject.parse(resultString);
+                            if (Integer.parseInt(objectMap.get("code").toString()) == 0) {
+                                username = (String) objectMap.get("account");
+                                session.setAttribute("username", username);
+                                session.setAttribute("globalSessionId", globalSessionId);// 等退出全局登录时使用
 //							zhou start
-                            CasHttpServletRequestWrapper casRequest=new CasHttpServletRequestWrapper(request,username);
-                            filterChain.doFilter(casRequest, response);
+                                CasHttpServletRequestWrapper casRequest = new CasHttpServletRequestWrapper(request, username);
+                                filterChain.doFilter(casRequest, response);
 //							zhou end
-                            logger.info("验票成功");
-                            return;
+                                logger.info("验票成功");
+                                return;
+                            }else {
+                                logger.info("验票失败，重新跳转到sso登录页面");
+                                response.sendRedirect(loginPage + "?service=" + url);
+                            }
+
                         } else {
                             logger.info("验票失败，重新跳转到sso登录页面");
                             response.sendRedirect(loginPage + "?service=" + url);
@@ -262,18 +268,18 @@ public class SSOClientFilter implements Filter {
             this.username = name;
         }
 
-		@Override
-		public String getRemoteUser() {
-			return getUsername();
-		}
+        @Override
+        public String getRemoteUser() {
+            return getUsername();
+        }
 
-		public String getUsername() {
-			return username;
-		}
+        public String getUsername() {
+            return username;
+        }
 
-		public void setUsername(String username) {
-			this.username = username;
-		}
-	}
+        public void setUsername(String username) {
+            this.username = username;
+        }
+    }
 
 }
