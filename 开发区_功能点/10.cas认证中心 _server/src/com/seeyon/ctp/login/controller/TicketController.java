@@ -1,6 +1,5 @@
 package com.seeyon.ctp.login.controller;
 
-import bsh.StringUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.seeyon.ctp.common.controller.BaseController;
 import com.seeyon.ctp.login.server.listener.GlobalSessions;
