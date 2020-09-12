@@ -108,14 +108,14 @@ public class SSOClientFilter implements Filter {
                     pairList.add(new BasicNameValuePair("globalSessionId", globalSessionId));
                     pairList.add(new BasicNameValuePair("localLoginOutUrl", basePath + localExitUrl));
                     pairList.add(new BasicNameValuePair("localSessionId", session.getId()));
-                    UrlEncodedFormEntity entityParam = new UrlEncodedFormEntity(pairList, "UTF-8");
-                    post.setEntity(entityParam);
+                    UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(pairList, "UTF-8");
+
 //                    post.setHeader("Content-Type", "application/json;charset=utf-8");
                     post.setHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
                     //设置post请求头
 
                     post.addHeader("token", tokenu);
-//                    post.setEntity(formEntity);
+                    post.setEntity(formEntity);
                     CloseableHttpResponse closeresponse=null;
                     try {
                         closeresponse = client.execute(post);
