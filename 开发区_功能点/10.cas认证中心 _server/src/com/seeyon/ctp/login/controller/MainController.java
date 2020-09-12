@@ -922,7 +922,8 @@ public class MainController extends BaseController {
                     //是否是应用服务器重定向而来
                     if (StringUtilSso.isUnEmpty(service)) {
                         // ticket
-                        String ticket = account + System.currentTimeMillis();
+//                        String ticket = account + System.currentTimeMillis();
+                        String ticket = UUID.randomUUID().toString();
                         TicketUtil.put(ticket, account);
                         StringBuilder url = new StringBuilder();
                         url.append(service);
@@ -933,6 +934,7 @@ public class MainController extends BaseController {
                         }
                         url.append("ticket=").append(ticket);
                         url.append("&globalSessionId=").append(request.getSession().getId());
+                        url.append("&flag=").append(map.get("memberId"));
                         logger.info("登录成功：回跳应用网站：" + url.toString());
                         modelAndView.setViewName("redirect:" + url.toString());
                         return modelAndView;
