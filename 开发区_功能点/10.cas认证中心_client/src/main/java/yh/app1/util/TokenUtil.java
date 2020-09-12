@@ -25,7 +25,7 @@ public class TokenUtil {
         HttpResponse response = null;
         httpPost = new HttpPost(url);
         httpPost.setHeader("Content-Type", "application/json;charset=utf-8");
-        String requestParams = "{\"userName\":\"rest\",\"password\":\"88f083b5-f8e0-47b9-8699-42cad31fa514\"}";
+        String requestParams = "{\"userName\":\"rest\",\"password\":\"55ffa403-230c-48c5-b74c-9d29fd100542\"}";
         StringEntity postingString = new StringEntity(requestParams, "utf-8");
         httpPost.setEntity(postingString);
         try {

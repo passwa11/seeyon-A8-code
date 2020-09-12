@@ -197,14 +197,14 @@ public class SSOClientFilter implements Filter {
 
         public CasHttpServletRequestWrapper(HttpServletRequest request, String name) {
             super(request);
-            Cookie[] cookies=request.getCookies();
-            for(Cookie cookie:cookies){
-                String cookieName =cookie.getName();
-                if("sso".equals(cookieName)){
-                    this.username = cookie.getValue();
-                }
-            }
-//            this.username = name;
+//            Cookie[] cookies=request.getCookies();
+//            for(Cookie cookie:cookies){
+//                String cookieName =cookie.getName();
+//                if("sso".equals(cookieName)){
+//                    this.username = cookie.getValue();
+//                }
+//            }
+            this.username = name;
         }
 
         @Override
