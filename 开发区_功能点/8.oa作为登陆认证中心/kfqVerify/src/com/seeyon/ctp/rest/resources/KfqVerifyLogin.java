@@ -12,6 +12,7 @@ import org.apache.commons.logging.Log;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.math.BigDecimal;
 import java.util.*;
 
 @Path("verifyLogin")
@@ -27,52 +28,26 @@ public class KfqVerifyLogin extends BaseResource {
     @Path("login")
     public Response verifyLogin(Map data) {
         String loginName = data.get("loginName").toString();
-        String pwd = data.get("pwd").toString();
         Map map = new HashMap();
-        String sql = "select login_name,credential_value,member_id from ORG_PRINCIPAL where LOGIN_NAME='" + loginName + "'";
+        String sql = "select id,name from ORG_MEMBER where id=" + Long.parseLong(loginName) + "";
         if (null != loginName || !"".equals(loginName)) {
-            if (null != pwd || !"".equals(pwd)) {
-                try {
-                    MessageEncoder encoder = new MessageEncoder();
-                    String encodePwd = encoder.encode(loginName, pwd);
-                    List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
-                    if (list.size() > 0) {
-                        Map<String, Object> pricipal = list.get(0);
-                        String r_loginName = (String) pricipal.get("login_name");
-                        String r_pwd = (String) pricipal.get("credential_value");
-                        if (r_loginName.equals(loginName)) {
-                            if (r_pwd.equals(encodePwd)) {
-
-                                String memberId = pricipal.get("member_id").toString();
-                                Set<String> set = verityPermission(memberId);
-                                Iterator<String> it = set.iterator();
-                                StringBuilder permission = new StringBuilder();
-                                while (it.hasNext()) {
-                                    permission.append(it.next() + ",");
-                                }
-                                Map<String, Object> dmap = new HashMap<>();
-                                dmap.put("loginName", pricipal.get("login_name").toString());
-                                dmap.put("permission", permission.toString());
-                                
-                                map.put("code", 0);
-                                map.put("msg", "请求成功");
-                                map.put("data", dmap);
-                            } else {
-                                map.put("code", 2);
-                                map.put("msg", "密码不正确");
-                            }
-                        }
-                    } else {
-                        map.put("code", 1);
-                        map.put("msg", "账号不存在");
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    LOGGER.error("验证登陆接口出错了" + e);
+            try {
+                List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
+                if (list.size() > 0) {
+                    Map<String, Object> pricipal = list.get(0);
+                    String id = (pricipal.get("id")).toString() ;
+                    Map<String, Object> dmap = new HashMap<>();
+                    dmap.put("userId", id);
+                    map.put("code", 0);
+                    map.put("msg", "请求成功");
+                    map.put("data", dmap);
+                } else {
+                    map.put("code", 1);
+                    map.put("msg", "账号不存在");
                 }
-            } else {
-                map.put("code", 2);
-                map.put("msg", "密码不正确");
+            } catch (Exception e) {
+                e.printStackTrace();
+                LOGGER.error("验证登陆接口出错了" + e);
             }
         } else {
             map.put("code", 1);
@@ -80,6 +55,67 @@ public class KfqVerifyLogin extends BaseResource {
         }
         return Response.ok(map).build();
     }
+
+
+//    @POST
+//    @Consumes({MediaType.APPLICATION_JSON})
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("login")
+//    public Response verifyLogin(Map data) {
+//        String loginName = data.get("loginName").toString();
+////        String pwd = data.get("pwd").toString();
+//        Map map = new HashMap();
+//        String sql = "select id,name from ORG_MEMBER where id=" + Long.parseLong() + "";
+//        if (null != loginName || !"".equals(loginName)) {
+//            if (null != pwd || !"".equals(pwd)) {
+//                try {
+//                    MessageEncoder encoder = new MessageEncoder();
+//                    String encodePwd = encoder.encode(loginName, pwd);
+//                    List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
+//                    if (list.size() > 0) {
+//                        Map<String, Object> pricipal = list.get(0);
+//                        String r_loginName = (String) pricipal.get("login_name");
+//                        String r_pwd = (String) pricipal.get("credential_value");
+//                        if (r_loginName.equals(loginName)) {
+//                            if (r_pwd.equals(encodePwd)) {
+//
+//                                String memberId = pricipal.get("member_id").toString();
+//                                Set<String> set = verityPermission(memberId);
+//                                Iterator<String> it = set.iterator();
+//                                StringBuilder permission = new StringBuilder();
+//                                while (it.hasNext()) {
+//                                    permission.append(it.next() + ",");
+//                                }
+//                                Map<String, Object> dmap = new HashMap<>();
+//                                dmap.put("loginName", pricipal.get("login_name").toString());
+//                                dmap.put("permission", permission.toString());
+//
+//                                map.put("code", 0);
+//                                map.put("msg", "请求成功");
+//                                map.put("data", dmap);
+//                            } else {
+//                                map.put("code", 2);
+//                                map.put("msg", "密码不正确");
+//                            }
+//                        }
+//                    } else {
+//                        map.put("code", 1);
+//                        map.put("msg", "账号不存在");
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                    LOGGER.error("验证登陆接口出错了" + e);
+//                }
+//            } else {
+//                map.put("code", 2);
+//                map.put("msg", "密码不正确");
+//            }
+//        } else {
+//            map.put("code", 1);
+//            map.put("msg", "账号不存在");
+//        }
+//        return Response.ok(map).build();
+//    }
 
 
     private CacheAccessable factory = CacheFactory.getInstance(KfqVerifyLogin.class);
