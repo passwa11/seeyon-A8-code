@@ -1,7 +1,9 @@
 package yh.app1.filter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.Filter;
@@ -20,11 +22,14 @@ import com.google.gson.reflect.TypeToken;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.PostMethod;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,29 +85,40 @@ public class SSOClientFilter implements Filter {
             }
         }
         // 登录拦截
+
         if (StringUtil.isEmpty(username)) {// 本地未登录
             // 中心已经登录
             if (StringUtil.isUnEmpty(ticket)) {
                 if (StringUtil.isUnEmpty(globalSessionId)) {
 //                    zhou
+                    String tokenu = TokenUtil.getToken(restToken);
                     CloseableHttpClient client = HttpClients.createDefault();
                     HttpPost post = new HttpPost(validateTicketUrl);
-                    Map<String, Object> map = new HashMap<>();
-                    map.put("ticket", ticket);
-                    map.put("globalSessionId", globalSessionId);
+//                    Map<String, Object> map = new HashMap<>();
+//                    map.put("ticket", ticket);
+//                    map.put("globalSessionId", globalSessionId);
                     String basePath = request.getScheme() + "://" + request.getServerName() + ":"
                             + request.getServerPort() + request.getContextPath() + "/";
-                    map.put("localLoginOutUrl", basePath + localExitUrl);
-                    map.put("localSessionId", session.getId());
-                    String pairs = JSON.toJSONString(map);
-                    StringEntity formEntity = new StringEntity(pairs, "UTF-8");
-                    post.setHeader("Content-Type", "application/json;charset=utf-8");
+//                    map.put("localLoginOutUrl", basePath + localExitUrl);
+//                    map.put("localSessionId", session.getId());
+//                    String pairs = JSON.toJSONString(map);
+//                    StringEntity formEntity = new StringEntity(pairs, "UTF-8");
+                    List<NameValuePair> pairList=new ArrayList<>();
+                    pairList.add(new BasicNameValuePair("ticket", ticket));
+                    pairList.add(new BasicNameValuePair("globalSessionId", globalSessionId));
+                    pairList.add(new BasicNameValuePair("localLoginOutUrl", basePath + localExitUrl));
+                    pairList.add(new BasicNameValuePair("localSessionId", session.getId()));
+                    UrlEncodedFormEntity entityParam = new UrlEncodedFormEntity(pairList, "UTF-8");
+                    post.setEntity(entityParam);
+//                    post.setHeader("Content-Type", "application/json;charset=utf-8");
+                    post.setHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
                     //设置post请求头
-                    String tokenu = TokenUtil.getToken(restToken);
+
                     post.addHeader("token", tokenu);
-                    post.setEntity(formEntity);
+//                    post.setEntity(formEntity);
+                    CloseableHttpResponse closeresponse=null;
                     try {
-                        CloseableHttpResponse closeresponse = client.execute(post);
+                        closeresponse = client.execute(post);
                         closeresponse.setHeader("Cache-Control", "no-cache");
                         String resultString = "";
                         if (closeresponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
@@ -130,6 +146,17 @@ public class SSOClientFilter implements Filter {
 
                     } catch (Exception e) {
                         e.printStackTrace();
+                    }finally {
+                        try{
+                            if(null != closeresponse){
+                                closeresponse.close();
+                            }
+                            if(null !=client){
+                                client.close();
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
                     }
 
                 } else {
