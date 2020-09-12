@@ -11,10 +11,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -152,6 +149,50 @@ public class SSOClientFilter implements Filter {
 
     }
 
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        ServletContext servletContext = filterConfig.getServletContext();
+        String ssoServer = servletContext.getInitParameter("ssoServerUrl");
+        localExitUrl = servletContext.getInitParameter("localExitUrl");
+        needLoginUrls = servletContext.getInitParameter("needLoginUrls");
+
+//        loginPage = ssoServer + "/auth/toLogin";
+        loginPage = ssoServer + "/main.do";
+//        validateTicketUrl = ssoServer + "/ticket/verify";
+        validateTicketUrl = ssoServer + "/rest/casplus/verify";
+        restToken = ssoServer + "/rest/token";
+    }
+
+    final class CasHttpServletRequestWrapper extends HttpServletRequestWrapper {
+
+        private String username;
+
+        public CasHttpServletRequestWrapper(HttpServletRequest request, String name) {
+            super(request);
+            Cookie[] cookies=request.getCookies();
+            for(Cookie cookie:cookies){
+                String cookieName =cookie.getName();
+                if("sso".equals(cookieName)){
+                    this.username = cookie.getValue();
+                }
+            }
+//            this.username = name;
+        }
+
+        @Override
+        public String getRemoteUser() {
+            return getUsername();
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+    }
 //    @Override
 //    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
 //            throws IOException, ServletException {
@@ -244,42 +285,5 @@ public class SSOClientFilter implements Filter {
 //        }
 //
 //    }
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        ServletContext servletContext = filterConfig.getServletContext();
-        String ssoServer = servletContext.getInitParameter("ssoServerUrl");
-        localExitUrl = servletContext.getInitParameter("localExitUrl");
-        needLoginUrls = servletContext.getInitParameter("needLoginUrls");
-
-//        loginPage = ssoServer + "/auth/toLogin";
-        loginPage = ssoServer + "/main.do";
-//        validateTicketUrl = ssoServer + "/ticket/verify";
-        validateTicketUrl = ssoServer + "/rest/casplus/verify";
-        restToken = ssoServer + "/rest/token";
-    }
-
-    final class CasHttpServletRequestWrapper extends HttpServletRequestWrapper {
-
-        private String username;
-
-        public CasHttpServletRequestWrapper(HttpServletRequest request, String name) {
-            super(request);
-            this.username = name;
-        }
-
-        @Override
-        public String getRemoteUser() {
-            return getUsername();
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-    }
 
 }
