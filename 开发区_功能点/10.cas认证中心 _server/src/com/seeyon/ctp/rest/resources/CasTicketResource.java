@@ -9,10 +9,7 @@ import org.apache.commons.logging.Log;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.HashMap;
@@ -62,15 +59,14 @@ public class CasTicketResource extends BaseResource {
 
 
     @POST
-    @Consumes({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
     @Produces(MediaType.APPLICATION_JSON)
     @Path("verify")
-    public Response verify(Map data) {
+    public Response verify(@FormParam("ticket") String ticket,@FormParam("globalSessionId")  String globalSessionId,@FormParam("localSessionId") String localSessionId,@FormParam("localLoginOutUrl")  String localLoginOutUrl) {
         Map<String, Object> map = new HashMap<>();
-        String account = TicketUtil.get(data.get("ticket").toString());
-        TicketUtil.remove(data.get("ticket").toString());
+        String account = TicketUtil.get(ticket);
+        TicketUtil.remove(ticket);
         if (StringUtilSso.isUnEmpty(account)) {
-            String globalSessionId = data.get("globalSessionId").toString();
             HttpSession session = GlobalSessions.get(globalSessionId);
             Map<String, String> loginOutMap = null;
             if (session.getAttribute("loginOutMap") != null) {
@@ -79,8 +75,6 @@ public class CasTicketResource extends BaseResource {
                 loginOutMap = new HashMap<>();
                 session.setAttribute("loginOutMap", loginOutMap);
             }
-            String localSessionId = data.get("localSessionId").toString();
-            String localLoginOutUrl = data.get("localLoginOutUrl").toString();
             loginOutMap.put(localSessionId, localLoginOutUrl);
             // 返回数据
             map.put("code", Constant.CODE_SUCCESS);
