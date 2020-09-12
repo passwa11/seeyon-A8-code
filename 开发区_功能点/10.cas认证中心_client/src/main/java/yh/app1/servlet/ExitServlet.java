@@ -28,7 +28,13 @@ public class ExitServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		ServletContext context = this.getServletContext();// 容器
+		ServletContext context = this.getServletContext();// 容器
+		String ssoServer = context.getInitParameter("ssoServerUrl");
+		CasLogoutRest.toLogout(response,ssoServer,request.getSession().getAttribute("globalSessionId").toString());
+		request.getSession().invalidate();
+		response.sendRedirect("http://" + request.getServerName()+":"+request.getServerPort() + "/app1/main");
+
+		//		ServletContext context = this.getServletContext();// 容器
 //		String ssoServer = context.getInitParameter("ssoServerUrl");
 //		HttpSession session = request.getSession();
 //		// 本地会话id，SSO回调退出时需要的参数
@@ -50,13 +56,6 @@ public class ExitServlet extends HttpServlet {
 //			}
 //
 //		}
-
-		ServletContext context = this.getServletContext();// 容器
-		String ssoServer = context.getInitParameter("ssoServerUrl");
-		CasLogoutRest.toLogout(response,ssoServer,request.getSession().getAttribute("globalSessionId").toString());
-		request.getSession().invalidate();
-		response.sendRedirect("http://" + request.getServerName()+":"+request.getServerPort() + "/app1/main");
-
 	}
 
 }
