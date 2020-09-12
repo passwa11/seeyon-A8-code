@@ -934,7 +934,7 @@ public class MainController extends BaseController {
                         }
                         url.append("ticket=").append(ticket);
                         url.append("&globalSessionId=").append(request.getSession().getId());
-                        url.append("&flag=").append(map.get("memberId"));
+//                        url.append("&flag=").append(map.get("memberId"));
                         logger.info("登录成功：回跳应用网站：" + url.toString());
                         modelAndView.setViewName("redirect:" + url.toString());
                         return modelAndView;
