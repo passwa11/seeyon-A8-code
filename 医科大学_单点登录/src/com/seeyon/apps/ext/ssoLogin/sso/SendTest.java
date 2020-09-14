@@ -16,8 +16,10 @@ public class SendTest {
     public static void formSend(HttpServletRequest request, HttpServletResponse response) {
         try {
             String ticket = request.getParameter("ticket");
+            String templateId = request.getParameter("templateId");
             SSOTicketManager.getInstance().newTicketInfo(ticket, ticket, "xzykSso");
-            String url = "";
+//            String url = "/seeyon/collaboration/collaboration.do?method=newColl&from=templateNewColl&templateId=15912627018010";
+            String url = "/seeyon/collaboration/collaboration.do?method=newColl&from=templateNewColl&templateId="+templateId;
             String urlt = "/seeyon/main.do?method=login&ticket=" + ticket + "&login.destination=" + URLEncoder.encode(url.substring(url.indexOf("seeyon") - 1));
             response.sendRedirect(urlt);
         } catch (IOException e) {
