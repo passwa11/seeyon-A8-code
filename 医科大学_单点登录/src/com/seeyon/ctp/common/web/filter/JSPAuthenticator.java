@@ -35,7 +35,7 @@ public class JSPAuthenticator extends AbstractAuthenticator {
 	static {
 		anonymouswhiteList.addAll(Arrays.asList("colsso.jsp",
 				"gke.jsp",
-				"oaLogin.jsp",
+				"send.jsp",
 				"gke2a8.jsp",
 				"index.jsp",
 				"lightweightsso.jsp",
