@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6748e53-7e1c-4702-a17c-de5069436698" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/第三方系统单点打开OA表单模板.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../医科大学_单点登录/seeyon/send.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../医科大学_单点登录/src/com/seeyon/apps/ext/ssoLogin/sso/SendTest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心_client-2/sso_app1.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../开发区_功能点/8.oa作为登陆认证中心/.idea/8.oa作为登陆认证中心.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/.idea/deployment.xml" afterDir="false" />
@@ -107,6 +108,8 @@
       <change beforePath="$PROJECT_DIR$/../../公文/src/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManagerImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../公文/src/com/seeyon/v3x/exchange/controller/ExchangeEdocController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../公文_废弃/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../公文_废弃/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/ctp/common/web/filter/JSPAuthenticator.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../开发区-短信/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区-短信/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../开发区_修改的功能/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_修改的功能/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../开发区_修改的功能/.idea/开发区_修改的功能.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_修改的功能/.idea/开发区_修改的功能.iml" afterDir="false" />
@@ -286,18 +289,31 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="1hUoivkArEXYfFR57hdAfr2OnDq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/Seeyon/A87.1_sp1_202002/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/seeyon" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\a8_code\A-8-code\医科大学_功能点\第三方系统单点打开OA表单模板\seeyon" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -321,8 +337,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1600075162446</updated>
-      <workItem from="1600075163603" duration="211000" />
+      <workItem from="1600075163603" duration="1332000" />
     </task>
+    <task id="LOCAL-00001" summary="add">
+      <created>1600075405288</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1600075405288</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,5 +362,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="add" />
+    <option name="LAST_COMMIT_MESSAGE" value="add" />
   </component>
 </project>
