@@ -80,6 +80,7 @@ public class SelectPeopleResources extends BaseResource {
                         Object fieldVal = map.get(key);
                         if (null == fieldVal) {
                             excludeExist.add(subBeans.get(i));
+                            result.put("recordId", subBeans.get(i).getId()+"");
                             break;
                         } else {
                             String val = fieldVal + "";
@@ -144,7 +145,7 @@ public class SelectPeopleResources extends BaseResource {
                     subTemp7.put("value", zJsonObject.getField0007());
                     int count = 1;
 
-                    List<Map<String,Object>> list=new ArrayList<>();
+                    List<Map<String, Object>> list = new ArrayList<>();
                     for (String key : masterMap.keySet()) {
                         if (key.startsWith("field")) {
                             Object fieldVal = masterMap.get(key);
@@ -152,33 +153,33 @@ public class SelectPeopleResources extends BaseResource {
                                 filldatas = new HashMap<>();
 
                                 if (count == 1) {
-                                    filldatas.put("tableName",tableName);
-                                    filldatas.put("fieldId",key);
+                                    filldatas.put("tableName", tableName);
+                                    filldatas.put("fieldId", key);
                                     filldatas.put("fieldData", subTemp1);
                                     list.add(filldatas);
                                 }
                                 if (count == 2) {
-                                    filldatas.put("tableName",tableName);
-                                    filldatas.put("fieldId",key);
+                                    filldatas.put("tableName", tableName);
+                                    filldatas.put("fieldId", key);
                                     filldatas.put("fieldData", subTemp2);
                                     list.add(filldatas);
                                 }
 
                                 if (count == 3) {
-                                    filldatas.put("tableName",tableName);
-                                    filldatas.put("fieldId",key);
+                                    filldatas.put("tableName", tableName);
+                                    filldatas.put("fieldId", key);
                                     filldatas.put("fieldData", subTemp4);
                                     list.add(filldatas);
                                 }
                                 if (count == 4) {
-                                    filldatas.put("tableName",tableName);
-                                    filldatas.put("fieldId",key);
+                                    filldatas.put("tableName", tableName);
+                                    filldatas.put("fieldId", key);
                                     filldatas.put("fieldData", subTemp5);
                                     list.add(filldatas);
                                 }
                                 if (count == 5) {
-                                    filldatas.put("tableName",tableName);
-                                    filldatas.put("fieldId",key);
+                                    filldatas.put("tableName", tableName);
+                                    filldatas.put("fieldId", key);
                                     filldatas.put("fieldData", subTemp7);
                                     list.add(filldatas);
                                 }

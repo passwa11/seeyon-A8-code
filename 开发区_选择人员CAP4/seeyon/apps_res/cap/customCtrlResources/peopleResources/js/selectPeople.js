@@ -119,30 +119,30 @@
                                 }
                                 var _list = res.data.data;
                                 var rows = res.data.dataCount;
-                                console.log(_list, 'zhou');
-                                console.log(rows, 'zhou');
+                                var currentId = res.data.recordId;
 
                                 var tableName = res.data.tableName;
                                 // var data = csdk.core.getFormData();
                                 // var list = data.formsons.front_formson_1.records[0].recordId;
                                 //添加一行空行到到明细表formson_001当前选中行后面
                                 // var curRecordId = list ? list : null;
-                                var arr = new Array();
-                                for (var i = 0; i < rows; i++) {
-                                    var obj = {};
-                                    arr.push(obj);
-                                }
+                                // var objArr=[];
+                                // for (var k=0;k<_list.length;k++){
+                                //     objArr.push({});
+                                // }
                                 var opts = {
                                     tableName: tableName,
-                                    posRecordId: null,
-                                    records: arr
+                                    posRecordId: currentId,
+                                    records: _list
                                 };
 
                                 csdk.core.addRecord(opts, function (err, newRecord) {
                                     if (err) {
                                         return;
                                     }
-                                    // newRecord.unshift(curRecordId);
+                                    if (null != currentId) {
+                                        newRecord.unshift(currentId);
+                                    }
                                     //添加成功，取得新记录的id
                                     for (let i = 0; i < newRecord.length; i++) {
                                         var addField = _list[i];
