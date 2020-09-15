@@ -144,7 +144,7 @@
                                         newRecord.unshift(currentId);
                                     }
                                     //添加成功，取得新记录的id
-                                    for (let i = 0; i < newRecord.length; i++) {
+                                    for (let i = 0; i < newRecord.length-1; i++) {
                                         var addField = _list[i];
                                         for (var j = 0; j < addField.length; j++) {
                                             addField[j].recordId = newRecord[i];
