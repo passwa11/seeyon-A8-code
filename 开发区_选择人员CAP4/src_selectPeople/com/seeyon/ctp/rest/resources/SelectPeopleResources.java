@@ -107,39 +107,31 @@ public class SelectPeopleResources extends BaseResource {
             result.put("dataCount", listJson.size());
             Map<String, Object> filldatas = null;
 
-            Map<String, Object> dataMap = null;
-            List<Object> listMap = new ArrayList<>();
-            for (int i = 0; i < excludeExist.size(); i++) {
-                Map<String, Object> masterMap = excludeExist.get(i).getRowData();
-                filldatas = new HashMap<>();
-                dataMap = new HashMap<>();
+            List<List<Map<String, Object>>> listMap = new ArrayList<>();
+            for (int i = 0; i < listJson.size(); i++) {
+                Map<String, Object> masterMap = excludeExist.get(0).getRowData();
                 ZJsonObject zJsonObject = null;
                 if (i < listJson.size()) {
                     zJsonObject = listJson.get(i);
                     Map<String, Object> subTemp1 = new HashMap<>();
 
-                    subTemp1.put("showValue", zJsonObject.getField0001());
-                    subTemp1.put("showValue2", zJsonObject.getField0001());
                     subTemp1.put("value", zJsonObject.getField0001());
+                    subTemp1.put("display", zJsonObject.getField0001());
 
                     Map<String, Object> subTemp2 = new HashMap<>();
-                    subTemp2.put("showValue", zJsonObject.getName());
-                    subTemp2.put("showValue2", zJsonObject.getName());
+                    subTemp2.put("display", zJsonObject.getName());
                     subTemp2.put("value", zJsonObject.getField0002());
 
                     Map<String, Object> subTemp3 = new HashMap<>();
-                    subTemp3.put("showValue", zJsonObject.getName());
-                    subTemp3.put("showValue2", zJsonObject.getName());
+                    subTemp3.put("display", zJsonObject.getName());
                     subTemp3.put("value", zJsonObject.getName());
 
                     Map<String, Object> subTemp4 = new HashMap<>();
-                    subTemp4.put("showValue", zJsonObject.getField0003());
-                    subTemp4.put("showValue2", zJsonObject.getField0003());
+                    subTemp4.put("display", zJsonObject.getField0003());
                     subTemp4.put("value", zJsonObject.getField0003());
 
                     Map<String, Object> subTemp5 = new HashMap<>();
-                    subTemp5.put("showValue", zJsonObject.getField0005());
-                    subTemp5.put("showValue2", zJsonObject.getField0005());
+                    subTemp5.put("display", zJsonObject.getField0005());
                     subTemp5.put("value", zJsonObject.getField0005());
 
 //                    Map<String, Object> subTemp6 = new HashMap<>();
@@ -148,39 +140,54 @@ public class SelectPeopleResources extends BaseResource {
 //                    subTemp6.put("value", zJsonObject.getMval());
 
                     Map<String, Object> subTemp7 = new HashMap<>();
-                    subTemp7.put("showValue", zJsonObject.getField0007());
-                    subTemp7.put("showValue2", zJsonObject.getField0007());
+                    subTemp7.put("display", zJsonObject.getField0007());
                     subTemp7.put("value", zJsonObject.getField0007());
                     int count = 1;
 
+                    List<Map<String,Object>> list=new ArrayList<>();
                     for (String key : masterMap.keySet()) {
                         if (key.startsWith("field")) {
                             Object fieldVal = masterMap.get(key);
                             if (null == fieldVal) {
+                                filldatas = new HashMap<>();
+
                                 if (count == 1) {
-                                    filldatas.put(key, subTemp1);
+                                    filldatas.put("tableName",tableName);
+                                    filldatas.put("fieldId",key);
+                                    filldatas.put("fieldData", subTemp1);
+                                    list.add(filldatas);
                                 }
                                 if (count == 2) {
-                                    filldatas.put(key, subTemp2);
+                                    filldatas.put("tableName",tableName);
+                                    filldatas.put("fieldId",key);
+                                    filldatas.put("fieldData", subTemp2);
+                                    list.add(filldatas);
                                 }
 
                                 if (count == 3) {
-                                    filldatas.put(key, subTemp4);
+                                    filldatas.put("tableName",tableName);
+                                    filldatas.put("fieldId",key);
+                                    filldatas.put("fieldData", subTemp4);
+                                    list.add(filldatas);
                                 }
                                 if (count == 4) {
-                                    filldatas.put(key, subTemp5);
+                                    filldatas.put("tableName",tableName);
+                                    filldatas.put("fieldId",key);
+                                    filldatas.put("fieldData", subTemp5);
+                                    list.add(filldatas);
                                 }
                                 if (count == 5) {
-                                    filldatas.put(key, subTemp7);
+                                    filldatas.put("tableName",tableName);
+                                    filldatas.put("fieldId",key);
+                                    filldatas.put("fieldData", subTemp7);
+                                    list.add(filldatas);
                                 }
 
                                 count++;
-                                dataMap.put(masterMap.get("id") + "", filldatas);
                             }
-                            dataMap.put("recordId", masterMap.get("id") + "");
                         }
                     }
-                    listMap.add(dataMap);
+                    listMap.add(list);
                 }
             }
 
@@ -193,13 +200,14 @@ public class SelectPeopleResources extends BaseResource {
 
         return success(result);
     }
+
     @POST
     @Produces({"application/json"})
     @Path("clearCachePerple")
-    public Response clearCachePerple(){
+    public Response clearCachePerple() {
         cacheMap.remove("listKey");
-        Map<String,Object> result=new HashMap<>();
-        result.put("code","0");
+        Map<String, Object> result = new HashMap<>();
+        result.put("code", "0");
         return success(result);
     }
 
@@ -216,7 +224,7 @@ public class SelectPeopleResources extends BaseResource {
         JSONArray jsonArray = jsonObject.getJSONArray("data");
         List<ZJsonObject> listJson = null;
         CacheListData ldata = cacheMap.get("listKey");
-        if (null ==ldata) {
+        if (null == ldata) {
             listJson = JSON.parseObject(jsonArray.toJSONString(), new TypeReference<List<ZJsonObject>>() {
             });
             ldata = new CacheListData();
@@ -393,9 +401,6 @@ public class SelectPeopleResources extends BaseResource {
 
         return success(result);
     }
-
-
-
 
 
 }

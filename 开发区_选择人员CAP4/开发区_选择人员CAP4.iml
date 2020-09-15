@@ -22,6 +22,6 @@
         <jarDirectory url="file://F:/Seeyon/A87.1_sp1_202002/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.20" level="application_server_libraries" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.571" level="application_server_libraries" />
   </component>
 </module>

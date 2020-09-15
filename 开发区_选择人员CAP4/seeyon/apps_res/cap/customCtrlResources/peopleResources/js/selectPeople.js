@@ -91,7 +91,6 @@
                         var peoples = dialog.getReturnValue();
                         //添加明细行并回填数据
                         var content = messageObj.formdata.content;
-                        var num = peoples.data.length + 1;
                         var arr = peoples.data;
                         var newPeople = new Array();
                         for (var i = 0; i < peoples.data.length; i++) {
@@ -106,79 +105,151 @@
 
                         $.ajax({
                             type: 'post',
-                            async: true,
+                            async: false,
                             url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo",
                             dataType: 'json',
                             data: JSON.stringify(jsonObj),
                             contentType: 'application/json',
                             success: function (res) {
                                 // 判断是否需要添加
+                                debugger;
                                 if (res.code != 0) {
                                     $.alert(res.message);
                                     return;
                                 }
-                                var dataCount = res.data.dataCount + 1;
-                                addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, dataCount);
+                                var _list = res.data.data;
+                                var rows = res.data.dataCount;
+                                console.log(_list, 'zhou');
+                                console.log(rows, 'zhou');
+
+                                var tableName = res.data.tableName;
+                                // var data = csdk.core.getFormData();
+                                // var list = data.formsons.front_formson_1.records[0].recordId;
+                                //添加一行空行到到明细表formson_001当前选中行后面
+                                // var curRecordId = list ? list : null;
+                                var arr = new Array();
+                                for (var i = 0; i < rows; i++) {
+                                    var obj = {};
+                                    arr.push(obj);
+                                }
+                                var opts = {
+                                    tableName: tableName,
+                                    posRecordId: null,
+                                    records: arr
+                                };
+
+                                csdk.core.addRecord(opts, function (err, newRecord) {
+                                    if (err) {
+                                        return;
+                                    }
+                                    // newRecord.unshift(curRecordId);
+                                    //添加成功，取得新记录的id
+                                    for (let i = 0; i < newRecord.length; i++) {
+                                        var addField = _list[i];
+                                        for (var j = 0; j < addField.length; j++) {
+                                            addField[j].recordId = newRecord[i];
+                                        }
+                                        csdk.core.setFieldData(addField);
+                                    }
+                                });
+                                dialog.close();
+
                             }, error: function (res) {
                             }
                         });
 
-                        function addLineAndFilldata(content, adaptation, messageObj, privateId, datainfo, flag) {
-                            debugger;
-                            flag--;
-                            // --flag;
-                            var jsonAdd = {
-                                'masterId': content.contentDataId,
-                                'dataInfo': JSON.stringify(datainfo),
-                                'flag': flag + ""
-                            };
-                            $.ajax({
-                                type: 'post',
-                                async: true,
-                                url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo",
-                                dataType: 'json',
-                                data: JSON.stringify(jsonAdd),
-                                contentType: 'application/json',
-                                success: function (res) {
-                                    // 判断是否需要添加
-                                    if (res.code != 0) {
-                                        $.alert(res.message);
-                                        return;
-                                    }
-                                    var isNext = res.data.add;
-                                    var val = 0;
 
-                                    if (isNext) {
-                                        var addLineParam = {};
-                                        var dataCount = res.data.dataCount;
-
-                                        addLineParam.tableName = res.data.tableName;
-                                        addLineParam.isFormRecords = true;
-                                        addLineParam.callbackFn = function () {
-                                            addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, flag);
-                                        }
-                                        window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
-                                    } else {
-                                        var dataList = res.data.data;
-                                        if (null != dataList && dataList != '') {
-                                            for (var i = 0; i < dataList.length; i++) {
-                                                var backfill = {};
-                                                backfill.tableName = res.data.tableName;
-                                                backfill.tableCategory = "formson";
-                                                backfill.updateData = dataList[i][dataList[i].recordId];
-                                                backfill.updateRecordId = dataList[i].recordId;
-                                                adaptation.backfillFormControlData(backfill, privateId);
-
-                                            }
-                                        }
-
-                                    }
-
-                                }
-                            });
-                        }
-
-                        dialog.close();
+                        // var peoples = dialog.getReturnValue();
+                        // //添加明细行并回填数据
+                        // var content = messageObj.formdata.content;
+                        // var num = peoples.data.length + 1;
+                        // var arr = peoples.data;
+                        // var newPeople = new Array();
+                        // for (var i = 0; i < peoples.data.length; i++) {
+                        //     var a = arr[i];
+                        //     newPeople.push(a);
+                        // }
+                        // var jsonObj = {
+                        //     "masterId": content.contentDataId + "",
+                        //     "dataInfo": JSON.stringify(peoples),
+                        //     "flag": "0"
+                        // };
+                        //
+                        // $.ajax({
+                        //     type: 'post',
+                        //     async: true,
+                        //     url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo",
+                        //     dataType: 'json',
+                        //     data: JSON.stringify(jsonObj),
+                        //     contentType: 'application/json',
+                        //     success: function (res) {
+                        //         // 判断是否需要添加
+                        //         if (res.code != 0) {
+                        //             $.alert(res.message);
+                        //             return;
+                        //         }
+                        //         var dataCount = res.data.dataCount + 1;
+                        //         addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, dataCount);
+                        //     }, error: function (res) {
+                        //     }
+                        // });
+                        //
+                        // function addLineAndFilldata(content, adaptation, messageObj, privateId, datainfo, flag) {
+                        //     debugger;
+                        //     flag--;
+                        //     // --flag;
+                        //     var jsonAdd = {
+                        //         'masterId': content.contentDataId,
+                        //         'dataInfo': JSON.stringify(datainfo),
+                        //         'flag': flag + ""
+                        //     };
+                        //     $.ajax({
+                        //         type: 'post',
+                        //         async: true,
+                        //         url: "/seeyon/rest/cap4/selectPeople/backfillpeopleInfo",
+                        //         dataType: 'json',
+                        //         data: JSON.stringify(jsonAdd),
+                        //         contentType: 'application/json',
+                        //         success: function (res) {
+                        //             // 判断是否需要添加
+                        //             if (res.code != 0) {
+                        //                 $.alert(res.message);
+                        //                 return;
+                        //             }
+                        //             var isNext = res.data.add;
+                        //             var val = 0;
+                        //
+                        //             if (isNext) {
+                        //                 var addLineParam = {};
+                        //                 var dataCount = res.data.dataCount;
+                        //
+                        //                 addLineParam.tableName = res.data.tableName;
+                        //                 addLineParam.isFormRecords = true;
+                        //                 addLineParam.callbackFn = function () {
+                        //                     addLineAndFilldata(content, adaptation, messageObj, privateId, peoples, flag);
+                        //                 }
+                        //                 window.thirdPartyFormAPI.insertFormsonRecords(addLineParam);
+                        //             } else {
+                        //                 var dataList = res.data.data;
+                        //                 if (null != dataList && dataList != '') {
+                        //                     for (var i = 0; i < dataList.length; i++) {
+                        //                         var backfill = {};
+                        //                         backfill.tableName = res.data.tableName;
+                        //                         backfill.tableCategory = "formson";
+                        //                         backfill.updateData = dataList[i][dataList[i].recordId];
+                        //                         backfill.updateRecordId = dataList[i].recordId;
+                        //                         adaptation.backfillFormControlData(backfill, privateId);
+                        //
+                        //                     }
+                        //                 }
+                        //
+                        //             }
+                        //
+                        //         }
+                        //     });
+                        // }
+                        //
+                        // dialog.close();
 
                     }
                 }, {
