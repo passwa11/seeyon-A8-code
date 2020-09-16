@@ -12,6 +12,7 @@ $(function () {
 
 
 function dbSelectedToSortData(flag) {
+    debugger;
 
     var arr29 = [];
     var arr30 = [];
@@ -348,7 +349,7 @@ function AllhtmlShow(data) {
             flag = '31';
         } else if ((data[i].flag).indexOf("32") != -1) {
             flag = '32';
-        } else if ((data[i].flag).indexOf("gonghui") != -1) {
+        } else if ((data[i].flag).indexOf("gh") != -1) {
             flag = 'gh';
         }
         html += '<dd ondblclick="removeDdRow' + flag + '(this)" lay-bsname="' + data[i].mval + '"  lay-field002="' + data[i].field0002 + '"  lay-zsort="' + data[i].field0007 + '" lay-id="' + data[i].id + '" lay-bs="' + data[i].field0005 + '"  lay-value="' + data[i].id + '" lay-username="' + data[i].name + '" lay-flag="' + flag + '" lay-name="' + data[i].field0001 + '" lay-dept="' + data[i].field0003 + '" class="">' + data[i].field0001 + '</dd>';
@@ -415,6 +416,7 @@ function gongHuiTable() {
             }
         ]
         , onCheck: function (row, $element) {
+            debugger;
             var tr_obj = row;
             var obj = {};//添加成员对象
             obj["value"] = tr_obj.id;
