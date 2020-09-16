@@ -384,6 +384,7 @@ function arrsyDataSort(data) {
 ////////////////////////////////////////////////////////////////////////////////////
 //工会
 function gongHuiTable() {
+    $('#gonghui').bootstrapTable('destroy');
     $('#gonghui').bootstrapTable({
         url: '/seeyon/ext/selectPeople.do?method=selectListData&type=gh',
         queryParamsType: '',              //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
@@ -543,6 +544,7 @@ function removeDdRowgh(item) {
 }
 
 function dangZhengBanTable() {
+    $('#dzb29').bootstrapTable('destroy');
     $('#dzb29').bootstrapTable({
         url: '/seeyon/ext/selectPeople.do?method=selectListData&type=29',
         queryParamsType: '',              //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
@@ -740,6 +742,7 @@ function removeDdRow29(item) {
 }
 
 function jiguan30Table() {
+    $('#jiguan30').bootstrapTable('destroy');
     $('#jiguan30').bootstrapTable({
         url: '/seeyon/ext/selectPeople.do?method=selectListData&type=30',
         queryParamsType: '',              //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
@@ -899,6 +902,7 @@ function removeDdRow30(item) {
 }
 
 function zhenban31Table() {
+    $('#zhenb31').bootstrapTable('destroy');
     $('#zhenb31').bootstrapTable({
         url: '/seeyon/ext/selectPeople.do?method=selectListData&type=31',
         queryParamsType: '',              //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
@@ -1062,6 +1066,7 @@ function removeDdRow31(item) {
 }
 
 function zhuqu32Table() {
+    $('#zhuqu32').bootstrapTable('destroy');
     $('#zhuqu32').bootstrapTable({
         url: '/seeyon/ext/selectPeople.do?method=selectListData&type=32',
         queryParamsType: '',              //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
@@ -1070,6 +1075,7 @@ function zhuqu32Table() {
         method: "post",
         contentType: "application/x-www-form-urlencoded",
         undefinedText: "",//当数据为 undefined 时显示的字符
+        sidePagination: "true",
         striped: false,                   //是否显示行间隔色
         cache: false,
         pagination: false,
