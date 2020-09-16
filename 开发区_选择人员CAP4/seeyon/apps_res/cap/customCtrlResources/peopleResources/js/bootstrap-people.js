@@ -411,7 +411,7 @@ function gongHuiTable() {
             {checkbox: true, width: '5%'}
             , {
                 field: 'field0001',
-                title: '接收对象',
+                title: '全选',
                 width: '88%',
             }
         ]
@@ -571,7 +571,7 @@ function dangZhengBanTable() {
             {checkbox: true, width: '5%'}
             , {
                 field: 'field0001',
-                title: '接收对象',
+                title: '全选',
                 width: '88%',
             }
         ],
@@ -769,7 +769,7 @@ function jiguan30Table() {
             {checkbox: true, width: '5%'}
             , {
                 field: 'field0001',
-                title: '接收对象',
+                title: '全选',
                 width: '88%',
             }
         ]
@@ -929,7 +929,7 @@ function zhenban31Table() {
             {checkbox: true, width: '5%'}
             , {
                 field: 'field0001',
-                title: '接收对象',
+                title: '全选',
                 width: '88%',
             }
         ]
@@ -1094,7 +1094,7 @@ function zhuqu32Table() {
             {checkbox: true, width: '5%'}
             , {
                 field: 'field0001',
-                title: '接收对象',
+                title: '全选',
                 width: '88%',
             }
         ]
