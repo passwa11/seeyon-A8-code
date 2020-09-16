@@ -12,7 +12,7 @@ $(function () {
 
 
 function dbSelectedToSortData(flag) {
-    debugger;
+
 
     var arr29 = [];
     var arr30 = [];
@@ -178,7 +178,7 @@ function dbSelectedToSortData(flag) {
 
 // 排序问题 对已选择人员进行部门排序
 function dataSorting(arr290, arr300, arr310, arr320, arrGH0) {
-    debugger;
+
     var arr29 = [];
     var arr30 = [];
     var arr31 = [];
@@ -416,7 +416,7 @@ function gongHuiTable() {
             }
         ]
         , onCheck: function (row, $element) {
-            debugger;
+
             var tr_obj = row;
             var obj = {};//添加成员对象
             obj["value"] = tr_obj.id;
@@ -1466,7 +1466,7 @@ function SureGonghui($table, rows) {
 
 
 function commonInfo(s) {
-    debugger;
+
     var list = $("dl").find("dd" + s);
     console.log(list)
     $.each(list, function (i, item) {
