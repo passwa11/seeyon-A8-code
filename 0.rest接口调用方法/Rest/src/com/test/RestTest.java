@@ -35,7 +35,7 @@ public class RestTest {
         httpPost = new HttpPost(url);
         httpPost.setHeader("Content-Type", "application/json;charset=utf-8");
 //        String requestParams = "{\"userName\":\"rest\",\"password\":\"rest111111\"}";
-        String requestParams = "{\"userName\":\"rest\",\"password\":\"5e9172a7-a3bc-4d89-94ec-601bcef6befc\"}";
+        String requestParams = "{\"userName\":\"rest\",\"password\":\"6c470a34-f84a-4e54-abfd-9a07c72ec5dc\"}";
         StringEntity postingString = new StringEntity(requestParams, "utf-8");
         httpPost.setEntity(postingString);
         try {
@@ -127,6 +127,7 @@ public class RestTest {
         /**
          * 使用httpclient 包中的httpGet请求
          */
-        testRestGet();
+//        testRestGet();
+        System.out.println(getToken());
     }
 }

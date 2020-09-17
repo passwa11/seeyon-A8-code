@@ -2,6 +2,8 @@ package com.bpm;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.seeyon.client.CTPRestClient;
+import com.seeyon.client.CTPServiceClientManager;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpPost;
@@ -14,6 +16,22 @@ import java.io.IOException;
 
 public class TokenUtil {
 
+    /**
+     * 获取rest
+     *
+     * @return
+     */
+    public static CTPRestClient getOARestInfo() {
+        String restUrl = "http://127.0.0.1:80";
+        String restUser = "rest";
+        String restPwd = "55ffa403-230c-48c5-b74c-9d29fd100542";
+        CTPServiceClientManager clientManager = CTPServiceClientManager.getInstance(restUrl);
+        CTPRestClient restClient = clientManager.getRestClient();
+        boolean ltFlag = restClient.authenticate(restUser, restPwd);
+        return ltFlag ? restClient : null;
+
+    }
+
     public static String getToken() {
         String token = "";
         String url = "http://127.0.0.1:80/seeyon/rest/token";
@@ -23,7 +41,7 @@ public class TokenUtil {
         httpPost = new HttpPost(url);
         httpPost.setHeader("Content-Type", "application/json;charset=utf-8");
 //        String requestParams = "{\"userName\":\"rest\",\"password\":\"rest111111\"}";
-        String requestParams = "{\"userName\":\"rest\",\"password\":\"55ffa403-230c-48c5-b74c-9d29fd100542\"}";
+        String requestParams = "{\"userName\":\"rest\",\"password\":\"6c470a34-f84a-4e54-abfd-9a07c72ec5dc\"}";
         StringEntity postingString = new StringEntity(requestParams, "utf-8");
         httpPost.setEntity(postingString);
         try {
