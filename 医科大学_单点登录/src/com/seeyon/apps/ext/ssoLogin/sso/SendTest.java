@@ -17,11 +17,22 @@ public class SendTest {
         try {
             String ticket = request.getParameter("ticket");
             String templateId = request.getParameter("templateId");
-            SSOTicketManager.getInstance().newTicketInfo(ticket, ticket, "xzykSso");
+            String type = request.getParameter("type");
+            SSOTicketManager.getInstance().newTicketInfo(ticket, ticket, "xkdxSso");
 //            String url = "/seeyon/collaboration/collaboration.do?method=newColl&from=templateNewColl&templateId=15912627018010";
-            String url = "/seeyon/collaboration/collaboration.do?method=newColl&from=templateNewColl&templateId="+templateId;
-            String urlt = "/seeyon/main.do?method=login&ticket=" + ticket + "&login.destination=" + URLEncoder.encode(url.substring(url.indexOf("seeyon") - 1));
-            response.sendRedirect(urlt);
+//            协同
+//            String url = "/seeyon/collaboration/collaboration.do?method=newColl&from=templateNewColl&templateId="+templateId;
+//            公文
+            String url = "";
+            if (null != type && !"".equals(type)) {
+                if (type.equals("xt")) {
+                    url = "/seeyon/collaboration/collaboration.do?method=newColl&from=templateNewColl&templateId=" + templateId;
+                } else if (type.equals("gw")) {
+                    url = "/seeyon/govdoc/govdoc.do?method=newGovdoc&sub_app=1&from=template&templateId=" + templateId;
+                }
+            }
+            String path = "/seeyon/main.do?method=login&ticket=" + ticket + "&login.destination=" + URLEncoder.encode(url.substring(url.indexOf("seeyon") - 1));
+            response.sendRedirect(path);
         } catch (IOException e) {
             log.error("医科系统打开Oa代办事项出错了，错误信息：" + e.getMessage());
         }
