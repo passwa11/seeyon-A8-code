@@ -61,7 +61,7 @@ public class KyPendingManager extends BaseController {
             appId = "amp"; //换成学校的参数
             accessToken = ""; //换成学校的参数
         } else {
-            url = "http://ehall.xzhmu.edu.cn/taskcenterapp/sys/taskCenter/taskReceive/pushTask.do";  //换成学校的地址
+            url = "http://apis.xzhmu.edu.cn/mdm_taskcenterapp-sys-taskCenter-taskReceive-pushTask-dodo/ProxyService/taskcenterapp-sys-taskCenter-taskReceive-pushTask-dodoProxyService";  //换成学校的地址
             appId = "amp"; //换成学校的参数
             accessToken = "bb5133cadb3b7be7bfa8618f8e2c0e44"; //换成学校的参数
         }
