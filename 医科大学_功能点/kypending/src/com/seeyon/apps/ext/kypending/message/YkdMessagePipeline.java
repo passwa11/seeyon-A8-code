@@ -1,4 +1,4 @@
-package com.seeyon.apps.ext.kypending;
+package com.seeyon.apps.ext.kypending.message;
 
 import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.kypending.util.MD5Util;
@@ -6,10 +6,8 @@ import com.seeyon.ctp.common.SystemEnvironment;
 import com.seeyon.ctp.common.authenticate.domain.User;
 import com.seeyon.ctp.common.usermessage.pipeline.Message;
 import com.seeyon.ctp.common.usermessage.pipeline.MessagePipeline;
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
