@@ -5,7 +5,7 @@
       <paths name="pend">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$/WebContent" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$/seeyon" web="/" />
           </mappings>
         </serverdata>
       </paths>
