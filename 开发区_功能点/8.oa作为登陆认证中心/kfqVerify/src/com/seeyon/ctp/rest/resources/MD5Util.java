@@ -46,6 +46,9 @@ public class MD5Util {
     public static void main(String[] args) {
         String en = MD5Util.md5Encode("oa987654321~=");
         System.out.println(en);
+//        F62E340CE52D64657BF8965483C3CA4B
+
+
     }
 
 }

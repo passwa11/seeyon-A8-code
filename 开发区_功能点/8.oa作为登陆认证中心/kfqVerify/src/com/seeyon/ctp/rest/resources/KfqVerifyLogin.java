@@ -28,7 +28,7 @@ public class KfqVerifyLogin extends BaseResource {
         Map map = new HashMap();
         if (null != appKey && !"".equals(appKey)) {
             if (appKey.equals(MD5Util.md5Encode(APP_KEY))) {
-                String loginName = data.get("loginName").toString();
+                String loginName = data.get("uid").toString();
                 String sql = "select id,name from ORG_MEMBER where id=" + Long.parseLong(loginName) + "";
                 if (null != loginName || !"".equals(loginName)) {
                     try {
