@@ -18,37 +18,47 @@ public class KfqVerifyLogin extends BaseResource {
 
     private static Log LOGGER = CtpLogFactory.getLog(KfqVerifyLogin.class);
 
+    private final String APP_KEY = "oa987654321~=";
+
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
     @Path("verifyLogin")
     public Response verifyLogin(Map data, @HeaderParam("appKey") String appKey) {
-        String loginName = data.get("loginName").toString();
         Map map = new HashMap();
-        String sql = "select id,name from ORG_MEMBER where id=" + Long.parseLong(loginName) + "";
-        if (null != loginName || !"".equals(loginName)) {
-            try {
-                List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
-                if (list.size() > 0) {
-                    Map<String, Object> pricipal = list.get(0);
-                    String id = (pricipal.get("id")).toString();
-                    Map<String, Object> dmap = new HashMap<>();
-                    dmap.put("userId", id);
-                    map.put("code", 0);
-                    map.put("msg", "请求成功");
-                    map.put("data", dmap);
+        if (null != appKey && !"".equals(appKey)) {
+            if (appKey.equals(MD5Util.md5Encode(APP_KEY))) {
+                String loginName = data.get("loginName").toString();
+                String sql = "select id,name from ORG_MEMBER where id=" + Long.parseLong(loginName) + "";
+                if (null != loginName || !"".equals(loginName)) {
+                    try {
+                        List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
+                        if (list.size() > 0) {
+                            Map<String, Object> pricipal = list.get(0);
+                            String id = (pricipal.get("id")).toString();
+                            Map<String, Object> dmap = new HashMap<>();
+                            dmap.put("userId", id);
+                            map.put("code", 0);
+                            map.put("msg", "请求成功");
+                            map.put("data", dmap);
+                        } else {
+                            map.put("code", 1);
+                            map.put("msg", "账号不存在");
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        LOGGER.error("验证登陆接口出错了" + e);
+                    }
                 } else {
                     map.put("code", 1);
                     map.put("msg", "账号不存在");
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-                LOGGER.error("验证登陆接口出错了" + e);
             }
         } else {
-            map.put("code", 1);
-            map.put("msg", "账号不存在");
+            map.put("code", 110);
+            map.put("msg", "appKey不正确！");
         }
+
         return Response.ok(map).build();
     }
 
