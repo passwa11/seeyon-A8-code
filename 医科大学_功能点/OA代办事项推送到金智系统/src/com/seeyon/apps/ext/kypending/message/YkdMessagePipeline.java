@@ -2,6 +2,7 @@ package com.seeyon.apps.ext.kypending.message;
 
 import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.kypending.util.MD5Util;
+import com.seeyon.apps.ext.kypending.util.ReadConfigTools;
 import com.seeyon.ctp.common.authenticate.domain.User;
 import com.seeyon.ctp.common.usermessage.pipeline.Message;
 import com.seeyon.ctp.common.usermessage.pipeline.MessagePipeline;
@@ -23,7 +24,6 @@ import java.util.Map;
 public class YkdMessagePipeline implements MessagePipeline {
 
     Logger logger = LoggerFactory.getLogger(YkdMessagePipeline.class);
-
 
 
     @Override
@@ -64,14 +64,14 @@ public class YkdMessagePipeline implements MessagePipeline {
         HttpPost method = null;
         HttpResponse httpResponse = null;
         JSONObject jsonObject = null;
-        String url = "http://apis.xzhmu.edu.cn/mp_message_pocket_web-mp-restful-message-send/ProxyService/message_pocket_web-mp-restful-message-sendProxyService";
-        String accessToken = "bb5133cadb3b7be7bfa8618f8e2c0e44";
-        String appId = "amp";
-        String schoolCode = "10313";
+        String url = ReadConfigTools.getInstance().getString("messageUrl");
+        String accessToken = ReadConfigTools.getInstance().getString("accessToken");
+        String appId = ReadConfigTools.getInstance().getString("appId");
+        String schoolCode = ReadConfigTools.getInstance().getString("schoolCode");
         for (Message message : messages) {
             try {
                 Map<String, Object> map = new HashMap<>();
-                map.put("appId", "amp");
+                map.put("appId", appId);
                 map.put("subject", "消息发送");
                 map.put("content", message.getContent());
                 map.put("sendType", 0);
