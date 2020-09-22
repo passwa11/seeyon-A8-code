@@ -4,8 +4,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.kypending.util.MD5Util;
 import com.seeyon.ctp.common.SystemEnvironment;
 import com.seeyon.ctp.common.authenticate.domain.User;
+import com.seeyon.ctp.common.taglibs.functions.Functions;
 import com.seeyon.ctp.common.usermessage.pipeline.Message;
 import com.seeyon.ctp.common.usermessage.pipeline.MessagePipeline;
+import com.seeyon.ctp.organization.bo.V3xOrgMember;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpPost;
@@ -99,16 +101,17 @@ public class YkdMessagePipeline implements MessagePipeline {
 
     @Override
     public boolean isAvailability() {
-        return SystemEnvironment.hasPlugin("rtx");
+        return true;
     }
 
     @Override
     public boolean isShowSetting() {
-        return false;
+        return true;
     }
 
     @Override
     public String isAllowSetting(User user) {
+
         return null;
     }
 
@@ -119,6 +122,6 @@ public class YkdMessagePipeline implements MessagePipeline {
 
     @Override
     public boolean isDefaultSend() {
-        return false;
+        return true;
     }
 }

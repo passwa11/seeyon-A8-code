@@ -1,6 +1,7 @@
 package com.seeyon.apps.ext.kypending.listener;
 
 import com.seeyon.apps.edoc.event.EdocAffairsAssignedEvent;
+import com.seeyon.apps.edoc.event.EdocProcessEvent;
 import com.seeyon.apps.ext.kypending.po.TempPendingData;
 import com.seeyon.apps.ext.kypending.util.JDBCUtil;
 import com.seeyon.apps.ext.kypending.util.ReadConfigTools;
@@ -13,10 +14,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EdocEvent {
+public class EdocSummaryEvent {
+
+    @ListenEvent(event = EdocProcessEvent.class, async = true)
+    public void m1(EdocProcessEvent event) {
+        CtpAffair affair = event.getAffair();
+        System.out.println(affair);
+    }
+
+
 
     @ListenEvent(event = EdocAffairsAssignedEvent.class, async = true)
-    public void assig(EdocAffairsAssignedEvent event) throws BusinessException {
+    public void edoc(EdocAffairsAssignedEvent event) {
         List<Map<String, Object>> insertList = new ArrayList<>();
         List<CtpAffair> list = event.getAffairs();
 
@@ -80,5 +89,9 @@ public class EdocEvent {
 
         }
     }
+
+
+
+
 
 }
