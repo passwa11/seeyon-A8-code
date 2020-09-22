@@ -4,4 +4,5 @@
     <bean name="kypending_Initializer" class="com.seeyon.apps.ext.kypending.kypendingPluginInitializer"/>
     <bean id="ykdMessagePipeline" class="com.seeyon.apps.ext.kypending.message.YkdMessagePipeline"/>
     <bean id="collaborationEvent" class="com.seeyon.apps.ext.kypending.listener.CollaborationEvent"/>
+    <bean id="edocListener" class="com.seeyon.apps.ext.kypending.listener.EdocListener"/>
 </beans>

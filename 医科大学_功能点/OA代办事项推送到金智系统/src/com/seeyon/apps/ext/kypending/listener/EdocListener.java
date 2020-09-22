@@ -1,9 +1,7 @@
 package com.seeyon.apps.ext.kypending.listener;
 
-import com.seeyon.apps.collaboration.event.*;
+import com.seeyon.apps.edoc.event.EdocAffairsAssignedEvent;
 import com.seeyon.apps.ext.kypending.manager.KyPendingManager;
-import com.seeyon.apps.ext.kypending.manager.TempPendingDataManager;
-import com.seeyon.apps.ext.kypending.manager.TempPendingDataManagerImpl;
 import com.seeyon.apps.ext.kypending.po.TempPendingData;
 import com.seeyon.apps.ext.kypending.util.JDBCUtil;
 import com.seeyon.apps.ext.kypending.util.ReadConfigTools;
@@ -16,44 +14,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CollaborationEvent {
+public class EdocListener {
 
-
-    private TempPendingDataManager dataManager = new TempPendingDataManagerImpl();
-
-    public TempPendingDataManager getDataManager() {
-        return dataManager;
-    }
-
-    /**
-     * 发起监听
-     *
-     * @param event
-     * @throws BusinessException
-     */
-    @ListenEvent(event = CollaborationStartEvent.class, async = true)
-    public void doLog(CollaborationStartEvent event) throws BusinessException {
-        CtpAffair ctpAffair = event.getAffair();
-        TempPendingData pendingData = new TempPendingData();
-        pendingData.setId(System.currentTimeMillis() + "");
-        pendingData.setProcessid(ctpAffair.getProcessId());
-        pendingData.setSummaryid(ctpAffair.getObjectId().longValue() + "");
-        dataManager.save(pendingData);
-
-    }
-
-    /**
-     * 下一节点处理信息
-     *
-     * @param event
-     * @throws BusinessException
-     */
-    @ListenEvent(event = CollaborationAffairsAssignedEvent.class, async = true)
-    public void assigned(CollaborationAffairsAssignedEvent event) throws BusinessException {
+    @ListenEvent(event = EdocAffairsAssignedEvent.class, async = true)
+    public void assig(EdocAffairsAssignedEvent event) throws BusinessException {
         List<Map<String, Object>> insertList = new ArrayList<>();
 
         List<CtpAffair> list = event.getAffairs();
-        CtpAffair currentAffair = event.getCurrentAffair();
 
         String todopath = ReadConfigTools.getInstance().getString("todopath");
         String appId = ReadConfigTools.getInstance().getString("appId");
@@ -63,9 +30,9 @@ public class CollaborationEvent {
             Map<String, Object> map = null;
             List<Map<String, Object>> mapList = new ArrayList<>();
             Map<String, Object> map2 = new HashMap<>();
-            map2.put("task_id", currentAffair.getObjectId().longValue() + "");
+            map2.put("task_id", list.get(0).getObjectId().longValue() + "");
             map2.put("task_delete_flag", 1);
-            map2.put("process_instance_id", currentAffair.getProcessId());
+            map2.put("process_instance_id", list.get(0).getProcessId());
             map2.put("process_delete_flag", 1);
             mapList.add(map2);
 
@@ -114,62 +81,6 @@ public class CollaborationEvent {
             KyPendingManager.getInstance().updateCtpAffair("inserttasks", todopath, appId, accessToken, insertList);
 
         }
-
     }
-
-    /**
-     * 撤销监听
-     *
-     * @param event
-     * @throws BusinessException
-     */
-    @ListenEvent(event = CollaborationCancelEvent.class, async = true)
-    public void cancelListener(CollaborationCancelEvent event) throws BusinessException {
-        String summaryId = event.getSummaryId().longValue() + "";
-        Map<String, Object> map = new HashMap<>();
-        map.put("summaryid", summaryId);
-        List<TempPendingData> list = dataManager.findTempPending(map);
-        List<Map<String, Object>> mapList = new ArrayList<>();
-        Map<String, Object> map2 = new HashMap<>();
-        map2.put("task_id", list.get(0).getSummaryid());
-        map2.put("task_delete_flag", 1);
-        map2.put("process_instance_id", list.get(0).getProcessid());
-        map2.put("process_delete_flag", 1);
-        mapList.add(map2);
-
-        String todopath = ReadConfigTools.getInstance().getString("todopath");
-        String appId = ReadConfigTools.getInstance().getString("appId");
-        String accessToken = ReadConfigTools.getInstance().getString("accessToken");
-        KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
-
-
-    }
-
-    /**
-     * 终止
-     *
-     * @param event
-     * @throws BusinessException
-     */
-    @ListenEvent(event = CollaborationStopEvent.class, async = true)
-    public void StopListener(CollaborationStopEvent event) throws BusinessException {
-        CtpAffair ctpAffair = event.getAffair();
-        System.out.println(ctpAffair);
-        System.out.println(event);
-    }
-
-    /**
-     * 删除事件监听
-     *
-     * @param event
-     * @throws BusinessException
-     */
-    @ListenEvent(event = CollaborationDelEvent.class, async = true)
-    public void StopListener(CollaborationDelEvent event) throws BusinessException {
-        CtpAffair ctpAffair = event.getAffair();
-        System.out.println(ctpAffair);
-        System.out.println(event);
-    }
-
 
 }

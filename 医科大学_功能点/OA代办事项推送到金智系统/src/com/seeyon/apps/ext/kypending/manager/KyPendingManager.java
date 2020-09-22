@@ -26,10 +26,10 @@ public class KyPendingManager {
         }
     }
 
-    public void insertCtpAffair(String url, String appId, String accessToken, List<Map<String, Object>> inserttaskList) {
+    public void updateCtpAffair(String type, String url, String appId, String accessToken, List<Map<String, Object>> inserttaskList) {
         if (inserttaskList.size() > 0) {
             Map<String, Object> map1 = new HashMap<>();
-            map1.put("inserttasks", inserttaskList);
+            map1.put(type, inserttaskList);
             String insertData = JSONObject.toJSONString(map1);
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("appId", appId));
@@ -42,7 +42,6 @@ public class KyPendingManager {
             System.out.println(resutl);
         }
     }
-
 
 //    public void eachMemberToSendData() {
 //        KyPendingManager manager = new KyPendingManager();

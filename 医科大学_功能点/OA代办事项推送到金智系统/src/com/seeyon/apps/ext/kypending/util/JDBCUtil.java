@@ -29,6 +29,12 @@ public class JDBCUtil {
         return resultMap;
     }
 
+    public static Map<String, Object> getMemberInfo(Long userId) {
+        String sql = "select m.name membername,m.id,p.login_name,u.name unitname from ORG_MEMBER m ,ORG_PRINCIPAL p,ORG_UNIT u where m.id=p.MEMBER_ID and m.ORG_DEPARTMENT_ID=u.id and m.id =" + userId;
+        List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
+        return list.get(0);
+    }
+
     public static int doUpdateOrInsert(String sql) {
         int result = 0;
         List params = new ArrayList();
