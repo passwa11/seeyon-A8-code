@@ -2,12 +2,9 @@ package com.seeyon.apps.ext.kypending.message;
 
 import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.kypending.util.MD5Util;
-import com.seeyon.ctp.common.SystemEnvironment;
 import com.seeyon.ctp.common.authenticate.domain.User;
-import com.seeyon.ctp.common.taglibs.functions.Functions;
 import com.seeyon.ctp.common.usermessage.pipeline.Message;
 import com.seeyon.ctp.common.usermessage.pipeline.MessagePipeline;
-import com.seeyon.ctp.organization.bo.V3xOrgMember;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpPost;
@@ -26,6 +23,39 @@ import java.util.Map;
 public class YkdMessagePipeline implements MessagePipeline {
 
     Logger logger = LoggerFactory.getLogger(YkdMessagePipeline.class);
+
+
+
+    @Override
+    public int getSortId() {
+        return 6;
+    }
+
+    @Override
+    public String getName() {
+        return "ykd";
+    }
+
+    @Override
+    public String getShowName() {
+        return "消息推送给金智";
+    }
+
+    @Override
+    public boolean isAvailability() {
+        return true;
+    }
+
+    @Override
+    public boolean isShowSetting() {
+        return true;
+    }
+
+    @Override
+    public String isAllowSetting(User user) {
+
+        return null;
+    }
 
     @Override
     public void invoke(Message[] messages) {
@@ -82,37 +112,6 @@ public class YkdMessagePipeline implements MessagePipeline {
             }
         }
 
-    }
-
-    @Override
-    public int getSortId() {
-        return 6;
-    }
-
-    @Override
-    public String getName() {
-        return "ykd";
-    }
-
-    @Override
-    public String getShowName() {
-        return null;
-    }
-
-    @Override
-    public boolean isAvailability() {
-        return true;
-    }
-
-    @Override
-    public boolean isShowSetting() {
-        return true;
-    }
-
-    @Override
-    public String isAllowSetting(User user) {
-
-        return null;
     }
 
     @Override
