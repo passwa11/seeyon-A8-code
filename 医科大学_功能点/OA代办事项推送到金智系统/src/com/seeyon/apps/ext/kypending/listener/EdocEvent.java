@@ -1,7 +1,6 @@
 package com.seeyon.apps.ext.kypending.listener;
 
 import com.seeyon.apps.edoc.event.EdocAffairsAssignedEvent;
-import com.seeyon.apps.ext.kypending.manager.KyPendingManager;
 import com.seeyon.apps.ext.kypending.po.TempPendingData;
 import com.seeyon.apps.ext.kypending.util.JDBCUtil;
 import com.seeyon.apps.ext.kypending.util.ReadConfigTools;
@@ -14,12 +13,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EdocListener {
+public class EdocEvent {
 
     @ListenEvent(event = EdocAffairsAssignedEvent.class, async = true)
     public void assig(EdocAffairsAssignedEvent event) throws BusinessException {
         List<Map<String, Object>> insertList = new ArrayList<>();
-
         List<CtpAffair> list = event.getAffairs();
 
         String todopath = ReadConfigTools.getInstance().getString("todopath");
@@ -36,7 +34,7 @@ public class EdocListener {
             map2.put("process_delete_flag", 1);
             mapList.add(map2);
 
-            KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
+//            KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
 
 
             for (CtpAffair affair : list) {
@@ -78,7 +76,7 @@ public class EdocListener {
                 map.put("process_instance_id", affair.getProcessId() + "");
                 insertList.add(map);
             }
-            KyPendingManager.getInstance().updateCtpAffair("inserttasks", todopath, appId, accessToken, insertList);
+//            KyPendingManager.getInstance().updateCtpAffair("inserttasks", todopath, appId, accessToken, insertList);
 
         }
     }

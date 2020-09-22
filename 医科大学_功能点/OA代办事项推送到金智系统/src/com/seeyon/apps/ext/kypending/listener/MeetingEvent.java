@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MeetingListener {
+public class MeetingEvent {
 
     @ListenEvent(event = MeetingAffairsAssignedEvent.class, async = true)
     public void m1(MeetingAffairsAssignedEvent event) throws BusinessException {
