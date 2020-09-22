@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.apps.ext.kypending.po">
+    <class name="TempPendingData" table="temp_pending_data">
+        <id name="id" type="string" column="id">
+            <generator class="assigned"/>
+        </id>
+        <property name="preaffairid" type="string" column="preaffairid"></property>
+        <property name="nextaffairid" type="string" column="nextaffairid"></property>
+        <property name="summaryid" type="string" column="summaryid"></property>
+        <property name="prememberid" type="string" column="prememberid"></property>
+        <property name="nextmemberid" type="string" column="nextmemberid"></property>
+        <property name="processid" type="string" column="processid"></property>
+    </class>
+</hibernate-mapping>

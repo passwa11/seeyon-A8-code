@@ -2,6 +2,9 @@ package com.seeyon.apps.ext.kypending.listener;
 
 import com.seeyon.apps.collaboration.event.*;
 import com.seeyon.apps.ext.kypending.manager.KyPendingManager;
+import com.seeyon.apps.ext.kypending.manager.TempPendingDataManager;
+import com.seeyon.apps.ext.kypending.manager.TempPendingDataManagerImpl;
+import com.seeyon.apps.ext.kypending.po.TempPendingData;
 import com.seeyon.apps.ext.kypending.util.JDBCUtil;
 import com.seeyon.apps.ext.kypending.util.ReadConfigTools;
 import com.seeyon.ctp.common.exceptions.BusinessException;
@@ -15,6 +18,20 @@ import java.util.Map;
 
 public class CollaborationEvent {
 
+    private String preMemberId;
+
+    private String nextMemberId;
+
+    private String preAffairId;
+
+    private String nextAffairId;
+
+    private TempPendingDataManager dataManager = new TempPendingDataManagerImpl();
+
+    public TempPendingDataManager getDataManager() {
+        return dataManager;
+    }
+
     /**
      * 发起监听
      *
@@ -23,8 +40,10 @@ public class CollaborationEvent {
      */
     @ListenEvent(event = CollaborationStartEvent.class, async = true)
     public void doLog(CollaborationStartEvent event) throws BusinessException {
-        CtpAffair list = event.getAffair();
-        System.out.println(list.getId());
+        CtpAffair ctpAffair = event.getAffair();
+        this.setPreAffairId(ctpAffair.getId().longValue() + "");
+        this.setPreMemberId(ctpAffair.getMemberId().longValue() + "");
+        System.out.println(ctpAffair.getId());
     }
 
     /**
@@ -39,14 +58,29 @@ public class CollaborationEvent {
 
         List<CtpAffair> list = event.getAffairs();
         if (list.size() > 0) {
+            TempPendingData pendingData = null;
             Map<String, Object> map = null;
             for (CtpAffair affair : list) {
+
+                //前后关联关系 start
+                pendingData = new TempPendingData();
+                pendingData.setId(System.currentTimeMillis() + "");
+                pendingData.setSummaryid(affair.getObjectId().longValue() + "");
+                pendingData.setPreaffairid(this.getPreAffairId());
+                pendingData.setPrememberid(this.getPreMemberId());
+                pendingData.setNextaffairid(affair.getId().longValue() + "");
+                pendingData.setNextmemberid(affair.getMemberId().longValue() + "");
+                pendingData.setProcessid(affair.getProcessId());
+                dataManager.save(pendingData);
+
+                //前后关联关系 end
+
                 Map<String, Object> bliMap = getMemberInfo(affair.getMemberId());
                 Map<String, Object> sendMap = getMemberInfo(affair.getSenderId());
 
                 map = new HashMap<>();
                 map.put("app_id", affair.getId().longValue() + "");
-                map.put("task_id", affair.getId().longValue() + "");
+                map.put("task_id", affair.getObjectId().longValue() + "");
                 map.put("created_by_ids", sendMap.get("login_name"));
                 map.put("created_by_names", sendMap.get("membername"));
                 map.put("created_by_depts", sendMap.get("unitname"));
@@ -75,7 +109,7 @@ public class CollaborationEvent {
                 map.put("node_name", affair.getNodePolicy());
                 map.put("node_id", affair.getActivityId());
                 map.put("form_url", formUrl);
-                map.put("process_instance_id", affair.getActivityId() + "");
+                map.put("process_instance_id", affair.getProcessId() + "");
                 insertList.add(map);
             }
             String todopath = ReadConfigTools.getInstance().getString("todopath");
@@ -93,6 +127,18 @@ public class CollaborationEvent {
     }
 
     /**
+     * 完成事件监听
+     *
+     * @param event
+     * @throws BusinessException
+     */
+    @ListenEvent(event = CollaborationFinishEvent.class, async = true)
+    public void FinishListener(CollaborationFinishEvent event) throws BusinessException {
+        System.out.println(event);
+        System.out.println(event);
+    }
+
+    /**
      * 撤销监听
      *
      * @param event
@@ -100,6 +146,13 @@ public class CollaborationEvent {
      */
     @ListenEvent(event = CollaborationCancelEvent.class, async = true)
     public void cancelListener(CollaborationCancelEvent event) throws BusinessException {
+        String summaryId = event.getSummaryId().longValue() + "";
+        Map<String, Object> map = new HashMap<>();
+        map.put("app_id", "");
+        map.put("task_id", "");
+        map.put("task_delete_flag", "");
+        map.put("task_delete_flag", "");
+
         System.out.println(event);
         System.out.println(event);
     }
@@ -116,17 +169,6 @@ public class CollaborationEvent {
         System.out.println(ctpAffair);
     }
 
-    /**
-     * 完成事件监听
-     *
-     * @param event
-     * @throws BusinessException
-     */
-    @ListenEvent(event = CollaborationFinishEvent.class, async = true)
-    public void FinishListener(CollaborationFinishEvent event) throws BusinessException {
-        System.out.println(event);
-        System.out.println(event);
-    }
 
     /**
      * 回退
@@ -164,5 +206,37 @@ public class CollaborationEvent {
         CtpAffair ctpAffair = event.getAffair();
         System.out.println(ctpAffair);
         System.out.println(event);
+    }
+
+    public String getPreMemberId() {
+        return preMemberId;
+    }
+
+    public void setPreMemberId(String preMemberId) {
+        this.preMemberId = preMemberId;
+    }
+
+    public String getNextMemberId() {
+        return nextMemberId;
+    }
+
+    public void setNextMemberId(String nextMemberId) {
+        this.nextMemberId = nextMemberId;
+    }
+
+    public String getPreAffairId() {
+        return preAffairId;
+    }
+
+    public void setPreAffairId(String preAffairId) {
+        this.preAffairId = preAffairId;
+    }
+
+    public String getNextAffairId() {
+        return nextAffairId;
+    }
+
+    public void setNextAffairId(String nextAffairId) {
+        this.nextAffairId = nextAffairId;
     }
 }
