@@ -35,7 +35,6 @@ public class CollaborationEvent {
      */
     @ListenEvent(event = CollaborationAffairsAssignedEvent.class, async = true)
     public void assigned(CollaborationAffairsAssignedEvent event) throws BusinessException {
-
         List<Map<String, Object>> insertList = new ArrayList<>();
 
         List<CtpAffair> list = event.getAffairs();

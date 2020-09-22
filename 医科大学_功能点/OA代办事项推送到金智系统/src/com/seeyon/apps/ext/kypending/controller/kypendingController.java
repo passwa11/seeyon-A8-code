@@ -18,7 +18,7 @@ public class kypendingController extends BaseController {
         User user = AppContext.getCurrentUser();
         KyPendingManager kyPendingManager = new KyPendingManager();
 //        kyPendingManager.getPending(user.getId());
-        kyPendingManager.eachMemberToSendData();
+//        kyPendingManager.eachMemberToSendData();
         return null;
     }
 }

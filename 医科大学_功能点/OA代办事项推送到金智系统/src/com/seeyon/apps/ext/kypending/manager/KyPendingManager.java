@@ -1,25 +1,13 @@
 package com.seeyon.apps.ext.kypending.manager;
 
 import com.alibaba.fastjson.JSONObject;
-import com.aspose.imaging.internal.aR.C;
 import com.seeyon.apps.ext.kypending.controller.kypendingController;
 import com.seeyon.apps.ext.kypending.util.*;
-import com.seeyon.ctp.common.AppContext;
-import com.seeyon.ctp.common.affair.manager.AffairManager;
-import com.seeyon.ctp.common.authenticate.domain.User;
-import com.seeyon.ctp.common.content.affair.constants.StateEnum;
-import com.seeyon.ctp.common.content.affair.constants.SubStateEnum;
-import com.seeyon.ctp.common.controller.BaseController;
-import com.seeyon.ctp.common.exceptions.BusinessException;
-import com.seeyon.ctp.common.po.affair.CtpAffair;
-import com.seeyon.ctp.util.FlipInfo;
-import net.sf.json.JSONArray;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,7 +41,6 @@ public class KyPendingManager {
             String resutl = RestfulUtil.post(info, params);
             System.out.println(resutl);
         }
-
     }
 
 
