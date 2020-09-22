@@ -1,4 +1,4 @@
-package com.ncbi.medhub.util;
+package com.seeyon.apps.ext.kypending.util;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpEntity;
