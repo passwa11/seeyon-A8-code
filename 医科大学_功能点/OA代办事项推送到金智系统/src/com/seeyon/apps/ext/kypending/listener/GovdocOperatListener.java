@@ -2,6 +2,7 @@ package com.seeyon.apps.ext.kypending.listener;
 
 import com.seeyon.apps.edoc.event.EdocAffairsAssignedEvent;
 import com.seeyon.apps.edoc.event.EdocProcessEvent;
+import com.seeyon.apps.ext.kypending.event.GovdocOperationEvent;
 import com.seeyon.apps.ext.kypending.po.TempPendingData;
 import com.seeyon.apps.ext.kypending.util.JDBCUtil;
 import com.seeyon.apps.ext.kypending.util.ReadConfigTools;
@@ -14,11 +15,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EdocSummaryEvent {
+public class GovdocOperatListener {
 
 
-    @ListenEvent(event = EdocAffairsAssignedEvent.class, async = true)
-    public void edoc(EdocAffairsAssignedEvent event) {
+    @ListenEvent(event = GovdocOperationEvent.class, async = true)
+    public void govdoc(GovdocOperationEvent event) {
+
         List<Map<String, Object>> insertList = new ArrayList<>();
         List<CtpAffair> list = event.getAffairs();
 

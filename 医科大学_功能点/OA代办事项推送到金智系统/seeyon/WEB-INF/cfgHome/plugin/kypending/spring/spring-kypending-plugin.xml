@@ -4,6 +4,6 @@
     <bean name="kypending_Initializer" class="com.seeyon.apps.ext.kypending.kypendingPluginInitializer"/>
     <bean id="ykdMessagePipeline" class="com.seeyon.apps.ext.kypending.message.YkdMessagePipeline"/>
     <bean id="collaborationEvent" class="com.seeyon.apps.ext.kypending.listener.CollaborationEvent"/>
-    <bean id="EdocEvent" class="com.seeyon.apps.ext.kypending.listener.EdocSummaryEvent"/>
-    <bean id="MeetingEvent" class="com.seeyon.apps.ext.kypending.listener.MeetingEvent"/>
+    <bean id="govdocOperatListener" class="com.seeyon.apps.ext.kypending.listener.GovdocOperatListener"/>
+    <bean id="meetingEvent" class="com.seeyon.apps.ext.kypending.listener.MeetingEvent"/>
 </beans>
