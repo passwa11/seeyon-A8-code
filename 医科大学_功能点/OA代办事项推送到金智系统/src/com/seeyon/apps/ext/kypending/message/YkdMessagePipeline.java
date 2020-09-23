@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -75,12 +76,13 @@ public class YkdMessagePipeline implements MessagePipeline {
                 map.put("subject", "消息发送");
                 map.put("content", message.getContent());
                 map.put("sendType", 0);
-                map.put("sendNow", 1);//发送方式，是否立即发送，0:定时发送 1:立即发送 默认1
-                map.put("tagId", "9007");
+                map.put("sendNow", true);//发送方式，是否立即发送，0:定时发送 1:立即发送 默认1
+                map.put("tagId", 9007);
+                List<Map<String ,Object>> list=new ArrayList<>();
                 Map<String, Object> receivers = new HashMap<>();
                 receivers.put("userId", message.getReceiverMember().getLoginName());
-
-                map.put("receivers", receivers);
+                list.add(receivers);
+                map.put("receivers", list);
                 map.put("schoolCode", schoolCode);
                 String ch = accessToken + schoolCode + message.getReceiverMember().getLoginName();
                 map.put("sign", MD5Util.getMD5Str(ch));

@@ -63,6 +63,7 @@ public class CollaborationEvent {
             Map<String, Object> map = null;
             List<Map<String, Object>> mapList = new ArrayList<>();
             Map<String, Object> map2 = new HashMap<>();
+            map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
             map2.put("task_id", currentAffair.getObjectId().longValue() + "");
             map2.put("task_delete_flag", 1);
             map2.put("process_instance_id", currentAffair.getProcessId());
@@ -78,7 +79,7 @@ public class CollaborationEvent {
                 Map<String, Object> sendMap = JDBCUtil.getMemberInfo(affair.getSenderId());
 
                 map = new HashMap<>();
-                map.put("app_id", affair.getId().longValue() + "");
+                map.put("app_id", ReadConfigTools.getInstance().getString("appId"));
                 map.put("task_id", affair.getObjectId().longValue() + "");
                 map.put("created_by_ids", sendMap.get("login_name"));
                 map.put("created_by_names", sendMap.get("membername"));
@@ -131,6 +132,7 @@ public class CollaborationEvent {
         List<TempPendingData> list = dataManager.findTempPending(map);
         List<Map<String, Object>> mapList = new ArrayList<>();
         Map<String, Object> map2 = new HashMap<>();
+        map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
         map2.put("task_id", list.get(0).getSummaryid());
         map2.put("task_delete_flag", 1);
         map2.put("process_instance_id", list.get(0).getProcessid());
@@ -158,6 +160,7 @@ public class CollaborationEvent {
         List<TempPendingData> list = dataManager.findTempPending(map);
         List<Map<String, Object>> mapList = new ArrayList<>();
         Map<String, Object> map2 = new HashMap<>();
+        map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
         map2.put("task_id", list.get(0).getSummaryid());
         map2.put("task_delete_flag", 1);
         map2.put("process_instance_id", list.get(0).getProcessid());

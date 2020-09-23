@@ -3,6 +3,7 @@ package com.seeyon.apps.ext.kypending.listener;
 import com.seeyon.apps.edoc.event.EdocAffairsAssignedEvent;
 import com.seeyon.apps.edoc.event.EdocProcessEvent;
 import com.seeyon.apps.ext.kypending.event.GovdocOperationEvent;
+import com.seeyon.apps.ext.kypending.manager.KyPendingManager;
 import com.seeyon.apps.ext.kypending.po.TempPendingData;
 import com.seeyon.apps.ext.kypending.util.JDBCUtil;
 import com.seeyon.apps.ext.kypending.util.ReadConfigTools;
@@ -32,13 +33,14 @@ public class GovdocOperatListener {
             Map<String, Object> map = null;
             List<Map<String, Object>> mapList = new ArrayList<>();
             Map<String, Object> map2 = new HashMap<>();
+            map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
             map2.put("task_id", list.get(0).getObjectId().longValue() + "");
             map2.put("task_delete_flag", 1);
             map2.put("process_instance_id", list.get(0).getProcessId());
             map2.put("process_delete_flag", 1);
             mapList.add(map2);
 
-//            KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
+            KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
 
 
             for (CtpAffair affair : list) {
@@ -47,7 +49,7 @@ public class GovdocOperatListener {
                 Map<String, Object> sendMap = JDBCUtil.getMemberInfo(affair.getSenderId());
 
                 map = new HashMap<>();
-                map.put("app_id", affair.getId().longValue() + "");
+                map.put("app_id", ReadConfigTools.getInstance().getString("appId"));
                 map.put("task_id", affair.getObjectId().longValue() + "");
                 map.put("created_by_ids", sendMap.get("login_name"));
                 map.put("created_by_names", sendMap.get("membername"));
@@ -80,7 +82,7 @@ public class GovdocOperatListener {
                 map.put("process_instance_id", affair.getProcessId() + "");
                 insertList.add(map);
             }
-//            KyPendingManager.getInstance().updateCtpAffair("inserttasks", todopath, appId, accessToken, insertList);
+            KyPendingManager.getInstance().updateCtpAffair("inserttasks", todopath, appId, accessToken, insertList);
 
         }
     }
