@@ -750,6 +750,7 @@ public class GovdocManagerImpl implements GovdocManager {
              * affair.getMemberId(), affair.getActivityId(),
              * wfIinfo.getSubmitConfirmMsg()); }
              */
+            //zhou
         }
 
         if (dealVo.isModifyFlag()) {
@@ -2647,6 +2648,8 @@ public class GovdocManagerImpl implements GovdocManager {
 
             // 开始撤销流程
             AffairData affairData = GovdocAffairHelper.getRepealAffairData(summaryId, affairId, repealVO);
+
+            CtpAffair cancelAffair = affairManager.get(affairId);
             affairData.setFormRecordId(summary.getFormRecordid());
             affairData.addBusinessData(GovdocWorkflowEventListener.CURRENTUSER_CONSTANT, repealVO.getCurrentUser());
             result = govdocWorkflowManager.cancelCase(affairData, caseId);
@@ -2699,12 +2702,12 @@ public class GovdocManagerImpl implements GovdocManager {
                 govdocContinueManager.deleteAllCustomDealWidth(summary.getId());
                 // 撤销后释放所有在本公文中被使用的编号
                 govdocPishiManager.emptyPishiNo(summary.getId());
-				//zhou:[医科大学] start
-				List<CtpAffair> affairList = affairData.getAffairList();
-				GovdocRepalEvent repalEvent=new GovdocRepalEvent(this);
-				repalEvent.setList(affairList);
-				EventDispatcher.fireEvent(repalEvent);
-				//zhou:[医科大学] end
+                //zhou:[医科大学] start
+
+                GovdocStopEvent repalEvent = new GovdocStopEvent(this);
+                repalEvent.setCurrentAffair(cancelAffair);
+                EventDispatcher.fireEvent(repalEvent);
+                //zhou:[医科大学] end
             }
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);

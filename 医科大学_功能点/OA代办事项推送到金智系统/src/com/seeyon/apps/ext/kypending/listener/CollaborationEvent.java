@@ -42,6 +42,24 @@ public class CollaborationEvent {
 
     }
 
+    @ListenEvent(event = CollaborationFinishEvent.class, async = true)
+    public void finish(CollaborationFinishEvent event) {
+        CtpAffair ctpAffair = event.getAffair();
+        Map<String, Object> map2 = new HashMap<>();
+        List<Map<String, Object>> mapList = new ArrayList<>();
+
+        map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
+        map2.put("task_id", ctpAffair.getObjectId().longValue()+"");
+        map2.put("task_delete_flag", 1);
+        map2.put("process_instance_id", ctpAffair.getProcessId());
+        map2.put("process_delete_flag", 1);
+        mapList.add(map2);
+        String todopath = ReadConfigTools.getInstance().getString("todopath");
+        String appId = ReadConfigTools.getInstance().getString("appId");
+        String accessToken = ReadConfigTools.getInstance().getString("accessToken");
+        KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
+    }
+
     /**
      * 下一节点处理信息
      *

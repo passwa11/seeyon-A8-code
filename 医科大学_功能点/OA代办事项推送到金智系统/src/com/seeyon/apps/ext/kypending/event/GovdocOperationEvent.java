@@ -13,6 +13,8 @@ public class GovdocOperationEvent extends Event {
 
     private boolean isStart;
 
+    private String type;
+
     public GovdocOperationEvent(Object source) {
         super(source);
     }
@@ -39,5 +41,13 @@ public class GovdocOperationEvent extends Event {
 
     public void setStart(boolean start) {
         isStart = start;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

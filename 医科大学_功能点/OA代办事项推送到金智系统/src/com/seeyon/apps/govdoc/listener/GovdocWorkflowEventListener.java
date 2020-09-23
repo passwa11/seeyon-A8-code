@@ -184,6 +184,13 @@ public class GovdocWorkflowEventListener extends GovdocAbWorkflowEventListener {
                 GovdocEventDispatcher.fireEdocFinishEvent(this, baseVo);
             }
 
+            //zhou:[医科大学代办消息推送]添加公文流程自定义事件 start
+            GovdocOperationEvent operationEvent = new GovdocOperationEvent(this);
+            operationEvent.setCurrentAffair((CtpAffair) context.getBusinessData(CTPAFFAIR_CONSTANT));
+            operationEvent.setType("finish");//分配
+            EventDispatcher.fireEvent(operationEvent);
+            //zhou:[医科大学代办消息推送]添加公文流程自定义事件 end
+
         } catch (Exception e) {
             LOGGER.error("公文流程结束出错", e);
         }
@@ -250,6 +257,12 @@ public class GovdocWorkflowEventListener extends GovdocAbWorkflowEventListener {
             baseVo.setCurrentUser((User) context.getBusinessData(GovdocWorkflowEventListener.CURRENTUSER_CONSTANT));
             govdocManager.transRepealCallback(baseVo);
 
+            //zhou:[医科大学代办消息推送]添加公文流程自定义事件 start
+            GovdocOperationEvent operationEvent = new GovdocOperationEvent(this);
+            operationEvent.setCurrentAffair(affair);
+            operationEvent.setType("cancel");//分配
+            EventDispatcher.fireEvent(operationEvent);
+            //zhou:[医科大学代办消息推送]添加公文流程自定义事件 end
         } catch (Exception e) {
             LOGGER.error("", e);
         }
@@ -870,6 +883,7 @@ public class GovdocWorkflowEventListener extends GovdocAbWorkflowEventListener {
             GovdocOperationEvent operationEvent = new GovdocOperationEvent(this);
             operationEvent.setCurrentAffair(ykdAffair);
             operationEvent.setAffairs(affairData.getAffairList());
+            operationEvent.setType("assigned");//分配
             EventDispatcher.fireEvent(operationEvent);
             //zhou:[医科大学代办消息推送]添加公文流程自定义事件 end
 

@@ -35,24 +35,24 @@ public class GovdocCancelListener {
 
     @ListenEvent(event = GovdocRepalEvent.class, async = true)
     public void cancel(GovdocRepalEvent event) {
-        List<CtpAffair> list = event.getList();
-        List<Map<String, Object>> mapList = new ArrayList<>();
-        Map<String, Object> map2 = null;
-
-        for (CtpAffair affair : list) {
-            map2 = new HashMap<>();
-            map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
-            map2.put("task_id", affair.getObjectId().longValue() + "");
-            map2.put("task_delete_flag", 1);
-            map2.put("process_instance_id", affair.getProcessId());
-            map2.put("process_delete_flag", 1);
-            mapList.add(map2);
-        }
-
-        String todopath = ReadConfigTools.getInstance().getString("todopath");
-        String appId = ReadConfigTools.getInstance().getString("appId");
-        String accessToken = ReadConfigTools.getInstance().getString("accessToken");
-        KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
+//        List<CtpAffair> list = event.getList();
+//        List<Map<String, Object>> mapList = new ArrayList<>();
+//        Map<String, Object> map2 = null;
+//
+//        for (CtpAffair affair : list) {
+//            map2 = new HashMap<>();
+//            map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
+//            map2.put("task_id", affair.getObjectId().longValue() + "");
+//            map2.put("task_delete_flag", 1);
+//            map2.put("process_instance_id", affair.getProcessId());
+//            map2.put("process_delete_flag", 1);
+//            mapList.add(map2);
+//        }
+//
+//        String todopath = ReadConfigTools.getInstance().getString("todopath");
+//        String appId = ReadConfigTools.getInstance().getString("appId");
+//        String accessToken = ReadConfigTools.getInstance().getString("accessToken");
+//        KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
     }
 
 }

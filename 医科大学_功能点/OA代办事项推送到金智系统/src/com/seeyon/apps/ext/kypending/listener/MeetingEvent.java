@@ -5,6 +5,9 @@ import com.seeyon.apps.ext.kypending.po.TempPendingData;
 import com.seeyon.apps.ext.kypending.util.JDBCUtil;
 import com.seeyon.apps.ext.kypending.util.ReadConfigTools;
 import com.seeyon.apps.meeting.event.MeetingAffairsAssignedEvent;
+import com.seeyon.apps.meeting.event.MeetingFinishEvent;
+import com.seeyon.apps.meeting.event.MeetingInviteEvent;
+import com.seeyon.apps.meeting.event.MeetingReplyEvent;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.common.po.affair.CtpAffair;
 import com.seeyon.ctp.util.annotation.ListenEvent;
@@ -83,4 +86,21 @@ public class MeetingEvent {
 
         }
     }
+
+    @ListenEvent(event = MeetingInviteEvent.class, async = true)
+    public void re(MeetingInviteEvent event) {
+        
+    }
+
+    @ListenEvent(event = MeetingReplyEvent.class, async = true)
+    public void re(MeetingReplyEvent event) {
+
+    }
+
+    @ListenEvent(event = MeetingFinishEvent.class, async = true)
+    public void finish(MeetingFinishEvent event) {
+
+    }
+
+
 }
