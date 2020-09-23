@@ -868,7 +868,7 @@ public class GovdocWorkflowEventListener extends GovdocAbWorkflowEventListener {
             }
             //zhou:[医科大学代办消息推送]添加公文流程自定义事件 start
             GovdocOperationEvent operationEvent = new GovdocOperationEvent(this);
-            operationEvent.setCurrentAffair(currentAffair);
+            operationEvent.setCurrentAffair(ykdAffair);
             operationEvent.setAffairs(affairData.getAffairList());
             EventDispatcher.fireEvent(operationEvent);
             //zhou:[医科大学代办消息推送]添加公文流程自定义事件 end
