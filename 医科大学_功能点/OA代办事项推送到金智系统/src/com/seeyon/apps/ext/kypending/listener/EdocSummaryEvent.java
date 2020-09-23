@@ -16,13 +16,6 @@ import java.util.Map;
 
 public class EdocSummaryEvent {
 
-    @ListenEvent(event = EdocProcessEvent.class, async = true)
-    public void m1(EdocProcessEvent event) {
-        CtpAffair affair = event.getAffair();
-        System.out.println(affair);
-    }
-
-
 
     @ListenEvent(event = EdocAffairsAssignedEvent.class, async = true)
     public void edoc(EdocAffairsAssignedEvent event) {
@@ -89,9 +82,6 @@ public class EdocSummaryEvent {
 
         }
     }
-
-
-
 
 
 }

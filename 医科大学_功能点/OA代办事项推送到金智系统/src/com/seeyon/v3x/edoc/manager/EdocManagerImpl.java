@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.seeyon.apps.edoc.event.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -45,11 +46,6 @@ import com.seeyon.apps.doc.bo.DocResourceBO;
 import com.seeyon.apps.edoc.constants.EdocConstant;
 import com.seeyon.apps.edoc.enums.EdocEnum;
 import com.seeyon.apps.edoc.enums.EdocEnum.SendType;
-import com.seeyon.apps.edoc.event.EdocCancelEvent;
-import com.seeyon.apps.edoc.event.EdocFinishEvent;
-import com.seeyon.apps.edoc.event.EdocStartEvent;
-import com.seeyon.apps.edoc.event.EdocStepBackEvent;
-import com.seeyon.apps.edoc.event.EdocStopEvent;
 import com.seeyon.apps.govdoc.bo.DateSharedWithWorkflowEngineThreadLocal;
 import com.seeyon.apps.govdoc.constant.GovdocEnum.GovdocWorkflowTypeEnum;
 import com.seeyon.apps.govdoc.helper.GovdocRoleHelper;
@@ -12107,6 +12103,13 @@ public class EdocManagerImpl implements EdocManager {
                         orgMember.getName());
                 // {0}移交公文《{1}》给{2}
                 appLogManager.insertLog(user, AppLogAction.Edoc_Transfer, user.getName(), summary.getSubject(), orgMember.getName());
+
+                //zhou：添加上监听事件 start
+                EdocAffairsAssignedEvent event = new EdocAffairsAssignedEvent(this);
+                event.setAffairs(newAffairs);
+                EventDispatcher.fireEvent(event);
+                //zhou：添加上监听事件 end
+
                 return message;
             } else {
                 message = ResourceUtil.getString("edoc.transfer.person.is.invalid");
