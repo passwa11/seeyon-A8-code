@@ -141,8 +141,6 @@ public class CollaborationEvent {
         String appId = ReadConfigTools.getInstance().getString("appId");
         String accessToken = ReadConfigTools.getInstance().getString("accessToken");
         KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
-
-
     }
 
     /**
@@ -153,9 +151,23 @@ public class CollaborationEvent {
      */
     @ListenEvent(event = CollaborationStopEvent.class, async = true)
     public void StopListener(CollaborationStopEvent event) throws BusinessException {
-        CtpAffair ctpAffair = event.getAffair();
-        System.out.println(ctpAffair);
-        System.out.println(event);
+//        CtpAffair ctpAffair = event.getAffair();
+        String summaryId = event.getSummaryId().longValue() + "";
+        Map<String, Object> map = new HashMap<>();
+        map.put("summaryid", summaryId);
+        List<TempPendingData> list = dataManager.findTempPending(map);
+        List<Map<String, Object>> mapList = new ArrayList<>();
+        Map<String, Object> map2 = new HashMap<>();
+        map2.put("task_id", list.get(0).getSummaryid());
+        map2.put("task_delete_flag", 1);
+        map2.put("process_instance_id", list.get(0).getProcessid());
+        map2.put("process_delete_flag", 1);
+        mapList.add(map2);
+
+        String todopath = ReadConfigTools.getInstance().getString("todopath");
+        String appId = ReadConfigTools.getInstance().getString("appId");
+        String accessToken = ReadConfigTools.getInstance().getString("accessToken");
+        KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
     }
 
     /**
