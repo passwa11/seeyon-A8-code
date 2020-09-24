@@ -4,6 +4,7 @@ import com.seeyon.apps.ext.kypending.manager.KyPendingManager;
 import com.seeyon.apps.ext.kypending.po.TempPendingData;
 import com.seeyon.apps.ext.kypending.util.JDBCUtil;
 import com.seeyon.apps.ext.kypending.util.ReadConfigTools;
+import com.seeyon.apps.meeting.bo.MeetingBO;
 import com.seeyon.apps.meeting.event.MeetingAffairsAssignedEvent;
 import com.seeyon.apps.meeting.event.MeetingFinishEvent;
 import com.seeyon.apps.meeting.event.MeetingInviteEvent;
@@ -19,7 +20,7 @@ import java.util.Map;
 
 public class MeetingEvent {
 
-    @ListenEvent(event = MeetingAffairsAssignedEvent.class, async = true)
+//    @ListenEvent(event = MeetingAffairsAssignedEvent.class, async = true)
     public void m1(MeetingAffairsAssignedEvent event) throws BusinessException {
         List<Map<String, Object>> insertList = new ArrayList<>();
 
@@ -87,18 +88,34 @@ public class MeetingEvent {
         }
     }
 
-    @ListenEvent(event = MeetingInviteEvent.class, async = true)
+//    @ListenEvent(event = MeetingInviteEvent.class, async = true)
     public void re(MeetingInviteEvent event) {
-        
+        System.out.println("------");
+        System.out.println("------");
+        System.out.println("------");
+
     }
 
-    @ListenEvent(event = MeetingReplyEvent.class, async = true)
+//    @ListenEvent(event = MeetingReplyEvent.class, async = true)
     public void re(MeetingReplyEvent event) {
+        System.out.println("------");
+        System.out.println("------");
+        System.out.println("------");
 
     }
 
-    @ListenEvent(event = MeetingFinishEvent.class, async = true)
+//    @ListenEvent(event = MeetingFinishEvent.class, async = true)
     public void finish(MeetingFinishEvent event) {
+        MeetingBO meeting = event.getMeeting();
+        Map<String, Object> map = null;
+        List<Map<String, Object>> mapList = new ArrayList<>();
+        Map<String, Object> map2 = new HashMap<>();
+        map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
+        map2.put("task_id", meeting.getId() + "");
+        map2.put("task_delete_flag", 1);
+        mapList.add(map2);
+
+//        KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
 
     }
 
