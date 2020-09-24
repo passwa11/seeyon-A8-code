@@ -2828,9 +2828,9 @@ public class GovdocPubManagerImpl implements GovdocPubManager {
         dealVo.setSummary(summary);
 
         //zhou:[医科大学] start
-        GovdocStopEvent cancelEvent = new GovdocStopEvent(this);
-        cancelEvent.setCurrentAffair(affair);
-        EventDispatcher.fireEvent(cancelEvent);
+//        GovdocStopEvent cancelEvent = new GovdocStopEvent(this);
+//        cancelEvent.setCurrentAffair(affair);
+//        EventDispatcher.fireEvent(cancelEvent);
         //zhou:[医科大学] end
 
         return true;

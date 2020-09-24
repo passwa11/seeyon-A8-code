@@ -15,6 +15,8 @@ public class GovdocOperationEvent extends Event {
 
     private String type;
 
+    private String summaryId;
+
     public GovdocOperationEvent(Object source) {
         super(source);
     }
@@ -49,5 +51,13 @@ public class GovdocOperationEvent extends Event {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getSummaryId() {
+        return summaryId;
+    }
+
+    public void setSummaryId(String summaryId) {
+        this.summaryId = summaryId;
     }
 }

@@ -1350,9 +1350,9 @@ public class GovdocManagerImpl implements GovdocManager {
         }
 
         //zhou:[医科大学] start
-        GovdocStopEvent cancelEvent = new GovdocStopEvent(this);
-        cancelEvent.setCurrentAffair(sendAffair);
-        EventDispatcher.fireEvent(cancelEvent);
+//        GovdocStopEvent cancelEvent = new GovdocStopEvent(this);
+//        cancelEvent.setCurrentAffair(sendAffair);
+//        EventDispatcher.fireEvent(cancelEvent);
         //zhou:[医科大学] end
 
         summary.setState(EdocConstant.flowState.terminate.ordinal());
@@ -2704,9 +2704,9 @@ public class GovdocManagerImpl implements GovdocManager {
                 govdocPishiManager.emptyPishiNo(summary.getId());
                 //zhou:[医科大学] start
 
-                GovdocStopEvent repalEvent = new GovdocStopEvent(this);
-                repalEvent.setCurrentAffair(cancelAffair);
-                EventDispatcher.fireEvent(repalEvent);
+//                GovdocStopEvent repalEvent = new GovdocStopEvent(this);
+//                repalEvent.setCurrentAffair(cancelAffair);
+//                EventDispatcher.fireEvent(repalEvent);
                 //zhou:[医科大学] end
             }
         } catch (Exception e) {

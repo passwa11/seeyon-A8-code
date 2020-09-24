@@ -188,6 +188,7 @@ public class GovdocWorkflowEventListener extends GovdocAbWorkflowEventListener {
             GovdocOperationEvent operationEvent = new GovdocOperationEvent(this);
             operationEvent.setCurrentAffair((CtpAffair) context.getBusinessData(CTPAFFAIR_CONSTANT));
             operationEvent.setType("finish");//分配
+            operationEvent.setSummaryId(summary.getId().longValue() + "");
             EventDispatcher.fireEvent(operationEvent);
             //zhou:[医科大学代办消息推送]添加公文流程自定义事件 end
 
@@ -261,6 +262,7 @@ public class GovdocWorkflowEventListener extends GovdocAbWorkflowEventListener {
             GovdocOperationEvent operationEvent = new GovdocOperationEvent(this);
             operationEvent.setCurrentAffair(affair);
             operationEvent.setType("cancel");//分配
+            operationEvent.setSummaryId(summaryId.longValue()+"");
             EventDispatcher.fireEvent(operationEvent);
             //zhou:[医科大学代办消息推送]添加公文流程自定义事件 end
         } catch (Exception e) {
