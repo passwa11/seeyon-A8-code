@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.seeyon.apps.xkjt.po">
+	<class name="XkjtLeaderDaiYue" table="XKJT_LEADER_DAIYUE" lazy="false">
+		<id name="id" type="long" column="ID">
+			<generator class="assigned" />
+		</id>
+		
+		<property name="leaderName" type="string" column="LEADER_NAME" />
+		<property name="status" type="integer" column="STATUS" />
+		<property name="title" type="string" column="TITLE" />
+		<property name="sendDate" type="timestamp" column="SEND_DATE" />
+		<property name="senderName" type="string" column="SENDER_NAME" />
+		<property name="edocType" type="integer" column="EDOC_TYPE" />
+		<property name="sendRecordId" type="long" column="SEND_RECORD_ID" />
+		<property name="edocId" type="long" column="EDOC_ID" />
+		<property name="leaderId" type="long" column="LEADER_ID" />
+		<!--  项目：徐州矿物集团【添加了一个新字段SIGN_FOR_DATE，且阅读后添加进当前时间】 作者：wxt.xiangrui 时间：2019-6-3 start  -->
+		<property name="signForDate" type="timestamp" column="SIGN_FOR_DATE" />
+		<!--  项目：徐州矿物集团【添加了一个新字段SIGN_FOR_DATE，且阅读后添加进当前时间】 作者：wxt.xiangrui 时间：2019-6-3 end  -->
+	</class>
+	
+	<class name="XkjtLeaderBanJie" table="EDOC_SUMMARY" lazy="false">
+		<id name="id" type="long" column="ID">
+			<generator class="assigned" />
+		</id>
+		<property name="createPerson" type="string" column="CREATE_PERSON" />
+		<property name="createTime" type="timestamp" column="CREATE_TIME" />
+		<property name="subject" type="string" column="SUBJECT" />
+		<property name="sendUnit" type="string" column="SEND_UNIT" />
+		<property name="edocType" type="integer" column="EDOC_TYPE" />
+		<property name="docMark" type="string" column="DOC_MARK" />
+		<property name="deadlineDatetime" type="timestamp" column="DEADLINE_DATETIME" />
+		<property name="completeTime" type="timestamp" column="COMPLETE_TIME" />
+		<property name="startUserId" type="long" column="START_USER_ID" />
+		<property name="state" type="long" column="STATE" />
+		<property name="urgentLevel" type="long" column="URGENT_LEVEL" />
+
+		<!-- <many-to-one name="xkjtLeaderBanJie2" class="com.seeyon.apps.xkjt.po.XkjtLeaderBanJie2" column="gsid"></many-to-one> -->
+	</class>
+	
+	<class name="XkjtLeaderBanJie2" table="CTP_AFFAIR" lazy="false">
+		<id name="id2" type="long" column="ID">
+			<generator class="assigned" />
+		</id>
+		<property name="isDelete" type="long" column="IS_DELETE" />
+		<property name="memberId" type="long" column="MEMBER_ID" />
+		<property name="objectId" type="long" column="OBJECT_ID" />
+		<property name="state" type="long" column="STATE" />
+		 <!-- <set name="XkjtLeaderBanJie">
+               <key column="gsid"></key>
+               <one-to-many class="com.seeyon.apps.xkjt.po.XkjtLeaderBanJie" />
+           </set> -->
+	</class> 
+</hibernate-mapping>

@@ -1,0 +1,13 @@
+appLog.action.4001        = \u7D81\u5B9A{0}\u7684\u7BC0\u9EDE\u70BA{1}
+appLog.action.4002        = \u65B0\u5EFA{0}\u7684LDAP_AD\u8CEC\u865F\u70BA{1}
+appLog.action.4004        = \u65B0\u5EFA{0}\u76EE\u9304\u7BC0\u9EDE\u70BA{1}
+appLog.action.4005        = \u66F4\u65B0{0}\u76EE\u9304\u7BC0\u9EDE\u70BA{1}
+appLog.action.4006        = \u4FEE\u6539{0}\u7D81\u5B9A{}\u8CEC\u865F\u7684\u5BC6\u78BC
+appLog.action.4007        = {0}\u4FEE\u6539\u81EA\u5DF1\u7684LDAP_AD\u5BC6\u78BC
+appLog.actionType.4001    = \u7D81\u5B9ALDAP_AD\u8CEC\u865F
+appLog.actionType.4002    = \u5275\u5EFALDAP_AD\u8CEC\u865F
+appLog.actionType.4004    = \u5275\u5EFA\u7BC0\u9EDE
+appLog.actionType.4005    = \u66F4\u65B0\u7BC0\u9EDE
+appLog.actionType.4006    = \u4FEE\u6539LDAP_AD\u5BC6\u78BC
+appLog.actionType.4007    = \u4FEE\u6539LDAP_AD\u5BC6\u78BC
+appLog.moduleName.4000    = LDAP_AD\u96C6\u6210

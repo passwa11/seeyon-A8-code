@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b901aad4-080c-4210-9d9f-cdb9107caad9" name="bug" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="F:\Seeyonxkjt\A8\ApacheJetspeed\webapps\seeyon" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

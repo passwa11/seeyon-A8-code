@@ -1,0 +1,536 @@
+showReply.reply.name = Reply
+
+Commonly.label = Commonly used
+
+GroupAnnouncement.label     = Group Announcement
+GroupAnnouncement.label.GOV = Org Announcement
+
+GroupNews.label     = Group News
+GroupNews.label.GOV = Org News
+
+Groupdiscussion.label     = Group discussion
+Groupdiscussion.label.GOV = Org discussions
+
+Groupsurvey.label     = Group survey
+Groupsurvey.label.GOV = Org survey
+
+SMS.postfix = Reply edit:{0}+content
+
+USBKey.attribute.canAccessMobile     = Uncontrolled access to mobile devices
+USBKey.attribute.generic             = General Token
+USBKey.attribute.isGeneric           = is Generic Dog
+USBKey.attribute.isMustUseDog        = Must User Authen Token to login
+USBKey.attribute.isNeedCheckUsername = Must Also Verifiy Username and Password
+USBKey.attribute.name                = Auth Token Name
+USBKey.attribute.owner               = Owner
+USBKey.attribute.setOwner            = For Designated Pesron Only
+USBKey.attribute.type                = Type
+USBKey.make.LoginVerifyUSBKey        = Login to verify the USB Key production - list
+USBKey.make.description              = <b>Instruction:</b>\r\n<li>When creating your Authentication Token, please copy the server-side token, and then insert it into the client-side token.</li>
+USBKey.make.isContinueMake           = Continue to Create More Token
+
+UnitAnnouncement.label = Unit Announcement
+
+UnitNews.label = Unit News
+
+Unitdiscussion.label = Unit discussion
+
+Unitsurvey.label = Unit survey
+
+account.latest.bbs.label = The latest BBS of the unit
+
+audit.label = Approval Requests (Culture)
+
+anonymous.label         = Anonymous
+anonymous.label.js      = Anonymous
+anonymous.post          = Anonymous Post
+anonymous.reply         = Anonymous Reply
+anonymous.reply.allowed = Reply Anonymously Allowed
+
+button.InboxFilter = Sift Mail
+button.all         = All
+button.delete      = Permanently Deleted
+button.download    = Download
+button.empty       = Empty
+button.move        = Move
+button.receive     = Receive
+button.reply       = Reply to Sender
+button.replyAll    = Reply to All
+button.reset       = Reset
+button.save        = Saved Copy In Server
+button.saveDraft   = Save as Draft
+button.setdefault  = Set As Default Mailbox
+button.sure        = Sure
+button.toCol       = sendToCol
+
+
+
+com.seeyon.v3x.mobile.bdlx                  = Form type
+com.seeyon.v3x.mobile.bdnr                  = Form cont
+com.seeyon.v3x.mobile.bdts                  = Prompt: the event is form. Please click the link to form cont to view it
+com.seeyon.v3x.mobile.bflb                  = Concurrence list
+com.seeyon.v3x.mobile.bflc                  = Concurrence flow
+com.seeyon.v3x.mobile.bjdbsx                = Edit the event to be processed
+com.seeyon.v3x.mobile.bjdfsx                = Edit the event to be sent
+com.seeyon.v3x.mobile.bjdfxt                = Edit the collaboration to be sent
+com.seeyon.v3x.mobile.bjybsx                = Edit the processed event
+com.seeyon.v3x.mobile.bjyfsx                = Edit the sent event
+com.seeyon.v3x.mobile.bodydownload          = DownLoad
+com.seeyon.v3x.mobile.bt                    = Title
+com.seeyon.v3x.mobile.btbnwk                = Null is not allowed for title
+com.seeyon.v3x.mobile.btbnwkqtxbt           = Null is not allowed for title. Please complete the title!
+com.seeyon.v3x.mobile.bzcgzwlx              = Sorry, do not support this text type.
+com.seeyon.v3x.mobile.cb                    = Hasten
+com.seeyon.v3x.mobile.cffq                  = Initiate repeatedly
+com.seeyon.v3x.mobile.cflc                  = Send flow in sequence
+com.seeyon.v3x.mobile.ckhz                  = information of processing
+com.seeyon.v3x.mobile.cklc                  = View flow
+com.seeyon.v3x.mobile.ckyj                  = View opinion
+com.seeyon.v3x.mobile.cl                    = Process
+com.seeyon.v3x.mobile.clryj                 = Opinion of conductor
+com.seeyon.v3x.mobile.cxlc                  = Cancel flow
+com.seeyon.v3x.mobile.dbxt                  = Collaboration to be processed
+com.seeyon.v3x.mobile.dbxtlb                = List of collaborations to be processed
+com.seeyon.v3x.mobile.dd                    = Place
+com.seeyon.v3x.mobile.dfxt                  = Collaboration to be sent
+com.seeyon.v3x.mobile.dfxtlb                = List of collaborations to be sent
+com.seeyon.v3x.mobile.dl                    = \ Processed by agent ({0})!
+com.seeyon.v3x.mobile.dly                   = Page of login
+com.seeyon.v3x.mobile.duorzx                = Executed By Multiple Staff
+com.seeyon.v3x.mobile.dw                    = The whole unit
+com.seeyon.v3x.mobile.fbsj                  = Issue time
+com.seeyon.v3x.mobile.fou                   = Not
+com.seeyon.v3x.mobile.fqr                   = Sponsor
+com.seeyon.v3x.mobile.fqrfy                 = Postscript of sponsor
+com.seeyon.v3x.mobile.fqsj                  = Sponsoring time
+com.seeyon.v3x.mobile.fz                    = Branch
+com.seeyon.v3x.mobile.g                     = Total
+com.seeyon.v3x.mobile.ge                    = entries
+com.seeyon.v3x.mobile.gglb                  = Bulletin
+com.seeyon.v3x.mobile.gj                    = Advanced
+com.seeyon.v3x.mobile.gjcz                  = Advanced operation
+com.seeyon.v3x.mobile.grsz                  = Personal setting
+com.seeyon.v3x.mobile.grym                  = Personal page
+com.seeyon.v3x.mobile.gt                    = Communicate
+com.seeyon.v3x.mobile.ht                    = Rollback
+com.seeyon.v3x.mobile.hygk                  = General situation of meeting
+com.seeyon.v3x.mobile.hz                    = Inform
+com.seeyon.v3x.mobile.jlr                   = Recorder
+com.seeyon.v3x.mobile.jx                    = Continue
+com.seeyon.v3x.mobile.jxbgd                 = Continue and archive
+com.seeyon.v3x.mobile.jxbsc                 = Continue and delete
+com.seeyon.v3x.mobile.jxbtj                 = Continue and submit
+com.seeyon.v3x.mobile.jzzx                  = Execute in competition
+com.seeyon.v3x.mobile.lcbnwk                = Null is not allowed for flow
+com.seeyon.v3x.mobile.lgtitle               = UFIDA-Seeyon A8 Collaborative System V3.0
+com.seeyon.v3x.mobile.ljfs                  = Send immediately
+com.seeyon.v3x.mobile.ljzf                  = Forward immediately
+com.seeyon.v3x.mobile.lx                    = Bulletin type
+com.seeyon.v3x.mobile.lxry                  = Offline personnel
+com.seeyon.v3x.mobile.mettingbasets         = Reply edit:{0} +y/n+content
+com.seeyon.v3x.mobile.mobilets              = Prompted:
+com.seeyon.v3x.mobile.nr                    = cont
+com.seeyon.v3x.mobile.qwjs                  = Full text retrieval
+com.seeyon.v3x.mobile.qx                    = Please create collaboration
+com.seeyon.v3x.mobile.qxjlc                 = Please create flow
+com.seeyon.v3x.mobile.qxjxt                 = Please create collaboration
+com.seeyon.v3x.mobile.r                     = Person
+com.seeyon.v3x.mobile.rcggxw                = Schedule/bulletin/news
+com.seeyon.v3x.mobile.rclb                  = List of schedules
+com.seeyon.v3x.mobile.rjly                  = Event source
+com.seeyon.v3x.mobile.sc                    = Delete
+com.seeyon.v3x.mobile.shi                   = Yes \r\n
+com.seeyon.v3x.mobile.sj                    = Time
+com.seeyon.v3x.mobile.tccklc                = Exit to view flow
+com.seeyon.v3x.mobile.ti                    = Prompt
+com.seeyon.v3x.mobile.tiao                  = item
+com.seeyon.v3x.mobile.tpxs                  = Display of image
+com.seeyon.v3x.mobile.wcj                   = Absent
+com.seeyon.v3x.mobile.whz                   = Unacknowledged
+com.seeyon.v3x.mobile.wpsts                 = Currently does not support the text type of WPS Word.
+com.seeyon.v3x.mobile.wzxs                  = Display of words
+com.seeyon.v3x.mobile.x                     = Item
+com.seeyon.v3x.mobile.xiazai                = Download
+com.seeyon.v3x.mobile.xjxt                  = New Collaboration
+com.seeyon.v3x.mobile.xsmh                  = Display mode
+com.seeyon.v3x.mobile.xtlb                  = Collaboration list
+com.seeyon.v3x.mobile.xtxj                  = Collaboration details
+com.seeyon.v3x.mobile.xwlb                  = News
+com.seeyon.v3x.mobile.xwlx                  = News type
+com.seeyon.v3x.mobile.xxbyc                 = Their views have been hidden
+com.seeyon.v3x.mobile.xxxx                  = Details
+com.seeyon.v3x.mobile.xz                    = Select
+com.seeyon.v3x.mobile.xzry                  = Select personnel
+com.seeyon.v3x.mobile.xzsycy                = Select all personnel
+com.seeyon.v3x.mobile.ybxt                  = Processed collaboration
+com.seeyon.v3x.mobile.ybxtlb                = List of processed collaboration
+com.seeyon.v3x.mobile.ydbgcqsp              = Initial approval of mobile office
+com.seeyon.v3x.mobile.yfxt                  = Sent collaboration
+com.seeyon.v3x.mobile.yfxtlb                = List of sent collaborations
+com.seeyon.v3x.mobile.yhr                   = Participant
+com.seeyon.v3x.mobile.yxtdjczf              = Original collaboration opinion (Forwarding of No. {0})
+com.seeyon.v3x.mobile.yyqh                  = Language switching
+com.seeyon.v3x.mobile.z                     = To
+com.seeyon.v3x.mobile.zcdb                  = Save temporarily to be processed
+com.seeyon.v3x.mobile.zcr                   = Moderator
+com.seeyon.v3x.mobile.zf                    = Forward
+com.seeyon.v3x.mobile.zfxt                  = Forward collaboration
+com.seeyon.v3x.mobile.zfyj                  = Forward opinion
+com.seeyon.v3x.mobile.zwlx                  = Text type
+
+current.board.label  = Current Type
+current.family.label = Current Category
+
+dee.push.log.GOV = Push the log
+
+delete.article.notice.alertDeleteItem = Select the article to be deleted
+delete.article.notice.label           = Confirm to delete the article?
+delete.favorites.post.notice.label    = Are you sure delete the reply?
+delete.label                          = Del
+delete.label.js                       = Del
+delete.label.log                      = Delete Article{0}
+delete.reply.post.notice.label        = Are you sure to delete?
+
+enter.label = Enter
+
+error.already_exists     = The record already exists!
+error.audituser.notblank = Null is not allowed for auditor. Please select auditor!
+error.notblank           = Null is not allowed!
+error.type.notblank      = Null is not allowed for bulletin type. Please reselect!
+
+export.csv.address.title   = residential street address
+export.csv.address1.title  = home address zip code
+export.csv.chinese.title   = Chinese title
+export.csv.dept.title      = departments
+export.csv.email.title     = e-mail address
+export.csv.email1.title    = e-mail type
+export.csv.email2.title    = e-mail Display Name
+export.csv.level.title     = functions
+export.csv.mobile.title    = mobile phones
+export.csv.name.title      = Name
+export.csv.name1.title     = last name
+export.csv.telephone.title = the main telephone unit
+export.csv.title           = Name, last name, Chinese title, units, departments, {0, choice, 0 # | 1 # functions}, residential street address, home address zip code, the main telephone unit, mobile phones, e-mail address, e-mail type, e-mail Display Name, Web
+export.csv.unit.title      = units
+export.csv.web.title       = Web
+
+ext.account.news.push.GOV = External push
+
+form.data.exception           = An Exception occured when read form ,Please review it on pc
+form.data.hasdelete           = Form data deleted already
+form.display.best.performance = Form displays for best performance
+form.label                    = Form
+form.lable                    = Form
+form.lable.continue           = Continue
+form.lable.pass.1             = Audited by
+form.lable.pass.2             = Not Approved
+form.lable.prompt             = The matter for the form, we can not see!
+form.lable.prompt.0           = Fill in the wrong\uFF01
+form.lable.prompt.1           = Show contents contained!
+form.lable.prompt.10          = With computing field, go to the PC side to deal with!
+form.lable.prompt.11          = With the expansion of the field, go to the PC side to deal with\uFF01
+form.lable.prompt.12          = With the double table of the field, go to the PC side to deal with\uFF01
+form.lable.prompt.16          = The {0}:{1} does not exist!
+form.lable.prompt.2           = Required to complete a signature, go to PC-processing!
+form.lable.prompt.3           = Can not be empty
+form.lable.prompt.4           = The joint operation was deleted, please sponsors revocation process!
+form.lable.prompt.5           = Please fill in the name of the department
+form.lable.prompt.6           = Please fill in the name-level positions
+form.lable.prompt.7           = Please fill out the Name of the position
+form.lable.prompt.8           = Please fill in the date
+form.lable.prompt.9           = Please fill out the date and time
+form.lable.prompt.level       = level
+form.lable.prompt.post        = Post
+form.lable.prompt.unit        = unit
+form.lable.view.1             = signature,View in pc
+form.lable.vouch.1            = Approved
+form.lable.vouch.2            = Not Approved
+
+freecoll.label = Unrestricted Collaboration
+
+gke.login.value = Login A8
+
+govinfo.label = Government Information
+
+index.welcome = {0}\uFF0CHello.
+
+info.confirm.load.template  = The original content of bulletin will be lost after loading of new bulletin page. \\n Are you sure to load new page?
+info.load.template          = Original news content will be lost after loading of new news board. \\n Are you sure to load new borad?
+info.please.select.template = Please select bulletin page!
+insert.localfile.label = Insert
+
+isearch.jsp.home.condition            = Condition
+isearch.jsp.home.date                 = Period
+isearch.jsp.home.scope                = Scope of Search
+isearch.jsp.home.scope.pigeonholed    = Archieved
+isearch.jsp.home.scope.pigeonholed.no = Not Archived
+isearch.jsp.home.scope.store          = Dump Data
+isearch.jsp.home.search               = Search
+isearch.jsp.home.sendtype             = Origin
+isearch.jsp.home.sendtype.isend       = Sent By Myself
+isearch.jsp.home.sendtype.someone     = Someone
+isearch.jsp.home.sendtype.tome        = Sent To Me
+isearch.jsp.home.to                   = To
+isearch.jsp.list.loc                  = Location
+isearch.jsp.list.result               = Search Results
+isearch.view.keywords                 = Keyword
+
+issue.content.label = Issue Content
+
+javax.portlet.title = Guestbook
+
+label.accept                        = Passed
+label.accept2                       = Issued Directly
+label.alert.backup                  = Backup
+label.alert.backupflag              = Backup Option
+label.alert.bc                      = BCC
+label.alert.cc                      = CC
+label.alert.chooseOutbox            = Choose Outbox
+label.alert.defaultbox              = Default Box
+label.alert.email                   = Email Address
+label.alert.error.archive           = Please select mail
+label.alert.error.comfirmdel        = Are you sure to delete
+label.alert.error.comfirmmove       = Are you sure to move
+label.alert.error.confirmphydelete  = Are you sure to delete?
+label.alert.error.delete            = Please select mail
+label.alert.error.download          = Please select mail
+label.alert.error.empty             = Are you sure?
+label.alert.error.fw                = Please select mail
+label.alert.error.fwonly            = Please select one
+label.alert.error.move              = Please select mail
+label.alert.error.reply             = Please select
+label.alert.error.replyonly         = Please select one
+label.alert.error.search.alert      = Searching...
+label.alert.error.search.conditions = Please enter conditions
+label.alert.error.search.title      = Search
+label.alert.fetch                   = Please wait...
+label.alert.isbackup                = isbackup
+label.alert.password                = Password
+label.alert.pop                     = Receiving Mail Server (POP3)
+label.alert.save                    = Saving, please wait!
+label.alert.savedraft               = Email is saving
+label.alert.searchscope             = Search scope
+label.alert.send                    = Email is sending...
+label.alert.sendleve                = Delivery Options
+label.alert.set.delete              = Are you sure?
+label.alert.set.select              = Please email
+label.alert.set.selectone           = Please select one
+label.alert.smtp                    = Sending Mail Server (SMPT)
+label.alert.to                      = To
+label.alert.username                = User Name
+label.attachments                   = Attachment
+label.audit                         = Audit
+label.auditneednot                  = Audit Not Needed
+label.configUser                    = Authorize To
+label.content.hasLink               = Text attached link is allowed
+label.content.link.availTime        = Link valid-time(hour)
+label.content.message.coll          = Send email notification case Collaboration online
+label.content.message.suffer        = Message prefix
+label.count                         = NUM
+label.equal                         = equal
+label.erromsg.1                     = Error
+label.erromsg.2                     = Please config your email first
+label.erromsg.3                     = Error
+label.erromsg.4                     = Error
+label.erromsg.5                     = Error
+label.erromsg.6                     = Error
+label.erromsg.7                     = Error
+label.erromsg.8                     = Error
+label.erromsg.9                     = Error
+label.error.inbox.general           = User name, password or other configuration errors, check the mailbox settings.
+label.error.inbox.password          = \u90AE\u7BB1\u914D\u7F6E\u51FA\u9519,\u8BF7\u68C0\u67E5\u5BC6\u7801\u662F\u5426\u586B\u5199\u6B63\u786E.
+label.error.inbox.pop               = \u90F5\u7BB1\u914D\u7F6E\u51FA\u932F,\u8ACB\u6AA2\u67E5POP\u5E33\u865F\u662F\u5426\u586B\u5BEB\u6B63\u78BA.
+label.error.inbox.serverbusy        = \u65E0\u6CD5\u8FDE\u63A5\u90AE\u7BB1\u670D\u52A1\u5668,\u8BF7\u7A0D\u540E\u91CD\u65B0\u63A5\u6536\u90AE\u4EF6.
+label.error.inbox.user              = \u90AE\u7BB1\u914D\u7F6E\u51FA\u9519,\u8BF7\u68C0\u67E5\u7528\u6237\u540D\u662F\u5426\u586B\u5199\u6B63\u786E.
+label.error.send.address            = \u53D1\u9001\u90AE\u4EF6\u51FA\u9519,\u8BF7\u68C0\u67E5\u53D1\u9001\u90AE\u4EF6\u7684\u5730\u5740\u662F\u5426\u6B63\u786E.
+label.error.send.general            = \u53D1\u9001\u90AE\u4EF6\u51FA\u9519 : \u8BF7\u68C0\u67E5\u90AE\u7BB1\u8BBE\u7F6E.
+label.error.send.password           = \u53D1\u9001\u90AE\u4EF6\u51FA\u9519 : \u8BF7\u68C0\u67E5\u90AE\u7BB1\u7684\u7528\u6237\u540D\u6216\u5BC6\u7801\u662F\u5426\u586B\u5199\u6B63\u786E.
+label.error.send.smtp               = Send e-mail error: Please make sure the SMTP address is correct.
+label.example                       = example
+label.failure                       = Failed
+label.gt                            = >
+label.head.after                    = after
+label.head.autoreply                = Auto Reply
+label.head.bc                       = BCC
+label.head.before                   = before
+label.head.cc                       = CC
+label.head.date                     = date
+label.head.equals                   = Equals
+label.head.from                     = Sender
+label.head.priority.2               = hight
+label.head.priority.3               = Normal
+label.head.priority.4               = lower
+label.head.size                     = size
+label.head.subject                  = subject
+label.head.to                       = To
+label.latest.bulletin               = Latest Bulletin
+label.less                          = less
+label.lt                            = <
+label.mail                          = E_mail
+label.mail.addbycontact             = Add to Address Book
+label.mail.addbymember              = Add to Employee List
+label.mail.contact                  = contact
+label.mail.create                   = Compose Email
+label.mail.draft                    = Draft Box
+label.mail.inbox                    = Inbox
+label.mail.pop3.port                = Port
+label.mail.pop3.ssl                 = The need for encrypted connections(SSL)
+label.mail.search                   = Search Results
+label.mail.searchMenu               = Box Searched
+label.mail.sendlist                 = Send Mail
+label.mail.sent                     = Sent
+label.mail.set                      = Set
+label.mail.trash                    = Trash Bin
+label.manage                        = Manage
+label.month                         = Month
+label.more                          = more
+label.new                           = New
+label.new.attention                 = please check the validity of address
+label.new.bulletin                  = Latest Bulletin
+label.new.bulletin.1                = Latest bulletins
+label.new.bulletin.2                = Units of the latest bulletin
+label.new.bulletin.3                = Latest Group Bulletins
+label.new.bulletin.3.rep            = Latest Group Bulletins
+label.new.bulletin.7                = Top Group Bulletins
+label.new.bulletin.8                = Units of the top Bulletins
+label.new.bulletin.custom           = The top Bulletins of this space
+label.new.create                    = New Mail
+label.new.delete                    = Delete
+label.new.news                      = Latest News
+label.new.not                       = No
+label.new.saveprepare               = Save
+label.new.word                      = New
+label.new.yes                       = Yes
+label.news                          = New
+label.news.new                      = Latest News
+label.news.type                     = News Type
+label.newword                       = New
+label.noaccept                      = Unpassed
+label.noaudit                       = Unaudited
+label.noread                        = Unread
+label.noused                        = Forbidden \r\n
+label.num                           = Serial NUM
+label.pos                           = Your Position:
+label.read                          = Read
+label.readCount                     = read count
+label.search.title                  = Query Mails
+label.set.pop.service.open          = Some mail box should be active its POP service.
+label.stat.byPublishDate            = Issue Date
+label.stat.byRead                   = Read Counts
+label.stat.byState                  = State
+label.stat.byType                   = Type
+label.stat.byWrite                  = Initiator
+label.success                       = Success
+label.template                      = Template
+label.top.js                        = Top
+label.total                         = Total
+label.totals                        = Bulletin Gross
+label.type.bulletin                 = Bulletin Type
+label.type.news                     = News Type
+label.used                          = Activate
+label.write                         = Sponsor
+
+leaveword.issue.label = Publication
+leaveword.more.label  = More
+m1.lbs.attendance.record.search = Mobile sign inquiry
+
+mail.set.success     = Set successfully!
+mail.test.address    = Test Email
+mail.test.send       = Test Send
+mail.test.send.faile = Failed to send, make sure the mailbox support SMTP service, and the parameters are set correctly.
+mail.test.send.label = Test Send
+mail.test.send.ok    = Send Success.
+name.label = Name
+
+nodeptspace.label = All the departments you are working in mainly or part-time don't have a space and the page will transfer to account bulletins which you can visit.
+
+notice.content.notnull = Please fill out the content!
+
+office.label = Auto / Stock / Asset Audit
+
+other.label = New
+
+please_enter_num = <Please enter the Arabic numerals>
+
+post.content   = Post Content
+post.delete.ok = Confirm to delete selected post?
+
+publicInfoMation.label = Please select
+
+quick.reply.label = Quickly Reply
+
+samename.templete.exist = Templete with the same name {0} exists already!
+
+save.inqtemplete.successfully = Save inquiry templete \u300A{0}\u300B successfully!
+
+search.label        = Full text retrieval
+search.result.title = Search result
+
+see.more.article.label = View More Article
+
+send.message.to.issue.user.label = Reply To Sponsor
+
+set.relate.member = Configuration associated personnel
+
+show.more.member        = more
+show.relateMember.label = relateMember
+
+space.1.name            = Dept
+space.17.name           = Unit
+space.18.name           = Group
+space.18.name.GOV       = Organization
+space.2.name            = Unit
+space.3.name            = Group
+space.3.name.GOV        = Organization
+space.4.name            = Team
+
+spaceDiscussed.lable = Discussed in this space
+
+spaceannouncement.lable = The announcement of this space
+
+spacenews.lable = The Space News
+
+spacesurvey.lable = The space survey
+
+state.audit        = Audited
+state.noaudit      = Unaudited
+state.nopigeonhole = Unarchived
+state.nopublish    = Unissued
+state.pigeonhole   = Unarchived
+state.publish      = Issued
+
+station.label = Post
+
+survey.join.people            = Number of participating in the survey <font color="red"> {0} </font>
+survey.join.people.link       = Number of participating in the survey
+survey.now.votes              = At present, there are <font color="red"> {0} </font> people to vote
+survey.now.votes.link1        = At present, there are
+survey.now.votes.link2        = people to vote
+survey.now.votes.notvote      = <font color="red">{0}</font> people to not vote
+survey.now.votes.notvote.link = people to not vote
+
+synchron.day      = Days
+synchron.hour     = Hour
+synchron.interval = Synchronization interval settings
+
+system.menuname.mobileLogin.configure          = SMS login authentication configuration
+system.menuname.mobileLogin.controlScope.false = Full system all user accounts (excluding admin)
+system.menuname.mobileLogin.controlScope.null  = Specify the account, the selection of personnel can not be empty!
+system.menuname.mobileLogin.controlScope.true  = Appoint account
+system.menuname.mobileLogin.defaultOn.false    = Do not open the default SMS verification code, the user can open their own
+system.menuname.mobileLogin.defaultOn.true     = Default open SMS verification code, the user can automatically shut down
+system.menuname.mobileLogin.verify.on          = Enable login verification code
+system.menuname.mobileLogin.verify.off         = Do not enable login verification code
+system.menuname.mobileLogin.explain            = Note: if the user does not set the phone number in the system, then even open the login message authentication, the user login, there is no SMS verification.
+system.menuname.mobileLogin.explain1           = Namely: SMS verification two premise: 1 to open the login message authentication; 2 system users have the phone number.
+system.menuname.mobileLogin.explain2           = Therefore, the normal use of this feature, please set the phone number.
+
+systemMailbox.setting.cancel      = Cancel Setting
+systemMailbox.setting.description = <li>In [Application Configuration Viewer] to set the parameters under tab to configure "internet.site.url" parameter</li>\r\n<li>System for system message mailbox when the mail message to remind the initiator</li>\r\n<li>Message body with links for direct click on the link in the message to open the page in detail</li>\r\n<li>After setting the system mailbox, you can 'mail test' to test whether normal mail delivery notification</li>
+system.mail.configuration.description = Configuration description <br/>1. please check your mailbox settings to ensure that POP (3) /SMTP service is opened. <br/>2. please check your mail service port POP (3) /SMTP service port is normal access, if not access please check network configuration, (consult: cooperative server execution command telnet pop.qq.com 110). <br/>3. some mailbox security policies need to use authorization code login, such as 163 mailboxes, QQ mailboxes need third party authorization code authentication, in detail please check the http://service.mail.qq.com/cgi-bin/help? Subtype=1&&no=1001256&&id=28. <br/>4. and system mailbox only support POP (3), SMTP protocol, SSL encryption, and other protocol encryption, such as exchange protocol does not support. <br/>
+
+
+templatecoll.all          = all
+templatecoll.label        = Template
+templatecoll.label.noForm = Template
+templatecoll.select       = select template

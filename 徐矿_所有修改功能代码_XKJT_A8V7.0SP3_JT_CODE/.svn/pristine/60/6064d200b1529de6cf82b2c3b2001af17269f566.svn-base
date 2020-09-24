@@ -1,0 +1,3499 @@
+var wfAjax = new WFAjax();
+var workfowFlashDialog = null;
+function removeWorkflowMatchResultCache() {
+    try {
+        return wfAjax.removeWorkflowMatchResultCache(matchRequestToken)
+    } catch (A) {
+        alert(A.message)
+    }
+}
+function canTakeBack(C, H, G, D, B, A, E) {
+    try {
+        if ($("#workflow_node_condition_input")[0]) {
+            $("#workflow_node_condition_input")[0].value = '{"matchRequestToken":"' + matchRequestToken + '"}'
+        }
+        return wfAjax.canTakeBack(A, H, G, C)
+    } catch (F) {
+        alert(F.message)
+    }
+}
+function saveProcessTempleteAndEvents() {
+    var C = function () {
+        var G;
+        if ($.browser.mozilla) {
+            G = document.getElementById("wfIframe").contentWindow
+        } else {
+            G = document.wfIframe
+        }
+        return G
+    };
+    if (!$("#wfIframe")[0]) {
+        alert("No Iframe named 'wfIframe' was found.");
+        return false
+    }
+    var F = C();
+    var A = $("#process_event").val();
+    if (!initPageDataToParentPage(F, this)) {
+        return false
+    }
+    var E = $("#process_xml").val();
+    var D = F.getProcessId();
+    var B = wfAjax.saveProcessTempleteAndEvents(D, E, A);
+    if (B) {
+        $.alert(B);
+        return false
+    }
+    return true
+}
+function canStopFlow(A) {
+    try {
+        if ($("#workflow_node_condition_input")[0]) {
+            $("#workflow_node_condition_input")[0].value = '{"matchRequestToken":"' + matchRequestToken + '"}'
+        }
+        return wfAjax.canStopFlow(A)
+    } catch (B) {
+        alert(B.message)
+    }
+}
+function canRepeal(A, D, C) {
+    try {
+        if ($("#workflow_node_condition_input")[0]) {
+            $("#workflow_node_condition_input")[0].value = '{"matchRequestToken":"' + matchRequestToken + '"}'
+        }
+        return wfAjax.canRepeal(A, D, C)
+    } catch (B) {
+        alert(B.message)
+    }
+}
+function canStepBack(B, G, F, A, C, D) {
+    try {
+        if ($("#workflow_node_condition_input")[0]) {
+            $("#workflow_node_condition_input")[0].value = '{"matchRequestToken":"' + matchRequestToken + '"}'
+        }
+        D = D == undefined ? "" : D;
+        C = C == undefined ? "" : C;
+        return wfAjax.canStepBack(B, A, G, F, C, D)
+    } catch (E) {
+        alert(E.message)
+    }
+}
+function lockWorkflowForStepBack(C, A, J, M, O, H, I, F, G, L, N, P, R, Q, K, E, D) {
+    if ($("#workflow_node_condition_input")[0]) {
+        $("#workflow_node_condition_input")[0].value = '{"matchRequestToken":"' + matchRequestToken + '"}'
+    }
+    D = D == undefined ? "" : D;
+    E = E == undefined ? "" : E;
+    var B = new Object();
+    B.formData = N;
+    B.mastrid = N;
+    B.processTemplateId = F;
+    B.processId = G;
+    B.caseId = J;
+    B.currentActivityId = L;
+    B.currentWorkitemId = A;
+    B.currentUserId = C;
+    B.bussinessId = H;
+    B.affairId = I;
+    B.appName = P;
+    B.formAppId = R;
+    B.formViewOperation = K;
+    B.matchRequestToken = matchRequestToken;
+    return wfAjax.lockWorkflowForStepBack(B, M, O, E, D)
+}
+function canTemporaryPending(A) {
+    try {
+        if ($("#workflow_node_condition_input")[0]) {
+            $("#workflow_node_condition_input")[0].value = '{"matchRequestToken":"' + matchRequestToken + '"}'
+        }
+        return wfAjax.canTemporaryPending(A)
+    } catch (B) {
+        alert(B.message)
+    }
+}
+function canSubmitWorkFlow(A) {
+    if (null != A && A != "" && A != "-1") {
+        return wfAjax.canWorkflowCurrentNodeSubmit(A)
+    }
+    return null
+}
+function lockWorkflow(E, B, C) {
+    try {
+        var A = wfAjax.lockWorkflow(E, B, C);
+        if (A == null) {
+            A = new Array("false", $.i18n("workflow.wapi.exception.msg002"))
+        }
+        return A
+    } catch (D) {
+        alert(D.message)
+    }
+}
+function lockWorkflowUseNowexpirationTime(F, C, D, B) {
+    try {
+        if (B && B == "true") {
+            B = true
+        } else {
+            B = false
+        }
+        var A = wfAjax.lockWorkflow(F, C, D, B);
+        if (A == null) {
+            A = new Array("false", $.i18n("workflow.wapi.exception.msg002"))
+        }
+        return A
+    } catch (E) {
+        alert(E.message)
+    }
+}
+function releaseWorkflow(C, A) {
+    try {
+        return wfAjax.releaseWorkflow(C, A)
+    } catch (B) {
+        alert(B.message)
+    }
+}
+function releaseWorkflowByAction(D, A, B) {
+    try {
+        return wfAjax.releaseWorkflow(D, A, B)
+    } catch (C) {
+        alert(C.message)
+    }
+}
+function checkWorkflowLock(D, B) {
+    try {
+        var A = wfAjax.checkWorkflowLock(D, B);
+        if (A == null) {
+            A = new Array("false", $.i18n("workflow.wapi.exception.msg002"))
+        }
+        return A
+    } catch (C) {
+        alert(C.message)
+    }
+}
+function checkWorkflowLock(E, B, C) {
+    try {
+        var A = wfAjax.checkWorkflowLock(E, B, C);
+        if (A == null) {
+            A = new Array("false", $.i18n("workflow.wapi.exception.msg002"))
+        }
+        return A
+    } catch (D) {
+        alert(D.message)
+    }
+}
+function _closeFlashDialogBeforeOpen(A) {
+    if (workfowFlashDialog) {
+        workfowFlashDialog.isHide = false;
+        workfowFlashDialog.close(workfowFlashDialog.index)
+    } else {
+        if ($("#workflow_dialog_workflowDesigner_Id", A.document).size() > 0) {
+            A.$("#workflow_dialog_workflowDesigner_Id_mask").remove();
+            A.$("#workflow_dialog_workflowDesigner_Id").remove()
+        }
+    }
+}
+function _closeOrHideFlashDialog() {
+    if (!$.browser.msie) {
+        workfowFlashDialog.close()
+    } else {
+        workfowFlashDialog.hideDialog()
+    }
+}
+function createWFTemplate(N, O, F, Q, C, L, R, D, U, E, I, T, H, S, J, A, P, G, M) {
+    var B = "";
+    var K = "";
+    if (H && H != "-1") {
+        if (Q && Q != "-1") {
+            B += Q + "."
+        }
+        B += H
+    }
+    if (T && T != "-1") {
+        if (Q && Q != "-1") {
+            K += Q + "."
+        }
+        K += T
+    }
+    editWorkflow({
+        targetWin: N,
+        valueWin: L,
+        embedIframeObj: G,
+        appName: O,
+        processId: C,
+        oldTemplateId: A,
+        defaultPolicyId: R,
+        defaultPolicyName: S,
+        currentUserId: D,
+        currentUserName: U,
+        currentAccountName: E,
+        flowPermAccountId: I,
+        formApp: F,
+        startDefualtRightId: B,
+        normalDefualtRightId: K,
+        wendanId: J,
+        isvalidate: P,
+        canCopyFlow: M
+    })
+}
+function modifyWFTemplateForEgg(L, M, E, N, B, J, O, C, R, D, H, Q, G, P, K) {
+    var F = L;
+    if (J) {
+        F = J
+    }
+    var A = "";
+    var I = "";
+    if (G && G != "-1") {
+        if (N && N != "-1") {
+            A += N + "."
+        }
+        A += G
+    }
+    if (Q && Q != "-1") {
+        if (N && N != "-1") {
+            I += N + "."
+        }
+        I += Q
+    }
+    editWorkflowForEgg({
+        targetWin: L,
+        valueWin: J,
+        appName: M,
+        processId: B,
+        defaultPolicyId: O,
+        defaultPolicyName: P,
+        currentUserId: C,
+        currentUserName: R,
+        currentAccountName: D,
+        flowPermAccountId: H,
+        formApp: E,
+        startDefualtRightId: A,
+        normalDefualtRightId: I,
+        canCopyFlow: K
+    })
+}
+function cloneWFTemplate(M, N, G, O, B, K, P, C, S, E, I, R, H, Q, D, F, L) {
+    var A = "";
+    var J = "";
+    if (H && H != "-1") {
+        if (O && O != "-1") {
+            A += O + "."
+        }
+        A += H
+    }
+    if (R && R != "-1") {
+        if (O && O != "-1") {
+            J += O + "."
+        }
+        J += R
+    }
+    editWorkflowForClone({
+        targetWin: M,
+        valueWin: K,
+        appName: N,
+        processId: B,
+        defaultPolicyId: P,
+        defaultPolicyName: Q,
+        currentUserId: C,
+        currentUserName: S,
+        currentAccountName: E,
+        flowPermAccountId: I,
+        formApp: G,
+        startDefualtRightId: A,
+        normalDefualtRightId: J,
+        wendanId: F,
+        oldWendanId: D,
+        canCopyFlow: L
+    })
+}
+function editWorkflow(Q) {
+    var M = Q.targetWin;
+    var K = Q.valueWin;
+    var F = Q.embedIframeObj;
+    var N = Q.appName;
+    var I = Q.processId;
+    var B = Q.oldTemplateId;
+    var R = Q.defaultPolicyId;
+    var S = Q.defaultPolicyName;
+    var C = Q.currentUserId;
+    var T = Q.currentUserName;
+    var E = Q.currentAccountName;
+    var H = Q.flowPermAccountId;
+    var D = Q.formApp;
+    var A = Q.startDefualtRightId;
+    var O = Q.normalDefualtRightId;
+    var J = Q.wendanId;
+    var P = Q.isvalidate;
+    var L = Q.canCopyFlow;
+    var G = M;
+    if (K) {
+        G = K
+    }
+    _closeFlashDialogBeforeOpen(M);
+    setTimeout(function () {
+        B = B == undefined ? "" : B;
+        var V = $(M).width();
+        var W = $(M).height();
+        if (V <= 0) {
+            V = $(document.body).width();
+            W = $(document.body).height()
+        }
+        var X = false;
+        if (P) {
+            X = true
+        }
+        var U = _wfctxPath + "/workflow/designer.do?method=showDiagram&isDebugger=false&scene=0&isModalDialog=true";
+        U += "&formApp=" + D;
+        U += "&appName=" + N;
+        U += "&processId=" + I;
+        U += "&currentUserId=" + C;
+        U += "&currentUserName=" + escapeSpecialChar(encodeURIComponent(T));
+        U += "&currentUserAccountName=" + escapeSpecialChar(encodeURIComponent(E));
+        U += "&defaultPolicyId=" + escapeSpecialChar(encodeURIComponent(R));
+        U += "&defaultPolicyName=" + escapeSpecialChar(encodeURIComponent(S));
+        U += "&flowPermAccountId=" + H;
+        U += "&wendanId=" + (J || "-1");
+        U += "&isvalidate=false&oldPTId=" + B;
+        U += "&startFormViewOperation=" + A;
+        U += "&nodeFormViewOperation=" + O;
+        U += "&needValidate=" + X;
+        U += "&canCopyFlow=" + L;
+        U += "&isTemplate=true";
+        U += CsrfGuard.getUrlSurffix();
+        if (F) {
+            U += "&openFromIframe=true";
+            F.src = U;
+            return
+        }
+        workfowFlashDialog = $.dialog({
+                id: "workflow_dialog_workflowDesigner_Id",
+                isHide: true,
+                url: U,
+                width: V - 20,
+                height: W - 100,
+                title: $.i18n("workflow.designer.title"),
+                targetWindow: M,
+                transParams: {
+                    subProcessJson: $("#process_subsetting", G.document).val(),
+                    formId: $("#formId").val(),
+                    dwidths: V,
+                    dheights: W - 20,
+                    workflowRule: $("#process_rulecontent", G.document).val(),
+                    returnValueWindow: G
+                },
+                closeParam: {
+                    show: true,
+                    handler: function () {
+                        if (typeof recoverWorkFlowHistoryData == "function") {
+                            recoverWorkFlowHistoryData()
+                        }
+                    }
+                },
+                minParam: {
+                    show: false
+                },
+                maxParam: {
+                    show: false
+                },
+                notCopyReturnValue: true,
+                buttons: [{
+                        text: $.i18n("workflow.designer.page.button.ok"),
+                        isEmphasize: true,
+                        handler: function () {
+                            var Y = workfowFlashDialog.getReturnValue({
+                                    innerButtonId: "ok"
+                                });
+                            if (Y) {
+                                initDialogDataToParentPage(Y, G, M);
+                                _closeOrHideFlashDialog();
+                                if (typeof finishWorkFlowModify == "function") {
+                                    finishWorkFlowModify()
+                                }
+                            }
+                        }
+                    }, {
+                        text: $.i18n("workflow.designer.page.button.cancel"),
+                        handler: function () {
+                            _closeOrHideFlashDialog();
+                            if (typeof recoverWorkFlowHistoryData == "function") {
+                                recoverWorkFlowHistoryData()
+                            }
+                        }
+                    }
+                ]
+            })
+    }, 10)
+}
+function editWorkflowForEgg(Q) {
+    var M = Q.targetWin;
+    var K = Q.valueWin;
+    var N = Q.appName;
+    var H = Q.processId;
+    var B = Q.oldTemplateId;
+    var J = Q.templateId;
+    var R = Q.defaultPolicyId;
+    var S = Q.defaultPolicyName;
+    var C = Q.currentUserId;
+    var T = Q.currentUserName;
+    var E = Q.currentAccountName;
+    var G = Q.flowPermAccountId;
+    var D = Q.formApp;
+    var A = Q.startDefualtRightId;
+    var O = Q.normalDefualtRightId;
+    var I = Q.wendanId;
+    var P = Q.isvalidate;
+    var L = Q.canCopyFlow;
+    var F = M;
+    if (K) {
+        F = K
+    }
+    _closeFlashDialogBeforeOpen(M);
+    setTimeout(function () {
+        var U = $("#process_xml", currentTr).val();
+        var W = $("#process_subsetting", currentTr).val();
+        W = W == undefined ? "" : W;
+        var a = wfAjax.validateProcessTemplateXMLForEgg(N, H, U, D, W);
+        $("#process_xml", currentTr).val(a[0]);
+        $("#process_subsetting", currentTr).val(a[3]);
+        $("#process_xml", F.document).val(a[0]);
+        $("#process_subsetting", F.document).val(a[3]);
+        B = $("#process_id", currentTr).val();
+        B = B == undefined ? "" : B;
+        var X = $(M).width();
+        var Y = $(M).height();
+        if (X <= 0) {
+            X = $(document.body).width();
+            Y = $(document.body).height()
+        }
+        var Z = false;
+        if (P) {
+            Z = true
+        }
+        var V = _wfctxPath + "/workflow/designer.do?method=showDiagram&isDebugger=false&scene=0&isModalDialog=true";
+        V += "&formApp=" + D;
+        V += "&appName=" + N;
+        V += "&processId=" + H;
+        V += "&currentUserId=" + C;
+        V += "&currentUserName=" + escapeSpecialChar(encodeURIComponent(T));
+        V += "&currentUserAccountName=" + escapeSpecialChar(encodeURIComponent(E));
+        V += "&defaultPolicyId=" + escapeSpecialChar(encodeURIComponent(R));
+        V += "&defaultPolicyName=" + escapeSpecialChar(encodeURIComponent(S));
+        V += "&flowPermAccountId=" + G;
+        V += "&wendanId=" + (I || "-1");
+        V += "&isvalidate=false&oldPTId=" + B;
+        V += "&startFormViewOperation=" + A;
+        V += "&nodeFormViewOperation=" + O;
+        V += "&needValidate=" + Z;
+        V += "&templateId=" + (J || "-1");
+        V += "&isTemplate=true";
+        V += "&canCopyFlow=" + L;
+        workfowFlashDialog = $.dialog({
+                id: "workflow_dialog_workflowDesigner_Id",
+                isHide: true,
+                url: V,
+                width: X - 20,
+                height: Y - 100,
+                title: $.i18n("workflow.designer.title"),
+                targetWindow: M,
+                transParams: {
+                    subProcessJson: $("#process_subsetting", currentTr).val(),
+                    formId: $("#formId").val(),
+                    dwidths: X,
+                    dheights: Y - 20,
+                    workflowRule: $("#process_rulecontent", currentTr).val(),
+                    returnValueWindow: F,
+                    verifyResultXml: a[1]
+                },
+                closeParam: {
+                    show: true,
+                    handler: function () {
+                        if (typeof recoverWorkFlowHistoryData == "function") {
+                            recoverWorkFlowHistoryData()
+                        }
+                    }
+                },
+                minParam: {
+                    show: false
+                },
+                maxParam: {
+                    show: false
+                },
+                notCopyReturnValue: true,
+                buttons: [{
+                        text: $.i18n("workflow.designer.page.button.ok"),
+                        isEmphasize: true,
+                        handler: function () {
+                            var b = workfowFlashDialog.getReturnValue({
+                                    innerButtonId: "ok"
+                                });
+                            if (b) {
+                                var d = wfAjax.validateFormTemplate(N, D || "", b[1], b[4]);
+                                if (d == null || d.length < 2) {
+                                    $.alert($.i18n("workflow.label.dialog.validateError.js"));
+                                    return
+                                }
+                                if ("false" == d[0]) {
+                                    if ($("#needRedirect", currentTr)[0]) {
+                                        $("#needRedirect", currentTr).val("true")
+                                    }
+                                    var f = $($.parseXML(d[1].substr(38)));
+                                    var l = f.find("n[s=false]");
+                                    var c = true,
+                                    o = "";
+                                    if (l.size() > 0) {
+                                        loopFlag1: for (var h = 0, j = l.size(); h < j; h++) {
+                                            var e = l.eq(h);
+                                            for (var g = 0; g < 5; g++) {
+                                                if ("false" == e.find("r" + g).text()) {
+                                                    c = false;
+                                                    o = e.find("r" + g + "msg").text();
+                                                    break loopFlag1
+                                                }
+                                            }
+                                        }
+                                    }
+                                    var m = f.find("l[s=false]");
+                                    if (c && m.size() > 0) {
+                                        loopFlag2: for (var h = 0, j = m.size(); h < j; h++) {
+                                            var k = m.eq(h);
+                                            if ("false" == k.find("r0").text()) {
+                                                c = false;
+                                                o = k.find("r0msg").text();
+                                                break loopFlag2
+                                            }
+                                        }
+                                    }
+                                    var n = f.find("cl[s=false]");
+                                    if (c && n.size() > 0) {
+                                        loopFlag2: for (var h = 0, j = n.size(); h < j; h++) {
+                                            var k = n.eq(h);
+                                            if ("false" == k.find("r0").text()) {
+                                                c = false;
+                                                o = k.find("r0msg").text();
+                                                break loopFlag2
+                                            }
+                                        }
+                                    }
+                                    f = l = m = e = k = n = null;
+                                    if (!c) {
+                                        $.alert(o);
+                                        return
+                                    }
+                                }
+                                initDialogDataToParentPage4egg(b, F, M);
+                                if ($("#needRedirect", currentTr)[0]) {
+                                    $("#needRedirect", currentTr).val("false")
+                                }
+                                _closeOrHideFlashDialog();
+                                if (typeof finishWorkFlowModify == "function") {
+                                    finishWorkFlowModify()
+                                }
+                            }
+                        }
+                    }, {
+                        text: $.i18n("workflow.designer.page.button.cancel"),
+                        handler: function () {
+                            _closeOrHideFlashDialog();
+                            if (typeof recoverWorkFlowHistoryData == "function") {
+                                recoverWorkFlowHistoryData()
+                            }
+                        }
+                    }
+                ]
+            })
+    }, 10)
+}
+function editWorkflowForClone(R) {
+    var N = R.targetWin;
+    var L = R.valueWin;
+    var O = R.appName;
+    var I = R.processId;
+    var B = R.oldTemplateId;
+    var K = R.templateId;
+    var S = R.defaultPolicyId;
+    var T = R.defaultPolicyName;
+    var C = R.currentUserId;
+    var V = R.currentUserName;
+    var F = R.currentAccountName;
+    var H = R.flowPermAccountId;
+    var E = R.formApp;
+    var A = R.startDefualtRightId;
+    var P = R.normalDefualtRightId;
+    var J = R.wendanId;
+    var D = R.oldWendanId;
+    var Q = R.isvalidate;
+    var M = R.canCopyFlow;
+    var U = wfAjax.selectProcessTemplateXMLForClone(O, I, E, D || "-1", J || "-1", "{}");
+    if (U == null || U.length < 2) {
+        $.alert($.i18n("workflow.label.dialog.cloneFailure.js"));
+        return
+    }
+    var G = N;
+    if (L) {
+        G = L
+    }
+    _closeFlashDialogBeforeOpen(N);
+    setTimeout(function () {
+        var X = $("#process_xml", G.document).val();
+        B = $("#process_id", G.document).val();
+        B = B == undefined ? "" : B;
+        $("#process_xml", G.document).val(U[0]);
+        var Y = $(N).width();
+        var Z = $(N).height();
+        if (Y <= 0) {
+            Y = $(document.body).width();
+            Z = $(document.body).height()
+        }
+        var a = false;
+        if (Q) {
+            a = true
+        }
+        var W = _wfctxPath + "/workflow/designer.do?method=showDiagram&isDebugger=false&scene=0&isModalDialog=true";
+        W += "&formApp=" + E;
+        W += "&appName=" + O;
+        W += "&currentUserId=" + C;
+        W += "&currentUserName=" + escapeSpecialChar(encodeURIComponent(V));
+        W += "&currentUserAccountName=" + escapeSpecialChar(encodeURIComponent(F));
+        W += "&defaultPolicyId=" + escapeSpecialChar(encodeURIComponent(S));
+        W += "&defaultPolicyName=" + escapeSpecialChar(encodeURIComponent(T));
+        W += "&flowPermAccountId=" + H;
+        W += "&wendanId=" + (J || "-1");
+        W += "&isvalidate=false&oldPTId=" + B;
+        W += "&startFormViewOperation=" + A;
+        W += "&nodeFormViewOperation=" + P;
+        W += "&needValidate=" + a;
+        W += "&templateId=" + (K || "-1");
+        W += "&isTemplate=true";
+        W += "&canCopyFlow=" + M;
+        workfowFlashDialog = $.dialog({
+                id: "workflow_dialog_workflowDesigner_Id",
+                isHide: true,
+                url: W,
+                width: Y - 20,
+                height: Z - 100,
+                title: $.i18n("workflow.designer.title"),
+                targetWindow: N,
+                transParams: {
+                    subProcessJson: $("#process_subsetting", G.document).val(),
+                    formId: $("#formId").val(),
+                    dwidths: Y,
+                    dheights: Z - 20,
+                    workflowRule: $("#process_rulecontent", G.document).val(),
+                    returnValueWindow: G,
+                    verifyResultXml: U[1],
+                    isClone: true,
+                    appName: O,
+                    formApp: E
+                },
+                closeParam: {
+                    show: true,
+                    handler: function () {
+                        $("#process_xml", G.document).val(X);
+                        if (typeof recoverWorkFlowHistoryData == "function") {
+                            recoverWorkFlowHistoryData()
+                        }
+                    }
+                },
+                minParam: {
+                    show: false
+                },
+                maxParam: {
+                    show: false
+                },
+                notCopyReturnValue: true,
+                buttons: [{
+                        text: $.i18n("workflow.designer.page.button.ok"),
+                        isEmphasize: true,
+                        handler: function () {
+                            var b = workfowFlashDialog.getReturnValue({
+                                    innerButtonId: "ok"
+                                });
+                            if (b) {
+                                var d = wfAjax.validateFormTemplate(O, E || newWendanId || "", b[1], b[4]);
+                                if (d == null || d.length < 2) {
+                                    $.alert($.i18n("workflow.label.dialog.validateError.js"));
+                                    return
+                                }
+                                if ("false" == d[0]) {
+                                    var f = $($.parseXML(d[1].substr(38)));
+                                    var l = f.find("n[s=false]");
+                                    var c = true,
+                                    o = "";
+                                    if (l.size() > 0) {
+                                        loopFlag1: for (var h = 0, j = l.size(); h < j; h++) {
+                                            var e = l.eq(h);
+                                            for (var g = 0; g < 5; g++) {
+                                                if ("false" == e.find("r" + g).text()) {
+                                                    c = false;
+                                                    o = e.find("r" + g + "msg").text();
+                                                    break loopFlag1
+                                                }
+                                            }
+                                        }
+                                    }
+                                    var m = f.find("l[s=false]");
+                                    if (c && m.size() > 0) {
+                                        loopFlag2: for (var h = 0, j = m.size(); h < j; h++) {
+                                            var k = m.eq(h);
+                                            if ("false" == k.find("r0").text()) {
+                                                c = false;
+                                                o = k.find("r0msg").text();
+                                                break loopFlag2
+                                            }
+                                        }
+                                    }
+                                    var n = f.find("cl[s=false]");
+                                    if (c && n.size() > 0) {
+                                        loopFlag3: for (var h = 0, j = n.size(); h < j; h++) {
+                                            var k = n.eq(h);
+                                            if ("false" == k.find("r0").text()) {
+                                                c = false;
+                                                o = k.find("r0msg").text();
+                                                break loopFlag3
+                                            }
+                                        }
+                                    }
+                                    f = l = m = e = n = k = null;
+                                    if (!c) {
+                                        o = "<div style='width:270px;' class='word_break_all'>" + o + "<div>";
+                                        $.alert(o);
+                                        return
+                                    }
+                                }
+                                initDialogDataToParentPage(b, G, N);
+                                _closeOrHideFlashDialog();
+                                if (typeof finishWorkFlowModify == "function") {
+                                    finishWorkFlowModify()
+                                }
+                            }
+                        }
+                    }, {
+                        text: $.i18n("workflow.designer.page.button.cancel"),
+                        handler: function () {
+                            $("#process_xml", G.document).val(X);
+                            _closeOrHideFlashDialog();
+                            if (typeof recoverWorkFlowHistoryData == "function") {
+                                recoverWorkFlowHistoryData()
+                            }
+                        }
+                    }
+                ]
+            })
+    }, 10)
+}
+function initDialogDataToParentPage4egg(V, H, S) {
+    var B = V[0];
+    var E = V[1];
+    var P = V[2];
+    var U = V[3];
+    var D = V[4];
+    var N = V[5];
+    var L = $("#process_desc_by", currentTr)[0];
+    var I = $("#process_xml", currentTr)[0];
+    var A = $("#value4Show", currentTr)[0];
+    var O = $("#process_rulecontent", currentTr)[0];
+    var Q = $("#process_subsetting", currentTr)[0];
+    var F = $("#process_event", currentTr)[0];
+    if (!L && B) {
+        showFlashAlert("Error: not found process_desc_by input element in parent page!");
+        throw new Error("Error: not found process_desc_by input element in parent page!")
+    }
+    if (!I && E) {
+        showFlashAlert("Error: not found process_xml input element in parent page!");
+        throw new Error("Error: not found process_xml input element in parent page!")
+    }
+    if (!A && P) {
+        showFlashAlert("Error: not found process_info input element in parent page!");
+        throw new Error("Error: not found process_info input element in parent page!")
+    }
+    if (!O && U) {
+        alert("Error: not found process_rulecontent input element in parent page!");
+        throw new Error("Error: not found process_rulecontent input element in parent page!")
+    }
+    if (!Q && D) {
+        showFlashAlert("Error: not found process_subsetting input element in parent page!");
+        throw new Error("Error: not found process_subsetting input element in parent page!")
+    }
+    if (B) {
+        L.value = B
+    }
+    if (E) {
+        I.value = E
+    }
+    if (P) {
+        A.value = P;
+        $(A).trigger("propertychange").trigger("input");
+        try {
+            $("#process_info").tokenInput("destroy")
+        } catch (T) {}
+    }
+    try {
+        O.value = (U == undefined || U == null) ? "" : U
+    } catch (T) {}
+    if (D) {
+        Q.value = D
+    }
+    if (F) {
+        F.value = N
+    }
+    try {
+        var C = $("#process_desc_by", currentTr)[0];
+        var R = $("#process_xml", currentTr)[0];
+        var M = $("#value4Show", currentTr)[0];
+        var J = $("#process_rulecontent", currentTr)[0];
+        var K = $("#process_subsetting", currentTr)[0];
+        var G = $("#process_event", currentTr)[0];
+        C.value = B;
+        R.value = E;
+        M.value = P;
+        J.value = U;
+        K.value = D;
+        G.value = N;
+        afterValueChange()
+    } catch (T) {}
+}
+function initDialogDataToParentPage(V, H, S) {
+    var B = V[0];
+    var E = V[1];
+    var P = V[2];
+    var U = V[3];
+    var D = V[4];
+    var N = V[5];
+    var L = $("#process_desc_by", H.document)[0];
+    var I = $("#process_xml", H.document)[0];
+    var A = $("#process_info", H.document)[0];
+    var O = $("#process_rulecontent", H.document)[0];
+    var Q = $("#process_subsetting", H.document)[0];
+    var F = $("#process_event", H.document)[0];
+    if (!L && B) {
+        showFlashAlert("Error: not found process_desc_by input element in parent page!");
+        throw new Error("Error: not found process_desc_by input element in parent page!")
+    }
+    if (!I && E) {
+        showFlashAlert("Error: not found process_xml input element in parent page!");
+        throw new Error("Error: not found process_xml input element in parent page!")
+    }
+    if (!A && P) {
+        showFlashAlert("Error: not found process_info input element in parent page!");
+        throw new Error("Error: not found process_info input element in parent page!")
+    }
+    if (!O && U) {
+        alert("Error: not found process_rulecontent input element in parent page!");
+        throw new Error("Error: not found process_rulecontent input element in parent page!")
+    }
+    if (!Q && D) {
+        showFlashAlert("Error: not found process_subsetting input element in parent page!");
+        throw new Error("Error: not found process_subsetting input element in parent page!")
+    }
+    if (B) {
+        L.value = B
+    }
+    if (E) {
+        I.value = E
+    }
+    if (P) {
+        $("#process_info", H.document).attr("value", P);
+        $("#process_info", H.document).trigger("propertychange").trigger("input");
+        try {
+            $("#process_info", H.document).tokenInput("destroy");
+            if (typeof(hideCommonContact) != "undefined") {
+                hideCommonContact()
+            }
+        } catch (T) {}
+        $("#process_info", H.document).attr("value", P)
+    }
+    try {
+        O.value = (U == undefined || U == null) ? "" : U
+    } catch (T) {}
+    if (D) {
+        Q.value = D
+    }
+    if (F) {
+        F.value = N
+    }
+    try {
+        var C = $("#process_desc_by", S.document)[0];
+        var R = $("#process_xml", S.document)[0];
+        var M = $("#process_info", S.document)[0];
+        var J = $("#process_rulecontent", S.document)[0];
+        var K = $("#process_subsetting", S.document)[0];
+        var G = $("#process_event", S.document)[0];
+        C.value = B;
+        R.value = E;
+        M.value = P;
+        J.value = U;
+        K.value = D;
+        G.value = N
+    } catch (T) {}
+}
+function createWFPersonal(J, G, D, F, C, B, I, E, H, A) {
+    var K = J;
+    if (I) {
+        K = I
+    }
+    _closeFlashDialogBeforeOpen(J);
+    setTimeout(function () {
+        var L = $(getCtpTop()).width();
+        var M = $(getCtpTop()).height();
+        workfowFlashDialog = J.$.dialog({
+                id: "workflow_dialog_workflowDesigner_Id",
+                isHide: true,
+                url: _wfctxPath + "/workflow/designer.do?method=showDiagram&isDebugger=false&scene=1&isModalDialog=true&processId=" + B + "&appName=" + G + "&currentUserId=" + D + "&currentUserName=" + escapeSpecialChar(encodeURIComponent(F)) + "&currentUserAccountName=" + escapeSpecialChar(encodeURIComponent(C)) + "&defaultPolicyId=" + escapeSpecialChar(encodeURIComponent(E)) + "&defaultPolicyName=" + escapeSpecialChar(encodeURIComponent(A)) + "&flowPermAccountId=" + H + CsrfGuard.getUrlSurffix(),
+                width: L - 20,
+                height: M - 100,
+                title: $.i18n("workflow.designer.title"),
+                targetWindow: getCtpTop(),
+                transParams: {
+                    dwidths: L,
+                    dheights: M,
+                    returnValueWindow: K
+                },
+                minParam: {
+                    show: false
+                },
+                maxParam: {
+                    show: false
+                },
+                notCopyReturnValue: true,
+                buttons: [{
+                        text: $.i18n("workflow.designer.page.button.ok"),
+                        isEmphasize: true,
+                        handler: function () {
+                            var N = workfowFlashDialog.getReturnValue({
+                                    innerButtonId: "ok"
+                                });
+                            if (N) {
+                                initDialogDataToParentPage(N, K, J);
+                                try {
+                                    getCtpTopFromOpener(window).distroy_token = true
+                                } catch (O) {}
+                                _closeOrHideFlashDialog();
+                                if (getA8Top().location.href.indexOf("a8genius.do") != -1) {
+                                    window.resizeTo(L, M)
+                                }
+                            }
+                        }
+                    }, {
+                        text: $.i18n("workflow.designer.page.button.cancel"),
+                        handler: function () {
+                            _closeOrHideFlashDialog();
+                            if (getA8Top().location.href.indexOf("a8genius.do") != -1) {
+                                window.resizeTo(L, M)
+                            }
+                        }
+                    }
+                ]
+            })
+    }, 10)
+}
+function showWFTDiagram(F, D, H, E, G, A, C) {
+    A = A || "";
+    C = C || "";
+    var B = F;
+    if (H) {
+        B = H
+    }
+    _closeFlashDialogBeforeOpen(F);
+    setTimeout(function () {
+        E = E == undefined ? "" : E;
+        G = G == undefined ? "" : G;
+        var J = $(F).width();
+        var K = $(F).height();
+        if (J <= 0) {
+            J = $(document.body).width();
+            K = $(document.body).height()
+        }
+        var I = _wfctxPath + "/workflow/designer.do?method=showDiagram&isTemplate=true&isDebugger=false&scene=2&isModalDialog=true&processId=" + D + "&currentUserAccountName=" + escapeSpecialChar(encodeURIComponent(G)) + "&appName=" + A + "&wendanId=" + C;
+        if (E != "") {
+            I = I + "&currentUserName=" + escapeSpecialChar(encodeURIComponent(E))
+        }
+        workfowFlashDialog = $.dialog({
+                id: "workflow_dialog_workflowDesigner_Id",
+                isHide: true,
+                url: I,
+                width: J - 30,
+                height: K - 100,
+                title: $.i18n("workflow.designer.title.readonly"),
+                transParams: {
+                    dwidths: J,
+                    dheights: K - 20,
+                    returnValueWindow: B
+                },
+                minParam: {
+                    show: false
+                },
+                maxParam: {
+                    show: false
+                },
+                notCopyReturnValue: true,
+                buttons: [{
+                        text: $.i18n("workflow.designer.page.button.close"),
+                        handler: function () {
+                            _closeOrHideFlashDialog()
+                        }
+                    }
+                ],
+                targetWindow: F
+            })
+    }, 10)
+}
+function showWFCDiagram(N, D, A, H, I, F, K, J, L, B, P, M, G, C, E) {
+    C = C || false;
+    E = E || "";
+    var O = N;
+    if (K) {
+        O = K
+    }
+    if (J == null) {
+        $.alert("please pass the argument appName (the 8th parameter of showWFCDiagram)")
+    }
+    _closeFlashDialogBeforeOpen(N);
+    setTimeout(function () {
+        var S = $(N).width();
+        var T = $(N).height();
+        if (S <= 0) {
+            S = $(document.body).width();
+            T = $(document.body).height()
+        }
+        var R = $.i18n("workflow.designer.title.readonly");
+        if (M && M != "") {
+            R = M
+        }
+        var Q = "";
+        if (G && G != "") {
+            Q = G
+        }
+        workfowFlashDialog = $.dialog({
+                id: "workflow_dialog_workflowDesigner_Id",
+                isHide: true,
+                url: _wfctxPath + "/workflow/designer.do?method=showDiagram&isDebugger=false&scene=3&isModalDialog=true&processId=" + A + "&caseId=" + D + "&isTemplate=" + H + "&showHastenButton=" + I + "&superviseId=" + F + "&appName=" + J + "&currentNodeId=" + B + "&formMutilOprationIds=" + P + "&currentUserName=" + encodeURIComponent(Q) + "&isHistoryFlag=" + C + "&wendanId=" + E,
+                width: S - 30,
+                height: T - 100,
+                title: R,
+                transParams: {
+                    dwidths: S,
+                    dheights: T - 20,
+                    returnValueWindow: O
+                },
+                minParam: {
+                    show: false
+                },
+                maxParam: {
+                    show: false
+                },
+                notCopyReturnValue: true,
+                buttons: [{
+                        text: $.i18n("workflow.designer.page.button.close"),
+                        handler: function () {
+                            _closeOrHideFlashDialog();
+                            if (L && typeof L == "function") {
+                                L()
+                            }
+                        }
+                    }
+                ],
+                targetWindow: N
+            })
+    }, 10)
+}
+function superviousWFCDiagram(M, F, B, G, J, H, K, E, A, L, D) {
+    D = D || false;
+    var I = wfAjax.getCaseState(F);
+    var C = I[0] == "true" ? true : false;
+    var N = M;
+    if (J) {
+        N = J
+    }
+    _closeFlashDialogBeforeOpen(M);
+    setTimeout(function () {
+        var O;
+        if (!C) {
+            O = lockWorkflow(B, _wfcurrentUserId, 0);
+            if (O[0] == "false") {
+                C = true
+            }
+        }
+        var Q = $(M).width();
+        var R = $(M).height();
+        if (Q <= 0) {
+            Q = $(document.body).width();
+            R = $(document.body).height()
+        }
+        var P = $.i18n("workflow.designer.title");
+        if (L && L != "") {
+            P = L
+        }
+        workfowFlashDialog = $.dialog({
+                id: "workflow_dialog_workflowDesigner_Id",
+                isHide: true,
+                url: _wfctxPath + "/workflow/designer.do?method=showDiagram&isDebugger=false&scene=3&isModalDialog=true&showHastenButton=false&processId=" + B + "&caseId=" + F + "&isTemplate=" + G + "&appName=" + H + "&flowPermAccountId=" + K + "&defaultPolicyId=" + escapeSpecialChar(encodeURIComponent(E)) + "&defaultPolicyName=" + escapeSpecialChar(encodeURIComponent(A)) + "&isHistoryFlag=" + D,
+                width: Q - 20,
+                height: R - 100,
+                title: P,
+                transParams: {
+                    dwidths: Q,
+                    dheights: R - 20,
+                    returnValueWindow: N
+                },
+                minParam: {
+                    show: false
+                },
+                maxParam: {
+                    show: false
+                },
+                closeParam: {
+                    show: true,
+                    handler: function () {
+                        if (!C) {
+                            releaseWorkflowByAction(B, _wfcurrentUserId, 0)
+                        }
+                    }
+                },
+                targetWindow: M,
+                notCopyReturnValue: true,
+                buttons: [{
+                        id: "modifyButton",
+                        text: $.i18n("workflow.designer.page.button.modify"),
+                        disabled: C,
+                        handler: function () {
+                            var T = workfowFlashDialog.getReturnValue({
+                                    innerButtonId: "supervious_modify"
+                                });
+                            if (T) {
+                                var W = T[0];
+                                var X = T[1];
+                                var V = T[2];
+                                var U = T[3];
+                                var S = T[4];
+                                W.refreshMonitor(X, V, U, S, 1, true, 4);
+                                workfowFlashDialog.showBtn("okButton");
+                                workfowFlashDialog.getBtn("okButton").removeClass("common_button_gray").addClass("common_button_emphasize");
+                                workfowFlashDialog.hideBtn("modifyButton")
+                            }
+                        }
+                    }, {
+                        id: "okButton",
+                        hide: true,
+                        btnType: 1,
+                        text: $.i18n("workflow.designer.page.button.ok"),
+                        handler: function () {
+                            var S = workfowFlashDialog.getReturnValue({
+                                    innerButtonId: "supervious_ok"
+                                });
+                            if (S) {
+                                _closeOrHideFlashDialog();
+                                if (!C) {
+                                    releaseWorkflowByAction(B, _wfcurrentUserId, 0)
+                                }
+                            }
+                        }
+                    }, {
+                        text: $.i18n("workflow.designer.button.close"),
+                        handler: function () {
+                            _closeOrHideFlashDialog();
+                            if (!C) {
+                                releaseWorkflowByAction(B, _wfcurrentUserId, 0)
+                            }
+                        }
+                    }
+                ]
+            });
+        if (O && O[0] && O[0] == "false") {
+            $.alert(O[1])
+        }
+    }, 10)
+}
+function editWFCDiagramEdocModalDialog(O, F, B, L, J, H, M, E, A, Q, I, N, D) {
+    D = D || false;
+    var G = lockWorkflowUseNowexpirationTime(B, _wfcurrentUserId, 2, "true");
+    if (G[0] == "false") {
+        I = (I == undefined || I == true) ? true : false;
+        if (I) {
+            $.alert(G[1])
+        } else {
+            alert(G[1])
+        }
+        return
+    }
+    var K = wfAjax.getCaseState(F);
+    var C = K[0] == "true" ? true : false;
+    var P = O;
+    if (L) {
+        P = L
+    }
+    _closeFlashDialogBeforeOpen(O);
+    setTimeout(function () {
+        var S = $(O).width();
+        var U = $(O).height();
+        if (S <= 0) {
+            S = $(document.body).width();
+            U = $(document.body).height()
+        }
+        var R = $.i18n("workflow.designer.title");
+        if (N && N != "") {
+            R = N
+        }
+        if (!I) {
+            if ($.browser.chrome) {
+                var T = v3x.openDialog({
+                        id: "password_new_Win",
+                        title: R,
+                        url: _wfctxPath + "/workflow/designer.do?method=showDiagram&isDebugger=false&scene=4&isModalDialog=true&processId=" + B + "&caseId=" + F + "&isTemplate=" + H + "&appName=" + J + "&flowPermAccountId=" + M + "&defaultPolicyId=" + escapeSpecialChar(encodeURIComponent(E)) + "&defaultPolicyName=" + escapeSpecialChar(encodeURIComponent(A)) + "&isEdoc=true&dialogTitle=" + escapeSpecialChar(encodeURIComponent(R)) + "&isHistoryFlag=" + D + "&action=2&addWorkflowExpirationTimeLock=true",
+                        width: S - 100,
+                        height: U - 50,
+                        minParam: {
+                            show: false
+                        },
+                        maxParam: {
+                            show: false
+                        },
+                        closeParam: {
+                            show: true,
+                            handler: function () {
+                                if (!$.browser.msie) {
+                                    T.close()
+                                } else {
+                                    T.hideDialog()
+                                }
+                                releaseWorkflowByAction(B, _wfcurrentUserId, 2)
+                            }
+                        },
+                        targetWindow: O,
+                        notCopyReturnValue: true,
+                        buttons: [{
+                                id: "okButton",
+                                text: $.i18n("workflow.designer.page.button.ok"),
+                                disabled: C,
+                                handler: function () {
+                                    var W = T.getReturnValue({
+                                            innerButtonId: "supervious_ok"
+                                        });
+                                    if (W) {
+                                        if (!$.browser.msie) {
+                                            T.close()
+                                        } else {
+                                            T.hideDialog()
+                                        }
+                                        releaseWorkflowByAction(B, _wfcurrentUserId, 2);
+                                        if (Q && typeof Q == "function") {
+                                            Q()
+                                        }
+                                    }
+                                }
+                            }, {
+                                text: $.i18n("workflow.designer.page.button.cancel"),
+                                handler: function () {
+                                    if (!$.browser.msie) {
+                                        T.close()
+                                    } else {
+                                        T.hideDialog()
+                                    }
+                                    releaseWorkflowByAction(B, _wfcurrentUserId, 2)
+                                }
+                            }
+                        ]
+                    })
+            } else {
+                var V = getA8Top().v3x.openWindow({
+                        url: _wfctxPath + "/workflow/designer.do?method=showDiagram&isDebugger=false&scene=4&isModalDialog=false&processId=" + B + "&caseId=" + F + "&isTemplate=" + H + "&appName=" + J + "&flowPermAccountId=" + M + "&defaultPolicyId=" + escapeSpecialChar(encodeURIComponent(E)) + "&defaultPolicyName=" + escapeSpecialChar(encodeURIComponent(A)) + "&isEdoc=true&dialogTitle=" + escapeSpecialChar(encodeURIComponent(R)) + "&isHistoryFlag=" + D + "&action=2&addWorkflowExpirationTimeLock=true",
+                        width: S - 10,
+                        height: U,
+                        resizable: "no"
+                    });
+                releaseWorkflowByAction(B, _wfcurrentUserId, 2);
+                if (Q && typeof Q == "function") {
+                    Q()
+                }
+            }
+        } else {
+            workfowFlashDialog = $.dialog({
+                    id: "workflow_dialog_workflowDesigner_Id",
+                    isHide: true,
+                    url: _wfctxPath + "/workflow/designer.do?method=showDiagram&isDebugger=false&scene=4&isModalDialog=true&processId=" + B + "&caseId=" + F + "&isTemplate=" + H + "&appName=" + J + "&flowPermAccountId=" + M + "&defaultPolicyId=" + escapeSpecialChar(encodeURIComponent(E)) + "&defaultPolicyName=" + escapeSpecialChar(encodeURIComponent(A)) + "&isHistoryFlag=" + D + "&action=2&addWorkflowExpirationTimeLock=true",
+                    width: S - 20,
+                    height: U - 100,
+                    title: R,
+                    transParams: {
+                        dwidths: S,
+                        dheights: U - 20,
+                        returnValueWindow: P
+                    },
+                    minParam: {
+                        show: false
+                    },
+                    maxParam: {
+                        show: false
+                    },
+                    closeParam: {
+                        show: true,
+                        handler: function () {
+                            releaseWorkflowByAction(B, _wfcurrentUserId, 2)
+                        }
+                    },
+                    targetWindow: O,
+                    notCopyReturnValue: true,
+                    buttons: [{
+                            id: "okButton",
+                            text: $.i18n("workflow.designer.page.button.ok"),
+                            disabled: C,
+                            handler: function () {
+                                var W = workfowFlashDialog.getReturnValue({
+                                        innerButtonId: "supervious_ok"
+                                    });
+                                if (W) {
+                                    _closeOrHideFlashDialog();
+                                    releaseWorkflowByAction(B, _wfcurrentUserId, 2);
+                                    if (Q && typeof Q == "function") {
+                                        Q()
+                                    }
+                                }
+                            }
+                        }, {
+                            text: $.i18n("workflow.designer.page.button.cancel"),
+                            handler: function () {
+                                _closeOrHideFlashDialog();
+                                releaseWorkflowByAction(B, _wfcurrentUserId, 2)
+                            }
+                        }
+                    ]
+                })
+        }
+    }, 10)
+}
+function editWFCDiagram(J, D, B, G, F, E, H, C, A, K, I) {
+    editWFCDiagramEdocModalDialog(J, D, B, G, F, E, H, C, A, K, true, I)
+}
+function adminWFCDiagram(M, G, B, H, L, I, O, F, K, E, A, D) {
+    D = D || false;
+    var J = wfAjax.getCaseState(G);
+    var C = J[0] == "true" ? true : false;
+    var N = M;
+    if (L) {
+        N = L
+    }
+    _closeFlashDialogBeforeOpen(M);
+    setTimeout(function () {
+        var P;
+        if (!C) {
+            P = lockWorkflowUseNowexpirationTime(B, _wfcurrentUserId, 1, "true");
+            if (P[0] == "false") {
+                C = true
+            }
+        }
+        var Q = $(M).width();
+        var R = $(M).height();
+        if (Q <= 0) {
+            Q = $(document.body).width();
+            R = $(document.body).height()
+        }
+        workfowFlashDialog = $.dialog({
+                id: "workflow_dialog_workflowDesigner_Id",
+                isHide: true,
+                url: _wfctxPath + "/workflow/designer.do?method=showDiagram&isDebugger=false&scene=3&isModalDialog=true&isst=false&processId=" + B + "&caseId=" + G + "&isTemplate=" + H + "&appName=" + I + "&flowPermAccountId=" + K + "&defaultPolicyId=" + escapeSpecialChar(encodeURIComponent(E)) + "&defaultPolicyName=" + escapeSpecialChar(encodeURIComponent(A)) + "&isHistoryFlag=" + D + "&action=1&addWorkflowExpirationTimeLock=true",
+                width: Q - 20,
+                height: R - 100,
+                title: $.i18n("workflow.designer.title"),
+                transParams: {
+                    dwidths: Q,
+                    dheights: R - 20,
+                    returnValueWindow: N
+                },
+                minParam: {
+                    show: false
+                },
+                maxParam: {
+                    show: false
+                },
+                closeParam: {
+                    show: true,
+                    handler: function () {
+                        if (!C) {
+                            releaseWorkflowByAction(B, _wfcurrentUserId, 1)
+                        }
+                    }
+                },
+                targetWindow: M,
+                notCopyReturnValue: true,
+                buttons: [{
+                        id: "modifyButton",
+                        text: $.i18n("workflow.designer.page.button.modify"),
+                        isEmphasize: true,
+                        disabled: C,
+                        handler: function () {
+                            var T = workfowFlashDialog.getReturnValue({
+                                    innerButtonId: "supervious_modify"
+                                });
+                            if (T) {
+                                var W = T[0];
+                                var X = T[1];
+                                var V = T[2];
+                                var U = T[3];
+                                var S = T[4];
+                                W.refreshMonitor(X, V, U, S, 1, true, 5);
+                                workfowFlashDialog.showBtn("okButton");
+                                workfowFlashDialog.hideBtn("modifyButton");
+                                workfowFlashDialog.disabledBtn("repealButton");
+                                workfowFlashDialog.disabledBtn("stopButton")
+                            }
+                        }
+                    }, {
+                        id: "okButton",
+                        hide: true,
+                        btnType: 1,
+                        text: $.i18n("workflow.designer.page.button.ok"),
+                        handler: function () {
+                            var S = workfowFlashDialog.getReturnValue({
+                                    innerButtonId: "supervious_ok"
+                                });
+                            if (S) {
+                                _closeOrHideFlashDialog();
+                                if (!C) {
+                                    releaseWorkflowByAction(B, _wfcurrentUserId, 1)
+                                }
+                            }
+                        }
+                    }, {
+                        id: "repealButton",
+                        text: $.i18n("workflow.designer.page.button.repeal"),
+                        disabled: C,
+                        handler: function () {
+                            var S = canRepeal(I, B, "");
+                            if (S[0] == "false") {
+                                $.alert(S[1]);
+                                return
+                            }
+                            if (typeof O == "function") {
+                                O(M, G, B, H, L, I, workfowFlashDialog)
+                            } else {
+                                alert("Error: cannot find function repealWorkflow(tWindow,caseId,processId,isTemplate,vWindow,appName,dialog), please define it!")
+                            }
+                        }
+                    }, {
+                        id: "stopButton",
+                        text: $.i18n("workflow.designer.page.button.stop"),
+                        disabled: C,
+                        handler: function () {
+                            if (typeof F == "function") {
+                                F(M, G, B, H, L, I, workfowFlashDialog)
+                            } else {
+                                alert("Error:cannot find function stopWorkflow(tWindow,caseId,processId,isTemplate,vWindow,appName,dialog), please define it!")
+                            }
+                        }
+                    }, {
+                        text: $.i18n("workflow.designer.button.close"),
+                        handler: function () {
+                            _closeOrHideFlashDialog();
+                            if (!C) {
+                                releaseWorkflowByAction(B, _wfcurrentUserId, 1)
+                            }
+                        }
+                    }
+                ]
+            });
+        if (P && P[0] && P[0] == "false") {
+            $.alert(P[1])
+        }
+    }, 10)
+}
+function confirmCircleBackSubmit(G, E, B, F, D, C) {
+    var A = $.confirm({
+            msg: G,
+            ok_fn: function () {
+                if (typeof(E) != "undefined" && E != null) {
+                    E.close()
+                }
+                stepBackToTargetNodeCallBackNodialog(B, C.processId, C.caseId, C.currentActivityId, F, D, "1")
+            },
+            cancel_fn: function () {
+                A.close();
+                try {
+                    releaseApplicationButtons()
+                } catch (H) {}
+            }
+        })
+}
+function preSendOrHandleWorkflow(Q, A, H, J, N, C, L, D, P, R, K, O, F, M, E, I) {
+    var G = Q;
+    if (O) {
+        G = O
+    }
+    var B = new Object();
+    B.appName = R;
+    B.processXml = K;
+    B.processId = J;
+    B.caseId = L;
+    B.currentActivityId = N;
+    B.currentWorkitemId = A;
+    B.currentUserId = C;
+    B.currentAccountId = D;
+    B.formData = P;
+    B.mastrid = P;
+    B.debugMode = false;
+    B.processTemplateId = H;
+    B.currentWorkItemIsInSpecial = M;
+    B.matchRequestToken = matchRequestToken;
+    B.useNowexpirationTime = I;
+    preDoWFNew(Q, B, null, G, F, J, A, E)
+}
+function validateCircleOperation(A, I, E, B, D, G, F, H) {
+    var C = wfAjax.validateCurrentSelectedNode(A.caseId, I, "", A.currentActivityId, A.processXml, A.currentAccountId, "collaboration", A.processId);
+    if (C[0] == "true") {
+        if (E == "true") {
+            if (C[2] == "true" || C[8] == "true") {
+                confirmGo($.i18n("workflow.special.circleback.alert7.js"), F, G);
+                return
+            } else {
+                if (D.indexOf("1") == -1) {
+                    confirmCircleBackSubmit($.i18n("workflow.special.circleback.alert8.js"), G, B, I, "1", A);
+                    return
+                }
+            }
+        } else {
+            if (C[2] == "true" || C[8] == "true") {
+                if (D.indexOf("0") == -1) {
+                    confirmCircleBackSubmit($.i18n("workflow.special.circleback.alert12.js"), G, B, I, "0", A);
+                    return
+                }
+            }
+        }
+    }
+    if (C[14] == "true") {
+        confirmGo($.i18n("workflow.special.circleback.alert15.js"), F, G);
+        return
+    }
+    if (C[13] == "true") {
+        confirmGo($.i18n("workflow.special.circleback.alert13.js"), F, G);
+        return
+    }
+    if (C[12] == "true") {
+        confirmGo($.i18n("workflow.special.circleback.alert4.js"), F, G);
+        return
+    } else {
+        if (C[11] == "true") {
+            confirmGo($.i18n("workflow.special.circleback.alert11.js"), F, G);
+            return
+        } else {
+            if (C[3] == "true") {
+                confirmGo($.i18n("workflow.special.circleback.alert1.js"), F, G);
+                return
+            } else {
+                if (C[4] == "true") {
+                    confirmGo($.i18n("workflow.special.circleback.alert2.js"), F, G);
+                    return
+                } else {
+                    if (C[15] == "true") {
+                        confirmGo($.i18n("workflow.special.circleback.alert16.js"), F, G);
+                        return
+                    } else {
+                        if (C[16] == "true") {
+                            confirmGo($.i18n("workflow.special.circleback.alert17.js"), F, G);
+                            return
+                        } else {
+                            if (C[5] == "true") {
+                                confirmGo($.i18n("workflow.special.circleback.alert3.js"), F, G);
+                                return
+                            } else {
+                                if (C[6] == "true") {
+                                    if (C[9] == "true") {
+                                        confirmGo($.i18n("workflow.special.circleback.alert4.js"), F, G)
+                                    } else {
+                                        confirmGo($.i18n("workflow.special.circleback.alert5.js"), F, G)
+                                    }
+                                    return
+                                } else {
+                                    if (C[7] == "true") {
+                                        confirmGo($.i18n("workflow.special.circleback.alert6.js"), F, G);
+                                        return
+                                    } else {
+                                        if (typeof(G) != "undefined" && G != null) {
+                                            G.close()
+                                        }
+                                        stepBackToTargetNodeCallBackNodialog(B, A.processId, A.caseId, A.currentActivityId, I, D, "1", H)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+function confirmGo(D, C, B) {
+    var A = $.confirm({
+            msg: D,
+            ok_fn: function () {
+                A.close();
+                if (typeof(B) != "undefined" && B != null) {
+                    B.close()
+                }
+                C()
+            },
+            cancel_fn: function () {
+                A.close();
+                try {
+                    releaseApplicationButtons()
+                } catch (E) {}
+            }
+        })
+}
+function preDoWFNew(U, s, n, d, T, K, W, L) {
+    s.isValidate = "true";
+    var r = new Object();
+    if (n) {
+        r = n
+    } else {
+        r = new Object();
+        var I = new Array();
+        var S = new Array();
+        var i = new Array();
+        r.allNotSelectNodes = I;
+        r.allSelectNodes = S;
+        r.allSelectInformNodes = i
+    }
+    r.pop = false;
+    r.token = "";
+    r.last = "false";
+    r.alreadyChecked = "false";
+    var g = wfAjax.transBeforeInvokeWorkFlow(s, r) || {};
+    var b = g.pop;
+    var q = g.token;
+    var t = g.canSubmit;
+    var D = g.circleNodes;
+    var N = g.isInSpecialStepBackStatus;
+    var m = g.toReGo;
+    var E = g.dynamicFormMasterIds;
+    if (q && q == "WORKFLOW") {}
+    else {
+        $.alert($.i18n("workflow.wapi.exception.msg002"));
+        try {
+            releaseApplicationButtons()
+        } catch (o) {}
+        return
+    }
+    if (t == "false") {
+        var Z = g.cannotSubmitMsg;
+        $.alert(Z);
+        try {
+            releaseApplicationButtons()
+        } catch (o) {}
+        return
+    }
+    var P = d.document;
+    var k = $("#workflow_last_input", P)[0];
+    if (k) {
+        k.value = g.last
+    }
+    var c = $("#workflow_thisNodelast_input", P)[0];
+    if (c) {
+        c.value = g.currentNodeLast
+    }
+    var G = $("#toReGo", P)[0];
+    if (G) {
+        G.value = m
+    }
+    var Y = $("#dynamicFormMasterIds", P)[0];
+    if (Y && E) {
+        Y.value = E
+    }
+    var f = g.oneSubProcessJson;
+    if (f) {
+        $("#workflow_newflow_input", d.document)[0].value = f
+    }
+    var B = g.invalidateActivityMap || {};
+    var V = $.parseJSON(g.humenNodeMatchAlertMsg);
+    var X = true;
+    var h = "";
+    var H = "";
+    $(g.allSelectNodes).each(function (u, w) {
+        var x = B[w];
+        var v = (x != null && x.trim() != "") ? true : false;
+        if (v) {
+            X = false;
+            h += (h != null && h.trim() == "") ? x : "\u3001" + x
+        }
+        if (V) {
+            H = V[w];
+            var e = (H != null && H.trim() != "") ? true : false;
+            if (e) {
+                X = false;
+                return false
+            }
+        }
+    });
+    if (!X) {
+        if (H) {
+            $.alert(H)
+        } else {
+            $.alert($.i18n("workflow.invalidateActivity.label", h))
+        }
+        if (K != "" && W != null && W != "-1" && W != "0") {
+            releaseWorkflowByAction(K, _wfcurrentUserId, 14)
+        }
+        try {
+            releaseApplicationButtons()
+        } catch (o) {}
+        return
+    }
+    var F = function () {
+        if (b == true) {
+            var AB = g.hasSubProcess;
+            var v = "";
+            if (AB) {
+                v = $.i18n("workflow.commonpage.branchpeoplenewflow.select")
+            } else {
+                v = $.i18n("workflow.commonpage.branchpeoplenewflow.select1")
+            }
+            var w = $.dialog({
+                    id: "workflow_dialog_showWorkFlowMatchResultPage_Id",
+                    url: _wfctxPath + "/workflow/designer.do?method=showWorkFlowMatchResultPage",
+                    width: 740,
+                    height: 400,
+                    title: v,
+                    isFromModle: true,
+                    targetWindow: getCtpTop(),
+                    closeParam: {
+                        show: true,
+                        handler: function () {
+                            releaseWorkflowByAction(K, _wfcurrentUserId, 14);
+                            removeWorkflowMatchResultCache();
+                            try {
+                                releaseApplicationButtons()
+                            } catch (AC) {}
+                        }
+                    },
+                    transParams: {
+                        context: s,
+                        cpMatchResult: g,
+                        isNeedCheckLevelScope: true
+                    },
+                    notCopyReturnValue: true,
+                    buttons: [{
+                            text: $.i18n("common.button.ok.label"),
+                            isEmphasize: true,
+                            handler: function () {
+                                var AD = $("#workflow_newflow_input", d.document)[0];
+                                if (!AD) {
+                                    showFlashAlert('Error : no hidden input <input type="hidden" name="workflow_newflow_input" id="workflow_newflow_input">  in the page!');
+                                    if (K != "" && W != null && W != "-1" && W != "0") {
+                                        releaseWorkflowByAction(K, _wfcurrentUserId, 14)
+                                    }
+                                    try {
+                                        releaseApplicationButtons()
+                                    } catch (AF) {}
+                                    return false
+                                }
+                                var AC = $("#workflow_node_peoples_input", d.document)[0];
+                                if (!AC) {
+                                    showFlashAlert('Error : no hidden input <input type="hidden" name="workflow_node_peoples_input" id="workflow_node_peoples_input"> in the page!');
+                                    if (K != "" && W != null && W != "-1" && W != "0") {
+                                        releaseWorkflowByAction(K, _wfcurrentUserId, 14)
+                                    }
+                                    try {
+                                        releaseApplicationButtons()
+                                    } catch (AF) {}
+                                    return false
+                                }
+                                var AE = $("#workflow_node_condition_input", d.document)[0];
+                                if (!AE) {
+                                    showFlashAlert('Error:no hidden input <input type="hidden" name="workflow_node_condition_input" id="workflow_node_condition_input"> in the page!');
+                                    if (K != "" && W != null && W != "-1" && W != "0") {
+                                        releaseWorkflowByAction(K, _wfcurrentUserId, 14)
+                                    }
+                                    try {
+                                        releaseApplicationButtons()
+                                    } catch (AF) {}
+                                    return false
+                                }
+                                setTimeout(function () {
+                                    var AH = w.getReturnValue({
+                                            innerButtonId: "ok"
+                                        });
+                                    if (AH) {
+                                        if (AH[0] == "") {
+                                            AH[0] = '{"matchRequestToken":"' + matchRequestToken + '"}'
+                                        } else {
+                                            AH[0] = '{"matchRequestToken":"' + matchRequestToken + '",' + AH[0].substring(1)
+                                        }
+                                        $("#workflow_node_condition_input", d.document)[0].value = AH[0];
+                                        $("#workflow_node_peoples_input", d.document)[0].value = AH[1];
+                                        $("#workflow_newflow_input", d.document)[0].value = AH[2];
+                                        if ($("#workflow_last_input", d.document)[0]) {
+                                            $("#workflow_last_input", d.document)[0].value = AH[3]
+                                        }
+                                        w.close();
+                                        var AG = s.caseId;
+                                        if (typeof T == "function") {
+                                            T()
+                                        } else {
+                                            if ($.content.callback.workflowNew) {
+                                                $.content.callback.workflowNew()
+                                            } else {
+                                                if ($.content.callback.workflowFinish) {
+                                                    $.content.callback.workflowFinish()
+                                                } else {
+                                                    showFlashAlert("Error : cannot find submit function workflowNew()!");
+                                                    if (K != "" && W != null && W != "-1" && W != "0") {
+                                                        releaseWorkflowByAction(K, _wfcurrentUserId, 14)
+                                                    }
+                                                    try {
+                                                        releaseApplicationButtons()
+                                                    } catch (AI) {}
+                                                    return
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        if (K != "" && W != null && W != "-1" && W != "0") {
+                                            releaseWorkflowByAction(K, _wfcurrentUserId, 14)
+                                        }
+                                        try {
+                                            releaseApplicationButtons()
+                                        } catch (AI) {}
+                                        return false
+                                    }
+                                }, 50)
+                            }
+                        }, {
+                            text: $.i18n("common.button.cancel.label"),
+                            handler: function () {
+                                try {
+                                    var AD;
+                                    if ($.browser.mozilla) {
+                                        AD = document.getElementById("zwIframe").contentWindow
+                                    } else {
+                                        AD = document.zwIframe
+                                    }
+                                    if (AD && typeof AD.deleteContentById == "function") {
+                                        AD.deleteContentById()
+                                    }
+                                    AD = null
+                                } catch (AC) {}
+                                $("#workflow_newflow_input", d.document)[0].value = "";
+                                $("#workflow_node_peoples_input", d.document)[0].value = "";
+                                $("#workflow_node_condition_input", d.document)[0].value = "";
+                                w.close();
+                                if (K != "" && W != null && W != "-1" && W != "0") {
+                                    releaseWorkflowByAction(K, _wfcurrentUserId, 14)
+                                }
+                                removeWorkflowMatchResultCache();
+                                try {
+                                    releaseApplicationButtons()
+                                } catch (AC) {}
+                            }
+                        }
+                    ]
+                })
+        } else {
+            var z = $("#workflow_node_condition_input", d.document)[0];
+            if (!z) {
+                showFlashAlert('Error : cannot find hidden input <input type="hidden" name="workflow_node_condition_input" id="workflow_node_condition_input"> in the page');
+                if (K != "" && W != null && W != "-1" && W != "0") {
+                    releaseWorkflowByAction(K, _wfcurrentUserId, 14)
+                }
+                try {
+                    releaseApplicationButtons()
+                } catch (AA) {}
+                return false
+            }
+            var x = "";
+            $(g.allSelectNodes).each(function (e, AC) {
+                if (e == 0) {
+                    x += '{"condition":[';
+                    x += '{"nodeId":"' + AC + '",';
+                    x += '"isDelete":"false"}'
+                } else {
+                    x += ',{"nodeId":"' + AC + '",';
+                    x += '"isDelete":"false"}'
+                }
+            });
+            if (g.allNotSelectNodes && g.allNotSelectNodes.length > 0) {
+                var y = g.allNotSelectNodes.length - 1;
+                $(g.allNotSelectNodes).each(function (e, AC) {
+                    x += ',{"nodeId":"' + AC + '",';
+                    x += '"isDelete":"true"}'
+                })
+            }
+            if (x != "") {
+                x += "]}"
+            }
+            if (x == "") {
+                x = '{"matchRequestToken":"' + matchRequestToken + '"}'
+            } else {
+                x = '{"matchRequestToken":"' + matchRequestToken + '",' + x.substring(1)
+            }
+            $("#workflow_node_condition_input", d.document)[0].value = x;
+            var u = s.caseId;
+            if (typeof T == "function") {
+                T()
+            } else {
+                if ($.content.callback.workflowNew) {
+                    $.content.callback.workflowNew()
+                } else {
+                    if ($.content.callback.workflowFinish) {
+                        $.content.callback.workflowFinish()
+                    } else {
+                        showFlashAlert("Error : cannot find submit function workflowNew()!");
+                        if (K != "" && W != null && W != "-1" && W != "0") {
+                            releaseWorkflowByAction(K, _wfcurrentUserId, 14)
+                        }
+                        try {
+                            releaseApplicationButtons()
+                        } catch (AA) {}
+                        return
+                    }
+                }
+            }
+        }
+    };
+    var J = D != null && typeof(D) != "undefined" && D.length > 0;
+    if (J) {
+        var j = s.currentWorkItemIsInSpecial;
+        var C = (j == null || typeof(j) == "undefined" || j == "") ? false : j;
+        if (N == "true" && !C) {
+            $.alert($.i18n("workflow.wapi.presend.alert.js"));
+            releaseWorkflowByAction(K, _wfcurrentUserId, 14);
+            try {
+                releaseApplicationButtons()
+            } catch (o) {}
+            return
+        }
+        if (D.length == 1 && D[0].submitStyle != "0,1") {
+            var O = D[0];
+            var p = O.nodeId;
+            var R = O.submitStyle;
+            var A = validateCircleOperation(s, p, N, W, R, null, F, 1);
+            return
+        } else {
+            var Q = (L == 1) ? ' checked="checked" ' : "";
+            var a = (L == 1 || L == 2) ? ' disabled="true" ' : "";
+            var M = '<span id="traceSpanArea" style="display:none"><label for="trackWorkflow" class="margin_t_5 hand"><input type="checkbox" id="trackWorkflow" name="trackWorkflow" ' + Q + a + ' class="radio_com">' + $.i18n("collaboration.workflow.trace.traceworkflow") + '</label><span class="color_blue hand" style="color:#318ed9;" title="' + $.i18n("collaboration.workflow.trace.summaryDetail") + '">[' + $.i18n("collaboration.workflow.trace.title") + "]</span></span>";
+            var l = $.dialog({
+                    id: "workflow_dialog_showCircleBackSelectDialog_Id",
+                    url: _wfctxPath + "/workflow/designer.do?method=showCircleBackSelectDialog",
+                    width: 740,
+                    height: 400,
+                    title: $.i18n("workflow.commonpage.circleback.select.js"),
+                    isFromModle: true,
+                    bottomHTML: M,
+                    targetWindow: getCtpTop(),
+                    closeParam: {
+                        show: true,
+                        handler: function () {
+                            releaseWorkflowByAction(K, _wfcurrentUserId, 14);
+                            try {
+                                releaseApplicationButtons()
+                            } catch (u) {}
+                        }
+                    },
+                    transParams: {
+                        circleNodes: D,
+                        contextParam: s,
+                        isInSpecialStepBackStatus: N
+                    },
+                    notCopyReturnValue: true,
+                    buttons: [{
+                            text: $.i18n("common.button.ok.label"),
+                            isEmphasize: true,
+                            id: "ok",
+                            handler: function () {
+                                var v = l.getReturnValue();
+                                var x = v[0];
+                                var u = v[1];
+                                var w = v[2];
+                                var e = validateCircleOperation(s, x, N, W, u, l, F, w);
+                                return
+                            }
+                        }, {
+                            text: $.i18n("common.button.cancel.label"),
+                            handler: function () {
+                                try {
+                                    var v;
+                                    if ($.browser.mozilla) {
+                                        v = document.getElementById("zwIframe").contentWindow
+                                    } else {
+                                        v = document.zwIframe
+                                    }
+                                    if (v && typeof v.deleteContentById == "function") {
+                                        v.deleteContentById()
+                                    }
+                                    v = null
+                                } catch (u) {}
+                                $("#workflow_newflow_input", d.document)[0].value = "";
+                                $("#workflow_node_peoples_input", d.document)[0].value = "";
+                                $("#workflow_node_condition_input", d.document)[0].value = "";
+                                l.close();
+                                if (K != "" && W != null && W != "-1" && W != "0") {
+                                    releaseWorkflowByAction(K, _wfcurrentUserId, 14)
+                                }
+                                try {
+                                    releaseApplicationButtons()
+                                } catch (u) {}
+                            }
+                        }
+                    ]
+                })
+        }
+    }
+    if (!J) {
+        F()
+    }
+}
+function showFailedCondition(D, B) {
+    var C = false;
+    var A = B == undefined ? true : B;
+    $("#workflow_select_people_or_branch tr[id='workflow_select_people_or_branch_template_ready']").each(function (J) {
+        var H = $("#workflow_branch_checkbox", $(this));
+        var K = $("input", H).attr("checked");
+        var F = $("input", H).attr("isSelect");
+        var I = $("input", H).attr("defaultShow");
+        if (K || F || I == "true") {
+            $(this).css("display", "")
+        } else {
+            C = true;
+            var G = $(this).css("display");
+            if (G == "none") {
+                $(this).css("display", "")
+            } else {
+                $(this).css("display", "none")
+            }
+        }
+    });
+    if (C && A) {
+        var E = $("#workflow_branch_show");
+        if (D == 0) {
+            E.html($.i18n("workflow.commonpage.branch.hide"))
+        } else {
+            E.html($.i18n("workflow.commonpage.branch.show"))
+        }
+    }
+}
+function selectPeople(A, B, E) {
+    var C = E;
+    var F = 1;
+    var D = 1;
+    if (B == "1") {
+        F = 1
+    } else {
+        F = -1
+    }
+    $.selectPeople({
+        type: "selectPeople",
+        panels: "Department,Team,Post,RelatePeople,JoinOrganization",
+        selectType: "Member",
+        showFlowTypeRadio: false,
+        maxSize: F,
+        minSize: D,
+        params: {
+            value: ""
+        },
+        callback: function (G) {
+            if (G.obj) {
+                A.value = G.text;
+                A.title = G.text;
+                $("#" + E).attr("value", getIdsString(G.obj, false))
+            }
+        }
+    })
+}
+function getNamesString(E) {
+    if (!E) {
+        return ""
+    }
+    var G = [];
+    for (var C = 0; C < E.length; C++) {
+        var F = E[C];
+        var B = null;
+        if (F.accountShortname) {
+            var A = document.getElementById("appName");
+            var D = document.getElementById("orgAccountId");
+            if (A && A.value == "4") {
+                if (F.type == "Account" || (D && D.value == F.accountId)) {
+                    B = F.name
+                } else {
+                    B = F.accountShortname + F.name
+                }
+            } else {
+                B = F.name + "(" + F.accountShortname + ")"
+            }
+        } else {
+            B = F.name
+        }
+        G[G.length] = B
+    }
+    return G.join("\u3001")
+}
+function getIdsString(C, E) {
+    if (!C) {
+        return ""
+    }
+    if (E == null) {
+        E = true
+    }
+    var D = [];
+    for (var B = 0; B < C.length; B++) {
+        var A = null;
+        if (E) {
+            A = C[B].type + "|" + C[B].id
+        } else {
+            A = C[B].id
+        }
+        D[D.length] = A + (C[B].excludeChildDepartment ? "|1" : "")
+    }
+    return D.join(",")
+}
+function showSelectPeoplePart(B, A) {
+    if (B.checked) {
+        $("#node_" + A + "_peoples").css("display", "")
+    } else {
+        $("#node_" + A + "_peoples").css("display", "none")
+    }
+}
+function showSubSelectPeoplePart(A, B) {
+    if (A.checked) {
+        $("#senderId_" + B).css("display", "");
+        $("#senderLabel_" + B).css("display", "");
+        $("#senderId_" + B + "Name").css("display", "")
+    } else {
+        $("#senderId_" + B).css("display", "none");
+        $("#senderLabel_" + B).css("display", "none");
+        $("#senderId_" + B + "Name").css("display", "none")
+    }
+}
+function setSelectValue(B, A) {
+    $("#" + A).attr("value", B.value)
+}
+function showConditionDesc(B) {
+    var A = $("#" + B).val();
+    A = A == "" ? $.i18n("workflow.label.empty2.js") : A;
+    $("#" + B + "_a").tooltip({
+        openAuto: true,
+        msg: "<div class='font_size12'>" + A + "</div>"
+    })
+}
+function getProcessChangeMessage() {
+    return $("#processChangeMessage").val()
+}
+function setProcessChangeMessage(A) {
+    $("#processChangeMessage").val(A)
+}
+function insertNode(C, I, H, D, M, P, E, Q, N, F, A, L, R, G) {
+    var J = wfAjax.canChangeNode(C);
+    if (J[0] == "false") {
+        $.alert(J[1]);
+        return
+    }
+    var B = lockWorkflowUseNowexpirationTime(I, _wfcurrentUserId, 3, G);
+    if (B[0] == "false") {
+        $.alert(B[1]);
+        return
+    }
+    if (!R) {
+        R = false
+    }
+    var K = {};
+    var O = $.dialog({
+            url: _wfctxPath + "/workflow/process.do?method=preAddNodeToDiagram&appName=" + P + "&isForm=" + E + "&defaultPolicyId=" + escapeSpecialChar(encodeURIComponent(Q)) + "&accountId=" + N + "&processId=" + I + "&nodeId=" + H + "&caseId=" + M + "&isTemplete=" + R,
+            transParams: {
+                processId: I,
+                nodeId: H,
+                processXML: $("#process_xml").val(),
+                dialogObj: K
+            },
+            width: 635,
+            height: 500,
+            title: $.i18n("workflow.insertPeople.title"),
+            notCopyReturnValue: true,
+            buttons: [{
+                    text: $.i18n("common.button.ok.label"),
+                    isEmphasize: true,
+                    handler: function () {
+                        try {
+                            var Z = O.getReturnValue();
+                            if (Z != null && Z.length > 0) {
+                                var S = $.parseJSON(Z);
+                                var U = $("#process_xml");
+                                if (U.size() <= 0) {
+                                    $.alert("please define hidden input whitch id is process_xml in the page!");
+                                    return
+                                }
+                                var V = U.val();
+                                var X = "";
+                                var T = $("#process_message_data");
+                                if (T.size() > 0) {
+                                    X = T.val()
+                                }
+                                S.summaryId = A;
+                                S.affairId = L;
+                                S.caseId = M;
+                                S.workitemId = C;
+                                var a = wfAjax.addNode(I, H, H, D, 1, S, V, "", X, getProcessChangeMessage());
+								if ("false" == a[2]) {
+                                    $.alert(a[3]);
+                                    return
+                                }
+                                if (a && a[0]) {
+                                    U.val(a[0])
+                                }
+                                if (a && a[4] && T.size() > 0) {
+                                    T.val(a[4]);
+                                    T = null
+                                }
+                                if (a && a[5]) {
+                                    setProcessChangeMessage(a[5])
+									
+									//徐矿：加签增加【公开方式】 zelda 2019年12月10日20:40:42 start
+									try{
+										var nodeJson = eval("(" + a[5] + ")");
+										var affertNdoe = nodeJson.nodes;
+										var addNodeIds = "";
+										for(var i = 0; i < affertNdoe.length; i++){
+											if(affertNdoe[i].added == true){
+												addNodeIds += affertNdoe[i].id + ",";
+											}
+										}
+										var param = {};
+										param.type=0;//表示新建或更新
+										param.nodeId = addNodeIds;
+										param.roleIds = S.roleIds;
+										if(S.roleIds != ""){
+											var result = callBackendMethod("xkjtManager","saveNodeOpenModes",param);
+										}
+										
+									
+									}catch(e){
+										console.log("zelda", e);
+									}
+									//徐矿：加签增加【公开方式】 zelda 2019年12月10日20:40:42 end
+                                }
+                                U = null;
+                                var Y = {
+                                    type: 1,
+                                    currentNodeId: H,
+                                    names: S.userName,
+                                    messageDataList: a[4]
+                                };
+                                if (typeof F == "function") {
+                                    F(Y)
+                                } else {
+                                    if (typeof refreshWorkflow == "function") {
+                                        refreshWorkflow(Y)
+                                    } else {
+                                        $.alert("\u8bf7\u6dfb\u52a0\u4e00\u4e2a\u540d\u5b57\u4e3arefreshWorkflow\u7684\u51fd\u6570\uff0c\u4ee5\u5237\u65b0\u6d41\u7a0b\u56fe\u9875\u9762\uff0c\u770b\u5230\u52a0\u7b7e/\u51cf\u7b7e\u6548\u679c\uff01")
+                                    }
+                                }
+                                O.close()
+                            } else {
+                                $.alert($.i18n("workflow.least.select.one"));
+                                return
+                            }
+                        } catch (W) {
+                            showFlashAlert(W.message)
+                        }
+                    }
+                }, {
+                    text: $.i18n("common.button.cancel.label"),
+                    handler: function () {
+                        O.close()
+                    }
+                }
+            ],
+            targetWindow: getCtpTop()
+        });
+    K.dialog = O
+}
+function assignNodeSelPerson(D, I, H, E, M, O, F, P, N, G, B, K, Q) {
+    var J = wfAjax.canChangeNode(D);
+    if (J[0] == "false") {
+        $.alert(J[1]);
+        return
+    }
+    var C = lockWorkflow(I, _wfcurrentUserId, 5);
+    if (C[0] == "false") {
+        $.alert(C[1]);
+        return
+    }
+    var R = wfAjax.getAcountExcludeElements();
+    var L = parseElements(R[0]);
+    var A = {
+        type: "selectPeople",
+        text: "${ctp:i18n('workflow.insertPeople.urgerAlt')}",
+        showFlowTypeRadio: false,
+        isConfirmExcludeSubDepartment: true,
+        unallowedSelectEmptyGroup: true,
+        excludeElements: L,
+        params: {
+            value: ""
+        },
+        targetWindow: window.top,
+        callback: function (Y) {
+            if (Y && Y.obj && Y.obj.length > 0) {
+                var V = {};
+                var e = [],
+                Z = [],
+                X = [],
+                c = [],
+                f = [],
+                a = [];
+                var W = false,
+                S = Y.obj;
+                for (var T = 0, U = S.length; T < U; T++) {
+                    e.push(S[T].id);
+                    Z.push(S[T].name);
+                    X.push(S[T].type);
+                    c.push(S[T].excludeChildDepartment);
+                    f.push(S[T].accountId);
+                    a.push(S[T].accountShortname);
+                    if (S[T].type != "Member") {
+                        W = true
+                    }
+                }
+                V.userId = e;
+                V.userName = Z;
+                V.userType = X;
+                V.userExcludeChildDepartment = c;
+                V.accountId = f;
+                V.accountShortname = a;
+                V.policyId = P;
+                V.policyName = Q;
+                V.flowType = "5";
+                var d = [],
+                b = "all";
+                var U = V.userType.length;
+                for (var T = 0; T < U; T++) {
+                    d.push(b)
+                }
+                competionObj = null;
+                V.node_process_mode = d;
+                if (F) {
+                    V.formOperationPolicy = "1"
+                } else {
+                    V.formOperationPolicy = "0"
+                }
+                assignNodeOpe(D, I, H, E, M, O, F, P, N, G, B, K, V)
+            } else {
+                $("#collSelectPeopleInput").val("<${ctp:i18n('workflow.insertPeople.urgerAlt')}>")
+            }
+        }
+    };
+    if ("${appName}" == "collaboration" || "${appName}" == "form") {
+        A.panels = "Department,Team,Post,Outworker,RelatePeople,JoinOrganization";
+        A.selectType = "Account,Member,Department,Team,Post,Outworker,RelatePeople"
+    } else {
+        A.panels = "Department,Team,Post,RelatePeople";
+        A.selectType = "Account,Member,Department,Team,Post,RelatePeople"
+    }
+    $.selectPeople(A)
+}
+function assignNode(B, A, E, N, D, K, L, C, J, P, I, F, M) {
+    var O = wfAjax.canChangeNode(B);
+    if (O[0] == "false") {
+        $.alert(O[1]);
+        return
+    }
+    var G = lockWorkflowUseNowexpirationTime(A, _wfcurrentUserId, 5, M);
+    if (G[0] == "false") {
+        $.alert(G[1]);
+        return
+    }
+    var H = $.dialog({
+            url: _wfctxPath + "/workflow/process.do?method=preAssignNode&appName=" + K + "&isForm=" + L + "&defaultPolicyId=" + escapeSpecialChar(encodeURIComponent(C)) + "&accountId=" + J + "&nodeId=" + E,
+            transParams: {
+                processId: A,
+                nodeId: E,
+                processXML: $("#process_xml").val()
+            },
+            width: 560,
+            height: 226,
+            title: $.i18n("workflow.assignNode.assign"),
+            notCopyReturnValue: true,
+            buttons: [{
+                    text: $.i18n("common.button.ok.label"),
+                    isEmphasize: true,
+                    handler: function () {
+                        try {
+                            var Q = H.getReturnValue();
+                            if (Q != null && Q.length > 0) {
+                                var S = $.parseJSON(Q);
+                                assignNodeOpe(B, A, E, N, D, K, L, C, J, P, I, F, S);
+                                H.close()
+                            } else {
+                                $.alert($.i18n("workflow.least.select.one"));
+                                return
+                            }
+                        } catch (R) {
+                            showFlashAlert(R.message)
+                        }
+                    }
+                }, {
+                    text: $.i18n("common.button.cancel.label"),
+                    handler: function () {
+                        H.close()
+                    }
+                }
+            ],
+            targetWindow: getCtpTop()
+        })
+}
+function assignNodeOpe(C, L, J, D, P, S, E, T, Q, G, B, N, U) {
+    var O = $("#process_xml");
+    var A = $("#readyObjectJSON");
+    if (O.size() <= 0) {
+        $.alert("\u8bf7\u6dfb\u52a0id=process_xml\u7684\u9690\u85cf\u57df\uff01");
+        return
+    }
+    if (A.size() <= 0) {
+        $.alert("\u8bf7\u6dfb\u52a0id=readyObjectJSON\u7684\u9690\u85cf\u57df\uff01");
+        return
+    }
+    var R = O.val();
+    var F = A.val();
+    var K = "";
+    var H = $("#process_message_data");
+    if (H.size() > 0) {
+        K = H.val()
+    }
+    U.summaryId = B;
+    U.affairId = N;
+    U.caseId = P;
+    var I = wfAjax.addNode(L, J, J, D, 3, U, R, F, K, getProcessChangeMessage());
+    if (I && I[0]) {
+        O.val(I[0])
+    }
+    if (I && I[1]) {
+        A.val(I[1])
+    }
+    if (I && I[4] && H.size() > 0) {
+        H.val(I[4]);
+        H = null
+    }
+    if (I && I[5]) {
+        setProcessChangeMessage(I[5])
+    }
+    O = null;
+    A = null;
+    var M = {
+        type: 3,
+        currentNodeId: J,
+        names: U.userName,
+        messageDataList: I[4]
+    };
+    if (typeof G == "function") {
+        G(M)
+    } else {
+        if (typeof refreshWorkflow == "function") {
+            refreshWorkflow(M)
+        } else {
+            $.alert("\u8bf7\u6dfb\u52a0\u4e00\u4e2a\u540d\u5b57\u4e3arefreshWorkflow\u7684\u51fd\u6570\uff0c\u4ee5\u5237\u65b0\u6d41\u7a0b\u56fe\u9875\u9762\uff0c\u770b\u5230\u52a0\u7b7e/\u51cf\u7b7e\u6548\u679c\uff01")
+        }
+    }
+}
+function informNode(D, J, I, E, N, P, F, Q, O, G, B, L, H) {
+    var K = wfAjax.canChangeNode(D);
+    if (K[0] == "false") {
+        $.alert(K[1]);
+        return
+    }
+    var C = lockWorkflowUseNowexpirationTime(J, _wfcurrentUserId, 6, H);
+    if (C[0] == "false") {
+        $.alert(C[1]);
+        return
+    }
+    var R = wfAjax.getAcountExcludeElements();
+    var M = parseElements(R[0]);
+    var A = {
+        type: "selectPeople",
+        text: $.i18n("workflow.insertPeople.urgerAlt"),
+        showFlowTypeRadio: false,
+        isConfirmExcludeSubDepartment: true,
+        unallowedSelectEmptyGroup: true,
+        excludeElements: M,
+        params: {
+            value: ""
+        },
+        targetWindow: getCtpTop(),
+        callback: function (k) {
+            if (k && k.obj && k.obj.length > 0) {
+                var a = [],
+                U = [],
+                j = [],
+                T = [],
+                X = [],
+                V = [],
+                d = [];
+                var h = {};
+                for (var e = 0, f = k.obj.length; e < f; e++) {
+                    a.push(k.obj[e].id);
+                    U.push(k.obj[e].name);
+                    j.push(k.obj[e].type);
+                    T.push(k.obj[e].excludeChildDepartment);
+                    X.push(k.obj[e].accountId);
+                    V.push(k.obj[e].accountShortname);
+                    d.push("all")
+                }
+                h.userId = a;
+                h.userName = U;
+                h.userType = j;
+                h.userExcludeChildDepartment = T;
+                h.accountId = X;
+                h.accountShortname = V;
+                h.flowType = "5";
+                h.node_process_mode = d;
+                h.policyId = Q;
+                h.policyName = $.i18n("permission.operation.Infom");
+                if (F) {
+                    h.formOperationPolicy = "0"
+                } else {
+                    h.formOperationPolicy = "1"
+                }
+                var c = $("#process_xml"),
+                S = $("#readyObjectJSON");
+                if (c.size() <= 0) {
+                    $.alert("\u8bf7\u6dfb\u52a0id=process_xml\u7684\u9690\u85cf\u57df\uff01");
+                    return
+                }
+                var g = c.val();
+                var W = $("#process_message_data");
+                var Z = "";
+                if (W.size() > 0) {
+                    Z = W.val()
+                }
+                h.summaryId = B;
+                h.affairId = L;
+                h.caseId = N;
+                var Y = wfAjax.addNode(J, I, I, E, 2, h, g, "", Z, getProcessChangeMessage());
+                if (Y && Y[0]) {
+                    c.val(Y[0])
+                }
+                if (Y && Y[4] && W.size() > 0) {
+                    W.val(Y[4]);
+                    W = null
+                }
+                if (Y && Y[5]) {
+                    setProcessChangeMessage(Y[5])
+                }
+                c = null;
+                var b = {
+                    type: 2,
+                    currentNodeId: I,
+                    names: h.userName,
+                    messageDataList: Y[4]
+                };
+                if (typeof G == "function") {
+                    G(b)
+                } else {
+                    if (typeof refreshWorkflow == "function") {
+                        refreshWorkflow(b)
+                    } else {
+                        $.alert("\u8bf7\u6dfb\u52a0\u4e00\u4e2a\u540d\u5b57\u4e3arefreshWorkflow\u7684\u51fd\u6570\uff0c\u4ee5\u5237\u65b0\u6d41\u7a0b\u56fe\u9875\u9762\uff0c\u770b\u5230\u52a0\u7b7e/\u51cf\u7b7e\u6548\u679c\uff01")
+                    }
+                }
+            } else {
+                $("#collSelectPeopleInput").val("<" + $.i18n("workflow.insertPeople.urgerAlt") + ">")
+            }
+        }
+    };
+    if (P == "collaboration" || P == "form") {
+        A.panels = "Department,Team,Post,Outworker,RelatePeople,JoinOrganization";
+        A.selectType = "Account,Member,Department,Team,Post,Outworker,RelatePeople"
+    } else {
+        A.panels = "Department,Team,Post";
+        A.selectType = "Account,Member,Department,Team,Post"
+    }
+    $.selectPeople(A)
+}
+function deleteNode(B, A, D, K, C, M, I, F, E, J) {
+    var L = wfAjax.canChangeNode(B);
+    if (L[0] == "false") {
+        $.alert(L[1]);
+        return
+    }
+    var G = lockWorkflowUseNowexpirationTime(A, _wfcurrentUserId, 4, J);
+    if (G[0] == "false") {
+        $.alert(G[1]);
+        return
+    }
+    var H = $.dialog({
+            id: "workflow_dialog_prePreDeleteNodeFromDiagram",
+            isFromModle: true,
+            url: _wfctxPath + "/workflow/process.do?method=prePreDeleteNodeFromDiagram",
+            transParams: {
+                processId: A,
+                nodeId: D,
+                isProcessTemplate: E,
+                processXML: $("#process_xml").val()
+            },
+            width: 400,
+            height: 280,
+            title: $.i18n("workflow.deletePeople.title"),
+            notCopyReturnValue: true,
+            buttons: [{
+                    text: $.i18n("common.button.ok.label"),
+                    isEmphasize: true,
+                    handler: function () {
+                        try {
+                            var P = H.getReturnValue();
+                            if (P != null && P.length > 0) {
+                                var Q = $.parseJSON(P);
+                                var O = Q.idArray;
+                                if (O.length <= 0) {
+                                    $.alert($.i18n("workflow.least.select.one"));
+                                    return
+                                }
+                                var R = $("#process_xml");
+                                var N = $("#process_message_data");
+                                var U = "";
+                                if (N.size() > 0) {
+                                    U = N.val()
+                                }
+                                var S = R.val();
+                                var W = wfAjax.deleteNode(A, D, K, O, S, U, getProcessChangeMessage(), I, F);
+                                if (W && W.processXML) {
+                                    R.val(W.processXML);
+                                    if (N.size() > 0) {
+                                        N.val(W.messageDataList);
+                                        N = null
+                                    }
+                                }
+                                if (W && W.processChangeMessage) {
+                                    setProcessChangeMessage(W.processChangeMessage)
+                                }
+                                R = null;
+                                var V = {
+                                    type: 4,
+                                    currentNodeId: D,
+                                    names: Q.nameArray,
+                                    messageDataList: W.messageDataList
+                                };
+                                if (typeof M == "function") {
+                                    M(V)
+                                } else {
+                                    if (typeof refreshWorkflow == "function") {
+                                        refreshWorkflow(V)
+                                    } else {
+                                        $.alert("\u8bf7\u6dfb\u52a0\u4e00\u4e2a\u540d\u5b57\u4e3arefreshWorkflow\u7684\u51fd\u6570\uff0c\u4ee5\u5237\u65b0\u6d41\u7a0b\u56fe\u9875\u9762\uff0c\u770b\u5230\u52a0\u7b7e/\u51cf\u7b7e\u6548\u679c\uff01")
+                                    }
+                                }
+                            }
+                        } catch (T) {
+                            showFlashAlert(T.message)
+                        }
+                        H.close()
+                    }
+                }, {
+                    text: $.i18n("common.button.cancel.label"),
+                    handler: function () {
+                        H.close()
+                    }
+                }
+            ],
+            targetWindow: getCtpTop()
+        })
+}
+function getUUID() {
+    var A = new Date().getTime() + "" + (UUID_seqence++);
+    if (UUID_seqence >= 100000) {
+        UUID_seqence = 0
+    }
+    return A
+}
+var tempSelectPeopleElements = null;
+var myflowtype = "";
+function createProcessXml(N, M, L, B, U, E, O, H, P, F, D, J, A, T, C) {
+    var G = M;
+    if (L) {
+        G = L
+    }
+    A = A == undefined ? "" : A;
+    var I = "Department,Team,Post,Outworker,RelatePeople,JoinOrganization";
+    var Q = "Account,Department,Team,Post,Outworker,RelatePeople,Member";
+    if (F != undefined && F != null) {
+        I = F
+    }
+    if (D != undefined && D != null) {
+        Q = D
+    }
+    var S = wfAjax.getAcountExcludeElements();
+    var K = parseElements(S[0]);
+    if (myflowtype == "") {
+        if (N == "edocSend" || N == "signReport" || N == "recEdoc" || N == "edoc" || N == "sendInfo" || N == "info") {
+            myflowtype = "sequence"
+        } else {
+            myflowtype = "concurrent"
+        }
+        myflowtype = C == undefined ? myflowtype : C
+    }
+    J = J == undefined ? true : J;
+    if (N == "collaboration") {
+        tempSelectPeopleElements = null
+    }
+    var R = $.selectPeople({
+            type: "selectPeople",
+            panels: I,
+            selectType: Q,
+            text: $.i18n("workflow.insertPeople.urgerAlt"),
+            showFlowTypeRadio: true,
+            hiddenColAssignRadio: true,
+            hiddenMultipleRadio: !J,
+            flowtype: myflowtype,
+            mode: A,
+            maxSize: 100,
+            targetWindow: M,
+            isConfirmExcludeSubDepartment: true,
+            unallowedSelectEmptyGroup: true,
+            excludeElements: K,
+            params: {
+                value: T == undefined ? "" : T
+            },
+            elements: tempSelectPeopleElements,
+            callback: function (V) {
+                try {
+                    if (V.obj && V.obj[0]) {
+                        tempSelectPeopleElements = V.obj[0];
+                        if (V.obj[1] == 0) {
+                            myflowtype = "sequence"
+                        } else {
+                            myflowtype = "concurrent"
+                        }
+                    }
+                    var W = $("#process_info_selectvalue", G.document);
+                    var Y = $("#process_info_selectvalue", M.document);
+                    W.val(V.value);
+                    Y.val(V.value);
+                    try {
+                        if (getCtpTopFromOpener(window).distroy_token == false) {
+                            dealSPData2Token("process_info", V)
+                        }
+                    } catch (X) {}
+                } catch (X) {}
+                createProcessXmlCallBack(M, V, N, G, B, U, E, O, H, P)
+            }
+        })
+}
+function createProcessXmlForward(G, I, H, B, E, D, J) {
+    var K = "";
+    try {
+        var C = $("#process_info_selectvalue", H.document);
+        var A = $("#process_info_selectvalue", I.document);
+        if (C[0]) {
+            K = C.val()
+        } else {
+            K = A.val()
+        }
+    } catch (F) {}
+    createProcessXml(G, I, H, "-1", "", "", D, "-1", J, null, null, B, E, K)
+}
+function createProcessXmlCallBack(Z, g, X, k, c, a, j, q, b, d) {
+    if (g && g.obj && g.obj.length > 0 && g.obj[0].length > 0) {
+        var h = [],
+        V = g.obj[2],
+        m = q,
+        Q = d,
+        x = "0",
+        p = g.obj[1],
+        K = "",
+        W = "",
+        H = "",
+        B = "",
+        T = "",
+        J = "",
+        A = "";
+        V = V == undefined ? "" : V;
+        h.push("<ps>");
+        h.push('<p s="' + V + '" u="" y="0" x="0" i="" n="" d="" t="">');
+        h.push('<n m="0" y="" x="" t="8" d="" n="" i="start">');
+        h.push('<a a="" b="" c="1" d="" e="" f="" g="" i="false" j="false" k=""/>');
+        h.push('<s c="1" r="" e="" f="" g="0" j="multiple" k="" l="" m="false" s="success" d="" t="" n="" i="' + m + '"/>');
+        h.push("</n>");
+        h.push('<n m="0" y="0" x="0" t="4" d="" n="end" i="end">');
+        h.push('<a a="" b="" c="1" d="" e="" f="" g="" i="false" j="false" k=""/>');
+        h.push('<s c="1" r="" e="" f="" g="0" j="multiple" k="" l="" m="false" s="success" d="" t="" n="' + Q + '" i="' + m + '"/>');
+        h.push("</n>");
+        var M = [],
+        O = g.obj[0];
+        for (var s = 0, N = O.length; s < N; s++) {
+            var I = O[s];
+            var r = getUUID(),
+            K = I.id,
+            W = I.name,
+            H = I.type,
+            B = I.excludeChildDepartment,
+            T = I.accountId,
+            E = I.accountShortname || "";
+            M.push(r);
+            var u = "all";
+            if (H == "Member") {
+                H = "user";
+                u = "single"
+            }
+            B = B == undefined ? false : B;
+            var R = 1;
+            if (H == "Post" && T == "-1730833917365171641") {
+                R = 2
+            }
+            h.push('<n a="1" b="normal" c="false" l="1000" e="0" t="6" d="" n="' + escapeSpecialChar(W) + '" i="' + r + '">');
+            h.push('<a a="' + escapeSpecialChar(E) + '" b="' + T + '" c="1" d="' + escapeSpecialChar(W) + '" e="" f="' + K + '" h="' + B + '" g="' + H + '" i="false" j="false" k="roleadmin"/>');
+            h.push('<s c="' + R + '" r="" e="" f="" g="0" j="' + u + '" k="" l="" m="false" s="success" d="" t="" n="' + Q + '" i="' + m + '"/>');
+            h.push("</n>");
+            if (s < 12) {
+                if (s > 0) {
+                    A += $.i18n("workflow.createProcessXml.common_separator_label")
+                }
+                var Y = W;
+                if (E != null && E != "null" && E != "undefined" && E != "") {
+                    Y = Y + "(" + E + ")"
+                }
+                Y += "(" + Q + ")";
+                A += Y
+            }
+        }
+        if (p == 0 || M.length == 1) {
+            h.push('<l a="" b="" c="" e="" m="" h="3" o="0" j="' + M[0] + '" k="start" t="11" d="" n="" i="' + getUUID() + '"/>');
+            h.push('<l a="" b="" c="" e="" m="" h="3" o="0" j="end" k="' + M[M.length - 1] + '" t="11" d="" n="" i="' + getUUID() + '"/>');
+            for (var s = 0; s < M.length - 1; s++) {
+                var v = M[s];
+                var l = M[s + 1];
+                h.push('<l a="" c="" b="" e="" m="" h="3" o="0" j="' + l + '" k="' + v + '" t="11" d="" n="" i="' + getUUID() + '"/>')
+            }
+        } else {
+            var L = getUUID();
+            var o = getUUID();
+            h.push('<n o="" p="true" y="0" x="0" t="2" d="" n="split" i="' + L + '">');
+            h.push('<s c="1" r="" e="" f="" g="0" j="' + u + '" k="" l="" m="false" s="success" d="" t="" n="' + Q + '" i="' + m + '"/>');
+            h.push("</n>");
+            h.push('<n o="" p="false" y="0" x="0" t="2" d="" n="join" i="' + o + '">');
+            h.push('<s c="1" r="" e="" f="" g="0" j="' + u + '" k="" l="" m="false" s="success" d="" t="" n="' + Q + '" i="' + m + '"/>');
+            h.push("</n>");
+            h.push('<l a="" b="" c="" e="" m="" h="3" o="0" j="' + L + '" k="start" t="11" d="" n="" i="' + getUUID() + '"/>');
+            h.push('<l a="" b="" c="" e="" m="" h="3" o="0" j="end" k="' + o + '" t="11" d="" n="" i="' + getUUID() + '"/>');
+            for (var s = M.length - 1; s >= 0; s--) {
+                var P = M[s];
+                h.push('<l a="" b="" c="" e="" m="" h="3" o="0" j="' + P + '" k="' + L + '" t="11" d="" n="" i="' + getUUID() + '"/>');
+                h.push('<l a="" b="" c="" e="" m="" h="3" o="0" j="' + o + '" k="' + P + '" t="11" d="" n="" i="' + getUUID() + '"/>')
+            }
+        }
+        h.push("</p></ps>");
+        var G = h.join("");
+        var F = $("#process_xml", k.document);
+        if (F.size() <= 0) {
+            $.alert("\u8bf7\u6dfb\u52a0id=process_xml\u7684\u8f93\u5165\u57df\uff01")
+        }
+        F.val(G);
+        var D = $("#process_desc_by", k.document);
+        if (D.size() <= 0) {
+            $.alert("\u8bf7\u6dfb\u52a0id=process_desc_by\u7684\u8f93\u5165\u57df\uff01")
+        }
+        D.val("xml");
+        var C = $("#process_info", k.document);
+        if (C.size() <= 0) {
+            $.alert("\u8bf7\u6dfb\u52a0id=process_info\u7684\u8f93\u5165\u57df\uff01")
+        }
+        C.val(A);
+        F = D = C = null;
+        try {
+            var U = $("#process_desc_by", k.document)[0];
+            var S = $("#process_xml", k.document)[0];
+            var n = $("#process_info", k.document)[0];
+            U.value = "xml";
+            S.value = G;
+            n.value = A
+        } catch (w) {}
+        if (p == 2) {
+            createWFPersonal(Z, X, c, a, j, "-1", k, q, b, d)
+        }
+    }
+}
+function showFlashAlert(A) {
+    try {
+        var C = $.alert(A)
+    } catch (B) {
+        C(A)
+    }
+}
+function stepBackToTargetNode(P, M, B, I, K, L, R, D, E, F, C, N, G, J) {
+    var O = wfAjax.canSpecialStepBack(B);
+    if (O[0] == "false") {
+        $.alert(O[1]);
+        try {
+            releaseApplicationButtons()
+        } catch (Q) {}
+        return
+    }
+    var A = lockWorkflow(I, _wfcurrentUserId, 10);
+    if (A[0] == "false") {
+        $.alert(A[1]);
+        try {
+            releaseApplicationButtons()
+        } catch (Q) {}
+        return false
+    }
+    E = E == undefined ? true : E;
+    D = D == undefined ? true : D;
+    F = F == undefined ? "" : F;
+    C = C == undefined ? "" : C;
+    var H = P;
+    if (M) {
+        H = M
+    }
+    _closeFlashDialogBeforeOpen(P);
+    setTimeout(function () {
+        var V = $(P).width();
+        var W = $(P).height();
+        if (V <= 0) {
+            V = $(document.body).width();
+            W = $(document.body).height()
+        }
+        W = W - 50;
+        try {
+            var U = (G == 1) ? ' checked="checked" ' : "";
+            var T = (G == 1 || G == 2) ? ' disabled="true" ' : "";
+            var S = '<span id="traceSpanArea" style="display:none"><label for="trackWorkflow" class="margin_t_5 hand"><input type="checkbox" id="trackWorkflow" name="trackWorkflow" ' + U + T + 'class="radio_com">' + $.i18n("collaboration.workflow.trace.traceworkflow") + '</label><span class="color_blue hand" style="color:#318ed9;" title="' + $.i18n("collaboration.workflow.trace.summaryDetail") + '">[' + $.i18n("collaboration.workflow.trace.title") + "]</span></span>";
+            S = typeof(J) != "undefined" && J ? S : "";
+            workfowFlashDialog = $.dialog({
+                    id: "workflow_dialog_workflowDesigner_Id",
+                    isHide: true,
+                    bottomHTML: S,
+                    url: _wfctxPath + "/workflow/designer.do?method=showDiagram&isDebugger=false&scene=6&isModalDialog=true&processId=" + I + "&caseId=" + K + "&currentNodeId=" + L + "&showToMe=" + E + "&showReGo=" + D + "&permissionAccountId=" + F + "&configCategory=" + C + "&isTemplate=" + N,
+                    width: V - 300,
+                    height: W - 70,
+                    title: $.i18n("workflow.special.stepback.title"),
+                    transParams: {
+                        dwidths: V - 270,
+                        dheights: W - 110,
+                        returnValueWindow: H
+                    },
+                    minParam: {
+                        show: false
+                    },
+                    maxParam: {
+                        show: false
+                    },
+                    closeParam: {
+                        show: true,
+                        handler: function () {
+                            releaseWorkflowByAction(I, _wfcurrentUserId, 10);
+                            try {
+                                releaseApplicationButtons()
+                            } catch (Y) {}
+                        }
+                    },
+                    targetWindow: P,
+                    notCopyReturnValue: true,
+                    buttons: [{
+                            text: $.i18n("workflow.designer.page.button.ok"),
+                            isEmphasize: true,
+                            handler: function () {
+                                var c = workfowFlashDialog.getReturnValue({
+                                        innerButtonId: "stepback_ok"
+                                    });
+                                var a = c[0];
+                                if (a) {
+                                    var Z = wfAjax.canSpecialStepBack(B);
+                                    if (Z[0] == "false") {
+                                        showFlashAlert(Z[1])
+                                    } else {
+                                        var Y = c[1];
+                                        var d = c[2];
+                                        if (Y == "start" && d == "0") {
+                                            var b = $.confirm({
+                                                    msg: $.i18n("workflow.special.stepback.label8"),
+                                                    ok_fn: function () {
+                                                        R(B, I, K, L, c[1], c[2], workfowFlashDialog, c[3], c[4]);
+                                                        releaseWorkflowByAction(I, _wfcurrentUserId, 10)
+                                                    },
+                                                    cancel_fn: function () {}
+                                                })
+                                        } else {
+                                            R(B, I, K, L, c[1], c[2], workfowFlashDialog, c[3], c[4]);
+                                            releaseWorkflowByAction(I, _wfcurrentUserId, 10)
+                                        }
+                                    }
+                                } else {
+                                    showFlashAlert($.i18n("workflow.special.stepback.label9"))
+                                }
+                            }
+                        }, {
+                            text: $.i18n("workflow.designer.page.button.cancel"),
+                            handler: function () {
+                                _closeOrHideFlashDialog();
+                                releaseWorkflowByAction(I, _wfcurrentUserId, 10);
+                                try {
+                                    releaseApplicationButtons()
+                                } catch (Y) {}
+                                return false
+                            }
+                        }
+                    ]
+                })
+        } catch (X) {
+            alert(X)
+        }
+    }, 10)
+}
+function multistageSign(S, C, Q, K, E, O, L, I, V, F, M, H, R, B, J) {
+    var P = wfAjax.canChangeNode(E);
+    if (P[0] == "false") {
+        $.alert(P[1]);
+        return
+    }
+    var D = lockWorkflow(O, _wfcurrentUserId, 8);
+    if (D[0] == "false") {
+        $.alert(D[1]);
+        return
+    }
+    var N = H == undefined ? "Department" : H;
+    var T = R == undefined ? "Department,Member" : R;
+    var B = B;
+    var G = -1;
+    var A = 1;
+    var U = $.selectPeople({
+            type: "selectPeople",
+            panels: N,
+            selectType: T,
+            text: $.i18n("workflow.insertPeople.urgerAlt"),
+            showFlowTypeRadio: false,
+            targetWindow: getCtpTop(),
+            departmentId: B + "",
+            unallowedSelectEmptyGroup: true,
+            params: {
+                value: ""
+            },
+            callback: function (W) {
+                showMultistageSignPageCallBack(W, J, C, Q, K, E, O, L, I, V, F, M, S)
+            }
+        })
+}
+function escapeSpecialChar(A) {
+    if (!A) {
+        return A
+    }
+    A = A.replace(/\&/g, "&amp;").replace(/\</g, "&lt;").replace(/\>/g, "&gt;").replace(/\"/g, "&quot;");
+    A = A.replace(/\'/g, "&#039;").replace(/"/g, "&#034;");
+    return A
+}
+function showMultistageSignPageCallBack(K, O, L, G, B, D, A, E, C, H, F, M, J) {
+    var N = K.value;
+    window.preAddMoreSignSelectData = {
+        selObj: N,
+        appName: J,
+        flowPermAccountId: M,
+        nodeId: E
+    };
+    var I = $.dialog({
+            url: _wfctxPath + "/workflow/process.do?method=preAddMoreSign&_r=" + (new Date()).getTime(),
+            width: 500,
+            height: 350,
+            title: $.i18n("workflow.moreSign.findPerson"),
+            minParam: {
+                show: false
+            },
+            maxParam: {
+                show: false
+            },
+            targetWindow: getCtpTop(),
+            notCopyReturnValue: true,
+            buttons: [{
+                    text: $.i18n("workflow.designer.page.button.ok"),
+                    isEmphasize: true,
+                    handler: function () {
+                        var U = I.getReturnValue();
+                        if (U == false) {}
+                        else {
+                            if (U != null && U.length > 0) {
+                                var T = $.parseJSON(U);
+                                var S = $("#process_xml");
+                                if (S.size() <= 0) {
+                                    $.alert("\u8bf7\u6dfb\u52a0id=process_xml\u7684\u9690\u85cf\u57df\uff01");
+                                    return
+                                }
+                                var V = S.val();
+                                var W = "";
+                                var Q = $("#process_message_data");
+                                if (Q.size() > 0) {
+                                    W = Q.val()
+                                }
+                                T.summaryId = L;
+                                T.affairId = G;
+                                T.currentUserId = C;
+                                T.performer = B;
+                                T.workitemId = D;
+                                T.currentLoginAccountId = F;
+                                var P = wfAjax.addNode(A, E, E, B, 5, T, V, "", W, getProcessChangeMessage());
+                                if ("false" == P[2]) {
+                                    $.alert(P[3]);
+                                    return
+                                }
+                                if (P && P[0]) {
+                                    S.val(P[0])
+                                }
+                                if (P && P[5]) {
+                                    setProcessChangeMessage(P[5])
+                                }
+                                if (P && P[4] && Q.size() > 0) {
+                                    Q.val(P[4]);
+                                    Q = null
+                                }
+                                S = null;
+                                var R = {
+                                    messageDataList: P[4]
+                                };
+                                if (typeof O == "function") {
+                                    O(R)
+                                } else {
+                                    if (typeof refreshWorkflow == "function") {
+                                        refreshWorkflow(R)
+                                    } else {
+                                        $.alert("\u8bf7\u6dfb\u52a0\u4e00\u4e2a\u540d\u5b57\u4e3arefreshWorkflow\u7684\u51fd\u6570\uff0c\u4ee5\u5237\u65b0\u6d41\u7a0b\u56fe\u9875\u9762\uff0c\u770b\u5230\u52a0\u7b7e/\u51cf\u7b7e\u6548\u679c\uff01")
+                                    }
+                                }
+                                I.close()
+                            }
+                        }
+                    }
+                }, {
+                    text: $.i18n("workflow.designer.page.button.cancel"),
+                    handler: function () {
+                        I.close()
+                    }
+                }
+            ]
+        })
+}
+function passRead(D, A, E, L, J, I, K, F, O, N) {
+    var M = wfAjax.canChangeNode(D);
+    if (M[0] == "false") {
+        $.alert(M[1]);
+        return
+    }
+    var G = lockWorkflow(A, _wfcurrentUserId, 7);
+    if (G[0] == "false") {
+        $.alert(G[1]);
+        return
+    }
+    var H = wfAjax.getAcountExcludeElements();
+    var C = parseElements(H[0]);
+    var B = {
+        type: "selectPeople",
+        text: $.i18n("workflow.insertPeople.urgerAlt"),
+        showFlowTypeRadio: false,
+        isConfirmExcludeSubDepartment: true,
+        excludeElements: C,
+        params: {
+            value: ""
+        },
+        departmentId: O + "",
+        unallowedSelectEmptyGroup: true,
+        targetWindow: getCtpTop(),
+        callback: function (g) {
+            if (g && g.obj && g.obj.length > 0) {
+                var X = [],
+                R = [],
+                f = [],
+                Q = [],
+                U = [],
+                S = [],
+                a = [];
+                var e = {};
+                for (var b = 0, c = g.obj.length; b < c; b++) {
+                    X.push(g.obj[b].id);
+                    R.push(g.obj[b].name);
+                    f.push(g.obj[b].type);
+                    Q.push(g.obj[b].excludeChildDepartment);
+                    U.push(g.obj[b].accountId);
+                    S.push(g.obj[b].accountShortname);
+                    a.push("all")
+                }
+                e.userId = X;
+                e.userName = R;
+                e.userType = f;
+                e.userExcludeChildDepartment = Q;
+                e.accountId = U;
+                e.accountShortname = S;
+                e.node_process_mode = a;
+                var Z = $("#process_xml"),
+                P = $("#readyObjectJSON");
+                if (Z.size() <= 0) {
+                    $.alert("\u8bf7\u6dfb\u52a0id=process_xml\u7684\u9690\u85cf\u57df\uff01");
+                    return
+                }
+                var d = Z.val();
+                var T = $("#process_message_data");
+                var W = "";
+                if (T.size() > 0) {
+                    W = T.val()
+                }
+                e.summaryId = K;
+                e.affairId = F;
+                var V = wfAjax.addNode(A, E, E, L, 6, e, d, "", W, getProcessChangeMessage());
+                if (V && V[0]) {
+                    Z.val(V[0])
+                }
+                if (V && V[4] && T.size() > 0) {
+                    T.val(V[4]);
+                    T = null
+                }
+                if (V && V[5]) {
+                    setProcessChangeMessage(V[5])
+                }
+                Z = null;
+                var Y = {
+                    messageDataList: V[4]
+                };
+                if (typeof N == "function") {
+                    N(Y)
+                } else {
+                    if (typeof refreshWorkflow == "function") {
+                        refreshWorkflow(Y)
+                    } else {
+                        $.alert("\u8bf7\u6dfb\u52a0\u4e00\u4e2a\u540d\u5b57\u4e3arefreshWorkflow\u7684\u51fd\u6570\uff0c\u4ee5\u5237\u65b0\u6d41\u7a0b\u56fe\u9875\u9762\uff0c\u770b\u5230\u52a0\u7b7e/\u51cf\u7b7e\u6548\u679c\uff01")
+                    }
+                }
+            } else {
+                $("#collSelectPeopleInput").val("<" + $.i18n("workflow.insertPeople.urgerAlt") + ">")
+            }
+        }
+    };
+    B.panels = "Department,Team";
+    B.selectType = "Account,Department,Team,Member";
+    $.selectPeople(B)
+}
+function replaceTemplateNode(D, A, C, B) {
+    B = B || {};
+    window.templateReplaceNodeDialog = $.dialog({
+            id: "templateReplaceNode",
+            url: _ctxPath + "/workflow/replace.do?method=index&appName=" + A,
+            width: 700,
+            height: 475,
+            title: C || $.i18n("workflow.replaceNode.40"),
+            minParam: {
+                show: false
+            },
+            maxParam: {
+                show: false
+            },
+            transParams: {
+                paramWin: window,
+                initData: B.datas,
+                initType: B.type
+            },
+            close_fn: function () {
+                window.dialog.transParams = null
+            },
+            targetWindow: getCtpTop()
+        });
+    D = null
+}
+function executeWorkflowBeforeEvent(B, J, H, N, A, C, F, K, E, M, G, L) {
+    if (N == null || N == "" || hasWorkflowEvent == "false" || hasWorkflowEvent == false) {
+        removeWorkflowMatchResultCache();
+        return true
+    }
+    var D = new Object();
+    D.formData = F;
+    D.mastrid = F;
+    D.processTemplateId = N;
+    D.processId = A;
+    D.currentActivityId = C;
+    D.bussinessId = J;
+    D.affairId = H;
+    D.appName = K;
+    D.formAppId = E;
+    D.formViewOperation = G;
+    D.matchRequestToken = matchRequestToken;
+    D.processXml = L;
+    D.currentNodeLast = $("#workflow_thisNodelast_input").val();
+    var O = wfAjax.executeWorkflowBeforeEvent(B, D);
+    if (O && O != "") {
+        $.alert(O);
+        try {
+            releaseApplicationButtons()
+        } catch (I) {}
+        return false
+    }
+    return true
+}
+function initPageDataToParentPage(W, B) {
+    if (!W) {
+        $.alert("sourceWindow is null!");
+        return false
+    }
+    if (typeof(W.OK) != "function") {
+        $.alert("sourceWindow can't find OK Function!");
+        return false
+    }
+    var E = W.OK({
+            innerButtonId: "ok"
+        });
+    if (!E) {
+        return false
+    }
+    var U = W.isvalidate;
+    var S = W.appName;
+    var H = W.formApp;
+    if (H == "-1") {
+        H = ""
+    }
+    var F = W.wendanId;
+    if (F == "-1") {
+        F = ""
+    }
+    if (U == "true" && E) {
+        var A = wfAjax.validateFormTemplate(S, H || F || "", E[1], E[4]);
+        if (A == null || A.length < 2) {
+            $.alert($.i18n("workflow.label.dialog.validateError.js"));
+            return false
+        }
+        if ("false" == A[0]) {
+            var C = $($.parseXML(A[1].substr(38)));
+            var N = C.find("n[s=false]");
+            var X = true,
+            K = "";
+            if (N.size() > 0) {
+                loopFlag1: for (var G = 0, Q = N.size(); G < Q; G++) {
+                    var R = N.eq(G);
+                    for (var P = 0; P < 5; P++) {
+                        if ("false" == R.find("r" + P).text()) {
+                            X = false;
+                            K = R.find("r" + P + "msg").text();
+                            break loopFlag1
+                        }
+                    }
+                }
+            }
+            var L = C.find("l[s=false]");
+            if (X && L.size() > 0) {
+                loopFlag2: for (var J = 0, D = L.size(); J < D; J++) {
+                    var I = L.eq(J);
+                    if ("false" == I.find("r0").text()) {
+                        X = false;
+                        K = I.find("r0msg").text();
+                        break loopFlag2
+                    }
+                }
+            }
+            var M = C.find("cl[s=false]");
+            if (X && M.size() > 0) {
+                loopFlag3: for (var O = 0, V = M.size(); O < V; O++) {
+                    var T = M.eq(O);
+                    if ("false" == T.find("r0").text()) {
+                        X = false;
+                        K = T.find("r0msg").text();
+                        break loopFlag3
+                    }
+                }
+            }
+            if (!X) {
+                K = "<div style='width:270px;' class='word_break_all'>" + K + "<div>";
+                $.alert(K);
+                return false
+            }
+        }
+    }
+    initDialogDataToParentPage(E, B);
+    return true
+}
+function workflowHasPolicy(C, A) {
+    var B = false;
+    if (A && A.hasPolicy) {
+        B = A.hasPolicy(C)
+    }
+    return B
+}
+function setCondition(P) {
+    var C = P.linkId;
+    var O = P.appName;
+    var L = P.conditionId;
+    var G = P.formCondition;
+    var D = P.conditionTitle;
+    var K = P.conditionType;
+    var B = P.isForce;
+    var M = P.conditionBase;
+    var E = P.conditionDesc;
+    var J = P.isCircle;
+    var F = P.submitStyle;
+    var A = P.subAppName;
+    var H = P.urlParams;
+    var S = P.formAppId;
+    var I = P.wendanId;
+    var R = P.isShowForce;
+    var Q = 1;
+    if ((L != null && L != undefined && L.trim() != "" && L.trim() != "null" && L.trim() != "undefined") && (G != null && G != undefined && G.trim() != "" && G.trim() != "null" && G.trim() != "undefined") && (D != null && D != undefined && D.trim() != "" && D.trim() != "null" && D.trim() != "undefined") && (M != null && M != undefined && M.trim() != "" && M.trim() != "null" && M.trim() != "undefined")) {
+        Q = 0
+    }
+    var N = $.dialog({
+            url: _ctxPath + "/workflow/designer.do?method=showWorkflowBranchSettingPage&appName=" + O + "&subAppName=" + A + "&urlParams=" + H + "&linkId=" + C + "&isNew=" + Q + "&conditionBase=" + M + "&formApp=" + S + "&wendanId=" + I + "&isShowForce=" + R,
+            width: 560,
+            height: 520,
+            title: $.i18n("workflow.formBranch.validate.16"),
+            minParam: {
+                show: false
+            },
+            maxParam: {
+                show: false
+            },
+            transParams: {
+                appName: O,
+                linkId: C,
+                isNew: Q,
+                conditionId: L,
+                formCondition: G,
+                conditionTitle: D,
+                conditionType: K,
+                isForce: B,
+                conditionBase: M,
+                conditionDesc: E,
+                isCircle: J,
+                submitStyle: F
+            },
+            targetWindow: getCtpTop(),
+            buttons: [{
+                    text: $.i18n("common.button.reset.label"),
+                    handler: function () {
+                        N.getReturnValue({
+                            reset: true
+                        })
+                    }
+                }, {
+                    text: $.i18n("workflow.designer.page.button.ok"),
+                    isEmphasize: true,
+                    handler: function () {
+                        var W = N.getReturnValue({
+                                innerButtonId: "ok"
+                            });
+                        try {
+                            W = $.parseJSON(W)
+                        } catch (V) {
+                            W = null
+                        }
+                        if (W) {
+                            var T = W[1];
+                            if ("office" != O) {
+                                if (T.search(/{[^{}]+}/) > -1) {
+                                    $.alert($.i18n("workflow.formBranch.validate.17"));
+                                    return
+                                }
+                            }
+                            if (W[5] != true) {
+                                $.alert($.i18n("workflow.formBranch.validate.25"));
+                                return
+                            }
+                            if (J == "true" && W[6] == "") {
+                                $.alert($.i18n("workflow.branch.condition.select.alert.js"));
+                                return false
+                            }
+                            var U = [1, W[1], W[0], W[4], W[3], W[2], W[6]];
+                            if (P.successCallBack) {
+                                P.successCallBack(U)
+                            }
+                            N.close()
+                        }
+                    }
+                }, {
+                    text: $.i18n("workflow.designer.page.button.cancel"),
+                    handler: function () {
+                        if (P.failCallBack) {
+                            P.failCallBack()
+                        }
+                        N.close()
+                    }
+                }
+            ]
+        })
+};

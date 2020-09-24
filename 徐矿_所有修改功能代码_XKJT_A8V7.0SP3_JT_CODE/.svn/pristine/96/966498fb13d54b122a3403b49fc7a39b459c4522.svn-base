@@ -1,0 +1,15 @@
+appLog.action.10000        = V5\u751f\u6210formtalk\u4e8c\u7ef4\u7801 {0}{1}
+appLog.action.10001        = formtalk\u63a8\u9001\u5230V5 {0}{1}
+appLog.action.10002        = V5\u63a8\u9001\u5230formtalk {0}{1}
+appLog.actionType.10000     = formtalk\u63a8\u9001
+appLog.moduleName.10000     = formtalk
+appLog.moduleName.10000.A6  = formtalk
+appLog.moduleName.10000.GOV = formtalk
+appLog.actionType.10001     = formtalk\u63a8\u9001
+appLog.moduleName.10001     = formtalk
+appLog.moduleName.10001.A6  = formtalk
+appLog.moduleName.10001.GOV = formtalk
+appLog.actionType.10002     = formtalk\u63a8\u9001
+appLog.moduleName.10002     = formtalk
+appLog.moduleName.10002.A6  = formtalk
+appLog.moduleName.10002.GOV = formtalk

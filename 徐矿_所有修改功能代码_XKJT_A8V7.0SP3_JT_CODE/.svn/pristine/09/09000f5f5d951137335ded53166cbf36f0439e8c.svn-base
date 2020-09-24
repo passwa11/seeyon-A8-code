@@ -1,0 +1,37 @@
+
+weakpwd.jsp.main.jsptitle                              = Weak password detection
+weakpwd.jsp.main.jspcontent1                           = A weak password refers to a password that contains only simple numbers and letters, such as "123456", "abcdef", etc. This password is not recommended for users because it can be easily cracked by others so that the user's computer is at risk.
+weakpwd.jsp.main.jspcontent2                           = Common techniques used to improve the security of a password include:
+weakpwd.jsp.main.jspcontent3                           = 1.Increasing password strength
+weakpwd.jsp.main.jspcontent4                           = 2.Requiring periodic password changes
+weakpwd.jsp.main.jspcontent5                           = 3.Limiting the number of allowed failures within a given time period (to prevent repeated password guessing)
+weakpwd.jsp.main.jspcontent6                           = We provide the following features to avoid the problem of weak password:
+weakpwd.jsp.main.jspbutton1                            = Password security settings
+weakpwd.jsp.main.jspbutton2                            = Weak password detection
+
+weakpwd.jsp.grid.jsptitle                              = Weak password detection
+weakpwd.jsp.grid.jspcontent1                           = A total of
+weakpwd.jsp.grid.jspcontent2                           = accounts, including
+weakpwd.jsp.grid.jspcontent3                           = weak password accounts
+
+weakpwd.jsp.grid.column1.js                            = Name
+weakpwd.jsp.grid.column2.js                            = Organization Name
+weakpwd.jsp.grid.column3.js                            = Department
+weakpwd.jsp.grid.column4.js                            = Email
+
+weakpwd.jsp.grid.button1.js                            = Export Excel
+weakpwd.jsp.grid.button2.js                            = Notice Selected
+weakpwd.jsp.grid.button3.js                            = Notice All
+
+weakpwd.jsp.grid.title.js                              = Weak password detection
+
+weakpwd.jsp.grid.button1.alert.noneselected.js         = Choose at least one notification target
+weakpwd.jsp.grid.button2.alert.noneselected.js         = No notification target
+weakpwd.jsp.grid.alert.notice.content.title.js         = Message
+weakpwd.jsp.grid.alert.notice.button.ok.js             = OK
+weakpwd.jsp.grid.alert.notice.button.cancel.js         = CANCEL
+weakpwd.jsp.grid.alert.notice.success.js               = Message is sent successfully
+weakpwd.jsp.grid.alert.notice.failure.js               = Message send failed
+weakpwd.jsp.grid.alert.notice.nonecontent.js           = Message send failed (no information content)
+weakpwd.jsp.grid.alert.notice.content                  = Your account is using a weak password. Please modify it in time.
+

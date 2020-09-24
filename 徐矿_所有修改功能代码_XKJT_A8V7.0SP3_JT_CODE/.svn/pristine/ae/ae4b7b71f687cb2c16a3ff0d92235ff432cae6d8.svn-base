@@ -1,0 +1,9 @@
+appLog.action.8001         = {0}Synchronization of all organizations to Yunxuetang
+appLog.action.8002         = {0}Synchronize selected organizations to Yunxuetang
+appLog.action.8003         = {0}Apply the apiKey of Yunxuetang
+appLog.action.8004         = {0}Bind existing Yunxuetang apiKey
+appLog.actionType.8001     = Yunxuetang synchronous
+appLog.actionType.8002     = Yunxuetang synchronous
+appLog.actionType.8003     = Yunxuetang apiKey
+appLog.actionType.8004     = Yunxuetang apiKey
+appLog.moduleName.8000     = Yunxuetang

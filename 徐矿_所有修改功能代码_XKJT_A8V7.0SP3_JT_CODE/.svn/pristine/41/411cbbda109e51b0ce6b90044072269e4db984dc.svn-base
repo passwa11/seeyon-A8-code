@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.seeyon.apps.xkjt.po">
+	<class name="XkjtSummaryAttachment" table="XKJT_SUMMARY_ATTACHMENT" lazy="false">
+		<id name="id" type="long" column="ID">
+			<generator class="assigned" />
+		</id>
+		<property name="summaryId" type="long" column="SUMMARY_ID" />
+		<property name="attachmentId" type="long" column="ATTACHMENT_ID" />
+		<property name="value" type="integer" column="VALUE" />
+	</class>
+</hibernate-mapping>

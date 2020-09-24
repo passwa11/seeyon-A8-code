@@ -1,0 +1,26 @@
+
+appLog.action.1111        = {0}\u8A2D\u7F6E{1}\u4EE3\u7406\u300A{2}\u300B\u4E8B\u9805\uFF08\u4EE3\u7406\u671F\u9650\uFF1A\u3010{3} \u81F3{4}\u3011)
+appLog.action.1112        = {0}\u4FEE\u6539{1}\u4EE3\u7406\u300A{2}\u300B\u4E8B\u9805\uFF08\u4EE3\u7406\u671F\u9650\uFF1A\u3010{3} \u81F3{4}\u3011)
+appLog.action.1113        = {0}\u53D6\u6D88\u4E86{1}\u70BA{2}\u7684\u4EE3\u7406\u4EBA
+appLog.action.1114        = {0}\u8A2D\u7F6E{1}\u4EE3\u7406\u300A{2}\u300B\u4E8B\u9805(\u4F86\u81EA\u96E2\u8077\u8FA6\u7406)
+appLog.action.1120        = {0}\u4FEE\u6539\u4E86{0}\u7684\u5BC6\u78BC
+appLog.action.1121        = {0}\u4FEE\u6539\u4E86\u5370\u7AE0\u300A{1}\u300B\u7684\u5BC6\u78BC
+appLog.action.1131        = \u958B\u555F\u77ED\u4FE1\u9A57\u8B49\u78BC\u767B\u9304
+appLog.action.1132        = \u505C\u7528\u77ED\u4FE1\u9A57\u8B49\u78BC\u767B\u9304
+appLog.action.1140        = {0}\u67E5\u770B\u4E86\u85AA\u8CC7
+appLog.action.1141        = {0}\u5C0E\u51FA\u4E86{1}{2}\u689D\u901A\u8A0A\u9304
+appLog.action.1151        = {0}\u8A2D\u7F6E\u4E86\u5DE5\u8CC7\u67E5\u770B\u5BC6\u78BC
+appLog.action.1152        = {0}\u4FEE\u6539\u4E86\u5DE5\u8CC7\u67E5\u770B\u5BC6\u78BC
+appLog.actionType.1111    = \u65B0\u5EFA\u4EE3\u7406\u4EBA
+appLog.actionType.1112    = \u4FEE\u6539\u4EE3\u7406\u4EBA
+appLog.actionType.1113    = \u53D6\u6D88\u4EE3\u7406
+appLog.actionType.1114    = \u96E2\u8077\u8FA6\u7406
+appLog.actionType.1120    = \u4FEE\u6539\u5BC6\u78BC
+appLog.actionType.1121    = \u4FEE\u6539\u5370\u7AE0\u5BC6\u78BC
+appLog.actionType.1131    = \u77ED\u4FE1\u9A57\u8B49\u78BC\u767B\u9304\u914D\u7F6E
+appLog.actionType.1132    = \u77ED\u4FE1\u9A57\u8B49\u78BC\u767B\u9304\u914D\u7F6E
+appLog.actionType.1140    = \u67E5\u770B\u85AA\u8CC7
+appLog.actionType.1141    = \u5C0E\u51FA\u901A\u8A0A\u9304
+appLog.actionType.1151    = \u8A2D\u7F6E\u5DE5\u8CC7\u67E5\u770B\u5BC6\u78BC
+appLog.actionType.1152    = \u4FEE\u6539\u5DE5\u8CC7\u67E5\u770B\u5BC6\u78BC
+appLog.moduleName.1100    = \u500B\u4EBA\u4E8B\u52D9

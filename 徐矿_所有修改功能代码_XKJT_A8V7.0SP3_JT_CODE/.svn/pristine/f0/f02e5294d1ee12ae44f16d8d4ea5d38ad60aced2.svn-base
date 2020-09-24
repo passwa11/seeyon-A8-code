@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.seeyon.apps.xkjt.po">
+	<class name="EdocFormInfo" table="EDOC_FORM_INFO" lazy="false">
+		<id name="id" type="long" column="ID">
+			<generator class="assigned" />
+		</id>
+		<property name="formId" type="long" column="FORM_ID" />
+		<property name="needNotShowDeptId" type="string" column="NEED_NOT_SHOW_DEPT_ID" />
+		<property name="needNotShowDeptName" type="string" column="NEED_NOT_SHOW_DEPT_NAME" />
+	</class>
+</hibernate-mapping>

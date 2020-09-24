@@ -1,0 +1,13 @@
+appLog.action.4001        = Binding node {0} {1}
+appLog.action.4002        = LDAP_AD new account {0} {1}
+appLog.action.4004        = New directory node {0} {1}
+appLog.action.4005        = Update the directory node {0} {1}
+appLog.action.4006        = Modify {0} bind {} account password
+appLog.action.4007        = {0} to modify their own password LDAP_AD
+appLog.actionType.4001    = Binding LDAP_AD account
+appLog.actionType.4002    = Create LDAP_AD account
+appLog.actionType.4004    = Create node
+appLog.actionType.4005    = Update node
+appLog.actionType.4006    = Modify LDAP_AD Password
+appLog.actionType.4007    = Modify LDAP_AD Password
+appLog.moduleName.4000    = LDAP_AD

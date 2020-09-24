@@ -1,0 +1,9 @@
+appLog.action.8101         =  {0}\u5C06\u516C\u544A{1}\u63A8\u9001\u5185\u5BB9\u81F3\u5916\u7F51\u6210\u529F
+appLog.action.8102         =  {0}\u5C06\u516C\u544A{1}\u63A8\u9001\u5185\u5BB9\u81F3\u5916\u7F51\u5931\u8D25
+appLog.action.8103         =  {0}\u5C06\u65B0\u95FB{1}\u63A8\u9001\u5185\u5BB9\u81F3\u5916\u7F51\u6210\u529F
+appLog.action.8104         =  {0}\u5C06\u65B0\u95FB{1}\u63A8\u9001\u5185\u5BB9\u81F3\u5916\u7F51\u5931\u8D25
+appLog.actionType.8101     = \u516C\u544A\u63A8\u9001
+appLog.actionType.8102     = \u516C\u544A\u63A8\u9001
+appLog.actionType.8103     = \u65B0\u95FB\u63A8\u9001
+appLog.actionType.8104     = \u65B0\u95FB\u63A8\u9001
+appLog.moduleName.8100     = \u6587\u5316\u5EFA\u8BBE

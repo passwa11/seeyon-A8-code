@@ -1,0 +1,13 @@
+appLog.action.9901        = Account {0} {1} bind NC
+appLog.action.9902        = Delete {0} {1} NC binding account
+appLog.action.9903        = NC modify account {0} bound to {1}
+appLog.action.9904        = Delete Account {0} bind NC
+appLog.action.9905        = Operation manual synchronization
+appLog.action.9906        = {0} automatic synchronization
+appLog.actionType.9901    = Set the binding
+appLog.actionType.9902    = Remove the binding
+appLog.actionType.9903    = Modify the binding information
+appLog.actionType.9904    = Remove the binding
+appLog.moduleName.9900    = NC
+appLog.actionType.9905    = Manual synchronization
+appLog.actionType.9906    = Automatic synchronization
