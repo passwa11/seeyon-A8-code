@@ -2617,18 +2617,19 @@ public class EdocExchangeManagerImpl implements EdocExchangeManager {
 	 */
 	@SuppressWarnings("rawtypes")
 	public String withdrawAll(String param,String sendCancelInfo) throws BusinessException {
-
+		Set<String> allSendedTypes = new HashSet<String>();
 		JSONObject paramJob = JSONObject.parseObject(param);
 		JSONArray jArr = (JSONArray)paramJob.get("xkjtCheckedArr");
-
+		EdocSendRecord newSendRecord = null;//新的待发送对象
+		CtpAffair newAffair = null;//待办事项
+		String sendRecordId = "";
 		for (Object object : jArr) {
 			List<String> sendedTypeIdsList = new ArrayList<String>();//存放发送部门
-			EdocSendRecord newSendRecord = null;//新的待发送对象
-			CtpAffair newAffair = null;//待办事项
+
 			String cancelInfo = "";//撤销附言
 			try {
 				JSONObject job = (JSONObject)object;
-				String sendRecordId = String.valueOf(job.get("sendRecordId"));
+				sendRecordId = String.valueOf(job.get("sendRecordId"));
 				String detailId = String.valueOf(job.get("detailId"));
 				String accountId = String.valueOf(job.get("accountId"));
 				String leaderId = String.valueOf(job.get("leaderId"));//人员ID
@@ -2641,6 +2642,10 @@ public class EdocExchangeManagerImpl implements EdocExchangeManager {
 					XkjtManager xkjtManager = (XkjtManager) AppContext.getBean("xkjtManager");
 					List<XkjtLeaderDaiYue> xkjtLeaderDaiYues =  xkjtManager.findXkjtLeaderDaiYueById(Long.valueOf(daiyueId));
 					if(xkjtLeaderDaiYues.size()!=0){
+
+						//update  chenq 只生成一条待发送数据   20200805   start
+						allSendedTypes.add("Member|"+leaderId);
+						//update  chenq 只生成一条待发送数据   20200805   end
 						XkjtLeaderDaiYue xkjtLeaderDaiYue = xkjtLeaderDaiYues.get(0);
 						xkjtLeaderDaiYue.setStatus(13);
 						xkjtManager.updateXkjtLeaderDaiYue(xkjtLeaderDaiYue);
@@ -2764,6 +2769,9 @@ public class EdocExchangeManagerImpl implements EdocExchangeManager {
 						sendedTypeIds = "Department|"+newExchangeOrgId;
 						break;
 					}
+					//update 只生成一条待签收数据  chenq 20200805 start
+					allSendedTypes.add(sendedTypeIds);
+					//update 只生成一条待签收数据  chenq 20200805 end
 					sendedTypeIdsList.add(sendedTypeIds);
 					if(newSendRecord==null){
 						newSendRecord = new EdocSendRecord();
@@ -2923,17 +2931,105 @@ public class EdocExchangeManagerImpl implements EdocExchangeManager {
 						}
 					}
 				}
-				newSendRecord.setSendedTypeIds(sendedTypeIdsStr);
-				sendEdocManager.create(newSendRecord);//新生成一条待发送
-				affairManager.save(newAffair);//新生成一条待发送事项
+
+
 			}
+
 
 			} catch(Exception e) {
 				LOGGER.error("全部撤销失败", e);
 			}
 
 		}
+		//update chenq 只生成一条待发送数据   20200805 start
+		try{
+			StringBuffer sb = new StringBuffer();
+			if(allSendedTypes.size()>0){
+
+				Iterator<String> it = allSendedTypes.iterator();
+				while (it.hasNext()) {
+				  String str = it.next();
+				  if(sb.length()==0){
+					  sb.append(str);
+				  }else{
+					  sb.append(","+str);
+				  }
+
+				}
+
+
+				EdocSendRecord sendRecord = sendEdocManager.getEdocSendRecordById(Long.parseLong(sendRecordId));
+				if(newSendRecord==null){
+					newSendRecord = new EdocSendRecord();
+					newSendRecord.setContentNo(sendRecord.getContentNo());
+					newSendRecord.setCopies(sendRecord.getCopies());
+					newSendRecord.setDocMark(sendRecord.getDocMark());
+					newSendRecord.setDocType(sendRecord.getDocType());
+					newSendRecord.setEdocId(sendRecord.getEdocId());
+					newSendRecord.setIssueDate(sendRecord.getIssueDate());
+					newSendRecord.setIssuer(sendRecord.getIssuer());
+					newSendRecord.setKeywords(sendRecord.getKeywords());
+					newSendRecord.setSecretLevel(sendRecord.getSecretLevel());
+					newSendRecord.setSubject(sendRecord.getSubject());
+					newSendRecord.setUrgentLevel(sendRecord.getUrgentLevel());
+					newSendRecord.setSendUnit(sendRecord.getSendUnit());
+					newSendRecord.setSendUserId(AppContext.currentUserId());
+					newSendRecord.setAssignType(EdocSendRecord.Exchange_Assign_To_Member);//撤销表示，指定交换，交换人为user.getId()
+					newSendRecord.setIsBase(EdocSendRecord.Exchange_Base_NO);//补发表示：非原发文
+					newSendRecord.setId(UUIDLong.longUUID());
+					newSendRecord.setSendedTypeIds(sb.toString());
+					newSendRecord.setCreateTime(new Timestamp(System.currentTimeMillis()));
+					newSendRecord.setExchangeType(sendRecord.getExchangeType());
+					newSendRecord.setExchangeOrgId(sendRecord.getExchangeOrgId());
+					newSendRecord.setExchangeAccountId(sendRecord.getExchangeAccountId());
+					newSendRecord.setExchangeOrgName(sendRecord.getExchangeOrgName());
+					newSendRecord.setStatus(EdocSendRecord.Exchange_iStatus_Send_New_Cancel);
+					newSendRecord.setIsTurnRec(sendRecord.getIsTurnRec());
+				}
+				newSendRecord.setSendedTypeIds(sb.toString());
+
+				/** 5、生成待发送新数据 */
+
+				if(newAffair == null) {
+					newAffair = new CtpAffair();
+					newAffair.setApp(ApplicationCategoryEnum.exSend.getKey());
+					newAffair.setSubject(newSendRecord.getSubject());
+					newAffair.setFinish(Boolean.FALSE);
+
+					if(newSendRecord.getUrgentLevel() != null){
+					    newAffair.setImportantLevel(Integer.parseInt(newSendRecord.getUrgentLevel()));
+					}
+
+					newAffair.setSubState(SubStateEnum.col_normal.key());
+					newAffair.setObjectId(newSendRecord.getEdocId());
+					EdocSummary summary = edocSummaryManager.findById(newSendRecord.getEdocId());
+					AffairUtil.addExtProperty(newAffair,AffairExtPropEnums.edoc_sendAccountId ,summary.getSendUnitId());
+					AffairUtil.addExtProperty(newAffair, AffairExtPropEnums.edoc_edocMark, newSendRecord.getDocMark());
+					AffairUtil.addExtProperty(newAffair, AffairExtPropEnums.edoc_sendUnit, newSendRecord.getSendUnit());
+					newAffair.setId(UUIDLong.longUUID());
+					newAffair.setDelete(Boolean.FALSE);
+					newAffair.setState(StateEnum.edoc_exchange_send.key());
+					newAffair.setCreateDate(new Timestamp(System.currentTimeMillis()));
+					newAffair.setReceiveTime(new Timestamp(System.currentTimeMillis()));
+					newAffair.setUpdateDate(new Timestamp(System.currentTimeMillis()));
+					newAffair.setSubObjectId(newSendRecord.getId());
+					newAffair.setSenderId(AppContext.currentUserId());
+					newAffair.setMemberId(AppContext.currentUserId());
+					newAffair.setSubState(SubStateEnum.col_normal.key());
+				}
+
+				sendEdocManager.create(newSendRecord);//新生成一条待发送
+				affairManager.save(newAffair);//新生成一条待发送事项
+			}else{
+				LOGGER.info("chenq---没有获取到人员信息");
+			}
+
+
+		}catch(Exception e){
+			LOGGER.error("chenq----只生成一条待发送数据错误 ", e);
+		}
 		
+		//update chenq 只生成一条待发送数据   20200805 end
 		return String.valueOf(EdocSendDetail.Exchange_iStatus_SendDetail_Torecieve);
 	}
 	
