@@ -33,7 +33,7 @@ public class MeetingEvent {
             Map<String, Object> map = null;
             List<Map<String, Object>> mapList = new ArrayList<>();
             Map<String, Object> map2 = new HashMap<>();
-            map.put("app_id", ReadConfigTools.getInstance().getString("appId"));
+            map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
             map2.put("task_id", list.get(0).getObjectId().longValue() + "");
             map2.put("task_delete_flag", 1);
             map2.put("process_instance_id", list.get(0).getProcessId());
