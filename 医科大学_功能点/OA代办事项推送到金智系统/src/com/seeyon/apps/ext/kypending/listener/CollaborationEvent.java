@@ -45,19 +45,7 @@ public class CollaborationEvent {
     @ListenEvent(event = CollaborationFinishEvent.class, async = true)
     public void finish(CollaborationFinishEvent event) {
         CtpAffair ctpAffair = event.getAffair();
-        Map<String, Object> map2 = new HashMap<>();
-        List<Map<String, Object>> mapList = new ArrayList<>();
-
-        map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
-        map2.put("task_id", ctpAffair.getObjectId().longValue()+"");
-        map2.put("task_delete_flag", 1);
-        map2.put("process_instance_id", ctpAffair.getProcessId());
-        map2.put("process_delete_flag", 1);
-        mapList.add(map2);
-        String todopath = ReadConfigTools.getInstance().getString("todopath");
-        String appId = ReadConfigTools.getInstance().getString("appId");
-        String accessToken = ReadConfigTools.getInstance().getString("accessToken");
-        KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
+        updateCommon(ctpAffair);
     }
 
     /**
@@ -200,9 +188,102 @@ public class CollaborationEvent {
     @ListenEvent(event = CollaborationDelEvent.class, async = true)
     public void StopListener(CollaborationDelEvent event) throws BusinessException {
         CtpAffair ctpAffair = event.getAffair();
-        System.out.println(ctpAffair);
-        System.out.println(event);
+        updateCommon(ctpAffair);
     }
 
+    @ListenEvent(event = CollaborationTakeBackEvent.class, async = true)
+    public void TakeBack(CollaborationTakeBackEvent event) {
+        CtpAffair ctpAffair = event.getAffair();
+        List<CtpAffair> list=new ArrayList<>();
+        list.add(ctpAffair);
+        insertCommon(list);
+    }
+
+    @ListenEvent(event = CollaborationStepBackEvent.class, async = true)
+    public void StepBack(CollaborationStepBackEvent event) {
+        CtpAffair ctpAffair = event.getAffair();
+        List<CtpAffair> list=new ArrayList<>();
+        list.add(ctpAffair);
+        insertCommon(list);
+    }
+
+    public void insertCommon(List<CtpAffair> list) {
+        List<Map<String, Object>> insertList = new ArrayList<>();
+        String todopath = ReadConfigTools.getInstance().getString("todopath");
+        String appId = ReadConfigTools.getInstance().getString("appId");
+        String accessToken = ReadConfigTools.getInstance().getString("accessToken");
+        TempPendingData pendingData = null;
+        Map<String, Object> map = null;
+        List<Map<String, Object>> mapList = new ArrayList<>();
+        Map<String, Object> map2 = new HashMap<>();
+        map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
+        map2.put("task_id", list.get(0).getObjectId().longValue() + "");
+        map2.put("task_delete_flag", 1);
+        map2.put("process_instance_id", list.get(0).getProcessId());
+        map2.put("process_delete_flag", 1);
+        mapList.add(map2);
+
+        KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
+
+
+        for (CtpAffair affair : list) {
+
+            Map<String, Object> bliMap = JDBCUtil.getMemberInfo(affair.getMemberId());
+            Map<String, Object> sendMap = JDBCUtil.getMemberInfo(affair.getSenderId());
+
+            map = new HashMap<>();
+            map.put("app_id", ReadConfigTools.getInstance().getString("appId"));
+            map.put("task_id", affair.getObjectId().longValue() + "");
+            map.put("created_by_ids", sendMap.get("login_name"));
+            map.put("created_by_names", sendMap.get("membername"));
+            map.put("created_by_depts", sendMap.get("unitname"));
+            map.put("subject", affair.getSubject());
+            map.put("biz_key", affair.getId().longValue() + "");
+            map.put("biz_domain", "OA");
+            map.put("status", "ACTIVE");
+            map.put("priority", "0");
+
+            List<Map<String, Object>> aList = new ArrayList<>();
+            Map<String, Object> assmap = new HashMap<>();
+            assmap.put("assign_dept", bliMap.get("unitname"));
+            assmap.put("assign_id", bliMap.get("login_name"));
+            assmap.put("assign_name", bliMap.get("membername"));
+            aList.add(assmap);
+            map.put("assignments", aList);
+            String formUrl = "";
+            String oaUrl = ReadConfigTools.getInstance().getString("oaurl");
+            if (affair.getApp().intValue() == 1) {
+                formUrl = oaUrl + "/seeyon/openPending.jsp?ticket=" + bliMap.get("login_name") + "&affairId=" + affair.getId().longValue() + "&app=1&objectId=" + affair.getObjectId() + "";
+            } else if (affair.getApp().intValue() == 4) {
+                formUrl = oaUrl + "/seeyon/openPending.jsp?ticket=" + bliMap.get("login_name") + "&affairId=" + affair.getId().longValue() + "&app=4&objectId=" + affair.getObjectId() + "";
+            } else if (affair.getApp().intValue() == 6) {
+                formUrl = oaUrl + "/seeyon/openPending.jsp?ticket=" + bliMap.get("login_name") + "&affairId=" + affair.getId().longValue() + "&app=6&objectId=" + affair.getObjectId() + "";
+            }
+            map.put("node_name", affair.getNodePolicy());
+            map.put("node_id", affair.getActivityId());
+            map.put("form_url", formUrl);
+            map.put("process_instance_id", affair.getProcessId() + "");
+            insertList.add(map);
+        }
+        KyPendingManager.getInstance().updateCtpAffair("inserttasks", todopath, appId, accessToken, insertList);
+
+    }
+
+
+    public void updateCommon(CtpAffair ctpAffair) {
+        Map<String, Object> map2 = new HashMap<>();
+        List<Map<String, Object>> mapList = new ArrayList<>();
+
+        map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
+        map2.put("task_id", ctpAffair.getObjectId().longValue() + "");
+        map2.put("task_delete_flag", 1);
+        map2.put("process_instance_id", ctpAffair.getProcessId());
+        map2.put("process_delete_flag", 1);
+        mapList.add(map2);
+        String todopath = ReadConfigTools.getInstance().getString("todopath");
+        String appId = ReadConfigTools.getInstance().getString("appId");
+        String accessToken = ReadConfigTools.getInstance().getString("accessToken");
+        KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
+    }
 
 }
