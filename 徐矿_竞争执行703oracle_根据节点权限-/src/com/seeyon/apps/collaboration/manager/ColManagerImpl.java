@@ -2119,6 +2119,7 @@ public class ColManagerImpl implements ColManager {
         userMessageManager.updateSystemMessageStateByUserAndReference(AppContext.currentUserId(), affair.getId());
 
 //      [徐矿竞争执行，更新处理时间问题。] zhou start
+
         //多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
         Map<String, Object> pMap = new HashMap<>();
         pMap.put("activityId", affair.getActivityId().longValue());
