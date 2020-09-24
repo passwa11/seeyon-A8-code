@@ -11860,7 +11860,7 @@ public class EdocController extends BaseController {
                                 + "getA8Top().window.returnValue = true;" + "getA8Top().window.close();");
                 return null;
             }
-
+            //部门归档  = 1
             if (Integer.valueOf(1).equals(doc.getPigeonholeType())) {
                 isDeptPigeonhole = true;
             }

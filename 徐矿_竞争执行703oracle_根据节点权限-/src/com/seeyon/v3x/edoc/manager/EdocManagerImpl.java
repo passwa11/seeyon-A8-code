@@ -4479,7 +4479,6 @@ public class EdocManagerImpl implements EdocManager {
             return false;
         }
 
-
         Long _workitemId = affair.getSubObjectId();
         Long caseId = summary.getCaseId();
 
@@ -4603,7 +4602,6 @@ public class EdocManagerImpl implements EdocManager {
             }
             _result = 0;
         }
-
         if (_result == 0) {//退回到普通节点
             try {
                 List<CtpAffair> trackingAffairLists = affairManager.getValidTrackAffairs(summaryId);
@@ -4666,7 +4664,6 @@ public class EdocManagerImpl implements EdocManager {
         } else {
             return false;
         }
-
     }
 
     private Map<String, Object> createRepealData2BeginNode(EdocSummary summary, CtpAffair affair, List<CtpAffair> allAvailabilityAffairList, String traceFlag) throws BusinessException {
@@ -6944,10 +6941,13 @@ public class EdocManagerImpl implements EdocManager {
                         //}
                         /**项目：徐矿集团   【根据权限屏蔽消息】 作者：jiangchenxi 时间：2019年3月15日 end*/
                     } else if ("taohong".equals(changeWords[i])) {
+                        LOGGER.info("正文操作日记记录 时间：" + time + ",操作：" + String.valueOf(ProcessLogAction.ProcessEdocAction.Body.getKey() + ",用户：" + user.getId() + "_" + user.getLoginName()));
                         this.processLogManager.insertLog(user, Long.valueOf(summary.getProcessId()), Long.valueOf(bPMActivity.getId()), ProcessLogAction.processEdoc, String.valueOf(ProcessLogAction.ProcessEdocAction.Body.getKey()));
                     } else if ("qianzhang".equals(changeWords[i])) {
+                        LOGGER.info("正文操作日记记录 时间：" + time + ",操作：" + String.valueOf(ProcessLogAction.ProcessEdocAction.signed.getKey() + ",用户：" + user.getId() + "_" + user.getLoginName()));
                         this.processLogManager.insertLog(user, Long.valueOf(summary.getProcessId()), Long.valueOf(bPMActivity.getId()), ProcessLogAction.processEdoc, String.valueOf(ProcessLogAction.ProcessEdocAction.signed.getKey()));
                     } else if ("taohongwendan".equals(changeWords[i])) {
+                        LOGGER.info("正文操作日记记录 时间：" + time + ",操作：" + String.valueOf(ProcessLogAction.ProcessEdocAction.bodyFromRed.getKey() + ",用户：" + user.getId() + "_" + user.getLoginName()));
                         this.processLogManager.insertLog(user, Long.valueOf(summary.getProcessId()), Long.valueOf(bPMActivity.getId()), ProcessLogAction.processEdoc, String.valueOf(ProcessLogAction.ProcessEdocAction.bodyFromRed.getKey()));
                     } else if ("depPinghole".equals(changeWords[i])) {
                         this.processLogManager.insertLog(user, Long.valueOf(summary.getProcessId()), Long.valueOf(bPMActivity.getId()), ProcessLogAction.processEdoc, String.valueOf(ProcessLogAction.ProcessEdocAction.depHigeonhole.getKey()));
@@ -7407,7 +7407,6 @@ public class EdocManagerImpl implements EdocManager {
         List<EdocOpinion> edocOpionionList = new ArrayList<EdocOpinion>();
         for (EdocOpinion edocOpinion : tempResult) {
             edocOpionionList.add(edocOpinion);
-
             edocOpinion.setOpinionAttachments(attHas.get(edocOpinion.getId()));
         }
         /**项目：徐矿集团  【屏蔽公文中的意见】 作者：jiangchenxi 时间：2019年3月12日 start*/
@@ -11962,7 +11961,7 @@ public class EdocManagerImpl implements EdocManager {
                         LOGGER.error("获取单位或部门名称错误" + e);
                     }
                 }
-                model.setState((Integer) objects[objects.length - 6]);
+                model.setState(StateEnum.col_sent.key());
                 // OA-19095 在公文交换--已发送中进行了撤销、补发的操作，发文登记簿统计时字段中的主送单位丢失了 end
 
                 StringBuilder sendToUnit = new StringBuilder();
@@ -12495,7 +12494,7 @@ public class EdocManagerImpl implements EdocManager {
      * 解锁，公文提交或者暂存待办的时候进行解锁,与Ajax解锁一起，构成两次解锁，避免解锁失败，节点无法修改的问题出现
      *
      * @param userId
-     * @param summaryId
+     * @param summary
      */
     public void unLockSummary(Long userId, EdocSummary summary) {
         if (summary == null) return;
