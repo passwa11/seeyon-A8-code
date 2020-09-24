@@ -49,6 +49,16 @@ public class GovdocOperatListener {
                         mapList.add(map2);
                         KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
                     }
+                } else {
+                    List<Map<String, Object>> mapList = new ArrayList<>();
+                    Map<String, Object> map2 = new HashMap<>();
+                    map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
+                    map2.put("task_id", affair.getObjectId().longValue() + "");
+                    map2.put("task_delete_flag", 1);
+                    map2.put("process_instance_id", affair.getProcessId());
+                    map2.put("process_delete_flag", 1);
+                    mapList.add(map2);
+                    KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
                 }
 
             } else if (type.equals("assigned")) {
