@@ -9,18 +9,18 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1hToeQpYqMjsLJ0qd1fVYLvlyG3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../A-8-code/徐矿_竞争执行703oracle_根据节点权限-/src/com/seeyon/v3x/edoc/webmodel/EdocSummaryBO.java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../徐矿_竞争执行703oracle_根据节点权限-/src/com/seeyon/v3x/edoc/webmodel/EdocSummaryBO.java" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../../A-8-code/徐矿_竞争执行703oracle_根据节点权限-/src/com/seeyon/v3x/edoc/webmodel/EdocSummaryBO.java" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../徐矿_竞争执行703oracle_根据节点权限-/src/com/seeyon/v3x/edoc/webmodel/EdocSummaryBO.java" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -64,6 +64,7 @@
       <workItem from="1600044542000" duration="7438000" />
       <workItem from="1600931753700" duration="97000" />
       <workItem from="1600931926614" duration="4887000" />
+      <workItem from="1600937678786" duration="202000" />
     </task>
     <servers />
   </component>
