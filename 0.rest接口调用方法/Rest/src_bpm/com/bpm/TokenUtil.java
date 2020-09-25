@@ -24,7 +24,7 @@ public class TokenUtil {
     public static CTPRestClient getOARestInfo() {
         String restUrl = "http://127.0.0.1:80";
         String restUser = "rest";
-        String restPwd = "55ffa403-230c-48c5-b74c-9d29fd100542";
+        String restPwd = "fcd54a1e-9323-4cf5-a959-ee44529d4432";
         CTPServiceClientManager clientManager = CTPServiceClientManager.getInstance(restUrl);
         CTPRestClient restClient = clientManager.getRestClient();
         boolean ltFlag = restClient.authenticate(restUser, restPwd);
@@ -41,13 +41,13 @@ public class TokenUtil {
         httpPost = new HttpPost(url);
         httpPost.setHeader("Content-Type", "application/json;charset=utf-8");
 //        String requestParams = "{\"userName\":\"rest\",\"password\":\"rest111111\"}";
-        String requestParams = "{\"userName\":\"rest\",\"password\":\"6c470a34-f84a-4e54-abfd-9a07c72ec5dc\"}";
+        String requestParams = "{\"userName\":\"rest\",\"password\":\"fcd54a1e-9323-4cf5-a959-ee44529d4432\"}";
         StringEntity postingString = new StringEntity(requestParams, "utf-8");
         httpPost.setEntity(postingString);
         try {
             response = client.execute(httpPost);
             response.setHeader("Cache-Control", "no-cache");
-            System.out.println(response.getStatusLine().getStatusCode());
+//            System.out.println(response.getStatusLine().getStatusCode());
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 String resultString = EntityUtils.toString(response.getEntity(), "utf-8").replaceAll(" ", "");
                 JSONObject jsonObject = JSON.parseObject(resultString);
