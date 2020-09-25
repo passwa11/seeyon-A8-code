@@ -8,18 +8,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="file://F:/Seeyon/A87.1_sp1_07/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://F:/Seeyon/A87.1_sp1_07/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
-        </SOURCES>
-        <jarDirectory url="file://F:/Seeyon/A87.1_sp1_07/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" />
-        <jarDirectory url="file://F:/Seeyon/A87.1_sp1_07/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" type="SOURCES" />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
