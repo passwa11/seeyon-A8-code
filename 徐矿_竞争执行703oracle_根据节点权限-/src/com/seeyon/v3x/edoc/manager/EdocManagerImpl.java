@@ -6941,13 +6941,13 @@ public class EdocManagerImpl implements EdocManager {
                         //}
                         /**项目：徐矿集团   【根据权限屏蔽消息】 作者：jiangchenxi 时间：2019年3月15日 end*/
                     } else if ("taohong".equals(changeWords[i])) {
-                        LOGGER.info("正文操作日记记录 时间：" + time + ",操作：" + String.valueOf(ProcessLogAction.ProcessEdocAction.Body.getKey() + ",用户：" + user.getId() + "_" + user.getLoginName()));
+//                        LOGGER.info("正文操作日记记录 时间：" + time + ",操作：" + String.valueOf(ProcessLogAction.ProcessEdocAction.Body.getKey() + ",用户：" + user.getId() + "_" + user.getLoginName()));
                         this.processLogManager.insertLog(user, Long.valueOf(summary.getProcessId()), Long.valueOf(bPMActivity.getId()), ProcessLogAction.processEdoc, String.valueOf(ProcessLogAction.ProcessEdocAction.Body.getKey()));
                     } else if ("qianzhang".equals(changeWords[i])) {
-                        LOGGER.info("正文操作日记记录 时间：" + time + ",操作：" + String.valueOf(ProcessLogAction.ProcessEdocAction.signed.getKey() + ",用户：" + user.getId() + "_" + user.getLoginName()));
+//                        LOGGER.info("正文操作日记记录 时间：" + time + ",操作：" + String.valueOf(ProcessLogAction.ProcessEdocAction.signed.getKey() + ",用户：" + user.getId() + "_" + user.getLoginName()));
                         this.processLogManager.insertLog(user, Long.valueOf(summary.getProcessId()), Long.valueOf(bPMActivity.getId()), ProcessLogAction.processEdoc, String.valueOf(ProcessLogAction.ProcessEdocAction.signed.getKey()));
                     } else if ("taohongwendan".equals(changeWords[i])) {
-                        LOGGER.info("正文操作日记记录 时间：" + time + ",操作：" + String.valueOf(ProcessLogAction.ProcessEdocAction.bodyFromRed.getKey() + ",用户：" + user.getId() + "_" + user.getLoginName()));
+//                        LOGGER.info("正文操作日记记录 时间：" + time + ",操作：" + String.valueOf(ProcessLogAction.ProcessEdocAction.bodyFromRed.getKey() + ",用户：" + user.getId() + "_" + user.getLoginName()));
                         this.processLogManager.insertLog(user, Long.valueOf(summary.getProcessId()), Long.valueOf(bPMActivity.getId()), ProcessLogAction.processEdoc, String.valueOf(ProcessLogAction.ProcessEdocAction.bodyFromRed.getKey()));
                     } else if ("depPinghole".equals(changeWords[i])) {
                         this.processLogManager.insertLog(user, Long.valueOf(summary.getProcessId()), Long.valueOf(bPMActivity.getId()), ProcessLogAction.processEdoc, String.valueOf(ProcessLogAction.ProcessEdocAction.depHigeonhole.getKey()));
