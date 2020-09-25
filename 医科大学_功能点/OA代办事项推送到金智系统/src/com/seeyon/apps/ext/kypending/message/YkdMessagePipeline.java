@@ -61,7 +61,6 @@ public class YkdMessagePipeline implements MessagePipeline {
     @Override
     public void invoke(Message[] messages) {
 //        处理消息
-        CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpPost method = null;
         HttpResponse httpResponse = null;
         JSONObject jsonObject = null;
@@ -69,8 +68,9 @@ public class YkdMessagePipeline implements MessagePipeline {
         String accessToken = ReadConfigTools.getInstance().getString("accessToken");
         String appId = ReadConfigTools.getInstance().getString("appId");
         String schoolCode = ReadConfigTools.getInstance().getString("schoolCode");
-        for (Message message : messages) {
-            try {
+        try (CloseableHttpClient httpClient = HttpClients.createDefault();) {
+            for (Message message : messages) {
+
                 Map<String, Object> map = new HashMap<>();
                 map.put("appId", appId);
                 map.put("subject", "消息发送");
@@ -78,7 +78,7 @@ public class YkdMessagePipeline implements MessagePipeline {
                 map.put("sendType", 0);
                 map.put("sendNow", true);//发送方式，是否立即发送，0:定时发送 1:立即发送 默认1
                 map.put("tagId", 9007);
-                List<Map<String ,Object>> list=new ArrayList<>();
+                List<Map<String, Object>> list = new ArrayList<>();
                 Map<String, Object> receivers = new HashMap<>();
                 receivers.put("userId", message.getReceiverMember().getLoginName());
                 list.add(receivers);
@@ -103,15 +103,10 @@ public class YkdMessagePipeline implements MessagePipeline {
                     String r = EntityUtils.toString(httpResponse.getEntity(), "utf-8");
                     jsonObject = JSONObject.parseObject(r);
                 }
-            } catch (Throwable e) {
-                logger.error("集成金智消息推送接口出错了！" + e.getMessage());
-            } finally {
-                try {
-                    httpClient.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
+
+        } catch (Throwable e) {
+            logger.error("集成金智消息推送接口出错了！" + e.getMessage());
         }
 
     }
