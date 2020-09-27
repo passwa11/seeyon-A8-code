@@ -23,7 +23,7 @@ public class meetingInfoTipController extends BaseController {
         Connection connection = JDBCAgent.getRawConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "select (select name from org_member o where o.id=m.perid ) username,(select name from org_unit u where u.id=m.departmentid) deptname,startdatetime,enddatetime,description,sqrdh,hcyq from meeting_room_app m where id=?";
+        String sql = "select ldname,(select name from org_member o where o.id=m.perid ) username,(select name from org_unit u where u.id=m.departmentid) deptname,startdatetime,enddatetime,description,sqrdh,hcyq from meeting_room_app m where id=?";
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, id);
@@ -42,6 +42,7 @@ public class meetingInfoTipController extends BaseController {
                 m.put("description", rs.getString("description"));
                 m.put("sqrdh", rs.getString("sqrdh"));
                 m.put("hcyq", rs.getString("hcyq"));
+                m.put("ldname", rs.getString("ldname"));
 
             }
             Map<String, Object> map = new HashMap<>();

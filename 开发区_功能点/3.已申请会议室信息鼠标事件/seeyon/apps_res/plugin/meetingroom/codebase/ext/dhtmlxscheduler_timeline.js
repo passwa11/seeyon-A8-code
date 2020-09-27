@@ -437,7 +437,7 @@
 				success: function (res) {
 					var m = res.data;
 					var html = "";
-					html += "申请人：" + m.sqr + "；申请人电话：" + (typeof (m.sqrdh)!='undefined' && m.sqrdh!=0?m.sqrdh:'') + "；申请部门：" + m.deptname + "；会议时间：" + m.time + "；用途：" + m.description+"；会场要求："+(typeof (m.hcyq)!='undefined' && m.hcyq !=0?m.hcyq:"");
+					html += "申请人：" + m.sqr + "；申请人电话：" + (typeof (m.sqrdh)!='undefined' && m.sqrdh!=0?m.sqrdh:'') + "；申请部门：" + m.deptname + "；参会领导："+(typeof (m.ldname)!='undefined' && m.ldname !=null ?m.ldname:"")+"；会议时间：" + m.time + "；用途：" + m.description+"；会场要求："+(typeof (m.hcyq)!='undefined' && m.hcyq !=0?m.hcyq:"");
 					k=scheduler.templates.event_class(a.start_date, a.end_date, a), k = stylebgcolor +(k || ""), h = a.color ? "background-color:" + a.color + ";" : "", o = a.textColor ? "color:" + a.textColor + ";" : "", l = "<div event_id=\"" + a.id + "\" class=\"" + k + "\" style=\"" + h + "" + o + "position:absolute; top:" + g + "px; left:" + (f-2) + "px; width:" + (Math.max(0, d - f)+5) + "px;" + (a._text_style || "") + "\">" + scheduler.templates.event_bar_text(a.start_date, a.end_date, a) + "</div><div id=\"id_" + a.id + "\"  style=\"" + h + "" + o + "position:absolute; top:" + g + "px;height: 100%; left:" + (f-2) + "px; width:" + (Math.max(0, d - f)+5) + "px;\">"+html+"</div>";
 				}
 			});
