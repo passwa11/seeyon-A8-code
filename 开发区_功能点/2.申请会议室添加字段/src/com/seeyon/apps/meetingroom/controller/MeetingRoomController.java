@@ -1009,7 +1009,7 @@ public class MeetingRoomController extends BaseController {
                 String[] urls = {"/seeyon/meetingroom.do?method=createPerm&openWin=1&id=" + request.getParameter("id") + "&affairId="};
                 String[] loginNames = new MeetingReadConfigTools().getString("loginNameOfReciver").split(",");
 
-                String sql = "select startdatetime,enddatetime,(select r.name from MEETING_room r where r.id =m.meetingroomid) meetingname,(select name from org_member o where o.id=m.perid ) username,(select name from org_unit u where u.id=m.departmentid) deptname from meeting_room_app m where m.id=?";
+                String sql = "select ldname,startdatetime,enddatetime,(select r.name from MEETING_room r where r.id =m.meetingroomid) meetingname,(select name from org_member o where o.id=m.perid ) username,(select name from org_unit u where u.id=m.departmentid) deptname from meeting_room_app m where m.id=?";
                 PreparedStatement ps = null;
                 ResultSet rs = null;
                 StringBuffer sb = new StringBuffer();
@@ -1018,7 +1018,7 @@ public class MeetingRoomController extends BaseController {
                     ps.setString(1, request.getParameter("id"));
                     rs = ps.executeQuery();
                     while (rs.next()) {
-                        sb.append(rs.getString("username") + "【" + rs.getString("deptname") + "】申请了会议室：" + rs.getString("meetingname") + "，时间为：" + rs.getString("startdatetime") + "至" + rs.getString("enddatetime") + "。请提前安排！");
+                        sb.append(rs.getString("username") + "【" + rs.getString("deptname") + "】申请了会议室：" + rs.getString("meetingname") + "，参会领导："+((rs.getString("ldname"))==null || "".equals(rs.getString("ldname"))?"无":rs.getString("ldname"))+"，时间为：" + rs.getString("startdatetime") + "至" + rs.getString("enddatetime") + "。请提前安排！");
                     }
                     ServiceResponse serviceResponse = messageService.sendMessageByLoginName(tokenId, loginNames, sb.toString(), urls);
                     serviceResponse.getResult();
