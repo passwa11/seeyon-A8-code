@@ -9,16 +9,18 @@ public class CollaborationZsListener {
 
     @ListenEvent(event = CollaborationFinishEvent.class, async = true)
     public void finish(CollaborationFinishEvent event) {
-        CtpAffair ctpAffair = event.getAffair();
-        System.out.println("finish");
-        System.out.println();
+        Long summaryId = event.getSummaryId();
+        String sql ="select a.COMPLETE_TIME,(select name from ORG_MEMBER where id= a.MEMBER_ID) memberName,(select OU.name from ORG_UNIT ou,ORG_MEMBER om where OM.id=a.MEMBER_ID and OM.ORG_DEPARTMENT_ID=OU.id) deptName,c.content,case c.ext_att4 when 'disagree' then '不同意' when 'agree' then '同意' when 'haveRead' then '已阅' else '' end result  " +
+                " from CTP_COMMENT_ALL c,CTP_AFFAIR a where MODULE_ID=? and c.AFFAIR_ID=a.id order by a.COMPLETE_TIME asc";
+
     }
 
     @ListenEvent(event = CollaborationStopEvent.class, async = true)
     public void stop(CollaborationStopEvent event) {
-        CtpAffair ctpAffair = event.getAffair();
-        System.out.println("stop");
+        Long summaryId = event.getSummaryId();
 
     }
+
+
 
 }
