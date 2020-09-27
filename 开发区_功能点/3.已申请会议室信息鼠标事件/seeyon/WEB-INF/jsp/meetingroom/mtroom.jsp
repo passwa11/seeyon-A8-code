@@ -486,6 +486,7 @@
                 // tooltipMsg += "<div class='tooltip_line'><b>联系电话:</b> " + (undefined==c.sqrdh?"":c.sqrdh) + "</div>";
                 tooltipMsg += "<div class='tooltip_line'><b>申请部门:</b> " + (undefined==c.sqDeptname?"":c.sqDeptname) + "</div>";
                 tooltipMsg += "<div class='tooltip_line'><b>联系电话:</b> " + (typeof (c.sqrdh)!='undefined' && c.sqrdh!=0?c.sqrdh:'') + "</div>";
+                tooltipMsg += "<div class='tooltip_line'><b>参会领导:</b> " + (typeof (c.ldname)!='undefined' && c.ldname!=null?c.ldname:'') + "</div>";
                 tooltipMsg += "<div class='tooltip_line'><b><fmt:message key='mt.label.meetingtime'/>:</b> " + time + "</div>";
 
                 var description = c.description != undefined ? c.description : "";
