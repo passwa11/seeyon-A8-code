@@ -422,6 +422,7 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                         PreparedStatement ps = null;
                         PreparedStatement psInsert = null;
                         ResultSet rs = null;
+                        ResultSet sonrs=null;
                         try {
                             ps = connection.prepareStatement(querySql.toString());
                             rs = ps.executeQuery();
@@ -449,14 +450,23 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                                     ps = connection.prepareStatement(querySendSonId);
                                     rs = ps.executeQuery();
                                     String sonIsRead = configTools.getString("formson_isRead");
-                                    String updateSonSql = "update " + son + " set " + formsonReciverTime + " = to_date('" + dateTime + "','yyyy-MM-dd HH24:mi:ss') ," + sonIsRead + "='" + isRead + "' where id=?";
-                                    String sonId = "";
-                                    while (rs.next()) {
-                                        sonId = rs.getString("id");
+                                    //zhou:2020-09-27 在这里判断一下接收时间是否为空，如果为空则不执行修改操作。
+                                    String sqlBySon ="select "+formsonReciverTime+" from "+ son +" where id="+rs.getString("id");
+                                    ps=connection.prepareStatement(sqlBySon);
+                                    sonrs=ps.executeQuery();
+                                    while(sonrs.next()){
+                                        String time=sonrs.getString(formsonReciverTime);
+                                        if(null==time || "".equals(time)){
+                                            String updateSonSql = "update " + son + " set " + formsonReciverTime + " = to_date('" + dateTime + "','yyyy-MM-dd HH24:mi:ss') ," + sonIsRead + "='" + isRead + "' where id=?";
+                                            String sonId = "";
+                                            while (rs.next()) {
+                                                sonId = rs.getString("id");
+                                            }
+                                            ps = connection.prepareStatement(updateSonSql);
+                                            ps.setString(1, sonId);
+                                            ps.executeUpdate();
+                                        }
                                     }
-                                    ps = connection.prepareStatement(updateSonSql);
-                                    ps.setString(1, sonId);
-                                    ps.executeUpdate();
                                 }
                             }
 
@@ -465,6 +475,9 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                         } finally {
                             if (null != rs) {
                                 rs.close();
+                            }
+                            if (null != sonrs) {
+                                sonrs.close();
                             }
                             if (null != psInsert) {
                                 psInsert.close();
