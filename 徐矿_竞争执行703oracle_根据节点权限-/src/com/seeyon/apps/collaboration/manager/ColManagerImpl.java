@@ -1728,11 +1728,11 @@ public class ColManagerImpl implements ColManager {
      *
      * @param affair
      * @param params <pre>
-     *                {String} [isTrack] 是否跟踪， 1 - 跟踪， 其他-不跟踪
-     *                {String} [trackRange_members] 跟踪指定人，在[isTrack]为1的前提下生效 , 0 - 跟踪指定人, 其他-跟踪全部
-     *                {String} [trackRange_all] 跟踪全部，在[isTrack]为1的前提下 生效, 值为 1
-     *                {String} [zdgzry] 跟踪指定人的ID
-     *               </pre>
+     *                                                                                      {String} [isTrack] 是否跟踪， 1 - 跟踪， 其他-不跟踪
+     *                                                                                      {String} [trackRange_members] 跟踪指定人，在[isTrack]为1的前提下生效 , 0 - 跟踪指定人, 其他-跟踪全部
+     *                                                                                      {String} [trackRange_all] 跟踪全部，在[isTrack]为1的前提下 生效, 值为 1
+     *                                                                                      {String} [zdgzry] 跟踪指定人的ID
+     *                                                                                     </pre>
      * @return
      * @throws BusinessException
      */
@@ -1871,7 +1871,7 @@ public class ColManagerImpl implements ColManager {
      * @param comment
      * @param handleType
      * @param params     其他参数，例如跟踪，等等
-     *                   <pre>
+     * <pre>
      *                      跟踪相关参数
      *                      {Map<String, String>} [trackParam] 跟踪相关参数，{@link #saveTrackInfo}
      *                   </pre>
@@ -2165,35 +2165,30 @@ public class ColManagerImpl implements ColManager {
                     affairManager.update(hqlz, phql);
                 }
             } else {
-                if (affairList.size() > 0) {
-                    for (CtpAffair af : affairList) {
-                        phql = new HashMap<>();
-                        phql.put("state", 4);
-                        phql.put("subState", 0);
-                        phql.put("completeTime", new java.util.Date());
-                        phql.put("id", af.getId());
-                        affairManager.update(hqlz, phql);
+                if (!affair.getNodePolicy().equals("请假集团领导")) {
+                    if (affairList.size() > 0) {
+                        for (CtpAffair af : affairList) {
+                            phql = new HashMap<>();
+                            phql.put("state", 4);
+                            phql.put("subState", 0);
+                            phql.put("completeTime", new java.util.Date());
+                            phql.put("id", af.getId());
+                            affairManager.update(hqlz, phql);
+                        }
                     }
+                }else {
+                    phql = new HashMap<>();
+                    phql.put("state", 4);
+                    phql.put("subState", 0);
+                    phql.put("completeTime", new java.util.Date());
+                    phql.put("id", affair.getId());
+                    affairManager.update(hqlz, phql);
                 }
-            }
 
+            }
         }
-//        String hql2 = "update CtpAffair a set a.state=:state ,a.subState=:subState,a.completeTime=:completeTime where  a.activityId=:activityId and a.objectId=:objectId";
-//        Map<String, Object> params2 = new HashMap<>();
-//        params2.put("state", 4);
-//        params2.put("subState", 0);
-//        params2.put("completeTime", new Date());
-//        params2.put("activityId", affair.getActivityId().longValue());
-//        params2.put("objectId", affair.getObjectId().longValue());
-//        try {
-//            affairManager.update(hql2, params2);
-//        } catch (BusinessException e) {
-//            e.printStackTrace();
-//            System.out.println("取回时修改状态值的hql语句出错了：" + e.getMessage());
-//        }
-//      多账号竞争执行，在此解决处理时间问题（同一流程节点a处理了，b的处理时间为空）
-//      [徐矿竞争执行，更新处理时间问题。] zhou end
     }
+
 
     private void updateAffairAttribute(CtpAffair affair, ColSummary summary, String subState) throws BusinessException {
         Timestamp now = new Timestamp(System.currentTimeMillis());
