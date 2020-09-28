@@ -914,7 +914,8 @@ public class MeetingMessageManagerImpl implements MeetingMessageManager {
         Long roomAppId = (Long) messageMap.get("roomAppId");
         List<Long> memberIdList = (List<Long>) messageMap.get("memberIdList");
 
-//        zhou 开发区撤销会议通知在消息体重添加会议具体时间
+//        zhou 开发区撤销会议通知在消息体重添加会议具体时间,
+        //修改的内容在 MeetingResources_zh_CN.properties文件中。
         String startTime = (String) messageMap.get("startTime");
         String endTime = (String) messageMap.get("endTime");
 //        zhou
