@@ -743,8 +743,8 @@ public class MeetingMessageManagerImpl implements MeetingMessageManager {
         }
         if (Strings.isNotEmpty(auditingIdList)) {
             //zhou:在消息提醒中添加参会领导字段。
-            MessageContent msgContent = MessageContent.get("mr.label.pleaseperm", userName, roomName, appVo.getStartDatetime(), appVo.getEndDatetime(), appDescription,appVo.getMeetingRoomApp().getLdname());
-            MessageContent agentMsgContent = MessageContent.get("mr.label.pleaseperm", userName, roomName, appVo.getStartDatetime(), appVo.getEndDatetime(), appDescription,appVo.getMeetingRoomApp().getLdname());
+            MessageContent msgContent = MessageContent.get("mr.label.pleaseperm", userName, roomName, appVo.getStartDatetime(), appVo.getEndDatetime(), appDescription,(null==appVo.getMeetingRoomApp().getLdname() || "".equals(appVo.getMeetingRoomApp().getLdname()))?"暂无":appVo.getMeetingRoomApp().getLdname());
+            MessageContent agentMsgContent = MessageContent.get("mr.label.pleaseperm", userName, roomName, appVo.getStartDatetime(), appVo.getEndDatetime(), appDescription,(null==appVo.getMeetingRoomApp().getLdname() || "".equals(appVo.getMeetingRoomApp().getLdname()))?"暂无":appVo.getMeetingRoomApp().getLdname());
 
             String periodicityId = "-1";
             if (!MeetingUtil.isIdNull(appVo.getMeetingRoomApp().getPeriodicityId())) {
