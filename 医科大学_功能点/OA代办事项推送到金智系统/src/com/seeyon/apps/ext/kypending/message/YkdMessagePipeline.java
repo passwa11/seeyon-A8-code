@@ -22,6 +22,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * zhou:消息推送 集成方案
+ */
+
 public class YkdMessagePipeline implements MessagePipeline {
 
     Logger logger = LoggerFactory.getLogger(YkdMessagePipeline.class);
