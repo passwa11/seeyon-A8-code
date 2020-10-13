@@ -1,0 +1,290 @@
+#segmentedControl{
+    margin-top: 17px;
+    background: #FFFFFF;
+    box-shadow: 0 3px 5px 1px rgba(230,234,241,0.50);
+    border-radius: 8px 8px 0 0;
+}
+.segmentedControl .cmp-control-item span{
+    position: absolute;
+    top: 7px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #E01D1D;
+    color:#fff;
+    line-height: 18px;
+    font-size: 12px;
+    text-align: center;
+    /** 锤子手机、三星note9文字偏上的问题修改 **/
+    font-family: "Tahoma";
+}
+.cmp-control-content{
+    background: #FFFFFF;
+    box-shadow: 0 3px 5px 1px rgba(230,234,241,0.50);
+    border-radius:0 0  8px 8px;
+    margin-bottom: 20px;
+}
+.containerDiv{
+    padding:0 14px;
+    height:calc(100% - 114px);
+}
+.headContainer{
+    height: 110px;
+    display:-webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    -o-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    -o-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-around;
+    -moz-justify-content: space-around;
+    -ms-justify-content: space-around;
+    -o-justify-content: space-around;
+    justify-content: space-around;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+}
+.headContainer p{
+    color: #fff;
+    margin-bottom: 0px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+body{
+    background-image: url(../img/logo.png);
+    background-repeat: no-repeat;
+    background-size: 100% 160px;
+    background-color: #f8f9fb;
+}
+.btnContainer{
+    height: 80px;
+    display:-webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    -o-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    -o-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -o-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+    text-align: center;
+}
+.btnContainer div{
+    width: calc(50% - 8px);
+    overflow: hidden;
+    background: #FFFFFF;
+    box-shadow: 0 3px 5px 1px rgba(230,234,241,0.50);
+    border-radius: 6px;
+    height: 80px;
+    line-height: 80px;
+    display:-webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+    -moz-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    -o-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    -o-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+
+}
+.btnContainer div p{
+    width: 48px;
+    height: 48px;
+    background: #eff6fe;
+    box-shadow: 0 2px 6px 0 #eff6fe;
+    border-radius: 50%;
+    line-height: 48px;
+    margin: 0 0 0 8px;
+    color:#1A69FD;
+}
+.btnContainer div>span{
+    font-family: PingFangSC-Medium;
+    font-size: 16px;
+    color: #333333;
+    letter-spacing: -0.39px;
+    margin-right: 8px;
+    margin-left: 8px;
+    line-height: 20px;
+    text-align: left;
+    font-weight: bold;
+}
+.scrollContainer{
+    height:100%;
+}
+.item1mobileContent{
+    position: relative;
+    padding: 14px 14px 18px 14px;
+    border-top: 1px solid #E4E4E4;
+}
+/* .item1mobileContent:first-child{
+    border: none;
+} */
+.item1mobileContent h4{
+    font-size: 16px;
+    margin:0;
+    padding: 0;
+    line-height: 26px;
+    height: 26px;
+}
+.item1mobileContent p{
+    font-size: 14px;
+    margin:6px 0 0 0;
+    padding: 0;
+    line-height: 20px;
+    height: 20px;
+}
+.item1mobileContent p.colorBlue,.item2mobileContentContainer p.color333{
+    font-size: 0px;
+}
+.item1mobileContent p span.spanSpace,.item2mobileContentContainer p span.spanSpace{
+    margin:0 2px 0 -3px;
+}
+.item1mobileContent p span{
+    font-size: 14px;
+    margin-right: 5px;
+}
+.right_wrap .mark em{
+    transform: rotate(-45deg) scale(0.8);
+}
+.colorBlue{
+    color: #297FFB;
+}
+.colorGray{
+    color:#CBD4EE;
+}
+.item2mobileContent{
+    padding: 14px 0 0 14px;
+    overflow: hidden;
+}
+/* #item2mobile .item2mobileContent:first-child{
+    border-top: 1px solid #E4E4E4;
+} */
+.meetingImg{
+    width: 100px;
+    height: 90px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+}
+.item2mobileContentContainer{
+    width: calc(100% - 108px);
+    padding-left: 6px;
+    padding-right: 14px;
+    border-bottom: 1px solid #E4E4E4;
+}
+#item2mobile ul li:last-child .item2mobileContent .item2mobileContentContainer{
+    border-bottom: none;
+}
+.item2mobileContentContainer h4{
+    margin-top: 0px;
+    margin-bottom:4px;
+    font-size: 16px;
+    color: #333333;
+    letter-spacing: 0.7px;
+    line-height: 18px;
+}
+.colorGreen{
+    color: #05B58F;
+}
+.colorOrange{
+    color: #FE6820;
+}
+.color333{
+    color: #333333;
+}
+.item2mobileContentContainer p span{
+    font-size: 12px;
+    margin-right: 5px;
+}
+.item2mobileContentContainer p{
+    margin-bottom: 0px;
+    line-height: 20px;
+    height: 20px;
+}
+.item2mobileP{
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #999999;
+    letter-spacing: 0;
+    line-height: 16px;
+}
+.item2mobileContentContainer h5{
+    margin:10px 0 17px 0;
+}
+.containerDiv h4{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #333;
+}
+.cmp-table-view:before{
+    display: none;
+}
+.cmp-table-view:after{
+    background-color: #d5d5d5;
+    height: 0;
+}
+.cmp-table-view li:first-child .item1mobileContent{
+    border: none;
+}
+.cmp-table-view li .item1mobileContent{
+    line-height: 1;
+}
+.segmentedControlBr{
+    /*position: relative;*/
+    /*top: 1px;*/
+    /*height: 2px;*/
+    border-top: 1px solid #E4E4E4;
+    /*background-color: #fff;*/
+    /*margin-bottom: -3px;*/
+}
+#pendingNum{
+    display: none;
+}
+#item1mobile,#item2mobile{
+    height: calc(100% - 148px) !important;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+  		<link href="http://cmp/v/css/cmp.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/cmp-meeting.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/m3_meeting.css" rel="stylesheet" type="text/css" />
+  		<link rel="stylesheet" href="http://cmp/v/css/cmp-att.css">
+  		<link rel="stylesheet" href="http://commons.v5.cmp/v/cmp-resources/content.css">
+		<title></title>
+	</head>
+	<body>
+		<div class="cmp-content meeting-invite-container"></div>
+		
+		<script type="text/html" id="invite_tpl">
+			<% 
+				var item = this;
+				var stateClass = "";
+				switch(item.meetingState){
+					case 10 : stateClass = "waiting";break;
+					case 20 : stateClass = "going";break;
+					case -10 :
+					case 30 :
+					case 31 : 
+					case 40 : stateClass = "end";break;
+					default : stateClass = "waiting";break;
+				} 
+			%>
+			<% if(!item.isAudited){ %>
+				<div class="error-container">
+					<img src="../img/auditing.png"/>
+					<div class="error-msg"><%=cmp.i18n("meeting.invite.msg.auditing")%></div>
+				</div>
+			<% }else if(item.isCanceled || !item.isPublic){ %>
+				<div class="error-container">
+					<img src="../img/notExist.png"/>
+					<div class="error-msg"><%=cmp.i18n("meeting.invite.msg.notExist")%></div>
+				</div>
+			<% }else{ %>
+				<div id="scroller">
+					<div>
+						<div class="meeting-invite-header">
+							<div class="meeting-name cmp-ellipsis-2"><%=item.meetingName%></div>
+							<div class="meeting-state <%=stateClass%>"><%=item.meetingStateHtml%></div>
+						</div>
+						
+						<div class="meeting-invite-prop">
+							<div class="meeting-prop-item">
+								<div class="prop-name"><%=cmp.i18n("meeting.page.lable.meetingTime")%></div>
+								<div class="prop-value"><%=item.meetingTime%></div>
+							</div>
+							<div class="meeting-prop-item">
+								<div class="prop-name"><%=cmp.i18n("meeting.meetingCreate.meetingPlace")%></div>
+								<div class="prop-value"><%=(item.meetingPlace ? item.meetingPlace : "")%></div>
+							</div>
+						</div>
+						
+						<div class="meeting-invite-content">
+							<div id="meetingContent" class="meeting-content"></div>
+						</div>
+						<% if(item.fileAttachments.length > 0){ %>
+						<div class="meeting-invite-att">
+							<span class="see-icon-accessory"></span>
+							<span>附件</span><span>(<%=item.fileAttachments.length%>)</span>
+							<span class="right jiantou see-icon-v5-common-arrow-down"></span>
+						</div>
+						<div class="meeting-attachment meeting-invite-line" id="attListUl" style="display: none;"></div>
+						<% } %>
+					</div>
+				</div>
+				<% if(!item.isFinished){ %>
+					<div class="meeting-invite-btn">
+						<div class="cmp-block-with-box cmp-block-with-btn">
+							<% if(!item.isAttend){ %>
+								<button type="button" class="cmp-btn cmp-btn-primary2 cmp-btn-width40 attend"><%=cmp.i18n("meeting.page.action.attend")%></button>
+							<% }else{ %>
+								<button type="button" class="cmp-btn cmp-btn-primary2 cmp-btn-width40 has-attend" disabled="disabled"><%=cmp.i18n("meeting.page.action.attended")%></button>
+							<% } %>
+						</div>
+					</div>
+				<% } %>
+			<% } %>
+		</script>
+		
+		<script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>  
+		<script src="http://cmp/v/js/cmp-i18n.js"></script>
+		<script  src="http://cmp/v/js/cmp.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meeting-jssdk.js" type="text/javascript"></script>
+<script  src="http://commons.v5.cmp/v/m3-jssdk.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meetingCommon.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/i18n/MeetingResources_zh_CN.js" type="text/javascript"></script>
+		<script src="http://cmp/v/js/cmp-att.js"></script>
+		<script src="http://cmp/v/js/cmp-imgCache.js"></script>
+		<script src="http://cmp/v/js/cmp-listView.js"></script>
+		<script src="http://commons.v5.cmp/v/widget/SeeyonAttachment.s3js"></script>
+		<script src="http://commons.v5.cmp/v/widget/SeeyonContent.js"></script>
+		<script src="http://commons.v5.cmp/v/js/editContent-jssdk.js"></script>
+		<script type="text/javascript">
+		   var _meetingPath = "http://meeting.v5.cmp/v1.0.0";
+	       cmp.i18n.init("http://meeting.v5.cmp/v1.0.0/i18n/", "MeetingResources",function(){
+	       		document.title= cmp.i18n("meeting.page.lable.meetingDetail");
+	       });
+	    </script>
+	    <script src="http://meeting.v5.cmp/v1.0.0/js/meetingInvite.js"></script>
+	</body>
+</html>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="14px" viewBox="0 0 40 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>日历-展开图标</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="日历-展开图标" fill="#fff">
+            <g id="Page-1">
+                <path d="M20.0268497,0.0136119105 C18.7996851,0.0136119105 2.11876655,7.10003315 2.11876655,7.10003315 C0.4332999,7.81303049 -0.409433434,9.83318966 0.22261657,11.615683 C0.854666573,13.3981764 2.64547489,14.4676724 4.22559988,13.7546751 L20.0268497,7.33769893 L35.8280996,13.7546751 C37.5135663,14.4676724 39.3043747,13.5170093 39.831083,11.615683 C40.3577914,9.83318966 39.515058,7.81303051 37.8295913,7.10003315 C37.8295913,7.10003315 21.2540146,0.0136119105 20.0268497,0.0136119105 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -24,7 +24,35 @@ public class MeetingRoomOccupancyVO implements Serializable{
     private Long appId;
     /** 是否结束使用 */
     private Boolean finish;
-    
+//    zhou
+    private String sqrdh;
+    private String sqrDept;
+    private String hcyq;
+
+	public String getSqrdh() {
+		return sqrdh;
+	}
+
+	public void setSqrdh(String sqrdh) {
+		this.sqrdh = sqrdh;
+	}
+
+	public String getSqrDept() {
+		return sqrDept;
+	}
+
+	public void setSqrDept(String sqrDept) {
+		this.sqrDept = sqrDept;
+	}
+
+	public String getHcyq() {
+		return hcyq;
+	}
+
+	public void setHcyq(String hcyq) {
+		this.hcyq = hcyq;
+	}
+
 	public Date getStartDatetime() {
 		return startDatetime;
 	}

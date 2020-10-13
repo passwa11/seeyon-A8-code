@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+    <link href="http://cmp/v/css/cmp.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/cmp-meeting.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/m3_meeting.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="http://cmp/v/css/cmp-att.css">
+    <link rel="stylesheet" href="http://cmp/v/css/cmp-listView.css">
+    <link rel="stylesheet" href="http://cmp/v/css/cmp-picker.css">
+    <link rel="stylesheet" href="http://cmp/v/css/cmp-search.css">
+    <link rel="stylesheet" href="http://cmp/v/css/cmp-list-card.css">
+	<title></title>
+	<link rel="stylesheet" href="http://meeting.v5.cmp/v1.0.0/css/meeting_list_pending.css">
+</head>
+<body class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1">
+	<div style="height:100%;">
+		<div class="headContainer">
+			<div id="myMeetingList">
+				<span class="see-icon-v5-common-mymeeting" style="font-size:25px;"></span>
+				<p><i18n key="meeting.home.btn.myMeetings"></i18n></p>
+			</div>
+			<div id="meetingRoomList">
+				<span class="see-icon-v5-common-assembly-fill" style="font-size:20px;"></span>
+				<p><i18n key="meeting.meetingRoomCommon.meetingRoom"></i18n></p>
+			</div>
+			<div id="meetingSummaryList">
+				<span class="see-icon-v5-common-meeting-summary" style="font-size:20px;"></span>
+				<p><i18n key="meeting.page.lable.summary"></i18n></p>
+			</div>
+		</div>
+		<div class="containerDiv">
+			<div class="btnContainer">
+				<div id="createMeeting">
+					<p class="cmp-pull-left"><span class="see-icon-v5-common-apply-meeting" style="font-size:26px;"></span></p>
+					<span class="cmp-pull-right"><i18n key="meeting.meetingCreate.createNewMeeting"></i18n></span>
+				</div>
+				<div id="applyRoom">
+					<p class="cmp-pull-left"><span class="see-icon-v5-common-apply-meetingroom" style="font-size:24px;"></span></p>
+					<span class="cmp-pull-right"><i18n key="meeting.meetingCreate.applyMeetingRoom"></i18n></span>
+				</div>
+			</div>
+			<div id='segmentedControl' class='cmp-segmented-control cmp-segmented-control-inverted segmentedControl'>
+		        <a class='cmp-control-item cmp-active' href='#item1mobile'>
+		           	<i18n key="meeting.page.state.pendingMeeting"></i18n><span id="pendingNum">-</span>
+		        </a>
+		        <a class='cmp-control-item' href='#item2mobile'>
+		            <i18n key="meeting.home.btn.appliedRooms"></i18n>
+		        </a>
+	    	</div>
+	    	<div class="segmentedControlBr"></div>
+	    	<div id="item1mobile" class='cmp-control-content cmp-tab-list-content cmp-active'>
+	    		<div id="pendingList" class="cmp-scroll-wrapper">
+		            <div class="cmp-scroll">
+		            	<ul class="cmp-table-view"></ul>
+		            </div>
+		        </div>
+	    	</div>
+    		<div id="item2mobile" class='cmp-control-content cmp-tab-list-content'>
+	    		<div id="appliedRooms" class="cmp-scroll-wrapper">
+		            <div class="cmp-scroll">
+		            	<ul class="cmp-table-view"></ul>
+		            </div>
+		        </div>
+    		</div>
+		</div>
+	</div>
+	
+	<!--待开会议模版-->
+	<script type="text/html" id="tpl_pending_list">
+		<% for(var i = 0;i < this.length;i++){ %>
+		<% var item = this[i]; %>
+			<li id="<%=item.id%>" affairId="<%=item.affairId%>" proxyId="<%=item.proxyId%>">
+				<div class="item1mobileContent right_wrap">
+					<h4>
+						<!-- 周期性会议 -->
+						<% if(item.category == 1) { %>
+							<%=cmp.i18n("meeting.page.perMeeting")%>
+						<%}%>
+						<%=item.title%>
+						<%if(item.proxyName){%>
+							(<%=cmp.i18n("meeting.page.lable.agent")%><%=item.proxyName%>)
+						<%}%>
+					</h4>
+	    			<p class="colorBlue">
+						<span><%=item.showTime%></span>
+						<% if(item.hasAttachments){ %>
+	    					<span class="see-icon-accessory colorGray"></span>
+	    				<% } %>
+	    			</p>
+	    			<p>发起人: <span style="color:#666666;"><%=item.createUserName%></span></p>
+	    			<%if(item.roomName || item.meetPlace){%>
+		    			<p>地点:
+		    				<span style="color:#666666;">
+			    				<% if(item.roomName != null && item.roomName != ""){ %><%=item.roomName%><%}%>
+								<% if(item.meetPlace != null && item.meetPlace != ""){ %><%=item.meetPlace%><%}%>
+		    				</span>
+		    			</p>
+	    			<%}%>
+					<% if(item.feedbackFlag == 1){%> <!--参加-->
+						<span class="mark m3-icon-status-seal part" style="color:#297FFB"><em><%=cmp.i18n('meeting.page.action.attend')%></em></span>
+			        <%}else if(item.feedbackFlag == 0){%> <!--不参加-->
+			        	<span class="mark m3-icon-status-seal unpart"><em><%=cmp.i18n('meeting.page.action.noAttend')%></em></span>
+			        <%}else if(item.feedbackFlag == -1){%> <!--待定-->
+			        	<span class="mark m3-icon-status-seal determined"><em><%=cmp.i18n('meeting.page.action.pending')%></em></span>
+			        <%}else if(item.feedbackFlag == -100){%><!-- 未回执 -->
+			        	<span class="mark m3-icon-status-seal viewed"><em><%=cmp.i18n('meeting.page.lable.noReceipt')%></em></span>
+			        <%}%>
+	    		</div>
+			</li>
+		<% } %>
+	</script>
+	
+	<!--已申请会议室模版-->
+	<script type="text/html" id="tpl_applied_rooms">
+		<% for(var i = 0;i < this.length;i++){ %>
+		<% var item = this[i]; %>
+			<li roomappId="<%=item.roomAppId%>">
+			    <div class="item2mobileContent">
+			    	<% if(item.image){ %>
+	    				<div class="cmp-pull-left meetingImg" style="background-image:url(<%=cmp.serverIp%>/seeyon/commonimage.do?method=showImage&id=<%=item.image%>&size=custom&w=127&h=90)"></div>
+	    			<% }else{ %>
+	    				<div class="cmp-pull-left meetingImg" style="background-image:url(../img/defaultMeetingRoom.jpg)"></div>
+	    			<% } %>
+	    			<div class="cmp-pull-right item2mobileContentContainer">
+	    				<h4><%=item.roomName%></h4>
+	    				<p class="color333"><%=item.showTime%></p>
+		    			<p class="item2mobileP"><%=cmp.i18n("meeting.meetingRoomList.seatCount", item.roomSeatCount)%></p>
+	    				
+						<% if(item.appStatus == 0) {%>
+							<h5 class="colorBlue"><%=cmp.i18n("meeting.meetingRoomCommon.pendingAudit")%></h5> <!--待审核-->
+						<%} else if(item.appStatus == 1) {%>
+							<h5 class="colorGreen"><%=cmp.i18n("meeting.meetingRoomCommon.auditPass")%></h5> <!--审核通过--> 
+						<%} else if(item.appStatus == 2) {%>	
+							<h5 class="colorOrange"><%=cmp.i18n("meeting.meetingRoomCommon.auditNotPassed")%></h5> <!--审核未通过-->
+						<%}%>
+	    			</div>
+	    		</div>
+    		</li>
+		<% } %>
+	</script>
+		
+	<script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>  
+	<script src="http://cmp/v/js/cmp-i18n.js"></script>
+	<script  src="http://cmp/v/js/cmp.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meeting-jssdk.js" type="text/javascript"></script>
+<script  src="http://commons.v5.cmp/v/m3-jssdk.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meetingCommon.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/i18n/MeetingResources_zh_CN.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var _meetingPath = "http://meeting.v5.cmp/v1.0.0";
+	</script>
+	<script type="text/javascript" src="http://cmp/v/js/cmp-imgCache.js"></script>
+    <script type="text/javascript" src="http://cmp/v/js/cmp-listView.js"></script>
+	<script src="http://meeting.v5.cmp/v1.0.0/js/meetingHome.js"></script>
+</body>  
+</html>

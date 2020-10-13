@@ -29,7 +29,7 @@ public class TokenUtil {
         HttpResponse response = null;
         httpPost = new HttpPost(url);
         httpPost.setHeader("Content-Type", "application/json;charset=utf-8");
-        String requestParams = "{\"userName\":\"rest\",\"password\":\"ab571a1b-f731-444f-8521-a8d4a8727d9e\"}";
+        String requestParams = "{\"userName\":\"rest\",\"password\":\"55ffa403-230c-48c5-b74c-9d29fd100542\"}";
         StringEntity postingString = new StringEntity(requestParams, "utf-8");
         httpPost.setEntity(postingString);
         try {
@@ -52,7 +52,6 @@ public class TokenUtil {
         HttpPost post = new HttpPost("http://127.0.0.1:80/seeyon/rest/verifyLogin/login");
         Map<String, Object> map = new HashMap<>();
         map.put("loginName", name);
-        map.put("pwd", pwd);
         String pairs=JSON.toJSONString(map);
         StringEntity formEntity = new StringEntity(pairs, "UTF-8");
         post.setHeader("Content-Type", "application/json;charset=utf-8");

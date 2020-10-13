@@ -66,7 +66,7 @@ public class SSOClientFilter implements Filter {
         String ticket = request.getParameter("ticket");
         String globalSessionId = request.getParameter("globalSessionId");
         String url = request.getRequestURL().toString();
-
+        String test=(String) request.getAttribute("test");
         String[] needLoginAry = needLoginUrls.split(",");
 
         // 除了包含needLoginAry的请求，其他的都不拦截
@@ -103,7 +103,7 @@ public class SSOClientFilter implements Filter {
 //                    map.put("localSessionId", session.getId());
 //                    String pairs = JSON.toJSONString(map);
 //                    StringEntity formEntity = new StringEntity(pairs, "UTF-8");
-                    List<NameValuePair> pairList=new ArrayList<>();
+                    List<NameValuePair> pairList = new ArrayList<>();
                     pairList.add(new BasicNameValuePair("ticket", ticket));
                     pairList.add(new BasicNameValuePair("globalSessionId", globalSessionId));
                     pairList.add(new BasicNameValuePair("localLoginOutUrl", basePath + localExitUrl));
@@ -116,7 +116,7 @@ public class SSOClientFilter implements Filter {
 
                     post.addHeader("token", tokenu);
                     post.setEntity(formEntity);
-                    CloseableHttpResponse closeresponse=null;
+                    CloseableHttpResponse closeresponse = null;
                     try {
                         closeresponse = client.execute(post);
                         closeresponse.setHeader("Cache-Control", "no-cache");
@@ -129,12 +129,12 @@ public class SSOClientFilter implements Filter {
                                 session.setAttribute("username", username);
                                 session.setAttribute("globalSessionId", globalSessionId);// 等退出全局登录时使用
 //							zhou start
-                                CasHttpServletRequestWrapper casRequest = new CasHttpServletRequestWrapper(request, username);
-                                filterChain.doFilter(casRequest, response);
+//                                CasHttpServletRequestWrapper casRequest = new CasHttpServletRequestWrapper(request, username);
+                                filterChain.doFilter(request, response);
 //							zhou end
                                 logger.info("验票成功");
                                 return;
-                            }else {
+                            } else {
                                 logger.info("验票失败，重新跳转到sso登录页面");
                                 response.sendRedirect(loginPage + "?service=" + url);
                             }
@@ -146,15 +146,15 @@ public class SSOClientFilter implements Filter {
 
                     } catch (Exception e) {
                         e.printStackTrace();
-                    }finally {
-                        try{
-                            if(null != closeresponse){
+                    } finally {
+                        try {
+                            if (null != closeresponse) {
                                 closeresponse.close();
                             }
-                            if(null !=client){
+                            if (null != client) {
                                 client.close();
                             }
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
@@ -166,7 +166,14 @@ public class SSOClientFilter implements Filter {
 
             } else {
                 logger.info("ticket为空！跳转到认证中心登录页");
-                response.sendRedirect(loginPage + "?service=" + url);
+                Cookie[] cookies = request.getCookies();
+                String loginName="";
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("sso")) {
+                        loginName=cookie.getValue();
+                    }
+                }
+                response.sendRedirect(loginPage + "?service=" + url+"&ssoInfo="+ loginName);
             }
         } else {// 已经登录
             logger.info("已经登录，无需拦截,进入系统:" + request.getContextPath());

@@ -67,6 +67,7 @@ public class SSOClientFilter implements Filter {
         String globalSessionId = request.getParameter("globalSessionId");
         String url = request.getRequestURL().toString();
 
+
         String[] needLoginAry = needLoginUrls.split(",");
 
         // 除了包含needLoginAry的请求，其他的都不拦截
@@ -129,8 +130,8 @@ public class SSOClientFilter implements Filter {
                                 session.setAttribute("username", username);
                                 session.setAttribute("globalSessionId", globalSessionId);// 等退出全局登录时使用
 //							zhou start
-                                CasHttpServletRequestWrapper casRequest = new CasHttpServletRequestWrapper(request, username);
-                                filterChain.doFilter(casRequest, response);
+//                                CasHttpServletRequestWrapper casRequest = new CasHttpServletRequestWrapper(request, username);
+                                filterChain.doFilter(request, response);
 //							zhou end
                                 logger.info("验票成功");
                                 return;

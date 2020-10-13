@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="stylesheet" href="http://cmp/v/css/cmp.css">
+    <link rel="stylesheet" href="http://xiaoz.v5.cmp/v1.0.0/css/xiaoz-card.css">
+</head>
+
+<body class="cmp-fullscreen xiaozhi-card">
+    <div class="xiaozhi-card-content list-before-line ul_list meeting_wrap collaboration-list">
+
+    </div>
+</body>
+
+<!-- <script type="text/html" id="cardTemplate">
+    <div class="left_img img-wrap choice">
+        <img class="img_setting" id="header" src="<%=this.header %>">
+    </div>
+    <div class="right_wrap">
+        <div class="meet_title cmp-ellipsis-2" id="title"><%=this.title %></div>
+        <div class="meeting_createuser">
+            <span class="name" style="font-size: 14px;margin-right: 10px;">发起人：</span>
+            <span class="name" style="font-size: 14px;margin-right: 10px;"><%=this.createUserName %></span>
+        </div>
+        <div class="meet_date" style="color: #297FFB;">
+            <span class="name" style="font-size: 14px;margin-right: 10px;">会议时间：</span>
+            <%=this.showTime %>
+        </div>
+    </div>
+</script> -->
+
+<script src="http://cmp/v/js/cmp-i18n.js"></script>
+<script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>
+<script src="http://cmp/v/js/cmp.js"></script>
+<script src="http://cmp/v/js/cmp-2.0.0.js"></script>
+<script src="http://cmp/v/js/cmp-app.js"></script>
+<script src="http://cmp/v/js/cmp-speechRobot.js"></script>
+<script src="http://meeting.v5.cmp/v1.0.0/js/xiaoz-card.js"></script>
+
+
+<!-- <script>
+    cmp.ready(function(){
+        //第一步，使用小致的获取语音输入插件，获取对话数据
+        cmp.speechRobot.getSpeechInput({
+            error:function(e){
+                console.log(e);
+            },
+            success:function(params){
+                console.log(params);
+                //第二步，解析渲染数据，根据渲染数据渲染成卡片样式
+                var renderData = params[0];
+                renderData.header = cmp.seeyonbasepath+"/rest/orgMember/avatar/"+renderData.createUserId+"?maxWidth=200";
+                var template = document.getElementById("cardTemplate").innerHTML;
+                var dataTpl = cmp.tpl(template,renderData);
+
+                var cardContent = document.querySelector(".xiaozhi-card-content");
+                cardContent.innerHTML = dataTpl;
+
+                //点击，打开详情页面
+                cardContent.addEventListener("tap",function(){
+                    //第三步，使用小致的插件，打开数据详情的H5页面
+                    cmp.speechRobot.openPage({
+                        url:"http://meeting.v5.cmp/v1.0.0/html/meetingDetail.html",
+                        params:renderData,
+                        success:function(){},
+                        error:function(){}
+
+                    })
+
+                })
+            }
+        });
+    });
+
+</script> -->
+</html>

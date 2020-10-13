@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name='format-detection' content='telephone=no,email=no'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <link href="http://cmp/v/css/cmp.css" rel="stylesheet" type="text/css"/>
+    <link href="http://meeting.v5.cmp/v1.0.0/css/cmp-meeting.css" rel="stylesheet" type="text/css"/>
+    <link href="http://meeting.v5.cmp/v1.0.0/css/m3_meeting.css" rel="stylesheet" type="text/css"/>
+    <title></title>
+    <style type="text/css">
+
+        .cmp-table-view-cell .left_name {
+            font-family: PingFangSC-Regular;
+            font-size: 16px;
+            color: #8F8F8F;
+        }
+
+        .cmp-table-view-cell .right_text {
+            font-family: ArialMT;
+            font-size: 16px;
+            color: #333;
+            text-align: right;
+        }
+
+        .cmp-table-view:before {
+            height: 0;
+        }
+
+        .cmp-table-view:after {
+            height: 0;
+        }
+
+        .cmp-table-view-cell:after {
+            left: 0px;
+        }
+
+        .cmp-table-view {
+            margin-top: 10px;
+        }
+
+        .meetingTimeRow {
+            display: flex;
+            display: -webkit-flex;
+            justify-content: flex-start;
+            -webkit-justify-content: flex-start;
+        }
+
+        .leftCell, .rightCell {
+            flex: 2;
+            -webkit-flex: 2;
+        }
+
+        .leftCell .titleLabel, .rightCell .titleLabel {
+            font-family: ArialMT;
+            font-size: 16px;
+            color: #999999;
+            letter-spacing: 0;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .leftCell .timeLabel, .rightCell .timeLabel {
+            font-family: ArialMT;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .leftCell input, .rightCell input {
+            font-family: ArialMT;
+            font-size: 16px;
+            color: #717171;
+        }
+
+        .startReq em {
+            color: red;
+        }
+
+        .centerCell {
+            flex: 1;
+            -webkit-flex: 1;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: center;
+            -webkit-justify-content: center;
+            align-items: center;
+            -webkit-align-items: center;
+        }
+
+        #descriptionCell:after {
+            height: 0;
+        }
+
+        .showMemberCard {
+            color: #297FFB;
+        }
+    </style>
+</head>
+<body class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1" style="background-color: #F8F9FB">
+<div id="contentDiv" class="cmp-content back_white cmp-content-none"
+     style="bottom:50px;width:100%;background-color: #F8F9FB;">
+    <ul class="cmp-table-view new_header_content">
+        <div class="meetingTimeRow" style="height: 103px">
+            <div class="leftCell">
+                <div class="meeting-edit-row">
+                    <!--开始时间-->
+                    <span class="startReq">
+							<span class="see-icon-must" style="top:10px;"></span>
+							<span class="titleLabel"><i18n key="meeting.meetingRoomApply.startTime"></i18n></span>
+						</span>
+                </div>
+                <div class="meeting-edit-row">
+                    <!--开始时间的年月日-->
+                    <div class="titleLabel" style="color: #717171;" id="startDatetime" class="right_text"></div>
+                </div>
+                <div class="meeting-edit-row">
+                    <!--开始时间的time-->
+                    <span class="timeLabel" id="startDatetimeLabel">
+						</span>
+                </div>
+            </div>
+            <div class="centerCell">
+                <img style="height:80px;width:26px;" src="../img/rightDate.png"/>
+            </div>
+            <div class="rightCell">
+                <div class="meeting-edit-row">
+                    <!--结束时间-->
+                    <span class="startReq">
+							<span class="see-icon-must" style="top:10px;"></span>
+							<span class="titleLabel"><i18n key="meeting.meetingRoomApply.endTime"></i18n></span>
+						</span>
+                </div>
+                <div class="meeting-edit-row">
+                    <div class="titleLabel" style="color: #717171;" id="endDatetime" class="right_text"></div>
+                </div>
+                <div class="meeting-edit-row">
+                    <span class="timeLabel" id="endDatetimeLabel"></span>
+                </div>
+            </div>
+        </div>
+    </ul>
+
+    <ul class="cmp-table-view">
+        <!-- 会议室名称 -->
+        <li class="cmp-table-view-cell">
+            <div class="list_item">
+                <div class="left_name">
+                    <i18n key="meeting.meetingRoomDetail.name"></i18n>
+                </div>
+                <div class="right_text" style="word-break:break-all;"><a id="roomName" href="javascript:void(0)"
+                                                                         style="color: #297FFB"></a></div>
+            </div>
+        </li>
+        <!-- 申请人 -->
+        <li id="roomSentPer" class="cmp-table-view-cell">
+            <div class="list_item">
+                <div class="left_name">
+                    <i18n key="meeting.meetingRoomCommon.applicant"></i18n>
+                </div>
+                <div id="appPerName" class="right_text" style="color:#297FFB;word-break:break-all"></div>
+            </div>
+        </li>
+        <!-- 审核人 -->
+        <li id="roomAuditPer" class="cmp-table-view-cell" style="display: none;">
+            <div class="list_item">
+                <div class="left_name">
+                    <i18n key="meeting.meetingRoomCommon.auditPer"></i18n>
+                </div>
+                <div id="auditPerName" class="right_text" style="color:#297FFB;word-break:break-all"></div>
+            </div>
+        </li>
+		<li id="sqrdhLI" class="cmp-table-view-cell">
+			<div class="list_item">
+				<div class="left_name">
+					申请人电话
+				</div>
+				<div id="sqrdh" class="right_text" style="color:#297FFB;word-break:break-all"></div>
+			</div>
+		</li>
+		<li  class="cmp-table-view-cell">
+			<div class="list_item">
+				<div class="left_name">
+					申请人部门
+				</div>
+				<div id="sqrdept" class="right_text" style="color:#297FFB;word-break:break-all"></div>
+			</div>
+		</li>
+		<li  class="cmp-table-view-cell">
+			<div class="list_item">
+				<div class="left_name">
+					参会领导
+				</div>
+				<div id="ldname" class="right_text" style="color:#297FFB;word-break:break-all"></div>
+			</div>
+		</li>
+		<li class="cmp-table-view-cell" id="descriptionCell">
+			<table class="table_wrap" style="width:100%;">
+				<tr>
+					<!--用途-->
+					<th class="left_name">
+						<i18n key="meeting.meetingRoomApply.description"></i18n>
+					</th>
+					<th id="description" class="right_text" style="word-break:break-all;"></th>
+				</tr>
+
+			</table>
+		</li>
+		<li class="cmp-table-view-cell" >
+			<table class="table_wrap" style="width:100%;">
+				<tr>
+					<!--会场要求-->
+					<th class="left_name">会场要求</th>
+					<th id="hcyq" class="right_text" style="word-break:break-all;"></th>
+				</tr>
+			</table>
+		</li>
+        <!-- 会议用品 -->
+        <li id="meetResource" class="cmp-table-view-cell" style="display: none;">
+            <table class="table_wrap" style="width:100%;">
+                <tr>
+                    <th class="left_name">
+                        <i18n key="meeting.meetingRoomApply.resources"></i18n>
+                    </th>
+                    <th id="meetResources" class="right_text" style="word-break:break-all"></th>
+                </tr>
+            </table>
+        </li>
+
+    </ul>
+
+    <ul class="cmp-table-view new_header_content">
+        <li class="cmp-table-view-cell">
+            <table class="table_wrap" style="width:100%;">
+                <tr>
+                    <!--审核意见-->
+                    <th class="left_name">
+                        <i18n key="meeting.meetingRoom.auditOpinion"></i18n>
+                    </th>
+                    <th id="contentTH" class="right_text" style="width: calc(100% - 90px);word-break:break-word;">
+                        <textarea id="commentContent" style="border: 0px;padding:0px;" placeholder=""
+                                  class="text"></textarea>
+                    </th>
+                </tr>
+            </table>
+        </li>
+    </ul>
+
+</div>
+<footer id="footerDiv" class="cmp-bar-tab cmp-bar-footer auto-height" style="right:0px;left:0px;">
+    <div class="cmp-block-with-btn cmp_handler_content_blue footer-btn approveNewBtns">
+        <a id="cancel" href="javascript:void(0)" style="display: none;">
+            <lable id="cancelBtnLable">
+                <i18n key="meeting.meetingRoom.cancel"></i18n>
+            </lable>
+        </a>
+        <a id="finish" href="javascript:void(0)" style="display: none;">
+            <lable id="finishBtnLable">
+                <i18n key="meeting.meetingRoom.finish"></i18n>
+            </lable>
+        </a>
+        <a id="disagree" href="javascript:void(0)" style="display: none;">
+            <lable id="disagreeBtnLable">
+                <i18n key="meeting.meetingRoom.disagree"></i18n>
+            </lable>
+        </a>
+        <a id="agree" href="javascript:void(0)" style="display: none;">
+            <lable id="agreeBtnLable">
+                <i18n key="meeting.meetingRoom.agree"></i18n>
+            </lable>
+        </a>
+    </div>
+</footer>
+<!-- js -->
+<script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>
+<script src="http://cmp/v/js/cmp-i18n.js"></script>
+<script src="http://cmp/v/js/cmp.js" type="text/javascript"></script>
+<script src="http://meeting.v5.cmp/v1.0.0/js/meeting-jssdk.js" type="text/javascript"></script>
+<script src="http://commons.v5.cmp/v/m3-jssdk.js" type="text/javascript"></script>
+<script src="http://meeting.v5.cmp/v1.0.0/js/meetingCommon.js" type="text/javascript"></script>
+<script src="http://meeting.v5.cmp/v1.0.0/i18n/MeetingResources_zh_CN.js" type="text/javascript"></script>
+<script src="http://cmp/v/js/cmp-app.js"></script>
+<script src="http://cmp/v/js/cmp-webviewListener.js"></script>
+<script src="http://cmp/v/js/cmp-visitingCard.js"></script>
+<script type="text/javascript">
+    var _meetingPath = "http://meeting.v5.cmp/v1.0.0";
+    var _collPath = "http://collaboration.v5.cmp/v1.0.0";
+</script>
+<script type="text/javascript" src="http://meeting.v5.cmp/v1.0.0/js/mrApprove.js"></script>
+</body>
+</html>

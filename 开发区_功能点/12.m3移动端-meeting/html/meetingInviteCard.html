@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+  		<link href="http://cmp/v/css/cmp.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/cmp-meeting.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/m3_meeting.css" rel="stylesheet" type="text/css" />
+		<title></title>
+	</head>
+	<body>
+		<div id="qrCodeInviteContainer" class="qrAnimateContainer">
+			<div class="sign-barcode-backdrop">
+				<img src="http://meeting.v5.cmp/v1.0.0/img/meetingShareTips.png" style="width: 100%;"/>
+			</div>
+			<div class="inviteContainer">
+				<div class="top-title">
+					INVITATION
+				</div>
+				<div class="border-line"></div>
+			</div>
+		</div>
+		<!--会议邀请界面模版-->
+		<script type="text/html" id="qrCodeInviteTpl">
+			<% var item = this; %>
+			<div class="invite-logo">
+				<% if(item.qrCodeInviteLogo){ %>
+					<img src="<%=cmp.serverIp%>/seeyon/commonimage.do?method=showImage&id=<%=item.qrCodeInviteLogo.fileUrl%>&size=auto"/>
+				<% }else{ %>
+					<div class="invite-account-name"><%=item.accountName%></div>
+				<% } %>
+			</div>
+			<div class="dashed"></div>
+			<div class="invite-prop">
+				<div class="prop-name"><%=cmp.i18n("meeting.meetingCreate.meetingName")%></div>
+				<div class="prop-value"><%=item.meeting.titleHtml%></div>
+			</div>
+			<div class="invite-prop">
+				<div class="prop-name"><%=cmp.i18n("meeting.page.lable.meetingTime")%></div>
+				<div class="prop-value"><%=item.meetingTimeDisplay%></div>
+			</div>
+			<div class="invite-prop">
+				<div class="prop-name"><%=cmp.i18n("meeting.meetingCreate.meetingPlace")%></div>
+				<div class="prop-value"><%=item.meeting.meetPlaceHtml%></div>
+			</div>
+			<div class="dashed"></div>
+			<div class="invite-qrcode">
+				<div class="qrcode-container">
+					<img src="<%=cmp.serverIp%>/seeyon/commonimage.do?method=showImage&id=<%=item.qrCodeInvite%>&size=auto"/>
+				</div>
+				<div class="qrcode-explain">
+					<%=cmp.i18n("meeting.page.action.shareTips")%>
+				</div>
+			</div>
+		</script>
+		<script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>  
+		<script src="http://cmp/v/js/cmp-i18n.js"></script>
+		<script  src="http://cmp/v/js/cmp.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meeting-jssdk.js" type="text/javascript"></script>
+<script  src="http://commons.v5.cmp/v/m3-jssdk.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meetingCommon.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/i18n/MeetingResources_zh_CN.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		   var _meetingPath = "http://meeting.v5.cmp/v1.0.0";
+	       cmp.i18n.init("http://meeting.v5.cmp/v1.0.0/i18n/", "MeetingResources",function(){
+	       		document.title = cmp.i18n("meeting.page.action.meetingInvite");
+	       });
+	    </script>
+	    <script src="http://meeting.v5.cmp/v1.0.0/js/meetingInviteCard.js"></script>
+	</body>
+</html>

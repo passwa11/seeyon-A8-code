@@ -269,6 +269,7 @@ public class DetaillogManagerImpl implements DetaillogManager {
     @AjaxAccess
     public FlipInfo getFlowNodeDetail(FlipInfo flipInfo, Map query) throws BusinessException {
         //分页时，携带的参数会变成String类型，存在 类型转换异常，因此 进行转换
+        System.out.println("-------------------------------------");
         Long summaryId = Long.parseLong(query.get("objectId").toString());
         query.put("objectId", summaryId);
         if (null == query.get("app")) {

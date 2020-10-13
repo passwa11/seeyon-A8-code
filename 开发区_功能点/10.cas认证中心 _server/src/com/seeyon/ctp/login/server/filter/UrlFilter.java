@@ -57,6 +57,7 @@ public class UrlFilter implements Filter {
         }
         /** 响应计时*/
         Long startMillis=System.currentTimeMillis();
+        request.setAttribute("test","tttttttt");
         filterChain.doFilter(request,response);
 
     }

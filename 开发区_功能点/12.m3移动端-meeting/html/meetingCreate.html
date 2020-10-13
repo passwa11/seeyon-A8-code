@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="cmpLockDetail"/>
+	<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+    <link href="http://cmp/v/css/cmp.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/cmp-meeting.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/m3_meeting.css" rel="stylesheet" type="text/css" />
+    <!-- 
+    <link rel="stylesheet" href="http://cmp/v/css/cmp-listView.css">
+	<link rel="stylesheet" href="http://cmp/v/css/cmp-picker.css">
+	<link rel="stylesheet" href="http://cmp/v/css/cmp-accDoc.css">
+	<link rel="stylesheet" href="http://cmp/v/css/cmp-att.css">
+	<link rel="stylesheet" href="http://cmp/v/css/cmp-search.css">
+	<link rel="stylesheet" href="http://cmp/v/css/cmp-selectOrg.css">
+	 -->
+	<title></title>
+	<link rel="stylesheet" href="http://meeting.v5.cmp/v1.0.0/css/meetingCreate.css"/>
+	<style type="text/css">
+
+
+	</style>
+</head>
+<body class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1" style="background-color: #F8F9FB;">
+	<div id="middleArea" class="cmp-content relative back_f4 absolute_wrap cmp-content-none" style="bottom:90px">
+		<div id="scroller">
+			<div id="otherDiv">
+				<ul class="cmp-table-view new_header_content" style="margin-top:0">
+					<li id="liMeetingName" class="cmp-table-view-cell" style="height: 50px;">
+						<!--会议名称-->
+						<span class="see-icon-must"></span>
+						<!--请输入会议名称-->
+	                	<span id="sMeetingName" class="headline" style="width:calc(100% - 40px); margin-top:8px;left:14px;">
+	                		<textarea id="meetingName" maxlength="60" style="height:100%; color: #000000;"></textarea>
+	                		<textarea id="shadowMeetingName"></textarea>
+	                	</span>
+					</li>
+					<li>
+						<div class="meetingTimeRow" style="height: 103px">
+							<div class="leftCell" id="showStartDate">
+								<span class="see-icon-must"></span>
+								<div class="meeting-edit-row" style="margin-left: 14px">
+									<span class="titleLabel"><i18n key="meeting.meetingRoomApply.startTime"></i18n></span>
+								</div>
+								<div class="meeting-edit-row">
+									<input  id="startDate" type="text" readonly="readonly">
+								</div>
+								<div class="meeting-edit-row">
+									<input class="timeLabel" id="startDatetimeLabel" type="text" readonly="readonly">
+								</div>
+							</div>
+							<div class="centerCell">
+								<span class="see-icon-v5-common-arrow-right"></span>
+							</div>
+							<div class="rightCell" id="showEndDate">
+								<span class="see-icon-must"></span>
+								<div class="meeting-edit-row">
+									<span class="titleLabel"><i18n key="meeting.meetingRoomApply.endTime"></i18n></span>
+								</div>
+								<div class="meeting-edit-row">
+									<input  id="endDate" type="text" readonly="readonly">
+								</div>
+								<div class="meeting-edit-row">
+									<input class="timeLabel" id="endDatetimeLabel" type="text" readonly="readonly">
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<li id="liMeetingPlace" class="cmp-table-view-cell cmp-before-line" style="padding-left: 14px;">
+
+						<!--会议地点-->
+						 <span class="title"><i18n key="meeting.meetingCreate.meetingPlace"></i18n></span>
+	               		 <span id="showMeetingPlaceAlways" class="right_arrow see-icon-v5-common-arrow-right"></span>
+	               		 <span id="showMeetingPlace" class="headline" style="width:calc(100% - 125px); margin-top:8px;text-align: right">
+	               		 	<textarea id="meetingPlace" class="cmp-ellipsis" maxlength="60" readonly="readonly" style="height:100%; color:#000;text-align: right;font-size: 16px;padding-right:5px;"></textarea>
+	                		<textarea id="shadowMeetingPlace"></textarea>
+	               		 	<input id="meetingPlace_value" style="display:none"/>
+	               		 	<input id="meetingPlace_value1" style="display:none"/>
+	               		 	<input id="meetingPlace_type" value="mtRoom" style="display:none"/>
+	               		 	<input id="roomAppBeginDate" style="display:none"/>
+	               		 	<input id="roomAppEndDate" style="display:none"/>
+	               		 </span>
+					</li>
+					<li id="liMeetingVideoPlace" class="cmp-table-view-cell" style="padding-left: 14px;display:none;">
+						<!--视频会议地点-->
+						 <span class="title"><i18n key="meeting.page.lable.button.vidio.room"></i18n></span>
+	               		 <span id="showMeetingVideoPlaceAlways" class="right_arrow see-icon-v5-common-arrow-right"></span>
+	               		 <span id="showMeetingVideoPlace" class="headline" style="width:calc(100% - 125px); margin-top:8px;text-align: right">
+	               		 	<textarea id="videoRoomName" maxlength="60" readonly="readonly" style="height:100%; color:#000000;text-align: right;font-size: 16px;padding-right:5px;"></textarea>
+	                		<textarea id="shadowMeetingVideoPlace"></textarea>
+	               		 	<input id="videoRoomId" style="display:none"/>
+	               		 	<input id="oldVideoRoomAppId" style="display:none"/>
+	               		 	<input id="videoRoomStartDate" style="display:none"/>
+	               		 	<input id="videoRoomEndDate" style="display:none"/>
+	               		 </span>
+					</li>
+					<!--与会人员-->
+					<li class="cmp-table-view-cell item-list-no-border" id="confereesCell" style="padding-left: 14px;">
+						 <span class="see-icon-must"></span>
+						 <span class="title"><span class="start-left-label"><i18n key="meeting.meetingCreate.conferees"></i18n></span></span>
+						 <span id="confereesAlways" class="right_arrow see-icon-v5-common-arrow-right"></span>
+	               		 <span class="headline">
+	               		 	<input id="conferees" type="text" readonly="readonly"/>
+	               		 	<input id="conferees_value" style="display:none"/>
+	               		 </span>
+					</li>
+
+				</ul>
+
+				<!--会议方式-->
+				<div id="showMeetingVideoArea" class="text-area" style="margin-bottom: 8px; display:none;">
+					<ul class="cmp-table-view new_header_content">
+						<li class="cmp-table-view-cell meetingNatureCell">
+							 <span class="title"><i18n key="meeting.meetingCreate.nature"></i18n></span>
+							 <span class="right_arrow see-icon-v5-common-arrow-right"></span>
+	                   		 <span id="showMeetingNature" class="headline">
+	                   		 	<input id="meetingNature" type="text" readonly="readonly"/>
+	                   		 	<input id="meetingNature_value" value="1" style="display:none"/>
+	                   		 </span>
+						</li>
+					</ul>
+				</div>
+
+
+				<div id="showOrHideMore"  class="show-more clearfix">
+					<div class="showOrHideLabel"><i18n key="meeting.meetingCreate.more"></i18n>
+						<span id="sub_toggle"><i18n key="meeting.meetingCreate.subTitle"></i18n></span></div>
+					<div class="show_more_icon" id="show_more_icon">
+						<span class="see-icon-v5-common-arrow-down icon"></span></div>
+					<div style="clear: both;"></div>
+				</div>
+
+				<ul id="moreItme" class="cmp-table-view new_header_content" style="display:none;">
+					<li class="cmp-table-view-cell" style="padding-left: 14px;width: 100%;">
+						 <span class="see-icon-must"></span>
+						 <span class="title"><i18n key="meeting.meetingCreate.host"></i18n></span>
+	               		 <span id="hostAlways" class="right_arrow see-icon-v5-common-arrow-right"></span>
+	               		 <span class="headline">
+	               		 	<input id="host" type="text" readonly="readonly"/>
+	               		 	<input id="host_value" style="display:none"/>
+	               		 </span>
+					</li>
+					<li class="cmp-table-view-cell">
+						 <span class="title"><i18n key="meeting.meetingCreate.recorder"></i18n></span>
+						 <span id="recoderAlways" class="right_arrow see-icon-v5-common-arrow-right"></span>
+	               		 <span class="headline">
+	               		 	<input id="recoder" type="text" readonly="readonly"/>
+	               		 	<input id="recoder_value" style="display:none"/>
+	               		 </span>
+					</li>
+					<li class="cmp-table-view-cell">
+						 <span class="title"><i18n key="meeting.meetingCreate.notify"></i18n></span>
+	               		 <span id="notifyAlways" class="right_arrow see-icon-v5-common-arrow-right"></span>
+	               		 <span class="headline">
+	               		 	<input id="notify" type="text" readonly="readonly"/>
+	               		 	<input id="notify_value" style="display:none"/>
+	               		 </span>
+					</li>
+<!--					提前提醒-->
+					<li class="cmp-table-view-cell item-list-no-border">
+						 <span class="title"><i18n key="meeting.meetingCreate.new.tip"></i18n></span>
+	               		 <span class="right_arrow see-icon-v5-common-arrow-right"></span>
+	               		 <span class="headline">
+	               		 	<input id="reminder" type="text" readonly="readonly"/>
+	               		 	<input id="reminder_value" value="0" style="display:none"/>
+	               		 </span>
+					</li>
+
+					<!--会议类型-->
+					<li id="liMeetingType" class="cmp-table-view-cell cmp-before-line" style="margin-top: 8px" >
+						<span class="title"><i18n key="meeting.meetingCreate.meetingType"></i18n></span>
+						<span id="showMeetingTypeAlways" class="right_arrow see-icon-v5-common-arrow-right"></span>
+						<span id="showMeetingType" class="headline" style="margin-top:8px;text-align: right">
+	               		 	<textarea id="meetingType" maxlength="60" readonly="readonly" style="height:100%;text-align: right;font-size: 16px;padding-right:5px;"></textarea>
+	                		<textarea id="shadowMeetingType"></textarea>
+	               		 	<input id="meetingType_value" style="display:none"/>
+	               		 </span>
+					</li>
+
+					<!--签到二维码-->
+					<li id="liQrcodeSign" class="cmp-table-view-cell" style="margin-top: 8px;">
+						<div class="title-line2">
+							<div class="title"><i18n key="meeting.page.label.singn.qrcode"></i18n></div>
+							<div class="sub-title"><i18n key="meeting.common.label.signQRCodeTips"></i18n></div>
+						</div>
+						<div class="qrCodeSign cmp-switch cmp-switch-blue cmp-switch-mini">
+							<div class="cmp-switch-handle"></div>
+						</div>
+					</li>
+					<!--外部会议-->
+					<li id="isPublic" class="cmp-table-view-cell" style="display: none;">
+						<div class="title-line2">
+							<div class="title"><i18n key="meeting.common.label.externalMeeting"></i18n></div>
+							<div class="sub-title"><i18n key="meeting.common.label.externalMeetingTips"></i18n></div>
+						</div>
+						<div class="cmp-switch cmp-switch-blue cmp-switch-mini">
+							<div class="cmp-switch-handle"></div>
+						</div>
+					</li>
+					<!-- 参会密码 -->
+					<div id="meetingPassword" class="text-area" style="margin:0;display:none;">
+						<ul class="cmp-table-view">
+							<li  class="cmp-table-view-cell">
+								<span class="title"><i18n key="meeting.meetingCreate.password"></i18n></span>
+								<span class="headline">
+		                		<input id="password" type="text" style="text-align:right;"/>
+		                	</span>
+							</li>
+						</ul>
+					</div>
+				</ul>
+
+
+			</div>
+			<div id="contentDiv" class="text-area" style="height:165px;">
+			 	<textarea id="content" class="text" style="height:100%;"></textarea>
+			</div>
+		</div>
+	</div>
+	<!-- 附件 -->
+	<div id="picture"></div>
+	<footer id="footerArea" class="cmp-bar cmp-bar-tab cmp-bar-footer cmp-bar-tabview attachment-wrap">
+		<div class="cmp-after-line">
+			<div id="attBtn" class="attach-title">
+				<span id="showAttCount" class="name"></span>
+				<span class="see-icon-accessory fujian cmp-pull-right" style="font-size:18px;"></span>
+			</div>
+			<div class="atatch-text"></div>
+		</div>
+		<div class="cmp-block-with-box footer-btn">
+			<button id="waitSend" class="cmp-btn cmp-btn-primary2 cmp-btn-outlined cmp-btn-width40"><i18n key="meeting.meetingCreate.waitSend"></i18n></button>
+			<button id="send" class="cmp-btn cmp-btn-primary2 cmp-btn-width40" style="margin-left:15px;"><i18n key="meeting.meetingCreate.send"></i18n></button>
+		</div>
+	</footer>
+</body>
+    <script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>  
+	<script src="http://cmp/v/js/cmp-i18n.js"></script>
+	<script  src="http://cmp/v/js/cmp.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meeting-jssdk.js" type="text/javascript"></script>
+<script  src="http://commons.v5.cmp/v/m3-jssdk.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meetingCommon.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/i18n/MeetingResources_zh_CN.js" type="text/javascript"></script>
+    <script type="text/javascript">
+       var $verstion = "";
+       var _meetingPath = "http://meeting.v5.cmp/v1.0.0";
+       var _collPath = "http://collaboration.v5.cmp/v1.0.0";  
+       var _common_v5_path = "http://commons.v5.cmp/v";
+       var _cmpPath = "http://cmp/v";
+       cmp.i18n.init("http://meeting.v5.cmp/v1.0.0/i18n/", "MeetingResources");
+    </script>
+    <script src="http://cmp/v/js/cmp-asyncLoad.js"></script>
+	<script src="http://cmp/v/js/cmp-imgCache.js"></script>
+    <script src="http://meeting.v5.cmp/v1.0.0/js/meetingCreateCommon.js"></script>
+    <script src="http://meeting.v5.cmp/v1.0.0/js/meetingCreate.js"></script>
+	<script src="http://cmp/v/js/cmp-webviewListener.js"></script>
+    
+    <!-- 
+    <script src="http://cmp/v/js/cmp-listView.js"></script>
+	<script src="http://cmp/v/js/cmp-picker.js"></script>
+	<script src="http://cmp/v/js/cmp-popPicker.js"></script>
+	<script src="http://cmp/v/js/cmp-dtPicker.js"></script>
+	<script src="http://cmp/v/js/cmp-accDoc.js"></script>
+	<script src="http://cmp/v/js/cmp-att.js"></script>
+	<script src="http://cmp/v/js/cmp-search.js"></script>
+	<script src="http://cmp/v/js/cmp-selectOrg.js"></script>
+	<script src="http://cmp/v/js/cmp-emoji.js"></script>
+    <script src="http://commons.v5.cmp/v/widget/SeeyonAttachment.s3js"></script>
+     -->
+</html>

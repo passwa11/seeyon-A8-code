@@ -1,0 +1,245 @@
+var meetingApi = (function() {
+    
+    var MeetingApi = function() {
+        this.basePath = "http://meeting.v5.cmp/v1.0.0";
+        this.fastProcessJSLoaded = false;
+        this.commonPath = "http://commons.v5.cmp/v";
+    }
+        
+    /**
+     * 跳转到会议查看页面
+     * @param meetingId : 协同ID
+     * @param openFrom : 来源（参考ColOpenFrom.java,例如来自文档中心此处传递"docLib"）
+     */
+    MeetingApi.prototype.jumpToMeetingSummary = function(meetingId, openFrom, obj1, fromXz) {
+        var paramData = {
+        	'listType' : 'dones',
+			'openFrom' : openFrom,
+			'meetingId' : meetingId,
+			'fromXz' : fromXz
+	    };
+	    cmp.href.next(this.basePath + "/html/meetingDetail.html?r="+new Date().getTime(), paramData,{pushInDetailPad : true});
+    }
+    
+    /**
+     * M3todo会议快速回执
+     * 对象包含属性 meetingId : 会议Id 
+     * feedbackFlag (1参加0不参加-1待定) 
+     * affairId
+     * proxyId(代理人ID) 
+     * memberId 
+     * pagetype 1是快速回执
+     */
+    MeetingApi.prototype.fastReplyProcess = function(paramObj) {
+		_this = this;
+    	var handle = function(paramObj) {
+			//设置快速回执
+			$s.Meeting.reply({}, paramObj, {
+				success : function(result) {
+					if(result["errorMsg"] && result["errorMsg"]!="") {
+		        		cmp.notification.alert(result["errorMsg"]);
+		        		cmp.event.trigger('M3ProcessFinish',document,{
+				            type: 'fastProcess',
+				            success: false,
+				            message: result["errorMsg"]
+				    	});
+		        		return;
+		        	}
+					cmp.event.trigger('M3ProcessFinish',document,{
+				            type: 'fastProcess',
+				            success: true
+				    });
+					
+				},
+				error : function(result){
+		       		cmp.event.trigger('M3ProcessFinish',document,{
+				            type: 'fastProcess',
+				            success: false
+				    });
+				}
+			});
+    	}
+	    if (!this.fastProcessJSLoaded) {
+	        //加载页面
+	        cmp.asyncLoad.js([
+		        this.basePath + '/js/meeting-jssdk.js',
+		        this.commonPath + '/m3-jssdk.js'
+	        ], function() {
+	            handle(paramObj);
+	            _this.fastProcessJSLoaded = true;
+	        });
+	    } else {
+	        handle(paramObj);
+	    }
+    }
+    
+    /**
+     * 跳转到会议查看页面
+     * @param meetingId : 协同ID
+     * @param openFrom  : 来源
+     */
+    MeetingApi.prototype.jumpToMeetingDetail = function(meetingId, openFrom){
+    	var paramData = {
+			'meetingId' : meetingId,
+			'openFrom' : openFrom
+	    };
+	    cmp.href.next(this.basePath + "/html/meetingDetail.html?r="+new Date().getTime(), paramData,{pushInDetailPad : true});
+    }
+    
+    /**
+	 * [打开应用]
+	 * @param  {string} type              [message代表消息模块,todo代表待办模块,shortcut快捷入口，timeArrange时间安排]
+	 * @param  {string} backUrl        [后退地址，在应用有结束情况时，跳回本地址，如协同、公文、调查处理成功时]
+	 * @param  {obj}    option           [待办/消息穿透所需要的json格式实体对象]
+	 * 			id: //会议id
+	 * 			affairId: //待办id，有就传，没有不传
+	 *      	proxyId: //代理人id，有就传，没有不传
+	 *     	 	subApp: //会议子类型 5会议通知 8会议室审核 3会议纪要
+	 *          roomAppId: 会议室申请ID，有就传，没有不传（会议室申请用）
+	 *          meetingSummaryId: 会议纪要ID
+	 *          openFrom: 来源，（会议室申请用）
+	 * @param  {string} obj               [其他可选参数]
+	 * 
+	 */
+	MeetingApi.prototype.openApp = function(type,backUrl,option,obj) {
+	    
+	    if(!option){
+	        return false;
+	    }
+		if(type == "todo" || type=="message") {
+			var subApp = option.subApp;
+			
+			if(type=="message") {
+    			if(option.linkType==null || option.linkType=="" || option.linkType=="null") {
+    			    return false;
+    			}
+				//会议室审核
+				if(option.linkType == "message.link.mt.room_perm" || option.linkType == "message.link.office.meetingroom"){
+					subApp = "8";
+					option.openFrom = "mrAuditList";
+				}
+				//会议纪要
+				if(option.linkType == "message.link.mt.summary" || option.linkType == "message.link.mt.summary_send" || option.linkType == "message.link.mt.send.scope"){
+				    subApp = "3";
+				    option.openFrom = "message";
+				}
+			}
+			var proxyId = !option.proxyId ? '0' : option.proxyId;
+			if(subApp == "8"){
+				var paramData = {
+					openFrom : option.openFrom,
+					roomAppId : option.roomAppId,
+					openType : 'todo'
+				}
+				
+				cmp.href.next(this.basePath + "/html/meetingRoomApprove.html?r="+new Date().getTime(), paramData,{pushInDetailPad : true});
+			}else if(subApp == "3") {
+			    var paramData = {
+			        meeting : { recordId : option.meetingSummaryId },
+			        openFrom : option.openFrom
+			    }
+			    cmp.href.next(this.basePath + "/html/meetingSummary.html?r="+new Date().getTime(), paramData,{pushInDetailPad : true});
+			}else{
+				var openFrom = "pending";//暂时这么处理
+				var paramData = {
+					'openFrom': openFrom,
+					'meetingId' : !option.id ? '-1' : option.id,
+					'affairId' : '-1',
+					'proxy' : !option.proxy ? false : option.proxy,
+					'proxyId' : !option.proxyId ? '0' : option.proxyId
+			    };
+		       	cmp.href.next(this.basePath + "/html/meetingDetail.html?r="+new Date().getTime(), paramData,{pushInDetailPad : true});
+			}
+       	} else if(type=="shortcut") {
+       		if(option.openFrom == "meetingCreate"){ //新建会议
+       			cmp.href.next(this.basePath + "/html/meetingCreate.html?r="+new Date().getTime(),paramData,{pushInDetailPad : true});
+       		}else if(option.openFrom == "meetingRoomApply"){  //申请会议室
+       			var paramData = {
+       				action : "applyMeetingRoom"
+       			}
+       			cmp.href.next(this.basePath + "/html/meetingRoomList.html?r="+new Date().getTime(), paramData,{pushInDetailPad : true});
+       		}else{
+       			var paramData = {
+       				'listType': option.listType
+       			};
+       			cmp.href.next(this.basePath + "/html/meeting_list_pending.html?r="+new Date().getTime(), paramData,{pushInDetailPad : true});
+       		}
+       	} else if(type == "timeArrange"){
+       	    var paramData = {
+       			'currentDate': obj.currentDate
+       		};
+       		cmp.href.next(this.basePath + "/html/meetingCreate.html?r="+new Date().getTime(),paramData,{pushInDetailPad : true});
+       	}else if(type == "xiaozhiSpeechInput"){
+       		var paramData = cmp.extend(option,{
+       			sourceType : 79,
+       			sourceId : option.relationId
+       		});
+       		cmp.href.next(this.basePath + "/html/meetingCreate.html",paramData);
+       	}
+	}
+	    /**
+        * 打开会议入口页面(小致用)
+        */
+    	MeetingApi.prototype.openMeetingPage4Xiaozhi = function(params) {
+    	    cmp.href.next(this.basePath + "/html/meeting_list_pending.html?useNativebanner=1&r="+new Date().getTime(), params);
+    	}
+    /**
+    * 带数据穿透到新建会议页面（小致界面点击【编辑】按钮时穿透到的页面）
+    */
+	MeetingApi.prototype.createMeetingByData4Xiaozhi = function(params) {
+		if(params.state && params.state == 0){ //保存待发状态
+	    	cmp.href.next(this.basePath + "/html/meetingModify.html?useNativebanner=1",params);
+		}else{
+	    	cmp.href.next(this.basePath + "/html/meetingCreate.html?useNativebanner=1",params);
+		}
+	}
+    
+    MeetingApi.prototype.appCreatePage = function() {
+        cmp.href.next(this.basePath + '/html/meetingCreate.html','', {
+            openWebviewCatch: true,
+            pushInDetailPad: true
+        });
+    }
+    
+    /**
+     * @description 应用首页
+     */
+    MeetingApi.prototype.appHomePage = function() {
+        cmp.href.next(this.basePath + "/html/meeting_list_pending.html");
+    }
+    
+    /**
+     * 小致界面点击【更多】穿透到我的会议列表页面
+     */
+	MeetingApi.prototype.meetingListMine = function(params) {
+		var paramData = cmp.extend(params,{
+       		sourceType : 79
+       	});
+	    cmp.href.next(this.basePath + "/html/meeting_list_mine.html?r=" + new Date().getTime(),paramData);
+	}
+	
+	/**
+     * 小致申请会议室穿透页面
+     */
+	MeetingApi.prototype.applyMeetingRoom = function(params) {
+		var paramData = cmp.extend(params,{
+       		action : "applyMeetingRoom"
+       	});
+       	cmp.href.next(this.basePath + "/html/meetingRoomList.html?r=" + new Date().getTime(), paramData);
+	}
+	
+	/**
+     * 小致会议纪要穿透页面
+     */
+	MeetingApi.prototype.meetingSummary = function(params) {
+       	var params = {
+	        meeting : { recordId : params.meetingSummaryId },
+	        openFrom : params.sourceType
+	    }
+       	cmp.href.next(this.basePath + "/html/meetingSummaryList.html?r=" + new Date().getTime(), params);
+	}
+    
+    
+    return new MeetingApi();
+    
+})();

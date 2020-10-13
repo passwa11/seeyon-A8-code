@@ -3,6 +3,7 @@ package yh.app1.servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,13 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getRemoteUser();
         System.out.println("========:" + name);
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            String cookieName = cookie.getName();
+            if ("sso".equals(cookieName)) {
+                System.out.println(cookie.getValue());
+            }
+        }
         request.getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(request, response);
     }
 

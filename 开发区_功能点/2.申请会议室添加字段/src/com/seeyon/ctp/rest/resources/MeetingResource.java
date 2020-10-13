@@ -3,6 +3,7 @@ package com.seeyon.ctp.rest.resources;
 import java.io.File;
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -27,6 +28,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.seeyon.apps.meeting.constants.MeetingRoleEnum;
+import com.seeyon.apps.meetingroom.dao.MeetingRoomPermDao;
+import com.seeyon.apps.meetingroom.manager.*;
+import com.seeyon.apps.meetingroom.manager.*;
+import com.seeyon.ctp.organization.bo.*;
+import com.seeyon.ctp.organization.dao.OrgDao;
+import com.seeyon.ctp.organization.dao.OrgDaoImpl;
+import com.seeyon.ctp.organization.po.OrgUnit;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.logging.Log;
@@ -82,9 +90,6 @@ import com.seeyon.apps.meeting.util.MeetingUtil;
 import com.seeyon.apps.meeting.vo.MeetingListVO;
 import com.seeyon.apps.meeting.vo.MeetingMemberVO;
 import com.seeyon.apps.meeting.vo.MeetingNewVO;
-import com.seeyon.apps.meetingroom.manager.MeetingRoomAppManager;
-import com.seeyon.apps.meetingroom.manager.MeetingRoomListManager;
-import com.seeyon.apps.meetingroom.manager.MeetingRoomManager;
 import com.seeyon.apps.meetingroom.po.MeetingRoom;
 import com.seeyon.apps.meetingroom.po.MeetingRoomApp;
 import com.seeyon.apps.meetingroom.po.MeetingRoomPerm;
@@ -126,11 +131,6 @@ import com.seeyon.ctp.common.usermessage.MessageReceiver;
 import com.seeyon.ctp.common.usermessage.UserMessageManager;
 import com.seeyon.ctp.common.usermessage.UserMessageUtil;
 import com.seeyon.ctp.event.EventDispatcher;
-import com.seeyon.ctp.organization.bo.V3xOrgAccount;
-import com.seeyon.ctp.organization.bo.V3xOrgDepartment;
-import com.seeyon.ctp.organization.bo.V3xOrgEntity;
-import com.seeyon.ctp.organization.bo.V3xOrgMember;
-import com.seeyon.ctp.organization.bo.V3xOrgVisitor;
 import com.seeyon.ctp.organization.dao.OrgHelper;
 import com.seeyon.ctp.organization.manager.OrgManager;
 import com.seeyon.ctp.util.BeanUtils;
@@ -219,10 +219,10 @@ public class MeetingResource extends BaseResource {
      *
      * @param pageMap 分页信息
      *                <pre>
-     *                                                     类型    名称             必填     备注
-     *                                                     String   pageNo     Y     页数(1,2,3...)
-     *                                                     String   pageSize   Y     每页显示条数
-     *                                               </pre>
+     *                                                                                                                                                                                            类型    名称             必填     备注
+     *                                                                                                                                                                                            String   pageNo     Y     页数(1,2,3...)
+     *                                                                                                                                                                                            String   pageSize   Y     每页显示条数
+     *                                                                                                                                                                                      </pre>
      * @return <pre>
      * {
      * 	code: 0, //0表示成功
@@ -276,10 +276,10 @@ public class MeetingResource extends BaseResource {
      *
      * @param pageMap 分页信息
      *                <pre>
-     *                                                     类型    名称           必填     备注
-     *                                                     String   pageNo    Y 	页数(1,2,3...)
-     *                                                     String   pageSize  Y 	每页显示条数
-     *                                              </pre>
+     *                                                                                                                                                                                            类型    名称           必填     备注
+     *                                                                                                                                                                                            String   pageNo    Y 	页数(1,2,3...)
+     *                                                                                                                                                                                            String   pageSize  Y 	每页显示条数
+     *                                                                                                                                                                                     </pre>
      * @return <pre>
      * {
      * 	page:"",
@@ -331,22 +331,22 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 传入参数
      *               <pre>
-     *                                           类型 	|	名称	| 	必填	|	备注
-     *                                           String	|	pageNo	|	Y	|	页数
-     *                                           String	|	pageSize|	Y	|	每页显示条数
-     *                                           </per>
-     *                                           @return
-     *                                           <pre>
-     *                                           {
-     *                                            code: 0, //0表示成功
-     *                                            message: '',
-     *                                            data: {
-     *                                           		page:"",
-     *                                           		size:"",
-     *                                           		data:{id,title,createUser,beginDate,endDate...} //更多字段可参考com.seeyon.ctp.rest.resources.MeetingListRestVO
-     *                                                }
-     *                                           }
-     *                                           </pre>
+     *                                                                                                                                                                         类型 	|	名称	| 	必填	|	备注
+     *                                                                                                                                                                         String	|	pageNo	|	Y	|	页数
+     *                                                                                                                                                                         String	|	pageSize|	Y	|	每页显示条数
+     *                                                                                                                                                                         </per>
+     *                                                                                                                                                                         @return
+     *                                                                                                                                                                         <pre>
+     *                                                                                                                                                                         {
+     *                                                                                                                                                                          code: 0, //0表示成功
+     *                                                                                                                                                                          message: '',
+     *                                                                                                                                                                          data: {
+     *                                                                                                                                                                         		page:"",
+     *                                                                                                                                                                         		size:"",
+     *                                                                                                                                                                         		data:{id,title,createUser,beginDate,endDate...} //更多字段可参考com.seeyon.ctp.rest.resources.MeetingListRestVO
+     *                                                                                                                                                                              }
+     *                                                                                                                                                                         }
+     *                                                                                                                                                                         </pre>
      * @throws BusinessException
      * @author wulin v6.1 2017-01-06
      */
@@ -382,23 +382,23 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 传入参数
      *               <pre>
-     *                                           类型 	|	名称	| 	必填	|	备注
-     *                                           String	|	pageNo	|	Y	|	页数
-     *                                           String	|	pageSize|	Y	|	每页显示条数
-     *                                           </per>
-     *                                           @return
-     *                                           <pre>
-     *                                           FlipInfo对象
-     *                                           {
-     *                                            code: 0,
-     *                                            message: '',
-     *                                            data: {
-     *                                           		page:"",
-     *                                           		size:"",
-     *                                           		data:{id,title,createUser,beginDate,endDate...} //更多字段可参考com.seeyon.ctp.rest.resources.MeetingListRestVO
-     *                                                }
-     *                                           }
-     *                                           </pre>
+     *                                                                                                                                                                         类型 	|	名称	| 	必填	|	备注
+     *                                                                                                                                                                         String	|	pageNo	|	Y	|	页数
+     *                                                                                                                                                                         String	|	pageSize|	Y	|	每页显示条数
+     *                                                                                                                                                                         </per>
+     *                                                                                                                                                                         @return
+     *                                                                                                                                                                         <pre>
+     *                                                                                                                                                                         FlipInfo对象
+     *                                                                                                                                                                         {
+     *                                                                                                                                                                          code: 0,
+     *                                                                                                                                                                          message: '',
+     *                                                                                                                                                                          data: {
+     *                                                                                                                                                                         		page:"",
+     *                                                                                                                                                                         		size:"",
+     *                                                                                                                                                                         		data:{id,title,createUser,beginDate,endDate...} //更多字段可参考com.seeyon.ctp.rest.resources.MeetingListRestVO
+     *                                                                                                                                                                              }
+     *                                                                                                                                                                         }
+     *                                                                                                                                                                         </pre>
      * @throws BusinessException
      * @author wulin v6.1 2017-01-06
      */
@@ -434,34 +434,34 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 传入参数
      *               <pre>
-     *                                           类型 		|	名称			|  必填	|	备注
-     *                                           String	|	pageNo		|	Y	|	页数
-     *                                           String	|	pageSize	|	Y	|	每页显示条数
-     *                                           String	|	status		|	Y	|	会议状态(多个状态逗号分隔，例如pending,sent)
-     *                                           String	|	createUser	|	N	|	会议发起人名称
-     *                                           </per>
-     *                                           @return
-     *                                           <pre>
-     *                                           {
-     *                                           	    "code": 200,
-     *                                           	    "data": {
-     *                                           	        "total": 5,
-     *                                           	        "data": [
-     *                                                        {
-     *                                           	                "data": [],
-     *                                           	                "title": "待开会议",
-     *                                           	                "status": "pending"
-     *                                                        },
-     *                                                        {
-     *                                           	                "data": [],
-     *                                           	                "title": "已发会议",
-     *                                           	                "status": "sent"
-     *                                                        }
-     *                                           	        ]
-     *                                                },
-     *                                           	    "message": "为你找到5条会议数据，您可以点击进行穿透查看"
-     *                                            }
-     *                                           </pre>
+     *                                                                                                                                                                         类型 		|	名称			|  必填	|	备注
+     *                                                                                                                                                                         String	|	pageNo		|	Y	|	页数
+     *                                                                                                                                                                         String	|	pageSize	|	Y	|	每页显示条数
+     *                                                                                                                                                                         String	|	status		|	Y	|	会议状态(多个状态逗号分隔，例如pending,sent)
+     *                                                                                                                                                                         String	|	createUser	|	N	|	会议发起人名称
+     *                                                                                                                                                                         </per>
+     *                                                                                                                                                                         @return
+     *                                                                                                                                                                         <pre>
+     *                                                                                                                                                                         {
+     *                                                                                                                                                                         	    "code": 200,
+     *                                                                                                                                                                         	    "data": {
+     *                                                                                                                                                                         	        "total": 5,
+     *                                                                                                                                                                         	        "data": [
+     *                                                                                                                                                                                      {
+     *                                                                                                                                                                         	                "data": [],
+     *                                                                                                                                                                         	                "title": "待开会议",
+     *                                                                                                                                                                         	                "status": "pending"
+     *                                                                                                                                                                                      },
+     *                                                                                                                                                                                      {
+     *                                                                                                                                                                         	                "data": [],
+     *                                                                                                                                                                         	                "title": "已发会议",
+     *                                                                                                                                                                         	                "status": "sent"
+     *                                                                                                                                                                                      }
+     *                                                                                                                                                                         	        ]
+     *                                                                                                                                                                              },
+     *                                                                                                                                                                         	    "message": "为你找到5条会议数据，您可以点击进行穿透查看"
+     *                                                                                                                                                                          }
+     *                                                                                                                                                                         </pre>
      * @throws BusinessException
      * @author fengshb V7.1SP1 2019-05-05
      */
@@ -556,30 +556,30 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 传入参数
      *               <pre>
-     *                                           类型 		|	名称			|  必填	|	备注
-     *                                           Integer	|	sourceType	|	Y	|	应用类型（见ApplicationCategoryEnum）
-     *                                           Long		|	sourceId	|	Y	|	关联ID
-     *                                           </per>
-     *                                           @return
-     *                                           <pre>
-     *                                           FlipInfo对象
-     *                                           {
-     *                                           "code": 200,
-     *                                           "data": [
-     *                                              {
-     *                                                 "sourceId": 883740,
-     *                                                 "beginDate": 1556985600000,
-     *                                                 "createUserId": 2456314066674470016,
-     *                                                 "endDate": 1557036000000,
-     *                                                 "showTime": "05-05 00:00-14:00",
-     *                                                 "createUserName": "张三",
-     *                                                 "meetingId": -6677196071911929330,
-     *                                                 "title": "xnjdw基地51404"
-     *                                              }
-     *                                            ],
-     *                                           "message": "好的,已创建好了会议。"
-     *                                           }
-     *                                           </pre>
+     *                                                                                                                                                                         类型 		|	名称			|  必填	|	备注
+     *                                                                                                                                                                         Integer	|	sourceType	|	Y	|	应用类型（见ApplicationCategoryEnum）
+     *                                                                                                                                                                         Long		|	sourceId	|	Y	|	关联ID
+     *                                                                                                                                                                         </per>
+     *                                                                                                                                                                         @return
+     *                                                                                                                                                                         <pre>
+     *                                                                                                                                                                         FlipInfo对象
+     *                                                                                                                                                                         {
+     *                                                                                                                                                                         "code": 200,
+     *                                                                                                                                                                         "data": [
+     *                                                                                                                                                                            {
+     *                                                                                                                                                                               "sourceId": 883740,
+     *                                                                                                                                                                               "beginDate": 1556985600000,
+     *                                                                                                                                                                               "createUserId": 2456314066674470016,
+     *                                                                                                                                                                               "endDate": 1557036000000,
+     *                                                                                                                                                                               "showTime": "05-05 00:00-14:00",
+     *                                                                                                                                                                               "createUserName": "张三",
+     *                                                                                                                                                                               "meetingId": -6677196071911929330,
+     *                                                                                                                                                                               "title": "xnjdw基地51404"
+     *                                                                                                                                                                            }
+     *                                                                                                                                                                          ],
+     *                                                                                                                                                                         "message": "好的,已创建好了会议。"
+     *                                                                                                                                                                         }
+     *                                                                                                                                                                         </pre>
      * @throws BusinessException
      * @author fengshb V7.1SP1 2019-05-05
      */
@@ -630,10 +630,10 @@ public class MeetingResource extends BaseResource {
      * @param personId 人员ID 非必填  当personId为空时，获取当前登录人员的待办列表
      * @param pageMap  参数map对象
      *                 <pre>
-     *                                                 类型               名称                     必填                        备注
-     *                                                 Object   pageNo      N           当前第几页  如果分页信息不传递，取默认
-     *                                                 Object   pageSize    N           每页显示多少条数据 如果分页信息不传递，取默认
-     *                                                 </pre>
+     *                                                                                                                                                                                                 类型               名称                     必填                        备注
+     *                                                                                                                                                                                                 Object   pageNo      N           当前第几页  如果分页信息不传递，取默认
+     *                                                                                                                                                                                                 Object   pageSize    N           每页显示多少条数据 如果分页信息不传递，取默认
+     *                                                                                                                                                                                                 </pre>
      * @return <pre>
      *  会议待办列表
      * <pre>
@@ -691,10 +691,10 @@ public class MeetingResource extends BaseResource {
      *
      * @param personId 人员Id 非必填    当personId为空时，获取当前登录人员的会议已发数量
      * @param pageMap  <pre>
-     *                                                        类型    名称           必填     备注
-     *                                                        Object   pageNo    N 	页数(1,2,3...),如果分页信息不传递，取默认
-     *                                                        Object   pageSize  N 	每页显示条数,如果分页信息不传递，取默认
-     *                                                 </pre>
+     *                                                                                                                                                                                                        类型    名称           必填     备注
+     *                                                                                                                                                                                                        Object   pageNo    N 	页数(1,2,3...),如果分页信息不传递，取默认
+     *                                                                                                                                                                                                        Object   pageSize  N 	每页显示条数,如果分页信息不传递，取默认
+     *                                                                                                                                                                                                 </pre>
      * @return <pre>
      * 	 已发会议列表数据
      * </pre>
@@ -722,10 +722,10 @@ public class MeetingResource extends BaseResource {
      *
      * @param personId 人员Id 非必填    当personId为空时，获取当前登录人员的会议待发列表
      * @param pageMap  <pre>
-     *                                                        类型    名称           必填     备注
-     *                                                        Object   pageNo    N 	页数(1,2,3...),如果分页信息不传递，取默认
-     *                                                        Object   pageSize  N 	每页显示条数,如果分页信息不传递，取默认
-     *                                                 </pre>
+     *                                                                                                                                                                                                        类型    名称           必填     备注
+     *                                                                                                                                                                                                        Object   pageNo    N 	页数(1,2,3...),如果分页信息不传递，取默认
+     *                                                                                                                                                                                                        Object   pageSize  N 	每页显示条数,如果分页信息不传递，取默认
+     *                                                                                                                                                                                                 </pre>
      * @return <pre>
      * 	待发会议列表数据
      * </pre>
@@ -814,15 +814,15 @@ public class MeetingResource extends BaseResource {
      * 提交震荡回复
      *
      * @param params <pre>
-     *                                            类型	                  名称			必填	                   备注
-     *                                            String           meetingId       Y               会议Id
-     *                                            String           replyId         Y               回执Id
-     *                                            String           content         Y               内容
-     *                                            String           memberId        Y               人员Id(如果是代理情况，传入被代理人ID)
-     *                                            String           hiddencomment   Y               是否隐藏意见(true：是； false：否)
-     *                                            String           hidden2creator  Y               是否对发起人隐藏(true：是； false：否)
-     *                                            String           sendMsg         Y               是否发送消息(true：是； false：否)
-     *                                           </pre>
+     *                                                                                                                                                                          类型	                  名称			必填	                   备注
+     *                                                                                                                                                                          String           meetingId       Y               会议Id
+     *                                                                                                                                                                          String           replyId         Y               回执Id
+     *                                                                                                                                                                          String           content         Y               内容
+     *                                                                                                                                                                          String           memberId        Y               人员Id(如果是代理情况，传入被代理人ID)
+     *                                                                                                                                                                          String           hiddencomment   Y               是否隐藏意见(true：是； false：否)
+     *                                                                                                                                                                          String           hidden2creator  Y               是否对发起人隐藏(true：是； false：否)
+     *                                                                                                                                                                          String           sendMsg         Y               是否发送消息(true：是； false：否)
+     *                                                                                                                                                                         </pre>
      * @return <pre>
      * 		MtComment 意见对象
      * </pre>
@@ -923,13 +923,13 @@ public class MeetingResource extends BaseResource {
      * 会议回执 <BR>
      *
      * @param map <pre>
-     *                                  	类型	                  名称			必填	                   备注
-     *                                  String            meetingId      Y                会议ID
-     *                                  String            content        Y                内容
-     *                                  String            memberId       Y                人员Id
-     *                                  String            feedbackFlag   Y                回执态度  （参加 1  不参加  0    待定 -1   告知人员传递3）
-     *                                  String            fileJson       N                附件json数据
-     *                                  </pre>
+     *                                                                                                                                     	类型	                  名称			必填	                   备注
+     *                                                                                                                                     String            meetingId      Y                会议ID
+     *                                                                                                                                     String            content        Y                内容
+     *                                                                                                                                     String            memberId       Y                人员Id
+     *                                                                                                                                     String            feedbackFlag   Y                回执态度  （参加 1  不参加  0    待定 -1   告知人员传递3）
+     *                                                                                                                                     String            fileJson       N                附件json数据
+     *                                                                                                                                     </pre>
      * @return <pre>
      * 	MtReply 会议回执对象。
      * </pre>
@@ -1794,14 +1794,14 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 传入参数
      *               <pre>
-     *                                                  类型    		名称             	是否必填     	 	备注
-     *                                                  String   pageNo     Y     页数(1,2,3...)
-     *                                                  String   pageSize   Y     每页显示条数
-     *                                                  String   condition  N     查询条件类型(查询时选择的类型 time/roomName)
-     *                                                  String   roomName   N     会议室名称
-     *                                                  String   startDate  N     会议开始时间(yyyy-MM-dd HH:mm)
-     *                                                  String   endDate    N     会议结束时间(yyyy-MM-dd HH:mm)
-     *                                            </pre>
+     *                                                                                                                                                                                类型    		名称             	是否必填     	 	备注
+     *                                                                                                                                                                                String   pageNo     Y     页数(1,2,3...)
+     *                                                                                                                                                                                String   pageSize   Y     每页显示条数
+     *                                                                                                                                                                                String   condition  N     查询条件类型(查询时选择的类型 time/roomName)
+     *                                                                                                                                                                                String   roomName   N     会议室名称
+     *                                                                                                                                                                                String   startDate  N     会议开始时间(yyyy-MM-dd HH:mm)
+     *                                                                                                                                                                                String   endDate    N     会议结束时间(yyyy-MM-dd HH:mm)
+     *                                                                                                                                                                          </pre>
      * @return com.seeyon.ctp.util.FlipInfo
      * @throws BusinessException
      * @throws ParseException
@@ -2114,14 +2114,14 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 参数map对象
      *               <pre>
-     *                                             类型                           名称                           必填                 备注
-     *                                           String   meetingId      N    会议Id
-     *                                           Long     beginDatetime  Y    会议开始时间
-     *                                           Long     endDatetime    Y    会议结束时间
-     *                                           String   emceeId        N    主持人ID(直接人员ID）
-     *                                           String   recorderId     N    记录人ID(直接人员ID）
-     *                                           String   conferees      Y    选择的会议参会人员ID（格式：Member|1212223,Member|1212223)
-     *                                           </pre>
+     *                                                                                                                                                                           类型                           名称                           必填                 备注
+     *                                                                                                                                                                         String   meetingId      N    会议Id
+     *                                                                                                                                                                         Long     beginDatetime  Y    会议开始时间
+     *                                                                                                                                                                         Long     endDatetime    Y    会议结束时间
+     *                                                                                                                                                                         String   emceeId        N    主持人ID(直接人员ID）
+     *                                                                                                                                                                         String   recorderId     N    记录人ID(直接人员ID）
+     *                                                                                                                                                                         String   conferees      Y    选择的会议参会人员ID（格式：Member|1212223,Member|1212223)
+     *                                                                                                                                                                         </pre>
      * @return <pre>
      * boolean   state   会议冲突状态
      * List<ConfereesConflictVO>  message 会议冲突人员详细信息
@@ -2313,10 +2313,10 @@ public class MeetingResource extends BaseResource {
      * @param meetingId 会议id  必填
      * @param map       参数Map
      *                  <pre>
-     *                                                    	类型	                  名称			必填	                   备注
-     *                                                     Long             proxyId           N              被代理人Id
-     *                                                     Long             currentUserId     N              当前用户Id
-     *                                                    </pre>
+     *                                                                                                                                                                                                             	类型	                  名称			必填	                   备注
+     *                                                                                                                                                                                                              Long             proxyId           N              被代理人Id
+     *                                                                                                                                                                                                              Long             currentUserId     N              当前用户Id
+     *                                                                                                                                                                                                             </pre>
      * @return
      * @throws BusinessException
      */
@@ -2385,14 +2385,14 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 传入参数
      *               <pre>
-     *                                           类型 	|	名称	| 	必填	|	备注
-     *                                           String	|	meetingId	|	Y	|	当前会议Id
-     *                                           String	|	isBatch		|	N	|	周期性会议是否批量撤销（true，false）
-     *                                           String	|	content		|	Y	| 	撤销附言
-     *                                           String	|	sendSMS		|	N	|	是否发送短信
-     *                                           </per>
-     *                                           @return Map<String, String>
-     *                                           @throws BusinessException
+     *                                                                                                                                                                         类型 	|	名称	| 	必填	|	备注
+     *                                                                                                                                                                         String	|	meetingId	|	Y	|	当前会议Id
+     *                                                                                                                                                                         String	|	isBatch		|	N	|	周期性会议是否批量撤销（true，false）
+     *                                                                                                                                                                         String	|	content		|	Y	| 	撤销附言
+     *                                                                                                                                                                         String	|	sendSMS		|	N	|	是否发送短信
+     *                                                                                                                                                                         </per>
+     *                                                                                                                                                                         @return Map<String, String>
+     *                                                                                                                                                                         @throws BusinessException
      */
     @POST
     @Path("cancelMeeting")
@@ -2425,11 +2425,11 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 传入参数
      *               <pre>
-     *                                           类型 	|	名称	| 	必填	|	备注
-     *                                           String	|	meetingId	|	Y	|	当前会议Id
-     *                                           </per>
-     *                                           @return Map<String, String>
-     *                                           @throws BusinessException
+     *                                                                                                                                                                         类型 	|	名称	| 	必填	|	备注
+     *                                                                                                                                                                         String	|	meetingId	|	Y	|	当前会议Id
+     *                                                                                                                                                                         </per>
+     *                                                                                                                                                                         @return Map<String, String>
+     *                                                                                                                                                                         @throws BusinessException
      */
     @POST
     @Path("advanceMeeting")
@@ -2492,12 +2492,12 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 传入参数
      *               <pre>
-     *                                           类型 	|	名称	| 	必填	|	备注
-     *                                           String	|	pageNo	|	N	|	页数
-     *                                           String	|	pageSize|	N	|	每页显示条数
-     *                                           </per>
-     *                                           @return flipInfo List<com.seeyon.ctp.rest.resources.MeetingRoomRestVO>
-     *                                           @throws BusinessException
+     *                                                                                                                                                                         类型 	|	名称	| 	必填	|	备注
+     *                                                                                                                                                                         String	|	pageNo	|	N	|	页数
+     *                                                                                                                                                                         String	|	pageSize|	N	|	每页显示条数
+     *                                                                                                                                                                         </per>
+     *                                                                                                                                                                         @return flipInfo List<com.seeyon.ctp.rest.resources.MeetingRoomRestVO>
+     *                                                                                                                                                                         @throws BusinessException
      */
     @POST
     @Path("getApplyMeemtingRooms")
@@ -2545,12 +2545,12 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 传入参数
      *               <pre>
-     *                                           类型 	|	名称	| 	必填	|	备注
-     *                                           String	|	pageNo	|	N	|	页数
-     *                                           String	|	pageSize|	N	|	每页显示条数
-     *                                           </per>
-     *                                           @return flipInfo List<com.seeyon.ctp.rest.resources.MeetingRoomRestVO>
-     *                                           @throws BusinessException
+     *                                                                                                                                                                         类型 	|	名称	| 	必填	|	备注
+     *                                                                                                                                                                         String	|	pageNo	|	N	|	页数
+     *                                                                                                                                                                         String	|	pageSize|	N	|	每页显示条数
+     *                                                                                                                                                                         </per>
+     *                                                                                                                                                                         @return flipInfo List<com.seeyon.ctp.rest.resources.MeetingRoomRestVO>
+     *                                                                                                                                                                         @throws BusinessException
      */
     @POST
     @Path("getMeetingRoomAudits")
@@ -2602,11 +2602,11 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 传入参数
      *               <pre>
-     *                                           类型 	|	名称	| 	必填	|	备注
-     *                                           Long	|	roomAppId	|	Y	|	会议室申请Id
-     *                                           </per>
-     *                                           @return MeetingRoomRestVO
-     *                                           @throws BusinessException
+     *                                                                                                                                                                         类型 	|	名称	| 	必填	|	备注
+     *                                                                                                                                                                         Long	|	roomAppId	|	Y	|	会议室申请Id
+     *                                                                                                                                                                         </per>
+     *                                                                                                                                                                         @return MeetingRoomRestVO
+     *                                                                                                                                                                         @throws BusinessException
      */
     @POST
     @Path("getMeetingRoomApp")
@@ -2618,7 +2618,7 @@ public class MeetingResource extends BaseResource {
         String openFrom = String.valueOf(params.get("openFrom"));
 
         MeetingRoomApp mrapp = meetingRoomManager.getRoomAppById(roomAppId);
-
+        OrgDao dao = new OrgDaoImpl();
         if (mrapp == null) {
             Map<String, String> retMap = new HashMap<String, String>();
             retMap.put("errorMsg", ResourceUtil.getString("meeting.room.app.cancel"));
@@ -2635,6 +2635,11 @@ public class MeetingResource extends BaseResource {
         mrRestVO.setStartDatetime(String.valueOf(mrapp.getStartDatetime()).substring(0, 16));
         mrRestVO.setEndDatetime(String.valueOf(mrapp.getEndDatetime()).substring(0, 16));
         mrRestVO.setAdminLab(room.getAdminLab());
+        //zhou:[开发区]
+        mrRestVO.setHcyq(mrapp.getHcyq());
+        mrRestVO.setSqrdh(mrapp.getSqrdh());
+        mrRestVO.setSqrdept(dao.getOrgUnitPO(mrapp.getDepartmentId()).getName());
+        mrRestVO.setLdname(mrapp.getLdname() == null || "".equals(mrapp.getLdname()) ? "无" : mrapp.getLdname());
 
         //1、会议室审核状态为待审核、审核不通过，管理员是能在会议室使用时间内撤销  2、申请人只要会议室未过结束时间都能够撤销
         if ((("mrAuditList".equals(openFrom) && !mrapp.getStatus().equals(RoomAppStateEnum.pass.key())) || ("mrApproveList".equals(openFrom))) && mrapp.getEndDatetime().getTime() > DateUtil.currentDate().getTime()) {
@@ -2690,13 +2695,13 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 传入参数
      *               <pre>
-     *                                           类型 	|	名称	| 	必填	|	备注
-     *                                           Long	|	roomAppId	|	Y	|	会议室申请Id
-     *                                           String	|	description	|	N	|	审核意见
-     *                                           Integer	|	permStatus	|	Y	|	审核态度（1：同意、2：不同意）
-     *                                           </per>
-     *                                           @return boolean true/false
-     *                                           @throws BusinessException
+     *                                                                                                                                                                         类型 	|	名称	| 	必填	|	备注
+     *                                                                                                                                                                         Long	|	roomAppId	|	Y	|	会议室申请Id
+     *                                                                                                                                                                         String	|	description	|	N	|	审核意见
+     *                                                                                                                                                                         Integer	|	permStatus	|	Y	|	审核态度（1：同意、2：不同意）
+     *                                                                                                                                                                         </per>
+     *                                                                                                                                                                         @return boolean true/false
+     *                                                                                                                                                                         @throws BusinessException
      */
     @POST
     @Path("finishAuditMeetingRoom")
@@ -2727,12 +2732,12 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 传入参数
      *               <pre>
-     *                                           类型                   |       名称                                | 必填  | 备注
-     *                                           Long    |   roomAppId       | Y  | 会议室申请Id
-     *                                           String  |  isContainMeeting | Y  | 会议室是否绑定会议（"false"：未绑定、"true"：绑定会议室）
-     *                                           </per>
-     *                                           @return Map<String, Object>
-     *                                           @throws BusinessException
+     *                                                                                                                                                                         类型                   |       名称                                | 必填  | 备注
+     *                                                                                                                                                                         Long    |   roomAppId       | Y  | 会议室申请Id
+     *                                                                                                                                                                         String  |  isContainMeeting | Y  | 会议室是否绑定会议（"false"：未绑定、"true"：绑定会议室）
+     *                                                                                                                                                                         </per>
+     *                                                                                                                                                                         @return Map<String, Object>
+     *                                                                                                                                                                         @throws BusinessException
      */
     @SuppressWarnings("finally")
     @POST
@@ -2763,12 +2768,12 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 传入参数
      *               <pre>
-     *                                           类型 	|	名称	| 	必填	|	备注
-     *                                           Long	|	roomAppId	|	Y	|	会议室申请Id
-     *                                           String |	cancelContent	| Y	| 撤销附言
-     *                                           </per>
-     *                                           @return boolean true/false
-     *                                           @throws BusinessException
+     *                                                                                                                                                                         类型 	|	名称	| 	必填	|	备注
+     *                                                                                                                                                                         Long	|	roomAppId	|	Y	|	会议室申请Id
+     *                                                                                                                                                                         String |	cancelContent	| Y	| 撤销附言
+     *                                                                                                                                                                         </per>
+     *                                                                                                                                                                         @return boolean true/false
+     *                                                                                                                                                                         @throws BusinessException
      */
     @SuppressWarnings("finally")
     @POST
@@ -2805,12 +2810,12 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 传入参数
      *               <pre>
-     *                                                  类型    名称             必填     备注
-     *                                                  String   roomId            Y     会议室ID
-     *                                                  String   description       N     用途
-     *                                                  String   startDatetime     Y     开始时间
-     *                                                  String   endDatetime       Y     结束时间
-     *                                            </pre>
+     *                                                                                                                                                                                类型    名称             必填     备注
+     *                                                                                                                                                                                String   roomId            Y     会议室ID
+     *                                                                                                                                                                                String   description       N     用途
+     *                                                                                                                                                                                String   startDatetime     Y     开始时间
+     *                                                                                                                                                                                String   endDatetime       Y     结束时间
+     *                                                                                                                                                                          </pre>
      * @return Map<String, Object>
      * @throws BusinessException
      * @throws ParseException
@@ -2892,14 +2897,14 @@ public class MeetingResource extends BaseResource {
      *
      * @param params 传入参数
      *               <pre>
-     *                                                  类型    名称             必填     备注
-     *                                                  String   pageNo     Y     页数(1,2,3...)
-     *                                                  String   pageSize   Y     每页显示条数
-     *                                                  String   condition  N     查询条件类型(查询时选择的类型 time/roomName)
-     *                                                  String   roomName   N     会议室名称
-     *                                                  String   startDate  N     开始时间(yyyy-MM-dd HH:mm)
-     *                                                  String   endDate    N     结束时间(yyyy-MM-dd HH:mm)
-     *                                            </pre>
+     *                                                                                                                                                                                类型    名称             必填     备注
+     *                                                                                                                                                                                String   pageNo     Y     页数(1,2,3...)
+     *                                                                                                                                                                                String   pageSize   Y     每页显示条数
+     *                                                                                                                                                                                String   condition  N     查询条件类型(查询时选择的类型 time/roomName)
+     *                                                                                                                                                                                String   roomName   N     会议室名称
+     *                                                                                                                                                                                String   startDate  N     开始时间(yyyy-MM-dd HH:mm)
+     *                                                                                                                                                                                String   endDate    N     结束时间(yyyy-MM-dd HH:mm)
+     *                                                                                                                                                                          </pre>
      * @return com.seeyon.ctp.util.FlipInfo
      * @throws BusinessException
      * @throws ParseException
@@ -2927,13 +2932,42 @@ public class MeetingResource extends BaseResource {
         return ok(flipInfo);
     }
 
+
+    /**
+     * zhou:[开发区修改会议室]
+     */
+    @POST
+    @Path("updateMeetingRoom")
+    public Response updateMeetingRoom(Map<String, Object> params) {
+        Long roomId = ParamUtil.getLong(params, "roomId");
+        Long roomAppId = ParamUtil.getLong(params, "roomAppId");
+        MeetingRoomApp roomApp = null;
+        Map<String, Object> map = new HashMap<>();
+        try {
+            roomApp = meetingRoomAppManager.getRoomAppById(roomAppId);
+            roomApp.setRoomId(roomId);
+            meetingRoomAppManager.saveOrUpdate(roomApp);
+
+            MeetingRoomPermDao permDao=new MeetingRoomPermDao();
+            MeetingRoomPerm perm = permDao.getRoomPermByAppId(roomAppId);
+            perm.setRoomId(roomId);
+            permDao.saveOrUpdate(perm);
+
+            map.put("code", 0);
+        } catch (BusinessException e) {
+            e.printStackTrace();
+            map.put("code", -1);
+        }
+        return Response.ok(map).build();
+    }
+
     /**
      * 获取会议室详情
      *
      * @param params <pre>
-     *                                                  类型    名称             必填     备注
-     *                                                  String   roomId     Y     会议室ID
-     *                                            </pre>
+     *                                                                                                                                                                                类型    名称             必填     备注
+     *                                                                                                                                                                                String   roomId     Y     会议室ID
+     *                                                                                                                                                                          </pre>
      * @return com.seeyon.apps.meetingroom.vo.MeetingRoomVO
      * @throws BusinessException
      * @throws ParseException
@@ -2942,6 +2976,9 @@ public class MeetingResource extends BaseResource {
     @Path("getMeetingRoom")
     public Response getMeetingRoom(Map<String, Object> params) throws BusinessException, ParseException {
         Long roomId = ParamUtil.getLong(params, "roomId");
+        Long roomAppId = ParamUtil.getLong(params, "roomAppId");
+
+        KfqMeetingRoomManager kfqMeetingRoomManager = new KfqMeetingRoomManagerImpl();
 
         MeetingRoom meetingRoom = meetingRoomManager.getRoomById(roomId);
         Map<String, Object> r_map = new HashMap<String, Object>();
@@ -2972,6 +3009,22 @@ public class MeetingResource extends BaseResource {
         List<Attachment> att = attachmentManager.getByReference(meetingRoom.getId(), RoomAttEnum.image.key());
         meetingRoomVo.setAttatchImage(att);
 
+        //[开发区会议管理,获取会议室管理员可以修改的会议室名称]  zhou start
+        MeetingRoomApp appVo = this.meetingRoomManager.getRoomAppById(roomAppId);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String[] dateRange = simpleDateFormat.format(appVo.getStartDatetime()).split(" ");
+        User user = AppContext.getCurrentUser();
+        Map<String, Object> map = new HashMap<>();
+        map.put("dateRange", dateRange[0]);
+
+        map.put("appId", Long.toString(appVo.getId()));
+        map.put("starttime", simpleDateFormat.format(appVo.getStartDatetime()));
+        map.put("endtime", simpleDateFormat.format(appVo.getEndDatetime()));
+        map.put("userId", Long.toString(user.getId()));
+        List<MeetingRoom> rooms = kfqMeetingRoomManager.findAllMeetingRoom(map);
+        meetingRoomVo.setRoomList(rooms);
+//      [开发区会议管理]  zhou end
+
         return ok(meetingRoomVo);
     }
 
@@ -2979,9 +3032,9 @@ public class MeetingResource extends BaseResource {
      * 获取会议室预订所有天的集合
      *
      * @param params <pre>
-     *                                                  类型    名称             必填     备注
-     *                                                  String   roomId     Y     会议室ID
-     *                                            </pre>
+     *                                                                                                                                                                                类型    名称             必填     备注
+     *                                                                                                                                                                                String   roomId     Y     会议室ID
+     *                                                                                                                                                                          </pre>
      * @return Map<String, Object>
      * @throws BusinessException
      * @throws ParseException
@@ -3042,10 +3095,10 @@ public class MeetingResource extends BaseResource {
      * 获取会议室申请信息
      *
      * @param params <pre>
-     *                                                  类型    名称             必填     备注
-     *                                                  String   roomId     Y     会议室ID
-     *                                                  String   qDate             Y     查询日期 (yyyy-MM-dd)
-     *                                            </pre>
+     *                                                                                                                                                                                类型    名称             必填     备注
+     *                                                                                                                                                                                String   roomId     Y     会议室ID
+     *                                                                                                                                                                                String   qDate             Y     查询日期 (yyyy-MM-dd)
+     *                                                                                                                                                                          </pre>
      * @return List<com.seeyon.apps.meetingroom.po.MeetingRoomApp>
      * @throws BusinessException
      * @throws ParseException
@@ -3080,6 +3133,9 @@ public class MeetingResource extends BaseResource {
      */
     private List<MeetingRoomOccupancyVO> copyAppToOccupancyVO(List<MeetingRoomApp> meetingRoomApps) throws BusinessException {
         List<MeetingRoomOccupancyVO> occupancyVos = new ArrayList<MeetingRoomOccupancyVO>();
+//      zhou
+        OrgDao dao = new OrgDaoImpl();
+
         for (MeetingRoomApp app : meetingRoomApps) {
             MeetingRoomOccupancyVO vo = new MeetingRoomOccupancyVO();
             vo.setStartDatetime(app.getStartDatetime());
@@ -3089,6 +3145,12 @@ public class MeetingResource extends BaseResource {
             vo.setStatus(app.getStatus());
             vo.setAppId(app.getId());
             vo.setFinish(app.getEndDatetime().before(new Date()));
+            //zhou
+            OrgUnit orgUnit = dao.getOrgUnitPO(app.getDepartmentId());
+            vo.setSqrdh(app.getSqrdh());
+            vo.setSqrDept(orgUnit.getName());
+            vo.setHcyq(app.getHcyq());
+
             occupancyVos.add(vo);
         }
         return occupancyVos;
@@ -3098,9 +3160,9 @@ public class MeetingResource extends BaseResource {
      * 获取会议室申请信息
      *
      * @param params <pre>
-     *                                                  类型    名称             必填     备注
-     *                                                  String   appId     Y     申请ID
-     *                                            </pre>
+     *                                                                                                                                                                                类型    名称             必填     备注
+     *                                                                                                                                                                                String   appId     Y     申请ID
+     *                                                                                                                                                                          </pre>
      * @return
      * @throws BusinessException
      */
@@ -3185,30 +3247,30 @@ public class MeetingResource extends BaseResource {
      * 会议发送
      *
      * @param params <pre>
-     *                                                  类型    名称             必填     备注
-     *                                                  String   title        Y     会议名称
-     *                                                  String   beginDate    Y     开始时间 (yyyy-MM-dd hh:mm:ss)
-     *                                                  String   endDate      Y     结束时间 (yyyy-MM-dd hh:mm:ss)
-     *                                                  String   conferees    Y     与会人(Member|id1,Member|id2 ……)
-     *                                                  String   emceeId      Y     主持人
-     *                                                  String   recorderId   N     记录人
-     *                                                  String   impart       N     告知人(Member|id1,Member|id2 ……)
-     *                                                  String   beforeTime   Y     提前提醒(0：无；5：5分钟；10：10分钟；15：15分钟；
-     *                                                  30：30分钟；60：1小时；120：2小时；180：3小时；240：4小时；480：8小时；720：0.5天；
-     *                                                  1440：1天；2880：2天；4320：3天；10080：1周)
-     *                                                  String   content      N     正文内容
-     *                                                  String   selectRoomType Y   会议室选择类型(applied：已申请；apply：申请会议室；mtPlace：手动输入)
-     *                                                  String   meetingPlace N     会议地点
-     *                                                  String   isHasAtt     Y     是否存在附件("true"/"false")
-     *                                                  Long     roomId       N     会议室ID
-     *                                                  String   roomAppBeginDate N 会议室申请开始时间(yyyy-MM-dd hh:mm:ss)
-     *                                                  String   roomAppEndDate   N 会议室申请结束时间(yyyy-MM-dd hh:mm:ss)
-     *                                                  Long     roomAppId    N     会议室申请ID
-     *                                                  String   type         Y     执行动作(send/save)
-     *                                                  String   sendType     N     是否来自小致语音发布的会议("speechRobot"表示小致语音会议发布)
-     *                                                  Long     meetingId    N     会议ID
-     *                                                  String   meetingNature Y    会议方式（1：普通；2：视频）
-     *                                            </pre>
+     *                                                                                                                                                                                类型    名称             必填     备注
+     *                                                                                                                                                                                String   title        Y     会议名称
+     *                                                                                                                                                                                String   beginDate    Y     开始时间 (yyyy-MM-dd hh:mm:ss)
+     *                                                                                                                                                                                String   endDate      Y     结束时间 (yyyy-MM-dd hh:mm:ss)
+     *                                                                                                                                                                                String   conferees    Y     与会人(Member|id1,Member|id2 ……)
+     *                                                                                                                                                                                String   emceeId      Y     主持人
+     *                                                                                                                                                                                String   recorderId   N     记录人
+     *                                                                                                                                                                                String   impart       N     告知人(Member|id1,Member|id2 ……)
+     *                                                                                                                                                                                String   beforeTime   Y     提前提醒(0：无；5：5分钟；10：10分钟；15：15分钟；
+     *                                                                                                                                                                                30：30分钟；60：1小时；120：2小时；180：3小时；240：4小时；480：8小时；720：0.5天；
+     *                                                                                                                                                                                1440：1天；2880：2天；4320：3天；10080：1周)
+     *                                                                                                                                                                                String   content      N     正文内容
+     *                                                                                                                                                                                String   selectRoomType Y   会议室选择类型(applied：已申请；apply：申请会议室；mtPlace：手动输入)
+     *                                                                                                                                                                                String   meetingPlace N     会议地点
+     *                                                                                                                                                                                String   isHasAtt     Y     是否存在附件("true"/"false")
+     *                                                                                                                                                                                Long     roomId       N     会议室ID
+     *                                                                                                                                                                                String   roomAppBeginDate N 会议室申请开始时间(yyyy-MM-dd hh:mm:ss)
+     *                                                                                                                                                                                String   roomAppEndDate   N 会议室申请结束时间(yyyy-MM-dd hh:mm:ss)
+     *                                                                                                                                                                                Long     roomAppId    N     会议室申请ID
+     *                                                                                                                                                                                String   type         Y     执行动作(send/save)
+     *                                                                                                                                                                                String   sendType     N     是否来自小致语音发布的会议("speechRobot"表示小致语音会议发布)
+     *                                                                                                                                                                                Long     meetingId    N     会议ID
+     *                                                                                                                                                                                String   meetingNature Y    会议方式（1：普通；2：视频）
+     *                                                                                                                                                                          </pre>
      * @return Map<String, Object>
      * @throws BusinessException
      */
@@ -3446,12 +3508,12 @@ public class MeetingResource extends BaseResource {
      * 注：此校验仅支持非周期会议，如果之后支持周期会议，需要增加传参以及修改调用方法
      *
      * @param params <pre>
-     *                                                  类型    名称             必填     备注
-     *                                                  String   beginDate    Y     开始时间 (yyyy-MM-dd hh:mm:ss)
-     *                                                  String   endDate      Y     结束时间 (yyyy-MM-dd hh:mm:ss)
-     *                                                  Long     roomId       Y     会议室ID
-     *                                                  Long     meetingId    N     会议ID
-     *                                            </pre>
+     *                                                                                                                                                                                类型    名称             必填     备注
+     *                                                                                                                                                                                String   beginDate    Y     开始时间 (yyyy-MM-dd hh:mm:ss)
+     *                                                                                                                                                                                String   endDate      Y     结束时间 (yyyy-MM-dd hh:mm:ss)
+     *                                                                                                                                                                                Long     roomId       Y     会议室ID
+     *                                                                                                                                                                                Long     meetingId    N     会议ID
+     *                                                                                                                                                                          </pre>
      * @return Map<String, Object>
      * @throws BusinessException
      */
@@ -3552,9 +3614,9 @@ public class MeetingResource extends BaseResource {
      * 获取会议修改所需元素
      *
      * @param params <pre>
-     *                                                  类型    名称             必填     备注
-     *                                                  String   meetingId     Y     会议ID
-     *                                            </pre>
+     *                                                                                                                                                                                类型    名称             必填     备注
+     *                                                                                                                                                                                String   meetingId     Y     会议ID
+     *                                                                                                                                                                          </pre>
      * @return
      * @throws BusinessException
      */
@@ -3741,15 +3803,15 @@ public class MeetingResource extends BaseResource {
      * 会议删除
      *
      * @param params <pre>
-     *                                                  类型    名称             必填     备注
-     *                                                  String   id        Y     会议ID
-     *                                                  String   listType      Y     将要删除会议的来源
-     *                                                     <pre>
-     *                                                     	listWaitSendMeeting   待发
-     *                                                     	listDoneMeeting       已开
-     *                                                     	listSendMeeting       已发
-     *                                                     </pre>
-     *                                            </pre>
+     *                                                                                                                                                                                类型    名称             必填     备注
+     *                                                                                                                                                                                String   id        Y     会议ID
+     *                                                                                                                                                                                String   listType      Y     将要删除会议的来源
+     *                                                                                                                                                                                   <pre>
+     *                                                                                                                                                                                   	listWaitSendMeeting   待发
+     *                                                                                                                                                                                   	listDoneMeeting       已开
+     *                                                                                                                                                                                   	listSendMeeting       已发
+     *                                                                                                                                                                                   </pre>
+     *                                                                                                                                                                          </pre>
      * @return Map<String, Object>
      * @throws BusinessException
      */
@@ -3780,9 +3842,9 @@ public class MeetingResource extends BaseResource {
      * 获取视频会议插件参数
      *
      * @param params <pre>
-     *                                                  类型    名称             必填     备注
-     *                                                  String   meetingId        Y     会议ID
-     *                                            </pre>
+     *                                                                                                                                                                                类型    名称             必填     备注
+     *                                                                                                                                                                                String   meetingId        Y     会议ID
+     *                                                                                                                                                                          </pre>
      * @return Map<String, Object>
      * @throws BusinessException
      */
@@ -3838,9 +3900,9 @@ public class MeetingResource extends BaseResource {
      * 获取视频会议插件参数
      *
      * @param params <pre>
-     *                                                  类型    名称             必填     备注
-     *                                                  String   meetingId        Y     会议ID
-     *                                            </pre>
+     *                                                                                                                                                                                类型    名称             必填     备注
+     *                                                                                                                                                                                String   meetingId        Y     会议ID
+     *                                                                                                                                                                          </pre>
      * @return Map<String, Object>
      * @throws BusinessException
      */
