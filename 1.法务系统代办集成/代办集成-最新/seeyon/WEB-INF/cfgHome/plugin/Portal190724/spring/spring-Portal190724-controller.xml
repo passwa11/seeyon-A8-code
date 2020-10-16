@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
-<beans default-autowire="byName">
-    <bean name="/ext/Portal190724.do" class="com.seeyon.apps.ext.Portal190724.controller.Portal190724Controller"/>
-    <bean name="/ext/setUserController.do" class="com.seeyon.apps.ext.Portal190724.controller.LawSetUserController"/>
-    <bean name="/ext/lawLogin.do" class="com.seeyon.apps.ext.Portal190724.controller.LoginController"/>
-    <bean name="/ext/documentSetUserController.do" class="com.seeyon.apps.ext.Portal190724.controller.DocumentSetUserController"/>
-</beans>

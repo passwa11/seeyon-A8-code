@@ -1,2 +1,0 @@
-徐矿根据截止报送时间提前一小时发送消息提醒 只修改了CAP4FormTriggerManagerImpl.java文件
-在代码703行位置

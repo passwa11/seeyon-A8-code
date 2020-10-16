@@ -1,6 +1,0 @@
-部署说明：
-第一步：在OA数据中创建四张表（m_org_unit、m_org_member、seeyon_oa_dw、seeyon_oa_jzgjbxx）sql语句请看 矿大.sql
-第二步：在文件夹seeyon\WEB-INF\classes\config下有一个config.properties文件，请将文件中的内容改成正式环境的。
-第三部：将解压包部署到项目中，重启项目。使用system账号登陆创建关联系统：
-  地址为：
-	 http://ip:port/seeyon/ext/kydx.do?method=syncData

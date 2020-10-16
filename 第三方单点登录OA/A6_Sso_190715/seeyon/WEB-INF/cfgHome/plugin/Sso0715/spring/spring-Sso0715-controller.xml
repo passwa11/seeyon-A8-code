@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
-<beans default-autowire="byName">
-    <!--    第三方系统与OA系统账户映射-->
-    <bean name="/ssoAccountWH.do" class="com.seeyon.apps.ext.Sso0715.controller.Sso0715Controller"/>
-</beans>

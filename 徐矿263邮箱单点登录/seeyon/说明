@@ -1,2 +1,0 @@
-在人员表（org_member）中添加了一个字段 create_263
-alter table org_member add(CREATE_263 number(4));
