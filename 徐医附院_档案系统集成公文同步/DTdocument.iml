@@ -417,7 +417,7 @@
             <entry key="com.zeroturnaround.jrebel.remoting.ModuleRemoteServerSelection" value="off" />
             <entry key="com.zeroturnaround.jrebel.remoting.ModuleSpecificSingleRemoteServer" />
             <entry key="jrebelEnabled" value="true" />
-            <entry key="lastExternalPluginCheckTime" value="1589598034495" />
+            <entry key="lastExternalPluginCheckTime" value="1598689197328" />
             <entry key="savedRebelXmlBuildTool" />
             <entry key="savedRebelXmlContent" />
           </map>
@@ -437,14 +437,14 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://F:/Seeyon/A87.1_sp1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
+          <root url="file://F:/Seeyon/A87.1_sp1_2/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://F:/Seeyon/A87.1_sp1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
+          <root url="file://F:/Seeyon/A87.1_sp1_2/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
         </SOURCES>
-        <jarDirectory url="file://F:/Seeyon/A87.1_sp1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" />
-        <jarDirectory url="file://F:/Seeyon/A87.1_sp1/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" type="SOURCES" />
+        <jarDirectory url="file://F:/Seeyon/A87.1_sp1_2/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" />
+        <jarDirectory url="file://F:/Seeyon/A87.1_sp1_2/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
   </component>

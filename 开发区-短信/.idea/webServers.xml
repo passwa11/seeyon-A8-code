@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="5eccc34a-a0f8-4d4c-9b90-4a3a27b94c95" name="sms" url="http://localhost">
-        <fileTransfer port="0" mountedRoot="F:\Seeyon\A871sp1_mysql_qiye\ApacheJetspeed\webapps\seeyon" accessType="MOUNT" />
+        <fileTransfer port="0" mountedRoot="F:\Seeyon\A87.1_sp1_07\ApacheJetspeed\webapps\seeyon" accessType="MOUNT" />
       </webServer>
     </option>
   </component>

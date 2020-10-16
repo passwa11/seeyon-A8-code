@@ -28,10 +28,10 @@ public class Demo1 {
             Map<String, Object> data1 = new HashMap<String, Object>();
             data1.put("templateCode", "bpm0916");
             data1.put("senderLoginName", "yanyi");
-            data1.put("subject", "bpm集成测试五五五五");
+            data1.put("subject", "bpm集成测试六六");
             Map<String, Object> dataMap = new HashMap<>();
-            dataMap.put("文本1", "222");
-            dataMap.put("文本2", "2");
+            dataMap.put("name", "11111111");
+            dataMap.put("address", "2222222");
             data1.put("data", com.alibaba.fastjson.JSONObject.toJSONString(dataMap));
             data1.put("param", "0");
             data1.put("transfertype", "json");

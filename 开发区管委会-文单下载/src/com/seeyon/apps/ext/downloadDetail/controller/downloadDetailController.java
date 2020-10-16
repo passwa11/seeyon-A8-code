@@ -2,6 +2,12 @@ package com.seeyon.apps.ext.downloadDetail.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.geom.Rectangle;
+import com.itextpdf.kernel.pdf.PdfPage;
+import com.itextpdf.kernel.pdf.canvas.PdfCanvas;
+import com.itextpdf.kernel.pdf.canvas.draw.ILineDrawer;
+import com.itextpdf.layout.element.LineSeparator;
 import com.seeyon.ctp.common.controller.BaseController;
 
 import javax.servlet.http.HttpServletResponse;
@@ -13,8 +19,7 @@ import com.seeyon.v3x.services.document.DocumentFactory;
 import com.seeyon.v3x.services.document.impl.DocumentFactoryImpl;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -72,28 +77,44 @@ public class downloadDetailController extends BaseController {
                 DefaultFontProvider defaultFontProvider = new DefaultFontProvider(false, false, false);
                 defaultFontProvider.addFont(FONT);
                 props.setFontProvider(defaultFontProvider);
-                PdfWriter writer = new PdfWriter(fos);
+                PdfWriter writer = new PdfWriter("f:\\1.pdf");
                 PdfDocument pdf = new PdfDocument(writer);
                 pdf.setDefaultPageSize(new PageSize(595.0F, 842.0F));
                 Document document = null;
+                File file=new File("f:\\test.html");
+//                if(!file.exists()){
+//                    file.createNewFile();
+//                }
+//                FileOutputStream fileOutputStream=new FileOutputStream(file);
+//                fileOutputStream.write(msg.getBytes("UTF-8"));
+                FileInputStream fis=new FileInputStream(file);
                 try {
-                    document = HtmlConverter.convertToDocument(msg, pdf, props);
+                    document = HtmlConverter.convertToDocument(fis, pdf, props);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                document.getRenderer();
+                // 将所有内容在一个页面显示
+                EndPosition endPosition = new EndPosition();
+                LineSeparator separator = new LineSeparator(endPosition);
+                document.add(separator);
+                document.getRenderer().close();
+                PdfPage page = pdf.getPage(1);
+                float y = endPosition.getY() - 36;
+                page.setMediaBox(new Rectangle(0, y, 595, 14400 - y));
                 document.close();
                 pdf.close();
                 fos.flush();
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
-                try {
-                    if (null != fos) {
-                        fos.close();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    if (null != fos) {
+//                        fos.close();
+//                    }
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
             }
         } catch (ServiceException ex) {
             ex.printStackTrace();
@@ -101,6 +122,73 @@ public class downloadDetailController extends BaseController {
             ex.printStackTrace();
         }
         return null;
+    }
+    class EndPosition implements ILineDrawer {
+
+        /** A Y-position. */
+        protected float y;
+
+        /**
+         * Gets the Y-position.
+         *
+         * @return the Y-position
+         */
+        public float getY() {
+            return y;
+        }
+
+        /*
+         * (non-Javadoc)
+         *
+         * @see
+         * com.itextpdf.kernel.pdf.canvas.draw.ILineDrawer#draw(com.itextpdf.kernel.pdf.
+         * canvas.PdfCanvas, com.itextpdf.kernel.geom.Rectangle)
+         */
+        @Override
+        public void draw(PdfCanvas pdfCanvas, Rectangle rect) {
+            this.y = rect.getY();
+        }
+
+        /*
+         * (non-Javadoc)
+         *
+         * @see com.itextpdf.kernel.pdf.canvas.draw.ILineDrawer#getColor()
+         */
+        @Override
+        public Color getColor() {
+            return null;
+        }
+
+        /*
+         * (non-Javadoc)
+         *
+         * @see com.itextpdf.kernel.pdf.canvas.draw.ILineDrawer#getLineWidth()
+         */
+        @Override
+        public float getLineWidth() {
+            return 0;
+        }
+
+        /*
+         * (non-Javadoc)
+         *
+         * @see
+         * com.itextpdf.kernel.pdf.canvas.draw.ILineDrawer#setColor(com.itextpdf.kernel.
+         * color.Color)
+         */
+        @Override
+        public void setColor(Color color) {
+        }
+
+        /*
+         * (non-Javadoc)
+         *
+         * @see com.itextpdf.kernel.pdf.canvas.draw.ILineDrawer#setLineWidth(float)
+         */
+        @Override
+        public void setLineWidth(float lineWidth) {
+        }
+
     }
 
     public String handlerToString(ResultSet set, String htmlContent) throws SQLException {

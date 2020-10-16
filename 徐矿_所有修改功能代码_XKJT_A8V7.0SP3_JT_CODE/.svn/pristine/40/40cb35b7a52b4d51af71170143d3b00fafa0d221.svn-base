@@ -1,9 +1,0 @@
-appLog.action.8101         =  {0} push the bulletin push {1} to external success
-appLog.action.8102         =  {0} push the bulletin push {1} to external failure
-appLog.action.8103         =  {0} push the news push {1} to external success
-appLog.action.8104         =  {0} push the news push {1} to external failure
-appLog.actionType.8101     = Bulletin push
-appLog.actionType.8102     = Bulletin push
-appLog.actionType.8101     = News push
-appLog.actionType.8102     = News push
-appLog.moduleName.8100     = Public information

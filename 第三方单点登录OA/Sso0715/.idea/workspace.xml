@@ -1,9 +1,398 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="78b9da95-e0c7-4667-8943-9a316d19215e" name="Default Changelist" comment="" />
-    <ignored path="$PROJECT_DIR$/classes/" />
-    <ignored path="$PROJECT_DIR$/bin/" />
+    <list default="true" id="78b9da95-e0c7-4667-8943-9a316d19215e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle_根据节点权限-/src/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/A-8-code.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/deployment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.rest接口调用方法/.idea/0.rest接口调用方法.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.rest接口调用方法/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.rest接口调用方法/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.rest接口调用方法/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.rest接口调用方法/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest-client/src/cn/com/test/Demo1.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest-client/src/cn/com/test/Demo1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.法务系统代办集成/档案系统集成公文同步/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.法务系统代办集成/档案系统集成公文同步/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/xzyk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/xzyk.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../CAP4培训课件/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../CAP4培训课件/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../RestTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../RestTest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/.idea/deployment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/.idea/webServers.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/.settings/de.loskutov.FileSync.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/HuaiAnCaiZheng_A8V7SP3_201907MessagePlug.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/seeyon/WEB-INF/cfgHome/plugin/msgIntegration/pluginCfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/seeyon/WEB-INF/cfgHome/plugin/msgIntegration/spring/spring.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/src_msg/com/seeyon/apps/common/kit/FormKit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/src_msg/com/seeyon/apps/common/kit/HttpKit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/src_msg/com/seeyon/apps/common/kit/JsonKit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/src_msg/com/seeyon/apps/jdMsg/JdMsgPipeline.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/src_msg/com/seeyon/apps/util/PropertiesUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/src_msg/com/seeyon/v3x/mobile/adapter/sms/AdaptMobileImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/src_msg/sms/sms.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../kuangYe_sms/短信.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../medhub/src/main/java/com/ncbi/medhub/http/HttpApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../medhub/src/main/java/com/ncbi/medhub/http/HttpApiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/.idea/deployment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/.mymetadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/WebRoot/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/WebRoot/WEB-INF/cfgHome/plugin/jjwl/pluginCfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/WebRoot/WEB-INF/cfgHome/plugin/jjwl/spring/spring-jjwl-sso.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/WebRoot/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/WebRoot/gainBill.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/WebRoot/oaBill.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/oa_jjwl.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/src/com/seeyon/apps/jjwl/JjwlLogin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/src/com/seeyon/apps/jjwl/JjwlSSOLoginHandshake.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/v3x_services/com/seeyon/oainterface/impl/exportdata/DoneSentListExporter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/v3x_services/com/seeyon/v3x/services/affair/AffairService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../oa_jjwl/v3x_services/com/seeyon/v3x/services/affair/impl/AffairServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../代办工作标题变色/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../代办工作标题变色/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../代办工作标题变色/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/BaseSectionImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../代办工作标题变色/seeyon/WEB-INF/classes/com/seeyon/ctp/portal/section/BaseSectionImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../修改送文单单位名称/.idea/deployment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../修改送文单单位名称/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../修改送文单单位名称/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../修改送文单单位名称/.idea/test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../修改送文单单位名称/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../修改送文单单位名称/.idea/webServers.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../修改送文单单位名称/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../修改送文单单位名称/out/classes/production/test/com/seeyon/v3x/exchange/controller/ExchangeEdocController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../修改送文单单位名称/seeyon/WEB-INF/jsp/exchange/edoc/edoc_send_detail.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../修改送文单单位名称/src/com/seeyon/v3x/exchange/controller/ExchangeEdocController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/.idea/deployment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/.idea/kotlinc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/.idea/公文.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/domain/CtpPdfSavepath.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/domain/CtpPdfSavepath.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManagerImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/seeyon/WEB-INF/classes/com/seeyon/v3x/exchange/controller/ExchangeEdocController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/src/com/seeyon/ctp/rest/resources/EdocResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/src/com/seeyon/ctp/rest/resources/MD5Utils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/src/com/seeyon/v3x/edoc/controller/EdocController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/src/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/src/com/seeyon/v3x/edoc/dao/CtpPdfSavepathDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/src/com/seeyon/v3x/edoc/domain/CtpPdfSavepath.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/src/com/seeyon/v3x/edoc/domain/CtpPdfSavepath.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/src/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/src/com/seeyon/v3x/edoc/manager/CtpPdfSavepathManagerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文/src/com/seeyon/v3x/exchange/controller/ExchangeEdocController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../公文_废弃/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../公文_废弃/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/.idea/deployment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/.idea/webServers.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/kypending.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/seeyon/WEB-INF/cfgHome/plugin/kypending/pluginCfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/seeyon/WEB-INF/cfgHome/plugin/kypending/pluginProperties.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/seeyon/WEB-INF/cfgHome/plugin/kypending/spring/spring-kypending-controller.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/seeyon/WEB-INF/cfgHome/plugin/kypending/spring/spring-kypending-plugin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/seeyon/openPending.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/src/com/seeyon/apps/ext/kypending/controller/OpenPendingController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/src/com/seeyon/apps/ext/kypending/controller/kypendingController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/src/com/seeyon/apps/ext/kypending/kypendingPluginInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/src/com/seeyon/apps/ext/kypending/manager/KyPendingManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/src/com/seeyon/apps/ext/kypending/manager/MemberUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/src/com/seeyon/apps/ext/kypending/message/YkdMessagePipeline.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/src/com/seeyon/apps/ext/kypending/util/ConstantUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/src/com/seeyon/apps/ext/kypending/util/HttpUtilTool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/src/com/seeyon/apps/ext/kypending/util/JDBCUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/src/com/seeyon/apps/ext/kypending/util/MD5Util.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/src/com/seeyon/apps/ext/kypending/util/RestfulInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/src/com/seeyon/apps/ext/kypending/util/RestfulUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/kypending/src/com/seeyon/ctp/common/web/filter/JSPAuthenticator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/第三方系统单点打开OA表单模板/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/第三方系统单点打开OA表单模板/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/第三方系统单点打开OA表单模板/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/第三方系统单点打开OA表单模板/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/第三方系统单点打开OA表单模板/.idea/第三方系统单点打开OA表单模板.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区-短信/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区-短信/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_修改的功能/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_修改的功能/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_修改的功能/.idea/开发区_修改的功能.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_修改的功能/.idea/开发区_修改的功能.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/rest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/seeyon/WEB-INF/cfgHome/plugin/ssoLogin/pluginCfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/seeyon/WEB-INF/cfgHome/plugin/ssoLogin/pluginProperties.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/seeyon/WEB-INF/cfgHome/plugin/ssoLogin/spring/spring-ssoLogin-controller.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/seeyon/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/seeyon/main/login/default/login.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/src/com/seeyon/ctp/login/controller/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/src/com/seeyon/ctp/login/controller/MainController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/src/com/seeyon/ctp/login/controller/TicketController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/src/com/seeyon/ctp/login/server/filter/UrlFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/src/com/seeyon/ctp/login/server/listener/GlobalSessionListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/src/com/seeyon/ctp/login/server/listener/GlobalSessions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/src/com/seeyon/ctp/login/server/util/Constant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/src/com/seeyon/ctp/login/server/util/StringUtilSso.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/src/com/seeyon/ctp/login/server/util/TicketUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _2/src/com/seeyon/ctp/rest/resources/CasTicketResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _server/rest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _server/rest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _server/src/com/seeyon/ctp/login/server/filter/UrlFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心 _server/src/com/seeyon/ctp/login/server/filter/UrlFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心_client-2/src/main/java/yh/app1/filter/SSOClientFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心_client-2/src/main/java/yh/app1/filter/SSOClientFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心_client/src/main/java/yh/app1/filter/SSOClientFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心_client/src/main/java/yh/app1/filter/SSOClientFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心_client/src/main/java/yh/app1/servlet/MainServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/10.cas认证中心_client/src/main/java/yh/app1/servlet/MainServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/ext/meetingInfoTip/po/MeetingAppHistory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/ext/meetingInfoTip/po/MeetingAppHistory.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/meeting/manager/MeetingMessageManagerImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/meetingroom/controller/MeetingRoomController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/meetingroom/dao/KfqMeetingRoomDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/meetingroom/dao/KfqMeetingRoomDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/meetingroom/dao/MeetingRoomHistoryDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/meetingroom/dao/MeetingRoomHistoryDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/meetingroom/manager/KfqMeetingRoomManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/meetingroom/manager/KfqMeetingRoomManagerImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/meetingroom/manager/MeetingRoomAppManagerImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/meetingroom/manager/MeetingRoomHistoryManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/meetingroom/manager/MeetingRoomHistoryManagerImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/meetingroom/po/MeetingRoomApp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/meetingroom/po/Meetingroomapp.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/com/seeyon/apps/meetingroom/util/MeetingReadConfigTools.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/2.申请会议室添加字段/seeyon/WEB-INF/classes/config/meeting.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/3.已申请会议室信息鼠标事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/meetingInfoTip/controller/meetingInfoTipController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/3.已申请会议室信息鼠标事件/seeyon/WEB-INF/classes/com/seeyon/apps/ext/meetingInfoTip/controller/meetingInfoTipController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/7.会务通知界面调整/seeyon/WEB-INF/classes/com/seeyon/ctp/common/detaillog/manager/DetaillogManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/7.会务通知界面调整/seeyon/WEB-INF/classes/com/seeyon/ctp/common/detaillog/manager/DetaillogManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/7.会务通知界面调整/src/com/seeyon/ctp/common/detaillog/manager/DetaillogManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/7.会务通知界面调整/src/com/seeyon/ctp/common/detaillog/manager/DetaillogManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/8.oa作为登陆认证中心/ProxySend/ProxySend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/8.oa作为登陆认证中心/ProxySend/ProxySend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/8.oa作为登陆认证中心/ProxySend/src/com/test/TokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/8.oa作为登陆认证中心/ProxySend/src/com/test/TokenUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/8.oa作为登陆认证中心/ProxySend/web/WEB-INF/classes/com/test/TokenUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/8.oa作为登陆认证中心/ProxySend/web/WEB-INF/classes/com/test/TokenUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/src/com/seeyon/ctp/login/controller/MainController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/po/Fmain0148.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/po/Formmain0148.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/po/JtldEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/selectPeople/po/myquery/Formmain0148.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/selectPeople/po/myquery/Formson0174.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/selectPeople/po/myquery/JtldEntity.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区管委会-文单下载 - 使用exe文件/downloadDetail.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区管委会-文单下载 - 使用exe文件/downloadDetail.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区管委会-文单下载 - 使用exe文件/src/com/seeyon/apps/ext/downloadDetail/controller/downloadDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区管委会-文单下载 - 使用exe文件/src/com/seeyon/apps/ext/downloadDetail/controller/downloadDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区管委会-文单下载 - 使用exe文件/src/com/seeyon/apps/ext/downloadDetail/util/HtmlToPDFUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区管委会-文单下载 - 使用exe文件/src/com/seeyon/apps/ext/downloadDetail/util/HtmlToPDFUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区管委会-文单下载/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区管委会-文单下载/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区管委会-文单下载/downloadDetail.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区管委会-文单下载/downloadDetail.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区管委会-文单下载/src/com/seeyon/apps/ext/downloadDetail/controller/downloadDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区管委会-文单下载/src/com/seeyon/apps/ext/downloadDetail/controller/downloadDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐医附院_档案系统集成公文同步/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_档案系统集成公文同步/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐医附院_档案系统集成公文同步/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_档案系统集成公文同步/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐医附院_档案系统集成公文同步/DTdocument.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐医附院_档案系统集成公文同步/DTdocument.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿CAP4_会议排座.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_修改送文单单位名称/out/classes/production/test/com/seeyon/v3x/exchange/controller/ExchangeEdocController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_修改送文单单位名称/src/com/seeyon/v3x/exchange/controller/ExchangeEdocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_修改送文单单位名称/src/com/seeyon/v3x/exchange/controller/ExchangeEdocController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/listener/WorkFlowEventListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/listener/WorkFlowEventListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/ColManagerImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/ColManagerImpl$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/ColManagerImpl$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/ColManagerImpl$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/ColManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/ColManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/ctp/rest/resources/EdocResource$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/ctp/rest/resources/EdocResource$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/ctp/rest/resources/EdocResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/ctp/rest/resources/EdocResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocListController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/util/EdocOpinionDisplayUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/util/EdocOpinionDisplayUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/webmodel/EdocSummaryBO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/webmodel/EdocSummaryBO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/webmodel/EdocSummaryModel$EDOCTYPE.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/webmodel/EdocSummaryModel$EDOCTYPE.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/webmodel/EdocSummaryModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/webmodel/EdocSummaryModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/v3x/exchange/manager/EdocExchangeManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE/seeyon/WEB-INF/classes/com/seeyon/v3x/exchange/manager/EdocExchangeManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_文单查看_20200624/seeyon/WEB-INF/jsp/edoc/edocSummary.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_文单查看_20200624/seeyon/WEB-INF/jsp/edoc/edocSummary.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_文单查看_20200624/src/com/seeyon/apps/ext/edocDetail/controller/edocDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_文单查看_20200624/src/com/seeyon/apps/ext/edocDetail/controller/edocDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_添加办结和未办结栏目/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_添加办结和未办结栏目/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_添加办结和未办结栏目/办结-未办结-总包-2020-05-15.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.idea/libraries/xjkt_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.settings/.jsdtscope" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.settings/de.loskutov.FileSync.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.settings/org.eclipse.core.resources.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.settings/org.eclipse.wst.common.component" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.settings/org.eclipse.wst.common.project.facet.core.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.settings/org.eclipse.wst.jsdt.ui.superType.container" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/.settings/org.eclipse.wst.jsdt.ui.superType.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/seeyon/WEB-INF/cfgHome/plugin/tiJiao/pluginCfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/seeyon/WEB-INF/cfgHome/plugin/tiJiao/spring/spring-tiJiao-listener.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/src/com/seeyon/apps/collaboration/listener/GongwenTijiaoListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/src/com/seeyon/apps/collaboration/listener/TijiaoListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/src/com/seeyon/apps/collaboration/manager/ColManagerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/src/com/seeyon/v3x/edoc/controller/EdocController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/xjkt-2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle/徐矿703oracle.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle_根据节点/徐矿703oracle.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿_竞争执行703oracle_根据节点权限- - 副本/徐矿703oracle.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿功能_成都代码合并/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿功能_成都代码合并/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿功能_成都代码合并/徐矿功能_成都代码合并.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿功能_成都代码合并/徐矿功能_成都代码合并.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/.idea/deployment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/.idea/libraries/cas_client_core_3_2_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/.idea/ssoLogin.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/seeyon/WEB-INF/cfgHome/plugin/ssoLogin/pluginCfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/seeyon/WEB-INF/cfgHome/plugin/ssoLogin/pluginProperties.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/seeyon/WEB-INF/cfgHome/plugin/ssoLogin/spring/spring-ssoLogin-manager.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/seeyon/WEB-INF/cfgHome/plugin/ssoLogin/spring/spring-ssoLogin-plugin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/controller/SsoLogin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/sso/XkSsoLogin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/sso/XkdxSsoLoginHandshake.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/ssoLoginPluginInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/util/StringHandle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/ctp/common/web/filter/JSPAuthenticator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/seeyon/WEB-INF/lib/cas-client-core-3.2.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/seeyon/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/src/com/seeyon/apps/ext/ssoLogin/controller/SsoLogin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/src/com/seeyon/apps/ext/ssoLogin/sso/XkdxSsoLoginHandshake.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/src/com/seeyon/apps/ext/ssoLogin/ssoLoginPluginInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/src/com/seeyon/apps/ext/ssoLogin/util/StringHandle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/src/com/seeyon/ctp/common/web/filter/JSPAuthenticator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/asp/IDStarV5.0认证集成实施手册(ASP版).doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/asp/IDStarV5.0认证集成实施手册(ASP版)_样例代码.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/cas集成总结.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/dotnet/IDStarV5.0应用集成接口说明_dotnet.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/dotnet/dotnet-cas-client-demo.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/IDStarV5.0(cas-client-core-3.x)应用集成接口说明_java.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/.idea/ant.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/.idea/artifacts/cas_client_3_2_1_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/.idea/copyright/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/.idea/deployment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/.idea/scopes/scope_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/cas-client-3.2.1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/web/WEB-INF/lib/cas-client-core-3.2.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/web/WEB-INF/lib/commons-lang-2.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/web/WEB-INF/lib/commons-logging-1.1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/web/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/web/WEB-INF/web.xml_saml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/web/caslogin.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/web/caslogout.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-3.x/cas-client-3.2.1/web/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/java/ids集成完整版/cas-client-core-3.2.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/php/IDStarV5.0(PHP集成版)-demo.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/php/IDStarV5.0应用集成接口说明-php.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿大学_单点登录/应用集成文档/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿待阅已阅/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿待阅已阅/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿待阅已阅/xkjt_edoc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿待阅已阅/xkjt_edoc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../徐矿选择人员CAP4/seeyon/apps_res/cap/customCtrlResources/hiddenResources/js/hidden.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../徐矿选择人员CAP4/seeyon/apps_res/cap/customCtrlResources/hiddenResources/js/hidden.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../栏目集成已阅待阅示例/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../栏目集成已阅待阅示例/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../矿业大学_单点登录/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../矿业大学_单点登录/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../矿业大学_单点登录/.idea/ssoLogin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../矿业大学_单点登录/.idea/ssoLogin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../矿业大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/controller/SsoLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../矿业大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/controller/SsoLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../矿业大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/sso/XkSsoLogin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../矿业大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/sso/XkdxSsoLoginHandshake.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../矿业大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/sso/XkdxSsoLoginHandshake.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../矿业大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/util/StringHandle.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../矿业大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/ssoLogin/util/StringHandle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../矿业大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/ctp/common/web/filter/JSPAuthenticator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../矿业大学_单点登录/seeyon/WEB-INF/classes/com/seeyon/ctp/common/web/filter/JSPAuthenticator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../矿业大学_短信/矿业大学-短信集成.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../矿业大学_组织机构同步/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../矿业大学_组织机构同步/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A6_Sso_190715/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../A6_Sso_190715/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A8_Sso_190715_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../A8_Sso_190715_2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProxySend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ProxySend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProxySend/ProxySend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../ProxySend/ProxySend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSOLoginTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSOLoginTest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSOLoginTest/SSOLoginTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSOLoginTest/SSOLoginTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/.idea/deployment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/.mymetadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/.settings/.jsdtscope" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/.settings/org.eclipse.wst.common.component" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/.settings/org.eclipse.wst.common.project.facet.core.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/.settings/org.eclipse.wst.jsdt.ui.superType.container" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/.settings/org.eclipse.wst.jsdt.ui.superType.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/demo03.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/seeyon/WEB-INF/cfgHome/plugin/samplePlugin/i18n/samplePlugin_en.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/seeyon/WEB-INF/cfgHome/plugin/samplePlugin/i18n/samplePlugin_zh_CN.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/seeyon/WEB-INF/cfgHome/plugin/samplePlugin/i18n/samplePlugin_zh_TW.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/seeyon/WEB-INF/cfgHome/plugin/samplePlugin/pluginCfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/seeyon/WEB-INF/cfgHome/plugin/samplePlugin/spring/spring-sample-sso.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo03/src/com/seeyon/apps/samplePlugin/SSOLoginTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/.idea/deployment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/.idea/webServers.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/.settings/de.loskutov.FileSync.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/seeyon/WEB-INF/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/seeyon/WEB-INF/cfgHome/plugin/xkEdoc/pluginCfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/seeyon/WEB-INF/cfgHome/plugin/xkEdoc/spring/spring-xkEdoc-controller.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/seeyon/WEB-INF/cfgHome/plugin/xkEdoc/spring/spring-xkEdoc-dao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/seeyon/WEB-INF/cfgHome/plugin/xkEdoc/spring/spring-xkEdoc-manager.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/seeyon/WEB-INF/cfgHome/plugin/xkEdoc/spring/spring-xkEdoc-plugin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/seeyon/WEB-INF/jsp/apps/ext/xkEdoc/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/seeyon/WEB-INF/jsp/apps/ext/xkEdoc/xk_viewEdoc.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/seeyon/WEB-INF/jsp/exchange/edoc/edoc_send_detail.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/src/com/seeyon/apps/ext/xkEdoc/controller/xkEdocController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/src/com/seeyon/apps/ext/xkEdoc/dao/XkjtSummaryAttDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/src/com/seeyon/apps/ext/xkEdoc/dao/XkjtSummaryAttDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/src/com/seeyon/apps/ext/xkEdoc/manager/XkjtSummaryAttManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/src/com/seeyon/apps/ext/xkEdoc/manager/XkjtSummaryAttManagerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/src/com/seeyon/apps/ext/xkEdoc/po/AttachmentEx.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/src/com/seeyon/apps/ext/xkEdoc/util/JDBCUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/src/com/seeyon/apps/ext/xkEdoc/xkEdocPluginInitializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sso/xkjt_edoc.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../落款靠右/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../落款靠右/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,211 +403,11 @@
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/Sso0715PluginInitializer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/manager/Sso0715Manager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/manager/Sso0715ManagerImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/dao/Sso0715Dao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/dao/Sso0715DaoImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/controller/Sso0715Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/Sso0715/i18n/export_to_js.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/Sso0715/pluginProperties.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/Sso0715/pluginCfg.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/Sso0715/spring/spring-Sso0715-controller.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/manager/Sso0715Manager.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/Sso0715PluginInitializer.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/manager/Sso0715ManagerImpl.java" />
-        <option value="$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/controller/Sso0715Controller.java" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="31" />
-    <option name="y" value="44" />
-    <option name="width" value="1536" />
-    <option name="height" value="1008" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Sso0715" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sso0715" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sso0715" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sso0715" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sso0715" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
-              <item name="plugin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sso0715" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
-              <item name="plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sso0715" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
-              <item name="plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="i18n" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sso0715" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="seeyon" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="cfgHome" type="462c0819:PsiDirectoryNode" />
-              <item name="plugin" type="462c0819:PsiDirectoryNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="spring" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sso0715" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sso0715" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sso0715" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sso0715" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sso0715" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Sso0715" type="462c0819:PsiDirectoryNode" />
-              <item name="manager" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-    </panes>
-  </component>
+  <component name="ProjectId" id="1gfJ13WurEUuHZS5xjVRt2l3iTX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -226,6 +415,9 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.zeroturnaround.javarebel.idea.plugin.settings.AdvancedConfigurable" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -290,119 +482,26 @@
       <updated>1563256321217</updated>
       <workItem from="1563256325271" duration="536000" />
       <workItem from="1563257469298" duration="1052000" />
+      <workItem from="1598499496527" duration="20000" />
+      <workItem from="1601426259026" duration="96000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1588000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="31" y="44" width="1536" height="1008" extended-state="0" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3177507" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="JRebel" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="UI Designer" order="6" />
-      <window_info id="Mybatis Builder" order="7" side_tool="true" />
-      <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info id="Jspresso Snap" order="9" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="FindBugs-IDEA" order="7" />
-      <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Java Enterprise" order="12" />
-      <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info anchor="bottom" id="Version Control" order="14" />
-      <window_info anchor="bottom" id="JRebel Console" order="15" side_tool="true" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="BPMNPalette" order="6" />
-      <window_info anchor="right" id="Remote Host" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="right" id="Palette&#9;" order="9" />
-      <window_info anchor="right" id="Theme Preview" order="10" />
-      <window_info anchor="right" id="RestServices" order="11" />
-      <window_info anchor="right" id="Bean Validation" order="12" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/Sso0715PluginInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/manager/Sso0715Manager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/manager/Sso0715ManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/dao/Sso0715DaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/controller/Sso0715Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/Sso0715/i18n/export_to_js.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/Sso0715/pluginProperties.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/Sso0715/pluginCfg.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/plugin/Sso0715/spring/spring-Sso0715-controller.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/seeyon/apps/ext/Sso0715/dao/Sso0715Dao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="masterDetails">
     <states>

@@ -52,7 +52,7 @@ public class HtmlToPDFUtils {
         InputStream simsunAsStream = null;
         if (able) {
             wkhtmltoxAsStream = Platform.isLinux() ? HtmlToPDFUtils.class.getResourceAsStream("/wkhtmltox") : HtmlToPDFUtils.class.getResourceAsStream("/wkhtmltopdf.exe");
-            simsunAsStream = HtmlToPDFUtils.class.getResourceAsStream("/NotoSansCJKsc-Regular.otf");
+            simsunAsStream = HtmlToPDFUtils.class.getResourceAsStream("/simfang.ttf");
         }
         if (null == wkhtmltoxAsStream || simsunAsStream == null) {
             logger.error("{},load wkhtmltoxAsStream :{},load simsunAsStream:{}", ++initc, null == wkhtmltoxAsStream, simsunAsStream == null);
@@ -61,7 +61,7 @@ public class HtmlToPDFUtils {
         logger.info("{},load wktool and font source ,result:{}", ++initc, able);
 
         if (able) {
-            File font = new File(simsunFontDir, "NotoSansCJKsc-Regular.otf");
+            File font = new File(simsunFontDir, "simfang.ttf");
             File wk = new File(wkHomeDir, Platform.isLinux() ? "wkhtmltox" : "wkhtmltopdf.exe");
 
             try {

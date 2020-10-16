@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+	<class name="com.seeyon.v3x.bulletin.domain.EhSendRange" table="eh_send_range">
+		<id name="id" column="id" type="long" length="20">
+			<generator class="assigned" />
+		</id>
+		<property name="moduleId" column="module_id" type="long"  />
+		<property name="memberId" column="member_id" type="long"  />
+		<property name="rangeId" column="range_id" type="string"  />
+		<property name="rangeName" column="range_name" type="string"  />
+		<property name="spare1" column="spare1" type="string"  />
+		<property name="spare2" column="spare2" type="string"  />
+		<property name="spare3" column="spare3" type="string"  />
+		<property name="spare4" column="spare4" type="string"  />
+		<property name="spare5" column="spare5" type="string"  />
+		<property name="spare6" column="spare6" type="string"  />
+	</class>
+</hibernate-mapping>

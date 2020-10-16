@@ -81,11 +81,7 @@ public class HttpApiService {
     /**
      * 带参数的post请求
      *
-     * @param url
-     * @param map
-     * @return
-     * @throws Exception
-     */
+     * @param url @param map @return @throws Exception */
     public String doPost(String url, Map<String, Object> map) throws Exception {
         // 声明httpPost请求
         HttpPost httpPost = new HttpPost(url);

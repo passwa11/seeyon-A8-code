@@ -65,7 +65,7 @@ public class downloadDetailController extends BaseController {
 //            byte[] b=new byte[1024];
             try {
 
-                response.setContentType("application/octet-stream;charset=UTF-8");
+                response.setContentType("application/octet-stream;charset=gb2312");
 //                response.setContentType("application/octet-stream;charset=gbk");
                 response.setHeader("Content-disposition", "attachment;filename=" + new String(filename.getBytes("gbk"), "iso8859-1")+".pdf");
                 fos = response.getOutputStream();

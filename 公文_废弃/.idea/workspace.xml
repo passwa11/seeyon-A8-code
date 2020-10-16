@@ -58,6 +58,9 @@
     <property name="settings.editor.selected.configurable" value="com.zeroturnaround.javarebel.idea.plugin.settings.AdvancedConfigurable" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/com/seeyon/v3x/edoc/controller/EdocController.java" />
   </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\s\A8-Test\公文\seeyon\WEB-INF\classes\com\seeyon\v3x\edoc\domain" />
@@ -172,6 +175,7 @@
       <workItem from="1577060668388" duration="3085000" />
       <workItem from="1577064777447" duration="58000" />
       <workItem from="1577065143986" duration="367000" />
+      <workItem from="1598495455796" duration="53000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1566893299814</created>

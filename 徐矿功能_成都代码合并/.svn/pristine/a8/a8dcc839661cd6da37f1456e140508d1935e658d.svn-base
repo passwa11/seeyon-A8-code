@@ -1,7 +1,0 @@
-appLog.action.3001        = {0}  created task "{1}"
-appLog.action.3002        = {0}  modified task "{1}"
-appLog.action.3003        = {0}  deleted task "{1}"
-appLog.actionType.3001    = Create Task
-appLog.actionType.3002    = Modify Task
-appLog.actionType.3003    = Delete Task
-appLog.moduleName.3000    = Work Task

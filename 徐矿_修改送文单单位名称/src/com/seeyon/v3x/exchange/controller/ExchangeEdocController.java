@@ -3,6 +3,7 @@ package com.seeyon.v3x.exchange.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -11,6 +12,8 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,14 +22,22 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.seeyon.apps.agent.bo.AgentModel;
 import com.seeyon.apps.agent.bo.MemberAgentBean;
+import com.seeyon.apps.cip.api.message.ThirdpartyMessageApi;
+import com.seeyon.apps.cip.constants.CIPErrorMessage;
+import com.seeyon.apps.cip.messageandpending.vo.MessageReceiveVo;
 import com.seeyon.apps.collaboration.util.ColUtil;
 import com.seeyon.apps.edoc.enums.EdocEnum;
 import com.seeyon.apps.sursenexchange.api.SursenExchangeApi;
+import com.seeyon.apps.xkjt.dao.XkjtDao;
+import com.seeyon.apps.xkjt.manager.XkjtManager;
+import com.seeyon.apps.xkjt.po.XkjtLeaderDaiYue;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.ModuleType;
 import com.seeyon.ctp.common.appLog.AppLogAction;
@@ -57,15 +68,20 @@ import com.seeyon.ctp.common.usermessage.MessageContent;
 import com.seeyon.ctp.common.usermessage.MessageReceiver;
 import com.seeyon.ctp.common.usermessage.UserMessageManager;
 import com.seeyon.ctp.organization.OrgConstants.Role_NAME;
+import com.seeyon.ctp.organization.bo.OrgTypeIdBO;
 import com.seeyon.ctp.organization.bo.V3xOrgAccount;
 import com.seeyon.ctp.organization.bo.V3xOrgDepartment;
 import com.seeyon.ctp.organization.bo.V3xOrgEntity;
 import com.seeyon.ctp.organization.bo.V3xOrgMember;
+import com.seeyon.ctp.organization.bo.V3xOrgPost;
+import com.seeyon.ctp.organization.bo.V3xOrgTeam;
 import com.seeyon.ctp.organization.manager.OrgManager;
+import com.seeyon.ctp.util.DBAgent;
 import com.seeyon.ctp.util.DateUtil;
 import com.seeyon.ctp.util.Strings;
 import com.seeyon.ctp.util.UUIDLong;
 import com.seeyon.ctp.util.annotation.CheckRoleAccess;
+import com.seeyon.ctp.util.json.JSONUtil;
 import com.seeyon.v3x.common.exceptions.MessageException;
 import com.seeyon.v3x.common.taglibs.functions.Functions;
 import com.seeyon.v3x.common.web.login.CurrentUser;
@@ -725,6 +741,7 @@ public class ExchangeEdocController extends BaseController {
         PrintWriter out = response.getWriter();
         User user = AppContext.getCurrentUser();
         String reSend = request.getParameter("reSend");
+        Long reRecordId = UUIDLong.longUUID();
         String[] exchangeModeValues = request.getParameterValues("exchangeMode");
         String internalExchange = "";
         String sursenExchange = "";
@@ -814,25 +831,234 @@ public class ExchangeEdocController extends BaseController {
         if (null != modelType && !"".equals(modelType) && "toSend".equals(modelType)) {
 
             //公文交换时候,发送公文,给发送的detail表插入数据,同时给待签收表插入数据
-            //String sendUserId = request.getParameter("sendUserId");
-            //String sender = request.getParameter("sender");
+            String sendUserId = request.getParameter("sendUserId");
+            String sender = request.getParameter("sender");
             //读取发送时重新选择的发送单位
             String typeAndIds = request.getParameter("grantedDepartId");
             String sendedNames = request.getParameter("depart");
 
-            // 开始：周 2019-06-17 修改发文单位
+            // 开始：zhou 2019-06-17 修改发文单位
             String sendUnit = request.getParameter("sendUnit");
             String sendUnitId = request.getParameter("sendUnitId");
             String summaryId = request.getParameter("summaryId");
 
-            EdocSummary edocSummaryZ = edocManager.getEdocSummaryById(Long.parseLong(summaryId),true);
+            EdocSummary edocSummaryZ = edocManager.getEdocSummaryById(Long.parseLong(summaryId), true);
             edocSummaryZ.setSendUnit(sendUnit);
             edocSummaryZ.setSendUnitId(sendUnitId);
             edocManager.update(edocSummaryZ);
             //结束
 
             EdocSendRecord record = edocExchangeManager.getSendRecordById(Long.valueOf(id));
+            try {
+                //客开：徐矿集团【封发时给领导传阅一份】 chenqiang 2019年4月4日  start
+                String parameter = request.getParameter("grantedDepartId");
+                EdocSummary xkjtSummary = edocManager.getEdocSummaryById(record.getEdocId(), false);
+                //update 送文单中删掉人员后不生效问题   chenqiang 20200713 start
+                //String sendToId = xkjtSummary.getSendToId();
+                //update 送文单中删掉人员后不生效问题   chenqiang 20200713 end
+                String copyToId = xkjtSummary.getCopyToId();
+                Set<Long> people = new HashSet<Long>();//去掉重复人员
+                /**项目：徐矿集团 【在公文发文单中的送往单位中增加可选择人员】 作者：jiangchenxi 时间：2019年5月27日 start*/
+                //update 送文单中删掉人员后不生效问题   chenqiang 20200713 start
 
+                /*if(Strings.isNotBlank(sendToId)){
+                	sendToId = sendToId+","+typeAndIds;
+                }else {
+                	sendToId = typeAndIds;
+				}*/
+                //update 送文单中删掉人员后不生效问题   chenqiang 20200713 end
+                /**项目：徐矿集团 【在公文发文单中的送往单位中增加可选择人员】 作者：jiangchenxi 时间：2019年5月27日 end*/
+                logger.info("chenq-------判断主送中是否有人员?");
+                //update 送文单中删掉人员后不生效问题   chenqiang 20200713 start
+                if (typeAndIds != null) {//有主送时
+
+                    String[] sendToIdArr = typeAndIds.split(",");
+                    //update 送文单中删掉人员后不生效问题   chenqiang 20200713 start
+                    for (int i = 0; i < sendToIdArr.length; i++) {
+                        String sendTo = sendToIdArr[i];
+                        String[] typeAndId = sendTo.split("\\|");
+                        String type = typeAndId[0];
+                        if ("Member".equals(type)) {
+                            logger.info("chenq-------有");
+                            people.add(Long.valueOf(typeAndId[1]));
+
+                        }
+
+                        // best 抄送和主送支持选择组 start
+                        if ("Team".equals(type)) {
+                            V3xOrgTeam team = orgManager.getTeamById(Long.valueOf(typeAndId[1]));
+                            if (team != null) {
+                                List<OrgTypeIdBO> members = team.getAllMembers();
+                                if (members != null) {
+                                    for (OrgTypeIdBO each : members) {
+                                        String eachId = each.getId();
+                                        if (each.getType().equals("Member")) {
+                                            people.add(Long.valueOf(eachId));
+                                        } else if (each.getType().equals("Post")) {
+                                            List<V3xOrgMember> postMembers = orgManager.getMembersByPost(Long.valueOf(eachId));
+                                            if (postMembers != null) {
+                                                for (V3xOrgMember member : postMembers) {
+                                                    people.add(member.getId());
+                                                }
+                                            }
+                                        } else if (each.getType().equals("Level")) {
+                                            List<V3xOrgMember> membersByLevel = orgManager.getMembersByLevel(Long.valueOf(eachId));
+                                            if (membersByLevel != null) {
+                                                for (V3xOrgMember member : membersByLevel) {
+                                                    people.add(member.getId());
+                                                }
+                                            }
+                                        } else if (each.getType().equals("Department")) {
+                                            List<V3xOrgMember> membersByDepartment = orgManager.getMembersByDepartment(Long.valueOf(eachId), true);
+                                            if (membersByDepartment != null) {
+                                                for (V3xOrgMember member : membersByDepartment) {
+                                                    people.add(member.getId());
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        // best 抄送和主送支持选择组 end
+
+                    }
+                }
+                logger.info("chenq-------判断抄送中是否有人员?");
+                //update 客开：徐矿集团【送文单去掉人员后还是发送数据】 chenqiang 20200714 start
+/*                if(copyToId!=null){
+
+                	String[] copyToIdArr = copyToId.split(",");
+                    for (int i = 0; i < copyToIdArr.length; i++) {
+						String copyTo = copyToIdArr[i];
+						String[] typeAndId = copyTo.split("\\|");
+						String type = typeAndId[0];
+						if("Member".equals(type)){
+							logger.info("chenq-------有");
+							people.add(Long.valueOf(typeAndId[1]));
+						}
+
+						// best 抄送和主送支持选择组 start
+						if ("Team".equals(type)) {
+							V3xOrgTeam team = orgManager.getTeamById(Long.valueOf(typeAndId[1]));
+							if (team != null) {
+								List<OrgTypeIdBO> members = team.getAllMembers();
+								if (members != null) {
+									for (OrgTypeIdBO each : members){
+										String eachId = each.getId();
+										if (each.getType().equals("Member")) {
+											people.add(Long.valueOf(eachId));
+										} else if (each.getType().equals("Post")) {
+											List<V3xOrgMember> postMembers = orgManager.getMembersByPost(Long.valueOf(eachId));
+											if (postMembers != null) {
+												for (V3xOrgMember member : postMembers) {
+													people.add(member.getId());
+												}
+											}
+										} else if (each.getType().equals("Level")) {
+											List<V3xOrgMember> membersByLevel = orgManager.getMembersByLevel(Long.valueOf(eachId));
+											if (membersByLevel != null) {
+												for (V3xOrgMember member : membersByLevel) {
+													people.add(member.getId());
+												}
+											}
+										} else if (each.getType().equals("Department")) {
+											List<V3xOrgMember> membersByDepartment = orgManager.getMembersByDepartment(Long.valueOf(eachId), false);
+											if (membersByDepartment != null) {
+												for (V3xOrgMember member : membersByDepartment) {
+													people.add(member.getId());
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						// best 抄送和主送支持选择组 end
+
+					}
+                }*/
+                //update 客开：徐矿集团【送文单去掉人员后还是发送数据】 chenqiang 20200714 end
+                XkjtDao xkjtDao = (XkjtDao) AppContext.getBean("xkjtDao");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                logger.info("chenq-------人员个数：" + people.size());
+                List<MessageReceiver> receivers = new ArrayList<MessageReceiver>();
+                Long summaryId = xkjtSummary.getId();
+                CtpAffair affair = null;
+                if (summaryId != null) {
+                    affair = affairManager.getSenderAffair(summaryId);
+                    if (affair == null) {
+                        // 获得从已发删除的affair
+                        DetachedCriteria criteria = DetachedCriteria.forClass(CtpAffair.class)
+                                .add(Restrictions.eq("objectId", summaryId)).add(Restrictions.eq("delete", true))
+                                .add(Restrictions.in("state",
+                                        new Object[]{StateEnum.col_sent.key(), StateEnum.col_waitSend.key()}));
+                        List<CtpAffair> list = DBAgent.findByCriteria(criteria);
+
+                        if (Strings.isNotEmpty(list)) {
+                            affair = list.get(0);
+                        } else {
+                            // 在文档中心打开部门归档的公文，由于部门归档doc_resource表的source_id是affairId，所以这里传的summaryId实际是affairId
+                            affair = affairManager.get(summaryId);
+                        }
+                    }
+                }
+//                List<MessageReceiveVo> msgs = new ArrayList<MessageReceiveVo>();
+                for (Long xkjtId : people) {
+                    XkjtLeaderDaiYue xkjtLeaderDaiYue = new XkjtLeaderDaiYue();
+                    xkjtLeaderDaiYue.setIdIfNew();
+                    V3xOrgMember memeber = orgManager.getMemberById(xkjtId);
+                    xkjtLeaderDaiYue.setLeaderId(xkjtId);
+                    xkjtLeaderDaiYue.setLeaderName(memeber.getName());
+                    xkjtLeaderDaiYue.setStatus(11);
+                    xkjtLeaderDaiYue.setTitle(xkjtSummary.getSubject());
+                    xkjtLeaderDaiYue.setSendDate(xkjtSummary.getCreateTime());
+                    xkjtLeaderDaiYue.setSenderName(xkjtSummary.getCreatePerson());
+                    xkjtLeaderDaiYue.setEdocType(0);
+                    if ("true".equals(reSend)) {
+                        xkjtLeaderDaiYue.setSendRecordId(reRecordId);
+                    } else {
+                        xkjtLeaderDaiYue.setSendRecordId(record.getId());
+                    }
+                    xkjtLeaderDaiYue.setEdocId(xkjtSummary.getId());
+                    xkjtDao.saveXkjtLeaderDaiYue(xkjtLeaderDaiYue);
+					/*try {
+						MessageReceiveVo vo = new MessageReceiveVo();
+						vo.setThirdpartyRegisterCode("3001");
+						vo.setThirdpartyMessageId(UUIDLong.longUUID() + "");
+						vo.setThirdpartySenderId(user.getId() + "");
+						vo.setThirdpartyReceiverId(xkjtId + "");
+						vo.setNoneBindingSender(user.getLoginName());
+						vo.setNoneBindingReceiver(orgManager.getMemberById(xkjtId).getLoginName());
+						vo.setCreation_date(new Date());
+						// H5地址
+						vo.setMessageH5URL("http://readedoc.v5.cmp/v/html/readEdocSummary.html?cmp_orientation=auto&edocId=" + xkjtSummary.getId() + "&readId=" + xkjtLeaderDaiYue.getId());
+						// PC地址
+						vo.setMessageURL("/ext/xkEdoc.do?method=xkViewEdoc&summaryId=" + xkjtSummary.getId() + "&id=" + xkjtLeaderDaiYue.getId());
+						// 消息内容
+						vo.setMessageContent(user.getName() + "发送《" + xkjtSummary.getSubject() + "》给您，请查阅！");
+						msgs.add(vo);
+					} catch (Exception e) {
+						logger.error("创建消息对象发生异常：id = " + xkjtLeaderDaiYue.getId(), e);
+					}*/
+                    MessageReceiver r = new MessageReceiver(affair.getId(), xkjtId, null, xkjtSummary.getId(), xkjtLeaderDaiYue.getId());
+                    receivers.add(r);
+                    // 发送消息
+					/*if (msgs.size() > 0) {
+						ThirdpartyMessageApi thirdpartyMessageApi = (ThirdpartyMessageApi)AppContext.getBean("thirdpartyMessageApi");
+						CIPErrorMessage error = thirdpartyMessageApi.receiveListMessage("3001", msgs);
+						if (!error.isSuccess()) {
+							logger.info("日志提醒消息发送失败:" + JSONUtil.toJSONString(error.getErrorMsgs()));
+						}
+					}*/
+                }
+                MessageContent content = new MessageContent(user.getName() + "发送《" + xkjtSummary.getSubject() + "》给您，请到待阅模块查阅！");
+                userMessageManager.sendSystemMessage(content, ApplicationCategoryEnum.edocSend, user.getId(), receivers, EdocMessageFilterParamEnum.exchange.key);
+
+                //客开：徐矿集团【封发时给领导传阅一份】 chenqiang 2019年4月4日  start
+            } catch (Exception e) {
+                logger.error("封发时给领导传阅一份异常", e);
+            }
             /**
              * 1. 补发的数据不做验证
              * 2. 待发的数据，如果发文被取消，不让发送成功
@@ -873,7 +1099,8 @@ public class ExchangeEdocController extends BaseController {
                 if ("true".equals(reSend)) {
                     isResend = true;
                     EdocSendRecord reRecord = new EdocSendRecord();
-                    reRecord.setIdIfNew();
+                    //reRecord.setIdIfNew();
+                    reRecord.setId(reRecordId);
                     reRecord.setContentNo(record.getContentNo());
                     reRecord.setCopies(record.getCopies());
                     reRecord.setCreateTime(new Timestamp(new Date().getTime()));
@@ -1624,7 +1851,7 @@ public class ExchangeEdocController extends BaseController {
             url = "message.link.exchange.register.govpending";
             /**
              * G6点登记消息，转到登记页面地址
-             * http://localhost:8088/seeyon/edocController.do?method=newEdocRegister&comm=create&edocType=1&registerType=1
+             * http://localhost:8088/seeyon/edocController.do?method=newEdocRegister&comm=create&edocType=1®isterType=1
              * &recieveId=179946784204145713&edocId=6526010927409218030&sendUnitId=8958087796226541112&listType=registerPending
              */
 
@@ -1641,8 +1868,8 @@ public class ExchangeEdocController extends BaseController {
         } else {
             /**
              * A8点登记消息，转到收文新建页面地址
-             * /edocController.do?method=entryManager&amp;entry=recManager&amp;listType=newEdoc&amp;comm=register&amp;
-             * edocType={0}&amp;recieveId={1}&amp;edocId={2}
+             * /edocController.do?method=entryManager&entry=recManager&listType=newEdoc&comm=register&
+             * edocType={0}&recieveId={1}&edocId={2}
              *
              */
             messageParam.add(String.valueOf(EdocEnum.edocType.recEdoc.ordinal()));
@@ -1830,19 +2057,29 @@ public class ExchangeEdocController extends BaseController {
         String affairId = request.getParameter("affairId");
         affairId = Functions.toHTML(affairId);
         User user = AppContext.getCurrentUser();
-
-        if (!isExchangeEdoc(modelType, id)) {
+        //客开：徐矿集团【撤销后消息点开异常处理】 chenqiang 20190412 start
+        try {
+            if (!isExchangeEdoc(modelType, id)) {
+                StringBuffer jsBuffer = new StringBuffer();
+                String hasNoRoleAlert = ResourceUtil.getString("exchange.notRole");//您没有公文交换的权限
+                jsBuffer.append("if(parent.doEndSign_exchange){");
+                jsBuffer.append("    parent.doEndSign_exchange('" + hasNoRoleAlert + "','" + affairId + "');");
+                jsBuffer.append("}else{");
+                jsBuffer.append("    alert('" + hasNoRoleAlert + "');");
+                jsBuffer.append("    window.close();");
+                jsBuffer.append("}");
+                super.rendJavaScript(response, jsBuffer.toString());
+                return null;
+            }
+        } catch (Exception e) {
             StringBuffer jsBuffer = new StringBuffer();
-            String hasNoRoleAlert = ResourceUtil.getString("exchange.notRole");//您没有公文交换的权限
-            jsBuffer.append("if(parent.doEndSign_exchange){");
-            jsBuffer.append("    parent.doEndSign_exchange('" + hasNoRoleAlert + "','" + affairId + "');");
-            jsBuffer.append("}else{");
-            jsBuffer.append("    alert('" + hasNoRoleAlert + "');");
-            jsBuffer.append("    window.close();");
-            jsBuffer.append("}");
+            String hasNoRoleAlert = "该公文已被撤销";//您没有公文交换的权限
+
+            jsBuffer.append("alert('" + hasNoRoleAlert + "');");
+            jsBuffer.append("window.close();");
             super.rendJavaScript(response, jsBuffer.toString());
-            return null;
         }
+        //客开：徐矿集团【撤销后消息点开异常处理】 chenqiang 20190412 end
 
 
         /***********************发文已分发*********************/
@@ -1850,7 +2087,7 @@ public class ExchangeEdocController extends BaseController {
             mav = new ModelAndView("exchange/edoc/edoc_list_modify_send");
             EdocSendRecord bean = edocExchangeManager.getSendRecordById(Long.valueOf(id));
             List<EdocSendDetail> sendDetailList = sendEdocManager.getDetailBySendId(bean.getId());
-            bean.setSendDetailList(sendDetailList);
+
 
             String exName = "";
             int exType = bean.getExchangeType();
@@ -1874,6 +2111,74 @@ public class ExchangeEdocController extends BaseController {
             bean.setExchangeOrgName(exName);
 
             summary = edocSummaryManager.findById(bean.getEdocId());
+            //客开：徐矿集团【显示领导阅读状态】 chenqiang 2019年4月4日  start
+            XkjtManager xkjtManager = (XkjtManager) AppContext.getBean("xkjtManager");
+
+            List<XkjtLeaderDaiYue> xkjtLeaderDaiYues = xkjtManager.findXkjtLeaderDaiYueByEdocIdAndSendId(bean.getId(), summary.getId());
+            if (xkjtLeaderDaiYues.size() > 0) {
+                for (XkjtLeaderDaiYue xkjtLeaderDaiYue : xkjtLeaderDaiYues) {
+                    EdocSendDetail edocSendDetail = new EdocSendDetail();
+                    edocSendDetail.setId(xkjtLeaderDaiYue.getId());
+                    edocSendDetail.setSendRecordId(xkjtLeaderDaiYue.getSendRecordId());
+                    edocSendDetail.setRecOrgName(xkjtLeaderDaiYue.getLeaderName());
+                    edocSendDetail.setStatus(xkjtLeaderDaiYue.getStatus());
+                    edocSendDetail.setLeaderId(xkjtLeaderDaiYue.getLeaderId());
+                    edocSendDetail.setDaiyueId(xkjtLeaderDaiYue.getId());
+                    edocSendDetail.setRecTime(xkjtLeaderDaiYue.getSignForDate());
+                    sendDetailList.add(edocSendDetail);
+                }
+            }
+            /** 项目：徐州矿物集团【因（已签收，未签收）和（已阅，待阅）是通过两个dao层查询出来，所以是2个list拼接起来的，需要用Collections进行排序】 作者：wxt.xiangrui 时间：2019-6-4 start */
+            //排序规则为按签收时间降序，null值排后面
+            Collections.sort(sendDetailList, new Comparator<EdocSendDetail>() {
+                @Override
+                public int compare(EdocSendDetail before, EdocSendDetail after) {
+                    if (before.getRecTime() == after.getRecTime()) {
+                        return 0;
+                    }
+                    if (before.getRecTime() == null) {
+                        return 1;
+                    }
+                    if (before.getRecTime() == null && after.getRecTime() == null) {
+                        return 0;
+                    }
+                    if (after.getRecTime() == null) {
+                        return -1;
+                    }
+                    if (before.getRecTime() != null && after.getRecTime() != null) {
+                        if (before.getRecTime().before(after.getRecTime())) {
+                            return 1;
+                        } else if (before.getRecTime().after(after.getRecTime())) {
+                            return -1;
+                        } else {
+                            return 0;
+                        }
+                    }
+                    return -1;
+                }
+            });
+            /** 项目：徐州矿物集团【因（已签收，未签收）和（已阅，待阅）是通过两个dao层查询出来，所以是2个list拼接起来的，需要用Collections进行排序】 作者：wxt.xiangrui 时间：2019-6-4 end */
+
+            bean.setSendDetailList(sendDetailList);
+            //客开：徐矿集团【显示领导阅读状态】 chenqiang 2019年4月4日  end
+
+            //客开：徐矿集团【已接收和待接收数量】 chenqiang 2019年4月2日  start
+
+            bean.setXkjtSign(0);
+            bean.setXkjtPresign(0);
+            for (EdocSendDetail edocSendDetail : sendDetailList) {
+                int status = edocSendDetail.getStatus();
+                if (status == 1 || status == 12) {//已阅和已签收
+                    int count = bean.getXkjtSign();
+                    count++;
+                    bean.setXkjtSign(count);
+                } else {
+                    int count = bean.getXkjtPresign();
+                    count++;
+                    bean.setXkjtPresign(count);
+                }
+            }
+            //客开：徐矿集团【已接收和待接收数量】 chenqiang 2019年4月2日  end
             mav.addObject("summary", summary);
             mav.addObject("elements", bean.getSendedTypeIds());
             mav.addObject("sendEntityName", bean.getSendEntityNames());
@@ -1902,6 +2207,8 @@ public class ExchangeEdocController extends BaseController {
             }
             // 如果份数等于0，显示为空
             String copies = bean.getCopies() == null ? "" : String.valueOf(bean.getCopies());
+            List<EdocSendDetail> edocSendDetail2 = bean.getSendDetailList();
+
 
             mav.addObject("bean", bean);
             mav.addObject("copies", copies);
@@ -2040,7 +2347,6 @@ public class ExchangeEdocController extends BaseController {
         } else if (null != modelType && !"".equals(modelType) && "received".equals(modelType)) {
             mav = new ModelAndView("exchange/edoc/edoc_list_modify_receive");
             EdocRecieveRecord bean = edocExchangeManager.getReceivedRecord(Long.valueOf(id));
-            summary = edocSummaryManager.findById(bean.getEdocId());
             /*********puyc 关联发文 * 收文的Id,收文的Type*********/
             String relSends = "haveNot";
 //	        List<EdocSummary> newEdocList = this.edocSummaryRelationManager.findNewEdoc(bean.getEdocId(), user.getId(), 1);
@@ -3404,21 +3710,28 @@ public class ExchangeEdocController extends BaseController {
             } else if (detail.getStatus() == EdocSendDetail.Exchange_iStatus_SendDetail_Recieved) {//已签收
                 alertNote = ResourceUtil.getString("exchange.receiveRecord.receive.already");
             }
-            if (Strings.isNotBlank(alertNote)) {
-                StringBuffer jsBuffer = new StringBuffer();
-                jsBuffer.append("	var currentWindow = window;");
-                if (isDialogArguments) {
-                    jsBuffer.append("if(window.dialogArguments) {");
-                    jsBuffer.append("	currentWindow = window.dialogArguments;");
-                    jsBuffer.append("	alert('" + alertNote + "');");
-                    jsBuffer.append("	window.close();");
-                    jsBuffer.append("}");
+            /*客开：徐矿集团【撤销已签收的公文】 chenqiang 20190411 start*/
+            if (detail != null) {
+                if (Strings.isNotBlank(alertNote) && detail.getStatus() != EdocSendDetail.Exchange_iStatus_SendDetail_Recieved) {
+                    StringBuffer jsBuffer = new StringBuffer();
+                    jsBuffer.append("	var currentWindow = window;");
+                    if (isDialogArguments) {
+                        jsBuffer.append("if(window.dialogArguments) {");
+                        jsBuffer.append("	currentWindow = window.dialogArguments;");
+                        jsBuffer.append("	alert('" + alertNote + "');");
+                        jsBuffer.append("	window.close();");
+                        jsBuffer.append("}");
+                    }
+                    jsBuffer.append("	var url = currentWindow.location.href;");
+                    jsBuffer.append("	currentWindow.location.href = url;");
+                    super.rendJavaScript(response, jsBuffer.toString());
+                    return false;
                 }
-                jsBuffer.append("	var url = currentWindow.location.href;");
-                jsBuffer.append("	currentWindow.location.href = url;");
-                super.rendJavaScript(response, jsBuffer.toString());
-                return false;
+            } else {
+                return true;
             }
+
+            /*客开：徐矿集团【撤销已签收的公文】 chenqiang 20190411 end*/
         } catch (Exception e) {
             return false;
         }
