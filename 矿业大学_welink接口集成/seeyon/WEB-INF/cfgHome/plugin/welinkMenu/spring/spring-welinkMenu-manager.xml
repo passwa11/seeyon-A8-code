@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-autowire="byName" default-lazy-init="false" default-dependency-check="none">
+    <bean id="welinkMenuManager" class="com.seeyon.apps.ext.welinkMenu.manager.welinkMenuManagerImpl"
+          lazy-init="default" autowire="default" dependency-check="default">
+    </bean>
+
+</beans>

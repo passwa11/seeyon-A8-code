@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+<link href="http://cmp/v/css/cmp.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/cmp-meeting.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/m3_meeting.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="http://cmp/v/css/cmp-att.css">
+<link rel="stylesheet" href="http://cmp/v/css/cmp-audio.css">
+<link rel="stylesheet" href="http://cmp/v/css/cmp-listView.css">
+  	<title></title>
+<style>
+.cmp-switch:before {
+	line-height: 26px;
+	top: 0px;
+}
+
+.cmp-popover .cmp-table-view .cmp-table-view-cell {
+	padding-left: 15px;
+}
+</style>
+</head>
+<body onresize="calHeight()">
+<div id="mainBodyArea" class="cmp-content cmp-col-content text_body cmp-content-none">
+	<div id="comment_div" class="replay_opinion_content col">
+	    <div class="information wh100">
+	        <textarea id="content" rows="5"></textarea>
+	    </div>
+   	</div>
+</div>
+
+<div id="opinionArea" class="cmp-popover" style="z-index: 99">
+	<div class="cmp-popover-arrow"></div>
+	<ul class="cmp-table-view">
+        <li class="cmp-table-view-cell"><span><i18n key="meeting.page.action.hideComments"></i18n></span>
+           	<div code="hiddencomment" id="id_hiddencomment" class="cmp-switch" cmp-data="hiddencomment">
+               	<div class="cmp-switch-handle"></div>
+           	</div>
+        </li>
+        <li class="cmp-table-view-cell"><span><i18n key="meeting.page.action.hideToCreator"></i18n></span>
+           	<div code="hidden2creator" id="id_hidden2creator" class="cmp-switch cmp-disabled" cmp-data="hidden2creator">
+               	<div class="cmp-switch-handle"></div>
+           	</div>
+        </li>
+        <li class="cmp-table-view-cell"><span><i18n key="meeting.page.action.sendMsg"></i18n></span>
+           	<div code="sendMsg" class="cmp-switch cmp-active" cmp-data="sendMsg">
+               	<div class="cmp-switch-handle"></div>
+           	</div>
+        </li>
+    </ul>
+</div>
+
+<!-- 附件容器 -->
+<div class="number">
+    <a id="attchmentFile" class="cmp-icon iconfont see-icon-accessory none-attach" style=" float: right;line-height: 40px; margin-right: 10px; ">
+      <span id="attCount" class="count_num none-attach"></span>
+    </a> 
+    <h5 id="fontCount">500</h5>
+</div>
+
+<footer class="cmp-bar cmp-bar-footer single_btn back_white">
+    <div class="wh100 border_t relative">
+	    <div class="footer-style">
+		    <a href="#opinionArea" class="cmp-pull-left left-btn">
+		        <span class="see-icon-more"></span>
+		    </a>
+		</div>
+        <div class="btn_wrap">
+            <button id="sendBtn"><i18n key="meeting.page.action.send"></i18n></button> 
+        </div>
+    </div>
+</footer>
+
+<div id="picture"></div>
+<script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>  
+<script src="http://cmp/v/js/cmp-i18n.js"></script>
+<script  src="http://cmp/v/js/cmp.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meeting-jssdk.js" type="text/javascript"></script>
+<script  src="http://commons.v5.cmp/v/m3-jssdk.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meetingCommon.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/i18n/MeetingResources_zh_CN.js" type="text/javascript"></script>
+<script src="http://cmp/v/js/cmp-att.js"></script>
+<script src="http://cmp/v/js/cmp-audio.js"></script>
+<script src="http://cmp/v/js/cmp-imgCache.js"></script>
+<script src="http://cmp/v/js/cmp-listView.js"></script>
+<script src="http://cmp/v/js/cmp-emoji.js"></script>
+<script type="text/javascript">
+    var _meetingPath = "http://meeting.v5.cmp/v1.0.0";
+  var _collPath = "http://collaboration.v5.cmp/v1.0.0";
+</script><script src="http://meeting.v5.cmp/v1.0.0/js/meetingComment.js"></script>
+<!--附件-->
+<script src="http://commons.v5.cmp/v/widget/SeeyonAttachment.s3js"></script>
+
+</body>
+
+</html>

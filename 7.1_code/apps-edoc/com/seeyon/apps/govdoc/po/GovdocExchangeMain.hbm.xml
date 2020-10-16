@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-11-13 16:41:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.seeyon.apps.govdoc.po">
+    <class name="GovdocExchangeMain" table="govdoc_exchange_main" >
+        <id name="id" type="long">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="subject" type="string">
+            <column name="SUBJECT">
+            </column>
+        </property>
+        <property name="createTime" type="timestamp">
+            <column name="CREATE_TIME" length="19" not-null="true">
+            </column>
+        </property>
+        <property name="startUserId" type="java.lang.Long">
+            <column name="START_USER_ID">
+            </column>
+        </property>
+        <property name="startTime" type="timestamp">
+            <column name="START_TIME" length="19">
+            </column>
+        </property>
+        <property name="createPerson" type="string">
+            <column name="CREATE_PERSON">
+            </column>
+        </property>
+        <property name="summaryId" type="java.lang.Long">
+            <column name="SUMMARY_ID"/>
+        </property>
+        <property name="affairId" type="java.lang.Long">
+            <column name="AFFAIR_ID"/>
+        </property>
+        <property name="type" type="integer">
+            <column name="exchange_type"/>
+        </property>
+        <property name="referenceId" type="java.lang.Long">
+        	<column name="REFERENCE_ID"></column>
+        </property>
+        <property name="ocipSysCode" type="string">
+        	<column name="ocip_sys_code"></column>
+        </property>
+        <property name="originalFileId" type="java.lang.Long">
+        	<column name="original_file_id"></column>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+    <link href="http://cmp/v/css/cmp.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/cmp-meeting.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/m3_meeting.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="http://cmp/v/css/cmp-listView.css">
+	<link rel="stylesheet" href="http://cmp/v/css/cmp-picker.css">
+	<link rel="stylesheet" href="http://cmp/v/css/cmp-search.css">
+	<title></title>
+	<style type="text/css">
+		.cmp-table-view:after{ height: 0px; }
+		.meet_palce:after{ height: 0px; }
+	</style>
+</head>
+<body  class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1">
+	<div class="cmp-segmented_title_content" id="searchHeader">
+	<form action="#" onsubmit="return false;">
+		<div class="cmp-content-title-search">
+			<div class="cmp-input-row see-icon-search cmp-search">
+				<input type="search" placeholder="" class="cmp-input-clear" disabled>
+				<span class="cmp-icon cmp-hidden cmp-icon-clear"></span>
+				<span class="cmp-placeholder" id="search">
+						<span class="cmp-icon cmp-icon-search"></span>
+						<span class="text-search"><i18n key="meeting.page.label.search"></i18n></span>
+					</span>
+			</div>
+		</div>
+	</form>
+</div>
+	<div id="reSearch" class="cmp-search-content cmp-header-search-position " style="display: none;">
+		<div class="cmp-segmented-control cmp-search-title " style="top:0px;">
+			<div class="cmp-search-item" style="width:12%;">
+		    	<span class="title" id="cmp_search_title" style="padding-right:0px;color:#666666!important"></span>
+	        </div>
+	        <div id="toSearch" class="cmp-search-item" style="width:72%;">
+	            <div id="searchText" class="item text cmp-active">
+	                <input id="searchTextValue" type="text" readonly="readonly">
+	            </div>
+	            <div id="searchDate" class="item date">
+	                <input id="searchDateBeg" class="cmp-search-date_btn" type="text" readonly="readonly" style="font-size: 14px">
+	                <span>-</span>
+	                <input id="searchDateEnd" class="cmp-search-date_btn" type="text" id="date_end" readonly="readonly" style="font-size: 14px">
+	            </div>
+	        </div>
+	        <div class="cmp-search-item">
+	            <span id="cancelSearch" class="gotoSearch"><i18n key="meeting.meetingRoomList.cancel"></i18n></span>
+	        </div>
+        </div>
+	</div>
+	<div id="dataCommonDiv" class="cmp-content back_white relative cmp-content-none">
+		<div class="cmp-control-content cmp-active">
+			<div id="pullrefresh" class="cmp-scroll-wrapper">
+				<div class="cmp-scroll">
+					<ul id="meetingSummaryList" class="cmp-table-view"></ul>					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+    <script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>  
+	<script src="http://cmp/v/js/cmp-i18n.js"></script>
+	<script  src="http://cmp/v/js/cmp.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meeting-jssdk.js" type="text/javascript"></script>
+<script  src="http://commons.v5.cmp/v/m3-jssdk.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meetingCommon.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/i18n/MeetingResources_zh_CN.js" type="text/javascript"></script>
+	<script type="text/javascript">
+       var _meetingPath = "http://meeting.v5.cmp/v1.0.0";
+       cmp.i18n.init("http://meeting.v5.cmp/v1.0.0/i18n/", "MeetingResources",function(){
+       		document.title = cmp.i18n("meeting.page.lable.summary");
+       });
+   </script>
+	<script src="http://cmp/v/js/cmp-imgCache.js"></script>
+	<script src="http://cmp/v/js/cmp-listView.js"></script>
+	<script src="http://cmp/v/js/cmp-webviewListener.js"></script>
+	<script src="http://cmp/v/js/cmp-picker.js"></script>
+	<script src="http://cmp/v/js/cmp-dtPicker.js"></script>
+	<script src="http://cmp/v/js/cmp-search.js"></script>
+	<script type="text/javascript">
+    var _meetingPath = "http://meeting.v5.cmp/v1.0.0";
+  var _collPath = "http://collaboration.v5.cmp/v1.0.0";
+</script>    <script src="http://meeting.v5.cmp/v1.0.0/js/meetingSummaryList.js"></script>
+    
+    <!-- js模版 -->
+	<script type="text/html" id="list_li_meetingSummary">
+		<% for(var i = 0,len = this.length;i < len; i++){ %>
+		<% var data = this[i]; %>
+			<li class="cmp-list-cell cmp-after-line">
+				<div class="meet_summary_list" >
+					<div class="detail_wrap" meetingId=<%=data.meetingId%> summaryId=<%=data.id%>>
+						<div class="meet_summary_title cmp-ellipsis-2">
+							<%=data.mtName%>
+						</div>
+						<div class="meet_summary_date">
+							<%=data.meetingTime%><% if(data.summaryAttCount>0){%><span class="outer m3-icon-attachment"></span><% }%>
+						</div>
+						<div class="meet_summary_user">
+							<span class="name" style="font-size: 14px;margin-right: 10px;">
+								<%=cmp.i18n("meeting.meetingList.sentName")%>:<%=data.createUserName%>(<%=data.createDateFormat%>)
+							</span>
+						</div>
+						<% if(data.meetingPlace != null && data.meetingPlace != ""){%>
+							<div class="meet_summary_palce cmp-ellipsis-2">
+								<span><%=cmp.i18n("meeting.meetingCreate.meetingPlace")%>:<%=data.meetingPlace%></span>
+							</div>
+						<% }%>
+					</div>
+				</div>
+			</li>
+		<% } %>
+	</script>
+</body>
+</html>

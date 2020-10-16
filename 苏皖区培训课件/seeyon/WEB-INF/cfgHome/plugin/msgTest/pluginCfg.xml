@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+	<id>msgTest</id>
+	<name>消息集成测试插件</name>
+	<category>20190510</category>
+</plugin>

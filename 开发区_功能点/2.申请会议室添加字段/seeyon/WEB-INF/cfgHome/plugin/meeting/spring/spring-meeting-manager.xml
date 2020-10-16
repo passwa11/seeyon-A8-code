@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+<!--    zhou-->
+    <bean id ="roomHistoryManager" class="com.seeyon.apps.meetingroom.manager.MeetingRoomHistoryManagerImpl"></bean>
+
+    <bean id="replyManager" class="com.seeyon.v3x.meeting.manager.MtReplyManagerImpl"/>
+    <bean id="mtMeetingManager" class="com.seeyon.v3x.meeting.manager.MtMeetingManagerImpl"/>
+
+    <bean id="meetingManager" class="com.seeyon.apps.meeting.manager.MeetingManagerImpl"/>
+    <bean id="meetingInitModuleSystemDataManager" class="com.seeyon.apps.meeting.manager.MeetingInitModuleSystemDataManagerImpl"/>
+    <bean id="meetingPluginChangeListener" class="com.seeyon.apps.meeting.listener.MeetingPluginChangeListener"/>
+    <bean id="meetingListManager" class="com.seeyon.apps.meeting.manager.MeetingListManagerImpl"/>
+    <bean id="meetingNewManager" class="com.seeyon.apps.meeting.manager.MeetingNewManagerImpl"/>
+    <bean id="meetingReplyManager" class="com.seeyon.apps.meeting.manager.MeetingReplyManagerImpl"/>
+    <bean id="meetingTemplateManager" class="com.seeyon.apps.meeting.manager.MeetingTemplateManagerImpl"/>
+    <bean id="meetingPeriodicityManager" class="com.seeyon.apps.meeting.manager.MeetingPeriodicityManagerImpl"/>
+    <bean id="meetingSummaryManager" class="com.seeyon.apps.meeting.manager.MeetingSummaryManagerImpl"/>
+    <bean id="meetingResourcesManager" class="com.seeyon.apps.meeting.manager.MeetingResourcesManagerImpl"/>
+    <bean id="publicResourceManager" class="com.seeyon.apps.meeting.manager.PublicResourceManagerImpl"/>
+    <bean id="meetingTypeManager" class="com.seeyon.apps.meeting.manager.MeetingTypeManagerImpl"/>
+    <bean id="meetingTypeRecordManager" class="com.seeyon.apps.meeting.manager.MeetingTypeRecordManagerImpl"/>
+    <bean id="meetingExtManager" class="com.seeyon.apps.meeting.manager.MeetingExtManagerImpl"/>
+    <bean id="meetingMessageManager" class="com.seeyon.apps.meeting.manager.MeetingMessageManagerImpl"/>
+    <bean id="meetingValidationManager" class="com.seeyon.apps.meeting.manager.MeetingValidationManagerImpl"/>
+    <bean id="meetingRoomManager" class="com.seeyon.apps.meetingroom.manager.MeetingRoomManagerImpl"/>
+    <bean id="meetingRoomListManager" class="com.seeyon.apps.meetingroom.manager.MeetingRoomListManagerImpl"/>
+    <bean id="meetingRoomAppManager" class="com.seeyon.apps.meetingroom.manager.MeetingRoomAppManagerImpl"/>
+    <bean id="meetingRoomPermManager" class="com.seeyon.apps.meetingroom.manager.MeetingRoomPermManagerImpl"/>
+    <bean id="meetingRoomRecordManager" class="com.seeyon.apps.meetingroom.manager.MeetingRoomRecordManagerImpl"/>
+    <bean id="confereesConflictManager" class="com.seeyon.apps.meeting.manager.ConfereesConflictManagerImpl"/>
+    <bean id="meetingOrganizationEventListener" class="com.seeyon.apps.meeting.listener.MeetingOrganizationEventListener"/>
+    <bean id="meetingApplicationHandler" class="com.seeyon.apps.meeting.manager.MeetingApplicationHandler" />
+    <bean id="meetingLockManager" class="com.seeyon.apps.common.manager.MeetingLockManagerImpl"/>
+    <bean id="meetingConfereeManager" class="com.seeyon.apps.meeting.manager.MeetingConfereeManagerImpl"/>
+
+    <bean id="meetingDataRepairTimeJob" class="com.seeyon.apps.meeting.quartz.MeetingDataRepairTimeJob"/>
+    <bean id="meetingSystemInitializer" class="com.seeyon.apps.meeting.quartz.MeetingSystemInitializer"/>
+    <bean id="meetingQuartzJobManager" class="com.seeyon.apps.meeting.quartz.MeetingQuartzJobManagerImpl"/>
+    <bean id="meetingTimeJob" class="com.seeyon.apps.meeting.quartz.MeetingTimeJob"/>
+
+    <bean id="meetingOuterManager" class="com.seeyon.apps.meeting.outer.MeetingOuterManagerImpl"/>
+    <bean id="meetingM3Manager" class="com.seeyon.apps.meeting.outer.MeetingM3ManagerImpl"/>
+    <bean id="meetingRoomM3Manager" class="com.seeyon.apps.meeting.outer.MeetingRoomM3ManagerImpl"/>
+    <bean id="meetingM1Manager" class="com.seeyon.apps.meeting.outer.MeetingM1ManagerImpl"/>
+    <bean id="meetingIndexImpl" class="com.seeyon.apps.meeting.outer.MeetingIndexImpl"/>
+    <bean id="meetingFilingEnableImpl" class="com.seeyon.apps.meeting.outer.MeetingFilingEnableImpl"/>
+
+    <bean id="meetingManager4ISearch" class="com.seeyon.apps.meeting.outer.MeetingManager4ISearch" init-method="init"/>
+
+    <bean id="meetingPortlet" class="com.seeyon.ctp.portal.portlet.MeetingPortlet"/>
+    <bean name="deskMeetingProcessManagerImpl"
+          class="com.seeyon.ctp.portal.portlet.manager.DeskMeetingProcessManagerImpl"/>
+    <bean id="meetingProjectPortletManager"
+          class="com.seeyon.ctp.portal.portlet.manager.MeetingProjectPortletManagerImpl"/>
+     <!-- 转协同处理 -->
+    <bean id="newCollDataMeetingHandler" class="com.seeyon.apps.meeting.manager.NewCollDataMeetingHandler"/>
+    <!-- 转公文处理 -->
+    <bean id="newGovdocDataMeetingSummaryHandler" class="com.seeyon.apps.meeting.manager.NewGovdocDataMeetingSummaryHandler"/>
+    <!-- 表单触发 -->
+    <bean name="/form/formTriggerCreateMeeting.do" class="com.seeyon.ctp.form.modules.trigger.createmeeting.FormTriggerCreateMeetingController" />
+    <bean id="formTriggerCreateMeetingDesign" class="com.seeyon.ctp.form.modules.trigger.createmeeting.FormTriggerCreateMeetingDesign"/>
+    <bean id="triggerCreateMeetingAction" class="com.seeyon.ctp.form.modules.trigger.createmeeting.FormTriggerCreateMeetingAction"/>
+    <!-- cap4表单触发 -->
+    <bean id="FormTriggerCreateMeeting4CAP4DesignManager" class="com.seeyon.ctp.form.modules.trigger.createmeeting.FormTriggerCreateMeeting4CAP4DesignManager"/>
+    <bean id="FormTriggerCreateMeeting4CAP4Action" class="com.seeyon.ctp.form.modules.trigger.createmeeting.FormTriggerCreateMeeting4CAP4Action"/>
+    <bean name="/cap4/formTriggerCreateMeeting4CAP4.do" class="com.seeyon.ctp.form.modules.trigger.createmeeting.FormTriggerCreateMeeting4CAP4Controller" />
+    <!--会议ajax接口-->
+    <bean id="meetingAjaxManager" class="com.seeyon.apps.meeting.manager.MeetingAjaxManagerImpl"/>
+    <!--会议地点编辑接口-->
+    <bean id="meetingSettingManager" class="com.seeyon.apps.meeting.manager.MeetingSettingManagerImpl"/>
+
+    <!--会议二维码相关接口-->
+    <bean id="meetingBarCodeManager" class="com.seeyon.apps.meeting.manager.MeetingBarCodeManagerImpl"/>
+
+    <bean id="meetingTableDataSource" class="com.seeyon.apps.meeting.report.MeetingTableDataSource"/>
+
+    <bean id="meetingReportCategory" class="com.seeyon.apps.meeting.report.MeetingReportCategory"/>
+
+    <bean id="meetingCustomEnumHandler" class="com.seeyon.apps.meeting.report.MeetingCustomEnumHandler"/>
+
+    <!--会议二维码生成接口-->
+    <bean id="meetingQrCodeDataManager" class="com.seeyon.ctp.common.publicqrcode.manager.MeetingQrCodeDataManagerImpl"/>
+
+    <!--离职交接接口-->
+    <bean id="memberLeaveClearItemMeeting" class="com.seeyon.apps.meeting.manager.memberLeave.MemberLeaveClearItemMeetingImpl"/>
+
+    <!--会议角色变更校验-->
+    <bean id="meetingCheckPrivUpdate" class="com.seeyon.apps.meeting.manager.MeetingCheckPrivUpdate"/>
+
+</beans>

@@ -1,0 +1,25 @@
+.cmp-table-view:after{ height: 0px; }
+.cmp-table-view:before{ height: 0px; }
+/*#searchHeader .cmp-content-title-search{*/
+    /*padding: 10px 12px 10px 12px;*/
+    /*height: 48px;*/
+/*}*/
+/*.cmp-search input[type='search']{*/
+    /*height: 28px;*/
+/*}*/
+/*#searchHeader .cmp-search .cmp-placeholder{*/
+    /*height: 28px;*/
+/*}*/
+/*#searchHeader .cmp-search .cmp-placeholder .cmp-icon{*/
+    /*font-size: 12px !important;*/
+    /*margin-right: 0;*/
+/*}*/
+/*.cmp-search .text-search{*/
+    /*font-size: 12px;*/
+/*}*/
+#dataCommonDiv{
+    height: calc(100% - 48px);
+}
+#mrContain,#mrApprovesContain,#mrAuditsContain{
+    height: calc(100% - 42px) !important;
+}

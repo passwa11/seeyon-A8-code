@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- 部门 -->
+	<class name="com.seeyon.apps.synorg.po.hr.HrDepartment" table="V_SEEYON_ORG" lazy="false">
+		<!-- 主建：编码 -->
+		<id name="code" type="string" column="CODE" length="50">
+			<generator class="assigned" />
+		</id>
+		<!-- 名称 -->
+		<property name="name" column="NAME" type="string" not-null="true" length="100" />
+		<!-- 上级部门编号 -->
+		<property name="parentCode" column="PARENT_CODE" type="string" not-null="false" length="50" />
+		<!-- 排序 -->
+		<property name="sortId" column="SORT_ID" type="long" not-null="false" length="10" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,484 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #f5f6fa;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(144, 147, 153, .3);
+}
+
+input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ccc;
+}
+
+.show {
+    display: block !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+html,
+body {
+    font-size: 14px;
+    height: 100%;
+    color: #333;
+    font-family: "PingFang SC", "Microsoft YaHei", SimSun, Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    cursor: default;
+    user-select: none;
+    overflow: hidden;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+
+/* 清除浮动类名 */
+
+.clearfix:after {
+    content: '';
+    height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+
+/* 页面样式部分 */
+
+.main {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+}
+
+
+/* 左侧参会人员样式部分 */
+
+.left-list {
+    width: 300px;
+    height: 100%;
+    margin-right: 20px;
+    background: #fbfbfb;
+    box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.19);
+    z-index: 1;
+    position: relative;
+}
+
+.person-dept {
+    height: calc(100% - 40px);
+}
+
+.members-list-title,
+.units-list-title,
+.seats-title {
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+    background-color: #49a4ea;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: auto;
+}
+
+.members-list,
+.units-list {
+    max-height: calc(50% - 50px);
+    overflow-y: auto;
+    margin-bottom: 10px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.19);
+}
+
+.edit-box {
+    width: 100%;
+    padding: 0 40px;
+    margin-bottom: 12px;
+}
+
+.add-btn,
+.sure-btn {
+    float: left;
+    padding: 0 20px;
+    color: #fff;
+    border: 1px solid #1F85EC;
+    background-color: #1F85EC;
+}
+
+.add-btn:hover,
+.sure-btn:hover {
+    background-color: #009def;
+}
+
+.delete-btn,
+.cancel-btn {
+    float: right;
+    padding: 0 20px;
+    border: 1px solid #DEDEDE;
+    background: #EAEAEA;
+}
+
+.delete-btn:hover,
+.cancel-btn:hover {
+    background-color: #f6f6f6;
+}
+
+.edit-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+.dialog-content {
+    width: 600px;
+    min-height: 200px;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.dialog-content>.header {
+    padding: 15px;
+    background-color: #1F85EC;
+    color: #fff;
+}
+
+.dialog-content .close-btn {
+    cursor: pointer;
+    padding: 2px;
+    float: right;
+}
+
+.dialog-content>.content {
+    padding: 15px;
+}
+
+.dialog-content>.content .row {
+    margin: 10px 0;
+}
+
+.dialog-content>.content .title {
+    display: inline-block;
+    width: 80px;
+}
+
+.dialog-content .unit-item {
+    display: none;
+}
+
+.dialog-content>.footer {
+    padding: 15px;
+    float: right;
+}
+
+.sure-btn {
+    margin-right: 20px;
+}
+
+.members-row {
+    display: flex;
+}
+
+.member {
+    width: calc((100% - 3px) / 3);
+    padding: 5px 0;
+    text-align: center;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin: 0px 1px 1px 0;
+    font-size: 12px;
+    position: relative;
+}
+
+.member:not(.seated-member) {
+    cursor: move;
+}
+
+.members-row>.member:hover,
+.members-row>.member:active {
+    color: #fff;
+    background-color: #49a4ea77;
+}
+
+.member-name,
+.member-dep {
+    display: block;
+    word-break: break-all;
+}
+
+.member-dep {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.clone_member,
+.clone_seat {
+    position: fixed;
+    z-index: 100;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.19);
+}
+
+
+/* 右侧会议室选座样式部分 */
+
+.right-seats {
+    width: calc(100% - 320px);
+    height: 100%;
+    background: #fbfbfb;
+}
+
+.seats-box {
+    height: calc(100% - 94px);
+    min-height: calc(100% - 94px);
+    padding: 0 20px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    overflow: auto;
+}
+
+
+/* 设置行头的宽度 */
+
+.seats-cols-head {
+    width: calc(100% - 40px);
+    float: right;
+}
+
+.seats-row,
+.seats-cols-head {
+    display: flex;
+}
+
+.seats-row {
+    position: relative;
+}
+
+.seats-body {
+    display: flex;
+}
+
+.seats-rows-head {
+    width: 40px;
+    text-align: center;
+}
+
+.seats-content {
+    width: calc(100% - 40px);
+}
+
+.seat-li,
+.row-index {
+    min-height: 32px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: relative;
+    font-size: 12px;
+}
+
+.row-index {
+    position: absolute;
+    left: -25px;
+    top: 8px;
+}
+
+.seat-li,
+.col-index {
+    min-width: 42px;
+}
+
+.seat-li,
+.row-index,
+.col-index {
+    margin: 0px 3px 3px 0;
+}
+
+.seat,
+.col-index,
+.row-index {
+    text-align: center;
+    word-break: break-all;
+}
+
+.col-index {
+    height: 35px;
+    line-height: 35px;
+}
+
+.seat {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.col-index,
+.row-index {
+    font-size: 12px;
+    border: none;
+}
+
+.seat-li>.seated-member {
+    color: #fff;
+    background-color: #49a4ea;
+}
+
+.seated-member.is-part-handleing {
+    border: 1px dotted #ddd;
+    /*background-color: #49a4ea77;*/
+}
+
+.icon-box {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.move-icon,
+.del-icon,
+.search-icon {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    margin-right: 3px;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.move-icon,
+.del-icon {
+    display: none;
+    float: left;
+}
+
+.move-icon {
+    background-image: url("../fonts/move.png");
+}
+
+.del-icon {
+    background-image: url("../fonts/delete.png");
+}
+
+.search-icon {
+    position: absolute;
+    top: 14px;
+    right: 5px;
+    background-image: url("../fonts/search.png");
+    transition: scale;
+}
+
+.search-icon:active {
+    transform: scale(1.2)
+}
+
+.members-listtitle-box {
+    display: inline-block;
+    width: calc(100% - 150px);
+    margin-right: 10px;
+}
+
+.search-box {
+    display: inline-block;
+    position: relative;
+}
+
+.search-ipt {
+    display: inline-block;
+    width: 120px;
+}
+
+.show {
+    display: block;
+}
+
+
+/* 一键入座、一键取消和批量取消 */
+
+.seats-bottom {
+    height: 30px;
+    margin: 12px 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.custome-btn {
+    font-size: 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    max-width: 91px;
+    padding: 0 12px;
+    height: 28px;
+    outline: none;
+    cursor: pointer;
+}
+
+.quickly-seat {
+    color: #fff;
+    border: 1px solid #1F85EC;
+    background-color: #1F85EC;
+    margin-right: 10px;
+}
+
+.quickly-seat:not(.custome_disabled_btn):hover {
+    background-color: #009def;
+}
+
+.quickly-cancel,
+.part-handle {
+    border: 1px solid #DEDEDE;
+    background: #EAEAEA;
+}
+
+.quickly-cancel:not(.custome_disabled_btn):hover,
+.part-handle:not(.custome_disabled_btn):hover {
+    background-color: #f6f6f6;
+}
+
+.quickly-cancel {
+    margin-right: 10px;
+}
+
+.part-handle {
+    margin-right: 5px;
+}
+
+.custome_disabled_btn {
+    cursor: not-allowed;
+    border: 1px solid #DEDEDE;
+    background: #F6F6F6;
+    color: #bbb;
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ctpConfig>
+	<addCKSQBillHostName>
+		<hostName mark="{VE}" desc="鱼跃插件主机地址">http://192.168.100.58:8080</hostName>
+	</addCKSQBillHostName>
+	<addEPBankBillHostName>
+		<hostName mark="{VE}" desc="鱼跃新增费用付款单调用地址">http://192.168.100.58:8080</hostName>
+	</addEPBankBillHostName>
+</ctpConfig>

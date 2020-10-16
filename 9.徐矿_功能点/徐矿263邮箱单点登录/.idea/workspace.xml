@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c5d562e7-146f-4eca-80c5-dde774810624" name="Default Changelist" comment="修改">
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../fileUploadConfig/seeyon/WEB-INF/classes/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fileUploadConfig/src/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../fileUploadConfig/src/com/seeyon/apps/ext/fileUploadConfig/controller/fileUploadConfigController.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>SSO_CID</find>
+      <find>MAIL_DOMAIN</find>
+      <find>sign</find>
+      <find>getUnReadC</find>
+      <find>net._263.macom.axis.xmapi.</find>
+      <find>service</find>
+      <find>createMe</find>
+      <find>GBKToBase64</find>
+      <find>createExtMember</find>
+      <find>message</find>
+      <find>returnMessage</find>
+      <find>getDomainUserlist</find>
+      <find>defaultMailFix</find>
+      <find>updateMember</find>
+      <find>imageFile</find>
+      <find>reporter</find>
+      <find>Enable</find>
+      <find>deleted</find>
+      <find>Boolean</find>
+      <find>desc</find>
+      <find>viewOne(</find>
+      <find>description</find>
+      <find>setCreate263</find>
+      <find>isDeleted</find>
+      <find>login263Email</find>
+      <find>true</find>
+      <find>create</find>
+      <find>create263</find>
+      <find>263</find>
+      <find>getAll</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1R2VNtDSLAljd8BFgqaPyXtpdNJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="F:/s/A-8-code/徐矿263邮箱单点登录" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
+    <property name="two.files.diff.last.used.file" value="$USER_HOME$/Desktop/MemberManagerImpl.class" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.seeyon.ctp.organization.bo" />
+      <recent name="com.seeyon.ctp.organization.manager" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\s\A-8-code\徐矿263邮箱单点登录\seeyon\WEB-INF\cfgHome\plugin\xk263Email\spring" />
+      <recent name="F:\s\A-8-code\徐矿263邮箱单点登录\seeyon\WEB-INF\jsp\apps\ext\xk263Email" />
+      <recent name="F:\s\A-8-code\徐矿263邮箱单点登录\src\com\seeyon\ctp\organization\po" />
+      <recent name="F:\s\A-8-code\徐矿263邮箱单点登录\src\com\seeyon\ctp\organization\dao" />
+      <recent name="F:\s\A-8-code\徐矿263邮箱单点登录\src\com\seeyon\ctp\organization\manager" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="Remote" nameIsGenerated="true">
+      <module name="徐矿263邮箱单点登录" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="8000" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="8000" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c5d562e7-146f-4eca-80c5-dde774810624" name="Default Changelist" comment="" />
+      <created>1558925965360</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1558925965360</updated>
+      <workItem from="1558925971406" duration="4027000" />
+      <workItem from="1558936797982" duration="2840000" />
+      <workItem from="1559026979956" duration="9514000" />
+      <workItem from="1559090825795" duration="19517000" />
+      <workItem from="1559176149356" duration="26348000" />
+      <workItem from="1559262952008" duration="13114000" />
+      <workItem from="1559348721801" duration="477000" />
+      <workItem from="1566367510804" duration="11801000" />
+      <workItem from="1566434319016" duration="9551000" />
+      <workItem from="1566457769067" duration="7000" />
+      <workItem from="1567490752207" duration="7767000" />
+      <workItem from="1567502142204" duration="1685000" />
+      <workItem from="1567556969834" duration="4635000" />
+      <workItem from="1567575337903" duration="69000" />
+      <workItem from="1568189347865" duration="51000" />
+      <workItem from="1568865143081" duration="287000" />
+      <workItem from="1574919954202" duration="110000" />
+    </task>
+    <task id="LOCAL-00001" summary="修改">
+      <created>1558928655910</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1558928655910</updated>
+    </task>
+    <task id="LOCAL-00002" summary="修改">
+      <created>1558942081906</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1558942081906</updated>
+    </task>
+    <task id="LOCAL-00003" summary="修改">
+      <created>1559032675801</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1559032675801</updated>
+    </task>
+    <task id="LOCAL-00004" summary="修改">
+      <created>1559032708201</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1559032708201</updated>
+    </task>
+    <task id="LOCAL-00005" summary="修改">
+      <created>1559100245237</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1559100245238</updated>
+    </task>
+    <task id="LOCAL-00006" summary="修改">
+      <created>1559100265867</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1559100265867</updated>
+    </task>
+    <task id="LOCAL-00007" summary="修改">
+      <created>1559100342179</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1559100342179</updated>
+    </task>
+    <task id="LOCAL-00008" summary="修改">
+      <created>1559109380354</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1559109380354</updated>
+    </task>
+    <task id="LOCAL-00009" summary="修改">
+      <created>1559111278996</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1559111278996</updated>
+    </task>
+    <task id="LOCAL-00010" summary="修改">
+      <created>1559119111555</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1559119111555</updated>
+    </task>
+    <task id="LOCAL-00011" summary="修改">
+      <created>1559119207750</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1559119207750</updated>
+    </task>
+    <task id="LOCAL-00012" summary="修改">
+      <created>1559119222573</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1559119222573</updated>
+    </task>
+    <task id="LOCAL-00013" summary="修改">
+      <created>1559181252335</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1559181252335</updated>
+    </task>
+    <task id="LOCAL-00014" summary="修改">
+      <created>1559184391026</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1559184391026</updated>
+    </task>
+    <task id="LOCAL-00015" summary="修改">
+      <created>1559184765290</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1559184765290</updated>
+    </task>
+    <task id="LOCAL-00016" summary="修改">
+      <created>1559186789164</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1559186789166</updated>
+    </task>
+    <task id="LOCAL-00017" summary="修改">
+      <created>1559196248965</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1559196248965</updated>
+    </task>
+    <task id="LOCAL-00018" summary="修改">
+      <created>1559198408607</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1559198408607</updated>
+    </task>
+    <task id="LOCAL-00019" summary="修改">
+      <created>1559201560638</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1559201560638</updated>
+    </task>
+    <task id="LOCAL-00020" summary="修改">
+      <created>1559202578660</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1559202578660</updated>
+    </task>
+    <task id="LOCAL-00021" summary="修改">
+      <created>1559204407116</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1559204407116</updated>
+    </task>
+    <task id="LOCAL-00022" summary="修改">
+      <created>1559266214453</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1559266214454</updated>
+    </task>
+    <task id="LOCAL-00023" summary="修改">
+      <created>1559273350082</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1559273350082</updated>
+    </task>
+    <task id="LOCAL-00024" summary="修改">
+      <created>1559274016961</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1559274016961</updated>
+    </task>
+    <task id="LOCAL-00025" summary="修改">
+      <created>1559274255421</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1559274255421</updated>
+    </task>
+    <task id="LOCAL-00026" summary="修改">
+      <created>1559285290074</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1559285290075</updated>
+    </task>
+    <task id="LOCAL-00027" summary="add">
+      <created>1566368829277</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1566368829277</updated>
+    </task>
+    <task id="LOCAL-00028" summary="修改">
+      <created>1566368876352</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1566368876352</updated>
+    </task>
+    <task id="LOCAL-00029" summary="修改">
+      <created>1566369748895</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1566369748895</updated>
+    </task>
+    <task id="LOCAL-00030" summary="修改">
+      <created>1566369773940</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1566369773940</updated>
+    </task>
+    <task id="LOCAL-00031" summary="修改">
+      <created>1566370504511</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1566370504511</updated>
+    </task>
+    <task id="LOCAL-00032" summary="修改">
+      <created>1566376814787</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1566376814787</updated>
+    </task>
+    <task id="LOCAL-00033" summary="修改">
+      <created>1566380247883</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1566380247883</updated>
+    </task>
+    <task id="LOCAL-00034" summary="修改">
+      <created>1566380276839</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1566380276839</updated>
+    </task>
+    <task id="LOCAL-00035" summary="修改">
+      <created>1566380681404</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1566380681404</updated>
+    </task>
+    <task id="LOCAL-00036" summary="修改">
+      <created>1566380694204</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1566380694204</updated>
+    </task>
+    <task id="LOCAL-00037" summary="修改">
+      <created>1566440284284</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1566440284284</updated>
+    </task>
+    <task id="LOCAL-00038" summary="修改">
+      <created>1566443124548</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1566443124548</updated>
+    </task>
+    <task id="LOCAL-00039" summary="修改">
+      <created>1566452519062</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1566452519062</updated>
+    </task>
+    <task id="LOCAL-00040" summary="修改">
+      <created>1567498448032</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1567498448032</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="add" />
+    <MESSAGE value="修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java</url>
+          <line>621</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java</url>
+          <line>760</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java</url>
+          <line>1902</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java</url>
+          <line>893</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java</url>
+          <line>750</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java</url>
+          <line>2018</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/bo/V3xOrgMember.class</url>
+          <line>481</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-organization.jar!/com/seeyon/ctp/organization/dao/OrgHelper.class</url>
+          <line>1108</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java</url>
+          <line>1945</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/OrgManagerDirectImpl.java</url>
+          <line>1974</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java</url>
+          <line>605</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/organization/manager/MemberManagerImpl.java</url>
+          <line>330</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/seeyon/WEB-INF/classes/com/seeyon/apps/ext/xk263Email/controller/xk263EmailController.class</url>
+          <line>34</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>徐矿263邮箱单点登录</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

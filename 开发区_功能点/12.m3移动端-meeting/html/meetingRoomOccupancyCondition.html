@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+    <link href="http://cmp/v/css/cmp.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/cmp-meeting.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/m3_meeting.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="http://cmp/v/css/cmp-dateCalender.css"/>
+    <link rel="stylesheet" type="text/css" href="http://cmp/v/css/cmp-picker.css"/>
+	<title></title>
+	<style type="text/css">
+		.cmp-table-view-cell:after{ left: 0px;}
+		.timeline-bglist{position:absolute;width:calc(100% - 74px);right:0;top:0;list-style:none;}
+		.timeline-bglist li{
+			position:absolute;
+			width:100%;
+			left:0;
+			overflow: hidden;
+			z-index: 8;
+			padding-left: 8px;
+			padding-top: 2px;
+			border-left: 2px solid #1BADF7;
+		}
+		.timeline-bglist li p {
+			line-height:20px;
+			font-size: 12px;
+			margin:0;
+		}
+		.font-blueColor{
+			color: #04547A; 
+		}
+		.timeline-bglist li p.appInfoDescriptionP{
+			font-size: 14px;
+			white-space: nowrap;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		}
+		.overState .font-blueColor{
+			color: #999999;
+		}
+		.timeline-bglist li.overState{
+			background-color: #F2F2F2;
+			border-left-color: #e4e4e4;
+		}
+		.todayTimeDiv{
+			position: absolute;
+			width: 100%;
+			pointer-events: none;
+			font-size: 0px;
+			height: 21px;
+		}
+		.todayTimeDiv span{
+			display: inline-block;
+		}
+		.todayTimeDiv span:nth-of-type(1){
+			background-color: #fff;
+			font-size: 12px;
+			color: #297FFB;
+			width: 65px;
+			text-indent: 22px;
+			line-height: 21px;
+		}
+		.todayTimeDiv span:nth-of-type(2){
+			background: #297FFB;
+			box-shadow: 0 2px 4px 0 rgba(58,173,251,0.30);
+			border-radius: 4px;
+			width: 8px;
+			height: 8px;
+		}
+		.todayTimeDiv span:nth-of-type(3){
+			background: #297FFB;
+			box-shadow: 0 2px 4px 0 rgba(58,173,251,0.30);
+			height: 1px;
+			width: calc(100% - 73px);
+			position: relative;
+    		top: -3px;
+		}
+		.subscribe{
+			width:57%;
+			margin:13px auto;
+			height: 34px;
+			background: #297FFB;
+			border-radius: 46px;
+			text-align: center;
+			font-family: PingFangSC-Medium;
+			font-size: 16px;
+			color: #FFFFFF;
+			letter-spacing: 0;
+			text-align: center;
+			line-height: 34px;
+		}
+		#headContainer{
+			overflow: hidden;
+			height: 74px;
+		}
+		.cmp-bar,.cmp-scroll,.cmp-conten{
+			transition: all 0.3s linear;
+		}
+		.cmp-bar .meeting-left-title{
+			font-size: 18px;
+			line-height: 50px;
+		}
+		.stateContainer{
+			position: absolute;
+			width: 100%;
+			height: 24px;
+			background: #F8F9FB;
+			top:50px;
+			left: 0px;
+		}
+		.stateContainer>p{
+			transform: scale(0.83);
+			font-size: 13px;
+			transform-origin: left center;
+			width: 120%;
+		}
+		.color999{
+			color:#666666;
+		}
+		.colorGreen{
+			color:#0DB18F;
+		}
+		.colorRed{
+			color:#F14209;
+		}
+		.colorOrange{
+			color: #D17B00;
+		}
+		.iconSpan{
+			position: relative;
+			top: 1px;
+			margin:0px  4px 0px 20px;
+		}
+		#adminNames{
+			display: inline-block;
+		    max-width: 37%;
+		    vertical-align: top;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    white-space: nowrap;
+		    height: 18px;
+		    line-height: 18px;
+		    position: relative;
+		    top: 3px;
+		}
+		.cmp-dtcContent .week{
+			color: #b9c3d1;
+		}
+		.cmp-dtcContent .week:first-child{
+			color: #b9c3d1;
+		}
+		.cmp-dtcContent .week:last-child{
+			color: #b9c3d1;
+		}
+		.cmp-dtcContent .show{
+			background-color: #fff;
+		}
+		.cmp-dtcContent{
+			background: #fff;
+		}
+		.cmp-dtcContent .lunar-week{
+			color: #a5a5a5;
+		}
+		.cmp-dtcContent .selected .number-day .lunar-week{
+			color: #fff;
+		}
+		.cmp-dtcContent .gray .number-day{
+			color: #b9c3d1;
+		}
+
+		/* 日历组件样式覆盖 */
+		#dateCalender .cmp-dtcHeader .title{
+			position: relative;display: inline-block;width:initial;vertical-align: middle;
+			padding: 0 5px;
+			color: #297FFB;
+		}
+		#dateCalender .cmp-dtcHeader .today{
+			float: none;
+			font-size: 12px;
+			display: inline-block;
+			vertical-align: middle;
+			background: #297FFB;padding:0 7px 0 5px;text-align: center;max-width: 50px;
+			color: #fff;
+			width: auto;
+			max-width: 100px;
+			height: 18px;
+			line-height: 18px;
+			border-top-left-radius: 3px;
+			border-bottom-left-radius: 3px;
+			border-top-right-radius: 2px;
+			border-bottom-right-radius: 2px;
+			position: absolute;
+			right: 10px;
+			top: 16px;
+		}
+		#dateCalender .cmp-dtcHeader .today::before {
+			position: absolute;
+			content: "";
+			width: 0;
+			height: 0;
+			border: transparent 9px solid;
+			border-right-color: #297FFB;
+			top: 0;
+			left: -13px;
+			transform: scaleX(0.5);
+			-webkit-transform: scaleX(0.5);
+		}
+		
+		/* 日历组件样式覆盖 */
+
+	</style>
+</head>
+<body class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1">
+	<div class="occupancy-container">
+		<div class="cmp-bar head-style" id="headContainer">
+	        <a id="" href="javascript:void(0)" class="cmp-pull-right right-btn">
+	        	<span id="showDetail" class="see-icon-v5-common-arrow-right"></span>
+	        	<!-- <span id="apply" class=" m3-icon-meetingRoom-fill left-icon" style=" font-size: 20px; "></span> -->
+	        </a>
+			<p id="title" class="meeting-left-title room-title"></p>
+			<div class="stateContainer"> 
+				<p>
+					<span class="color999 see-icon-v5-common-meeting-capacity iconSpan" style="margin-left:10px;"></span>
+					<span class="color999" id="roomSeatCount"></span>
+					<span class="color999 see-icon-v5-common-meeting-admin iconSpan"></span>
+					<span class="color999" id="adminNames"></span>
+					<span class="see-icon-v5-common-meeting-occupation iconSpan" id="applyStateIcon"></span>
+					<span id="applyState"></span>
+				</p>
+			</div>
+		</div>
+		<div class="cmp-content back_white absolute cmp-content-none" style="bottom:0px;width:100%;top:74px;">
+			<div id="dateCalender"></div>
+			<div id="scrollArea" class="cmp-scroll scroll_wrap">
+				<div id="timeList" class="timeline-wrap">
+				</div>
+			</div>
+			<div class="subscribe" id="apply"><i18n key="meeting.page.label.subscribe"></i18n></div>
+		</div>
+	</div>
+	
+	<!-- 快捷键 -->
+	<div id="maskContainer" class="mask">
+		<div class="wrap">
+		    <div class="li_wrap">
+				<div class="cell" id="meetingCreateDiv">
+				   <span id="meetingCreate" class="icon m3-icon-m3-createMeeting"></span>
+				   <span class="name"><i18n key="meeting.meetingCreate.createNewMeeting"></i18n></span>
+				</div>
+				<div class="cell" id="meetingApplyDiv">
+				   <span id="meetingApply" class="icon m3-icon-meetingRoom-fill"></span>
+				   <span class="name"><i18n key="meeting.meetingRoomApply.application"></i18n></span>
+				</div>
+		    </div>
+		</div>
+		<div class="close"><span class="m3-icon-close"></span></div>
+	</div>
+	
+    <script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>  
+	<script src="http://cmp/v/js/cmp-i18n.js"></script>
+	<script  src="http://cmp/v/js/cmp.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meeting-jssdk.js" type="text/javascript"></script>
+<script  src="http://commons.v5.cmp/v/m3-jssdk.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meetingCommon.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/i18n/MeetingResources_zh_CN.js" type="text/javascript"></script>
+	<script src="http://cmp/v/js/cmp-dateCalender.js"></script>
+	<script src="http://cmp/v/js/cmp-picker.js"></script>
+	<script src="http://cmp/v/js/cmp-dtPicker.js"></script>
+	<script type="text/javascript">
+    var _meetingPath = "http://meeting.v5.cmp/v1.0.0";
+  var _collPath = "http://collaboration.v5.cmp/v1.0.0";
+</script>    <script src="http://meeting.v5.cmp/v1.0.0/js/meetingRoomOccupancyCondition.js"></script>
+</body>
+</html>

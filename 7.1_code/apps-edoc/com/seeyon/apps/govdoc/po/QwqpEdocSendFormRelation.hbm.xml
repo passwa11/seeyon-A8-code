@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class  name="com.seeyon.apps.govdoc.po.QwqpEdocSendFormRelation"  table="edoc_sendForm_file_relation" lazy="true" >
+    <id name="id" type="long" column="id" length="20" >
+        <generator class="assigned" />
+    </id>
+    <property name="fileId" type="long" column="file_id" not-null="true" length="20" />
+    <property name="edocId" type="long" column="edoc_id" not-null="true" length="20" />
+    <property name="fileType" type="string" column="file_type" length="20" />
+    <property name="signString" type="string" column="sign_string" />
+    <property name="opinions" type="string" column="opinions" />
+    
+</class>
+</hibernate-mapping>

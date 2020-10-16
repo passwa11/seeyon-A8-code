@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.seeyon.v3x.edoc.domain.CtpPdfSavepath" table="ctp_pdf_savepath" lazy="false">
+        <id name="edocsummaryid"
+            type="long"
+            column="edocsummaryid"
+        >
+            <generator class="assigned"/>
+        </id>
+
+        <property
+                name="savepath"
+                type="string"
+                column="savepath"
+                length="200"
+        />
+    </class>
+</hibernate-mapping>

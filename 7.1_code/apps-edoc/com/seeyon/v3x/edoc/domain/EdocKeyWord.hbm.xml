@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.seeyon.v3x.edoc.domain.EdocKeyWord" table="edoc_keyword" lazy="true">
+		<id name="id" type="long" column="id" length="20">
+			<generator class="assigned" />
+		</id>
+		<property name="name" type="string" column="name" length="255" />
+		<property name="parentId" type="long" column="parent_id" length="20" />
+		<property name="sortNum" type="integer" column="sort_number" length="11" />
+		<property name="accountId" type="long" column="org_accountid" length="20" />
+		<property name="levelNum" type="integer" column="level_number" length="4" />
+		<property name="isSystem" type="boolean" column="is_system" length="1" />
+		<property name="createUserId" type="long" column="create_user_id" length="20" />
+		<property name="createTime" type="timestamp" column="create_time" length="19" />
+	</class>
+</hibernate-mapping> 

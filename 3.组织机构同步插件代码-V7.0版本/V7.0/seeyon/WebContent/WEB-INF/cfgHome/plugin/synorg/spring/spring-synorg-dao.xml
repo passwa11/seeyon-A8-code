@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="syncUnitDao" class="com.seeyon.apps.synorg.dao.SyncUnitDaoImpl"></bean>
+	<bean id="syncDepartmentDao" class="com.seeyon.apps.synorg.dao.SyncDepartmentDaoImpl"></bean>
+	<bean id="syncLevelDao" class="com.seeyon.apps.synorg.dao.SyncLevelDaoImpl"></bean>
+	<bean id="syncPostDao" class="com.seeyon.apps.synorg.dao.SyncPostDaoImpl"></bean>
+	<bean id="syncMemberDao" class="com.seeyon.apps.synorg.dao.SyncMemberDaoImpl"></bean>
+	<bean id="syncOrgDao" class="com.seeyon.apps.synorg.dao.SyncOrgDaoImpl"></bean>
+	<bean id="syncLogDao" class="com.seeyon.apps.synorg.dao.SyncLogDaoImpl"></bean>
+	<bean id="syncDataDao" class="com.seeyon.apps.synorg.dao.SyncDataDaoImpl"></bean>
+</beans>

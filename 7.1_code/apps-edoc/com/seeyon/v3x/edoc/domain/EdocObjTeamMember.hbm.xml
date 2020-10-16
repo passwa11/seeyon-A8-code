@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class 
+    name="com.seeyon.v3x.edoc.domain.EdocObjTeamMember" 
+    table="edoc_obj_team_member"
+    lazy="false"
+>
+    <id
+        name="id"
+        type="long"
+        column="id"
+        length="20"
+    >
+        <generator class="assigned" />
+    </id>
+    <property
+        name="memberId"
+        type="long"
+        column="member_id"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="teamId"
+        type="long"
+        column="team_id"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="teamType"
+        type="string"
+        column="team_type"
+        not-null="true"
+        length="16"
+    />
+	<property
+        name="sortNum"
+        type="int"
+        column="sort_num"
+        not-null="true"
+        length="4"
+    />
+    <!-- Associations -->
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class 
+    name="com.seeyon.v3x.edoc.domain.EdocElement" 
+    table="edoc_element"
+    lazy="true"
+>
+    <id
+        name="id"
+        type="long"
+        column="id"
+        length="20"
+    >
+        <generator class="assigned" />
+    </id>
+    <property
+        name="elementId"
+        type="string"
+        column="element_id"
+		not-null="true"
+        length="3"
+    />
+    <property
+        name="name"
+        type="string"
+        column="name"
+        not-null="true"
+        length="255"
+    />
+    <property
+        name="fieldName"
+        type="string"
+        column="field_name"
+        length="30"
+    />
+    <property
+        name="type"
+        type="integer"
+        column="type"
+		not-null="true"
+        length="4"
+    /> 
+	<property
+        name="metadataId"
+        type="long"
+        column="metadata_id"
+        length="20"
+    />
+	<property
+        name="isSystem"
+        type="boolean"
+        column="is_system"
+		not-null="true"
+        length="1"
+    />
+	<property
+        name="status"
+        type="integer"
+        column="status"
+        length="4"
+    />
+    <property
+        name="domainId"
+        type="java.lang.Long"
+        column="domain_id"
+        not-null="true"
+        length="20"
+    />
+    <property
+        name="inputMode"
+        type="string"
+        column="input_mode"
+        not-null="false"
+        length="32"
+    />
+</class>
+</hibernate-mapping>

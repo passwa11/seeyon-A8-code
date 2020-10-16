@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+    <bean id="allItemsManager" class="com.seeyon.apps.ext.allItems.manager.allItemsManagerImpl"></bean>
+    <!--协同所有未办结-->
+    <bean id="cooprationNOBanjieSection" class="com.seeyon.apps.ext.allItems.section.CooprationNOBanjieSection" init-method="init">
+        <property name="sectionType" value="common"/>
+        <property name="sortId" value="99"/>
+        <property name="properties">
+            <list>
+                <bean class="com.seeyon.ctp.portal.section.SectionPropertyImpl">
+                    <property name="reference">
+                        <list>
+                            <!-- 栏目标题-->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="columnsName"/>
+                                <property name="subject" value="栏目名称"/>
+                                <property name="valueType" value="2"/>
+                                <property name="defaultValue" value="协同所有未办结"/>
+                                <property name="validateValue" value="max=1000 min=1"></property>
+                            </bean>
+                            <!-- 栏目高度-->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="sectionHigt"/>
+                                <property name="subject" value="高度"/>
+                                <property name="valueType" value="2"/>
+                                <property name="defaultValue" value="300"/>
+                                <property name="validate" value="isInteger"></property>
+                                <property name="validateValue" value="isInteger=true max=1000 min=1"></property>
+                            </bean>
+                            <!--栏目链接-->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="sectionUrl"/>
+                                <property name="subject" value="栏目链接"/>
+                                <property name="valueType" value="2"/>
+                                <property name="defaultValue" value=""/>
+                                <property name="validateValue" value="max=1000"></property>
+                            </bean>
+                            <!-- 模板来源 -->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="panel"/><!-- 模板来源 -->
+                                <property name="subject" value="cannel.panel.templ.label"/>
+                                <property name="valueType" value="5"/>
+                                <property name="defaultValue" value="all"/>
+                                <property name="valueRanges">
+                                    <list>
+                                        <bean class="com.seeyon.ctp.portal.section.SectionReferenceValueRangeImpl">
+                                            <property name="subject" value="section.panel.all.label"/>
+                                            <property name="value" value="all"/>
+                                        </bean>
+                                        <!-- 模板分类 -->
+                                        <bean class="com.seeyon.ctp.portal.section.SectionReferenceValueRangeImpl">
+                                            <property name="subject" value="pending.panel.templete.label"/>
+                                            <property name="value" value="template_catagory"/>
+                                            <property name="backUp" value="true"/>
+                                            <property name="panelSetUrl"
+                                                      value="template/template.do?method=templateChooseMul&amp;amp;type=-1&amp;amp;isPortal=1&amp;amp;isMul=true&amp;amp;scope=MaxScope&amp;amp;isCanSelectCategory=true"/>
+                                        </bean>
+
+                                    </list>
+                                </property>
+                            </bean>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <!--协同所有办结-->
+    <bean id="cooprationBanjieSection" class="com.seeyon.apps.ext.allItems.section.CooprationBanjieSection" init-method="init">
+        <property name="sectionType" value="common"/>
+        <property name="sortId" value="99"/>
+        <property name="properties">
+            <list>
+                <bean class="com.seeyon.ctp.portal.section.SectionPropertyImpl">
+                    <property name="reference">
+                        <list>
+                            <!-- 栏目标题-->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="columnsName"/>
+                                <property name="subject" value="栏目名称"/>
+                                <property name="valueType" value="2"/>
+                                <property name="defaultValue" value="协同所有办结"/>
+                                <property name="validateValue" value="max=1000 min=1"></property>
+                            </bean>
+                            <!-- 栏目高度-->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="sectionHigt"/>
+                                <property name="subject" value="高度"/>
+                                <property name="valueType" value="2"/>
+                                <property name="defaultValue" value="300"/>
+                                <property name="validate" value="isInteger"></property>
+                                <property name="validateValue" value="isInteger=true max=1000 min=1"></property>
+                            </bean>
+                            <!--栏目链接-->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="sectionUrl"/>
+                                <property name="subject" value="栏目链接"/>
+                                <property name="valueType" value="2"/>
+                                <property name="defaultValue" value=""/>
+                                <property name="validateValue" value="max=1000"></property>
+                            </bean>
+                            <!-- 模板来源 -->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="panel"/><!-- 模板来源 -->
+                                <property name="subject" value="cannel.panel.templ.label"/>
+                                <property name="valueType" value="5"/>
+                                <property name="defaultValue" value="all"/>
+                                <property name="valueRanges">
+                                    <list>
+                                        <bean class="com.seeyon.ctp.portal.section.SectionReferenceValueRangeImpl">
+                                            <property name="subject" value="section.panel.all.label"/>
+                                            <property name="value" value="all"/>
+                                        </bean>
+                                        <!-- 模板分类 -->
+                                        <bean class="com.seeyon.ctp.portal.section.SectionReferenceValueRangeImpl">
+                                            <property name="subject" value="pending.panel.templete.label"/>
+                                            <property name="value" value="template_catagory"/>
+                                            <property name="backUp" value="true"/>
+                                            <property name="panelSetUrl"
+                                                      value="template/template.do?method=templateChooseMul&amp;amp;type=-1&amp;amp;isPortal=1&amp;amp;isMul=true&amp;amp;scope=MaxScope&amp;amp;isCanSelectCategory=true"/>
+                                        </bean>
+
+                                    </list>
+                                </property>
+                            </bean>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <!--    所有办结-->
+    <bean id="allBanJieSection" class="com.seeyon.apps.ext.allItems.section.AllBanJieSection" init-method="init">
+        <property name="sectionType" value="common"/>
+        <property name="sortId" value="99"/>
+        <property name="properties">
+            <list>
+                <bean class="com.seeyon.ctp.portal.section.SectionPropertyImpl">
+                    <property name="reference">
+                        <list>
+                            <!-- 栏目标题-->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="columnsName"/>
+                                <property name="subject" value="栏目名称"/>
+                                <property name="valueType" value="2"/>
+                                <property name="defaultValue" value="所有办结"/>
+                                <property name="validateValue" value="max=1000 min=1"></property>
+                            </bean>
+                            <!-- 栏目高度-->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="sectionHigt"/>
+                                <property name="subject" value="高度"/>
+                                <property name="valueType" value="2"/>
+                                <property name="defaultValue" value="460"/>
+                                <property name="validate" value="isInteger"></property>
+                                <property name="validateValue" value="isInteger=true max=1000 min=1"></property>
+                            </bean>
+                            <!--栏目链接-->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="sectionUrl"/>
+                                <property name="subject" value="栏目链接"/>
+                                <property name="valueType" value="2"/>
+                                <property name="defaultValue" value=""/>
+                                <property name="validateValue" value="max=1000"></property>
+                            </bean>
+                            <!-- 模板来源 -->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="panel"/><!-- 模板来源 -->
+                                <property name="subject" value="cannel.panel.templ.label"/>
+                                <property name="valueType" value="5"/>
+                                <property name="defaultValue" value="all"/>
+                                <property name="valueRanges">
+                                    <list>
+                                        <bean class="com.seeyon.ctp.portal.section.SectionReferenceValueRangeImpl">
+                                            <property name="subject" value="section.panel.all.label"/>
+                                            <property name="value" value="all"/>
+                                        </bean>
+                                        <!-- 模板分类 -->
+                                        <bean class="com.seeyon.ctp.portal.section.SectionReferenceValueRangeImpl">
+                                            <property name="subject" value="pending.panel.templete.label"/>
+                                            <property name="value" value="template_catagory"/>
+                                            <property name="backUp" value="true"/>
+                                            <property name="panelSetUrl"
+                                                      value="template/template.do?method=templateChooseMul&amp;amp;type=-1&amp;amp;isPortal=1&amp;amp;isMul=true&amp;amp;scope=MaxScope&amp;amp;isCanSelectCategory=true"/>
+                                        </bean>
+
+                                    </list>
+                                </property>
+                            </bean>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <!--    所有未办结-->
+    <bean id="noBanJieSection" class="com.seeyon.apps.ext.allItems.section.AllNOBanJieSection" init-method="init">
+        <property name="sectionType" value="common"/>
+        <property name="sortId" value="99"/>
+        <property name="properties">
+            <list>
+                <bean class="com.seeyon.ctp.portal.section.SectionPropertyImpl">
+                    <property name="reference">
+                        <list>
+                            <!-- 栏目标题-->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="columnsName"/>
+                                <property name="subject" value="栏目名称"/>
+                                <property name="valueType" value="2"/>
+                                <property name="defaultValue" value="所有办结"/>
+                                <property name="validateValue" value="max=1000 min=1"></property>
+                            </bean>
+                            <!-- 栏目高度-->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="sectionHigt"/>
+                                <property name="subject" value="高度"/>
+                                <property name="valueType" value="2"/>
+                                <property name="defaultValue" value="460"/>
+                                <property name="validate" value="isInteger"></property>
+                                <property name="validateValue" value="isInteger=true max=1000 min=1"></property>
+                            </bean>
+                            <!--栏目链接-->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="sectionUrl"/>
+                                <property name="subject" value="栏目链接"/>
+                                <property name="valueType" value="2"/>
+                                <property name="defaultValue" value=""/>
+                                <property name="validateValue" value="max=1000"></property>
+                            </bean>
+                            <!-- 模板来源 -->
+                            <bean class="com.seeyon.ctp.portal.section.SectionReferenceImpl">
+                                <property name="name" value="panel"/><!-- 模板来源 -->
+                                <property name="subject" value="cannel.panel.templ.label"/>
+                                <property name="valueType" value="5"/>
+                                <property name="defaultValue" value="all"/>
+                                <property name="valueRanges">
+                                    <list>
+                                        <bean class="com.seeyon.ctp.portal.section.SectionReferenceValueRangeImpl">
+                                            <property name="subject" value="section.panel.all.label"/>
+                                            <property name="value" value="all"/>
+                                        </bean>
+                                        <!-- 模板分类 -->
+                                        <bean class="com.seeyon.ctp.portal.section.SectionReferenceValueRangeImpl">
+                                            <property name="subject" value="pending.panel.templete.label"/>
+                                            <property name="value" value="template_catagory"/>
+                                            <property name="backUp" value="true"/>
+                                            <property name="panelSetUrl"
+                                                      value="template/template.do?method=templateChooseMul&amp;amp;type=-1&amp;amp;isPortal=1&amp;amp;isMul=true&amp;amp;scope=MaxScope&amp;amp;isCanSelectCategory=true"/>
+                                        </bean>
+
+                                    </list>
+                                </property>
+                            </bean>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+</beans>

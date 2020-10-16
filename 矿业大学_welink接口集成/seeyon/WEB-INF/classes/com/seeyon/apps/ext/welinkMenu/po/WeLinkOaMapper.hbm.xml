@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.seeyon.apps.ext.welinkMenu.po">
+    <class name="WeLinkOaMapper" table="WELINK_OA_MAPPER" lazy="false">
+        <id name="oaMeetingId" type="string" column="OA_MEETING_ID">
+            <generator class="assigned"/>
+        </id>
+        <property name="welinkMeetingId" type="string" column="WELINK_MEETING_ID"/>
+    </class>
+</hibernate-mapping>

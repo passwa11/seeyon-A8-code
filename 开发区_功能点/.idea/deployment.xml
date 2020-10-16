@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="已预订背景色">
+    <serverData>
+      <paths name="会议室申请添加字段">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/申请会议室添加字段/seeyon" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="已预订背景色">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/会议室已预订背景改为红色/seeyon" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="鼠标事件">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/已申请会议室信息鼠标事件/seeyon" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

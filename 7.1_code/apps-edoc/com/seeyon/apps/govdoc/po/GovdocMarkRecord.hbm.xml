@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.seeyon.apps.govdoc.po">
+	<class name="com.seeyon.apps.govdoc.po.GovdocMarkRecord" table="govdoc_mark_record"  lazy="false">
+		<id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="govdocType" type="int" column="govdoc_type" />
+        <property name="summaryId" type="long" column="summary_id" />
+        <property name="formDataId" type="long" column="form_data_id" />
+        <property name="categoryId" type="long" column="category_id" />
+        <property name="markDefId" type="long" column="mark_def_id" />
+        <property name="callId" type="long" column="call_id" />
+        <property name="markstr" type="string" column="markstr" />
+        <property name="wordNo" type="string" column="word_no" />
+        <property name="markType" type="int" column="mark_type" />
+        <property name="yearNo" type="string" column="year_no" />
+        <property name="markNumber" type="int" column="mark_number" />
+        <property name="selectType" type="int" column="select_type" />
+        <property name="createTime" type="timestamp" column="create_time" />
+        <property name="lastTime" type="timestamp" column="last_time" />
+        <property name="createUserId" type="long" column="create_user_id" />
+        <property name="lastUserId" type="long" column="last_user_id" />
+        <property name="domainId" type="long" column="domain_id" />
+        <property name="flowState" type="int" column="flow_state" />
+        <property name="usedState" type="int" column="used_state" />
+        <property name="usedType" type="int" column="used_type" />
+        <property name="newflowType" type="int" column="newflow_type" />
+        <property name="parentSummaryId" type="long" column="parent_summary_id" />
+        <property name="childSummaryId" type="string" column="child_summary_id" />
+	</class>
+</hibernate-mapping>

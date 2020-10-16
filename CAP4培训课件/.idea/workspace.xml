@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cff092c5-d863-4d3b-a30e-926dbfb09edc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../kuangYe_sms/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../修改送文单单位名称/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../开发区管委会-文单下载/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../徐矿大学_单点登录/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../栏目集成已阅待阅示例/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../矿业大学_组织机构同步/sql/组织机构同步中间表说明.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/xzyk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../4.组织机构同步-医科大/.idea/xzyk.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kuangYe_sms/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../kuangYe_sms/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kuangYe_sms/HuaiAnCaiZheng_A8V7SP3_201907MessagePlug.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../kuangYe_sms/HuaiAnCaiZheng_A8V7SP3_201907MessagePlug.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../代办工作标题变色/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../代办工作标题变色/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../修改送文单单位名称/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../修改送文单单位名称/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../修改送文单单位名称/seeyon/WEB-INF/jsp/exchange/edoc/edoc_send_detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../修改送文单单位名称/seeyon/WEB-INF/jsp/exchange/edoc/edoc_send_detail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../公文/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../公文/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_修改的功能/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../开发区_修改的功能/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_修改的功能/.idea/开发区_修改的功能.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../开发区_修改的功能/.idea/开发区_修改的功能.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/customFieldCtrl/constants/SelectPeople.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/customFieldCtrl/fieldCtrl/SelectPeopleFieldCtrl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/customFieldCtrl/kit/CAP4FormKit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/customFieldCtrl/kit/DateKit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/customFieldCtrl/kit/EnumUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/customFieldCtrl/kit/StrKit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/customFieldCtrl/vo/People.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/customFieldCtrl/vo/ZJsonObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/dao/JtldEntityDaoImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/manager/JtldEntityManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/manager/JtldEntityManagerImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/po/Fmain0148.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/po/Formmain0148.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/po/Formson0174.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/po/JtldEntity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/selectPerplePluginInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/util/JDBCUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/util/JsonKit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/selectPeople/po/myquery/Formmain0148.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/selectPeople/po/myquery/Formson0174.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/selectPeople/po/myquery/JtldEntity.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/ctp/rest/resources/SelectPeopleResources$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/ctp/rest/resources/SelectPeopleResources.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../开发区管委会-文单下载/downloadDetail.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../开发区管委会-文单下载/downloadDetail.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/DTdocument.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/DTdocument.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/src/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐医附院_档案系统集成公文同步/src/com/seeyon/apps/ext/DTdocument/controller/DTdocumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/seeyon/WEB-INF/classes/com/seeyon/apps/ext/allItems/dao/allItemsDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿_添加办结和未办结栏目/办结-未办结-总包-2020-05-15.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿大学_单点登录/.idea/ssoLogin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿大学_单点登录/.idea/ssoLogin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿大学_单点登录/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿大学_单点登录/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿待阅已阅/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿待阅已阅/src/com/seeyon/apps/ext/xkEdoc/controller/xkEdocController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿待阅已阅/src/com/seeyon/apps/ext/xkEdoc/controller/xkEdocController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../徐矿选择人员CAP4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../栏目集成已阅待阅示例/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../栏目集成已阅待阅示例/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../矿业大学_组织机构同步/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../矿业大学_组织机构同步/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1dTsycX4w26M6uNNbqMAFBt7WQn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="com.zeroturnaround.javarebel.idea.plugin.settings.AdvancedConfigurable" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet">
+      <option name="HEIGHT" value="0" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="WIDTH" value="0" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cff092c5-d863-4d3b-a30e-926dbfb09edc" name="Default Changelist" comment="" />
+      <created>1557793795191</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1557793795191</updated>
+      <workItem from="1557793811695" duration="111000" />
+      <workItem from="1557794344857" duration="1414000" />
+      <workItem from="1558052887541" duration="10527000" />
+      <workItem from="1558312268287" duration="2602000" />
+      <workItem from="1558409879119" duration="4083000" />
+      <workItem from="1558418928389" duration="1947000" />
+      <workItem from="1558428480932" duration="2913000" />
+      <workItem from="1558433910724" duration="29000" />
+      <workItem from="1558486775656" duration="7728000" />
+      <workItem from="1558509836542" duration="1473000" />
+      <workItem from="1558513296349" duration="265000" />
+      <workItem from="1558517659112" duration="650000" />
+      <workItem from="1558601057782" duration="822000" />
+      <workItem from="1558946216091" duration="1243000" />
+      <workItem from="1559287226453" duration="52000" />
+      <workItem from="1559287368975" duration="5492000" />
+      <workItem from="1559349258724" duration="9251000" />
+      <workItem from="1559376488751" duration="628000" />
+      <workItem from="1592460673746" duration="1137000" />
+      <workItem from="1592468576656" duration="53000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>CAP4培训课件</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.22080925" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

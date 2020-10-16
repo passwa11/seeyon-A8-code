@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="stylesheet" href="http://cmp/v/css/cmp.css">
+    <link rel="stylesheet" href="http://xiaoz.v5.cmp/v1.0.0/css/xiaoz-card.css">
+</head>
+
+<body class="cmp-fullscreen xiaozhi-card">
+
+</body>
+
+<script type="text/html" id="cardTemplate">
+    <% for(var i = 0;i<this.length;i++){ %>
+    <% var oneStatusMeetings = this[i]; %>
+    <div class="xiaozhi-card-content">
+        <% if(oneStatusMeetings.displayClassifyName){ %>
+        <div class="xiaozhi-card-subtitle text-wrap"><%=oneStatusMeetings.title %></div>
+        <% } %>
+        <ul class="list-before-line ul_list">
+            <% var oneStatusMeetingData =oneStatusMeetings.data;  %>
+            <% for(var j = 0;j<oneStatusMeetingData.length;j++){ %>
+            <% var oneMeeting = oneStatusMeetingData[j]; %>
+            <li class="list-before-line ul_list meeting_wrap collaboration-list" gotoParams='<%=JSON.stringify(oneMeeting.gotoParams) %>'>
+                <div class="left_img img-wrap choice">
+                    <img class="img_setting" id="header" src="<%=oneMeeting.header %>">
+                </div>
+                <div class="right_wrap text-wrap">
+                    <div class="meet_title cmp-ellipsis-2" id="title"><%=oneMeeting.title %></div>
+                    <div class="meeting_createuser">
+                        <span class="name" style="font-size: 14px;margin-right: 10px;"><%=oneMeeting.createUserName %></span>
+                        <span class="name" style="font-size: 14px;margin-left: 15px;"><%=oneMeeting.createTime %></span>
+                        <% if(oneMeeting.hasAttachments){ %>
+                        <span class="see-icon-accessory"></span>
+                        <% } %>
+                    </div>
+                    <div class="meeting_createuser">
+                        <span class="name" style="font-size: 14px;margin-right: 10px;"><%=oneMeeting.joinCount %>人参加</span>
+                        <span class="name" style="font-size: 14px;margin-left: 15px;"><%=oneMeeting.unjoinCount %>人不参数</span>
+                        <span class="name" style="font-size: 14px;margin-left: 15px;"><%=oneMeeting.pendingCount %>人待定</span>
+                    </div>
+                    <% if(oneMeeting.meetPlace){ %>
+                    <div class="meeting_createuser">
+                        <span class="name" style="font-size: 14px;margin-right: 10px;">会议地点：</span>
+                        <%=oneMeeting.meetPlace %>
+                    </div>
+                    <% } %>
+                    <div class="meet_date" style="color: #297FFB;">
+                        <span class="name" style="font-size: 14px;margin-right: 10px;">会议时间：</span>
+                        <%=oneMeeting.showTime %>
+                    </div>
+                    <% if(oneMeeting.feedbackFlag == 1){%> <!--参加-->
+                    <span class="mark m3-icon-status-seal part"><em>参加</em></span>
+                    <%}else if(oneMeeting.feedbackFlag == 0){%> <!--不参加-->
+                    <span class="mark m3-icon-status-seal unpart"><em>不参数</em></span>
+                    <%}else if(oneMeeting.feedbackFlag == -1){%> <!--待定-->
+                    <span class="mark m3-icon-status-seal determined"><em>待定</em></span>
+                    <%}else if(oneMeeting.feedbackFlag == -100){%><!-- 未回执 -->
+                    <span class="mark m3-icon-status-seal viewed"><em>未回执</em></span>
+                    <%}%>
+                </div>
+            </li>
+            <% } %>
+        </ul>
+        <div class="xiaozhi-card-morebtn" queryParams='<%=oneStatusMeetings.queryParams %>'>
+            <span class="cmp-icon cmp-icon-search"></span>
+            <span class="name"><%=oneStatusMeetings.seeMoreText %></span>
+            <span  class="right_arrow see-icon-v5-common-arrow-right"></span>
+        </div>
+    </div>
+    <% } %>
+
+
+</script>
+
+<script src="http://cmp/v/js/cmp-i18n.js"></script>
+<script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>
+<script src="http://cmp/v/js/cmp.js"></script>
+<script src="http://cmp/v/js/cmp-2.0.0.js"></script>
+<script src="http://cmp/v/js/cmp-speechRobot.js"></script>
+<script src="http://meeting.v5.cmp/v1.0.0/js/xiaoz-card.js"></script>
+
+<!-- <script>
+    cmp.ready(function(){
+        //第一步，使用小致的获取语音输入插件，获取对话数据
+        cmp.speechRobot.getSpeechInput({
+            error:function(e){
+
+            },
+            success:function(params){
+                console.log(params);
+                var data = params.data;
+                var renderData = getRenderData(data);
+                var template = document.getElementById("cardTemplate").innerHTML;
+                var dataTpl = cmp.tpl(template,renderData);
+
+                var cardContent = document.querySelector(".xiaozhi-card");
+                cardContent.innerHTML = dataTpl;
+
+                //点击，打开详情页面
+                var moreBtns = document.querySelectorAll(".xiaozhi-card-morebtn");
+                for(var i = 0;i<moreBtns.length;i++){
+                    (function(i){
+                        var moreBtn = moreBtns[i];
+                        moreBtn.addEventListener("tap",function(){
+                            //第三步，使用小致的插件，打开数据详情的H5页面
+                            var queryParams = this.getAttribute("queryParams");
+                            cmp.speechRobot.openPage({
+                                url:"http://meeting.v5.cmp/v1.0.0/html/meeting_list_mine.html",
+                                params:JSON.parse(queryParams),
+                                success:function(){},
+                                error:function(){}
+
+                            })
+
+                        });
+                    })(i);
+                }
+
+
+                var items = document.querySelectorAll(".ul_list");
+                for(var i = 0;i<items.length;i++){
+                    (function(i){
+                        var item = items[i];
+                        item.addEventListener("tap",function(){
+                            //第三步，使用小致的插件，打开数据详情的H5页面
+                            var gotoParams = this.getAttribute("gotoParams");
+                            gotoParams = JSON.parse(gotoParams);
+                            gotoParams.meetingId = gotoParams.id;
+                            cmp.speechRobot.openPage({
+                                url:"http://meeting.v5.cmp/v1.0.0/html/meetingDetail.html",
+                                params:gotoParams,
+                                success:function(){},
+                                error:function(){}
+
+                            })
+
+                        });
+                    })(i);
+                }
+            }
+        });
+    });
+
+    function getRenderData(data){
+        var renderData = [];
+        var judgeDisplayClassifyNameNum = 0;
+        for(var i = 0;i< data.length;i++){
+            var statusMeeting = data[i];//分类数据
+            var meetings = statusMeeting.data;
+            if(meetings.length){
+                judgeDisplayClassifyNameNum++;
+            }
+        }
+        var displayClassifyName = judgeDisplayClassifyNameNum>1;
+        for(var i = 0;i<data.length;i++){
+            var statusMeeting = data[i];
+            statusMeeting.displayClassifyName = displayClassifyName;
+            var meetings = statusMeeting.data;
+            if(meetings.length){
+                var status = statusMeeting.status;
+                var seeMoreText = "待开";
+                if(status == "done"){
+                    seeMoreText = "已开";
+                }
+                statusMeeting.seeMoreText = "查看更多"+seeMoreText+"会议";
+                for(var j = 0;j<meetings.length;j++){
+                    var oneMeeting = meetings[j];
+                    var showTime = getShowTime(oneMeeting.beginDate,oneMeeting.endDate);
+                    oneMeeting.showTime = showTime;
+
+                    oneMeeting.header = cmp.seeyonbasepath+ '/rest/orgMember/avatar/'+oneMeeting.icon+'?maxWidth=200';
+                    var createTime = getCreateTime(oneMeeting.createDate);
+                    oneMeeting.createTime = createTime;
+
+                }
+                statusMeeting.queryParams = JSON.stringify(statusMeeting.queryParams);
+                renderData.push(statusMeeting);
+            }
+
+        }
+        return renderData;
+    }
+
+    function getShowTime(beginDate,endDate){
+        var todayTimestamp = 24*60*60*1000;//今天的整个时间戳长度
+        var tomorrowTimestamp = 2*24*60*60*1000;//明天的整个时间长度
+        var currentDate = new Date();
+        beginDate = parseInt(beginDate);
+        endDate = parseInt(endDate);
+
+        var current = currentDate.getTime();
+        var begin = new Date(beginDate);
+        var end = new Date(endDate);
+
+        var cyear = currentDate.getFullYear();
+
+        var byear = begin.getFullYear();
+        var bmonth = begin.getMonth()+1;
+        bmonth = handleNum(bmonth);
+        var bday = begin.getDate();
+        bday = handleNum(bday);
+        var bhour = begin.getHours();
+        var bmunite = begin.getMinutes();
+
+        var eyear = end.getFullYear();
+        var emonth = end.getMonth()+1;
+        emonth = handleNum(emonth);
+        var eday = end.getDate();
+        eday = handleNum(eday);
+        var ehour = end.getHours();
+        ehour = handleNum(ehour);
+        var emunite = end.getHours();
+        emunite = handleNum(emunite);
+
+        var beginShowTime = "";
+        var endShowTime = "";
+        var bdiff = current - begin;
+        var ediff = current - end;
+
+        if(bdiff > 0 && bdiff <= todayTimestamp){
+            beginShowTime = "今天";
+        }else if(bdiff <= tomorrowTimestamp){
+            beginShowTime = "明天";
+        }else {
+            if(cyear != byear){
+                beginShowTime = byear+"-"+bmonth+"-" + bday;
+            }else {
+                beginShowTime = bmonth+"-" + bday;
+            }
+        }
+        beginShowTime =beginShowTime +" " + bhour + ":" + bmunite;
+
+        if((ediff > 0 && ediff <= todayTimestamp)){
+            if((end - begin >= todayTimestamp)){
+                endShowTime = "今天";
+            }
+        }else if(ediff <= tomorrowTimestamp){
+            if((end - begin >= todayTimestamp)){
+                endShowTime = "明天";
+            }
+        }else {
+            if(cyear != byear){
+                endShowTime = eyear+"-"+emonth+"-" + eday;
+            }else {
+                endShowTime = emonth+"-" + eday;
+            }
+        }
+        endShowTime =endShowTime +  " " + ehour + ":" + emunite;
+
+        var showTime = beginShowTime + " - " + endShowTime;
+        return showTime;
+    }
+    
+    function getCreateTime(createDate) {
+        var createTime = new Date(parseInt(createDate));
+        var current = new Date();
+        var result = "";
+        if(current.getFullYear() != createTime.getFullYear()){
+            result = createTime.getFullYear() + "-" + handleNum(createTime.getMonth() + 1)+ "-" + handleNum(createTime.getDate());
+        }else {
+            result =  handleNum(createTime.getMonth() + 1)+"-" + handleNum(createTime.getDate());
+        }
+        return result;
+    }
+    function handleNum(num){
+        if(num < 10){
+            num = "0" + num;
+        }
+        return num;
+    }
+
+</script> -->
+</html>

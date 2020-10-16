@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+	<bean id="printFieldCtrl" class="com.seeyon.apps.customFieldCtrl.fieldCtrl.PrintFieldCtrl" />
+	
+	<bean id="scanBarcode" class="com.seeyon.apps.customFieldCtrl.fieldCtrl.ScanBarcodeFieldCtrl" />
+	
+	<bean id="openUnflow" class="com.seeyon.apps.customFieldCtrl.fieldCtrl.OpenUnflowFieldCtrl" />
+	
+	<bean id="mapFieldCtrl" class="com.seeyon.apps.customFieldCtrl.fieldCtrl.MapFieldCtrl" />
+</beans>

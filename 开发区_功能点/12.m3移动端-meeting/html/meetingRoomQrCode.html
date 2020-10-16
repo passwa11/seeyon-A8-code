@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+  		<link href="http://cmp/v/css/cmp.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/cmp-meeting.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/m3_meeting.css" rel="stylesheet" type="text/css" />
+		<title></title>
+	</head>
+	<body>
+		<div class="meeting-sign-container"></div>
+		
+		<!--异常模版-->
+		<script type="text/html" id="signTpl-error">
+			<% var data = this; %>
+			<div class="sign-header">
+				<img src="http://meeting.v5.cmp/v1.0.0/img/meetingSign.png"/>
+			</div>
+			<div class="sign-content">
+				<div class="sign-error">
+					<%=data.errorMsg%>
+				</div>
+				<div class="sign-meeting-name">
+					<%=data.meetingRoomName%>
+				</div>
+			</div>
+		</script>
+		
+		<script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>  
+		<script src="http://cmp/v/js/cmp-i18n.js"></script>
+		<script  src="http://cmp/v/js/cmp.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meeting-jssdk.js" type="text/javascript"></script>
+<script  src="http://commons.v5.cmp/v/m3-jssdk.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meetingCommon.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/i18n/MeetingResources_zh_CN.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		   var $verstion = "";
+		   var _meetingPath = "http://meeting.v5.cmp/v1.0.0";
+		   var _collPath = "http://collaboration.v5.cmp/v1.0.0";  
+		   var _common_v5_path = "http://commons.v5.cmp/v";
+		   var _cmpPath = "http://cmp/v";
+	       cmp.i18n.init("http://meeting.v5.cmp/v1.0.0/i18n/", "MeetingResources",function(){
+	       		setPageTitle(cmp.i18n("meeting.qrCode.qrApply"));
+	       });
+	    </script>
+	    <script src="http://meeting.v5.cmp/v1.0.0/js/meetingRoomQrCode.js"></script>
+	</body>
+</html>

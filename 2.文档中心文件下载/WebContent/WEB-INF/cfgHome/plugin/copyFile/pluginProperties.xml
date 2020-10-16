@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ctpConfig>
+	<auth>
+		<authip mark="{VE}" desc="设置IP">http://127.0.0.1</authip>
+	</auth>
+	<!--<a8x>-->
+		<!--<enabled mark="{option,0,1} {VE}" desc="是否启用A8x插件 0&#45;&#45;不启用  1&#45;&#45;启用">1</enabled>-->
+		<!--<db>-->
+			<!--<driver mark="{VE}" desc="ERP数据库驱动">#oracle.jdbc.driver.OracleDriver#</driver>-->
+			<!--<url mark="{VE}" desc="ERP数据库URL">#jdbc:oracle:thin:@127.0.0.1:1521:ORCL#</url>-->
+			<!--<user mark="{VE}" desc="ERP数据库用户">#v5#</user>-->
+			<!--<pwd mark="{password} {VE}" desc="ERP数据库密码">#v5_zengyu#</pwd>-->
+		<!--</db>-->
+	<!--</a8x>-->
+</ctpConfig>

@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class 
+    name="com.seeyon.v3x.edoc.domain.EdocForm" 
+    table="edoc_form"
+    lazy="true"
+>
+    <id
+        name="id"
+        type="long"
+        column="id"
+        length="20"
+    >
+        <generator class="assigned" />
+    </id>
+    <property
+        name="name"
+        type="string"
+        column="name"
+        not-null="true"
+        length="255"
+    />
+    <property
+        name="description"
+        type="string"
+        column="description"
+        length="255"
+    />
+	<property
+        name="content"
+        type="string"
+        column="content"
+    />
+    <property
+        name="type"
+        type="integer"
+        column="type"
+		not-null="true"
+        length="4"
+    /> 
+	<property
+        name="createUserId"
+        type="long"
+        column="create_user_id"
+        length="20"
+    />
+	<property
+        name="createTime"
+        type="timestamp"
+        column="create_time"
+		not-null="true"
+        length="19"
+    />
+	<property
+        name="lastUserId"
+        type="long"
+        column="last_user_id"
+        length="20"
+    />
+	<property
+        name="lastUpdate"
+        type="timestamp"
+        column="last_update"
+		not-null="true"
+        length="19"
+    />
+ 
+    <property
+        name="domainId"
+        type="java.lang.Long"
+        column="domain_id"
+        not-null="true"
+        length="20"
+    /> 
+
+    
+    <property
+        name="fileId"
+        type="long"
+        column="file_id"
+        length="20"
+    />
+    
+    <property
+    	name="showLog"
+    	type="java.lang.Boolean"
+    	column="show_log"
+    	length="4"
+    />
+    
+    <property
+    	name="isSystem"
+    	type="java.lang.Boolean"
+    	column="is_system"
+    	length="4"
+    />
+
+    <property
+    	name="isunit"
+    	type="java.lang.Boolean"
+    	column="isunit"
+    	length="4"
+    />
+  
+	<property
+		name="subType"
+		type="java.lang.Long"
+		column="sub_type"
+		length="20"
+	/>
+
+	<!-- Associations -->
+
+	<set
+        name="edocFormElements"
+        lazy="false"
+        cascade="all-delete-orphan"
+        inverse="true"
+    >
+        <key>
+            <column name="form_id" /> <!-- a foreign key in edoc_form_element referencing the primary key of this table. -->
+        </key>
+        <one-to-many class="com.seeyon.v3x.edoc.domain.EdocFormElement" />
+    </set>
+
+
+	<set
+        name="edocFormAcls"
+        lazy="false"
+        cascade="all-delete-orphan"
+        inverse="true"
+    >
+        <key>
+            <column name="form_id" /> <!-- a foreign key in edoc_form_acl referencing the primary key of this table. -->
+        </key>
+        <one-to-many class="com.seeyon.v3x.edoc.domain.EdocFormAcl" />
+    </set>
+	<set
+        name="edocFormExtendInfo"
+        lazy="false"
+        cascade="all-delete-orphan"
+        inverse="true"
+    >
+        <key>
+            <column name="form_id" /> <!-- a foreign key in edoc_form_acl referencing the primary key of this table. -->
+        </key>
+        <one-to-many class="com.seeyon.v3x.edoc.domain.EdocFormExtendInfo" />
+    </set>
+	<set
+        name="edocFormFlowPermBound"
+        lazy="false"
+        cascade="all-delete-orphan"
+        inverse="true"
+    >
+        <key>
+            <column name="edoc_form_id" /> <!-- a foreign key in edoc_form_acl referencing the primary key of this table. -->
+        </key>
+        <one-to-many class="com.seeyon.v3x.edoc.domain.EdocFormFlowPermBound" />
+    </set>
+
+</class>
+</hibernate-mapping>

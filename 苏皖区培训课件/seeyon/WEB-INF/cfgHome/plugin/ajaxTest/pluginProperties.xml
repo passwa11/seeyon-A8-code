@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ctpConfig>
+	<ajaxTest>
+	    <msg mark="{VE}" desc="测试消息">Hello World!</msg>
+	</ajaxTest>
+</ctpConfig>

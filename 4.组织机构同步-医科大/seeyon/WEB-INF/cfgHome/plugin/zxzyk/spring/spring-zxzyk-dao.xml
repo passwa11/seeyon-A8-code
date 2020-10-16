@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+    <bean name="xzykDaoDemo" class="com.seeyon.apps.ext.zxzyk.dao.xzykDaoImpl"/>
+    <bean name="orgDeptDao" class="com.seeyon.apps.ext.zxzyk.dao.OrgDeptDaoImpl"/>
+    <bean name="orgLevelDao" class="com.seeyon.apps.ext.zxzyk.dao.OrgLevelDaoImpl"/>
+    <bean name="orgMemberDao" class="com.seeyon.apps.ext.zxzyk.dao.OrgMemberDaoImpl"/>
+
+</beans>

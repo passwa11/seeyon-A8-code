@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- 职务级别表 -->
+	<class name="com.seeyon.apps.synorg.po.SynLevel" table="PLUGIN_SYN_LEVEL" lazy="false">
+		<!-- 主建：编码 -->
+		<id name="code" type="string" column="CODE" length="50">
+			<generator class="assigned" />
+		</id>
+		<!-- 名称 -->
+		<property name="name" column="NAME" type="string" not-null="true" length="50" />
+		<!-- 排序 -->
+		<property name="sortId" column="SORT_ID" type="long" not-null="false" length="10" />
+		<!-- 描述 -->
+		<property name="description" column="DESCRIPTION" type="string" not-null="false" length="500" />
+		<!-- 创建时间 -->
+		<property name="createDate" column="CREATE_DATE" type="timestamp" not-null="true" length="7" />
+		<!-- 同步时间 -->
+		<property name="syncDate" column="SYNC_DATE" type="timestamp" not-null="false" length="7" />
+		<!-- 同步状态 -->
+		<property name="syncState" column="SYNC_STATE" type="integer" not-null="false" length="4" />
+	</class>
+</hibernate-mapping>
+

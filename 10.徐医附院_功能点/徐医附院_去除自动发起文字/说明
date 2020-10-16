@@ -1,0 +1,2 @@
+去除标题中的“自动发起”文字，不需要修改代码，修改国际化文件就可以了
+key为：collaboration.newflow.fire.subject

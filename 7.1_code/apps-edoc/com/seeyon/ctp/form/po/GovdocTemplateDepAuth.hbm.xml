@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.ctp.form.po">
+    <!-- 表单日志记录 -->
+  <class
+    name="GovdocTemplateDepAuth"
+    table="govdoc_template_dep_auth"
+  >
+    <id
+      name="id"
+      type="long"
+      column="ID"
+    >
+      <generator class="assigned"/>
+    </id>
+
+        <!-- 单位部门ID -->
+    <property
+      name="orgId"
+      column="org_id"
+      type="long"
+      not-null="false"
+    />
+        <!-- 单位部门名称 -->
+    <property
+      name="orgName"
+      column="org_name"
+      type="string"
+      not-null="false"
+    />
+        <!-- 类型 -->
+    <property
+      name="orgType"
+      column="org_type"
+      type="string"
+      not-null="false"
+    />
+        <!-- 流程模板ID -->
+    <property
+      name="templateId"
+      column="template_id"
+      type="long"
+    />
+    <property
+        name="authType"
+        type="int"
+        column="auth_type"
+        length="4"
+    />
+  </class>
+</hibernate-mapping>

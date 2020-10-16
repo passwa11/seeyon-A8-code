@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.seeyon.apps.ext.Portal190724.po">
+    <class name="Contract" table="CONTRACT" lazy="false">
+        <id name="id" type="long" column="ID">
+            <generator class="assigned"/>
+        </id>
+        <property name="oauserId" type="long" column="OAUSERID"/>
+        <property name="taskName" type="string" column="TASKNAME"/>
+        <property name="busiType" type="string" column="BUSITYPE"/>
+        <property name="createOrg" type="string" column="CREATEORG"/>
+        <property name="createUser" type="string" column="CREATEUSER"/>
+        <property name="beginTime" type="string" column="BEGINTIME"/>
+        <property name="taskUrl" type="string" column="TASKURL"/>
+        <property name="handleUser" type="string" column="HANDLEUSER"/>
+        <property name="appTaskId" type="string" column="APPTASKID"/>
+    </class>
+</hibernate-mapping>

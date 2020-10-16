@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.seeyon.v3x.edoc.domain.EdocFormFlowPermBound" lazy="false" table="edoc_form_flowperm_bound">
+	<id
+        name="id"
+        type="long"
+        column="id"
+        length="20"
+    >
+		<generator class="assigned" />
+	</id>
+
+	<property
+        name="edocFormId"
+        type="long"
+        column="edoc_form_id"
+        length="20"
+    />
+    <property
+        name="processName"
+        type="string"
+        column="process_name"
+        length="255"
+    />
+	<property
+        name="flowPermName"
+        type="string"
+        column="flowperm_name"
+        length="255"
+    />
+    
+	<property
+        name="flowPermNameLabel"
+        type="string"
+        column="flowperm_name_label"
+        length="255"
+    />   
+    
+    <property
+    	name="sortType"
+    	type="string"
+    	column="SORT_TYPE"
+    	length="8"
+    />  
+    
+    <property 
+    	name="domainId"
+    	type="long"
+    	column="domain_id"
+    	length="20"/>
+
+</class>
+</hibernate-mapping>

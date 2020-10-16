@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.seeyon.apps.ext.syncPost.po">
+    <class name="MidPost" table="MID_POST" lazy="false">
+        <id name="id" type="long" column="ID">
+            <generator class="assigned"/>
+        </id>
+        <property name="postCode" type="string" column="POST_CODE"/>
+        <property name="postName" type="string" column="POST_NAME"/>
+        <property name="postDesc" type="string" column="POST_DESC"/>
+        <property name="accountId" type="long" column="ACCOUNT_ID"/>
+        <property name="operationType" type="long" column="OPERATION_TYPE"/>
+        <property name="sortId" type="long" column="SORT_ID"/>
+        <property name="oaType" type="long" column="OA_TYPE"/>
+        <property name="postId" type="long" column="POST_ID"/>
+    </class>
+</hibernate-mapping>

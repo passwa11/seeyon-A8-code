@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+    <bean name="/mtMeeting.do" class="com.seeyon.v3x.meeting.controller.MtMeetingController"></bean>
+
+    <bean name="/meeting.do" class="com.seeyon.apps.meeting.controller.MeetingController"></bean>
+   	<bean name="/meetingNavigation.do" class="com.seeyon.apps.meeting.controller.MeetingNavigationController"></bean>
+   	<bean name="/meetingSummary.do" class="com.seeyon.apps.meeting.controller.MeetingSummaryController"></bean>
+    <bean name="/mtAdminController.do" class="com.seeyon.apps.meeting.controller.MeetingDataBaseController"/>
+    <bean name="/meetingType.do" class="com.seeyon.apps.meeting.controller.MeetingTypeController"/>
+    <bean name="/meetingResource.do" class="com.seeyon.apps.meeting.controller.PublicResourceController"/>
+    <bean name="/meetingList.do" class="com.seeyon.apps.meeting.controller.MeetingListController"></bean>
+    <bean name="/meetingN.do" class="com.seeyon.apps.meeting.controller.MeetingController"></bean>
+    <bean name="/meetingroomList.do" class="com.seeyon.apps.meetingroom.controller.MeetingRoomListController"></bean>
+    <bean name="/meetingroom.do" class="com.seeyon.apps.meetingroom.controller.MeetingRoomController"></bean>
+    <bean name="/meetingView.do" class="com.seeyon.apps.meeting.controller.MeetingViewController"></bean>
+    <!--会议大屏-->
+    <bean name="/meetingPanel.do" class="com.seeyon.apps.meeting.controller.MeetingPanelController"></bean>
+
+    <!--cap4表单触发会议室  -->
+    <bean id="formMeetingroomCtrl" class="com.seeyon.cap4.form.bean.meetingroom.FormMeetingroomCtrl"/>
+    <!--cap3表单触发会议室  -->
+    <bean id="FormMeetingPlaceInfo" class="com.seeyon.ctp.meeting.form.meetingplace.FormMeetingPlaceInfo"/>
+
+
+</beans>

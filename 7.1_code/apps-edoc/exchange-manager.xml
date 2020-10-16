@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+	<bean id="edocSendRecordDao"
+		class="com.seeyon.v3x.exchange.dao.EdocSendRecordDao">
+	</bean>
+	
+	<bean id="edocRecieveRecordDao"
+		class="com.seeyon.v3x.exchange.dao.EdocRecieveRecordDao">
+	</bean>
+	
+	<bean id="edocSendDetailDao"
+		class="com.seeyon.v3x.exchange.dao.EdocSendDetailDao">
+	</bean>
+	
+	<bean id="exchangeServerDao"
+		class="com.seeyon.v3x.exchange.dao.ExchangeServerDao">
+	</bean>
+	
+	<bean id="exchangeAccountDao"
+		class="com.seeyon.v3x.exchange.dao.ExchangeAccountDao">
+	</bean>
+		
+	<bean id="edocSummaryRelationDao"
+		class="com.seeyon.v3x.edoc.dao.EdocSummaryRelationDao">
+	</bean>	
+	<bean id="recieveEdocManager" parent="baseTxService">
+		<property name="target">
+			<bean class="com.seeyon.v3x.exchange.manager.RecieveEdocManagerImpl">
+				<property name="userMessageManager" ref="userMessageManager"></property>
+				<property name="affairManager" ref="affairManager"></property>		
+				<property name="orgManager" ref="orgManager"></property>	
+			</bean>
+		</property>		
+	</bean>
+	
+	<bean id="sendEdocManager" parent="baseTxService">
+		<property name="target">
+			<bean class="com.seeyon.v3x.exchange.manager.SendEdocManagerImpl">
+				<property name="orgManager" ref="orgManager"></property>
+			    <property name="affairManager" ref="affairManager"></property>
+				<property name="userMessageManager" ref="userMessageManager" ></property>
+				<property name="edocObjTeamManager" ref="edocObjTeamManager" />
+				<property name="edocSendRecordDao" ref="edocSendRecordDao" />
+				<property name="edocSendDetailDao" ref="edocSendDetailDao" />			
+			</bean>
+		</property>
+	</bean>	
+	
+	<bean id="edocExchangeManager" parent="baseTxService">
+		<property name="target">
+			<bean class="com.seeyon.v3x.exchange.manager.EdocExchangeManagerImpl">
+			<property name="orgManager" ref="orgManager"></property>
+			<property name="affairManager" ref="affairManager"></property>
+			<property name="edocSummaryManager" ref="edocSummaryManager"></property>
+			<property name="userMessageManager" ref="userMessageManager" />	
+			<property name="edocObjTeamManager" ref="edocObjTeamManager" />
+			<property name="edocSendDetailDao" ref="edocSendDetailDao" />
+			</bean>
+		</property>
+	</bean>	
+	
+	<bean id="edocSummaryRelationManager" parent="baseTxService">
+		<property name="target">
+			<bean class="com.seeyon.v3x.edoc.manager.EdocSummaryRelationManagerImpl">
+				<property name="edocSummaryRelationDao" ref="edocSummaryRelationDao" />
+			</bean>
+		</property>	
+		<property name="transactionAttributes">
+			<props>
+				<prop key="get*">PROPAGATION_SUPPORTS</prop>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>			
+	</bean>
+	
+	<bean id="exchangeServerManager" parent="baseTxService">
+		<property name="target">
+			<bean class="com.seeyon.v3x.exchange.manager.ExchangeServerManagerImpl"></bean>
+		</property>		
+	</bean>
+	
+	<bean id="exchangeAccountManager" parent="baseTxService">
+		<property name="target">
+			<bean class="com.seeyon.v3x.exchange.manager.ExchangeAccountManagerImpl"></bean>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getLastModifyTimestamp">PROPAGATION_SUPPORTS</prop>
+				<prop key="isModifyExchangeAccounts">PROPAGATION_SUPPORTS</prop>
+				<prop key="get*">PROPAGATION_SUPPORTS</prop>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="SelectPeoplePanel4ExchangeAccount" class="com.seeyon.v3x.exchange.manager.SelectPeoplePanel4ExchangeAccountImpl"></bean>
+		
+</beans>

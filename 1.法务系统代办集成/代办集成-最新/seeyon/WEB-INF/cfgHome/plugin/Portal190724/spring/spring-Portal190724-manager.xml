@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+    <bean id="portal190724Manager" class="com.seeyon.apps.ext.Portal190724.manager.Portal190724ManagerImpl">
+    </bean>
+
+    <bean id="sectionPortal" class="com.seeyon.apps.ext.Portal190724.section.SectionPortal" init-method="init">
+        <property name="sectionType" value="common"/>
+        <property name="sortId" value="99"/>
+    </bean>
+
+    <bean name="sampleTask" class="com.seeyon.apps.ext.quartz.SampleTask"/>
+
+
+
+</beans>

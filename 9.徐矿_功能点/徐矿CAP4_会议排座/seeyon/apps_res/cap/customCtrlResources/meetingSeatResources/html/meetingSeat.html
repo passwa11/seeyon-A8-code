@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <link rel="stylesheet" href="../css/meetingSeat.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="left-list">
+            <div class="person-dept">
+                <div class="members-list-title clearfix">
+                    <p class="members-listtitle-box">
+                        <span>参会人员(</span>
+                        <span class="counts">0</span> )
+                    </p>
+                    <div class="search-box">
+                        <input id="meetingSeatSearch" class="search-ipt" type="text">
+                        <i class="search-icon"></i>
+                    </div>
+                </div>
+                <div class="members-list"></div>
+                <p class="units-list-title">
+                    <span>未报送单位(</span>
+                    <span class="counts">0</span> )
+                </p>
+                <div class="units-list"></div>
+            </div>
+            <div class="edit-box">
+                <div class="btn-box clearfix">
+                    <button class="custome-btn add-btn">添加</button>
+                    <button class="custome-btn delete-btn">删除</button>
+                </div>
+            </div>
+        </div>
+        <div class="right-seats">
+            <p class="seats-title">
+                <span>人员排座(</span>
+                <span class="counts">0</span> )
+            </p>
+            <div class="seats-box">
+                <p style="font-weight:bold;color: #0a6aac;text-align: center;font-size: 16px;white-space: nowrap;text-overflow: ellipsis;overflow-x: auto;">
+                    <span><input type="text" style="border: 0px;background-color: #ffffff;font-size: 30px;text-align: center;color: #0b3c5e" value="" placeholder=""></span>
+                </p>
+                <div class="clearfix">
+                    <ul class="seats-cols-head"></ul>
+                </div>
+                <div class="seats-body">
+                    <div class="seats-rows-head"></div>
+                    <div class="seats-content"></div>
+                </div>
+            </div>
+            <div class="seats-bottom">
+                <button class="custome-btn quickly-seat">一键入座</button>
+                <button class="custome-btn quickly-cancel">一键清空</button>
+                <button class="custome-btn part-handle">批量操作</button>
+            </div>
+        </div>
+        <div class="edit-dialog">
+            <div class="dialog-content clearfix">
+                <div class="header clearfix">
+                    <span>添加</span>
+                    <span class="close-btn">x</span>
+                </div>
+                <div class="content">
+                    <div class="type row">
+                        <span class="title">添加类型：</span>
+                        <label for="member"><input name="radio" type="radio" value="member" checked>人员</label>
+                        <label style="margin-left: 10px;" for="unit"><input name="radio" type="radio" value="unit">单位</label>
+                    </div>
+                    <div class="member-item">
+                        <div class="name row">
+                            <span class="title">姓名：</span>
+                            <input class="name" type="text">
+                        </div>
+                        <div class="dep row">
+                            <span class="title">单位：</span>
+                            <input class="dep" type="text">
+                        </div>
+                    </div>
+                    <div class="unit-item">
+                        <div class="dep row">
+                            <span class="title">名称：</span>
+                            <input class="name" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="footer clearfix">
+                    <button class="custome-btn sure-btn">确定</button>
+                    <button class="custome-btn cancel-btn">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../../common/js/jquery-2.1.4.min.js"></script>
+    <!--    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
+    <script type="text/javascript" src="../utils/html2canvas.min.js"></script>
+    <script type="text/javascript" src="../utils/jspdf.min.js"></script>
+    <script type="text/javascript" src="../js/meetingSeat1.js"></script>
+</body>
+
+</html>

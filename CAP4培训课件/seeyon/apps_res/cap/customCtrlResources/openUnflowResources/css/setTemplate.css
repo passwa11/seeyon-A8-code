@@ -1,0 +1,87 @@
+body{
+    font-family: "microsoft yahei";
+}
+#tab {
+    height: 26px;
+    width: 100%;
+    border-bottom: 1px solid #666666;
+    margin-bottom: 5px;
+}
+#tab span {
+    height: 30px;
+    line-height: 30px;
+    width: 50%;
+    font-size: 14px;
+    text-align: center;
+    color: #666666;
+    margin-right: 20px;
+    padding: 0 5px 0 5px;
+    cursor: pointer;
+}
+#tab span.select {
+    border-bottom: 2px solid #2453b3;
+    color: #2453b3;
+}
+
+.list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    height: 310px;
+    overflow: auto;
+}
+.list .active{
+    background-color: #1F85EC;
+    border: 1px solid #1F85EC;
+    color: #ffffff;
+}
+
+.list li{
+    cursor: pointer;
+    margin: 3px 0 3px 0;
+}
+.list span{
+    display: inline-block;
+    background: url("img/icon16.png") -32px -240px  no-repeat scroll transparent;
+    margin-right: 2px;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+}
+.search-box {
+    height: 20px;
+    margin: 10px 0 10px 0;
+    position: relative;
+}
+.cap-icon-sousuo {
+    position: absolute;
+    top: 2px;
+    left: 170px;
+    color: #1F85EC;
+    font-size: 20px;
+    line-height: 20px;
+    cursor: pointer;
+}
+.cap-icon-sousuo:before {
+    content: "";
+    background:  url("img/icon16.png") -192px -176px no-repeat;
+    height: 16px;
+    line-height: 16px;
+    width: 16px;
+    font-size: 12px;
+    display: block;
+    position: absolute;
+    top: 5px;
+    margin-left: 2px;
+}
+.search-input {
+    background: #FFFFFF;
+    border: 1px solid #D4D4D4;
+    border-radius: 100px;
+    min-height: 20px;
+    width: 150px;
+    padding-right: 35px;
+    padding-left: 10px;
+    outline: none;
+}

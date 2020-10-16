@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+    <link href="http://cmp/v/css/cmp.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/cmp-meeting.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/m3_meeting.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="http://cmp/v/css/cmp-listView.css">
+	<title></title>
+	<style type="text/css">
+		/*.cmp-table-view{ height: 0px; }*/
+		.cmp-table-view-cell:after{ left: 0px; }
+		.head-style:after{ height: 0px; }
+		.cmp-list-cell{ border-bottom:none; }
+		#noFeedback,#noJoin,#pending,#join,#haveSign{
+			font-family: PingFangSC-Regular;
+			font-size: 16px;
+			letter-spacing: 0;
+			line-height: 20px;
+			height:33px;
+		}
+		.cmp-segmented-control.cmp-segmented-control-inverted .cmp-control-item.cmp-active:before{
+			border-bottom: 0;
+			background-color: #297FFB;
+			border-radius: 1.5px;
+			height: 3px;
+			bottom: 0;
+		}
+		.cmp-content div.new-tab-nav a{
+			padding-bottom: 4px;
+		}
+		#page01,#page02,#page03,#page04,#page05{
+			height: calc(100% - 54px) !important;
+		}
+		.cmp-control-content ul.list-before-line{
+			background: #ffffff;
+		}
+		.cmp-control-content ul.list-before-line:before{
+			content: ' ';
+		    display: block;
+		    width: 100%;
+		    height: 14px;
+		    background: #f8f9fb;
+		}
+	</style>
+</head>
+<body  class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1">
+	<div class="cmp-content relative back_f4 cmp-content-none" style="height: 100%;">
+		<div id="detailDiv" style="padding-top: 10px;" class="cmp-segmented-control cmp-segmented-control-inverted cmp-segmented-control-primary new-tab-nav">
+			<a id="join" href="#page01" class="cmp-control-item cmp-active">
+				<i18n key="meeting.page.action.attend"></i18n>
+				<div class="userNumber" id="joinNumber"></div>
+			</a><!-- 参加 -->
+			<a id="pending" href="#page02" class="cmp-control-item">
+				<i18n key="meeting.page.action.pending"></i18n>
+				<div class="userNumber" id="pendingNumber"></div>
+			</a><!-- 待定 -->
+			<a id="noJoin" href="#page03" class="cmp-control-item">
+				<i18n key="meeting.page.action.noAttend"></i18n>
+				<div class="userNumber" id="noJoinNumber"></div>
+			</a><!-- 不参加 -->
+			<a id="noFeedback" href="#page04" class="cmp-control-item">
+				<div><i18n key="meeting.page.lable.noReceipt"></i18n></div>
+				<div class="userNumber" id="noFeedbackNumber"></div>
+			</a><!-- 未回执 -->
+			<a id="haveSign" href="#page05" class="cmp-control-item">
+				<div><i18n key="meeting.page.label.sign"></i18n></div>
+				<div class="userNumber" id="signNumber"></div>
+			</a><!-- 已签到 -->
+		</div>
+			<div id="page01" class="cmp-control-content back_white cmp-active">
+				<div id="page011">
+					<ul class="list-before-line" id="joinUserDiv"></ul>
+				</div>
+			</div>
+			<div id="page02" class="cmp-control-content back_white">
+				<div id="page022">
+					<ul class="list-before-line" id="pendingUserDiv"></ul>
+				</div>
+				<div id="remindersPendingUserDiv" style='position:absolute;left:0;bottom:0;width:100%;display:none;'>
+					<button type='button' style='margin-bottom:0px;font-size:14px;border-radius:0px;' 
+					  class='cmp-btn-primary cmp-btn-block display_inline-block' onclick="remindersPending()">
+						<span>
+							<i18n key="meeting.page.lable.reminders"></i18n>
+						</span>
+					</button>
+				</div>
+			</div>
+			<div id="page03" class="cmp-control-content back_white">
+				<div id="page033">
+					<ul class="list-before-line" id="noJoinUserDiv"></ul>
+				</div>
+			</div>
+			<div id="page04" class="cmp-control-content back_white">
+				<div id="page044">
+					<ul class="list-before-line" id="noFeedbackUserDiv"></ul>
+				</div>
+				<div id="remindersNoFeedbackUserDiv" style='position:absolute;left:0;bottom:0;width:100%;display:none;'>
+					<button type='button' style='margin-bottom:0px;font-size:14px;border-radius:0px;'
+					  class='cmp-btn-primary cmp-btn-block display_inline-block' onclick="remindersNoFeedback()">
+						<span>
+							<i18n key="meeting.page.lable.reminders"></i18n>
+						</span>
+					</button>
+				</div>
+			</div>
+			<div id="page05" class="cmp-control-content back_white">
+				<div id="page055">
+					<ul class="list-before-line" id="signUserDiv"></ul>
+				</div>
+			</div>
+	</div>
+</body>
+	<!-- js -->
+	<script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>  
+	<script src="http://cmp/v/js/cmp-i18n.js"></script>
+	<script  src="http://cmp/v/js/cmp.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meeting-jssdk.js" type="text/javascript"></script>
+<script  src="http://commons.v5.cmp/v/m3-jssdk.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meetingCommon.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/i18n/MeetingResources_zh_CN.js" type="text/javascript"></script>
+	<script src="http://cmp/v/js/cmp-imgCache.js"></script>
+	<script src="http://cmp/v/js/cmp-listView.js"></script>
+	<script type="text/javascript">
+    var _meetingPath = "http://meeting.v5.cmp/v1.0.0";
+  var _collPath = "http://collaboration.v5.cmp/v1.0.0";
+</script>    <script type="text/javascript" src="http://meeting.v5.cmp/v1.0.0/js/meetingUserList.js"></script>
+	<!--参会人员模版-->
+	<script type="text/html" id="replyMemberTpl">
+	 	<% 
+	    	for(var i = 0,len = this.length; i < len; i++){  
+	        	var data = this[i];
+	    %>
+		    <li class="cmp-list-cell li-border">
+				<div class="attendess-wrap">
+					<div class="img-wrap">
+						<img class="cmp-img-cache img_setting" cmp-data="<%=data.memberId %>"  />
+						<% if(data.replyState == '-100' && data.look == '1') { %>
+							<div class="read-states has-read">
+					           <div class="state-bg">
+					              <span class="see-icon-v5-common-view-circle-fill state-color"></span>
+					           </div>
+					        </div>
+						<% } %>
+						<% if(data.replyState == '-100' && data.look == '0') { %>
+							<div class="read-states other">
+					           <div class="state-bg">
+					              <span class="see-icon-v5-common-unview-circle-fill state-color"></span>
+					           </div>
+					        </div>
+						<% } %>
+					</div>
+					<div class="text">
+						<div class="name">
+							<div style="width:75%;float:left" class="memberName">
+								<%=data.memberName %>
+								<% if(data.userType == 1 || data.userType == 2){ %>
+									<span class="external-member"><%=cmp.i18n("meeting.page.action.visitor")%></span>
+								<% } %>
+							</div>
+							<div class="job cmp-ellipsis"><%=data.memberPost %></div>
+						</div>
+					</div>
+					<div style="width:25%;float:right;text-align:right;padding-right:20px;padding-top:22px;height:21px;">
+						<% if(data.replyState == "-100") { %>
+							<% if(data.look !=undefined && data.look == '1') { %>
+								<%=cmp.i18n("meeting.meetingDetail.replyState.read")%>
+							<%}%>
+							<% if(data.look !=undefined && data.look == '0') { %>
+								<%=cmp.i18n("meeting.meetingDetail.replyState.unread")%>
+							<%}%>
+						<%}%>
+					</div>
+				</div>
+			</li>
+	    <%}%>
+	</script>
+	<!--签到模版-->
+	<script type="text/html" id="signMemberTpl">
+	 	<% 
+	    	for(var i = 0,len = this.length; i < len; i++){  
+	        	var data = this[i];
+	    %>
+		    <li class="cmp-list-cell li-border">
+				<div class="attendess-wrap">
+					<div class="img-wrap">
+						<img class="cmp-img-cache img_setting" cmp-data="<%=data.memberId %>"  />
+						<% if(data.replyState == '-100' && data.look == '1') { %>
+							<div class="read-states has-read">
+					           <div class="state-bg">
+					              <span class="see-icon-v5-common-view-circle-fill state-color"></span>
+					           </div>
+					        </div>
+						<%}%>
+						<% if(data.replyState == '-100' && data.look == '0') { %>
+							<div class="read-states other">
+					           <div class="state-bg">
+					              <span class="see-icon-v5-common-unview-circle-fill state-color"></span>
+					           </div>
+					        </div>
+						<%}%>
+					</div>
+						<div class="text">
+							<div class="name">
+								<div style="width:75%;float:left" class="memberName">
+									<%=data.memberName %>
+									<% if(data.userType == 1 || data.userType == 2){ %>
+										<span class="external-member"><%=cmp.i18n("meeting.page.action.visitor")%></span>
+									<% } %>
+								</div>
+								<div class="job cmp-ellipsis"><%=data.memberPost %></div>
+							</div>
+						</div>
+						<div style="width:40%;float:right;text-align:right;margin-top:15px;margin-right:20px;height:64px;">
+							<% if(data.signDate !=undefined && data.signDate != '') { %>
+								<p style="margin:0;color: #333;font-size: 18px;"><%=DateUtil.toString(data.signDate, "hh:mm")%></p>
+								<p style="margin:0;"><%=DateUtil.toString(data.signDate, "yyyy-MM-dd")%></p>
+							<% } %>
+						</div>
+				</div>
+			</li>
+	    <%}%>
+	</script>
+</html>

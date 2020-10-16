@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<meta name='format-detection' content='telephone=no,email=no' />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+    <link href="http://cmp/v/css/cmp.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/cmp-meeting.css" rel="stylesheet" type="text/css" />
+<link href="http://meeting.v5.cmp/v1.0.0/css/m3_meeting.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="http://cmp/v/css/cmp-listView.css">
+	<title></title>
+	<style type="text/css">
+		.cmp-table-view-cell:after{ left: 0px; }
+		.head-style:after{ height: 0px; }
+		.cmp-list-cell{ border-bottom:none; }
+		.cmp-table-view:before{ height: 0px; }
+	</style>
+</head>
+<body  class="cmp-fullscreen cmp-ios cmp-ios-9 cmp-ios-9-1">
+	<div class="cmp-content relative back_f4 cmp-content-none">
+		<div class="back_white " style=" margin-top: 8px;">
+			<div id="page01" class="cmp-control-content cmp-active">
+				<div id="page011" class="cmp-scroll-wrapper">
+					<div class="cmp-scroll">
+						<ul class="cmp-table-view ul_list" id="joinUserDiv">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+	<!-- js -->
+	<script src="http://cmp/v/js/cordova/__CMPSHELL_PLATFORM__/cordova.js"></script>
+<script src="http://cmp/v/js/cordova/cordova-plugins.js"></script>  
+	<script src="http://cmp/v/js/cmp-i18n.js"></script>
+	<script  src="http://cmp/v/js/cmp.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meeting-jssdk.js" type="text/javascript"></script>
+<script  src="http://commons.v5.cmp/v/m3-jssdk.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/js/meetingCommon.js" type="text/javascript"></script>
+<script  src="http://meeting.v5.cmp/v1.0.0/i18n/MeetingResources_zh_CN.js" type="text/javascript"></script>
+	<script src="http://cmp/v/js/cmp-imgCache.js"></script>
+	<script src="http://cmp/v/js/cmp-listView.js"></script>
+	<script type="text/javascript">
+    var _meetingPath = "http://meeting.v5.cmp/v1.0.0";
+  var _collPath = "http://collaboration.v5.cmp/v1.0.0";
+</script>    <script type="text/javascript" src="http://meeting.v5.cmp/v1.0.0/js/meetingSummaryUserList.js"></script>
+	<script type="text/javascript">
+		cmp.ready(function(){
+			cmp.listView("#page011");
+		});
+	</script>
+	
+	<script type="text/html" id="replyMemberTpl">
+	 	<% 
+	    	for(var i = 0,len = this.length; i < len; i++){  
+	        	var data = this[i];
+	    %>
+		    <li class="cmp-list-cell li-border">
+				<div class="attendess-wrap">
+					<div class="img-wrap">
+						<img class="cmp-img-cache img_setting" cmp-data="<%=data.memberId %>"  />
+					</div>
+					<div class="text">
+						<div class="name"><%=data.memberName %></div>
+						<div class="job"><%=data.memberPost %></div>
+					</div>
+				</div>
+			</li>
+	    <%}%>
+	</script>
+</html>

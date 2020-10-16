@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.seeyon.v3x.edoc.domain.EdocSubjectWrapRecord" lazy="false" table="edoc_subjectwrap_record">
+		<id
+        name="id"
+        type="long"
+        column="id"
+        length="20"
+    	>
+		<generator class="assigned" />
+		</id>
+		
+		<property
+        name="userId"
+        type="long"
+        column="user_id"
+        length="20"
+    	/>
+    	
+    	<property
+        name="AccountId"
+        type="long"
+        column="account_id"
+        length="20"
+    	/>
+    	
+    	<property
+        name="listType"
+        type="integer"
+        column="list_type"
+        length="4"
+    	/>
+    	
+    	<property
+        name="edocType"
+        type="integer"
+        column="edoc_type"
+        length="4"
+    	/>
+    </class>
+</hibernate-mapping>    

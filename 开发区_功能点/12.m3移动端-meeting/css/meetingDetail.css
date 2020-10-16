@@ -1,0 +1,36 @@
+.content-widget p{word-break: break-word!important;margin-left: 0!important;margin-right: 0!important;}
+.meeting-body{}
+.meeting-body .cmp-content{
+    height: 100%;
+}
+.meeting-detail .date-wrap{
+  font-size: 0;
+}
+.detail-title-name-warp{
+    height: 16px;
+    line-height: 14px;
+    font-size: 14px;
+    color: #666666;
+    max-width: 100%;
+    display: -webkit-box;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 36px;
+    -webkit-align-items: center;
+    align-items: center;
+    white-space:nowrap;
+}
+.detail-title-username{
+    overflow: hidden;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+.detail-title-name-warp #createDate{
+    margin-left: 0;
+    padding-left: 10px;
+}

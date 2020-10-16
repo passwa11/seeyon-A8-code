@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+    <bean id="mtMeetingDao" class="com.seeyon.v3x.meeting.dao.MtMeetingDao"></bean>
+    <bean id="mtReplyDao" class="com.seeyon.v3x.meeting.dao.MtReplyDao"></bean>
+
+    <bean id="meetingDao" class="com.seeyon.apps.meeting.dao.MeetingDao"></bean>
+    <bean id="meetingListDao" class="com.seeyon.apps.meeting.dao.MeetingListDao"></bean>
+    <bean id="meetingConfereeDao" class="com.seeyon.apps.meeting.dao.MeetingConfereeDao" />
+    <bean id="meetingReplyDao" class="com.seeyon.apps.meeting.dao.MeetingReplyDao"></bean>
+    <bean id="meetingTemplateDao" class="com.seeyon.apps.meeting.dao.MeetingTemplateDao"></bean>
+    <bean id="meetingTemplateUserDao" class="com.seeyon.apps.meeting.dao.MeetingTemplateUserDao"></bean>
+    <bean id="meetingPeriodicityDao" class="com.seeyon.apps.meeting.dao.MeetingPeriodicityDao"></bean>
+    <bean id="meetingSummaryDao" class="com.seeyon.apps.meeting.dao.MeetingSummaryDao"></bean>
+    <bean id="meetingSummaryScopeDao" class="com.seeyon.apps.meeting.dao.MeetingSummaryScopeDao" />
+    <bean id="meetingValidationDao" class="com.seeyon.apps.meeting.dao.MeetingValidationDao" />
+    <bean id="publicResourceDao" class="com.seeyon.apps.meeting.dao.PublicResourceDao" />
+    <bean id="meetingResourcesDao" class="com.seeyon.apps.meeting.dao.MeetingResourcesDao"></bean>
+    <bean id="meetingTypeDao" class="com.seeyon.apps.meeting.dao.MeetingTypeDao"></bean>
+    <bean id="meetingTypeRecordDao" class="com.seeyon.apps.meeting.dao.MeetingTypeRecordDao"></bean>
+    <bean id="meetingRoomDao" class="com.seeyon.apps.meetingroom.dao.MeetingRoomDaoImpl"></bean>
+    <bean id="meetingRoomListDao" class="com.seeyon.apps.meetingroom.dao.MeetingRoomListDao"></bean>
+    <bean id="meetingRoomAppDao" class="com.seeyon.apps.meetingroom.dao.MeetingRoomAppDao"></bean>
+    <bean id="meetingRoomPermDao" class="com.seeyon.apps.meetingroom.dao.MeetingRoomPermDao"></bean>
+    <bean id="meetingRoomRecordDao" class="com.seeyon.apps.meetingroom.dao.MeetingRoomRecordDao"></bean>
+    <bean id="meetingOuterDao" class="com.seeyon.apps.meeting.dao.MeetingOuterDao"></bean>
+    <bean id="meetingScreenDao" class="com.seeyon.apps.meeting.dao.MeetingScreenDao"></bean>
+    <bean id="meetingQrcodeSignDao" class="com.seeyon.apps.meeting.dao.MeetingQrcodeSignDaoImpl"></bean>
+    <bean id="meetingPanelDao" class="com.seeyon.apps.meeting.dao.MeetingPanelDaoImpl"></bean>
+    <!--    zhou-->
+    <bean id="meetingRoomHistoryDao" class="com.seeyon.apps.meetingroom.dao.MeetingRoomHistoryDaoImpl"></bean>
+</beans>

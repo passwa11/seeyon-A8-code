@@ -1,0 +1,13 @@
+2020-04-11 10:26:32.491 [Thread-11] INFO  com.scienjus.smartqq.client.SmartQQApi -
+				开始获取二维码
+2020-04-11 10:26:32.828 [Thread-11] INFO  com.scienjus.smartqq.client.SmartQQApi -
+				二维码已保存在 F:\0_test_code\档案系统集成公文同步\.idea\SmartIM\smartqq.jpg 文件中，请打开手机QQ并扫描二维码
+2020-04-11 10:26:32.829 [Thread-11] DEBUG com.scienjus.smartqq.client.SmartQQApi -
+				等待扫描二维码
+2020-04-11 10:27:32.665 [Thread-11] ERROR com.scienjus.smartqq.client.SmartQQClient -
+				登录失败
+java.lang.RuntimeException: 验证二维码超时
+	at com.scienjus.smartqq.client.SmartQQApi.verifyQRCode(SmartQQApi.java:188)
+	at com.scienjus.smartqq.client.SmartQQApi.login(SmartQQApi.java:109)
+	at com.scienjus.smartqq.client.SmartQQClient.login(SmartQQClient.java:195)
+	at cn.ieclipse.smartim.actions.LoginAction$1.run(LoginAction.java:31)

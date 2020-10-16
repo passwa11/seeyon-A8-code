@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6b85442b-5a07-4403-83d7-74439168030c" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1WdcE3YXqEFydmSUb1xpW0J2HV5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="D:/gitcode/study-java/sbsm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="com.zeroturnaround.javarebel.idea.plugin.settings.AdvancedConfigurable" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.seeyon.ctp.common.i18n" />
+      <recent name="com.seeyon.ctp.portal.section" />
+      <recent name="com.seeyon.ctp.portal.portlet" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\0_test_code\去除自动发起\seeyon\WEB-INF\cfgHome\plugin" />
+      <recent name="F:\0_test_code\去除自动发起\src\com\seeyon\ctp\portal\section" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="Remote" nameIsGenerated="true">
+      <module name="去除自动发起" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="8000" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="8000" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6b85442b-5a07-4403-83d7-74439168030c" name="Default Changelist" comment="" />
+      <created>1579482796114</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579482796114</updated>
+      <workItem from="1579482797833" duration="1935000" />
+      <workItem from="1579485085476" duration="11053000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="392" y="92" key="#Deployment" timestamp="1579484232830">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="392" y="92" key="#Deployment/0.0.1600.870/1600.-180.1920.1080@0.0.1600.870" timestamp="1579484232830" />
+    <state x="2390" y="214" key="#com.intellij.debugger.actions.ViewTextAction" timestamp="1579493742837">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state x="2390" y="214" key="#com.intellij.debugger.actions.ViewTextAction/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1579493742837" />
+    <state x="254" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579484188472">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="254" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.870/1600.-180.1920.1080@0.0.1600.870" timestamp="1579484188472" />
+    <state x="2311" y="161" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579500143203">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state x="2311" y="161" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1579500143203" />
+    <state x="530" y="188" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1579482852239">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="530" y="188" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1600.870/1600.-180.1920.1080@0.0.1600.870" timestamp="1579482852239" />
+    <state width="796" height="466" key="DebuggerActiveHint" timestamp="1579492794266">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="796" height="466" key="DebuggerActiveHint/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1579492794266" />
+    <state x="2086" y="-15" key="FileChooserDialogImpl" timestamp="1579500266250">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state x="405" y="133" key="FileChooserDialogImpl/0.0.1600.870/1600.-180.1920.1080@0.0.1600.870" timestamp="1579485143039" />
+    <state x="2086" y="-15" key="FileChooserDialogImpl/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1579500266250" />
+    <state width="1876" height="373" key="GridCell.Tab.0.bottom" timestamp="1579500285198">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1556" height="64" key="GridCell.Tab.0.bottom/0.0.1600.870/1600.-180.1920.1080@0.0.1600.870" timestamp="1579492004697" />
+    <state width="1876" height="373" key="GridCell.Tab.0.bottom/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1579500285198" />
+    <state width="1876" height="373" key="GridCell.Tab.0.center" timestamp="1579500285197">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1556" height="64" key="GridCell.Tab.0.center/0.0.1600.870/1600.-180.1920.1080@0.0.1600.870" timestamp="1579492004697" />
+    <state width="1876" height="373" key="GridCell.Tab.0.center/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1579500285197" />
+    <state width="1876" height="373" key="GridCell.Tab.0.left" timestamp="1579500285197">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1556" height="64" key="GridCell.Tab.0.left/0.0.1600.870/1600.-180.1920.1080@0.0.1600.870" timestamp="1579492004697" />
+    <state width="1876" height="373" key="GridCell.Tab.0.left/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1579500285197" />
+    <state width="1876" height="373" key="GridCell.Tab.0.right" timestamp="1579500285198">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1556" height="64" key="GridCell.Tab.0.right/0.0.1600.870/1600.-180.1920.1080@0.0.1600.870" timestamp="1579492004697" />
+    <state width="1876" height="373" key="GridCell.Tab.0.right/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1579500285198" />
+    <state width="1876" height="373" key="GridCell.Tab.1.bottom" timestamp="1579500285199">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1556" height="64" key="GridCell.Tab.1.bottom/0.0.1600.870/1600.-180.1920.1080@0.0.1600.870" timestamp="1579492004583" />
+    <state width="1876" height="373" key="GridCell.Tab.1.bottom/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1579500285199" />
+    <state width="1876" height="373" key="GridCell.Tab.1.center" timestamp="1579500285198">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1556" height="64" key="GridCell.Tab.1.center/0.0.1600.870/1600.-180.1920.1080@0.0.1600.870" timestamp="1579492004583" />
+    <state width="1876" height="373" key="GridCell.Tab.1.center/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1579500285198" />
+    <state width="1876" height="373" key="GridCell.Tab.1.left" timestamp="1579500285198">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1556" height="64" key="GridCell.Tab.1.left/0.0.1600.870/1600.-180.1920.1080@0.0.1600.870" timestamp="1579492004583" />
+    <state width="1876" height="373" key="GridCell.Tab.1.left/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1579500285198" />
+    <state width="1876" height="373" key="GridCell.Tab.1.right" timestamp="1579500285199">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1556" height="64" key="GridCell.Tab.1.right/0.0.1600.870/1600.-180.1920.1080@0.0.1600.870" timestamp="1579492004583" />
+    <state width="1876" height="373" key="GridCell.Tab.1.right/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1579500285199" />
+    <state x="280" y="8" key="SettingsEditor" timestamp="1579482918744">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="280" y="8" key="SettingsEditor/0.0.1600.870/1600.-180.1920.1080@0.0.1600.870" timestamp="1579482918744" />
+    <state x="2029" y="-7" width="1281" height="763" key="find.popup" timestamp="1579488079314">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state x="2029" y="-7" width="1281" height="763" key="find.popup/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1579488079314" />
+    <state x="2261" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1579487687188">
+      <screen x="1600" y="-180" width="1920" height="1080" />
+    </state>
+    <state x="2261" y="255" width="672" height="678" key="search.everywhere.popup/0.0.1600.870/1600.-180.1920.1080@1600.-180.1920.1080" timestamp="1579487687188" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/portlet/CollaborationPortlet.java</url>
+          <line>558</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/portlet/CollaborationPortlet.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/BaseSectionImpl.java</url>
+          <line>484</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSectionUrlUtil.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSection.java</url>
+          <line>166</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://F:/Seeyon/A87.1_sp1_oracle/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-workflow-component.jar!/com/seeyon/ctp/common/affair/manager/PendingManagerImpl.class</url>
+          <line>1001</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://F:/Seeyon/A87.1_sp1_oracle/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-apps-vjoin.jar!/com/seeyon/apps/vjoin/portal/section/PendingSection4Vjoin.class</url>
+          <line>80</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/portal/section/PendingSection.java</url>
+          <line>233</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://F:/Seeyon/A87.1_sp1_oracle/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-workflow-component.jar!/com/seeyon/ctp/common/affair/manager/PendingManagerImpl.class</url>
+          <line>1012</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/common/affair/manager/PendingManagerImpl.java</url>
+          <line>1099</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/common/affair/util/WFComponentUtil.java</url>
+          <line>503</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://F:/Seeyon/A87.1_sp1_oracle/ApacheJetspeed/webapps/seeyon/WEB-INF/lib/seeyon-ctp-core.jar!/com/seeyon/ctp/common/i18n/ResourceUtil.class</url>
+          <line>88</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/seeyon/ctp/common/i18n/ResourceUtil.java</url>
+          <line>191</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Remote">
+        <watch expression="affairs" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
