@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sendMsg_jdk1.6_200716">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/seeyon/WEB-INF/lib/sendMsg_jdk1.6_200716.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
