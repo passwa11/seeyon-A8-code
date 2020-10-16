@@ -110,8 +110,8 @@ function radioChange(val) {
             MeetingUtils.clearSelectOrgCache();
             cmp.storage["delete"](cacheKey_mrAppParams, true);
 
-            _$("#conferees").innerHTML="";
-            _$("#conferees_value").innerHTML="";
+            _$("#conferees").value="";
+            _$("#conferees_value").value="";
             break;
         case 1:
             _$("#confereesCell").style.display = "block";
