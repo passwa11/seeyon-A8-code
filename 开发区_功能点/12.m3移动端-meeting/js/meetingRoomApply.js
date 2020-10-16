@@ -106,6 +106,10 @@ function radioChange(val) {
     switch (val) {
         case 0:
             _$("#confereesCell").style.display = "none";
+            //删除选人组件使用的缓存
+            MeetingUtils.clearSelectOrgCache();
+            cmp.storage["delete"](cacheKey_mrAppParams, true);
+
             break;
         case 1:
             _$("#confereesCell").style.display = "block";
