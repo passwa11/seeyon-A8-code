@@ -20,6 +20,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.seeyon.apps.ext.zs.manager.ZsTempFormCorrelationManager;
+import com.seeyon.apps.ext.zs.manager.ZsTempFormCorrelationManagerImpl;
+import com.seeyon.apps.ext.zs.po.ZsTempFormCorrelation;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.commons.logging.Log;
@@ -96,11 +99,11 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 		this.edocOpinionDao = edocOpinionDao;
 	}
 
-	
+
 	public void setFlowFactory(FlowFactory flowFactory) {
 		this.flowFactory = flowFactory;
 	}
-	
+
 	public FormApi4Cap3 getFormApi4Cap3() {
 	    if(formApi4Cap3 == null){
 	        formApi4Cap3 = (FormApi4Cap3) AppContext.getBean("formApi4Cap3");
@@ -133,7 +136,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
         }
 		return flowFactory;
 	}
-	
+
 	public OrgManagerDirect getOrgManagerDirect() {
 		if(orgManagerDirect==null){
 			orgManagerDirect = (OrgManagerDirect) AppContext.getBean("orgManagerDirect");
@@ -147,21 +150,21 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 	     }
 		return ctpCommentManager;
 	}
-	
+
 	public EdocOpinionDao getEdocOpinionDao() {
 		 if (edocOpinionDao == null) {
 			 edocOpinionDao = (EdocOpinionDao) AppContext.getBean("edocOpinionDao");
 	     }
 		return edocOpinionDao;
 	}
-	
+
 	public ColManager getColManager(){
     	if(colManager==null){
     		 colManager=(ColManager)AppContext.getBean("colManager");
     	}
     	return colManager;
     }
-	
+
 	public ProjectManager getProjectManager(){
     	if(projectManager==null){
     		projectManager=(ProjectManager)AppContext.getBean("projectManager");
@@ -174,7 +177,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 			templateManager = (TemplateManager) AppContext.getBean("templateManager");
         }
 		String templateXml="";
-		
+
 		try {
 			templateXml=getFlowFactory().getTemplateXml(templateCode);
 		} catch (Exception e) {
@@ -182,9 +185,9 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 			//e.printStackTrace();
 			log.error(e.getMessage(), e);
 		}
-		
+
 		Object data = param.get("data");
-		
+
 		CtpTemplate template = templateManager.getTempleteByTemplateNumber(templateCode);
 		if(template == null||templateXml.length()==0||"".equals(templateXml)) {
 			return null;
@@ -192,17 +195,17 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 
 		try {
 			//将templateXml从表去除，然后根据sub信息重新插入
-			List<Element> subDellist = new ArrayList<Element>(); 
-			Document document = DocumentHelper.parseText(templateXml); 
+			List<Element> subDellist = new ArrayList<Element>();
+			Document document = DocumentHelper.parseText(templateXml);
 			Element priceTmp =  document.getRootElement().element("subForms").element("subForm");
-			subDellist = document.selectNodes("//subForms/subForm"); 
-			//删除节点  
+			subDellist = document.selectNodes("//subForms/subForm");
+			//删除节点
 			for(int i=0;i<subDellist.size();i++){
 				Element delSub=subDellist.get(i);
-				delSub.getParent().remove(delSub); 
+				delSub.getParent().remove(delSub);
 			}
 			templateXml= document.asXML();
-	        
+
 			//将json的打他转换对象
 			Map jsonObject= null;
 			if(data instanceof Map || data instanceof LinkedHashMap){
@@ -217,7 +220,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
             }else{
             	sub = (List)JSONUtil.parseJSONString(String.valueOf(sub1));
             }
-            
+
 			boolean isForm = template.getModuleType() == 1 && Integer.valueOf(template.getBodyType()) == 20;
 
 			if(isForm){
@@ -250,7 +253,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 	                    }
 	                }
 	              //根据sub来插入subForm
-	                 Element subForms =  document.getRootElement().element("subForms"); 
+	                 Element subForms =  document.getRootElement().element("subForms");
 	                 List subFormslist = subForms.elements();
 	                //循环从表字段
 	                 if(sub!=null&&sub.size()>0){
@@ -264,7 +267,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 	                            	if(sub.get(i) instanceof Map){
 	                            		jsonSub = (Map)sub.get(i);
 	                            	}else{
-	                            		
+
 	                            		 jsonSub=(Map) JSONUtil.parseJSONString(sub.get(i).toString());
 	                            	}
 	                                if(jsonSub.get(field.getDisplay())!=null){
@@ -305,7 +308,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 	                    }
 	                }
 	              //根据sub来插入subForm
-	                 Element subForms =  document.getRootElement().element("subForms"); 
+	                 Element subForms =  document.getRootElement().element("subForms");
 	                 List subFormslist = subForms.elements();
 	                //循环从表字段
 	                 if(sub!=null&&sub.size()>0){
@@ -319,7 +322,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 	                            	if(sub.get(i) instanceof Map){
 	                            		jsonSub = (Map)sub.get(i);
 	                            	}else{
-	                            		
+
 	                            		 jsonSub=(Map) JSONUtil.parseJSONString(sub.get(i).toString());
 	                            	}
 	                                if(jsonSub.get(field.getDisplay())!=null){
@@ -333,14 +336,14 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 	                        }
 	                 }
 				}
-				
+
 				param.put("data", document.asXML());
 				return param;
 			}
 		} catch (Exception e) {
 			log.error(e.getMessage(),e);
 		}
-		return null;	
+		return null;
 	}
 
 	/**
@@ -378,12 +381,20 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 				return ok(mapError);
 			}
 		}
-		
+
 		long summaryId = sendCollaboration(templateCode, param);
+		//zhou:[宗申映射表单关系] start
+		ZsTempFormCorrelationManager manager=new ZsTempFormCorrelationManagerImpl();
+		ZsTempFormCorrelation zs=new ZsTempFormCorrelation();
+		zs.setId(System.currentTimeMillis());
+		zs.setThirdId(thirdFormId);
+		zs.setOaSummaryId(summaryId+"");
+		manager.saveForm(zs);
+		//zhou:[宗申映射表单关系] end
         return ok(summaryId);
-		
+
 	}
-	
+
 	/**
 	 * 外部批量发起协同(模板协同(非office正文)，表单协同)表单导入时枚举只能传入ID或者Enumvalue
 	 * @param templateCode 表单模板编号
@@ -402,7 +413,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("batchlaunch/{templateCode}")
 	@RestInterfaceAnnotation
-	public Response batchlaunchCollaboration(@PathParam("templateCode") String templateCode,Map<String,Object> param) 
+	public Response batchlaunchCollaboration(@PathParam("templateCode") String templateCode,Map<String,Object> param)
 			throws Exception {
 		List colInfo=(List) param.get("collList");
 		List ruturnInfo=new ArrayList();
@@ -413,7 +424,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 			ruturnInfo.add(summaryInfo);
 		}
         return ok(ruturnInfo);
-		
+
 	}
 
 	private long sendCollaboration(String templateCode,
@@ -425,7 +436,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 		if (templateManager == null) {
 			templateManager = (TemplateManager) AppContext.getBean("templateManager");
         }
-	
+
 		//正文内容  keyfile|
 		Object bodyContent = null;
 		//根据模板id，查询模板
@@ -434,14 +445,14 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 	           throw new ServiceException(ErrorServiceMessage.flowTempleExist.getErroCode(),ErrorServiceMessage.flowTempleExist.getValue()+":"+templateCode);
 	    }
 		String senderLoginName = (String) param.get("senderLoginName");
-		
+
 		String subject = (String) param.get("subject");
 		//是否草稿状态
 		String state = (String) param.get("param");
 		String data = (String) param.get("data");
 		//如果后续还要增加参数 都通过 Map<String,Object> relevantParam 来传递
 		Map<String,Object> relevantParam =new HashMap();
-		
+
 		//是否有发起人单位ID
 		if(param.get("accountCode")!=null){
 			 List<V3xOrgEntity> listEntity = getOrgManagerDirect().getEntityNoRelationDirect("V3xOrgAccount", "code",
@@ -450,10 +461,10 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 				 relevantParam.put("accountId", listEntity.get(0).getId());
 			 }
 		}
-		
+
 		String affairId = (String) param.get("affairId");
 		relevantParam.put("affairId", affairId);
-		
+
 		//表单正文附件ID
 		if(param.get("formContentAtt")!=null){
 				Long[] formcontentatt = list2LongArray((List<Long>) param.get("formContentAtt"));
@@ -464,7 +475,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 		FormExport formExportData = null;
 		//枚举值转ID
 				data = enumValueToId(data, templateCode);
-				
+
 				if(isForm){
 					if ("2.0".equals(Double.toString(FormUtils.getXmlVersion(data)))) {
 		                formExportData = FormUtils.xmlTransformFormExport(data);
@@ -510,7 +521,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 				Map<String, FormFieldBean> parentFieldMap = new LinkedHashMap<String, FormFieldBean>();
 				Map<String, String> enumFieldValueMap = new LinkedHashMap<String, String>();
 				for(FormFieldBean field : allFields) {
-					
+
 					if(field.getEnumId() != 0) {
 						if(StringUtils.isNotEmpty(field.getEnumParent())) {
 							for(FormFieldBean bean : allFields) {
@@ -522,7 +533,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 						}
 						columnMap.put(field.getDisplay(), field);
 					}
-					
+
 				}
 				Document document = DocumentHelper.parseText(data);
 				Element formExportEle = (Element)document.selectSingleNode("/formExport");
@@ -554,14 +565,14 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 										valueEle.setText(enumValue);
 									}
 								}
-								
+
 							}
 						}
 					}
 				}
 				return document.asXML();
 			}
-		
+
 		} catch (Exception e) {
 			log.error(e);
 		}
@@ -577,7 +588,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 				if((value.equals(item.getEnumvalue())||value.equals(Long.toString(item.getId())))&& level == item.getLevelNum()) {
 					FormFieldBean parentFildBean = parentFieldMap.get(fieldBean.getDisplay());
 					if(parentFildBean != null) {
-						
+
 						String strParentId = String.valueOf(item.getParentId());
 						if(strParentId.equals(enumValueMap.get(parentFildBean.getDisplay()))) {
 							return String.valueOf(item.getId());
@@ -595,7 +606,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 		return value;
 
 	}
-	
+
 	private String sendCollaborationForDee(String templateCode,
 			Map<String, Object> param) throws ServiceException, Exception,
 			BusinessException {
@@ -605,13 +616,13 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 		if (templateManager == null) {
 			templateManager = (TemplateManager) AppContext.getBean("templateManager");
         }
-		
+
 		//正文内容  keyfile|
 		Object bodyContent = null;
 		//根据模板id，查询模板
 		String returninfo = "|ok";
 		String keyFiledVal = (String) param.get("keyFieldVal");
-		
+
 		CtpTemplate template = templateManager.getTempleteByTemplateNumber(templateCode);
 		if (template == null||template.getWorkflowId()==null) {
 	          // throw new ServiceException(ErrorServiceMessage.flowTempleExist.getErroCode(),ErrorServiceMessage.flowTempleExist.getValue()+":"+templateCode);
@@ -649,7 +660,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 		return keyFiledVal+returninfo;
 	}
 	protected Long[] list2LongArray(List list){
-		
+
 		if(list == null) {
 			return new Long[0];
 		}
@@ -661,7 +672,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 		}
 		return array;
 	}
-	
+
 	/**
 	 * 取得流程的运转状态
 	 * @param flowId 协同id，summary表主键
@@ -672,9 +683,9 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Path("state/{flowId}")
 	@RestInterfaceAnnotation
-    public Response getFlowState (@PathParam("flowId")long flowId) 
+    public Response getFlowState (@PathParam("flowId")long flowId)
     		throws Exception {
-        
+
         if (flowFactory == null) {
             flowFactory = (FlowFactory) AppContext.getBean("flowFactory");
         }
@@ -693,13 +704,13 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("data/{flowId}")
 	@RestInterfaceAnnotation
-	public Response getFlowData (@PathParam("flowId")long flowId,@QueryParam("exportType") String exportType,@QueryParam("exportFormat") String exportFormat) 
+	public Response getFlowData (@PathParam("flowId")long flowId,@QueryParam("exportType") String exportType,@QueryParam("exportFormat") String exportFormat)
     		throws Exception {
         if(documentFactory==null){
             documentFactory=(DocumentFactory)AppContext.getBean("documentFactory");
         }
         String restFlag =exportType;
-        FlowExport flowExport=documentFactory.exportFlow2(restFlag, flowId);   
+        FlowExport flowExport=documentFactory.exportFlow2(restFlag, flowId);
         TextExport content = flowExport.getFlowContent();
         if("json".equals(exportFormat)){
         	Map param=new HashMap<String, Object>();
@@ -730,9 +741,9 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
     			return ok(((TextHtmlExport)content).getContext());
     		}
         }
-		
+
         return  ok(content.toString());
-    }	
+    }
     private String toString(IDataPojo pl) throws ServiceException {
         StringWriter writer = new StringWriter();
         try {
@@ -743,13 +754,13 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
     	   log.error(e.getMessage(),e);
 		}
         return writer.toString();
-    }	
+    }
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("notification/{flowToken}")
 	@RestInterfaceAnnotation
-	public Response sendNotification(@PathParam("flowToken") String flowToken,Map<String,Object> param) 
+	public Response sendNotification(@PathParam("flowToken") String flowToken,Map<String,Object> param)
 			throws Exception {
 		String action = (String)param.get("action");
 		if(action==null) {
@@ -783,7 +794,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 	}
 			/**
 	 * 按时间段查询指定表单模板结束的流程
-	 * 
+	 *
 	 * @param templateCode
 	 *            模板编号
 	 * @param beginDateTime
@@ -819,9 +830,9 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 	}
 		/**
 	 * 根据summaryId 去查所有意见
-	 * 
+	 *
 	 * @param summaryId 协同ID
-	 *        
+	 *
 	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
@@ -831,10 +842,10 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 		List<Comment> commentAllByModuleId = getCtpCommentManager().getCommentAllByModuleId(ModuleType.collaboration, summaryId);
 		return ok(commentAllByModuleId);
 	}
-	
+
 		/**
 	 * 根据summaryId 去查所有意见
-	 * 
+	 *
 	 * @param summaryId
 	 * 		  公文Id
 	 */
@@ -850,8 +861,8 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 		return ok(findEdocOpinionBySummaryId);
 	}
 
-	
-	
+
+
 	@GET
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Path("FromTemplate/{templateCode}")
@@ -863,7 +874,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
         }
         return ok(flowFactory.getTemplateDefinition(null, templateCode)[1]);
 	}
-	
+
 	@GET
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Path("dostaff/{summaryId}")
@@ -879,23 +890,23 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 		ArrayList<Long> activityList = new ArrayList<Long>();
 		ArrayList<Long> memberList = new ArrayList<Long>();
 		ArrayList<V3xOrgMember> memberInfoList = new ArrayList<V3xOrgMember>();
-		
+
 		for(int i=0;i<pendingList.size();i++){
 			activityList.add(pendingList.get(i).getActivityId());
 		}
 		for(int i=0;i<pendingList.size();i++){
 			memberList.add(pendingList.get(i).getMemberId());
-			
+
 		}
 		 //获取二维数组行
 		 ArrayList<Long> rowInfo = new ArrayList<Long>();
 		 ArrayList<Long> memberRemovedup = new ArrayList<Long>();
-		 
-		 HashSet r  =   new  HashSet(activityList); 
-		 rowInfo.addAll(r); 
-		 HashSet m  =   new  HashSet(memberList); 
-		 memberRemovedup.addAll(m); 
-		 
+
+		 HashSet r  =   new  HashSet(activityList);
+		 rowInfo.addAll(r);
+		 HashSet m  =   new  HashSet(memberList);
+		 memberRemovedup.addAll(m);
+
 		 for(int i=0;i<memberRemovedup.size();i++){
 			 memberInfoList.add(getOrgManager().getMemberById(pendingList.get(i).getMemberId()));
 		 }
@@ -913,23 +924,23 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 	            }
 		 }
 		 //定义二位数组每行列
-		 V3xOrgMember[][] rows=new V3xOrgMember[rowInfo.size()][]; 
-		 Object[] valuesObj = map.values().toArray(); 
+		 V3xOrgMember[][] rows=new V3xOrgMember[rowInfo.size()][];
+		 Object[] valuesObj = map.values().toArray();
 
 		 for(int row=0;row<rows.length;row++){
 			 ArrayList<Long> columnInfo=returnArrayLength(valuesObj[row]);
 			 if(columnInfo==null){
 				 continue;
 			 }
-			 rows[row]=new V3xOrgMember[columnInfo.size()]; 
+			 rows[row]=new V3xOrgMember[columnInfo.size()];
 			 for(int column=0;column<columnInfo.size();column++){
 				 rows[row][column]=findV3xOrgMemberByList(columnInfo.get(column),memberInfoList);
 			 }
-		 }                           
+		 }
         return ok(rows);
 	}
-	
-	/** 
+
+	/**
 	* 获取表单模板V2.0XML信息
 	* URL show/showbar
     * @since 6.1
@@ -940,7 +951,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
     *	String	templateCode	 Y	表单模板ID
     * </pre>
     * @return 返回表单XML信息
-	* @throws 
+	* @throws
 	*/
 	@GET
 	@Consumes("application/json")
@@ -950,7 +961,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 	public Response getFromTemplateXml(@PathParam("templateCode") String templateCode) throws Exception {
 		 return ok(getFlowFactory().getTemplateXml(templateCode));
 	}
-	
+
 	private V3xOrgMember findV3xOrgMemberByList(Long memberId,ArrayList<V3xOrgMember> memberInfoList){
 		if(memberInfoList==null||memberInfoList.size()<=0||memberId==null){
 			return null;
@@ -963,12 +974,12 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 		}
 		return res;
 	}
-	
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("launchcollabrationbyCIP/{templateCode}")
 	public Response launchCollabrationByCIP(@PathParam("templateCode") String templateCode,Map<String,Object> param) throws Exception{
-		
+
 		String transfertype="xml";//默认为xml(data为XML格式)
 		transfertype=(String) param.get("transfertype");
 		Map<String, Object> mapError = new HashMap<String, Object>();
@@ -1004,7 +1015,7 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 		}
         return success(o);
 	}
-	
+
 	private ArrayList<Long> returnArrayLength(Object value){
 		if(value==null){
 			return null;
