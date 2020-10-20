@@ -362,9 +362,9 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("{templateCode}")
+	@Path("{templateCode}/{thirdFormId}")
 	@RestInterfaceAnnotation
-	public Response launchCollaboration(@PathParam("templateCode") String templateCode,Map<String,Object> param) 
+	public Response launchCollaboration(@PathParam("templateCode") String templateCode,@PathParam("thirdFormId") String thirdFormId,Map<String,Object> param)
 			throws ServiceException,BusinessException,Exception {
 		String transfertype="xml";//默认为xml(data为XML格式)
 		transfertype=(String) param.get("transfertype");
