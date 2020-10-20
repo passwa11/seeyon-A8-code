@@ -846,6 +846,12 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
             this.dealAutoIncreaseRow(autoIncreaseRowBeans, formBean, formDataMasterBean, formAuthViewBean, formDataParamBean.getRightId(), isWaitSent, extendData.getClearSubReferences());
             formDataMasterBean.removeExtraMap(FormConstant.WAIT_SEND_BY_BACK_OR_REPEAL);
             CAPFormDataLogUtil.recordTrace(formDataMasterBean, "打开计算后");
+            /**zhou:[合并的代码] 解决发起表单附件出现两次的问题*/
+            Set<String> clearSubReferences4Open = (Set)AppContext.getThreadContext("clearSubReferences4Open");
+            if (CollectionUtils.isNotEmpty(clearSubReferences4Open)) {
+                LOGGER.info(formDataMasterBean.getId() + " data open remove auto relation files " + clearSubReferences4Open);
+                extendData.getClearSubReferences().addAll(clearSubReferences4Open);
+            }
         }
 
         //构造签章数据(计算之后)
