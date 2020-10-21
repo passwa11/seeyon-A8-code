@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4888ed8f-a253-426b-8e92-cfbaef4ab81d" name="Default Changelist" comment="" />
+    <list default="true" id="cd38e6ee-dd62-4d9b-8a0e-1321297dc7d7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../8.教育局-华网功能点" beforeDir="false" afterPath="$PROJECT_DIR$/../../8.教育局-华网功能点" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/OA代办事项推送到金智系统.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/6.zip" beforeDir="false" afterPath="$PROJECT_DIR$/6.zip" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectId" id="1ilB75jqMev6WMpiPh1sCAf0eZu" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1ix6ReWZVFy9t1DuK4UEjuIPZrh" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="F:/致远OA/致远资料/0_致远源码/7.1SP1" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -31,16 +40,59 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4888ed8f-a253-426b-8e92-cfbaef4ab81d" name="Default Changelist" comment="" />
-      <created>1602472127789</created>
+      <changelist id="cd38e6ee-dd62-4d9b-8a0e-1321297dc7d7" name="Default Changelist" comment="" />
+      <created>1602836888789</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1602472127789</updated>
-      <workItem from="1602472129445" duration="7693000" />
+      <updated>1602836888789</updated>
+      <workItem from="1602836890238" duration="402000" />
+      <workItem from="1602838510674" duration="280000" />
+      <workItem from="1602840534275" duration="745000" />
     </task>
+    <task id="LOCAL-00001" summary="清除选人控件缓存">
+      <created>1602837053980</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602837053980</updated>
+    </task>
+    <task id="LOCAL-00002" summary="清除选人控件缓存">
+      <created>1602838648973</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1602838648973</updated>
+    </task>
+    <task id="LOCAL-00003" summary="清除选人控件缓存">
+      <created>1602841210651</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1602841210651</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="清除选人控件缓存" />
+    <option name="LAST_COMMIT_MESSAGE" value="清除选人控件缓存" />
   </component>
 </project>
