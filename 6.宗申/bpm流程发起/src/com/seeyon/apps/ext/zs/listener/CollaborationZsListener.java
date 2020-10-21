@@ -162,10 +162,44 @@ public class CollaborationZsListener {
     @ListenEvent(event = CollaborationStopEvent.class, async = true)
     public void stop(CollaborationStopEvent event) {
         Long summaryId = event.getSummaryId();
+        CtpAffair currentAffair = event.getAffair();
         String sql = "select a.COMPLETE_TIME,(select name from ORG_MEMBER where id= a.MEMBER_ID) memberName,(select OU.name from ORG_UNIT ou,ORG_MEMBER om where OM.id=a.MEMBER_ID and OM.ORG_DEPARTMENT_ID=OU.id) deptName,c.content,case c.ext_att4 when 'disagree' then '不同意' when 'agree' then '同意' when 'haveRead' then '已阅' else '' end result  " +
-                " from CTP_COMMENT_ALL c,CTP_AFFAIR a where MODULE_ID=" + summaryId.longValue() + " and c.AFFAIR_ID=a.id order by a.COMPLETE_TIME asc";
-        List<Map<String, Object>> list = JDBCUtil.doQuery(sql);
-        System.out.println(list);
+                " from CTP_COMMENT_ALL c,CTP_AFFAIR a where  c.AFFAIR_ID=a.id and c.AFFAIR_ID=" + currentAffair.getId() + " order by a.COMPLETE_TIME asc";
+
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            connection = JDBCAgent.getRawConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            boolean flag = false;
+            while (rs.next()) {
+                String result = rs.getString("result");
+                if ("不同意".equals(result)) {
+                    flag = true;
+                }
+            }
+
+            if (flag) {
+                toPushInfo(rs, currentAffair.getObjectId().longValue());
+            }
+        } catch (Exception e) {
+        } finally {
+            try {
+                if (null != rs) {
+                    rs.close();
+                }
+                if (null != ps) {
+                    ps.close();
+                }
+                if (null != connection) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
 
     }
 
