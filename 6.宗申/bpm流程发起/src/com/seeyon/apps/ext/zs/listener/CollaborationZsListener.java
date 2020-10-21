@@ -46,10 +46,13 @@ public class CollaborationZsListener {
             connection = JDBCAgent.getRawConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
-            toPushInfo(rs, affair.getObjectId().longValue());
+            boolean isSuccess = toPushInfo(rs, affair.getObjectId().longValue());
+            if (isSuccess) {
+                toDeleteFormData(affair.getObjectId().longValue() + "");
+            }
         } catch (Exception e) {
 
-        }finally {
+        } finally {
             try {
                 if (null != rs) {
                     rs.close();
@@ -95,7 +98,10 @@ public class CollaborationZsListener {
             }
 
             if (flag) {
-                toPushInfo(rs, currentAffair.getObjectId().longValue());
+                boolean isSuccess = toPushInfo(rs, currentAffair.getObjectId().longValue());
+                if (isSuccess) {
+                    toDeleteFormData(currentAffair.getObjectId().longValue() + "");
+                }
             }
         } catch (Exception e) {
         } finally {
@@ -115,7 +121,7 @@ public class CollaborationZsListener {
         }
     }
 
-    public void toPushInfo(ResultSet rs, long summaryId) throws SQLException {
+    public boolean toPushInfo(ResultSet rs, long summaryId) throws SQLException {
         String url = "http://192.168.1.88:8088/SrmCommSrv.asmx/upVender";
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost post = new HttpPost(url);
@@ -144,6 +150,7 @@ public class CollaborationZsListener {
         }
         post.setEntity(encodedFormEntity);
         HttpResponse response = null;
+        boolean isSuccess = false;
         try {
             response = client.execute(post);
             response.setHeader("Cache-Control", "no-cache");
@@ -152,10 +159,12 @@ public class CollaborationZsListener {
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 String result = EntityUtils.toString(response.getEntity(), "utf-8");
                 System.out.println(result);
+                isSuccess = true;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return isSuccess;
     }
 
 
@@ -182,7 +191,10 @@ public class CollaborationZsListener {
             }
 
             if (flag) {
-                toPushInfo(rs, currentAffair.getObjectId().longValue());
+                boolean isSuccess = toPushInfo(rs, currentAffair.getObjectId().longValue());
+                if (isSuccess) {
+                    toDeleteFormData(currentAffair.getObjectId().longValue() + "");
+                }
             }
         } catch (Exception e) {
         } finally {
@@ -190,6 +202,45 @@ public class CollaborationZsListener {
                 if (null != rs) {
                     rs.close();
                 }
+                if (null != ps) {
+                    ps.close();
+                }
+                if (null != connection) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void toDeleteFormData(String summaryId) {
+        //删除协同表单数据
+        String sql_1 = "delete from COL_SUMMARY where id =" + summaryId;
+        //删除表单数据关联的代办事项数据
+        String sql_2 = "delete from CTP_AFFAIR where object_id =" + summaryId;
+        //删除正文内容信息
+        String sql_3 = "delete from CTP_CONTENT_ALL where MODULE_ID=" + summaryId;
+        //删除消息提醒信息
+        String sql_4 = "delete from CTP_USER_HISTORY_MESSAGE where REFERENCE_ID in (select a.id from CTP_AFFAIR a,COL_SUMMARY c where a.OBJECT_ID=c.id and c.id=" + summaryId + ")";
+
+        Connection connection = null;
+        PreparedStatement ps = null;
+        try {
+            connection = JDBCAgent.getRawConnection();
+            ps = connection.prepareStatement(sql_1);
+            ps.executeUpdate();
+            ps = connection.prepareStatement(sql_2);
+            ps.executeUpdate();
+            ps = connection.prepareStatement(sql_3);
+            ps.executeUpdate();
+            ps = connection.prepareStatement(sql_4);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
                 if (null != ps) {
                     ps.close();
                 }
