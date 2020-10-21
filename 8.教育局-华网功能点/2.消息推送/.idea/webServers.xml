@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f1dc4e3d-db16-4a34-99fd-dff01e70966a" name="message" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="F:\Seeyon\v8sp1-qiye\ApacheJetspeed\webapps\seeyon" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
