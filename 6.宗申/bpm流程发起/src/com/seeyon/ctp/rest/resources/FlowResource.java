@@ -389,7 +389,11 @@ private FlowLogFactory flowLog = FlowLogFactory.getInstance(FlowResource.class);
 		zs.setId(System.currentTimeMillis());
 		zs.setThirdId(thirdFormId);
 		zs.setOaSummaryId(summaryId+"");
-		manager.saveForm(zs);
+		try {
+			manager.saveForm(zs);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		//zhou:[宗申映射表单关系] end
         return ok(summaryId);
 

@@ -12,13 +12,13 @@ public class ZsTempFormCorrelationManagerImpl implements ZsTempFormCorrelationMa
     private ZsTempFormCorrelationDao dao = new ZsTempFormCorrelationDaoImpl();
 
     @Override
-    public ZsTempFormCorrelation saveForm(ZsTempFormCorrelation zs) {
-        return getDao().saveForm(zs);
+    public void saveForm(ZsTempFormCorrelation zs) {
+        dao.saveForm(zs);
     }
 
     @Override
     public List<ZsTempFormCorrelation> getFormInfoBySummaryId(Map<String, Object> summaryId) {
-        return getDao().getFormInfoBySummaryId(summaryId);
+        return dao.getFormInfoBySummaryId(summaryId);
     }
 
     public ZsTempFormCorrelationDao getDao() {

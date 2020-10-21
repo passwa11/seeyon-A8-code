@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface ZsTempFormCorrelationManager {
 
-    ZsTempFormCorrelation saveForm(ZsTempFormCorrelation zs);
+    void saveForm(ZsTempFormCorrelation zs);
 
     List<ZsTempFormCorrelation> getFormInfoBySummaryId(Map<String, Object> summaryId);
 

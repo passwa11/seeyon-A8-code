@@ -8,8 +8,8 @@ import java.util.Map;
 
 public class ZsTempFormCorrelationDaoImpl implements ZsTempFormCorrelationDao {
     @Override
-    public ZsTempFormCorrelation saveForm(ZsTempFormCorrelation zs) {
-        return (ZsTempFormCorrelation) DBAgent.save(zs);
+    public void saveForm(ZsTempFormCorrelation zs) {
+        DBAgent.save(zs);
     }
 
     @Override
