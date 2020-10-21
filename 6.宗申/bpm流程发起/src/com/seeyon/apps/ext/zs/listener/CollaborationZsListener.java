@@ -130,7 +130,12 @@ public class CollaborationZsListener {
         ZsTempFormCorrelationManager zsManager = new ZsTempFormCorrelationManagerImpl();
         Map<String, Object> map = new HashMap<>();
         map.put("oaSummaryId", summaryId + "");
-        List<ZsTempFormCorrelation> list = zsManager.getFormInfoBySummaryId(map);
+        List<ZsTempFormCorrelation> list = null;
+        try {
+            list = zsManager.getFormInfoBySummaryId(map);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         while (rs.next()) {
             pairs.add(new BasicNameValuePair("FormID", summaryId + ""));

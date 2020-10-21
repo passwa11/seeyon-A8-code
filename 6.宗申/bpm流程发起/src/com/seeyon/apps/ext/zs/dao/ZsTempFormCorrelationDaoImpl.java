@@ -14,6 +14,6 @@ public class ZsTempFormCorrelationDaoImpl implements ZsTempFormCorrelationDao {
 
     @Override
     public List<ZsTempFormCorrelation> getFormInfoBySummaryId(Map<String, Object> param) {
-        return DBAgent.find("from ZsTempFormCorrelation where oaSummaryId:= oaSummaryId", param);
+        return DBAgent.find("from ZsTempFormCorrelation where oaSummaryId =:oaSummaryId", param);
     }
 }
