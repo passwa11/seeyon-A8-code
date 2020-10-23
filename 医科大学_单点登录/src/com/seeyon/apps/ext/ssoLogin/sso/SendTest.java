@@ -15,7 +15,8 @@ public class SendTest {
 
     public static void formSend(HttpServletRequest request, HttpServletResponse response) {
         try {
-            String ticket = request.getParameter("ticket");
+            String ticket = request.getRemoteUser();
+//            String ticket = request.getParameter("ticket");
             String templateId = request.getParameter("templateId");
             String type = request.getParameter("type");
             SSOTicketManager.getInstance().newTicketInfo(ticket, ticket, "xkdxSso");
