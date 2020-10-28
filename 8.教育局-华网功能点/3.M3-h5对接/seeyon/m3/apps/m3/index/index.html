@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="cmp" content="cmpFullScreen"/>
+    <title></title>
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=20822183926">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-sliders.css?buildversion=20822183926">
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp-dateCalender.css?buildversion=20822183926">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/css/portal.css?buildversion=20822183926">
+    <link rel="stylesheet" href="/seeyon/m3/apps/v5/portal/css/iconfont.css?buildversion=20822183926">
+</head>
+<body>
+<h1 id="error">加载中......</h1>
+</body>
+<!-- 国际化顺序 1应用的国际化 2cmp-i18n.js 3去国际化 4加载cmp -->
+<script src="/seeyon/m3/apps/v5/portal/i18n/Portal_zh_CN.js?buildversion=20822183926"></script>
+<script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=20822183926"></script>
+<script>
+    var scrollText;
+    cmp.i18n.init("/seeyon/m3/apps/v5/portal/i18n/", "Portal", function () {
+        scrollText = {
+            "pullDownLable": cmp.i18n("portal.page.down_fresh"),
+            "pullingDownLable": cmp.i18n("portal.page.release_fresh"),
+            "pullUpLable": cmp.i18n("portal.page.up_load"),
+            "pullingUpLable": cmp.i18n("portal.page.release_load"),
+            "loadingLable": cmp.i18n("portal.page.loading"),
+            "pullDownSuccess": cmp.i18n("portal.page.load_success"),
+            "nomore": "<div class='showOperateArea'><div class='showOperate'><i class='iconfont icon-set'></i></div><span class='showOperateText'>" + cmp.i18n("portal.page.custom_column") + "</span></div>",
+            "mangeSpace": "<div class='showOperateArea'><span class='showOperateText'>" + cmp.i18n("portal.button.config.space") + "</span></div>"
+        }
+    });
+    //开启调试工具
+    window.localStorage['CMP_DEV_MODAL'] = "true";
+</script>
+<script src="/seeyon/m3/cmp/js/cmp.js?buildversion=20822183926"></script>
+
+
+<script type="text/javascript">
+    var $verstion = "?buildversion=20822183926";
+</script>
+<script type="text/javascript">
+
+    var _cmpPath = "/seeyon/m3/cmp";
+    var _common_v5_path = "/seeyon/m3/apps/v5/commons";
+    var _colPath = "/seeyon/m3/apps/v5/collaboration";
+    var _docPath = "/seeyon/m3/apps/v5/doc";
+
+    var _formqueryreportPath = "/seeyon/m3/apps/v5/formqueryreport";
+
+    var _unflowformPath = "/seeyon/m3/apps/v5/unflowform";
+    var _workflowPath = "/seeyon/m3/apps/v5/workflow";
+    var _bulPath = "/seeyon/m3/apps/v5/bulletin";
+    var _newsPath = "/seeyon/m3/apps/v5/news";
+    var _mycollectionPath = "/seeyon/m3/apps/v5/mycollection";
+    var _edocPath = "/seeyon/m3/apps/v5/edoc";
+    var _meetingPath = "/seeyon/m3/apps/v5/meeting";
+    var _bbsPath = "/seeyon/m3/apps/v5/bbs";
+    var _inquiryPath = "/seeyon/m3/apps/v5/inquiry";
+    var _taskmanagePath = "/seeyon/m3/apps/v5/taskmanage";
+    var _calendarPath = "/seeyon/m3/apps/v5/calendar";
+    var _addressbookPath = "/seeyon/m3/apps/v5/addressbook";
+    var _attendancePath = "/seeyon/m3/apps/v5/attendance";
+    var _hrPath = "/seeyon/m3/apps/v5/hr";
+    var _footprintPath = "/seeyon/m3/apps/v5/footprint";
+    var _showPath = "/seeyon/m3/apps/v5/show";
+    var _portalPath = "/seeyon/m3/apps/v5/portal";
+    var _cap4Path = "/seeyon/m3/apps/v5/cap4";
+    var _cap4unflow = "/seeyon/m3/apps/v5/cap4unflow";
+    var _cap4query = "/seeyon/m3/apps/v5/cap4query";
+    var _cap4business = "/seeyon/m3/apps/v5/cap4business";
+    var _cap4report = "/seeyon/m3/apps/v5/cap4report";
+    var _cap4todolist = "/seeyon/m3/apps/v5/cap4todolist";
+    var _vreportPath = "/seeyon/m3/apps/v5/vreport";
+    var _bizPath = "/seeyon/m3/apps/v5/biz";
+    var _fullsearch = "/seeyon/m3/apps/v5/fullsearch";
+    var _searchPath = "/seeyon/m3/apps/m3/search";
+    var _my = "/seeyon/m3/apps/m3/my/v1.0.0";
+    var _todoPath = "/seeyon/m3/apps/m3/todo";
+    var _leaderagendaPath = "/seeyon/m3/apps/v5/leaderagenda";
+    var _templateapprovePath = "/seeyon/m3/apps/v5/templateapprove";
+    var _cipPath = "/seeyon/m3/apps/v5/cip";
+    var _officePath = "/seeyon/m3/apps/v5/office";
+</script>
+
+<script src="/seeyon/m3/cmp/js/cmp-webviewListener.js?buildversion=20822183926"></script>
+<script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=20822183926"></script>
+<script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=20822183926"></script>
+<script src="/seeyon/m3/cmp/js/cmp-sliders.js?buildversion=20822183926"></script>
+
+<!-- 部分栏目会调用里面的rest接口 -->
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=20822183926"></script>
+<script src="/seeyon/m3/apps/v5/taskmanage/taskmanage_m_api.s3js?buildversion=20822183926"
+        type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/meeting/meeting_m_api.s3js?buildversion=20822183926" type="text/javascript"></script>
+
+<!--↓↓↓↓ 磁贴调用js ↓↓↓↓-->
+<script src="/seeyon/m3/cmp/js/cmp-barcode.js?buildversion=20822183926"></script>
+<script src="/seeyon/m3/cmp/js/cmp-att.js?buildversion=20822183926"></script>
+<script src="/seeyon/m3/apps/v5/biz/biz_m_api.s3js?buildversion=20822183926" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/collaboration/collaboration_m_api.s3js?buildversion=20822183926"
+        type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/formqueryreport/formqueryreport_m_api.s3js?buildversion=20822183926"
+        type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/cap4/cap4_m_api.s3js?buildversion=20822183926" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/cap4todolist/cap4todolist_m_api.s3js?buildversion=20822183926"
+        type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/portal/portal_m_api.s3js?buildversion=20822183926" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/vreport/vreport_m_api.s3js?buildversion=20822183926" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/doc/doc_m_api.s3js?buildversion=20822183926" type="text/javascript"></script>
+<script src="/seeyon/m3/apps/v5/cap4unflow/cap4unflow_m_api.s3js?buildversion=20822183926"
+        type="text/javascript"></script>
+<!--↑↑↑↑ 磁贴调用js （vreport 依赖 formq/portal/cap4/） ↑↑↑↑-->
+<script src="/seeyon/m3/apps/v5/portal/js/iscroll-probe.js?buildversion=20822183926"></script>
+<script src="/seeyon/m3/apps/v5/cip/js/cip-jssdk.js"></script>
+<script src="/seeyon/m3/apps/v5/cip/js/cip-api.js"></script>
+<script src="/seeyon/m3/apps/v5/portal/js/shortCutEvent.js?buildversion=20822183926"></script>
+<script src="/seeyon/m3/apps/v5/portal/js/portal.js?buildversion=20822183926"></script>
+<script src="/seeyon/m3/cmp/js/cmp-sortable.js?buildversion=20822183926"></script>
+<!-- <script src="/seeyon/m3/apps/v5/portal/js/spaceSelectionSort.js?buildversion=20822183926"></script> 空间排序 -->
+<script>
+
+    var rest = "rest";
+    var restPassword = "6b905898-3e48-428b-9295-d920068e5f1e";
+
+    <!--    zhou:此文件只是作为-->
+    var query = location.search.substring(1);
+    console.log(query, "query");
+    var vars = query.split("&");
+    var thirdToken = "";
+    var thirdUid = "";
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == "token") {
+            thirdToken = pair[1];
+        }
+        if (pair[0] == "uId") {
+            thirdUid = pair[1];
+        }
+    }
+
+    var data = {"userName": rest, "password": restPassword};
+    cmp.ajax({
+        url: cmp.util.getSeeyonPath() + "/rest/token",  //seeyon的rest接口，cmp.seeyonbasepath是seeyon服务器路径，兼容M3和微协同
+        type: "POST",
+        data: JSON.stringify(data),
+        headers: {
+            //请求headers，异步seeyon的rest接口设置如下headers字段
+            'Accept': 'application/json; charset=utf-8',
+            'Accept-Language': cmp.language,
+            'Content-Type': 'application/json; charset=utf-8',
+        },
+        success: function (result) {
+            //请求成功的业务逻辑
+            var token = result.id;
+            valicationToken(token);
+        },
+        error: function (error) {
+            if (cmp.errorHandle(error) == false) {  //请求错误时，先使用cmp的错误处理组件，如果cmp的错误处理组件为false，说明cmp组件处理不了这个错误，需要业务自己处理（cmp处理的错误包括被迫下线、网络断开、session失效、更新密码等）
+                cmp.notification.alert("请求数据失败")
+            }
+        }
+    });
+
+
+    function valicationToken(token) {
+        cmp.ajax({
+            url: cmp.util.getSeeyonPath() + "/rest/h5/validationToken/" + thirdToken + "/" + thirdUid,  //seeyon的rest接口，cmp.seeyonbasepath是seeyon服务器路径，兼容M3和微协同
+            type: "GET",
+            headers: {   //请求headers，异步seeyon的rest接口设置如下headers字段
+                'Accept': 'application/json; charset=utf-8',
+                'Accept-Language': cmp.language,
+                'Content-Type': 'application/json; charset=utf-8',
+                'token': token,//微协同请求必带上token
+                'option.n_a_s': '1'
+            },
+            success: function (result) {
+                //请求成功的业务逻辑
+                var ru = result.data.dataCount;
+                // if (ru < 0) {
+                toGetOaUserInfo(token);
+                // }
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
+    function toGetOaUserInfo(token) {
+
+        cmp.ajax({
+            url: cmp.util.getSeeyonPath() + "/rest/orgMembers/code/" + thirdUid + "",  //seeyon的rest接口，cmp.seeyonbasepath是seeyon服务器路径，兼容M3和微协同
+            type: "GET",
+            headers: {   //请求headers，异步seeyon的rest接口设置如下headers字段
+                'Accept': 'application/json; charset=utf-8',
+                'Accept-Language': cmp.language,
+                'Content-Type': 'application/json; charset=utf-8',
+                'token': token,//微协同请求必带上token
+                'option.n_a_s': '1'
+            },
+            success: function (result) {
+                //请求成功的业务逻辑
+                if (result[0] == undefined) {
+                    document.getElementById("error").innerHTML = "账号不存在！";
+                } else {
+                    var oaLoginName = result[0].loginName;
+                    console.log(oaLoginName, "oaLoginName");
+                    toLoginH5(oaLoginName);
+                }
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
+    function toLoginH5(loginName) {
+        var data = {"userName": rest, "password": restPassword, "loginName": loginName};
+        cmp.ajax({
+            url: cmp.util.getSeeyonPath() + "/rest/token",  //seeyon的rest接口，cmp.seeyonbasepath是seeyon服务器路径，兼容M3和微协同
+            type: "POST",
+            data: JSON.stringify(data),
+            headers: {
+                //请求headers，异步seeyon的rest接口设置如下headers字段
+                'Accept': 'application/json; charset=utf-8',
+                'Accept-Language': cmp.language,
+                'Content-Type': 'application/json; charset=utf-8',
+            },
+            success: function (result) {
+                //请求成功的业务逻辑
+                var token = result.id;
+                location.href = cmp.util.getSeeyonPath() + "/H5/collaboration/index.html?token=" + token + "&html=&loginName=yanyi";
+            },
+            error: function (error) {
+                if (cmp.errorHandle(error) == false) {  //请求错误时，先使用cmp的错误处理组件，如果cmp的错误处理组件为false，说明cmp组件处理不了这个错误，需要业务自己处理（cmp处理的错误包括被迫下线、网络断开、session失效、更新密码等）
+                    cmp.notification.alert("请求数据失败")
+                }
+            }
+        });
+    }
+
+</script>
+</html>
