@@ -181,9 +181,9 @@
             success: function (result) {
                 //请求成功的业务逻辑
                 var ru = result.data.dataCount;
-                // if (ru < 0) {
-                toGetOaUserInfo(token);
-                // }
+                if (ru > 0) {
+                    toGetOaUserInfo(token);
+                }
             },
             error: function (error) {
                 console.log(error);
