@@ -1836,6 +1836,22 @@ function clearSelect2() {
             });
 
         }
+        if (type == 'two') {
+            $('#two').bootstrapTable('insertRow', {
+                index: 0,
+                row: {
+                    id: $(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name: $(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
+                    field0005: $(item).attr("lay-bs"),
+                    mval: $(item).attr("lay-bsname"),
+                    field0007: $(item).attr("lay-zsort")
+                }
+            });
+
+        }
 
     });
     ids29 = [];
@@ -1843,6 +1859,7 @@ function clearSelect2() {
     ids31 = [];
     ids32 = [];
     idsgh = [];
+    idsTwoLevelDept =[];
 }
 
 function clearSelect() {
