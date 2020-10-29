@@ -106,7 +106,7 @@ function removeTableRowTwoLevelDept(row) {
 function removeDdRowtwo(item) {
     $(item).remove();
 
-    insertSortExist('two',item);
+    insertSortExist('two', item);
 
     for (var i = 0; i < idsTwoLevelDept.length; i++) {
         var index = idsTwoLevelDept.indexOf($(item).attr("lay-id"));
@@ -606,7 +606,7 @@ function removeTableRowGH(row) {
 function removeDdRowgh(item) {
     $(item).remove();
 
-    insertSortExist('gonghui',item);
+    insertSortExist('gonghui', item);
 
     for (var i = 0; i < idsgh.length; i++) {
         var index = idsgh.indexOf($(item).attr("lay-id"));
@@ -816,7 +816,7 @@ function removeTableRow29(row) {
 
 function removeDdRow29(item) {
     $(item).remove();
-    insertSortExist('dzb29',item);
+    insertSortExist('dzb29', item);
 
     for (var i = 0; i < ids29.length; i++) {
         var index = ids29.indexOf($(item).attr("lay-id"));
@@ -829,7 +829,7 @@ function removeDdRow29(item) {
 
 function insertSortExist(id, item) {
     var data = $('#' + id).bootstrapTable('getData', {useCurrentPage: false, includeHiddenRows: false});
-    if(data.length>0){
+    if (data.length > 0) {
         var sort_ = parseInt($(item).attr("lay-zsort"));
         for (var i = 0; i < data.length; i++) {
             var _s = parseInt(data[i].field0007);
@@ -847,7 +847,7 @@ function insertSortExist(id, item) {
                 }
             }
         }
-    }else {
+    } else {
         insertDataCommon(id, 0, item);
     }
 
@@ -991,7 +991,7 @@ function removeTableRow30(row) {
 
 function removeDdRow30(item) {
     $(item).remove();
-    insertSortExist('jiguan30',item);
+    insertSortExist('jiguan30', item);
 
     for (var i = 0; i < ids30.length; i++) {
         var index = ids30.indexOf($(item).attr("lay-id"));
@@ -1143,7 +1143,7 @@ function removeTableRow31(row) {
 function removeDdRow31(item) {
     $(item).remove();
 
-    insertSortExist('zhenb31',item);
+    insertSortExist('zhenb31', item);
 
     for (var i = 0; i < ids31.length; i++) {
         var index = ids31.indexOf($(item).attr("lay-id"));
@@ -1739,100 +1739,22 @@ function clearSelect2() {
         $(".selected-info dd[lay-value=" + $(item).attr('lay-value') + "]").remove();
         var type = $(item).attr("lay-flag");
         if (type == '29') {
-            $('#dzb29').bootstrapTable('insertRow', {
-                index: 0,
-                row: {
-                    id: $(item).attr("lay-id"),
-                    field0001: $(item).attr("lay-name"),
-                    field0002: $(item).attr("lay-value"),
-                    name: $(item).attr("lay-username"),
-                    field0003: $(item).attr("lay-dept"),
-                    field0005: $(item).attr("lay-bs"),
-                    mval: $(item).attr("lay-bsname"),
-                    field0007: $(item).attr("lay-zsort")
-                }
-            });
-
+            insertSortExist('dzb29', item);
         }
         if (type == '30') {
-            $('#jiguan30').bootstrapTable('insertRow', {
-                index: 0,
-                row: {
-                    id: $(item).attr("lay-id"),
-                    field0001: $(item).attr("lay-name"),
-                    field0002: $(item).attr("lay-value"),
-                    name: $(item).attr("lay-username"),
-                    field0003: $(item).attr("lay-dept"),
-                    field0005: $(item).attr("lay-bs"),
-                    mval: $(item).attr("lay-bsname"),
-                    field0007: $(item).attr("lay-zsort")
-                }
-            });
-
+            insertSortExist('jiguan30', item);
         }
         if (type == '31') {
-            $('#zhenb31').bootstrapTable('insertRow', {
-                index: 0,
-                row: {
-                    id: $(item).attr("lay-id"),
-                    field0001: $(item).attr("lay-name"),
-                    field0002: $(item).attr("lay-value"),
-                    name: $(item).attr("lay-username"),
-                    field0003: $(item).attr("lay-dept"),
-                    field0005: $(item).attr("lay-bs"),
-                    mval: $(item).attr("lay-bsname"),
-                    field0007: $(item).attr("lay-zsort")
-                }
-            });
-
+            insertSortExist('zhenb31', item);
         }
         if (type == '32') {
-            $('#zhuqu32').bootstrapTable('insertRow', {
-                index: 0,
-                row: {
-                    id: $(item).attr("lay-id"),
-                    field0001: $(item).attr("lay-name"),
-                    field0002: $(item).attr("lay-value"),
-                    name: $(item).attr("lay-username"),
-                    field0003: $(item).attr("lay-dept"),
-                    field0005: $(item).attr("lay-bs"),
-                    mval: $(item).attr("lay-bsname"),
-                    field0007: $(item).attr("lay-zsort")
-                }
-            });
-
+            insertSortExist('zhuqu32', item);
         }
         if (type == 'gh') {
-            $('#gonghui').bootstrapTable('insertRow', {
-                index: 0,
-                row: {
-                    id: $(item).attr("lay-id"),
-                    field0001: $(item).attr("lay-name"),
-                    field0002: $(item).attr("lay-value"),
-                    name: $(item).attr("lay-username"),
-                    field0003: $(item).attr("lay-dept"),
-                    field0005: $(item).attr("lay-bs"),
-                    mval: $(item).attr("lay-bsname"),
-                    field0007: $(item).attr("lay-zsort")
-                }
-            });
-
+            insertSortExist('gonghui', item);
         }
         if (type == 'two') {
-            $('#two').bootstrapTable('insertRow', {
-                index: 0,
-                row: {
-                    id: $(item).attr("lay-id"),
-                    field0001: $(item).attr("lay-name"),
-                    field0002: $(item).attr("lay-value"),
-                    name: $(item).attr("lay-username"),
-                    field0003: $(item).attr("lay-dept"),
-                    field0005: $(item).attr("lay-bs"),
-                    mval: $(item).attr("lay-bsname"),
-                    field0007: $(item).attr("lay-zsort")
-                }
-            });
-
+            insertSortExist('two', item);
         }
 
     });
