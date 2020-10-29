@@ -105,19 +105,9 @@ function removeTableRowTwoLevelDept(row) {
 
 function removeDdRowTwoLevelDept(item) {
     $(item).remove();
-    $('#two').bootstrapTable('insertRow', {
-        index: 0,
-        row: {
-            id: $(item).attr("lay-id"),
-            field0001: $(item).attr("lay-name"),
-            field0002: $(item).attr("lay-value"),
-            name: $(item).attr("lay-username"),
-            field0003: $(item).attr("lay-dept"),
-            field0005: $(item).attr("lay-bs"),
-            mval: $(item).attr("lay-bsname"),
-            field0007: $(item).attr("lay-zsort")
-        }
-    });
+
+    insertSortExist('two',item);
+
     for (var i = 0; i < idsTwoLevelDept.length; i++) {
         var index = idsTwoLevelDept.indexOf($(item).attr("lay-id"));
         if (index > -1) {
@@ -615,8 +605,20 @@ function removeTableRowGH(row) {
 
 function removeDdRowgh(item) {
     $(item).remove();
-    $('#gonghui').bootstrapTable('insertRow', {
-        index: 0,
+
+    insertSortExist('gonghui',item);
+
+    for (var i = 0; i < idsgh.length; i++) {
+        var index = idsgh.indexOf($(item).attr("lay-id"));
+        if (index > -1) {
+            idsgh.splice(index, 1);
+        }
+    }
+}
+
+function insertDataCommon(id, i, item) {
+    $('#' + id).bootstrapTable('insertRow', {
+        index: i,
         row: {
             id: $(item).attr("lay-id"),
             field0001: $(item).attr("lay-name"),
@@ -628,13 +630,8 @@ function removeDdRowgh(item) {
             field0007: $(item).attr("lay-zsort")
         }
     });
-    for (var i = 0; i < idsgh.length; i++) {
-        var index = idsgh.indexOf($(item).attr("lay-id"));
-        if (index > -1) {
-            idsgh.splice(index, 1);
-        }
-    }
 }
+
 
 function dangZhengBanTable() {
     $('#dzb29').bootstrapTable({
@@ -819,26 +816,36 @@ function removeTableRow29(row) {
 
 function removeDdRow29(item) {
     $(item).remove();
-    $('#dzb29').bootstrapTable('insertRow', {
-        index: 0,
-        row: {
-            id: $(item).attr("lay-id"),
-            field0001: $(item).attr("lay-name"),
-            field0002: $(item).attr("lay-value"),
-            name: $(item).attr("lay-username"),
-            field0003: $(item).attr("lay-dept"),
-            field0005: $(item).attr("lay-bs"),
-            mval: $(item).attr("lay-bsname"),
-            field0007: $(item).attr("lay-zsort")
-        }
-    });
+    insertSortExist('dzb29',item);
+
     for (var i = 0; i < ids29.length; i++) {
         var index = ids29.indexOf($(item).attr("lay-id"));
         if (index > -1) {
             ids29.splice(index, 1);
         }
     }
-    console.log(ids29);
+}
+
+
+function insertSortExist(id, item) {
+    var data = $('#' + id).bootstrapTable('getData', {useCurrentPage: false, includeHiddenRows: false});
+    var sort_ = parseInt($(item).attr("lay-zsort"));
+    for (var i = 0; i < data.length; i++) {
+        var _s = parseInt(data[i].field0007);
+        var _end = parseInt(data[(i + 1) >= data.length ? i : (i + 1)].field0007);
+        if (sort_ > _s & sort_ < _end) {
+            insertDataCommon(id, i + 1, item);
+            break;
+        } else if (sort_ < _s) {
+            insertDataCommon(id, i, item);
+            break;
+        } else {
+            if ((i + 1) >= data.length) {
+                insertDataCommon(id, data.length, item);
+                break
+            }
+        }
+    }
 }
 
 function jiguan30Table() {
@@ -979,19 +986,8 @@ function removeTableRow30(row) {
 
 function removeDdRow30(item) {
     $(item).remove();
-    $('#jiguan30').bootstrapTable('insertRow', {
-        index: 0,
-        row: {
-            id: $(item).attr("lay-id"),
-            field0001: $(item).attr("lay-name"),
-            field0002: $(item).attr("lay-value"),
-            name: $(item).attr("lay-username"),
-            field0003: $(item).attr("lay-dept"),
-            field0005: $(item).attr("lay-bs"),
-            mval: $(item).attr("lay-bsname"),
-            field0007: $(item).attr("lay-zsort")
-        }
-    });
+    insertSortExist('jiguan30',item);
+
     for (var i = 0; i < ids30.length; i++) {
         var index = ids30.indexOf($(item).attr("lay-id"));
         if (index > -1) {
@@ -1141,19 +1137,9 @@ function removeTableRow31(row) {
 
 function removeDdRow31(item) {
     $(item).remove();
-    $('#zhenb31').bootstrapTable('insertRow', {
-        index: 0,
-        row: {
-            id: $(item).attr("lay-id"),
-            field0001: $(item).attr("lay-name"),
-            field0002: $(item).attr("lay-value"),
-            name: $(item).attr("lay-username"),
-            field0003: $(item).attr("lay-dept"),
-            field0005: $(item).attr("lay-bs"),
-            mval: $(item).attr("lay-bsname"),
-            field0007: $(item).attr("lay-zsort")
-        }
-    });
+
+    insertSortExist('zhenb31',item);
+
     for (var i = 0; i < ids31.length; i++) {
         var index = ids31.indexOf($(item).attr("lay-id"));
         if (index > -1) {
@@ -1304,19 +1290,9 @@ function removeTableRow32(row) {
 
 function removeDdRow32(item) {
     $(item).remove();
-    $('#zhuqu32').bootstrapTable('insertRow', {
-        index: 0,
-        row: {
-            id: $(item).attr("lay-id"),
-            field0001: $(item).attr("lay-name"),
-            field0002: $(item).attr("lay-value"),
-            name: $(item).attr("lay-username"),
-            field0003: $(item).attr("lay-dept"),
-            field0005: $(item).attr("lay-bs"),
-            mval: $(item).attr("lay-bsname"),
-            field0007: $(item).attr("lay-zsort")
-        }
-    });
+
+    insertSortExist('zhuqu32', item);
+
     for (var i = 0; i < ids32.length; i++) {
         var index = ids32.indexOf($(item).attr("lay-id"));
         if (index > -1) {
@@ -1324,6 +1300,7 @@ function removeDdRow32(item) {
         }
     }
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////////
 
@@ -1422,7 +1399,7 @@ function TwoLevelDeptSure($table, rows) {
     var arrJtld = rows;
 
 
-    dataSorting(null, null, null, null, null,rows);
+    dataSorting(null, null, null, null, null, rows);
 
     idsTwoLevelDept = $.map(rows, function (row) {
         return row.id
@@ -1490,7 +1467,7 @@ function dangZhengBanSure($table, rows) {
     //         }
     //     }
     // }
-    dataSorting(rows, null, null, null, null,null);
+    dataSorting(rows, null, null, null, null, null);
 
     ids29 = $.map(rows, function (row) {
         return row.id
@@ -1515,7 +1492,7 @@ function dangZhengBanSure($table, rows) {
 function Sure30($table, rows) {
 
     var arrJtld = rows;
-    dataSorting(null, rows, null, null, null,null);
+    dataSorting(null, rows, null, null, null, null);
 
     ids30 = $.map(rows, function (row) {
         return row.id
@@ -1539,7 +1516,7 @@ function Sure31($table, rows) {
 
     var arrJtld = rows;
 
-    dataSorting(null, null, rows, null, null,null);
+    dataSorting(null, null, rows, null, null, null);
 
     ids31 = $.map(rows, function (row) {
         return row.id
@@ -1563,7 +1540,7 @@ function Sure32($table, rows) {
 
     var arrJtld = rows;
 
-    dataSorting(null, null, null, rows, null,null);
+    dataSorting(null, null, null, rows, null, null);
 
     ids32 = $.map(rows, function (row) {
         return row.id
@@ -1587,7 +1564,7 @@ function SureGonghui($table, rows) {
 
     var arrJtld = rows;
 
-    dataSorting(null, null, null, null, rows,null);
+    dataSorting(null, null, null, null, rows, null);
 
     idsgh = $.map(rows, function (row) {
         return row.id
@@ -1859,7 +1836,7 @@ function clearSelect2() {
     ids31 = [];
     ids32 = [];
     idsgh = [];
-    idsTwoLevelDept =[];
+    idsTwoLevelDept = [];
 }
 
 function clearSelect() {
