@@ -829,23 +829,28 @@ function removeDdRow29(item) {
 
 function insertSortExist(id, item) {
     var data = $('#' + id).bootstrapTable('getData', {useCurrentPage: false, includeHiddenRows: false});
-    var sort_ = parseInt($(item).attr("lay-zsort"));
-    for (var i = 0; i < data.length; i++) {
-        var _s = parseInt(data[i].field0007);
-        var _end = parseInt(data[(i + 1) >= data.length ? i : (i + 1)].field0007);
-        if (sort_ > _s & sort_ < _end) {
-            insertDataCommon(id, i + 1, item);
-            break;
-        } else if (sort_ < _s) {
-            insertDataCommon(id, i, item);
-            break;
-        } else {
-            if ((i + 1) >= data.length) {
-                insertDataCommon(id, data.length, item);
-                break
+    if(data.length>0){
+        var sort_ = parseInt($(item).attr("lay-zsort"));
+        for (var i = 0; i < data.length; i++) {
+            var _s = parseInt(data[i].field0007);
+            var _end = parseInt(data[(i + 1) >= data.length ? i : (i + 1)].field0007);
+            if (sort_ > _s & sort_ < _end) {
+                insertDataCommon(id, i + 1, item);
+                break;
+            } else if (sort_ < _s) {
+                insertDataCommon(id, i, item);
+                break;
+            } else {
+                if ((i + 1) >= data.length) {
+                    insertDataCommon(id, data.length, item);
+                    break
+                }
             }
         }
+    }else {
+        insertDataCommon(id, 0, item);
     }
+
 }
 
 function jiguan30Table() {
