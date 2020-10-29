@@ -20,9 +20,9 @@ public class JtldEntityDaoImpl implements JtldEntityDao {
         String sql = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0184  order by FIELD0007 asc";
 
         List<Map<String, Object>> list = null;
-        if(KfqContants.DEBUGGER){
+        if (KfqContants.DEBUGGER) {
             list = JDBCUtil.doQuery(sqltest);
-        }else{
+        } else {
             list = JDBCUtil.doQuery(sql);
         }
         return list;
@@ -34,9 +34,9 @@ public class JtldEntityDaoImpl implements JtldEntityDao {
 //        正式
         String sql = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0183  order by FIELD0007 asc";
         List<Map<String, Object>> list = null;
-        if(KfqContants.DEBUGGER){
+        if (KfqContants.DEBUGGER) {
             list = JDBCUtil.doQuery(sqltest);
-        }else{
+        } else {
             list = JDBCUtil.doQuery(sql);
         }
         return list;
@@ -48,9 +48,9 @@ public class JtldEntityDaoImpl implements JtldEntityDao {
         //        正式
         String sql = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0175  order by FIELD0007 asc";
         List<Map<String, Object>> list = null;
-        if(KfqContants.DEBUGGER){
+        if (KfqContants.DEBUGGER) {
             list = JDBCUtil.doQuery(sqltest);
-        }else{
+        } else {
             list = JDBCUtil.doQuery(sql);
         }
         return list;
@@ -62,9 +62,9 @@ public class JtldEntityDaoImpl implements JtldEntityDao {
         //        正式
         String sql = "select id,field0001 ,field0002,field0004 field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0174  order by FIELD0007 asc";
         List<Map<String, Object>> list = null;
-        if(KfqContants.DEBUGGER){
+        if (KfqContants.DEBUGGER) {
             list = JDBCUtil.doQuery(sqltest);
-        }else{
+        } else {
             list = JDBCUtil.doQuery(sql);
         }
         return list;
@@ -74,9 +74,21 @@ public class JtldEntityDaoImpl implements JtldEntityDao {
     public List<Map<String, Object>> selectGonghui(String name) {
         String sql = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0285 order by FIELD0007 asc";
         List<Map<String, Object>> list = null;
-        if(KfqContants.DEBUGGER){
+        if (KfqContants.DEBUGGER) {
             list = JDBCUtil.doQuery(sql);
-        }else{
+        } else {
+            list = JDBCUtil.doQuery(sql);
+        }
+        return list;
+    }
+
+    @Override
+    public List<Map<String, Object>> selectTwoLevelDept(String name) {
+        String sql = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0533 order by FIELD0007 asc";
+        List<Map<String, Object>> list = null;
+        if (KfqContants.DEBUGGER) {
+            list = JDBCUtil.doQuery(sql);
+        } else {
             list = JDBCUtil.doQuery(sql);
         }
         return list;

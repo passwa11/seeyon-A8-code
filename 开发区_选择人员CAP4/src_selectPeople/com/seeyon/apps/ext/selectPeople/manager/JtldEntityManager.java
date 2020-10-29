@@ -21,8 +21,12 @@ public interface JtldEntityManager {
 
     //党政办人员
     List<Map<String, Object>> selectDangZhengBan0029(String name);
+
     //总工会_人武部
     List<Map<String, Object>> selectGonghui(String name);
+
+
+    List<Map<String, Object>> selectTwoLevelDept(String name);
 
 
     public void insertFormson0174(List<Formson0174> formson0174);

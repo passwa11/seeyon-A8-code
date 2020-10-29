@@ -7,8 +7,124 @@ $(function () {
     zhenban31Table();
     zhuqu32Table();
     gongHuiTable();
-
+    twoTable();
 });
+
+function twoTable() {
+    $('#two').bootstrapTable({
+        url: '/seeyon/ext/selectPeople.do?method=selectListData&type=two',
+        queryParamsType: '',              //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
+        queryParams: queryParams,
+        uniqueId: "id",
+        method: "post",
+        contentType: "application/x-www-form-urlencoded",
+        undefinedText: "",//当数据为 undefined 时显示的字符
+        striped: false,                   //是否显示行间隔色
+        cache: false,
+        pagination: false,
+        sortable: true, //是否启用排序
+        sortOrder: "asc",//排序方式
+        showRefresh: true,
+        search: true,
+        searchAlign: 'left',
+        height: 380,
+        virtualScroll: true,
+        silentSort: true,
+        showColumns: false,
+        detailView: false,
+        clickToSelect: true,                //是否启用点击选中行
+        columns: [
+            {checkbox: true, width: '5%'}
+            , {
+                field: 'field0001',
+                title: '全选',
+                width: '88%',
+            }
+        ]
+        , onCheck: function (row, $element) {
+
+            var tr_obj = row;
+            var obj = {};//添加成员对象
+            obj["value"] = tr_obj.id;
+            obj["text"] = tr_obj.field0001;
+            obj["dept"] = tr_obj.field0003;
+            if ($("dl.selected-info dd").length <= 0) {
+                var option = '<dd ondblclick="removeDdRowTwoLevelDept(this)"    lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="two" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                $("dl.selected-info").append(option);
+                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                    var index = $(this).attr("class").indexOf("selected-this");
+                    if (index == 0) {
+                        $(this).removeClass("selected-this");
+                    } else {
+                        $(this).addClass("selected-this");
+                    }
+                });
+            } else {
+                var selected = function () {//判断是否已选择了该人员
+                    var flag = true;
+                    $("dl.selected-info dd").each(function (i, item) {
+                        if ($(item).attr("lay-value") == obj.value) {
+                            flag = false;//已经选择
+                        }
+                    });
+                    return flag;
+                }
+                if (selected()) {
+                    var option = '<dd ondblclick="removeDdRowTwoLevelDept(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="two"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+                    $("dl.selected-info").append(option);
+                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                        var index = $(this).attr("class").indexOf("selected-this");
+                        if (index == 0) {
+                            $(this).removeClass("selected-this");
+                        } else {
+                            $(this).addClass("selected-this");
+                        }
+                    });
+                }
+            }
+            dbSelectedToSortData('check');
+            revokeReuse();
+
+            removeTableRowTwoLevelDept(row);
+        }
+
+    });
+
+}
+
+
+var idsTwoLevelDept = [];
+
+function removeTableRowTwoLevelDept(row) {
+    idsTwoLevelDept.push(row.id);
+    $('#two').bootstrapTable('remove', {
+        field: 'id',
+        values: idsTwoLevelDept
+    });
+}
+
+function removeDdRowTwoLevelDept(item) {
+    $(item).remove();
+    $('#two').bootstrapTable('insertRow', {
+        index: 0,
+        row: {
+            id: $(item).attr("lay-id"),
+            field0001: $(item).attr("lay-name"),
+            field0002: $(item).attr("lay-value"),
+            name: $(item).attr("lay-username"),
+            field0003: $(item).attr("lay-dept"),
+            field0005: $(item).attr("lay-bs"),
+            mval: $(item).attr("lay-bsname"),
+            field0007: $(item).attr("lay-zsort")
+        }
+    });
+    for (var i = 0; i < idsTwoLevelDept.length; i++) {
+        var index = idsTwoLevelDept.indexOf($(item).attr("lay-id"));
+        if (index > -1) {
+            idsTwoLevelDept.splice(index, 1);
+        }
+    }
+}
 
 
 function dbSelectedToSortData(flag) {
@@ -19,6 +135,7 @@ function dbSelectedToSortData(flag) {
     var arr31 = [];
     var arr32 = [];
     var arrGH = [];
+    var arrTwoLevel = [];
 
     var allData = [];
     if (flag == 'check') {
@@ -81,8 +198,19 @@ function dbSelectedToSortData(flag) {
                 arr32.push(obj);
             } else if (flag == 'gh') {
                 arrGH.push(obj);
+            } else if (flag == 'two') {
+                arrTwoLevel.push(obj);
             }
         });
+    }
+
+    var two = [];
+    if (flag == 'check') {
+        two = arrTwoLevel;
+    } else {
+        if (arrTwoLevel.length > 0) {
+            two = arrsyDataSort(arrTwoLevel);
+        }
     }
 
     var l29 = [];
@@ -140,6 +268,8 @@ function dbSelectedToSortData(flag) {
     var html32 = '';
     var htmlgh = '';
 
+    var htmlTwo = '';
+
     var allhtml = '';
     if (flag == 'check') {
         allhtml = AllhtmlShow(allData);
@@ -161,8 +291,11 @@ function dbSelectedToSortData(flag) {
         if (lgh.length > 0) {
             htmlgh = htmlShow(lgh, 'gh');
         }
+        if (htmlTwo.length > 0) {
+            htmlTwo = htmlShow(two, 'two');
+        }
         $(".selected-info").html("");
-        option += html29 + html30 + html31 + html32 + htmlgh;
+        option += html29 + html30 + html31 + html32 + htmlgh + htmlTwo;
     }
 
     $("dl.selected-info").append(option);
@@ -177,7 +310,7 @@ function dbSelectedToSortData(flag) {
 }
 
 // 排序问题 对已选择人员进行部门排序
-function dataSorting(arr290, arr300, arr310, arr320, arrGH0) {
+function dataSorting(arr290, arr300, arr310, arr320, arrGH0, arrTwoLevel) {
 
     var arr29 = [];
     var arr30 = [];
@@ -351,6 +484,8 @@ function AllhtmlShow(data) {
             flag = '32';
         } else if ((data[i].flag).indexOf("gh") != -1) {
             flag = 'gh';
+        } else if ((data[i].flag).indexOf("two") != -1) {
+            flag = 'two';
         }
         html += '<dd ondblclick="removeDdRow' + flag + '(this)" lay-bsname="' + data[i].mval + '"  lay-field002="' + data[i].field0002 + '"  lay-zsort="' + data[i].field0007 + '" lay-id="' + data[i].id + '" lay-bs="' + data[i].field0005 + '"  lay-value="' + data[i].id + '" lay-username="' + data[i].name + '" lay-flag="' + flag + '" lay-name="' + data[i].field0001 + '" lay-dept="' + data[i].field0003 + '" class="">' + data[i].field0001 + '</dd>';
     }
@@ -402,7 +537,7 @@ function gongHuiTable() {
         search: true,
         searchAlign: 'left',
         height: 380,
-        virtualScroll:true,
+        virtualScroll: true,
         silentSort: true,
         showColumns: false,
         detailView: false,
@@ -461,51 +596,7 @@ function gongHuiTable() {
 
             removeTableRowGH(row);
         }
-        // , onDblClickRow: function (row, $element, field) {
-        //     var tr_obj = row;
-        //     var obj = {};//添加成员对象
-        //     obj["value"] = tr_obj.id;
-        //     obj["text"] = tr_obj.field0001;
-        //     obj["dept"] = tr_obj.field0003;
-        //     if ($("dl.selected-info dd").length <= 0) {
-        //         var option = '<dd ondblclick="removeDdRowgh(this)"    lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="gh" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-        //         $("dl.selected-info").append(option);
-        //         $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-        //             var index = $(this).attr("class").indexOf("selected-this");
-        //             if (index == 0) {
-        //                 $(this).removeClass("selected-this");
-        //             } else {
-        //                 $(this).addClass("selected-this");
-        //             }
-        //         });
-        //     } else {
-        //         var selected = function () {//判断是否已选择了该人员
-        //             var flag = true;
-        //             $("dl.selected-info dd").each(function (i, item) {
-        //                 if ($(item).attr("lay-value") == obj.value) {
-        //                     flag = false;//已经选择
-        //                 }
-        //             });
-        //             return flag;
-        //         }
-        //         if (selected()) {
-        //             var option = '<dd ondblclick="removeDdRowgh(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="gh"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-        //             $("dl.selected-info").append(option);
-        //             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-        //                 var index = $(this).attr("class").indexOf("selected-this");
-        //                 if (index == 0) {
-        //                     $(this).removeClass("selected-this");
-        //                 } else {
-        //                     $(this).addClass("selected-this");
-        //                 }
-        //             });
-        //         }
-        //     }
-        //     dbSelectedToSortData();
-        //     revokeReuse();
-        //
-        //     removeTableRowGH(row);
-        // }
+
     });
 
 }
@@ -520,6 +611,7 @@ function removeTableRowGH(row) {
         values: idsgh
     });
 }
+
 
 function removeDdRowgh(item) {
     $(item).remove();
@@ -562,7 +654,7 @@ function dangZhengBanTable() {
         search: true,
         searchAlign: 'left',
         height: 380,
-        virtualScroll:true,
+        virtualScroll: true,
         silentSort: true,
         showColumns: false,
         detailView: false,
@@ -674,6 +766,14 @@ function dangZhengBanTable() {
 
 //解决冲突
 function revokeReuse() {
+
+    if (idsTwoLevelDept.length > 0) {
+        $('#two').bootstrapTable('remove', {
+            field: 'id',
+            values: idsTwoLevelDept
+        });
+    }
+
     if (ids29.length > 0) {
         $('#dzb29').bootstrapTable('remove', {
             field: 'id',
@@ -759,7 +859,7 @@ function jiguan30Table() {
         search: true,
         searchAlign: 'left',
         height: 380,
-        virtualScroll:true,
+        virtualScroll: true,
         silentSort: true,
         showColumns: false,
         detailView: false,
@@ -918,7 +1018,7 @@ function zhenban31Table() {
         search: true,
         searchAlign: 'left',
         height: 380,
-        virtualScroll:true,
+        virtualScroll: true,
         silentSort: true,
         showColumns: false,
         detailView: false,
@@ -1082,7 +1182,7 @@ function zhuqu32Table() {
         search: true,
         searchAlign: 'left',
         height: 380,
-        virtualScroll:true,
+        virtualScroll: true,
         silentSort: true,
         showColumns: false,
         detailView: false,
@@ -1229,6 +1329,15 @@ function removeDdRow32(item) {
 
 
 function sureSelect() {
+
+    var $tableTwoLevelDept = $("#two");
+    var rowsTwo = $tableTwoLevelDept.bootstrapTable('getSelections');
+    if (rowsTwo != null) {
+        if (rowsTwo.length > 0) {
+            TwoLevelDeptSure($tableTwoLevelDept, rowsTwo);
+        }
+    }
+
     var $table29 = $('#dzb29');
     var rows29 = $table29.bootstrapTable('getSelections');
     if (rows29 != null) {
@@ -1299,6 +1408,40 @@ function sureSelect() {
         });
     }
 
+    if (idsTwoLevelDept.length > 0) {
+        $('#two').bootstrapTable('remove', {
+            field: 'id',
+            values: idsTwoLevelDept
+        });
+    }
+
+}
+
+function TwoLevelDeptSure($table, rows) {
+
+    var arrJtld = rows;
+
+
+    dataSorting(null, null, null, null, null,rows);
+
+    idsTwoLevelDept = $.map(rows, function (row) {
+        return row.id
+    });
+    $("dl").find('dd').each(function () {
+        var id = $(this).attr("lay-id");
+        var flag = $(this).attr("lay-flag");
+        if (flag == '29') {
+            if (undefined != id) {
+                idsTwoLevelDept.push(id);
+            }
+        }
+    });
+
+    $table.bootstrapTable('remove', {
+        field: 'id',
+        values: idsTwoLevelDept
+    });
+
 }
 
 //确认 党政办人员
@@ -1347,7 +1490,7 @@ function dangZhengBanSure($table, rows) {
     //         }
     //     }
     // }
-    dataSorting(rows, null, null, null, null);
+    dataSorting(rows, null, null, null, null,null);
 
     ids29 = $.map(rows, function (row) {
         return row.id
@@ -1372,7 +1515,7 @@ function dangZhengBanSure($table, rows) {
 function Sure30($table, rows) {
 
     var arrJtld = rows;
-    dataSorting(null, rows, null, null, null);
+    dataSorting(null, rows, null, null, null,null);
 
     ids30 = $.map(rows, function (row) {
         return row.id
@@ -1396,7 +1539,7 @@ function Sure31($table, rows) {
 
     var arrJtld = rows;
 
-    dataSorting(null, null, rows, null, null);
+    dataSorting(null, null, rows, null, null,null);
 
     ids31 = $.map(rows, function (row) {
         return row.id
@@ -1420,7 +1563,7 @@ function Sure32($table, rows) {
 
     var arrJtld = rows;
 
-    dataSorting(null, null, null, rows, null);
+    dataSorting(null, null, null, rows, null,null);
 
     ids32 = $.map(rows, function (row) {
         return row.id
@@ -1444,7 +1587,7 @@ function SureGonghui($table, rows) {
 
     var arrJtld = rows;
 
-    dataSorting(null, null, null, null, rows);
+    dataSorting(null, null, null, null, rows,null);
 
     idsgh = $.map(rows, function (row) {
         return row.id
@@ -1468,7 +1611,6 @@ function SureGonghui($table, rows) {
 function commonInfo(s) {
 
     var list = $("dl").find("dd" + s);
-    console.log(list)
     $.each(list, function (i, item) {
         $(".selected-info dd[lay-value=" + $(item).attr('lay-value') + "]").remove();
         var type = $(item).attr("lay-flag");
@@ -1575,6 +1717,28 @@ function commonInfo(s) {
                 var index = idsgh.indexOf($(item).attr("lay-id"));
                 if (index > -1) {
                     idsgh.splice(index, 1);
+                }
+            }
+        }
+
+        if (type == 'two') {
+            $('#two').bootstrapTable('insertRow', {
+                index: 0,
+                row: {
+                    id: $(item).attr("lay-id"),
+                    field0001: $(item).attr("lay-name"),
+                    field0002: $(item).attr("lay-value"),
+                    name: $(item).attr("lay-username"),
+                    field0003: $(item).attr("lay-dept"),
+                    field0005: $(item).attr("lay-bs"),
+                    mval: $(item).attr("lay-bsname"),
+                    field0007: $(item).attr("lay-zsort")
+                }
+            });
+            for (var i = 0; i < idsTwoLevelDept.length; i++) {
+                var index = idsTwoLevelDept.indexOf($(item).attr("lay-id"));
+                if (index > -1) {
+                    idsTwoLevelDept.splice(index, 1);
                 }
             }
         }

@@ -39,6 +39,10 @@ public class JtldEntityManagerImpl implements JtldEntityManager {
         dao.insertFormson0174(formson0174);
     }
 
+    @Override
+    public List<Map<String, Object>> selectTwoLevelDept(String name) {
+        return dao.selectTwoLevelDept(name);
+    }
 
     @Override
     public List<Map<String, Object>> selectGonghui(String name) {
