@@ -308,6 +308,8 @@ function dataSorting(arr290, arr300, arr310, arr320, arrGH0, arrTwoLevel) {
     var arr32 = [];
     var arrGH = [];
 
+    var arrTwo = [];
+
     $("dl").find('dd').each(function () {
         var id = $(this).attr("lay-id");
         var field0001 = $(this).attr("lay-name");
@@ -341,8 +343,28 @@ function dataSorting(arr290, arr300, arr310, arr320, arrGH0, arrTwoLevel) {
             arr32.push(obj);
         } else if (flag == 'gh') {
             arrGH.push(obj);
+        } else if (flag == 'two') {
+            arrTwo.push(obj);
         }
     });
+
+    var two = [];
+    if (arrTwoLevel != null) {
+        if (arrTwo != null) {
+            two = arrsyDataSort(arrTwo.concat(arrTwoLevel));
+        } else {
+            two = arrsyDataSort(arrTwoLevel);
+        }
+    } else {
+        if (arrTwo != null) {
+            two = arrTwo;
+        } else {
+            two = arrsyDataSort(arrTwo);
+
+        }
+    }
+
+
     var l29 = [];
     if (arr290 != null) {
         if (arr29 != null) {
@@ -431,6 +453,8 @@ function dataSorting(arr290, arr300, arr310, arr320, arrGH0, arrTwoLevel) {
     var html31 = '';
     var html32 = '';
     var htmlgh = '';
+
+    var htmlTwo = '';
     // clearSelect();
     $(".selected-info").html("");
     if (l29.length > 0) {
@@ -448,7 +472,11 @@ function dataSorting(arr290, arr300, arr310, arr320, arrGH0, arrTwoLevel) {
     if (lgh.length > 0) {
         htmlgh = htmlShow(lgh, 'gh');
     }
-    option += html29 + html30 + html31 + html32 + htmlgh;
+    if (two.length > 0) {
+        htmlTwo = htmlShow(two, 'two');
+    }
+
+    option += html29 + html30 + htmlTwo + html31 + html32 + htmlgh;
     $("dl.selected-info").append(option);
     $(".selected-info dd").on('click', function () {
         var index = $(this).attr("class").indexOf("selected-this");
@@ -1402,7 +1430,6 @@ function sureSelect() {
 function TwoLevelDeptSure($table, rows) {
 
     var arrJtld = rows;
-
 
     dataSorting(null, null, null, null, null, rows);
 
