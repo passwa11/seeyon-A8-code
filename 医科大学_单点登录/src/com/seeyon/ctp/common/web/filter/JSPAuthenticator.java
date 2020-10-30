@@ -22,20 +22,23 @@ import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.SystemEnvironment;
 import com.seeyon.ctp.util.FileUtil;
 import com.seeyon.ctp.util.Strings;
+
 /**
  * JSP身份验证。
- * @author wangwenyou
  *
+ * @author wangwenyou
  */
 public class JSPAuthenticator extends AbstractAuthenticator {
 
 	private static Log LOG = LogFactory.getLog(JSPAuthenticator.class);
 	// 可匿名访问的白名单
 	private static Set<String> anonymouswhiteList = new HashSet<String>();
+
 	static {
 		anonymouswhiteList.addAll(Arrays.asList("colsso.jsp",
 				"gke.jsp",
 				"send.jsp",
+				"openPending.jsp",
 				"gke2a8.jsp",
 				"index.jsp",
 				"lightweightsso.jsp",
@@ -44,11 +47,13 @@ public class JSPAuthenticator extends AbstractAuthenticator {
 				"ssoproxy/jsp/ssoproxy.jsp",
 				"thirdpartysso/listVoucherA8Form.jsp"));
 	}
+
 	private static boolean inited = false;
 	// 允许执行的JSP文件白名单
-	private static Map<String,Long> JSP_WHITELIST = new HashMap<String,Long>();
+	private static Map<String, Long> JSP_WHITELIST = new HashMap<String, Long>();
+
 	private static void init() {
-		if(inited) {
+		if (inited) {
 			return;
 		}
 		String securityConfDir = SystemEnvironment.getApplicationFolder() + File.separator + "WEB-INF"
@@ -56,20 +61,20 @@ public class JSPAuthenticator extends AbstractAuthenticator {
 		File dir = new File(securityConfDir);
 		DirectoryScanner ds = new DirectoryScanner();
 		ds.setBasedir(dir);
-		ds.setIncludes(new String[] { "jsp_whitelist_*" });
+		ds.setIncludes(new String[]{"jsp_whitelist_*"});
 		ds.scan();
 		String[] files = ds.getIncludedFiles();
 		for (String whitelistFiles : files) {
 			try {
-				List<String> rules = FileUtils.readLines(new File(dir,whitelistFiles), "UTF-8");
+				List<String> rules = FileUtils.readLines(new File(dir, whitelistFiles), "UTF-8");
 				for (String rule : rules) {
 					rule = rule.trim();
 					if (rule.startsWith("#")) {
 						continue;
 					}
-					File f = new File(SystemEnvironment.getApplicationFolder(),rule);
-					if(f.exists()) {
-						JSP_WHITELIST.put(rule,f.lastModified());
+					File f = new File(SystemEnvironment.getApplicationFolder(), rule);
+					if (f.exists()) {
+						JSP_WHITELIST.put(rule, f.lastModified());
 					}
 				}
 			} catch (IOException e) {
@@ -100,15 +105,16 @@ public class JSPAuthenticator extends AbstractAuthenticator {
 //		}
 		// 判是否已登录
 		AppContext.initSystemEnvironmentContext(request, response);
-		if(anonymouswhiteList.contains(uri)) {
+		if (anonymouswhiteList.contains(uri)) {
 			return true;
-		}else {
-		    if(AppContext.getCurrentUser() != null) {
-		    	return true;
-		    }
+		} else {
+			if (AppContext.getCurrentUser() != null) {
+				return true;
+			}
 		}
 		return false;
 	}
+
 	private static void onError(String msg) throws ServletException {
 		LOG.error(msg);
 		throw new ServletException(msg);
