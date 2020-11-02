@@ -370,7 +370,7 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                     String isRead = configTools.getString("isRead").trim();
 
                     String fuCol = configTools.getString("table_formmain_readColumn").trim();
-                    String blankVal= configTools.getString("table_formmain_readColumn_val").trim();
+                    String blankVal = configTools.getString("table_formmain_readColumn_val").trim();
 //                    当点击会务通知列表是修改会务通知主表阅读字段的状态为已读
                     String huiWu = "select " + fuCol + " from " + fu + " where id=" + id;
                     if (fu.equals(tableName)) {
@@ -422,7 +422,9 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                         PreparedStatement ps = null;
                         PreparedStatement psInsert = null;
                         ResultSet rs = null;
-                        ResultSet sonrs=null;
+                        ResultSet sonrs = null;
+
+                        ResultSet rs2 = null;
                         try {
                             ps = connection.prepareStatement(querySql.toString());
                             rs = ps.executeQuery();
@@ -432,15 +434,16 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                                     psInsert = connection.prepareStatement(updateSql.toString());
                                     psInsert.executeUpdate();
 
+
 //
                                     String queryReciverById = "select field0009,field0012 from " + tableInfo + " where id = " + id;
                                     ps = connection.prepareStatement(queryReciverById);
-                                    rs = ps.executeQuery();
+                                    rs2 = ps.executeQuery();
                                     String field0009 = "";
                                     String field0012 = "";
-                                    while (rs.next()) {
-                                        field0009 = rs.getString("field0009");
-                                        field0012 = rs.getString("field0012");
+                                    while (rs2.next()) {
+                                        field0009 = rs2.getString("field0009");
+                                        field0012 = rs2.getString("field0012");
                                     }
 
                                     String son = configTools.getString("table_formson_son");
@@ -450,23 +453,26 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
                                     ps = connection.prepareStatement(querySendSonId);
                                     rs = ps.executeQuery();
                                     String sonIsRead = configTools.getString("formson_isRead");
-                                    //zhou:2020-09-27 在这里判断一下接收时间是否为空，如果为空则不执行修改操作。
-                                    String sqlBySon ="select "+formsonReciverTime+" from "+ son +" where id="+rs.getString("id");
-                                    ps=connection.prepareStatement(sqlBySon);
-                                    sonrs=ps.executeQuery();
-                                    while(sonrs.next()){
-                                        String time=sonrs.getString(formsonReciverTime);
-                                        if(null==time || "".equals(time)){
+                                    //zhou:2020-09-27 在这里判断一下接收时间是否为空，如果为空则执行修改操作。
+                                    String sqlBySon = "select " + formsonReciverTime + " from " + son + " where id=";
+                                    Long son0171=null;
+                                    while (rs.next()) {
+                                        son0171=rs.getLong("id");
+                                        sqlBySon += rs.getLong("id");
+                                    }
+                                    ps = connection.prepareStatement(sqlBySon);
+                                    sonrs = ps.executeQuery();
+
+                                    while (sonrs.next()) {
+                                        String time = sonrs.getString(formsonReciverTime);
+                                        if (null == time || "".equals(time)) {
                                             String updateSonSql = "update " + son + " set " + formsonReciverTime + " = to_date('" + dateTime + "','yyyy-MM-dd HH24:mi:ss') ," + sonIsRead + "='" + isRead + "' where id=?";
-                                            String sonId = "";
-                                            while (rs.next()) {
-                                                sonId = rs.getString("id");
-                                            }
                                             ps = connection.prepareStatement(updateSonSql);
-                                            ps.setString(1, sonId);
+                                            ps.setLong(1, son0171);
                                             ps.executeUpdate();
                                         }
                                     }
+                                    rs2.close();
                                 }
                             }
 
@@ -847,7 +853,7 @@ public class CAPFormDataOpenService extends AbstractCAPFormDataService {
             formDataMasterBean.removeExtraMap(FormConstant.WAIT_SEND_BY_BACK_OR_REPEAL);
             CAPFormDataLogUtil.recordTrace(formDataMasterBean, "打开计算后");
             /**zhou:[合并的代码] 解决发起表单附件出现两次的问题*/
-            Set<String> clearSubReferences4Open = (Set)AppContext.getThreadContext("clearSubReferences4Open");
+            Set<String> clearSubReferences4Open = (Set) AppContext.getThreadContext("clearSubReferences4Open");
             if (CollectionUtils.isNotEmpty(clearSubReferences4Open)) {
                 LOGGER.info(formDataMasterBean.getId() + " data open remove auto relation files " + clearSubReferences4Open);
                 extendData.getClearSubReferences().addAll(clearSubReferences4Open);
