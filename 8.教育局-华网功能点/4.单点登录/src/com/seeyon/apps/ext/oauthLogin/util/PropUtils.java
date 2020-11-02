@@ -26,16 +26,6 @@ public class PropUtils {
 
     private Properties pps;
 
-    private static PropUtils prop;
-
-    public static PropUtils getInstance() {
-        if (null == prop) {
-            prop = new PropUtils();
-        }
-        return prop;
-    }
-
-
     public PropUtils() {
         pps = new Properties();
         String path = Thread.currentThread().getContextClassLoader().getResource("").getPath();
