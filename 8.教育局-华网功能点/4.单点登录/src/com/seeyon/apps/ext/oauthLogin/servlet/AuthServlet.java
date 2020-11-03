@@ -16,6 +16,7 @@ public class AuthServlet extends HttpServlet {
         System.out.println("=======================");
         HttpSession session = request.getSession();
         PropUtils propUtils = new PropUtils();
+        String code = request.getParameter("code");
         String returnUrl = request.getParameter("returnUrl");
         response.setCharacterEncoding("UTF-8");
         String url = propUtils.getSSOOAuthAuthorize() + "?clientId=" + propUtils.getSSOClientId() + "&returnUrl=" + java.net.URLEncoder.encode(returnUrl, "utf-8");
