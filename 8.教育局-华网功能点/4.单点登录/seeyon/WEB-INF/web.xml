@@ -319,14 +319,7 @@
         <servlet-name>ToRedirectServlet</servlet-name>
         <url-pattern>/redirect</url-pattern>
     </servlet-mapping>
-    <servlet>
-        <servlet-name>getAuthCode</servlet-name>
-        <servlet-class>com.seeyon.apps.ext.oauthLogin.servlet.GetAuthCode</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>getAuthCode</servlet-name>
-        <url-pattern>/getAuthCode</url-pattern>
-    </servlet-mapping>
+
     <!--    zhou :结束-->
 
     <servlet>
