@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class AuthServlet extends HttpServlet {
 
@@ -49,7 +50,10 @@ public class AuthServlet extends HttpServlet {
                     String expires_in = (String) object.get("expires_in");
 
                     String loginName = oauthLoginManager.selectLoginNameByCode(userId);
-                    String encodeloginName = StringHandle.encode(loginName);
+                    StringBuffer sb = new StringBuffer();
+                    sb.append(loginName + ":");
+                    sb.append(UUID.randomUUID().toString());
+                    String encodeloginName = StringHandle.encode(sb.toString());
                     if (null != loginName) {
                         try {
                             String servername = request.getServerName();
