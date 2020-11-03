@@ -9,4 +9,5 @@
             <bean class="com.seeyon.apps.ext.oauthLogin.sso.SsoLoginHandshake"/>
         </property>
     </bean>
+    <bean id="loginOutEvent" class="com.seeyon.apps.ext.oauthLogin.listener.LoginOutEvent"/>
 </beans>
