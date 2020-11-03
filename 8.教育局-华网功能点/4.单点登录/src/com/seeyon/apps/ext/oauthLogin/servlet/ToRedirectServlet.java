@@ -15,6 +15,8 @@ public class ToRedirectServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = req.getSession();
         PropUtils pUtils = new PropUtils();
+        String code = req.getParameter("code");
+        System.out.println(code);
         if (session.getAttribute(pUtils.getSSOSessionUser()) == null) {
             response.sendRedirect(pUtils.getSSOAuthPath() + "?returnUrl=" + java.net.URLEncoder.encode(pUtils.getSSOClientHomePage(), "utf-8"));//未登录跳转到转向服务器登录页面
         } else {
