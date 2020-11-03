@@ -8,9 +8,7 @@ import com.seeyon.ctp.login.event.UserLogoutEvent;
 import com.seeyon.ctp.login.online.OnlineUser;
 import com.seeyon.ctp.util.annotation.ListenEvent;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
-import java.net.URL;
 import java.util.List;
 
 public class LoginOutEvent {
@@ -22,7 +20,6 @@ public class LoginOutEvent {
         UserLogoutEvent.LogoutUser user = list.get(0);
         OnlineUser onlineUser = user.getUser();
         System.out.println(onlineUser.getLoginName());
-//
         HttpServletResponse response = (HttpServletResponse) AppContext
                 .getThreadContext(GlobalNames.THREAD_CONTEXT_RESPONSE_KEY);
         PropUtils propUtils = new PropUtils();
