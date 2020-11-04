@@ -82,105 +82,134 @@ import com.seeyon.v3x.inquiry.vo.SurveyTypeCompose;
 
 /**
  * 6.0新调查的主要Controller
+ *
  * @author kygz
  */
-public class InquiryDataController extends BaseController{
-	private static final Log    logger        = LogFactory.getLog(InquiryDataController.class);
-    private InquiryManager      inquiryManager;
+public class InquiryDataController extends BaseController {
+    private static final Log logger = LogFactory.getLog(InquiryDataController.class);
+    private InquiryManager inquiryManager;
     private InquiryAffairManager inquiryAffairManager;
-    private OrgManager          orgManager;
-    private AttachmentManager   attachmentManager;
-    private UserMessageManager  userMessageManager;
-    private FileToExcelManager  fileToExcelManager;
-    private AppLogManager       appLogManager;
-    private DocApi              docApi;
-    private CollaborationApi 	collaborationApi;
-    private AffairManager       affairManager;
-    private PortalApi           portalApi;
-    private ChartRender         chartRender;
-    private  ShowApi			showApi;
-    private ETagCacheManager    eTagCacheManager;
+    private OrgManager orgManager;
+    private AttachmentManager attachmentManager;
+    private UserMessageManager userMessageManager;
+    private FileToExcelManager fileToExcelManager;
+    private AppLogManager appLogManager;
+    private DocApi docApi;
+    private CollaborationApi collaborationApi;
+    private AffairManager affairManager;
+    private PortalApi portalApi;
+    private ChartRender chartRender;
+    private ShowApi showApi;
+    private ETagCacheManager eTagCacheManager;
 
     public void seteTagCacheManager(ETagCacheManager eTagCacheManager) {
         this.eTagCacheManager = eTagCacheManager;
     }
 
-	public void setShowApi(ShowApi showApi) {
-		this.showApi = showApi;
-	}
-	public ChartRender getChartRender() {	return chartRender;}
-	public void setChartRender(ChartRender chartRender) {
-		this.chartRender = chartRender;
-	}
-	public InquiryManager getInquiryManager() {	return inquiryManager;}
-	public void setInquiryManager(InquiryManager inquiryManager) {
-		this.inquiryManager = inquiryManager;
-	}
+    public void setShowApi(ShowApi showApi) {
+        this.showApi = showApi;
+    }
+
+    public ChartRender getChartRender() {
+        return chartRender;
+    }
+
+    public void setChartRender(ChartRender chartRender) {
+        this.chartRender = chartRender;
+    }
+
+    public InquiryManager getInquiryManager() {
+        return inquiryManager;
+    }
+
+    public void setInquiryManager(InquiryManager inquiryManager) {
+        this.inquiryManager = inquiryManager;
+    }
+
     public InquiryAffairManager getInquiryAffairManager() {
         return inquiryAffairManager;
     }
+
     public void setInquiryAffairManager(InquiryAffairManager inquiryAffairManager) {
         this.inquiryAffairManager = inquiryAffairManager;
     }
+
     public OrgManager getOrgManager() {
-		return orgManager;
-	}
-	public void setOrgManager(OrgManager orgManager) {
-		this.orgManager = orgManager;
-	}
-	public AttachmentManager getAttachmentManager() {
-		return attachmentManager;
-	}
-	public void setAttachmentManager(AttachmentManager attachmentManager) {
-		this.attachmentManager = attachmentManager;
-	}
-	public UserMessageManager getUserMessageManager() {
-		return userMessageManager;
-	}
-	public void setUserMessageManager(UserMessageManager userMessageManager) {
-		this.userMessageManager = userMessageManager;
-	}
-	public FileToExcelManager getFileToExcelManager() {
-		return fileToExcelManager;
-	}
-	public void setFileToExcelManager(FileToExcelManager fileToExcelManager) {
-		this.fileToExcelManager = fileToExcelManager;
-	}
-	public AppLogManager getAppLogManager() {
-		return appLogManager;
-	}
-	public void setAppLogManager(AppLogManager appLogManager) {
-		this.appLogManager = appLogManager;
-	}
-	public DocApi getDocApi() {
-		return docApi;
-	}
-	public void setDocApi(DocApi docApi) {
-		this.docApi = docApi;
-	}
-	public CollaborationApi getCollaborationApi() {
-		return collaborationApi;
-	}
-	public void setCollaborationApi(CollaborationApi collaborationApi) {
-		this.collaborationApi = collaborationApi;
-	}
-	public AffairManager getAffairManager() {
-		return affairManager;
-	}
-	public void setAffairManager(AffairManager affairManager) {
-		this.affairManager = affairManager;
-	}
-	public void setPortalApi(PortalApi portalApi) {
+        return orgManager;
+    }
+
+    public void setOrgManager(OrgManager orgManager) {
+        this.orgManager = orgManager;
+    }
+
+    public AttachmentManager getAttachmentManager() {
+        return attachmentManager;
+    }
+
+    public void setAttachmentManager(AttachmentManager attachmentManager) {
+        this.attachmentManager = attachmentManager;
+    }
+
+    public UserMessageManager getUserMessageManager() {
+        return userMessageManager;
+    }
+
+    public void setUserMessageManager(UserMessageManager userMessageManager) {
+        this.userMessageManager = userMessageManager;
+    }
+
+    public FileToExcelManager getFileToExcelManager() {
+        return fileToExcelManager;
+    }
+
+    public void setFileToExcelManager(FileToExcelManager fileToExcelManager) {
+        this.fileToExcelManager = fileToExcelManager;
+    }
+
+    public AppLogManager getAppLogManager() {
+        return appLogManager;
+    }
+
+    public void setAppLogManager(AppLogManager appLogManager) {
+        this.appLogManager = appLogManager;
+    }
+
+    public DocApi getDocApi() {
+        return docApi;
+    }
+
+    public void setDocApi(DocApi docApi) {
+        this.docApi = docApi;
+    }
+
+    public CollaborationApi getCollaborationApi() {
+        return collaborationApi;
+    }
+
+    public void setCollaborationApi(CollaborationApi collaborationApi) {
+        this.collaborationApi = collaborationApi;
+    }
+
+    public AffairManager getAffairManager() {
+        return affairManager;
+    }
+
+    public void setAffairManager(AffairManager affairManager) {
+        this.affairManager = affairManager;
+    }
+
+    public void setPortalApi(PortalApi portalApi) {
         this.portalApi = portalApi;
     }
+
     /**
      * 6.0调查首页
      * 版块类型 2-单位 3-集团
      */
-	public ModelAndView inquiryIndex(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	    int spaceType = NumberUtils.toInt(request.getParameter("spaceType"));
+    public ModelAndView inquiryIndex(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        int spaceType = NumberUtils.toInt(request.getParameter("spaceType"));
         Long spaceId = NumberUtils.toLong(request.getParameter("spaceId"));
-    	ModelAndView mav = new ModelAndView("inquiry/inquiryIndex");
+        ModelAndView mav = new ModelAndView("inquiry/inquiryIndex");
 
         String accountName = orgManager.getAccountById(AppContext.getCurrentUser().getLoginAccount()).getShortName();
         String groupName = orgManager.getRootAccount().getShortName();
@@ -199,12 +228,12 @@ public class InquiryDataController extends BaseController{
             }
             mav.addObject("entity", entity);
         }
-        mav = inquiryMavData(mav,"index",null,spaceType, spaceId);
+        mav = inquiryMavData(mav, "index", null, spaceType, spaceId);
 
         /**秀吧最热列表*/
-        if(AppContext.hasResourceCode("F05_show")){
-        	List<ShowbarInfoBO> showbarHotList = showApi.findShowbarHotList(5);
-        	mav.addObject("showbarHotList", showbarHotList);
+        if (AppContext.hasResourceCode("F05_show")) {
+            List<ShowbarInfoBO> showbarHotList = showApi.findShowbarHotList(5);
+            mav.addObject("showbarHotList", showbarHotList);
         }
 
 
@@ -213,17 +242,18 @@ public class InquiryDataController extends BaseController{
 
     /**
      * 版块首页
+     *
      * @param request
      * @param response
      * @return
      * @throws Exception
      */
     public ModelAndView inquiryBoardIndex(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	ModelAndView mav = new ModelAndView("inquiry/inquiryBoardIndex");
-    	String manageMode = request.getParameter("manageMode");
-    	String boardType = request.getParameter("boardType");
+        ModelAndView mav = new ModelAndView("inquiry/inquiryBoardIndex");
+        String manageMode = request.getParameter("manageMode");
+        String boardType = request.getParameter("boardType");
 
-    	int spaceType = NumberUtils.toInt(request.getParameter("spaceType"));
+        int spaceType = NumberUtils.toInt(request.getParameter("spaceType"));
         Long spaceId = NumberUtils.toLong(request.getParameter("spaceId"));
 
         List<SurveyTypeCompose> inquiryTypeList = new ArrayList<SurveyTypeCompose>(); // 调查类型列表
@@ -239,24 +269,24 @@ public class InquiryDataController extends BaseController{
         boolean hasAuthIssue = false;
         if (spaceType == SpaceType.public_custom.ordinal()) {// 自定义单位版块
             accountInquiryTypeList = inquiryManager.getUserIndexInquiryList(spaceId, spaceType, false);
-        }else if(spaceType == SpaceType.public_custom_group.ordinal()){// 自定义集团版块
+        } else if (spaceType == SpaceType.public_custom_group.ordinal()) {// 自定义集团版块
             groupInquiryTypeList = inquiryManager.getUserIndexInquiryList(spaceId, spaceType, false);
-        }else if(spaceType == SpaceType.custom.ordinal()){// 自定义团队版块直接进入版块首页
+        } else if (spaceType == SpaceType.custom.ordinal()) {// 自定义团队版块直接进入版块首页
             customInquiryTypeList = inquiryManager.getUserIndexInquiryList(spaceId, spaceType, false);
-        }else {
+        } else {
             groupInquiryTypeList = inquiryManager.getUserIndexInquiryList(true, false);
             accountInquiryTypeList = inquiryManager.getUserIndexInquiryList(false, false);
         }
 
-        if(groupInquiryTypeList!=null){
-        	groupInquiryTypeList = inquiryManager.complateMangerRelation(groupInquiryTypeList);
-        	inquiryTypeList.addAll(groupInquiryTypeList);
+        if (groupInquiryTypeList != null) {
+            groupInquiryTypeList = inquiryManager.complateMangerRelation(groupInquiryTypeList);
+            inquiryTypeList.addAll(groupInquiryTypeList);
         }
-        if(accountInquiryTypeList!=null){
-        	accountInquiryTypeList = inquiryManager.complateMangerRelation(accountInquiryTypeList);
-        	inquiryTypeList.addAll(accountInquiryTypeList);
+        if (accountInquiryTypeList != null) {
+            accountInquiryTypeList = inquiryManager.complateMangerRelation(accountInquiryTypeList);
+            inquiryTypeList.addAll(accountInquiryTypeList);
         }
-        if(customInquiryTypeList!=null){
+        if (customInquiryTypeList != null) {
             customInquiryTypeList = inquiryManager.complateMangerRelation(customInquiryTypeList);
             inquiryTypeList.addAll(customInquiryTypeList);
         }
@@ -265,11 +295,11 @@ public class InquiryDataController extends BaseController{
 
         List<Long> typeIdsList1 = new ArrayList<Long>();
         for (SurveyTypeCompose type : inquiryTypeList) {
-        	typeIdsList1.add(type.getInquirySurveytype().getId());
+            typeIdsList1.add(type.getInquirySurveytype().getId());
         }
         //抽取调查
         List<InquiryBasicVo> inquiryBasicTempListAll = new ArrayList<InquiryBasicVo>();
-        List<Integer> numList = inquiryManager.getIndexMyNum(inquiryBasicTempListAll,typeIdsList1);
+        List<Integer> numList = inquiryManager.getIndexMyNum(inquiryBasicTempListAll, typeIdsList1);
         List<Integer> boardNumList = inquiryManager.getBoardInquiryNum(inquiryBoardId);
         //去掉已经离职的管理员
         for (SurveyTypeCompose bt : inquiryTypeList) {
@@ -277,42 +307,42 @@ public class InquiryDataController extends BaseController{
             String managerId = "";
             if (managersList != null) {
                 for (Long a : managersList) {
-                    managerId+=a.toString()+",";
+                    managerId += a.toString() + ",";
                 }
-                if((!Strings.isBlank(managerId))&&",".equals(managerId.substring(managerId.length()-1,managerId.length()))){
-                	managerId = managerId.substring(0,managerId.length()-1);
+                if ((!Strings.isBlank(managerId)) && ",".equals(managerId.substring(managerId.length() - 1, managerId.length()))) {
+                    managerId = managerId.substring(0, managerId.length() - 1);
                 }
             }
-            if(bt.isHasPublicAuth()){
-            	hasIssue = true;
+            if (bt.isHasPublicAuth()) {
+                hasIssue = true;
             }
-            if(bt.getChecker()!=null&&user.getId().equals(bt.getChecker().getId())){
+            if (bt.getChecker() != null && user.getId().equals(bt.getChecker().getId())) {
                 hasAuthIssue = true;
             }
-            if(bt.getInquirySurveytype().getId().equals(inquiryBoardId)){
-        		mav.addObject("board", bt);
-        		mav.addObject("boardManager", managerId);
-        	}
+            if (bt.getInquirySurveytype().getId().equals(inquiryBoardId)) {
+                mav.addObject("board", bt);
+                mav.addObject("boardManager", managerId);
+            }
         }
         int manageNum = 0;
-        if("group".equals(boardType)){
-        	for(SurveyTypeCompose s: groupInquiryTypeList){
-        		if(s.isHasManageAuth()){
-        			manageNum++;
-        		}
-        	}
+        if ("group".equals(boardType)) {
+            for (SurveyTypeCompose s : groupInquiryTypeList) {
+                if (s.isHasManageAuth()) {
+                    manageNum++;
+                }
+            }
 
         }
-        if("account".equals(boardType)){
-        	for(SurveyTypeCompose s: accountInquiryTypeList){
-        		if(s.isHasManageAuth()){
-        			manageNum++;
-        		}
-        	}
+        if ("account".equals(boardType)) {
+            for (SurveyTypeCompose s : accountInquiryTypeList) {
+                if (s.isHasManageAuth()) {
+                    manageNum++;
+                }
+            }
         }
-        if("custom".equals(boardType)){
-            for(SurveyTypeCompose s: customInquiryTypeList){
-                if(s.isHasManageAuth()){
+        if ("custom".equals(boardType)) {
+            for (SurveyTypeCompose s : customInquiryTypeList) {
+                if (s.isHasManageAuth()) {
                     manageNum++;
                 }
             }
@@ -324,9 +354,9 @@ public class InquiryDataController extends BaseController{
         mav.addObject("groupInquiryTypeList", groupInquiryTypeList);
         mav.addObject("accountInquiryTypeList", accountInquiryTypeList);
         mav.addObject("customInquiryTypeList", customInquiryTypeList);
-        mav.addObject("groupInquiryTypeListPageNum", groupInquiryTypeList==null?0:Math.ceil(groupInquiryTypeList.size()/(double)5));
-        mav.addObject("accountInquiryTypeListPageNum", accountInquiryTypeList==null?0:Math.ceil(accountInquiryTypeList.size()/(double)5));
-        mav.addObject("customInquiryTypeListPageNum", customInquiryTypeList==null?0:Math.ceil(customInquiryTypeList.size()/(double)5));
+        mav.addObject("groupInquiryTypeListPageNum", groupInquiryTypeList == null ? 0 : Math.ceil(groupInquiryTypeList.size() / (double) 5));
+        mav.addObject("accountInquiryTypeListPageNum", accountInquiryTypeList == null ? 0 : Math.ceil(accountInquiryTypeList.size() / (double) 5));
+        mav.addObject("customInquiryTypeListPageNum", customInquiryTypeList == null ? 0 : Math.ceil(customInquiryTypeList.size() / (double) 5));
         mav.addObject("hasIssue", hasIssue);
         mav.addObject("hasAuthIssue", hasAuthIssue);
         mav.addObject("iJoined", numList.get(0));
@@ -337,15 +367,15 @@ public class InquiryDataController extends BaseController{
         mav.addObject("boardType", request.getParameter("boardType"));
         mav.addObject("boardPageNo", request.getParameter("boardPageNo"));
         mav.addObject("manageMode", manageMode);
-        mav.addObject("manageMove", manageNum>1);
+        mav.addObject("manageMove", manageNum > 1);
         return mav;
     }
 
     /**
      * 板块授权设置
-     * @throws Exception
      *
-     * */
+     * @throws Exception
+     */
     public ModelAndView inquiryTypeAuthSet(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView mav = new ModelAndView("inquiry/inquiryTypeAuthSet");
         String typeId = request.getParameter("typeId");
@@ -393,6 +423,7 @@ public class InquiryDataController extends BaseController{
 
     /**
      * 调查版块授权设置提交
+     *
      * @param request
      * @param response
      * @return
@@ -401,12 +432,12 @@ public class InquiryDataController extends BaseController{
     public ModelAndView modifyTypeAauth(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String surveytype_id = request.getParameter("typeId");
         Long surveytypeId = NumberUtils.toLong(surveytype_id);
-       // 是否允许匿名投票 0:允许 1：不允许
+        // 是否允许匿名投票 0:允许 1：不允许
         String anonymousFlag = request.getParameter("anonymousFlag");
         InquirySurveytype type = inquiryManager.getSurveyTypeById(surveytypeId);
         Integer authType = Integer.parseInt(request.getParameter("authType"));
         if (type != null) {
-        	type.setAnonymousFlag(Integer.parseInt(anonymousFlag));
+            type.setAnonymousFlag(Integer.parseInt(anonymousFlag));
             if (authType == InquiryConstants.AUTHTYPE_ALL) {
                 inquiryManager.saveInquiryAuthorities(surveytypeId, "");
                 type.setAuthType(authType);
@@ -465,47 +496,45 @@ public class InquiryDataController extends BaseController{
         }
 
 
-
         return super.refreshWindow("parent");
     }
 
     /**
      * 根据可操作列表展示
-     *
-     * */
+     */
     public ModelAndView listType(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	ModelAndView mav = new ModelAndView("inquiry/inquiryMove");
+        ModelAndView mav = new ModelAndView("inquiry/inquiryMove");
         String typeId = request.getParameter("typeId");
         String ids = request.getParameter("ids");
         // 类型列表
         List<SurveyTypeCompose> typeComposeList = null;
-        if(Strings.isNotBlank(typeId)){
+        if (Strings.isNotBlank(typeId)) {
             Long _typeId = NumberUtils.toLong(typeId);
             InquirySurveytype inquirySurveytype = inquiryManager.getSurveyTypeById(_typeId);
-            if(inquirySurveytype!=null){
+            if (inquirySurveytype != null) {
                 int spaceType = inquirySurveytype.getSpaceType();
                 Long spaceId = inquirySurveytype.getAccountId();
                 if (spaceType == SpaceType.public_custom.ordinal()) {// 自定义单位版块
                     typeComposeList = inquiryManager.getUserIndexInquiryList(spaceId, spaceType, false);
-                }else if(spaceType == SpaceType.public_custom_group.ordinal()){// 自定义集团版块
+                } else if (spaceType == SpaceType.public_custom_group.ordinal()) {// 自定义集团版块
                     typeComposeList = inquiryManager.getUserIndexInquiryList(spaceId, spaceType, false);
-                }else if(spaceType == SpaceType.custom.ordinal()){// 自定义团队版块
-                }else if(spaceType == SpaceType.group.ordinal()){
+                } else if (spaceType == SpaceType.custom.ordinal()) {// 自定义团队版块
+                } else if (spaceType == SpaceType.group.ordinal()) {
                     typeComposeList = inquiryManager.getUserIndexInquiryList(true, false);
-                }else if(spaceType == SpaceType.corporation.ordinal()){
+                } else if (spaceType == SpaceType.corporation.ordinal()) {
                     typeComposeList = inquiryManager.getUserIndexInquiryList(false, false);
                 }
             }
         }
         List<InquirySurveytype> typeList = new ArrayList<InquirySurveytype>();
-        if(typeComposeList!=null){
-        	typeComposeList = inquiryManager.complateMangerRelation(typeComposeList);
+        if (typeComposeList != null) {
+            typeComposeList = inquiryManager.complateMangerRelation(typeComposeList);
         }
-        for(SurveyTypeCompose typeCompose:typeComposeList){
-        	String id = typeCompose.getInquirySurveytype().getId().toString();
-        	if((!typeId.equals(id))&&typeCompose.isHasManageAuth()){
-        		typeList.add(typeCompose.getInquirySurveytype());
-        	}
+        for (SurveyTypeCompose typeCompose : typeComposeList) {
+            String id = typeCompose.getInquirySurveytype().getId().toString();
+            if ((!typeId.equals(id)) && typeCompose.isHasManageAuth()) {
+                typeList.add(typeCompose.getInquirySurveytype());
+            }
         }
         //启用排序 2013-08-09
         Comparator<InquirySurveytype> comp = new InquirySurveytype();
@@ -515,49 +544,55 @@ public class InquiryDataController extends BaseController{
 
         return mav;
     }
+
     /**
      * 我发起的 页面
+     *
      * @param request
      * @param response
      * @return
      * @throws Exception
      */
-    public ModelAndView inquiryIStart(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public ModelAndView inquiryIStart(HttpServletRequest request, HttpServletResponse response) throws Exception {
         int spaceType = NumberUtils.toInt(request.getParameter("spaceType"));
         Long spaceId = NumberUtils.toLong(request.getParameter("spaceId"));
-    	ModelAndView mav = new ModelAndView("inquiry/inquiryIStart");
-    	mav.addObject("type","1");
-    	mav = inquiryMavData(mav,"iStart",null,spaceType, spaceId);
-    	return mav;
+        ModelAndView mav = new ModelAndView("inquiry/inquiryIStart");
+        mav.addObject("type", "1");
+        mav = inquiryMavData(mav, "iStart", null, spaceType, spaceId);
+        return mav;
     }
+
     /**
      * 审核调查 页面
+     *
      * @param request
      * @param response
      * @return
      * @throws Exception
      */
-    public ModelAndView inquiryIAuth(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public ModelAndView inquiryIAuth(HttpServletRequest request, HttpServletResponse response) throws Exception {
         int spaceType = NumberUtils.toInt(request.getParameter("spaceType"));
         Long spaceId = NumberUtils.toLong(request.getParameter("spaceId"));
-    	ModelAndView mav = new ModelAndView("inquiry/inquiryIStart");
-    	mav.addObject("type","2");
-    	mav = inquiryMavData(mav,"iAuth",null, spaceType, spaceId);
-    	return mav;
+        ModelAndView mav = new ModelAndView("inquiry/inquiryIStart");
+        mav.addObject("type", "2");
+        mav = inquiryMavData(mav, "iAuth", null, spaceType, spaceId);
+        return mav;
     }
+
     /**
      * 页面共享要传递的数据,包含：
      * 1.我能查看的所有调查的数量，其中我能填写的调查数量-所有版块
      * 2.我参与的，我发起的，审核调查的数量
      * 3.当前用户是否有任意版块的发起权限
      * 4.版块列表-index boardIndex
+     *
      * @param mav
      * @param pageType 页面类型—— index调查首页 boardIndex版块首页 iStart我发起的 iAuth我调查的
      * @return
      * @throws Exception
      */
-    private ModelAndView inquiryMavData(ModelAndView mav,String pageType,Long boardId, int spaceType, Long spaceId) throws Exception{
-    	List<SurveyTypeCompose> inquiryTypeList = new ArrayList<SurveyTypeCompose>(); // 调查类型列表
+    private ModelAndView inquiryMavData(ModelAndView mav, String pageType, Long boardId, int spaceType, Long spaceId) throws Exception {
+        List<SurveyTypeCompose> inquiryTypeList = new ArrayList<SurveyTypeCompose>(); // 调查类型列表
         List<SurveyTypeCompose> groupInquiryTypeList = null; // 调查类型列表
         List<SurveyTypeCompose> accountInquiryTypeList = null; // 调查类型列表
         List<SurveyTypeCompose> customInquiryTypeList = null; // 自定义团队 调查类型列表
@@ -568,41 +603,41 @@ public class InquiryDataController extends BaseController{
         boolean hasAuthIssue = false;
         if (spaceType == SpaceType.public_custom.ordinal()) {// 自定义单位版块
             accountInquiryTypeList = inquiryManager.getUserIndexInquiryList(spaceId, spaceType, false);
-        }else if(spaceType == SpaceType.public_custom_group.ordinal()){// 自定义集团版块
+        } else if (spaceType == SpaceType.public_custom_group.ordinal()) {// 自定义集团版块
             groupInquiryTypeList = inquiryManager.getUserIndexInquiryList(spaceId, spaceType, false);
-        }else if(spaceType == SpaceType.custom.ordinal()){// 自定义团队版块直接进入版块首页
+        } else if (spaceType == SpaceType.custom.ordinal()) {// 自定义团队版块直接进入版块首页
             customInquiryTypeList = inquiryManager.getUserIndexInquiryList(spaceId, spaceType, false);
-        }else {
+        } else {
             if ((Boolean) (SysFlag.sys_isGroupVer.getFlag())) {
                 groupInquiryTypeList = inquiryManager.getUserIndexInquiryList(true, false);
             }
             accountInquiryTypeList = inquiryManager.getUserIndexInquiryList(false, false);
         }
-        if(groupInquiryTypeList!=null){
-        	groupInquiryTypeList = inquiryManager.complateMangerRelation(groupInquiryTypeList);
-        	inquiryTypeList.addAll(groupInquiryTypeList);
+        if (groupInquiryTypeList != null) {
+            groupInquiryTypeList = inquiryManager.complateMangerRelation(groupInquiryTypeList);
+            inquiryTypeList.addAll(groupInquiryTypeList);
         }
-        if(accountInquiryTypeList!=null){
-        	accountInquiryTypeList = inquiryManager.complateMangerRelation(accountInquiryTypeList);
-        	inquiryTypeList.addAll(accountInquiryTypeList);
+        if (accountInquiryTypeList != null) {
+            accountInquiryTypeList = inquiryManager.complateMangerRelation(accountInquiryTypeList);
+            inquiryTypeList.addAll(accountInquiryTypeList);
         }
-        if(customInquiryTypeList!=null){
+        if (customInquiryTypeList != null) {
             customInquiryTypeList = inquiryManager.complateMangerRelation(customInquiryTypeList);
             inquiryTypeList.addAll(customInquiryTypeList);
         }
         List<Long> typeIdsList = new ArrayList<Long>();
         for (SurveyTypeCompose type : inquiryTypeList) {
-        	typeIdsList.add(type.getInquirySurveytype().getId());
+            typeIdsList.add(type.getInquirySurveytype().getId());
         }
         //抽取调查
-        numList = inquiryManager.getIndexMyNum(null,typeIdsList);
+        numList = inquiryManager.getIndexMyNum(null, typeIdsList);
         //去掉已经离职的管理员
         for (SurveyTypeCompose bt : inquiryTypeList) {
-            if(bt.isHasPublicAuth()){
-            	hasIssue = true;
+            if (bt.isHasPublicAuth()) {
+                hasIssue = true;
             }
-            if(bt.getChecker()!=null&&user.getId().equals(bt.getChecker().getId())){
-            	hasAuthIssue = true;
+            if (bt.getChecker() != null && user.getId().equals(bt.getChecker().getId())) {
+                hasAuthIssue = true;
             }
         }
 
@@ -619,64 +654,71 @@ public class InquiryDataController extends BaseController{
         mav.addObject("hasIssue", hasIssue);
         mav.addObject("hasAuthIssue", hasAuthIssue);
         //4.版块列表-index boardIndex
-        if("index".equals(pageType)||"boardIndex".equals(pageType)){
-        	mav.addObject("typeList", inquiryTypeList);
+        if ("index".equals(pageType) || "boardIndex".equals(pageType)) {
+            mav.addObject("typeList", inquiryTypeList);
             mav.addObject("groupInquiryTypeList", groupInquiryTypeList);
             mav.addObject("accountInquiryTypeList", accountInquiryTypeList);
             mav.addObject("customInquiryTypeList", customInquiryTypeList);
-            mav.addObject("groupInquiryTypeListPageNum", groupInquiryTypeList==null?0:Math.ceil(groupInquiryTypeList.size()/(double)5));
-            mav.addObject("accountInquiryTypeListPageNum", accountInquiryTypeList==null?0:Math.ceil(accountInquiryTypeList.size()/(double)5));
-            mav.addObject("customInquiryTypeListPageNum", customInquiryTypeList==null?0:Math.ceil(customInquiryTypeList.size()/(double)5));
-            if("index".equals(pageType)&&(spaceType==2||spaceType==3)){//依次选 单位、集团
+            mav.addObject("groupInquiryTypeListPageNum", groupInquiryTypeList == null ? 0 : Math.ceil(groupInquiryTypeList.size() / (double) 5));
+            mav.addObject("accountInquiryTypeListPageNum", accountInquiryTypeList == null ? 0 : Math.ceil(accountInquiryTypeList.size() / (double) 5));
+            mav.addObject("customInquiryTypeListPageNum", customInquiryTypeList == null ? 0 : Math.ceil(customInquiryTypeList.size() / (double) 5));
+            if ("index".equals(pageType) && (spaceType == 2 || spaceType == 3)) {//依次选 单位、集团
                 mav.addObject("listSelect", spaceType);
             }
         }
-    	return mav;
+        return mav;
     }
+
     /**
      * 新建调查
+     *
      * @param request
      * @param response
      * @return
      * @throws Exception
      */
-    private EhSendRangeManager sendRangeManager=new EhSendRangeManagerImpl();
+    private EhSendRangeManager sendRangeManager = new EhSendRangeManagerImpl();
 
     public EhSendRangeManager getSendRangeManager() {
         return sendRangeManager;
     }
 
-    public ModelAndView inquiryCreate(HttpServletRequest request, HttpServletResponse response) throws Exception{
-    	ModelAndView mav = new ModelAndView("inquiry/inquiryCreate");
-    	String inquiryId = request.getParameter("inquiryId");
-    	String typeId = request.getParameter("typeId");
+    public ModelAndView inquiryCreate(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        ModelAndView mav = new ModelAndView("inquiry/inquiryCreate");
+        String inquiryId = request.getParameter("inquiryId");
+        String typeId = request.getParameter("typeId");
         String isEdit = request.getParameter("isEdit");
-    	int spaceType = NumberUtils.toInt(request.getParameter("spaceType"));
+        int spaceType = NumberUtils.toInt(request.getParameter("spaceType"));
         Long spaceId = NumberUtils.toLong(request.getParameter("spaceId"));
-        mav.addObject("spaceType",spaceType);
-        mav.addObject("spaceId",spaceId);
-    	InquirySurveybasic inquiry = new InquirySurveybasic();
+        mav.addObject("spaceType", spaceType);
+        mav.addObject("spaceId", spaceId);
+        InquirySurveybasic inquiry = new InquirySurveybasic();
 
 //    	恩华药业 zhou  start
-        Map map=new HashMap();
-        map.put("moduleId",Long.parseLong(typeId));
-        List<EhSendRange> ehSendRanges=sendRangeManager.findEhSendRangeByCondition(map);
-        if(ehSendRanges.size()>0){
-            mav.addObject("range",ehSendRanges.get(0));
-        }else{
-            mav.addObject("range",null);
+        Map map = new HashMap();
+        if (null != typeId && !"".equals(typeId)) {
+            map.put("moduleId", Long.parseLong(typeId));
+        } else {
+            map.put("moduleId", Long.parseLong("0"));
+
+        }
+        List<EhSendRange> ehSendRanges = sendRangeManager.findEhSendRangeByCondition(map);
+        if (ehSendRanges.size() > 0) {
+            mav.addObject("range", ehSendRanges.get(0));
+        } else {
+            mav.addObject("range", null);
         }
 //    	恩华药业 zhou  end
-    	if(inquiryId!=null){
-    		inquiry.setId(Long.parseLong(inquiryId));
+        if (inquiryId != null) {
+            inquiry.setId(Long.parseLong(inquiryId));
             SurveyBasicCompose temp = inquiryManager.getInquiryBasic(inquiryId);
-            if(temp!=null){
+            if (temp != null) {
                 inquiry.setCensor(temp.getInquirySurveybasic().getCensor());
             }
-            if(!("true".equals(isEdit)&&inquiryManager.getInquiryBasic(inquiryId).getInquirySurveybasic().getCreaterId().equals(AppContext.currentUserId()))){
+            if (!("true".equals(isEdit) && inquiryManager.getInquiryBasic(inquiryId).getInquirySurveybasic().getCreaterId().equals(AppContext.currentUserId()))) {
                 return null;
             }
-            if("true".equals(isEdit)){
+            if ("true".equals(isEdit)) {
                 //对调查进行加锁
                 String action = InquiryLockAction.InQUIRY_LOCK_EDITING;
                 InquiryLock inqlock = inquiryManager.lock(Long.parseLong(inquiryId), action);
@@ -686,22 +728,22 @@ public class InquiryDataController extends BaseController{
                     response.setContentType("text/html;charset=UTF-8");
                     PrintWriter out = response.getWriter();
                     out.println("<script type='text/javascript'>");
-                    out.println("alert('"+ ResourceUtil.getString(lockmessage,orm.getName()) + "');window.close();");
+                    out.println("alert('" + ResourceUtil.getString(lockmessage, orm.getName()) + "');window.close();");
                     out.println("</script>");
                     out.flush();
                     return null;
                 }
             }
-    	}else{
-    		inquiry.setIdIfNew();
-    	}
-    	if(typeId!=null){
-    		InquirySurveytype inquiryType = inquiryManager.getSurveyTypeById(Long.parseLong(typeId));
-    		mav.addObject("inquiryTypeId",typeId);
-    		mav.addObject("inquiryTypeOf",inquiryType.getSpaceType());
-    	}
-    	//版块信息
-    	List<SurveyTypeCompose> groupInquiryTypeList = null; // 调查类型列表
+        } else {
+            inquiry.setIdIfNew();
+        }
+        if (typeId != null) {
+            InquirySurveytype inquiryType = inquiryManager.getSurveyTypeById(Long.parseLong(typeId));
+            mav.addObject("inquiryTypeId", typeId);
+            mav.addObject("inquiryTypeOf", inquiryType.getSpaceType());
+        }
+        //版块信息
+        List<SurveyTypeCompose> groupInquiryTypeList = null; // 调查类型列表
         List<SurveyTypeCompose> accountInquiryTypeList = null; // 调查类型列表
         List<SurveyTypeCompose> customInquiryTypeList = null; // 调查类型列表
         if (spaceType == SpaceType.public_custom.ordinal()) {// 自定义单位版块
@@ -709,77 +751,77 @@ public class InquiryDataController extends BaseController{
 
             StringBuilder publisthScopeSpace = new StringBuilder();
             List<Object[]> issueAreas = portalApi.getSecuityOfSpace(spaceId);
-            for(Object[] arr : issueAreas) {
+            for (Object[] arr : issueAreas) {
                 publisthScopeSpace.append(StringUtils.join(arr, "|") + ",");
             }
-            mav.addObject("entity",publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1));
+            mav.addObject("entity", publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1));
             mav.addObject("DEPARTMENTissueArea", publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1));
-        }else if(spaceType == SpaceType.public_custom_group.ordinal()){// 自定义集团版块
+        } else if (spaceType == SpaceType.public_custom_group.ordinal()) {// 自定义集团版块
             groupInquiryTypeList = inquiryManager.getUserIndexInquiryList(spaceId, spaceType, false);
 
             StringBuilder publisthScopeSpace = new StringBuilder();
             List<Object[]> issueAreas = portalApi.getSecuityOfSpace(spaceId);
-            for(Object[] arr : issueAreas) {
+            for (Object[] arr : issueAreas) {
                 publisthScopeSpace.append(StringUtils.join(arr, "|") + ",");
             }
-            mav.addObject("entity",publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1));
+            mav.addObject("entity", publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1));
             mav.addObject("DEPARTMENTissueArea", publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1));
-        }else if(spaceType == SpaceType.custom.ordinal()){// 自定义团队版块直接进入版块首页
+        } else if (spaceType == SpaceType.custom.ordinal()) {// 自定义团队版块直接进入版块首页
             customInquiryTypeList = inquiryManager.getUserIndexInquiryList(spaceId, spaceType, false);
 
             StringBuilder publisthScopeSpace = new StringBuilder();
             List<Object[]> issueAreas = portalApi.getSecuityOfSpace(spaceId);
-            for(Object[] arr : issueAreas) {
+            for (Object[] arr : issueAreas) {
                 publisthScopeSpace.append(StringUtils.join(arr, "|") + ",");
             }
-            if(publisthScopeSpace.length() > 0){
+            if (publisthScopeSpace.length() > 0) {
                 publisthScopeSpace.substring(0, publisthScopeSpace.length() - 1);
             }
-            List<Object[]> entityObj= portalApi.getSecuityOfSpace(Long.valueOf(spaceId));
-            String entity="";
+            List<Object[]> entityObj = portalApi.getSecuityOfSpace(Long.valueOf(spaceId));
+            String entity = "";
             for (Object[] obj : entityObj) {
-                entity+=obj[0]+"|"+obj[1]+",";
+                entity += obj[0] + "|" + obj[1] + ",";
             }
-            if(!"".equals(entity)){
-                entity=entity.substring(0, entity.length()-1);
+            if (!"".equals(entity)) {
+                entity = entity.substring(0, entity.length() - 1);
             }
-            mav.addObject("entity",entity);
+            mav.addObject("entity", entity);
             mav.addObject("DEPARTMENTissueArea", publisthScopeSpace);
-        }else {
+        } else {
             groupInquiryTypeList = inquiryManager.getUserIndexInquiryList(true, false);
             accountInquiryTypeList = inquiryManager.getUserIndexInquiryList(false, false);
         }
         List<SurveyTypeCompose> groupTypeList = new ArrayList<SurveyTypeCompose>(); // 调查类型列表
-        List<SurveyTypeCompose> accountTypeList =new ArrayList<SurveyTypeCompose>(); // 调查类型列表
-        List<SurveyTypeCompose> customTypeList =new ArrayList<SurveyTypeCompose>(); // 调查类型列表
+        List<SurveyTypeCompose> accountTypeList = new ArrayList<SurveyTypeCompose>(); // 调查类型列表
+        List<SurveyTypeCompose> customTypeList = new ArrayList<SurveyTypeCompose>(); // 调查类型列表
 
-        if(groupInquiryTypeList!=null){
-        	groupInquiryTypeList = inquiryManager.complateMangerRelation(groupInquiryTypeList);
-        	for (SurveyTypeCompose bt : groupInquiryTypeList) {
-        	    if(bt.isHasPublicAuth()){
-        	        groupTypeList.add(bt);
-        	    }
-        	}
+        if (groupInquiryTypeList != null) {
+            groupInquiryTypeList = inquiryManager.complateMangerRelation(groupInquiryTypeList);
+            for (SurveyTypeCompose bt : groupInquiryTypeList) {
+                if (bt.isHasPublicAuth()) {
+                    groupTypeList.add(bt);
+                }
+            }
         }
-        if(accountInquiryTypeList!=null){
-        	accountInquiryTypeList = inquiryManager.complateMangerRelation(accountInquiryTypeList);
-        	for (SurveyTypeCompose bt : accountInquiryTypeList) {
-        	    if(bt.isHasPublicAuth()){
-        	        accountTypeList.add(bt);
-        	    }
-        	}
+        if (accountInquiryTypeList != null) {
+            accountInquiryTypeList = inquiryManager.complateMangerRelation(accountInquiryTypeList);
+            for (SurveyTypeCompose bt : accountInquiryTypeList) {
+                if (bt.isHasPublicAuth()) {
+                    accountTypeList.add(bt);
+                }
+            }
         }
-        if(customInquiryTypeList!=null){
+        if (customInquiryTypeList != null) {
             customInquiryTypeList = inquiryManager.complateMangerRelation(customInquiryTypeList);
             for (SurveyTypeCompose bt : customInquiryTypeList) {
-                if(bt.isHasPublicAuth()){
+                if (bt.isHasPublicAuth()) {
                     customTypeList.add(bt);
                 }
             }
         }
 
         User member = AppContext.getCurrentUser();
-        V3xOrgDepartment department=new V3xOrgDepartment();
+        V3xOrgDepartment department = new V3xOrgDepartment();
         // 登录人员在兼职单位
         if (!member.getLoginAccount().equals(member.getAccountId())) {
             List<MemberPost> memberPostList = orgManager.getMemberConcurrentPostsByAccountId(member.getId(), member.getLoginAccount());
@@ -793,53 +835,55 @@ public class InquiryDataController extends BaseController{
             department = this.orgManager.getEntityById(V3xOrgDepartment.class, departmentid); // 获取发布部门
         }
         //定位初始在第一步
-    	mav.addObject("step","1");
-    	mav.addObject("isEdit",request.getParameter("isEdit"));
-    	mav.addObject("beginDeptId",department.getId());
-    	mav.addObject("beginDeptName",department.getName());
-    	mav.addObject("inquiryId",inquiry.getId().toString());
-    	mav.addObject("inquiryState",inquiry.getCensor());
-    	mav.addObject("groupInquiryTypeList",groupTypeList);
-    	mav.addObject("accountInquiryTypeList",accountTypeList);
-    	mav.addObject("customInquiryTypeList",customTypeList);
-    	return mav;
+        mav.addObject("step", "1");
+        mav.addObject("isEdit", request.getParameter("isEdit"));
+        mav.addObject("beginDeptId", department.getId());
+        mav.addObject("beginDeptName", department.getName());
+        mav.addObject("inquiryId", inquiry.getId().toString());
+        mav.addObject("inquiryState", inquiry.getCensor());
+        mav.addObject("groupInquiryTypeList", groupTypeList);
+        mav.addObject("accountInquiryTypeList", accountTypeList);
+        mav.addObject("customInquiryTypeList", customTypeList);
+        return mav;
     }
+
     /**
      * 调查详情
+     *
      * @param request
      * @param response
      * @return
      * @throws Exception
      */
-    public ModelAndView inquiryView(HttpServletRequest request, HttpServletResponse response) throws Exception{
-    	ModelAndView mav = new ModelAndView("inquiry/inquiryInfo");
-    	Long userId = AppContext.currentUserId();
-    	String inquiryId = request.getParameter("inquiryId");
-    	String isAuth = request.getParameter("isAuth");
-    	String memberId = request.getParameter("memberId");
-    	String indexFlag = request.getParameter("indexFlag");
+    public ModelAndView inquiryView(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        ModelAndView mav = new ModelAndView("inquiry/inquiryInfo");
+        Long userId = AppContext.currentUserId();
+        String inquiryId = request.getParameter("inquiryId");
+        String isAuth = request.getParameter("isAuth");
+        String memberId = request.getParameter("memberId");
+        String indexFlag = request.getParameter("indexFlag");
         String theAffairId = request.getParameter("affairId");
         String infoMode = "info";
-    	String authMind = "";
+        String authMind = "";
         String reload = "if(window.opener){" +
-                            "if(window.opener.getCtpTop().isCtpTop){" +
-                                "window.opener.getCtpTop().reFlesh();" +
-                            "}else{" +
-                                "window.opener.location.reload();" +
-                            "}" +
-                        "}" +
-                        "window.close();";
+                "if(window.opener.getCtpTop().isCtpTop){" +
+                "window.opener.getCtpTop().reFlesh();" +
+                "}else{" +
+                "window.opener.location.reload();" +
+                "}" +
+                "}" +
+                "window.close();";
         boolean hasAtts = false;
         boolean hasDoc = false;
 //    	InquiryBasicVo inquiry = inquiryManager.getInquiryBasicVoById(Long.parseLong(inquiryId),"info");
-    	if(inquiryId==null){//预览
-    		String packageStr = request.getParameter("packageStr");
-        	String questionStr = request.getParameter("questionStr");
-        	String metaData = request.getParameter("metaData");
+        if (inquiryId == null) {//预览
+            String packageStr = request.getParameter("packageStr");
+            String questionStr = request.getParameter("questionStr");
+            String metaData = request.getParameter("metaData");
             String attsData = request.getParameter("preAttachment");
 
             String sendDate = Datetimes.formatDatetimeWithoutSecond(new Date());
-	    	SurveyTypeCompose inquiryBoard = inquiryManager.getSurveyTypeComposeBYID(Long.parseLong(request.getParameter("boardList")));
+            SurveyTypeCompose inquiryBoard = inquiryManager.getSurveyTypeComposeBYID(Long.parseLong(request.getParameter("boardList")));
 
             InquirySurveybasic inquirySurveybasic = new InquirySurveybasic();
             inquirySurveybasic.setIdIfNew();
@@ -855,54 +899,54 @@ public class InquiryDataController extends BaseController{
                 attachmentManager.deleteByReference(inquirySurveybasic.getId(), inquirySurveybasic.getId());
                 attachmentManager.create(ApplicationCategoryEnum.inquiry, inquirySurveybasic.getId(), inquirySurveybasic.getId(), atts);
                 List<Attachment> attachments = attachmentManager.getByReference(inquirySurveybasic.getId());
-                if(attachments.size()>0){
-                    for(Attachment attachment : attachments){
-                        if(attachment.getType() == 0&&!hasAtts){
+                if (attachments.size() > 0) {
+                    for (Attachment attachment : attachments) {
+                        if (attachment.getType() == 0 && !hasAtts) {
                             hasAtts = true;
                         }
-                        if(attachment.getType() == 2&&!hasDoc){
+                        if (attachment.getType() == 2 && !hasDoc) {
                             hasDoc = true;
                         }
                     }
-                    mav.addObject("hasAtts",false);
-                    mav.addObject("hasDoc",false);
+                    mav.addObject("hasAtts", false);
+                    mav.addObject("hasDoc", false);
                     mav.addObject("inquiryAttListJSON", "");
                 }
             }
 
-        	Map<String,String> senderInfo = new HashMap<String,String>();
-        	infoMode = "preview";
-        	String senderId = userId.toString();
-        	String senderName = AppContext.currentUserName();
-        	String senderImgUrl = Functions.getAvatarImageUrl(userId);
-        	senderInfo.put("senderId", senderId);
-        	senderInfo.put("senderName", senderName);
-        	senderInfo.put("senderImgUrl", senderImgUrl);
+            Map<String, String> senderInfo = new HashMap<String, String>();
+            infoMode = "preview";
+            String senderId = userId.toString();
+            String senderName = AppContext.currentUserName();
+            String senderImgUrl = Functions.getAvatarImageUrl(userId);
+            senderInfo.put("senderId", senderId);
+            senderInfo.put("senderName", senderName);
+            senderInfo.put("senderImgUrl", senderImgUrl);
 
-        	Map<String,String> inquiryInfo = new HashMap<String,String>();
-        	inquiryInfo.put("startDeptId", request.getParameter("packageStr"));
-        	inquiryInfo.put("startDeptName", request.getParameter("beginDeptName"));
-        	inquiryInfo.put("inquiryScope", "");
+            Map<String, String> inquiryInfo = new HashMap<String, String>();
+            inquiryInfo.put("startDeptId", request.getParameter("packageStr"));
+            inquiryInfo.put("startDeptName", request.getParameter("beginDeptName"));
+            inquiryInfo.put("inquiryScope", "");
             String scopeName = request.getParameter("inquiryScope");
             inquiryInfo.put("inquiryScopeName", scopeName);
-            String inquiryScopeNameLimit = Strings.getSafeLimitLengthString(scopeName,121,"...");
+            String inquiryScopeNameLimit = Strings.getSafeLimitLengthString(scopeName, 121, "...");
             inquiryInfo.put("inquiryScopeNameLimit", inquiryScopeNameLimit);
-        	inquiryInfo.put("inquiryBoardId", request.getParameter("boardList"));
-        	inquiryInfo.put("inquiryBoardName", inquiryBoard.getInquirySurveytype().getTypeName());
-        	inquiryInfo.put("inquiryId", "");
-        	inquiryInfo.put("inquiryAuthId", inquiryBoard.getChecker()!=null?inquiryBoard.getChecker().getId().toString():"");
-        	inquiryInfo.put("inquiryName", "");
-        	inquiryInfo.put("inquirySendDate", sendDate);
-        	inquiryInfo.put("inquiryEndDate", request.getParameter("closeDate")==null?ResourceUtil.getString("inquiry.meta.timelimitnone"):request.getParameter("closeDate"));
-        	mav.addObject("inquiryInfo",inquiryInfo);
-	    	mav.addObject("senderInfo",senderInfo);
-	    	mav.addObject("authMind",authMind);
-	    	mav.addObject("infoMode",infoMode);
-	    	mav.addObject("packageStr","{"+Functions.toHTMLescapeRN(packageStr)+"}");
-	    	mav.addObject("questionStr","{"+Functions.toHTMLescapeRN(questionStr)+"}");
-	    	mav.addObject("metaData","{"+Functions.toHTMLescapeRN(metaData)+"}");
-    		return mav;
-    	}else{
+            inquiryInfo.put("inquiryBoardId", request.getParameter("boardList"));
+            inquiryInfo.put("inquiryBoardName", inquiryBoard.getInquirySurveytype().getTypeName());
+            inquiryInfo.put("inquiryId", "");
+            inquiryInfo.put("inquiryAuthId", inquiryBoard.getChecker() != null ? inquiryBoard.getChecker().getId().toString() : "");
+            inquiryInfo.put("inquiryName", "");
+            inquiryInfo.put("inquirySendDate", sendDate);
+            inquiryInfo.put("inquiryEndDate", request.getParameter("closeDate") == null ? ResourceUtil.getString("inquiry.meta.timelimitnone") : request.getParameter("closeDate"));
+            mav.addObject("inquiryInfo", inquiryInfo);
+            mav.addObject("senderInfo", senderInfo);
+            mav.addObject("authMind", authMind);
+            mav.addObject("infoMode", infoMode);
+            mav.addObject("packageStr", "{" + Functions.toHTMLescapeRN(packageStr) + "}");
+            mav.addObject("questionStr", "{" + Functions.toHTMLescapeRN(questionStr) + "}");
+            mav.addObject("metaData", "{" + Functions.toHTMLescapeRN(metaData) + "}");
+            return mav;
+        } else {
             //来源性质
             String from = request.getParameter("from");
             /*
@@ -911,27 +955,27 @@ public class InquiryDataController extends BaseController{
                 from=colCube，从协同立方打开
              */
 
-	    	InquiryBasicVo inquiry = inquiryManager.getInquiryBasicVoById(Long.parseLong(inquiryId),"info");
-	    	if(inquiry == null){
-                if("message".equals(from)){
-                    super.rendJavaScript(response, "alert('"+ResourceUtil.getString("inquiry.view.nopermissions")+"');window.close()");
+            InquiryBasicVo inquiry = inquiryManager.getInquiryBasicVoById(Long.parseLong(inquiryId), "info");
+            if (inquiry == null) {
+                if ("message".equals(from)) {
+                    super.rendJavaScript(response, "alert('" + ResourceUtil.getString("inquiry.view.nopermissions") + "');window.close()");
 
-                }else if("1".equals(indexFlag)){
-                    super.rendJavaScript(response, "alert('"+ResourceUtil.getString("inquiry.view.nopermissions")+"');try {parent.window.opener.location.reload();parent.window.close()} catch(e) {}");
-                }else{
-                    super.rendJavaScript(response, "alert('"+ResourceUtil.getString("inquiry.view.nopermissions")+"');"+reload);
+                } else if ("1".equals(indexFlag)) {
+                    super.rendJavaScript(response, "alert('" + ResourceUtil.getString("inquiry.view.nopermissions") + "');try {parent.window.opener.location.reload();parent.window.close()} catch(e) {}");
+                } else {
+                    super.rendJavaScript(response, "alert('" + ResourceUtil.getString("inquiry.view.nopermissions") + "');" + reload);
                 }
                 return null;
             }
-	    	InquirySurveytype type = inquiryManager.getSurveyTypeById(inquiry.getSurveyTypeId());
-            if(type == null || type.getFlag() != InquiryConstants.FLAG_NORMAL.intValue()){
-                if("message".equals(from)){
-                    super.rendJavaScript(response, "alert('"+ResourceUtil.getString("inquiry.view.nopermissions")+"');window.close()");
+            InquirySurveytype type = inquiryManager.getSurveyTypeById(inquiry.getSurveyTypeId());
+            if (type == null || type.getFlag() != InquiryConstants.FLAG_NORMAL.intValue()) {
+                if ("message".equals(from)) {
+                    super.rendJavaScript(response, "alert('" + ResourceUtil.getString("inquiry.view.nopermissions") + "');window.close()");
 
-                }else if("1".equals(indexFlag)){
-                    super.rendJavaScript(response, "alert('"+ResourceUtil.getString("inquiry.view.nopermissions")+"');try {parent.window.opener.location.reload();parent.window.close()} catch(e) {}");
-                }else{
-                    super.rendJavaScript(response, "alert('"+ResourceUtil.getString("inquiry.view.nopermissions")+"');"+reload);
+                } else if ("1".equals(indexFlag)) {
+                    super.rendJavaScript(response, "alert('" + ResourceUtil.getString("inquiry.view.nopermissions") + "');try {parent.window.opener.location.reload();parent.window.close()} catch(e) {}");
+                } else {
+                    super.rendJavaScript(response, "alert('" + ResourceUtil.getString("inquiry.view.nopermissions") + "');" + reload);
                 }
                 return null;
             }
@@ -939,7 +983,7 @@ public class InquiryDataController extends BaseController{
             //更新消息状态
             userMessageManager.updateSystemMessageStateByUserAndReference(userId, inquiry.getId());
 
-            Map<String,String> inquiryInfo = new HashMap<String,String>();
+            Map<String, String> inquiryInfo = new HashMap<String, String>();
             List<InquiryScope> scopeList = inquiryManager.getAllScopeForInquiry(inquiry.getId());
 
             String scope_range = "";
@@ -950,15 +994,15 @@ public class InquiryDataController extends BaseController{
                 V3xOrgEntity org = this.orgManager.getEntity(desc, egid);
                 scope_range += org.getEntityType() + "|" + egid + ",";
             }
-            scope_name = Functions.showOrgEntities(scope_range,"、");
+            scope_name = Functions.showOrgEntities(scope_range, "、");
             V3xOrgMember member = orgManager.getMemberById(userId);
             Set<V3xOrgMember> memberSet = orgManager.getMembersByTypeAndIds(scope_range);
 
             //用户性质
             boolean isInScope = memberSet.contains(member);
-            if(Strings.isNotBlank(theAffairId)){
+            if (Strings.isNotBlank(theAffairId)) {
                 CtpAffair ctpAffair = affairManager.get(Long.valueOf(theAffairId));
-                if(ctpAffair!=null){
+                if (ctpAffair != null) {
                     isInScope = true;
                 }
             }
@@ -977,32 +1021,32 @@ public class InquiryDataController extends BaseController{
 
             if (!(isInScope || isTypeManager || isAuthManager || isAgent || isCreate)) {
                 if (!"pigeonhole".equals(from)) {
-                    super.rendJavaScript(response, "alert('"+ResourceUtil.getString("inquiry.user.notAuthority")+"');window.close()");
+                    super.rendJavaScript(response, "alert('" + ResourceUtil.getString("inquiry.user.notAuthority") + "');window.close()");
                     return null;
                 }
             }
 
-	    	if(inquiry.getInquirySurveybasic().getCensor()==InquirySurveybasic.CENSOR_NO_PASS.intValue()){
-                    infoMode = "noPass";
-                    authMind = inquiry.getInquirySurveybasic().getCheckMind();
-	    	}else if(inquiry.getInquirySurveybasic().getCensor()==InquirySurveybasic.CENSOR_PASS_NO_SEND.intValue()){
-	    		infoMode = "pass";
-	    		authMind = inquiry.getInquirySurveybasic().getCheckMind();
-	    	}else if(inquiry.getInquirySurveybasic().getCensor()==InquirySurveybasic.CENSOR_DRAUGHT.intValue()){
-                if(isCreate&&"false".equals(isAuth)){
+            if (inquiry.getInquirySurveybasic().getCensor() == InquirySurveybasic.CENSOR_NO_PASS.intValue()) {
+                infoMode = "noPass";
+                authMind = inquiry.getInquirySurveybasic().getCheckMind();
+            } else if (inquiry.getInquirySurveybasic().getCensor() == InquirySurveybasic.CENSOR_PASS_NO_SEND.intValue()) {
+                infoMode = "pass";
+                authMind = inquiry.getInquirySurveybasic().getCheckMind();
+            } else if (inquiry.getInquirySurveybasic().getCensor() == InquirySurveybasic.CENSOR_DRAUGHT.intValue()) {
+                if (isCreate && "false".equals(isAuth)) {
                     infoMode = "info";
-                }else{
-                    if("message".equals(from)){
-                        super.rendJavaScript(response, "alert('"+ResourceUtil.getString("inquiry.view.nopermissions")+"');window.close()");
-                    }else if("1".equals(indexFlag)){
-                        super.rendJavaScript(response, "alert('"+ResourceUtil.getString("inquiry.view.nopermissions")+"');try {parent.window.opener.location.reload();parent.window.close()} catch(e) {}");
-                    }else{
-                        super.rendJavaScript(response, "alert('"+ResourceUtil.getString("inquiry.view.nopermissions")+"');"+reload);
+                } else {
+                    if ("message".equals(from)) {
+                        super.rendJavaScript(response, "alert('" + ResourceUtil.getString("inquiry.view.nopermissions") + "');window.close()");
+                    } else if ("1".equals(indexFlag)) {
+                        super.rendJavaScript(response, "alert('" + ResourceUtil.getString("inquiry.view.nopermissions") + "');try {parent.window.opener.location.reload();parent.window.close()} catch(e) {}");
+                    } else {
+                        super.rendJavaScript(response, "alert('" + ResourceUtil.getString("inquiry.view.nopermissions") + "');" + reload);
                     }
                     return null;
                 }
-            }else if(inquiry.getInquirySurveybasic().getCensor()==InquirySurveybasic.CENSOR_NO.intValue()){
-                if("true".equals(isAuth)){
+            } else if (inquiry.getInquirySurveybasic().getCensor() == InquirySurveybasic.CENSOR_NO.intValue()) {
+                if ("true".equals(isAuth)) {
                     //对调查进行加锁
                     String action = InquiryLockAction.InQUIRY_LOCK_AUDITING;
                     InquiryLock inqlock = inquiryManager.lock(inquiry.getId(), action);
@@ -1011,29 +1055,29 @@ public class InquiryDataController extends BaseController{
                         String lockmessage = inqlock.getAction();
                         String alertMsg = ResourceUtil.getString(lockmessage,
                                 orm.getName());
-                        super.rendJavaScript(response, "alert('"+alertMsg+"');window.close()");
+                        super.rendJavaScript(response, "alert('" + alertMsg + "');window.close()");
                         return null;
                     }
                 }
                 infoMode = "ready";
-            }else if(inquiry.getInquirySurveybasic().getCensor()==InquirySurveybasic.CENSOR_CLOSE.intValue()){
-	    		infoMode = "finish";
-	    	}else if(inquiry.getInquirySurveybasic().getCensor()==InquirySurveybasic.CENSOR_PASS.intValue()){
-	    		infoMode = "write";
-                if(!isInScope){
+            } else if (inquiry.getInquirySurveybasic().getCensor() == InquirySurveybasic.CENSOR_CLOSE.intValue()) {
+                infoMode = "finish";
+            } else if (inquiry.getInquirySurveybasic().getCensor() == InquirySurveybasic.CENSOR_PASS.intValue()) {
+                infoMode = "write";
+                if (!isInScope) {
                     infoMode = "info";
-                    mav.addObject("isInScope",isInScope);
+                    mav.addObject("isInScope", isInScope);
                 }
-	    	}else if(inquiry.getInquirySurveybasic().getCensor()==InquirySurveybasic.CENSOR_FILING_YES.intValue()){
-                if("pigeonhole".equals(from)){
+            } else if (inquiry.getInquirySurveybasic().getCensor() == InquirySurveybasic.CENSOR_FILING_YES.intValue()) {
+                if ("pigeonhole".equals(from)) {
                     infoMode = "pigeonhole";
-                }else{
-                    if("message".equals(from)){
-                        super.rendJavaScript(response, "alert('"+ResourceUtil.getString("inquiry.view.nopermissions")+"');window.close()");
-                    }else if("1".equals(indexFlag)){
-                        super.rendJavaScript(response, "alert('"+ResourceUtil.getString("inquiry.view.nopermissions")+"');try {parent.window.opener.location.reload();parent.window.close()} catch(e) {}");
-                    }else{
-                        super.rendJavaScript(response, "alert('"+ResourceUtil.getString("inquiry.view.nopermissions")+"');"+reload);
+                } else {
+                    if ("message".equals(from)) {
+                        super.rendJavaScript(response, "alert('" + ResourceUtil.getString("inquiry.view.nopermissions") + "');window.close()");
+                    } else if ("1".equals(indexFlag)) {
+                        super.rendJavaScript(response, "alert('" + ResourceUtil.getString("inquiry.view.nopermissions") + "');try {parent.window.opener.location.reload();parent.window.close()} catch(e) {}");
+                    } else {
+                        super.rendJavaScript(response, "alert('" + ResourceUtil.getString("inquiry.view.nopermissions") + "');" + reload);
                     }
                     return null;
                 }
@@ -1051,10 +1095,10 @@ public class InquiryDataController extends BaseController{
             for (Attachment atta : articleAtts) {
                 if (atta.getSubReference().equals(inquiry.getId())) {
                     inquiryAttachments.add(atta);
-                    if(atta.getType() == 0&&!hasAtts){
+                    if (atta.getType() == 0 && !hasAtts) {
                         hasAtts = true;
                     }
-                    if(atta.getType() == 2&&!hasDoc){
+                    if (atta.getType() == 2 && !hasDoc) {
                         hasDoc = true;
                     }
                 } else {
@@ -1062,41 +1106,41 @@ public class InquiryDataController extends BaseController{
                 }
             }
 
-	    	Map<String,String> senderInfo = new HashMap<String,String>();
-	    	String senderId = inquiry.getIssueUserId().toString();
-	    	String senderName = inquiry.getIssueUserName();
-	    	String senderImgUrl = inquiry.getIssueUserImgUrl();
-	    	senderInfo.put("senderId", senderId);
-	    	senderInfo.put("senderName", senderName);
-	    	senderInfo.put("senderImgUrl", senderImgUrl);
+            Map<String, String> senderInfo = new HashMap<String, String>();
+            String senderId = inquiry.getIssueUserId().toString();
+            String senderName = inquiry.getIssueUserName();
+            String senderImgUrl = inquiry.getIssueUserImgUrl();
+            senderInfo.put("senderId", senderId);
+            senderInfo.put("senderName", senderName);
+            senderInfo.put("senderImgUrl", senderImgUrl);
 
-	    	inquiryInfo.put("startDeptId", inquiry.getDepartmentId().toString());
-	    	inquiryInfo.put("startDeptName", inquiry.getDepartmentName());
-	    	inquiryInfo.put("inquiryScope", scope_range.substring(0, scope_range.length() - 1));
-	    	inquiryInfo.put("inquiryScopeName", scope_name);
-	    	String inquiryScopeNameLimit = Strings.getSafeLimitLengthString(scope_name,121,"...");
-	    	logger.info("*Scope of investigation intercepted:"+ inquiryScopeNameLimit);
-	    	inquiryInfo.put("inquiryScopeNameLimit", inquiryScopeNameLimit);
-	    	inquiryInfo.put("inquiryBoardId", inquiry.getSurveyTypeId().toString());
-	    	inquiryInfo.put("inquiryBoardName", inquiry.getSurveyTypeName());
-	    	inquiryInfo.put("inquiryId", inquiry.getInquirySurveybasic().getId().toString());
-	    	inquiryInfo.put("inquiryAuthId", inquiry.getInquirySurveybasic().getCensorId().toString());
-	    	inquiryInfo.put("inquiryName", inquiry.getInquirySurveybasic().getSurveyName());
-			inquiryInfo.put("inquirySendDate", Datetimes.formatDate(inquiry.getInquirySurveybasic().getIssueDate()));
-			inquiryInfo.put("inquiryEndDate", inquiry.getInquirySurveybasic().getCloseDate() == null ? "" : Datetimes.formatDate(inquiry.getInquirySurveybasic().getCloseDate()));
-			inquiryInfo.put("inquirySpaceType", String.valueOf(inquiry.getInquirySurveybasic().getSpaceType()));
-			inquiryInfo.put("surveyState", inquiry.getSurveyState());
-			mav.addObject("inquiryInfo",inquiryInfo);
-	    	mav.addObject("senderInfo",senderInfo);
-	    	mav.addObject("authMind",authMind);
-	    	mav.addObject("infoMode",infoMode);
-	    	mav.addObject("memberId",memberId);
-	    	mav.addObject("isAuth",isAuth);
-	    	mav.addObject("isManager",isTypeManager);
-	    	mav.addObject("isAuthManager",isAuthManager);
-	    	mav.addObject("isSender",isCreate);
-            mav.addObject("hasAtts",hasAtts);
-            mav.addObject("hasDoc",hasDoc);
+            inquiryInfo.put("startDeptId", inquiry.getDepartmentId().toString());
+            inquiryInfo.put("startDeptName", inquiry.getDepartmentName());
+            inquiryInfo.put("inquiryScope", scope_range.substring(0, scope_range.length() - 1));
+            inquiryInfo.put("inquiryScopeName", scope_name);
+            String inquiryScopeNameLimit = Strings.getSafeLimitLengthString(scope_name, 121, "...");
+            logger.info("*Scope of investigation intercepted:" + inquiryScopeNameLimit);
+            inquiryInfo.put("inquiryScopeNameLimit", inquiryScopeNameLimit);
+            inquiryInfo.put("inquiryBoardId", inquiry.getSurveyTypeId().toString());
+            inquiryInfo.put("inquiryBoardName", inquiry.getSurveyTypeName());
+            inquiryInfo.put("inquiryId", inquiry.getInquirySurveybasic().getId().toString());
+            inquiryInfo.put("inquiryAuthId", inquiry.getInquirySurveybasic().getCensorId().toString());
+            inquiryInfo.put("inquiryName", inquiry.getInquirySurveybasic().getSurveyName());
+            inquiryInfo.put("inquirySendDate", Datetimes.formatDate(inquiry.getInquirySurveybasic().getIssueDate()));
+            inquiryInfo.put("inquiryEndDate", inquiry.getInquirySurveybasic().getCloseDate() == null ? "" : Datetimes.formatDate(inquiry.getInquirySurveybasic().getCloseDate()));
+            inquiryInfo.put("inquirySpaceType", String.valueOf(inquiry.getInquirySurveybasic().getSpaceType()));
+            inquiryInfo.put("surveyState", inquiry.getSurveyState());
+            mav.addObject("inquiryInfo", inquiryInfo);
+            mav.addObject("senderInfo", senderInfo);
+            mav.addObject("authMind", authMind);
+            mav.addObject("infoMode", infoMode);
+            mav.addObject("memberId", memberId);
+            mav.addObject("isAuth", isAuth);
+            mav.addObject("isManager", isTypeManager);
+            mav.addObject("isAuthManager", isAuthManager);
+            mav.addObject("isSender", isCreate);
+            mav.addObject("hasAtts", hasAtts);
+            mav.addObject("hasDoc", hasDoc);
             mav.addObject("inquiryAttListJSON", JSONUtil.toJSONString(inquiryAttachments));
 
             AccessControlBean.getInstance().addAccessControl(ApplicationCategoryEnum.inquiry, String.valueOf(inquiry.getId()), AppContext.currentUserId());
@@ -1104,7 +1148,7 @@ public class InquiryDataController extends BaseController{
         return mav;
     }
 
-    public ModelAndView inquiryResult(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public ModelAndView inquiryResult(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView mav = new ModelAndView("inquiry/inquiryResult");
         Long userId = AppContext.currentUserId();
         String inquiryId = request.getParameter("inquiryId");
@@ -1125,16 +1169,16 @@ public class InquiryDataController extends BaseController{
             logger.error("Exception in judging whether or not it is the inquiry board administrator", e);
         }
 
-        if(inquiry==null){//为空时
+        if (inquiry == null) {//为空时
             return null;
-        }else if (!(inquiry.getInquirySurveybasic().getCreaterId().equals(userId) || isTypeManager ||
+        } else if (!(inquiry.getInquirySurveybasic().getCreaterId().equals(userId) || isTypeManager ||
                 (inquiry.getInquirySurveybasic().isAllowViewResult() && !isVote/*条件含义：允许投票后查看，并且投过票*/) ||
                 (inquiry.getInquirySurveybasic().isAllowViewResultAhead()))) {
             return null;
-        }else{
+        } else {
             SurveyTypeCompose inquiryBoard = inquiryManager.getSurveyTypeComposeBYID(inquiry.getInquirySurveybasic().getSurveyTypeId());
             try {
-                inquiry = inquiryManager.findVoteResultByfilter(inquiry,"all",null,null);
+                inquiry = inquiryManager.findVoteResultByfilter(inquiry, "all", null, null);
             } catch (Exception e) {
                 logger.error("Get survey exceptions when viewing survey results", e);
                 PrintWriter out = null;
@@ -1152,18 +1196,18 @@ public class InquiryDataController extends BaseController{
             }
 
             String infoMode = "info";
-            if(inquiry.getInquirySurveybasic().getCensor()==InquirySurveybasic.CENSOR_NO.intValue()){
+            if (inquiry.getInquirySurveybasic().getCensor() == InquirySurveybasic.CENSOR_NO.intValue()) {
                 infoMode = "ready";
-            }else if(inquiry.getInquirySurveybasic().getCensor()==InquirySurveybasic.CENSOR_NO_PASS.intValue()){
+            } else if (inquiry.getInquirySurveybasic().getCensor() == InquirySurveybasic.CENSOR_NO_PASS.intValue()) {
                 infoMode = "noPass";
-            }else if(inquiry.getInquirySurveybasic().getCensor()==InquirySurveybasic.CENSOR_PASS_NO_SEND.intValue()){
+            } else if (inquiry.getInquirySurveybasic().getCensor() == InquirySurveybasic.CENSOR_PASS_NO_SEND.intValue()) {
                 infoMode = "pass";
-            }else if(inquiry.getInquirySurveybasic().getCensor()==InquirySurveybasic.CENSOR_CLOSE.intValue()){
+            } else if (inquiry.getInquirySurveybasic().getCensor() == InquirySurveybasic.CENSOR_CLOSE.intValue()) {
                 infoMode = "finish";
-            }else if(inquiry.getInquirySurveybasic().getCensor()==InquirySurveybasic.CENSOR_PASS.intValue()){
+            } else if (inquiry.getInquirySurveybasic().getCensor() == InquirySurveybasic.CENSOR_PASS.intValue()) {
                 infoMode = "write";
             }
-            Map<String,String> senderInfo = new HashMap<String,String>();
+            Map<String, String> senderInfo = new HashMap<String, String>();
             String senderId = inquiry.getSender().getId().toString();
             String senderName = Functions.showMemberName(inquiry.getSender().getId());
             String senderImgUrl = Functions.getAvatarImageUrl(inquiry.getSender().getId());
@@ -1171,7 +1215,7 @@ public class InquiryDataController extends BaseController{
             senderInfo.put("senderName", senderName);
             senderInfo.put("senderImgUrl", senderImgUrl);
 
-            Map<String,String> inquiryInfo = new HashMap<String,String>();
+            Map<String, String> inquiryInfo = new HashMap<String, String>();
             Set<InquiryScope> scopeSet = inquiry.getInquirySurveybasic().getInquiryScopes();
             String scope_range = "";
             String scope_name = "";
@@ -1181,18 +1225,18 @@ public class InquiryDataController extends BaseController{
                 V3xOrgEntity org = this.orgManager.getEntity(desc, egid);
                 scope_range += org.getEntityType() + "|" + egid + ",";
             }
-            scope_name = Functions.showOrgEntities(scope_range,"、");
+            scope_name = Functions.showOrgEntities(scope_range, "、");
             List<InquirySurveyVoterVO> voteMemberList = new ArrayList<InquirySurveyVoterVO>();
             List<InquiryAffair> inquiryAffairList = inquiryAffairManager.findAffairsByObjectId(inquiry.getInquirySurveybasic().getId());
             int votedNum = 0;
-            if(inquiryAffairList!=null){
-                for(InquiryAffair affair : inquiryAffairList){
+            if (inquiryAffairList != null) {
+                for (InquiryAffair affair : inquiryAffairList) {
                     InquirySurveyVoterVO tempVoterVo = new InquirySurveyVoterVO();
                     V3xOrgMember tempMember = orgManager.getMemberById(affair.getMemberId());
                     tempVoterVo.setV3xOrgMember(tempMember);
                     tempVoterVo.setVoteDate(affair.getVoteDate());
                     tempVoterVo.setHadVoted(affair.getState().equals(InquiryConstants.AFFAIR_STATE_DONE));
-                    if(affair.getState().equals(InquiryConstants.AFFAIR_STATE_DONE)){
+                    if (affair.getState().equals(InquiryConstants.AFFAIR_STATE_DONE)) {
                         votedNum++;
                     }
                     V3xOrgDepartment dept = orgManager.getDepartmentById(affair.getDepartmentId());
@@ -1224,14 +1268,14 @@ public class InquiryDataController extends BaseController{
             inquiryInfo.put("inquiryId", inquiry.getInquirySurveybasic().getId().toString());
             inquiryInfo.put("inquiryAuthId", inquiry.getInquirySurveybasic().getCensorId().toString());
             inquiryInfo.put("inquiryName", inquiry.getInquirySurveybasic().getSurveyName());
-			inquiryInfo.put("inquirySendDate", Datetimes.formatDate(inquiry.getInquirySurveybasic().getIssueDate()));
-			inquiryInfo.put("inquiryEndDate", inquiry.getInquirySurveybasic().getCloseDate() == null ? "" : Datetimes.formatDate(inquiry.getInquirySurveybasic().getCloseDate()));
-            mav.addObject("inquiryInfo",inquiryInfo);
-            mav.addObject("senderInfo",senderInfo);
-            mav.addObject("infoMode",infoMode);
-            mav.addObject("inquiry",inquiry);
-            mav.addObject("isSenderOrAdmin",isTypeManager || isSender);
-            mav.addObject("voteMemberList",voteMemberList);
+            inquiryInfo.put("inquirySendDate", Datetimes.formatDate(inquiry.getInquirySurveybasic().getIssueDate()));
+            inquiryInfo.put("inquiryEndDate", inquiry.getInquirySurveybasic().getCloseDate() == null ? "" : Datetimes.formatDate(inquiry.getInquirySurveybasic().getCloseDate()));
+            mav.addObject("inquiryInfo", inquiryInfo);
+            mav.addObject("senderInfo", senderInfo);
+            mav.addObject("infoMode", infoMode);
+            mav.addObject("inquiry", inquiry);
+            mav.addObject("isSenderOrAdmin", isTypeManager || isSender);
+            mav.addObject("voteMemberList", voteMemberList);
 //            mav.addObject("overviewChartData", JSONUtil.toJSONString(overviewChartData));
 //            mav.addObject("deptVoteData", deptVoteData);
 //            mav.addObject("postVoteData", postVoteData);
@@ -1239,6 +1283,7 @@ public class InquiryDataController extends BaseController{
 
         return mav;
     }
+
     private boolean isUserAdmin(Long surveyTypeId, Long userId) throws Exception {
         boolean result = false;
         //拿到调查类型的ID,拿到调查类型的管理员的集合
@@ -1252,16 +1297,18 @@ public class InquiryDataController extends BaseController{
         }
         return result;
     }
+
     /**
      * 查看大图
+     *
      * @param request
      * @param response
      * @return inquiryViewImage
      * @throws Exception
      */
-    public ModelAndView inquiryViewImage(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public ModelAndView inquiryViewImage(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView mav = new ModelAndView("inquiry/inquiryViewImage");
-        mav.addObject("imgId",request.getParameter("imgId"));
+        mav.addObject("imgId", request.getParameter("imgId"));
         return mav;
     }
 
@@ -1282,12 +1329,13 @@ public class InquiryDataController extends BaseController{
 
     /**
      * 导出所有人的答卷
+     *
      * @param request
      * @param response
      * @return inquiryViewImage
      * @throws Exception
      */
-    public ModelAndView exportMemberResultExcel(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public ModelAndView exportMemberResultExcel(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String bid = request.getParameter("bid");
         SurveyBasicCompose sbcompose = inquiryManager.getInquiryBasicByBasicID(Long.parseLong(bid));
         if (sbcompose == null) {
@@ -1296,23 +1344,23 @@ public class InquiryDataController extends BaseController{
         }
         boolean isTypeManager = inquiryManager.isInquiryManager(sbcompose.getInquirySurveybasic().getSurveyTypeId(), AppContext.currentUserId());
         boolean isCreate = sbcompose.getInquirySurveybasic().getCreaterId().equals(AppContext.currentUserId());
-        boolean isSecret = sbcompose.getInquirySurveybasic().getCryptonym()==1;
-        if(!(isTypeManager||isCreate)){
+        boolean isSecret = sbcompose.getInquirySurveybasic().getCryptonym() == 1;
+        if (!(isTypeManager || isCreate)) {
             return null;
         }
-        sbcompose = inquiryManager.findVoteResultByfilter(sbcompose,"all",null,null);
+        sbcompose = inquiryManager.findVoteResultByfilter(sbcompose, "all", null, null);
 
         List<InquiryAffair> affairList = inquiryAffairManager.findAffairsByObjectId(Long.parseLong(bid));
         List<InquiryAffair> votedList = new ArrayList<InquiryAffair>();
-        for(InquiryAffair affair : affairList){
-            if(affair.getState()==4){
+        for (InquiryAffair affair : affairList) {
+            if (affair.getState() == 4) {
                 votedList.add(affair);
             }
         }
-        List<InquiryVotedefinite> votes = inquiryManager.findInquiryVoteListByInquiryId(Long.parseLong(bid),null);
-        DataRecord inquiryResult = InquiryUtil.createMemberInquiryExcelTable(votedList,sbcompose,votes,orgManager,isSecret);
+        List<InquiryVotedefinite> votes = inquiryManager.findInquiryVoteListByInquiryId(Long.parseLong(bid), null);
+        DataRecord inquiryResult = InquiryUtil.createMemberInquiryExcelTable(votedList, sbcompose, votes, orgManager, isSecret);
 
-        fileToExcelManager.save(response,ResourceUtil.getString("inquiry.memberexcel"),inquiryResult);
+        fileToExcelManager.save(response, ResourceUtil.getString("inquiry.memberexcel"), inquiryResult);
         return null;
     }
 

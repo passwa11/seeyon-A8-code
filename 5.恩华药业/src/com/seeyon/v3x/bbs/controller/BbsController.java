@@ -93,21 +93,21 @@ import com.seeyon.v3x.common.security.SecurityCheck;
 
 public class BbsController extends BaseController {
 
-    private static Log         log = LogFactory.getLog(BbsController.class);
-    private BbsBoardManager    bbsBoardManager;
-    private BbsArticleManager  bbsArticleManager;
-    private OrgManager         orgManager;
-    private AttachmentManager  attachmentManager;
+    private static Log log = LogFactory.getLog(BbsController.class);
+    private BbsBoardManager bbsBoardManager;
+    private BbsArticleManager bbsArticleManager;
+    private OrgManager orgManager;
+    private AttachmentManager attachmentManager;
     private UserMessageManager userMessageManager;
-    private PortalApi          portalApi;
-    private ProjectApi         projectApi;
-    private AppLogManager      appLogManager;
-    private RoleManager        roleManager;
-    private DocApi             docApi;
+    private PortalApi portalApi;
+    private ProjectApi projectApi;
+    private AppLogManager appLogManager;
+    private RoleManager roleManager;
+    private DocApi docApi;
     private FileToExcelManager fileToExcelManager;
-    private ShowApi            showApi;
-    private BbsReadManager     bbsReadManager;
-    private ETagCacheManager   eTagCacheManager;
+    private ShowApi showApi;
+    private BbsReadManager bbsReadManager;
+    private ETagCacheManager eTagCacheManager;
     private FileManager fileManager;
 
     public void seteTagCacheManager(ETagCacheManager eTagCacheManager) {
@@ -171,13 +171,13 @@ public class BbsController extends BaseController {
     }
 
     // 查询版块信息框架
-    @CheckRoleAccess(roleTypes = { Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator }, extendRoles = { "SpaceManager" })
+    @CheckRoleAccess(roleTypes = {Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator}, extendRoles = {"SpaceManager"})
     public ModelAndView listBoard(HttpServletRequest request, HttpServletResponse response) throws Exception {
         return new ModelAndView("bbs/bbsmanager/bbsmanageframe");
     }
 
     // 查询版块信息
-    @CheckRoleAccess(roleTypes = { Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator }, extendRoles = { "SpaceManager" })
+    @CheckRoleAccess(roleTypes = {Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator}, extendRoles = {"SpaceManager"})
     public ModelAndView listBoardMain(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
         ModelAndView mav = new ModelAndView("bbs/bbsmanager/bbsmanage");
         User user = AppContext.getCurrentUser();
@@ -207,13 +207,13 @@ public class BbsController extends BaseController {
     }
 
     // 新建版块信息框架
-    @CheckRoleAccess(roleTypes = { Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator }, extendRoles = { "SpaceManager" })
+    @CheckRoleAccess(roleTypes = {Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator}, extendRoles = {"SpaceManager"})
     public ModelAndView listBoardAdd(HttpServletRequest request, HttpServletResponse response) throws Exception {
         return new ModelAndView("bbs/bbsmanager/bbsmanagecreate");
     }
 
     // 新增版块初始化信息
-    @CheckRoleAccess(roleTypes = { Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator }, extendRoles = { "SpaceManager" })
+    @CheckRoleAccess(roleTypes = {Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator}, extendRoles = {"SpaceManager"})
     public ModelAndView newBoard(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView mav = new ModelAndView("bbs/bbsmanager/createboard");
         User user = AppContext.getCurrentUser();
@@ -249,14 +249,15 @@ public class BbsController extends BaseController {
         mav.addObject("newId", UUIDLong.longUUID());
         return mav;
     }
-    private EhSendRangeManager sendRangeManager=new EhSendRangeManagerImpl();
+
+    private EhSendRangeManager sendRangeManager = new EhSendRangeManagerImpl();
 
     public EhSendRangeManager getSendRangeManager() {
         return sendRangeManager;
     }
 
     // 新增版块信息
-    @CheckRoleAccess(roleTypes = { Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator }, extendRoles = { "SpaceManager" })
+    @CheckRoleAccess(roleTypes = {Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator}, extendRoles = {"SpaceManager"})
     public ModelAndView createBoard(HttpServletRequest request, HttpServletResponse response) throws Exception {
         V3xBbsBoard bbsBoard = setVO(request, response);
         String spaceId = request.getParameter("spaceId");
@@ -278,11 +279,11 @@ public class BbsController extends BaseController {
         this.bbsBoardManager.createBbsBoard(bbsBoard, request.getParameter("bbsBoardAdmin"));
 
 //       恩华药业 zhou start
-        EhSendRange sendRange=new EhSendRange();
+        EhSendRange sendRange = new EhSendRange();
         sendRange.setId(System.currentTimeMillis());
         sendRange.setModuleId(bbsBoard.getId());
-        String rangeId=request.getParameter("sendArrangeId");
-        String rangeName=request.getParameter("sendArrangeName");
+        String rangeId = request.getParameter("sendArrangeId");
+        String rangeName = request.getParameter("sendArrangeName");
         sendRange.setRangeId(rangeId);
         sendRange.setRangeName(rangeName);
         sendRangeManager.saveEhSendRange(sendRange);
@@ -297,7 +298,7 @@ public class BbsController extends BaseController {
     }
 
     // 查询版块信息(修改)
-    @CheckRoleAccess(roleTypes = { Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator }, extendRoles = { "SpaceManager" })
+    @CheckRoleAccess(roleTypes = {Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator}, extendRoles = {"SpaceManager"})
     public ModelAndView listBoardModify(HttpServletRequest request, HttpServletResponse response) throws Exception {
         return new ModelAndView("bbs/bbsmanager/bbsmanagemodify");
     }
@@ -305,7 +306,7 @@ public class BbsController extends BaseController {
     /**
      * 进入修改讨论版块信息页面
      */
-    @CheckRoleAccess(roleTypes = { Role_NAME.NULL })
+    @CheckRoleAccess(roleTypes = {Role_NAME.NULL})
     public ModelAndView oldBoard(HttpServletRequest request, HttpServletResponse response) throws Exception {
         User user = AppContext.getCurrentUser();
         Long vJoinAllowAccount = OrgHelper.getVJoinAllowAccount();
@@ -334,12 +335,12 @@ public class BbsController extends BaseController {
         mav.addObject("showVjoin", showVjoin);
         mav.addObject("bbsBoard", bbsBoard);
 //      恩华药业  zhou start
-        Map map=new HashMap();
-        map.put("moduleId",bbsBoard.getId());
-        List<EhSendRange> ehSendRanges=sendRangeManager.findEhSendRangeByCondition(map);
-        if(ehSendRanges.size()>0){
+        Map map = new HashMap();
+        map.put("moduleId", bbsBoard.getId());
+        List<EhSendRange> ehSendRanges = sendRangeManager.findEhSendRangeByCondition(map);
+        if (ehSendRanges.size() > 0) {
             mav.addObject("range", ehSendRanges.get(0));
-        }else {
+        } else {
             mav.addObject("range", null);
         }
 //      恩华药业  zhou end
@@ -371,7 +372,7 @@ public class BbsController extends BaseController {
     /**
      * 完成对讨论板块信息的修改，包括持久化与同步内存
      */
-    @CheckRoleAccess(roleTypes = { Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator }, extendRoles = { "SpaceManager" })
+    @CheckRoleAccess(roleTypes = {Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator}, extendRoles = {"SpaceManager"})
     public ModelAndView modifyBoard(HttpServletRequest request, HttpServletResponse response) throws Exception {
         V3xBbsBoard bbsBoard = setVO(request, response);
         String spaceId = request.getParameter("spaceId");
@@ -391,20 +392,20 @@ public class BbsController extends BaseController {
         this.bbsBoardManager.updateV3xBbsBoard(bbsBoard, auth);
 
 //        恩华药业 zhou start
-        Map map=new HashMap();
-        map.put("moduleId",bbsBoard.getId());
-        List<EhSendRange> ehSendRanges=sendRangeManager.findEhSendRangeByCondition(map);
-        if(ehSendRanges.size()>0){
-            EhSendRange ehSendRange=ehSendRanges.get(0);
-            String rangeId=request.getParameter("sendArrangeId");
-            String rangeName=request.getParameter("sendArrangeName");
+        Map map = new HashMap();
+        map.put("moduleId", bbsBoard.getId());
+        List<EhSendRange> ehSendRanges = sendRangeManager.findEhSendRangeByCondition(map);
+        if (ehSendRanges.size() > 0) {
+            EhSendRange ehSendRange = ehSendRanges.get(0);
+            String rangeId = request.getParameter("sendArrangeId");
+            String rangeName = request.getParameter("sendArrangeName");
             ehSendRange.setRangeId(rangeId);
             ehSendRange.setRangeName(rangeName);
             sendRangeManager.updateEhSendRange(ehSendRange);
-        }else {
-            EhSendRange ehSendRange=new EhSendRange();
-            String rangeId=request.getParameter("sendArrangeId");
-            String rangeName=request.getParameter("sendArrangeName");
+        } else {
+            EhSendRange ehSendRange = new EhSendRange();
+            String rangeId = request.getParameter("sendArrangeId");
+            String rangeName = request.getParameter("sendArrangeName");
             ehSendRange.setRangeId(rangeId);
             ehSendRange.setRangeName(rangeName);
             ehSendRange.setModuleId(bbsBoard.getId());
@@ -421,13 +422,13 @@ public class BbsController extends BaseController {
     }
 
     // 查询版块信息
-    @CheckRoleAccess(roleTypes = { Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator }, extendRoles = { "SpaceManager" })
+    @CheckRoleAccess(roleTypes = {Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator}, extendRoles = {"SpaceManager"})
     public ModelAndView listBoardDel(HttpServletRequest request, HttpServletResponse response) throws Exception {
         return new ModelAndView("bbs/bbsmanager/bbsmanagedelete");
     }
 
     // 删除版块信息
-    @CheckRoleAccess(roleTypes = { Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator }, extendRoles = { "SpaceManager" })
+    @CheckRoleAccess(roleTypes = {Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator}, extendRoles = {"SpaceManager"})
     public ModelAndView delBoard(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String[] boardIdStrArray = request.getParameterValues("id");
         if (boardIdStrArray != null && boardIdStrArray.length > 0) {
@@ -448,7 +449,7 @@ public class BbsController extends BaseController {
     /**
      * 讨论版块排序转向页面
      */
-    @CheckRoleAccess(roleTypes = { Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator }, extendRoles = { "SpaceManager" })
+    @CheckRoleAccess(roleTypes = {Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator}, extendRoles = {"SpaceManager"})
     public ModelAndView orderBbsBoard(HttpServletRequest request, HttpServletResponse response) throws Exception {
         User user = AppContext.getCurrentUser();
         String spaceId = request.getParameter("spaceId");
@@ -470,7 +471,7 @@ public class BbsController extends BaseController {
     /**
      * 保存讨论版块排序结果
      */
-    @CheckRoleAccess(roleTypes = { Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator }, extendRoles = { "SpaceManager" })
+    @CheckRoleAccess(roleTypes = {Role_NAME.GroupAdmin, Role_NAME.AccountAdministrator}, extendRoles = {"SpaceManager"})
     public ModelAndView saveOrder(HttpServletRequest request, HttpServletResponse response) throws Exception {
         bbsBoardManager.updateBbsBoardOrder(request.getParameterValues("projects"));
         super.rendJavaScript(response, "parent.location.href=parent.location;");
@@ -479,6 +480,7 @@ public class BbsController extends BaseController {
 
     /**
      * 单位、集团讨论版块管理员和审核员设置与变更时保存日志
+     *
      * @param bbsBoard
      */
     private void saveManagersChangeLog(V3xBbsBoard bbsBoard, boolean isNew) {
@@ -500,6 +502,7 @@ public class BbsController extends BaseController {
     /**
      * 取消管理员角色
      * 其它同类型（单位、集团）板块所有管理员中不包含此板块管理员的先删除增加
+     *
      * @param board
      * @throws BusinessException
      */
@@ -545,6 +548,7 @@ public class BbsController extends BaseController {
 
     /**
      * 讨论管理员角色处理
+     *
      * @param adminStr
      * @throws BusinessException
      */
@@ -701,6 +705,7 @@ public class BbsController extends BaseController {
 
     /**
      * 更多项目讨论
+     *
      * @param request
      * @param response
      * @return
@@ -761,6 +766,7 @@ public class BbsController extends BaseController {
 
     /**
      * 是否有新建项目讨论的权限
+     *
      * @param projectId
      * @param mav
      * @throws BusinessException
@@ -776,6 +782,7 @@ public class BbsController extends BaseController {
 
     /**
      * 条件查询更多项目讨论
+     *
      * @param request
      * @param response
      * @return
@@ -854,6 +861,7 @@ public class BbsController extends BaseController {
 
     /**
      * 获取关联项目讨论区发帖时的默认讨论范围
+     *
      * @param boardId 关联项目讨论区ID
      */
     private String getProjectBbsPublishScope(Long boardId) throws Exception {
@@ -872,6 +880,7 @@ public class BbsController extends BaseController {
 
     /**
      * 获取部门讨论区发帖时的默认讨论范围：能够访问部门空间的全体人员
+     *
      * @param boardId
      */
     private String getDeptBbsPublishScope(Long boardId) throws BusinessException {
@@ -891,7 +900,7 @@ public class BbsController extends BaseController {
     /**
      * showPost页面防护js动作：关闭窗口、刷新其父窗口(如果能够获取到的话)
      */
-    private String       jsAction      = "if(window.opener) " + "    try {window.opener.getA8Top().reFlesh();}catch(e) {}" + "window.close();";
+    private String jsAction = "if(window.opener) " + "    try {window.opener.getA8Top().reFlesh();}catch(e) {}" + "window.close();";
 
     //用于点击次数更新同步
     private final byte[] readCountLock = new byte[0];
@@ -1023,7 +1032,7 @@ public class BbsController extends BaseController {
         if (Strings.isNotEmpty(v3xBbsBoardManageList)) {
             // 快速需求(Fast Demand):增加板块停用状态,这里的增加判断是否是正常状态的板块,不正常移除
             Iterator iterator = v3xBbsBoardManageList.iterator();
-            while(iterator.hasNext()) {
+            while (iterator.hasNext()) {
                 V3xBbsBoard v3xBbsBoard = (V3xBbsBoard) iterator.next();
                 if (v3xBbsBoard.getFlag() != BbsConstants.FLAG_NORMAL) {
                     iterator.remove();
@@ -1036,8 +1045,7 @@ public class BbsController extends BaseController {
 
     /**
      * 移动到新分类方法
-     *
-     * */
+     */
     public ModelAndView moveToType(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String idStr = request.getParameter("ids");
         String typeId = request.getParameter("typeId");
@@ -1068,7 +1076,6 @@ public class BbsController extends BaseController {
 
     /**
      * 讨论归档
-     *
      */
     public ModelAndView pigeonhole(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String ids = request.getParameter("id");
@@ -1164,8 +1171,8 @@ public class BbsController extends BaseController {
             Long boardId = NumberUtils.toLong(boardIdStr);
             BoardModel boardModel = new BoardModel();
             V3xBbsBoard v3xBbsBoard = bbsBoardManager.getBoardById(boardId);
-            if(v3xBbsBoard == null){
-                super.rendJavaScript(response, "alert('"+ResourceUtil.getString("bbs.board.deleted")+"');window.close()");
+            if (v3xBbsBoard == null) {
+                super.rendJavaScript(response, "alert('" + ResourceUtil.getString("bbs.board.deleted") + "');window.close()");
                 return null;
             }
             // 快速需求(Fast Demand):增加板块停用状态,这里的增加判断是否是正常状态的板块
@@ -1298,9 +1305,9 @@ public class BbsController extends BaseController {
 
             // 单位板块
             List<V3xBbsBoard> accountBbsBoardList = new ArrayList<V3xBbsBoard>();
-            if(user.isVJoinMember()){//vjoin人員時，根据准出单位查询版块
+            if (user.isVJoinMember()) {//vjoin人員時，根据准出单位查询版块
                 accountBbsBoardList = this.bbsBoardManager.getAllCorporationBbsBoard(OrgHelper.getVJoinAllowAccount());
-            }else{
+            } else {
                 accountBbsBoardList = this.bbsBoardManager.getAllCorporationBbsBoard(user.getLoginAccount());
             }
             List<BoardModel> accountBoardModelList = new ArrayList<BoardModel>();
@@ -1401,12 +1408,12 @@ public class BbsController extends BaseController {
 
         try {
             ReplaceBase64Result result = fileManager.replaceBase64Image(article.getContent());
-            if (result.isConvertBase64Img()){
+            if (result.isConvertBase64Img()) {
                 article.setContent(result.getHtml());
                 bbsArticleManager.updateArticle(article);
             }
         } catch (Exception e) {// 查看时，如果转换失败就不转换了
-            log.error("An exception occurred when the base64 encoding picture in the text was converted to a URL!",e);
+            log.error("An exception occurred when the base64 encoding picture in the text was converted to a URL!", e);
         }
 
         V3xBbsBoard board = null;
@@ -1425,7 +1432,7 @@ public class BbsController extends BaseController {
         }
 
         if (alert || (article.getState().intValue() == BbsConstants.BBS_ARTICLE_PIGEONHOLE && !"pigeonhole".equals(from))) {
-            if(Strings.isBlank(alertInfo)){
+            if (Strings.isBlank(alertInfo)) {
                 alertInfo = ResourceUtil.getString("bbs.article.delorcanceled.js");
             }
             // 来自协同立方的话，这样关闭，
@@ -1507,12 +1514,12 @@ public class BbsController extends BaseController {
             try {
                 // 此处是为了升级历史数据
                 ReplaceBase64Result result = fileManager.replaceBase64Image(reply.getContent());
-                if( result.isConvertBase64Img() ){// 替换过正文内容才执行更新
+                if (result.isConvertBase64Img()) {// 替换过正文内容才执行更新
                     reply.setContent(result.getHtml());
                     DBAgent.update(reply);
                 }
             } catch (Exception e) {// 查看时，如果转换失败就不转换了
-                log.error("An exception occurred when the base64 encoding picture in the text was converted to a URL!",e);
+                log.error("An exception occurred when the base64 encoding picture in the text was converted to a URL!", e);
             }
 
             if (reply.getUseReplyFlag() == 4) {
@@ -1607,12 +1614,13 @@ public class BbsController extends BaseController {
 
     /**
      * 预览
+     *
      * @param request
      * @param response
      * @return
      * @throws Exception
      */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public ModelAndView bbsPreview(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView mav = new ModelAndView("bbs/bbsInfo");
         String boardId = request.getParameter("preBoardId");
@@ -1675,6 +1683,7 @@ public class BbsController extends BaseController {
 
     /**
      * 新讨论用正文编辑器
+     *
      * @param request
      * @param response
      * @return
@@ -1797,6 +1806,7 @@ public class BbsController extends BaseController {
 
     /**
      * 创建新讨论-6.0新版
+     *
      * @throws Exception
      */
     public ModelAndView createArticleEditor(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -1957,8 +1967,8 @@ public class BbsController extends BaseController {
         }
         //置顶数
         Integer newTopNum = Integer.parseInt(request.getParameter("topNumber"));
-        if(board.getTopNumber()!=null&&!board.getTopNumber().equals(newTopNum)){
-            bbsArticleManager.updateTopNumberOrder(board.getTopNumber().toString(),newTopNum.toString(),board.getId());
+        if (board.getTopNumber() != null && !board.getTopNumber().equals(newTopNum)) {
+            bbsArticleManager.updateTopNumberOrder(board.getTopNumber().toString(), newTopNum.toString(), board.getId());
         }
         board.setTopNumber(newTopNum);
         board.setOrderFlag(Integer.parseInt(request.getParameter("orderFlag")));
@@ -2047,6 +2057,7 @@ public class BbsController extends BaseController {
      * 我发起的-- 1
      * 我回复的---2
      * 我收藏的---3
+     *
      * @throws Exception
      */
     public ModelAndView myArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -2112,6 +2123,7 @@ public class BbsController extends BaseController {
 
         String articleId = request.getParameter("articleId");
         String boardId = request.getParameter("boardId");
+
 
         V3xBbsArticle article = new V3xBbsArticle();
         V3xBbsBoard board = null;
@@ -2201,9 +2213,9 @@ public class BbsController extends BaseController {
             if ((Boolean) (SysFlag.sys_isGroupVer.getFlag())) {
                 groupBoard = bbsBoardManager.getCanIssueGroupBoard(userId);
             }
-            if(AppContext.getCurrentUser().isVJoinMember()){
+            if (AppContext.getCurrentUser().isVJoinMember()) {
                 accountBoard = bbsBoardManager.getCanIssueCorporationBoard(userId, OrgHelper.getVJoinAllowAccount());
-            }else{
+            } else {
                 accountBoard = bbsBoardManager.getCanIssueCorporationBoard(userId, accountId);
             }
         }
@@ -2215,10 +2227,14 @@ public class BbsController extends BaseController {
         boardMap.put("project", projectBoard);
 
         //      恩华药业 zhou start
-        Map map=new HashMap();
-        map.put("moduleId",Long.parseLong(boardId));
-        List<EhSendRange> ehSendRangeList=sendRangeManager.findEhSendRangeByCondition(map);
-        if(ehSendRangeList.size()>0){
+        Map map = new HashMap();
+        if (null != boardId && !"".equals(boardId)) {
+            map.put("moduleId", Long.parseLong(boardId));
+        }else {
+            map.put("moduleId", Long.parseLong("0"));
+        }
+        List<EhSendRange> ehSendRangeList = sendRangeManager.findEhSendRangeByCondition(map);
+        if (ehSendRangeList.size() > 0) {
             mav.addObject("range", ehSendRangeList.get(0));
         } else {
             mav.addObject("range", null);
@@ -2227,13 +2243,13 @@ public class BbsController extends BaseController {
 
         Long vJoinAllowAccount = OrgHelper.getVJoinAllowAccount();
         boolean showVjoin = false;
-        showVjoin =vJoinAllowAccount != null && vJoinAllowAccount == AppContext.currentAccountId();
+        showVjoin = vJoinAllowAccount != null && vJoinAllowAccount == AppContext.currentAccountId();
         mav.addObject("showVjoin", showVjoin);
         mav.addObject("isVjoinMember", AppContext.getCurrentUser().isVJoinMember());
         mav.addObject("boardMap", boardMap);
         mav.addObject("boardMapJson", JSONUtil.toJSONString(boardMap));
         mav.addObject("boardType", boardType);
-        mav.addObject("boardName", board!=null?board.getName():"");
+        mav.addObject("boardName", board != null ? board.getName() : "");
         mav.addObject("article", article);
         return mav;
     }
@@ -2242,7 +2258,7 @@ public class BbsController extends BaseController {
         this.portalApi = portalApi;
     }
 
-	public void setBbsReadManager(BbsReadManager bbsReadManager) {
-		this.bbsReadManager = bbsReadManager;
-	}
+    public void setBbsReadManager(BbsReadManager bbsReadManager) {
+        this.bbsReadManager = bbsReadManager;
+    }
 }
