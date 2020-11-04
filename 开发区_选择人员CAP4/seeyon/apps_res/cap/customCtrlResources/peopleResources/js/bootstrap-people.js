@@ -521,7 +521,7 @@ function htmlShow(data, flag) {
 function arrsyDataSort(data) {
     for (var i = 0; i < data.length - 1; i++) {
         for (var j = 0; j < data.length - 1 - i; j++) {
-            if (data[j].field0007 > data[j + 1].field0007) {
+            if (parseInt(data[j].field0007) > parseInt(data[j + 1].field0007)) {
                 var obj = data[j];
                 data[j] = data[j + 1];
                 data[j + 1] = obj;
@@ -1339,7 +1339,7 @@ function removeDdRow32(item) {
 
 
 function sureSelect() {
-
+    debugger;
     var $tableTwoLevelDept = $("#two");
     var rowsTwo = $tableTwoLevelDept.bootstrapTable('getSelections');
     if (rowsTwo != null) {
@@ -1455,7 +1455,7 @@ function TwoLevelDeptSure($table, rows) {
 
 //确认 党政办人员
 function dangZhengBanSure($table, rows) {
-
+    debugger;
     var arrJtld = rows;
 
     // for (var i = 0; i < arrJtld.length; i++) {
