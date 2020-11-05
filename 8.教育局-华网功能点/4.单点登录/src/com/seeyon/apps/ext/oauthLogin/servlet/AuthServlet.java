@@ -3,6 +3,7 @@ package com.seeyon.apps.ext.oauthLogin.servlet;
 import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.oauthLogin.manager.oauthLoginManager;
 import com.seeyon.apps.ext.oauthLogin.manager.oauthLoginManagerImpl;
+import com.seeyon.apps.ext.oauthLogin.po.LoginRecord;
 import com.seeyon.apps.ext.oauthLogin.util.HttpUtil;
 import com.seeyon.apps.ext.oauthLogin.util.PropUtils;
 import com.seeyon.apps.ext.oauthLogin.util.StringHandle;
@@ -18,9 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class AuthServlet extends HttpServlet {
 
@@ -53,6 +52,23 @@ public class AuthServlet extends HttpServlet {
                     sb.append(UUID.randomUUID().toString());
                     String encodeloginName = StringHandle.encode(sb.toString());
                     if (null != loginName) {
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("loginName", loginName);
+                        List<LoginRecord> list = oauthLoginManager.selectLoginRecordByLoginName(map);
+                        LoginRecord loginRecord = null;
+                        if (list.size() > 0) {
+                            loginRecord = list.get(0);
+                            loginRecord.setLoginType("auth");
+                            oauthLoginManager.updateLoginRecord(loginRecord);
+                        } else {
+                            loginRecord = new LoginRecord();
+                            loginRecord.setId(System.currentTimeMillis());
+                            loginRecord.setLoginName(loginName);
+                            loginRecord.setLoginType("auth");
+                            loginRecord.setLoginTime(new Date());
+                            oauthLoginManager.saveLoginRecord(loginRecord);
+                        }
+
                         try {
                             String servername = request.getServerName();
                             int port = request.getServerPort();

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.seeyon.apps.ext.oauthLogin.po">
+    <class name="LoginRecord" table="login_record" lazy="false">
+        <id name="id" type="long" column="ID">
+            <generator class="assigned"/>
+        </id>
+        <property name="loginName" type="string" column="LOGIN_NAME"/>
+        <property name="loginType" type="string" column="LOGIN_TYPE"/>
+        <property name="loginTime" type="date" column="LOGIN_TIME"/>
+    </class>
+</hibernate-mapping>

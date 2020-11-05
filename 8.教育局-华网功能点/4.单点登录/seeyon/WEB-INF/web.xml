@@ -320,15 +320,6 @@
         <url-pattern>/redirect</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>logoutAuth</servlet-name>
-        <servlet-class>com.seeyon.apps.ext.oauthLogin.servlet.LogoutServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>logoutAuth</servlet-name>
-        <url-pattern>/logoutAuth</url-pattern>
-    </servlet-mapping>
-
     <!--    zhou :结束-->
 
     <servlet>

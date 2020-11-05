@@ -1,6 +1,7 @@
 package com.seeyon.apps.ext.oauthLogin.dao;
 
 
+import com.seeyon.apps.ext.oauthLogin.po.LoginRecord;
 import com.seeyon.ctp.util.DBAgent;
 import com.seeyon.ctp.util.JDBCAgent;
 
@@ -13,6 +14,20 @@ import java.util.Map;
 
 public class oauthLoginDaoImpl implements oauthLoginDao {
 
+    @Override
+    public void saveLoginRecord(LoginRecord loginRecord) {
+        DBAgent.save(loginRecord);
+    }
+
+    @Override
+    public void updateLoginRecord(LoginRecord loginRecord) {
+        DBAgent.update(loginRecord);
+    }
+
+    @Override
+    public List<LoginRecord> selectLoginRecordByLoginName(Map<String, Object> map) {
+        return DBAgent.find("from LoginRecord where loginName =:loginName ", map);
+    }
 
     @Override
     public String selectLoginNameByCode(String code) {

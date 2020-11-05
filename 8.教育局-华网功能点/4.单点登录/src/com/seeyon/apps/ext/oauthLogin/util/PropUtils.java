@@ -30,7 +30,7 @@ public class PropUtils {
         pps = new Properties();
         String path = Thread.currentThread().getContextClassLoader().getResource("").getPath();
         try {
-            File file = new File(path, "sms/oauth.properties");
+            File file = new File(path, "sms/oauth-test.properties");
             InputStream is = new FileInputStream(file);
             pps.load(new InputStreamReader(is, "UTF-8"));
 

@@ -285,9 +285,9 @@ vPortalMainFrameElements.topRightsystemOperation = {
                 window.close();
             }
         } else {
-            // logout();
+            logout();
             //zhou
-            window.location.href=_ctxPath+"/logoutAuth";
+            // window.location.href=_ctxPath+"/logoutAuth";
         }
     },
     // 设计器中获取可设置属性
