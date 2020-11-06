@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.seeyon.apps.ext.zs.po">
+    <class name="ZsTempFormCorrelation" table="ZS_TEMP_FORM_CORRELATION" lazy="false">
+        <id name="id" type="long" column="ID">
+            <generator class="assigned"/>
+        </id>
+        <property name="thirdId" type="string" column="THIRDID"/>
+        <property name="oaSummaryId" type="string" column="OASUMMARYID"/>
+    </class>
+</hibernate-mapping>

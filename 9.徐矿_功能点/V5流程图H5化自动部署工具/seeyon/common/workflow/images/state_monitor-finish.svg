@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>monitor-finish</title>
+    <desc>Created with Sketch.</desc>
+    <g id="基础内容" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="流程图内图标" transform="translate(-305.000000, -41.000000)">
+            <g id="monitor-finish" transform="translate(305.000000, 41.000000)">
+                <circle id="Oval-2" fill="#FFFFFF" cx="8" cy="8" r="8"></circle>
+                <path d="M7.999,1 C5.999,1 4.399,1.7 2.999,3 C1.7,4.399 1,6 1,8 C1,9.899 1.7,11.5 2.999,12.899 C4.1,14 5.982,15 7.999,15 C9.899,15 11.499,14.3 12.899,12.899 C14.299,11.5 14.999,9.899 14.999,8 C14.999,6 14.3,4.399 12.899,3 C11.499,1.7 9.899,1 7.999,1" id="Shape" fill="#FFFFFF"></path>
+                <path d="M7.999,1 C9.899,1 11.499,1.7 12.899,3 C14.3,4.399 14.999,6 14.999,8 C14.999,9.899 14.299,11.5 12.899,12.899 C11.499,14.3 9.899,15 7.999,15 C5.982,15 4.1,14 2.999,12.899 C1.7,11.5 1,9.899 1,8 C1,6 1.7,4.399 2.999,3 C4.399,1.7 5.999,1 7.999,1 Z M3,8.5 L6.6,12 L12.2,6.4 L10.8,5 L6.5,9.2 L4.4,7.1 L3,8.5 Z" id="已办" fill="#36A946"></path>
+            </g>
+        </g>
+    </g>
+</svg>

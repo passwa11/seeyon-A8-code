@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_vj_post</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M17,33.875 C26.3198052,33.875 33.875,26.3198052 33.875,17 C33.875,7.68019485 26.3198052,0.125 17,0.125 C7.68019485,0.125 0.125,7.68019485 0.125,17 C0.125,26.3198052 7.68019485,33.875 17,33.875 Z" id="path-1"></path>
+        <filter x="-20.7%" y="-20.7%" width="141.5%" height="141.5%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.294117647   0 0 0 0 0.564705882   0 0 0 0 0.870588235  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="基础内容" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="流程图内图标" transform="translate(-178.000000, -233.000000)">
+            <g id="ic_vj_post" transform="translate(183.000000, 238.000000)">
+                <g id="Oval" fill-rule="nonzero">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <path stroke="#FFFFFF" stroke-width="1" d="M17,34.375 C7.40405247,34.375 -0.375,26.5959475 -0.375,17 C-0.375,7.40405247 7.40405247,-0.375 17,-0.375 C26.5959475,-0.375 34.375,7.40405247 34.375,17 C34.375,26.5959475 26.5959475,34.375 17,34.375 Z" fill="#FFFFFF" fill-rule="evenodd"></path>
+                </g>
+                <path d="M17,31.875 C25.2152357,31.875 31.875,25.2152357 31.875,17 C31.875,8.78476435 25.2152357,2.125 17,2.125 C8.78476435,2.125 2.125,8.78476435 2.125,17 C2.125,25.2152357 8.78476435,31.875 17,31.875 Z M17,34 C7.61115925,34 0,26.3888407 0,17 C0,7.61115925 7.61115925,0 17,0 C26.3888407,0 34,7.61115925 34,17 C34,26.3888407 26.3888407,34 17,34 Z" id="Oval" fill="#48C0FB" fill-rule="nonzero"></path>
+                <path d="M23.715119,14.6795595 C23.774619,14.7390595 23.834119,14.7985595 23.893619,14.8580595 C24.548119,15.5720595 24.905119,16.5240595 24.964619,17.5355595 L24.964619,18.7850595 L16.634619,18.7850595 L16.634619,17.5355595 C16.634619,16.5240595 16.991619,15.5720595 17.646119,14.8580595 C17.705619,14.7985595 17.765119,14.7390595 17.824619,14.6795595 C18.657619,13.8465595 19.609619,13.4300595 20.799619,13.4300595 C21.930119,13.4300595 22.941619,13.8465595 23.715119,14.6795595 Z M20.7995,12.835 C20.145,12.835 19.55,12.597 19.1335,12.1805 C18.6575,11.7045 18.4195,11.1095 18.4195,10.455 C18.4195,9.8005 18.6575,9.265 19.1335,8.789 C19.55,8.313 20.145,8.075 20.7995,8.075 C21.454,8.075 21.9895,8.313 22.4655,8.789 C22.9415,9.265 23.1795,9.8005 23.1795,10.455 C23.1795,11.1095 22.9415,11.7045 22.4655,12.1805 C21.9895,12.597 21.454,12.835 20.7995,12.835 Z M9.6135,11.05 L10.625,10.455 L14.671,17.0595 L13.6595,17.6545 L12.172,15.2745 L10.0895,16.405 L10.0895,19.38 L26.095,19.38 L26.095,22.355 L24.9645,22.355 L24.9645,25.925 L21.9895,25.925 L21.9895,22.355 L11.8745,22.355 L11.8745,25.925 L8.8995,25.925 L8.8995,22.355 L7.65,22.355 L7.65,19.38 L8.8995,19.38 L8.8995,15.215 L11.339,13.906 L9.6135,11.05 Z" id="Combined-Shape" fill="#6EA4D9"></path>
+            </g>
+        </g>
+    </g>
+</svg>

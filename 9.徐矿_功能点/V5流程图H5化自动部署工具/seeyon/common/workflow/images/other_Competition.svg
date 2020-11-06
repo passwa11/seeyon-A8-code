@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="16px" viewBox="0 0 10 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>竞争执行 2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="基础内容" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="流程图内图标" transform="translate(-357.000000, -68.000000)" fill="#E82424">
+            <g id="竞争执行-2" transform="translate(357.000000, 68.000000)">
+                <path d="M10,5.53846414 L1.08694917,0.923077356 L1.08694917,0.61536988 C1.08694917,0.246138938 0.869571275,0 0.543484535,0 C0.32608674,0 0.108688946,0.184615471 0.0543544243,0.369230943 L0,0.369230943 L0,15.3846076 C0,15.7538385 0.217397794,16 0.543484535,16 C0.869571275,16 1.08694917,15.7538385 1.08694917,15.3846076 L1.08694917,10.1538509 L10,5.53846414" id="竞争执行"></path>
+            </g>
+        </g>
+    </g>
+</svg>

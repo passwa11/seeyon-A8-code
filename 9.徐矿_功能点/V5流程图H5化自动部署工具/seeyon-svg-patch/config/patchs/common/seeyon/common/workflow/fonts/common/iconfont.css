@@ -1,0 +1,595 @@
+@font-face {
+  font-family: 'syIconfont';
+  src:  url('iconfont.eot?1554291372029?V=V70_2019-04-30');
+  src:  url('iconfont.eot?1554291372029#iefix?V=V70_2019-04-30') format('embedded-opentype'),
+  url('iconfont.ttf?1554291372029?V=V70_2019-04-30') format('truetype'),
+  url('iconfont.woff?1554291372029?V=V70_2019-04-30') format('woff'),
+  url('iconfont.svg?1554291372029#iconfont?V=V70_2019-04-30') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.syIcon {
+  font-family:"syIconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sy-praise-fill:before {
+  content: "\e664";
+}
+
+.sy-praise:before {
+  content: "\e66e";
+}
+
+.sy-comment:before {
+  content: "\e60c";
+}
+
+.sy-comment-fill:before {
+  content: "\e614";
+}
+
+.sy-collect-fill:before {
+  content: "\e686";
+}
+
+.sy-collect:before {
+  content: "\e68d";
+}
+
+.sy-video-meeting:before {
+  content: "\e6ac";
+}
+
+.sy-more-fill:before {
+  content: "\e6aa";
+}
+
+.sy-spot:before {
+  content: "\e608";
+}
+
+.sy-save:before {
+  content: "\e629";
+}
+
+.sy-search:before {
+  content: "\e62b";
+}
+
+.sy-modify:before {
+  content: "\e630";
+}
+
+.sy-delete-x:before {
+  content: "\e660";
+}
+
+.sy-prompt:before {
+  content: "\e618";
+}
+
+.sy-close:before {
+  content: "\e68e";
+}
+
+.sy-M:before {
+  content: "\e69a";
+}
+
+.sy-PC:before {
+  content: "\e69b";
+}
+
+.sy-msg:before {
+  content: "\e623";
+}
+
+.sy-setting:before {
+  content: "\e624";
+}
+
+.sy-dataRelationLink:before {
+  content: "\e783";
+}
+
+.sy-internationalization-resources:before {
+  content: "\e6e5";
+}
+
+.sy-simulation:before {
+  content: "\e6ef";
+}
+
+.sy-unsentEvent:before {
+  content: "\e6fd";
+}
+
+.sy-newaffair:before {
+  content: "\e6fe";
+}
+
+.sy-collaborationthemespace:before {
+  content: "\e6ff";
+}
+
+.sy-todoevent:before {
+  content: "\e700";
+}
+
+.sy-trackevent:before {
+  content: "\e705";
+}
+
+.sy-supervisoryevent:before {
+  content: "\e702";
+}
+
+.sy-doneevent:before {
+  content: "\e703";
+}
+
+.sy-sentevent:before {
+  content: "\e704";
+}
+
+.sy-newmeeting:before {
+  content: "\e701";
+}
+
+.sy-read:before {
+  content: "\e6f7";
+}
+
+.sy-delete1:before {
+  content: "\e70d";
+}
+
+.sy-newworkflowform:before {
+  content: "\e739";
+}
+
+.sy-coltemplatemanage:before {
+  content: "\e750";
+}
+
+.sy-formtemplate:before {
+  content: "\e752";
+}
+
+.sy-wfanalysis:before {
+  content: "\e727";
+}
+
+.sy-businessDesignCenter:before {
+  content: "\e735";
+}
+
+.sy-dept_management:before {
+  content: "\e744";
+}
+
+.sy-non-workflow-form:before {
+  content: "\e8d6";
+}
+
+.sy-must:before {
+  content: "\e638";
+}
+
+.sy-hook-plane:before {
+  content: "\e693";
+}
+
+.sy-upload:before {
+  content: "\e762";
+}
+
+.sy-download:before {
+  content: "\e619";
+}
+
+.sy-exclamatory-mark-plane:before {
+  content: "\e6af";
+}
+
+.sy-help-line:before {
+  content: "\e611";
+}
+
+.sy-help-plane:before {
+  content: "\e6a7";
+}
+
+.sy-warning:before {
+  content: "\e694";
+}
+
+.sy-arrow-plane-up:before {
+  content: "\e654";
+}
+
+.sy-arrow-plane-down:before {
+  content: "\e69c";
+}
+
+.sy-arrow-plane-left:before {
+  content: "\e770";
+}
+
+.sy-arrow-plane-right:before {
+  content: "\e69d";
+}
+
+.sy-double-arrow-left:before {
+  content: "\e643";
+}
+
+.sy-double-arrow-right:before {
+  content: "\e644";
+}
+
+.sy-arrow-hollow-down:before {
+  content: "\e6ab";
+}
+
+.sy-arrow-hollow-up:before {
+  content: "\e6a9";
+}
+
+.sy-arrow-right:before {
+  content: "\e688";
+}
+
+.sy-arrow-up:before {
+  content: "\e653";
+}
+
+.sy-arrow-down:before {
+  content: "\e656";
+}
+
+.sy-arrow-left:before {
+  content: "\e687";
+}
+
+.sy-minus-line:before {
+  content: "\e6b4";
+}
+
+.sy-plus-line:before {
+  content: "\e6b3";
+}
+
+.sy-plus-plane:before {
+  content: "\e689";
+}
+
+.sy-minus-plane:before {
+  content: "\e68a";
+}
+
+.sy-choose-persons:before {
+  content: "\e673";
+}
+
+.sy-choose-person:before {
+  content: "\e674";
+}
+
+.sy-choose-departments:before {
+  content: "\e67b";
+}
+
+.sy-choose-department:before {
+  content: "\e670";
+}
+
+.sy-date-select:before {
+  content: "\e65d";
+}
+
+.sy-datetime:before {
+  content: "\e6a1";
+}
+
+.sy-preview:before {
+  content: "\e61c";
+}
+
+.sy-attachment:before {
+  content: "\e655";
+}
+
+.sy-delete:before {
+  content: "\e62c";
+}
+
+.sy-xls_16:before {
+  content: "\e7af";
+}
+
+.sy-extended_blue_16:before {
+  content: "\e8f9";
+}
+
+.sy-flow:before {
+  content: "\e7ad";
+}
+
+.sy-query:before {
+  content: "\e7a7";
+}
+
+.sy-agree-line:before {
+  content: "\e68b";
+}
+
+.sy-disagree-line:before {
+  content: "\e68c";
+}
+
+.sy-read-line:before {
+  content: "\e691";
+}
+
+.sy-html:before {
+  content: "\e63f";
+}
+
+.sy-show-normal:before {
+  content: "\e882";
+}
+
+.sy-show-all:before {
+  content: "\e883";
+}
+
+.sy-explain:before {
+  content: "\e886";
+}
+
+.sy-zoom-out:before {
+  content: "\e884";
+}
+
+.sy-zoom-in:before {
+  content: "\e885";
+}
+
+.sy-release:before {
+  content: "\e88c";
+}
+
+.sy-apply-meetingroom:before {
+  content: "\e603";
+}
+
+.sy-Supervisory-monitoring:before {
+  content: "\e77f";
+}
+
+.sy-Process-permissions:before {
+  content: "\e780";
+}
+
+.sy-BPM-home:before {
+  content: "\e781";
+}
+
+.sy-processBook:before {
+  content: "\e782";
+}
+
+.sy-processAssistant:before {
+  content: "\e784";
+}
+
+.sy-dianhuahuiyi:before {
+  content: "\e793";
+}
+
+.sy-at:before {
+  content: "\e794";
+}
+
+.sy-call_template:before {
+  content: "\e79b";
+}
+
+.sy-editor:before {
+  content: "\e79f";
+}
+
+.sy-termination:before {
+  content: "\e7a4";
+}
+
+.sy-signa:before {
+  content: "\e7a5";
+}
+
+.sy-attribute:before {
+  content: "\e7aa";
+}
+
+.sy-localhost_upload:before {
+  content: "\e7ab";
+}
+
+.sy-double-arrow-up:before {
+  content: "\e79c";
+}
+
+.sy-double-arrow-down:before {
+  content: "\e7ac";
+}
+
+.sy-ranking-list:before {
+  content: "\e60f";
+}
+
+.sy-organization-overview:before {
+  content: "\e612";
+}
+
+.sy-efficiency-analyse:before {
+  content: "\e613";
+}
+
+.sy-overdue:before {
+  content: "\e615";
+}
+
+.sy-efficiency-trends:before {
+  content: "\e617";
+}
+
+.sy-predict-process:before {
+  content: "\e7ae";
+}
+
+.sy-operation-overview:before {
+  content: "\e616";
+}
+
+.sy-formengine:before {
+  content: "\e8bb";
+}
+
+.sy-transfer:before {
+  content: "\e7a6";
+}
+
+.sy-signafalse:before {
+  content: "\e79d";
+}
+
+.sy-current_countersigned:before {
+  content: "\e792";
+}
+
+.sy-signature:before {
+  content: "\e7a2";
+}
+
+.sy-apply-meeting:before {
+  content: "\e798";
+}
+
+.sy-view_log:before {
+  content: "\e796";
+}
+
+.sy-modify_attachment:before {
+  content: "\e7a1";
+}
+
+.sy-toback:before {
+  content: "\e791";
+}
+
+.sy-modify_text:before {
+  content: "\e79a";
+}
+
+.sy-notification:before {
+  content: "\e7a9";
+}
+
+.sy-forward_event:before {
+  content: "\e7a8";
+}
+
+.sy-associated_document:before {
+  content: "\e7a0";
+}
+
+.sy-forwarding:before {
+  content: "\e79e";
+}
+
+.sy-saveDraft:before {
+  content: "\e78f";
+}
+
+.sy-save_template:before {
+  content: "\e790";
+}
+
+.sy-text_type:before {
+  content: "\e7a3";
+}
+
+.sy-print:before {
+  content: "\e78e";
+}
+
+.sy-process_max:before {
+  content: "\e799";
+}
+
+.sy-process:before {
+  content: "\e795";
+}
+
+.sy-revoke:before {
+  content: "\e8c6";
+}
+
+.sy-end:before {
+  content: "\e8ce";
+}
+
+.sy-reportView_help:before {
+  content: "\e64e";
+}
+
+.sy-unite-docdispatch:before {
+  content: "\e8f7";
+}
+
+.sy-circulated:before {
+  content: "\e8f8";
+}
+
+.sy-issuing-zoom:before {
+  content: "\e8fa";
+}
+
+.sy-read-switch-office:before {
+  content: "\e8f0";
+}
+
+.sy-wen-single-red:before {
+  content: "\e8f5";
+}
+
+.sy-wen-shan-issuing:before {
+  content: "\e8fb";
+}
+
+.sy-turn-agenda:before {
+  content: "\e8f1";
+}
+
+.sy-body-red:before {
+  content: "\e8f6";
+}
+
+.sy-transfer-bulletin:before {
+  content: "\e8f4";
+}
+
+.sy-word-to-ofd:before {
+  content: "\e8f2";
+}
+
+.sy-word-to-pdf:before {
+  content: "\e8f3";
+}
+

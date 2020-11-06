@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>315_FormFieldCurrent Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="17" cy="17" r="17"></circle>
+        <filter x="-20.6%" y="-20.6%" width="141.2%" height="141.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.960784314   0 0 0 0 0.650980392   0 0 0 0 0.137254902  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="基础内容" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="流程图内图标" transform="translate(-236.000000, -380.000000)">
+            <g id="315_FormFieldCurrent-Copy" transform="translate(241.000000, 385.000000)">
+                <g id="Oval">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <circle stroke="#FFFFFF" stroke-width="1" fill="#F5A623" fill-rule="evenodd" cx="17" cy="17" r="17.5"></circle>
+                </g>
+                <path d="M23.119721,11.7849436 L16.296854,11.7849436 C16.1708333,11.7849436 15.9826898,11.7904475 15.7909963,11.8381474 C15.3259622,11.9518935 14.9674244,12.1977317 14.6319609,12.7793043 C14.4402674,13.1095348 14.4083185,13.573692 14.4775412,13.9406148 C14.5485387,14.3167106 14.7402322,14.6836333 15.010023,14.9349754 C15.0259974,14.9441485 15.0366471,14.9569908 15.0508466,14.9679985 C16.064337,15.8486131 17.1257507,16.7677546 17.352943,16.9658928 C17.6617824,17.2355811 17.8889747,17.7602806 17.4381401,18.3326801 C17.235797,18.589526 16.6553918,18.7784912 16.1761582,18.3601993 L15.1289439,17.4465616 L14.246799,18.5179761 C14.2805229,18.5528337 14.8272042,19.0023141 15.3543612,19.4939906 C15.9276666,20.0278632 16.5772945,20.0553824 16.8719344,20.0627208 C16.8808091,20.0627208 16.8896838,20.0608862 16.8985585,20.0608862 C17.5073627,20.0131862 18.0913178,19.8444018 18.6486487,19.1197294 C19.197105,18.4078992 19.3958982,16.9438775 18.3309346,15.9715322 C18.3309346,15.9715322 18.3167351,15.9586899 18.2918859,15.9366745 C18.025645,15.7055132 16.502747,14.3827567 16.502747,14.3827567 C16.502747,14.3827567 16.2471557,14.1589338 16.1424343,14.072707 C15.9791399,13.9351109 15.9294416,13.702115 15.9968893,13.5314959 C16.0590122,13.3755538 16.1743832,13.193927 16.4867726,13.193927 L24.0746384,13.1975962 L25.1786507,14.8377409 C25.5354135,15.3679443 25.4786155,16.0871129 25.0384305,16.5457663 L17.6298335,24.3006785 C17.1222009,24.8327165 16.2879793,24.8327165 15.7803467,24.3006785 L8.37352462,16.5420971 C7.93333965,16.0834436 7.87654159,15.364275 8.23330441,14.8340717 L11.7743085,9.5742341 C12.0192501,9.21648442 12.4150616,9 12.8410471,9 L20.572683,9 C20.9986685,9 21.39448,9.21648442 21.6358717,9.57790333 L23.119721,11.7849436 Z" id="Path" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

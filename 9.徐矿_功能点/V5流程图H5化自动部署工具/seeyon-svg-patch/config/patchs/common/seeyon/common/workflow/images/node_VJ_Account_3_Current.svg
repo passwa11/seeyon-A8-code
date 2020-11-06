@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_vj_wai copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M17,33.875 C26.3198052,33.875 33.875,26.3198052 33.875,17 C33.875,7.68019485 26.3198052,0.125 17,0.125 C7.68019485,0.125 0.125,7.68019485 0.125,17 C0.125,26.3198052 7.68019485,33.875 17,33.875 Z" id="path-1"></path>
+        <filter x="-20.7%" y="-20.7%" width="141.5%" height="141.5%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.960784314   0 0 0 0 0.650980392   0 0 0 0 0.137254902  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="基础内容" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="流程图内图标" transform="translate(-236.000000, -331.000000)">
+            <g id="ic_vj_wai-copy" transform="translate(241.000000, 336.000000)">
+                <g id="Oval" fill-rule="nonzero">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <path stroke="#FFFFFF" stroke-width="1" d="M17,34.375 C7.40405247,34.375 -0.375,26.5959475 -0.375,17 C-0.375,7.40405247 7.40405247,-0.375 17,-0.375 C26.5959475,-0.375 34.375,7.40405247 34.375,17 C34.375,26.5959475 26.5959475,34.375 17,34.375 Z" fill="#FFFFFF" fill-rule="evenodd"></path>
+                </g>
+                <path d="M17,31.875 C25.2152357,31.875 31.875,25.2152357 31.875,17 C31.875,8.78476435 25.2152357,2.125 17,2.125 C8.78476435,2.125 2.125,8.78476435 2.125,17 C2.125,25.2152357 8.78476435,31.875 17,31.875 Z M17,34 C7.61115925,34 0,26.3888407 0,17 C0,7.61115925 7.61115925,0 17,0 C26.3888407,0 34,7.61115925 34,17 C34,26.3888407 26.3888407,34 17,34 Z" id="Oval" fill="#F5A623" fill-rule="nonzero"></path>
+                <path d="M12.835,12.7500607 L21.165,12.7500607 L21.165,14.510775 L22.95,14.510775 L22.95,25.0750607 L18.785,25.0750607 L18.785,22.7268548 L15.215595,22.7268548 L15.215595,25.0750607 L11.05,25.0750607 L11.05,14.510775 L12.835,14.510775 L12.835,12.7500607 Z M18.785,18.6191083 L21.165595,18.6191083 L21.165595,16.2709024 L18.785,16.2709024 L18.785,18.6191083 Z M15.81,18.6191083 L18.19,18.6191083 L18.19,16.2709024 L15.81,16.2709024 L15.81,18.6191083 Z M12.835,18.6191083 L15.215595,18.6191083 L15.215595,16.2709024 L12.835,16.2709024 L12.835,18.6191083 Z M18.785,22.1405369 L21.165595,22.1405369 L21.165595,19.7929179 L18.785,19.7929179 L18.785,22.1405369 Z M15.81,22.1405369 L18.19,22.1405369 L18.19,19.7929179 L15.81,19.7929179 L15.81,22.1405369 Z M12.835,22.1405369 L15.215595,22.1405369 L15.215595,19.7929179 L12.835,19.7929179 L12.835,22.1405369 Z M16.575,11.9000607 L16.575,7.22506071 L17.85,7.22506071 L17.85,11.9000607 L16.575,11.9000607 Z M15.725,25.0750607 L15.725,23.3750607 L18.275,23.3750607 L18.275,25.0750607 L15.725,25.0750607 Z M18.275,11.475 L18.275,7.225 C19.7321429,8.62142857 21.1892857,10.0178571 22.525,11.475 L18.275,11.475 Z" id="Combined-Shape" fill="#F5A623"></path>
+            </g>
+        </g>
+    </g>
+</svg>

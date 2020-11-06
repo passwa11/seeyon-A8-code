@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>311_LevelCurrent</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="17" cy="17" r="17"></circle>
+        <filter x="-20.6%" y="-20.6%" width="141.2%" height="141.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.960784314   0 0 0 0 0.650980392   0 0 0 0 0.137254902  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="基础内容" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="流程图内图标" transform="translate(-120.000000, -282.000000)">
+            <g id="311_LevelCurrent" transform="translate(125.000000, 287.000000)">
+                <g id="Oval">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <circle stroke="#FFFFFF" stroke-width="1" fill="#F5A623" fill-rule="evenodd" cx="17" cy="17" r="17.5"></circle>
+                </g>
+                <path d="M23.0604405,10.455 C23.0604405,11.1095 22.8819405,11.7045 22.4059405,12.1805 C21.9299405,12.597 21.3944405,12.835 20.6804405,12.835 C20.0854405,12.835 19.4904405,12.597 19.0739405,12.1805 C18.5979405,11.7045 18.3004405,11.1095 18.3004405,10.455 C18.3004405,9.8005 18.5979405,9.265 19.0739405,8.789 C19.4904405,8.313 20.0854405,8.075 20.6804405,8.075 C21.3944405,8.075 21.9299405,8.313 22.4059405,8.789 C22.8819405,9.265 23.0604405,9.8005 23.0604405,10.455 Z M20.6804405,13.43 C21.8704405,13.43 22.8819405,13.8465 23.6554405,14.6795 C23.6554405,14.739 23.7744405,14.7985 23.8339405,14.858 C24.4884405,15.572 24.8454405,16.524 24.8454405,17.5355 L24.8454405,19.38 L18.8954405,19.38 L18.2409405,14.263 C18.2409405,14.263 18.3004405,14.2035 18.3599405,14.144 C18.4194405,14.144 18.4789405,14.0845 18.5384405,14.0845 C18.8954405,13.8465 19.2524405,13.668 19.6689405,13.549 C19.7879405,13.549 19.7879405,13.549 19.9069405,13.4895 L20.1449405,13.4895 C20.3234405,13.43 20.5019405,13.43 20.6804405,13.43 Z M9.435,15.215 L16.5155,15.215 L15.3255,19.38 L8.245,19.261 L9.435,15.215 Z M17.7054405,19.38 L15.9204405,19.38 L17.0509405,15.6315 C17.0509405,15.572 17.1104405,15.453 17.1104405,15.215 L17.7054405,19.38 Z M7.65,22.95 L7.65,19.975 L25.4405,19.975 L25.4405,22.95 L24.2505,22.95 L24.2505,25.925 L8.84,25.925 L8.84,22.95 L7.65,22.95 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

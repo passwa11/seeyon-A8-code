@@ -1,0 +1,594 @@
+{
+	"V7.0SP1": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 112786,
+				"md5": "1141e29e7bbba9596046dd72d0400f40"
+			},
+			{
+				"version": 116820,
+				"md5": "9ca2e1c9c7b595bf95eccfb64379d82e"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 112786,
+				"md5": "b3ed71dfaef1b1d1959d3b122b86a548"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 112786,
+				"md5": "63241395e4d2f7b53ae9e907f3d61a8a"
+			}
+		]
+	},
+	"V5.6": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 51086,
+				"md5": "8750b73e88c8d630132950db362c15b0"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 51086,
+				"md5": "3a253e48573aa9173ea5f708f94a9cc8"
+			},
+			{
+				"version": 51626,
+				"md5": "1ae704bda30f17354b38fdb8efef4d69"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 51086,
+				"md5": "7f9da1d745fca29b02374c2132177e03"
+			}
+		]
+	},
+	"V7.0SP3": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 123269,
+				"md5": "9ca2e1c9c7b595bf95eccfb64379d82e"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 123269,
+				"md5": "7e9959c258fd3172d7bfb1aa13bb1159"
+			},
+			{
+				"version": 147466,
+				"md5": "61c77b526ae5e74d5ce0db87bf325b06"
+			},
+			{
+				"version": 162517,
+				"md5": "9ed860663911326387b65009d7c1dfe5"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 123269,
+				"md5": "63241395e4d2f7b53ae9e907f3d61a8a"
+			}
+		]
+	},
+	"V7.0SP2": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 117228,
+				"md5": "9ca2e1c9c7b595bf95eccfb64379d82e"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 117228,
+				"md5": "7e9959c258fd3172d7bfb1aa13bb1159"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 117228,
+				"md5": "63241395e4d2f7b53ae9e907f3d61a8a"
+			}
+		]
+	},
+	"V7.0": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 105831,
+				"md5": "1141e29e7bbba9596046dd72d0400f40"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 105831,
+				"md5": "3f9a0126471a652ddc7a06c6013acf1f"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 105831,
+				"md5": "144ceaba07c1f723a6ea35ac3fbb5a32"
+			}
+		]
+	},
+	"V6.1": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 62072,
+				"md5": "7865658d592214e4e9b0d3813de57f8b"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 62072,
+				"md5": "bac5bafbf62081935fe330183b10362e"
+			},
+			{
+				"version": 66050,
+				"md5": "74f410dcfe9a52e334d1a2b292c43155"
+			},
+			{
+				"version": 67084,
+				"md5": "b1adf7866af07b25601952cbd74b78de"
+			},
+			{
+				"version": 67807,
+				"md5": "9cccaf46382ad41870a907bffe92c80a"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 62072,
+				"md5": "6b61d87cceb369cb229bda10a0206210"
+			},
+			{
+				"version": 72844,
+				"md5": "bf1981cafa5872c566f7f2a1be2b09ec"
+			}
+		]
+	},
+	"V6.0": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 32039,
+				"md5": "7865658d592214e4e9b0d3813de57f8b"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 32039,
+				"md5": "51f2fa1b570b1e174dac53d4802394ed"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 32039,
+				"md5": "bd243eacc41ac10275f675986c9e3485"
+			}
+		]
+	},
+	"V5.1": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 39252,
+				"md5": "5322323aa20cc38d86d854ea31b71675"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 39252,
+				"md5": "aa25f4023bc4b72550f5a4321fa37824"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 39252,
+				"md5": "b76a8e4d1605e8302ca4f7fb0dc3c6dd"
+			}
+		]
+	},
+	"V5.6SP1": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 47716,
+				"md5": "8750b73e88c8d630132950db362c15b0"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 49061,
+				"md5": "3a253e48573aa9173ea5f708f94a9cc8"
+			},
+			{
+				"version": 51701,
+				"md5": "1ae704bda30f17354b38fdb8efef4d69"
+			},
+			{
+				"version": 51719,
+				"md5": "5e0bfe477c5aa3f0691d9532118e2668"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 43860,
+				"md5": "7f9da1d745fca29b02374c2132177e03"
+			}
+		]
+	},
+	"V6.1SP1": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 74417,
+				"md5": "7865658d592214e4e9b0d3813de57f8b"
+			},
+			{
+				"version": 78082,
+				"md5": "202352accd2ea1984f3130f705bdbcc"
+			},
+			{
+				"version": 82529,
+				"md5": "81952034b5f1f60d93ce4c1a5300a676"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 74417,
+				"md5": "da6a969bdc599e1108ca01f791bea0ed"
+			},
+			{
+				"version": 78082,
+				"md5": "f7aa19626b4b44c7a615265017192286"
+			},
+			{
+				"version": 81209,
+				"md5": "a3b7722107b95bb209a295fb1487433b"
+			},
+			{
+				"version": 82780,
+				"md5": "f071ef90e14d508cdde4c0e94d4fa0b0"
+			},
+			{
+				"version": 87243,
+				"md5": "400f8512741d88946ec14391d554cd66"
+			},
+			{
+				"version": 87539,
+				"md5": "6df21ce8d39f283c51a8ff8a0fe62bb9"
+			},
+			{
+				"version": 109933,
+				"md5": "b721aa196960987ee4334e2c00c719db"
+			},
+			{
+				"version": 151018,
+				"md5": "446961a2d9a87e5d389d7436963c09d7"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 74417,
+				"md5": "d5ac61e0ef4d6240547cc6c5e79c2b75"
+			},
+			{
+				"version": 78406,
+				"md5": "2a37a08721aeaa79cbdc6581c061d9c"
+			},
+			{
+				"version": 82780,
+				"md5": "3dbafd2188bf91d396cf230fd1eb0779"
+			}
+		]
+	},
+	"V6.0SP1": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 40688,
+				"md5": "7865658d592214e4e9b0d3813de57f8b"
+			},
+			{
+				"version": 58267,
+				"md5": "6740b232aa7eae65fdb5a23f47c97c9b"
+			},
+			{
+				"version": 82531,
+				"md5": "dba08af9913bbcfb7a0f5052f8abca27"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 40688,
+				"md5": "a63935968993a835ec35942e5fab36a6"
+			},
+			{
+				"version": 58267,
+				"md5": "5c81c33293a0292900aa07553da249f3"
+			},
+			{
+				"version": 58349,
+				"md5": "2fd8efaf05d20de79521fe789c306b8a"
+			},
+			{
+				"version": 58417,
+				"md5": "b616ba4d103877a955068954dc6a78b6"
+			},
+			{
+				"version": 58462,
+				"md5": "6f7c2e1a6e92b2bd8f3bdc9e1913b5b6"
+			},
+			{
+				"version": 59322,
+				"md5": "129f771d80bca76634f83a108f03bfbf"
+			},
+			{
+				"version": 70357,
+				"md5": "39bcd3b650262531019b788bedf58321"
+			},
+			{
+				"version": 72242,
+				"md5": "3e01f96454e932174d67c25155fcb900"
+			},
+			{
+				"version": 72581,
+				"md5": "b059a71e4967120aa91a9a19ff372d32"
+			},
+			{
+				"version": 72847,
+				"md5": "eecaf3a31f3f15754cd7abdc7ba7b5de"
+			},
+			{
+				"version": 74235,
+				"md5": "9fc1254abc0b187983560bd2f018cf5"
+			},
+			{
+				"version": 81208,
+				"md5": "70c11b30d56554b19397c1c7c2552245"
+			},
+			{
+				"version": 82878,
+				"md5": "28a3a685d7933f248dba57775450e13"
+			},
+			{
+				"version": 109755,
+				"md5": "8c5bb72fb539ad2f63818a6deb169de8"
+			},
+			{
+				"version": 129605,
+				"md5": "eac1ff6b8dbe4044b0b10f575fe89d99"
+			},
+			{
+				"version": 129609,
+				"md5": "8594b0dbc3d514325c934e8eca442996"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 40688,
+				"md5": "bd243eacc41ac10275f675986c9e3485"
+			},
+			{
+				"version": 72847,
+				"md5": "840da1d1785edeac996690a54f3c6429"
+			},
+			{
+				"version": 78411,
+				"md5": "a33232ed9e73baa6d05cd809cd9777b1"
+			},
+			{
+				"version": 82878,
+				"md5": "2649159195cce69f33a9460b102a7633"
+			}
+		]
+	},
+	"V6.1SP2": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 74326,
+				"md5": "51bb70bb90fc36c6f7394aff5c34e000"
+			},
+			{
+				"version": 78081,
+				"md5": "cb1185ccee9b31ac17ec9969634b15e7"
+			},
+			{
+				"version": 82528,
+				"md5": "28570217f13b6d3a790f6cf75d600516"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 74326,
+				"md5": "a4141c6874b129ceb34b3293296c956b"
+			},
+			{
+				"version": 78081,
+				"md5": "118146e355f27d13420a4eee9e6a17f7"
+			},
+			{
+				"version": 81214,
+				"md5": "89ab27a6c73219ce4d0be9a9f74085a7"
+			},
+			{
+				"version": 82777,
+				"md5": "86157e44de0564192bef1ab95c8b6caa"
+			},
+			{
+				"version": 87832,
+				"md5": "816f76be575b1d2adbedd7d7d8a8ac7c"
+			},
+			{
+				"version": 109932,
+				"md5": "9f0e42fab1bc8cfc84abf2cdc6497655"
+			},
+			{
+				"version": 132417,
+				"md5": "18d60a0035d0815ffba2a0087c153938"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 74326,
+				"md5": "b02e8c2692cddd0d89d2f9ebd4fa96d0"
+			},
+			{
+				"version": 78404,
+				"md5": "71222096182ec4c1df4cde4545e70bc0"
+			},
+			{
+				"version": 82777,
+				"md5": "bdb5ea83aaaf29912cb95e1a3472766f"
+			}
+		]
+	},
+	"V5.1SP1": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 40744,
+				"md5": "5322323aa20cc38d86d854ea31b71675"
+			},
+			{
+				"version": 41707,
+				"md5": "f263a09798a876f0c956f00113d4b64b"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 40744,
+				"md5": "72d6efb12eb90785d03a81177916c2d6"
+			},
+			{
+				"version": 47692,
+				"md5": "592f6fe41530b2e755869f87069b55df"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 40744,
+				"md5": "fc611307e1d4711d406d5d91fd991e73"
+			}
+		]
+	},
+	"V5.0SP2": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 32586,
+				"md5": "20f367cb17ac94cb93c9c868d247e266"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 32586,
+				"md5": "5deb1766870d981fb041290791afdce2"
+			},
+			{
+				"version": 32835,
+				"md5": "e5333d5fb31e4538b5ed84aacac2a16"
+			},
+			{
+				"version": 32841,
+				"md5": "d86162420849eb98d132d774c771a0af"
+			},
+			{
+				"version": 36147,
+				"md5": "3fc0f00f872f0d6d3949a388249294ba"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 32586,
+				"md5": "f3d132382d8b04bcfd6efc11a7926388"
+			}
+		]
+	},
+	"G6V5.6SP1": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 47716,
+				"md5": "8750b73e88c8d630132950db362c15b0"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 49061,
+				"md5": "3a253e48573aa9173ea5f708f94a9cc8"
+			},
+			{
+				"version": 51701,
+				"md5": "1ae704bda30f17354b38fdb8efef4d69"
+			},
+			{
+				"version": 51719,
+				"md5": "5e0bfe477c5aa3f0691d9532118e2668"
+			},
+			{
+				"version": 51719,
+				"md5": "466e94603278a9166bbee418df6ebde6"
+			},
+            {
+                "version": 51719,
+                "md5": "36ec8a312f442c7bf83241ef9b9ca79d"
+            },
+			{
+				"version": 51720,
+				"md5": "379c2092e22dd0ce58f6d5b5ed9395b9"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 43860,
+				"md5": "7f9da1d745fca29b02374c2132177e03"
+			},
+			{
+				"version": 43860,
+				"md5": "cc8e0bcd4bc4f9f7f4fb976982e6ef83"
+			},
+			{
+				"version": 43860,
+				"md5": "c0d33c17812b1ed7ca424ca3b5ecd587"
+			}
+		]
+	},
+	"G6V6.1SP1": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 52699,
+				"md5": "94ca952325cee68d2f5e3104a726ebc0"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 52699,
+				"md5": "e9278212cb408772ed31f44fa040cdaa"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 52699,
+				"md5": "bdb5ea83aaaf29912cb95e1a3472766f"
+			}
+		]
+	},
+	"G6V6.1": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 52700,
+				"md5": "94ca952325cee68d2f5e3104a726ebc0"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 52700,
+				"md5": "e9278212cb408772ed31f44fa040cdaa"
+			}
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 52700,
+				"md5": "bdb5ea83aaaf29912cb95e1a3472766f"
+			}
+		]
+	}
+}

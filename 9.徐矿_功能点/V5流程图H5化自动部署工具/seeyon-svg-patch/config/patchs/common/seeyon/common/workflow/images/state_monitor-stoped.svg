@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>Group Copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="基础内容" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="流程图内图标" transform="translate(-328.000000, -67.000000)">
+            <g id="Group-Copy" transform="translate(328.000000, 67.000000)">
+                <circle id="Oval-2-Copy-7" fill="#FFFFFF" cx="8" cy="8" r="8"></circle>
+                <path d="M8.00003565,1 C4.13383752,1 1,4.13385933 1,8.00004456 C1,11.866212 4.13383752,15 8.00003565,15 C11.8661981,15 15,11.866212 15,8.00004456 C15,4.13385933 11.8661981,1 8.00003565,1 L8.00003565,1 Z M11.3478044,8.66959203 C11.3478044,8.8040434 11.2388068,8.91305898 11.1043556,8.91305898 L4.89564442,8.91305898 C4.76117541,8.91305898 4.65217779,8.8040434 4.65217779,8.66959203 L4.65217779,7.33046144 C4.65217779,7.19599225 4.76117541,7.08697667 4.89564442,7.08697667 L11.1043556,7.08697667 C11.2388068,7.08697667 11.3478044,7.19599225 11.3478044,7.33046144 L11.3478044,8.66959203 L11.3478044,8.66959203 Z" id="终止" fill="#B7B7B7"></path>
+            </g>
+        </g>
+    </g>
+</svg>

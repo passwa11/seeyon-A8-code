@@ -2,6 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/8.教育局-华网功能点/2.消息推送" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/9.徐矿_功能点/徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE" vcs="Git" />
   </component>
 </project>

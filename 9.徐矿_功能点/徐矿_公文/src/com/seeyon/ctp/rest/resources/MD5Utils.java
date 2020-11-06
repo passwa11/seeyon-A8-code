@@ -1,5 +1,7 @@
 package com.seeyon.ctp.rest.resources;
 
+import com.seeyon.ctp.common.AppContext;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.security.MessageDigest;
@@ -14,6 +16,7 @@ import java.security.MessageDigest;
  
 public class MD5Utils {
     public static String getFileMD5(File file) {
+        AppContext
         if (!file.isFile()) {
             return null;
         }

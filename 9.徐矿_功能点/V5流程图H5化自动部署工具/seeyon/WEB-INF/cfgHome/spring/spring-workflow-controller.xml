@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+    <bean name="/custom/function.do" class="com.seeyon.ctp.workflow.custom.function.CustomFunctionController">
+    </bean>
+
+	<bean name="/workflow/replace.do" class="com.seeyon.ctp.workflow.controller.WorkFlowReplaceNodeController">
+		<property name="workFlowReplaceNodeManager" ref="workFlowReplaceNodeManager"/>
+	</bean>
+<!--    zhou:合并修改-->
+    <bean name="/workflow/designer.do" class="com.seeyon.ctp.workflow.designer.controller.WorkFlowSvgDesignerController">
+        <property name="workFlowDesignerManager" ref="workFlowDesignerManager"/>
+        <property name="processManager" ref="processManager"/>
+    </bean>
+    
+    <bean name="/workflow/process.do" class="com.seeyon.ctp.workflow.process.controller.WorkFlowProcessController">
+        <property name="workFlowProcessManager" ref="workFlowProcessManager"/>
+    </bean>
+    
+    <bean name="/workflow/subProcess.do" class="com.seeyon.ctp.workflow.controller.SubProcessController">
+        <property name="subProcessManager" ref="subProcessManager"/>
+    </bean>
+    
+    <bean name="/workflow/hasten.do" class="com.seeyon.ctp.workflow.designer.controller.WorkFlowHastenController">
+        <property name="workFlowHastenManager" ref="workFlowHastenManager"/>
+    </bean>
+    
+    <bean name="/workflow/cie.do" class="com.seeyon.ctp.workflow.controller.WorkFlowCIEController">
+        <property name="workflowApiManager" ref="wapi"/>
+    </bean>
+</beans>

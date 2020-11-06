@@ -16,14 +16,14 @@ public class TokenUtil {
 
     public static String getToken() {
         String token = "";
-        String url = "http://127.0.0.1:80/seeyon/rest/token";
+        String url = "http://127.0.0.1:81/seeyon/rest/token";
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost httpPost = null;
         HttpResponse response = null;
         httpPost = new HttpPost(url);
         httpPost.setHeader("Content-Type", "application/json;charset=utf-8");
-//        String requestParams = "{\"userName\":\"rest\",\"password\":\"rest111111\"}";
-        String requestParams = "{\"userName\":\"rest\",\"password\":\"fcd54a1e-9323-4cf5-a959-ee44529d4432\"}";
+//        String requestParams = "{\"userName\":\"rest\",\"password\":\"fcd54a1e-9323-4cf5-a959-ee44529d4432\"}";
+        String requestParams = "{\"userName\":\"rest\",\"password\":\"4215d272-77b8-49d9-a68e-39f6d17cd91b\"}";
         StringEntity postingString = new StringEntity(requestParams, "utf-8");
         httpPost.setEntity(postingString);
         try {

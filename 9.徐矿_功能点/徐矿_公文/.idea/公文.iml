@@ -9,18 +9,18 @@
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.20" level="application_server_libraries" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.571" level="application_server_libraries" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
+          <root url="file://F:/Seeyonxkjt/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="file://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
+          <root url="file://F:/Seeyonxkjt/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
         </SOURCES>
-        <jarDirectory url="file://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" />
-        <jarDirectory url="file://F:/Seeyon/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" type="SOURCES" />
+        <jarDirectory url="file://F:/Seeyonxkjt/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" />
+        <jarDirectory url="file://F:/Seeyonxkjt/A8/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
   </component>

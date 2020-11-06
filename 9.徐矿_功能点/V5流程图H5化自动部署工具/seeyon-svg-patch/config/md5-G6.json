@@ -1,0 +1,90 @@
+{
+	"G6V5.6SP1": {
+		"workflowDesigner_js.jsp": [
+			{
+				"version": 47716,
+				"md5": "8750b73e88c8d630132950db362c15b0"
+			}
+		],
+		"workflowDesigner-min.js": [
+			{
+				"version": 49061,
+				"md5": "3a253e48573aa9173ea5f708f94a9cc8"
+			},
+			{
+				"version": 51701,
+				"md5": "1ae704bda30f17354b38fdb8efef4d69"
+			},
+			{
+				"version": 51719,
+				"md5": "5e0bfe477c5aa3f0691d9532118e2668"
+			},
+            {
+                "version": 51719,
+                "md5": "466e94603278a9166bbee418df6ebde6"
+            },
+            {
+               "version": 51719,
+               "md5": "36ec8a312f442c7bf83241ef9b9ca79d"
+            },
+			{
+                "version": 51720,
+                "md5": "379c2092e22dd0ce58f6d5b5ed9395b9"
+            }
+		],
+		"workflowDesigner.jsp": [
+			{
+				"version": 43860,
+				"md5": "7f9da1d745fca29b02374c2132177e03"
+			},
+			{
+                "version": 43860,
+                "md5": "cc8e0bcd4bc4f9f7f4fb976982e6ef83"
+            },
+            {
+                "version": 43860,
+                "md5": "c0d33c17812b1ed7ca424ca3b5ecd587"
+            }
+		]
+	},
+	"G6V6.1SP1": {
+        "workflowDesigner_js.jsp": [
+            {
+                "version": 52699,
+                "md5": "94ca952325cee68d2f5e3104a726ebc0"
+            }
+        ],
+        "workflowDesigner-min.js": [
+            {
+                "version": 52699,
+                "md5": "e9278212cb408772ed31f44fa040cdaa"
+            }
+        ],
+        "workflowDesigner.jsp": [
+            {
+                "version": 52699,
+                "md5": "bdb5ea83aaaf29912cb95e1a3472766f"
+            }
+        ]
+    },
+    "G6V6.1": {
+        "workflowDesigner_js.jsp": [
+            {
+                "version": 52700,
+                "md5": "94ca952325cee68d2f5e3104a726ebc0"
+            }
+        ],
+        "workflowDesigner-min.js": [
+            {
+                "version": 52700,
+                "md5": "e9278212cb408772ed31f44fa040cdaa"
+            }
+        ],
+        "workflowDesigner.jsp": [
+            {
+                "version": 52700,
+                "md5": "bdb5ea83aaaf29912cb95e1a3472766f"
+            }
+        ]
+    }
+}

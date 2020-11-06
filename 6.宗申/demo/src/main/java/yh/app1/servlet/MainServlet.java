@@ -30,12 +30,15 @@ public class MainServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id=request.getParameter("id");
         String no=request.getParameter("VenderNO");
         String venderName=request.getParameter("venderName");
         String address=request.getParameter("address");
         String token = TokenUtil.getToken();
         System.out.println(token);
-        String url = "http://localhost:80/seeyon/rest/flow/gysmb001";
+//        String template="gysmb001";
+        String template="test001";
+        String url = "http://localhost:81/seeyon/rest/flow/"+template+"/"+id;
         try (CloseableHttpClient client = HttpClients.createDefault()) {
             HttpPost hpost = new HttpPost(url);
             HttpResponse hResponse = null;
@@ -43,8 +46,8 @@ public class MainServlet extends HttpServlet {
             hpost.addHeader("token", token);
 
             Map<String, Object> data1 = new HashMap<String, Object>();
-            data1.put("templateCode", "gysmb001");
-            data1.put("senderLoginName", "yanyi");
+            data1.put("templateCode", "test001");
+            data1.put("senderLoginName", "liyongzhi");
             data1.put("subject", no);
             Map<String, Object> dataMap = new HashMap<>();
             dataMap.put("VenderNO", no);

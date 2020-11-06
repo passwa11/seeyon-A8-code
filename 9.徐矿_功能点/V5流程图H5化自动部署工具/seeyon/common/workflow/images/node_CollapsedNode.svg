@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>node_SuperNode备份</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="17" cy="17" r="17"></circle>
+        <filter x="-47.1%" y="-47.1%" width="194.1%" height="194.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="0" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.294117647   0 0 0 0 0.564705882   0 0 0 0 0.870588235  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="基础内容" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="流程图内图标-copy-2" transform="translate(-390.000000, -131.000000)">
+            <g id="node_SuperNode备份" transform="translate(401.000000, 142.000000)">
+                <g id="Oval">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <circle stroke="#FFFFFF" stroke-width="1" fill="#DB8B80" fill-rule="evenodd" cx="17" cy="17" r="17.5"></circle>
+                </g>
+                <path d="M23.8397853,19.5 C22.6468129,19.5 21.6795956,18.4926091 21.6795956,17.2499477 C21.6795956,16.0073126 22.6468129,15 23.8397853,15 C25.0327827,15 26,16.0073126 26,17.2499477 C26,18.4926091 25.0327827,19.5 23.8397853,19.5 L23.8397853,19.5 Z M16.9999498,19.5 C15.8069524,19.5 14.8398354,18.4926091 14.8398354,17.2499477 C14.8398354,16.0073126 15.8069524,15 16.9999498,15 C18.1930226,15 19.1601395,16.0073126 19.1601395,17.2499477 C19.1601395,18.4926091 18.1930226,19.5 16.9999498,19.5 L16.9999498,19.5 Z M10.1600893,19.5 C8.96711693,19.5 8,18.4926091 8,17.2499477 C8,16.0073126 8.96711693,15 10.1600893,15 C11.3531871,15 12.3203041,16.0073126 12.3203041,17.2499477 C12.3203041,18.4926091 11.3531871,19.5 10.1600893,19.5 L10.1600893,19.5 Z" id="iconfont-gengduo" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

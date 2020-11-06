@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+<id>oauthLogin</id>
+<name>oa集成第三方认证中心</name>
+<category>20201102</category>
+</plugin>
