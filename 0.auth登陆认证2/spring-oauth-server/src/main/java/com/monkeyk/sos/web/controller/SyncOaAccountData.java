@@ -86,7 +86,7 @@ public class SyncOaAccountData {
             }
         }
 
-        return null;
+        return "redirect:/./";
     }
 
     public Connection getConnection() {
