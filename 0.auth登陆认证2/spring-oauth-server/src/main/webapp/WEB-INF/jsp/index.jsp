@@ -33,8 +33,9 @@
     <form action="${contextPath}/signout" method="post">
         <tags:csrf/>
         <button class="btn btn-default" type="submit">退出</button>
+        <a href="/server/toSync" class="btn btn-success">同步</a>
+
     </form>
-    <a href="/server/toSync">同步</a>
 </div>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
     <div class="row">
