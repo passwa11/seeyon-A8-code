@@ -17,7 +17,7 @@
 
 <body >
 <%--powderblue--%>
-<h2 style="margin-bottom: 20px;margin-top:130px;text-align:center;color:black;font-weight:bold;">认 证 登 录</h2>
+<h2 style="margin-bottom: 20px;margin-top:130px;text-align:center;color:black;font-weight:bold;">登 录 认 证 </h2>
 
 <div class="row" style="padding-left:250px;" >
     <div class="col-md-9"  >
