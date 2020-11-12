@@ -16,12 +16,6 @@
     <script src="${contextPath}/static/angular.min.js"></script>
     <script src="${contextPath}/static/jquery.min.js"></script>
     <script>
-        function test(id) {
-            $.post("archive_client/${cli.clientId}", function (data) {
-
-            });
-        }
-
         function sureDelete(id) {
             if (confirm("确定要删除数据吗？")) {
                 location.href = "archive_client/" + id;
