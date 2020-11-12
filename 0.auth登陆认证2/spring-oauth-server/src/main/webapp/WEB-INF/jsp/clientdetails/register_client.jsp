@@ -19,9 +19,10 @@
     <div class="col-md-1"></div>
     <div class="col-md-10" style="background-color:rgb(255,255,255);height: 900px;">
 
-<%--        <a href="./" class="btn btn-info">返回</a>--%>
+        <%--        <a href="./" class="btn btn-info">返回</a>--%>
 
         <h2>注册应用</h2>
+        <hr/>
 
         <div ng-app style="background-color:rgb(255,255,255);">
             <div ng-controller="RegisterClientCtrl">

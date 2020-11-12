@@ -17,10 +17,11 @@
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10" style="background-color:rgb(255,255,255);height: 900px;">
-<%--        <span style="float: right;margin-top: 20px;">--%>
-<%--            <a href="/server/" class="btn btn-info">返回</a>--%>
-<%--        </span>--%>
+        <%--        <span style="float: right;margin-top: 20px;">--%>
+        <%--            <a href="/server/" class="btn btn-info">返回</a>--%>
+        <%--        </span>--%>
         <h2>注册应用</h2>
+        <hr/>
         <div ng-app style="">
             <div ng-controller="RegisterClientCtrl">
                 <form:form modelAttribute="formDto" cssClass="form-horizontal">

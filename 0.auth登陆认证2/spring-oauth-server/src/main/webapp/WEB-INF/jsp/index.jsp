@@ -25,6 +25,7 @@
 
 </head>
 <body>
+
 <h2>认证服务
     <small class="badge" title="Version">${mainVersion}</small>
 </h2>
@@ -75,7 +76,6 @@
                 <td width="15%">
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                         <a href="register_client/${cli.clientId}" class="btn btn-info btn-sm">修改</a>
-                        <%--                        <a href="archive_client/${cli.clientId}" class="btn btn-warning btn-sm">删除</a>--%>
                         <a href="javascript:sureDelete('${cli.clientId}')" class="btn btn-warning btn-sm">删除</a>
                     </sec:authorize>
                 </td>
