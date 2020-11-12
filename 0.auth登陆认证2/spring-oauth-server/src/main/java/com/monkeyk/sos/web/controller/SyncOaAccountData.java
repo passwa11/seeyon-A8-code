@@ -30,8 +30,8 @@ public class SyncOaAccountData {
     @RequestMapping(value = "toSync", method = RequestMethod.GET)
     public String toSync(HttpServletRequest request, HttpServletResponse response) {
 
-        String deleteUser_="delete from user_";
-        String deletePrivilege="delete from user_privilege";
+        String deleteUser_="delete from user_ where username <>'admin'";
+        String deletePrivilege="delete from user_privilege where privilege <> 'ADMIN'";
 
         this.jdbcTemplate.update(deleteUser_);
         this.jdbcTemplate.update(deletePrivilege);
