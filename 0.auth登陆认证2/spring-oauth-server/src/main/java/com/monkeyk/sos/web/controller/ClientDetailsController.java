@@ -92,7 +92,7 @@ public class ClientDetailsController {
      * */
     @RequestMapping(value = "register_client", method = RequestMethod.POST)
     public String submitRegisterClient(@ModelAttribute("formDto") OauthClientDetailsDto formDto, BindingResult result) {
-        System.out.print("submitRegisterClient==" + formDto.getClientId() + "====" + formDto.getClientSecret());
+//        System.out.print("submitRegisterClient==" + formDto.getClientId() + "====" + formDto.getClientSecret());
         clientDetailsDtoValidator.validate(formDto, result);
         if (result.hasErrors()) {
             return "clientdetails/register_client";
