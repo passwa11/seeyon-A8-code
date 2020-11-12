@@ -33,7 +33,6 @@
     <form action="${contextPath}/signout" method="post">
         <tags:csrf/>
         <button class="btn btn-default" type="submit">退出</button>
-        <a href="/server/toSync" class="btn btn-success">同步</a>
 
     </form>
 </div>
@@ -44,6 +43,7 @@
         </div>
         <div class="col-md-2">
             <div class="pull-right">
+                <a href="/server/toSync" class="btn btn-info btn-sm">同步人员</a>
                 <a href="register_client" class="btn btn-success btn-sm">注册应用</a>
             </div>
         </div>
@@ -51,7 +51,7 @@
 </sec:authorize>
 <hr/>
 
-<div class="list-group">
+<div class="list-group" style="background-color:rgb(255,255,255);">
     <table class="table table-bordered" style="word-break:break-all;">
         <thead>
         <th>应用名称</th>

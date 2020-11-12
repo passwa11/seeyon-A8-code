@@ -17,7 +17,7 @@
     <meta name="${_csrf.headerName}" content="${_csrf.token}"/>
     <link rel="shortcut icon" href="${contextPath}/static/favicon.ico"/>
 
-    <title><sitemesh:write property='title'/> - Spring Security&OAuth2</title>
+    <title>认证服务</title>
 
     <link href="${contextPath}/static/bootstrap.min.css" rel="stylesheet"/>
     <script type="text/javascript" src="${contextPath}/static/jquery.min.js"></script>
