@@ -32,7 +32,7 @@ public class UserRowMapper implements RowMapper<User> {
     public User mapRow(ResultSet rs, int i) throws SQLException {
         User user = new User();
 
-        user.id(rs.getInt("id"));
+        user.id(rs.getString("id"));
         user.guid(rs.getString("guid"));
 
         user.archived(rs.getBoolean("archived"));
@@ -50,7 +50,6 @@ public class UserRowMapper implements RowMapper<User> {
         }else{
             user.setRealsecret("");
         }
-        System.out.println(rs.getString("realsecret"));
        // user.setRealsecret(rs.getString("realsecret"));
 
         return user;

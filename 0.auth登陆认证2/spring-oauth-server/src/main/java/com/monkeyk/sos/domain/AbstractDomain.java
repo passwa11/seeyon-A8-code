@@ -15,7 +15,7 @@ public abstract class AbstractDomain implements Serializable {
     /**
      * Database id
      */
-    protected int id;
+    protected String id;
 
     protected boolean archived;
     /**
@@ -31,11 +31,11 @@ public abstract class AbstractDomain implements Serializable {
     public AbstractDomain() {
     }
 
-    public int id() {
+    public String id() {
         return id;
     }
 
-    public void id(int id) {
+    public void id(String id) {
         this.id = id;
     }
 

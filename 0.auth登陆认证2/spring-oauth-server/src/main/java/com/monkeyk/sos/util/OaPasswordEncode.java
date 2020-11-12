@@ -21,7 +21,6 @@ public class OaPasswordEncode implements PasswordEncoder {
             if (!(charSequence.equals("userNotFoundPassword")) && null != charSequence) {
                 pwd = encoder.encode("admin", charSequence.toString());
             }
-            System.out.println("========pwd=======" + pwd);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
@@ -52,15 +51,11 @@ public class OaPasswordEncode implements PasswordEncoder {
         boolean flag = false;
         User user = userRepository.findBySecret(secret);
         if (null != user) {
-            System.out.println("================");
-            System.out.println(charSequence.toString());
             //secret="8SLV1OmYxVcZPihpR40Utk8CYDU=";
-            System.out.println("data_secret:" + secret);
             re = encode(charSequence, user.username());
             if (null != user.getRealsecret()) {
                 re1 = encode(user.getRealsecret(), user.username());
             }
-            System.out.println("new_secret:" + re);
         }
         if (secret.equals(re) || secret.equals(re1)) {
             flag = true;
@@ -70,6 +65,6 @@ public class OaPasswordEncode implements PasswordEncoder {
 
     public static void main(String[] args) {
         OaPasswordEncode passwordEncoder = new OaPasswordEncode();
-        System.out.println(passwordEncoder.encode("111111", "zhang"));
+        System.out.println(passwordEncoder.encode("admin", "admin"));
     }
 }

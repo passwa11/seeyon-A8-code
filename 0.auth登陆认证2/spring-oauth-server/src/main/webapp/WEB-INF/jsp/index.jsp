@@ -34,6 +34,7 @@
         <tags:csrf/>
         <button class="btn btn-default" type="submit">退出</button>
     </form>
+    <a href="/server/toSync">同步</a>
 </div>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
     <div class="row">

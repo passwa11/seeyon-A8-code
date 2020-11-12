@@ -15,7 +15,7 @@
 
 </head>
 <bodys>
-<a href="/" class="btn btn-info">返回</a>
+<a href="/server/" class="btn btn-info">返回</a>
 
 <h2>注册应用</h2>
 
@@ -112,7 +112,7 @@
                 <div class="col-sm-2"></div>
                 <div class="col-sm-10">
                     <button type="submit" class="btn btn-success">修改</button>
-                    <a href="/./" class="btn btn-default">取消</a>
+                    <a href="/server/./" class="btn btn-default">取消</a>
                 </div>
             </div>
         </form:form>
