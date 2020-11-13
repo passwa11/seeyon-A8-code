@@ -27,10 +27,11 @@
 <body>
 <div class="row" style="">
     <div class="col-xs-1"></div>
-    <div class="col-xs-10" style="background-color:rgb(255,255,255);height: 800px;">
+<%--    <div class="col-xs-10" style="background-color:rgb(255,255,255);height: 800px;">--%>
+    <div class="col-xs-10" style="">
 
         <div class="row" style="margin-top: 20px;">
-            <div class="col-sm-8">
+            <div class="col-sm-8" style="font-size: 16px;">
                 当前登录账户: <span class="text-success">${SPRING_SECURITY_CONTEXT.authentication.principal.username}</span>
             </div>
             <div class="col-sm-4">
@@ -47,7 +48,7 @@
         <sec:authorize access="hasRole('ROLE_ADMIN')">
             <div class="row">
                 <div class="col-md-9">
-                    <h3>已注册应用信息</h3>
+<%--                    <h3>已注册应用信息</h3>--%>
                 </div>
                 <div class="col-md-3">
                     <div class="pull-right" style="margin-top: 20px;">
@@ -59,9 +60,9 @@
         </sec:authorize>
         <hr/>
 
-        <div class="list-group">
+        <div class="list-group" style="background-color:rgb(255,255,255);">
             <table class="table table-bordered" style="word-break:break-all;">
-                <thead>
+                <thead style="background-color: #d5d3db">
                 <th>应用名称</th>
                 <th>授权id</th>
                 <th>授权密码</th>
