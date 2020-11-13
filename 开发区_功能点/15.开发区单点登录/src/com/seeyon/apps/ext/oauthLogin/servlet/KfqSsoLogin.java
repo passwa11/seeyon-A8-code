@@ -77,12 +77,8 @@ public class KfqSsoLogin extends HttpServlet {
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 HttpEntity entity = response.getEntity();
                 String resultString = EntityUtils.toString(response.getEntity(), "utf-8").replaceAll(" ", "");
-                System.out.println(resultString);
                 Map<String, Object> m = (Map<String, Object>) JSONObject.parse(resultString);
-                System.out.println(m.get("access_token"));
-
                 loginName = toGet((String) m.get("access_token"), prop);
-
             }
         } catch (Exception e) {
             e.printStackTrace();

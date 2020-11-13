@@ -15,6 +15,7 @@ public class PropUtils {
     private String SSO_Services;
     private String SSO_UserInfo;
     private String applicationUrl;
+    private String SSO_Logout;
 
     private Properties pps;
 
@@ -32,9 +33,18 @@ public class PropUtils {
             SSO_Services = pps.getProperty("SSO_Services");
             SSO_UserInfo = pps.getProperty("SSO_UserInfo");
             applicationUrl = pps.getProperty("applicationUrl");
+            SSO_Logout = pps.getProperty("SSO_Logout");
         } catch (Exception e) {
             System.out.println("未找到配置文件");
         }
+    }
+
+    public String getSSO_Logout() {
+        return SSO_Logout;
+    }
+
+    public void setSSO_Logout(String SSO_Logout) {
+        this.SSO_Logout = SSO_Logout;
     }
 
     public String getApplicationUrl() {
