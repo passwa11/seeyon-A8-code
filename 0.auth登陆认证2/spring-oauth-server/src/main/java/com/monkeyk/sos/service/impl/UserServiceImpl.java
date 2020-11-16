@@ -94,9 +94,9 @@ public class UserServiceImpl implements UserService {
         userJsonDto.setUsername(oAuth2Authentication.getName());
 
         final Collection<GrantedAuthority> authorities = oAuth2Authentication.getAuthorities();
-        for (GrantedAuthority authority : authorities) {
-            userJsonDto.getPrivileges().add(authority.getAuthority());
-        }
+//        for (GrantedAuthority authority : authorities) {
+//            userJsonDto.getPrivileges().add(authority.getAuthority());
+//        }
 
         return userJsonDto;
     }

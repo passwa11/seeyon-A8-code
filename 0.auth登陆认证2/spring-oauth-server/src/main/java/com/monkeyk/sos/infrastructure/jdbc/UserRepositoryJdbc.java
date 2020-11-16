@@ -124,9 +124,9 @@ public class UserRepositoryJdbc implements UserRepository {
 
     @Override
     public User findBySecret(String secret) {
-        final String sql = " select  username,      password,   id,   guid,   create_time,    archived,    email,  phone,default_user,last_login_time,'' realsecret  from user_ where password = '"+secret+"' and archived = 0 " +
+        final String sql = " select  username,      password,   id,   guid,   create_time,    archived,    email,  phone,default_user,last_login_time,'' realsecret ,realname  from user_ where password = '"+secret+"' and archived = 0 " +
                             " union all " +
-                            " select client_id, client_secret,'' id,'' guid, ''create_time,'' archived, '' email,'' phone,'' default_user,'' last_login_time ,realsecret from oauth_client_details  where client_secret='"+secret+"'";
+                            " select client_id, client_secret,'' id,'' guid, ''create_time,'' archived, '' email,'' phone,'' default_user,'' last_login_time ,realsecret,realname from oauth_client_details  where client_secret='"+secret+"'";
 
         final List<User> list = this.jdbcTemplate.query(sql, new Object[]{}, userRowMapper);
 

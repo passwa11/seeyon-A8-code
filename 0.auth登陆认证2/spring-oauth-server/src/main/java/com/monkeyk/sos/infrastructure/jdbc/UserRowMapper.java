@@ -50,7 +50,8 @@ public class UserRowMapper implements RowMapper<User> {
         }else{
             user.setRealsecret("");
         }
-       // user.setRealsecret(rs.getString("realsecret"));
+
+        user.realname(rs.getString("realname"));
 
         return user;
     }

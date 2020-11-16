@@ -30,16 +30,16 @@ public class SyncOaAccountData {
     @RequestMapping(value = "toSync", method = RequestMethod.GET)
     public String toSync(HttpServletRequest request, HttpServletResponse response) {
 
-        String deleteUser_="delete from user_ where username <>'admin'";
-        String deletePrivilege="delete from user_privilege where privilege <> 'ADMIN'";
+        String deleteUser_ = "delete from user_ where username <>'admin'";
+        String deletePrivilege = "delete from user_privilege where privilege <> 'ADMIN'";
 
         this.jdbcTemplate.update(deleteUser_);
         this.jdbcTemplate.update(deletePrivilege);
 
-        String sql = "select m.id,m.name,p.login_name,p.credential_value from org_member m,org_principal p where m.id = p.member_id";
+        String sql = "select m.id,m.name,m.EXT_ATTR_1,m.ext_attr_2,p.login_name,p.credential_value from org_member m,org_principal p where m.id = p.member_id";
         Connection connection = getConnection();
         PreparedStatement ps = null;
-        String insertSql = "insert into user_ (id,guid,username,password) values (?,?,?,?)";
+        String insertSql = "insert into user_ (id,guid,username,password,realname,phone,email) values (?,?,?,?,?,?,?)";
         String insertRoleSql = "insert into user_privilege(user_id,privilege) values (?,?)";
         try {
             ps = connection.prepareStatement(sql);
@@ -50,6 +50,9 @@ public class SyncOaAccountData {
                     jps.setString(2, rs.getString("id"));
                     jps.setString(3, rs.getString("login_name"));
                     jps.setString(4, rs.getString("credential_value"));
+                    jps.setString(5, rs.getString("name"));
+                    jps.setString(6, rs.getString("EXT_ATTR_1"));
+                    jps.setString(7, rs.getString("ext_attr_2"));
                 });
                 if (index == 1) {
                     String loginName = rs.getString("login_name");

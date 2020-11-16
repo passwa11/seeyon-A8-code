@@ -26,6 +26,17 @@ public class User extends AbstractDomain {
 
     private Date lastLoginTime;
     private String realsecret;
+
+    private String realname;
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
     public String getRealsecret() {
         return realsecret;
     }
@@ -65,6 +76,10 @@ public class User extends AbstractDomain {
 
     public String email() {
         return email;
+    }
+
+    public String realname() {
+        return realname;
     }
 
     public List<Privilege> privileges() {
@@ -117,6 +132,11 @@ public class User extends AbstractDomain {
 
     public User password(String password) {
         this.password = password;
+        return this;
+    }
+
+    public User realname(String realname) {
+        this.realname = realname;
         return this;
     }
 }
