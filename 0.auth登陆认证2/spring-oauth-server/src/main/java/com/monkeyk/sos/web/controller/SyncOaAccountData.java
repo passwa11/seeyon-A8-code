@@ -36,7 +36,7 @@ public class SyncOaAccountData {
         this.jdbcTemplate.update(deleteUser_);
         this.jdbcTemplate.update(deletePrivilege);
 
-        String sql = "select m.id,m.name,m.EXT_ATTR_1,m.ext_attr_2,p.login_name,p.credential_value from org_member m,org_principal p where m.id = p.member_id";
+        String sql = "select m.id,m.name,m.EXT_ATTR_1,m.ext_attr_2,p.login_name,p.credential_value from (select * from ORG_MEMBER where IS_ENABLE=1 and IS_DELETED=0) m,org_principal p where m.id = p.member_id";
         Connection connection = getConnection();
         PreparedStatement ps = null;
         String insertSql = "insert into user_ (id,guid,username,password,realname,phone,email) values (?,?,?,?,?,?,?)";
