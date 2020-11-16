@@ -1,0 +1,2 @@
+alter table user_ add(realname varchar(255));
+alter table oauth_client_details add(realname varchar(255));

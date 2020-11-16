@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50711
 File Encoding         : 65001
 
-Date: 2020-11-13 09:23:24
+Date: 2020-11-16 14:17:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -61,13 +61,15 @@ CREATE TABLE `oauth_client_details` (
   `autoapprove` varchar(255) DEFAULT 'false',
   `realsecret` varchar(255) DEFAULT NULL,
   `client_name` varchar(255) DEFAULT NULL,
+  `realname` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`client_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of oauth_client_details
 -- ----------------------------
-INSERT INTO `oauth_client_details` VALUES ('918c92cd2b634a9bb256a9cc620b42bc', 'sos-resource', 'mC8lpXp4Kg5uE0kIynu7czpJSfY=', 'read', 'authorization_code', 'http://localhost:80/seeyon/kfqLogin', null, null, null, null, '2020-11-12 10:20:50', '0', '1', 'true', '6Syc9SEmPDXNxMGoCLicQ8iZzN8bTrsm', 'oa');
+INSERT INTO `oauth_client_details` VALUES ('0091cc5cff0b4df8899b1c7c0ac05ac1', 'sos-resource', 'gg7bBKC52qspQzjV/rsq6z9RT74=', 'read', 'authorization_code', 'http://localhost:8081/client1/local', null, null, null, null, '2020-11-16 09:04:13', '0', '1', 'true', 'F1Sbgu80fhNwXEYd1RFGinZTPzt2R5w6', '测试获取人员信息', null);
+INSERT INTO `oauth_client_details` VALUES ('918c92cd2b634a9bb256a9cc620b42bc', 'sos-resource', 'mC8lpXp4Kg5uE0kIynu7czpJSfY=', 'read', 'authorization_code', 'http://localhost:80/seeyon/kfqLogin', null, null, null, null, '2020-11-12 10:20:50', '0', '1', 'true', '6Syc9SEmPDXNxMGoCLicQ8iZzN8bTrsm', 'oa', null);
 
 -- ----------------------------
 -- Table structure for oauth_code
@@ -116,6 +118,7 @@ CREATE TABLE `user_` (
   `default_user` tinyint(1) DEFAULT '0',
   `last_login_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `realsecret` varchar(255) DEFAULT NULL,
+  `realname` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `guid` (`guid`),
   UNIQUE KEY `username` (`username`)
@@ -124,7 +127,7 @@ CREATE TABLE `user_` (
 -- ----------------------------
 -- Records of user_
 -- ----------------------------
-INSERT INTO `user_` VALUES ('7547111895052600818', '7547111895052600818', '2020-11-12 14:42:29', '0', null, 'dgPhRXPHVVyUPdQb+Z0/nY7vW58=', null, 'admin', '0', '2020-11-12 14:42:29', null);
+INSERT INTO `user_` VALUES ('7547111895052600818', '7547111895052600818', '2020-11-12 14:42:29', '0', null, 'dgPhRXPHVVyUPdQb+Z0/nY7vW58=', null, 'admin', '0', '2020-11-12 14:42:29', null, null);
 
 -- ----------------------------
 -- Table structure for user_privilege

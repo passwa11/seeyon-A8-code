@@ -65,6 +65,6 @@ public class OaPasswordEncode implements PasswordEncoder {
 
     public static void main(String[] args) {
         OaPasswordEncode passwordEncoder = new OaPasswordEncode();
-        System.out.println(passwordEncoder.encode("admin@2020", "admin"));
+        System.out.println(passwordEncoder.encode("admin@2020", "server-admin"));
     }
 }

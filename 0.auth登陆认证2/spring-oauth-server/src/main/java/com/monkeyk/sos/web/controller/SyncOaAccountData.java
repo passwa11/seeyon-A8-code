@@ -30,7 +30,7 @@ public class SyncOaAccountData {
     @RequestMapping(value = "toSync", method = RequestMethod.GET)
     public String toSync(HttpServletRequest request, HttpServletResponse response) {
 
-        String deleteUser_ = "delete from user_ where username <>'admin'";
+        String deleteUser_ = "delete from user_ where username <>'server-admin'";
         String deletePrivilege = "delete from user_privilege where privilege <> 'ADMIN'";
 
         this.jdbcTemplate.update(deleteUser_);
@@ -56,7 +56,7 @@ public class SyncOaAccountData {
                 });
                 if (index == 1) {
                     String loginName = rs.getString("login_name");
-                    if ("admin".equals(loginName)) {
+                    if ("server-admin".equals(loginName)) {
                         this.jdbcTemplate.update(insertRoleSql, jps -> {
                             jps.setString(1, rs.getString("id"));
                             jps.setString(2, "ADMIN");

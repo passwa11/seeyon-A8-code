@@ -77,7 +77,9 @@ public class ClientDetailsController {
         model.addAttribute("formDto", details);
         return "clientdetails/edit_client";
     }
-
+    /**
+     * 修改
+     * */
     @RequestMapping(value = "register_client/{clientId}", method = RequestMethod.POST)
     public String editRegisterClient(@PathVariable("clientId") String clientId, @ModelAttribute("formDto") OauthClientDetailsDto formDto, BindingResult result) {
         if (result.hasErrors()) {
@@ -98,7 +100,7 @@ public class ClientDetailsController {
             return "clientdetails/register_client";
         }
         oauthService.registerClientDetails(formDto);
-        return "redirect:";
+        return "redirect:/./";
     }
 
 

@@ -20,7 +20,7 @@ public class UserJsonDto implements Serializable {
 
     private String username;
     private String phone;
-    private String email;
+//    private String email;
 
     private String realname;
 
@@ -35,7 +35,7 @@ public class UserJsonDto implements Serializable {
         this.username = user.username();
 
         this.phone = user.phone();
-        this.email = user.email();
+//        this.email = user.email();
         this.realname=user.realname();
 //        final List<Privilege> privilegeList = user.privileges();
 //        for (Privilege privilege : privilegeList) {
@@ -83,13 +83,13 @@ public class UserJsonDto implements Serializable {
         this.phone = phone;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 
 //    public List<String> getPrivileges() {
 //        return privileges;
