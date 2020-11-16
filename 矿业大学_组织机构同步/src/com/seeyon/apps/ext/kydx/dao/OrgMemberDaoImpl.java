@@ -27,19 +27,19 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             String loginName = "";
-            Map<String,Object> map=null;
+            Map<String, Object> map = null;
             while (rs.next()) {
                 loginName = rs.getString("gh");
                 JSONObject memberJson = client.get("/orgMember?loginName=" + loginName, JSONObject.class);
                 if (null != memberJson) {
-                        String userid = memberJson.getString("id");
-                        map = new HashMap();
-                        map.put("id", userid);
-                        map.put("enabled", false);
-                        JSONObject jsonObject = client.put("/orgMember/" + userid + "/enabled/false", map, JSONObject.class);
+                    String userid = memberJson.getString("id");
+                    map = new HashMap();
+                    map.put("id", userid);
+                    map.put("enabled", false);
+                    JSONObject jsonObject = client.put("/orgMember/" + userid + "/enabled/false", map, JSONObject.class);
 
-                    }
                 }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -370,6 +370,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                         JSONObject json = client.put("/orgMember", memberMap, JSONObject.class);
                         if (null != json) {
                             if (json.getBoolean("success")) {
+                                CtpOrgUser user = DBAgent.get(CtpOrgUser.class, Long.parseLong(member.getId()));
                                 CtpOrgUser orgUser = new CtpOrgUser();
                                 orgUser.setId(Long.parseLong(member.getId()));
                                 orgUser.setType("ldap.member.openLdap");
@@ -382,7 +383,12 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 orgUser.setActionTime(new Date());
                                 orgUser.setDescription("");
                                 orgUser.setExUnitCode("uid=" + member.getLoginname() + ",ou=" + member.getYrfsdm());
-                                DBAgent.update(orgUser);
+                                if (null != user) {
+                                    DBAgent.update(orgUser);
+                                } else {
+                                    DBAgent.save(orgUser);
+                                }
+
 
                                 String sql = "update m_org_member set ";
                                 if (member.getName() != null && !"".equals(member.getName())) {
