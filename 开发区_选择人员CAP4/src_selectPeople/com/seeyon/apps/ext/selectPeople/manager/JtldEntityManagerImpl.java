@@ -45,6 +45,11 @@ public class JtldEntityManagerImpl implements JtldEntityManager {
     }
 
     @Override
+    public List<Map<String, Object>> selectCommon(String name, String tableName) {
+        return dao.selectCommon(name, tableName);
+    }
+
+    @Override
     public List<Map<String, Object>> selectGonghui(String name) {
         return dao.selectGonghui(name);
     }

@@ -14,6 +14,19 @@ import java.util.Map;
 public class JtldEntityDaoImpl implements JtldEntityDao {
 
     @Override
+    public List<Map<String, Object>> selectCommon(String name, String tableName) {
+        String sql = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from " + tableName + "  order by FIELD0007 asc";
+
+        List<Map<String, Object>> list = null;
+        if (KfqContants.DEBUGGER) {
+            list = JDBCUtil.doQuery(sql);
+        } else {
+            list = JDBCUtil.doQuery(sql);
+        }
+        return list;
+    }
+
+    @Override
     public List<Map<String, Object>> selectZhuQu0032(String name) {
         String sqltest = "select id,field0001 ,field0002,field0003,field0005,field0007,(select showvalue from ctp_enum_item where id =field0005) mval from formmain_0032  order by FIELD0007 asc";
 //        正式

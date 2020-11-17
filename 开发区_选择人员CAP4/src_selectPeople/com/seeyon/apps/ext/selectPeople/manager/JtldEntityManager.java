@@ -28,6 +28,7 @@ public interface JtldEntityManager {
 
     List<Map<String, Object>> selectTwoLevelDept(String name);
 
+    List<Map<String, Object>> selectCommon(String name,String tableName);
 
     public void insertFormson0174(List<Formson0174> formson0174);
 

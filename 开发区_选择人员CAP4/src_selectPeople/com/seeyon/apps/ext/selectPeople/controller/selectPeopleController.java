@@ -147,6 +147,11 @@ public class selectPeopleController extends BaseController {
                     m.put("flag", "two");
                     revoler.add(m);
                 }
+            } else if (type.equals("dzbld")) {
+                String tableName = "formmain_0568";
+                String flag = "dzbld";
+                list = manager.selectCommon(name, tableName);
+                revoler = toRevokeListData(list, flag);
             }
             Map<String, Object> map = new HashMap<>();
             map.put("code", 0);
@@ -160,6 +165,28 @@ public class selectPeopleController extends BaseController {
             System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    public List<Map<String, Object>> toRevokeListData(List<Map<String, Object>> list, String flag) {
+        List<Map<String, Object>> revoler = new ArrayList<>();
+        for (int j = 0; j < list.size(); j++) {
+            Map<String, Object> m = list.get(j);
+            String userId = (String) m.get("field0002");
+            String sql = "select WMSYS.WM_CONCAT(name) name from ORG_MEMBER where id in(" + userId + ")";
+            List<Map<String, Object>> l = JDBCUtil.doQuery(sql);
+            for (Map.Entry<String, Object> entry : l.get(0).entrySet()) {
+                m.put(entry.getKey(), entry.getValue() + "");
+            }
+        }
+        for (int i = 0; i < list.size(); i++) {
+            Map<String, Object> m = new HashMap<>();
+            for (Map.Entry<String, Object> entry : list.get(i).entrySet()) {
+                m.put(entry.getKey(), entry.getValue() + "");
+            }
+            m.put("flag", flag);
+            revoler.add(m);
+        }
+        return revoler;
     }
 
     /**

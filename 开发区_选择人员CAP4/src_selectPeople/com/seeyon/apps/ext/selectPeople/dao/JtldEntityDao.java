@@ -34,5 +34,7 @@ public interface JtldEntityDao {
     //二级部门
     List<Map<String, Object>> selectTwoLevelDept(String name);
 
+    List<Map<String, Object>> selectCommon(String name,String tableName);
+
     public void insertFormson0174(List<Formson0174> formson0174);
 }
