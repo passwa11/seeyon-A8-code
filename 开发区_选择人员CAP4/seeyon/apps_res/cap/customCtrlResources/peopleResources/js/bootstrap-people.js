@@ -19,7 +19,7 @@ $(function () {
 
 });
 
-function dlCommon(ddType) {
+function dlCommon(ddType,row) {
     var tr_obj = row;
     var obj = {};//添加成员对象
     obj["value"] = tr_obj.id;
@@ -93,7 +93,7 @@ function hwzTable() {
             }
         ]
         , onCheck: function (row, $element) {
-            dlCommon('hwz');
+            dlCommon('hwz',row);
             dbSelectedToSortData('check');
             revokeReuse();
             removeTableRowhwz(row);
@@ -157,7 +157,7 @@ function tableCommon(tableId) {
         ]
         , onCheck: function (row, $element) {
 
-            dlCommon('dzbld');
+            dlCommon('dzbld',row);
 
             dbSelectedToSortData('check');
             revokeReuse();
@@ -235,7 +235,7 @@ function twoTable() {
             }
         ]
         , onCheck: function (row, $element) {
-            dlCommon('two');
+            dlCommon('two',row);
             dbSelectedToSortData('check');
             revokeReuse();
 
@@ -781,7 +781,7 @@ function gongHuiTable() {
             }
         ]
         , onCheck: function (row, $element) {
-            dlCommon('gh');
+            dlCommon('gh',row);
             dbSelectedToSortData('check');
             revokeReuse();
 
@@ -866,7 +866,7 @@ function dangZhengBanTable() {
             }
         ],
         onCheck: function (row, $element) {
-            dlCommon('29');
+            dlCommon('29',row);
 
             dbSelectedToSortData('check');
             revokeReuse();
@@ -1012,7 +1012,7 @@ function jiguan30Table() {
             }
         ]
         , onCheck: function (row, $element) {
-            dlCommon('30');
+            dlCommon('30',row);
             dbSelectedToSortData('check');
             revokeReuse();
 
@@ -1078,7 +1078,7 @@ function zhenban31Table() {
 
         , onCheck: function (row, $element) {
 
-            dlCommon('31');
+            dlCommon('31',row);
 
             dbSelectedToSortData('check');
             revokeReuse();
@@ -1148,7 +1148,7 @@ function zhuqu32Table() {
             }
         ]
         , onCheck: function (row, $element) {
-            dlCommon('32');
+            dlCommon('32',row);
             dbSelectedToSortData('check');
             revokeReuse();
             removeTableRow32(row);
