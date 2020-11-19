@@ -3,6 +3,7 @@ layui.use(['element'], function () {
 });
 
 var idsdzbld = [];
+var idsHwz = [];
 $(function () {
     //dzbld:党政办领导
     tableCommon("dzbld");
@@ -13,7 +14,115 @@ $(function () {
     zhuqu32Table();
     gongHuiTable();
     twoTable();
+    //会务组
+    hwzTable();
+
 });
+
+function dlCommon(ddType) {
+    var tr_obj = row;
+    var obj = {};//添加成员对象
+    obj["value"] = tr_obj.id;
+    obj["text"] = tr_obj.field0001;
+    obj["dept"] = tr_obj.field0003;
+    if ($("dl.selected-info dd").length <= 0) {
+        var option = '<dd ondblclick="removeDbRow' + ddType + '(this)"    lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="' + ddType + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+        $("dl.selected-info").append(option);
+        $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+            var index = $(this).attr("class").indexOf("selected-this");
+            if (index == 0) {
+                $(this).removeClass("selected-this");
+            } else {
+                $(this).addClass("selected-this");
+            }
+        });
+    } else {
+        var selected = function () {//判断是否已选择了该人员
+            var flag = true;
+            $("dl.selected-info dd").each(function (i, item) {
+                if ($(item).attr("lay-value") == obj.value) {
+                    flag = false;//已经选择
+                }
+            });
+            return flag;
+        }
+        if (selected()) {
+            var option = '<dd ondblclick="removeDbRow' + ddType + '(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="' + ddType + '"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+            $("dl.selected-info").append(option);
+            $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
+                var index = $(this).attr("class").indexOf("selected-this");
+                if (index == 0) {
+                    $(this).removeClass("selected-this");
+                } else {
+                    $(this).addClass("selected-this");
+                }
+            });
+        }
+    }
+}
+
+function hwzTable() {
+    $('#hwz').bootstrapTable({
+        url: '/seeyon/ext/selectPeople.do?method=selectListData&type=hwz',
+        queryParamsType: '',              //默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
+        queryParams: queryParams,
+        uniqueId: "id",
+        method: "post",
+        contentType: "application/x-www-form-urlencoded",
+        undefinedText: "",//当数据为 undefined 时显示的字符
+        striped: false,                   //是否显示行间隔色
+        cache: false,
+        pagination: false,
+        sortable: true, //是否启用排序
+        sortOrder: "asc",//排序方式
+        showRefresh: true,
+        search: true,
+        searchAlign: 'left',
+        height: 380,
+        virtualScroll: true,
+        silentSort: true,
+        showColumns: false,
+        detailView: false,
+        clickToSelect: true,                //是否启用点击选中行
+        columns: [
+            {checkbox: true, width: '5%'}
+            , {
+                field: 'field0001',
+                title: '全选',
+                width: '88%',
+            }
+        ]
+        , onCheck: function (row, $element) {
+            dlCommon('hwz');
+            dbSelectedToSortData('check');
+            revokeReuse();
+            removeTableRowhwz(row);
+        }
+
+    });
+}
+
+function removeTableRowhwz(row) {
+    idsHwz.push(row.id);
+    $('#hwz').bootstrapTable('remove', {
+        field: 'id',
+        values: idsHwz
+    });
+}
+
+function removeDbRowhwz(item) {
+    $(item).remove();
+
+    insertSortExist('hwz', item);
+
+    for (var i = 0; i < idsHwz.length; i++) {
+        var index = idsHwz.indexOf($(item).attr("lay-id"));
+        if (index > -1) {
+            idsHwz.splice(index, 1);
+        }
+    }
+}
+
 
 function tableCommon(tableId) {
     $('#' + tableId).bootstrapTable({
@@ -48,45 +157,8 @@ function tableCommon(tableId) {
         ]
         , onCheck: function (row, $element) {
 
-            var tr_obj = row;
-            var obj = {};//添加成员对象
-            obj["value"] = tr_obj.id;
-            obj["text"] = tr_obj.field0001;
-            obj["dept"] = tr_obj.field0003;
-            if ($("dl.selected-info dd").length <= 0) {
-                var option = '<dd ondblclick="removeDbRowdzbld(this)"    lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="' + tableId + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").append(option);
-                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-                    var index = $(this).attr("class").indexOf("selected-this");
-                    if (index == 0) {
-                        $(this).removeClass("selected-this");
-                    } else {
-                        $(this).addClass("selected-this");
-                    }
-                });
-            } else {
-                var selected = function () {//判断是否已选择了该人员
-                    var flag = true;
-                    $("dl.selected-info dd").each(function (i, item) {
-                        if ($(item).attr("lay-value") == obj.value) {
-                            flag = false;//已经选择
-                        }
-                    });
-                    return flag;
-                }
-                if (selected()) {
-                    var option = '<dd ondblclick="removeDbRowdzbld(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="' + tableId + '"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                    $("dl.selected-info").append(option);
-                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-                        var index = $(this).attr("class").indexOf("selected-this");
-                        if (index == 0) {
-                            $(this).removeClass("selected-this");
-                        } else {
-                            $(this).addClass("selected-this");
-                        }
-                    });
-                }
-            }
+            dlCommon('dzbld');
+
             dbSelectedToSortData('check');
             revokeReuse();
 
@@ -97,7 +169,7 @@ function tableCommon(tableId) {
 }
 
 
-function removeDbRowdzbld(item){
+function removeDbRowdzbld(item) {
     $(item).remove();
 
     insertSortExist('dzbld', item);
@@ -163,46 +235,7 @@ function twoTable() {
             }
         ]
         , onCheck: function (row, $element) {
-
-            var tr_obj = row;
-            var obj = {};//添加成员对象
-            obj["value"] = tr_obj.id;
-            obj["text"] = tr_obj.field0001;
-            obj["dept"] = tr_obj.field0003;
-            if ($("dl.selected-info dd").length <= 0) {
-                var option = '<dd ondblclick="removeDdRowtwo(this)"    lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="two" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").append(option);
-                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-                    var index = $(this).attr("class").indexOf("selected-this");
-                    if (index == 0) {
-                        $(this).removeClass("selected-this");
-                    } else {
-                        $(this).addClass("selected-this");
-                    }
-                });
-            } else {
-                var selected = function () {//判断是否已选择了该人员
-                    var flag = true;
-                    $("dl.selected-info dd").each(function (i, item) {
-                        if ($(item).attr("lay-value") == obj.value) {
-                            flag = false;//已经选择
-                        }
-                    });
-                    return flag;
-                }
-                if (selected()) {
-                    var option = '<dd ondblclick="removeDdRowtwo(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="two"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                    $("dl.selected-info").append(option);
-                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-                        var index = $(this).attr("class").indexOf("selected-this");
-                        if (index == 0) {
-                            $(this).removeClass("selected-this");
-                        } else {
-                            $(this).addClass("selected-this");
-                        }
-                    });
-                }
-            }
+            dlCommon('two');
             dbSelectedToSortData('check');
             revokeReuse();
 
@@ -246,6 +279,7 @@ function dbSelectedToSortData(flag) {
     var arr32 = [];
     var arrGH = [];
     var arrTwoLevel = [];
+    var arrHwz = [];
 
     var allData = [];
     if (flag == 'check') {
@@ -312,6 +346,8 @@ function dbSelectedToSortData(flag) {
                 arrTwoLevel.push(obj);
             } else if (flag == 'dzbld') {
                 arrDzld.push(obj);
+            } else if (flag == 'hwz') {
+                arrHwz.push(obj);
             }
         });
     }
@@ -382,6 +418,15 @@ function dbSelectedToSortData(flag) {
         }
     }
 
+    var hwz = [];
+    if (flag == 'check') {
+        hwz = arrHwz;
+    } else {
+        if (arrHwz.length > 0) {
+            hwz = arrsyDataSort(arrHwz);
+        }
+    }
+
     var option = "";
     var html29 = '';
     var html30 = '';
@@ -391,6 +436,8 @@ function dbSelectedToSortData(flag) {
     var htmldzld = '';
 
     var htmlTwo = '';
+
+    var htmlHwz = '';
 
     var allhtml = '';
     if (flag == 'check') {
@@ -419,8 +466,11 @@ function dbSelectedToSortData(flag) {
         if (htmlTwo.length > 0) {
             htmlTwo = htmlShow(two, 'two');
         }
+        if (htmlHwz.length > 0) {
+            htmlHwz = htmlShow(hwz, 'hwz');
+        }
         $(".selected-info").html("");
-        option += htmldzld + html29 + html30 + html31 + html32 + htmlgh + htmlTwo;
+        option += htmldzld + html29 + html30 + html31 + html32 + htmlgh + htmlTwo + htmlHwz;
     }
 
     $("dl.selected-info").append(option);
@@ -435,7 +485,7 @@ function dbSelectedToSortData(flag) {
 }
 
 // 排序问题 对已选择人员进行部门排序
-function dataSorting(arrdzbld0, arr290, arr300, arr310, arr320, arrGH0, arrTwoLevel) {
+function dataSorting(arrdzbld0, arr290, arr300, arr310, arr320, arrGH0, arrTwoLevel, arrHwz) {
 
     var arrdzbld = [];
     var arr29 = [];
@@ -664,7 +714,7 @@ function AllhtmlShow(data) {
             flag = 'gh';
         } else if ((data[i].flag).indexOf("two") != -1) {
             flag = 'two';
-        } else if((data[i].flag).indexOf("dzbld") != -1){
+        } else if ((data[i].flag).indexOf("dzbld") != -1) {
             flag = 'dzbld';
         }
         html += '<dd ondblclick="removeDdRow' + flag + '(this)" lay-bsname="' + data[i].mval + '"  lay-field002="' + data[i].field0002 + '"  lay-zsort="' + data[i].field0007 + '" lay-id="' + data[i].id + '" lay-bs="' + data[i].field0005 + '"  lay-value="' + data[i].id + '" lay-username="' + data[i].name + '" lay-flag="' + flag + '" lay-name="' + data[i].field0001 + '" lay-dept="' + data[i].field0003 + '" class="">' + data[i].field0001 + '</dd>';
@@ -731,46 +781,7 @@ function gongHuiTable() {
             }
         ]
         , onCheck: function (row, $element) {
-
-            var tr_obj = row;
-            var obj = {};//添加成员对象
-            obj["value"] = tr_obj.id;
-            obj["text"] = tr_obj.field0001;
-            obj["dept"] = tr_obj.field0003;
-            if ($("dl.selected-info dd").length <= 0) {
-                var option = '<dd ondblclick="removeDdRowgh(this)"    lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="gh" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").append(option);
-                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-                    var index = $(this).attr("class").indexOf("selected-this");
-                    if (index == 0) {
-                        $(this).removeClass("selected-this");
-                    } else {
-                        $(this).addClass("selected-this");
-                    }
-                });
-            } else {
-                var selected = function () {//判断是否已选择了该人员
-                    var flag = true;
-                    $("dl.selected-info dd").each(function (i, item) {
-                        if ($(item).attr("lay-value") == obj.value) {
-                            flag = false;//已经选择
-                        }
-                    });
-                    return flag;
-                }
-                if (selected()) {
-                    var option = '<dd ondblclick="removeDdRowgh(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="gh"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                    $("dl.selected-info").append(option);
-                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-                        var index = $(this).attr("class").indexOf("selected-this");
-                        if (index == 0) {
-                            $(this).removeClass("selected-this");
-                        } else {
-                            $(this).addClass("selected-this");
-                        }
-                    });
-                }
-            }
+            dlCommon('gh');
             dbSelectedToSortData('check');
             revokeReuse();
 
@@ -855,46 +866,8 @@ function dangZhengBanTable() {
             }
         ],
         onCheck: function (row, $element) {
+            dlCommon('29');
 
-            var tr_obj = row;
-            var obj = {};//添加成员对象
-            obj["value"] = tr_obj.id;
-            obj["text"] = tr_obj.field0001;
-            obj["dept"] = tr_obj.field0003;
-            if ($("dl.selected-info dd").length <= 0) {
-                var option = '<dd ondblclick="removeDdRow29(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="29" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").append(option);
-                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-                    var index = $(this).attr("class").indexOf("selected-this");
-                    if (index == 0) {
-                        $(this).removeClass("selected-this");
-                    } else {
-                        $(this).addClass("selected-this");
-                    }
-                });
-            } else {
-                var selected = function () {//判断是否已选择了该人员
-                    var flag = true;
-                    $("dl.selected-info dd").each(function (i, item) {
-                        if ($(item).attr("lay-value") == obj.value) {
-                            flag = false;//已经选择
-                        }
-                    });
-                    return flag;
-                }
-                if (selected()) {
-                    var option = '<dd ondblclick="removeDdRow29(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="29"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                    $("dl.selected-info").append(option);
-                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-                        var index = $(this).attr("class").indexOf("selected-this");
-                        if (index == 0) {
-                            $(this).removeClass("selected-this");
-                        } else {
-                            $(this).addClass("selected-this");
-                        }
-                    });
-                }
-            }
             dbSelectedToSortData('check');
             revokeReuse();
             removeTableRow29(row);
@@ -905,7 +878,12 @@ function dangZhengBanTable() {
 
 //解决冲突
 function revokeReuse() {
-
+    if (idsHwz.length > 0) {
+        $('#hwz').bootstrapTable('remove', {
+            field: 'id',
+            values: idsHwz
+        });
+    }
     if (idsdzbld.length > 0) {
         $('#dzbld').bootstrapTable('remove', {
             field: 'id',
@@ -1034,46 +1012,7 @@ function jiguan30Table() {
             }
         ]
         , onCheck: function (row, $element) {
-            var tr_obj = row;
-            var obj = {};//添加成员对象
-            obj["value"] = tr_obj.id;
-            obj["text"] = tr_obj.field0001;
-            obj["dept"] = tr_obj.field0003;
-            if ($("dl.selected-info dd").length <= 0) {
-                var option = '<dd ondblclick="removeDdRow30(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="30" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").append(option);
-                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-                    var index = $(this).attr("class").indexOf("selected-this");
-                    if (index == 0) {
-                        $(this).removeClass("selected-this");
-                    } else {
-                        $(this).addClass("selected-this");
-                    }
-                });
-            } else {
-                var selected = function () {//判断是否已选择了该人员
-                    var flag = true;
-                    $("dl.selected-info dd").each(function (i, item) {
-                        if ($(item).attr("lay-value") == obj.value) {
-                            flag = false;//已经选择
-                        }
-                    });
-                    return flag;
-                }
-                if (selected()) {
-                    var option = '<dd ondblclick="removeDdRow30(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="30"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                    $("dl.selected-info").append(option);
-                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-                        var index = $(this).attr("class").indexOf("selected-this");
-                        if (index == 0) {
-                            $(this).removeClass("selected-this");
-                        } else {
-                            $(this).addClass("selected-this");
-                        }
-                    });
-                }
-            }
-            //
+            dlCommon('30');
             dbSelectedToSortData('check');
             revokeReuse();
 
@@ -1138,46 +1077,9 @@ function zhenban31Table() {
         ]
 
         , onCheck: function (row, $element) {
-            var tr_obj = row;
-            var obj = {};//添加成员对象
-            obj["value"] = tr_obj.id;
-            obj["text"] = tr_obj.field0001;
-            obj["dept"] = tr_obj.field0003;
-            if ($("dl.selected-info dd").length <= 0) {
-                var option = '<dd ondblclick="removeDdRow31(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="31" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").append(option);
-                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-                    var index = $(this).attr("class").indexOf("selected-this");
-                    if (index == 0) {
-                        $(this).removeClass("selected-this");
-                    } else {
-                        $(this).addClass("selected-this");
-                    }
-                });
-            } else {
-                var selected = function () {//判断是否已选择了该人员
-                    var flag = true;
-                    $("dl.selected-info dd").each(function (i, item) {
-                        if ($(item).attr("lay-value") == obj.value) {
-                            flag = false;//已经选择
-                        }
-                    });
-                    return flag;
-                }
-                if (selected()) {
-                    var option = '<dd ondblclick="removeDdRow31(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="31"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                    $("dl.selected-info").append(option);
-                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-                        var index = $(this).attr("class").indexOf("selected-this");
-                        if (index == 0) {
-                            $(this).removeClass("selected-this");
-                        } else {
-                            $(this).addClass("selected-this");
-                        }
-                    });
-                }
-            }
-            //
+
+            dlCommon('31');
+
             dbSelectedToSortData('check');
             revokeReuse();
 
@@ -1187,6 +1089,7 @@ function zhenban31Table() {
 
     });
 }
+
 
 var ids31 = [];
 
@@ -1245,47 +1148,7 @@ function zhuqu32Table() {
             }
         ]
         , onCheck: function (row, $element) {
-            var tr_obj = row;
-            var obj = {};//添加成员对象
-            obj["value"] = tr_obj.id;
-            obj["text"] = tr_obj.field0001;
-            obj["dept"] = tr_obj.field0003;
-            if ($("dl.selected-info dd").length <= 0) {
-                var option = '<dd ondblclick="removeDdRow32(this)" lay-bsname="' + tr_obj.mval + '" lay-field002="' + tr_obj.field0002 + '" lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '"  lay-username="' + tr_obj.name + '" lay-flag="32" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                $("dl.selected-info").append(option);
-                $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-                    var index = $(this).attr("class").indexOf("selected-this");
-                    if (index == 0) {
-                        $(this).removeClass("selected-this");
-                    } else {
-                        $(this).addClass("selected-this");
-                    }
-                });
-            } else {
-                var selected = function () {//判断是否已选择了该人员
-                    var flag = true;
-                    $("dl.selected-info dd").each(function (i, item) {
-                        if ($(item).attr("lay-value") == obj.value) {
-                            flag = false;//已经选择
-                        }
-                    });
-                    return flag;
-                }
-                if (selected()) {
-                    var option = '<dd  ondblclick="removeDdRow32(this)" lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="32"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
-                    $("dl.selected-info").append(option);
-                    $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
-
-                        var index = $(this).attr("class").indexOf("selected-this");
-                        if (index == 0) {
-                            $(this).removeClass("selected-this");
-                        } else {
-                            $(this).addClass("selected-this");
-                        }
-                    });
-                }
-            }
-            //
+            dlCommon('32');
             dbSelectedToSortData('check');
             revokeReuse();
             removeTableRow32(row);
@@ -1324,11 +1187,19 @@ function removeDdRow32(item) {
 
 function sureSelect() {
     debugger;
+    var $tablehwz = $("#hwz");
+    var rowshwz = $tablehwz.bootstrapTable('getSelections');
+    if (rowshwz != null) {
+        if (rowshwz.length > 0) {
+            sureCommon($tablehwz, rowshwz, 'hwz', idsHwz);
+        }
+    }
+
     var $tabledzbld = $("#dzbld");
     var rowsdzbld = $tabledzbld.bootstrapTable('getSelections');
     if (rowsdzbld != null) {
         if (rowsdzbld.length > 0) {
-            dzbldSure($tabledzbld, rowsdzbld);
+            sureCommon($tabledzbld, rowsdzbld, 'dzbld', idsdzbld);
         }
     }
 
@@ -1336,7 +1207,7 @@ function sureSelect() {
     var rowsTwo = $tableTwoLevelDept.bootstrapTable('getSelections');
     if (rowsTwo != null) {
         if (rowsTwo.length > 0) {
-            TwoLevelDeptSure($tableTwoLevelDept, rowsTwo);
+            sureCommon($tableTwoLevelDept, rowsTwo, 'two', idsTwoLevelDept);
         }
     }
 
@@ -1344,14 +1215,14 @@ function sureSelect() {
     var rows29 = $table29.bootstrapTable('getSelections');
     if (rows29 != null) {
         if (rows29.length > 0) {
-            dangZhengBanSure($table29, rows29);
+            sureCommon($table29, rows29, '29', ids29);
         }
     }
     var $table30 = $('#jiguan30');
     var rows30 = $table30.bootstrapTable('getSelections');
     if (rows30 != null) {
         if (rows30.length > 0) {
-            Sure30($table30, rows30);
+            sureCommon($table30, rows30, '30', ids30);
         }
     }
     var $table31 = $('#zhenb31');
@@ -1359,7 +1230,7 @@ function sureSelect() {
 
     if (rows31 != null) {
         if (rows31.length > 0) {
-            Sure31($table31, rows31);
+            sureCommon($table31, rows31, '31', ids31);
         }
     }
 
@@ -1367,7 +1238,7 @@ function sureSelect() {
     var rows32 = $table32.bootstrapTable('getSelections');
     if (rows32 != null) {
         if (rows32.length > 0) {
-            Sure32($table32, rows32);
+            sureCommon($table32, rows32, '32', ids32);
         }
     }
 
@@ -1375,7 +1246,8 @@ function sureSelect() {
     var rowsGh = $tableGh.bootstrapTable('getSelections');
     if (rowsGh != null) {
         if (rowsGh.length > 0) {
-            SureGonghui($tableGh, rowsGh);
+            sureCommon($tableGh, rowsGh, 'gh', idsgh);
+
         }
     }
 
@@ -1419,174 +1291,52 @@ function sureSelect() {
 
 }
 
-function TwoLevelDeptSure($table, rows) {
+function sureCommon($table, rows, type, idsArr) {
+    switch (type) {
+        case "hwz":
+            dataSorting(null, null, null, null, null, null, null, rows);
+            break;
+        case "dzbld":
+            dataSorting(rows, null, null, null, null, null, null, null);
+            break;
+        case "two":
+            dataSorting(null, null, null, null, null, null, rows, null);
+            break;
+        case "29":
+            dataSorting(null, rows, null, null, null, null, null, null);
+            break;
+        case "30":
+            dataSorting(null, null, rows, null, null, null, null, null);
+            break;
+        case "31":
+            dataSorting(null, null, null, rows, null, null, null, null);
+            break;
+        case "32":
+            dataSorting(null, null, null, null, rows, null, null, null);
+            break;
+        case "gh":
+            dataSorting(null, null, null, null, null, rows, null, null);
+            break;
+        default:
+            break;
+    }
 
-    var arrJtld = rows;
-
-    dataSorting(null,null, null, null, null, null, rows);
-
-    idsTwoLevelDept = $.map(rows, function (row) {
+    idsArr = $.map(rows, function (row) {
         return row.id
     });
     $("dl").find('dd').each(function () {
         var id = $(this).attr("lay-id");
         var flag = $(this).attr("lay-flag");
-        if (flag == '29') {
+        if (flag == type) {
             if (undefined != id) {
-                idsTwoLevelDept.push(id);
+                idsArr.push(id);
             }
         }
     });
 
     $table.bootstrapTable('remove', {
         field: 'id',
-        values: idsTwoLevelDept
-    });
-
-}
-
-function dzbldSure($table, rows) {
-
-
-    dataSorting(rows,null, null, null, null, null, null);
-
-    idsdzbld = $.map(rows, function (row) {
-        return row.id
-    });
-    $("dl").find('dd').each(function () {
-        var id = $(this).attr("lay-id");
-        var flag = $(this).attr("lay-flag");
-        if (flag == 'dzbld') {
-            if (undefined != id) {
-                idsdzbld.push(id);
-            }
-        }
-    });
-
-    $table.bootstrapTable('remove', {
-        field: 'id',
-        values: idsdzbld
-    });
-
-}
-
-//确认 党政办人员
-function dangZhengBanSure($table, rows) {
-    debugger;
-    dataSorting(null,rows, null, null, null, null, null);
-
-    ids29 = $.map(rows, function (row) {
-        return row.id
-    });
-    $("dl").find('dd').each(function () {
-        var id = $(this).attr("lay-id");
-        var flag = $(this).attr("lay-flag");
-        if (flag == '29') {
-            if (undefined != id) {
-                ids29.push(id);
-            }
-        }
-    });
-
-    $table.bootstrapTable('remove', {
-        field: 'id',
-        values: ids29
-    });
-
-}
-
-function Sure30($table, rows) {
-
-    var arrJtld = rows;
-    dataSorting(null,null, rows, null, null, null, null);
-
-    ids30 = $.map(rows, function (row) {
-        return row.id
-    });
-    $("dl").find('dd').each(function () {
-        var id = $(this).attr("lay-id");
-        var flag = $(this).attr("lay-flag");
-        if (flag == '30') {
-            if (undefined != id) {
-                ids30.push(id);
-            }
-        }
-    });
-    $table.bootstrapTable('remove', {
-        field: 'id',
-        values: ids30
-    });
-}
-
-function Sure31($table, rows) {
-
-    var arrJtld = rows;
-
-    dataSorting(null,null, null, rows, null, null, null);
-
-    ids31 = $.map(rows, function (row) {
-        return row.id
-    });
-    $("dl").find('dd').each(function () {
-        var id = $(this).attr("lay-id");
-        var flag = $(this).attr("lay-flag");
-        if (flag == '31') {
-            if (undefined != id) {
-                ids31.push(id);
-            }
-        }
-    });
-    $table.bootstrapTable('remove', {
-        field: 'id',
-        values: ids31
-    });
-}
-
-function Sure32($table, rows) {
-
-    var arrJtld = rows;
-
-    dataSorting(null,null, null, null, rows, null, null);
-
-    ids32 = $.map(rows, function (row) {
-        return row.id
-    });
-    $("dl").find('dd').each(function () {
-        var id = $(this).attr("lay-id");
-        var flag = $(this).attr("lay-flag");
-        if (flag == '32') {
-            if (undefined != id) {
-                ids32.push(id);
-            }
-        }
-    });
-    $table.bootstrapTable('remove', {
-        field: 'id',
-        values: ids32
-    });
-}
-
-function SureGonghui($table, rows) {
-
-    var arrJtld = rows;
-
-    dataSorting(null,null, null, null, null, rows, null);
-
-    idsgh = $.map(rows, function (row) {
-        return row.id
-    });
-    $("dl").find('dd').each(function () {
-        var id = $(this).attr("lay-id");
-        var flag = $(this).attr("lay-flag");
-        if (flag == 'gh') {
-            if (undefined != id) {
-                idsgh.push(id);
-            }
-        }
-    });
-    $table.bootstrapTable('remove', {
-        field: 'id',
-        values: idsgh
+        values: idsArr
     });
 }
 
@@ -1598,7 +1348,7 @@ function commonInfo(s) {
         $(".selected-info dd[lay-value=" + $(item).attr('lay-value') + "]").remove();
         var type = $(item).attr("lay-flag");
         if (type == '29') {
-            insertSortExist('dzb29',item);
+            insertSortExist('dzb29', item);
 
             for (var i = 0; i < ids29.length; i++) {
                 var index = ids29.indexOf($(item).attr("lay-id"));
@@ -1608,7 +1358,7 @@ function commonInfo(s) {
             }
         }
         if (type == '30') {
-            insertSortExist('jiguan30',item);
+            insertSortExist('jiguan30', item);
 
 
             for (var i = 0; i < ids30.length; i++) {
@@ -1619,7 +1369,7 @@ function commonInfo(s) {
             }
         }
         if (type == '31') {
-            insertSortExist('zhenb31',item);
+            insertSortExist('zhenb31', item);
             for (var i = 0; i < ids31.length; i++) {
                 var index = ids31.indexOf($(item).attr("lay-id"));
                 if (index > -1) {
@@ -1629,7 +1379,7 @@ function commonInfo(s) {
 
         }
         if (type == '32') {
-            insertSortExist('zhuqu32',item);
+            insertSortExist('zhuqu32', item);
 
             for (var i = 0; i < ids32.length; i++) {
                 var index = ids32.indexOf($(item).attr("lay-id"));
@@ -1639,7 +1389,7 @@ function commonInfo(s) {
             }
         }
         if (type == 'gh') {
-            insertSortExist('gonghui',item);
+            insertSortExist('gonghui', item);
 
             for (var i = 0; i < idsgh.length; i++) {
                 var index = idsgh.indexOf($(item).attr("lay-id"));
@@ -1650,7 +1400,7 @@ function commonInfo(s) {
         }
 
         if (type == 'two') {
-            insertSortExist('two',item);
+            insertSortExist('two', item);
 
             for (var i = 0; i < idsTwoLevelDept.length; i++) {
                 var index = idsTwoLevelDept.indexOf($(item).attr("lay-id"));
@@ -1661,8 +1411,8 @@ function commonInfo(s) {
         }
 
         if (type == 'dzbld') {
-            var id='dzbld';
-            insertSortExist(id,item);
+            var id = 'dzbld';
+            insertSortExist(id, item);
             for (var i = 0; i < idsdzbld.length; i++) {
                 var index = idsdzbld.indexOf($(item).attr("lay-id"));
                 if (index > -1) {
@@ -1714,7 +1464,7 @@ function clearSelect2() {
     ids32 = [];
     idsgh = [];
     idsTwoLevelDept = [];
-    idsdzbld=[];
+    idsdzbld = [];
 }
 
 
