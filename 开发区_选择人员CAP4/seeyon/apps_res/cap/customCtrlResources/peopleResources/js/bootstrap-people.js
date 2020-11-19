@@ -725,24 +725,24 @@ function dataSorting(arrdzbld0, arr290, arr300, arr310, arr320, arrGH0, arrTwoLe
 function AllhtmlShow(data) {
     var html = "";
     for (var i = 0; i < data.length; i++) {
-        var flag = '';
-        if ((data[i].flag).indexOf("29") != -1) {
-            flag = '29';
-        } else if ((data[i].flag).indexOf("30") != -1) {
-            flag = '30';
-        } else if ((data[i].flag).indexOf("31") != -1) {
-            flag = '31';
-        } else if ((data[i].flag).indexOf("32") != -1) {
-            flag = '32';
-        } else if ((data[i].flag).indexOf("gh") != -1) {
-            flag = 'gh';
-        } else if ((data[i].flag).indexOf("two") != -1) {
-            flag = 'two';
-        } else if ((data[i].flag).indexOf("dzbld") != -1) {
-            flag = 'dzbld';
-        }else if ((data[i].flag).indexOf("hwz") != -1) {
-            flag = 'hwz';
-        }
+        var flag = data[i].flag;
+        // if ((data[i].flag).indexOf("29") != -1) {
+        //     flag = '29';
+        // } else if ((data[i].flag).indexOf("30") != -1) {
+        //     flag = '30';
+        // } else if ((data[i].flag).indexOf("31") != -1) {
+        //     flag = '31';
+        // } else if ((data[i].flag).indexOf("32") != -1) {
+        //     flag = '32';
+        // } else if ((data[i].flag).indexOf("gh") != -1) {
+        //     flag = 'gh';
+        // } else if ((data[i].flag).indexOf("two") != -1) {
+        //     flag = 'two';
+        // } else if ((data[i].flag).indexOf("dzbld") != -1) {
+        //     flag = 'dzbld';
+        // }else if ((data[i].flag).indexOf("hwz") != -1) {
+        //     flag = 'hwz';
+        // }
         html += '<dd ondblclick="removeDdRow' + flag + '(this)" lay-bsname="' + data[i].mval + '"  lay-field002="' + data[i].field0002 + '"  lay-zsort="' + data[i].field0007 + '" lay-id="' + data[i].id + '" lay-bs="' + data[i].field0005 + '"  lay-value="' + data[i].id + '" lay-username="' + data[i].name + '" lay-flag="' + flag + '" lay-name="' + data[i].field0001 + '" lay-dept="' + data[i].field0003 + '" class="">' + data[i].field0001 + '</dd>';
     }
     return html;
