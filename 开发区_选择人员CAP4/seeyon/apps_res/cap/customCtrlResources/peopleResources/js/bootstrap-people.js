@@ -19,7 +19,9 @@ $(function () {
 
 });
 
-function dlCommon(ddType,row) {
+function dlCommon(ddType, row) {
+    console.log("ddtype:====" + ddType);
+    debugger;
     var tr_obj = row;
     var obj = {};//添加成员对象
     obj["value"] = tr_obj.id;
@@ -93,7 +95,7 @@ function hwzTable() {
             }
         ]
         , onCheck: function (row, $element) {
-            dlCommon('hwz',row);
+            dlCommon('hwz', row);
             dbSelectedToSortData('check');
             revokeReuse();
             removeTableRowhwz(row);
@@ -157,7 +159,7 @@ function tableCommon(tableId) {
         ]
         , onCheck: function (row, $element) {
 
-            dlCommon('dzbld',row);
+            dlCommon('dzbld', row);
 
             dbSelectedToSortData('check');
             revokeReuse();
@@ -235,7 +237,7 @@ function twoTable() {
             }
         ]
         , onCheck: function (row, $element) {
-            dlCommon('two',row);
+            dlCommon('two', row);
             dbSelectedToSortData('check');
             revokeReuse();
 
@@ -271,7 +273,7 @@ function removeDdRowtwo(item) {
 }
 
 function dbSelectedToSortData(flag) {
-
+    debugger;
     var arrDzld = [];
     var arr29 = [];
     var arr30 = [];
@@ -485,7 +487,7 @@ function dbSelectedToSortData(flag) {
 }
 
 // 排序问题 对已选择人员进行部门排序
-function dataSorting(arrdzbld0, arr290, arr300, arr310, arr320, arrGH0, arrTwoLevel, arrHwz) {
+function dataSorting(arrdzbld0, arr290, arr300, arr310, arr320, arrGH0, arrTwoLevel, arrHwz00) {
 
     var arrdzbld = [];
     var arr29 = [];
@@ -495,6 +497,7 @@ function dataSorting(arrdzbld0, arr290, arr300, arr310, arr320, arrGH0, arrTwoLe
     var arrGH = [];
 
     var arrTwo = [];
+    var arrHw = [];
 
     $("dl").find('dd').each(function () {
         var id = $(this).attr("lay-id");
@@ -533,8 +536,25 @@ function dataSorting(arrdzbld0, arr290, arr300, arr310, arr320, arrGH0, arrTwoLe
             arrTwo.push(obj);
         } else if (flag == 'dzbld') {
             arrdzbld.push(obj);
+        } else if (flag == 'hwz') {
+            arrHw.push(obj);
         }
     });
+
+    var hw = [];
+    if (arrHwz00 != null) {
+        if (arrHw != null) {
+            hw = arrsyDataSort(arrHw.concat(arrHwz00));
+        } else {
+            hw = arrsyDataSort(arrHwz00);
+        }
+    } else {
+        if (arrHw != null) {
+            hw = arrHw;
+        } else {
+            hw = arrsyDataSort(arrHw);
+        }
+    }
 
     var ld = [];
     if (arrdzbld0 != null) {
@@ -661,6 +681,7 @@ function dataSorting(arrdzbld0, arr290, arr300, arr310, arr320, arrGH0, arrTwoLe
     var htmlgh = '';
 
     var htmlTwo = '';
+    var htmlHw = '';
     $(".selected-info").html("");
     if (ld.length > 0) {
         htmlld = htmlShow(ld, 'dzbld');
@@ -685,8 +706,11 @@ function dataSorting(arrdzbld0, arr290, arr300, arr310, arr320, arrGH0, arrTwoLe
     if (two.length > 0) {
         htmlTwo = htmlShow(two, 'two');
     }
+    if (hw.length > 0) {
+        htmlHw = htmlShow(hw, 'hwz');
+    }
 
-    option += htmlld + html29 + html30 + htmlTwo + html31 + html32 + htmlgh;
+    option += htmlld + html29 + html30 + htmlTwo + html31 + html32 + htmlgh + htmlHw;
     $("dl.selected-info").append(option);
     $(".selected-info dd").on('click', function () {
         var index = $(this).attr("class").indexOf("selected-this");
@@ -781,7 +805,7 @@ function gongHuiTable() {
             }
         ]
         , onCheck: function (row, $element) {
-            dlCommon('gh',row);
+            dlCommon('gh', row);
             dbSelectedToSortData('check');
             revokeReuse();
 
@@ -866,7 +890,7 @@ function dangZhengBanTable() {
             }
         ],
         onCheck: function (row, $element) {
-            dlCommon('29',row);
+            dlCommon('29', row);
 
             dbSelectedToSortData('check');
             revokeReuse();
@@ -1012,7 +1036,7 @@ function jiguan30Table() {
             }
         ]
         , onCheck: function (row, $element) {
-            dlCommon('30',row);
+            dlCommon('30', row);
             dbSelectedToSortData('check');
             revokeReuse();
 
@@ -1078,7 +1102,7 @@ function zhenban31Table() {
 
         , onCheck: function (row, $element) {
 
-            dlCommon('31',row);
+            dlCommon('31', row);
 
             dbSelectedToSortData('check');
             revokeReuse();
@@ -1148,7 +1172,7 @@ function zhuqu32Table() {
             }
         ]
         , onCheck: function (row, $element) {
-            dlCommon('32',row);
+            dlCommon('32', row);
             dbSelectedToSortData('check');
             revokeReuse();
             removeTableRow32(row);
@@ -1348,80 +1372,44 @@ function commonInfo(s) {
         $(".selected-info dd[lay-value=" + $(item).attr('lay-value') + "]").remove();
         var type = $(item).attr("lay-flag");
         if (type == '29') {
-            insertSortExist('dzb29', item);
-
-            for (var i = 0; i < ids29.length; i++) {
-                var index = ids29.indexOf($(item).attr("lay-id"));
-                if (index > -1) {
-                    ids29.splice(index, 1);
-                }
-            }
+            idsHandler('dzb29', ids29, item);
         }
         if (type == '30') {
-            insertSortExist('jiguan30', item);
-
-
-            for (var i = 0; i < ids30.length; i++) {
-                var index = ids30.indexOf($(item).attr("lay-id"));
-                if (index > -1) {
-                    ids30.splice(index, 1);
-                }
-            }
+            idsHandler('jiguan30', ids30, item);
         }
         if (type == '31') {
-            insertSortExist('zhenb31', item);
-            for (var i = 0; i < ids31.length; i++) {
-                var index = ids31.indexOf($(item).attr("lay-id"));
-                if (index > -1) {
-                    ids31.splice(index, 1);
-                }
-            }
-
+            idsHandler('zhenb31', ids31, item);
         }
         if (type == '32') {
-            insertSortExist('zhuqu32', item);
+            idsHandler('zhuqu32', ids32, item);
 
-            for (var i = 0; i < ids32.length; i++) {
-                var index = ids32.indexOf($(item).attr("lay-id"));
-                if (index > -1) {
-                    ids32.splice(index, 1);
-                }
-            }
         }
         if (type == 'gh') {
-            insertSortExist('gonghui', item);
-
-            for (var i = 0; i < idsgh.length; i++) {
-                var index = idsgh.indexOf($(item).attr("lay-id"));
-                if (index > -1) {
-                    idsgh.splice(index, 1);
-                }
-            }
+            idsHandler('gonghui', idsgh, item);
         }
 
         if (type == 'two') {
-            insertSortExist('two', item);
-
-            for (var i = 0; i < idsTwoLevelDept.length; i++) {
-                var index = idsTwoLevelDept.indexOf($(item).attr("lay-id"));
-                if (index > -1) {
-                    idsTwoLevelDept.splice(index, 1);
-                }
-            }
+            idsHandler('two', idsTwoLevelDept, item);
         }
 
         if (type == 'dzbld') {
-            var id = 'dzbld';
-            insertSortExist(id, item);
-            for (var i = 0; i < idsdzbld.length; i++) {
-                var index = idsdzbld.indexOf($(item).attr("lay-id"));
-                if (index > -1) {
-                    idsdzbld.splice(index, 1);
-                }
-            }
+            idsHandler('dzbld', idsdzbld, item);
+        }
+        if (type == 'hwz') {
+            idsHandler('hwz', idsHwz, item);
         }
 
     });
+}
+
+function idsHandler(type, ids, item) {
+    insertSortExist(type, item);
+    for (var i = 0; i < ids.length; i++) {
+        var index = ids.indexOf($(item).attr("lay-id"));
+        if (index > -1) {
+            ids.splice(index, 1);
+        }
+    }
 }
 
 function removeSelect() {
