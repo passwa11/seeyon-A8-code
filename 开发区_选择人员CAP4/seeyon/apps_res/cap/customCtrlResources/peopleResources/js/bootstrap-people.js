@@ -740,6 +740,8 @@ function AllhtmlShow(data) {
             flag = 'two';
         } else if ((data[i].flag).indexOf("dzbld") != -1) {
             flag = 'dzbld';
+        }else if ((data[i].flag).indexOf("hwz") != -1) {
+            flag = 'hwz';
         }
         html += '<dd ondblclick="removeDdRow' + flag + '(this)" lay-bsname="' + data[i].mval + '"  lay-field002="' + data[i].field0002 + '"  lay-zsort="' + data[i].field0007 + '" lay-id="' + data[i].id + '" lay-bs="' + data[i].field0005 + '"  lay-value="' + data[i].id + '" lay-username="' + data[i].name + '" lay-flag="' + flag + '" lay-name="' + data[i].field0001 + '" lay-dept="' + data[i].field0003 + '" class="">' + data[i].field0001 + '</dd>';
     }
@@ -1445,6 +1447,10 @@ function clearSelect2() {
             insertSortExist('dzbld', item);
         }
 
+        if (type == 'hwz') {
+            insertSortExist('hwz', item);
+        }
+
     });
     ids29 = [];
     ids30 = [];
@@ -1453,6 +1459,7 @@ function clearSelect2() {
     idsgh = [];
     idsTwoLevelDept = [];
     idsdzbld = [];
+    idsHwz=[];
 }
 
 
