@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GroupAdmin>
+    <menus>
+        <menu code="" sort="1" name="system.menuname.GroupOrganizationManagement" desc="组织模型管理" icon="icon-organization-model" target="mainfrm" plugin="" url="/organization/account.do?method=manageIndex">
+            <submenus>
+                <menu code="" sort="1" name="system.menuname.OrganizationManagement" desc="组织机构管理" icon="icon-CA-verify" target="mainfrm" plugin="" url="">
+                    <submenus>
+                        <menu code="" sort="1" name="system.menuname.Organization.tree" desc="组织架构图" icon="icon-company" target="mainfrm" plugin="" url="/organization/account.do?method=showTree&amp;from=orgModelManager" />
+                        <menu code="" sort="2" name="menu.group.orgaAccount.setting" desc="单位管理" icon="icon-zuzhijigouguanli" target="mainfrm" plugin="" url="/organization/account.do?method=listAccounts" />
+                        <menu code="" sort="3" name="system.menuname.Dept.Redistribution" desc="部门调整" icon="icon-bumen" target="mainfrm" plugin="" url="/organization/moveDeptController.do?method=showMoveDeptframe" />
+                    </submenus>
+                </menu>
+                <menu code="" sort="2" name="menu.group.orgpost.setting" desc="岗位角色管理" icon="icon-CA-verify" target="mainfrm" plugin="" url="">
+                    <submenus>
+                        <menu code="" sort="1" name="system.menuname.BasicPost" desc="基准岗管理" icon="icon-gangwei" target="mainfrm" plugin="" url="/organization/postController.do?method=showPostframe" />
+                        <menu code="" sort="2" name="system.menuname.GroupLevel" desc="集团职务级别" icon="icon-duty" target="mainfrm" plugin="" url="/organization/levelController.do?method=showLevelframe" />
+                        <menu code="" sort="3" name="system.menuname.RoleSetting" desc="角色权限设置" icon="icon-jiaosequanxianshezhi" target="mainfrm" plugin="" url="/organization/role.do?method=showRoleList" />
+                    </submenus>
+                </menu>
+                <menu code="" sort="3" name="menu.group.memberInfo.setting" desc="人员信息管理" icon="icon-CA-verify" target="mainfrm" plugin="" url="">
+                    <submenus>
+                        <menu code="" sort="1" name="system.menuname.PersonnelRedistribution" desc="未分配人员" icon="icon-waiburenyuanguanli" target="mainfrm" plugin="" url="/organization/distributeController.do?method=showDistributeframe" />
+                        <menu code="" sort="2" name="system.menuname.Part-timeManagement" desc="兼职管理" icon="icon-jianzhi" target="mainfrm" plugin="" url="/organization/conPost.do?method=index" />
+                        <menu code="" sort="3" name="system.menuname.member.info.setting" desc="人员信息字段设置" icon="icon-tongxunlushezhi" target="mainfrm" plugin="" url="/metadata.do?method=metadataConfig&amp;moudleType=14" />
+                    </submenus>
+                </menu>
+                <menu code="" sort="4" name="menu.manager.business.org.setting" desc="多维组织管理" icon="icon-zuzhijigouguanli" target="mainfrm" plugin="businessorganization" url="/businessorganization/account.do?method=index" />
+                <menu code="" sort="5" name="system.menuname.SystemTeams" desc="系统组管理" icon="icon-group-management" target="mainfrm" plugin="" url="/organization/teamController.do?method=showTeamframe" />
+                <menu code="" sort="6" name="system.menuname.Guest.special.accountManagement" desc="特殊账号管理" icon="icon-teshuzhanghaoguanli" target="mainfrm" plugin="" url="/organization/guestController.do?method=showGuestframe" />
+                <menu code="" sort="7" name="已办已发查询设置" desc="已办已发查询设置" icon="icon-company" target="mainfrm" plugin="" url="www.baidu.com" />
+            </submenus>
+        </menu>
+
+        <menu code="" sort="2" name="system.menuname.GroupApplicationConfig" desc="基础功能设置" icon="icon-jichugongnengshezhi" target="mainfrm" plugin="" url="">
+            <submenus>
+                <menu code="" sort="1" name="system.menuname.FormatConfig" desc="常用格式设置" icon="icon-format" target="mainfrm" plugin="bulletin,news" url="/contentTemplate.do?method=homeEntry" />
+                <menu code="" sort="2" name="system.menuname.agentManager" desc="代理人设置" icon="icon-agent-set" target="mainfrm" plugin="" url="/agentManager.do?method=index" />
+                <menu code="" sort="3" name="system.menuname.WorkdaySetting" desc="工作时间设置" icon="icon-gongzuoshijian" target="mainfrm" plugin="" url="/workTimeSetController.do?method=toFrameHTML" />
+                <menu code="" sort="4" name="system.menuname.Metadata" desc="枚举管理" icon="icon-meijuguanli" target="mainfrm" plugin="" url="/enum.do?method=systemMetadataIndex" />
+                <menu code="sms_management" sort="5" name="system.menuname.ShortMessageConfig" desc="短信应用管理" icon="icon-duanxindengluyanzhengpeizhi" target="mainfrm" plugin="" url="/mobileManager.do?method=popedomManage" />
+                <menu code="" sort="6" name="system.menuname.formula" desc="公式配置" icon="icon-gongshipeizhi" target="mainfrm" plugin="" url="/formula/formula.do?method=index" />
+                <menu code="" sort="12" name="system.menuname.leaderwindow" desc="领导之窗" icon="icon-leaderwidow" target="mainfrm" plugin="leaderwindow" url="/portal/leaderWindowController.do?method=listMain" />
+                <menu code="" sort="13" name="system.menuname.trustdo" desc="手机盾授权" icon="icon-leaderwidow" target="mainfrm" plugin="trustdo" url="/trustdo/A8/XRD.do?method=index" />
+                <menu code="" sort="14" name="system.menuname.trustdoDx.signAnalysis" desc="信任度签署统计" icon="icon-leaderwidow" target="mainfrm" plugin="trustdoDx" url="/officalSealController.do?method=statAnalysis&amp;viewPage=signAnalysis" />
+            </submenus>
+        </menu>
+
+        <menu code="" sort="3" name="portal.system.menu.platform" desc="V-Portal配置平台" icon="icon-V-Portalguanlipingtai" target="mainfrm" plugin="" url="/portal/portalDesigner.do?method=portalMainPage">
+            <submenus>
+                <menu code="" sort="1" name="portal.system.menu.loginpage" desc="登录管理" icon="icon-dengluyeguanli" target="mainfrm" plugin="" url="">
+                    <submenus>
+                        <menu code="portal_login" sort="1" name="portal.system.menu.loginpagesettings" desc="登录页设置" icon="" target="newWindow" plugin="" url="/portal/loginTemplateController.do?method=loginTemplateMain" />
+                        <menu code="portal_loginbeforeportalsettings" sort="2" name="portal.system.menu.loginbeforeportalsettings" desc="登录前门户设置" icon="" target="mainfrm" plugin="vPortalAdvanced" url="/portal/portalDesigner.do?method=preLoginPortal" />
+                    </submenus>
+                </menu>
+                <menu code="portal_portalset_pc" sort="2" name="portal.system.menu.portalset.pc" desc="PC门户管理" icon="icon-menhushezhi" target="mainfrm" plugin="" url="/portal/portalDesigner.do?method=vPortalSet" />
+                <menu code="portal_spaceset_pc" sort="3" name="portal.system.menu.spaceset.pc" desc="PC空间管理" icon="icon-space-set" target="mainfrm" plugin="" url="/portal/spaceController.do?method=vPortalSpaceMain&amp;spaceCategory=pc" />
+                <menu code="portal_portalset_mobile" sort="4" name="portal.system.menu.portalset.mobile" desc="移动门户管理" icon="icon-menhushezhi" target="mainfrm" plugin="m3,weixin" url="/portal/portalDesigner.do?method=mVPortalSet" />
+                <menu code="portal_spaceset_mobile" sort="5" name="portal.mobilespacesetting.manage" desc="移动空间管理" icon="icon-space-set" target="mainfrm" plugin="m3,weixin" url="/portal/spaceController.do?method=vPortalSpaceMain&amp;spaceCategory=mobile&amp;portalId=&amp;portalType=1&amp;from=" />
+                <menu code="portal_bigscreen" sort="6" name="portal.system.menu.bigscreen" desc="大屏管理" icon="icon-dapingshezhi" target="mainfrm" plugin="vPortalBigScreen" url="/portal/portalDesigner.do?method=bigScreen" />
+                <menu code="" sort="7" name="portal.system.menu.basiclib" desc="样式库" icon="icon-yangshiku" target="mainfrm" plugin="" url="">
+                    <submenus>
+                        <menu code="portal_portaltemplete" sort="1" name="portal.system.menu.basiclib.portaltemplete" desc="整体样式库" icon="" target="mainfrm" plugin="" url="/portal/portalDesigner.do?method=themeLibrary" />
+                        <menu code="portal_decorationlib" sort="2" name="portal.system.menu.basiclib.decorationlib" desc="栏目布局库" icon="" target="mainfrm" plugin="" url="/portal/portalDesigner.do?method=sectionLayoutLibrary" />
+                        <menu code="portal_sectionlib" sort="3" name="portal.system.menu.basiclib.sectionlib" desc="栏目外框库" icon="" target="mainfrm" plugin="" url="/portal/portalDesigner.do?method=sectionFrameLibrary" />
+                        <menu code="portal_sectionstylelib" sort="4" name="portal.system.menu.basiclib.sectionstylelib" desc="栏目样式库" icon="" target="newWindow" plugin="" url="/portal/portalDesigner.do?method=sectionHelpIndex&amp;type=pc" />
+                    </submenus>
+                </menu>
+                <menu code="" sort="8" name="portal.system.menu.resourcelib" desc="资源库" icon="icon-resource" target="mainfrm" plugin="" url="">
+                    <submenus>
+                        <menu code="portal_photogallery" sort="1" name="portal.system.menu.photogallery" desc="图片库" icon="" target="newWindow" plugin="" url="/portal/portalDesigner.do?method=pictureLibrary" />
+                        <menu code="portal_iconlibrary" sort="2" name="portal.system.menu.iconlibrary" desc="图标库" icon="" target="newWindow" plugin="" url="/portal/portalDesigner.do?method=iconLibrary" />
+                    </submenus>
+                </menu>
+                <menu code="portal_dev" sort="8" name="portal.system.menu.dev" desc="门户开发手册" icon="icon-development-manual" target="newWindow" plugin="" url="http://open.seeyon.com/book/ctp/summary/portal-manual.html" />
+            </submenus>
+        </menu>
+
+        <menu code="" sort="4" name="system.menuname.WorkingManagement" desc="协同BPM平台" icon="icon-gongzuoliuguanlipingtai" target="mainfrm" plugin="" url="/processAssetsController.do?method=workflowManagementPlatform">
+            <submenus>
+                <menu code="" sort="1" name="processAssetsCenter.page.title.center" desc="流程知识中心" icon="icon-liuchengzhishizhongxin" target="mainfrm" plugin="" url="/processAssetsController.do?method=processAssetsFrame" />
+                <menu code="" sort="2" name="system.menuname.WorkflowManagement" desc="流程督办监控" icon="icon-liuchengguanli" target="mainfrm" plugin="" url="/supervise/supervise.do?method=superviseFrame" />
+                <menu code="" sort="3" name="system.menuname.Workflow" desc="流程统计" icon="icon-liuchengtongji" target="mainfrm" plugin="" url="/workflowProcess.do?method=queryProcessAnalysis" />
+                <menu code="" sort="4" name="system.menuname.wfanalysis" desc="流程绩效" icon="icon-liuchengjixiaofenxi" target="newWindow" plugin="wfanalysis" url="/wfanalysis.do?method=index" />
+                <menu code="" sort="5" name="system.menuname.paramSet" desc="参数设置" icon="icon-yangshiku" target="mainfrm" plugin="" url="/collaboration/collaboration.do?method=collaborationSet" />
+                <menu code="" sort="6" name="cip.plugin.menu.flowEvent" desc="业务流程集成" icon="icon-gongzuoliuguanlipingtai" target="mainfrm" plugin="cip" url="/cip/appIntegrationController.do?method=preview&amp;menu=flowEvent" />
+            </submenus>
+        </menu>
+
+        <menu code="" sort="5" name="menu.doc" desc="知识管理" icon="icon-zhishiguanli" target="mainfrm" plugin="" url="">
+            <submenus>
+                <menu code="" sort="1" name="system.menuname.DocumentCenterConfig" desc="文档中心设置" icon="icon-wendangzhongxinshezhi" target="mainfrm" plugin="doc" url="/docManager.do?method=docLibIndex" />
+                <menu code="" sort="2" name="system.menuname.KMCreditConfig" desc="知识积分设置" icon="icon-knowledge-integral" target="mainfrm" plugin="doc" url="/doc/knowledgeController.do?method=knowledgeIntegrationIndex" />
+                <menu code="" sort="3" name="system.menuname.RSSChannel" desc="RSS频道管理" icon="icon-RSS" target="mainfrm" plugin="rss" url="/rss/rssController.do?method=index" />
+            </submenus>
+        </menu>
+
+        <menu code="" sort="6" name="system.menuname.CultureInfoManagement" desc="文化建设管理" icon="icon-wenhuajiansheguanli" target="mainfrm" plugin="" url="">
+            <submenus>
+                <menu code="" sort="1" name="menu.group.news.set" desc="集团新闻设置" icon="icon-xinwenshezhi" target="mainfrm" plugin="news" url="/newsType.do?method=listMain&amp;flag=group" />
+                <menu code="" sort="2" name="menu.group.bulletin.set" desc="集团公告设置" icon="icon-gonggaoshezhi" target="mainfrm" plugin="bulletin" url="/bulType.do?method=listMain&amp;flag=group" />
+                <menu code="" sort="3" name="menu.group.bbs.set" desc="集团讨论设置" icon="icon-taolunshezhi" target="mainfrm" plugin="bbs" url="/bbs.do?method=listBoard&amp;flag=group" />
+                <menu code="" sort="4" name="menu.group.inquiry.set" desc="集团调查设置" icon="icon-diaochashezhi" target="mainfrm" plugin="inquiry" url="/inquiry.do?method=inquiryFrame&amp;flag=group" />
+            </submenus>
+        </menu>
+
+        <menu code="" sort="7" name="system.menuname.OfficialDocument" desc="公文管理" icon="icon-gongwenguanli" target="mainfrm" plugin="edoc" url="">
+            <submenus>
+                <menu code="" sort="1" name="menu.govdoc.process.supervise" desc="公文流程监控" icon="icon-liuchengguanli" target="mainfrm" plugin="edoc" url="/supervise/supervise.do?method=superviseFrame&amp;openFrom=govdoc" />
+                <menu code="" sort="2" name="menu.govdoc.process.Statistics" desc="公文流程统计" icon="icon-liuchengtongji" target="mainfrm" plugin="edoc" url="/workflowProcess.do?method=queryProcessAnalysis&amp;openFrom=govdoc" />
+            </submenus>
+        </menu>
+
+        <menu code="cip_platform" sort="8" name="cip.integrated.platform" desc="CIP集成平台" icon="icon-CIP" target="mainfrm" plugin="" url="/cip/appIntegrationController.do?method=preview&amp;menu=appFirst">
+            <submenus>
+                <menu code="" sort="1" name="cip.plugin.menu.sysregister" desc="系统注册" icon="icon-xitongzhuce" target="mainfrm" plugin="cip" url="/cip/appIntegrationController.do?method=preview&amp;menu=appRegister" />
+                <menu code="" sort="2" name="cip.plugin.menu.interface" desc="集成接口" icon="icon-jichengjiekou" target="mainfrm" plugin="cip" url="/cip/appIntegrationController.do?method=preview&amp;menu=integrationFunction">
+                    <submenus>
+                        <menu code="" sort="1" name="cip.plugin.menu.extinterface" desc="外部接口库" icon="" target="mainfrm" plugin="" url="/cip/interface/interfaceController.do" />
+                        <menu code="" sort="2" name="cip.plugin.menu.interface.v5interface" desc="V5接口" icon="" target="mainfrm" plugin="" url="/cip/thirdpartyinterface/interface.do?method=index&amp;category=A8" />
+                        <menu code="" sort="3" name="cip.plugin.menu.interface.v5event" desc="协同事件" icon="" target="mainfrm" plugin="" url="/cip/event/collaborationEventController.do?method=v5Event" />
+                        <menu code="" sort="4" name="cip.cap4.title" desc="业务接口" icon="" target="mainfrm" plugin="" url="/cap4/magicManagementController.do" />
+                    </submenus>
+                </menu>
+                <menu code="" sort="3" name="cip.plugin.menu.masterdata" desc="主数据同步" icon="icon-master-record" target="mainfrm" plugin="cip" url="/cip/appIntegrationController.do?method=preview&amp;menu=masterdata">
+                    <submenus>
+                        <menu code="" sort="1" name="cip.plugin.menu.orgsyn" desc="组织同步" icon="" target="mainfrm" plugin="" url="/cip/org/synOrgController.do" />
+                        <menu code="" sort="2" name="system.menuname.imosync" desc="IMO同步" icon="" target="mainfrm" plugin="imo" url="/imo.do?method=framesetThree" />
+                        <menu code="" sort="3" name="system.menuname.GK-ESynchronization" desc="GK-E同步" icon="" target="mainfrm" plugin="gke" url="/gke.do?method=framesetThree" />
+                    </submenus>
+                </menu>
+                <menu code="" sort="4" name="cip.plugin.menu.exchange" desc="数据交换" icon="icon-shujujiaohuan" target="mainfrm" plugin="cip" url="/cip/appIntegrationController.do?method=preview&amp;menu=exchange">
+                    <submenus>
+                        <menu code="" sort="1" name="cip.plugin.menu.deeconsole" desc="DEE控制台" icon="" target="mainfrm" plugin="" url="/cip/appIntegrationController.do?method=integrationPlugin&amp;type=dee" />
+                    </submenus>
+                </menu>
+                <menu code="" sort="5" name="cip.plugin.menu.appintegration" desc="应用接入" icon="icon-yingyongjieru" target="mainfrm" plugin="cip" url="/cip/appIntegrationController.do?method=preview&amp;menu=integration" />
+                <menu code="" sort="6" name="cip.plugin.menu.flowEvent" desc="业务流程集成" icon="icon-gongzuoliuguanlipingtai" target="mainfrm" plugin="cip" url="/cip/appIntegrationController.do?method=preview&amp;menu=flowEvent" />
+                <menu code="" sort="7" name="cip.unite.auth" desc="统一认证" icon="icon-leaderwidow" target="mainfrm" plugin="cip" url="">
+                    <submenus>
+                        <menu code="" sort="1" name="CAS" desc="CAS" icon="" target="mainfrm" plugin="cip" url="/cip/casBasicSetController.do?method=casBasicSetIndex" />
+                    </submenus>
+                </menu>
+                <menu code="" sort="8" name="cip.plugin.menu.erpplugin" desc="ERP集成插件" icon="icon-ERP" target="mainfrm" plugin="cip" url="/cip/appIntegrationController.do?method=preview&amp;menu=erpplugin">
+                    <submenus>
+                        <menu code="" sort="1" name="cip.plugin.voucher" desc="财务凭证" icon="" target="mainfrm" plugin="" url="/cip/appIntegrationController.do?method=integrationPlugin&amp;type=voucher" />
+                        <menu code="" sort="2" name="cip.plugin.nc" desc="NC插件" icon="" target="mainfrm" plugin="" url="/cip/appIntegrationController.do?method=integrationPlugin&amp;type=nc" />
+                        <menu code="" sort="3" name="cip.plugin.sap" desc="SAP插件" icon="" target="mainfrm" plugin="" url="/cip/appIntegrationController.do?method=integrationPlugin&amp;type=orgsync" />
+                        <menu code="" sort="4" name="cip.plugin.eas" desc="EAS插件" icon="" target="mainfrm" plugin="" url="/cip/appIntegrationController.do?method=integrationPlugin&amp;type=eas" />
+                    </submenus>
+                </menu>
+                <menu code="" sort="9" name="cip.plugin.menu.collaboration.add" desc="协同+集成插件" icon="icon-cooperate-add" target="mainfrm" plugin="cip" url="/cip/appIntegrationController.do?method=preview&amp;menu=integrationPlug">
+                    <submenus>
+                        <menu code="" sort="1" name="cip.plugin.xc" desc="携程商旅" icon="" target="mainfrm" plugin="" url="/cip/appIntegrationController.do?method=integrationPlugin&amp;type=xc" />
+                        <menu code="" sort="2" name="cip.plugin.multicall" desc="电话会议插件" icon="" target="mainfrm" plugin="" url="/cip/appIntegrationController.do?method=integrationPlugin&amp;type=multicall" />
+                        <menu code="" sort="3" name="cip.platform.integration.qunje" desc="智能印章集成" icon="icon-CombinedShape" target="mainfrm" plugin="qunje" url="/qunje.do?method=logList" />
+                    </submenus>
+                </menu>
+                <menu code="" sort="10" name="cip.plugin.menu.maintenance" desc="集成维护" icon="icon-xitongweihu" target="mainfrm" plugin="cip" url="/cip/appIntegrationController.do?method=preview&amp;menu=integrationMaintenance" />
+            </submenus>
+        </menu>
+
+        <menu code="" sort="9" name="m3.mobile.manager.menu.title" desc="M3移动管理平台" icon="icon-M3" target="mainfrm" plugin="m3" url="/m3/mobileManager.do?method=index">
+            <submenus>
+                <menu code="" sort="1" name="m3.mobile.manager.menu.authManager" desc="授权管理" icon="icon-shouquanguanli" target="mainfrm" plugin="m3" url="">
+                    <submenus>
+                        <menu code="" sort="1" name="m3.mobile.manager.menu.mobileOfficeGuide" desc="移动Office授权" icon="" target="mainfrm" plugin="m3&amp;moffice" url="/m3/mobileOfficeGuide.do?method=index&amp;_resourceCode=m3_mobileOfficeGuide" />
+                    </submenus>
+                </menu>
+                <menu code="" sort="2" name="m3.mobile.manager.menu.appManager" desc="应用管理" icon="icon-yingyongguanli" target="mainfrm" plugin="m3" url="">
+                    <submenus>
+                        <menu code="" sort="1" name="m3.mobile.manager.menu.app.registe" desc="移动应用注册" icon="" target="mainfrm" plugin="m3" url="/cip/registerController.do?method=gotoThirdpartyRegisterIndex" />
+                    </submenus>
+                </menu>
+                <menu code="" sort="3" name="m3.mobile.manager.menu.individuation" desc="个性化配置" icon="icon-gexinghuapeizhi" target="mainfrm" plugin="m3" url="">
+                    <submenus>
+                        <menu code="" sort="1" name="m3.mobile.manager.menu.homeSkinConfig" desc="登录页自定义" icon="" target="mainfrm" plugin="m3" url="/m3/homeSkinController.do?method=index&amp;_resourceCode=m3_homeSkinConfig" />
+                        <menu code="" sort="2" name="m3.mobile.manager.menu.startpage" desc="启动页自定义" icon="" target="mainfrm" plugin="m3" url="/m3/appStartMgrController.do?method=customAccount&amp;_resourceCode=m3_startpage" />
+                        <menu code="" sort="3" name="m3.mobile.manager.menu.banner" desc="工作台banner自定义" icon="" target="mainfrm" plugin="m3" url="/m3/bannerController.do?method=index" />
+                    </submenus>
+                </menu>
+            </submenus>
+        </menu>
+
+        <menu code="" sort="10" name="system.menuname.wechatSet" desc="微协同管理平台" icon="icon-weixietongguanlipingtai" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=platformOverview">
+            <submenus>
+                <menu code="" sort="1" name="weixin.system.menu.wechatBasicSettings" desc="微协同基础设置" icon="icon-jichushezhi" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=wechatBasicSettings" />
+                <menu code="" sort="2" name="weixin.system.menu.integrated.appWechatMiniProgram" desc="微信小程序集成" icon="icon-mini-program" target="mainfrm" plugin="weixinMiniProgram" url="/wechat/miniprogram.do?method=miniprogramList" />
+                <menu code="" sort="3" name="weixin.system.menu.integrated.appWechatService" desc="微信服务号集成" icon="icon-weixin" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=appWechatService" />
+                <menu code="" sort="4" name="weixin.system.menu.integrated.appWechatEnterprise" desc="企业微信集成" icon="icon-companyweixin" target="mainfrm" plugin="weixin" url="">
+                    <submenus>
+                        <menu code="" sort="1" name="weixin.system.menu.integrated.config" desc="集成配置" icon="" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=appWechatEnterprise" />
+                        <menu code="" sort="2" name="weixin.system.menu.orgSyn" desc="组织机构同步" icon="" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=orgSynWechatEnterprise" />
+                        <menu code="" sort="3" name="weixin.system.menu.orgChange" desc="监听组织变化" icon="" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=orgChange" />
+                        <menu code="" sort="4" name="weixin.system.menu.portalWorkbench" desc="工作台设置" icon="" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=portalWorkbenchWechatEnterprise" />
+                        <menu code="" sort="5" name="weixin.system.menu.portalNavigationSettings" desc="微信底导航设置" icon="" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=portalNavigationSettings" />
+                        <menu code="" sort="6" name="weixin.system.menu.syncLogWechat" desc="同步日志查询" icon="" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=syncLogWechat" />
+                    </submenus>
+                </menu>
+                <menu code="" sort="5" name="weixin.system.menu.integrated.appDingDing" desc="钉钉集成" icon="icon-dingding" target="mainfrm" plugin="weixin" url="">
+                    <submenus>
+                        <menu code="" sort="1" name="weixin.system.menu.integrated.config" desc="集成配置" icon="" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=appDingDing" />
+                        <menu code="" sort="2" name="weixin.system.menu.orgSyn" desc="组织机构同步" icon="" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=orgSynDingDing" />
+                        <menu code="" sort="3" name="weixin.system.menu.orgChange" desc="监听组织变化" icon="" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=orgChange" />
+                        <menu code="" sort="4" name="weixin.system.menu.portalWorkbench" desc="工作台设置" icon="" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=portalWorkbenchDingDing" />
+                        <menu code="" sort="5" name="weixin.system.menu.syncLogDing" desc="同步日志查询" icon="" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=syncLogDing" />
+                    </submenus>
+                </menu>
+                <menu code="" sort="6" name="weixin.system.menu.applicationManagement" desc="应用管理" icon="icon-yingyongguanli" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=applicationManagement" />
+                <menu code="" sort="7" name="weixin.system.menu.userManagement" desc="账号管理" icon="icon-zhanghaoguanli" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=userManagement" />
+                <menu code="" sort="8" name="weixin.system.menu.messageSet" desc="消息设置" icon="icon-xiaoxiguanli" target="mainfrm" plugin="weixin" url="">
+                    <submenus>
+                        <menu code="" sort="1" name="weixin.system.menu.messageSetApp" desc="APP消息" icon="" target="mainfrm" plugin="weixin" url="/wechat/wechatSet.do?method=messageSetApp" />
+                    </submenus>
+                </menu>
+                <menu code="" sort="9" name="weixin.system.menu.monitoring" desc="行为监控" icon="icon-hangweijiankong" target="mainfrm" plugin="weixin" url="/m3/monitoringController.do?method=index&amp;fromClientType=wechat" />
+            </submenus>
+        </menu>
+
+        <menu code="" sort="11" name="system.menuname.openplatform" desc="致远开放平台" icon="icon-CTP-studio" target="mainfrm" plugin="" url="">
+            <submenus>
+                <menu code="" sort="1" name="system.menuname.openplatform.cmp" desc="CMP移动平台" icon="icon-CMPyidongpingtai" target="newWindow" plugin="" url="http://open.seeyon.com/seeyon/appOpenPlatform.html" />
+                <menu code="" sort="2" name="system.menuname.openplatform.ctp" desc="CTP技术平台" icon="icon-CTPjishupingtai" target="newWindow" plugin="" url="http://open.seeyon.com/seeyon/technologyPlatform.html" />
+                <menu code="" sort="3" name="system.menuname.openplatform.cip" desc="CIP集成平台" icon="icon-CIPjichengpingtai" target="newWindow" plugin="" url="http://open.seeyon.com/seeyon/developmentPlatform.html" />
+            </submenus>
+        </menu>
+
+        <menu code="" sort="12" name="system.menuname.SystemMaintenance" desc="系统维护" icon="icon-xitongweihu" target="mainfrm" plugin="" url="">
+            <submenus>
+                <menu code="" sort="1" name="system.menuname.LockedUserManagement" desc="锁定用户管理" icon="icon-suodingyonghuguanli" target="mainfrm" plugin="" url="/lockedUserManager.do?method=initHome" />
+                <menu code="" sort="2" name="system.menuname.OrgLicenseManagement" desc="单位许可数分配" icon="icon-danweixukeshufenpei" target="mainfrm" plugin="" url="/permission/licpermission.do?method=showAccountFrame" />
+            </submenus>
+        </menu>
+
+        <menu code="" sort="13" name="system.menuname.SystemLog" desc="系统日志" icon="icon-xitongrizhi" target="mainfrm" plugin="" url="">
+            <submenus>
+                <menu code="system_logonLog" sort="1" name="system.menuname.LogonLog" desc="登录日志" icon="icon-denglurizhi" target="mainfrm" plugin="" url="/logonLog.do?method=summaryStat" />
+                <menu code="system_appLog" sort="2" name="system.menuname.AppLog" desc="应用日志" icon="icon-yingyongrizhi" target="mainfrm" plugin="" url="/appLog.do?method=mainFrame" />
+            </submenus>
+        </menu>
+    </menus>
+</GroupAdmin>
