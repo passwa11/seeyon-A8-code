@@ -1,13 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <script type="text/javascript" charset="UTF-8" src="<c:url value="/common/jquery/jquery.js" "></script>
-    <script type="text/javascript" charset="UTF-8" src="<c:url value="/common/zTree/js/jquery.ztree.js" "></script>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/common/zTree/css/zTreeStyle/zTreeStyle.css" ">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/common/layui/css/layui.css" ">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/common/layui/css/selection_infomation.css" ">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/common/layui/css/selection_infomation-lt.css" ">
-    <script type="text/javascript" charset="UTF-8" src="<c:url value="/common/layui/layui.all.js" "></script>
+    <script type="text/javascript" src="<c:url value="/common/js/V3X.js" />"></script>
+    <script type="text/javascript" src="<c:url value="/common/js/prototype.js" />"></script>
+    <script type="text/javascript" src="<c:url value="/common/js/menu/xmenu.js" />"></script>
+    <script type="text/javascript" charset="UTF-8" src="<c:url value="/common/jquery/jquery.js" />"></script>
+    <script type="text/javascript" charset="UTF-8" src="<c:url value="/common/zTree/js/jquery.ztree.js" />"></script>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/common/zTree/css/zTreeStyle/zTreeStyle.css" />">
     <style type="text/css">
         #nav {
             float: left;
@@ -98,4 +98,11 @@
 </div>
 
 </body>
+<script type="text/javascript">
+    $(function () {
+        $.post("/seeyon/ext/accessSetting.do?method=getUnitTree", null, function (ref) {
+            console.log(ref)
+        });
+    });
+</script>
 </html>
