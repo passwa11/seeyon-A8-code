@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e9015fcc-43fa-4197-bad9-70d287e92005" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../开发区_功能点/14.消息过滤/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../开发区_功能点/14.消息过滤/.idea/14.消息过滤.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../开发区_功能点/14.消息过滤/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../开发区_功能点/14.消息过滤/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../开发区_功能点/14.消息过滤/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../开发区_功能点/14.消息过滤/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../开发区_功能点/14.消息过滤/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../开发区_功能点/14.消息过滤/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/ColMessageManagerImpl$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../开发区_功能点/14.消息过滤/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/ColMessageManagerImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../开发区_功能点/14.消息过滤/src/com/seeyon/apps/collaboration/manager/ColMessageManagerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../开发区_功能点/16.添加修改人员或密码同步到认证服务库中/src/com.seeyon/ctp/organization/util/PropUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../开发区_功能点/kfqMessage/kfqMessage.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../开发区_功能点/kfqMessage/src/com/seeyon/apps/ext/kfqMessage/listener/CollabrationEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/spring-oauth-client" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/spring-oauth-server" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/.idea/artifacts/zhou_oauth_client_test_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/.idea/libraries/fastjson_1_2_58.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/1.txyt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/classes/META-INF/zhou-oauth-client-test.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/classes/cn/com/zhou/demo/OauthDemoServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/classes/cn/com/zhou/demo3/client2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/classes/cn/com/zhou/git/LoginServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/classes/cn/com/zhou/git/RedirectServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/classes/cn/com/zhou/localServer/OauthLocalServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/classes/cn/com/zhou/localServer/RedirectLocalServerServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/lib/commons-codec-1.14.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/lib/commons-io-2.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/lib/commons-logging-1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/lib/fastjson-1.2.58.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/lib/httpclient-4.5.12.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/lib/httpcore-4.4.13.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/lib/mockito-core-3.3.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/production/zhou-oauth-client-test/cn/com/zhou/demo/OauthDemoServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/production/zhou-oauth-client-test/cn/com/zhou/demo3/client2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/production/zhou-oauth-client-test/cn/com/zhou/git/LoginServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/production/zhou-oauth-client-test/cn/com/zhou/git/RedirectServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/production/zhou-oauth-client-test/cn/com/zhou/localServer/OauthLocalServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/out/production/zhou-oauth-client-test/cn/com/zhou/localServer/RedirectLocalServerServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/src/cn/com/zhou/demo/OauthDemoServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/src/cn/com/zhou/demo3/client2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/src/cn/com/zhou/git/LoginServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/src/cn/com/zhou/git/RedirectServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/src/cn/com/zhou/localServer/OauthLocalServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/src/cn/com/zhou/localServer/RedirectLocalServerServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/web/WEB-INF/lib/commons-codec-1.14.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/web/WEB-INF/lib/commons-io-2.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/web/WEB-INF/lib/commons-logging-1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/web/WEB-INF/lib/fastjson-1.2.58.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/web/WEB-INF/lib/httpclient-4.5.12.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/web/WEB-INF/lib/httpcore-4.4.13.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/web/WEB-INF/lib/mockito-core-3.3.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/web/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/web/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证/zhou-oauth-client-test/zhou-oauth-client-test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/spring-oauth-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.auth登陆认证2/spring-oauth-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/spring-oauth-server/src/main/java/com/monkeyk/sos/util/OaPasswordEncode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.auth登陆认证2/spring-oauth-server/src/main/java/com/monkeyk/sos/util/OaPasswordEncode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/spring-oauth-server/说明文档/认证接口调用说明-发给第三方.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.auth登陆认证2/spring-oauth-server/说明文档/认证接口调用说明-发给第三方.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/spring-oauth-server/说明文档/部署说明.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.auth登陆认证2/spring-oauth-server/说明文档/部署说明.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/classes/cn/com/zhou/demo/OauthDemoServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/classes/cn/com/zhou/demo3/client2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/classes/cn/com/zhou/localServer/OauthLocalServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/classes/cn/com/zhou/localServer/OauthLocalServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/classes/cn/com/zhou/localServer/RedirectLocalServerServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/out/artifacts/zhou_oauth_client_test_war_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/out/production/zhou-oauth-client-test/cn/com/zhou/demo/OauthDemoServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/out/production/zhou-oauth-client-test/cn/com/zhou/demo3/client2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/out/production/zhou-oauth-client-test/cn/com/zhou/localServer/OauthLocalServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/out/production/zhou-oauth-client-test/cn/com/zhou/localServer/OauthLocalServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/out/production/zhou-oauth-client-test/cn/com/zhou/localServer/RedirectLocalServerServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/src/cn/com/zhou/demo/OauthDemoServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/src/cn/com/zhou/demo3/client2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/src/cn/com/zhou/localServer/OauthLocalServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/src/cn/com/zhou/localServer/OauthLocalServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/src/cn/com/zhou/localServer/RedirectLocalServerServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.auth登陆认证2/zhou-oauth-client-test/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../0.rest接口调用方法/Rest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成-最新/.idea/Portal190724.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成-最新/.idea/Portal190724.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成-最新/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成-最新/src/com/seeyon/apps/ext/Portal190724/section/SectionPortal.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../1.法务系统代办集成/代办集成-最新/src/com/seeyon/apps/ext/Portal190724/section/SectionPortal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../10.徐医附院_功能点/徐医附院_代办工作添加科室名称/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../10.徐医附院_功能点/徐医附院_代办工作添加科室名称/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../10.徐医附院_功能点/徐医附院_代办工作添加科室名称/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../10.徐医附院_功能点/徐医附院_代办工作添加科室名称/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/seeyon/WEB-INF/cfgHome/metadata/menu-AccountAdmin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/seeyon/WEB-INF/cfgHome/metadata/menu-AccountAdmin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/dao/OrgMemberDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/dao/OrgMemberDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/dao/OrgMemberDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/dao/OrgMemberDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/manager/OrgMemberManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/manager/OrgMemberManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/manager/OrgMemberManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/manager/OrgMemberManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/xzykConf/xzykPlugin.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/xzykConf/xzykPlugin.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/seeyon/WEB-INF/classes/com/seeyon/apps/ext/messageSend/message/HwPushMessagePipeline.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/seeyon/WEB-INF/classes/com/seeyon/apps/ext/messageSend/message/HwPushMessagePipeline.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/seeyon/WEB-INF/classes/com/seeyon/apps/ext/messageSend/util/PropUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/seeyon/WEB-INF/classes/com/seeyon/apps/ext/messageSend/util/PropUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/seeyon/WEB-INF/classes/sms/app.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/seeyon/WEB-INF/classes/sms/app.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/src/com/seeyon/apps/ext/messageSend/message/HwPushMessagePipeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/src/com/seeyon/apps/ext/messageSend/message/HwPushMessagePipeline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/src/com/seeyon/apps/ext/messageSend/util/PropUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/src/com/seeyon/apps/ext/messageSend/util/PropUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/src/sms/app.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/src/sms/app.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/华网消息推送-new-2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../8.教育局-华网功能点/3.M3-h5对接/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../8.教育局-华网功能点/3.M3-h5对接/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../8.教育局-华网功能点/4.单点登录/seeyon/WEB-INF/classes/com/seeyon/ctp/login/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../8.教育局-华网功能点/4.单点登录/seeyon/WEB-INF/classes/com/seeyon/ctp/login/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../8.教育局-华网功能点/4.单点登录/src/com/seeyon/ctp/login/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../8.教育局-华网功能点/4.单点登录/src/com/seeyon/ctp/login/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../8.教育局-华网功能点/4.单点登录/单点登录-20201105.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/.idea/seeyon.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/WEB-INF/cfgHome/spring/spring-workflow-controller.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/WEB-INF/cfgHome/spring/spring-workflow-controller.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/WEB-INF/jsp/common.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/WEB-INF/jsp/common/common_footer.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/WEB-INF/jsp/ctp/workflow/workflowDesigner.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/WEB-INF/jsp/ctp/workflow/workflowDesigner_js_svg.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/WEB-INF/jsp/ctp/workflow/workflowDesigner_js_svg.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/WEB-INF/jsp/ctp/workflow/workflowDesigner_svg.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/WEB-INF/jsp/ctp/workflow/workflowDesigner_svg.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/common/workflow/workflowDesigner-min_svg.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/common/workflow/workflowDesigner-min_svg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/OA代办事项推送到金智系统/src/com/seeyon/apps/ext/kypending/listener/MeetingEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../医科大学_功能点/OA代办事项推送到金智系统/src/com/seeyon/apps/ext/kypending/listener/MeetingEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/12.m3移动端-meeting/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/12.m3移动端-meeting/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/15.开发区单点登录/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/15.开发区单点登录/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/15.开发区单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/oauthLogin/servlet/KfqSsoLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/15.开发区单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/oauthLogin/servlet/KfqSsoLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/15.开发区单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/oauthLogin/util/PropUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/15.开发区单点登录/seeyon/WEB-INF/classes/com/seeyon/apps/ext/oauthLogin/util/PropUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/15.开发区单点登录/seeyon/WEB-INF/classes/config/sso.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/15.开发区单点登录/seeyon/WEB-INF/classes/config/sso.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/15.开发区单点登录/seeyon/WEB-INF/jsp/apps/ext/oauthLogin/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/15.开发区单点登录/src/config/sso.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/15.开发区单点登录/src/config/sso.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/.idea/9.cas认证中心.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/.idea/deployment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/.idea/webServers.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/cfgHome/plugin/ssoLogin/pluginCfg.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/cfgHome/plugin/ssoLogin/pluginProperties.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/cfgHome/plugin/ssoLogin/spring/spring-ssoLogin-manager.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/classes/com/seeyon/ctp/login/client/constant/AuthConst.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/classes/com/seeyon/ctp/login/controller/MainController.java-bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/classes/com/seeyon/ctp/login/controller/SsoLogin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/classes/com/seeyon/ctp/login/server/filter/LoginFilter$CasHttpServletRequestWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/classes/com/seeyon/ctp/login/server/filter/LoginFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/classes/com/seeyon/ctp/login/server/storage/ClientStorage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/classes/com/seeyon/ctp/login/server/storage/SessionStorage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/classes/com/seeyon/ctp/login/sso/XkdxSsoLoginHandshake.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/classes/com/seeyon/ctp/login/util/EncryptString.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/classes/com/seeyon/ctp/login/util/HTTPUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/classes/com/seeyon/ctp/login/util/StringHandle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/seeyon/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/src/com/seeyon/ctp/login/client/constant/AuthConst.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/src/com/seeyon/ctp/login/controller/SsoLogin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/src/com/seeyon/ctp/login/server/filter/LoginFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/src/com/seeyon/ctp/login/server/storage/ClientStorage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/src/com/seeyon/ctp/login/server/storage/SessionStorage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/src/com/seeyon/ctp/login/util/EncryptString.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/src/com/seeyon/ctp/login/util/HTTPUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_功能点/9.cas认证中心/src/com/seeyon/ctp/login/util/StringHandle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_选择人员CAP4/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_选择人员CAP4/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../开发区_选择人员CAP4/人员选择控件.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../矿业大学_组织机构同步/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../矿业大学_组织机构同步/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../矿业大学_组织机构同步/kydx.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../矿业大学_组织机构同步/kydx.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../矿业大学_组织机构同步/seeyon/WEB-INF/classes/config/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../矿业大学_组织机构同步/seeyon/WEB-INF/classes/config/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../矿业大学_组织机构同步/src/config/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../矿业大学_组织机构同步/src/config/config.properties" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1kfnKgcJO25OHzpYxWpLVix0L2O" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="F:/Seeyon/A87.1_sp1_2/ApacheJetspeed/webapps/seeyon/WEB-INF/lib" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.145977" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e9015fcc-43fa-4197-bad9-70d287e92005" name="Default Changelist" comment="" />
+      <created>1606100450478</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606100450478</updated>
+      <workItem from="1606100451693" duration="117000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
