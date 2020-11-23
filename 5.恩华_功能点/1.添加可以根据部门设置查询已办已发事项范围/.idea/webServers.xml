@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5cbc518b-adfd-4f83-882f-afb4c91114af" name="已办已发权限设置" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="F:\Seeyon\A87.1_sp1_2\ApacheJetspeed\webapps\seeyon" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -27,7 +27,7 @@
                 <menu code="" sort="4" name="menu.manager.business.org.setting" desc="多维组织管理" icon="icon-zuzhijigouguanli" target="mainfrm" plugin="businessorganization" url="/businessorganization/account.do?method=index" />
                 <menu code="" sort="5" name="system.menuname.SystemTeams" desc="系统组管理" icon="icon-group-management" target="mainfrm" plugin="" url="/organization/teamController.do?method=showTeamframe" />
                 <menu code="" sort="6" name="system.menuname.Guest.special.accountManagement" desc="特殊账号管理" icon="icon-teshuzhanghaoguanli" target="mainfrm" plugin="" url="/organization/guestController.do?method=showGuestframe" />
-                <menu code="" sort="7" name="已办已发查询设置" desc="已办已发查询设置" icon="icon-company" target="mainfrm" plugin="" url="www.baidu.com" />
+                <menu code="" sort="7" name="已办已发查询设置" desc="已办已发查询设置" icon="icon-company" target="mainfrm" plugin="" url="/ext/accessSetting.do?method=index" />
             </submenus>
         </menu>
 
