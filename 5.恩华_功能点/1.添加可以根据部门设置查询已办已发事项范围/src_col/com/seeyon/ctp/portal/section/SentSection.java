@@ -12,12 +12,15 @@ package com.seeyon.ctp.portal.section;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+import com.seeyon.apps.collaboration.manager.ColManager;
+import com.seeyon.apps.collaboration.po.ColSummary;
+import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManager;
+import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManagerImpl;
+import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
+import com.seeyon.ctp.organization.bo.V3xOrgMember;
+import com.seeyon.ctp.organization.manager.OrgManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -62,7 +65,8 @@ public class SentSection extends BaseSectionImpl {
     private AffairManager            affairManager;
     private EdocApi                  edocApi;
     private ConfigGrantManager       configGrantManager;
-
+    private OrgManager orgManager;
+    private ColManager colManager;
     private CommonAffairSectionUtils commonAffairSectionUtils;
 
     private PendingManager pendingManager;
@@ -77,6 +81,14 @@ public class SentSection extends BaseSectionImpl {
 
     public void setCommonAffairSectionUtils(CommonAffairSectionUtils commonAffairSectionUtils) {
         this.commonAffairSectionUtils = commonAffairSectionUtils;
+    }
+
+    public void setOrgManager(OrgManager orgManager) {
+        this.orgManager = orgManager;
+    }
+
+    public void setColManager(ColManager colManager) {
+        this.colManager = colManager;
     }
 
     public ConfigGrantManager getConfigGrantManager() {
@@ -191,8 +203,50 @@ public class SentSection extends BaseSectionImpl {
         //OA-27551首页事项中去除已发已办栏目名称后面的数字显示
         fi.setNeedTotal(false);
         List<CtpAffair> affairs = new ArrayList<CtpAffair>();
-		try {
+        List<CtpAffair> newAffairs = new ArrayList<>();
+
+        try {
 			affairs = pendingManager.querySectionAffair(condition, fi, preference, ColOpenFrom.listSent.name(), new HashMap<String, String>(), false);
+
+            //【恩华药业】zhou:协同过滤掉设定范围内的数据【开始】
+            AccessSetingManager manager = new AccessSetingManagerImpl();
+            for (CtpAffair affair : affairs) {
+                if (affair.getApp() == 1) {
+                    Long senderId = affair.getSenderId();
+                    V3xOrgMember member = orgManager.getMemberById(senderId);
+                    Long departmentId = member.getOrgDepartmentId();
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("deptmentId", departmentId);
+                    List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(map);
+                    if (list.size() > 0) {
+                        DepartmentViewTimeRange range = list.get(0);
+                        Long startTime = null != range.getStartTime() ? range.getStartTime().getTime() : 0l;
+                        Long endTime = null != range.getEndTime() ? range.getEndTime().getTime() : 0l;
+                        Long objectId = affair.getObjectId();
+                        ColSummary colSummary = colManager.getColSummaryById(objectId);
+                        Date createDate = colSummary.getCreateDate();
+                        if (startTime.longValue() != 0l && endTime.longValue() != 0l) {
+                            if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
+                                newAffairs.add(affair);
+                            }
+                        }else if(startTime.longValue() != 0l && endTime.longValue() == 0l ){
+                            if (createDate.getTime() > startTime.longValue()) {
+                                newAffairs.add(affair);
+                            }
+                        }else if (startTime.longValue() == 0l && endTime.longValue() != 0l ){
+                            if (createDate.getTime() < endTime.longValue()) {
+                                newAffairs.add(affair);
+                            }
+                        }
+                    } else {
+                        newAffairs.add(affair);
+                    }
+                } else {
+                    newAffairs.add(affair);
+                }
+            }
+
+            //【恩华药业】zhou:协同过滤掉设定范围内的数据【结束】
 		} catch (BusinessException e1) {
 			log.error("获取已发事项报错:", e1);
 		}
@@ -205,7 +259,8 @@ public class SentSection extends BaseSectionImpl {
             log.error("", e);
         }
         //单列表
-        c = this.getTemplete(c,affairs, preference);
+        //zhou:修改第二个参数
+        c = this.getTemplete(c,newAffairs, preference);
         // 【更多】
 
         c.addBottomButton(BaseSectionTemplete.BOTTOM_BUTTON_LABEL_MORE,
