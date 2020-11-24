@@ -2,7 +2,9 @@ package com.seeyon.apps.ext.accessSeting.manager;
 
 import com.seeyon.apps.ext.accessSeting.dao.AccessSetingDao;
 import com.seeyon.apps.ext.accessSeting.dao.AccessSetingDaoImpl;
+import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 public class AccessSetingManagerImpl implements AccessSetingManager {
@@ -10,21 +12,35 @@ public class AccessSetingManagerImpl implements AccessSetingManager {
     private AccessSetingDao dao = new AccessSetingDaoImpl();
 
     @Override
-    public List<Map<String, Object>> queryAllUnit() {
-        List<Map<String, Object>> accountList = dao.queryAllAccount();
-        List<Map<String, Object>> deptList = dao.queryAllDepartment();
+    public void saveDepartmentViewTimeRange(DepartmentViewTimeRange range) {
+        dao.saveDepartmentViewTimeRange(range);
+    }
+
+    @Override
+    public void updateDepartmentViewTimeRange(DepartmentViewTimeRange range) {
+        dao.updateDepartmentViewTimeRange(range);
+    }
+
+    @Override
+    public List<DepartmentViewTimeRange> getDepartmentViewTimeRange(Map<String, Object> range) {
+        return dao.getDepartmentViewTimeRange(range);
+    }
+
+    @Override
+    public List<Map<String, Object>> queryAllUnit(Long accountId) {
+        List<Map<String, Object>> deptList = dao.queryAllDepartment(accountId);
         List<Map<String, Object>> parent = new LinkedList<>();
-        for (int i = 0; i < accountList.size(); i++) {
-            String path = (String) accountList.get(i).get("path");
-            if (path.length() == 4) {
-                Map<String, Object> m = dealMapVal(accountList.get(i));
+        for (int i = 0; i < deptList.size(); i++) {
+            BigDecimal id = (BigDecimal) deptList.get(i).get("id");
+            BigDecimal orgaccountId = (BigDecimal) deptList.get(i).get("org_account_id");
+            if (id.longValue() == orgaccountId.longValue()) {
+                Map<String, Object> m = dealMapVal(deptList.get(i));
                 parent.add(m);
             }
         }
-        //为集团添加单位
         for (Map<String, Object> m : parent) {
             String idVal = (String) m.get("path");
-            m.put("children", getChild(idVal, accountList));
+            m.put("children", getChild(idVal, deptList));
         }
         return parent;
     }
@@ -54,10 +70,10 @@ public class AccessSetingManagerImpl implements AccessSetingManager {
 
     public Map<String, Object> dealMapVal(Map<String, Object> map) {
         Map<String, Object> m_ = new HashMap<>();
-        m_.put("id", map.get("id").toString());
-        m_.put("name", map.get("name"));
-        m_.put("path", map.get("path"));
-        m_.put("orgAccountId", map.get("org_account_id").toString());
+        m_.put("id", map.get("id").toString() + "");
+        m_.put("name", map.get("name").toString() + "");
+        m_.put("path", map.get("path").toString() + "");
+        m_.put("orgAccountId", map.get("org_account_id").toString() + "");
         m_.put("children", "");
         return m_;
     }

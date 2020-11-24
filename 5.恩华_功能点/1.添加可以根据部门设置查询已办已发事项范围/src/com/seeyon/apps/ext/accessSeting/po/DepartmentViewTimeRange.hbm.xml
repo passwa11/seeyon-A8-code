@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.seeyon.apps.ext.accessSeting.po">
+    <class name="DepartmentViewTimeRange" table="DEPARTMENT_VIEW_TIME_RANGE" lazy="false">
+        <id name="id" type="long" column="ID">
+            <generator class="assigned"/>
+        </id>
+        <property name="deptmentId" type="long" column="DEPARTMENT_ID"/>
+        <property name="departmentName" type="string" column="DEPARTMENT_NAME"/>
+        <property name="startTime" type="date" column="START_TIME"/>
+        <property name="endTime" type="date" column="END_TIME"/>
+    </class>
+</hibernate-mapping>

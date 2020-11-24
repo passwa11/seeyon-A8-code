@@ -4,13 +4,10 @@
     <list default="true" id="e9015fcc-43fa-4197-bad9-70d287e92005" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../../10.徐医附院_功能点/徐医附院/附件上传权限设置/fileUploadConfig.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大-测试/.idea/4.组织机构同步-医科大-测试.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/dao/AccessSetingDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/dao/AccessSetingDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/manager/AccessSetingManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/manager/AccessSetingManagerImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/util/JDBCUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/metadata/menu-AccountAdmin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/po/DepartmentViewTimeRange.hbm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/po/DepartmentViewTimeRange.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/说明及文件/create.sql" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/.idea/V5流程图H5化自动部署工具.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../开发区_功能点/14.消息过滤/.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../开发区_功能点/14.消息过滤/.idea/14.消息过滤.iml" afterDir="false" />
@@ -266,6 +263,7 @@
       <change beforePath="$PROJECT_DIR$/../../10.徐医附院_功能点/徐医附院/fileUploadConfig/test/com/Test.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../10.徐医附院_功能点/徐医附院_代办工作添加科室名称/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../10.徐医附院_功能点/徐医附院_代办工作添加科室名称/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../10.徐医附院_功能点/徐医附院_代办工作添加科室名称/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../10.徐医附院_功能点/徐医附院_代办工作添加科室名称/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../10.徐医附院_功能点/徐医附院_栏目集成修改我的模板/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../10.徐医附院_功能点/徐医附院_栏目集成修改我的模板/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/seeyon/WEB-INF/cfgHome/metadata/menu-AccountAdmin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/seeyon/WEB-INF/cfgHome/metadata/menu-AccountAdmin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/dao/OrgMemberDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/dao/OrgMemberDao.java" afterDir="false" />
@@ -273,10 +271,14 @@
       <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/manager/OrgMemberManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/manager/OrgMemberManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/manager/OrgMemberManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/com/seeyon/apps/ext/zxzyk/manager/OrgMemberManagerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/xzykConf/xzykPlugin.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.组织机构同步-医科大/src/xzykConf/xzykPlugin.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/1.添加可以根据部门设置查询已办已发事项范围.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/1.添加可以根据部门设置查询已办已发事项范围.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/metadata/menu-GroupAdmin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/cfgHome/metadata/menu-GroupAdmin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/accessSeting/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/accessSeting/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/controller/AccessSetingControlller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/controller/AccessSetingControlller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/dao/AccessSetingDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/dao/AccessSetingDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/dao/AccessSetingDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/dao/AccessSetingDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/manager/AccessSetingManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/manager/AccessSetingManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/manager/AccessSetingManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/manager/AccessSetingManagerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/seeyon/WEB-INF/classes/com/seeyon/apps/ext/messageSend/message/HwPushMessagePipeline.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/seeyon/WEB-INF/classes/com/seeyon/apps/ext/messageSend/message/HwPushMessagePipeline.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/seeyon/WEB-INF/classes/com/seeyon/apps/ext/messageSend/util/PropUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/seeyon/WEB-INF/classes/com/seeyon/apps/ext/messageSend/util/PropUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/seeyon/WEB-INF/classes/sms/app.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../8.教育局-华网功能点/2.消息推送/seeyon/WEB-INF/classes/sms/app.properties" afterDir="false" />
@@ -301,6 +303,10 @@
       <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/WEB-INF/jsp/ctp/workflow/workflowDesigner_svg.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/WEB-INF/jsp/ctp/workflow/workflowDesigner_svg.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/common/workflow/workflowDesigner-min_svg.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/V5流程图H5化自动部署工具/seeyon/common/workflow/workflowDesigner-min_svg.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_添加办结和未办结栏目/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_添加办结和未办结栏目/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_添加办结和未办结栏目/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_添加办结和未办结栏目/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿待阅已阅/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿待阅已阅/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿待阅已阅/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿待阅已阅/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/OA代办事项推送到金智系统/src/com/seeyon/apps/ext/kypending/listener/MeetingEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../医科大学_功能点/OA代办事项推送到金智系统/src/com/seeyon/apps/ext/kypending/listener/MeetingEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../开发区_功能点/12.m3移动端-meeting/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/12.m3移动端-meeting/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../开发区_功能点/15.开发区单点登录/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_功能点/15.开发区单点登录/.idea/webServers.xml" afterDir="false" />
@@ -342,6 +348,7 @@
       <change beforePath="$PROJECT_DIR$/../../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_选择人员CAP4/seeyon/WEB-INF/classes/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../开发区_选择人员CAP4/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../开发区_选择人员CAP4/src_selectPeople/com/seeyon/apps/ext/selectPeople/controller/selectPeopleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../开发区_选择人员CAP4/人员选择控件.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../栏目集成已阅待阅示例/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../栏目集成已阅待阅示例/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../矿业大学_组织机构同步/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../矿业大学_组织机构同步/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../矿业大学_组织机构同步/kydx.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../矿业大学_组织机构同步/kydx.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../矿业大学_组织机构同步/seeyon/WEB-INF/classes/config/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../矿业大学_组织机构同步/seeyon/WEB-INF/classes/config/config.properties" afterDir="false" />
@@ -372,18 +379,18 @@
     <property name="ToolWindowDuplicates.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../10.徐医附院_功能点/徐医附院/附件上传权限设置" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/po" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.145977" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\a8_code\A-8-code\5.恩华_功能点\1.添加可以根据部门设置查询已办已发事项范围\src\com\seeyon\apps\ext\accessSeting\po" />
+      <recent name="F:\a8_code\A-8-code\5.恩华_功能点\1.添加可以根据部门设置查询已办已发事项范围\seeyon\WEB-INF\cfgHome\metadata" />
       <recent name="F:\a8_code\A-8-code\5.恩华_功能点\1.添加可以根据部门设置查询已办已发事项范围\src\com\seeyon\apps\ext\accessSeting\util" />
       <recent name="F:\a8_code\A-8-code\5.恩华_功能点\1.添加可以根据部门设置查询已办已发事项范围\seeyon\WEB-INF\jsp\apps\ext\accessSeting" />
       <recent name="F:\a8_code\A-8-code\5.恩华_功能点\1.添加可以根据部门设置查询已办已发事项范围\seeyon\WEB-INF\cfgHome\plugin\accessSeting\spring" />
-      <recent name="F:\a8_code\A-8-code\5.恩华_功能点\1.添加可以根据部门设置查询已办已发事项范围\seeyon\WEB-INF\cfgHome\plugin\accessSeting" />
-      <recent name="F:\a8_code\A-8-code\5.恩华_功能点\1.添加可以根据部门设置查询已办已发事项范围\seeyon\WEB-INF\cfgHome\metadata" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -447,7 +454,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606100450478</updated>
-      <workItem from="1606100451693" duration="12615000" />
+      <workItem from="1606100451693" duration="17709000" />
+      <workItem from="1606177486962" duration="12379000" />
     </task>
     <task id="LOCAL-00001" summary="add">
       <created>1606100608688</created>
@@ -470,7 +478,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606109749351</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add">
+      <created>1606118160798</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1606118160798</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,7 +496,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -492,26 +509,5 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="add" />
     <option name="LAST_COMMIT_MESSAGE" value="add" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/controller/AccessSetingControlller.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/manager/AccessSetingManagerImpl.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/manager/AccessSetingManagerImpl.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
