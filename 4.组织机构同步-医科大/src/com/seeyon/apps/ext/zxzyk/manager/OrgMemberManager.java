@@ -8,4 +8,5 @@ public interface OrgMemberManager {
 
     void deleteOrgMember();
 
+    void updateEnableOrgmember();
 }

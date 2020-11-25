@@ -35,6 +35,9 @@ public class SyncDeptTask implements Runnable {
         orgMemberManager.insertOrgMember();
         orgMemberManager.updateOrgMember();
 
+        //更新启用状态
+        orgMemberManager.updateEnableOrgmember();
+
         orgMemberManager.deleteOrgMember();
         orgDeptManager.deleteOrgDept();
         orgLevelManager.deleteNotExistLevel();

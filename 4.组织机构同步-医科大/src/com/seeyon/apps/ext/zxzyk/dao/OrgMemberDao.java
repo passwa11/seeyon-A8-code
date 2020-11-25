@@ -17,4 +17,8 @@ public interface OrgMemberDao {
     List<OrgMember> queryNotExistOrgMember();
 
     void deleteOrgMember(List<OrgMember> list);
+
+    List<OrgMember> queryNoEnableMember();
+
+    void updateIsEnableOfMember(List<OrgMember> list);
 }

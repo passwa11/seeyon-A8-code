@@ -15,6 +15,74 @@ import java.util.*;
 public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
+    public List<OrgMember> queryNoEnableMember() {
+        String sql ="select MM.id,mm.code,vm.is_enable,VM.name from V_ORG_MEMBER vm, M_ORG_MEMBER mm where VM.CODE=MM.code and VM.IS_ENABLE='0'";
+        List<OrgMember> memberList = new ArrayList<>();
+        Connection connection = SyncConnectionUtil.getMidConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            OrgMember orgMember = null;
+            while (rs.next()) {
+                orgMember = new OrgMember();
+                orgMember.setMemberid(rs.getString("id"));
+                orgMember.setOrgAccountId(new OrgCommon().getOrgAccountId());
+                orgMember.setMembercode(rs.getString("code"));
+                orgMember.setMembername(rs.getString("name"));
+                orgMember.setEnabled(false);
+                memberList.add(orgMember);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            SyncConnectionUtil.closeResultSet(rs);
+            SyncConnectionUtil.closePrepareStatement(ps);
+            SyncConnectionUtil.closeConnection(connection);
+        }
+
+        return memberList;
+    }
+
+    @Override
+    public void updateIsEnableOfMember(List<OrgMember> list) {
+        CTPRestClient client = SyncConnectionUtil.getOaRest();
+        try {
+            if (null != list && list.size() > 0) {
+                Map memberMap = null;
+                for (OrgMember member : list) {
+                    memberMap = new HashMap();
+                    memberMap.put("id", member.getMemberid());
+                    memberMap.put("orgAccountId", member.getOrgAccountId());
+                    memberMap.put("enabled", member.getEnabled());
+
+                    JSONObject memberJson = client.get("/orgMember?loginName=" + member.getMembercode(), JSONObject.class);
+                    if (null != memberJson) {
+                        JSONObject json = client.put("/orgMember", memberMap, JSONObject.class);
+                        if (null != json) {
+                            if (json.getBoolean("success")) {
+                                String sql = "update m_org_member set ";
+                                if (!member.getEnabled()) {
+                                    sql = sql + " IS_ENABLE = '0' ";
+                                } else {
+                                    sql = sql + " IS_ENABLE = '1' ";
+                                }
+
+                                sql = sql + " where id = '" + member.getMemberid() + "' ";
+
+                                SyncConnectionUtil.insertResult(sql);
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public List<OrgMember> queryAddOrgMember() {
         //正式
         String sql = "select DISTINCT c2.code,c2.name,c2.id,c2.POSTID,c2.description,c2.mobile,M_ORG_UNIT.id unitId,M_ORG_LEVEL.id levelId from " +

@@ -27,4 +27,10 @@ public class OrgMemberManagerImpl implements OrgMemberManager {
         List<OrgMember> list = orgMemberDao.queryNotExistOrgMember();
         orgMemberDao.deleteOrgMember(list);
     }
+
+    @Override
+    public void updateEnableOrgmember() {
+        List<OrgMember> list = orgMemberDao.queryNoEnableMember();
+        orgMemberDao.updateIsEnableOfMember(list);
+    }
 }

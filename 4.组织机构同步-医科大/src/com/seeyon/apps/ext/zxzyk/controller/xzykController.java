@@ -49,6 +49,9 @@ public class xzykController extends BaseController {
             orgMemberManager.insertOrgMember();
             orgMemberManager.updateOrgMember();
 
+            //更新启用状态
+            orgMemberManager.updateEnableOrgmember();
+
             orgDeptManager.deleteOrgDept();
             orgMemberManager.deleteOrgMember();
             orgLevelManager.deleteNotExistLevel();
