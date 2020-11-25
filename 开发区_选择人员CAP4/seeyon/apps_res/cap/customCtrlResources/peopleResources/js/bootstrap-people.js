@@ -21,7 +21,7 @@ $(function () {
 
 function dlCommon(ddType, row) {
     console.log("ddtype:====" + ddType);
-    debugger;
+    
     var tr_obj = row;
     var obj = {};//添加成员对象
     obj["value"] = tr_obj.id;
@@ -96,7 +96,7 @@ function hwzTable() {
         ]
         , onCheck: function (row, $element) {
             dlCommon('hwz', row);
-            dbSelectedToSortData('check');
+            // dbSelectedToSortData('check');
             revokeReuse();
             removeTableRowhwz(row);
         }
@@ -161,7 +161,7 @@ function tableCommon(tableId) {
 
             dlCommon('dzbld', row);
 
-            dbSelectedToSortData('check');
+            // dbSelectedToSortData('check');
             revokeReuse();
 
             removeTableRowdzbld(row);
@@ -238,7 +238,7 @@ function twoTable() {
         ]
         , onCheck: function (row, $element) {
             dlCommon('two', row);
-            dbSelectedToSortData('check');
+            // dbSelectedToSortData('check');
             revokeReuse();
 
             removeTableRowTwoLevelDept(row);
@@ -273,7 +273,7 @@ function removeDdRowtwo(item) {
 }
 
 function dbSelectedToSortData(flag) {
-    debugger;
+    
     var arrDzld = [];
     var arr29 = [];
     var arr30 = [];
@@ -499,6 +499,8 @@ function dataSorting(arrdzbld0, arr290, arr300, arr310, arr320, arrGH0, arrTwoLe
     var arrTwo = [];
     var arrHw = [];
 
+
+    var arrCommon = [];
     $("dl").find('dd').each(function () {
         var id = $(this).attr("lay-id");
         var field0001 = $(this).attr("lay-name");
@@ -522,154 +524,66 @@ function dataSorting(arrdzbld0, arr290, arr300, arr310, arr320, arrGH0, arrTwoLe
         obj["mval"] = bsname;
         obj["field0007"] = zsort;
         obj["flag"] = flag;
-        if (flag == '29') {
-            arr29.push(obj);
-        } else if (flag == '30') {
-            arr30.push(obj);
-        } else if (flag == '31') {
-            arr31.push(obj);
-        } else if (flag == '32') {
-            arr32.push(obj);
-        } else if (flag == 'gh') {
-            arrGH.push(obj);
-        } else if (flag == 'two') {
-            arrTwo.push(obj);
-        } else if (flag == 'dzbld') {
-            arrdzbld.push(obj);
-        } else if (flag == 'hwz') {
-            arrHw.push(obj);
-        }
+        // if (flag == '29') {
+        //     arr29.push(obj);
+        // } else if (flag == '30') {
+        //     arr30.push(obj);
+        // } else if (flag == '31') {
+        //     arr31.push(obj);
+        // } else if (flag == '32') {
+        //     arr32.push(obj);
+        // } else if (flag == 'gh') {
+        //     arrGH.push(obj);
+        // } else if (flag == 'two') {
+        //     arrTwo.push(obj);
+        // } else if (flag == 'dzbld') {
+        //     arrdzbld.push(obj);
+        // } else if (flag == 'hwz') {
+        //     arrHw.push(obj);
+        // }
+        arrCommon.push(obj);
     });
 
     var hw = [];
     if (arrHwz00 != null) {
-        if (arrHw != null) {
-            hw = arrsyDataSort(arrHw.concat(arrHwz00));
-        } else {
-            hw = arrsyDataSort(arrHwz00);
-        }
-    } else {
-        if (arrHw != null) {
-            hw = arrHw;
-        } else {
-            hw = arrsyDataSort(arrHw);
-        }
+        hw = (arrHwz00);
     }
 
     var ld = [];
     if (arrdzbld0 != null) {
-        if (arrdzbld != null) {
-            ld = arrsyDataSort(arrdzbld.concat(arrdzbld0));
-        } else {
-            ld = arrsyDataSort(arrdzbld0);
-        }
-    } else {
-        if (arrdzbld != null) {
-            ld = arrdzbld;
-        } else {
-            ld = arrsyDataSort(arrdzbld);
-
-        }
+        ld = (arrdzbld0);
     }
 
 
     var two = [];
     if (arrTwoLevel != null) {
-        if (arrTwo != null) {
-            two = arrsyDataSort(arrTwo.concat(arrTwoLevel));
-        } else {
-            two = arrsyDataSort(arrTwoLevel);
-        }
-    } else {
-        if (arrTwo != null) {
-            two = arrTwo;
-        } else {
-            two = arrsyDataSort(arrTwo);
-
-        }
+        two = (arrTwoLevel);
     }
 
 
     var l29 = [];
     if (arr290 != null) {
-        if (arr29 != null) {
-            l29 = arrsyDataSort(arr29.concat(arr290));
-            // l29 = arr29.concat(arr290);
-        } else {
-            l29 = arrsyDataSort(arr290);
-        }
-    } else {
-        if (arr29 != null) {
-            l29 = arr29;
-        } else {
-            l29 = arrsyDataSort(arr29);
-
-        }
+        l29 = (arr290);
     }
 
     var l30 = [];
     if (arr300 != null) {
-        if (arr30 != null) {
-            l30 = arrsyDataSort(arr30.concat(arr300));
-            // l30 = arr30.concat(arr300);
-        } else {
-            l30 = arrsyDataSort(arr300);
-        }
-    } else {
-        if (arr30 != null) {
-            l30 = arr30;
-        } else {
-            l30 = arrsyDataSort(arr30);
-
-        }
+        l30 = (arr300);
     }
 
     var l31 = [];
     if (arr310 != null) {
-        if (arr31 != null) {
-            l31 = arrsyDataSort(arr31.concat(arr310));
-            // l31 = arr31.concat(arr310);
-        } else {
-            l31 = arrsyDataSort(arr310);
-        }
-    } else {
-        if (arr31 != null) {
-            l31 = arr31;
-        } else {
-            l31 = arrsyDataSort(arr31);
-        }
+        l31 = (arr310);
     }
 
     var l32 = [];
     if (arr320 != null) {
-        if (arr32 != null) {
-            l32 = arrsyDataSort(arr32.concat(arr320));
-            // l32 = arr32.concat(arr320);
-        } else {
-            l32 = arrsyDataSort(arr320);
-        }
-    } else {
-        if (arr32 != null) {
-            l32 = arr32;
-        } else {
-            l32 = arrsyDataSort(arr32);
-        }
+        l32 = (arr320);
     }
 
     var lgh = [];
     if (arrGH0 != null) {
-        if (arrGH != null) {
-            lgh = arrsyDataSort(arrGH.concat(arrGH0));
-            // lgh = arrGH.concat(arrGH0);
-        } else {
-            lgh = arrsyDataSort(arrGH0);
-        }
-    } else {
-        if (arrGH != null) {
-            lgh = arrGH;
-        } else {
-            lgh = arrsyDataSort(arrGH);
-        }
+        lgh = (arrGH0);
     }
 
     var option = "";
@@ -682,35 +596,44 @@ function dataSorting(arrdzbld0, arr290, arr300, arr310, arr320, arrGH0, arrTwoLe
 
     var htmlTwo = '';
     var htmlHw = '';
+    var htmlSelected = "";
     $(".selected-info").html("");
+    htmlSelected = htmlShow(arrCommon, null);
+
     if (ld.length > 0) {
         htmlld = htmlShow(ld, 'dzbld');
+        option += htmlSelected + htmlld;
     }
 
     $(".selected-info").html("");
     if (l29.length > 0) {
         html29 = htmlShow(l29, '29');
+        option += htmlSelected + html29;
     }
     if (l30.length > 0) {
         html30 = htmlShow(l30, '30');
+        option += htmlSelected + html30;
     }
     if (l31.length > 0) {
         html31 = htmlShow(l31, '31');
+        option += htmlSelected + html31;
     }
     if (l32.length > 0) {
         html32 = htmlShow(l32, '32');
+        option += htmlSelected + html32;
     }
     if (lgh.length > 0) {
         htmlgh = htmlShow(lgh, 'gh');
+        option += htmlSelected + htmlgh;
     }
     if (two.length > 0) {
         htmlTwo = htmlShow(two, 'two');
+        option += htmlSelected + htmlTwo;
     }
     if (hw.length > 0) {
         htmlHw = htmlShow(hw, 'hwz');
+        option += htmlSelected + htmlHw;
     }
-
-    option += htmlld + html29 + html30 + htmlTwo + html31 + html32 + htmlgh + htmlHw;
     $("dl.selected-info").append(option);
     $(".selected-info dd").on('click', function () {
         var index = $(this).attr("class").indexOf("selected-this");
@@ -734,7 +657,11 @@ function AllhtmlShow(data) {
 function htmlShow(data, flag) {
     var html = "";
     for (var i = 0; i < data.length; i++) {
-        html += '<dd ondblclick="removeDdRow' + flag + '(this)" lay-bsname="' + data[i].mval + '"  lay-field002="' + data[i].field0002 + '"  lay-zsort="' + data[i].field0007 + '" lay-id="' + data[i].id + '" lay-bs="' + data[i].field0005 + '"  lay-value="' + data[i].id + '" lay-username="' + data[i].name + '" lay-flag="' + flag + '" lay-name="' + data[i].field0001 + '" lay-dept="' + data[i].field0003 + '" class="">' + data[i].field0001 + '</dd>';
+        if(flag==null){
+            html += '<dd ondblclick="removeDdRow' + flag + '(this)" lay-bsname="' + data[i].mval + '"  lay-field002="' + data[i].field0002 + '"  lay-zsort="' + data[i].field0007 + '" lay-id="' + data[i].id + '" lay-bs="' + data[i].field0005 + '"  lay-value="' + data[i].id + '" lay-username="' + data[i].name + '" lay-flag="' + data[i].flag + '" lay-name="' + data[i].field0001 + '" lay-dept="' + data[i].field0003 + '" class="">' + data[i].field0001 + '</dd>';
+        }else{
+            html += '<dd ondblclick="removeDdRow' + flag + '(this)" lay-bsname="' + data[i].mval + '"  lay-field002="' + data[i].field0002 + '"  lay-zsort="' + data[i].field0007 + '" lay-id="' + data[i].id + '" lay-bs="' + data[i].field0005 + '"  lay-value="' + data[i].id + '" lay-username="' + data[i].name + '" lay-flag="' + flag + '" lay-name="' + data[i].field0001 + '" lay-dept="' + data[i].field0003 + '" class="">' + data[i].field0001 + '</dd>';
+        }
     }
     return html;
 }
@@ -791,7 +718,7 @@ function gongHuiTable() {
         ]
         , onCheck: function (row, $element) {
             dlCommon('gh', row);
-            dbSelectedToSortData('check');
+            // dbSelectedToSortData('check');
             revokeReuse();
 
             removeTableRowGH(row);
@@ -877,7 +804,7 @@ function dangZhengBanTable() {
         onCheck: function (row, $element) {
             dlCommon('29', row);
 
-            dbSelectedToSortData('check');
+            // dbSelectedToSortData('check');
             revokeReuse();
             removeTableRow29(row);
 
@@ -1022,7 +949,7 @@ function jiguan30Table() {
         ]
         , onCheck: function (row, $element) {
             dlCommon('30', row);
-            dbSelectedToSortData('check');
+            // dbSelectedToSortData('check');
             revokeReuse();
 
             removeTableRow30(row);
@@ -1089,7 +1016,7 @@ function zhenban31Table() {
 
             dlCommon('31', row);
 
-            dbSelectedToSortData('check');
+            // dbSelectedToSortData('check');
             revokeReuse();
 
             removeTableRow31(row);
@@ -1158,7 +1085,7 @@ function zhuqu32Table() {
         ]
         , onCheck: function (row, $element) {
             dlCommon('32', row);
-            dbSelectedToSortData('check');
+            // dbSelectedToSortData('check');
             revokeReuse();
             removeTableRow32(row);
 
@@ -1195,7 +1122,7 @@ function removeDdRow32(item) {
 
 
 function sureSelect() {
-    debugger;
+    
     var $tablehwz = $("#hwz");
     var rowshwz = $tablehwz.bootstrapTable('getSelections');
     if (rowshwz != null) {
@@ -1351,7 +1278,7 @@ function sureCommon($table, rows, type, idsArr) {
 
 
 function commonInfo(s) {
-
+    
     var list = $("dl").find("dd" + s);
     $.each(list, function (i, item) {
         $(".selected-info dd[lay-value=" + $(item).attr('lay-value') + "]").remove();
@@ -1402,7 +1329,7 @@ function removeSelect() {
 }
 
 function clearSelect2() {
-
+    debugger;
     var list = $("dl").find("dd");
     $.each(list, function (i, item) {
         $(".selected-info dd[lay-value=" + $(item).attr('lay-value') + "]").remove();
@@ -1442,7 +1369,7 @@ function clearSelect2() {
     idsgh = [];
     idsTwoLevelDept = [];
     idsdzbld = [];
-    idsHwz=[];
+    idsHwz = [];
 }
 
 
