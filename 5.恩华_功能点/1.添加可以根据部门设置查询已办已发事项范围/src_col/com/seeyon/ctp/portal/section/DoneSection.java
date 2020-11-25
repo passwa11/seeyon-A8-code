@@ -228,14 +228,16 @@ public class DoneSection extends BaseSectionImpl {
                             if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
                                 newAffairs.add(affair);
                             }
-                        }else if(startTime.longValue() != 0l && endTime.longValue() == 0l ){
+                        } else if (startTime.longValue() != 0l && endTime.longValue() == 0l) {
                             if (createDate.getTime() > startTime.longValue()) {
                                 newAffairs.add(affair);
                             }
-                        }else if (startTime.longValue() == 0l && endTime.longValue() != 0l ){
+                        } else if (startTime.longValue() == 0l && endTime.longValue() != 0l) {
                             if (createDate.getTime() < endTime.longValue()) {
                                 newAffairs.add(affair);
                             }
+                        } else {
+                            newAffairs.add(affair);
                         }
                     } else {
                         newAffairs.add(affair);

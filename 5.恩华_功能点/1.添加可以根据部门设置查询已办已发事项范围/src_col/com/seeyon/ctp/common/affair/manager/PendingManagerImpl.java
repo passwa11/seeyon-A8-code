@@ -14,6 +14,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.seeyon.apps.collaboration.manager.ColManager;
+import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManager;
+import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManagerImpl;
+import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -376,8 +380,13 @@ public class PendingManagerImpl implements PendingManager {
     private static boolean hasValue(Map query){
       return query.get("state")!=null&&Strings.isNotBlank(String.valueOf(query.get("state"))) && !"".equals(query.get("state"));
     }
+	private ColManager colManager;
 
-    @SuppressWarnings("unchecked")
+	public void setColManager(ColManager colManager) {
+		this.colManager = colManager;
+	}
+
+	@SuppressWarnings("unchecked")
     public FlipInfo getMoreList4SectionContion(FlipInfo fi, Map query) throws BusinessException{
     	
     	Boolean fromMore = true;
@@ -681,7 +690,51 @@ public class PendingManagerImpl implements PendingManager {
         if(isG6Version()){//政务版本,适配M3首页显示文号显示
         	rowStr += ",edocMark";
         }
-        List<PendingRow> voList  = affairList2PendingRowList(affairListClone, user, null, false,rowStr, state,query);
+		//【恩华药业】zhou:协同过滤掉设定范围内的数据【开始】
+		List<CtpAffair> newAffairs = new ArrayList<>();
+		AccessSetingManager manager = new AccessSetingManagerImpl();
+		for (CtpAffair affair : affairListClone) {
+			if (affair.getApp() == 1) {
+				Long senderId = affair.getSenderId();
+				V3xOrgMember member = orgManager.getMemberById(senderId);
+				Long departmentId = member.getOrgDepartmentId();
+				Map<String, Object> map = new HashMap<>();
+				map.put("deptmentId", departmentId);
+				List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(map);
+				if (list.size() > 0) {
+					DepartmentViewTimeRange range = list.get(0);
+					Long startTime = null != range.getStartTime() ? range.getStartTime().getTime() : 0l;
+					Long endTime = null != range.getEndTime() ? range.getEndTime().getTime() : 0l;
+					Long objectId2 = affair.getObjectId();
+					ColSummary colSummary = colManager.getColSummaryById(objectId2);
+					Date createDate = colSummary.getCreateDate();
+					if (startTime.longValue() != 0l && endTime.longValue() != 0l) {
+						if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
+							newAffairs.add(affair);
+						}
+					}else if(startTime.longValue() != 0l && endTime.longValue() == 0l ){
+						if (createDate.getTime() > startTime.longValue()) {
+							newAffairs.add(affair);
+						}
+					}else if (startTime.longValue() == 0l && endTime.longValue() != 0l ){
+						if (createDate.getTime() < endTime.longValue()) {
+							newAffairs.add(affair);
+						}
+					}else {
+						newAffairs.add(affair);
+					}
+				} else {
+					newAffairs.add(affair);
+				}
+			} else {
+				newAffairs.add(affair);
+			}
+		}
+
+		//【恩华药业】zhou:协同过滤掉设定范围内的数据【结束】
+		//zhou:修改第一个参数
+        List<PendingRow> voList  = affairList2PendingRowList(newAffairs, user, null, false,rowStr, state,query);
+//        List<PendingRow> voList  = affairList2PendingRowList(affairListClone, user, null, false,rowStr, state,query);
         fi.setData(voList);
         return fi;
     }

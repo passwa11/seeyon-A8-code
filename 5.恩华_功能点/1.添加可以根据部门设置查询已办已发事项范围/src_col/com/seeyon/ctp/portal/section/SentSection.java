@@ -237,6 +237,8 @@ public class SentSection extends BaseSectionImpl {
                             if (createDate.getTime() < endTime.longValue()) {
                                 newAffairs.add(affair);
                             }
+                        }else {
+                            newAffairs.add(affair);
                         }
                     } else {
                         newAffairs.add(affair);
