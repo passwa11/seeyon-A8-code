@@ -96,7 +96,7 @@
 
                 <div class="layui-input-inline" style="margin-top: 20px;">
                     <button class="common_button common_button_emphasize" id="saveRange">保存</button>
-                    <button class="common_button common_button_gray" id="selected_info_reset">取消</button>
+                    <button class="common_button common_button_gray" id="reset">取消</button>
                 </div>
             </div>
         </div>
@@ -132,6 +132,13 @@
     $(function () {
         $.fn.zTree.init($("#treeDemo"), setting, ${list});
 
+        $("#reset").on('click', function () {
+            $("#startTime").val("");
+            $("#endTime").val("");
+            $("#deptid").val("");
+            $("#deptname").val("");
+        });
+
         $("#saveRange").on('click', function () {
             var obj = {};
             obj['deptmentId'] = $("#deptid").val() + "";
@@ -145,9 +152,9 @@
                     $("#info").append("保存失败！");
                 }
             });
-            setTimeout(function(){
+            setTimeout(function () {
                 $("#info").replaceWith("");
-            },2000);
+            }, 2000);
         });
     });
 

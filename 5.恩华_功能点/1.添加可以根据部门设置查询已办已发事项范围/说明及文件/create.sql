@@ -5,3 +5,9 @@ DEPARTMENT_NAME VARCHAR2(50),
 START_TIME DATE,
 END_TIME DATE
 );
+
+-- 离职设置
+create table leave_config(
+id number primary key ,
+is_enable CHAR DEFAULT 0
+);

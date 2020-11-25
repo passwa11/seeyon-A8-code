@@ -4,7 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManager;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManagerImpl;
+import com.seeyon.apps.ext.accessSeting.manager.LeaveSetingManager;
+import com.seeyon.apps.ext.accessSeting.manager.LeaveSetingManagerImpl;
 import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
+import com.seeyon.apps.ext.accessSeting.po.LeaveSeting;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.authenticate.domain.User;
 import com.seeyon.ctp.common.controller.BaseController;
@@ -22,12 +25,47 @@ public class AccessSetingControlller extends BaseController {
 
     private AccessSetingManager manager = new AccessSetingManagerImpl();
 
+    private LeaveSetingManager leaveSetingManager = new LeaveSetingManagerImpl();
+
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {
         User user = AppContext.getCurrentUser();
         Long accountId = user.getAccountId();
         List<Map<String, Object>> list = manager.queryAllUnit(accountId);
         request.setAttribute("list", JSON.toJSONString(list));
         return new ModelAndView("apps/ext/accessSeting/index");
+    }
+
+    public ModelAndView leaveSeting(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        List<LeaveSeting> all = leaveSetingManager.findAll();
+        if (all.size() > 0) {
+            LeaveSeting leaveSeting = all.get(0);
+            request.setAttribute("leave", leaveSeting);
+        } else {
+//            request.setAttribute("leave", null);
+        }
+        return new ModelAndView("apps/ext/accessSeting/leave");
+    }
+
+    public ModelAndView saveLeaveSeting(HttpServletRequest request, HttpServletResponse response, LeaveSeting leaveSeting) {
+        leaveSeting.setId(System.currentTimeMillis());
+
+        List<LeaveSeting> all = leaveSetingManager.findAll();
+        Map<String, Object> map = new HashMap<>();
+        try {
+            if (all.size() > 0) {
+                LeaveSeting s = all.get(0);
+                s.setIsEnable(leaveSeting.getIsEnable());
+                leaveSetingManager.updateLeaveSeting(s);
+            } else {
+                leaveSetingManager.saveLeaveSeting(leaveSeting);
+            }
+            map.put("code", 0);
+        } catch (Exception e) {
+            map.put("code", -1);
+        }
+        JSONObject json = new JSONObject(map);
+        render(response, json.toJSONString());
+        return null;
     }
 
     public ModelAndView getDepartmentRange(HttpServletRequest request, HttpServletResponse response, String departmentId) {
