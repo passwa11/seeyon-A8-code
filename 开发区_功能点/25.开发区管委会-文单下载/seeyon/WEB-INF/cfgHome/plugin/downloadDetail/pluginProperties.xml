@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ctpConfig>
+	<auth>
+		<authip mark="{VE}" desc="设置IP">http://127.0.0.1</authip>
+	</auth>
+</ctpConfig>
