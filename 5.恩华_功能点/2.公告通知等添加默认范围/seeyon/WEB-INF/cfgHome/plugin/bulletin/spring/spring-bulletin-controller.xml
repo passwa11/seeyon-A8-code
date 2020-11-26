@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+	<bean name="/bulType.do" class="com.seeyon.v3x.bulletin.controller.BulTypeController" />
+
+	<bean name="/bulData.do" class="com.seeyon.v3x.bulletin.controller.BulDataController" />
+
+	<bean name="/bulIssue.do" class="com.seeyon.v3x.bulletin.controller.BulIssueController" />
+
+	<bean name="/ehSendRangeController.do" class="com.seeyon.v3x.bulletin.controller.EhSendRangeController"/>
+</beans>
