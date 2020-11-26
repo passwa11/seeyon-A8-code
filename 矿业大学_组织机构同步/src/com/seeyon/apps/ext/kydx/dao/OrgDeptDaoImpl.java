@@ -169,7 +169,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
     @Override
     public List<OrgDept> queryFirstOrgDept() {
 //        String sql = "select tou.code,tou.name,tou.unit,tou.is_enable from  (select * from THIRD_ORG_UNIT where is_delete <> '1' and unit is not null and unit ='0' ) tou where  not exists (select * from M_ORG_UNIT m where m.code = tou.code)";
-        String sql = "select * from (select dwid,dwmc,dwjc,lsdwh,dwh,sfsy,dz_dqzyjg from seeyon_oa_dw where ifnull(dz_dqzyjg,'1')!='0' and LSDWH ='000000' ) d where not EXISTS (select * from m_org_unit u where u.dwid=d.dwid)";
+        String sql = "select * from (select dwid,dwmc,dwjc,lsdwh,dwh,sfsy,ifnull(dz_dqzyjg,'1') dz_dqzyjg from seeyon_oa_dw where ifnull(dz_dqzyjg,'1')!='0' and LSDWH ='000000' ) d where not EXISTS (select * from m_org_unit u where u.dwid=d.dwid)";
         Connection connection=null;
         Statement statement = null;
         ResultSet rs = null;
@@ -284,7 +284,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
     public List<OrgDept> queryOtherOrgDept() {
         List<OrgDept> firstDeptList = new ArrayList<>();
 //        String sql = "select tou.code,tou.name,tou.is_enable,(select m.id from M_ORG_UNIT m where m.code= tou.UNIT) parent,tou.unit from  (select * from THIRD_ORG_UNIT where is_delete <> '1' and unit is not null and unit <>'0' ) tou where  not exists (select * from M_ORG_UNIT m where m.code = tou.code)";
-        String sql = "select dwid,dwmc,dwjc,lsdwh,dwh,(select oaid from m_org_unit u where u.dwh=d.LSDWH) oaParentId,sfsy,dz_dqzyjg from (select * from seeyon_oa_dw where ifnull(dz_dqzyjg,'1')!='0' and lsdwh <>'000000') d where not exists (select * from m_org_unit mu where mu.dwid=d.dwid)";
+        String sql = "select dwid,dwmc,dwjc,lsdwh,dwh,(select oaid from m_org_unit u where u.dwh=d.LSDWH) oaParentId,sfsy,dz_dqzyjg from (select dwid,dwmc,dwjc,lsdwh,dwh,sfsy,ifnull(dz_dqzyjg,'1') dz_dqzyjg from seeyon_oa_dw where ifnull(dz_dqzyjg,'1')!='0' and lsdwh <>'000000') d where not exists (select * from m_org_unit mu where mu.dwid=d.dwid)";
         Connection connection=null;
         PreparedStatement prep = null;
         ResultSet res = null;
