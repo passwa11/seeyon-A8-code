@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.apps.collaboration.po">
+    <!-- 协同主表 -->
+  <class
+    name="HisColSummary"
+    table="HIS_COL_SUMMARY"
+  >
+    <id
+      name="id"
+      type="long"
+      column="ID"
+    >
+      <generator class="assigned"/>
+    </id>
+
+        <!-- 标题 -->
+    <property
+      name="subject"
+      column="SUBJECT"
+      type="string"
+      not-null="false"
+      length="255"
+    />
+        <!-- 流程ID -->
+    <property
+      name="processId"
+      column="PROCESS_ID"
+      type="string"
+      not-null="false"
+      length="100"
+    />
+        <!-- 协同类型 -->
+    <property
+      name="colType"
+      column="COL_TYPE"
+      type="integer"
+      not-null="false"
+      length="11"
+    />
+        <!-- 重要程度 -->
+    <property
+      name="importantLevel"
+      column="IMPORTANT_LEVEL"
+      type="integer"
+      not-null="false"
+      length="11"
+    />
+        <!-- 流程状态 -->
+    <property
+      name="state"
+      column="STATE"
+      type="integer"
+      not-null="false"
+      length="11"
+    />
+        <!-- 审核通过/审核不通过
+审核通过/审核不通过
+记录审核通过/审核不通过
+记录审核通过/审核不通过
+记录审核通过,审核不通过 -->
+    <property
+      name="audited"
+      column="IS_AUDITED"
+      type="boolean"
+      not-null="false"
+      length="4"
+    />
+        <!-- 模板ID -->
+    <property
+      name="templeteId"
+      column="TEMPLETE_ID"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 结束时间 -->
+    <property
+      name="finishDate"
+      column="FINISH_DATE"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+        <!-- 按工作时间计算超期时间 -->
+    <property
+      name="overWorktime"
+      column="OVER_WORKTIME"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 转发人 -->
+    <property
+      name="forwardMember"
+      column="FORWARD_MEMBER"
+      type="string"
+      not-null="false"
+      length="255"
+    />
+        <!-- 父协同ID -->
+    <property
+      name="parentformSummaryid"
+      column="PARENTFORM_SUMMARYID"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 协同来源（用于显示外部系统名称，如NC） -->
+    <property
+      name="source"
+      column="SOURCE"
+      type="string"
+      not-null="false"
+      length="255"
+    />
+        <!-- 能否修改正文 -->
+    <property
+      name="canEdit"
+      column="CAN_EDIT"
+      type="boolean"
+      not-null="false"
+      length="4"
+    />
+        <!-- 是否能归档 -->
+    <property
+      name="canArchive"
+      column="CAN_ARCHIVE"
+      type="boolean"
+      not-null="false"
+      length="4"
+    />
+        <!-- 关联项目ID -->
+    <property
+      name="projectId"
+      column="PROJECT_ID"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 流程规则 -->
+    <property
+      name="workflowRule"
+      column="WORKFLOW_RULE"
+      type="string"
+      not-null="false"
+    />
+        <!-- 主表记录id -->
+    <property
+      name="formRecordid"
+      column="FORM_RECORDID"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 表单视图id -->
+    <property
+      name="formid"
+      column="FORMID"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 发起人 -->
+    <property
+      name="startMemberId"
+      column="START_MEMBER_ID"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 是否自动终止流程 -->
+    <property
+      name="canAutostopflow"
+      column="CAN_AUTOSTOPFLOW"
+      type="integer"
+      not-null="false"
+      length="4"
+    />
+        <!-- 是否能跟踪 -->
+    <property
+      name="canTrack"
+      column="CAN_TRACK"
+      type="boolean"
+      not-null="false"
+      length="4"
+    />
+        <!-- 标志串 -->
+    <property
+      name="identifier"
+      column="IDENTIFIER"
+      type="string"
+      not-null="false"
+      length="100"
+    />
+        <!-- 能否编辑附件 -->
+    <property
+      name="canEditAttachment"
+      column="CAN_EDIT_ATTACHMENT"
+      type="boolean"
+      not-null="false"
+      length="4"
+    />
+        <!-- 单位ID -->
+    <property
+      name="orgAccountId"
+      column="ORG_ACCOUNT_ID"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 流程实例ID -->
+    <property
+      name="caseId"
+      column="CASE_ID"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 按自然时间计算运行时间 -->
+    <property
+      name="runTime"
+      column="RUN_TIME"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 提醒周期 -->
+    <property
+      name="remindInterval"
+      column="REMIND_INTERVAL"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 开始时间 -->
+    <property
+      name="startDate"
+      column="START_DATE"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+        <!-- 按自然时间计算超期时间 -->
+    <property
+      name="overTime"
+      column="OVER_TIME"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 重复次数 -->
+    <property
+      name="resentTime"
+      column="RESENT_TIME"
+      type="integer"
+      not-null="false"
+      length="11"
+    />
+        <!-- 按工作时间计算运行时间 -->
+    <property
+      name="runWorktime"
+      column="RUN_WORKTIME"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 处理期限 -->
+    <property
+      name="deadline"
+      column="DEADLINE"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 新流程类型 -->
+    <property
+      name="newflowType"
+      column="NEWFLOW_TYPE"
+      type="integer"
+      not-null="false"
+      length="11"
+    />
+        <!-- 是否能修改 -->
+    <property
+      name="canModify"
+      column="CAN_MODIFY"
+      type="boolean"
+      not-null="false"
+      length="4"
+    />
+        <!-- 正文类型 -->
+    <property
+      name="bodyType"
+      column="BODY_TYPE"
+      type="string"
+      not-null="false"
+      length="20"
+    />
+        <!-- 归档ID -->
+    <property
+      name="archiveId"
+      column="ARCHIVE_ID"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 是否周期提醒 -->
+    <property
+      name="canDueReminder"
+      column="CAN_DUE_REMINDER"
+      type="boolean"
+      not-null="false"
+      length="4"
+    />
+        <!-- 创建时间 -->
+    <property
+      name="createDate"
+      column="CREATE_DATE"
+      type="timestamp"
+      not-null="false"
+      length="7"
+    />
+        <!-- 表单ID-->
+    <property
+      name="formAppid"
+      column="FORM_APPID"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 是否核定0：默认值;1核定通过;2核定不能过 -->
+    <property
+      name="vouch"
+      column="VOUCH"
+      type="boolean"
+      not-null="false"
+      length="4"
+    />
+        <!-- 部门ID -->
+    <property
+      name="orgDepartmentId"
+      column="ORG_DEPARTMENT_ID"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+        <!-- 是否能转发 -->
+    <property
+      name="canForward"
+      column="CAN_FORWARD"
+      type="boolean"
+      not-null="false"
+      length="4"
+    />
+        <!-- webserivce服务码 -->
+    <property
+      name="webserviceCode"
+      column="WEBSERVICE_CODE"
+      type="string"
+      not-null="false"
+      length="60"
+    />
+        <!-- 提前提醒 -->
+    <property
+      name="advanceRemind"
+      column="ADVANCE_REMIND"
+      type="long"
+      not-null="false"
+      length="20"
+    />
+
+    <!-- 回复条数 -->
+    <property
+      name="replyCounts"
+      column="replyCounts"
+      type="integer"
+      not-null="false"
+      length="11"
+    />
+
+  </class>
+</hibernate-mapping>
