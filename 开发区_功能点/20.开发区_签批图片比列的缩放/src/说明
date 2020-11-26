@@ -1,0 +1,16 @@
+签批图片比例缩放：没有修改类文件，只修改了一个js（seeyon\common\content\govdoc_form.js）文件
+#签章涉及的表：
+    SIGNET_HTM_DOCUMENT
+#涉及的类文件：
+    ImageController.java
+    MainbodyController.java
+    SignatPicController.java
+    FormParseUtil.java
+    \com\seeyon\apps\govdoc\option\util\EdocOptionDisplayUtil.java
+    \com\seeyon\apps\edoc\api\EdocApiImpl.java
+    
+
+
+
+
+
