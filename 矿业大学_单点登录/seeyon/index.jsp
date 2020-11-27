@@ -11,9 +11,9 @@
 <title>A8</title>
 </head>
 <body>
-<%--<jsp:forward page="main.do" />--%>
-<%
-    XkSsoLogin.login(request, response);
-%>
+<jsp:forward page="main.do" />
+<%--<%--%>
+<%--    XkSsoLogin.login(request, response);--%>
+<%--%>--%>
 </body>
 </html>
