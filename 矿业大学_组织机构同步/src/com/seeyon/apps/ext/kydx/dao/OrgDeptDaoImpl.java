@@ -74,7 +74,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
     public void updateOrgDept() {
         OrgCommon orgCommon = new OrgCommon();
 //        String sql = " select m.id,t.name,t.code,t.unit,(select mo.id from m_org_unit mo where MO.code=t.unit) parentOaId,t.is_enable from (select * from third_org_unit where is_delete <>'1' ) t,m_org_unit m where t.code=m.code and (t.name <> m.name or t.unit <> m.unit)";
-        String sql = "select d.dwmc,d.dwjc,d.dwh,d.lsdwh,u.oaid,(select mu.oaid from m_org_unit mu where mu.dwh=d.lsdwh) oaParentId ,d.dz_dqzyjg from seeyon_oa_dw d,m_org_unit u where d.dwid=u.dwid and (d.dwmc <>u.dwmc or d.DWJC<>u.dwjc or d.dwh<>u.dwh or d.lsdwh<>u.lsdwh or d.DZ_DQZYJG != ifnull(u.dz_dqzyjg,'1')) ";
+        String sql = "select d.dwmc,d.dwjc,d.dwh,d.lsdwh,u.oaid,(select mu.oaid from m_org_unit mu where mu.dwh=d.lsdwh) oaParentId ,ifnull(d.dz_dqzyjg,'1') dz_dqzyjg from seeyon_oa_dw d,m_org_unit u where d.dwid=u.dwid and (d.dwmc <>u.dwmc or d.DWJC<>u.dwjc or d.dwh<>u.dwh or d.lsdwh<>u.lsdwh or ifnull(d.DZ_DQZYJG,'1') <> ifnull(u.dz_dqzyjg,'1')) ";
         CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
         Connection connection = null;
         PreparedStatement ps = null;
