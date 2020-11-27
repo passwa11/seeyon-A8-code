@@ -10,10 +10,7 @@ import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +18,55 @@ import java.util.Map;
 
 public class OrgDeptDaoImpl implements OrgDeptDao {
     private Logger log = LoggerFactory.getLogger(OrgDeptDaoImpl.class);
+
+    @Override
+    public void updateIsUse() {
+        CTPRestClient client = SyncConnectionInfoUtil.getOARestInfo();
+        String sql = "select ifnull(d.dz_dqzyjg,'1') dz_dqzyjg,m.oaid from seeyon_oa_dw d,m_org_unit m where d.dwid=m.dwid ";
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            connection = JDBCAgent.getRawConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String dqzyjg = rs.getString("dz_dqzyjg");
+                String oaid = rs.getString("oaid");
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("id", oaid);
+                if ("0".equals(dqzyjg)) {
+                    map.put("enabled", false);
+                } else {
+                    map.put("enabled", true);
+                }
+                JSONObject json = client.put("/orgDepartment", map, JSONObject.class);
+                if (null != json) {
+                    if (json.getBoolean("success")) {
+                        JSONObject ent = json.getJSONArray("successMsgs").getJSONObject(0).getJSONObject("ent");
+                        StringBuffer updateSql = new StringBuffer();
+                        updateSql.append("update m_org_unit set ");
+
+                        if (null != dqzyjg && !"".equals(dqzyjg)) {
+                            updateSql.append(" dz_dqzyjg = '" + dqzyjg + "'");
+                        } else {
+                            updateSql.append(" dz_dqzyjg = '1'");
+                        }
+                        updateSql.append(" where oaid = '" + oaid + "' ");
+                        SyncConnectionInfoUtil.insertResult(updateSql.toString());
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            SyncConnectionInfoUtil.closeResultSet(rs);
+            SyncConnectionInfoUtil.closePrepareStatement(ps, null);
+            SyncConnectionInfoUtil.closeConnection(connection);
+        }
+    }
 
     @Override
     public void deleteOrgDept() {
@@ -49,7 +95,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                 for (OrgDept dept : deptList) {
                     HashMap deptMap = new HashMap();
                     deptMap.put("id", dept.getId());
-                    JSONObject json = client.delete("orgDepartment/" + dept.getId(),deptMap,JSONObject.class);
+                    JSONObject json = client.delete("orgDepartment/" + dept.getId(), deptMap, JSONObject.class);
                     if (null != json) {
                         if (json.getBoolean("success")) {
                             sb.append("," + dept.getId());
@@ -80,7 +126,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
         PreparedStatement ps = null;
         ResultSet res = null;
         try {
-            connection =JDBCAgent.getRawConnection();
+            connection = JDBCAgent.getRawConnection();
             ps = connection.prepareStatement(sql);
             res = ps.executeQuery();
             List<OrgDept> deptList = new ArrayList<>();
@@ -108,9 +154,9 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
                     deptMap.put("code", dept.getDeptCode());
                     deptMap.put("name", dept.getDeptName());
                     deptMap.put("superior", dept.getParentId());
-                    if(null !=dept.getIsUse() && !"".equals(dept.getIsUse()) && "0".equals(dept.getIsUse())){
+                    if (null != dept.getIsUse() && !"".equals(dept.getIsUse()) && "0".equals(dept.getIsUse())) {
                         deptMap.put("enabled", false);
-                    }else {
+                    } else {
                         deptMap.put("enabled", true);
                     }
                     deptMap.put("shortName", dept.getShortName());
@@ -170,7 +216,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
     public List<OrgDept> queryFirstOrgDept() {
 //        String sql = "select tou.code,tou.name,tou.unit,tou.is_enable from  (select * from THIRD_ORG_UNIT where is_delete <> '1' and unit is not null and unit ='0' ) tou where  not exists (select * from M_ORG_UNIT m where m.code = tou.code)";
         String sql = "select * from (select dwid,dwmc,dwjc,lsdwh,dwh,sfsy,ifnull(dz_dqzyjg,'1') dz_dqzyjg from seeyon_oa_dw where ifnull(dz_dqzyjg,'1')!='0' and LSDWH ='000000' ) d where not EXISTS (select * from m_org_unit u where u.dwid=d.dwid)";
-        Connection connection=null;
+        Connection connection = null;
         Statement statement = null;
         ResultSet rs = null;
         List<OrgDept> orgDeptList = new ArrayList<>();
@@ -285,7 +331,7 @@ public class OrgDeptDaoImpl implements OrgDeptDao {
         List<OrgDept> firstDeptList = new ArrayList<>();
 //        String sql = "select tou.code,tou.name,tou.is_enable,(select m.id from M_ORG_UNIT m where m.code= tou.UNIT) parent,tou.unit from  (select * from THIRD_ORG_UNIT where is_delete <> '1' and unit is not null and unit <>'0' ) tou where  not exists (select * from M_ORG_UNIT m where m.code = tou.code)";
         String sql = "select dwid,dwmc,dwjc,lsdwh,dwh,(select oaid from m_org_unit u where u.dwh=d.LSDWH) oaParentId,sfsy,dz_dqzyjg from (select dwid,dwmc,dwjc,lsdwh,dwh,sfsy,ifnull(dz_dqzyjg,'1') dz_dqzyjg from seeyon_oa_dw where ifnull(dz_dqzyjg,'1')!='0' and lsdwh <>'000000') d where not exists (select * from m_org_unit mu where mu.dwid=d.dwid)";
-        Connection connection=null;
+        Connection connection = null;
         PreparedStatement prep = null;
         ResultSet res = null;
         try {

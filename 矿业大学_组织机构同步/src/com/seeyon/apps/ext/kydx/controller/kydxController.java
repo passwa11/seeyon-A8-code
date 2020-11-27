@@ -31,7 +31,7 @@ public class kydxController extends BaseController {
             new MidData().insertDwToOa();
             new MidData().insertAccountToOa();
             new MidData().updateAccount();
-//            new MidData().deleteMorgMember();
+            //new MidData().deleteMorgMember();
 
 
             deptManager.insertOrgDept();
@@ -46,6 +46,8 @@ public class kydxController extends BaseController {
             memberManager.updateLdap();
 
             memberManager.queryDeleteMemberByGh();
+
+            deptManager.updateIsUse();
         } catch (Exception e) {
             e.printStackTrace();
         }

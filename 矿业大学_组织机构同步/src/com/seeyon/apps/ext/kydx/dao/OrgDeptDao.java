@@ -18,4 +18,5 @@ public interface OrgDeptDao {
 
     void deleteOrgDept();
 
+    void updateIsUse();
 }

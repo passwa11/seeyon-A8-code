@@ -10,4 +10,6 @@ public interface OrgDeptManager {
     void updateOrgDept();
 
     void deleteOrgDept();
+
+    void updateIsUse();
 }

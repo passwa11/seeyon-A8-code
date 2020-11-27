@@ -16,6 +16,11 @@ public class OrgDeptManagerImpl implements OrgDeptManager {
     }
 
     @Override
+    public void updateIsUse() {
+        deptDao.updateIsUse();
+    }
+
+    @Override
     public void insertOrgDept() {
         List<OrgDept> list = deptDao.queryFirstOrgDept();
         deptDao.insertOrgDept(list);
