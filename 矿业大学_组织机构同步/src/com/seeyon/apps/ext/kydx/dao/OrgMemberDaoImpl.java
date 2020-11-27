@@ -229,6 +229,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                         Map updatememberMap = new HashMap<>();
                         updatememberMap.put("id", memberJson.getString("id"));
                         updatememberMap.put("orgAccountId", member.getOrgAccountId());
+                        updatememberMap.put("orgDepartmentId", member.getOrgDepartmentId());
                         updatememberMap.put("telNumber", member.getPhone());
                         updatememberMap.put("officeNum", member.getTel());
                         updatememberMap.put("emailAddress", null == member.getEmail() ? "" : member.getEmail());
