@@ -1,0 +1,4 @@
+在OA数据库中有表 m_org_member 请先清空表中数据，执行语句：
+delete from m_org_member;
+
+将seeyon.zip解压部署到项目中，重启服务，手动执行或者等待定时任务。
