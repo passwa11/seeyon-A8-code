@@ -25,7 +25,8 @@ public class SsoLogin extends HttpServlet {
             try {
                 String servername = request.getServerName();
                 int port = request.getServerPort();
-                String url = "http://" + servername + ":" + port + "/seeyon/";
+//                String url =  "https://" + servername + ":" + port + "/seeyon/";
+                String url =  request.getScheme()+"://" + servername + "/seeyon/";
                 response.sendRedirect(url + "login/sso?from=xkSso&ticket=" + encodeloginName);
             } catch (IOException e) {
                 log.error("单点登录OA系统出错了，错误信息：" + e.getMessage());
