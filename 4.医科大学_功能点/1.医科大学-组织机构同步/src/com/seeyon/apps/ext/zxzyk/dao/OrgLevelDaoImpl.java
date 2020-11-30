@@ -109,7 +109,7 @@ public class OrgLevelDaoImpl implements OrgLevelDao {
         } finally {
             SyncConnectionUtil.closeResultSet(rs);
             SyncConnectionUtil.closePrepareStatement(ps);
-            SyncConnectionUtil.closeResultSet(rs);
+            SyncConnectionUtil.closeConnection(connection);
         }
 
         return levelList;
@@ -168,7 +168,7 @@ public class OrgLevelDaoImpl implements OrgLevelDao {
         } finally {
             SyncConnectionUtil.closeResultSet(rs);
             SyncConnectionUtil.closePrepareStatement(ps);
-            SyncConnectionUtil.closeResultSet(rs);
+            SyncConnectionUtil.closeConnection(connection);
         }
 
         return levelList;
