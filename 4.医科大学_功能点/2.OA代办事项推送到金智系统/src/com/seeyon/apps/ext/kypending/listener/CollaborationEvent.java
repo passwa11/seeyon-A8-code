@@ -1,12 +1,16 @@
 package com.seeyon.apps.ext.kypending.listener;
 
 import com.seeyon.apps.collaboration.event.*;
+import com.seeyon.apps.collaboration.manager.ColManager;
+import com.seeyon.apps.collaboration.manager.ColManagerImpl;
+import com.seeyon.apps.collaboration.po.ColSummary;
 import com.seeyon.apps.ext.kypending.manager.KyPendingManager;
 import com.seeyon.apps.ext.kypending.manager.TempPendingDataManager;
 import com.seeyon.apps.ext.kypending.manager.TempPendingDataManagerImpl;
 import com.seeyon.apps.ext.kypending.po.TempPendingData;
 import com.seeyon.apps.ext.kypending.util.JDBCUtil;
 import com.seeyon.apps.ext.kypending.util.ReadConfigTools;
+import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.common.po.affair.CtpAffair;
 import com.seeyon.ctp.util.annotation.ListenEvent;
@@ -23,6 +27,12 @@ public class CollaborationEvent {
 
     public TempPendingDataManager getDataManager() {
         return dataManager;
+    }
+
+    public ColManager colManager =(ColManager) AppContext.getBean("colManager");
+
+    public void setColManager(ColManager colManager) {
+        this.colManager = colManager;
     }
 
     /**
@@ -94,7 +104,21 @@ public class CollaborationEvent {
                 map.put("biz_key", affair.getId().longValue() + "");
                 map.put("biz_domain", "OA");
                 map.put("status", "ACTIVE");
-                map.put("priority", "0");
+                ColSummary colSummary = colManager.getSummaryById(affair.getObjectId());
+                int importantLevel = colSummary.getImportantLevel().intValue();
+                //金智 1: 特急 2:紧急 3:一般
+                //oa:1普通，2重要，3非常重要
+                switch (importantLevel) {
+                    case 1:
+                        map.put("priority", "3");
+                        break;
+                    case 2:
+                        map.put("priority", "2");
+                        break;
+                    case 3:
+                        map.put("priority", "1");
+                        break;
+                }
 
                 List<Map<String, Object>> aList = new ArrayList<>();
                 Map<String, Object> assmap = new HashMap<>();
@@ -194,7 +218,7 @@ public class CollaborationEvent {
     @ListenEvent(event = CollaborationTakeBackEvent.class, async = true)
     public void TakeBack(CollaborationTakeBackEvent event) {
         CtpAffair ctpAffair = event.getAffair();
-        List<CtpAffair> list=new ArrayList<>();
+        List<CtpAffair> list = new ArrayList<>();
         list.add(ctpAffair);
         insertCommon(list);
     }
@@ -202,7 +226,7 @@ public class CollaborationEvent {
     @ListenEvent(event = CollaborationStepBackEvent.class, async = true)
     public void StepBack(CollaborationStepBackEvent event) {
         CtpAffair ctpAffair = event.getAffair();
-        List<CtpAffair> list=new ArrayList<>();
+        List<CtpAffair> list = new ArrayList<>();
         list.add(ctpAffair);
         insertCommon(list);
     }

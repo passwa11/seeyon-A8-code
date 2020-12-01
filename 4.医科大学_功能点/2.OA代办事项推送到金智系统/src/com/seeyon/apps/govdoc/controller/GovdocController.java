@@ -14,6 +14,8 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.seeyon.apps.ext.kypending.manager.KyPendingManager;
+import com.seeyon.apps.ext.kypending.util.ReadConfigTools;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.logging.Log;
 import org.json.JSONException;
@@ -517,6 +519,25 @@ public class GovdocController extends BaseController {
 		GovdocSummaryVO summaryVO = GovdocSummaryHelper.fillSummaryVoParam(request);
 		
 		//设置对象到VO对象
+		//todo zhou:[医科大学]在金智代办中已经处理的数据还显示问题修改 【开始】
+		String todopath = ReadConfigTools.getInstance().getString("todopath");
+		String appId = ReadConfigTools.getInstance().getString("appId");
+		String accessToken = ReadConfigTools.getInstance().getString("accessToken");
+		Long affairId=summaryVO.getAffairId();
+		CtpAffair Affair_ = affairManager.get(affairId);
+		List<Map<String, Object>> mapList = new ArrayList<>();
+		if(null !=Affair_){
+			Map<String, Object> map2 = new HashMap<>();
+			map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
+			map2.put("task_id", Affair_.getObjectId().longValue() + "");
+			map2.put("task_delete_flag", 1);
+			map2.put("process_instance_id", Affair_.getProcessId());
+			map2.put("process_delete_flag", 1);
+			mapList.add(map2);
+		}
+
+		// todo zhou:[医科大学]在金智代办中已经处理的数据还显示问题修改【结束】
+
 		if(!govdocPubManager.fillSummaryObj(summaryVO)) {
 			String openFrom = request.getParameter("openFrom");
 			if(openFrom!=null&&"F8Reprot".equals(openFrom)){
@@ -529,10 +550,25 @@ public class GovdocController extends BaseController {
 		        return null;
 			}
 			GovdocUtil.webAlertAndClose(response, summaryVO.getErrorMsg());
+			//todo zhou:[医科大学]在金智代办中已经处理的数据还显示问题修改 【开始】
+			if(null !=Affair_) {
+				KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
+			}
+			//todo zhou:[医科大学]在金智代办中已经处理的数据还显示问题修改 【结束】
 
 			return null;
 		}
-		
+		if(null !=Affair_) {
+			if(null !=Affair_.getState()){
+				if(Affair_.getState().intValue()==4 || Affair_.getState().intValue()==5 || Affair_.getState().intValue()==6 ||
+						Affair_.getState().intValue()==7 || Affair_.getState().intValue()==8 || Affair_.getState().intValue()==15){
+					//todo zhou:[医科大学]在金智代办中已经处理的数据还显示问题修改 【开始】
+					KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
+					//todo zhou:[医科大学]在金智代办中已经处理的数据还显示问题修改 【结束】
+				}
+			}
+		}
+
 		try {
 			summaryVO.setAction("summary");
 			govdocManager.transShowSummary(summaryVO);

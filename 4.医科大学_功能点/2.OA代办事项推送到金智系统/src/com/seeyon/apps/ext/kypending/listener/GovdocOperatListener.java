@@ -9,9 +9,13 @@ import com.seeyon.apps.ext.kypending.manager.TempPendingDataManagerImpl;
 import com.seeyon.apps.ext.kypending.po.TempPendingData;
 import com.seeyon.apps.ext.kypending.util.JDBCUtil;
 import com.seeyon.apps.ext.kypending.util.ReadConfigTools;
+import com.seeyon.apps.govdoc.manager.GovdocSummaryManager;
+import com.seeyon.apps.govdoc.manager.impl.GovdocSummaryManagerImpl;
+import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.common.po.affair.CtpAffair;
 import com.seeyon.ctp.util.annotation.ListenEvent;
+import com.seeyon.v3x.edoc.domain.EdocSummary;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +25,13 @@ import java.util.Map;
 public class GovdocOperatListener {
     TempPendingDataManager dataManager = new TempPendingDataManagerImpl();
 
+    public GovdocSummaryManager govdocSummaryManager =(GovdocSummaryManager) AppContext.getBean("govdocSummaryManager");
 
+    public void setGovdocSummaryManager(GovdocSummaryManager govdocSummaryManager) {
+        this.govdocSummaryManager = govdocSummaryManager;
+    }
+
+    //金智 1: 特急 2:紧急 3:一般
     @ListenEvent(event = GovdocOperationEvent.class, async = true)
     public void govdoc(GovdocOperationEvent event) {
 
@@ -99,7 +109,39 @@ public class GovdocOperatListener {
                         map.put("biz_key", affair.getId().longValue() + "");
                         map.put("biz_domain", "OA");
                         map.put("status", "ACTIVE");
-                        map.put("priority", "0");
+                        EdocSummary signSummary = null;
+                        //金智 1: 特急 2:紧急 3:一般
+                        //oa :1 普通
+                        //2 平急
+                        //3 加急
+                        //4 特急
+                        //5 特提
+                        try {
+                            signSummary = govdocSummaryManager.getSummaryById(affair.getObjectId());
+                        } catch (BusinessException e) {
+                            e.printStackTrace();
+                        }
+                        String urgentLevel = signSummary.getUrgentLevel();
+                        switch (urgentLevel){
+                            case "1":
+                                map.put("priority", "3");
+                                break;
+                            case "2":
+                                map.put("priority", "2");
+                                break;
+                            case "3":
+                                map.put("priority", "2");
+                                break;
+                            case "4":
+                                map.put("priority", "1");
+                                break;
+                            case "5":
+                                map.put("priority", "1");
+                                break;
+                            default:
+                                map.put("priority", "3");
+                        }
+
 
                         List<Map<String, Object>> aList = new ArrayList<>();
                         Map<String, Object> assmap = new HashMap<>();
