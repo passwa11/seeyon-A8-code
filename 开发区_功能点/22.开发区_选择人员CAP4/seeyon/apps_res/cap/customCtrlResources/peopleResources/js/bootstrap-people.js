@@ -759,7 +759,7 @@ function insertDataCommon(id, i, item) {
         row: {
             id: $(item).attr("lay-id"),
             field0001: $(item).attr("lay-name"),
-            field0002: $(item).attr("lay-value"),
+            field0002: $(item).attr("lay-field002"),
             name: $(item).attr("lay-username"),
             field0003: $(item).attr("lay-dept"),
             field0005: $(item).attr("lay-bs"),
