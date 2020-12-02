@@ -15,10 +15,8 @@ import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.common.po.affair.CtpAffair;
 import com.seeyon.ctp.util.annotation.ListenEvent;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class CollaborationEvent {
 
@@ -29,11 +27,13 @@ public class CollaborationEvent {
         return dataManager;
     }
 
-    public ColManager colManager =(ColManager) AppContext.getBean("colManager");
+    public ColManager colManager = (ColManager) AppContext.getBean("colManager");
 
     public void setColManager(ColManager colManager) {
         this.colManager = colManager;
     }
+
+    private SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
      * 发起监听
@@ -55,7 +55,7 @@ public class CollaborationEvent {
     @ListenEvent(event = CollaborationFinishEvent.class, async = true)
     public void finish(CollaborationFinishEvent event) {
         CtpAffair ctpAffair = event.getAffair();
-        updateCommon(ctpAffair);
+        updateCompleteStatus(ctpAffair);
     }
 
     /**
@@ -79,11 +79,19 @@ public class CollaborationEvent {
             Map<String, Object> map = null;
             List<Map<String, Object>> mapList = new ArrayList<>();
             Map<String, Object> map2 = new HashMap<>();
+//            map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
+//            map2.put("task_id", currentAffair.getObjectId().longValue() + "");
+//            map2.put("task_delete_flag", 1);
+//            map2.put("process_instance_id", currentAffair.getProcessId());
+//            map2.put("process_delete_flag", 1);
+
             map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
             map2.put("task_id", currentAffair.getObjectId().longValue() + "");
-            map2.put("task_delete_flag", 1);
+            map2.put("status", "COMPLETE");
+            map2.put("end_on", simpleDateFormat.format(new Date()));
             map2.put("process_instance_id", currentAffair.getProcessId());
-            map2.put("process_delete_flag", 1);
+            map2.put("process_instance_status", "COMPLETE");
+            map2.put("process_instance_ent_date", simpleDateFormat.format(new Date()));
             mapList.add(map2);
 
             KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
@@ -293,6 +301,29 @@ public class CollaborationEvent {
 
     }
 
+    private String _todoPath;
+    private String _appId;
+    private String _accessToken;
+
+
+    public void updateCompleteStatus(CtpAffair ctpAffair) {
+        List<Map<String, Object>> mapList = new ArrayList<>();
+        //todo 在这里将处理的数据状态改为已完成，使数据在金智已办栏目中显示
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Map<String, Object> map2 = new HashMap<>();
+        map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
+        map2.put("task_id", ctpAffair.getObjectId().longValue() + "");
+        map2.put("status", "COMPLETE");
+        map2.put("end_on", sdf.format(new Date()));
+        map2.put("process_instance_id", ctpAffair.getProcessId());
+        map2.put("process_instance_status", "COMPLETE");
+        map2.put("process_instance_ent_date", sdf.format(new Date()));
+        mapList.add(map2);
+
+        KyPendingManager.getInstance().updateCtpAffair("updatetasks", get_todoPath(), get_appId(), get_accessToken(), mapList);
+
+    }
+
 
     public void updateCommon(CtpAffair ctpAffair) {
         Map<String, Object> map2 = new HashMap<>();
@@ -310,4 +341,27 @@ public class CollaborationEvent {
         KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
     }
 
+    public String get_todoPath() {
+        return _todoPath;
+    }
+
+    public void set_todoPath(String _todoPath) {
+        this._todoPath = ReadConfigTools.getInstance().getString("todopath");
+    }
+
+    public String get_appId() {
+        return _appId;
+    }
+
+    public void set_appId(String _appId) {
+        this._appId = ReadConfigTools.getInstance().getString("appId");
+    }
+
+    public String get_accessToken() {
+        return _accessToken;
+    }
+
+    public void set_accessToken(String _accessToken) {
+        this._accessToken = ReadConfigTools.getInstance().getString("accessToken");
+    }
 }
