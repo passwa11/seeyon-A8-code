@@ -1908,8 +1908,12 @@ public class CollaborationController extends BaseController {
         String todopath = ReadConfigTools.getInstance().getString("todopath");
         String appId = ReadConfigTools.getInstance().getString("appId");
         String accessToken = ReadConfigTools.getInstance().getString("accessToken");
-        Long aLong = Long.parseLong(affairId);
-        CtpAffair Affair_ = affairManager.get(aLong);
+        CtpAffair Affair_=null;
+        if(null!=affairId && !"".equals(affairId)){
+            Long aLong = Long.parseLong(affairId);
+            Affair_= affairManager.get(aLong);
+        }
+
         List<Map<String, Object>> mapList = new ArrayList<>();
 
         if (null != Affair_) {
