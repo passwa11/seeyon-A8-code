@@ -22,6 +22,9 @@ public class GovdocOperatListener {
 
     public GovdocSummaryManager govdocSummaryManager = (GovdocSummaryManager) AppContext.getBean("govdocSummaryManager");
 
+    String get_todoPath = ReadConfigTools.getInstance().getString("todopath");
+    String get_appId = ReadConfigTools.getInstance().getString("appId");
+    String get_accessToken = ReadConfigTools.getInstance().getString("accessToken");
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public void setGovdocSummaryManager(GovdocSummaryManager govdocSummaryManager) {
@@ -149,10 +152,6 @@ public class GovdocOperatListener {
 
     }
 
-    private String _todoPath;
-    private String _appId;
-    private String _accessToken;
-
     //如果不存在单独查询，然后删除
     public void doesItExist(String summaryId, String type) {
         Map<String, Object> map = new HashMap<>();
@@ -177,7 +176,7 @@ public class GovdocOperatListener {
                 map2.put("process_instance_ent_date", simpleDateFormat.format(new Date()));
             }
             mapList.add(map2);
-            KyPendingManager.getInstance().updateCtpAffair("updatetasks", get_todoPath(), get_appId(), get_accessToken(), mapList);
+            KyPendingManager.getInstance().updateCtpAffair("updatetasks", get_todoPath, get_appId, get_accessToken, mapList);
         }
     }
 
@@ -191,48 +190,39 @@ public class GovdocOperatListener {
         map2.put("process_instance_id", ctpAffair.getProcessId());
         map2.put("process_delete_flag", 1);
         mapList.add(map2);
-        KyPendingManager.getInstance().updateCtpAffair("updatetasks", get_todoPath(), get_appId(), get_accessToken(), mapList);
+        KyPendingManager.getInstance().updateCtpAffair("updatetasks", get_todoPath, get_appId, get_accessToken, mapList);
     }
 
     public void updateCompleteStatus(CtpAffair ctpAffair) {
+        Map<String, Object> currentUserMap = JDBCUtil.getMemberInfo(ctpAffair.getMemberId());
+
         List<Map<String, Object>> mapList = new ArrayList<>();
         //todo 在这里将处理的数据状态改为已完成，使数据在金智已办栏目中显示
         Map<String, Object> map2 = new HashMap<>();
         map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
         map2.put("task_id", ctpAffair.getObjectId().longValue() + "");
+        map2.put("actual_owner_id",currentUserMap.get("login_name"));
+        map2.put("actual_owner_name",currentUserMap.get("membername"));
+        map2.put("actual_owner_dept",currentUserMap.get("unitname"));
         map2.put("status", "COMPLETE");
         map2.put("end_on", simpleDateFormat.format(new Date()));
         map2.put("process_instance_id", ctpAffair.getProcessId());
         map2.put("process_instance_status", "COMPLETE");
         map2.put("process_instance_ent_date", simpleDateFormat.format(new Date()));
+        String formUrl = "";
+        String oaUrl = ReadConfigTools.getInstance().getString("oaurl");
+        if (ctpAffair.getApp().intValue() == 1) {
+            formUrl = oaUrl + "/seeyon/openPending.jsp?ticket=" + currentUserMap.get("login_name") + "&affairId=" + ctpAffair.getId().longValue() + "&app=1&objectId=" + ctpAffair.getObjectId() + "";
+        } else if (ctpAffair.getApp().intValue() == 4) {
+            formUrl = oaUrl + "/seeyon/openPending.jsp?ticket=" + currentUserMap.get("login_name") + "&affairId=" + ctpAffair.getId().longValue() + "&app=4&objectId=" + ctpAffair.getObjectId() + "";
+        } else if (ctpAffair.getApp().intValue() == 6) {
+            formUrl = oaUrl + "/seeyon/openPending.jsp?ticket=" + currentUserMap.get("login_name") + "&affairId=" + ctpAffair.getId().longValue() + "&app=6&objectId=" + ctpAffair.getObjectId() + "";
+        }
+        map2.put("form_url", formUrl);
+        map2.put("form_url_view", formUrl);
         mapList.add(map2);
 
-        KyPendingManager.getInstance().updateCtpAffair("updatetasks", get_todoPath(), get_appId(), get_accessToken(), mapList);
+        KyPendingManager.getInstance().updateCtpAffair("updatetasks", get_todoPath, get_appId, get_accessToken, mapList);
 
     }
-
-    public String get_todoPath() {
-        return _todoPath;
-    }
-
-    public void set_todoPath(String _todoPath) {
-        this._todoPath = ReadConfigTools.getInstance().getString("todopath");
-    }
-
-    public String get_appId() {
-        return _appId;
-    }
-
-    public void set_appId(String _appId) {
-        this._appId = ReadConfigTools.getInstance().getString("appId");
-    }
-
-    public String get_accessToken() {
-        return _accessToken;
-    }
-
-    public void set_accessToken(String _accessToken) {
-        this._accessToken = ReadConfigTools.getInstance().getString("accessToken");
-    }
-
 }
