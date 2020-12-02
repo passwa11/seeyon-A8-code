@@ -25,6 +25,7 @@ import com.seeyon.apps.doc.api.DocApi;
 import com.seeyon.apps.doc.constants.DocConstants.PigeonholeType;
 import com.seeyon.apps.edoc.api.EdocApi;
 import com.seeyon.apps.ext.kypending.manager.KyPendingManager;
+import com.seeyon.apps.ext.kypending.util.JDBCUtil;
 import com.seeyon.apps.ext.kypending.util.ReadConfigTools;
 import com.seeyon.apps.taskmanage.util.MenuPurviewUtil;
 import com.seeyon.cap4.form.api.FormApi4Cap4;
@@ -125,6 +126,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
@@ -1908,22 +1910,18 @@ public class CollaborationController extends BaseController {
         String todopath = ReadConfigTools.getInstance().getString("todopath");
         String appId = ReadConfigTools.getInstance().getString("appId");
         String accessToken = ReadConfigTools.getInstance().getString("accessToken");
+        List<Map<String, Object>> mapList = new ArrayList<>();
         CtpAffair Affair_=null;
-        if(null!=affairId && !"".equals(affairId)){
+        if(null != affairId && !"".equals(affairId)){
             Long aLong = Long.parseLong(affairId);
             Affair_= affairManager.get(aLong);
         }
-
-        List<Map<String, Object>> mapList = new ArrayList<>();
+        Map<String, Object> map2 = new HashMap<>();
 
         if (null != Affair_) {
-            Map<String, Object> map2 = new HashMap<>();
             map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
             map2.put("task_id", Affair_.getObjectId().longValue() + "");
-            map2.put("task_delete_flag", 1);
-            map2.put("process_instance_id", Affair_.getProcessId());
-            map2.put("process_delete_flag", 1);
-            mapList.add(map2);
+
         }
 
         //todo zhou :金智代办中心已处理数据还存在问题解决【结束】
@@ -1932,6 +1930,10 @@ public class CollaborationController extends BaseController {
             ColUtil.webAlertAndClose(response, summaryVO.getErrorMsg());
             //todo zhou :金智代办中心已处理数据还存在问题解决【开始】
             if (null != Affair_) {
+                map2.put("task_delete_flag", 1);
+                map2.put("process_instance_id", Affair_.getProcessId());
+                map2.put("process_delete_flag", 1);
+                mapList.add(map2);
                 KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
             }
             //todo zhou :金智代办中心已处理数据还存在问题解决【结束】
@@ -1941,6 +1943,30 @@ public class CollaborationController extends BaseController {
             if (Affair_.getState().intValue() == 4 || Affair_.getState().intValue() == 5 || Affair_.getState().intValue() == 6 ||
                     Affair_.getState().intValue() == 7 || Affair_.getState().intValue() == 8 || Affair_.getState().intValue() == 15) {
                 //todo zhou:[医科大学]在金智代办中已经处理的数据还显示问题修改 【开始】
+                Map<String, Object> currentUserMap = JDBCUtil.getMemberInfo(Affair_.getMemberId());
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+                map2.put("actual_owner_id",currentUserMap.get("login_name"));
+                map2.put("actual_owner_name",currentUserMap.get("membername"));
+                map2.put("actual_owner_dept",currentUserMap.get("unitname"));
+                map2.put("status", "COMPLETE");
+                map2.put("end_on", sdf.format(new Date()));
+                map2.put("process_instance_id", Affair_.getProcessId());
+                map2.put("process_instance_status", "COMPLETE");
+                map2.put("process_instance_ent_date", sdf.format(new Date()));
+                String formUrl = "";
+                String oaUrl = ReadConfigTools.getInstance().getString("oaurl");
+                if (Affair_.getApp().intValue() == 1) {
+                    formUrl = oaUrl + "/seeyon/openPending.jsp?ticket=" + currentUserMap.get("login_name") + "&affairId=" + Affair_.getId().longValue() + "&app=1&objectId=" + Affair_.getObjectId() + "";
+                } else if (Affair_.getApp().intValue() == 4) {
+                    formUrl = oaUrl + "/seeyon/openPending.jsp?ticket=" + currentUserMap.get("login_name") + "&affairId=" + Affair_.getId().longValue() + "&app=4&objectId=" + Affair_.getObjectId() + "";
+                } else if (Affair_.getApp().intValue() == 6) {
+                    formUrl = oaUrl + "/seeyon/openPending.jsp?ticket=" + currentUserMap.get("login_name") + "&affairId=" + Affair_.getId().longValue() + "&app=6&objectId=" + Affair_.getObjectId() + "";
+                }
+                map2.put("form_url", formUrl);
+                map2.put("form_url_view", formUrl);
+                mapList.add(map2);
+
                 KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
                 //todo zhou:[医科大学]在金智代办中已经处理的数据还显示问题修改 【结束】
             }

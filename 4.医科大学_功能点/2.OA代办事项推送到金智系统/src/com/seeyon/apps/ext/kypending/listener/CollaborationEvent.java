@@ -33,7 +33,7 @@ public class CollaborationEvent {
         this.colManager = colManager;
     }
 
-    private SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
      * 发起监听
@@ -84,9 +84,13 @@ public class CollaborationEvent {
 //            map2.put("task_delete_flag", 1);
 //            map2.put("process_instance_id", currentAffair.getProcessId());
 //            map2.put("process_delete_flag", 1);
-
+            Map<String, Object> currentUserMap = JDBCUtil.getMemberInfo(list.get(0).getMemberId());
             map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
             map2.put("task_id", currentAffair.getObjectId().longValue() + "");
+
+            map2.put("actual_owner_id",currentUserMap.get("login_name"));
+            map2.put("actual_owner_name",currentUserMap.get("membername"));
+            map2.put("actual_owner_dept",currentUserMap.get("unitname"));
             map2.put("status", "COMPLETE");
             map2.put("end_on", simpleDateFormat.format(new Date()));
             map2.put("process_instance_id", currentAffair.getProcessId());
@@ -294,6 +298,8 @@ public class CollaborationEvent {
             map.put("node_name", affair.getNodePolicy());
             map.put("node_id", affair.getActivityId());
             map.put("form_url", formUrl);
+            map2.put("form_url_view", formUrl);
+
             map.put("process_instance_id", affair.getProcessId() + "");
             insertList.add(map);
         }
@@ -307,20 +313,38 @@ public class CollaborationEvent {
 
 
     public void updateCompleteStatus(CtpAffair ctpAffair) {
+        Map<String, Object> currentUserMap = JDBCUtil.getMemberInfo(ctpAffair.getMemberId());
         List<Map<String, Object>> mapList = new ArrayList<>();
         //todo 在这里将处理的数据状态改为已完成，使数据在金智已办栏目中显示
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Map<String, Object> map2 = new HashMap<>();
         map2.put("app_id", ReadConfigTools.getInstance().getString("appId"));
         map2.put("task_id", ctpAffair.getObjectId().longValue() + "");
+
+        map2.put("actual_owner_id",currentUserMap.get("login_name"));
+        map2.put("actual_owner_name",currentUserMap.get("membername"));
+        map2.put("actual_owner_dept",currentUserMap.get("unitname"));
         map2.put("status", "COMPLETE");
         map2.put("end_on", sdf.format(new Date()));
         map2.put("process_instance_id", ctpAffair.getProcessId());
         map2.put("process_instance_status", "COMPLETE");
         map2.put("process_instance_ent_date", sdf.format(new Date()));
+        String formUrl = "";
+        String oaUrl = ReadConfigTools.getInstance().getString("oaurl");
+        if (ctpAffair.getApp().intValue() == 1) {
+            formUrl = oaUrl + "/seeyon/openPending.jsp?ticket=" + currentUserMap.get("login_name") + "&affairId=" + ctpAffair.getId().longValue() + "&app=1&objectId=" + ctpAffair.getObjectId() + "";
+        } else if (ctpAffair.getApp().intValue() == 4) {
+            formUrl = oaUrl + "/seeyon/openPending.jsp?ticket=" + currentUserMap.get("login_name") + "&affairId=" + ctpAffair.getId().longValue() + "&app=4&objectId=" + ctpAffair.getObjectId() + "";
+        } else if (ctpAffair.getApp().intValue() == 6) {
+            formUrl = oaUrl + "/seeyon/openPending.jsp?ticket=" + currentUserMap.get("login_name") + "&affairId=" + ctpAffair.getId().longValue() + "&app=6&objectId=" + ctpAffair.getObjectId() + "";
+        }
+        map2.put("form_url", formUrl);
+        map2.put("form_url_view", formUrl);
         mapList.add(map2);
-
-        KyPendingManager.getInstance().updateCtpAffair("updatetasks", get_todoPath(), get_appId(), get_accessToken(), mapList);
+        String todopath = ReadConfigTools.getInstance().getString("todopath");
+        String appId = ReadConfigTools.getInstance().getString("appId");
+        String accessToken = ReadConfigTools.getInstance().getString("accessToken");
+        KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
 
     }
 
