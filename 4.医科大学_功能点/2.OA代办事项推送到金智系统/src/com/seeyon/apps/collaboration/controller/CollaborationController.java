@@ -1940,7 +1940,7 @@ public class CollaborationController extends BaseController {
             return null;
         }
         if(null != Affair_){
-            if (Affair_.getState().intValue() == 4 || Affair_.getState().intValue() == 5 || Affair_.getState().intValue() == 6 ||
+            if (Affair_.getState().intValue() == 4  ||
                     Affair_.getState().intValue() == 7 || Affair_.getState().intValue() == 8 || Affair_.getState().intValue() == 15) {
                 //todo zhou:[医科大学]在金智代办中已经处理的数据还显示问题修改 【开始】
                 Map<String, Object> currentUserMap = JDBCUtil.getMemberInfo(Affair_.getMemberId());
@@ -1969,6 +1969,12 @@ public class CollaborationController extends BaseController {
 
                 KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
                 //todo zhou:[医科大学]在金智代办中已经处理的数据还显示问题修改 【结束】
+            }else if (Affair_.getState().intValue() == 5 || Affair_.getState().intValue() == 6) {
+                map2.put("task_delete_flag", 1);
+                map2.put("process_instance_id", Affair_.getProcessId());
+                map2.put("process_delete_flag", 1);
+                mapList.add(map2);
+                KyPendingManager.getInstance().updateCtpAffair("updatetasks", todopath, appId, accessToken, mapList);
             }
         }
 
