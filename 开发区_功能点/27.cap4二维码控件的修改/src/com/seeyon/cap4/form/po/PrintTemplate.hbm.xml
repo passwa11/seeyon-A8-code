@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.seeyon.cap4.form.po">
+    <!-- 标签打印表 -->
+  <class
+    name="PrintTemplate"
+    table="cap_print_template"
+  >
+    <id
+      name="id"
+      type="long"
+      column="ID"
+    >
+      <generator class="assigned"/>
+    </id>
+
+    <!-- 模板名称 -->
+    <property
+      name="templateName"
+      column="template_name"
+      type="string"
+      not-null="false"
+      length="100"
+    />
+    <!-- 创建人 -->
+    <property
+            name="createId"
+            column="create_id"
+            type="long"
+            not-null="false"
+            length="20"
+    />
+    <!-- 创建时间 -->
+    <property
+            name="createDate"
+            column="create_date"
+            type="timestamp"
+            not-null="false"
+            length="7"
+    />
+    <!-- 修改时间 -->
+    <property
+            name="modifyDate"
+            column="modify_date"
+            type="timestamp"
+            not-null="false"
+            length="7"
+    />
+    <!-- 模板内容 -->
+    <property
+            name="content"
+            column="content"
+            type="string"
+            not-null="false"
+    />
+    <!-- 状态 -->
+    <property name="type" column="type" type="integer" not-null="false" length="6"/>
+
+    <!-- 状态 -->
+    <property name="state" column="state" type="integer" not-null="false" length="6"/>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.seeyon.ctp.common.barCode.domain.BarCodeInfo" table="bar_code_info">
+		<id name="id" type="java.lang.Long">
+			<column name="id" length="20" />
+			<generator class="assigned" />
+		</id>
+		<property name="categoryId">
+			<column name="category_id" length="10"/>
+			<type name="java.lang.Integer"/>
+		</property>
+		<property name="objectId">
+			<column name="object_id" length="20"/>
+			<type name="java.lang.Long"/>
+		</property>
+		<property name="createDate">
+			<column name="create_date"/>
+			<type name="java.util.Date"/>
+		</property>
+		<property name="fileName">
+			<column name="file_name" length="20"/>
+			<type name="java.lang.Long"/>
+		</property>
+		<property name="fileExt">
+			<column name="file_ext" length="20"/>
+			<type name="java.lang.String"/>
+		</property>
+		<property name="updateDate">
+			<column name="update_date"/>
+			<type name="java.util.Date"/>
+		</property>
+	</class>
+</hibernate-mapping>
