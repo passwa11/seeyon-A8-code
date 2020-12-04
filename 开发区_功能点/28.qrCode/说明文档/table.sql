@@ -1,6 +1,7 @@
 create table temp_qr_code_bj(
-	id varchar2(50) primary key,
+	id NUMBER primary key,
 	create_date date,
+	bj_id VARCHAR2(50),
 	file_url VARCHAR2(255),
 	filename VARCHAR2(100),
 	mime_type varchar2(50),
@@ -9,3 +10,4 @@ create table temp_qr_code_bj(
 	bj_p2 VARCHAR2(100),
 	bj_p3 VARCHAR2(100)
 );
+
