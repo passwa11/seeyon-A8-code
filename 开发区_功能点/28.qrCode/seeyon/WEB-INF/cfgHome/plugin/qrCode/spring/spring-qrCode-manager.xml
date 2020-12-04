@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+    <bean id="qrCodeManager" class="com.seeyon.apps.ext.qrCode.manager.qrCodeManagerImpl">
+    </bean>
+</beans>
