@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.seeyon.apps.ext.qrCode.po">
+    <class name="TempQrCodeBj" table="temp_qr_code_bj" lazy="false">
+        <id name="id" type="long" column="ID">
+            <generator class="assigned"/>
+        </id>
+        <property name="bjId" type="string" column="BJ_ID"/>
+        <property name="createDate" type="date" column="CREATE_DATE"/>
+        <property name="fileUrl" type="string" column="FILE_URL"/>
+        <property name="filename" type="string" column="FILENAME"/>
+        <property name="mimeType" type="string" column="MIME_TYPE"/>
+        <property name="createMemberId" type="string" column="CREATE_MEMBER_ID"/>
+        <property name="bjP1" type="string" column="BJ_P1"/>
+        <property name="bjP2" type="string" column="BJ_P2"/>
+        <property name="bjP3" type="string" column="BJ_P3"/>
+    </class>
+</hibernate-mapping>
