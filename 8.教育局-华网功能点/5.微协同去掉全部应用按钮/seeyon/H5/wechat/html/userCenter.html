@@ -12,120 +12,120 @@
     <link href="../css/common.css?buildversion=20200526" rel="stylesheet">
 </head>
 <body style="background:#F4F4F4;">
-    <div class="user">
-        <div class="userContent">
-            <div class="content">
-                <div class="detail">
-                    <div class="name">
-                        <span id="userName"></span>
-                    </div>
-                    <div class="obj">
-                        <span id="post" style=" text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 90%; display: inline-block; "></span>
-                    </div>
-                </div>
-                <div class="avatar">
-                    <img id="userCard" style="border-radius: 100%;">
-                </div>
-            </div>
-            <div class="dept">
-                <span><i18n key="weixin.usercenter.dept"></i18n>：</span>
-                <span id="deptName"></span>
-            </div>
-            <div class="duty">
-                <span><i18n key="weixin.usercenter.level"></i18n>：</span>
-                <span id="level"></span>
-            </div>
-        </div>
-        
-    </div>
-    
-    <div class="operate">
-        <div class="agent" id="agent">
+<div class="user">
+    <div class="userContent">
+        <div class="content">
             <div class="detail">
-                <div class="title">
-                    <span class="iconfont icon-personal-center" style="font-size: 20px;color: #297FFB;"></span>
-                    <span style="font-size: 16px;color: #333;margin-left: 10px;"><i18n key="weixin.agent.label"></i18n></span>
+                <div class="name">
+                    <span id="userName"></span>
                 </div>
-                <div class="arrow">
-                    <span class="iconfont icon-Enter-in" style="font-size: 12px;color: #999;margin-right: 20px;"></span>
-                </div>
-            </div>
-        </div>
-        <div class="message">
-            <div class="detail">
-                <div class="title">
-                    <span class="iconfont icon-message-set" style="font-size: 20px;color: #f5a623;"></span>
-                    <span style="font-size: 16px;color: #333;margin-left: 10px;"><i18n key="weixin.usercenter.msgnotification"></i18n></span>
-                </div>
-                <div class="arrow">
-                    <span class="iconfont icon-Enter-in" style="font-size: 12px;color: #999;margin-right: 20px;"></span>
+                <div class="obj">
+                    <span id="post" style=" text-overflow: ellipsis; overflow: hidden; white-space: nowrap; width: 90%; display: inline-block; "></span>
                 </div>
             </div>
+            <div class="avatar">
+                <img id="userCard" style="border-radius: 100%;">
+            </div>
         </div>
-         <div class="mycustomerservice" id="mycustomerservice" style="display:none;">
-            <div class="detail">
-                <div class="title">
-                    <span class="m3-icon-kefu" style="font-size: 20px;color: #00bfcf;"></span>
-                    <span style="font-size: 16px;color: #333;margin-left: 10px;"><i18n key="weixin.usercenter.mycustomerservice"></i18n></span>
-                </div>
-                <div class="arrow">
-                    <span class="iconfont icon-Enter-in" style="font-size: 12px;color: #999;margin-right: 20px;"></span>
-                </div>
+        <div class="dept">
+            <span><i18n key="weixin.usercenter.dept"></i18n>：</span>
+            <span id="deptName"></span>
+        </div>
+        <div class="duty">
+            <span><i18n key="weixin.usercenter.level"></i18n>：</span>
+            <span id="level"></span>
+        </div>
+    </div>
+
+</div>
+
+<div class="operate">
+    <div class="agent" id="agent">
+        <div class="detail">
+            <div class="title">
+                <span class="iconfont icon-personal-center" style="font-size: 20px;color: #297FFB;"></span>
+                <span style="font-size: 16px;color: #333;margin-left: 10px;"><i18n key="weixin.agent.label"></i18n></span>
+            </div>
+            <div class="arrow">
+                <span class="iconfont icon-Enter-in" style="font-size: 12px;color: #999;margin-right: 20px;"></span>
             </div>
         </div>
     </div>
-    <div class="relieve">
-        <span><i18n key="weixin.usercenter.unbind"></i18n></span>
+    <!--        <div class="message">-->
+    <!--            <div class="detail">-->
+    <!--                <div class="title">-->
+    <!--                    <span class="iconfont icon-message-set" style="font-size: 20px;color: #f5a623;"></span>-->
+    <!--                    <span style="font-size: 16px;color: #333;margin-left: 10px;"><i18n key="weixin.usercenter.msgnotification"></i18n></span>-->
+    <!--                </div>-->
+    <!--                <div class="arrow">-->
+    <!--                    <span class="iconfont icon-Enter-in" style="font-size: 12px;color: #999;margin-right: 20px;"></span>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <div class="mycustomerservice" id="mycustomerservice" style="display:none;">
+        <div class="detail">
+            <div class="title">
+                <span class="m3-icon-kefu" style="font-size: 20px;color: #00bfcf;"></span>
+                <span style="font-size: 16px;color: #333;margin-left: 10px;"><i18n key="weixin.usercenter.mycustomerservice"></i18n></span>
+            </div>
+            <div class="arrow">
+                <span class="iconfont icon-Enter-in" style="font-size: 12px;color: #999;margin-right: 20px;"></span>
+            </div>
+        </div>
     </div>
-    <div id="portalFooter" class="portalFooter">
-        <div class="block navTodo">
-            <div class="pIcon">
-                <span class="iconfont icon-backlog"></span>
-            </div>
-            <div class="pName">
-                <span><i18n key="portal.bottom.todo"></i18n></span>
-            </div>
+</div>
+<div class="relieve">
+    <span><i18n key="weixin.usercenter.unbind"></i18n></span>
+</div>
+<div id="portalFooter" class="portalFooter">
+    <div class="block navTodo">
+        <div class="pIcon">
+            <span class="iconfont icon-backlog"></span>
         </div>
-        <div class="block navPortal">
-            <div class="pIcon">
-                <span class="iconfont icon-information-portal"></span>
-            </div>
-            <div class="pName">
-                <span><i18n key="portal.bottom.portal_index"></i18n></span>
-            </div>
+        <div class="pName">
+            <span><i18n key="portal.bottom.todo"></i18n></span>
         </div>
-        <!--        zhou:隐藏-->
-        <div class="block navApp" style="display: none;">
-            <div class="pIcon">
-                <span class="iconfont icon-m3-app"></span>
-            </div>
-            <div class="pName">
-                <span><i18n key="portal.bottom.all_apps"></i18n></span>
-            </div>
-        </div>
-        <div class="block navUser">
-            <div class="pIcon pIconChoose">
-                <span class="iconfont icon-personal-center-fill"></span>
-            </div>
-            <div class="pName pNameChoose">
-                <span><i18n key="portal.bottom.personal_center"></i18n></span>
-            </div>
-        </div>
-        <div style="clear: both;"></div>
     </div>
-    <script type="text/javascript" src="/seeyon/H5/wechat/i18n/wechat_zh_CN.js?buildversion=20200526"></script>
-    <script type="text/javascript" src="/seeyon/m3/apps/v5/portal/i18n/Portal_zh_CN.js?buildversion=20200526"></script>
-    <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=20200526"></script>
-    <script type="text/javascript">
-        cmp.i18n.init("/seeyon/H5/wechat/i18n/","wechat",null,"20200526");
-        cmp.i18n.init("/seeyon/m3/apps/v5/portal/i18n/","Portal",null,"20200526");
-    </script>
-    <script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=20200526" ></script>
-    <script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=20200526"></script>
-    <script type="text/javascript" src="/seeyon/m3/apps/v5/commons/js/onlinecustomerservice-jssdk.js?buildversion=20200526"></script>
-    <script type="text/javascript" src="/seeyon/H5/wechat/js/weixin-jssdk.js?buildversion=20200526"></script>
-    <script type="text/javascript" src="/seeyon/H5/wechat/js/userCenter.js?buildversion=20200526"></script>
-    <script type="text/javascript" src="/seeyon/H5/wechat/js/stastics.js?buildversion=20200526"></script>
-    <script type="text/javascript" src="/seeyon/m3/apps/v5/commons/js/onlinecustomerservice-jssdk.js?buildversion=20200526"></script>
+    <div class="block navPortal">
+        <div class="pIcon">
+            <span class="iconfont icon-information-portal"></span>
+        </div>
+        <div class="pName">
+            <span><i18n key="portal.bottom.portal_index"></i18n></span>
+        </div>
+    </div>
+    <!--        zhou:隐藏-->
+    <div class="block navApp" style="display: none;">
+        <div class="pIcon">
+            <span class="iconfont icon-m3-app"></span>
+        </div>
+        <div class="pName">
+            <span><i18n key="portal.bottom.all_apps"></i18n></span>
+        </div>
+    </div>
+    <div class="block navUser">
+        <div class="pIcon pIconChoose">
+            <span class="iconfont icon-personal-center-fill"></span>
+        </div>
+        <div class="pName pNameChoose">
+            <span><i18n key="portal.bottom.personal_center"></i18n></span>
+        </div>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<script type="text/javascript" src="/seeyon/H5/wechat/i18n/wechat_zh_CN.js?buildversion=20200526"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/portal/i18n/Portal_zh_CN.js?buildversion=20200526"></script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=20200526"></script>
+<script type="text/javascript">
+    cmp.i18n.init("/seeyon/H5/wechat/i18n/","wechat",null,"20200526");
+    cmp.i18n.init("/seeyon/m3/apps/v5/portal/i18n/","Portal",null,"20200526");
+</script>
+<script type="text/javascript" src="/seeyon/m3/cmp/js/cmp.js?buildversion=20200526" ></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=20200526"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/js/onlinecustomerservice-jssdk.js?buildversion=20200526"></script>
+<script type="text/javascript" src="/seeyon/H5/wechat/js/weixin-jssdk.js?buildversion=20200526"></script>
+<script type="text/javascript" src="/seeyon/H5/wechat/js/userCenter.js?buildversion=20200526"></script>
+<script type="text/javascript" src="/seeyon/H5/wechat/js/stastics.js?buildversion=20200526"></script>
+<script type="text/javascript" src="/seeyon/m3/apps/v5/commons/js/onlinecustomerservice-jssdk.js?buildversion=20200526"></script>
 </body>
 </html>
