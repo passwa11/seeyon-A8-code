@@ -1,0 +1,345 @@
+<!--
+@Author: lizhiheng <mars>
+@Date:   2016-08-27 12:58:56
+@Project: m3
+@Last modified by:   mars
+@Last modified time: 2016-08-29 11:31:42
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>待办工作</title>
+    <!--导入v5门户的图标库-->
+    <link href="/seeyon/m3/apps/v5/portal/css/iconfont.css?buildversion=20822184112" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/seeyon/m3/cmp/css/cmp.css?buildversion=20822184112">
+    <link rel="stylesheet" href="/seeyon/m3/apps/m3/commons/fonts/iconfont.css?buildversion=20822184112">
+    <link rel="stylesheet" href="/seeyon/m3/apps/m3/commons/css/base.css?buildversion=20822184112">
+    <link rel="stylesheet" href="/seeyon/m3/apps/m3/todo/css/app-animate.css?buildversion=20822184112">
+    <link rel="stylesheet" href="/seeyon/m3/apps/m3/todo/css/app-todo-list.css?buildversion=20822184112">
+    <link rel="stylesheet" href="/seeyon/m3/apps/m3/todo/css/app-todo-list-80.css?buildversion=20822184112">
+
+</head>
+<body class="flex-v m3-todo cmp-white-bg1 cmp-main-fc">
+    <script>
+        /**
+         * @description 优化IphoneX的头部交互，组织去抖动
+         */
+        ;(function() {
+            var ua = window.navigator.userAgent.toUpperCase(),
+                curUrl = window.location.href,
+                isNeedShowHeader = curUrl.match(/ParamHrefMark|isfromnative/);
+            if (curUrl.match(/isroot/)) {
+                isNeedShowHeader = false;
+            }
+            window.isNeedShowHeader = isNeedShowHeader;
+            if (ua.match(/IPHONEX/)) {
+                document.body.className += ' cmp-ios-x';
+            } else if (ua.match(/IPHONE|IPAD|IPOD/)) {
+                document.body.className += ' cmp-ios';
+            }
+            if (isNeedShowHeader) {
+                document.body.className += ' showHeader';
+            }
+        })();
+
+        ;(function() {
+            var serverId = window.localStorage[ 'curServerId' ] || '',
+                userId = window.localStorage[ 'curUserId' ] || '',
+                fontType = window.localStorage[ 'fontType-' + serverId + '-' + userId ] || 'cmp-font-type-12';
+            document.body.className += ' cmp-font-type-' + fontType;
+        })();
+    </script>
+    <header class="cmp-header flex-h cmp-bar cmp-bar-nav cmp-white-bg1">
+        <div class="back cmp-action-back">
+            <span class="cmp-icon see-icon-v5-common-arrow-back cmp-main-fc"></span>
+            <!-- <span class="nav-text"><i18n key="todo.m3.h5.return"></i18n></span> -->
+        </div>
+        <h1 class="flex-1 cmp-main-fc"><i18n key="todo.m3.h5.todo"></i18n></h1>
+        <div class="other-btns flex-h">
+            <a class="icon-search flex-1 iconfont see-icon-m3-search cmp-main-fc" id="search"></a>
+            <a class="icon-create flex-1 iconfont see-icon-m3-add-round cmp-main-fc" id="create"></a>
+        </div>
+    </header>
+    <!-- 一级页签 -->
+    <div class="page-first-nav-warp">
+        <section class="cmp-after-line cmp-white-bg1 header-nav flex-h flex-vc menu-into other-btns-warp header display_none" id="header-nav">
+            <div class="flex-1 header-nav-btn cmp-main-fc">
+                <!-- 待办 -->
+                <a class="cmp-main-fc active" id="todo" data-index="0">
+                    <i18n key="todo.m3.h5.todo"></i18n>
+                    <span class="arrow"></span>
+                </a>
+                <!-- 任务 -->
+                <a class="cmp-main-fc display-none" id="task" data-index="1"><i18n key="todo.m3.h5.task"></i18n></a>
+                <!-- 日程 -->
+                <a class="cmp-main-fc display-none" id="schedule" data-index="2"><i18n key="todo.m3.h5.schedule"></i18n></a>
+            </div>
+            <div class="other-btns display-none flex-h">
+                <a class="icon-app flex-1 iconfont see-icon-m3-app-fill cmp-main-fc" id="commonApp"></a>
+                <a class="icon-search flex-1 iconfont see-icon-m3-search cmp-main-fc" id="search1"></a>
+                <a class="icon-create flex-1 iconfont see-icon-m3-add-round cmp-main-fc" id="create1"></a>
+            </div>
+        </section>
+    </div>
+    <div class="no-net cmp-white-bg"></div>
+    <div class="flex-v flex-1 todo-box content page-over-hidden cmp-white-bg1">
+        <div class="wapper flex-v flex-1 cmp-white-bg1" id="todo-wapper">
+        	<!-- 查询 -->
+        	<div class="cmp-segmented_title_content cmp-white-bg" id="searchHeader" style="display:none;">
+		         <form action="#" onsubmit="return false;">
+		              <div class="cmp-content-title-search cmp-content-search-add cmp-white-bg">
+		                  <div class="cmp-input-row see-icon-search cmp-search">
+		                      <input type="search" placeholder="" class="cmp-input-clear cmp-input-bg" disabled>
+		                      <span class="cmp-icon cmp-hidden cmp-icon-clear"></span>
+		                      <span class="cmp-placeholder cmp-sup-fc2 cmp-input-bg"  id="searchPortal">
+		                                        <span class="cmp-icon cmp-icon-search cmp-sup-fc2"></span>
+		                      <span class="text-search"><i18n key="todo.m3.h5.searchPrompt"></i18n></span>
+		                      </span>
+		                  </div>
+		                  <div class="search-title-cancel cmp-icon see-icon-v5-common-add-circle pendingCreateDom cmp-theme-fc" id="create1"></div>
+		              </div>
+		          </form>
+		      </div>
+		     <div id="reSearch" class="cmp-search-content cmp-header-search-position " style="display: none;right: 0px;left: 0px; height:44px;background-color:#F8F9FB;">
+		            <div class="cmp-search-title " style="border:none;top:0px;padding: 9px 3px;background-color:#F8F9FB;">
+		                <div class="cmp-search-item" style="width:20px;">
+		                    <span class="title" id="cmp_search_title" style="color:#666666!important"></span>
+		                </div>
+		                <div id="toSearch" class="cmp-search-item" style="font-size:16px;color:#297ffb;width:200px;">
+		                    <div id="searchText" class="item text cmp-active">
+		                        <input id="searchTextValue" type="text" readonly="readonly">
+		                    </div>
+		                    <div id="searchDate" class="item date">
+		                        <input id="searchDateBeg" class="cmp-search-date_btn" type="text" readonly="readonly">
+		                        <span>-</span>   <input id="searchDateEnd" class="cmp-search-date_btn" type="text" id="date_end" readonly="readonly">
+		                    </div>
+		                </div>
+		                <div class="cmp-search-item" style="float:right;margin-right:20px;">
+		                    <span id="cancelSearch" class=" gotoSearch"><i18n key="todo.m3.h5.cancel"></i18n></span>
+		                </div>
+		            </div>
+		        </div>
+            <!-- 二级待办页签 -->
+            <section class="todo-nav-wapper" id="todo-nav">
+                <div class="flex-h todo-second-nav">
+                    <div class="flex-1 over-hidden" id="nav-tabbar"></div>
+
+                    <div class="flex-h">
+                        <div class="todo-list-hline" ></div>
+                        <a class="edit-nav iconfont see-icon-m3-spread" id="edit-nav"></a>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- 代办列表内容 -->
+            <section class="todo-list-content over-hidden flex-1" id="todo-list-content"></section>
+        </div>
+        <div class="wapper flex-v flex-1 display-none cmp-white-bg1" id="task-wapper">
+            <div class="todo-header flex-h task-header cmp-white-bg cmp-sup-fc1">
+                <!-- 未完成任务 -->
+                <span class="flex-1 cmp-font-desc"><i18n key="todo.m3.h5.unDealTask"></i18n></span>
+                <!-- 更多任务 -->
+                <span class="iconfont cmp-font-sbtn see-icon-m3-arrow-right" id="task-app"><i18n key="todo.m3.h5.moreTask"></i18n></span>
+            </div>
+            <div class="flex-1 over-hidden" id="task-list-view">
+                <div class="cmp-listview-scroll">
+                    <ul class="cmp-white-bg1"></ul>
+                    <div class="listview-bottom"></div>
+                </div>
+            </div>
+        </div>
+        <div class="wapper flex-v flex-1 display-none cmp-white-bg1">
+            <div class="todo-header flex-h cmp-sup-fc1 cmp-white-bg display-none">
+                <!-- 今日日程 -->
+                <span class="flex-1 cmp-font-desc"><i18n key="todo.m3.h5.todaySchedule"></i18n></span>
+                <!-- 更多日程 -->
+                <span class="iconfont see-icon-m3-arrow-right cmp-font-sbtn" id="schedule-app"><i18n key="todo.m3.h5.moreSchedule"></i18n></span>
+            </div>
+            <div class="flex-1 over-hidden" id="schedule-list-view">
+                <div class="cmp-listview-scroll">
+                    <ul class="cmp-white-bg1"></ul>
+                    <div class="listview-bottom"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 已办，已发，待发入口 -->
+    <section class="todo-entry flex-h display-none cmp-white-bg cmp-desc-fc cmp-before-line cmp-bdb-bgc">
+        <div class="flex1" data-target="listDone">
+            <span class="cmp-app-bgc3-no cmp-y-center cmp-x-center cmp-flex-h bg-green iconfont see-icon-m3-finishedmatter-fill cmp-title-fc-no"></span>
+            <!-- 已办 -->
+            <span class="textover-1 cmp-font-btn"><i18n key="todo.m3.h5.coorDone"></i18n></span>
+        </div>
+        <div class="flex1" data-target="listSent">
+            <span class="cmp-app-bgc2-no cmp-y-center cmp-x-center cmp-flex-h bg-pink iconfont see-icon-m3-sendedmatter-fill cmp-title-fc-no"></span>
+            <!-- 已发 -->
+            <span class="textover-1 cmp-font-btn"><i18n key="todo.m3.h5.coorSent"></i18n></span>
+        </div>
+        <div class="flex1" data-target="listWaitSend">
+            <span class="cmp-theme-bgc-no cmp-y-center cmp-x-center cmp-flex-h bg-red iconfont see-icon-m3-planmatter-fill cmp-title-fc-no"></span>
+            <!-- 待发 -->
+            <span class="textover-1 cmp-font-btn"><i18n key="todo.m3.h5.coorSending"></i18n></span>
+        </div>
+    </section>
+    <!-- 透明层 -->
+    <section class="opacity-5 todo-entry-opacity display-none"></section>
+    <section class="opacity-5 nav-set-opacity display-none"></section>
+    <section class="opacity-5 doc-opacity display-none"></section>
+    <!-- 页签设置层 -->
+    <section class="nav-set display-none cmp-white-bg1">
+        <div class="flex-h nav-set-title">
+            <span class="flex-1">
+                <!-- 待办类别 -->
+                <i class="cmp-font-title cmp-main-fc"><i18n key="todo.m3.h5.todoType"></i18n></i>
+                <!-- 选择进入分类 -->
+                <i class="nav-text cmp-font-asswords cmp-desc-fc"><i18n key="todo.m3.h5.selectEntryType"></i18n></i>
+            </span>
+            <!-- 编辑 -->
+            <span class="nav-edit cmp-font-btn cmp-theme-fc"><i18n key="todo.m3.h5.edit"></i18n></span>
+        </div>
+        <ul class="nav-showlist cmp-cont-fc" id="nav-show"></ul>
+        <div class="flex-h nav-set-title mar-30">
+            <span class="flex-1">
+                <!-- 更多类别 -->
+                <i class="cmp-font-title cmp-main-fc"><i18n key="todo.m3.h5.moreType"></i18n></i>
+                <!-- 点击添加分类 -->
+                <i class="cmp-desc-fc nav-set-add cmp-font-asswords display-none"><i18n key="todo.m3.h5.moreMsg"></i18n></i>
+            </span>
+        </div>
+        <ul class="nav-showlist cmp-cont-fc" id="nav-hide"></ul>
+    </section>
+    <!-- 批处理 -->
+    <section class="batch-process-btn flex-h display-none">
+        <!-- 转发 -->
+        <a class="flex-1" id="batch-forword" data-method="forwardProcess"><i18n key="todo.m3.h5.processForward"></i18n></a>
+        <!-- 归档 -->
+        <a class="flex-1" id="batch-archive" data-method="archiveProcess"><i18n key="todo.m3.h5.processArchive"></i18n></a>
+        <!-- 删除 -->
+        <a class="flex-1" id="batch-delete" data-method="deleteProcess"><i18n key="todo.m3.h5.processDelete"></i18n></a>
+        <!-- 批处理 -->
+        <a class="flex-1" id="batch-process" data-method="batchProcess"><i18n key="todo.m3.h5.processBatch"></i18n></a>
+    </section>
+
+    <!--微协同下导航html片段 xinpei 2019-01-19-->
+    <footer class="todo-portalFooter cmp-hidden" id="home">
+        <div class="block navTodo">
+            <div class="pIcon pIconChoose">
+                <span class="iconfont icon-backlog-fill"></span>
+            </div>
+            <div class="pName pNameChoose">
+                <span><i18n key="todo.m3.online.navbar.name.todowork"></i18n></span>
+            </div>
+        </div>
+        <div class="block navPortal">
+            <div class="pIcon">
+                <span class="see-icon-v5-common-information-portal"></span>
+            </div>
+            <div class="pName">
+                <span><i18n key="todo.m3.online.navbar.name.portalIndex"></i18n></span>
+            </div>
+        </div>
+<!--        zhou:隐藏-->
+        <div class="block navApp" style="display: none;">
+            <div class="pIcon">
+                <span class="iconfont icon-wechat-m3-app"></span>
+            </div>
+            <div class="pName">
+                <span><i18n key="todo.m3.online.navbar.name.allApps"></i18n></span>
+            </div>
+        </div>
+        <div class="block navUser">
+            <div class="pIcon">
+                <span class="iconfont icon-personal-center"></span>
+            </div>
+            <div class="pName">
+                <span><i18n key="todo.m3.online.navbar.name.personalCenter"></i18n></span>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+    </footer>
+     <!--微协同渲染下导航 xinpei 2019-01-19-->
+    <script>
+        function renderNavBar(){
+            var urlParams = getUrlParams();
+            if(Object.keys(urlParams).length){
+                var weixinFrom = urlParams["weixinFrom"];
+                var homeBar = document.getElementById("home");
+                if(weixinFrom == "home"){
+                    homeBar.classList.remove("cmp-hidden");
+ }
+}
+}
+        function getUrlParams(){
+            var urlSearch = window.location.search;
+            var urlParams = {};
+            if(urlSearch) {
+                urlSearch = decodeURI(urlSearch);
+                urlSearch = urlSearch.replace(/\?/, "");
+                if (urlSearch.indexOf("&") != -1) {
+                    urlSearch = urlSearch.split("&");
+                    for (var i = 0; i < urlSearch.length; i++) {
+                        var oneParamStr = urlSearch[i];
+                        if (oneParamStr) {
+                            urlParams[oneParamStr.substring(0, oneParamStr.indexOf("="))] = oneParamStr.substring(oneParamStr.indexOf("=") + 1);
+}
+}
+} else {
+                    urlParams[urlSearch.substring(0, urlSearch.indexOf("="))] = urlSearch.substring(urlSearch.indexOf("=") + 1);
+}
+}
+            return urlParams;
+}
+        renderNavBar();
+    </script>    <!---微协同绑定下导航按钮事件 xinpei 2019-01-19-->
+    <script>function bindNavbarEvent(){
+               document.querySelector(".navPortal").addEventListener("tap",function () {
+            cmp.href.next("/seeyon/m3/apps/v5/portal/html/portalIndex.html?weixinFrom=home&wxtmainportal=true");
+        });
+        document.querySelector(".navApp").addEventListener("tap",function () {
+            cmp.href.next("/seeyon/H5/wechat/html/allApps.html?weixinFrom=home");
+        });
+        document.querySelector(".navUser").addEventListener("tap",function () {
+            cmp.href.next("/seeyon/H5/wechat/html/userCenter.html?weixinFrom=home");
+        });    }
+ bindNavbarEvent();</script>    <!---微协同快捷菜单容器 xinpei 2019-01-19-->
+    <div class="cmp-white-bg createFilter display_none"></div> <div class="create display_none"><div id="slider" class="cmp-slider"></div><div class="close"><span class="see-icon-v5-common-close"></span></div></div>    <!-- 归档的容器 -->
+    <div id="docPigeonhole" class="GM_Alert_Content Animated-Container bottom-go animated"></div>
+    <script src="/seeyon/m3/apps/m3/todo/i18n/todo_zh_CN.js?buildversion=20822184112"></script>
+    <script src="/seeyon/m3/apps/m3/commons/i18n/commons_zh_CN.js?buildversion=20822184112"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-i18n.js?buildversion=20822184112"></script>
+    <script>
+        cmp.i18n.load("/seeyon/m3/apps/m3/commons/i18n/", "commons");
+        cmp.i18n.init("/seeyon/m3/apps/m3/todo/i18n/", "todo");
+        var m3CommonsPath = "/seeyon/m3/apps/m3/commons";
+        var m3TodoPath = "/seeyon/m3/apps/m3/todo";
+        var cmpPath = "/seeyon/m3/cmp";
+        var v5TaskmanagerPath = "/seeyon/m3/apps/v5/taskmanage";
+        var v5MeetingPath = "/seeyon/m3/apps/v5/meeting";
+        var v5CalendarPath = "/seeyon/m3/apps/v5/calendar";
+        var $verstion = "?buildversion=20822184112";
+    </script>
+
+        <script src="/seeyon/m3/cmp/js/cmp.js?buildversion=20822184112"></script>
+    <script src="/seeyon/m3/apps/v5/cip/js/cip-jssdk.js?buildversion=20822184112"></script>
+	<script src="/seeyon/m3/apps/v5/cip/js/cip-api.js?buildversion=20822184112"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-app.js?buildversion=20822184112"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-asyncLoad.js?buildversion=20822184112"></script>
+    <script src="/seeyon/m3/cmp/js/cmp-sortable.js?buildversion=20822184112"></script>
+    <script src="/seeyon/m3/apps/m3/commons/js/m3-path.s3js?buildversion=20822184112"></script>
+    <!-- seajs -->
+    <script src="/seeyon/m3/apps/m3/commons/lib/seajs-2.2.1.js?buildversion=20822184112"></script>
+    <script src="/seeyon/m3/apps/m3/commons/config.js?buildversion=20822184112"></script>
+    <!--微协同导入app映射关系 xinpei 2019-10-21-->
+    <script  src="/seeyon/m3/apps/m3/commons/js/m3-app-map.s3js?buildversion=20822184112" type="text/javascript"></script>
+<script  src="/seeyon/m3/apps/v5/commons/wechat-jssdk.js?buildversion=20822184112" type="text/javascript"></script>
+    <!-- 模块入口 -->
+    <script>seajs.use('todo/js/app-todo.js')</script>
+    
+</body>
+</html>

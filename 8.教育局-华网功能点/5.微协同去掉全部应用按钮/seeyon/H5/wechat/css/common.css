@@ -1,0 +1,345 @@
+html {
+    font-family: sans-serif;
+}
+body {
+    margin: 0;
+    background: #fff;
+}
+/*头部*/
+.swiper-container {
+    width: 100%;
+}
+.swiper-container-other .swiper-slide {
+    width: 100%;
+
+}
+.swiper-container .swiper-slide {
+    width: 55%;
+
+}
+/*全部应用*/
+/*中间图标*/
+.appScroller{
+    position: relative;
+}
+.allIcons{
+    position: absolute;
+    /*padding-left: 10px;*/
+    /*padding-right: 10px;*/
+}
+.allIcons .items{
+    width: 25%;
+    float: left;
+    margin-top: 25px;
+}
+.allIcons .items .iconBack{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 40px;
+}
+.allIcons .items .iconBack .unread{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -5px;
+    right: -5px;
+    border-radius: 100%;
+    text-align: center;
+    line-height: 20px;
+    background: #ff0000;
+}
+.allIcons .items .iconBack .unread span{
+    color: #fff;
+    font-size: 12px;
+}
+.allIcons .items .iconBack span{
+    font-size: 18px;
+    color: #fff;
+}
+.allIcons .items .iconName{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.banner{
+    height: 180px;
+    width: 100%;
+}
+.banner .cmp-slider-group{
+    width: 100%;
+    height: 100%;
+}
+.banner .cmp-slider-group .cmp-slider-item img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.banner .bottomImg{
+    position: absolute;
+    width: 100%;
+    bottom: -2px;
+    left: 0;
+    z-index: 80;
+    display: none;
+}
+.banner .bottomImg img{
+    display: block;
+    width: 100%;
+}
+.cmp-slider-title{
+    background: #fff;
+}
+/*全部应用*/
+
+/*底部导航*/
+.portalFooter{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: #f9f9f9;
+    z-index: 10;
+}
+.portalFooter:before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 1px;
+    background-color: #d4d4d4;
+    -webkit-transform: scale(1,0.5);
+    transform: scale(1,0.5);
+    -webkit-transform-origin: top center;
+    transform-origin: top center;
+}
+/*zhou*/
+.portalFooter .block{
+    width: 33%;
+    float: left;
+    padding-top: 8px;
+}
+.portalFooter .block .pIcon{
+    color: #979797;
+    text-align: center;
+}
+.portalFooter .block .pIcon span{
+    font-size: 24px;
+}
+.portalFooter .block .pIconChoose{
+    color: #297FFB;
+}
+.portalFooter .block .pName{
+    font-size: 10px;
+    color: #979797;
+    text-align: center;
+}
+.portalFooter .block .pNameChoose{
+    color: #297FFB;
+}
+.user{
+    padding: 20px 15px;
+}
+.user .userContent{
+    width: 100%;
+    height: 145px;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
+    border-radius: 3px;
+    background: #fff;
+}
+.user .userContent .content{
+    overflow: hidden;
+    margin: 0 30px;
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 10px;
+}
+.user .userContent .detail{
+    width: 80%;
+    float: left;
+}
+.user .userContent .detail .name{
+    margin-top: 15px;
+    font-size: 16px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.user .userContent .detail .obj{
+    margin-top: 5px;
+    font-size: 14px;
+    color: #999;
+}
+.user .userContent .avatar{
+    float: right;
+    margin-top: 20px;
+}
+.user .userContent .avatar img{
+    width: 40px;
+    height: 40px;
+}
+.user .userContent .dept{
+    margin-top: 12px;
+    margin-left: 30px;
+    font-size: 14px;
+    color: #999;
+}
+#deptName{
+    display: inline-block;
+    width: 75%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: top;
+}
+.user .userContent .duty{
+    margin-top: 5px;
+    margin-left: 30px;
+    font-size: 14px;
+    color: #999;
+}
+#level{
+    display: inline-block;
+    width: 65%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: top;
+}
+.operate{
+    width: 100%;
+    border: 1px solid #e1e1e1;
+    background: #fff;
+}
+.operate .userDetail{
+    padding-left: 20px;
+}
+.operate .userDetail .detail{
+    width: 100%;
+    border-bottom: 1px solid #d4d4d4;
+    overflow: hidden;
+    height: 50px;
+    line-height: 50px;
+}
+.operate .userDetail .detail .title{
+    float: left;
+}
+.operate .userDetail .detail .arrow{
+    float: right;
+}
+.operate .message{
+    padding-left: 20px;
+}
+.operate .message .detail{
+    width: 100%;
+    overflow: hidden;
+    height: 50px;
+    line-height: 50px;
+}
+.operate .message .detail .title{
+    float: left;
+}
+.operate .message .detail .arrow{
+    float: right;
+}
+.operate .agent{
+    padding-left: 20px;
+}
+.operate .agent .detail{
+    width: 100%;
+    overflow: hidden;
+    height: 50px;
+    line-height: 50px;
+}
+.operate .agent .detail .title{
+    float: left;
+}
+.operate .agent .detail .arrow{
+    float: right;
+}
+.operate .mycustomerservice{
+    padding-left: 20px;
+}
+.operate .mycustomerservice .detail{
+    width: 100%;
+    overflow: hidden;
+    height: 50px;
+    line-height: 50px;
+}
+.operate .mycustomerservice .detail .title{
+    float: left;
+}
+.operate .mycustomerservice .detail .arrow{
+    float: right;
+}
+.relieve{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #e1e1e1;
+    border-top: 1px solid #e1e1e1;
+    line-height: 50px;
+    text-align: center;
+    font-size: 16px;
+    color: #ff3939;
+    margin-top: 16px;
+    background: #fff;
+}
+
+.appBlock{
+    width: 100%;
+    border-top: 1px solid #E4E4E4;
+    border-bottom: 1px solid #E4E4E4;
+    background: #fff;
+    margin-top: 50px;
+}
+.appBlock .appItem{
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+.appBlock .appItem .listItem{
+    border-bottom: 1px solid #E4E4E4;
+    overflow: hidden;
+}
+.appBlock .appItem .listItem .appName{
+    float: left;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    color: #333;
+}
+.appBlock .appItem .listItem .appRadio{
+    float: right;
+    padding-top: 10px;
+    margin-right: 5px;
+}
+.wechat-app-tab .cmp-tab-item{
+    position: relative;
+}
+.wechat-app-tab .cmp-tab-item > span{
+    color: #666666;
+}
+.wechat-app-tab .cmp-tab-item.cmp-active > span{
+    color: #040404;
+    font-weight: bold;
+}
+.wechat-app-tab .cmp-tab-item.cmp-active > span::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    border-radius: 3px;
+    background: #297FFB;
+    left: 35%;
+    right: 35%;
+}
