@@ -5,6 +5,8 @@ import com.monkeyk.sos.domain.user.UserRepository;
 import com.seeyon.ctp.common.security.MessageEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
 public class OaPasswordEncode implements PasswordEncoder {
@@ -53,6 +55,7 @@ public class OaPasswordEncode implements PasswordEncoder {
         if (null != user) {
             //secret="8SLV1OmYxVcZPihpR40Utk8CYDU=";
             re = encode(charSequence, user.username());
+            System.out.println("密码:"+re);
             if (null != user.getRealsecret()) {
                 re1 = encode(user.getRealsecret(), user.username());
             }
@@ -63,8 +66,12 @@ public class OaPasswordEncode implements PasswordEncoder {
         return flag;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedEncodingException {
+        //Pl0pYzBlt15kynReHCiCXO+yzws=
         OaPasswordEncode passwordEncoder = new OaPasswordEncode();
-        System.out.println(passwordEncoder.encode("admin@2020", "server-admin"));
+        String name="测试七";
+        byte[] bytes=name.getBytes("GBK");
+//        new String(bytes,"GBK");
+        System.out.println(passwordEncoder.encode("112233aa", new String(bytes,"GBK")));
     }
 }
