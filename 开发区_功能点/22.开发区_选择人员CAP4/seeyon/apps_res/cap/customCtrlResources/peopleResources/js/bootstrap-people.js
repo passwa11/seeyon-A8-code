@@ -20,15 +20,13 @@ $(function () {
 });
 
 function dlCommon(ddType, row) {
-    console.log("ddtype:====" + ddType);
-    
     var tr_obj = row;
     var obj = {};//添加成员对象
     obj["value"] = tr_obj.id;
     obj["text"] = tr_obj.field0001;
     obj["dept"] = tr_obj.field0003;
     if ($("dl.selected-info dd").length <= 0) {
-        var option = '<dd ondblclick="removeDbRow' + ddType + '(this)"    lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="' + ddType + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+        var option = '<dd ondblclick="removeDbRow(\'' + ddType + '\',this)"    lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '" lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '" lay-flag="' + ddType + '" lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
         $("dl.selected-info").append(option);
         $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
             var index = $(this).attr("class").indexOf("selected-this");
@@ -49,7 +47,7 @@ function dlCommon(ddType, row) {
             return flag;
         }
         if (selected()) {
-            var option = '<dd ondblclick="removeDbRow' + ddType + '(this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="' + ddType + '"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
+            var option = '<dd ondblclick="removeDbRow(\'' + ddType + '\',this)"  lay-bsname="' + tr_obj.mval + '"  lay-field002="' + tr_obj.field0002 + '"  lay-zsort="' + tr_obj.field0007 + '"  lay-id="' + tr_obj.id + '" lay-bs="' + tr_obj.field0005 + '"  lay-value="' + obj.value + '" lay-username="' + tr_obj.name + '"  lay-flag="' + ddType + '"  lay-name="' + obj.text + '" lay-dept="' + obj.dept + '" class="">' + obj.text + '</dd>';
             $("dl.selected-info").append(option);
             $(".selected-info dd[lay-value=" + obj.value + "]").on('click', function () {
                 var index = $(this).attr("class").indexOf("selected-this");
@@ -170,6 +168,52 @@ function tableCommon(tableId) {
     });
 }
 
+function removeDbRow(type, item) {
+    $(item).remove();
+    switch (type) {
+        case "hwz":
+            insertSortExist('hwz', item);
+            arrayToForeach(idsHwz, item);
+            break;
+        case "dzbld":
+            insertSortExist('dzbld', item);
+            arrayToForeach(idsdzbld, item);
+            break;
+        case "two":
+            insertSortExist('two', item);
+            arrayToForeach(idsTwoLevelDept, item);
+            break;
+        case "29":
+            insertSortExist('dzb29', item);
+            arrayToForeach(ids29, item);
+            break;
+        case "30":
+            insertSortExist('jiguan30', item);
+            arrayToForeach(ids30, item);
+            break;
+        case "31":
+            insertSortExist('zhenb31', item);
+            arrayToForeach(ids31, item);
+            break;
+        case "32":
+            insertSortExist('zhuqu32', item);
+            arrayToForeach(ids32, item);
+            break;
+        case "gh":
+            insertSortExist('gonghui', item);
+            arrayToForeach(idsgh, item);
+            break;
+    }
+}
+
+function arrayToForeach(ids, item) {
+    for (var i = 0; i < ids.length; i++) {
+        var index = ids.indexOf($(item).attr("lay-id"));
+        if (index > -1) {
+            ids.splice(index, 1);
+        }
+    }
+}
 
 function removeDbRowdzbld(item) {
     $(item).remove();
@@ -273,7 +317,7 @@ function removeDdRowtwo(item) {
 }
 
 function dbSelectedToSortData(flag) {
-    
+
     var arrDzld = [];
     var arr29 = [];
     var arr30 = [];
@@ -657,9 +701,9 @@ function AllhtmlShow(data) {
 function htmlShow(data, flag) {
     var html = "";
     for (var i = 0; i < data.length; i++) {
-        if(flag==null){
+        if (flag == null) {
             html += '<dd ondblclick="removeDdRow' + flag + '(this)" lay-bsname="' + data[i].mval + '"  lay-field002="' + data[i].field0002 + '"  lay-zsort="' + data[i].field0007 + '" lay-id="' + data[i].id + '" lay-bs="' + data[i].field0005 + '"  lay-value="' + data[i].id + '" lay-username="' + data[i].name + '" lay-flag="' + data[i].flag + '" lay-name="' + data[i].field0001 + '" lay-dept="' + data[i].field0003 + '" class="">' + data[i].field0001 + '</dd>';
-        }else{
+        } else {
             html += '<dd ondblclick="removeDdRow' + flag + '(this)" lay-bsname="' + data[i].mval + '"  lay-field002="' + data[i].field0002 + '"  lay-zsort="' + data[i].field0007 + '" lay-id="' + data[i].id + '" lay-bs="' + data[i].field0005 + '"  lay-value="' + data[i].id + '" lay-username="' + data[i].name + '" lay-flag="' + flag + '" lay-name="' + data[i].field0001 + '" lay-dept="' + data[i].field0003 + '" class="">' + data[i].field0001 + '</dd>';
         }
     }
@@ -874,7 +918,6 @@ function removeTableRow29(row) {
         field: 'id',
         values: ids29
     });
-    console.log(ids29.toString())
 }
 
 function removeDdRow29(item) {
@@ -1122,7 +1165,7 @@ function removeDdRow32(item) {
 
 
 function sureSelect() {
-    
+
     var $tablehwz = $("#hwz");
     var rowshwz = $tablehwz.bootstrapTable('getSelections');
     if (rowshwz != null) {
@@ -1278,7 +1321,7 @@ function sureCommon($table, rows, type, idsArr) {
 
 
 function commonInfo(s) {
-    
+
     var list = $("dl").find("dd" + s);
     $.each(list, function (i, item) {
         $(".selected-info dd[lay-value=" + $(item).attr('lay-value') + "]").remove();
@@ -1329,7 +1372,6 @@ function removeSelect() {
 }
 
 function clearSelect2() {
-    debugger;
     var list = $("dl").find("dd");
     $.each(list, function (i, item) {
         $(".selected-info dd[lay-value=" + $(item).attr('lay-value') + "]").remove();
