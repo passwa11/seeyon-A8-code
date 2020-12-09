@@ -160,12 +160,13 @@
         </dependency>
 
         <!--devtools热部署-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-            <scope>true</scope>
-        </dependency>
+        <!--        在使用redis存储token时  在获取用户信息时会导致获取用户信息报错-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-devtools</artifactId>-->
+        <!--            <optional>true</optional>-->
+        <!--            <scope>true</scope>-->
+        <!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/org.webjars.bower/jquery -->
         <dependency>
             <groupId>org.webjars.bower</groupId>
