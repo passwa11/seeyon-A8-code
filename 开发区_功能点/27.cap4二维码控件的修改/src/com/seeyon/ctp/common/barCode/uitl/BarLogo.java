@@ -1,7 +1,7 @@
 package com.seeyon.ctp.common.barCode.uitl;
 
-import java.awt.Graphics2D;
-import java.awt.Image;
+import java.awt.*;
+import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,18 +19,14 @@ public class BarLogo {
 
     /**
      * 生成带logo的二维码
-     * 
-     * @param matrix
-     *            二维码矩阵相关
-     * @param format
-     *            二维码图片格式
-     * @param file
-     *            二维码图片文件
-     * @param logoPath
-     *            logo路径
+     *
+     * @param matrix   二维码矩阵相关
+     * @param format   二维码图片格式
+     * @param file     二维码图片文件
+     * @param logoPath logo路径
      * @throws IOException
      */
-    public static void writeToFile(BitMatrix matrix, String format, File file, String logoPath, int logoWidth, int logoHeight) throws IOException {
+    public static void writeToFile2(BitMatrix matrix, String format, File file, String logoPath, int logoWidth, int logoHeight) throws IOException {
         BufferedImage image = toBufferedImage(matrix);
         Graphics2D gs = image.createGraphics();
 
@@ -39,18 +35,33 @@ public class BarLogo {
          * 路径必须以classpath:开头
          */
         InputStream inputStream;
-        if(logoPath.contains("classpath:")){
+        if (logoPath.contains("classpath:")) {
             logoPath = logoPath.substring(10);
             inputStream = BarLogo.class.getClassLoader().getResourceAsStream(logoPath);
-        }else{
+        } else {
             inputStream = new FileInputStream(new File(logoPath));
         }
         Image img = ImageIO.read(inputStream);
         int x = (matrix.getWidth() - logoWidth) / 2;
         int y = (matrix.getHeight() - logoHeight) / 2;
         gs.drawImage(img, x, y, logoWidth, logoHeight, null);
+        Shape shape = new RoundRectangle2D.Float(x, y, logoWidth, logoWidth, 6, 6);
+        gs.setStroke(new BasicStroke(3f));
+        gs.draw(shape);
         gs.dispose();
         img.flush();
+        if (!ImageIO.write(image, format, file)) {
+            throw new IOException("Could not write an image of format " + format + " to " + file);
+        }
+    }
+
+    public static void writeToFile(BitMatrix matrix, String format, File file, String logoPath, int logoWidth, int logoHeight) throws IOException {
+        BufferedImage image = toBufferedImage(matrix);
+        try {
+            QRCodeUtil.insertImage(image, logoPath, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if (!ImageIO.write(image, format, file)) {
             throw new IOException("Could not write an image of format " + format + " to " + file);
         }

@@ -10,14 +10,7 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import com.google.zxing.BinaryBitmap;
-import com.google.zxing.DecodeHintType;
-import com.google.zxing.LuminanceSource;
-import com.google.zxing.MultiFormatReader;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.NotFoundException;
-import com.google.zxing.Result;
-import com.google.zxing.WriterException;
+import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.client.j2se.MatrixToImageConfig;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
@@ -121,12 +114,19 @@ public class BarCodeUtil {
 	 */
 	@SuppressWarnings("deprecation")
 	public static void encode(String contents, BarCodeParamVo paramVo, File f) throws WriterException, IOException {
-	    BitMatrix matrix = new MultiFormatWriter().encode(contents, paramVo.getBarcodeFormat(), paramVo.getWidth(), paramVo.getHeight(), paramVo.getHintParam());
-		if (Strings.isNotBlank(paramVo.getLogoPath())) {//生成带logo的二维码
-		    BarLogo.writeToFile(matrix, paramVo.getFileExt(), f, paramVo.getLogoPath(), paramVo.getLogoWidth(), paramVo.getLogoHeight());
-		} else {
-	        MatrixToImageWriter.writeToFile(matrix, paramVo.getFileExt(), f,new MatrixToImageConfig());
-		}
+        Map<EncodeHintType, Object> typeMap=(Map<EncodeHintType, Object>)paramVo.getHintParam();
+        try {
+            QRCodeUtil.encode(contents, paramVo.getLogoPath(), "c:/barcode", true,f);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//	    BitMatrix matrix = new MultiFormatWriter().encode(contents, paramVo.getBarcodeFormat(), paramVo.getWidth(), paramVo.getHeight(), paramVo.getHintParam());
+//		if (Strings.isNotBlank(paramVo.getLogoPath())) {//生成带logo的二维码
+//
+//		    BarLogo.writeToFile(matrix, paramVo.getFileExt(), f, paramVo.getLogoPath(), paramVo.getLogoWidth(), paramVo.getLogoHeight());
+//		} else {
+//	        MatrixToImageWriter.writeToFile(matrix, paramVo.getFileExt(), f,new MatrixToImageConfig());
+//		}
 	}
 	
 	/**根据输入流读取二维码内容

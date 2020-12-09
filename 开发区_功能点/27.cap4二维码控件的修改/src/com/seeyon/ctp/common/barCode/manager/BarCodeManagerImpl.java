@@ -27,44 +27,45 @@ import java.util.List;
 import java.util.Map;
 
 public class BarCodeManagerImpl implements BarCodeManager {
-	
-	private static Log log = CtpLogFactory.getLog(BarCodeManagerImpl.class);
+
+    private static Log log = CtpLogFactory.getLog(BarCodeManagerImpl.class);
 
     private static final String CONTENT_PARAM_CONTENT = "content";
     private static final String CONTENT_PARAM_CODE_TYPE = "codeType";
     private String tmpdir = System.getProperty("java.io.tmpdir");
 
-	private BarCodeDao barCodeDao;
+    private BarCodeDao barCodeDao;
     private FileManager fileManager;
     private AttachmentManager attachmentManager;
 
-	/**
-	 *保存或更新二维码信息
-	 *@param objectId  对象id，比如：公文id
-	 *@param fileName  服务器保存的物理文件名
-	 *@param categoryId 应用分类 
-	*/
-	@Override
-	public void saveBarCode(Long objectId, Long fileName,String fileExt,Integer categoryId) {
-		BarCodeInfo info = this.barCodeDao.getByObjectId(objectId);
-		Date today = new Date();
-		if(info != null) {
-			info.setFileName(fileName);
-			info.setFileExt(fileExt);
-			info.setUpdateDate(today);
-			this.barCodeDao.update(info);
-		}else {
-			info = new BarCodeInfo();
-			info.setNewId();
-			info.setCategoryId(categoryId);
-			info.setCreateDate(today);
-			info.setUpdateDate(today);
-			info.setFileName(fileName);
-			info.setObjectId(objectId);
-			info.setFileExt(fileExt);
-			this.barCodeDao.save(info);
-		}
-	}
+    /**
+     * 保存或更新二维码信息
+     *
+     * @param objectId   对象id，比如：公文id
+     * @param fileName   服务器保存的物理文件名
+     * @param categoryId 应用分类
+     */
+    @Override
+    public void saveBarCode(Long objectId, Long fileName, String fileExt, Integer categoryId) {
+        BarCodeInfo info = this.barCodeDao.getByObjectId(objectId);
+        Date today = new Date();
+        if (info != null) {
+            info.setFileName(fileName);
+            info.setFileExt(fileExt);
+            info.setUpdateDate(today);
+            this.barCodeDao.update(info);
+        } else {
+            info = new BarCodeInfo();
+            info.setNewId();
+            info.setCategoryId(categoryId);
+            info.setCreateDate(today);
+            info.setUpdateDate(today);
+            info.setFileName(fileName);
+            info.setObjectId(objectId);
+            info.setFileExt(fileExt);
+            this.barCodeDao.save(info);
+        }
+    }
 
     @Override
     public ResultVO getBarCodeFile(BarCodeParamVo paramVo, Map<String, Object> customParam) throws BusinessException {
@@ -72,38 +73,38 @@ public class BarCodeManagerImpl implements BarCodeManager {
         String contents = typeManager.getContentStr(customParam);
         if (Strings.isBlank(contents)) {
             return new ResultVO(false, ResourceUtil.getString("common.barcode.value.empty"));
-        } else if (BarCodeUtil.checkContentLength(contents,paramVo.getMaxLength())) {
+        } else if (BarCodeUtil.checkContentLength(contents, paramVo.getMaxLength())) {
             //需要抛出异常的抛出异常
-            if(paramVo.isThrowException()){
+            if (paramVo.isThrowException()) {
                 return new ResultVO(false, ResourceUtil.getString("common.barcode.length.more"));
-            }else{
+            } else {
                 //不需要抛出异常继续生成二维码的，就生成一个带提示提示信息的二维码，在扫描该二维码的时候好给出超长的提示
-                if(log.isDebugEnabled()) {
+                if (log.isDebugEnabled()) {
                     log.debug("生成的二维码超过长度，内容为：" + contents);
                 }
                 contents = typeManager.getContent4OutOfLength(customParam);
             }
         }
         String baseFolder = getTempDir();
-        File codeFile = new File(baseFolder, UUIDLong.longUUID()+"." + paramVo.getFileExt());
+        File codeFile = new File(baseFolder, UUIDLong.longUUID() + "." + paramVo.getFileExt());
         try {
             contents = BarCodeEncoder.getInstance().encode(contents, paramVo.getEncodeVersion());
             Map<String, String> contentMap = new HashMap<String, String>();
             contentMap.put(CONTENT_PARAM_CONTENT, contents);
             contentMap.put(CONTENT_PARAM_CODE_TYPE, paramVo.getCodeType());
             contents = JSONUtil.toJSONString(contentMap);
-            if(log.isDebugEnabled()) {
+            if (log.isDebugEnabled()) {
                 log.debug(contents);
             }
             BarCodeUtil.encode(contents, paramVo, codeFile);
         } catch (Exception e) {
-            log.error("二维码图片生成异常："+e.getMessage(), e);
-            if("Data too big".equals(e.getMessage()) || "Unable to fit message in columns".equals(e.getMessage())){
-                if(paramVo.isThrowException()){
+            log.error("二维码图片生成异常：" + e.getMessage(), e);
+            if ("Data too big".equals(e.getMessage()) || "Unable to fit message in columns".equals(e.getMessage())) {
+                if (paramVo.isThrowException()) {
                     return new ResultVO(false, ResourceUtil.getString("common.barcode.length.more"));
-                }else{
+                } else {
                     //不需要抛出异常继续生成二维码的，就生成一个带提示提示信息的二维码，在扫描该二维码的时候好给出超长的提示
-                    if(log.isDebugEnabled()) {
+                    if (log.isDebugEnabled()) {
                         log.debug("生成的二维码超过长度，内容为：" + contents);
                     }
                     contents = typeManager.getContent4OutOfLength(customParam);
@@ -114,11 +115,11 @@ public class BarCodeManagerImpl implements BarCodeManager {
                         contentMap.put(CONTENT_PARAM_CODE_TYPE, paramVo.getCodeType());
                         contents = JSONUtil.toJSONString(contentMap);
                         BarCodeUtil.encode(contents, paramVo, codeFile);
-                    }catch (Exception e2){
-                        log.info("转换为生成超长标识之后，还是异常："+e2.getMessage(),e2);
+                    } catch (Exception e2) {
+                        log.info("转换为生成超长标识之后，还是异常：" + e2.getMessage(), e2);
                     }
                 }
-            }else{
+            } else {
                 return new ResultVO(false, ResourceUtil.getString("common.barcode.error"));
             }
         }
@@ -148,6 +149,8 @@ public class BarCodeManagerImpl implements BarCodeManager {
     @Override
     public ResultVO getBarCodeAttachment(Map<String, Object> codeParam, Map<String, Object> customParam) throws BusinessException {
         BarCodeParamVo paramVo = new BarCodeParamVo(codeParam);
+        //logo图片
+//        paramVo.setLogoPath("F:\\Seeyon\\A87.1_sp1_07\\ApacheJetspeed\\temp\\dog.jpg");
         return getBarCodeAttachment(paramVo, customParam);
     }
 
@@ -201,7 +204,7 @@ public class BarCodeManagerImpl implements BarCodeManager {
     }
 
     private String getTempDir() {
-		return tmpdir;
+        return tmpdir;
     }
 
     public void setFileManager(FileManager fileManager) {
