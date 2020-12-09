@@ -55,7 +55,7 @@ public class OaPasswordEncode implements PasswordEncoder {
         if (null != user) {
             //secret="8SLV1OmYxVcZPihpR40Utk8CYDU=";
             re = encode(charSequence, user.username());
-            System.out.println("密码:"+re);
+//            System.out.println("密码:"+re);
             if (null != user.getRealsecret()) {
                 re1 = encode(user.getRealsecret(), user.username());
             }
