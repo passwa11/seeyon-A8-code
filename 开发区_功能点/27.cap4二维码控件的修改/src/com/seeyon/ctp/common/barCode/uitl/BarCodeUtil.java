@@ -25,18 +25,20 @@ import com.seeyon.ctp.util.Strings;
 
 /**
  * 二维码组件，采用google开源项目zxing
- * @author wangfeng
  *
+ * @author wangfeng
  */
 public class BarCodeUtil {
-	
-	/**生成图片的格式*/
-	public static final String FORMAT = "png";
-	
-	public static final String CHARSET = "UTF-8";
+
+    /**
+     * 生成图片的格式
+     */
+    public static final String FORMAT = "png";
+
+    public static final String CHARSET = "UTF-8";
 
     public static final int CONTENT_MAX_LENGTH = 1000;
-	
+
 //	public static void main(String[] args)throws Exception{
 //		File file = new File("D://qrcodeImage.png");
 //		String contents = "你好";
@@ -74,6 +76,7 @@ public class BarCodeUtil {
     /**
      * 根据type key获取对应的实现类，
      * 如果不存在，则返回默认实现
+     *
      * @param typeKey key
      * @return 实现
      */
@@ -83,7 +86,8 @@ public class BarCodeUtil {
 
     /**
      * 根据 type key 获取对应的实现类
-     * @param typeKey key
+     *
+     * @param typeKey     key
      * @param needDefault 是否需要默认实现，当根据key查询对应的实现时，不存在时,否则返回null
      * @return 实现
      */
@@ -96,27 +100,31 @@ public class BarCodeUtil {
         return bar;
     }
 
-	/**为指定的内容生成二维码
-	 * @param contents 内容
-	 * @throws WriterException 
-	 * @throws IOException 
-	 */
-	public static void encode(String contents, BarCodeParamVo paramVo,OutputStream out) throws WriterException, IOException {
-		BitMatrix matrix = new MultiFormatWriter().encode(contents, paramVo.getBarcodeFormat(), paramVo.getWidth(), paramVo.getHeight(), paramVo.getHintParam());
-		MatrixToImageWriter.writeToStream(matrix, paramVo.getFileExt(), out,new MatrixToImageConfig());
-	}
-	
-	/**为指定的内容生成二维码
-	 * @param contents 内容
-	 * @param f 生成的文件
-	 * @throws WriterException
-	 * @throws IOException
-	 */
-	@SuppressWarnings("deprecation")
-	public static void encode(String contents, BarCodeParamVo paramVo, File f) throws WriterException, IOException {
-        Map<EncodeHintType, Object> typeMap=(Map<EncodeHintType, Object>)paramVo.getHintParam();
+    /**
+     * 为指定的内容生成二维码
+     *
+     * @param contents 内容
+     * @throws WriterException
+     * @throws IOException
+     */
+    public static void encode(String contents, BarCodeParamVo paramVo, OutputStream out) throws WriterException, IOException {
+        BitMatrix matrix = new MultiFormatWriter().encode(contents, paramVo.getBarcodeFormat(), paramVo.getWidth(), paramVo.getHeight(), paramVo.getHintParam());
+        MatrixToImageWriter.writeToStream(matrix, paramVo.getFileExt(), out, new MatrixToImageConfig());
+    }
+
+    /**
+     * 为指定的内容生成二维码
+     *
+     * @param contents 内容
+     * @param f        生成的文件
+     * @throws WriterException
+     * @throws IOException
+     */
+    @SuppressWarnings("deprecation")
+    public static void encode(String contents, BarCodeParamVo paramVo, File f) throws WriterException, IOException {
+        Map<EncodeHintType, Object> typeMap = (Map<EncodeHintType, Object>) paramVo.getHintParam();
         try {
-            QRCodeUtil.encode(contents, paramVo.getLogoPath(), "c:/barcode", true,f);
+            QRCodeUtil.encode(contents, paramVo.getLogoPath(), true, f);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -127,25 +135,28 @@ public class BarCodeUtil {
 //		} else {
 //	        MatrixToImageWriter.writeToFile(matrix, paramVo.getFileExt(), f,new MatrixToImageConfig());
 //		}
-	}
-	
-	/**根据输入流读取二维码内容
-	 * @param in 二维码图片输入流
-	 * @throws IOException 
-	 * @throws NotFoundException 
-	 */
-	public static String decode(InputStream in) throws IOException, NotFoundException{
-        BufferedImage bufferedImage = ImageIO.read(in);  
-        LuminanceSource source = new BufferedImageLuminanceSource(bufferedImage);  
-        BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));  
-        Map<DecodeHintType, String> hints = new HashMap<DecodeHintType, String>();  
-        hints.put(DecodeHintType.CHARACTER_SET, CHARSET);  
-        Result result = new MultiFormatReader().decode(bitmap, hints);  
+    }
+
+    /**
+     * 根据输入流读取二维码内容
+     *
+     * @param in 二维码图片输入流
+     * @throws IOException
+     * @throws NotFoundException
+     */
+    public static String decode(InputStream in) throws IOException, NotFoundException {
+        BufferedImage bufferedImage = ImageIO.read(in);
+        LuminanceSource source = new BufferedImageLuminanceSource(bufferedImage);
+        BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+        Map<DecodeHintType, String> hints = new HashMap<DecodeHintType, String>();
+        hints.put(DecodeHintType.CHARACTER_SET, CHARSET);
+        Result result = new MultiFormatReader().decode(bitmap, hints);
         return result.toString();
-	}
+    }
 
     /**
      * 校验字符串长度是否超过二维码支持的最大长度
+     *
      * @param content 字符串
      * @return true 超过
      */
@@ -156,17 +167,19 @@ public class BarCodeUtil {
 
     /**
      * 判断生成的内容是否大于自定义的长度限制
+     *
      * @param content
      * @param maxLength
      * @return
      */
-    public static boolean checkContentLength(String content,int maxLength){
+    public static boolean checkContentLength(String content, int maxLength) {
         return getStringLength(content, false) > maxLength;
     }
 
     /**
      * 获取字符串长度
-     * @param content 字符串
+     *
+     * @param content    字符串
      * @param needFormat 是否需要做特殊处理：中文按照3个字符处理
      * @return 字符串长度
      */

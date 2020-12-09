@@ -172,7 +172,7 @@ public class QRCodeUtil {
         ImageIO.write(image, FORMAT_NAME, new File(destPath + File.separator + file));
     }
 
-    public static void encode(String content, String imgPath, String destPath,
+    public static void encode(String content, String imgPath,
                               boolean needCompress, File file) throws Exception {
         BufferedImage image = QRCodeUtil.createImage(content, imgPath, needCompress);
         //zhou
