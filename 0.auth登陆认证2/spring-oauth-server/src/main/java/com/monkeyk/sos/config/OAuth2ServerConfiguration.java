@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -28,6 +29,7 @@ import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeSe
 import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 import javax.sql.DataSource;
 
@@ -131,6 +133,8 @@ public class OAuth2ServerConfiguration {
         @Autowired
         private AuthorizationCodeServices authorizationCodeServices;
 
+//        @Autowired
+//        private RedisConnectionFactory redisConnectionFactory;
 
         @Autowired
         private UserService userDetailsService;
@@ -160,11 +164,30 @@ public class OAuth2ServerConfiguration {
          * Redis TokenStore (有Redis场景时使用)
          */
 //        @Bean
-//        public TokenStore tokenStore(RedisConnectionFactory connectionFactory) {
-//            final RedisTokenStore redisTokenStore = new RedisTokenStore(connectionFactory);
-//            //prefix
+//        public TokenStore tokenStore(RedisConnectionFactory redisConnectionFactory) {
+//            final RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
+//            //设置redis token存储中的前缀
 //            redisTokenStore.setPrefix(RESOURCE_ID);
 //            return redisTokenStore;
+//        }
+
+        /**
+         * 设置token存储
+         */
+//        @Bean
+//        public DefaultTokenServices tokenServices(){
+//            DefaultTokenServices tokenServices = new DefaultTokenServices();
+//            //配置token存储
+//            tokenServices.setTokenStore(tokenStore());
+//            //开启支持refresh_token，此处如果之前没有配置，启动服务后再配置重启服务，可能会导致不返回token的问题，解决方式：清除redis对应token存储
+//            tokenServices.setSupportRefreshToken(true);
+//            //复用refresh_token
+//            tokenServices.setReuseRefreshToken(true);
+//            //token有效期，设置12小时 : 12*60*60
+//            tokenServices.setAccessTokenValiditySeconds(1 * 60 * 60);
+//            //refresh_token有效期，设置一周
+//            tokenServices.setRefreshTokenValiditySeconds(7 * 24 * 60 * 60);
+//            return tokenServices;
 //        }
 
 
@@ -190,11 +213,19 @@ public class OAuth2ServerConfiguration {
                     .authenticationManager(authenticationManager);
         }
 
+        /**
+         * 授权服务安全配置，主要用于放行客户端访问授权服务接口
+         *
+         * @param security AuthorizationServerSecurityConfigurer
+         * @throws Exception 异常
+         */
         @Override
         public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
             // real 值可自定义
             oauthServer
+                    //客户端token调用许可
                     .tokenKeyAccess("permitAll()")
+                    //客户端校验token访问许可
                     .checkTokenAccess("permitAll()")
 //            oauthServer.realm("spring-oauth-server")
                     // 支持 client_credentials 的配置
