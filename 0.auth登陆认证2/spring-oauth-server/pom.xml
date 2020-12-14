@@ -198,8 +198,6 @@
                             <Implementation-BuildNumber>${project.version}</Implementation-BuildNumber>
                             <Implementation-Title>spring-oauth-server(boot)</Implementation-Title>
                             <Implementation-Version>${project.version}</Implementation-Version>
-                            <Implementation-URL>http://monkeyk.com</Implementation-URL>
-                            <Implementation-Vendor>Not Vendor Yet, Inc.</Implementation-Vendor>
                         </manifestEntries>
                         <manifest>
                             <!--<mainClass>${start-class}</mainClass>-->

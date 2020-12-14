@@ -66,8 +66,8 @@
             <table class="table table-bordered" style="word-break:break-all;">
                 <thead style="background-color: #d5d3db">
                 <th>应用名称</th>
-                <th>授权id</th>
-                <th>授权密码</th>
+                <th>应用id(client_id)</th>
+                <th>授权秘钥(client_secret)</th>
                 <th>第三方应用首页地址</th>
                 <th>操作</th>
                 </thead>

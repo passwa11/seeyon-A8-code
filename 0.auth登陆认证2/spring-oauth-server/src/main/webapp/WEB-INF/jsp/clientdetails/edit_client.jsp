@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="clientId" class="col-sm-2 control-label">授权应用id<em
+                        <label for="clientId" class="col-sm-2 control-label">应用id(client_id)<em
                                 class="text-danger">*</em></label>
 
                         <div class="col-sm-10">
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="clientSecret" class="col-sm-2 control-label">授权应用key<em
+                        <label for="clientSecret" class="col-sm-2 control-label">授权秘钥(client_secret)<em
                                 class="text-danger">*</em></label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="clientSecret" name="clientSecret"

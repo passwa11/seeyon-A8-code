@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="clientId" class="col-sm-2 control-label">应用标识<em class="text-danger">*</em></label>
+                        <label for="clientId" class="col-sm-2 control-label">应用标识(client_id)<em class="text-danger">*</em></label>
 
                         <div class="col-sm-10">
                             <form:input path="clientId" cssClass="form-control" id="clientId" placeholder="client_id"
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="clientSecret" class="col-sm-2 control-label">应用key<em
+                        <label for="clientSecret" class="col-sm-2 control-label">授权秘钥(client_secret)<em
                                 class="text-danger">*</em></label>
 
                         <div class="col-sm-10">
