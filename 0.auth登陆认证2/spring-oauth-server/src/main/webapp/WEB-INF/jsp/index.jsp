@@ -36,11 +36,13 @@
             </div>
             <div class="col-sm-4">
                 <div class="pull-right">
-                    <form action="${contextPath}/signout" method="post">
-                        <tags:csrf/>
-                        <button class="btn btn-default" type="submit">退出</button>
+<%--                    <form action="${contextPath}/signout" method="post">--%>
+<%--&lt;%&ndash;                    <form action="${contextPath}/logout" method="post">&ndash;%&gt;--%>
+<%--                        <tags:csrf/>--%>
+<%--                        <button class="btn btn-default" type="submit">退出</button>--%>
 
-                    </form>
+<%--                    </form>--%>
+                    <a class="btn btn-default" href="${contextPath}/logout">退出</a>
                 </div>
             </div>
         </div>
