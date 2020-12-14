@@ -76,7 +76,7 @@ public class KfqSsoLogin extends HttpServlet {
         try {
             response = client.execute(httpPost);
             response.setHeader("Cache-Control", "no-cache");
-            System.out.println(response.getStatusLine().getStatusCode());
+//            System.out.println(response.getStatusLine().getStatusCode());
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 HttpEntity entity = response.getEntity();
                 String resultString = EntityUtils.toString(response.getEntity(), "utf-8").replaceAll(" ", "");
