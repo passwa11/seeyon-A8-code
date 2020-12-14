@@ -1,5 +1,6 @@
 package com.monkeyk.sos.config;
 
+import com.monkeyk.sos.handler.CustomLogoutSuccessHandler;
 import com.monkeyk.sos.service.UserService;
 import com.monkeyk.sos.util.OaPasswordEncode;
 import com.monkeyk.sos.web.context.SOSContextHolder;
@@ -14,7 +15,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
@@ -45,6 +45,9 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/public/**", "/static/**");
     }
 
+    //退出成功处理类
+    @Autowired
+    private CustomLogoutSuccessHandler customLogoutSuccessHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -56,6 +59,8 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .antMatchers("/static/**").permitAll()
                 .antMatchers("/oauth/rest_token*").permitAll()
                 .antMatchers("/login*").permitAll()
+//                .antMatchers("/logout").permitAll()
+//                .antMatchers("/myLogout").permitAll()
 
                 // /user/ 开头的URL需要 ADMIN 权限
 //                .antMatchers("/user/**").hasAnyRole("ADMIN")
@@ -72,11 +77,24 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .passwordParameter("oidcPwd")
                 .and()
                 .logout()
-                .logoutUrl("/signout")
-                .deleteCookies("JSESSIONID")
+                .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
+//                .logoutSuccessUrl("/")
+                .logoutSuccessHandler(customLogoutSuccessHandler)
+//                //无效会话
+//                .invalidateHttpSession(true)
+//                // 清除身份验证
+//                .clearAuthentication(true)
+//                .permitAll()
+                //zhou
+//                .logoutUrl("/signout")
+//                .addLogoutHandler(new MyLogoutHandler())
+//                .deleteCookies("JSESSIONID")
+//                .logoutSuccessUrl("/")
                 .and()
-                .exceptionHandling();
+                .exceptionHandling()
+                //禁用csrf
+                .and().csrf().disable();
 
         http.authenticationProvider(authenticationProvider());
     }

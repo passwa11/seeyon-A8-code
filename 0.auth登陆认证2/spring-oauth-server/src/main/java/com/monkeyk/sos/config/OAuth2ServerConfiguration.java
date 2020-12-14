@@ -133,8 +133,6 @@ public class OAuth2ServerConfiguration {
         @Autowired
         private AuthorizationCodeServices authorizationCodeServices;
 
-//        @Autowired
-//        private RedisConnectionFactory redisConnectionFactory;
 
         @Autowired
         private UserService userDetailsService;
@@ -189,8 +187,6 @@ public class OAuth2ServerConfiguration {
 //            tokenServices.setRefreshTokenValiditySeconds(7 * 24 * 60 * 60);
 //            return tokenServices;
 //        }
-
-
         @Bean
         public ClientDetailsService clientDetailsService(DataSource dataSource) {
             return new CustomJdbcClientDetailsService(dataSource);
