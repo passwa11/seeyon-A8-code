@@ -3,6 +3,7 @@ package com.seeyon.apps.ext.oauthLogin.servlet;
 import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.oauthLogin.sso.StringHandle;
 import com.seeyon.apps.ext.oauthLogin.util.PropUtils;
+import com.seeyon.ctp.util.JDBCAgent;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -20,6 +21,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.Map;
 
 public class KfqSsoLogin extends HttpServlet {
@@ -78,6 +81,23 @@ public class KfqSsoLogin extends HttpServlet {
                 HttpEntity entity = response.getEntity();
                 String resultString = EntityUtils.toString(response.getEntity(), "utf-8").replaceAll(" ", "");
                 Map<String, Object> m = (Map<String, Object>) JSONObject.parse(resultString);
+                //zhou:新加记录获取到的token
+//                String saveToken = "insert into temp_token(id,token) values(?,?)";
+//                Connection conn = null;
+//                PreparedStatement ps = null;
+//                try {
+//                    conn = JDBCAgent.getRawConnection();
+//                    ps = conn.prepareStatement(saveToken);
+//                    ps.setLong(1, System.currentTimeMillis());
+//                    ps.setString(2, (String) m.get("access_token"));
+//                    ps.executeUpdate();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                } finally {
+//                    ps.close();
+//                    conn.close();
+//                }
+
                 loginName = toGet((String) m.get("access_token"), prop);
             }
         } catch (Exception e) {
