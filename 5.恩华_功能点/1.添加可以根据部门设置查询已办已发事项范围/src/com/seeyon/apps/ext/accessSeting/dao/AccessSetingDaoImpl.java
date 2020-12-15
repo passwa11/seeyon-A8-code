@@ -16,13 +16,18 @@ public class AccessSetingDaoImpl implements AccessSetingDao {
     @Override
     public List<ZorgMember> getAllMemberPOByDeptId(Map<String, Object> param, Boolean p1, Boolean p2) {
         StringBuilder sql = new StringBuilder();
-        sql.append("select s.* from (select mpl.*,d.DAY_NUM from (select m.ORG_DEPARTMENT_ID,(select name from ORG_UNIT u where u.id=m.ORG_DEPARTMENT_ID) deptname,m.id,m.name,m.ORG_LEVEL_ID,l.name levelName,p.LOGIN_NAME from ORG_MEMBER m,ORG_LEVEL l,ORG_PRINCIPAL p where m.ORG_LEVEL_ID=l.id and p.MEMBER_ID=m.id and m.IS_ENABLE=1 ) mpl LEFT JOIN DEPARTMENT_VIEW_TIME_RANGE d on mpl.id=d.MEMBER_ID) s where 1=1 ");
+        sql.append("select s.* from (select mpl.*,nvl(d.DAY_NUM,0) DAY_NUM from (select m.ORG_DEPARTMENT_ID,(select name from ORG_UNIT u where u.id=m.ORG_DEPARTMENT_ID) deptname,m.id,m.name,m.ORG_LEVEL_ID,l.name levelName,p.LOGIN_NAME from ORG_MEMBER m,ORG_LEVEL l,ORG_PRINCIPAL p where m.ORG_LEVEL_ID=l.id and p.MEMBER_ID=m.id and m.IS_ENABLE=1 ) mpl LEFT JOIN DEPARTMENT_VIEW_TIME_RANGE d on mpl.id=d.MEMBER_ID) s where 1=1 ");
         for (Map.Entry<String, Object> entry : param.entrySet()) {
             String key = entry.getKey();
             String value = (String) entry.getValue();
             if ("name".equals(key)) {
                 if (!"".equals(value)) {
                     sql.append(" and s.name like '%" + value + "%'");
+                }
+            }
+            if ("departmentId".equals(key)) {
+                if (!"".equals(value)) {
+                    sql.append(" and s.ORG_DEPARTMENT_ID = " + value);
                 }
             }
 

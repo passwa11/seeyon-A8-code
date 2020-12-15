@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +46,12 @@ public class AccessSetingControlller extends BaseController {
             Map map = new HashMap<>();
             map.put("departmentId", departmentId);
             map.put("name", request.getParameter("name"));
-            List<ZorgMember> list = manager.showPeople(map);
+            List<ZorgMember> list = null;
+            if (departmentId.equals("")) {
+                list = new ArrayList<>();
+            } else {
+                list = manager.showPeople(map);
+            }
             Map<String, Object> map2 = new HashMap<>();
             map2.put("code", 0);
             map2.put("message", "");

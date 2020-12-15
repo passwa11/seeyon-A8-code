@@ -114,6 +114,7 @@
                 <div class="layui-input-inline" style="margin-top: 20px;">
                     <button class="common_button common_button_emphasize" id="saveRange">保存</button>
                     <button class="common_button common_button_gray" id="reset">取消</button>
+                    <button class="common_button common_button_gray" id="reset">设置</button>
                 </div>
             </div>
         </div>
