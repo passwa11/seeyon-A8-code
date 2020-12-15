@@ -70,8 +70,8 @@
                 memIds += arr[i]["id"] + ",";
                 names += arr[i]["name"] + "；";
             }
-            $("#memberId").append(memIds);
-            $("#names").append(names);
+            $("#memberId").val(memIds);
+            $("#names").text(names);
 
             $("#saveRange").on('click', function () {
                 var obj = {};
