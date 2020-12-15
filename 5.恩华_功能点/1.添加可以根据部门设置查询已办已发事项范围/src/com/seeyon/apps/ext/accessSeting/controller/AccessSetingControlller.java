@@ -66,12 +66,34 @@ public class AccessSetingControlller extends BaseController {
         return null;
     }
 
+    /**
+     * 跳转到查询设置页面
+     *
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {
         User user = AppContext.getCurrentUser();
         Long accountId = user.getAccountId();
         List<Map<String, Object>> list = manager.queryAllUnit(accountId);
         request.setAttribute("list", JSON.toJSONString(list));
         return new ModelAndView("apps/ext/accessSeting/index");
+    }
+
+    /**
+     * 弹出设置页面
+     *
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ModelAndView setting(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        User user = AppContext.getCurrentUser();
+        Long accountId = user.getAccountId();
+        return new ModelAndView("apps/ext/accessSeting/setConfig");
     }
 
     public ModelAndView leaveSeting(HttpServletRequest request, HttpServletResponse response) throws Exception {
