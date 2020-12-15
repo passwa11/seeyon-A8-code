@@ -30,12 +30,6 @@
 <body>
 <div class="content_wrap">
     <div id="nav" style="border: 1px solid #90d7bb;">
-        <%--        <div class="layui-card" style="margin-top: 0px">--%>
-        <%--            <div class="layui-table-header">--%>
-        <%--                <div style="line-height: 30px;height: 30px;padding-left: 20px;">--%>
-        <%--                </div>--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
         <ul id="treeDemo" class="ztree"></ul>
     </div>
     <div style="float: left;width: 72%;height: 90%;background-color: #fdfffd;">
@@ -43,7 +37,7 @@
             <div class="layui-card" style="margin-top: 0px">
                 <div class="layui-table-header">
                     <div style="line-height: 30px;height: 30px;padding-left: 20px;">
-                        <%--                        部门信息--%>
+                        <%--部门信息--%>
                     </div>
                 </div>
             </div>
