@@ -68,7 +68,7 @@ public class AccessSetingDaoImpl implements AccessSetingDao {
 
     @Override
     public List<DepartmentViewTimeRange> getDepartmentViewTimeRange(Map<String, Object> map) {
-        return DBAgent.find("from DepartmentViewTimeRange where deptmentId=:deptmentId", map);
+        return DBAgent.find("from DepartmentViewTimeRange where memberId=:memberId", map);
     }
 
     @Override

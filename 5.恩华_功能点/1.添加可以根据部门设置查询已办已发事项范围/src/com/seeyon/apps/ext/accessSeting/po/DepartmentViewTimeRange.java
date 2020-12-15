@@ -10,6 +10,15 @@ public class DepartmentViewTimeRange {
     private Date endTime;
     private Long memberId;
     private Long dayNum;
+    private String ids;
+
+    public String getIds() {
+        return ids;
+    }
+
+    public void setIds(String ids) {
+        this.ids = ids;
+    }
 
     public Long getDayNum() {
         return dayNum;

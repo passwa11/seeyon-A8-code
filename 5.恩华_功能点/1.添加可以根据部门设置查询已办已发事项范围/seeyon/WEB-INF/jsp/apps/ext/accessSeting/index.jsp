@@ -86,7 +86,6 @@
         });
         //打开设置页面
         $('#setConfig').on('click', function () {
-            console.log(table.checkStatus('memberTableId').data);
             layer.open({
                 type: 2,
                 id: 'setConfigId',

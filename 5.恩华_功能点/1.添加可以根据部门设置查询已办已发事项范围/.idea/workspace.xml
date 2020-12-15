@@ -658,6 +658,8 @@
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/accessSeting/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/accessSeting/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/accessSeting/setConfig.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/accessSeting/setConfig.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/controller/AccessSetingControlller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/controller/AccessSetingControlller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/dao/AccessSetingDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/dao/AccessSetingDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/po/DepartmentViewTimeRange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/po/DepartmentViewTimeRange.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../2.公告通知等添加默认范围/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../2.公告通知等添加默认范围/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../5.恩华药业/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../5.恩华药业/.idea/.gitignore" beforeDir="false" />
@@ -1343,7 +1345,7 @@
     <property name="ToolWindowDuplicates.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/seeyon/WEB-INF/jsp/apps/ext/accessSeting" />
+    <property name="last_opened_file_path" value="D:/myProject/xjhczz" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.145977" />
@@ -1425,7 +1427,7 @@
       <workItem from="1606350496760" duration="2535000" />
       <workItem from="1607325383531" duration="638000" />
       <workItem from="1607992464988" duration="6534000" />
-      <workItem from="1608012964545" duration="5581000" />
+      <workItem from="1608012964545" duration="9838000" />
     </task>
     <task id="LOCAL-00001" summary="add">
       <created>1606100608688</created>
@@ -1567,7 +1569,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608017509879</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="add">
+      <created>1608018574126</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1608018574126</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1619,16 +1628,6 @@
           <url>file://$PROJECT_DIR$/src_col/com/seeyon/ctp/common/affair/manager/PendingManagerImpl.java</url>
           <line>391</line>
           <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/controller/AccessSetingControlller.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/dao/AccessSetingDaoImpl.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

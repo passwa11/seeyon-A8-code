@@ -91,8 +91,6 @@ public class AccessSetingControlller extends BaseController {
      * @throws Exception
      */
     public ModelAndView setting(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        User user = AppContext.getCurrentUser();
-        Long accountId = user.getAccountId();
         return new ModelAndView("apps/ext/accessSeting/setConfig");
     }
 
@@ -146,21 +144,23 @@ public class AccessSetingControlller extends BaseController {
     }
 
     public ModelAndView saveDepartmentViewTimeRange(HttpServletRequest request, HttpServletResponse response, DepartmentViewTimeRange range) {
-        range.setId(System.currentTimeMillis());
         Map<String, Object> map2 = new HashMap<>();
         try {
-            Map<String, Object> params = new HashMap<>();
-            params.put("deptmentId", range.getDeptmentId());
-            List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(params);
-            if (list.size() > 0) {
-                DepartmentViewTimeRange upRange = list.get(0);
-                upRange.setDeptmentId(range.getDeptmentId());
-                upRange.setDepartmentName(range.getDepartmentName());
-                upRange.setStartTime(range.getStartTime());
-                upRange.setEndTime(range.getEndTime());
-                manager.updateDepartmentViewTimeRange(upRange);
-            } else {
-                manager.saveDepartmentViewTimeRange(range);
+            String[] memberIds = (range.getIds()).split(",");
+            Map<String, Object> params = null;
+            for (int i = 0; i < memberIds.length; i++) {
+                params = new HashMap<>();
+                params.put("memberId", range.getMemberId());
+                List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(params);
+                if (list.size() > 0) {
+                    DepartmentViewTimeRange upRange = list.get(0);
+                    upRange.setDayNum(range.getDayNum());
+                    manager.updateDepartmentViewTimeRange(upRange);
+                } else {
+                    range.setId(System.currentTimeMillis());
+                    range.setMemberId(Long.parseLong(memberIds[i]));
+                    manager.saveDepartmentViewTimeRange(range);
+                }
             }
             map2.put("code", 0);
         } catch (Exception e) {
