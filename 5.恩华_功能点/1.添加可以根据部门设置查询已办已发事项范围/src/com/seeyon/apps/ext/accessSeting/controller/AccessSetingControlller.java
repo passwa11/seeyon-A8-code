@@ -8,6 +8,7 @@ import com.seeyon.apps.ext.accessSeting.manager.LeaveSetingManager;
 import com.seeyon.apps.ext.accessSeting.manager.LeaveSetingManagerImpl;
 import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
 import com.seeyon.apps.ext.accessSeting.po.LeaveSeting;
+import com.seeyon.apps.ext.accessSeting.po.ZorgMember;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.authenticate.domain.User;
 import com.seeyon.ctp.common.controller.BaseController;
@@ -21,13 +22,43 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 public class AccessSetingControlller extends BaseController {
 
     private AccessSetingManager manager = new AccessSetingManagerImpl();
 
     private LeaveSetingManager leaveSetingManager = new LeaveSetingManagerImpl();
+
+    /**
+     * 根据部门id获取部门人员列表
+     *
+     * @param request
+     * @param response
+     * @return
+     */
+    public ModelAndView getMemberByDepartmentId(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String departmentId = request.getParameter("departmentId");
+            if (null == departmentId || departmentId.equals("")) {
+                departmentId = "";
+            }
+            Map map = new HashMap<>();
+            map.put("departmentId", departmentId);
+            map.put("name", request.getParameter("name"));
+            List<ZorgMember> list = manager.showPeople(map);
+            Map<String, Object> map2 = new HashMap<>();
+            map2.put("code", 0);
+            map2.put("message", "");
+            map2.put("count", list.size());
+            map2.put("data", list);
+            JSONObject json = new JSONObject(map2);
+            render(response, json.toJSONString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
 
     public ModelAndView index(HttpServletRequest request, HttpServletResponse response) throws Exception {
         User user = AppContext.getCurrentUser();

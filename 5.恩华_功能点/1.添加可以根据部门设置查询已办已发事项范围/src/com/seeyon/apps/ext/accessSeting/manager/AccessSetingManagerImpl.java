@@ -3,13 +3,43 @@ package com.seeyon.apps.ext.accessSeting.manager;
 import com.seeyon.apps.ext.accessSeting.dao.AccessSetingDao;
 import com.seeyon.apps.ext.accessSeting.dao.AccessSetingDaoImpl;
 import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
+import com.seeyon.apps.ext.accessSeting.po.ZorgMember;
+import com.seeyon.ctp.common.exceptions.BusinessException;
 
 import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.*;
 
 public class AccessSetingManagerImpl implements AccessSetingManager {
 
     private AccessSetingDao dao = new AccessSetingDaoImpl();
+
+    @Override
+    public List<ZorgMember> showPeople(Map<String, Object> params) throws BusinessException {
+        /********过滤和条件搜索*******/
+        Map queryParams = new HashMap<String, Object>();
+        Boolean enabled = null;
+        for (Map.Entry<String, Object> entry : params.entrySet()) {
+            String key = entry.getKey();
+            String value = (String) entry.getValue();
+            if ("name".equals(key)) {
+                queryParams.put("name", value);
+            }
+            if ("departmentId".equals(key)) {
+                queryParams.put("departmentId", value);
+            }
+            if ("loginName".equals(key)) {
+                queryParams.put("loginName", value);
+            }
+        }
+        List<ZorgMember> list = null;
+        try {
+            list = dao.getAllMemberPOByDeptId(queryParams, true, true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
     @Override
     public void saveDepartmentViewTimeRange(DepartmentViewTimeRange range) {

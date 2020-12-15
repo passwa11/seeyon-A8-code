@@ -11,5 +11,8 @@
         <property name="departmentName" type="string" column="DEPARTMENT_NAME"/>
         <property name="startTime" type="date" column="START_TIME"/>
         <property name="endTime" type="date" column="END_TIME"/>
+        <property name="memberId" type="long" column="MEMBER_ID"/>
+        <property name="dayNum" type="long" column="DAY_NUM"/>
+
     </class>
 </hibernate-mapping>

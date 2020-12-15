@@ -4,6 +4,9 @@
     <%@ include file="../../../common/common.jsp" %>
     <link type="text/css" rel="stylesheet" href="<c:url value="/common/js/xtree/xtree.css" />">
     <link rel="stylesheet" type="text/css" href="<c:url value="/common/zTree/css/zTreeStyle/zTreeStyle.css" />">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/common/layui/css/layui.css" />">
+    <script type="text/javascript" charset="UTF-8" src="<c:url value="/common/layui/layui.all.js" />"></script>
+
     <style type="text/css">
         #nav {
             float: left;
@@ -29,10 +32,30 @@
 </head>
 <body>
 <div class="content_wrap">
-    <div id="nav" style="border: 1px solid #90d7bb;">
+    <div id="nav" style="border: 1px solid #90d7bb;margin-left: 10px;">
         <ul id="treeDemo" class="ztree"></ul>
     </div>
-    <div style="float: left;width: 72%;height: 90%;background-color: #fdfffd;">
+    <div style="margin-left: 10px;border: 1px solid #90d7bb;float: left;width: 32%;height: 90%;background-color: #fdfffd;">
+        <div class="layui-card" style="margin-top: 0px">
+            <div class="layui-table-header">
+                <div style="line-height: 30px;height: 30px;padding-left: 20px;">
+                    人员信息
+                </div>
+            </div>
+        </div>
+        <div id="ishow" class="layui-form-item" style="margin-top: 20px;margin-left: 20px;">
+            <div class="layui-input-inline">
+                <input type="text" id="memberInput" name="username" lay-verify="title"
+                       autocomplete="off"
+                       placeholder="姓名" class="layui-input">
+            </div>
+            <button class="layui-btn layui-btn-primary layui-btn-radius" id="queryMember">查询</button>
+            <button class="layui-btn layui-btn-primary layui-btn-radius" id="queryallMember">显示全部</button>
+        </div>
+        <table id="memberTable" lay-filter="memberTableFilter"></table>
+    </div>
+
+    <div style="float: left;width: 40%;height: 90%;background-color: #fdfffd;">
         <div style="border: 1px solid #90d7bb;width: 95%;height: 100%;margin-left: 10px;">
             <div class="layui-card" style="margin-top: 0px">
                 <div class="layui-table-header">
@@ -99,59 +122,88 @@
 
 </body>
 <script type="text/javascript">
-    var setting = {
-        callback: {
-            onClick: zTreeOnClick
-        }
-    };
+    layui.use(['table', 'layer', 'element'], function () {
 
-    function zTreeOnClick(event, treeId, treeNode) {
-        var id = treeNode.id;
-        var name = treeNode.name;
-        $("#deptid").val(id);
-        $("#deptname").val(name);
+        var layer = layui.layer;
+        var table = layui.table;
+        var selectedMember = [];//选择信息数组
 
-        $.post("/seeyon/ext/accessSetting.do?method=getDepartmentRange", {departmentId: id + ""}, function (ref) {
-            if (ref.data != null) {
-                $("#startTime").val(ref.data.startTime);
-                $("#endTime").val(ref.data.endTime);
-            } else {
-                $("#startTime").val("");
-                $("#endTime").val("");
+        table.render({
+            id: 'memberTableId'
+            , elem: '#memberTable'
+            , url: '/seeyon/ext/accessSetting.do?method=getMemberByDepartmentId'
+            , height: 550
+            , page: false //开启分页
+            , cols: [[ //表头
+                {type: 'checkbox'},
+                {field: 'name', title: '姓名', width: '30%', sort: true},
+                {field: 'dayNum', title: '最近天数', width: '30%'}
+            ]]
+            , where: {
+                name: ""
             }
         });
 
-    }
+        var setting = {
+            callback: {
+                onClick: zTreeOnClick
+            }
+        };
 
-    $(function () {
-        $.fn.zTree.init($("#treeDemo"), setting, ${list});
+        function zTreeOnClick(event, treeId, treeNode) {
+            var id = treeNode.id;
+            var name = treeNode.name;
+            $("#deptid").val(id);
+            $("#deptname").val(name);
 
-        $("#reset").on('click', function () {
-            $("#startTime").val("");
-            $("#endTime").val("");
-            $("#deptid").val("");
-            $("#deptname").val("");
-        });
-
-        $("#saveRange").on('click', function () {
-            var obj = {};
-            obj['deptmentId'] = $("#deptid").val() + "";
-            obj['departmentName'] = $("#deptname").val();
-            obj['startTime'] = $("#startTime").val();
-            obj['endTime'] = $("#endTime").val();
-            $.post("/seeyon/ext/accessSetting.do?method=saveDepartmentViewTimeRange", obj, function (ref) {
-                if (ref.code == 0) {
-                    $("#info").append("保存成功！");
-                } else {
-                    $("#info").append("保存失败！");
+            table.reload('memberTableId', {
+                where: {
+                    departmentId: id.toString(),
+                    name: ""
                 }
             });
-            setTimeout(function () {
-                $("#info").replaceWith("");
-            }, 2000);
+
+            // $.post("/seeyon/ext/accessSetting.do?method=getDepartmentRange", {departmentId: id + ""}, function (ref) {
+            //     if (ref.data != null) {
+            //         $("#startTime").val(ref.data.startTime);
+            //         $("#endTime").val(ref.data.endTime);
+            //     } else {
+            //         $("#startTime").val("");
+            //         $("#endTime").val("");
+            //     }
+            // });
+
+        }
+
+        $(function () {
+            $.fn.zTree.init($("#treeDemo"), setting, ${list});
+
+            $("#reset").on('click', function () {
+                $("#startTime").val("");
+                $("#endTime").val("");
+                $("#deptid").val("");
+                $("#deptname").val("");
+            });
+
+            $("#saveRange").on('click', function () {
+                var obj = {};
+                obj['deptmentId'] = $("#deptid").val() + "";
+                obj['departmentName'] = $("#deptname").val();
+                obj['startTime'] = $("#startTime").val();
+                obj['endTime'] = $("#endTime").val();
+                $.post("/seeyon/ext/accessSetting.do?method=saveDepartmentViewTimeRange", obj, function (ref) {
+                    if (ref.code == 0) {
+                        $("#info").append("保存成功！");
+                    } else {
+                        $("#info").append("保存失败！");
+                    }
+                });
+                setTimeout(function () {
+                    $("#info").replaceWith("");
+                }, 2000);
+            });
         });
     });
-
 
 </script>
 </html>

@@ -1,14 +1,55 @@
 package com.seeyon.apps.ext.accessSeting.dao;
 
 import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
+import com.seeyon.apps.ext.accessSeting.po.ZorgMember;
 import com.seeyon.apps.ext.accessSeting.util.JDBCUtil;
 import com.seeyon.ctp.util.DBAgent;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class AccessSetingDaoImpl implements AccessSetingDao {
+
+    @Override
+    public List<ZorgMember> getAllMemberPOByDeptId(Map<String, Object> param, Boolean p1, Boolean p2) {
+        StringBuilder sql = new StringBuilder();
+        sql.append("select s.* from (select mpl.*,d.DAY_NUM from (select m.ORG_DEPARTMENT_ID,(select name from ORG_UNIT u where u.id=m.ORG_DEPARTMENT_ID) deptname,m.id,m.name,m.ORG_LEVEL_ID,l.name levelName,p.LOGIN_NAME from ORG_MEMBER m,ORG_LEVEL l,ORG_PRINCIPAL p where m.ORG_LEVEL_ID=l.id and p.MEMBER_ID=m.id and m.IS_ENABLE=1 ) mpl LEFT JOIN DEPARTMENT_VIEW_TIME_RANGE d on mpl.id=d.MEMBER_ID) s where 1=1 ");
+        for (Map.Entry<String, Object> entry : param.entrySet()) {
+            String key = entry.getKey();
+            String value = (String) entry.getValue();
+            if ("name".equals(key)) {
+                if (!"".equals(value)) {
+                    sql.append(" and s.name like '%" + value + "%'");
+                }
+            }
+
+        }
+        List<Map<String, Object>> result = null;
+        try {
+            result = JDBCUtil.doQuery(sql.toString());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        List<ZorgMember> rows = new ArrayList<>();
+        if (null != result && result.size() > 0) {
+            for (int i = 0; i < result.size(); i++) {
+                ZorgMember orgMember = new ZorgMember();
+                orgMember.setName((String) result.get(i).get("name"));
+                orgMember.setOrgLevelId(((BigDecimal) result.get(i).get("org_level_id")).toString());
+                orgMember.setId(((BigDecimal) result.get(i).get("id")).toString());
+                orgMember.setLevelName((String) result.get(i).get("levelname"));
+                orgMember.setLoginName((String) result.get(i).get("login_name"));
+                orgMember.setDayNum(((BigDecimal) result.get(i).get("day_num")).toString());
+                orgMember.setDeptname((String) result.get(i).get("deptname"));
+                orgMember.setOrgDepartmentId(((BigDecimal) result.get(i).get("org_department_id")).toString());
+                rows.add(orgMember);
+            }
+        }
+        return rows;
+    }
 
     @Override
     public void saveDepartmentViewTimeRange(DepartmentViewTimeRange range) {
