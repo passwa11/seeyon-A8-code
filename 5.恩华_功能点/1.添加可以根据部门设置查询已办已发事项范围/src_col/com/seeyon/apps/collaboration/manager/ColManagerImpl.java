@@ -46,7 +46,10 @@ import com.seeyon.apps.doc.bo.DocResourceBO;
 import com.seeyon.apps.doc.constants.DocConstants.PigeonholeType;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManager;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManagerImpl;
+import com.seeyon.apps.ext.accessSeting.manager.LeaveSetingManager;
+import com.seeyon.apps.ext.accessSeting.manager.LeaveSetingManagerImpl;
 import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
+import com.seeyon.apps.ext.accessSeting.po.LeaveSeting;
 import com.seeyon.apps.index.api.IndexApi;
 import com.seeyon.apps.project.api.ProjectApi;
 import com.seeyon.apps.project.bo.ProjectBO;
@@ -1242,6 +1245,11 @@ public class ColManagerImpl implements ColManager {
             }
         }
     }
+    private LeaveSetingManager leaveSetingManager=new LeaveSetingManagerImpl();
+
+    public void setLeaveSetingManager(LeaveSetingManager leaveSetingManager) {
+        this.leaveSetingManager = leaveSetingManager;
+    }
 
     public FlipInfo getDoneAffairs(FlipInfo flipInfo, Map<String, String> query) throws BusinessException {
         //设置用户id
@@ -1269,6 +1277,7 @@ public class ColManagerImpl implements ColManager {
                 result = colDaoFK.queryByConditionHis(flipInfo, query);
             }
         } else {
+
             //[恩华药业]zhou：获取部门查看数据的日期范围 【开始】
             User user = AppContext.getCurrentUser();
             Long departmentId = user.getDepartmentId();
@@ -1289,26 +1298,41 @@ public class ColManagerImpl implements ColManager {
             }
             //[恩华药业]zhou：获取部门查看数据的日期范围 【结束】
             result = colDao.queryByCondition(flipInfo, query);
-        }
-        for (ColSummaryVO csvo : result) {
-            String nodeName = csvo.getNodePolicy();
-            ColSummary summary = csvo.getSummary();
-            long flowPermAccountId = ColUtil.getFlowPermAccountId(AppContext.currentAccountId(), summary.getOrgAccountId(), summary.getPermissionAccountId());
-            Permission permisson = permissionManager.getPermission(EnumNameEnum.col_flow_perm_policy.name(), nodeName, flowPermAccountId);
-            if (permisson != null) {
-                //节点权限设置不允许删除
-                NodePolicyVO nodePolicyVo = new NodePolicyVO(permisson);
-                boolean canReMove = nodePolicyVo.isReMove();
-                csvo.setcanReMove(canReMove);
 
-            } else {
-                csvo.setcanReMove(true);
+
+        }
+        //[恩华药业]zhou:离职人员可以看到哪些数据 【开始】
+        //判断当前登录人是不是已发起离职流程
+
+        List<LeaveSeting> leaveSetings=leaveSetingManager.findAll();
+        LeaveSeting seting=leaveSetings.get(0);
+
+        if(seting.getIsEnable()=='0'){//为0表示不允许查看已办数据
+            if (flipInfo != null) {
+                flipInfo.setData(null);
+            }
+        }else {
+            for (ColSummaryVO csvo : result) {
+                String nodeName = csvo.getNodePolicy();
+                ColSummary summary = csvo.getSummary();
+                long flowPermAccountId = ColUtil.getFlowPermAccountId(AppContext.currentAccountId(), summary.getOrgAccountId(), summary.getPermissionAccountId());
+                Permission permisson = permissionManager.getPermission(EnumNameEnum.col_flow_perm_policy.name(), nodeName, flowPermAccountId);
+                if (permisson != null) {
+                    //节点权限设置不允许删除
+                    NodePolicyVO nodePolicyVo = new NodePolicyVO(permisson);
+                    boolean canReMove = nodePolicyVo.isReMove();
+                    csvo.setcanReMove(canReMove);
+
+                } else {
+                    csvo.setcanReMove(true);
+                }
+            }
+            if (flipInfo != null) {
+                flipInfo.setData(result);
             }
         }
+        //[恩华药业]zhou:离职人员可以看到哪些数据 【结束】
 
-        if (flipInfo != null) {
-            flipInfo.setData(result);
-        }
         return flipInfo;
     }
 
