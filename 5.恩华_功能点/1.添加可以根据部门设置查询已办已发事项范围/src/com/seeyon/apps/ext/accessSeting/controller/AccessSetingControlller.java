@@ -149,17 +149,19 @@ public class AccessSetingControlller extends BaseController {
             String[] memberIds = (range.getIds()).split(",");
             Map<String, Object> params = null;
             for (int i = 0; i < memberIds.length; i++) {
-                params = new HashMap<>();
-                params.put("memberId", range.getMemberId());
-                List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(params);
-                if (list.size() > 0) {
-                    DepartmentViewTimeRange upRange = list.get(0);
-                    upRange.setDayNum(range.getDayNum());
-                    manager.updateDepartmentViewTimeRange(upRange);
-                } else {
-                    range.setId(System.currentTimeMillis());
-                    range.setMemberId(Long.parseLong(memberIds[i]));
-                    manager.saveDepartmentViewTimeRange(range);
+                if (!"".equals(memberIds[i])) {
+                    params = new HashMap<>();
+                    params.put("memberId", Long.parseLong(memberIds[i]));
+                    List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(params);
+                    if (list.size() > 0) {
+                        DepartmentViewTimeRange upRange = list.get(0);
+                        upRange.setDayNum(range.getDayNum());
+                        manager.updateDepartmentViewTimeRange(upRange);
+                    } else {
+                        range.setId(System.currentTimeMillis());
+                        range.setMemberId(Long.parseLong(memberIds[i]));
+                        manager.saveDepartmentViewTimeRange(range);
+                    }
                 }
             }
             map2.put("code", 0);
