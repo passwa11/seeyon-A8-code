@@ -12,6 +12,7 @@ import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.authenticate.domain.User;
 import com.seeyon.ctp.common.controller.BaseController;
 import com.seeyon.ctp.util.FlipInfo;
+import com.seeyon.ctp.util.PropertiesUtil;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 public class AccessSetingControlller extends BaseController {
 
