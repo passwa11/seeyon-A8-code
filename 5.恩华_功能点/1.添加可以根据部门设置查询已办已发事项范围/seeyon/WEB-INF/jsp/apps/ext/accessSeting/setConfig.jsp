@@ -79,6 +79,7 @@
                 obj['dayNum'] = $("#dayNum").val() + "";
                 $.post("/seeyon/ext/accessSetting.do?method=saveDepartmentViewTimeRange", obj, function (ref) {
                     if (ref.code == 0) {
+                        parent.layui.table.reload('memberTableId');
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
                         parent.layer.msg('设置成功！', {icon: 6})

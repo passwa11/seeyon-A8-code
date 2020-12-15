@@ -45,12 +45,12 @@
         </div>
         <div id="ishow" class="layui-form-item" style="margin-top: 20px;margin-left: 20px;">
             <div class="layui-input-inline">
+                <input type="hidden" id="deptid"/>
                 <input type="text" id="memberInput" name="username" lay-verify="title"
                        autocomplete="off"
                        placeholder="姓名" class="layui-input">
             </div>
             <button class="common_button" id="queryMember">查询</button>
-            <button class="common_button" id="queryallMember">显示全部</button>
             <button class="common_button common_button_emphasize" id="setConfig">设置</button>
         </div>
         <table id="memberTable" lay-filter="memberTableFilter"></table>
@@ -84,6 +84,15 @@
                 name: ""
             }
         });
+        $("#queryMember").bind('click', function () {
+            //执行重载
+            table.reload('memberTableId', {
+                where: {
+                    departmentId: $("#deptid").val().toString(),
+                    name: $("#memberInput").val()
+                }
+            });
+        });
         //打开设置页面
         $('#setConfig').on('click', function () {
             layer.open({
@@ -109,7 +118,6 @@
             var id = treeNode.id;
             var name = treeNode.name;
             $("#deptid").val(id);
-            $("#deptname").val(name);
 
             table.reload('memberTableId', {
                 where: {
