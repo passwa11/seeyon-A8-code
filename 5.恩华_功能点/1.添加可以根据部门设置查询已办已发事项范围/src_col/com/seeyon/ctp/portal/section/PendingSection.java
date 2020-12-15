@@ -239,9 +239,9 @@ public class PendingSection extends BaseSectionImpl {
 				if (affair.getApp() == 1) {
 					Long senderId = affair.getSenderId();
 					V3xOrgMember member = orgManager.getMemberById(senderId);
-					Long departmentId = member.getOrgDepartmentId();
+					Long userId = member.getId();
 					Map<String, Object> map = new HashMap<>();
-					map.put("deptmentId", departmentId);
+					map.put("memberId", userId);
 					List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(map);
 					if (list.size() > 0) {
 						DepartmentViewTimeRange range = list.get(0);

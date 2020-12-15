@@ -214,6 +214,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAmount;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -1093,20 +1095,23 @@ public class ColManagerImpl implements ColManager {
         } else {
             //[恩华药业]zhou：获取部门查看数据的日期范围 【开始】
             User user = AppContext.getCurrentUser();
-            Long departmentId = user.getDepartmentId();
+            Long memberId = user.getId();
             Map<String, Object> params = new HashMap<>();
-            params.put("deptmentId", departmentId);
+            params.put("memberId", memberId);
             List<DepartmentViewTimeRange> rangeList = setingManager.getDepartmentViewTimeRange(params);
             if (rangeList.size() > 0) {
                 DepartmentViewTimeRange range = rangeList.get(0);
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                String startTime = null == range.getStartTime() ? "" : sdf.format(range.getStartTime());
-                String endTime = null == range.getEndTime() ? "" : sdf.format(range.getEndTime());
-                StringBuffer sb=new StringBuffer();
-                if (!"".equals(startTime) || !"".equals(endTime)) {
-                    sb.append(startTime+"#");
-                    sb.append(endTime);
-                    query.put("createDate",sb.toString());
+                if (range.getDayNum() > 0) {
+                    LocalDate end = LocalDate.now();
+                    LocalDate start = LocalDate.now().minusDays(range.getDayNum());
+                    String startTime = start.toString();
+                    String endTime = end.toString();
+                    StringBuffer sb = new StringBuffer();
+                    if (!"".equals(startTime) || !"".equals(endTime)) {
+                        sb.append(startTime + "#");
+                        sb.append(endTime);
+                        query.put("createDate", sb.toString());
+                    }
                 }
             }
             //[恩华药业]zhou：获取部门查看数据的日期范围 【结束】
@@ -1245,7 +1250,8 @@ public class ColManagerImpl implements ColManager {
             }
         }
     }
-    private LeaveSetingManager leaveSetingManager=new LeaveSetingManagerImpl();
+
+    private LeaveSetingManager leaveSetingManager = new LeaveSetingManagerImpl();
 
     public void setLeaveSetingManager(LeaveSetingManager leaveSetingManager) {
         this.leaveSetingManager = leaveSetingManager;
@@ -1289,11 +1295,11 @@ public class ColManagerImpl implements ColManager {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String startTime = null == range.getStartTime() ? "" : sdf.format(range.getStartTime());
                 String endTime = null == range.getEndTime() ? "" : sdf.format(range.getEndTime());
-                StringBuffer sb=new StringBuffer();
+                StringBuffer sb = new StringBuffer();
                 if (!"".equals(startTime) || !"".equals(endTime)) {
-                    sb.append(startTime+"#");
+                    sb.append(startTime + "#");
                     sb.append(endTime);
-                    query.put("createDate",sb.toString());
+                    query.put("createDate", sb.toString());
                 }
             }
             //[恩华药业]zhou：获取部门查看数据的日期范围 【结束】
@@ -1304,14 +1310,14 @@ public class ColManagerImpl implements ColManager {
         //[恩华药业]zhou:离职人员可以看到哪些数据 【开始】
         //判断当前登录人是不是已发起离职流程
 
-        List<LeaveSeting> leaveSetings=leaveSetingManager.findAll();
-        LeaveSeting seting=leaveSetings.get(0);
+        List<LeaveSeting> leaveSetings = leaveSetingManager.findAll();
+        LeaveSeting seting = leaveSetings.get(0);
 
-        if(seting.getIsEnable()=='0'){//为0表示不允许查看已办数据
+        if (seting.getIsEnable() == '0') {//为0表示不允许查看已办数据
             if (flipInfo != null) {
                 flipInfo.setData(null);
             }
-        }else {
+        } else {
             for (ColSummaryVO csvo : result) {
                 String nodeName = csvo.getNodePolicy();
                 ColSummary summary = csvo.getSummary();
@@ -2017,11 +2023,11 @@ public class ColManagerImpl implements ColManager {
      *
      * @param affair
      * @param params <pre>
-     *                                                                                                                  {String} [isTrack] 是否跟踪， 1 - 跟踪， 其他-不跟踪
-     *                                                                                                                  {String} [trackRange_members] 跟踪指定人，在[isTrack]为1的前提下生效 , 0 - 跟踪指定人, 其他-跟踪全部
-     *                                                                                                                  {String} [trackRange_all] 跟踪全部，在[isTrack]为1的前提下 生效, 值为 1
-     *                                                                                                                  {String} [zdgzry] 跟踪指定人的ID
-     *                                                                                                                 </pre>
+     *                                                                                                                                {String} [isTrack] 是否跟踪， 1 - 跟踪， 其他-不跟踪
+     *                                                                                                                                {String} [trackRange_members] 跟踪指定人，在[isTrack]为1的前提下生效 , 0 - 跟踪指定人, 其他-跟踪全部
+     *                                                                                                                                {String} [trackRange_all] 跟踪全部，在[isTrack]为1的前提下 生效, 值为 1
+     *                                                                                                                                {String} [zdgzry] 跟踪指定人的ID
+     *                                                                                                                               </pre>
      * @return
      * @throws BusinessException
      */
@@ -2184,9 +2190,9 @@ public class ColManagerImpl implements ColManager {
      * @param handleType
      * @param params     其他参数，例如跟踪，等等
      *                   <pre>
-     *                                                                                                                                                    跟踪相关参数
-     *                                                                                                                                                    {Map<String, String>} [trackParam] 跟踪相关参数，{@link #saveTrackInfo}
-     *                                                                                                                                                 </pre>
+     *                                                                                                                                                                      跟踪相关参数
+     *                                                                                                                                                                      {Map<String, String>} [trackParam] 跟踪相关参数，{@link #saveTrackInfo}
+     *                                                                                                                                                                   </pre>
      * @throws BusinessException
      */
     @SuppressWarnings("unchecked")
