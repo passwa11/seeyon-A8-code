@@ -179,44 +179,47 @@ public class AgentSection extends BaseSectionImpl {
             AccessSetingManager manager = new AccessSetingManagerImpl();
             for (CtpAffair affair : affairs) {
                 if (affair.getApp() == 1) {
-                    Long transactorId = affair.getTransactorId();
+                    Long transactorId = affair.getMemberId();
                     V3xOrgMember member = null;
                     try {
                         member = orgManager.getMemberById(transactorId);
                     } catch (BusinessException e) {
                         e.printStackTrace();
                     }
-                    Long userId = member.getId();
-                    Map<String, Object> map2 = new HashMap<>();
-                    map2.put("memberId", userId);
-                    List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(map2);
-                    if (list.size() > 0) {
-                        DepartmentViewTimeRange range = list.get(0);
-                        if (!"".equals(range.getDayNum()) && null != range.getDayNum() && Long.parseLong(range.getDayNum()) > 0l) {
-                            LocalDateTime end = LocalDateTime.now();
-                            LocalDateTime start = LocalDateTime.now().minusDays(Long.parseLong(range.getDayNum()));
-                            Long startTime = start.toInstant(ZoneOffset.of("+8")).toEpochMilli();
-                            Long endTime = end.toInstant(ZoneOffset.of("+8")).toEpochMilli();
-                            Long objectId = affair.getObjectId();
-                            ColSummary colSummary = null;
-                            try {
-                                colSummary = colManager.getColSummaryById(objectId);
-                            } catch (BusinessException e) {
-                                e.printStackTrace();
-                            }
-                            Date createDate = colSummary.getCreateDate();
-                            if (startTime.longValue() != 0l && endTime.longValue() != 0l) {
-                                if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
-                                    newAffairs.add(affair);
+                    if(null != member){
+                        Long userId = member.getId();
+                        Map<String, Object> map2 = new HashMap<>();
+                        map2.put("memberId", userId);
+                        List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(map2);
+                        if (list.size() > 0) {
+                            DepartmentViewTimeRange range = list.get(0);
+                            if (!"".equals(range.getDayNum()) && null != range.getDayNum() && Long.parseLong(range.getDayNum()) > 0l) {
+                                LocalDateTime end = LocalDateTime.now();
+                                LocalDateTime start = LocalDateTime.now().minusDays(Long.parseLong(range.getDayNum()));
+                                Long startTime = start.toInstant(ZoneOffset.of("+8")).toEpochMilli();
+                                Long endTime = end.toInstant(ZoneOffset.of("+8")).toEpochMilli();
+                                Long objectId = affair.getObjectId();
+                                ColSummary colSummary = null;
+                                try {
+                                    colSummary = colManager.getColSummaryById(objectId);
+                                } catch (BusinessException e) {
+                                    e.printStackTrace();
                                 }
+                                Date createDate = colSummary.getCreateDate();
+                                if (startTime.longValue() != 0l && endTime.longValue() != 0l) {
+                                    if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
+                                        newAffairs.add(affair);
+                                    }
+                                }
+                            } else if (!"".equals(range.getDayNum()) && null != range.getDayNum() && Long.parseLong(range.getDayNum()) == 0l) {
+                            } else {
+                                newAffairs.add(affair);
                             }
-                        } else if (!"".equals(range.getDayNum()) && null != range.getDayNum() && Long.parseLong(range.getDayNum()) == 0l) {
                         } else {
                             newAffairs.add(affair);
                         }
-                    } else {
-                        newAffairs.add(affair);
                     }
+
                 } else {
                     newAffairs.add(affair);
                 }

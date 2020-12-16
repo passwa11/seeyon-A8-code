@@ -246,7 +246,7 @@ public class TrackSection extends BaseSectionImpl {
         FlipInfo fi = new FlipInfo();
         fi.setNeedTotal(false);
         String count = preference.get("count");
-        int coun = 8;
+        int coun = 0;
         if (Strings.isNotBlank(count)) {
             coun = Integer.parseInt(count);
         }
@@ -338,7 +338,7 @@ public class TrackSection extends BaseSectionImpl {
         //【更多】
         c.addBottomButton(BaseSectionTemplete.BOTTOM_BUTTON_LABEL_MORE, "/portalAffair/portalAffairController.do?method=moreTrack" + "&fragmentId=" + preference.get(PropertyName.entityId.name())
                 + "&ordinal=" + preference.get(PropertyName.ordinal.name()) + "&currentPanel=" + panel + "&rowStr=" + rowStr + "&columnsName=" + s);
-        c.setDataNum(coun);
+        c.setDataNum(newAffairs.size());
         return c;
     }
 
