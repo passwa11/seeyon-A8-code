@@ -1102,7 +1102,7 @@ public class ColManagerImpl implements ColManager {
             if (rangeList.size() > 0) {
                 DepartmentViewTimeRange range = rangeList.get(0);
                 StringBuffer sb = new StringBuffer();
-                if (!"".equals(range.getDayNum()) && Long.parseLong(range.getDayNum()) > 0l) {
+                if (!"".equals(range.getDayNum())  && null !=range.getDayNum() && Long.parseLong(range.getDayNum()) > 0l) {
                     LocalDate end = LocalDate.now();
                     LocalDate start = LocalDate.now().minusDays(Long.parseLong(range.getDayNum()));
                     String startTime = start.toString();
@@ -1113,7 +1113,7 @@ public class ColManagerImpl implements ColManager {
                         sb.append(endTime);
                         query.put("createDate", sb.toString());
                     }
-                } else if (!"".equals(range.getDayNum()) && Long.parseLong(range.getDayNum()) == 0l) {
+                } else if (!"".equals(range.getDayNum()) && null !=range.getDayNum()  && Long.parseLong(range.getDayNum()) == 0l) {
                     LocalDate end = LocalDate.now();
                     sb.append(end.toString() + "#");
                     query.put("createDate", sb.toString());
@@ -1299,9 +1299,10 @@ public class ColManagerImpl implements ColManager {
             if (rangeList.size() > 0) {
                 DepartmentViewTimeRange range = rangeList.get(0);
                 LocalDate end = LocalDate.now();
-                LocalDate start = LocalDate.now().minusDays( Long.parseLong(range.getDayNum()));
                 StringBuffer sb = new StringBuffer();
-                if (!"".equals(range.getDayNum()) && Long.parseLong(range.getDayNum()) > 0l) {
+                if (!"".equals(range.getDayNum()) && null !=range.getDayNum()  && Long.parseLong(range.getDayNum()) > 0l) {
+                    LocalDate start = LocalDate.now().minusDays( Long.parseLong(range.getDayNum()));
+
                     String startTime = start.toString();
                     String endTime = end.toString();
                     if (!"".equals(startTime) || !"".equals(endTime)) {
@@ -1309,7 +1310,7 @@ public class ColManagerImpl implements ColManager {
                         sb.append(endTime);
                         query.put("createDate", sb.toString());
                     }
-                }else if (!"".equals(range.getDayNum()) && Long.parseLong(range.getDayNum()) == 0l){
+                }else if (!"".equals(range.getDayNum()) && null !=range.getDayNum()  && Long.parseLong(range.getDayNum()) == 0l){
                     sb.append(end.toString() + "#");
                 }
             }

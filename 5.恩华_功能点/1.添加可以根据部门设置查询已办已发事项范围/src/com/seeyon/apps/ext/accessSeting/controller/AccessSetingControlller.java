@@ -47,11 +47,7 @@ public class AccessSetingControlller extends BaseController {
             map.put("departmentId", departmentId);
             map.put("name", request.getParameter("name"));
             List<ZorgMember> list = null;
-            if (departmentId.equals("")) {
-                list = new ArrayList<>();
-            } else {
-                list = manager.showPeople(map);
-            }
+            list = manager.showPeople(map);
             Map<String, Object> map2 = new HashMap<>();
             map2.put("code", 0);
             map2.put("message", "");

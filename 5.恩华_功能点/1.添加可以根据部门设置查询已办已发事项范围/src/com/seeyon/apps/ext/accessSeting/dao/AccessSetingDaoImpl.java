@@ -47,7 +47,7 @@ public class AccessSetingDaoImpl implements AccessSetingDao {
                 orgMember.setId(((BigDecimal) result.get(i).get("id")).toString());
                 orgMember.setLevelName((String) result.get(i).get("levelname"));
                 orgMember.setLoginName((String) result.get(i).get("login_name"));
-                orgMember.setDayNum(!"".equals((String) result.get(i).get("day_num"))?(String) result.get(i).get("day_num"):"-");
+                orgMember.setDayNum(!"".equals((String) result.get(i).get("day_num")) && null != ((String) result.get(i).get("day_num")) ? (String) result.get(i).get("day_num") : "-");
                 orgMember.setDeptname((String) result.get(i).get("deptname"));
                 orgMember.setOrgDepartmentId(((BigDecimal) result.get(i).get("org_department_id")).toString());
                 rows.add(orgMember);
