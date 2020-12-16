@@ -1101,17 +1101,23 @@ public class ColManagerImpl implements ColManager {
             List<DepartmentViewTimeRange> rangeList = setingManager.getDepartmentViewTimeRange(params);
             if (rangeList.size() > 0) {
                 DepartmentViewTimeRange range = rangeList.get(0);
-                if (range.getDayNum() > 0) {
+                StringBuffer sb = new StringBuffer();
+                if (!"".equals(range.getDayNum()) && Long.parseLong(range.getDayNum()) > 0l) {
                     LocalDate end = LocalDate.now();
-                    LocalDate start = LocalDate.now().minusDays(range.getDayNum());
+                    LocalDate start = LocalDate.now().minusDays(Long.parseLong(range.getDayNum()));
                     String startTime = start.toString();
                     String endTime = end.toString();
-                    StringBuffer sb = new StringBuffer();
+
                     if (!"".equals(startTime) || !"".equals(endTime)) {
                         sb.append(startTime + "#");
                         sb.append(endTime);
                         query.put("createDate", sb.toString());
                     }
+                } else if (!"".equals(range.getDayNum()) && Long.parseLong(range.getDayNum()) == 0l) {
+                    LocalDate end = LocalDate.now();
+                    sb.append(end.toString() + "#");
+                    query.put("createDate", sb.toString());
+
                 }
             }
             //[恩华药业]zhou：获取部门查看数据的日期范围 【结束】
@@ -1292,18 +1298,19 @@ public class ColManagerImpl implements ColManager {
             List<DepartmentViewTimeRange> rangeList = setingManager.getDepartmentViewTimeRange(params);
             if (rangeList.size() > 0) {
                 DepartmentViewTimeRange range = rangeList.get(0);
-
-                if (range.getDayNum() > 0) {
-                    LocalDate end = LocalDate.now();
-                    LocalDate start = LocalDate.now().minusDays(range.getDayNum());
+                LocalDate end = LocalDate.now();
+                LocalDate start = LocalDate.now().minusDays( Long.parseLong(range.getDayNum()));
+                StringBuffer sb = new StringBuffer();
+                if (!"".equals(range.getDayNum()) && Long.parseLong(range.getDayNum()) > 0l) {
                     String startTime = start.toString();
                     String endTime = end.toString();
-                    StringBuffer sb = new StringBuffer();
                     if (!"".equals(startTime) || !"".equals(endTime)) {
                         sb.append(startTime + "#");
                         sb.append(endTime);
                         query.put("createDate", sb.toString());
                     }
+                }else if (!"".equals(range.getDayNum()) && Long.parseLong(range.getDayNum()) == 0l){
+                    sb.append(end.toString() + "#");
                 }
             }
             //[恩华药业]zhou：获取部门查看数据的日期范围 【结束】
@@ -2027,11 +2034,11 @@ public class ColManagerImpl implements ColManager {
      *
      * @param affair
      * @param params <pre>
-     *                                                                                                                                              {String} [isTrack] 是否跟踪， 1 - 跟踪， 其他-不跟踪
-     *                                                                                                                                              {String} [trackRange_members] 跟踪指定人，在[isTrack]为1的前提下生效 , 0 - 跟踪指定人, 其他-跟踪全部
-     *                                                                                                                                              {String} [trackRange_all] 跟踪全部，在[isTrack]为1的前提下 生效, 值为 1
-     *                                                                                                                                              {String} [zdgzry] 跟踪指定人的ID
-     *                                                                                                                                             </pre>
+     *                                                                                                                                                                                        {String} [isTrack] 是否跟踪， 1 - 跟踪， 其他-不跟踪
+     *                                                                                                                                                                                        {String} [trackRange_members] 跟踪指定人，在[isTrack]为1的前提下生效 , 0 - 跟踪指定人, 其他-跟踪全部
+     *                                                                                                                                                                                        {String} [trackRange_all] 跟踪全部，在[isTrack]为1的前提下 生效, 值为 1
+     *                                                                                                                                                                                        {String} [zdgzry] 跟踪指定人的ID
+     *                                                                                                                                                                                       </pre>
      * @return
      * @throws BusinessException
      */
@@ -2194,9 +2201,9 @@ public class ColManagerImpl implements ColManager {
      * @param handleType
      * @param params     其他参数，例如跟踪，等等
      *                   <pre>
-     *                                                                                                                                                                                        跟踪相关参数
-     *                                                                                                                                                                                        {Map<String, String>} [trackParam] 跟踪相关参数，{@link #saveTrackInfo}
-     *                                                                                                                                                                                     </pre>
+     *                                                                                                                                                                                                                                              跟踪相关参数
+     *                                                                                                                                                                                                                                              {Map<String, String>} [trackParam] 跟踪相关参数，{@link #saveTrackInfo}
+     *                                                                                                                                                                                                                                           </pre>
      * @throws BusinessException
      */
     @SuppressWarnings("unchecked")
@@ -8146,8 +8153,6 @@ public class ColManagerImpl implements ColManager {
      * 存为草稿：操作者的操作意见被保存在意见框中，包含态度、意见、附件、关联、意见隐藏(2013-12-09 产品经理杨圆确认)；
      * 将处理意见保存为草稿状态
      *
-     * @param id
-     * @param summary
      */
     public void saveOpinionDraft(Long affairId, Long summaryId) throws BusinessException {
         try {

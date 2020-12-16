@@ -252,19 +252,18 @@ public class PendingSection extends BaseSectionImpl {
                     List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(map);
                     if (list.size() > 0) {
                         DepartmentViewTimeRange range = list.get(0);
-                        if (range.getDayNum() > 0) {
-							LocalDateTime end = LocalDateTime.now();
-							LocalDateTime start = LocalDateTime.now().minusDays(range.getDayNum());
-							Long startTime = start.toInstant(ZoneOffset.of("+8")).toEpochMilli();
-							Long endTime = end.toInstant(ZoneOffset.of("+8")).toEpochMilli();
+                        if (!"".equals(range.getDayNum()) && Long.parseLong(range.getDayNum()) > 0l) {
+                            LocalDateTime end = LocalDateTime.now();
+                            LocalDateTime start = LocalDateTime.now().minusDays(Long.parseLong(range.getDayNum()));
+                            Long startTime = start.toInstant(ZoneOffset.of("+8")).toEpochMilli();
+                            Long endTime = end.toInstant(ZoneOffset.of("+8")).toEpochMilli();
                             Long objectId = affair.getObjectId();
                             ColSummary colSummary = colManager.getColSummaryById(objectId);
                             Date createDate = colSummary.getCreateDate();
-                            if (startTime.longValue() != 0l && endTime.longValue() != 0l) {
-                                if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
-                                    newAffairs.add(affair);
-                                }
+                            if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
+                                newAffairs.add(affair);
                             }
+                        } else if (!"".equals(range.getDayNum()) && Long.parseLong(range.getDayNum()) == 0l) {
                         } else {
                             newAffairs.add(affair);
                         }

@@ -59,8 +59,8 @@ import com.seeyon.v3x.common.manager.ConfigGrantManager;
 
 /**
  * 已发事项栏目
- * @author zhaifeng
  *
+ * @author zhaifeng
  */
 public class SentSection extends BaseSectionImpl {
     private static final Log log = LogFactory.getLog(SentSection.class);
@@ -223,9 +223,9 @@ public class SentSection extends BaseSectionImpl {
                     List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(map);
                     if (list.size() > 0) {
                         DepartmentViewTimeRange range = list.get(0);
-                        if (range.getDayNum() > 0) {
+                        if (!"".equals(range.getDayNum()) && Long.parseLong(range.getDayNum()) > 0l) {
                             LocalDateTime end = LocalDateTime.now();
-                            LocalDateTime start = LocalDateTime.now().minusDays(range.getDayNum());
+                            LocalDateTime start = LocalDateTime.now().minusDays(Long.parseLong(range.getDayNum()));
                             Long startTime = start.toInstant(ZoneOffset.of("+8")).toEpochMilli();
                             Long endTime = end.toInstant(ZoneOffset.of("+8")).toEpochMilli();
                             Long objectId = affair.getObjectId();
@@ -236,7 +236,8 @@ public class SentSection extends BaseSectionImpl {
                                     newAffairs.add(affair);
                                 }
                             }
-                        }else{
+                        } else if (!"".equals(range.getDayNum()) && Long.parseLong(range.getDayNum()) == 0l) {
+                        } else {
                             newAffairs.add(affair);
                         }
                     } else {
@@ -368,6 +369,7 @@ public class SentSection extends BaseSectionImpl {
 
     /**
      * 获得列表模版
+     *
      * @param affairs
      * @return
      */
@@ -808,7 +810,8 @@ public class SentSection extends BaseSectionImpl {
 
     /**
      * 取出公文扩展字段
-     * @param affair CtpAffair对象
+     *
+     * @param affair       CtpAffair对象
      * @param edocMarkCell 公文文号
      */
     private void getEdocExtField(CtpAffair affair, MultiRowVariableColumnTemplete.Cell edocMarkCell, int width) {

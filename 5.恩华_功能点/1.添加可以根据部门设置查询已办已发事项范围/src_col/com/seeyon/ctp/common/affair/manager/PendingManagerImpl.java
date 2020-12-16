@@ -706,9 +706,9 @@ public class PendingManagerImpl implements PendingManager {
                 List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(map);
                 if (list.size() > 0) {
                     DepartmentViewTimeRange range = list.get(0);
-                    if (range.getDayNum() > 0l) {
+                    if (!"".equals(range.getDayNum()) && Long.parseLong(range.getDayNum()) > 0l) {
                         LocalDateTime end = LocalDateTime.now();
-                        LocalDateTime start = LocalDateTime.now().minusDays(range.getDayNum());
+                        LocalDateTime start = LocalDateTime.now().minusDays(Long.parseLong(range.getDayNum()));
                         Long startTime = start.toInstant(ZoneOffset.of("+8")).toEpochMilli();
                         Long endTime = end.toInstant(ZoneOffset.of("+8")).toEpochMilli();
                         Long objectId2 = affair.getObjectId();
@@ -717,6 +717,7 @@ public class PendingManagerImpl implements PendingManager {
                         if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
                             newAffairs.add(affair);
                         }
+                    } else if (!"".equals(range.getDayNum()) && Long.parseLong(range.getDayNum()) == 0l) {
                     } else {
                         newAffairs.add(affair);
                     }
