@@ -12,13 +12,18 @@ package com.seeyon.ctp.portal.section;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.*;
 
+import com.seeyon.apps.collaboration.manager.ColManager;
+import com.seeyon.apps.collaboration.po.ColSummary;
+import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManager;
+import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManagerImpl;
+import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
+import com.seeyon.ctp.common.exceptions.BusinessException;
+import com.seeyon.ctp.organization.bo.V3xOrgMember;
+import com.seeyon.ctp.organization.manager.OrgManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -52,21 +57,39 @@ import com.seeyon.ctp.util.Strings;
 
 /**
  * @author zhaifeng
- *
  */
 public class TrackSection extends BaseSectionImpl {
     private static final Log log = LogFactory.getLog(TrackSection.class);
     private AffairManager affairManager;
     private PendingManager pendingManager;
     private EdocApi edocApi;
+    private ColManager colManager;
+    private OrgManager orgManager;
     private CommonAffairSectionUtils commonAffairSectionUtils;
+
 
     public CommonAffairSectionUtils getCommonAffairSectionUtils() {
         return commonAffairSectionUtils;
     }
 
+    public OrgManager getOrgManager() {
+        return orgManager;
+    }
+
+    public void setOrgManager(OrgManager orgManager) {
+        this.orgManager = orgManager;
+    }
+
     public void setCommonAffairSectionUtils(CommonAffairSectionUtils commonAffairSectionUtils) {
         this.commonAffairSectionUtils = commonAffairSectionUtils;
+    }
+
+    public ColManager getColManager() {
+        return colManager;
+    }
+
+    public void setColManager(ColManager colManager) {
+        this.colManager = colManager;
     }
 
     public EdocApi getEdocApi() {
@@ -261,8 +284,57 @@ public class TrackSection extends BaseSectionImpl {
         } catch (UnsupportedEncodingException e) {
             log.error("", e);
         }
+        //【恩华药业】zhou:协同过滤掉设定范围内的数据【开始】
+        List<CtpAffair> newAffairs = new ArrayList<>();
+        AccessSetingManager manager = new AccessSetingManagerImpl();
+        for (CtpAffair affair : affairs) {
+            if (affair.getApp() == 1) {
+                Long senderId = affair.getMemberId();
+                V3xOrgMember member = null;
+                try {
+                    member = orgManager.getMemberById(senderId);
+                } catch (BusinessException e) {
+                    e.printStackTrace();
+                }
+                Long userId = member.getId();
+                Map<String, Object> map = new HashMap<>();
+                map.put("memberId", userId);
+                List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(map);
+                if (list.size() > 0) {
+                    DepartmentViewTimeRange range = list.get(0);
+                    if (!"".equals(range.getDayNum()) && null != range.getDayNum() && Long.parseLong(range.getDayNum()) > 0l) {
+                        LocalDateTime end = LocalDateTime.now();
+                        LocalDateTime start = LocalDateTime.now().minusDays(Long.parseLong(range.getDayNum()));
+                        Long startTime = start.toInstant(ZoneOffset.of("+8")).toEpochMilli();
+                        Long endTime = end.toInstant(ZoneOffset.of("+8")).toEpochMilli();
+                        Long objectId = affair.getObjectId();
+                        ColSummary colSummary = null;
+                        try {
+                            colSummary = colManager.getColSummaryById(objectId);
+                        } catch (BusinessException e) {
+                            e.printStackTrace();
+                        }
+                        Date createDate = colSummary.getCreateDate();
+                        if (startTime.longValue() != 0l && endTime.longValue() != 0l) {
+                            if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
+                                newAffairs.add(affair);
+                            }
+                        }
+                    } else if (!"".equals(range.getDayNum()) && null != range.getDayNum() && Long.parseLong(range.getDayNum()) == 0l) {
+                    } else {
+                        newAffairs.add(affair);
+                    }
+                } else {
+                    newAffairs.add(affair);
+                }
+            } else {
+                newAffairs.add(affair);
+            }
+        }
+
+        //【恩华药业】zhou:协同过滤掉设定范围内的数据【结束】
         //单列表
-        c = this.getTemplete(c, affairs, preference);
+        c = this.getTemplete(c, newAffairs, preference);
         //【更多】
         c.addBottomButton(BaseSectionTemplete.BOTTOM_BUTTON_LABEL_MORE, "/portalAffair/portalAffairController.do?method=moreTrack" + "&fragmentId=" + preference.get(PropertyName.entityId.name())
                 + "&ordinal=" + preference.get(PropertyName.ordinal.name()) + "&currentPanel=" + panel + "&rowStr=" + rowStr + "&columnsName=" + s);
@@ -355,6 +427,7 @@ public class TrackSection extends BaseSectionImpl {
 
     /**
      * 根据条件查询列表
+     *
      * @param preference
      * @return
      */
@@ -392,6 +465,7 @@ public class TrackSection extends BaseSectionImpl {
 
     /**
      * 获得列表模版
+     *
      * @param affairs
      * @return
      */
@@ -950,7 +1024,8 @@ public class TrackSection extends BaseSectionImpl {
 
     /**
      * 取出公文扩展字段
-     * @param affair CtpAffair对象
+     *
+     * @param affair       CtpAffair对象
      * @param edocMarkCell 公文文号
      * @param sendUnitCell 公文发文单位
      */
