@@ -213,7 +213,7 @@ public class DoneSection extends BaseSectionImpl {
             AccessSetingManager manager = new AccessSetingManagerImpl();
             for (CtpAffair affair : affairs) {
                 if (affair.getApp() == 1) {
-                    Long senderId = affair.getSenderId();
+                    Long senderId = affair.getMemberId();
                     V3xOrgMember member = orgManager.getMemberById(senderId);
                     Long userId = member.getId();
                     Map<String, Object> map = new HashMap<>();
