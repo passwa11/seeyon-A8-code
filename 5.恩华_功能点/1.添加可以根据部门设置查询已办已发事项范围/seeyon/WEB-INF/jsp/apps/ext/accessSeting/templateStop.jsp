@@ -126,6 +126,11 @@
         var setting = {
             callback: {
                 onClick: zTreeOnClick
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
             }
         };
 

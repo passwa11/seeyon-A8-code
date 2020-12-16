@@ -49,12 +49,12 @@ public class AccessSetingControlller extends BaseController {
         Map<String, Object> map = null;
         for (CtpTemplateCategory c : categories) {
             map = new HashMap<>();
-            map.put("id", c.getId());
-            map.put("pId", c.getParentId());
+            map.put("id", c.getId()+"");
+            map.put("pId", null==c.getParentId()?"0":c.getParentId()+"");
             map.put("name", c.getName());
             list.add(map);
         }
-        request.setAttribute("list", list);
+        request.setAttribute("list", JSON.toJSONString(list));
         return new ModelAndView("apps/ext/accessSeting/templateStop");
     }
 
