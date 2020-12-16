@@ -1286,20 +1286,23 @@ public class ColManagerImpl implements ColManager {
 
             //[恩华药业]zhou：获取部门查看数据的日期范围 【开始】
             User user = AppContext.getCurrentUser();
-            Long departmentId = user.getDepartmentId();
+            Long userid = user.getId();
             Map<String, Object> params = new HashMap<>();
-            params.put("deptmentId", departmentId);
+            params.put("memberId", userid);
             List<DepartmentViewTimeRange> rangeList = setingManager.getDepartmentViewTimeRange(params);
             if (rangeList.size() > 0) {
                 DepartmentViewTimeRange range = rangeList.get(0);
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                String startTime = null == range.getStartTime() ? "" : sdf.format(range.getStartTime());
-                String endTime = null == range.getEndTime() ? "" : sdf.format(range.getEndTime());
-                StringBuffer sb = new StringBuffer();
-                if (!"".equals(startTime) || !"".equals(endTime)) {
-                    sb.append(startTime + "#");
-                    sb.append(endTime);
-                    query.put("createDate", sb.toString());
+                if (range.getDayNum() > 0) {
+                    LocalDate end = LocalDate.now();
+                    LocalDate start = LocalDate.now().minusDays(range.getDayNum());
+                    String startTime = start.toString();
+                    String endTime = end.toString();
+                    StringBuffer sb = new StringBuffer();
+                    if (!"".equals(startTime) || !"".equals(endTime)) {
+                        sb.append(startTime + "#");
+                        sb.append(endTime);
+                        query.put("createDate", sb.toString());
+                    }
                 }
             }
             //[恩华药业]zhou：获取部门查看数据的日期范围 【结束】
@@ -2023,11 +2026,11 @@ public class ColManagerImpl implements ColManager {
      *
      * @param affair
      * @param params <pre>
-     *                                                                                                                                {String} [isTrack] 是否跟踪， 1 - 跟踪， 其他-不跟踪
-     *                                                                                                                                {String} [trackRange_members] 跟踪指定人，在[isTrack]为1的前提下生效 , 0 - 跟踪指定人, 其他-跟踪全部
-     *                                                                                                                                {String} [trackRange_all] 跟踪全部，在[isTrack]为1的前提下 生效, 值为 1
-     *                                                                                                                                {String} [zdgzry] 跟踪指定人的ID
-     *                                                                                                                               </pre>
+     *                                                                                                                                              {String} [isTrack] 是否跟踪， 1 - 跟踪， 其他-不跟踪
+     *                                                                                                                                              {String} [trackRange_members] 跟踪指定人，在[isTrack]为1的前提下生效 , 0 - 跟踪指定人, 其他-跟踪全部
+     *                                                                                                                                              {String} [trackRange_all] 跟踪全部，在[isTrack]为1的前提下 生效, 值为 1
+     *                                                                                                                                              {String} [zdgzry] 跟踪指定人的ID
+     *                                                                                                                                             </pre>
      * @return
      * @throws BusinessException
      */
@@ -2190,9 +2193,9 @@ public class ColManagerImpl implements ColManager {
      * @param handleType
      * @param params     其他参数，例如跟踪，等等
      *                   <pre>
-     *                                                                                                                                                                      跟踪相关参数
-     *                                                                                                                                                                      {Map<String, String>} [trackParam] 跟踪相关参数，{@link #saveTrackInfo}
-     *                                                                                                                                                                   </pre>
+     *                                                                                                                                                                                        跟踪相关参数
+     *                                                                                                                                                                                        {Map<String, String>} [trackParam] 跟踪相关参数，{@link #saveTrackInfo}
+     *                                                                                                                                                                                     </pre>
      * @throws BusinessException
      */
     @SuppressWarnings("unchecked")
