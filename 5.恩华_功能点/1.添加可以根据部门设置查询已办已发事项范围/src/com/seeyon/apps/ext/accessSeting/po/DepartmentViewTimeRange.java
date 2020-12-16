@@ -9,7 +9,7 @@ public class DepartmentViewTimeRange {
     private Date startTime;
     private Date endTime;
     private Long memberId;
-    private Long dayNum;
+    private String dayNum;
     private String ids;
 
     public String getIds() {
@@ -20,11 +20,11 @@ public class DepartmentViewTimeRange {
         this.ids = ids;
     }
 
-    public Long getDayNum() {
+    public String getDayNum() {
         return dayNum;
     }
 
-    public void setDayNum(Long dayNum) {
+    public void setDayNum(String dayNum) {
         this.dayNum = dayNum;
     }
 

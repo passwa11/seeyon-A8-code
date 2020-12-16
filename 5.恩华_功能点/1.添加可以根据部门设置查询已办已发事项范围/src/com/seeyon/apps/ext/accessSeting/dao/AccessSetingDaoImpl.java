@@ -16,7 +16,7 @@ public class AccessSetingDaoImpl implements AccessSetingDao {
     @Override
     public List<ZorgMember> getAllMemberPOByDeptId(Map<String, Object> param, Boolean p1, Boolean p2) {
         StringBuilder sql = new StringBuilder();
-        sql.append("select s.* from (select mpl.*,nvl(d.DAY_NUM,0) DAY_NUM from (select m.ORG_DEPARTMENT_ID,(select name from ORG_UNIT u where u.id=m.ORG_DEPARTMENT_ID) deptname,m.id,m.name,m.ORG_LEVEL_ID,l.name levelName,p.LOGIN_NAME from ORG_MEMBER m,ORG_LEVEL l,ORG_PRINCIPAL p where m.ORG_LEVEL_ID=l.id and p.MEMBER_ID=m.id and m.IS_ENABLE=1 ) mpl LEFT JOIN DEPARTMENT_VIEW_TIME_RANGE d on mpl.id=d.MEMBER_ID) s where 1=1 ");
+        sql.append("select s.* from (select mpl.*,nvl(d.DAY_NUM,'') DAY_NUM from (select m.ORG_DEPARTMENT_ID,(select name from ORG_UNIT u where u.id=m.ORG_DEPARTMENT_ID) deptname,m.id,m.name,m.ORG_LEVEL_ID,l.name levelName,p.LOGIN_NAME from ORG_MEMBER m,ORG_LEVEL l,ORG_PRINCIPAL p where m.ORG_LEVEL_ID=l.id and p.MEMBER_ID=m.id and m.IS_ENABLE=1 ) mpl LEFT JOIN DEPARTMENT_VIEW_TIME_RANGE d on mpl.id=d.MEMBER_ID) s where 1=1 ");
         for (Map.Entry<String, Object> entry : param.entrySet()) {
             String key = entry.getKey();
             String value = (String) entry.getValue();
@@ -47,7 +47,7 @@ public class AccessSetingDaoImpl implements AccessSetingDao {
                 orgMember.setId(((BigDecimal) result.get(i).get("id")).toString());
                 orgMember.setLevelName((String) result.get(i).get("levelname"));
                 orgMember.setLoginName((String) result.get(i).get("login_name"));
-                orgMember.setDayNum(((BigDecimal) result.get(i).get("day_num")).toString());
+                orgMember.setDayNum(!"".equals((String) result.get(i).get("day_num"))?(String) result.get(i).get("day_num"):"-");
                 orgMember.setDeptname((String) result.get(i).get("deptname"));
                 orgMember.setOrgDepartmentId(((BigDecimal) result.get(i).get("org_department_id")).toString());
                 rows.add(orgMember);
