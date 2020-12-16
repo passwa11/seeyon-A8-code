@@ -2,9 +2,9 @@
  * $Author翟锋$
  * $Rev$
  * $Date::2012-11-13$:
- *
+ * <p>
  * Copyright (C) 2012 Seeyon, Inc. All rights reserved.
- *
+ * <p>
  * This software is the proprietary information of Seeyon, Inc.
  * Use is subject to license terms.
  */
@@ -12,6 +12,8 @@ package com.seeyon.ctp.portal.section;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.*;
 
 import com.seeyon.apps.collaboration.manager.ColManager;
@@ -61,21 +63,21 @@ import com.seeyon.v3x.common.manager.ConfigGrantManager;
  *
  */
 public class SentSection extends BaseSectionImpl {
-    private static final Log         log = LogFactory.getLog(SentSection.class);
-    private AffairManager            affairManager;
-    private EdocApi                  edocApi;
-    private ConfigGrantManager       configGrantManager;
+    private static final Log log = LogFactory.getLog(SentSection.class);
+    private AffairManager affairManager;
+    private EdocApi edocApi;
+    private ConfigGrantManager configGrantManager;
     private OrgManager orgManager;
     private ColManager colManager;
     private CommonAffairSectionUtils commonAffairSectionUtils;
 
     private PendingManager pendingManager;
 
-	public void setPendingManager(PendingManager pendingManager) {
-		this.pendingManager = pendingManager;
-	}
+    public void setPendingManager(PendingManager pendingManager) {
+        this.pendingManager = pendingManager;
+    }
 
-	public CommonAffairSectionUtils getCommonAffairSectionUtils() {
+    public CommonAffairSectionUtils getCommonAffairSectionUtils() {
         return commonAffairSectionUtils;
     }
 
@@ -159,8 +161,9 @@ public class SentSection extends BaseSectionImpl {
     public String getBaseName() {
         return ResourceUtil.getString("common.my.sent.title");
     }
+
     @Override
-    public String getBaseNameI18nKey(){
+    public String getBaseNameI18nKey() {
         return "common.my.sent.title";
     }
 
@@ -197,7 +200,7 @@ public class SentSection extends BaseSectionImpl {
         FlipInfo fi = new FlipInfo();
         fi.setNeedTotal(false);
         MultiRowVariableColumnTemplete c = new MultiRowVariableColumnTemplete();
-        int count= c.getPageSize(preference)[0];
+        int count = c.getPageSize(preference)[0];
         //单列表
         fi.setSize(count);
         //OA-27551首页事项中去除已发已办栏目名称后面的数字显示
@@ -206,7 +209,7 @@ public class SentSection extends BaseSectionImpl {
         List<CtpAffair> newAffairs = new ArrayList<>();
 
         try {
-			affairs = pendingManager.querySectionAffair(condition, fi, preference, ColOpenFrom.listSent.name(), new HashMap<String, String>(), false);
+            affairs = pendingManager.querySectionAffair(condition, fi, preference, ColOpenFrom.listSent.name(), new HashMap<String, String>(), false);
 
             //【恩华药业】zhou:协同过滤掉设定范围内的数据【开始】
             AccessSetingManager manager = new AccessSetingManagerImpl();
@@ -220,24 +223,20 @@ public class SentSection extends BaseSectionImpl {
                     List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(map);
                     if (list.size() > 0) {
                         DepartmentViewTimeRange range = list.get(0);
-                        Long startTime = null != range.getStartTime() ? range.getStartTime().getTime() : 0l;
-                        Long endTime = null != range.getEndTime() ? range.getEndTime().getTime() : 0l;
-                        Long objectId = affair.getObjectId();
-                        ColSummary colSummary = colManager.getColSummaryById(objectId);
-                        Date createDate = colSummary.getCreateDate();
-                        if (startTime.longValue() != 0l && endTime.longValue() != 0l) {
-                            if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
-                                newAffairs.add(affair);
+                        if (range.getDayNum() > 0) {
+                            LocalDateTime end = LocalDateTime.now();
+                            LocalDateTime start = LocalDateTime.now().minusDays(range.getDayNum());
+                            Long startTime = start.toInstant(ZoneOffset.of("+8")).toEpochMilli();
+                            Long endTime = end.toInstant(ZoneOffset.of("+8")).toEpochMilli();
+                            Long objectId = affair.getObjectId();
+                            ColSummary colSummary = colManager.getColSummaryById(objectId);
+                            Date createDate = colSummary.getCreateDate();
+                            if (startTime.longValue() != 0l && endTime.longValue() != 0l) {
+                                if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
+                                    newAffairs.add(affair);
+                                }
                             }
-                        }else if(startTime.longValue() != 0l && endTime.longValue() == 0l ){
-                            if (createDate.getTime() > startTime.longValue()) {
-                                newAffairs.add(affair);
-                            }
-                        }else if (startTime.longValue() == 0l && endTime.longValue() != 0l ){
-                            if (createDate.getTime() < endTime.longValue()) {
-                                newAffairs.add(affair);
-                            }
-                        }else {
+                        }else{
                             newAffairs.add(affair);
                         }
                     } else {
@@ -249,9 +248,9 @@ public class SentSection extends BaseSectionImpl {
             }
 
             //【恩华药业】zhou:协同过滤掉设定范围内的数据【结束】
-		} catch (BusinessException e1) {
-			log.error("获取已发事项报错:", e1);
-		}
+        } catch (BusinessException e1) {
+            log.error("获取已发事项报错:", e1);
+        }
 
         //String s =   Functions.escapeJavascript(Functions.toHTML(Functions.toHTML(this.getName(preference) .replaceAll("#", "%25").replaceAll("&", "%23").replaceAll("=", "%3D"))));
         String s = "";
@@ -262,7 +261,7 @@ public class SentSection extends BaseSectionImpl {
         }
         //单列表
         //zhou:修改第二个参数
-        c = this.getTemplete(c,newAffairs, preference);
+        c = this.getTemplete(c, newAffairs, preference);
         // 【更多】
 
         c.addBottomButton(BaseSectionTemplete.BOTTOM_BUTTON_LABEL_MORE,
@@ -281,68 +280,68 @@ public class SentSection extends BaseSectionImpl {
         Integer count = SectionUtils.getSectionCount(3, preference);
         fi.setSize(count);
         fi.setNeedTotal(false);
-        
+
         //condition.setVjoin(true);//移动端只查询协同数据
-        
+
         List<CtpAffair> affairs = new ArrayList<CtpAffair>();
-		try {
-			affairs = pendingManager.querySectionAffair(condition, fi, preference, ColOpenFrom.listSent.name(), new HashMap<String, String>(), false);
-		} catch (BusinessException e1) {
-			log.error("获取已发栏目数据报错:", e1);
-		}
+        try {
+            affairs = pendingManager.querySectionAffair(condition, fi, preference, ColOpenFrom.listSent.name(), new HashMap<String, String>(), false);
+        } catch (BusinessException e1) {
+            log.error("获取已发栏目数据报错:", e1);
+        }
         MListTemplete c = new MListTemplete();
         if (Strings.isNotEmpty(affairs)) {
             for (CtpAffair affair : affairs) {
                 MListTemplete.Row row = c.addRow();
                 String subject = affair.getSubject();
-                if(affair.getAutoRun() != null && affair.getAutoRun()){
-                    subject = ResourceUtil.getString("collaboration.newflow.fire.subject",subject);
+                if (affair.getAutoRun() != null && affair.getAutoRun()) {
+                    subject = ResourceUtil.getString("collaboration.newflow.fire.subject", subject);
                 }
                 row.setSubject(subject.replaceAll("\\r\\n", ""));
                 //设置重要程度图标
-                if(affair.getImportantLevel() != null && affair.getImportantLevel() > 1  && affair.getImportantLevel() < 6){
-                	//3:非常重要 2重要
-                	row.setIcon("important-"+affair.getImportantLevel());
+                if (affair.getImportantLevel() != null && affair.getImportantLevel() > 1 && affair.getImportantLevel() < 6) {
+                    //3:非常重要 2重要
+                    row.setIcon("important-" + affair.getImportantLevel());
                 }
                 ApplicationCategoryEnum appEnum = ApplicationCategoryEnum.valueOf(affair.getApp());
                 switch (appEnum) {
-        			case collaboration :
-        				row.setLink("/seeyon/m3/apps/v5/collaboration/html/details/summary.html?affairId=" + affair.getId()
-        				+ "&openFrom=listSent&VJoinOpen=VJoin&summaryId=" + affair.getObjectId() + "&r="
-        				+ System.currentTimeMillis());
-        				break;
-        			case edoc:
-	            		ApplicationSubCategoryEnum subAppEnum = ApplicationSubCategoryEnum.valueOf(affair.getApp(), affair.getSubApp());
-	            		switch (subAppEnum) {
-	            			case edoc_fawen://G6新公文发文
-	            			case edoc_qianbao://G6新公文签报
-	            			case edoc_shouwen://G6新公文收文
-	            			case edoc_jiaohuan://G6新公文交换
-	            				row.setLink("/seeyon/m3/apps/v5/edoc/html/details/summary.html?affairId=" + affair.getId()
-	            				+ "&openFrom=listSent&VJoinOpen=VJoin&summaryId=" + affair.getObjectId() + "&r="
-	            				+ System.currentTimeMillis());
-	                    		break;
-	            			case old_edocSend://G6老公文发文
-	            			case old_edocRec://G6老公文收文
-	            			case old_edocSign://G6老公文签报
-	            				row.setLink("/seeyon/m3/apps/v5/edoc/html/edocSummary.html?affairId=" + affair.getId()
-	            				+ "&openFrom=listSent&VJoinOpen=VJoin&summaryId=" + affair.getObjectId() + "&r="
-	            				+ System.currentTimeMillis());
-	                    		break;
-							default:
-								row.setLink("noSupport");
-								break;
-	            		}
-	            		break;
-					case meeting:
-						row.setLink("/seeyon/m3/apps/v5/meeting/html/meetingDetail.html?meetingId=" + affair.getObjectId());
-						break;
-					case meetingroom:
-						row.setLink("/seeyon/m3/apps/v5/meeting/html/meetingRoomApprove.html?openFrom=mrAuditList&roomAppId=" + affair.getObjectId());
-						break;
-					default:
-						row.setLink("noSupport");
-						break;
+                    case collaboration:
+                        row.setLink("/seeyon/m3/apps/v5/collaboration/html/details/summary.html?affairId=" + affair.getId()
+                                + "&openFrom=listSent&VJoinOpen=VJoin&summaryId=" + affair.getObjectId() + "&r="
+                                + System.currentTimeMillis());
+                        break;
+                    case edoc:
+                        ApplicationSubCategoryEnum subAppEnum = ApplicationSubCategoryEnum.valueOf(affair.getApp(), affair.getSubApp());
+                        switch (subAppEnum) {
+                            case edoc_fawen://G6新公文发文
+                            case edoc_qianbao://G6新公文签报
+                            case edoc_shouwen://G6新公文收文
+                            case edoc_jiaohuan://G6新公文交换
+                                row.setLink("/seeyon/m3/apps/v5/edoc/html/details/summary.html?affairId=" + affair.getId()
+                                        + "&openFrom=listSent&VJoinOpen=VJoin&summaryId=" + affair.getObjectId() + "&r="
+                                        + System.currentTimeMillis());
+                                break;
+                            case old_edocSend://G6老公文发文
+                            case old_edocRec://G6老公文收文
+                            case old_edocSign://G6老公文签报
+                                row.setLink("/seeyon/m3/apps/v5/edoc/html/edocSummary.html?affairId=" + affair.getId()
+                                        + "&openFrom=listSent&VJoinOpen=VJoin&summaryId=" + affair.getObjectId() + "&r="
+                                        + System.currentTimeMillis());
+                                break;
+                            default:
+                                row.setLink("noSupport");
+                                break;
+                        }
+                        break;
+                    case meeting:
+                        row.setLink("/seeyon/m3/apps/v5/meeting/html/meetingDetail.html?meetingId=" + affair.getObjectId());
+                        break;
+                    case meetingroom:
+                        row.setLink("/seeyon/m3/apps/v5/meeting/html/meetingRoomApprove.html?openFrom=mrAuditList&roomAppId=" + affair.getObjectId());
+                        break;
+                    default:
+                        row.setLink("noSupport");
+                        break;
                 }
                 row.setCreateDate(MListTemplete.showDate(affair.getCreateDate()));
                 String memberName = Functions.showMemberName(affair.getSenderId());
@@ -372,7 +371,7 @@ public class SentSection extends BaseSectionImpl {
      * @param affairs
      * @return
      */
-    private MultiRowVariableColumnTemplete getTemplete(MultiRowVariableColumnTemplete c,List<CtpAffair> affairs, Map<String, String> preference) {
+    private MultiRowVariableColumnTemplete getTemplete(MultiRowVariableColumnTemplete c, List<CtpAffair> affairs, Map<String, String> preference) {
         User user = AppContext.getCurrentUser();
         String widthStr = preference.get("width");
         int width = 10;
@@ -457,7 +456,7 @@ public class SentSection extends BaseSectionImpl {
                 categoryCell = row.addCell();
             }
             if (isHastenInfo) {
-            	buttonCell = row.addCell();
+                buttonCell = row.addCell();
             }
             if (affairs == null || affairs.size() < 1) {
                 continue;
@@ -466,27 +465,27 @@ public class SentSection extends BaseSectionImpl {
                 CtpAffair affair = affairs.get(i);
                 String currentNodesInfoStr = currentNodeInfos.get(affair.getObjectId());
                 if (Strings.isNotBlank(currentNodesInfoStr) && isCurrentNodesInfo) {
-                	String currentInfo = Strings.getSafeLimitLengthString(currentNodesInfoStr, 10, "..");
-                	if (Integer.valueOf(StateEnum.col_sent.getKey()).equals(affair.getState()) && !affair.isFinish() && !ResourceUtil.getString("collaboration.list.finished.label").equals(currentNodesInfoStr)) {
-                		currentInfo = ResourceUtil.getString("collaboration.pending.CreateMember.label", currentInfo);//待XX处理
-                	}
-                	currentInfo = "<span title='" + currentNodesInfoStr + "' >" + currentInfo + "</span>";
-                	currentNodesInfoCell.setCellContentHTML(currentInfo);
+                    String currentInfo = Strings.getSafeLimitLengthString(currentNodesInfoStr, 10, "..");
+                    if (Integer.valueOf(StateEnum.col_sent.getKey()).equals(affair.getState()) && !affair.isFinish() && !ResourceUtil.getString("collaboration.list.finished.label").equals(currentNodesInfoStr)) {
+                        currentInfo = ResourceUtil.getString("collaboration.pending.CreateMember.label", currentInfo);//待XX处理
+                    }
+                    currentInfo = "<span title='" + currentNodesInfoStr + "' >" + currentInfo + "</span>";
+                    currentNodesInfoCell.setCellContentHTML(currentInfo);
                 }
                 if (isHastenInfo && Integer.valueOf(StateEnum.col_sent.getKey()).equals(affair.getState()) && !affair.isFinish() && !ResourceUtil.getString("collaboration.list.finished.label").equals(currentNodesInfoStr)) {
-                	
-                	String hastenUrl = SystemEnvironment.getContextPath()+"/hasten.do?method=openHastenDialog&openFrom=send&affairId=" + affair.getId() + "&memberId=" + affair.getMemberId();
-                	Map<String, Map<String, String>> buttonHandler = new HashMap<String, Map<String, String>>();
-                	Map<String,String> clickHandler = new HashMap<String,String>();
-                	clickHandler.put(HANDLER_PARAMETER.name.name(), "showHastenDialog");
-                	clickHandler.put(HANDLER_PARAMETER.parameter.name(), hastenUrl);
-                	buttonHandler.put(OPEN_TYPE.click.name(), clickHandler);
-                	buttonCell.setCellContentHTML(ResourceUtil.getString("common.portal.section.affair.remind.label"));
-                	buttonCell.setHandler(buttonHandler);
-                	buttonCell.setOpenType(OPEN_TYPE.dialog);
-                	Map<String, String> custom =  new HashMap<String,String>();
-                	custom.put(HANDLER_PARAMETER.type.name(), "button");
-                	buttonCell.setCustomParameter(custom);
+
+                    String hastenUrl = SystemEnvironment.getContextPath() + "/hasten.do?method=openHastenDialog&openFrom=send&affairId=" + affair.getId() + "&memberId=" + affair.getMemberId();
+                    Map<String, Map<String, String>> buttonHandler = new HashMap<String, Map<String, String>>();
+                    Map<String, String> clickHandler = new HashMap<String, String>();
+                    clickHandler.put(HANDLER_PARAMETER.name.name(), "showHastenDialog");
+                    clickHandler.put(HANDLER_PARAMETER.parameter.name(), hastenUrl);
+                    buttonHandler.put(OPEN_TYPE.click.name(), clickHandler);
+                    buttonCell.setCellContentHTML(ResourceUtil.getString("common.portal.section.affair.remind.label"));
+                    buttonCell.setHandler(buttonHandler);
+                    buttonCell.setOpenType(OPEN_TYPE.dialog);
+                    Map<String, String> custom = new HashMap<String, String>();
+                    custom.put(HANDLER_PARAMETER.type.name(), "button");
+                    buttonCell.setCustomParameter(custom);
                 }
                 String url = "";
                 String forwardMember = affair.getForwardMember();
@@ -524,13 +523,13 @@ public class SentSection extends BaseSectionImpl {
                     //设置正文类型图标
                     if (affair.getBodyType() != null && !"10".equals(affair.getBodyType())
                             && !"30".equals(affair.getBodyType()) && !"HTML".equals(affair.getBodyType())) {
-                    	String bodyType = affair.getBodyType();
+                        String bodyType = affair.getBodyType();
                         String bodyTypeClass = convertPortalBodyType(bodyType);
-                        if(!"html_16".equals(bodyTypeClass) && !"meeting_video_16".equals(bodyTypeClass)) {
-                        	subjectCell.addExtClasses("ico16 office"+bodyTypeClass);
+                        if (!"html_16".equals(bodyTypeClass) && !"meeting_video_16".equals(bodyTypeClass)) {
+                            subjectCell.addExtClasses("ico16 office" + bodyTypeClass);
                         }
                     }
-                    
+
                     subjectCell.setCellContent(subject.replaceAll("\\r\\n", ""));
                 }
                 int app = affair.getApp();
@@ -563,202 +562,202 @@ public class SentSection extends BaseSectionImpl {
                                 url = "/collaboration/collaboration.do?method=listSent";
                                 categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
                                 Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
-	                        	Map<String,String> clickHandler = new HashMap<String,String>();
-	                        	clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
-	                        	clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
-	                        	categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
-	                        	categoryCell.setHandler(categoryHandler);
+                                Map<String, String> clickHandler = new HashMap<String, String>();
+                                clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
+                                clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
+                                categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
+                                categoryCell.setHandler(categoryHandler);
                             }
                             categoryCell.setCellContentHTML(categoryName);
                         }
                         break;
                     case edoc://G6公文
-                    	ApplicationSubCategoryEnum subAppEnum = ApplicationSubCategoryEnum.valueOf(app, affair.getSubApp());
-                    	switch (subAppEnum) {
-                    		case edoc_fawen://G6新公文发文
-                    			if(subjectCell != null) {
-        	                		subjectCell.setLinkURL("/govdoc/govdoc.do?method=summary&openFrom=listSent&affairId=" + affair.getId() + "&app="+affair.getApp() +"&summaryId="+affair.getObjectId());
-        	                	}
-        	                	if(categoryCell != null) {
-        	                		//分类链接：判断是否有公文管理-待办列表，若有则链接到发文管理-已发列表，若没有则链接到公文管理-已发列表
-        	                		boolean f11 = user.hasResourceCode("F20_govDocSendManage");
-        	                		url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&govdocType=1&listType=listSent&_resourceCode=F20_govDocSendManage";
-        	                		if(!f11) {
-      	            			  		f11 = user.hasResourceCode("F20_gocDovSend");
-      	            			  		url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&listType=listSentAllRoot&_resourceCode=F20_gocDovSend";	
-      	            			  	}
-      	            			  	categoryName = ResourceUtil.getString("govdoc.edocSend.label");
-      	            			  	if(f11) {
-		      	            			Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
-		  	                        	Map<String,String> clickHandler = new HashMap<String,String>();
-		  	                        	clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
-		  	                        	clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
-		  	                        	categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
-		  	                        	categoryCell.setHandler(categoryHandler);
-		  	                        	categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
-      	            			  	}
-	  	                        	categoryCell.setCellContentHTML(categoryName);
-        	                	}
-                    			break;
-                    		case edoc_qianbao://G6新公文签报
-                    			if(subjectCell != null) {
-        	                		subjectCell.setLinkURL("/govdoc/govdoc.do?method=summary&openFrom=listSent&affairId=" + affair.getId() + "&app="+affair.getApp() +"&summaryId="+affair.getObjectId());
-        	                	}
-        	                	if(categoryCell != null) {
-        	                		boolean f11 = user.hasResourceCode("F20_signReport");
-        	                		url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&govdocType=3&listType=listSent&_resourceCode=F20_signReport";
-        	                		if(!f11) {
-        	                			f11 = user.hasResourceCode("F20_gocDovSend");
-        	                			url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&listType=listSentAllRoot&app=4&_resourceCode=F20_gocDovSend";	
-        	                		}
-        	                		categoryName = ResourceUtil.getString("govdoc.edocSign.label");
-        	                		if(f11) {
-        	                			Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
-		  	                        	Map<String,String> clickHandler = new HashMap<String,String>();
-		  	                        	clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
-		  	                        	clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
-		  	                        	categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
-		  	                        	categoryCell.setHandler(categoryHandler);
-		  	                        	categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
-        	                		}
-	  	                        	categoryCell.setCellContentHTML(categoryName);
-        	                	}
-                    			break;
-                    		case edoc_shouwen://G6新公文收文
-                    			if(subjectCell != null){
-                    				subjectCell.setLinkURL("/govdoc/govdoc.do?method=summary&openFrom=listSent&affairId=" + affair.getId() + "&app="+affair.getApp() +"&summaryId="+affair.getObjectId());
-        	                	}
-                    			if(categoryCell != null){
-	                    			boolean f11 = user.hasResourceCode("F20_receiveManage");
-	                    			url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&govdocType=2,4&listType=listSent&_resourceCode=F20_receiveManage";
-	                    			if(!f11) {
-	                    				f11 = user.hasResourceCode("F20_gocDovSend");
-	                    				url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&listType=listSentAllRoot&_resourceCode=F20_gocDovSend";
-        	                  		}
-	                    			categoryName = ResourceUtil.getString("govdoc.edocRec.label");
-	                    			if(f11) {
-		                    			Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
-		  	                        	Map<String,String> clickHandler = new HashMap<String,String>();
-		  	                        	clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
-		  	                        	clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
-		  	                        	categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
-		  	                        	categoryCell.setHandler(categoryHandler);
-		  	                        	categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
-	                    			}
-	  	                        	categoryCell.setCellContentHTML(categoryName);
-                    			}
-                    			break;
-                    		case edoc_jiaohuan://G6新公文交换
-                    			if(subjectCell != null){
-                    				subjectCell.setLinkURL("/govdoc/govdoc.do?method=summary&openFrom=listSent&affairId=" + affair.getId() + "&app="+affair.getApp() +"&summaryId="+affair.getObjectId());
-        	                	}
-                    			if(categoryCell != null){
-	                    			boolean f11 = user.hasResourceCode("F20_receiveManage");
-	                    			url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&govdocType=2,4&listType=listSent&_resourceCode=F20_receiveManage";
-	                    			if(!f11) {
-	                    				f11 = user.hasResourceCode("F20_gocDovSend");
-	                    				url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&listType=listSentAllRoot&_resourceCode=F20_gocDovSend";	
-        	                  		}
-	                    			categoryName = ResourceUtil.getString("govdoc.edocRec.label");
-	                    			if(f11) {
-		                    			Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
-		  	                        	Map<String,String> clickHandler = new HashMap<String,String>();
-		  	                        	clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
-		  	                        	clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
-		  	                        	categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
-		  	                        	categoryCell.setHandler(categoryHandler);
-		  	                        	categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
-	                    			}
-	  	                        	categoryCell.setCellContentHTML(categoryName);
-                    			}
-                    			break;
-                    		case old_edocSend://G6老公文发文
-                    			if (subjectCell != null) {
+                        ApplicationSubCategoryEnum subAppEnum = ApplicationSubCategoryEnum.valueOf(app, affair.getSubApp());
+                        switch (subAppEnum) {
+                            case edoc_fawen://G6新公文发文
+                                if (subjectCell != null) {
+                                    subjectCell.setLinkURL("/govdoc/govdoc.do?method=summary&openFrom=listSent&affairId=" + affair.getId() + "&app=" + affair.getApp() + "&summaryId=" + affair.getObjectId());
+                                }
+                                if (categoryCell != null) {
+                                    //分类链接：判断是否有公文管理-待办列表，若有则链接到发文管理-已发列表，若没有则链接到公文管理-已发列表
+                                    boolean f11 = user.hasResourceCode("F20_govDocSendManage");
+                                    url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&govdocType=1&listType=listSent&_resourceCode=F20_govDocSendManage";
+                                    if (!f11) {
+                                        f11 = user.hasResourceCode("F20_gocDovSend");
+                                        url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&listType=listSentAllRoot&_resourceCode=F20_gocDovSend";
+                                    }
+                                    categoryName = ResourceUtil.getString("govdoc.edocSend.label");
+                                    if (f11) {
+                                        Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
+                                        Map<String, String> clickHandler = new HashMap<String, String>();
+                                        clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
+                                        clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
+                                        categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
+                                        categoryCell.setHandler(categoryHandler);
+                                        categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
+                                    }
+                                    categoryCell.setCellContentHTML(categoryName);
+                                }
+                                break;
+                            case edoc_qianbao://G6新公文签报
+                                if (subjectCell != null) {
+                                    subjectCell.setLinkURL("/govdoc/govdoc.do?method=summary&openFrom=listSent&affairId=" + affair.getId() + "&app=" + affair.getApp() + "&summaryId=" + affair.getObjectId());
+                                }
+                                if (categoryCell != null) {
+                                    boolean f11 = user.hasResourceCode("F20_signReport");
+                                    url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&govdocType=3&listType=listSent&_resourceCode=F20_signReport";
+                                    if (!f11) {
+                                        f11 = user.hasResourceCode("F20_gocDovSend");
+                                        url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&listType=listSentAllRoot&app=4&_resourceCode=F20_gocDovSend";
+                                    }
+                                    categoryName = ResourceUtil.getString("govdoc.edocSign.label");
+                                    if (f11) {
+                                        Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
+                                        Map<String, String> clickHandler = new HashMap<String, String>();
+                                        clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
+                                        clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
+                                        categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
+                                        categoryCell.setHandler(categoryHandler);
+                                        categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
+                                    }
+                                    categoryCell.setCellContentHTML(categoryName);
+                                }
+                                break;
+                            case edoc_shouwen://G6新公文收文
+                                if (subjectCell != null) {
+                                    subjectCell.setLinkURL("/govdoc/govdoc.do?method=summary&openFrom=listSent&affairId=" + affair.getId() + "&app=" + affair.getApp() + "&summaryId=" + affair.getObjectId());
+                                }
+                                if (categoryCell != null) {
+                                    boolean f11 = user.hasResourceCode("F20_receiveManage");
+                                    url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&govdocType=2,4&listType=listSent&_resourceCode=F20_receiveManage";
+                                    if (!f11) {
+                                        f11 = user.hasResourceCode("F20_gocDovSend");
+                                        url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&listType=listSentAllRoot&_resourceCode=F20_gocDovSend";
+                                    }
+                                    categoryName = ResourceUtil.getString("govdoc.edocRec.label");
+                                    if (f11) {
+                                        Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
+                                        Map<String, String> clickHandler = new HashMap<String, String>();
+                                        clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
+                                        clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
+                                        categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
+                                        categoryCell.setHandler(categoryHandler);
+                                        categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
+                                    }
+                                    categoryCell.setCellContentHTML(categoryName);
+                                }
+                                break;
+                            case edoc_jiaohuan://G6新公文交换
+                                if (subjectCell != null) {
+                                    subjectCell.setLinkURL("/govdoc/govdoc.do?method=summary&openFrom=listSent&affairId=" + affair.getId() + "&app=" + affair.getApp() + "&summaryId=" + affair.getObjectId());
+                                }
+                                if (categoryCell != null) {
+                                    boolean f11 = user.hasResourceCode("F20_receiveManage");
+                                    url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&govdocType=2,4&listType=listSent&_resourceCode=F20_receiveManage";
+                                    if (!f11) {
+                                        f11 = user.hasResourceCode("F20_gocDovSend");
+                                        url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&listType=listSentAllRoot&_resourceCode=F20_gocDovSend";
+                                    }
+                                    categoryName = ResourceUtil.getString("govdoc.edocRec.label");
+                                    if (f11) {
+                                        Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
+                                        Map<String, String> clickHandler = new HashMap<String, String>();
+                                        clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
+                                        clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
+                                        categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
+                                        categoryCell.setHandler(categoryHandler);
+                                        categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
+                                    }
+                                    categoryCell.setCellContentHTML(categoryName);
+                                }
+                                break;
+                            case old_edocSend://G6老公文发文
+                                if (subjectCell != null) {
                                     subjectCell.setLinkURL("/edocController.do?method=detailIFrame&from=" + from + "&affairId=" + affair.getId() + "");
                                 }
-                    			if(categoryCell != null) {
-	                    			//分类链接：判断是否有公文管理-待办列表，若有则链接到发文管理-已发列表，若没有则链接到公文管理-已发列表
-	    	                		boolean f11 = user.hasResourceCode("F20_govDocSendManage");
-	    	                		url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&govdocType=1&listType=listSent&_resourceCode=F20_govDocSendManage";
-	  	            			  	if(!f11) {
-	  	            			  		f11 = user.hasResourceCode("F20_gocDovSend");
-	  	            			  		url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&listType=listSentAllRoot&_resourceCode=F20_gocDovSend";	
-	  	            			  	}
-	  	            			  	categoryName = ResourceUtil.getString("govdoc.edocSend.label");
-	  	            			  	if(f11) {
-		  	            			  	Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
-		  	                        	Map<String,String> clickHandler = new HashMap<String,String>();
-		  	                        	clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
-		  	                        	clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
-		  	                        	categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
-		  	                        	categoryCell.setHandler(categoryHandler);
-		  	                        	categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
-		  	            			}
-	  	                        	categoryCell.setCellContentHTML(categoryName);
-                    			}
-                    			break;
+                                if (categoryCell != null) {
+                                    //分类链接：判断是否有公文管理-待办列表，若有则链接到发文管理-已发列表，若没有则链接到公文管理-已发列表
+                                    boolean f11 = user.hasResourceCode("F20_govDocSendManage");
+                                    url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&govdocType=1&listType=listSent&_resourceCode=F20_govDocSendManage";
+                                    if (!f11) {
+                                        f11 = user.hasResourceCode("F20_gocDovSend");
+                                        url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&listType=listSentAllRoot&_resourceCode=F20_gocDovSend";
+                                    }
+                                    categoryName = ResourceUtil.getString("govdoc.edocSend.label");
+                                    if (f11) {
+                                        Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
+                                        Map<String, String> clickHandler = new HashMap<String, String>();
+                                        clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
+                                        clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
+                                        categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
+                                        categoryCell.setHandler(categoryHandler);
+                                        categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
+                                    }
+                                    categoryCell.setCellContentHTML(categoryName);
+                                }
+                                break;
                             case old_edocRec://G6老公文收文
-                            	if (subjectCell != null) {
+                                if (subjectCell != null) {
                                     subjectCell.setLinkURL("/edocController.do?method=detailIFrame&from=" + from + "&affairId=" + affair.getId() + "");
                                 }
-                            	if(categoryCell != null) {
-	                    			boolean f11 = user.hasResourceCode("F20_receiveManage");
-	                    			url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&govdocType=2,4&listType=listSent&_resourceCode=F20_receiveManage";
-	                    			if(!f11) {
-	                    				f11 = user.hasResourceCode("F20_gocDovSend");
-	                    				url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&listType=listSentAllRoot&_resourceCode=F20_gocDovSend";
-        	                  		}
-	                    			categoryName = ResourceUtil.getString("govdoc.edocRec.label");
-	                    			if(f11) {
-		                    			Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
-		  	                        	Map<String,String> clickHandler = new HashMap<String,String>();
-		  	                        	clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
-		  	                        	clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
-		  	                        	categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
-		  	                        	categoryCell.setHandler(categoryHandler);
-		  	                        	categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
-	                    			}
-	  	                        	categoryCell.setCellContentHTML(categoryName);
-                    			}
-                            	break;
+                                if (categoryCell != null) {
+                                    boolean f11 = user.hasResourceCode("F20_receiveManage");
+                                    url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&govdocType=2,4&listType=listSent&_resourceCode=F20_receiveManage";
+                                    if (!f11) {
+                                        f11 = user.hasResourceCode("F20_gocDovSend");
+                                        url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&listType=listSentAllRoot&_resourceCode=F20_gocDovSend";
+                                    }
+                                    categoryName = ResourceUtil.getString("govdoc.edocRec.label");
+                                    if (f11) {
+                                        Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
+                                        Map<String, String> clickHandler = new HashMap<String, String>();
+                                        clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
+                                        clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
+                                        categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
+                                        categoryCell.setHandler(categoryHandler);
+                                        categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
+                                    }
+                                    categoryCell.setCellContentHTML(categoryName);
+                                }
+                                break;
                             case old_edocSign://G6老公文签报
-                            	if (subjectCell != null) {
+                                if (subjectCell != null) {
                                     subjectCell.setLinkURL("/edocController.do?method=detailIFrame&from=" + from + "&affairId=" + affair.getId() + "");
                                 }
-                            	if(categoryCell != null) {
-        	                		boolean f11 = user.hasResourceCode("F20_signReport");
-        	                		url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&govdocType=3&listType=listSent&_resourceCode=F20_signReport";
-        	                		if(!f11) {
-        	                			f11 = user.hasResourceCode("F20_gocDovSend");
-        	                			url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&listType=listSentAllRoot&app=4&_resourceCode=F20_gocDovSend";	
-      		                		}
-        	                		categoryName = ResourceUtil.getString("govdoc.edocSign.label");
-        	                		if(f11) {
-	        	                		Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
-		  	                        	Map<String,String> clickHandler = new HashMap<String,String>();
-		  	                        	clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
-		  	                        	clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
-		  	                        	categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
-		  	                        	categoryCell.setHandler(categoryHandler);
-		  	                        	categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
-        	                		}
-	  	                        	categoryCell.setCellContentHTML(categoryName);
-        	                	}
-                            	break;
+                                if (categoryCell != null) {
+                                    boolean f11 = user.hasResourceCode("F20_signReport");
+                                    url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&govdocType=3&listType=listSent&_resourceCode=F20_signReport";
+                                    if (!f11) {
+                                        f11 = user.hasResourceCode("F20_gocDovSend");
+                                        url = AppContext.getRawRequest().getContextPath() + "/govdoc/govdoc.do?method=index&listType=listSentAllRoot&app=4&_resourceCode=F20_gocDovSend";
+                                    }
+                                    categoryName = ResourceUtil.getString("govdoc.edocSign.label");
+                                    if (f11) {
+                                        Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
+                                        Map<String, String> clickHandler = new HashMap<String, String>();
+                                        clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
+                                        clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
+                                        categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
+                                        categoryCell.setHandler(categoryHandler);
+                                        categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
+                                    }
+                                    categoryCell.setCellContentHTML(categoryName);
+                                }
+                                break;
                             case old_exSend://G6老公文交换(老公文交换只展示待办数据)
-                            	break;
+                                break;
                             case old_exSign://G6老公文签收(老公文交换只展示待办数据)
-                            	 break;
+                                break;
                             case old_edocRegister://G6老公文登记
-                            	if (subjectCell != null) {
+                                if (subjectCell != null) {
                                     subjectCell.setLinkURL("/edocController.do?method=detailIFrame&from=" + from + "&affairId=" + affair.getId() + "");
                                 }
-                            	break;
+                                break;
                             case old_edocRecDistribute://G6老公文分发
-                            	break;
-                    	}
-                    	getEdocExtField(affair, edocMarkCell, width);
-                    	break;
+                                break;
+                        }
+                        getEdocExtField(affair, edocMarkCell, width);
+                        break;
                     case info:
                         if (subjectCell != null) {
                             subjectCell.setLinkURL("/infoDetailController.do?method=detail&summaryId="
@@ -774,12 +773,12 @@ public class SentSection extends BaseSectionImpl {
                                 }
                             }
                             Map<String, Map<String, String>> categoryHandler = new HashMap<String, Map<String, String>>();
-                        	Map<String,String> clickHandler = new HashMap<String,String>();
-                        	clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
-                        	clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
-                        	categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
-                        	categoryCell.setHandler(categoryHandler);
-                        	categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
+                            Map<String, String> clickHandler = new HashMap<String, String>();
+                            clickHandler.put(HANDLER_PARAMETER.name.name(), "open_link");
+                            clickHandler.put(HANDLER_PARAMETER.parameter.name(), url);
+                            categoryHandler.put(OPEN_TYPE.click.name(), clickHandler);
+                            categoryCell.setHandler(categoryHandler);
+                            categoryCell.setOpenType(OPEN_TYPE.openWorkSpace);
                             categoryCell.setCellContentHTML(categoryName);
                         }
                         break;
@@ -801,7 +800,7 @@ public class SentSection extends BaseSectionImpl {
 //                edocApps.add(ApplicationCategoryEnum.edocRegister.getKey());//待登记公文 24
 //                edocApps.add(ApplicationCategoryEnum.edocRecDistribute.getKey());//收文分发34
 
-                
+
             }
         }
         return c;
@@ -824,38 +823,38 @@ public class SentSection extends BaseSectionImpl {
             }
         }
     }
-    
+
     @Override
     public boolean isAllowMobileCustomSet() {
         return true;
     }
-    
+
     @Override
-	public String getResolveFunction(Map<String, String> preference) {
-		return MultiRowVariableColumnTemplete.RESOLVE_FUNCTION;
-	}
-    
+    public String getResolveFunction(Map<String, String> preference) {
+        return MultiRowVariableColumnTemplete.RESOLVE_FUNCTION;
+    }
+
     private String convertPortalBodyType(String bodyType) {
-    	String bodyTypeClass = "html_16";
-    	if("FORM".equals(bodyType) || "20".equals(bodyType)) {
-			bodyTypeClass = "form_text_16";
-		} else if("TEXT".equals(bodyType) || "30".equals(bodyType)) {
-			bodyTypeClass = "txt_16";
-		} else if("OfficeWord".equals(bodyType) || "41".equals(bodyType)) {
-			bodyTypeClass = "doc_16";
-		} else if("OfficeExcel".equals(bodyType) || "42".equals(bodyType)) {
-			bodyTypeClass = "xls_16";
-		} else if("WpsWord".equals(bodyType) || "43".equals(bodyType)) {
-			bodyTypeClass = "wps_16";
-		} else if("WpsExcel".equals(bodyType) || "44".equals(bodyType)) {
-			bodyTypeClass = "xls2_16";
-		} else if("Pdf".equals(bodyType) || "45".equals(bodyType)) {
-			bodyTypeClass = "pdf_16";
-		} else if("Ofd".equals(bodyType) || "46".equals(bodyType)) {
+        String bodyTypeClass = "html_16";
+        if ("FORM".equals(bodyType) || "20".equals(bodyType)) {
+            bodyTypeClass = "form_text_16";
+        } else if ("TEXT".equals(bodyType) || "30".equals(bodyType)) {
+            bodyTypeClass = "txt_16";
+        } else if ("OfficeWord".equals(bodyType) || "41".equals(bodyType)) {
+            bodyTypeClass = "doc_16";
+        } else if ("OfficeExcel".equals(bodyType) || "42".equals(bodyType)) {
+            bodyTypeClass = "xls_16";
+        } else if ("WpsWord".equals(bodyType) || "43".equals(bodyType)) {
+            bodyTypeClass = "wps_16";
+        } else if ("WpsExcel".equals(bodyType) || "44".equals(bodyType)) {
+            bodyTypeClass = "xls2_16";
+        } else if ("Pdf".equals(bodyType) || "45".equals(bodyType)) {
+            bodyTypeClass = "pdf_16";
+        } else if ("Ofd".equals(bodyType) || "46".equals(bodyType)) {
             bodyTypeClass = "ofd_16";
-        } else if("videoConf".equals(bodyType)) {
-			bodyTypeClass = "meeting_video_16";
-		}
-		return bodyTypeClass;
+        } else if ("videoConf".equals(bodyType)) {
+            bodyTypeClass = "meeting_video_16";
+        }
+        return bodyTypeClass;
     }
 }
