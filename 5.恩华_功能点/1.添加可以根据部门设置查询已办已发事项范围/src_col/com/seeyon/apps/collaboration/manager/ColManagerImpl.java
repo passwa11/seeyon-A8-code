@@ -1292,6 +1292,7 @@ public class ColManagerImpl implements ColManager {
             List<DepartmentViewTimeRange> rangeList = setingManager.getDepartmentViewTimeRange(params);
             if (rangeList.size() > 0) {
                 DepartmentViewTimeRange range = rangeList.get(0);
+
                 if (range.getDayNum() > 0) {
                     LocalDate end = LocalDate.now();
                     LocalDate start = LocalDate.now().minusDays(range.getDayNum());
