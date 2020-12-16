@@ -51,6 +51,7 @@
                        placeholder="姓名" class="layui-input">
             </div>
             <button class="common_button" id="queryMember">查询</button>
+            <button class="common_button" id="queryAll">显示所有</button>
             <button class="common_button common_button_emphasize" id="setConfig">设置</button>
         </div>
         <table id="memberTable" lay-filter="memberTableFilter"></table>
@@ -84,6 +85,15 @@
                 name: ""
             }
         });
+        $("#queryAll").bind('click', function () {
+            //执行重载
+            table.reload('memberTableId', {
+                where: {
+                    departmentId: "",
+                    name: ""
+                }
+            });
+        });
         $("#queryMember").bind('click', function () {
             //执行重载
             table.reload('memberTableId', {
@@ -95,17 +105,22 @@
         });
         //打开设置页面
         $('#setConfig').on('click', function () {
-            layer.open({
-                type: 2,
-                id: 'setConfigId',
-                title: '最近数据显示设置',
-                shadeClose: false,
-                maxmin: false, //开启最大化最小化按钮
-                area: ['50%', '50%'],
-                content: '/seeyon/ext/accessSetting.do?method=setting',
-                success: function (layero, index) {
-                }
-            });
+            var arr=layui.table.checkStatus('memberTableId').data;
+            if(arr.length>0){
+                layer.open({
+                    type: 2,
+                    id: 'setConfigId',
+                    title: '最近数据显示设置',
+                    shadeClose: false,
+                    maxmin: false, //开启最大化最小化按钮
+                    area: ['50%', '50%'],
+                    content: '/seeyon/ext/accessSetting.do?method=setting',
+                    success: function (layero, index) {
+                    }
+                });
+            }else {
+                layer.msg('请至少选择一条数据！', {icon: 6});
+            }
         });
 
         var setting = {
