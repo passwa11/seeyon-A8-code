@@ -733,6 +733,7 @@ public class PendingManagerImpl implements PendingManager {
         //zhou:修改第一个参数
         List<PendingRow> voList = affairList2PendingRowList(newAffairs, user, null, false, rowStr, state, query);
 //        List<PendingRow> voList  = affairList2PendingRowList(affairListClone, user, null, false,rowStr, state,query);
+        fi.setTotal(voList.size());
         fi.setData(voList);
         return fi;
     }
