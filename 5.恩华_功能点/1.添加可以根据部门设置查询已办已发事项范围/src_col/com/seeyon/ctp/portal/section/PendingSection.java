@@ -241,43 +241,43 @@ public class PendingSection extends BaseSectionImpl {
                 affairs = pendingManager.getPendingList(user.getId(), Long.parseLong(fragmentId), ordinal, pageSize);
             }
             //【恩华药业】zhou:协同过滤掉设定范围内的数据【开始】
-            AccessSetingManager manager = new AccessSetingManagerImpl();
-            for (CtpAffair affair : affairs) {
-                if (affair.getApp() == 1) {
-                    Long senderId = affair.getSenderId();
-                    V3xOrgMember member = orgManager.getMemberById(senderId);
-                    Long userId = member.getId();
-                    Map<String, Object> map = new HashMap<>();
-                    map.put("memberId", userId);
-                    List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(map);
-                    if (list.size() > 0) {
-                        DepartmentViewTimeRange range = list.get(0);
-                        if (!"".equals(range.getDayNum()) && null !=range.getDayNum() && Long.parseLong(range.getDayNum()) > 0l) {
-                            LocalDateTime end = LocalDateTime.now();
-                            LocalDateTime start = LocalDateTime.now().minusDays(Long.parseLong(range.getDayNum()));
-                            Long startTime = start.toInstant(ZoneOffset.of("+8")).toEpochMilli();
-                            Long endTime = end.toInstant(ZoneOffset.of("+8")).toEpochMilli();
-                            Long objectId = affair.getObjectId();
-                            ColSummary colSummary = colManager.getColSummaryById(objectId);
-                            Date createDate = colSummary.getCreateDate();
-                            if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
-                                newAffairs.add(affair);
-                            }
-                        } else if (!"".equals(range.getDayNum()) && null !=range.getDayNum()  && Long.parseLong(range.getDayNum()) == 0l) {
-                        } else {
-                            newAffairs.add(affair);
-                        }
-                    } else {
-                        newAffairs.add(affair);
-                    }
-                } else {
-                    newAffairs.add(affair);
-                }
-            }
+//            AccessSetingManager manager = new AccessSetingManagerImpl();
+//            for (CtpAffair affair : affairs) {
+//                if (affair.getApp() == 1) {
+//                    Long senderId = affair.getSenderId();
+//                    V3xOrgMember member = orgManager.getMemberById(senderId);
+//                    Long userId = member.getId();
+//                    Map<String, Object> map = new HashMap<>();
+//                    map.put("memberId", userId);
+//                    List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(map);
+//                    if (list.size() > 0) {
+//                        DepartmentViewTimeRange range = list.get(0);
+//                        if (!"".equals(range.getDayNum()) && null !=range.getDayNum() && Long.parseLong(range.getDayNum()) > 0l) {
+//                            LocalDateTime end = LocalDateTime.now();
+//                            LocalDateTime start = LocalDateTime.now().minusDays(Long.parseLong(range.getDayNum()));
+//                            Long startTime = start.toInstant(ZoneOffset.of("+8")).toEpochMilli();
+//                            Long endTime = end.toInstant(ZoneOffset.of("+8")).toEpochMilli();
+//                            Long objectId = affair.getObjectId();
+//                            ColSummary colSummary = colManager.getColSummaryById(objectId);
+//                            Date createDate = colSummary.getCreateDate();
+//                            if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
+//                                newAffairs.add(affair);
+//                            }
+//                        } else if (!"".equals(range.getDayNum()) && null !=range.getDayNum()  && Long.parseLong(range.getDayNum()) == 0l) {
+//                        } else {
+//                            newAffairs.add(affair);
+//                        }
+//                    } else {
+//                        newAffairs.add(affair);
+//                    }
+//                } else {
+//                    newAffairs.add(affair);
+//                }
+//            }
             //【恩华药业】zhou:协同过滤掉设定范围内的数据【结束】
             //zhou:修改第一个参数
 //            rowList = pendingManager.affairList2PendingRowList(affairs, user, currentPanel, true, rowStr,StateEnum.col_pending.key());
-            rowList = pendingManager.affairList2PendingRowList(newAffairs, user, currentPanel, true, rowStr, StateEnum.col_pending.key());
+            rowList = pendingManager.affairList2PendingRowList(affairs, user, currentPanel, true, rowStr, StateEnum.col_pending.key());
 
             // 置顶排序一下
             if ("0".equals(getAiShortValue(preference))) {

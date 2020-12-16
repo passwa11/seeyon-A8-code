@@ -1115,7 +1115,7 @@ public class ColManagerImpl implements ColManager {
                     }
                 } else if (!"".equals(range.getDayNum()) && null !=range.getDayNum()  && Long.parseLong(range.getDayNum()) == 0l) {
                     LocalDate end = LocalDate.now();
-                    sb.append(end.toString() + "#");
+                    sb.append(end.plusDays(1).toString() + "#");
                     query.put("createDate", sb.toString());
 
                 }
@@ -1311,7 +1311,8 @@ public class ColManagerImpl implements ColManager {
                         query.put("createDate", sb.toString());
                     }
                 }else if (!"".equals(range.getDayNum()) && null !=range.getDayNum()  && Long.parseLong(range.getDayNum()) == 0l){
-                    sb.append(end.toString() + "#");
+                    sb.append(end.plusDays(1).toString() + "#");
+                    query.put("createDate", sb.toString());
                 }
             }
             //[恩华药业]zhou：获取部门查看数据的日期范围 【结束】

@@ -66,7 +66,15 @@ public class TrackSection extends BaseSectionImpl {
     private ColManager colManager;
     private OrgManager orgManager;
     private CommonAffairSectionUtils commonAffairSectionUtils;
+    private Integer count;
 
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
 
     public CommonAffairSectionUtils getCommonAffairSectionUtils() {
         return commonAffairSectionUtils;
@@ -218,7 +226,8 @@ public class TrackSection extends BaseSectionImpl {
             }
         }
         AffairCondition affairCondition = getSectionAffairCondition(preference);
-        return affairCondition.getTrackCount(affairManager);
+//        return affairCondition.getTrackCount(affairManager);
+        return this.getCount();
     }
 
     @Override
@@ -331,7 +340,7 @@ public class TrackSection extends BaseSectionImpl {
                 newAffairs.add(affair);
             }
         }
-
+        this.setCount(newAffairs.size());
         //【恩华药业】zhou:协同过滤掉设定范围内的数据【结束】
         //单列表
         c = this.getTemplete(c, newAffairs, preference);
@@ -1041,7 +1050,7 @@ public class TrackSection extends BaseSectionImpl {
 
     @Override
     public boolean isShowTotal() {
-        return true;
+        return false;
     }
 
     @Override
