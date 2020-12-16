@@ -656,12 +656,13 @@
       <change beforePath="$PROJECT_DIR$/../../4.组织机构同步-医科大/xzyk_20190903.rar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/controller/AccessSetingControlller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/controller/AccessSetingControlller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/dao/AccessSetingDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/dao/AccessSetingDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/dao/LeaveSetingDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/dao/LeaveSetingDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/manager/LeaveSetingManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/manager/LeaveSetingManagerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/po/LeaveSeting.hbm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/seeyon/apps/ext/accessSeting/po/LeaveSeting.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src_col/com/seeyon/apps/collaboration/manager/ColManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_col/com/seeyon/apps/collaboration/manager/ColManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src_col/com/seeyon/ctp/common/affair/manager/PendingManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_col/com/seeyon/ctp/common/affair/manager/PendingManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src_col/com/seeyon/ctp/portal/section/DoneSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_col/com/seeyon/ctp/portal/section/DoneSection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src_col/com/seeyon/ctp/portal/section/PendingSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_col/com/seeyon/ctp/portal/section/PendingSection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src_col/com/seeyon/ctp/portal/section/SentSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src_col/com/seeyon/ctp/portal/section/SentSection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../2.公告通知等添加默认范围/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../2.公告通知等添加默认范围/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../5.恩华药业/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../5.恩华药业/.idea/.gitignore" beforeDir="false" />
@@ -736,6 +737,26 @@
       <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_所有修改功能代码_XKJT_A8V7.0SP3_JT_CODE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_添加办结和未办结栏目/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_添加办结和未办结栏目/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_添加办结和未办结栏目/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿_添加办结和未办结栏目/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/ColManagerImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/ColManagerImpl$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/ColManagerImpl$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/ColManagerImpl$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/ColManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/apps/collaboration/manager/ColManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/common/content/affair/AffairDaoImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/common/content/affair/AffairDaoImpl$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/common/content/affair/AffairDaoImpl$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/common/content/affair/AffairDaoImpl$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/common/content/affair/AffairDaoImpl$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/common/content/affair/AffairDaoImpl$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/common/content/affair/AffairDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/common/content/affair/AffairDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/common/content/affair/AffairManagerImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/common/content/affair/AffairManagerImpl$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/common/content/affair/AffairManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/common/content/affair/AffairManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/rest/resources/EdocResource$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/rest/resources/EdocResource$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/rest/resources/EdocResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/ctp/rest/resources/EdocResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/controller/EdocListController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/EdocManagerImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/EdocManagerImpl$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/EdocManagerImpl$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/EdocManagerImpl$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/EdocManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/manager/EdocManagerImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/util/EdocOpinionDisplayUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿功能_成都代码合并/seeyon/WEB-INF/classes/com/seeyon/v3x/edoc/util/EdocOpinionDisplayUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿待阅已阅/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿待阅已阅/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿待阅已阅/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../9.徐矿_功能点/徐矿待阅已阅/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../医科大学_功能点/OA代办事项推送到金智系统/.classpath" beforeDir="false" />
@@ -1347,7 +1368,7 @@
     <property name="ToolWindowDuplicates.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="D:/myProject/xjhczz" />
+    <property name="last_opened_file_path" value="F:/致远OA/致远资料/0_致远源码/7.1SP1" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.145977" />
@@ -1442,7 +1463,8 @@
       <workItem from="1607325383531" duration="638000" />
       <workItem from="1607992464988" duration="6534000" />
       <workItem from="1608012964545" duration="14987000" />
-      <workItem from="1608078232361" duration="7780000" />
+      <workItem from="1608078232361" duration="16411000" />
+      <workItem from="1608101460217" duration="6023000" />
     </task>
     <task id="LOCAL-00001" summary="add">
       <created>1606100608688</created>
@@ -1668,7 +1690,70 @@
       <option name="project" value="LOCAL" />
       <updated>1608084217772</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="add">
+      <created>1608086118429</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1608086118429</updated>
+    </task>
+    <task id="LOCAL-00034" summary="add">
+      <created>1608086982025</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1608086982025</updated>
+    </task>
+    <task id="LOCAL-00035" summary="add">
+      <created>1608087168663</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1608087168663</updated>
+    </task>
+    <task id="LOCAL-00036" summary="add">
+      <created>1608088268771</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1608088268771</updated>
+    </task>
+    <task id="LOCAL-00037" summary="add">
+      <created>1608089741554</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1608089741554</updated>
+    </task>
+    <task id="LOCAL-00038" summary="add">
+      <created>1608098681800</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1608098681800</updated>
+    </task>
+    <task id="LOCAL-00039" summary="add">
+      <created>1608105806684</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1608105806684</updated>
+    </task>
+    <task id="LOCAL-00040" summary="add">
+      <created>1608108611932</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1608108611932</updated>
+    </task>
+    <task id="LOCAL-00041" summary="add">
+      <created>1608110159086</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1608110159086</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1698,23 +1783,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src_col/com/seeyon/apps/collaboration/manager/ColManagerImpl.java</url>
-          <line>1069</line>
+          <line>1066</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src_col/com/seeyon/apps/collaboration/manager/ColManagerImpl.java</url>
-          <line>1096</line>
+          <line>1093</line>
           <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src_col/com/seeyon/ctp/common/affair/manager/PendingManagerImpl.java</url>
-          <line>695</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src_col/com/seeyon/apps/collaboration/manager/ColManagerImpl.java</url>
-          <line>1293</line>
-          <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src_col/com/seeyon/ctp/portal/section/SentSection.java</url>
@@ -1723,22 +1798,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src_col/com/seeyon/ctp/common/affair/manager/PendingManagerImpl.java</url>
-          <line>394</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src_col/com/seeyon/ctp/common/affair/manager/PendingManagerImpl.java</url>
           <line>733</line>
-          <option name="timeStamp" value="28" />
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src_col/com/seeyon/ctp/common/affair/manager/PendingManagerImpl.java</url>
-          <line>709</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src_col/com/seeyon/ctp/portal/section/PendingSection.java</url>
-          <line>243</line>
+          <line>695</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>

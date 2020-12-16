@@ -46,10 +46,7 @@ import com.seeyon.apps.doc.bo.DocResourceBO;
 import com.seeyon.apps.doc.constants.DocConstants.PigeonholeType;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManager;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManagerImpl;
-import com.seeyon.apps.ext.accessSeting.manager.LeaveSetingManager;
-import com.seeyon.apps.ext.accessSeting.manager.LeaveSetingManagerImpl;
 import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
-import com.seeyon.apps.ext.accessSeting.po.LeaveSeting;
 import com.seeyon.apps.index.api.IndexApi;
 import com.seeyon.apps.project.api.ProjectApi;
 import com.seeyon.apps.project.bo.ProjectBO;
@@ -1257,11 +1254,7 @@ public class ColManagerImpl implements ColManager {
         }
     }
 
-    private LeaveSetingManager leaveSetingManager = new LeaveSetingManagerImpl();
 
-    public void setLeaveSetingManager(LeaveSetingManager leaveSetingManager) {
-        this.leaveSetingManager = leaveSetingManager;
-    }
 
     public FlipInfo getDoneAffairs(FlipInfo flipInfo, Map<String, String> query) throws BusinessException {
         //设置用户id
