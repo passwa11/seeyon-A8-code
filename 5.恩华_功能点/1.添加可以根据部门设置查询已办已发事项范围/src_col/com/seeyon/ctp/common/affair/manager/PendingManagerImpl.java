@@ -697,15 +697,16 @@ public class PendingManagerImpl implements PendingManager {
         AccessSetingManager manager = new AccessSetingManagerImpl();
         for (CtpAffair affair : affairListClone) {
             if (affair.getApp() == 1) {
-                Long senderId = affair.getSenderId();
-                V3xOrgMember member = orgManager.getMemberById(senderId);
+                //已办根据当前代办人过滤数据。
+                Long currentUserId = affair.getMemberId();
+                V3xOrgMember member = orgManager.getMemberById(currentUserId);
                 Long userId = member.getId();
                 Map<String, Object> map = new HashMap<>();
                 map.put("memberId", userId);
                 List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(map);
                 if (list.size() > 0) {
                     DepartmentViewTimeRange range = list.get(0);
-                    if (range.getDayNum() > 0) {
+                    if (range.getDayNum() > 0l) {
                         LocalDateTime end = LocalDateTime.now();
                         LocalDateTime start = LocalDateTime.now().minusDays(range.getDayNum());
                         Long startTime = start.toInstant(ZoneOffset.of("+8")).toEpochMilli();
@@ -713,10 +714,8 @@ public class PendingManagerImpl implements PendingManager {
                         Long objectId2 = affair.getObjectId();
                         ColSummary colSummary = colManager.getColSummaryById(objectId2);
                         Date createDate = colSummary.getCreateDate();
-                        if (startTime.longValue() != 0l && endTime.longValue() != 0l) {
-                            if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
-                                newAffairs.add(affair);
-                            }
+                        if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
+                            newAffairs.add(affair);
                         }
                     } else {
                         newAffairs.add(affair);
