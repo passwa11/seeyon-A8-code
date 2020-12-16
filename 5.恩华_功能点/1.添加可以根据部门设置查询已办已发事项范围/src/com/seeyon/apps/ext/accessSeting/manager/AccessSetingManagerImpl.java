@@ -3,6 +3,7 @@ package com.seeyon.apps.ext.accessSeting.manager;
 import com.seeyon.apps.ext.accessSeting.dao.AccessSetingDao;
 import com.seeyon.apps.ext.accessSeting.dao.AccessSetingDaoImpl;
 import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
+import com.seeyon.apps.ext.accessSeting.po.TempTemplateStop;
 import com.seeyon.apps.ext.accessSeting.po.ZorgMember;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 
@@ -13,6 +14,21 @@ import java.util.*;
 public class AccessSetingManagerImpl implements AccessSetingManager {
 
     private AccessSetingDao dao = new AccessSetingDaoImpl();
+
+    @Override
+    public void saveTempTemplateStop(TempTemplateStop stop) {
+        dao.saveTempTemplateStop(stop);
+    }
+
+    @Override
+    public void updateTempTemplateStop(TempTemplateStop stop) {
+        dao.updateTempTemplateStop(stop);
+    }
+
+    @Override
+    public List<TempTemplateStop> getTemplateStop(Map<String, Object> param) {
+        return dao.getTemplateStop(param);
+    }
 
     @Override
     public List<ZorgMember> showPeople(Map<String, Object> params) throws BusinessException {

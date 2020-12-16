@@ -1,6 +1,7 @@
 package com.seeyon.apps.ext.accessSeting.dao;
 
 import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
+import com.seeyon.apps.ext.accessSeting.po.TempTemplateStop;
 import com.seeyon.apps.ext.accessSeting.po.ZorgMember;
 
 import java.sql.SQLException;
@@ -27,7 +28,16 @@ public interface AccessSetingDao {
 
     void updateDepartmentViewTimeRange(DepartmentViewTimeRange range);
 
-    List<DepartmentViewTimeRange> getDepartmentViewTimeRange(Map<String,Object> range);
+    List<DepartmentViewTimeRange> getDepartmentViewTimeRange(Map<String, Object> range);
 
     List<ZorgMember> getAllMemberPOByDeptId(Map<String, Object> param, Boolean p1, Boolean p2) throws SQLException;
+
+    //****禁用模板流程***********************************************************************
+    void saveTempTemplateStop(TempTemplateStop stop);
+
+    void updateTempTemplateStop(TempTemplateStop stop);
+
+    List<TempTemplateStop> getTemplateStop(Map<String, Object> param);
+
+    //***************************************************************************
 }

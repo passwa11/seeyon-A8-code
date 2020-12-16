@@ -8,8 +8,12 @@ MEMBER_ID NUMBER,
 DAY_NUM NUMBER
 );
 
--- 离职设置
-create table leave_config(
-id number primary key ,
-is_enable CHAR DEFAULT 0
-);
+-- 禁用模板流程
+CREATE TABLE TEMP_TEMPLATE_STOP(
+    ID NUMBER NOT NULL primary key,
+    TEMPLATE_ID VARCHAR2(100),
+    ORG_ACCOUNT_ID VARCHAR2(100),
+    P2 VARCHAR2(255),
+    P3 VARCHAR2(255),
+    P1 VARCHAR2(255)
+)

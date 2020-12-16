@@ -1,9 +1,11 @@
 package com.seeyon.apps.ext.accessSeting.dao;
 
 import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
+import com.seeyon.apps.ext.accessSeting.po.TempTemplateStop;
 import com.seeyon.apps.ext.accessSeting.po.ZorgMember;
 import com.seeyon.apps.ext.accessSeting.util.JDBCUtil;
 import com.seeyon.ctp.util.DBAgent;
+import com.seeyon.ctp.util.JDBCAgent;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
@@ -12,6 +14,25 @@ import java.util.List;
 import java.util.Map;
 
 public class AccessSetingDaoImpl implements AccessSetingDao {
+
+    //****禁用模板流程*******************************************************
+
+    @Override
+    public void saveTempTemplateStop(TempTemplateStop stop) {
+        DBAgent.save(stop);
+    }
+
+    @Override
+    public void updateTempTemplateStop(TempTemplateStop stop) {
+        DBAgent.update(stop);
+    }
+
+    @Override
+    public List<TempTemplateStop> getTemplateStop(Map<String, Object> param) {
+        return DBAgent.find("from TempTemplateStop where templateId=:templateId ", param);
+    }
+
+    //***********************************************************
 
     @Override
     public List<ZorgMember> getAllMemberPOByDeptId(Map<String, Object> param, Boolean p1, Boolean p2) {

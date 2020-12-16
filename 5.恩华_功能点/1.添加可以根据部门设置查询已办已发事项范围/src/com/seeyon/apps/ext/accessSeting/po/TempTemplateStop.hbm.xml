@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.seeyon.apps.ext.accessSeting.po">
+    <class name="TempTemplateStop" table="TEMP_TEMPLATE_STOP" lazy="false">
+        <id name="id" type="long" column="ID">
+            <generator class="assigned"/>
+        </id>
+        <property name="templateId" type="long" column="TEMPLATE_ID"/>
+        <property name="orgAccountId" type="string" column="ORG_ACCOUNT_ID"/>
+        <property name="p1" type="date" column="P1"/>
+        <property name="p2" type="date" column="P2"/>
+        <property name="p3" type="long" column="P3"/>
+    </class>
+</hibernate-mapping>

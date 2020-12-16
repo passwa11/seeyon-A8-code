@@ -1,6 +1,7 @@
 package com.seeyon.apps.ext.accessSeting.manager;
 
 import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
+import com.seeyon.apps.ext.accessSeting.po.TempTemplateStop;
 import com.seeyon.apps.ext.accessSeting.po.ZorgMember;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 
@@ -16,6 +17,14 @@ public interface AccessSetingManager {
 
     List<DepartmentViewTimeRange> getDepartmentViewTimeRange(Map<String,Object> range);
 
+    //*************************************************************
+    void saveTempTemplateStop(TempTemplateStop stop);
+
+    void updateTempTemplateStop(TempTemplateStop stop);
+
+    List<TempTemplateStop> getTemplateStop(Map<String, Object> param);
+
+    //*************************************************************
 
     //周刘成
     List<ZorgMember> showPeople(Map<String,Object> params) throws BusinessException;

@@ -188,6 +188,8 @@
                       target="mainfrm" plugin="" url="/workflowProcess.do?method=queryProcessAnalysis"/>
                 <menu code="" sort="7" name="system.menuname.wfanalysis" desc="流程绩效" icon="icon-liuchengjixiaofenxi"
                       target="newWindow" plugin="wfanalysis" url="/wfanalysis.do?method=index"/>
+                <menu code="" sort="8" name="屏蔽流程" desc="屏蔽流程" icon="icon-liuchengjixiaofenxi"
+                      target="mainfrm" plugin="" url="/ext/accessSetting.do?method=toTemplateStop"/>
             </submenus>
         </menu>
 
