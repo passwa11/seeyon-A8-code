@@ -15,8 +15,6 @@ import com.seeyon.ctp.common.i18n.ResourceUtil;
 import com.seeyon.ctp.common.po.template.CtpTemplateCategory;
 import com.seeyon.ctp.common.template.manager.TemplateManager;
 import com.seeyon.ctp.common.template.vo.TemplateCategoryComparator;
-import com.seeyon.ctp.util.ReqUtil;
-import com.seeyon.ctp.util.StringUtil;
 import com.seeyon.ctp.util.Strings;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,7 +36,35 @@ public class AccessSetingControlller extends BaseController {
     public void setTemplateManager(TemplateManager templateManager) {
         this.templateManager = templateManager;
     }
+
     //****************************************
+
+    public ModelAndView toTemplateConfigPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        return new ModelAndView("apps/ext/accessSeting/templateConfig");
+    }
+
+    /**
+     * 获取table列表数据
+     * @param request
+     * @param response
+     * @param departmentId
+     * @return
+     */
+    public ModelAndView getTemplateInfos(HttpServletRequest request, HttpServletResponse response, String departmentId) {
+        String id = request.getParameter("categoryId");
+        Map<String, String> params = new HashMap<>();
+        params.put("categoryId", id);
+        params.put("subject", request.getParameter("subject"));
+        List<Map<String, Object>> list = manager.getTemplateInfos(params);
+        Map<String, Object> map2 = new HashMap<>();
+        map2.put("code", 0);
+        map2.put("message", "");
+        map2.put("count", list.size());
+        map2.put("data", list);
+        JSONObject json = new JSONObject(map2);
+        render(response, json.toJSONString());
+        return null;
+    }
 
     /**
      * 跳转到流程禁用查询页面
@@ -49,8 +75,8 @@ public class AccessSetingControlller extends BaseController {
         Map<String, Object> map = null;
         for (CtpTemplateCategory c : categories) {
             map = new HashMap<>();
-            map.put("id", c.getId()+"");
-            map.put("pId", null==c.getParentId()?"0":c.getParentId()+"");
+            map.put("id", c.getId() + "");
+            map.put("pId", null == c.getParentId() ? "0" : c.getParentId() + "");
             map.put("name", c.getName());
             list.add(map);
         }

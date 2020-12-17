@@ -16,6 +16,11 @@ public class AccessSetingManagerImpl implements AccessSetingManager {
     private AccessSetingDao dao = new AccessSetingDaoImpl();
 
     @Override
+    public List<Map<String, Object>> getTemplateInfos(Map<String, String> map) {
+        return dao.getTemplateInfos(map);
+    }
+
+    @Override
     public void saveTempTemplateStop(TempTemplateStop stop) {
         dao.saveTempTemplateStop(stop);
     }

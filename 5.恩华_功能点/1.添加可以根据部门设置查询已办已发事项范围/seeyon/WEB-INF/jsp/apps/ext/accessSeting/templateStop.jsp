@@ -39,22 +39,22 @@
         <div class="layui-card" style="margin-top: 0px">
             <div class="layui-table-header">
                 <div style="line-height: 30px;height: 30px;padding-left: 20px;">
-                    人员信息
+                    模板信息
                 </div>
             </div>
         </div>
         <div id="ishow" class="layui-form-item" style="margin-top: 20px;margin-left: 20px;">
             <div class="layui-input-inline">
-                <input type="hidden" id="deptid"/>
+                <input type="hidden" id="categoryId"/>
                 <input type="text" id="memberInput" name="username" lay-verify="title"
                        autocomplete="off"
-                       placeholder="姓名" class="layui-input">
+                       placeholder="模板名称" class="layui-input">
             </div>
             <button class="common_button" id="queryMember">查询</button>
             <button class="common_button" id="queryAll">显示所有</button>
             <button class="common_button common_button_emphasize" id="setConfig">设置</button>
         </div>
-        <table id="memberTable" lay-filter="memberTableFilter"></table>
+        <table id="templateTable" lay-filter="templateTableFilter"></table>
     </div>
 
 
@@ -69,37 +69,34 @@
         var selectedMember = [];//选择信息数组
 
         table.render({
-            id: 'memberTableId'
-            , elem: '#memberTable'
-            , url: '/seeyon/ext/accessSetting.do?method=getMemberByDepartmentId'
+            id: 'templateTableId'
+            , elem: '#templateTable'
+            , url: '/seeyon/ext/accessSetting.do?method=getTemplateInfos'
             , height: 550
             , page: false //开启分页
             , cols: [[ //表头
                 {type: 'checkbox'},
-                {field: 'name', title: '姓名', width: '20%', sort: true},
-                {field: 'deptname', title: '部门', width: '30%', sort: true},
-                {field: 'levelName', title: '职务', width: '20%'},
-                {field: 'dayNum', title: '最近天数', width: '20%', sort: true}
+                {field: 'subject', title: '模板名称', width: '30%', sort: true},
+                {field: 'name', title: '所属分类', width: '30%', sort: true},
+                {field: 'p1', title: '是否允许', width: '30%', sort: true}
             ]]
-            , where: {
-                name: ""
-            }
+            , where: {}
         });
         $("#queryAll").bind('click', function () {
             //执行重载
-            table.reload('memberTableId', {
+            table.reload('templateTableId', {
                 where: {
-                    departmentId: "",
-                    name: ""
+                    categoryId: "",
+                    subject: ""
                 }
             });
         });
         $("#queryMember").bind('click', function () {
             //执行重载
-            table.reload('memberTableId', {
+            table.reload('templateTableId', {
                 where: {
-                    departmentId: $("#deptid").val().toString(),
-                    name: $("#memberInput").val()
+                    categoryId: $("#categoryId").val() + "",
+                    subject: ""
                 }
             });
         });
@@ -114,7 +111,7 @@
                     shadeClose: false,
                     maxmin: false, //开启最大化最小化按钮
                     area: ['50%', '50%'],
-                    content: '/seeyon/ext/accessSetting.do?method=setting',
+                    content: '/seeyon/ext/accessSetting.do?method=toTemplateConfigPage',
                     success: function (layero, index) {
                     }
                 });
@@ -135,27 +132,18 @@
         };
 
         function zTreeOnClick(event, treeId, treeNode) {
-            var id = treeNode.id;
-            var name = treeNode.name;
-            $("#deptid").val(id);
-
-            table.reload('memberTableId', {
+            var id = treeNode.catid;
+            $("#categoryId").val(id);
+            table.reload('templateTableId', {
                 where: {
-                    departmentId: id.toString(),
-                    name: ""
+                    categoryId: id.toString(),
+                    subject: ""
                 }
             });
         }
 
         $(function () {
             $.fn.zTree.init($("#treeDemo"), setting, ${list});
-
-            $("#reset").on('click', function () {
-                $("#startTime").val("");
-                $("#endTime").val("");
-                $("#deptid").val("");
-                $("#deptname").val("");
-            });
 
             $("#saveRange").on('click', function () {
                 var obj = {};

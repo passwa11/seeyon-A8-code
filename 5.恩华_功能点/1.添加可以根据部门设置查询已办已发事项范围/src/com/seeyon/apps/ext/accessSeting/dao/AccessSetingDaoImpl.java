@@ -4,6 +4,7 @@ import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
 import com.seeyon.apps.ext.accessSeting.po.TempTemplateStop;
 import com.seeyon.apps.ext.accessSeting.po.ZorgMember;
 import com.seeyon.apps.ext.accessSeting.util.JDBCUtil;
+import com.seeyon.ctp.common.i18n.ResourceUtil;
 import com.seeyon.ctp.util.DBAgent;
 import com.seeyon.ctp.util.JDBCAgent;
 
@@ -16,6 +17,39 @@ import java.util.Map;
 public class AccessSetingDaoImpl implements AccessSetingDao {
 
     //****禁用模板流程*******************************************************
+
+
+    @Override
+    public List<Map<String, Object>> getTemplateInfos(Map<String, String> params) {
+        String sql = "select w3.* from (select ct.*,nvl(s.P1,'-') p1 from (select c.id catid,c.name,t.subject,t.id from CTP_TEMPLATE_CATEGORY c, CTP_TEMPLATE t where c.id=t.CATEGORY_ID) ct LEFT JOIN TEMP_TEMPLATE_STOP s on CT.id=s.TEMPLATE_ID) w3 where 1=1  ";
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            if (entry.getKey().equals("subject")) {
+                if (null != entry.getValue() && !"".equals(entry.getValue())) {
+                    sql += " and w3.subject like '%" + entry.getValue() + "%'";
+                }
+            }
+            if (entry.getKey().equals("categoryId")) {
+                if (null != entry.getValue() && !"".equals(entry.getValue())) {
+                    sql += " and w3.CATID = '%" + entry.getValue() + "%'";
+                }
+            }
+
+        }
+
+        List<Map<String, Object>> result = null;
+        try {
+            result = JDBCUtil.doQuery(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        List<Map<String, Object>> nl = new ArrayList<>();
+        for (int i = 0; i < result.size(); i++) {
+            Map<String, Object> map = result.get(i);
+            map.put("name", ResourceUtil.getString((String) map.get("name")));
+            nl.add(map);
+        }
+        return nl;
+    }
 
     @Override
     public void saveTempTemplateStop(TempTemplateStop stop) {
