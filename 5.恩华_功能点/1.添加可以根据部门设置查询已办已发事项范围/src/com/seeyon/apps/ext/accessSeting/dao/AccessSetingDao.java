@@ -41,5 +41,7 @@ public interface AccessSetingDao {
 
     List<Map<String,String>> getTemplateInfos(Map<String,String> map);
 
+    List<TempTemplateStop> getStatusIsZero();
+
     //***************************************************************************
 }

@@ -21,6 +21,13 @@ public class AccessSetingDaoImpl implements AccessSetingDao {
 
 
     @Override
+    public List<TempTemplateStop> getStatusIsZero() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("p1", "0");
+        return DBAgent.find("from TempTemplateStop where p1=:p1 ", map);
+    }
+
+    @Override
     public List<Map<String, String>> getTemplateInfos(Map<String, String> params) {
         String sql = "select w3.* from (select ct.*,nvl(s.P1,'-') p1 from (select c.id catid,c.name,t.subject,t.id from CTP_TEMPLATE_CATEGORY c, CTP_TEMPLATE t where c.id=t.CATEGORY_ID) ct LEFT JOIN TEMP_TEMPLATE_STOP s on CT.id=s.TEMPLATE_ID) w3 where 1=1  ";
         for (Map.Entry<String, String> entry : params.entrySet()) {

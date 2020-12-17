@@ -18,6 +18,9 @@ public interface AccessSetingManager {
     List<DepartmentViewTimeRange> getDepartmentViewTimeRange(Map<String,Object> range);
 
     //*************************************************************
+    List<TempTemplateStop> getStatusIsZero();
+
+
     void saveTempTemplateStop(TempTemplateStop stop);
 
     void updateTempTemplateStop(TempTemplateStop stop);
