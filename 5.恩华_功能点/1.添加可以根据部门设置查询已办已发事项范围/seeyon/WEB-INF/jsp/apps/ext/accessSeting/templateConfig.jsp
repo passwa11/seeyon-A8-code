@@ -20,24 +20,23 @@
                             <tbody>
                             <tr>
                                 <th nowrap="nowrap">
-                                    <label class="margin_r_10" for="dayNum">设置最近天数:</label></th>
+                                    <label class="margin_r_10" for="dayNum">是否允许:</label></th>
                                 <td colspan="3">
-                                    <div class="common_txtbox_wrap">
-                                        <input id="dayNum" type="number"/>
-                                    </div>
+                                    <input type="radio" name="p1" id="p11" value="1"/><label for="p11">允许</label>
+                                    &nbsp;
+                                    <input type="radio" name="p1" id="p12" value="0"/><label for="p12">不允许</label>
                                 </td>
                             </tr>
                             <tr>
                                 <th nowrap="nowrap">
-                                    <label class="margin_r_10" for="text">选中人员:</label></th>
+                                    <label class="margin_r_10" for="text">选中模板:</label></th>
                                 <td width="100%" colspan="3">
-                                    <input type="hidden" id="memberId"/>
+                                    <input type="hidden" id="templateIds"/>
                                     <div class="common_txtbox  clearfix">
                                         <textarea cols="30" rows="7" id="names" readonly class="w100b "></textarea>
                                     </div>
                                 </td>
                             </tr>
-
                             </tbody>
                         </table>
                     </div>
@@ -63,23 +62,23 @@
 
 
         $(function () {
-            var arr = parent.layui.table.checkStatus('memberTableId').data;
-            var memIds = "";
+            var arr = parent.layui.table.checkStatus('templateTableId').data;
+            var Ids = "";
             var names = ""
             for (let i = 0; i < arr.length; i++) {
-                memIds += arr[i]["id"] + ",";
-                names += arr[i]["name"] + "；";
+                Ids += arr[i]["id"] + ",";
+                names += arr[i]["subject"] + "；";
             }
-            $("#memberId").val(memIds);
+            $("#templateIds").val(Ids);
             $("#names").text(names);
 
             $("#saveRange").on('click', function () {
                 var obj = {};
-                obj['ids'] = $("#memberId").val() + "";
-                obj['dayNum'] = $("#dayNum").val() + "";
-                $.post("/seeyon/ext/accessSetting.do?method=saveDepartmentViewTimeRange", obj, function (ref) {
+                obj['templateId'] = $("#templateIds").val() + "";
+                obj['p1'] = $(":radio:checked").val() + "";
+                $.post("/seeyon/ext/accessSetting.do?method=saveTemplateInfo", obj, function (ref) {
                     if (ref.code == 0) {
-                        parent.layui.table.reload('memberTableId');
+                        parent.layui.table.reload('templateTableId');
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
                         parent.layer.msg('设置成功！', {icon: 6})

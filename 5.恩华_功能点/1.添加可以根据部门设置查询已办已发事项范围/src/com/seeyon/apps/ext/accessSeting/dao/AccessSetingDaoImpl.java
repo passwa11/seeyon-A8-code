@@ -30,7 +30,7 @@ public class AccessSetingDaoImpl implements AccessSetingDao {
             }
             if (entry.getKey().equals("categoryId")) {
                 if (null != entry.getValue() && !"".equals(entry.getValue())) {
-                    sql += " and w3.CATID = '%" + entry.getValue() + "%'";
+                    sql += " and w3.CATID = " + entry.getValue();
                 }
             }
 

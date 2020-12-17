@@ -96,13 +96,13 @@
             table.reload('templateTableId', {
                 where: {
                     categoryId: $("#categoryId").val() + "",
-                    subject: ""
+                    subject: $("#memberInput").val()
                 }
             });
         });
         //打开设置页面
         $('#setConfig').on('click', function () {
-            var arr = layui.table.checkStatus('memberTableId').data;
+            var arr = layui.table.checkStatus('templateTableId').data;
             if (arr.length > 0) {
                 layer.open({
                     type: 2,
@@ -132,11 +132,11 @@
         };
 
         function zTreeOnClick(event, treeId, treeNode) {
-            var id = treeNode.catid;
+            var id = treeNode.id;
             $("#categoryId").val(id);
             table.reload('templateTableId', {
                 where: {
-                    categoryId: id.toString(),
+                    categoryId: id + "",
                     subject: ""
                 }
             });

@@ -8,6 +8,15 @@ public class TempTemplateStop {
     private String p1;
     private String p2;
     private String p3;
+    private String ids;
+
+    public String getIds() {
+        return ids;
+    }
+
+    public void setIds(String ids) {
+        this.ids = ids;
+    }
 
     public Long getId() {
         return id;

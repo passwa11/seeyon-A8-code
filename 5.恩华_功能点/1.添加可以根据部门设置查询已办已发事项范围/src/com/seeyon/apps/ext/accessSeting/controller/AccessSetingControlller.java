@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManager;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManagerImpl;
 import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
+import com.seeyon.apps.ext.accessSeting.po.TempTemplateStop;
 import com.seeyon.apps.ext.accessSeting.po.ZorgMember;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.ModuleType;
@@ -45,6 +46,7 @@ public class AccessSetingControlller extends BaseController {
 
     /**
      * 获取table列表数据
+     *
      * @param request
      * @param response
      * @param departmentId
@@ -193,6 +195,36 @@ public class AccessSetingControlller extends BaseController {
             map.put("data", null);
         }
         JSONObject json = new JSONObject(map);
+        render(response, json.toJSONString());
+        return null;
+    }
+
+    public ModelAndView saveTemplateInfo(HttpServletRequest request, HttpServletResponse response, TempTemplateStop stop) {
+        Map<String, Object> map2 = new HashMap<>();
+        try {
+            String[] templateIds = (stop.getIds()).split(",");
+            Map<String, Object> params = null;
+            for (int i = 0; i < templateIds.length; i++) {
+                if (!"".equals(templateIds[i])) {
+                    params = new HashMap<>();
+                    params.put("templateId", templateIds[i]);
+                    List<TempTemplateStop> list = manager.getTemplateStop(params);
+                    if (list.size() > 0) {
+                        TempTemplateStop temp = list.get(0);
+                        temp.setP1(stop.getP1());
+                        manager.updateTempTemplateStop(temp);
+                    } else {
+                        stop.setId(System.currentTimeMillis());
+                        stop.setTemplateId(templateIds[i]);
+                        manager.saveTempTemplateStop(stop);
+                    }
+                }
+            }
+            map2.put("code", 0);
+        } catch (Exception e) {
+            map2.put("code", -1);
+        }
+        JSONObject json = new JSONObject(map2);
         render(response, json.toJSONString());
         return null;
     }
