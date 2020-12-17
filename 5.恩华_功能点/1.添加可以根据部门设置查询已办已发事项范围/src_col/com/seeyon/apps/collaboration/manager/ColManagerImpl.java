@@ -1122,9 +1122,28 @@ public class ColManagerImpl implements ColManager {
 
             result = colDao.queryByCondition(flipInfo, query);
         }
-
+        //[恩华] zhou: 模板停用流程【开始】
+        List<TempTemplateStop> stops = setingManager.getStatusIsZero();
+        List<String> templates = new ArrayList<>();
+        for (int i = 0; i < stops.size(); i++) {
+            templates.add(stops.get(i).getTemplateId());
+        }
+        List<ColSummaryVO> tempList = new ArrayList<>();
+        for (int i = 0; i < result.size(); i++) {
+            ColSummaryVO vo = result.get(i);
+            String templateId = "";
+            if (null != vo.getTempleteId() && !"".equals(vo.getTempleteId())) {
+                templateId = Long.toString(vo.getTempleteId());
+                if (!templates.contains(templateId)) {
+                    tempList.add(vo);
+                }
+            } else {
+                tempList.add(vo);
+            }
+        }
+        //[恩华] zhou: 模板停用流程【结束】
         if (flipInfo != null) {
-            flipInfo.setData(result);
+            flipInfo.setData(tempList);
         }
         return flipInfo;
     }
