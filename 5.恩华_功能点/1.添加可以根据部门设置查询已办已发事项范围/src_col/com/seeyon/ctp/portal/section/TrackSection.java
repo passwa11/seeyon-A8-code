@@ -21,6 +21,7 @@ import com.seeyon.apps.collaboration.po.ColSummary;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManager;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManagerImpl;
 import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
+import com.seeyon.apps.ext.accessSeting.po.TempTemplateStop;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.organization.bo.V3xOrgMember;
 import com.seeyon.ctp.organization.manager.OrgManager;
@@ -343,7 +344,28 @@ public class TrackSection extends BaseSectionImpl {
         this.setCount(newAffairs.size());
         //【恩华药业】zhou:协同过滤掉设定范围内的数据【结束】
         //单列表
-        c = this.getTemplete(c, newAffairs, preference);
+
+        //[恩华] zhou: 模板停用流程【开始】
+        List<TempTemplateStop> stops = manager.getStatusIsZero();
+        List<String> templates = new ArrayList<>();
+        for (int i = 0; i < stops.size(); i++) {
+            templates.add(stops.get(i).getTemplateId());
+        }
+        List<CtpAffair> tempList = new ArrayList<>();
+        for (int i = 0; i < newAffairs.size(); i++) {
+            CtpAffair vo = newAffairs.get(i);
+            String templateId = "";
+            if (null != vo.getTempleteId() && !"".equals(vo.getTempleteId())) {
+                templateId = Long.toString(vo.getTempleteId());
+                if (!templates.contains(templateId)) {
+                    tempList.add(vo);
+                }
+            } else {
+                tempList.add(vo);
+            }
+        }
+        //[恩华] zhou: 模板停用流程【结束】
+        c = this.getTemplete(c, tempList, preference);
         //【更多】
         c.addBottomButton(BaseSectionTemplete.BOTTOM_BUTTON_LABEL_MORE, "/portalAffair/portalAffairController.do?method=moreTrack" + "&fragmentId=" + preference.get(PropertyName.entityId.name())
                 + "&ordinal=" + preference.get(PropertyName.ordinal.name()) + "&currentPanel=" + panel + "&rowStr=" + rowStr + "&columnsName=" + s);
