@@ -19,9 +19,11 @@ import java.util.*;
 
 import com.seeyon.apps.collaboration.manager.ColManager;
 import com.seeyon.apps.collaboration.po.ColSummary;
+import com.seeyon.apps.collaboration.vo.ColSummaryVO;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManager;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManagerImpl;
 import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
+import com.seeyon.apps.ext.accessSeting.po.TempTemplateStop;
 import com.seeyon.ctp.organization.bo.V3xOrgMember;
 import com.seeyon.ctp.organization.manager.OrgManager;
 import org.apache.commons.logging.Log;
@@ -207,10 +209,11 @@ public class DoneSection extends BaseSectionImpl {
         fi.setNeedTotal(false);
         List<CtpAffair> affairs = new ArrayList<CtpAffair>();
         List<CtpAffair> newAffairs = new ArrayList<>();
+        AccessSetingManager manager = new AccessSetingManagerImpl();
+
         try {
             affairs = pendingManager.querySectionAffair(condition, fi, preference, ColOpenFrom.listDone.name(), new HashMap<String, String>(), false);
             //【恩华药业】zhou:协同过滤掉设定范围内的数据【开始】
-            AccessSetingManager manager = new AccessSetingManagerImpl();
             for (CtpAffair affair : affairs) {
                 if (affair.getApp() == 1) {
                     Long senderId = affair.getMemberId();
@@ -221,7 +224,7 @@ public class DoneSection extends BaseSectionImpl {
                     List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(map);
                     if (list.size() > 0) {
                         DepartmentViewTimeRange range = list.get(0);
-                        if (!"".equals(range.getDayNum()) && null !=range.getDayNum()  && Long.parseLong(range.getDayNum()) > 0l) {
+                        if (!"".equals(range.getDayNum()) && null != range.getDayNum() && Long.parseLong(range.getDayNum()) > 0l) {
                             LocalDateTime end = LocalDateTime.now();
                             LocalDateTime start = LocalDateTime.now().minusDays(Long.parseLong(range.getDayNum()));
                             Long startTime = start.toInstant(ZoneOffset.of("+8")).toEpochMilli();
@@ -232,7 +235,7 @@ public class DoneSection extends BaseSectionImpl {
                             if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
                                 newAffairs.add(affair);
                             }
-                        } else if (!"".equals(range.getDayNum()) && null !=range.getDayNum()  && Long.parseLong(range.getDayNum()) == 0l) {
+                        } else if (!"".equals(range.getDayNum()) && null != range.getDayNum() && Long.parseLong(range.getDayNum()) == 0l) {
                         } else {
                             newAffairs.add(affair);
                         }
@@ -255,8 +258,28 @@ public class DoneSection extends BaseSectionImpl {
             log.error("", e);
 
         }
+        //[恩华] zhou: 模板停用流程【开始】
+        List<TempTemplateStop> stops = manager.getStatusIsZero();
+        List<String> templates = new ArrayList<>();
+        for (int i = 0; i < stops.size(); i++) {
+            templates.add(stops.get(i).getTemplateId());
+        }
+        List<CtpAffair> tempList = new ArrayList<>();
+        for (int i = 0; i < newAffairs.size(); i++) {
+            CtpAffair vo = newAffairs.get(i);
+            String templateId = "";
+            if (null != vo.getTempleteId() && !"".equals(vo.getTempleteId())) {
+                templateId = Long.toString(vo.getTempleteId());
+                if (!templates.contains(templateId)) {
+                    tempList.add(vo);
+                }
+            } else {
+                tempList.add(vo);
+            }
+        }
+        //[恩华] zhou: 模板停用流程【结束】
         //zhou:修改第二个参数
-        this.getTemplete(c, newAffairs, preference);
+        this.getTemplete(c, tempList, preference);
         //【更多】
         c.addBottomButton(BaseSectionTemplete.BOTTOM_BUTTON_LABEL_MORE, "/portalAffair/portalAffairController.do?method=moreDone" + "&fragmentId=" + preference.get(PropertyName.entityId.name())
                 + "&ordinal=" + preference.get(PropertyName.ordinal.name()) + "&rowStr=" + rowStr + "&columnsName=" + s + "&isGroupBy=" + isGroupBy);

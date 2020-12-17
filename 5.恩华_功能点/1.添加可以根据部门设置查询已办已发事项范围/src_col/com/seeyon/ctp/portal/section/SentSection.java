@@ -21,6 +21,7 @@ import com.seeyon.apps.collaboration.po.ColSummary;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManager;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManagerImpl;
 import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
+import com.seeyon.apps.ext.accessSeting.po.TempTemplateStop;
 import com.seeyon.ctp.organization.bo.V3xOrgMember;
 import com.seeyon.ctp.organization.manager.OrgManager;
 import org.apache.commons.logging.Log;
@@ -207,12 +208,12 @@ public class SentSection extends BaseSectionImpl {
         fi.setNeedTotal(false);
         List<CtpAffair> affairs = new ArrayList<CtpAffair>();
         List<CtpAffair> newAffairs = new ArrayList<>();
+        AccessSetingManager manager = new AccessSetingManagerImpl();
 
         try {
             affairs = pendingManager.querySectionAffair(condition, fi, preference, ColOpenFrom.listSent.name(), new HashMap<String, String>(), false);
 
             //【恩华药业】zhou:协同过滤掉设定范围内的数据【开始】
-            AccessSetingManager manager = new AccessSetingManagerImpl();
             for (CtpAffair affair : affairs) {
                 if (affair.getApp() == 1) {
                     Long senderId = affair.getSenderId();
@@ -261,8 +262,28 @@ public class SentSection extends BaseSectionImpl {
             log.error("", e);
         }
         //单列表
+        //[恩华] zhou: 模板停用流程【开始】
+        List<TempTemplateStop> stops = manager.getStatusIsZero();
+        List<String> templates = new ArrayList<>();
+        for (int i = 0; i < stops.size(); i++) {
+            templates.add(stops.get(i).getTemplateId());
+        }
+        List<CtpAffair> tempList = new ArrayList<>();
+        for (int i = 0; i < newAffairs.size(); i++) {
+            CtpAffair vo = newAffairs.get(i);
+            String templateId = "";
+            if (null != vo.getTempleteId() && !"".equals(vo.getTempleteId())) {
+                templateId = Long.toString(vo.getTempleteId());
+                if (!templates.contains(templateId)) {
+                    tempList.add(vo);
+                }
+            } else {
+                tempList.add(vo);
+            }
+        }
+        //[恩华] zhou: 模板停用流程【结束】
         //zhou:修改第二个参数
-        c = this.getTemplete(c, newAffairs, preference);
+        c = this.getTemplete(c, tempList, preference);
         // 【更多】
 
         c.addBottomButton(BaseSectionTemplete.BOTTOM_BUTTON_LABEL_MORE,
