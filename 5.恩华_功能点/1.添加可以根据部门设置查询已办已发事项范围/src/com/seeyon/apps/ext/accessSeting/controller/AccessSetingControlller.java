@@ -57,12 +57,27 @@ public class AccessSetingControlller extends BaseController {
         Map<String, String> params = new HashMap<>();
         params.put("categoryId", id);
         params.put("subject", request.getParameter("subject"));
-        List<Map<String, Object>> list = manager.getTemplateInfos(params);
+        List<Map<String, String>> list = manager.getTemplateInfos(params);
+        List<Map<String, String>> nlist = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            Map<String, String> val = list.get(i);
+            switch (val.get("p1")) {
+                case "1":
+                    val.put("p1", "允许");
+                    break;
+                case "0":
+                    val.put("p1", "不允许");
+                    break;
+                default:
+                    val.put("p1", "-");
+            }
+            nlist.add(val);
+        }
         Map<String, Object> map2 = new HashMap<>();
         map2.put("code", 0);
         map2.put("message", "");
-        map2.put("count", list.size());
-        map2.put("data", list);
+        map2.put("count", nlist.size());
+        map2.put("data", nlist);
         JSONObject json = new JSONObject(map2);
         render(response, json.toJSONString());
         return null;

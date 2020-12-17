@@ -7,10 +7,10 @@
         <id name="id" type="long" column="ID">
             <generator class="assigned"/>
         </id>
-        <property name="templateId" type="long" column="TEMPLATE_ID"/>
+        <property name="templateId" type="string" column="TEMPLATE_ID"/>
         <property name="orgAccountId" type="string" column="ORG_ACCOUNT_ID"/>
-        <property name="p1" type="date" column="P1"/>
-        <property name="p2" type="date" column="P2"/>
-        <property name="p3" type="long" column="P3"/>
+        <property name="p1" type="string" column="P1"/>
+        <property name="p2" type="string" column="P2"/>
+        <property name="p3" type="string" column="P3"/>
     </class>
 </hibernate-mapping>

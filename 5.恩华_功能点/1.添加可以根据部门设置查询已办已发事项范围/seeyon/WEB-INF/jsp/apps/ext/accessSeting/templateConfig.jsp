@@ -51,6 +51,7 @@
 </div>
 
 </body>
+
 <script type="text/javascript">
     layui.use(['form', 'table', 'layer', 'layedit', 'laydate'], function () {
         var $ = layui.$
@@ -74,7 +75,7 @@
 
             $("#saveRange").on('click', function () {
                 var obj = {};
-                obj['templateId'] = $("#templateIds").val() + "";
+                obj['ids'] = $("#templateIds").val() + "";
                 obj['p1'] = $(":radio:checked").val() + "";
                 $.post("/seeyon/ext/accessSetting.do?method=saveTemplateInfo", obj, function (ref) {
                     if (ref.code == 0) {

@@ -11,6 +11,7 @@ import com.seeyon.ctp.util.JDBCAgent;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +21,7 @@ public class AccessSetingDaoImpl implements AccessSetingDao {
 
 
     @Override
-    public List<Map<String, Object>> getTemplateInfos(Map<String, String> params) {
+    public List<Map<String, String>> getTemplateInfos(Map<String, String> params) {
         String sql = "select w3.* from (select ct.*,nvl(s.P1,'-') p1 from (select c.id catid,c.name,t.subject,t.id from CTP_TEMPLATE_CATEGORY c, CTP_TEMPLATE t where c.id=t.CATEGORY_ID) ct LEFT JOIN TEMP_TEMPLATE_STOP s on CT.id=s.TEMPLATE_ID) w3 where 1=1  ";
         for (Map.Entry<String, String> entry : params.entrySet()) {
             if (entry.getKey().equals("subject")) {
@@ -42,11 +43,15 @@ public class AccessSetingDaoImpl implements AccessSetingDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        List<Map<String, Object>> nl = new ArrayList<>();
+        List<Map<String, String>> nl = new ArrayList<>();
         for (int i = 0; i < result.size(); i++) {
             Map<String, Object> map = result.get(i);
             map.put("name", ResourceUtil.getString((String) map.get("name")));
-            nl.add(map);
+            Map<String, String> m = new HashMap<>();
+            for (Map.Entry<String, Object> entry : map.entrySet()) {
+                m.put(entry.getKey(), entry.getValue() + "");
+            }
+            nl.add(m);
         }
         return nl;
     }

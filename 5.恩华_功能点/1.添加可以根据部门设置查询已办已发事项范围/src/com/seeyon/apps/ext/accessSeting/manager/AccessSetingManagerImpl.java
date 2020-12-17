@@ -16,7 +16,7 @@ public class AccessSetingManagerImpl implements AccessSetingManager {
     private AccessSetingDao dao = new AccessSetingDaoImpl();
 
     @Override
-    public List<Map<String, Object>> getTemplateInfos(Map<String, String> map) {
+    public List<Map<String, String>> getTemplateInfos(Map<String, String> map) {
         return dao.getTemplateInfos(map);
     }
 
