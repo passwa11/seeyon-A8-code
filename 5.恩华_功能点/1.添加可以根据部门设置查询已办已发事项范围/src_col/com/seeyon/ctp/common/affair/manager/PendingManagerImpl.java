@@ -21,6 +21,7 @@ import com.seeyon.apps.collaboration.manager.ColManager;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManager;
 import com.seeyon.apps.ext.accessSeting.manager.AccessSetingManagerImpl;
 import com.seeyon.apps.ext.accessSeting.po.DepartmentViewTimeRange;
+import com.seeyon.apps.ext.accessSeting.po.TempTemplateStop;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -731,7 +732,28 @@ public class PendingManagerImpl implements PendingManager {
 
         //【恩华药业】zhou:协同过滤掉设定范围内的数据【结束】
         //zhou:修改第一个参数
-        List<PendingRow> voList = affairList2PendingRowList(newAffairs, user, null, false, rowStr, state, query);
+
+        //[恩华] zhou: 模板停用流程【开始】
+        List<TempTemplateStop> stops = manager.getStatusIsZero();
+        List<String> templates = new ArrayList<>();
+        for (int i = 0; i < stops.size(); i++) {
+            templates.add(stops.get(i).getTemplateId());
+        }
+        List<CtpAffair> tempList = new ArrayList<>();
+        for (int i = 0; i < newAffairs.size(); i++) {
+            CtpAffair vo = newAffairs.get(i);
+            String templateId = "";
+            if (null != vo.getTempleteId() && !"".equals(vo.getTempleteId())) {
+                templateId = Long.toString(vo.getTempleteId());
+                if (!templates.contains(templateId)) {
+                    tempList.add(vo);
+                }
+            } else {
+                tempList.add(vo);
+            }
+        }
+        //[恩华] zhou: 模板停用流程【结束】
+        List<PendingRow> voList = affairList2PendingRowList(tempList, user, null, false, rowStr, state, query);
 //        List<PendingRow> voList  = affairList2PendingRowList(affairListClone, user, null, false,rowStr, state,query);
         fi.setTotal(voList.size());
         fi.setData(voList);
