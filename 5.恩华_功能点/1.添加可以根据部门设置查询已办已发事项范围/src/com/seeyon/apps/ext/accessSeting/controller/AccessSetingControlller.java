@@ -53,10 +53,12 @@ public class AccessSetingControlller extends BaseController {
      * @return
      */
     public ModelAndView getTemplateInfos(HttpServletRequest request, HttpServletResponse response, String departmentId) {
+        User user=AppContext.getCurrentUser();
         String id = request.getParameter("categoryId");
         Map<String, String> params = new HashMap<>();
         params.put("categoryId", id);
         params.put("subject", request.getParameter("subject"));
+        params.put("orgAccountId",Long.toString(user.getAccountId()));
         List<Map<String, String>> list = manager.getTemplateInfos(params);
         List<Map<String, String>> nlist = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
