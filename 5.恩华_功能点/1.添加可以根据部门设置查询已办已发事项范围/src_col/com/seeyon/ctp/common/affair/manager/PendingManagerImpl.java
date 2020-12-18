@@ -694,6 +694,7 @@ public class PendingManagerImpl implements PendingManager {
             rowStr += ",edocMark";
         }
         //【恩华药业】zhou:协同过滤掉设定范围内的数据【开始】
+
         List<CtpAffair> newAffairs = new ArrayList<>();
         AccessSetingManager manager = new AccessSetingManagerImpl();
         for (CtpAffair affair : affairListClone) {
@@ -755,7 +756,6 @@ public class PendingManagerImpl implements PendingManager {
         //[恩华] zhou: 模板停用流程【结束】
         List<PendingRow> voList = affairList2PendingRowList(tempList, user, null, false, rowStr, state, query);
 //        List<PendingRow> voList  = affairList2PendingRowList(affairListClone, user, null, false,rowStr, state,query);
-        fi.setTotal(voList.size());
         fi.setData(voList);
         return fi;
     }
