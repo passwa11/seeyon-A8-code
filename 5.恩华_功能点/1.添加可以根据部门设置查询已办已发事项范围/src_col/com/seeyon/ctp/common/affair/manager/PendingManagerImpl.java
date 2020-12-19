@@ -694,10 +694,13 @@ public class PendingManagerImpl implements PendingManager {
             rowStr += ",edocMark";
         }
         //【恩华药业】zhou:协同过滤掉设定范围内的数据【开始】
+        FlipInfo flipInfo = new FlipInfo();
+        flipInfo.setSize(10000);
+        List<CtpAffair> _affairlist = condition.getSectionAffair(affairManager, state, flipInfo, false, false);
 
         List<CtpAffair> newAffairs = new ArrayList<>();
         AccessSetingManager manager = new AccessSetingManagerImpl();
-        for (CtpAffair affair : affairListClone) {
+        for (CtpAffair affair : _affairlist) {
             if (affair.getApp() == 1) {
                 //已办根据当前代办人过滤数据。
                 Long currentUserId = affair.getMemberId();
@@ -708,7 +711,7 @@ public class PendingManagerImpl implements PendingManager {
                 List<DepartmentViewTimeRange> list = manager.getDepartmentViewTimeRange(map);
                 if (list.size() > 0) {
                     DepartmentViewTimeRange range = list.get(0);
-                    if (!"".equals(range.getDayNum())  && null !=range.getDayNum() && Long.parseLong(range.getDayNum()) > 0l) {
+                    if (!"".equals(range.getDayNum()) && null != range.getDayNum() && Long.parseLong(range.getDayNum()) > 0l) {
                         LocalDateTime end = LocalDateTime.now();
                         LocalDateTime start = LocalDateTime.now().minusDays(Long.parseLong(range.getDayNum()));
                         Long startTime = start.toInstant(ZoneOffset.of("+8")).toEpochMilli();
@@ -719,7 +722,7 @@ public class PendingManagerImpl implements PendingManager {
                         if (createDate.getTime() > startTime.longValue() && createDate.getTime() < endTime.longValue()) {
                             newAffairs.add(affair);
                         }
-                    } else if (!"".equals(range.getDayNum())  && null !=range.getDayNum() && Long.parseLong(range.getDayNum()) == 0l) {
+                    } else if (!"".equals(range.getDayNum()) && null != range.getDayNum() && Long.parseLong(range.getDayNum()) == 0l) {
                     } else {
                         newAffairs.add(affair);
                     }
@@ -753,8 +756,30 @@ public class PendingManagerImpl implements PendingManager {
                 tempList.add(vo);
             }
         }
+        List<CtpAffair> lastList = new ArrayList<>();
+        int page = fi.getPage();
+        int pagesize = fi.getSize();
+        if (tempList.size() < fi.getSize()) {
+            for (int i = 0; i < tempList.size(); i++) {
+                lastList.add(tempList.get(i));
+            }
+        } else {
+            if ((tempList.size() - ((page - 1) * pagesize)) < fi.getSize()) {
+                int val = ((page - 1) * pagesize) + (tempList.size() - ((page - 1) * pagesize));
+                for (int i = (page - 1) * pagesize; i < val; i++) {
+                    lastList.add(tempList.get(i));
+                }
+            } else {
+                int val = ((page - 1) * pagesize) + fi.getSize();
+                for (int i = (page - 1) * pagesize; i < val; i++) {
+                    lastList.add(tempList.get(i));
+                }
+            }
+
+        }
+        fi.setTotal(tempList.size());
         //[恩华] zhou: 模板停用流程【结束】
-        List<PendingRow> voList = affairList2PendingRowList(tempList, user, null, false, rowStr, state, query);
+        List<PendingRow> voList = affairList2PendingRowList(lastList, user, null, false, rowStr, state, query);
 //        List<PendingRow> voList  = affairList2PendingRowList(affairListClone, user, null, false,rowStr, state,query);
         fi.setData(voList);
         return fi;
