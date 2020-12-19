@@ -1118,32 +1118,38 @@ public class ColManagerImpl implements ColManager {
 
                 }
             }
+
+            //[恩华] zhou: 模板停用流程【开始】
+            List<TempTemplateStop> stops = setingManager.getStatusIsZero();
+            StringBuilder sb = new StringBuilder();
+            sb.append("-1");
+            for (int i = 0; i < stops.size(); i++) {
+                if ("0".equals(stops.get(i).getP1())) {
+                    sb.append("," + stops.get(i).getTemplateId());
+                }
+            }
+            query.put("templeteIds", sb.toString());
             //[恩华药业]zhou：获取部门查看数据的日期范围 【结束】
 
             result = colDao.queryByCondition(flipInfo, query);
         }
-        //[恩华] zhou: 模板停用流程【开始】
-        List<TempTemplateStop> stops = setingManager.getStatusIsZero();
-        List<String> templates = new ArrayList<>();
-        for (int i = 0; i < stops.size(); i++) {
-            templates.add(stops.get(i).getTemplateId());
-        }
-        List<ColSummaryVO> tempList = new ArrayList<>();
-        for (int i = 0; i < result.size(); i++) {
-            ColSummaryVO vo = result.get(i);
-            String templateId = "";
-            if (null != vo.getTempleteId() && !"".equals(vo.getTempleteId())) {
-                templateId = Long.toString(vo.getTempleteId());
-                if (!templates.contains(templateId)) {
-                    tempList.add(vo);
-                }
-            } else {
-                tempList.add(vo);
-            }
-        }
+
+//        List<ColSummaryVO> tempList = new ArrayList<>();
+//        for (int i = 0; i < result.size(); i++) {
+//            ColSummaryVO vo = result.get(i);
+//            String templateId = "";
+//            if (null != vo.getTempleteId() && !"".equals(vo.getTempleteId())) {
+//                templateId = Long.toString(vo.getTempleteId());
+//                if (!templates.contains(templateId)) {
+//                    tempList.add(vo);
+//                }
+//            } else {
+//                tempList.add(vo);
+//            }
+//        }
         //[恩华] zhou: 模板停用流程【结束】
         if (flipInfo != null) {
-            flipInfo.setData(tempList);
+            flipInfo.setData(result);
         }
         return flipInfo;
     }
@@ -1332,21 +1338,22 @@ public class ColManagerImpl implements ColManager {
                 }
             }
             //[恩华药业]zhou：获取部门查看数据的日期范围 【结束】
+            //[恩华] zhou: 模板停用流程【开始】
+            List<TempTemplateStop> stops = setingManager.getStatusIsZero();
+            StringBuilder sb = new StringBuilder();
+            sb.append("0");
+            for (int i = 0; i < stops.size(); i++) {
+                if ("0".equals(stops.get(i).getP1())) {
+                    sb.append("," + stops.get(i).getTemplateId());
+                }
+            }
+            query.put("templeteIds", sb.toString());
             result = colDao.queryByCondition(flipInfo, query);
 
 
         }
-        //[恩华药业]zhou:离职人员可以看到哪些数据 【开始】
         //判断当前登录人是不是已发起离职流程
 
-//        List<LeaveSeting> leaveSetings = leaveSetingManager.findAll();
-//        LeaveSeting seting = leaveSetings.get(0);
-
-//        if (seting.getIsEnable() == '0') {//为0表示不允许查看已办数据
-//            if (flipInfo != null) {
-//                flipInfo.setData(null);
-//            }
-//        } else {
         for (ColSummaryVO csvo : result) {
             String nodeName = csvo.getNodePolicy();
             ColSummary summary = csvo.getSummary();
@@ -1363,7 +1370,7 @@ public class ColManagerImpl implements ColManager {
             }
         }
         //[恩华] zhou: 模板停用流程【开始】
-        List<TempTemplateStop> stops = setingManager.getStatusIsZero();
+      /*  List<TempTemplateStop> stops = setingManager.getStatusIsZero();
         List<String> templates = new ArrayList<>();
         for (int i = 0; i < stops.size(); i++) {
             templates.add(stops.get(i).getTemplateId());
@@ -1381,9 +1388,9 @@ public class ColManagerImpl implements ColManager {
                 tempList.add(vo);
             }
         }
-        //[恩华] zhou: 模板停用流程【结束】
+        //[恩华] zhou: 模板停用流程【结束】*/
         if (flipInfo != null) {
-            flipInfo.setData(tempList);
+            flipInfo.setData(result);
         }
 //        }
         //[恩华药业]zhou:离职人员可以看到哪些数据 【结束】
@@ -2072,11 +2079,11 @@ public class ColManagerImpl implements ColManager {
      *
      * @param affair
      * @param params <pre>
-     *                                                                                                                                                                                                                                                                                                                                                  {String} [isTrack] 是否跟踪， 1 - 跟踪， 其他-不跟踪
-     *                                                                                                                                                                                                                                                                                                                                                  {String} [trackRange_members] 跟踪指定人，在[isTrack]为1的前提下生效 , 0 - 跟踪指定人, 其他-跟踪全部
-     *                                                                                                                                                                                                                                                                                                                                                  {String} [trackRange_all] 跟踪全部，在[isTrack]为1的前提下 生效, 值为 1
-     *                                                                                                                                                                                                                                                                                                                                                  {String} [zdgzry] 跟踪指定人的ID
-     *                                                                                                                                                                                                                                                                                                                                                 </pre>
+     *                                                                                                                                                                                                                                                                                                                                                                                                          {String} [isTrack] 是否跟踪， 1 - 跟踪， 其他-不跟踪
+     *                                                                                                                                                                                                                                                                                                                                                                                                          {String} [trackRange_members] 跟踪指定人，在[isTrack]为1的前提下生效 , 0 - 跟踪指定人, 其他-跟踪全部
+     *                                                                                                                                                                                                                                                                                                                                                                                                          {String} [trackRange_all] 跟踪全部，在[isTrack]为1的前提下 生效, 值为 1
+     *                                                                                                                                                                                                                                                                                                                                                                                                          {String} [zdgzry] 跟踪指定人的ID
+     *                                                                                                                                                                                                                                                                                                                                                                                                         </pre>
      * @return
      * @throws BusinessException
      */
@@ -2239,9 +2246,9 @@ public class ColManagerImpl implements ColManager {
      * @param handleType
      * @param params     其他参数，例如跟踪，等等
      *                   <pre>
-     *                                                                                                                                                                                                                                                                                                                                                                                                                                                    跟踪相关参数
-     *                                                                                                                                                                                                                                                                                                                                                                                                                                                    {Map<String, String>} [trackParam] 跟踪相关参数，{@link #saveTrackInfo}
-     *                                                                                                                                                                                                                                                                                                                                                                                                                                                 </pre>
+     *                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            跟踪相关参数
+     *                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            {Map<String, String>} [trackParam] 跟踪相关参数，{@link #saveTrackInfo}
+     *                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         </pre>
      * @throws BusinessException
      */
     @SuppressWarnings("unchecked")
