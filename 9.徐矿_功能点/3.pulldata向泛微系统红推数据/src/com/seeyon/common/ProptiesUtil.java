@@ -13,6 +13,11 @@ public class ProptiesUtil {
     private String oaUrl;
     private String oaPendingMemberId;
     private String oaTeamUnitId;
+    private String workflowId;
+    private String sendUserId;
+    private String restUsername;
+    private String restPassword;
+    private String sendLoginName;
 
     public ProptiesUtil() {
         String path = Thread.currentThread().getContextClassLoader().getResource("").getPath();
@@ -28,11 +33,56 @@ public class ProptiesUtil {
             oaUrl = properties.getProperty("oa.server.url");
             oaPendingMemberId = properties.getProperty("oa.pending.memberid");
             oaTeamUnitId = properties.getProperty("oa.team.unit.id");
+            workflowId=properties.getProperty("fw.workflowId");
+            sendUserId=properties.getProperty("fw.sendUserId");
+            restUsername=properties.getProperty("oa.rest.username");
+            restPassword = properties.getProperty("oa.rest.password");
+            sendLoginName= properties.getProperty("oa.sendEdoc.loginName");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getRestUsername() {
+        return restUsername;
+    }
+
+    public void setRestUsername(String restUsername) {
+        this.restUsername = restUsername;
+    }
+
+    public String getRestPassword() {
+        return restPassword;
+    }
+
+    public void setRestPassword(String restPassword) {
+        this.restPassword = restPassword;
+    }
+
+    public String getSendLoginName() {
+        return sendLoginName;
+    }
+
+    public void setSendLoginName(String sendLoginName) {
+        this.sendLoginName = sendLoginName;
+    }
+
+    public String getWorkflowId() {
+        return workflowId;
+    }
+
+    public void setWorkflowId(String workflowId) {
+        this.workflowId = workflowId;
+    }
+
+    public String getSendUserId() {
+        return sendUserId;
+    }
+
+    public void setSendUserId(String sendUserId) {
+        this.sendUserId = sendUserId;
     }
 
     public String getOaTeamUnitId() {

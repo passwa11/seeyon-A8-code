@@ -1,6 +1,5 @@
 package com.seeyon.apps.ext.pulldata.listener;
 
-import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.asymmetric.KeyType;
@@ -9,7 +8,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.seeyon.apps.collaboration.event.CollaborationAffairsAssignedEvent;
-import com.seeyon.apps.collaboration.event.CollaborationCancelEvent;
 import com.seeyon.apps.collaboration.event.CollaborationStartEvent;
 import com.seeyon.apps.ext.pulldata.event.EdocCancelEvent;
 import com.seeyon.apps.ext.pulldata.event.EdocExchangeSendEvent;
@@ -17,6 +15,7 @@ import com.seeyon.common.GetFwTokenUtil;
 import com.seeyon.common.HttpClient;
 import com.seeyon.common.JDBCUtil;
 import com.seeyon.common.ProptiesUtil;
+import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.exceptions.BusinessException;
 import com.seeyon.ctp.common.filemanager.manager.FileManager;
 import com.seeyon.ctp.common.filemanager.manager.FileManagerImpl;
@@ -24,13 +23,13 @@ import com.seeyon.ctp.common.po.affair.CtpAffair;
 import com.seeyon.ctp.util.JDBCAgent;
 import com.seeyon.ctp.util.annotation.ListenEvent;
 import com.seeyon.v3x.edoc.domain.EdocSummary;
+import com.seeyon.v3x.edoc.exception.EdocException;
+import com.seeyon.v3x.edoc.manager.EdocManager;
+import com.seeyon.v3x.edoc.manager.EdocManagerImpl;
 import net.sf.json.JSONArray;
-import sun.misc.BASE64Encoder;
 
 import java.io.*;
 import java.math.BigDecimal;
-import java.net.URI;
-import java.net.URL;
 import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -42,15 +41,13 @@ import java.util.*;
 public class EdocExchangeSendListener {
 
     private FileManager fileManager = new FileManagerImpl();
+    private EdocManager edocManager = (EdocManager) AppContext.getBean("edocManager");
 
     /**
      * 流程发起监听事件
      */
     @ListenEvent(event = CollaborationStartEvent.class, async = true)
     public void start(CollaborationStartEvent event) {
-        CtpAffair ctpAffair = event.getAffair();
-        Long summaryId = event.getSummaryId();
-        System.out.println("==================");
     }
 
     /**
@@ -59,7 +56,7 @@ public class EdocExchangeSendListener {
      * @param event
      */
     @ListenEvent(event = CollaborationAffairsAssignedEvent.class, async = true)
-    public void assigned(CollaborationAffairsAssignedEvent event) throws UnsupportedEncodingException {
+    public void assigned(CollaborationAffairsAssignedEvent event) throws UnsupportedEncodingException, EdocException {
         CtpAffair currentAffair = event.getCurrentAffair();
         Long summaryId = event.getSummaryId();
         Long affairId = currentAffair.getId();
@@ -76,7 +73,7 @@ public class EdocExchangeSendListener {
         String appId = prop.getAppId();
         String spk = StrUtil.nullToEmpty((String) objectMap.get("spk"));
         RSA rsa = new RSA(null, spk);
-        String userId = rsa.encryptBase64("31", CharsetUtil.CHARSET_UTF_8, KeyType.PublicKey);
+        String userId = rsa.encryptBase64(prop.getSendUserId(), CharsetUtil.CHARSET_UTF_8, KeyType.PublicKey);
         Map<String, String> headers = new HashMap<>();
         headers.put("appid", appId);
         headers.put("token", token);
@@ -113,7 +110,7 @@ public class EdocExchangeSendListener {
                 String appId = prop.getAppId();
                 String spk = StrUtil.nullToEmpty((String) objectMap.get("spk"));
                 RSA rsa = new RSA(null, spk);
-                String userId = rsa.encryptBase64("31", CharsetUtil.CHARSET_UTF_8, KeyType.PublicKey);
+                String userId = rsa.encryptBase64(prop.getSendUserId(), CharsetUtil.CHARSET_UTF_8, KeyType.PublicKey);
                 Map<String, String> headers = new HashMap<>();
                 headers.put("appid", appId);
                 headers.put("token", token);
@@ -193,7 +190,7 @@ public class EdocExchangeSendListener {
 
             Map<String, String> param = new HashMap<>();
             param.put("requestName", "集团发文");
-            param.put("workflowId", "24");
+            param.put("workflowId", pUtil.getWorkflowId());
             param.put("mainData", JSONArray.fromObject(mapList).toString());
 
 //        Map<String, Object> otherParams = new HashMap<>();
@@ -209,7 +206,7 @@ public class EdocExchangeSendListener {
             String appId = pUtil.getAppId();
             String spk = StrUtil.nullToEmpty((String) objectMap.get("spk"));
             RSA rsa = new RSA(null, spk);
-            String userId = rsa.encryptBase64("31", CharsetUtil.CHARSET_UTF_8, KeyType.PublicKey);
+            String userId = rsa.encryptBase64(pUtil.getSendUserId(), CharsetUtil.CHARSET_UTF_8, KeyType.PublicKey);
             Map<String, String> headers = new HashMap<>();
             headers.put("appid", appId);
             headers.put("token", token);
@@ -262,5 +259,9 @@ public class EdocExchangeSendListener {
 
     public void setFileManager(FileManager fileManager) {
         this.fileManager = fileManager;
+    }
+
+    public EdocManager getEdocManager() {
+        return edocManager;
     }
 }
