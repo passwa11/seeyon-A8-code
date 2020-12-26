@@ -153,6 +153,1163 @@ public class EdocResource extends BaseResource {
     private EdocMarkManager edocMarkManager = (EdocMarkManager) AppContext.getBean("edocMarkManager");
 
     /**
+     * [客开-徐矿公文撤销] 作者：shiZC
+     * @param param
+     * @return
+     * @throws Exception
+     */
+    @POST
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("repealExternal")
+    public Response repealExternal(Map<String, Object> param) throws Exception {
+        param.put("docBack", "cancelColl");
+        param.put("trackWorkflowType", "0");
+        Map<String, Object> returnMap = new HashMap<String, Object>();
+        User user = AppContext.getCurrentUser();
+        String[] _summaryIds = new String[]{};
+        String page = ParamUtil.getString(param, "page", "");
+        StringBuilder info = new StringBuilder();
+        /****/
+        //String _trackWorkflowType = request.getParameter("trackWorkflowType");
+        String _trackWorkflowType = ParamUtil.getString(param, "trackWorkflowType", "");
+
+        //String _affairId = request.getParameter("affairId");
+        String _affairId = ParamUtil.getString(param, "affairId", "");
+        //String repealComment = request.getParameter("repealComment"); // 撤销附言
+        String repealComment = ParamUtil.getString(param, "repealComment", ""); // 撤销附言
+        // lijl添加,为了区分是撤销流程还是取回
+        //String docBack = request.getParameter("docBack");// docBack取回/cancelColl撤销
+        String docBack = ParamUtil.getString(param, "docBack", "");// docBack取回/cancelColl撤销
+        // GOV-4082 发文流程撤销确定后没有反应。另发现撤销和退回拟稿人功能重复
+        if (Strings.isBlank(docBack)) {
+            docBack = "";
+        }
+
+        if ("workflowManager".equals(page)) {
+            //String[] summaryIdArr = { request.getParameter("summaryId") };
+            String[] summaryIdArr = {ParamUtil.getString(param, "summaryId", "")};
+            _summaryIds = summaryIdArr;
+        } else {
+            //_summaryIds = request.getParameterValues("id");
+            //id已，拼接
+            _summaryIds = ParamUtil.getString(param, "id", "").split(",");
+            if ("dealrepeal".equals(page)) {
+                //repealComment = request.getParameter("content");
+                repealComment = ParamUtil.getString(param, "content", "");
+            }
+        }
+
+        boolean isRelieveLock = true;
+        String processId = "";
+        Long summaryIdLong = null;
+        EdocSummary summary = null;
+        try {
+
+            int result = 0;
+            List<CtpAffair> doneList = null;
+            // lijl添加空值判断,如果为空则提示"流程撤销错误!"
+            if (_summaryIds != null) {
+                if (_summaryIds.length > 0) {
+
+                    CtpAffair _affair = null;
+                    // affair状态校验需要放到 获取processId之后进行，因为还需要在finally中进行解锁
+                    if (Strings.isNotBlank(_affairId)) {
+                        _affair = affairManager.get(Long.parseLong(_affairId));
+                        // 当公文不是待办/在办的状态时，不能撤销操作
+                        if (_affair.getState() != StateEnum.col_pending.key()
+                                || _affair.getState() != StateEnum.col_sent.key()) {
+                            String msg = EdocHelper.getErrorMsgByAffair(_affair);
+                            if (Strings.isNotBlank(msg)) {
+                                StringBuffer sb = new StringBuffer();
+                                sb.append("alert('" + msg + "');");
+                                sb.append("parent.doEndSign_dealrepeal('true');");
+                                //rendJavaScript(response, sb.toString());
+                                return null;
+                            }
+                        }
+                    }
+
+                    for (int i = 0; i < _summaryIds.length; i++) {
+                        Long summaryId = Long.parseLong(_summaryIds[i]);
+                        summary = edocManager.getEdocSummaryById(summaryId, false);
+                        processId = summary.getProcessId();
+                        summaryIdLong = summary.getId();
+
+                        if (summary.getFinished()) {
+                            result = 1;
+                        }
+                        // else if(summary.getHasArchive()){result=2;}
+                        else {
+                            Map<String, Object> conditions = new HashMap<String, Object>();
+                            conditions.put("objectId", summary.getId());
+                            conditions.put("app", EdocUtil.getAppCategoryByEdocType(summary.getEdocType()).key());
+                            List<Integer> states = new ArrayList<Integer>();
+                            states.add(StateEnum.col_done.key());
+                            states.add(StateEnum.col_stepStop.key());
+
+                            conditions.put("state", states);
+                            doneList = affairManager.getByConditions(null, conditions);
+                            if ((doneList != null && doneList.size() > 0) && "docBack".equals(docBack)) {// 处理中不能取回
+                                result = 3;// 已有人员
+                            } else {
+                                boolean isCancel = true;
+                                // 收文撤销，取回，数据到达待分发。
+                                if (1 == summary.getEdocType()) {
+                                    // affairManager.deleteByObject(ApplicationCategoryEnum.edocRecDistribute,
+                                    // summary.getId());
+                                    Map<String, Object> distributerConditions = new HashMap<String, Object>();
+                                    distributerConditions.put("objectId", summary.getId());
+                                    distributerConditions.put("app", ApplicationCategoryEnum.edocRecDistribute.key());
+                                    List<Integer> distributerStates = new ArrayList<Integer>();
+                                    distributerStates.add(StateEnum.col_done.key());
+                                    distributerConditions.put("state", distributerStates);
+                                    List<CtpAffair> distributerDoneList = affairManager.getByConditions(null,
+                                            distributerConditions);
+                                    for (int k = 0; k < distributerDoneList.size(); k++) {
+                                        distributerDoneList.get(k).setState(StateEnum.col_pending.key());
+                                        affairManager.updateAffair(distributerDoneList.get(k));
+                                    }
+                                    EdocRegister edocRegister = edocRegisterManager
+                                            .findRegisterByDistributeEdocId(summaryId);
+                                    if (edocRegister != null) {
+                                        edocRegister.setDistributeDate(null);
+                                        // GOV-3328
+                                        // （需求检查）【公文管理】-【收文管理】-【分发】，已分发纸质公文撤销后到待分发列表中了，应该在草稿箱中
+                                        if ("docBack".equals(docBack)) {// 取回
+                                            edocRegister.setDistributeEdocId(-1l);
+                                            edocRegister.setDistributeState(
+                                                    EdocNavigationEnum.EdocDistributeState.WaitDistribute.ordinal());// 将状态设置为"未分发"
+                                        } else {
+                                            // GOV-4848.【公文管理】-【收文管理】，收文分发员在已分发列表将已分发的收文删除，收文待办人处理时退回公文，退回的数据不见了
+                                            // start
+                                            edocRegister.setDistributeEdocId(summaryId);
+                                            edocRegister.setDistributeState(
+                                                    EdocNavigationEnum.EdocDistributeState.DraftBox.ordinal());// 将状态设置为"草稿"
+                                            // GOV-4848.【公文管理】-【收文管理】，收文分发员在已分发列表将已分发的收文删除，收文待办人处理时退回公文，退回的数据不见了
+                                            // end
+                                        }
+
+                                        // 撤销与取回时，登记对象退回状态为：0
+                                        edocRegister.setIsRetreat(0);// 非退回
+                                        edocRegisterManager.update(edocRegister);
+
+                                        // 删除收文(暂物理删除) 撤销/取回都要删除分发数据
+                                        summary.setState(CollaborationEnum.flowState.deleted.ordinal());
+
+                                    } else {
+                                        EdocRecieveRecord record = recieveEdocManager
+                                                .getEdocRecieveRecordByReciveEdocId(summaryId);
+                                        if (record != null) {
+                                            // 删除收文(暂物理删除) 撤销/取回都要删除分发数据
+                                            summary.setState(CollaborationEnum.flowState.deleted.ordinal());
+                                        } else {
+                                            if ("docBack".equals(docBack)) {
+                                                result = 4;
+                                                isCancel = false;
+                                            }
+                                        }
+                                    }
+                                }
+                                // 可以取回或撤销
+                                if (isCancel) {
+                                    // OA-19935
+                                    // 客户bug验证：流程是gw1，gw11，m1，串发，m1撤销，gw1在待发直接查看（不是编辑态），文单上丢失了撤销的意见
+                                    EdocOpinion repealOpinion = new EdocOpinion();
+                                    if (Strings.isNotBlank(_affairId)) {
+                                        repealOpinion.setAffairId(Long.parseLong(_affairId));
+                                    }
+                                    //String policy = request.getParameter("policy");
+                                    String policy = ParamUtil.getString(param, "policy", "");
+                                    repealOpinion.setPolicy(policy);
+
+                                    repealOpinion.setNeedRepealRecord(_trackWorkflowType);
+                                    result = edocManager.cancelSummary(user.getId(), summaryId, _affair, repealComment,
+                                            docBack, repealOpinion);
+                                }
+                            }
+                        }
+                        if (result == 1 || result == -1
+                                || ((result == 3 || result == 4) && "docBack".equals(docBack))) {
+                            info.append("《").append(summary.getSubject()).append("》");
+                        } else {
+                            try {
+                                // 已发撤销后，需要删除已经发出去的全文检索文件
+                                if (AppContext.hasPlugin("index")) {
+                                    indexManager.delete(summary.getId(), ApplicationCategoryEnum.edoc.getKey());
+                                }
+                            } catch (Exception e) {
+                                LOGGER.error("撤销公文流程，更新全文检索异常", e);
+                            }
+                            // 撤销流程事件
+                            CollaborationCancelEvent event = new CollaborationCancelEvent(this);
+                            event.setSummaryId(summary.getId());
+                            event.setUserId(user.getId());
+                            event.setMessage(repealComment);
+                            EventDispatcher.fireEvent(event);
+                            // 发送消息给督办人，更新督办状态，并删除督办日志、删除督办记录、删除催办次数
+
+                            superviseManager.updateStatus2Cancel(summaryId);
+                        }
+                        try {
+                            // 解锁正文文单
+                            unLock(user.getId(), summary);
+                        } catch (Exception e) {
+                            LOGGER.error("解锁正文文单抛出异常：", e);
+                        }
+                    }
+                } else {
+                    String alertStr = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
+                            "edoc.back.flow.error");
+					/*out.println("<script>");
+					out.println("<!--");
+					out.println("alert('" + alertStr + "');");
+					out.println("//-->");
+					out.println("</script>");
+					return null;*/
+                    returnMap.put("returnValue", false);
+                    returnMap.put("errMsg", alertStr);
+                    return getResponse(returnMap);
+                }
+            } else {
+                String alertStr = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
+                        "edoc.back.flow.error");
+				/*out.println("<script>");
+				out.println("<!--");
+				out.println("alert('" + alertStr + "');");
+				out.println("//-->");
+				out.println("</script>");
+				return null;*/
+                returnMap.put("returnValue", false);
+                returnMap.put("errMsg", alertStr);
+                return getResponse(returnMap);
+            }
+
+            //super.printV3XJS(out);
+            if (info.length() > 0) {
+                String alertStr = "";
+                // 取回
+                if ("docBack".equals(docBack)) {
+                    if (result == 1) {
+                        // 流程已结束
+                        alertStr = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
+                                "edoc.back.state.end.alert", info.toString());
+                    } else if (result == 3) {// 取回
+                        // 公文${0}正在处理中，不能进行取回操作。
+                        alertStr = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
+                                "edoc.is.running", info.toString());
+                    } else if (result == 4) {// 取回
+                        // 纸质收文{0}不允许进行取回操作
+                        alertStr = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
+                                "edoc.rec.notBack", info.toString());
+                    } else if (result == -1) {
+                        alertStr = ResourceUtil.getString("edoc.alert.flow.cannotTakeback", info.toString());// 公文"+info.toString()+"后面节点任务事项已处理完成，不能取回
+                    } else if (result == -2) {
+                        alertStr = ResourceUtil.getString("edoc.alert.flow.cannotTakeback1", info.toString());// 公文"+info.toString()+"当前任务事项所在节点为知会节点，不能取回
+                    }
+                }
+                // 撤销
+                else {
+                    if (result == 1) {
+                        // 流程已结束
+                        alertStr = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
+                                "edoc.state.end.alert", info.toString());
+                    }
+                }
+
+                // 很奇怪，调用ResourceBundleUtil.getString之后，会在提示中加入$, 先暂时这样处理
+                // changyi add
+                if (alertStr.indexOf("$") > -1) {
+                    alertStr = alertStr.replace("$", "");
+                }
+
+                if (((result == 3 || result == 4) && "docBack".equals(docBack)) || result == 1) {
+					/*out.println("<script>");
+					out.println("<!--");
+					out.println("alert(\"" + StringEscapeUtils.escapeJavaScript(alertStr) + "\");");
+					out.println("//-->");
+					out.println("</script>");*/
+                    returnMap.put("returnValue", false);
+                    returnMap.put("errMsg", StringEscapeUtils.escapeJavaScript(alertStr));
+                    return getResponse(returnMap);
+                }
+                return null;
+            }
+        } catch (Exception e) {
+            LOGGER.error("撤销流程时抛出异常：", e);
+        } finally {
+            // 目前撤销只能 一次执行一条
+            if (isRelieveLock) {
+                this.officeLockManager.unlockAll(summaryIdLong);
+                wapi.releaseWorkFlowProcessLock(processId, String.valueOf(AppContext.currentUserId()));
+                wapi.releaseWorkFlowProcessLock(String.valueOf(summaryIdLong),
+                        String.valueOf(AppContext.currentUserId()));
+
+                try {
+                    unLock(user.getId(), summary);
+                } catch (Exception e) {
+                    LOGGER.error("解锁正文文单抛出异常：", e);
+                }
+            }
+        }
+        //if ("workflowManager".equals(page)) {
+			/*out.println("<script>");
+			out.println("if(window.dialogArguments){"); // 弹出
+			out.println("  window.returnValue = \"true\";");
+			out.println("  window.close();");
+			out.println("}else{");
+			out.println("  parent.ok();");
+			out.println("}");
+			out.println("</script>");
+			out.close();
+			return null;*/
+        returnMap.put("returnValue", true);
+        returnMap.put("errMsg", StringEscapeUtils.escapeJavaScript(page));
+        return getResponse(returnMap);
+        //} else {
+			/*out.println("<script>");
+			out.println("if(window.dialogArguments){"); // 弹出
+			out.println("  window.returnValue = \"true\";");
+			out.println("  window.close();");
+			out.println("}else{");
+			if ("dealrepeal".equals(page)) {
+				// GOV-2873 【公文管理】-【发文管理】-【待办】，处理待办公文时点击'撤销'报错
+				out.println("parent.doEndSign_dealrepeal();");
+			} else {
+				out.println(" parent.location.href =  parent.location.href; ");
+			}
+			out.println("}");
+			out.println("</script>");
+			return null;*/
+			/*returnMap.put("returnValue", false);
+			returnMap.put("errMsg","处理待办公文时点击 撤销 报错" );
+			return getResponse(returnMap);
+		}*/
+    }
+
+    /**
+     * [客开-徐矿集团] 公文发送接口 作者：shiZC
+     * @param param
+     * @return
+     * @throws BusinessException
+     */
+    @POST
+    @Produces({MediaType.APPLICATION_JSON})
+    @Path("sendExternal")
+    public Response sendExternal(Map<String, Object> param) throws BusinessException {
+        param.put("__ActionToken", "SEEYON_A8");
+        param.put("caseId", "-1");
+        param.put("deadlineSelect", "0");
+        param.put("edocExchangeType", "0");
+        param.put("edocType", "0");
+        param.put("edocType_mark", "0");
+        param.put("exchangeDeptType", "Creater");
+        param.put("fromSend", "true");
+        param.put("hasArchive", "false");
+        param.put("isModifyAtt", "0");
+        param.put("isModifyContent", "0");
+        param.put("isModifyForm", "0");
+        param.put("isTrack", "1");
+        param.put("isUniteSend", "false");
+        param.put("my:create_person", "test1");
+        param.put("my:secret_level", "3");
+        param.put("sVisorsFromTemplate", "false");
+        param.put("standardDuration", "0");
+        param.put("taohongriqiSwitch", "true");
+        param.put("trackRange", "1");
+        param.put("workflow_last_input", "false");
+        User user = AppContext.getCurrentUser();
+        Map<String, Object> returnMap = new HashMap<String, Object>();
+        //String processTypeStr = request.getParameter("processType");
+        String processTypeStr = ParamUtil.getString(param, "page", "");
+        //String workflowNodePeoplesInput = request.getParameter("workflow_node_peoples_input");
+        String workflowNodePeoplesInput = ParamUtil.getString(param, "workflow_node_peoples_input", "");
+        //String workflowNodeConditionInput = request.getParameter("workflow_node_condition_input");
+        String workflowNodeConditionInput = ParamUtil.getString(param, "workflow_node_condition_input", "");
+        Long processType = 0L;
+        if (processTypeStr != null && !"".equals(processTypeStr)) {
+            processType = Long.parseLong(processTypeStr);
+        }
+        /**
+         * 表单ID
+         */
+        //String etable = request.getParameter("edoctable");
+        String etable = ParamUtil.getString(param, "edoctable", "");
+        long formId = 0;
+        if (Strings.isNotBlank(etable)) {
+            formId = Long.parseLong(etable);
+        }
+        // 检查公文单是否已经被删除。“当前公文单不存在，可能已经被删除，请检查。”
+        boolean isExsit = edocFormManager.isExsit(formId);
+        if (!isExsit) {
+            StringBuffer sb = new StringBuffer();
+            String errMsg = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
+                    "alert_edocform_isnotexsit");
+            sb.append("alert('" + StringEscapeUtils.escapeJavaScript(errMsg) + "');");
+            sb.append("history.back();");
+            returnMap.put("returnValue", false);
+            returnMap.put("errMsg", sb.toString());
+            return getResponse(returnMap);
+        }
+
+        // 取得公文发送人的信息
+        String comm = ParamUtil.getString(param, "comm", "");
+        // 来文登记,更新登记时间，给签收人发送消息
+		/*long registerId = Strings.isBlank(request.getParameter("registerId")) ? -1
+				: Long.parseLong(request.getParameter("registerId"));*/
+        long registerId = Strings.isBlank(ParamUtil.getString(param, "registerId", "")) ? -1
+                : Long.parseLong(ParamUtil.getString(param, "registerId", ""));
+        Long agentToId = null;
+        EdocRegister edocRegister = null;
+        //String backBoxToEdit = request.getParameter("backBoxToEdit");
+        String backBoxToEdit = ParamUtil.getString(param, "backBoxToEdit", "");
+        //String recieveIdStr = request.getParameter("recieveId");
+        String recieveIdStr = ParamUtil.getString(param, "recieveId", "");
+        //String edocType = request.getParameter("edocType");
+        String edocType = ParamUtil.getString(param, "edocType", "");
+
+        EdocSummary edocSummary = new EdocSummary();
+        edocSummary.setSubject(ParamUtil.getString(param, "subject", ""));
+        edocSummary.setText1(ParamUtil.getString(param, "my:text1", ""));
+        edocSummary.setSendUnit(ParamUtil.getString(param, "my:send_unit", ""));
+        edocSummary.setSendUnitId(ParamUtil.getString(param, "my:send_unit_id", ""));
+        edocSummary.setDocMark(ParamUtil.getString(param, "my:doc_mark", ""));
+        edocSummary.setCreatePerson(ParamUtil.getString(param, "my:create_person", ""));//创建人
+        edocSummary.setSendDepartmentId(ParamUtil.getString(param, "my:send_department_id", ""));
+        edocSummary.setSendDepartment(ParamUtil.getString(param, "my:send_department", ""));
+        edocSummary.setIdIfNew();
+        //bind(request, edocSummary);
+
+        if ("1".equals(edocType)) {
+            if (registerId != -1) {
+                edocRegister = edocRegisterManager.findRegisterById(registerId);
+            } else if (Strings.isNotBlank(recieveIdStr)) {
+                edocRegister = edocRegisterManager.findRegisterByRecieveId(Long.parseLong(recieveIdStr));
+            }
+
+            if (edocRegister != null) {
+                edocSummary.setSendTo(edocRegister.getSendTo());
+            }
+
+
+        }
+
+        // 因为DataUtil中requestToSummary方法很多地方都在调用，公文发送性能优化时在requestToSummary内部将获取公文单的公文元素保存进了ThreadLocal中
+        // 需要在这里向ThreadLocal中设置一个开关，当该方法调用requestToSummary时才将公文元素保存进了ThreadLocal中
+        SharedWithThreadLocal.setCanUse();
+        //DataUtil.requestToSummary(request, edocSummary, formId);
+
+        Long lockUserId = edocLockManager.canGetLock(edocSummary.getSubject(), user.getId());
+        if (lockUserId != null) {
+            LOGGER.error(AppContext.currentAccountName() + "不能获取到map缓存锁，不能执行操作finishWorkItem,summaryId" + edocSummary.getId() + "subject:" + edocSummary.getSubject() + " userId:" + user.getId());
+            return null;
+        }
+
+        String lockDocMarkSubject = "";
+        String lockDocMark = "";
+        try {
+            // ***快速发文相关变量 start***
+            boolean isQuickSend = false; // 快速发文标识
+			/*int edocExchangeType = request.getParameter("edocExchangeType") == null ? -1
+					: Integer.parseInt(request.getParameter("edocExchangeType"));*/
+            int edocExchangeType = ParamUtil.getString(param, "edocExchangeType", "") == null ? -1
+                    : Integer.parseInt(ParamUtil.getString(param, "edocExchangeType", ""));
+            //String edocMangerID = request.getParameter("memberList");
+            String edocMangerID = ParamUtil.getString(param, "memberList", "");
+            String quickSendPigholeInfo = ""; // 快速发文归档成功后的提示
+            // ***快速发文相关变量 end***
+
+            //String deadlineDatetime = (String) request.getParameter("deadLineDateTime");
+            String deadlineDatetime = ParamUtil.getString(param, "deadLineDateTime", "");
+            if (!isQuickSend && Strings.isNotBlank(deadlineDatetime)) {
+                edocSummary.setDeadlineDatetime(DateUtil.parse(deadlineDatetime, "yyyy-MM-dd HH:mm"));
+            }
+
+            // 新建公文页面流程期限这里加一个隐藏域，后台保存的是这里的值，因为如果从模板加载设了流程期限的话，就disabled了，后台就取不到值了
+            //String deadline2 = request.getParameter("deadline2");
+            String deadline2 = ParamUtil.getString(param, "deadline2", "");
+
+            // OA-20265 调用格式模板，发送后报错。
+            if (!isQuickSend && Strings.isNotBlank(deadline2)) {
+                edocSummary.setDeadline(Long.parseLong(deadline2));
+            }
+            //String advanceRemind2 = request.getParameter("advanceRemind2");
+            String advanceRemind2 = ParamUtil.getString(param, "advanceRemind2", "");
+            if (!isQuickSend && Strings.isNotBlank(advanceRemind2)) {
+                edocSummary.setAdvanceRemind(Long.parseLong(advanceRemind2));
+            }
+
+            // 设置公文类型,党务还是政务的
+            //String edocGovType = request.getParameter("edocGovType");
+            String edocGovType = ParamUtil.getString(param, "edocGovType", "");
+            if ("party".equals(edocGovType)) {
+                //String party = request.getParameter("my:party");
+                String party = ParamUtil.getString(param, "my:party", "");
+                edocSummary.setParty(party);
+            } else if ("administrative".equals(edocGovType)) {
+                //String administrative = request.getParameter("my:administrative");
+                String administrative = ParamUtil.getString(param, "my:administrative", "");
+                edocSummary.setAdministrative(administrative);
+            }
+
+            /***** puyc**区分 分发和拟文 分发，收文的summaryId *****/
+            //String recSummaryIdStr = request.getParameter("recSummaryIdVal");
+            String recSummaryIdStr = ParamUtil.getString(param, "recSummaryIdVal", "");
+            if (Strings.isNotBlank(recSummaryIdStr) && !"-1".equals(recSummaryIdStr)) {
+                List<EdocSummaryRelation> list = this.edocSummaryRelationManager
+                        .findEdocSummaryRelation(Long.parseLong(recSummaryIdStr));
+                if (list != null) {
+                    this.edocSummaryRelationManager.updateEdocSummaryRelation(list, Long.parseLong(recSummaryIdStr),
+                            edocSummary.getId());
+                }
+            }
+            /***** puyc**区分 分发和拟文 分发，收文的summaryId end *****/
+
+            // OA-40064一个没有发文单位公文元素的公文进行公文交换后，test02在发文登记簿中按发文单位统计，列表中显示为空，但是发送单和签收单都显示了发文单位
+            // 当发文单没有 发文单位 公文元素时，也需要summary中设置发文单位
+            // OA-68915 签报拟文时文单上没有发文部门元素，发送后没有保存发文部门
+			/*if (Strings.isBlank(request.getParameter("my:send_unit"))) {
+				edocSummary = setEdocDefaultSendInfo(edocSummary, user, "0");
+			}*/
+            if (Strings.isBlank(ParamUtil.getString(param, "my:send_unit", ""))) {
+                edocSummary = setEdocDefaultSendInfo(edocSummary, user, "0");
+            }
+            //if (Strings.isBlank(request.getParameter("my:send_department"))) {
+            if (Strings.isBlank(ParamUtil.getString(param, "my:send_department", ""))) {
+                edocSummary = setEdocDefaultSendInfo(edocSummary, user, "1");
+            }
+
+            // OA-32875 系统管理员-枚举管理，公文类型、行文类型枚举引用之后显示为否（注意查看一下OA-29865中的修改方法）
+            // 更新系统枚举引用
+            //EdocHelper.updateEnumItemRef(request);
+
+            // OA-17655 拟文时设置了跟踪，发送后被回退，在待发中编辑，进入到拟文页面，跟踪被取消了。应该保留原来的设置。
+            // 设置summary中的跟踪，因为DataUtil.requestToSummary方法中取跟踪值有点问题，但该方法在处理回退时也被调用了，修改害怕引起其他问题
+            //String isTrack = request.getParameter("isTrack");
+            String isTrack = ParamUtil.getString(param, "isTrack", "");
+            if (Strings.isNotBlank(isTrack)) {
+                edocSummary.setCanTrack(Integer.parseInt(isTrack));
+            }
+
+            //String templeteId = request.getParameter("templeteId");
+            String templeteId = ParamUtil.getString(param, "templeteId", "");
+            if (Strings.isNotBlank(templeteId)) {
+                CtpTemplate _curTemplate = new CtpTemplate();
+                try {
+                    _curTemplate = templeteManager.getCtpTemplate(Long.parseLong(templeteId));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                if (_curTemplate.getFormParentid() != null && !_curTemplate.isSystem()) {
+                    edocSummary.setTempleteId(_curTemplate.getFormParentid());
+                } else {
+                    edocSummary.setTempleteId(Long.parseLong(templeteId));
+                }
+                if (null != _curTemplate && !_curTemplate.isSystem() && null == _curTemplate.getFormParentid()) {
+                    templeteManager.updateTempleteHistory(user.getId(), _curTemplate.getId());
+                    edocSummary.setTempleteId(null);
+                }
+            }
+
+            // 将公文流水号（内部文号）自动增1
+            // add by handy,2007-10-16
+            // if("new_form".equals(comm))
+            // {
+            // edocInnerMarkDefinitionManager.getInnerMark(edocSummary.getEdocType(),
+            // user.getAccountId(), true);
+            // }
+            // edocSummary.setSerialNo(serialNo);
+
+            List<Long> markDefinitionIdList = new ArrayList<Long>();
+            // 第一个公文文号
+            EdocMarkModel em = EdocMarkModel.parse(edocSummary.getDocMark());
+            if (em != null) {
+                markDefinitionIdList.add(em.getMarkDefinitionId());
+            }
+            // 第二个公文文号
+            em = EdocMarkModel.parse(edocSummary.getDocMark2());
+            if (em != null) {
+                markDefinitionIdList.add(em.getMarkDefinitionId());
+            }
+            // 内部文号
+            em = EdocMarkModel.parse(edocSummary.getSerialNo());
+            if (em != null) {
+                markDefinitionIdList.add(em.getMarkDefinitionId());
+            }
+            if (Strings.isNotEmpty(markDefinitionIdList)) {
+
+                List<EdocMarkDefinition> markDefinitions = edocMarkDefinitionManager
+                        .queryMarkDefinitionListById(markDefinitionIdList);
+
+                // ----------性能优化，存入SharedWithThreadLocal
+                SharedWithThreadLocal.setMarkDefinition(markDefinitions);
+            }
+
+            // 处理公文文号
+            // 如果公文文号为空，不做任何处理
+            String docMark = edocSummary.getDocMark();
+            if (Strings.isNotBlank(edocSummary.getDocMark()) && edocSummary.getEdocType() == com.seeyon.v3x.edoc.util.Constants.EDOC_FORM_TYPE_SIGN) {
+                lockDocMarkSubject = edocMarkLockManager.canGetLock(edocSummary.getDocMark(), edocSummary.getSubject());
+                lockDocMark = edocSummary.getDocMark();
+                if (Strings.isNotBlank(lockDocMarkSubject)) {
+                    EdocMarkModel emark = EdocMarkModel.parse(docMark);
+                    String errMsg = "公文《" + lockDocMarkSubject + "》占用了文号《" + emark.getMark() + "》,请刷新重试";
+                    StringBuffer str = new StringBuffer("");
+                    str.append("alert('" + StringEscapeUtils.escapeJavaScript(errMsg) + "');");
+                    str.append("history.back();");
+                    returnMap.put("returnValue", false);
+                    returnMap.put("errMsg", str.toString());
+                    return getResponse(returnMap);
+                }
+            }
+            if (Strings.isNotBlank(edocSummary.getSerialNo()) && edocSummary.getEdocType() == com.seeyon.v3x.edoc.util.Constants.EDOC_FORM_TYPE_SIGN) {
+                lockDocMark = edocSummary.getSerialNo();
+                lockDocMarkSubject = edocMarkLockManager.canGetLock(edocSummary.getSerialNo(), edocSummary.getSubject());
+                if (Strings.isNotBlank(lockDocMarkSubject)) {
+                    EdocMarkModel serialNo = EdocMarkModel.parse(edocSummary.getSerialNo());
+                    String errMsg = "公文《" + lockDocMarkSubject + "》占用了文号《" + serialNo.getMark() + "》,请刷新重试";
+                    StringBuffer str = new StringBuffer("");
+                    str.append("alert('" + StringEscapeUtils.escapeJavaScript(errMsg) + "');");
+                    str.append("history.back();");
+                    returnMap.put("returnValue", false);
+                    returnMap.put("errMsg", str.toString());
+                    return getResponse(returnMap);
+                }
+            }
+            if (Strings.isNotBlank(edocSummary.getDocMark2()) && edocSummary.getEdocType() == com.seeyon.v3x.edoc.util.Constants.EDOC_FORM_TYPE_SIGN) {
+                lockDocMarkSubject = edocMarkLockManager.canGetLock(edocSummary.getDocMark2(), edocSummary.getSubject());
+                lockDocMark = edocSummary.getDocMark2();
+                if (Strings.isNotBlank(lockDocMarkSubject)) {
+                    EdocMarkModel mark2 = EdocMarkModel.parse(edocSummary.getDocMark2());
+                    String errMsg = "公文《" + lockDocMarkSubject + "》占用了文号《" + mark2.getMark() + "》,请刷新重试";
+                    StringBuffer str = new StringBuffer("");
+                    str.append("alert('" + StringEscapeUtils.escapeJavaScript(errMsg) + "');");
+                    str.append("history.back();");
+                    returnMap.put("returnValue", false);
+                    returnMap.put("errMsg", str.toString());
+                    return getResponse(returnMap);
+                }
+            }
+            try {
+                docMark = this.registDocMark(edocSummary.getId(), docMark, 1, edocSummary.getEdocType(), false,
+                        EdocEnum.MarkType.edocMark.ordinal());
+            } catch (EdocMarkHistoryExistException e) {
+                // 签报提交时如果文号存在
+                // OA-47875签报拟文时使用发文封发完的公文文号，发送报错
+                String errMsg = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
+                        e.getMessage());
+                StringBuffer str = new StringBuffer("");
+                str.append("alert('" + errMsg + "');");
+                str.append("history.back();");
+                returnMap.put("returnValue", false);
+                returnMap.put("errMsg", str.toString());
+                return getResponse(returnMap);
+            }
+            if (docMark != null) {
+                docMark = docMark.replaceAll(String.valueOf((char) 160), String.valueOf((char) 32));
+                edocSummary.setDocMark(docMark);
+            }
+
+            // 处理第二个公文文号
+            docMark = edocSummary.getDocMark2();
+            try {
+                docMark = this.registDocMark(edocSummary.getId(), docMark, 2, edocSummary.getEdocType(), false,
+                        EdocEnum.MarkType.edocMark.ordinal());
+            } catch (EdocMarkHistoryExistException e) {
+                String errMsg = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
+                        e.getMessage());
+                StringBuffer str = new StringBuffer("");
+                str.append("alert('" + errMsg + "');");
+                str.append("history.back();");
+                returnMap.put("returnValue", false);
+                returnMap.put("errMsg", errMsg);
+                return getResponse(returnMap);
+            }
+            if (docMark != null) {
+                docMark = docMark.replaceAll(String.valueOf((char) 160), String.valueOf((char) 32));
+                edocSummary.setDocMark2(docMark);
+            }
+
+            // 内部文号
+            String serialNo = edocSummary.getSerialNo();
+            serialNo = this.registDocMark(edocSummary.getId(), serialNo, 3, edocSummary.getEdocType(), false,
+                    EdocEnum.MarkType.edocInMark.ordinal());
+            if (serialNo != null) {
+                serialNo = serialNo.replaceAll(String.valueOf((char) 160), String.valueOf((char) 32));
+                edocSummary.setSerialNo(serialNo);
+            }
+
+            Map<String, Object> options = new HashMap<String, Object>();
+
+            EdocEnum.SendType sendType = EdocEnum.SendType.normal;
+
+            // 是否重复发起
+            //if (null != request.getParameter("resend") && !"".equals(request.getParameter("resend"))) {
+            if (null != ParamUtil.getString(param, "resend", "") && !"".equals(ParamUtil.getString(param, "resend", ""))) {
+                sendType = EdocEnum.SendType.resend;
+            }
+
+            // 是否转发
+            //if (null != request.getParameter("forward") && !"".equals(request.getParameter("forward"))) {
+            if (null != ParamUtil.getString(param, "forward", "") && !"".equals(ParamUtil.getString(param, "forward", ""))) {
+                sendType = EdocEnum.SendType.forward;
+                // 是否转发意见
+                //boolean isForwardOpinion = "true".equals(request.getParameter("isForwardOpinion"));
+                boolean isForwardOpinion = "true".equals(ParamUtil.getString(param, "isForwardOpinion", ""));
+                // 转发人附言
+                //String additionalComment = request.getParameter("additionalComment");
+                String additionalComment = ParamUtil.getString(param, "additionalComment", "");
+                // 转发人追加的附件
+
+                options.put("isForwardOpinion", isForwardOpinion);
+                options.put("additionalComment", additionalComment);
+            }
+
+            //String note = request.getParameter("note");// 发起人附言
+            String note = ParamUtil.getString(param, "note", "");// 发起人附言
+            EdocOpinion senderOninion = new EdocOpinion();
+            senderOninion.setContent(note);
+            senderOninion.setIdIfNew();
+            //String trackMode = request.getParameter("isTrack");
+            String trackMode = ParamUtil.getString(param, "isTrack", "");
+            boolean track = (!isQuickSend && "1".equals(trackMode)) ? true : false;
+            // 跟踪
+            //String trackMembers = request.getParameter("trackMembers");
+            String trackMembers = ParamUtil.getString(param, "trackMembers", "");
+            //String trackRange = request.getParameter("trackRange");
+            String trackRange = ParamUtil.getString(param, "trackRange", "");
+            // 如果设置了跟踪指定人，但是指定人为空，则把跟踪设置为false
+            if (Strings.isNotBlank(trackRange) && "0".endsWith(trackRange) && Strings.isBlank(trackMembers)) {
+                track = false;
+            }
+            senderOninion.affairIsTrack = track;
+            senderOninion.setAttribute(1);
+            senderOninion.setIsHidden(false);
+            senderOninion.setCreateUserId(user.getId());
+            senderOninion.setCreateTime(new Timestamp(System.currentTimeMillis()));
+            //senderOninion.setPolicy(request.getParameter("policy"));
+            senderOninion.setPolicy(ParamUtil.getString(param, "policy", ""));
+            senderOninion.setOpinionType(EdocOpinion.OpinionType.senderOpinion.ordinal());
+            senderOninion.setNodeId(0);
+
+            EdocBody body = new EdocBody();
+            //bind(request, body);
+            body.setId(UUIDLong.longUUID());
+            //String tempStr = request.getParameter("bodyType");
+            String tempStr = ParamUtil.getString(param, "bodyType", "");
+            body.setContentType(tempStr);
+            //Date bodyCreateDate = Datetimes.parseDatetime(request.getParameter("bodyCreateDate"));
+            Date bodyCreateDate = Datetimes.parseDatetime(ParamUtil.getString(param, "bodyCreateDate", ""));
+            if (bodyCreateDate != null) {
+                body.setCreateTime(new Timestamp(bodyCreateDate.getTime()));
+            }
+            // -------性能优化，该方法在新建公文单发送，编辑发送，退件箱编辑后发送都会调用，希望在新建公文发送时就不执行删除附件操作了
+            //String hasSummaryId = request.getParameter("newSummaryId");
+            String hasSummaryId = ParamUtil.getString(param, "newSummaryId", "");
+            boolean isNewSent = false; // 是否新建公文发送
+            if (Strings.isBlank(hasSummaryId)) {
+                isNewSent = true;
+            }
+
+            // 来文登记,更新登记时间，给签收人发送消息
+            if (Strings.isNotBlank(recieveIdStr)) {
+                EdocRecieveRecord record = recieveEdocManager.getEdocRecieveRecord(Long.parseLong(recieveIdStr));
+                if (record != null) {
+                    // 获得登记人
+                    long registerUserId = record.getRegisterUserId();
+                    // 设置当前登记的 被代理人
+                    if (registerUserId != user.getId().longValue()) {
+                        agentToId = registerUserId;
+                    }
+                    long edocId = record.getEdocId();
+                    EdocSummary sendEdoc = edocManager.getEdocSummaryById(edocId, false);
+                    // BUG-普通-V5-V5.1SP1-2015年8月月度修复包-20150930012635-打开待登记的公文，修改来文单位之后提交流程，查看来文单位还是修改之前的状态-唐桂林-20151012
+                    //if (request.getParameter("my:send_unit") == null) {
+                    if (ParamUtil.getString(param, "my:send_unit", "") == null || ParamUtil.getString(param, "my:send_unit", "") == "") {
+                        String sendUnit = sendEdoc.getSendUnit();
+                        String sendUnit2 = sendEdoc.getSendUnit2();
+                        if (Strings.isNotBlank(sendUnit2) && !sendUnit2.equals(sendUnit)) {
+                            sendUnit += "," + sendUnit2;
+                        }
+                        edocSummary.setSendUnit(sendUnit);
+                    }
+                }
+            }
+
+            //String waitRegister_recieveId = request.getParameter("waitRegister_recieveId");
+            String waitRegister_recieveId = ParamUtil.getString(param, "waitRegister_recieveId", "");
+            /**
+             * 获得A8所需要签收id（各种场景：待登记中登记，从待发中编辑登记等）
+             */
+            recieveIdStr = RecRelationHandlerFactory.getHandler().getRecieveIdBeforeSendRec(edocSummary, recieveIdStr,
+                    waitRegister_recieveId, isNewSent);
+
+            String isG6 = SystemProperties.getInstance().getProperty("edoc.isG6");
+
+            // 删除原有附件
+            if (!isNewSent && !edocSummary.isNew()) {
+                this.attachmentManager.deleteByReference(edocSummary.getId(), edocSummary.getId());
+            }
+            // ---------------------- start ----------------------
+            // OA-65581 发起人从已发中撤销后重新发起，发现催办日志没有清空上一轮催办的记录(与协同一致，指定回退的不清)
+            CtpAffair sendAffair = affairManager.getSenderAffair(edocSummary.getId());
+            if (sendAffair != null) {
+                int subState = sendAffair.getSubState().intValue();
+                if (subState != SubStateEnum.col_pending_specialBacked.getKey()
+                        && subState != SubStateEnum.col_pending_specialBackToSenderCancel.getKey()) {
+
+                    this.superviseManager.deleteLogs(edocSummary.getId());// 删除催办日志
+                }
+            }
+            // ---------------------- end ----------------------
+            // test code begin
+            if (isQuickSend) {// 快速发文后，summary的状态为结束。
+                edocSummary.setState(CollaborationEnum.flowState.finish.ordinal());
+                edocSummary.setFinished(true);
+                edocSummary.setCompleteTime(new Timestamp(System.currentTimeMillis()));
+                edocSummary.setCanTrack(0);
+                edocSummary.setDeadline(null);
+                edocSummary.setDeadlineDatetime(null);
+            } else {
+                edocSummary.setState(CollaborationEnum.flowState.run.ordinal());
+            }
+
+            edocSummary.setCreateTime(new Timestamp(System.currentTimeMillis()));
+            // 流程期限具体时间需要做版本控制
+
+            if (!isQuickSend && "true".equals(isG6)) {
+                //String deadlineTime = request.getParameter("deadlineTime"); // 如果选的是流程期限具体时间，在这里进行运算，会更精确。
+                String deadlineTime = ParamUtil.getString(param, "deadlineTime", ""); // 如果选的是流程期限具体时间，在这里进行运算，会更精确。
+                Long deadlineValue = getMinValueByDeadlineTime(deadlineTime, edocSummary.getCreateTime());
+                if (deadlineValue != -1L) {
+                    edocSummary.setDeadline(deadlineValue);
+                }
+            }
+
+            if (edocSummary.getStartTime() == null) {
+                edocSummary.setStartTime(new Timestamp(System.currentTimeMillis()));
+            }
+            edocSummary.setStartUserId(agentToId == null ? user.getId() : agentToId);
+            //edocSummary.setFormId(Long.parseLong(request.getParameter("edoctable")));
+            edocSummary.setFormId(Long.parseLong(ParamUtil.getString(param, "edoctable", "")));
+            V3xOrgMember member = orgManager.getEntityById(V3xOrgMember.class, edocSummary.getStartUserId());
+            edocSummary.setStartMember(member);
+            // 如果公文单无登记人，自动赋上登记节为发起人。yangzd
+            //if (request.getParameter("my:create_person") == null) {
+            if (ParamUtil.getString(param, "my:create_person", "") == null || ParamUtil.getString(param, "my:create_person", "") == "") {
+                edocSummary.setCreatePerson(user.getName());
+            }
+            // yangzd
+            if (edocSummary.getOrgAccountId() == null) {
+                edocSummary.setOrgAccountId(user.getLoginAccount());
+            }
+            edocSummary.setOrgDepartmentId(getEdocOwnerDepartmentId(edocSummary.getOrgAccountId(), agentToId));
+            // OA-40757 收文登记簿查询，没有把公文的发文单位查询出来
+            //if (edocSummary.getEdocType() == 1 && request.getParameter("my:send_unit") != null) {
+            if (edocSummary.getEdocType() == 1 && ParamUtil.getString(param, "my:send_unit", "") != null) {
+                // 当是纸质登记时，如果收文单中有发文单位的公文元素，需要在收文summary中设置发文单位
+                //edocSummary.setSendUnit(request.getParameter("my:send_unit"));
+                edocSummary.setSendUnit(ParamUtil.getString(param, "my:send_unit", ""));
+            }
+            // BUG_普通_V5_V5.1sp1_发文管理的快速发文，主送单位为机构组（含两个部门）。收文管理时调用模板，主送单位元素显示的是机构组名称，发送出去后再看显示的是单位名称了_20150123006723_20150127
+            //if (edocSummary.getEdocType() == 1 && request.getParameter("my:send_to") != null) {
+            if (edocSummary.getEdocType() == 1 && ParamUtil.getString(param, "my:send_to", "") != null) {
+                //edocSummary.setSendTo(request.getParameter("my:send_to"));
+                edocSummary.setSendTo(ParamUtil.getString(param, "my:send_to", ""));
+            }
+
+            body.setIdIfNew();
+            if (body.getCreateTime() == null) {
+                body.setCreateTime(new Timestamp(System.currentTimeMillis()));
+            }
+            body.setLastUpdate(new Timestamp(System.currentTimeMillis()));
+            // test code end
+            // 保存附件hassavedattachment
+			/*String attaFlag = attachmentManager.create(ApplicationCategoryEnum.edoc, edocSummary.getId(),
+					edocSummary.getId(), request);*/
+			/*String attaFlag =attachmentManager.create(ApplicationCategoryEnum.edoc,edocSummary.getId(),edocSummary.getId());
+			if (com.seeyon.ctp.common.filemanager.Constants.isUploadLocaleFile(attaFlag)) {
+				edocSummary.setHasAttachments(true);
+
+				// 拟文发送的时候,附件只保存附件,不保存关联文档
+				*//*String[] filenames = request
+						.getParameterValues(com.seeyon.ctp.common.filemanager.Constants.FILEUPLOAD_INPUT_NAME_filename);
+				String[] fileTypes = request
+						.getParameterValues(com.seeyon.ctp.common.filemanager.Constants.FILEUPLOAD_INPUT_NAME_type);*//*
+               String fileName=ParamUtil.getString(param,com.seeyon.ctp.common.filemanager.Constants.FILEUPLOAD_INPUT_NAME_filename,"");
+				String[] filenames={};
+               if(fileName!=null && fileName!=""){
+				   filenames=fileName.split(",");
+				}
+				String fileType=ParamUtil.getString(param,com.seeyon.ctp.common.filemanager.Constants.FILEUPLOAD_INPUT_NAME_type,"");
+				String[] fileTypes={};
+				if(fileType!=null && fileType!=""){
+					fileTypes=fileType.split(",");
+				}
+				edocSummary.setAttachments(EdocHelper.getAttachments(filenames, fileTypes));
+			}*/
+            boolean isNew = edocSummary.isNew();
+            // OA-45558 登记外来公文时，保存待发后，将待发公文发送后，待发中仍存在该公文，已发中也有该公文
+            if (!isNew && Strings.isNotBlank(hasSummaryId)) {
+                // 待发编辑发送时，这里需要设置为之前的id，不然在manager中就不会更新affair了
+                edocSummary.setId(Long.parseLong(hasSummaryId));
+            }
+            Long affairId = 0L;
+
+            Long detailId = null;
+            if (!isNewSent) {
+                detailId = edocSummary.getId();
+            }
+            Map<String, String> superviseMap = new HashMap<String, String>();
+            superviseMap.put("detailId", detailId == null ? null : String.valueOf(detailId));
+			/*superviseMap.put("supervisorIds", request.getParameter("supervisorId"));
+			superviseMap.put("supervisorNames", request.getParameter("supervisors"));
+			superviseMap.put("awakeDate", request.getParameter("awakeDate"));*/
+            superviseMap.put("supervisorIds", ParamUtil.getString(param, "supervisorId", ""));
+            superviseMap.put("supervisorNames", ParamUtil.getString(param, "supervisors", ""));
+            superviseMap.put("awakeDate", ParamUtil.getString(param, "awakeDate", ""));
+            //String title = request.getParameter("title");
+            String title = ParamUtil.getString(param, "title", "");
+            if (Strings.isBlank(title)) {
+                //title = request.getParameter("superviseTitle");
+                title = ParamUtil.getString(param, "superviseTitle", "");
+            }
+            superviseMap.put("title", title);
+            edocSummary.setSuperviseMap(superviseMap);
+
+            //String process_xml = request.getParameter("process_xml");
+            String process_xml = ParamUtil.getString(param, "process_xml", "");
+            //String templeteProcessId = request.getParameter("templeteProcessId");
+            String templeteProcessId = ParamUtil.getString(param, "templeteProcessId", "");
+            try {
+
+                affairId = edocManager.transRunCase(edocSummary, body, senderOninion, sendType, options, comm, agentToId,
+                        isNewSent, process_xml, workflowNodePeoplesInput, workflowNodeConditionInput, templeteProcessId);
+            } catch (Exception e) {
+                LOGGER.error("发起公文流程异常", e);
+            }
+
+            // 不跟踪 或者 全部跟踪的时候不向部门跟踪表中添加数据，所以将下面这个参数串设置为空。
+            if (!track || "1".equals(trackRange)) {
+                trackMembers = "";
+            }
+            edocManager.setTrack(affairId, track, trackMembers);
+
+            // 全文检索入库
+            add2Index(edocSummary.getEdocType(), edocSummary.getId());
+
+            if (edocSummary != null && edocSummary.getEdocType() == 1) {
+                RecRelationAfterSendParam param1 = new RecRelationAfterSendParam();
+                param1.setSummary(edocSummary);
+                param1.setRegister(edocRegister);
+                param1.setUser(user);
+                param1.setProcessType(processType);
+                param1.setRecieveId(recieveIdStr);
+                param1.setWaitRegister_recieveId(waitRegister_recieveId);
+                /**
+                 * 保存收文summary数据后续处理(更新签收，登记数据状态)
+                 */
+                RecRelationHandlerFactory.getHandler().transAfterSendRec(param1);
+            }
+
+            /* puyc 关联收文 */
+            Long sendSummaryId = edocSummary.getId();// 发文Id
+			/*String relationRecIdStr = request.getParameter("relationRecId"); // 在分发的时候没有值
+			String relationRec = request.getParameter("relationRecd");
+			//// 待登记关联发文时，关联id用签收id
+			String recieveId = request.getParameter("recieveId");
+			String forwordType = request.getParameter("forwordType");
+			String forwordtosend_recAffairId = request.getParameter("forwordtosend_recAffairId");*/
+            String relationRecIdStr = ParamUtil.getString(param, "relationRecId", ""); // 在分发的时候没有值
+            String relationRec = ParamUtil.getString(param, "relationRecd", "");
+            //// 待登记关联发文时，关联id用签收id
+            String recieveId = ParamUtil.getString(param, "recieveId", "");
+            String forwordType = ParamUtil.getString(param, "forwordType", "");
+            String forwordtosend_recAffairId = ParamUtil.getString(param, "forwordtosend_recAffairId", "");
+
+            if (Strings.isNotBlank(relationRec) && "haveYes".equals(relationRec)) {
+                EdocSummaryRelation edocSummaryRelation = new EdocSummaryRelation();
+                edocSummaryRelation.setIdIfNew();
+                edocSummaryRelation.setSummaryId(sendSummaryId);// 发文Id
+                edocSummaryRelation.setRelationEdocId(Long.parseLong(relationRecIdStr));// 收文Id
+                edocSummaryRelation.setEdocType(0);// 发文Type
+                if (Strings.isNotBlank(forwordtosend_recAffairId)) {
+                    edocSummaryRelation.setRecAffairId(Long.parseLong(forwordtosend_recAffairId));
+                }
+                edocSummaryRelation.setMemberId(user.getId());
+                this.edocSummaryRelationManager.saveEdocSummaryRelation(edocSummaryRelation);
+            }
+
+            /* puyc 关联发文 */
+            //String relationSend = request.getParameter("relationSend");
+            String relationSend = ParamUtil.getString(param, "relationSend", "");
+            if (Strings.isNotBlank(relationSend) && "haveYes".equals(relationSend)) {
+                if (Strings.isNotBlank(recieveId) || Strings.isNotBlank(relationRecIdStr)) {
+                    EdocSummaryRelation edocSummaryRelation = new EdocSummaryRelation();
+                    edocSummaryRelation.setIdIfNew();
+
+                    if (Strings.isNotBlank(recieveId)) {
+                        edocSummaryRelation.setSummaryId(Long.parseLong(recieveId));// 签收Id
+                    } else {
+                        edocSummaryRelation.setSummaryId(Long.parseLong(relationRecIdStr));// 收文Id
+                    }
+                    edocSummaryRelation.setRelationEdocId(sendSummaryId);// 发文Id
+                    edocSummaryRelation.setEdocType(1);// 收文Type
+                    // changyi 加上转发人ID
+                    edocSummaryRelation.setMemberId(user.getId());
+                    if ("registered".equals(forwordType)) {
+                        edocSummaryRelation.setType(1);
+                    } else if ("waitSent".equals(forwordType)) {
+                        edocSummaryRelation.setType(2);
+                    }
+                    this.edocSummaryRelationManager.saveEdocSummaryRelation(edocSummaryRelation);
+                }
+            }
+            /* puyc 收文关联发文 end */
+
+            // 是否更新发文关联收文的 recAffairId
+            isUpdateRecRelation(edocSummary);
+
+            // ****快速发文start***
+            if (isQuickSend) {
+                CtpAffair a = affairManager.get(affairId);
+                // 发文拟文才有交换
+                if (edocSummary.getEdocType() == EdocEnum.edocType.sendEdoc.ordinal()) {
+                    // 封发的时候进行相关的问号操作，移动到历史表中。tdbug28578 以封发节点完成提交，作为流程结束标志。
+                    edocMarkHistoryManager.afterSend(edocSummary);
+                    // 这不知道啥玩意，处理时封发有的代码，先挪过来 TODO
+                    if (edocSummary.getPackTime() == null) {
+                        edocSummary.setPackTime(new Timestamp(System.currentTimeMillis()));
+                    }
+
+                    Long unitId = -1L;
+                    if (edocExchangeType != -1) {
+                        if (edocExchangeType == EdocSendRecord.Exchange_Send_iExchangeType_Dept) {// 部门交换
+                            //edocMangerID = request.getParameter("returnDeptId");
+                            edocMangerID = ParamUtil.getString(param, "returnDeptId", "");
+
+                            if (Strings.isBlank(edocMangerID)) {
+                                unitId = orgManager.getMemberById(user.getId()).getOrgDepartmentId();
+                            } else {// 发起人存在副岗时，选择交换部门
+                                unitId = Long.valueOf(edocMangerID);
+                            }
+                        } else if (edocExchangeType == EdocSendRecord.Exchange_Send_iExchangeType_Org) {// 单位交换
+                            unitId = edocSummary.getOrgAccountId();
+                        }
+                        try {
+                            sendEdocManager.create(edocSummary, unitId, edocExchangeType, edocMangerID, a, false);
+                            // 更新公文统计表为封发
+                            edocStatManager.setSeal(edocSummary.getId());
+                        } catch (Exception e) {
+                            LOGGER.error("生成公文统计表错误", e);
+                            // throw new EdocException(e);
+                        }
+                    }
+                }
+                try {
+                    // 快速发文——归档。start
+                    if (edocSummary.getEdocType() == 0 || edocSummary.getEdocType() == 1) { // 发文
+                        if (edocSummary.getArchiveId() != null && !edocSummary.getHasArchive()) {
+                            edocManager.pigeonholeAffair("", a, edocSummary.getId(), edocSummary.getArchiveId(), false);
+                            quickSendPigholeInfo = ResourceBundleUtil.getString(
+                                    "com.seeyon.v3x.edoc.resources.i18n.EdocResource", "edoc.quickSend.pigholeInfo");
+                        }
+                    }
+                    // 快速发文——归档。end
+                } catch (Exception e) {
+                    LOGGER.error("快速发文归档错误", e);
+                }
+
+            }
+            // ****快速发文 end***
+
+            //记录文号的变动日志
+            if (Strings.isNotBlank(edocSummary.getDocMark())) {
+                appLogManager.insertLog(user, AppLogAction.Edoc_Doc_Mark_Create, user.getName(), edocSummary.getSubject(), edocSummary.getDocMark());
+            }
+            if (Strings.isNotBlank(edocSummary.getSerialNo())) {
+                appLogManager.insertLog(user, AppLogAction.Edoc_Serial_No_Create, user.getName(), edocSummary.getSubject(), edocSummary.getSerialNo());
+            }
+
+            //String pageview = request.getParameter("pageview");
+            String pageview = ParamUtil.getString(param, "pageview", "");
+            StringBuffer sb = new StringBuffer();
+            if ("listReaded".equals(pageview)) {
+                sb.append("if(window.dialogArguments) {"); // 弹出
+                sb.append("  	window.returnValue = \"true\";");
+                sb.append("  	window.close();");
+                sb.append("} else {");
+                sb.append(
+                        "	parent.parent.location.href='edocController.do?method=listIndex&controller=edocController.do&from=listReaded&listType=listReaded&edocType="
+                                + edocSummary.getEdocType() + Functions.csrfSuffix() + "'");
+                sb.append("}");
+            } else if ("listReading".equals(pageview)) {
+                sb.append("if(window.dialogArguments) {"); // 弹出
+                sb.append("  	window.returnValue = \"true\";");
+                sb.append("  	window.close();");
+                sb.append("} else {");
+                sb.append(
+                        "	parent.parent.location.href='edocController.do?method=listIndex&controller=edocController.do&from=listReading&listType=listReading&edocType="
+                                + edocSummary.getEdocType() + Functions.csrfSuffix() + "'");
+                sb.append("}");
+            } else {
+                //String openFrom = request.getParameter("openFrom");
+                String openFrom = ParamUtil.getString(param, "openFrom", "");
+                //if ("agent".equals(request.getParameter("app")) && edocRegister != null
+                if ("agent".equals(ParamUtil.getString(param, "app", "")) && edocRegister != null
+                        && !user.getId().equals(edocRegister.getRegisterUserId())) {// 代理人跳转到代理事项
+                    sb.append("if(parent.dialogArguments || window.dialogArguments) {");
+                    sb.append("  window.returnValue = \"true\";");
+                    sb.append("  	window.close();");
+                    sb.append("} else {");
+                    sb.append(
+                            "	parent.parent.parent.location.href='collaboration/pending.do?method=morePending&from=Agent" + Functions.csrfSuffix() + "';");
+                    sb.append("}");
+                } else if (Strings.isNotBlank(openFrom) && "ucpc".equals(openFrom)) {
+                    sb.append("if(typeof(getA8Top)!='undefined') {");
+                    sb.append(" getA8Top().window.close();");
+                    sb.append("} else {");
+                    sb.append("	parent.parent.parent.window.close();");
+                    sb.append("}");
+                } else {
+                    //String from = Strings.isBlank(request.getParameter("from")) ? "listSent" : request.getParameter("from");
+                    String from = Strings.isBlank(ParamUtil.getString(param, "from", "")) ? "listSent" : ParamUtil.getString(param, "from", "");
+                    if (!"".equals(quickSendPigholeInfo)) {
+                        sb.append("alert('" + StringEscapeUtils.escapeJavaScript(quickSendPigholeInfo) + "');");
+                    }
+                    sb.append("if(parent.dialogArguments || window.dialogArguments ) {");
+                    sb.append("  window.returnValue = \"true\";");
+                    sb.append("  	window.close();");
+                    sb.append("} else {");
+                    sb.append(
+                            "	parent.parent.location.href='edocController.do?method=listIndex&controller=edocController.do&from="
+                                    + from + "&edocType=" + edocSummary.getEdocType() + "&listType=listSent" + Functions.csrfSuffix() + "'");
+                    sb.append("}");
+                }
+            }
+
+            // 性能优化，删除实例对象
+            SharedWithThreadLocal.remove();
+            //rendJavaScript(response, sb.toString());
+            returnMap.put("returnValue", true);
+            returnMap.put("id", edocSummary.getId());
+            returnMap.put("affairId", affairId);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            edocLockManager.unlock(edocSummary.getSubject(), user.getId());
+            if (lockDocMarkSubject == null) {
+                edocMarkLockManager.unlock(lockDocMark);
+            }
+        }
+        // long endtime = System.currentTimeMillis();
+        return getResponse(returnMap);
+    }
+
+
+    /**
      * 公文事项设置是否跟踪
      * url: edocResource/setTrack
      *
@@ -1987,339 +3144,6 @@ public class EdocResource extends BaseResource {
 
     }
 
-    /**
-     * [客开-徐矿公文撤销] 作者：shiZC
-     * @param param
-     * @return
-     * @throws Exception
-     */
-    @POST
-    @Produces({MediaType.APPLICATION_JSON})
-    @Path("repealExternal")
-    public Response repealExternal(Map<String, Object> param) throws Exception {
-        param.put("docBack", "cancelColl");
-        param.put("trackWorkflowType", "0");
-        Map<String, Object> returnMap = new HashMap<String, Object>();
-        User user = AppContext.getCurrentUser();
-        String[] _summaryIds = new String[]{};
-        String page = ParamUtil.getString(param, "page", "");
-        StringBuilder info = new StringBuilder();
-        /****/
-        //String _trackWorkflowType = request.getParameter("trackWorkflowType");
-        String _trackWorkflowType = ParamUtil.getString(param, "trackWorkflowType", "");
-
-        //String _affairId = request.getParameter("affairId");
-        String _affairId = ParamUtil.getString(param, "affairId", "");
-        //String repealComment = request.getParameter("repealComment"); // 撤销附言
-        String repealComment = ParamUtil.getString(param, "repealComment", ""); // 撤销附言
-        // lijl添加,为了区分是撤销流程还是取回
-        //String docBack = request.getParameter("docBack");// docBack取回/cancelColl撤销
-        String docBack = ParamUtil.getString(param, "docBack", "");// docBack取回/cancelColl撤销
-        // GOV-4082 发文流程撤销确定后没有反应。另发现撤销和退回拟稿人功能重复
-        if (Strings.isBlank(docBack)) {
-            docBack = "";
-        }
-
-        if ("workflowManager".equals(page)) {
-            //String[] summaryIdArr = { request.getParameter("summaryId") };
-            String[] summaryIdArr = {ParamUtil.getString(param, "summaryId", "")};
-            _summaryIds = summaryIdArr;
-        } else {
-            //_summaryIds = request.getParameterValues("id");
-            //id已，拼接
-            _summaryIds = ParamUtil.getString(param, "id", "").split(",");
-            if ("dealrepeal".equals(page)) {
-                //repealComment = request.getParameter("content");
-                repealComment = ParamUtil.getString(param, "content", "");
-            }
-        }
-
-        boolean isRelieveLock = true;
-        String processId = "";
-        Long summaryIdLong = null;
-        EdocSummary summary = null;
-        try {
-
-            int result = 0;
-            List<CtpAffair> doneList = null;
-            // lijl添加空值判断,如果为空则提示"流程撤销错误!"
-            if (_summaryIds != null) {
-                if (_summaryIds.length > 0) {
-
-                    CtpAffair _affair = null;
-                    // affair状态校验需要放到 获取processId之后进行，因为还需要在finally中进行解锁
-                    if (Strings.isNotBlank(_affairId)) {
-                        _affair = affairManager.get(Long.parseLong(_affairId));
-                        // 当公文不是待办/在办的状态时，不能撤销操作
-                        if (_affair.getState() != StateEnum.col_pending.key()
-                                || _affair.getState() != StateEnum.col_sent.key()) {
-                            String msg = EdocHelper.getErrorMsgByAffair(_affair);
-                            if (Strings.isNotBlank(msg)) {
-                                StringBuffer sb = new StringBuffer();
-                                sb.append("alert('" + msg + "');");
-                                sb.append("parent.doEndSign_dealrepeal('true');");
-                                //rendJavaScript(response, sb.toString());
-                                return null;
-                            }
-                        }
-                    }
-
-                    for (int i = 0; i < _summaryIds.length; i++) {
-                        Long summaryId = Long.parseLong(_summaryIds[i]);
-                        summary = edocManager.getEdocSummaryById(summaryId, false);
-                        processId = summary.getProcessId();
-                        summaryIdLong = summary.getId();
-
-                        if (summary.getFinished()) {
-                            result = 1;
-                        }
-                        // else if(summary.getHasArchive()){result=2;}
-                        else {
-                            Map<String, Object> conditions = new HashMap<String, Object>();
-                            conditions.put("objectId", summary.getId());
-                            conditions.put("app", EdocUtil.getAppCategoryByEdocType(summary.getEdocType()).key());
-                            List<Integer> states = new ArrayList<Integer>();
-                            states.add(StateEnum.col_done.key());
-                            states.add(StateEnum.col_stepStop.key());
-
-                            conditions.put("state", states);
-                            doneList = affairManager.getByConditions(null, conditions);
-                            if ((doneList != null && doneList.size() > 0) && "docBack".equals(docBack)) {// 处理中不能取回
-                                result = 3;// 已有人员
-                            } else {
-                                boolean isCancel = true;
-                                // 收文撤销，取回，数据到达待分发。
-                                if (1 == summary.getEdocType()) {
-                                    // affairManager.deleteByObject(ApplicationCategoryEnum.edocRecDistribute,
-                                    // summary.getId());
-                                    Map<String, Object> distributerConditions = new HashMap<String, Object>();
-                                    distributerConditions.put("objectId", summary.getId());
-                                    distributerConditions.put("app", ApplicationCategoryEnum.edocRecDistribute.key());
-                                    List<Integer> distributerStates = new ArrayList<Integer>();
-                                    distributerStates.add(StateEnum.col_done.key());
-                                    distributerConditions.put("state", distributerStates);
-                                    List<CtpAffair> distributerDoneList = affairManager.getByConditions(null,
-                                            distributerConditions);
-                                    for (int k = 0; k < distributerDoneList.size(); k++) {
-                                        distributerDoneList.get(k).setState(StateEnum.col_pending.key());
-                                        affairManager.updateAffair(distributerDoneList.get(k));
-                                    }
-                                    EdocRegister edocRegister = edocRegisterManager
-                                            .findRegisterByDistributeEdocId(summaryId);
-                                    if (edocRegister != null) {
-                                        edocRegister.setDistributeDate(null);
-                                        // GOV-3328
-                                        // （需求检查）【公文管理】-【收文管理】-【分发】，已分发纸质公文撤销后到待分发列表中了，应该在草稿箱中
-                                        if ("docBack".equals(docBack)) {// 取回
-                                            edocRegister.setDistributeEdocId(-1l);
-                                            edocRegister.setDistributeState(
-                                                    EdocNavigationEnum.EdocDistributeState.WaitDistribute.ordinal());// 将状态设置为"未分发"
-                                        } else {
-                                            // GOV-4848.【公文管理】-【收文管理】，收文分发员在已分发列表将已分发的收文删除，收文待办人处理时退回公文，退回的数据不见了
-                                            // start
-                                            edocRegister.setDistributeEdocId(summaryId);
-                                            edocRegister.setDistributeState(
-                                                    EdocNavigationEnum.EdocDistributeState.DraftBox.ordinal());// 将状态设置为"草稿"
-                                            // GOV-4848.【公文管理】-【收文管理】，收文分发员在已分发列表将已分发的收文删除，收文待办人处理时退回公文，退回的数据不见了
-                                            // end
-                                        }
-
-                                        // 撤销与取回时，登记对象退回状态为：0
-                                        edocRegister.setIsRetreat(0);// 非退回
-                                        edocRegisterManager.update(edocRegister);
-
-                                        // 删除收文(暂物理删除) 撤销/取回都要删除分发数据
-                                        summary.setState(CollaborationEnum.flowState.deleted.ordinal());
-
-                                    } else {
-                                        EdocRecieveRecord record = recieveEdocManager
-                                                .getEdocRecieveRecordByReciveEdocId(summaryId);
-                                        if (record != null) {
-                                            // 删除收文(暂物理删除) 撤销/取回都要删除分发数据
-                                            summary.setState(CollaborationEnum.flowState.deleted.ordinal());
-                                        } else {
-                                            if ("docBack".equals(docBack)) {
-                                                result = 4;
-                                                isCancel = false;
-                                            }
-                                        }
-                                    }
-                                }
-                                // 可以取回或撤销
-                                if (isCancel) {
-                                    // OA-19935
-                                    // 客户bug验证：流程是gw1，gw11，m1，串发，m1撤销，gw1在待发直接查看（不是编辑态），文单上丢失了撤销的意见
-                                    EdocOpinion repealOpinion = new EdocOpinion();
-                                    if (Strings.isNotBlank(_affairId)) {
-                                        repealOpinion.setAffairId(Long.parseLong(_affairId));
-                                    }
-                                    //String policy = request.getParameter("policy");
-                                    String policy = ParamUtil.getString(param, "policy", "");
-                                    repealOpinion.setPolicy(policy);
-
-                                    repealOpinion.setNeedRepealRecord(_trackWorkflowType);
-                                    result = edocManager.cancelSummary(user.getId(), summaryId, _affair, repealComment,
-                                            docBack, repealOpinion);
-                                }
-                            }
-                        }
-                        if (result == 1 || result == -1
-                                || ((result == 3 || result == 4) && "docBack".equals(docBack))) {
-                            info.append("《").append(summary.getSubject()).append("》");
-                        } else {
-                            try {
-                                // 已发撤销后，需要删除已经发出去的全文检索文件
-                                if (AppContext.hasPlugin("index")) {
-                                    indexManager.delete(summary.getId(), ApplicationCategoryEnum.edoc.getKey());
-                                }
-                            } catch (Exception e) {
-                                LOGGER.error("撤销公文流程，更新全文检索异常", e);
-                            }
-                            // 撤销流程事件
-                            CollaborationCancelEvent event = new CollaborationCancelEvent(this);
-                            event.setSummaryId(summary.getId());
-                            event.setUserId(user.getId());
-                            event.setMessage(repealComment);
-                            EventDispatcher.fireEvent(event);
-                            // 发送消息给督办人，更新督办状态，并删除督办日志、删除督办记录、删除催办次数
-
-                            superviseManager.updateStatus2Cancel(summaryId);
-                        }
-                        try {
-                            // 解锁正文文单
-                            unLock(user.getId(), summary);
-                        } catch (Exception e) {
-                            LOGGER.error("解锁正文文单抛出异常：", e);
-                        }
-                    }
-                } else {
-                    String alertStr = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
-                            "edoc.back.flow.error");
-					/*out.println("<script>");
-					out.println("<!--");
-					out.println("alert('" + alertStr + "');");
-					out.println("//-->");
-					out.println("</script>");
-					return null;*/
-                    returnMap.put("returnValue", false);
-                    returnMap.put("errMsg", alertStr);
-                    return getResponse(returnMap);
-                }
-            } else {
-                String alertStr = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
-                        "edoc.back.flow.error");
-				/*out.println("<script>");
-				out.println("<!--");
-				out.println("alert('" + alertStr + "');");
-				out.println("//-->");
-				out.println("</script>");
-				return null;*/
-                returnMap.put("returnValue", false);
-                returnMap.put("errMsg", alertStr);
-                return getResponse(returnMap);
-            }
-
-            //super.printV3XJS(out);
-            if (info.length() > 0) {
-                String alertStr = "";
-                // 取回
-                if ("docBack".equals(docBack)) {
-                    if (result == 1) {
-                        // 流程已结束
-                        alertStr = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
-                                "edoc.back.state.end.alert", info.toString());
-                    } else if (result == 3) {// 取回
-                        // 公文${0}正在处理中，不能进行取回操作。
-                        alertStr = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
-                                "edoc.is.running", info.toString());
-                    } else if (result == 4) {// 取回
-                        // 纸质收文{0}不允许进行取回操作
-                        alertStr = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
-                                "edoc.rec.notBack", info.toString());
-                    } else if (result == -1) {
-                        alertStr = ResourceUtil.getString("edoc.alert.flow.cannotTakeback", info.toString());// 公文"+info.toString()+"后面节点任务事项已处理完成，不能取回
-                    } else if (result == -2) {
-                        alertStr = ResourceUtil.getString("edoc.alert.flow.cannotTakeback1", info.toString());// 公文"+info.toString()+"当前任务事项所在节点为知会节点，不能取回
-                    }
-                }
-                // 撤销
-                else {
-                    if (result == 1) {
-                        // 流程已结束
-                        alertStr = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
-                                "edoc.state.end.alert", info.toString());
-                    }
-                }
-
-                // 很奇怪，调用ResourceBundleUtil.getString之后，会在提示中加入$, 先暂时这样处理
-                // changyi add
-                if (alertStr.indexOf("$") > -1) {
-                    alertStr = alertStr.replace("$", "");
-                }
-
-                if (((result == 3 || result == 4) && "docBack".equals(docBack)) || result == 1) {
-					/*out.println("<script>");
-					out.println("<!--");
-					out.println("alert(\"" + StringEscapeUtils.escapeJavaScript(alertStr) + "\");");
-					out.println("//-->");
-					out.println("</script>");*/
-                    returnMap.put("returnValue", false);
-                    returnMap.put("errMsg", StringEscapeUtils.escapeJavaScript(alertStr));
-                    return getResponse(returnMap);
-                }
-                return null;
-            }
-        } catch (Exception e) {
-            LOGGER.error("撤销流程时抛出异常：", e);
-        } finally {
-            // 目前撤销只能 一次执行一条
-            if (isRelieveLock) {
-                this.officeLockManager.unlockAll(summaryIdLong);
-                wapi.releaseWorkFlowProcessLock(processId, String.valueOf(AppContext.currentUserId()));
-                wapi.releaseWorkFlowProcessLock(String.valueOf(summaryIdLong),
-                        String.valueOf(AppContext.currentUserId()));
-
-                try {
-                    unLock(user.getId(), summary);
-                } catch (Exception e) {
-                    LOGGER.error("解锁正文文单抛出异常：", e);
-                }
-            }
-        }
-        //if ("workflowManager".equals(page)) {
-			/*out.println("<script>");
-			out.println("if(window.dialogArguments){"); // 弹出
-			out.println("  window.returnValue = \"true\";");
-			out.println("  window.close();");
-			out.println("}else{");
-			out.println("  parent.ok();");
-			out.println("}");
-			out.println("</script>");
-			out.close();
-			return null;*/
-        returnMap.put("returnValue", true);
-        returnMap.put("errMsg", StringEscapeUtils.escapeJavaScript(page));
-        return getResponse(returnMap);
-        //} else {
-			/*out.println("<script>");
-			out.println("if(window.dialogArguments){"); // 弹出
-			out.println("  window.returnValue = \"true\";");
-			out.println("  window.close();");
-			out.println("}else{");
-			if ("dealrepeal".equals(page)) {
-				// GOV-2873 【公文管理】-【发文管理】-【待办】，处理待办公文时点击'撤销'报错
-				out.println("parent.doEndSign_dealrepeal();");
-			} else {
-				out.println(" parent.location.href =  parent.location.href; ");
-			}
-			out.println("}");
-			out.println("</script>");
-			return null;*/
-			/*returnMap.put("returnValue", false);
-			returnMap.put("errMsg","处理待办公文时点击 撤销 报错" );
-			return getResponse(returnMap);
-		}*/
-    }
 
     /**
      * 解锁，公文提交或者暂存待办的时候进行解锁,与Ajax解锁一起，构成两次解锁，避免解锁失败，节点无法修改的问题出现
@@ -2360,827 +3184,6 @@ public class EdocResource extends BaseResource {
         }
     }
 
-    /**
-     * [客开-徐矿集团] 公文发送接口 作者：shiZC
-     * @param param
-     * @return
-     * @throws BusinessException
-     */
-    @POST
-    @Produces({MediaType.APPLICATION_JSON})
-    @Path("sendExternal")
-    public Response sendExternal(Map<String, Object> param) throws BusinessException {
-        param.put("__ActionToken", "SEEYON_A8");
-        param.put("caseId", "-1");
-        param.put("deadlineSelect", "0");
-        param.put("edocExchangeType", "0");
-        param.put("edocType", "0");
-        param.put("edocType_mark", "0");
-        param.put("exchangeDeptType", "Creater");
-        param.put("fromSend", "true");
-        param.put("hasArchive", "false");
-        param.put("isModifyAtt", "0");
-        param.put("isModifyContent", "0");
-        param.put("isModifyForm", "0");
-        param.put("isTrack", "1");
-        param.put("isUniteSend", "false");
-        param.put("my:create_person", "test1");
-        param.put("my:secret_level", "3");
-        param.put("sVisorsFromTemplate", "false");
-        param.put("standardDuration", "0");
-        param.put("taohongriqiSwitch", "true");
-        param.put("trackRange", "1");
-        param.put("workflow_last_input", "false");
-        User user = AppContext.getCurrentUser();
-        Map<String, Object> returnMap = new HashMap<String, Object>();
-        //String processTypeStr = request.getParameter("processType");
-        String processTypeStr = ParamUtil.getString(param, "page", "");
-        //String workflowNodePeoplesInput = request.getParameter("workflow_node_peoples_input");
-        String workflowNodePeoplesInput = ParamUtil.getString(param, "workflow_node_peoples_input", "");
-        //String workflowNodeConditionInput = request.getParameter("workflow_node_condition_input");
-        String workflowNodeConditionInput = ParamUtil.getString(param, "workflow_node_condition_input", "");
-        Long processType = 0L;
-        if (processTypeStr != null && !"".equals(processTypeStr)) {
-            processType = Long.parseLong(processTypeStr);
-        }
-        /**
-         * 表单ID
-         */
-        //String etable = request.getParameter("edoctable");
-        String etable = ParamUtil.getString(param, "edoctable", "");
-        long formId = 0;
-        if (Strings.isNotBlank(etable)) {
-            formId = Long.parseLong(etable);
-        }
-        // 检查公文单是否已经被删除。“当前公文单不存在，可能已经被删除，请检查。”
-        boolean isExsit = edocFormManager.isExsit(formId);
-        if (!isExsit) {
-            StringBuffer sb = new StringBuffer();
-            String errMsg = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
-                    "alert_edocform_isnotexsit");
-            sb.append("alert('" + StringEscapeUtils.escapeJavaScript(errMsg) + "');");
-            sb.append("history.back();");
-            returnMap.put("returnValue", false);
-            returnMap.put("errMsg", sb.toString());
-            return getResponse(returnMap);
-        }
-
-        // 取得公文发送人的信息
-        String comm = ParamUtil.getString(param, "comm", "");
-        // 来文登记,更新登记时间，给签收人发送消息
-		/*long registerId = Strings.isBlank(request.getParameter("registerId")) ? -1
-				: Long.parseLong(request.getParameter("registerId"));*/
-        long registerId = Strings.isBlank(ParamUtil.getString(param, "registerId", "")) ? -1
-                : Long.parseLong(ParamUtil.getString(param, "registerId", ""));
-        Long agentToId = null;
-        EdocRegister edocRegister = null;
-        //String backBoxToEdit = request.getParameter("backBoxToEdit");
-        String backBoxToEdit = ParamUtil.getString(param, "backBoxToEdit", "");
-        //String recieveIdStr = request.getParameter("recieveId");
-        String recieveIdStr = ParamUtil.getString(param, "recieveId", "");
-        //String edocType = request.getParameter("edocType");
-        String edocType = ParamUtil.getString(param, "edocType", "");
-
-        EdocSummary edocSummary = new EdocSummary();
-        edocSummary.setSubject(ParamUtil.getString(param, "subject", ""));
-        edocSummary.setText1(ParamUtil.getString(param, "my:text1", ""));
-        edocSummary.setSendUnit(ParamUtil.getString(param, "my:send_unit", ""));
-        edocSummary.setSendUnitId(ParamUtil.getString(param, "my:send_unit_id", ""));
-        edocSummary.setDocMark(ParamUtil.getString(param, "my:doc_mark", ""));
-        edocSummary.setCreatePerson(ParamUtil.getString(param, "my:create_person", ""));//创建人
-        edocSummary.setSendDepartmentId(ParamUtil.getString(param, "my:send_department_id", ""));
-        edocSummary.setSendDepartment(ParamUtil.getString(param, "my:send_department", ""));
-        edocSummary.setIdIfNew();
-        //bind(request, edocSummary);
-
-        if ("1".equals(edocType)) {
-            if (registerId != -1) {
-                edocRegister = edocRegisterManager.findRegisterById(registerId);
-            } else if (Strings.isNotBlank(recieveIdStr)) {
-                edocRegister = edocRegisterManager.findRegisterByRecieveId(Long.parseLong(recieveIdStr));
-            }
-
-            if (edocRegister != null) {
-                edocSummary.setSendTo(edocRegister.getSendTo());
-            }
-
-
-        }
-
-        // 因为DataUtil中requestToSummary方法很多地方都在调用，公文发送性能优化时在requestToSummary内部将获取公文单的公文元素保存进了ThreadLocal中
-        // 需要在这里向ThreadLocal中设置一个开关，当该方法调用requestToSummary时才将公文元素保存进了ThreadLocal中
-        SharedWithThreadLocal.setCanUse();
-        //DataUtil.requestToSummary(request, edocSummary, formId);
-
-        Long lockUserId = edocLockManager.canGetLock(edocSummary.getSubject(), user.getId());
-        if (lockUserId != null) {
-            LOGGER.error(AppContext.currentAccountName() + "不能获取到map缓存锁，不能执行操作finishWorkItem,summaryId" + edocSummary.getId() + "subject:" + edocSummary.getSubject() + " userId:" + user.getId());
-            return null;
-        }
-
-        String lockDocMarkSubject = "";
-        String lockDocMark = "";
-        try {
-            // ***快速发文相关变量 start***
-            boolean isQuickSend = false; // 快速发文标识
-			/*int edocExchangeType = request.getParameter("edocExchangeType") == null ? -1
-					: Integer.parseInt(request.getParameter("edocExchangeType"));*/
-            int edocExchangeType = ParamUtil.getString(param, "edocExchangeType", "") == null ? -1
-                    : Integer.parseInt(ParamUtil.getString(param, "edocExchangeType", ""));
-            //String edocMangerID = request.getParameter("memberList");
-            String edocMangerID = ParamUtil.getString(param, "memberList", "");
-            String quickSendPigholeInfo = ""; // 快速发文归档成功后的提示
-            // ***快速发文相关变量 end***
-
-            //String deadlineDatetime = (String) request.getParameter("deadLineDateTime");
-            String deadlineDatetime = ParamUtil.getString(param, "deadLineDateTime", "");
-            if (!isQuickSend && Strings.isNotBlank(deadlineDatetime)) {
-                edocSummary.setDeadlineDatetime(DateUtil.parse(deadlineDatetime, "yyyy-MM-dd HH:mm"));
-            }
-
-            // 新建公文页面流程期限这里加一个隐藏域，后台保存的是这里的值，因为如果从模板加载设了流程期限的话，就disabled了，后台就取不到值了
-            //String deadline2 = request.getParameter("deadline2");
-            String deadline2 = ParamUtil.getString(param, "deadline2", "");
-
-            // OA-20265 调用格式模板，发送后报错。
-            if (!isQuickSend && Strings.isNotBlank(deadline2)) {
-                edocSummary.setDeadline(Long.parseLong(deadline2));
-            }
-            //String advanceRemind2 = request.getParameter("advanceRemind2");
-            String advanceRemind2 = ParamUtil.getString(param, "advanceRemind2", "");
-            if (!isQuickSend && Strings.isNotBlank(advanceRemind2)) {
-                edocSummary.setAdvanceRemind(Long.parseLong(advanceRemind2));
-            }
-
-            // 设置公文类型,党务还是政务的
-            //String edocGovType = request.getParameter("edocGovType");
-            String edocGovType = ParamUtil.getString(param, "edocGovType", "");
-            if ("party".equals(edocGovType)) {
-                //String party = request.getParameter("my:party");
-                String party = ParamUtil.getString(param, "my:party", "");
-                edocSummary.setParty(party);
-            } else if ("administrative".equals(edocGovType)) {
-                //String administrative = request.getParameter("my:administrative");
-                String administrative = ParamUtil.getString(param, "my:administrative", "");
-                edocSummary.setAdministrative(administrative);
-            }
-
-            /***** puyc**区分 分发和拟文 分发，收文的summaryId *****/
-            //String recSummaryIdStr = request.getParameter("recSummaryIdVal");
-            String recSummaryIdStr = ParamUtil.getString(param, "recSummaryIdVal", "");
-            if (Strings.isNotBlank(recSummaryIdStr) && !"-1".equals(recSummaryIdStr)) {
-                List<EdocSummaryRelation> list = this.edocSummaryRelationManager
-                        .findEdocSummaryRelation(Long.parseLong(recSummaryIdStr));
-                if (list != null) {
-                    this.edocSummaryRelationManager.updateEdocSummaryRelation(list, Long.parseLong(recSummaryIdStr),
-                            edocSummary.getId());
-                }
-            }
-            /***** puyc**区分 分发和拟文 分发，收文的summaryId end *****/
-
-            // OA-40064一个没有发文单位公文元素的公文进行公文交换后，test02在发文登记簿中按发文单位统计，列表中显示为空，但是发送单和签收单都显示了发文单位
-            // 当发文单没有 发文单位 公文元素时，也需要summary中设置发文单位
-            // OA-68915 签报拟文时文单上没有发文部门元素，发送后没有保存发文部门
-			/*if (Strings.isBlank(request.getParameter("my:send_unit"))) {
-				edocSummary = setEdocDefaultSendInfo(edocSummary, user, "0");
-			}*/
-            if (Strings.isBlank(ParamUtil.getString(param, "my:send_unit", ""))) {
-                edocSummary = setEdocDefaultSendInfo(edocSummary, user, "0");
-            }
-            //if (Strings.isBlank(request.getParameter("my:send_department"))) {
-            if (Strings.isBlank(ParamUtil.getString(param, "my:send_department", ""))) {
-                edocSummary = setEdocDefaultSendInfo(edocSummary, user, "1");
-            }
-
-            // OA-32875 系统管理员-枚举管理，公文类型、行文类型枚举引用之后显示为否（注意查看一下OA-29865中的修改方法）
-            // 更新系统枚举引用
-            //EdocHelper.updateEnumItemRef(request);
-
-            // OA-17655 拟文时设置了跟踪，发送后被回退，在待发中编辑，进入到拟文页面，跟踪被取消了。应该保留原来的设置。
-            // 设置summary中的跟踪，因为DataUtil.requestToSummary方法中取跟踪值有点问题，但该方法在处理回退时也被调用了，修改害怕引起其他问题
-            //String isTrack = request.getParameter("isTrack");
-            String isTrack = ParamUtil.getString(param, "isTrack", "");
-            if (Strings.isNotBlank(isTrack)) {
-                edocSummary.setCanTrack(Integer.parseInt(isTrack));
-            }
-
-            //String templeteId = request.getParameter("templeteId");
-            String templeteId = ParamUtil.getString(param, "templeteId", "");
-            if (Strings.isNotBlank(templeteId)) {
-                CtpTemplate _curTemplate = new CtpTemplate();
-                try {
-                    _curTemplate = templeteManager.getCtpTemplate(Long.parseLong(templeteId));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                if (_curTemplate.getFormParentid() != null && !_curTemplate.isSystem()) {
-                    edocSummary.setTempleteId(_curTemplate.getFormParentid());
-                } else {
-                    edocSummary.setTempleteId(Long.parseLong(templeteId));
-                }
-                if (null != _curTemplate && !_curTemplate.isSystem() && null == _curTemplate.getFormParentid()) {
-                    templeteManager.updateTempleteHistory(user.getId(), _curTemplate.getId());
-                    edocSummary.setTempleteId(null);
-                }
-            }
-
-            // 将公文流水号（内部文号）自动增1
-            // add by handy,2007-10-16
-            // if("new_form".equals(comm))
-            // {
-            // edocInnerMarkDefinitionManager.getInnerMark(edocSummary.getEdocType(),
-            // user.getAccountId(), true);
-            // }
-            // edocSummary.setSerialNo(serialNo);
-
-            List<Long> markDefinitionIdList = new ArrayList<Long>();
-            // 第一个公文文号
-            EdocMarkModel em = EdocMarkModel.parse(edocSummary.getDocMark());
-            if (em != null) {
-                markDefinitionIdList.add(em.getMarkDefinitionId());
-            }
-            // 第二个公文文号
-            em = EdocMarkModel.parse(edocSummary.getDocMark2());
-            if (em != null) {
-                markDefinitionIdList.add(em.getMarkDefinitionId());
-            }
-            // 内部文号
-            em = EdocMarkModel.parse(edocSummary.getSerialNo());
-            if (em != null) {
-                markDefinitionIdList.add(em.getMarkDefinitionId());
-            }
-            if (Strings.isNotEmpty(markDefinitionIdList)) {
-
-                List<EdocMarkDefinition> markDefinitions = edocMarkDefinitionManager
-                        .queryMarkDefinitionListById(markDefinitionIdList);
-
-                // ----------性能优化，存入SharedWithThreadLocal
-                SharedWithThreadLocal.setMarkDefinition(markDefinitions);
-            }
-
-            // 处理公文文号
-            // 如果公文文号为空，不做任何处理
-            String docMark = edocSummary.getDocMark();
-            if (Strings.isNotBlank(edocSummary.getDocMark()) && edocSummary.getEdocType() == com.seeyon.v3x.edoc.util.Constants.EDOC_FORM_TYPE_SIGN) {
-                lockDocMarkSubject = edocMarkLockManager.canGetLock(edocSummary.getDocMark(), edocSummary.getSubject());
-                lockDocMark = edocSummary.getDocMark();
-                if (Strings.isNotBlank(lockDocMarkSubject)) {
-                    EdocMarkModel emark = EdocMarkModel.parse(docMark);
-                    String errMsg = "公文《" + lockDocMarkSubject + "》占用了文号《" + emark.getMark() + "》,请刷新重试";
-                    StringBuffer str = new StringBuffer("");
-                    str.append("alert('" + StringEscapeUtils.escapeJavaScript(errMsg) + "');");
-                    str.append("history.back();");
-                    returnMap.put("returnValue", false);
-                    returnMap.put("errMsg", str.toString());
-                    return getResponse(returnMap);
-                }
-            }
-            if (Strings.isNotBlank(edocSummary.getSerialNo()) && edocSummary.getEdocType() == com.seeyon.v3x.edoc.util.Constants.EDOC_FORM_TYPE_SIGN) {
-                lockDocMark = edocSummary.getSerialNo();
-                lockDocMarkSubject = edocMarkLockManager.canGetLock(edocSummary.getSerialNo(), edocSummary.getSubject());
-                if (Strings.isNotBlank(lockDocMarkSubject)) {
-                    EdocMarkModel serialNo = EdocMarkModel.parse(edocSummary.getSerialNo());
-                    String errMsg = "公文《" + lockDocMarkSubject + "》占用了文号《" + serialNo.getMark() + "》,请刷新重试";
-                    StringBuffer str = new StringBuffer("");
-                    str.append("alert('" + StringEscapeUtils.escapeJavaScript(errMsg) + "');");
-                    str.append("history.back();");
-                    returnMap.put("returnValue", false);
-                    returnMap.put("errMsg", str.toString());
-                    return getResponse(returnMap);
-                }
-            }
-            if (Strings.isNotBlank(edocSummary.getDocMark2()) && edocSummary.getEdocType() == com.seeyon.v3x.edoc.util.Constants.EDOC_FORM_TYPE_SIGN) {
-                lockDocMarkSubject = edocMarkLockManager.canGetLock(edocSummary.getDocMark2(), edocSummary.getSubject());
-                lockDocMark = edocSummary.getDocMark2();
-                if (Strings.isNotBlank(lockDocMarkSubject)) {
-                    EdocMarkModel mark2 = EdocMarkModel.parse(edocSummary.getDocMark2());
-                    String errMsg = "公文《" + lockDocMarkSubject + "》占用了文号《" + mark2.getMark() + "》,请刷新重试";
-                    StringBuffer str = new StringBuffer("");
-                    str.append("alert('" + StringEscapeUtils.escapeJavaScript(errMsg) + "');");
-                    str.append("history.back();");
-                    returnMap.put("returnValue", false);
-                    returnMap.put("errMsg", str.toString());
-                    return getResponse(returnMap);
-                }
-            }
-            try {
-                docMark = this.registDocMark(edocSummary.getId(), docMark, 1, edocSummary.getEdocType(), false,
-                        EdocEnum.MarkType.edocMark.ordinal());
-            } catch (EdocMarkHistoryExistException e) {
-                // 签报提交时如果文号存在
-                // OA-47875签报拟文时使用发文封发完的公文文号，发送报错
-                String errMsg = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
-                        e.getMessage());
-                StringBuffer str = new StringBuffer("");
-                str.append("alert('" + errMsg + "');");
-                str.append("history.back();");
-                returnMap.put("returnValue", false);
-                returnMap.put("errMsg", str.toString());
-                return getResponse(returnMap);
-            }
-            if (docMark != null) {
-                docMark = docMark.replaceAll(String.valueOf((char) 160), String.valueOf((char) 32));
-                edocSummary.setDocMark(docMark);
-            }
-
-            // 处理第二个公文文号
-            docMark = edocSummary.getDocMark2();
-            try {
-                docMark = this.registDocMark(edocSummary.getId(), docMark, 2, edocSummary.getEdocType(), false,
-                        EdocEnum.MarkType.edocMark.ordinal());
-            } catch (EdocMarkHistoryExistException e) {
-                String errMsg = ResourceBundleUtil.getString("com.seeyon.v3x.edoc.resources.i18n.EdocResource",
-                        e.getMessage());
-                StringBuffer str = new StringBuffer("");
-                str.append("alert('" + errMsg + "');");
-                str.append("history.back();");
-                returnMap.put("returnValue", false);
-                returnMap.put("errMsg", errMsg);
-                return getResponse(returnMap);
-            }
-            if (docMark != null) {
-                docMark = docMark.replaceAll(String.valueOf((char) 160), String.valueOf((char) 32));
-                edocSummary.setDocMark2(docMark);
-            }
-
-            // 内部文号
-            String serialNo = edocSummary.getSerialNo();
-            serialNo = this.registDocMark(edocSummary.getId(), serialNo, 3, edocSummary.getEdocType(), false,
-                    EdocEnum.MarkType.edocInMark.ordinal());
-            if (serialNo != null) {
-                serialNo = serialNo.replaceAll(String.valueOf((char) 160), String.valueOf((char) 32));
-                edocSummary.setSerialNo(serialNo);
-            }
-
-            Map<String, Object> options = new HashMap<String, Object>();
-
-            EdocEnum.SendType sendType = EdocEnum.SendType.normal;
-
-            // 是否重复发起
-            //if (null != request.getParameter("resend") && !"".equals(request.getParameter("resend"))) {
-            if (null != ParamUtil.getString(param, "resend", "") && !"".equals(ParamUtil.getString(param, "resend", ""))) {
-                sendType = EdocEnum.SendType.resend;
-            }
-
-            // 是否转发
-            //if (null != request.getParameter("forward") && !"".equals(request.getParameter("forward"))) {
-            if (null != ParamUtil.getString(param, "forward", "") && !"".equals(ParamUtil.getString(param, "forward", ""))) {
-                sendType = EdocEnum.SendType.forward;
-                // 是否转发意见
-                //boolean isForwardOpinion = "true".equals(request.getParameter("isForwardOpinion"));
-                boolean isForwardOpinion = "true".equals(ParamUtil.getString(param, "isForwardOpinion", ""));
-                // 转发人附言
-                //String additionalComment = request.getParameter("additionalComment");
-                String additionalComment = ParamUtil.getString(param, "additionalComment", "");
-                // 转发人追加的附件
-
-                options.put("isForwardOpinion", isForwardOpinion);
-                options.put("additionalComment", additionalComment);
-            }
-
-            //String note = request.getParameter("note");// 发起人附言
-            String note = ParamUtil.getString(param, "note", "");// 发起人附言
-            EdocOpinion senderOninion = new EdocOpinion();
-            senderOninion.setContent(note);
-            senderOninion.setIdIfNew();
-            //String trackMode = request.getParameter("isTrack");
-            String trackMode = ParamUtil.getString(param, "isTrack", "");
-            boolean track = (!isQuickSend && "1".equals(trackMode)) ? true : false;
-            // 跟踪
-            //String trackMembers = request.getParameter("trackMembers");
-            String trackMembers = ParamUtil.getString(param, "trackMembers", "");
-            //String trackRange = request.getParameter("trackRange");
-            String trackRange = ParamUtil.getString(param, "trackRange", "");
-            // 如果设置了跟踪指定人，但是指定人为空，则把跟踪设置为false
-            if (Strings.isNotBlank(trackRange) && "0".endsWith(trackRange) && Strings.isBlank(trackMembers)) {
-                track = false;
-            }
-            senderOninion.affairIsTrack = track;
-            senderOninion.setAttribute(1);
-            senderOninion.setIsHidden(false);
-            senderOninion.setCreateUserId(user.getId());
-            senderOninion.setCreateTime(new Timestamp(System.currentTimeMillis()));
-            //senderOninion.setPolicy(request.getParameter("policy"));
-            senderOninion.setPolicy(ParamUtil.getString(param, "policy", ""));
-            senderOninion.setOpinionType(EdocOpinion.OpinionType.senderOpinion.ordinal());
-            senderOninion.setNodeId(0);
-
-            EdocBody body = new EdocBody();
-            //bind(request, body);
-            body.setId(UUIDLong.longUUID());
-            //String tempStr = request.getParameter("bodyType");
-            String tempStr = ParamUtil.getString(param, "bodyType", "");
-            body.setContentType(tempStr);
-            //Date bodyCreateDate = Datetimes.parseDatetime(request.getParameter("bodyCreateDate"));
-            Date bodyCreateDate = Datetimes.parseDatetime(ParamUtil.getString(param, "bodyCreateDate", ""));
-            if (bodyCreateDate != null) {
-                body.setCreateTime(new Timestamp(bodyCreateDate.getTime()));
-            }
-            // -------性能优化，该方法在新建公文单发送，编辑发送，退件箱编辑后发送都会调用，希望在新建公文发送时就不执行删除附件操作了
-            //String hasSummaryId = request.getParameter("newSummaryId");
-            String hasSummaryId = ParamUtil.getString(param, "newSummaryId", "");
-            boolean isNewSent = false; // 是否新建公文发送
-            if (Strings.isBlank(hasSummaryId)) {
-                isNewSent = true;
-            }
-
-            // 来文登记,更新登记时间，给签收人发送消息
-            if (Strings.isNotBlank(recieveIdStr)) {
-                EdocRecieveRecord record = recieveEdocManager.getEdocRecieveRecord(Long.parseLong(recieveIdStr));
-                if (record != null) {
-                    // 获得登记人
-                    long registerUserId = record.getRegisterUserId();
-                    // 设置当前登记的 被代理人
-                    if (registerUserId != user.getId().longValue()) {
-                        agentToId = registerUserId;
-                    }
-                    long edocId = record.getEdocId();
-                    EdocSummary sendEdoc = edocManager.getEdocSummaryById(edocId, false);
-                    // BUG-普通-V5-V5.1SP1-2015年8月月度修复包-20150930012635-打开待登记的公文，修改来文单位之后提交流程，查看来文单位还是修改之前的状态-唐桂林-20151012
-                    //if (request.getParameter("my:send_unit") == null) {
-                    if (ParamUtil.getString(param, "my:send_unit", "") == null || ParamUtil.getString(param, "my:send_unit", "") == "") {
-                        String sendUnit = sendEdoc.getSendUnit();
-                        String sendUnit2 = sendEdoc.getSendUnit2();
-                        if (Strings.isNotBlank(sendUnit2) && !sendUnit2.equals(sendUnit)) {
-                            sendUnit += "," + sendUnit2;
-                        }
-                        edocSummary.setSendUnit(sendUnit);
-                    }
-                }
-            }
-
-            //String waitRegister_recieveId = request.getParameter("waitRegister_recieveId");
-            String waitRegister_recieveId = ParamUtil.getString(param, "waitRegister_recieveId", "");
-            /**
-             * 获得A8所需要签收id（各种场景：待登记中登记，从待发中编辑登记等）
-             */
-            recieveIdStr = RecRelationHandlerFactory.getHandler().getRecieveIdBeforeSendRec(edocSummary, recieveIdStr,
-                    waitRegister_recieveId, isNewSent);
-
-            String isG6 = SystemProperties.getInstance().getProperty("edoc.isG6");
-
-            // 删除原有附件
-            if (!isNewSent && !edocSummary.isNew()) {
-                this.attachmentManager.deleteByReference(edocSummary.getId(), edocSummary.getId());
-            }
-            // ---------------------- start ----------------------
-            // OA-65581 发起人从已发中撤销后重新发起，发现催办日志没有清空上一轮催办的记录(与协同一致，指定回退的不清)
-            CtpAffair sendAffair = affairManager.getSenderAffair(edocSummary.getId());
-            if (sendAffair != null) {
-                int subState = sendAffair.getSubState().intValue();
-                if (subState != SubStateEnum.col_pending_specialBacked.getKey()
-                        && subState != SubStateEnum.col_pending_specialBackToSenderCancel.getKey()) {
-
-                    this.superviseManager.deleteLogs(edocSummary.getId());// 删除催办日志
-                }
-            }
-            // ---------------------- end ----------------------
-            // test code begin
-            if (isQuickSend) {// 快速发文后，summary的状态为结束。
-                edocSummary.setState(CollaborationEnum.flowState.finish.ordinal());
-                edocSummary.setFinished(true);
-                edocSummary.setCompleteTime(new Timestamp(System.currentTimeMillis()));
-                edocSummary.setCanTrack(0);
-                edocSummary.setDeadline(null);
-                edocSummary.setDeadlineDatetime(null);
-            } else {
-                edocSummary.setState(CollaborationEnum.flowState.run.ordinal());
-            }
-
-            edocSummary.setCreateTime(new Timestamp(System.currentTimeMillis()));
-            // 流程期限具体时间需要做版本控制
-
-            if (!isQuickSend && "true".equals(isG6)) {
-                //String deadlineTime = request.getParameter("deadlineTime"); // 如果选的是流程期限具体时间，在这里进行运算，会更精确。
-                String deadlineTime = ParamUtil.getString(param, "deadlineTime", ""); // 如果选的是流程期限具体时间，在这里进行运算，会更精确。
-                Long deadlineValue = getMinValueByDeadlineTime(deadlineTime, edocSummary.getCreateTime());
-                if (deadlineValue != -1L) {
-                    edocSummary.setDeadline(deadlineValue);
-                }
-            }
-
-            if (edocSummary.getStartTime() == null) {
-                edocSummary.setStartTime(new Timestamp(System.currentTimeMillis()));
-            }
-            edocSummary.setStartUserId(agentToId == null ? user.getId() : agentToId);
-            //edocSummary.setFormId(Long.parseLong(request.getParameter("edoctable")));
-            edocSummary.setFormId(Long.parseLong(ParamUtil.getString(param, "edoctable", "")));
-            V3xOrgMember member = orgManager.getEntityById(V3xOrgMember.class, edocSummary.getStartUserId());
-            edocSummary.setStartMember(member);
-            // 如果公文单无登记人，自动赋上登记节为发起人。yangzd
-            //if (request.getParameter("my:create_person") == null) {
-            if (ParamUtil.getString(param, "my:create_person", "") == null || ParamUtil.getString(param, "my:create_person", "") == "") {
-                edocSummary.setCreatePerson(user.getName());
-            }
-            // yangzd
-            if (edocSummary.getOrgAccountId() == null) {
-                edocSummary.setOrgAccountId(user.getLoginAccount());
-            }
-            edocSummary.setOrgDepartmentId(getEdocOwnerDepartmentId(edocSummary.getOrgAccountId(), agentToId));
-            // OA-40757 收文登记簿查询，没有把公文的发文单位查询出来
-            //if (edocSummary.getEdocType() == 1 && request.getParameter("my:send_unit") != null) {
-            if (edocSummary.getEdocType() == 1 && ParamUtil.getString(param, "my:send_unit", "") != null) {
-                // 当是纸质登记时，如果收文单中有发文单位的公文元素，需要在收文summary中设置发文单位
-                //edocSummary.setSendUnit(request.getParameter("my:send_unit"));
-                edocSummary.setSendUnit(ParamUtil.getString(param, "my:send_unit", ""));
-            }
-            // BUG_普通_V5_V5.1sp1_发文管理的快速发文，主送单位为机构组（含两个部门）。收文管理时调用模板，主送单位元素显示的是机构组名称，发送出去后再看显示的是单位名称了_20150123006723_20150127
-            //if (edocSummary.getEdocType() == 1 && request.getParameter("my:send_to") != null) {
-            if (edocSummary.getEdocType() == 1 && ParamUtil.getString(param, "my:send_to", "") != null) {
-                //edocSummary.setSendTo(request.getParameter("my:send_to"));
-                edocSummary.setSendTo(ParamUtil.getString(param, "my:send_to", ""));
-            }
-
-            body.setIdIfNew();
-            if (body.getCreateTime() == null) {
-                body.setCreateTime(new Timestamp(System.currentTimeMillis()));
-            }
-            body.setLastUpdate(new Timestamp(System.currentTimeMillis()));
-            // test code end
-            // 保存附件hassavedattachment
-			/*String attaFlag = attachmentManager.create(ApplicationCategoryEnum.edoc, edocSummary.getId(),
-					edocSummary.getId(), request);*/
-			/*String attaFlag =attachmentManager.create(ApplicationCategoryEnum.edoc,edocSummary.getId(),edocSummary.getId());
-			if (com.seeyon.ctp.common.filemanager.Constants.isUploadLocaleFile(attaFlag)) {
-				edocSummary.setHasAttachments(true);
-
-				// 拟文发送的时候,附件只保存附件,不保存关联文档
-				*//*String[] filenames = request
-						.getParameterValues(com.seeyon.ctp.common.filemanager.Constants.FILEUPLOAD_INPUT_NAME_filename);
-				String[] fileTypes = request
-						.getParameterValues(com.seeyon.ctp.common.filemanager.Constants.FILEUPLOAD_INPUT_NAME_type);*//*
-               String fileName=ParamUtil.getString(param,com.seeyon.ctp.common.filemanager.Constants.FILEUPLOAD_INPUT_NAME_filename,"");
-				String[] filenames={};
-               if(fileName!=null && fileName!=""){
-				   filenames=fileName.split(",");
-				}
-				String fileType=ParamUtil.getString(param,com.seeyon.ctp.common.filemanager.Constants.FILEUPLOAD_INPUT_NAME_type,"");
-				String[] fileTypes={};
-				if(fileType!=null && fileType!=""){
-					fileTypes=fileType.split(",");
-				}
-				edocSummary.setAttachments(EdocHelper.getAttachments(filenames, fileTypes));
-			}*/
-            boolean isNew = edocSummary.isNew();
-            // OA-45558 登记外来公文时，保存待发后，将待发公文发送后，待发中仍存在该公文，已发中也有该公文
-            if (!isNew && Strings.isNotBlank(hasSummaryId)) {
-                // 待发编辑发送时，这里需要设置为之前的id，不然在manager中就不会更新affair了
-                edocSummary.setId(Long.parseLong(hasSummaryId));
-            }
-            Long affairId = 0L;
-
-            Long detailId = null;
-            if (!isNewSent) {
-                detailId = edocSummary.getId();
-            }
-            Map<String, String> superviseMap = new HashMap<String, String>();
-            superviseMap.put("detailId", detailId == null ? null : String.valueOf(detailId));
-			/*superviseMap.put("supervisorIds", request.getParameter("supervisorId"));
-			superviseMap.put("supervisorNames", request.getParameter("supervisors"));
-			superviseMap.put("awakeDate", request.getParameter("awakeDate"));*/
-            superviseMap.put("supervisorIds", ParamUtil.getString(param, "supervisorId", ""));
-            superviseMap.put("supervisorNames", ParamUtil.getString(param, "supervisors", ""));
-            superviseMap.put("awakeDate", ParamUtil.getString(param, "awakeDate", ""));
-            //String title = request.getParameter("title");
-            String title = ParamUtil.getString(param, "title", "");
-            if (Strings.isBlank(title)) {
-                //title = request.getParameter("superviseTitle");
-                title = ParamUtil.getString(param, "superviseTitle", "");
-            }
-            superviseMap.put("title", title);
-            edocSummary.setSuperviseMap(superviseMap);
-
-            //String process_xml = request.getParameter("process_xml");
-            String process_xml = ParamUtil.getString(param, "process_xml", "");
-            //String templeteProcessId = request.getParameter("templeteProcessId");
-            String templeteProcessId = ParamUtil.getString(param, "templeteProcessId", "");
-            try {
-
-                affairId = edocManager.transRunCase(edocSummary, body, senderOninion, sendType, options, comm, agentToId,
-                        isNewSent, process_xml, workflowNodePeoplesInput, workflowNodeConditionInput, templeteProcessId);
-            } catch (Exception e) {
-                LOGGER.error("发起公文流程异常", e);
-            }
-
-            // 不跟踪 或者 全部跟踪的时候不向部门跟踪表中添加数据，所以将下面这个参数串设置为空。
-            if (!track || "1".equals(trackRange)) {
-                trackMembers = "";
-            }
-            edocManager.setTrack(affairId, track, trackMembers);
-
-            // 全文检索入库
-            add2Index(edocSummary.getEdocType(), edocSummary.getId());
-
-            if (edocSummary != null && edocSummary.getEdocType() == 1) {
-                RecRelationAfterSendParam param1 = new RecRelationAfterSendParam();
-                param1.setSummary(edocSummary);
-                param1.setRegister(edocRegister);
-                param1.setUser(user);
-                param1.setProcessType(processType);
-                param1.setRecieveId(recieveIdStr);
-                param1.setWaitRegister_recieveId(waitRegister_recieveId);
-                /**
-                 * 保存收文summary数据后续处理(更新签收，登记数据状态)
-                 */
-                RecRelationHandlerFactory.getHandler().transAfterSendRec(param1);
-            }
-
-            /* puyc 关联收文 */
-            Long sendSummaryId = edocSummary.getId();// 发文Id
-			/*String relationRecIdStr = request.getParameter("relationRecId"); // 在分发的时候没有值
-			String relationRec = request.getParameter("relationRecd");
-			//// 待登记关联发文时，关联id用签收id
-			String recieveId = request.getParameter("recieveId");
-			String forwordType = request.getParameter("forwordType");
-			String forwordtosend_recAffairId = request.getParameter("forwordtosend_recAffairId");*/
-            String relationRecIdStr = ParamUtil.getString(param, "relationRecId", ""); // 在分发的时候没有值
-            String relationRec = ParamUtil.getString(param, "relationRecd", "");
-            //// 待登记关联发文时，关联id用签收id
-            String recieveId = ParamUtil.getString(param, "recieveId", "");
-            String forwordType = ParamUtil.getString(param, "forwordType", "");
-            String forwordtosend_recAffairId = ParamUtil.getString(param, "forwordtosend_recAffairId", "");
-
-            if (Strings.isNotBlank(relationRec) && "haveYes".equals(relationRec)) {
-                EdocSummaryRelation edocSummaryRelation = new EdocSummaryRelation();
-                edocSummaryRelation.setIdIfNew();
-                edocSummaryRelation.setSummaryId(sendSummaryId);// 发文Id
-                edocSummaryRelation.setRelationEdocId(Long.parseLong(relationRecIdStr));// 收文Id
-                edocSummaryRelation.setEdocType(0);// 发文Type
-                if (Strings.isNotBlank(forwordtosend_recAffairId)) {
-                    edocSummaryRelation.setRecAffairId(Long.parseLong(forwordtosend_recAffairId));
-                }
-                edocSummaryRelation.setMemberId(user.getId());
-                this.edocSummaryRelationManager.saveEdocSummaryRelation(edocSummaryRelation);
-            }
-
-            /* puyc 关联发文 */
-            //String relationSend = request.getParameter("relationSend");
-            String relationSend = ParamUtil.getString(param, "relationSend", "");
-            if (Strings.isNotBlank(relationSend) && "haveYes".equals(relationSend)) {
-                if (Strings.isNotBlank(recieveId) || Strings.isNotBlank(relationRecIdStr)) {
-                    EdocSummaryRelation edocSummaryRelation = new EdocSummaryRelation();
-                    edocSummaryRelation.setIdIfNew();
-
-                    if (Strings.isNotBlank(recieveId)) {
-                        edocSummaryRelation.setSummaryId(Long.parseLong(recieveId));// 签收Id
-                    } else {
-                        edocSummaryRelation.setSummaryId(Long.parseLong(relationRecIdStr));// 收文Id
-                    }
-                    edocSummaryRelation.setRelationEdocId(sendSummaryId);// 发文Id
-                    edocSummaryRelation.setEdocType(1);// 收文Type
-                    // changyi 加上转发人ID
-                    edocSummaryRelation.setMemberId(user.getId());
-                    if ("registered".equals(forwordType)) {
-                        edocSummaryRelation.setType(1);
-                    } else if ("waitSent".equals(forwordType)) {
-                        edocSummaryRelation.setType(2);
-                    }
-                    this.edocSummaryRelationManager.saveEdocSummaryRelation(edocSummaryRelation);
-                }
-            }
-            /* puyc 收文关联发文 end */
-
-            // 是否更新发文关联收文的 recAffairId
-            isUpdateRecRelation(edocSummary);
-
-            // ****快速发文start***
-            if (isQuickSend) {
-                CtpAffair a = affairManager.get(affairId);
-                // 发文拟文才有交换
-                if (edocSummary.getEdocType() == EdocEnum.edocType.sendEdoc.ordinal()) {
-                    // 封发的时候进行相关的问号操作，移动到历史表中。tdbug28578 以封发节点完成提交，作为流程结束标志。
-                    edocMarkHistoryManager.afterSend(edocSummary);
-                    // 这不知道啥玩意，处理时封发有的代码，先挪过来 TODO
-                    if (edocSummary.getPackTime() == null) {
-                        edocSummary.setPackTime(new Timestamp(System.currentTimeMillis()));
-                    }
-
-                    Long unitId = -1L;
-                    if (edocExchangeType != -1) {
-                        if (edocExchangeType == EdocSendRecord.Exchange_Send_iExchangeType_Dept) {// 部门交换
-                            //edocMangerID = request.getParameter("returnDeptId");
-                            edocMangerID = ParamUtil.getString(param, "returnDeptId", "");
-
-                            if (Strings.isBlank(edocMangerID)) {
-                                unitId = orgManager.getMemberById(user.getId()).getOrgDepartmentId();
-                            } else {// 发起人存在副岗时，选择交换部门
-                                unitId = Long.valueOf(edocMangerID);
-                            }
-                        } else if (edocExchangeType == EdocSendRecord.Exchange_Send_iExchangeType_Org) {// 单位交换
-                            unitId = edocSummary.getOrgAccountId();
-                        }
-                        try {
-                            sendEdocManager.create(edocSummary, unitId, edocExchangeType, edocMangerID, a, false);
-                            // 更新公文统计表为封发
-                            edocStatManager.setSeal(edocSummary.getId());
-                        } catch (Exception e) {
-                            LOGGER.error("生成公文统计表错误", e);
-                            // throw new EdocException(e);
-                        }
-                    }
-                }
-                try {
-                    // 快速发文——归档。start
-                    if (edocSummary.getEdocType() == 0 || edocSummary.getEdocType() == 1) { // 发文
-                        if (edocSummary.getArchiveId() != null && !edocSummary.getHasArchive()) {
-                            edocManager.pigeonholeAffair("", a, edocSummary.getId(), edocSummary.getArchiveId(), false);
-                            quickSendPigholeInfo = ResourceBundleUtil.getString(
-                                    "com.seeyon.v3x.edoc.resources.i18n.EdocResource", "edoc.quickSend.pigholeInfo");
-                        }
-                    }
-                    // 快速发文——归档。end
-                } catch (Exception e) {
-                    LOGGER.error("快速发文归档错误", e);
-                }
-
-            }
-            // ****快速发文 end***
-
-            //记录文号的变动日志
-            if (Strings.isNotBlank(edocSummary.getDocMark())) {
-                appLogManager.insertLog(user, AppLogAction.Edoc_Doc_Mark_Create, user.getName(), edocSummary.getSubject(), edocSummary.getDocMark());
-            }
-            if (Strings.isNotBlank(edocSummary.getSerialNo())) {
-                appLogManager.insertLog(user, AppLogAction.Edoc_Serial_No_Create, user.getName(), edocSummary.getSubject(), edocSummary.getSerialNo());
-            }
-
-            //String pageview = request.getParameter("pageview");
-            String pageview = ParamUtil.getString(param, "pageview", "");
-            StringBuffer sb = new StringBuffer();
-            if ("listReaded".equals(pageview)) {
-                sb.append("if(window.dialogArguments) {"); // 弹出
-                sb.append("  	window.returnValue = \"true\";");
-                sb.append("  	window.close();");
-                sb.append("} else {");
-                sb.append(
-                        "	parent.parent.location.href='edocController.do?method=listIndex&controller=edocController.do&from=listReaded&listType=listReaded&edocType="
-                                + edocSummary.getEdocType() + Functions.csrfSuffix() + "'");
-                sb.append("}");
-            } else if ("listReading".equals(pageview)) {
-                sb.append("if(window.dialogArguments) {"); // 弹出
-                sb.append("  	window.returnValue = \"true\";");
-                sb.append("  	window.close();");
-                sb.append("} else {");
-                sb.append(
-                        "	parent.parent.location.href='edocController.do?method=listIndex&controller=edocController.do&from=listReading&listType=listReading&edocType="
-                                + edocSummary.getEdocType() + Functions.csrfSuffix() + "'");
-                sb.append("}");
-            } else {
-                //String openFrom = request.getParameter("openFrom");
-                String openFrom = ParamUtil.getString(param, "openFrom", "");
-                //if ("agent".equals(request.getParameter("app")) && edocRegister != null
-                if ("agent".equals(ParamUtil.getString(param, "app", "")) && edocRegister != null
-                        && !user.getId().equals(edocRegister.getRegisterUserId())) {// 代理人跳转到代理事项
-                    sb.append("if(parent.dialogArguments || window.dialogArguments) {");
-                    sb.append("  window.returnValue = \"true\";");
-                    sb.append("  	window.close();");
-                    sb.append("} else {");
-                    sb.append(
-                            "	parent.parent.parent.location.href='collaboration/pending.do?method=morePending&from=Agent" + Functions.csrfSuffix() + "';");
-                    sb.append("}");
-                } else if (Strings.isNotBlank(openFrom) && "ucpc".equals(openFrom)) {
-                    sb.append("if(typeof(getA8Top)!='undefined') {");
-                    sb.append(" getA8Top().window.close();");
-                    sb.append("} else {");
-                    sb.append("	parent.parent.parent.window.close();");
-                    sb.append("}");
-                } else {
-                    //String from = Strings.isBlank(request.getParameter("from")) ? "listSent" : request.getParameter("from");
-                    String from = Strings.isBlank(ParamUtil.getString(param, "from", "")) ? "listSent" : ParamUtil.getString(param, "from", "");
-                    if (!"".equals(quickSendPigholeInfo)) {
-                        sb.append("alert('" + StringEscapeUtils.escapeJavaScript(quickSendPigholeInfo) + "');");
-                    }
-                    sb.append("if(parent.dialogArguments || window.dialogArguments ) {");
-                    sb.append("  window.returnValue = \"true\";");
-                    sb.append("  	window.close();");
-                    sb.append("} else {");
-                    sb.append(
-                            "	parent.parent.location.href='edocController.do?method=listIndex&controller=edocController.do&from="
-                                    + from + "&edocType=" + edocSummary.getEdocType() + "&listType=listSent" + Functions.csrfSuffix() + "'");
-                    sb.append("}");
-                }
-            }
-
-            // 性能优化，删除实例对象
-            SharedWithThreadLocal.remove();
-            //rendJavaScript(response, sb.toString());
-            returnMap.put("returnValue", true);
-            returnMap.put("id", edocSummary.getId());
-            returnMap.put("affairId", affairId);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            edocLockManager.unlock(edocSummary.getSubject(), user.getId());
-            if (lockDocMarkSubject == null) {
-                edocMarkLockManager.unlock(lockDocMark);
-            }
-        }
-        // long endtime = System.currentTimeMillis();
-        return getResponse(returnMap);
-    }
 
     /**
      * 设置公文的默认发文单位/发文部门(用逗号隔开)
