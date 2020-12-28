@@ -5,13 +5,15 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import java.io.UnsupportedEncodingException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Collection;
 
 import java.util.List;
 import java.util.Properties;
 
-import com.alibaba.fastjson.JSON;
-import com.seeyon.apps.common.kit.JsonKit;
 import com.seeyon.apps.util.PropertiesUtil;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
@@ -98,7 +100,7 @@ public class AdaptMobileImpl implements AdapterMobileMessageManger {
     @Override
     public boolean sendMessage(Long messageId, String srcPhone, String destPhone, String content) {
         HttpClient httpclient = new HttpClient();
-
+        String name = getDestName(destPhone);
         try {
             String result = "";
             PostMethod post = new PostMethod(PropertiesUtil.getUrl());
@@ -107,7 +109,8 @@ public class AdaptMobileImpl implements AdapterMobileMessageManger {
             post.addParameter("LoginName", PropertiesUtil.getLoginName());
             post.addParameter("Password", PropertiesUtil.getPassword());
 //            "您好%s您有%s条待办事项%s请及时处理%sOA%s";
-            String msg=String.format(PropertiesUtil.getTemplate(),"!","1", ",","[","]");
+//            %s协同办公平台%s%s老师您好%s您有一条待办需要处理%s请登录协同办公平台查看详情%s
+            String msg = String.format(PropertiesUtil.getTemplate(), "[", "]",name , ":", content,"!");
             post.addParameter("MessageContent", msg);
 //            post.addParameter("MessageContent", String.format(PropertiesUtil.getTemplate(), ((int)((Math.random()*9+1)*100000))+""));
             post.addParameter("UserNumber", destPhone);
@@ -132,6 +135,41 @@ public class AdaptMobileImpl implements AdapterMobileMessageManger {
         } finally {
         }
         return false;
+    }
+
+    public String getDestName(String destPhone) {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select name from ORG_MEMBER where ext_attr_1 =?";
+        String name = "";
+        if(null != destPhone && !"".equals(destPhone)){
+            try {
+                ps = connection.prepareStatement(sql);
+                ps.setString(1, destPhone);
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    name = rs.getString("name");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (null != rs) {
+                        rs.close();
+                    }
+                    if (null != ps) {
+                        ps.close();
+                    }
+                    if (null != connection) {
+                        connection.close();
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return name;
     }
 
 
