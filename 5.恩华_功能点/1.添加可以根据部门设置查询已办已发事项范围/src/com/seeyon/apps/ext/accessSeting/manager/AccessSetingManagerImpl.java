@@ -48,6 +48,10 @@ public class AccessSetingManagerImpl implements AccessSetingManager {
         for (Map.Entry<String, Object> entry : params.entrySet()) {
             String key = entry.getKey();
             String value = (String) entry.getValue();
+
+            if ("accountId".equals(key)) {
+                queryParams.put("accountId", value);
+            }
             if ("name".equals(key)) {
                 queryParams.put("name", value);
             }

@@ -53,12 +53,12 @@ public class AccessSetingControlller extends BaseController {
      * @return
      */
     public ModelAndView getTemplateInfos(HttpServletRequest request, HttpServletResponse response, String departmentId) {
-        User user=AppContext.getCurrentUser();
+        User user = AppContext.getCurrentUser();
         String id = request.getParameter("categoryId");
         Map<String, String> params = new HashMap<>();
         params.put("categoryId", id);
         params.put("subject", request.getParameter("subject"));
-        params.put("orgAccountId",Long.toString(user.getAccountId()));
+        params.put("orgAccountId", Long.toString(user.getAccountId()));
         List<Map<String, String>> list = manager.getTemplateInfos(params);
         List<Map<String, String>> nlist = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
@@ -149,11 +149,13 @@ public class AccessSetingControlller extends BaseController {
      */
     public ModelAndView getMemberByDepartmentId(HttpServletRequest request, HttpServletResponse response) {
         try {
+            User user = AppContext.getCurrentUser();
             String departmentId = request.getParameter("departmentId");
             if (null == departmentId || departmentId.equals("")) {
                 departmentId = "";
             }
             Map map = new HashMap<>();
+            map.put("accountId", user.getLoginAccount() + "");
             map.put("departmentId", departmentId);
             map.put("name", request.getParameter("name"));
             List<ZorgMember> list = null;
