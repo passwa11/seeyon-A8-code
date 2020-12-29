@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.seeyon.apps.util.PropertiesUtil;
+import com.seeyon.ctp.util.JDBCAgent;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
@@ -100,7 +101,7 @@ public class AdaptMobileImpl implements AdapterMobileMessageManger {
     @Override
     public boolean sendMessage(Long messageId, String srcPhone, String destPhone, String content) {
         HttpClient httpclient = new HttpClient();
-        String name = getDestName(destPhone);
+        String name = getDestName(destPhone.trim());
         try {
             String result = "";
             PostMethod post = new PostMethod(PropertiesUtil.getUrl());
@@ -110,7 +111,13 @@ public class AdaptMobileImpl implements AdapterMobileMessageManger {
             post.addParameter("Password", PropertiesUtil.getPassword());
 //            "您好%s您有%s条待办事项%s请及时处理%sOA%s";
 //            %s协同办公平台%s%s老师您好%s您有一条待办需要处理%s请登录协同办公平台查看详情%s
-            String msg = String.format(PropertiesUtil.getTemplate(), "[", "]",name , ":", content,"!");
+            String info = "";
+            if (content.contains("《")) {
+                info = content.substring(content.indexOf("《"), content.indexOf("》") + 1);
+            } else {
+                info = content;
+            }
+            String msg = String.format(PropertiesUtil.getTemplate(), "【", "】", name, ":", info, "！");
             post.addParameter("MessageContent", msg);
 //            post.addParameter("MessageContent", String.format(PropertiesUtil.getTemplate(), ((int)((Math.random()*9+1)*100000))+""));
             post.addParameter("UserNumber", destPhone);
@@ -143,8 +150,9 @@ public class AdaptMobileImpl implements AdapterMobileMessageManger {
         ResultSet rs = null;
         String sql = "select name from ORG_MEMBER where ext_attr_1 =?";
         String name = "";
-        if(null != destPhone && !"".equals(destPhone)){
+        if (null != destPhone && !"".equals(destPhone)) {
             try {
+                connection = JDBCAgent.getRawConnection();
                 ps = connection.prepareStatement(sql);
                 ps.setString(1, destPhone);
                 rs = ps.executeQuery();
