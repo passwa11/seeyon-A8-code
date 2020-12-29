@@ -212,6 +212,7 @@ public class DoneSection extends BaseSectionImpl {
         AccessSetingManager manager = new AccessSetingManagerImpl();
 
         try {
+            fi.setSize(20);
             affairs = pendingManager.querySectionAffair(condition, fi, preference, ColOpenFrom.listDone.name(), new HashMap<String, String>(), false);
             //【恩华药业】zhou:协同过滤掉设定范围内的数据【开始】
             for (CtpAffair affair : affairs) {
