@@ -99,9 +99,9 @@ public class AccessSetingDaoImpl implements AccessSetingDao {
                 }
             }
             if ("departmentId".equals(key)) {
-                if (!"".equals(value)) {
+//                if (!"".equals(value)) {
                     sql.append(" and s.ORG_DEPARTMENT_ID = " + value);
-                }
+//                }
             }
 
         }
