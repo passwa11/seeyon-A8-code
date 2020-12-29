@@ -25,11 +25,12 @@ public class AccessSetingDaoImpl implements AccessSetingDao {
         Map<String, Object> map = new HashMap<>();
         map.put("p1", "0");
         return DBAgent.find("from TempTemplateStop where p1=:p1 ", map);
+//        return DBAgent.find("from TempTemplateStop where 1=1 ");
     }
 
     @Override
     public List<Map<String, String>> getTemplateInfos(Map<String, String> params) {
-        String sql = "select w3.* from (select ct.*,nvl(s.P1,'-') p1 from (select c.id catid,c.name,t.subject,t.id from CTP_TEMPLATE_CATEGORY c, (select * from CTP_TEMPLATE where ORG_ACCOUNT_ID=" + params.get("orgAccountId") + ") t where c.id=t.CATEGORY_ID) ct LEFT JOIN TEMP_TEMPLATE_STOP s on CT.id=s.TEMPLATE_ID) w3 where 1=1  ";
+        String sql = "select w3.* from (select ct.*,nvl(s.P1,'-') p1 from (select c.id catid,c.name,t.subject,t.id from CTP_TEMPLATE_CATEGORY c, (select * from CTP_TEMPLATE where ORG_ACCOUNT_ID=" + params.get("orgAccountId") + " and IS_DELETE=0 and WORKFLOW_ID !=0 ) t where c.id=t.CATEGORY_ID) ct LEFT JOIN TEMP_TEMPLATE_STOP s on CT.id=s.TEMPLATE_ID) w3 where 1=1  ";
         for (Map.Entry<String, String> entry : params.entrySet()) {
             if (entry.getKey().equals("subject")) {
                 if (null != entry.getValue() && !"".equals(entry.getValue())) {
