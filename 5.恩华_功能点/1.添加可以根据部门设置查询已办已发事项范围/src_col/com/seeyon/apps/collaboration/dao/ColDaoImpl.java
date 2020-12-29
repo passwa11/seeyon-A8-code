@@ -764,7 +764,8 @@ public class ColDaoImpl extends BaseHibernateDao<ColSummary> implements ColDao {
         String templeteIds = condition.get(ColQueryCondition.templeteIds.name());
         String templateName = condition.get(ColQueryCondition.templateName.name());
         if (Strings.isNotBlank(templeteIds)) {
-            sb.append(" and summary.templete_id in(:templeteIds) ");
+            //zhou:合并同一流程时调用的
+            sb.append(" and summary.templete_id not in(:templeteIds) ");
             List<Long> l = new ArrayList<Long>();
             List<String> ls = Arrays.asList(condition.get(ColQueryCondition.templeteIds.name()).split(","));
             for (String s : ls) {
