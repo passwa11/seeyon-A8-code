@@ -29,6 +29,7 @@ import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeSe
 import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 import javax.sql.DataSource;
@@ -161,13 +162,13 @@ public class OAuth2ServerConfiguration {
         /*
          * Redis TokenStore (有Redis场景时使用)
          */
-//        @Bean
-//        public TokenStore tokenStore(RedisConnectionFactory redisConnectionFactory) {
-//            final RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
-//            //设置redis token存储中的前缀
-//            redisTokenStore.setPrefix(RESOURCE_ID);
-//            return redisTokenStore;
-//        }
+        @Bean
+        public TokenStore tokenStore(RedisConnectionFactory redisConnectionFactory) {
+            final RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
+            //设置redis token存储中的前缀
+            redisTokenStore.setPrefix(RESOURCE_ID);
+            return redisTokenStore;
+        }
 
         /**
          * 设置token存储

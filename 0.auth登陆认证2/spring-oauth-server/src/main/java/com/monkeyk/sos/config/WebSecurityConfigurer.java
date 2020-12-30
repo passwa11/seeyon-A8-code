@@ -1,5 +1,6 @@
 package com.monkeyk.sos.config;
 
+import com.monkeyk.sos.handler.CustomLoginSuccessHandler;
 import com.monkeyk.sos.handler.CustomLogoutSuccessHandler;
 import com.monkeyk.sos.service.UserService;
 import com.monkeyk.sos.util.OaPasswordEncode;
@@ -49,6 +50,10 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Autowired
     private CustomLogoutSuccessHandler customLogoutSuccessHandler;
 
+    //登陆成功处理类
+    @Autowired
+    private CustomLoginSuccessHandler customLoginSuccessHandler;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 //        http.csrf().ignoringAntMatchers("/oauth/authorize", "/oauth/token", "/oauth/rest_token");
@@ -75,21 +80,23 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error=1")
                 .usernameParameter("oidc_user")
                 .passwordParameter("oidcPwd")
+                //zhou:登陆成功处理类
+//                .successHandler(customLoginSuccessHandler)
                 .and()
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
-//                .logoutSuccessUrl("/")
                 .logoutSuccessHandler(customLogoutSuccessHandler)
+                .deleteCookies("JSESSIONID")
+
 //                //无效会话
-//                .invalidateHttpSession(true)
+                .invalidateHttpSession(true)
 //                // 清除身份验证
 //                .clearAuthentication(true)
 //                .permitAll()
                 //zhou
 //                .logoutUrl("/signout")
 //                .addLogoutHandler(new MyLogoutHandler())
-//                .deleteCookies("JSESSIONID")
 //                .logoutSuccessUrl("/")
                 .and()
                 .exceptionHandling()
