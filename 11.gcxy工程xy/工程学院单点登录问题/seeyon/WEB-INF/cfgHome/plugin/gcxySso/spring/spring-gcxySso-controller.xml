@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans default-autowire="byName">
-    <bean name="qrCodeDaoDemo" class="com.seeyon.apps.ext.qrCode.dao.qrCodeDaoImpl"/>
+    <bean name="/ext/gcxySso.do" class="com.seeyon.apps.ext.gcxySso.controller.gcxySsoController"/>
 </beans>
