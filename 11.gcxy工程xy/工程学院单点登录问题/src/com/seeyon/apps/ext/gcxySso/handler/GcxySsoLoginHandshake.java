@@ -7,7 +7,8 @@ public class GcxySsoLoginHandshake extends SSOLoginHandshakeAbstract {
     public String handshake(String ticket) {
         String decodeloginName = "";
         if (null != ticket && !"".equals(ticket)) {
-            decodeloginName = StringHandle.decode(ticket);
+            String t = StringHandle.decode(ticket);
+            decodeloginName = t.split(":")[0];
         } else {
             return null;
         }
