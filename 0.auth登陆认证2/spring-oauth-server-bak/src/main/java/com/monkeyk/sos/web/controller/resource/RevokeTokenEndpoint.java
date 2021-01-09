@@ -10,11 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
 
 /**
@@ -29,18 +25,11 @@ public class RevokeTokenEndpoint {
     @Qualifier("consumerTokenServices")
     ConsumerTokenServices consumerTokenServices;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/verifyLoginStatus", params = "access_token")
-    public void verifyLoginStatus(HttpServletRequest request, HttpServletResponse response, String access_token) {
-        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-        String sessionId = attr.getSessionId();
-        System.out.println(sessionId);
-    }
-
     @Autowired
     private TokenStore tokenStore;
 
     @DeleteMapping(value = "/remove_token", params = "access_token")
-    public void deleteToken(Principal principal, String access_token) {
+    public void deleteToken(Principal principal, String access_token){
         OAuth2AccessToken accessToken = tokenStore.readAccessToken(access_token);
         if (accessToken != null) {
             // 移除access_token

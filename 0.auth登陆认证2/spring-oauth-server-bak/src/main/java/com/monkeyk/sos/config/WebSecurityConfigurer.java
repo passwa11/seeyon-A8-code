@@ -57,7 +57,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().ignoringAntMatchers("/oauth/authorize", "/oauth/token", "/oauth/rest_token");
+//        http.csrf().ignoringAntMatchers("/oauth/authorize", "/oauth/token", "/oauth/rest_token");
 
         http.authorizeRequests()
                 // permitAll() 的URL路径属于公开访问，不需要权限
@@ -91,7 +91,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .deleteCookies("JSESSIONID")
 
 //                //无效会话
-//                .invalidateHttpSession(true)
+                .invalidateHttpSession(true)
 //                // 清除身份验证
 //                .clearAuthentication(true)
 //                .permitAll()
