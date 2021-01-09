@@ -19,29 +19,14 @@
         <servlet-class>cn.com.zhou.localServer.OauthLocalServer</servlet-class>
     </servlet>
 
-    <servlet>
-        <servlet-name>redirectLocalServerServlet</servlet-name>
-        <servlet-class>cn.com.zhou.localServer.RedirectLocalServerServlet</servlet-class>
-    </servlet>
-    
-    <servlet>
-        <servlet-name>demoServer</servlet-name>
-        <servlet-class>cn.com.zhou.demo.OauthDemoServer</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>demoServer</servlet-name>
-        <url-pattern>/demo</url-pattern>
-    </servlet-mapping>
+
 
     <servlet-mapping>
         <servlet-name>localServer</servlet-name>
         <url-pattern>/local</url-pattern>
     </servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>redirectLocalServerServlet</servlet-name>
-        <url-pattern>/redirectLocal</url-pattern>
-    </servlet-mapping>
+
 
     <servlet-mapping>
         <servlet-name>redirectServlet</servlet-name>
