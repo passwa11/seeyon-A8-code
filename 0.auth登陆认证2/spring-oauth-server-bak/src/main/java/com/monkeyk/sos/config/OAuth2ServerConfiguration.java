@@ -154,10 +154,10 @@ public class OAuth2ServerConfiguration {
 //        /*
 //         * JDBC TokenStore
 //         */
-//        @Bean
-//        public TokenStore tokenStore(DataSource dataSource) {
-//            return new JdbcTokenStore(dataSource);
-//        }
+        @Bean
+        public TokenStore tokenStore(DataSource dataSource) {
+            return new JdbcTokenStore(dataSource);
+        }
 
         /*
          * Redis TokenStore (有Redis场景时使用)

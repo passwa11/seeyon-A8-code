@@ -34,4 +34,14 @@ public class UnityController {
         return userService.loadCurrentUserJsonDto();
     }
 
+
+
+    @RequestMapping("check_user_status")
+    @ResponseBody
+    public UserJsonDto checkuserInfo(HttpServletRequest request, Authentication auth) {
+        String token = request.getParameter("access_token");
+        return userService.loadCurrentUserJsonDto();
+    }
+
+
 }
