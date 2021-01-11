@@ -1,9 +1,11 @@
 package com.monkeyk.sos.handler;
 
+import com.monkeyk.sos.domain.CheckUserStatus;
 import com.monkeyk.sos.domain.shared.security.SOSUserDetails;
 import com.monkeyk.sos.service.CheckUserStatusServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
 import org.springframework.security.web.authentication.AbstractAuthenticationTargetUrlRequestHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @Component
 public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlRequestHandler implements LogoutSuccessHandler {
@@ -21,11 +24,19 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
     @Autowired
     private CheckUserStatusServiceImpl service;
 
+    @Autowired
+    private ConsumerTokenServices consumerTokenServices;
+
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         SOSUserDetails map = (SOSUserDetails) authentication.getPrincipal();
         String username = map.user().username();
+        List<CheckUserStatus> statusList = service.findAll(username);
+        for (CheckUserStatus checkUserStatus : statusList) {
+            consumerTokenServices.revokeToken(checkUserStatus.getToken());
+        }
         service.delete(username);
+
         // 将子系统的cookie删掉
         HttpSession session = request.getSession();
         String sessionId = session.getId();
