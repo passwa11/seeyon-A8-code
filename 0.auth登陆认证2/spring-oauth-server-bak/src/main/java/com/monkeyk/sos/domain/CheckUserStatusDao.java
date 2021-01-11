@@ -9,7 +9,7 @@ public interface CheckUserStatusDao {
 
     void update(CheckUserStatus userStatus);
 
-    List<Map<String, Object>> findAll(String loginName);
+    List<CheckUserStatus> findAll(String loginName);
 
     void delete(String loginName);
 }

@@ -45,9 +45,9 @@ public class CheckUserStatusServiceImpl implements CheckUserStatusDao {
     }
 
     @Override
-    public List<Map<String, Object>> findAll(String loginName) {
+    public List<CheckUserStatus> findAll(String loginName) {
         String sql = "select * from check_user_status where loginname=?";
-        List<Map<String, Object>> list = jdbcTemplate.queryForList(sql, new Object[]{loginName}, new CheckUserStatusMapper());
+        List<CheckUserStatus> list = jdbcTemplate.query(sql, new String[]{loginName}, new CheckUserStatusMapper());
         return list;
     }
 

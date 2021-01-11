@@ -57,7 +57,7 @@ public class UnityController {
         String token = request.getParameter("access_token");
         SOSUserDetails map = (SOSUserDetails) auth.getPrincipal();
         String username = map.user().username();
-        List<Map<String, Object>> mapList = statusService.findAll(username);
+        List<CheckUserStatus> mapList = statusService.findAll(username);
         if (mapList.size() > 0) {
             return true;
         }
