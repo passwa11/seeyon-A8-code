@@ -1,5 +1,8 @@
 package com.monkeyk.sos.handler;
 
+import com.monkeyk.sos.domain.shared.security.SOSUserDetails;
+import com.monkeyk.sos.service.CheckUserStatusServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AbstractAuthenticationTargetUrlRequestHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
@@ -14,8 +17,15 @@ import java.io.IOException;
 
 @Component
 public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlRequestHandler implements LogoutSuccessHandler {
+
+    @Autowired
+    private CheckUserStatusServiceImpl service;
+
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+        SOSUserDetails map = (SOSUserDetails) authentication.getPrincipal();
+        String username = map.user().username();
+        service.delete(username);
         // 将子系统的cookie删掉
         HttpSession session = request.getSession();
         String sessionId = session.getId();
