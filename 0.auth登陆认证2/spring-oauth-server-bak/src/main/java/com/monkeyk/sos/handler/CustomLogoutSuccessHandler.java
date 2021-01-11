@@ -39,9 +39,6 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
 
         // 将子系统的cookie删掉
         HttpSession session = request.getSession();
-        String sessionId = session.getId();
-        System.out.println("退出应用的session的id:" + sessionId);
-        String returnUrl = request.getParameter("returnUrl");
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length > 0) {
             for (Cookie cookie : cookies) {
@@ -50,6 +47,8 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
                 response.addCookie(cookie);
             }
         }
+        String returnUrl = request.getParameter("returnUrl");
+
         if (null != returnUrl) {
             response.sendRedirect(returnUrl);
         }
