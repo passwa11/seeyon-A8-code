@@ -2207,51 +2207,12 @@ public class MainController extends BaseController {
 
 //            zhou
             session.invalidate();
-//            Connection connection = null;
-//            PreparedStatement ps = null;
-//            ResultSet rs = null;
-//            String token = "";
-//            try {
-//                String sql = "select id,token from temp_token";
-//                connection = JDBCAgent.getRawConnection();
-//                ps = connection.prepareStatement(sql);
-//                rs = ps.executeQuery();
-//                while (rs.next()) {
-//                    token = rs.getString("token");
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            } finally {
-//                rs.close();
-//                ps.close();
-//                connection.close();
-//            }
-//            CloseableHttpClient httpClient = HttpClients.createDefault();
-//            HttpDelete httpDelete = null;
-//            HttpResponse httpResponse = null;
-//            JSONObject jsonObject = null;
-//            try {
-//                httpDelete = new HttpDelete("http://localhost:8080/server/oauth/token?accessToken="+token);
-//                httpResponse = httpClient.execute(httpDelete);
-//                if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-//                    HttpEntity httpEntity = httpResponse.getEntity();
-//                    String result = EntityUtils.toString(httpEntity, "UTF-8");
-//                    jsonObject = JSONObject.parseObject(result);
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            } finally {
-//                try {
-//                    httpClient.close();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
 
             String servername = request.getServerName();
             PropUtils p = new PropUtils();
             String ssoLogout = p.getSSO_Logout();
-            response.sendRedirect(ssoLogout + "?returnUrl=" + URLEncoder.encode("http://" + servername + "/seeyon/kfqLogin"));
+//            response.sendRedirect(ssoLogout + "?returnUrl=" + URLEncoder.encode("http://" + servername + "/seeyon/kfqLogin"));
+            response.sendRedirect(ssoLogout + "?returnUrl=" + URLEncoder.encode("http://" + servername + "/seeyon/maim.do?method=index"));
 //            response.sendRedirect(SystemEnvironment.getContextPath() + destination);
         }
 

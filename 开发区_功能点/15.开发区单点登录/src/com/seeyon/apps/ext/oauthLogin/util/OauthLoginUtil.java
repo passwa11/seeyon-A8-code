@@ -57,7 +57,7 @@ public class OauthLoginUtil {
 //                    ps.close();
 //                    conn.close();
 //                }
-
+                MapCacheUtil.cache.put("token", (String) m.get("access_token"));
                 loginName = toGet((String) m.get("access_token"), prop);
             }
         } catch (Exception e) {

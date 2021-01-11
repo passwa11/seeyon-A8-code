@@ -267,6 +267,17 @@
         <filter-name>kgh5filter</filter-name>
         <filter-class>com.seeyon.apps.common.isignaturehtml.filter.IsignatureFilter</filter-class>
     </filter>
+    <!--    zhou:认证登陆拦截器 开始-->
+    <filter>
+        <filter-name>oauthFilter</filter-name>
+        <filter-class>com.seeyon.apps.ext.oauthLogin.filter.OauthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>oauthFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    <!--    zhou:认证登陆拦截器 结束-->
+    
     <filter-mapping>
         <filter-name>kgh5filter</filter-name>
         <url-pattern>/isignaturehtmlH5servlet</url-pattern>
@@ -296,7 +307,7 @@
         <url-pattern>/getAJAXMessageServlet</url-pattern>
     </servlet-mapping>
 
-<!--    zhou-->
+    <!--    zhou-->
     <servlet>
         <servlet-name>kfqSsoLogin</servlet-name>
         <servlet-class>com.seeyon.apps.ext.oauthLogin.servlet.KfqSsoLogin</servlet-class>
