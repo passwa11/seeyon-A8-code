@@ -52,7 +52,8 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
         if (null != returnUrl) {
             System.out.println(returnUrl);
             response.sendRedirect(returnUrl);
+        } else {
+            super.handle(request, response, authentication);
         }
-//        super.handle(request, response, authentication);
     }
 }
