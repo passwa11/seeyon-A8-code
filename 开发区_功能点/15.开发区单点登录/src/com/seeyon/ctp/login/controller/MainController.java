@@ -14,6 +14,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.agent.utils.AgentUtil;
 import com.seeyon.apps.edoc.api.EdocApi;
 import com.seeyon.apps.eip.manager.EipApi;
+import com.seeyon.apps.ext.oauthLogin.util.MapCacheUtil;
 import com.seeyon.apps.ext.oauthLogin.util.PropUtils;
 import com.seeyon.apps.ldap.config.LDAPConfig;
 import com.seeyon.apps.ldap.util.LdapUtils;
@@ -2153,6 +2154,7 @@ public class MainController extends BaseController {
      */
     @NeedlessCheckLogin
     public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        User user = AppContext.getCurrentUser();
         response.setDateHeader("Expires", -1);
         response.setHeader("Cache-Control", "no-store");
         response.setHeader("Pragrma", "no-cache");
@@ -2211,8 +2213,9 @@ public class MainController extends BaseController {
             String servername = request.getServerName();
             PropUtils p = new PropUtils();
             String ssoLogout = p.getSSO_Logout();
+            MapCacheUtil.cache.put(user.getLoginName(), "");
 //            response.sendRedirect(ssoLogout + "?returnUrl=" + URLEncoder.encode("http://" + servername + "/seeyon/kfqLogin"));
-            response.sendRedirect(ssoLogout + "?returnUrl=" + URLEncoder.encode("http://" + servername + "/seeyon/maim.do?method=index"));
+            response.sendRedirect(ssoLogout + "?returnUrl=" + URLEncoder.encode("http://" + servername + "/seeyon/main.do?method=index"));
 //            response.sendRedirect(SystemEnvironment.getContextPath() + destination);
         }
 

@@ -41,24 +41,8 @@ public class OauthLoginUtil {
                 HttpEntity entity = response.getEntity();
                 String resultString = EntityUtils.toString(response.getEntity(), "utf-8").replaceAll(" ", "");
                 Map<String, Object> m = (Map<String, Object>) JSONObject.parse(resultString);
-                //zhou:新加记录获取到的token
-//                String saveToken = "insert into temp_token(id,token) values(?,?)";
-//                Connection conn = null;
-//                PreparedStatement ps = null;
-//                try {
-//                    conn = JDBCAgent.getRawConnection();
-//                    ps = conn.prepareStatement(saveToken);
-//                    ps.setLong(1, System.currentTimeMillis());
-//                    ps.setString(2, (String) m.get("access_token"));
-//                    ps.executeUpdate();
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                } finally {
-//                    ps.close();
-//                    conn.close();
-//                }
-                MapCacheUtil.cache.put("token", (String) m.get("access_token"));
                 loginName = toGet((String) m.get("access_token"), prop);
+                MapCacheUtil.cache.put(loginName, (String) m.get("access_token"));
             }
         } catch (Exception e) {
             e.printStackTrace();
