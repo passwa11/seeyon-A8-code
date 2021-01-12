@@ -14,12 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
-import java.util.Map;
 
 public class OauthFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
     }
 
     @Override
@@ -56,16 +54,6 @@ public class OauthFilter implements Filter {
         } else {
             filterChain.doFilter(request, response);
         }
-
-
-    }
-
-    /**
-     * 白名单
-     */
-    public String[] whitelist() {
-        String[] arr = {"main.do"};
-        return arr;
     }
 
     @Override
