@@ -29,29 +29,30 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
 
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        SOSUserDetails map = (SOSUserDetails) authentication.getPrincipal();
-        String username = map.user().username();
-        List<CheckUserStatus> statusList = service.findAll(username);
-        for (CheckUserStatus checkUserStatus : statusList) {
-            consumerTokenServices.revokeToken(checkUserStatus.getToken());
-        }
-        service.delete(username);
-
-        // 将子系统的cookie删掉
-        HttpSession session = request.getSession();
-        Cookie[] cookies = request.getCookies();
-        if (cookies != null && cookies.length > 0) {
-            for (Cookie cookie : cookies) {
-                cookie.setMaxAge(0);
-                cookie.setPath("/");
-                response.addCookie(cookie);
+        String returnUrl = request.getParameter("returnUrl");
+        if (null != authentication) {
+            SOSUserDetails map = (SOSUserDetails) authentication.getPrincipal();
+            String username = map.user().username();
+            List<CheckUserStatus> statusList = service.findAll(username);
+            for (CheckUserStatus checkUserStatus : statusList) {
+                consumerTokenServices.revokeToken(checkUserStatus.getToken());
+            }
+            service.delete(username);
+            // 将子系统的cookie删掉
+            HttpSession session = request.getSession();
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null && cookies.length > 0) {
+                for (Cookie cookie : cookies) {
+                    cookie.setMaxAge(0);
+                    cookie.setPath("/");
+                    response.addCookie(cookie);
+                }
             }
         }
-        String returnUrl = request.getParameter("returnUrl");
-
         if (null != returnUrl) {
+            System.out.println(returnUrl);
             response.sendRedirect(returnUrl);
         }
-        super.handle(request, response, authentication);
+//        super.handle(request, response, authentication);
     }
 }
