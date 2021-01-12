@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class RedisCheckUserStatus {
@@ -19,7 +20,8 @@ public class RedisCheckUserStatus {
 
     public void save(CheckUserStatus status) {
         ValueOperations<String, CheckUserStatus> operations = redisTemplate.opsForValue();
-        operations.set(System.currentTimeMillis() + status.getLoginname(), status);
+        //设置缓存过期时间为30   单位：分钟　
+        operations.set(System.currentTimeMillis() + status.getLoginname(), status, 30, TimeUnit.MINUTES);
     }
 
     public void delete(String loginName) {
