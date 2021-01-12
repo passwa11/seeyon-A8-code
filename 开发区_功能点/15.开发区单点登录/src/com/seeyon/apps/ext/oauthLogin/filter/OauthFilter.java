@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.net.URLEncoder;
 
 public class OauthFilter implements Filter {
+
+    private PropUtils propUtils = new PropUtils();
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
     }
@@ -32,7 +35,7 @@ public class OauthFilter implements Filter {
             if (null != t && !"".equals(t)) {
                 map.add(user.getLoginName(), MapCacheUtil.cache.get(user.getLoginName()));
                 String token = MapCacheUtil.cache.get(user.getLoginName());
-                ResponseEntity<String> responseEntity = rest.getForEntity("http://localhost:8080/server/unity/check_user_status?access_token=" + token, String.class);
+                ResponseEntity<String> responseEntity = rest.getForEntity(propUtils.getCheckUserStatus() + "?access_token=" + token, String.class);
                 String obj = responseEntity.getBody();
                 if ("true".equals(obj)) {
                     filterChain.doFilter(request, response);
