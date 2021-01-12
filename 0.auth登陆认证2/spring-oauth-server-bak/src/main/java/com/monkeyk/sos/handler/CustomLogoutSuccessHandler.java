@@ -39,7 +39,6 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
             }
             service.delete(username);
             // 将子系统的cookie删掉
-            HttpSession session = request.getSession();
             Cookie[] cookies = request.getCookies();
             if (cookies != null && cookies.length > 0) {
                 for (Cookie cookie : cookies) {
@@ -50,7 +49,6 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
             }
         }
         if (null != returnUrl) {
-            System.out.println(returnUrl);
             response.sendRedirect(returnUrl);
         } else {
             super.handle(request, response, authentication);
