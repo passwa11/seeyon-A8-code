@@ -1,10 +1,22 @@
 package com.monkeyk.sos.domain;
 
-public class CheckUserStatus {
+import java.io.Serializable;
+
+public class CheckUserStatus implements Serializable {
 
     private int id;
     private String token;
     private String loginname;
+
+    public CheckUserStatus() {
+    }
+
+    public CheckUserStatus(int id, String token, String loginname) {
+        super();
+        this.id = id;
+        this.token = token;
+        this.loginname = loginname;
+    }
 
     public int getId() {
         return id;

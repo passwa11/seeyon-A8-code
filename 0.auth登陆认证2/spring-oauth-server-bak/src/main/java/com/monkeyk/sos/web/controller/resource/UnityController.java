@@ -4,6 +4,7 @@ import com.monkeyk.sos.domain.CheckUserStatus;
 import com.monkeyk.sos.domain.shared.security.SOSUserDetails;
 import com.monkeyk.sos.domain.user.User;
 import com.monkeyk.sos.service.CheckUserStatusServiceImpl;
+import com.monkeyk.sos.service.RedisCheckUserStatus;
 import com.monkeyk.sos.service.dto.UserJsonDto;
 import com.monkeyk.sos.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class UnityController {
     @Autowired
     private CheckUserStatusServiceImpl statusService;
 
+    @Autowired
+    private RedisCheckUserStatus redisCheckUserStatus;
+
 
     @RequestMapping("dashboard")
     public String dashboard() {
@@ -46,7 +50,10 @@ public class UnityController {
         CheckUserStatus cus = new CheckUserStatus();
         cus.setToken(token);
         cus.setLoginname(username);
-        statusService.addUserStatus(cus);
+        //使用数据库的方式存储
+//        statusService.addUserStatus(cus);
+        //使用redis方式存储
+        redisCheckUserStatus.save(cus);
         return userService.loadCurrentUserJsonDto();
     }
 
@@ -54,10 +61,12 @@ public class UnityController {
     @RequestMapping("check_user_status")
     @ResponseBody
     public boolean checkuserInfo(HttpServletRequest request, Authentication auth) {
-        String token = request.getParameter("access_token");
         SOSUserDetails map = (SOSUserDetails) auth.getPrincipal();
         String username = map.user().username();
-        List<CheckUserStatus> mapList = statusService.findAll(username);
+        //数据库
+//        List<CheckUserStatus> mapList = statusService.findAll(username);
+        //redis
+        List<CheckUserStatus> mapList = redisCheckUserStatus.findAllByLoginname(username);
         if (mapList.size() > 0) {
             return true;
         }

@@ -36,7 +36,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="clientId" class="col-sm-2 control-label">应用标识(client_id)<em class="text-danger">*</em></label>
+                        <label for="clientId" class="col-sm-2 control-label">应用标识(client_id)<em
+                                class="text-danger">*</em></label>
 
                         <div class="col-sm-10">
                             <form:input path="clientId" cssClass="form-control" id="clientId" placeholder="client_id"
@@ -51,6 +52,19 @@
                         <div class="col-sm-10">
                             <form:input path="clientSecret" cssClass="form-control" id="clientSecret"
                                         placeholder="client_secret" required="required" readonly="true"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="accessTokenValidity" class="col-sm-2 control-label">token有效时间</label>
+
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" name="accessTokenValidity"
+                                   id="accessTokenValidity"
+                                   placeholder="access_token_validity"/>
+
+                            <p class="help-block">设定客户端的access_token的有效时间值(单位:秒),可选, 若不设定值则使用默认的有效时间值(60 * 60 * 12,
+                                12小时);
+                                若设定则必须是大于0的整数值</p>
                         </div>
                     </div>
                     <div class="form-group" style="display: none;">

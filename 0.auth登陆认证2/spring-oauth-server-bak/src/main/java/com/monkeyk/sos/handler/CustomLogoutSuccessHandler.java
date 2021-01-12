@@ -3,6 +3,7 @@ package com.monkeyk.sos.handler;
 import com.monkeyk.sos.domain.CheckUserStatus;
 import com.monkeyk.sos.domain.shared.security.SOSUserDetails;
 import com.monkeyk.sos.service.CheckUserStatusServiceImpl;
+import com.monkeyk.sos.service.RedisCheckUserStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
@@ -25,6 +26,9 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
     private CheckUserStatusServiceImpl service;
 
     @Autowired
+    private RedisCheckUserStatus redisCheckUserStatus;
+
+    @Autowired
     private ConsumerTokenServices consumerTokenServices;
 
     @Override
@@ -37,7 +41,10 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
             for (CheckUserStatus checkUserStatus : statusList) {
                 consumerTokenServices.revokeToken(checkUserStatus.getToken());
             }
-            service.delete(username);
+            //数据库
+//            service.delete(username);
+            //redis
+            redisCheckUserStatus.delete(username);
             // 将子系统的cookie删掉
             Cookie[] cookies = request.getCookies();
             if (cookies != null && cookies.length > 0) {
