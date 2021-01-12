@@ -25,7 +25,7 @@ public class RedisCheckUserStatus {
     }
 
     public void delete(String loginName) {
-        Set set = redisTemplate.keys("*" + loginName + "*");
+        Set set = redisTemplate.keys("*" + loginName);
         List<String> list = new ArrayList<>(set);
         if (list.size() != 0) {
             for (String status : list) {
