@@ -46,9 +46,6 @@ public class OauthFilter implements Filter {
                         return;
                     } else {
                         String servername = request.getServerName();
-                        PropUtils p = new PropUtils();
-                        String ssoLogout = p.getSSO_Logout();
-//                        response.sendRedirect(ssoLogout + "?returnUrl=" + URLEncoder.encode("http://" + servername + "/seeyon/main.do?method=logout"));
                         response.sendRedirect("http://" + servername + "/seeyon/main.do?method=logout");
                     }
                 }
