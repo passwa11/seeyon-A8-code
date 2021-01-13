@@ -7,6 +7,7 @@ import com.monkeyk.sos.service.RedisCheckUserStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
+import org.springframework.security.oauth2.common.OAuth2RefreshToken;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
@@ -48,16 +49,17 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
             //从redis数据库中查询
             List<CheckUserStatus> statusList = redisCheckUserStatus.findAllByLoginname(username);
             for (CheckUserStatus checkUserStatus : statusList) {
-                //              从store中删除token
+                //从store中删除token
                 OAuth2AccessToken oAuth2AccessToken = redisTokenStore.readAccessToken(checkUserStatus.getToken());
+                OAuth2RefreshToken refreshToken = redisTokenStore.readRefreshToken(checkUserStatus.getToken());
                 if (null != oAuth2AccessToken) {
+                    redisTokenStore.removeRefreshToken(refreshToken);
                     redisTokenStore.removeAccessToken(oAuth2AccessToken);
                 }
                 consumerTokenServices.revokeToken(checkUserStatus.getToken());
-
             }
             //数据库
-//            service.delete(username);
+            //service.delete(username);
             //redis
             redisCheckUserStatus.delete(username);
             // 将子系统的cookie删掉
