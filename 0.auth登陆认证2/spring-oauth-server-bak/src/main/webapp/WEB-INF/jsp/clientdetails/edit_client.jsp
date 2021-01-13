@@ -17,9 +17,6 @@
 <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10" style="background-color:rgb(255,255,255);height: 900px;">
-        <%--        <span style="float: right;margin-top: 20px;">--%>
-        <%--            <a href="/server/" class="btn btn-info">返回</a>--%>
-        <%--        </span>--%>
         <h2>注册应用</h2>
         <hr/>
         <div ng-app style="">
@@ -106,6 +103,43 @@
 
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                            <a href="javascript:void(0);" ng-click="showMore()">更多选项</a>
+                        </div>
+                    </div>
+                    <div ng-show="visible">
+                        <div class="form-group">
+                            <label for="accessTokenValidity" class="col-sm-2 control-label">token有效时间</label>
+
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="accessTokenValidity"
+                                       id="accessTokenValidity" value="${formDto.accessTokenValidity()}"
+                                       placeholder=""/>
+
+                                <p class="help-block">设定客户端的access_token的有效时间值(单位:秒),可选, 若不设定值则使用默认的有效时间值(60 * 60 * ${Math.round(formDto.accessTokenValidity/3600)},
+                                        ${Math.round(formDto.accessTokenValidity/3600)}小时);
+                                    若设定则必须是大于0的整数值</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="refreshTokenValidity" class="col-sm-2 control-label">refresh_token有效时间</label>
+
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="refreshTokenValidity"
+                                       id="refreshTokenValidity"  value="${formDto.refreshTokenValidity()}"
+                                       placeholder=""/>
+
+                                <p class="help-block">设定客户端的refresh_token的有效时间值(单位:秒),可选, 若不设定值则使用默认的有效时间值(60 * 60 * 24
+                                    * ${Math.round(formDto.refreshTokenValidity/(60 * 60 * 24))},
+                                        ${Math.round(formDto.refreshTokenValidity/(60 * 60 * 24))}天);
+                                    若设定则必须是大于0的整数值</p>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <input type="hidden" name="trusted" value="true"/>
                     <input type="hidden" name="autoApprove" value="true"/>
 

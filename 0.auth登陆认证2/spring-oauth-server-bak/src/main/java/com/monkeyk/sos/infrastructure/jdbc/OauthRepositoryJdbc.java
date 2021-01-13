@@ -61,8 +61,8 @@ public class OauthRepositoryJdbc implements OauthRepository {
 
     @Override
     public void updateClientDetails(OauthClientDetails clientDetails) {
-        final String sql = " update oauth_client_details set client_name=?,web_server_redirect_uri=?  where client_id = ? ";
-        this.jdbcTemplate.update(sql, clientDetails.getClientName(), clientDetails.getWebServerRedirectUri(), clientDetails.getClientId());
+        final String sql = " update oauth_client_details set client_name=?,web_server_redirect_uri=?,access_token_validity=?,refresh_token_validity=?  where client_id = ? ";
+        this.jdbcTemplate.update(sql, clientDetails.getClientName(), clientDetails.getWebServerRedirectUri(),clientDetails.getAccessTokenValidity(),clientDetails.getRefreshTokenValidity(), clientDetails.getClientId());
     }
 
     @Override
