@@ -6,7 +6,10 @@ import com.monkeyk.sos.service.CheckUserStatusServiceImpl;
 import com.monkeyk.sos.service.RedisCheckUserStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 import org.springframework.security.web.authentication.AbstractAuthenticationTargetUrlRequestHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -30,16 +33,28 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
 
     @Autowired
     private ConsumerTokenServices consumerTokenServices;
+    @Autowired
+    private TokenStore redisTokenStore;
 
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         String returnUrl = request.getParameter("returnUrl");
+
         if (null != authentication) {
             SOSUserDetails map = (SOSUserDetails) authentication.getPrincipal();
             String username = map.user().username();
-            List<CheckUserStatus> statusList = service.findAll(username);
+            //从数据库
+            //List<CheckUserStatus> statusList = service.findAll(username);
+            //从redis数据库中查询
+            List<CheckUserStatus> statusList = redisCheckUserStatus.findAllByLoginname(username);
             for (CheckUserStatus checkUserStatus : statusList) {
+                //              从store中删除token
+                OAuth2AccessToken oAuth2AccessToken = redisTokenStore.readAccessToken(checkUserStatus.getToken());
+                if (null != oAuth2AccessToken) {
+                    redisTokenStore.removeAccessToken(oAuth2AccessToken);
+                }
                 consumerTokenServices.revokeToken(checkUserStatus.getToken());
+
             }
             //数据库
 //            service.delete(username);

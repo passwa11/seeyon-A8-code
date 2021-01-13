@@ -21,11 +21,11 @@ public class RedisCheckUserStatus {
     public void save(CheckUserStatus status) {
         ValueOperations<String, CheckUserStatus> operations = redisTemplate.opsForValue();
         //设置缓存过期时间为30   单位：分钟　
-        operations.set(System.currentTimeMillis() + status.getLoginname(), status, 30, TimeUnit.MINUTES);
+        operations.set(status.getLoginname() + System.currentTimeMillis(), status, 30, TimeUnit.MINUTES);
     }
 
     public void delete(String loginName) {
-        Set set = redisTemplate.keys("*" + loginName);
+        Set set = redisTemplate.keys(loginName + "*");
         List<String> list = new ArrayList<>(set);
         if (list.size() != 0) {
             for (String status : list) {
@@ -35,7 +35,7 @@ public class RedisCheckUserStatus {
     }
 
     public List<CheckUserStatus> findAllByLoginname(String loginName) {
-        Set set = redisTemplate.keys("*" + loginName + "*");
+        Set set = redisTemplate.keys(loginName + "*");
         List<String> list = new ArrayList<>(set);
         List<CheckUserStatus> result = new ArrayList<>();
         if (list.size() != 0) {

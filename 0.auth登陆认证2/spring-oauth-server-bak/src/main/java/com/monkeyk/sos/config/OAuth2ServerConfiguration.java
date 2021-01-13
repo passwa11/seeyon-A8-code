@@ -154,21 +154,21 @@ public class OAuth2ServerConfiguration {
 //        /*
 //         * JDBC TokenStore
 //         */
-        @Bean
-        public TokenStore tokenStore(DataSource dataSource) {
-            return new JdbcTokenStore(dataSource);
-        }
+//        @Bean
+//        public TokenStore tokenStore(DataSource dataSource) {
+//            return new JdbcTokenStore(dataSource);
+//        }
 
         /*
          * Redis TokenStore (有Redis场景时使用)
          */
-//        @Bean
-//        public TokenStore tokenStore(RedisConnectionFactory redisConnectionFactory) {
-//            final RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
-//            //设置redis token存储中的前缀
-//            redisTokenStore.setPrefix(RESOURCE_ID);
-//            return redisTokenStore;
-//        }
+        @Bean
+        public TokenStore tokenStore(RedisConnectionFactory redisConnectionFactory) {
+            final RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
+            //设置redis token存储中的前缀
+            redisTokenStore.setPrefix(RESOURCE_ID);
+            return redisTokenStore;
+        }
 
         /**
          * 设置token存储
