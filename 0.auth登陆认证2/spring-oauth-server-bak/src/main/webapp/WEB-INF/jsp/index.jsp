@@ -88,6 +88,9 @@
                                 <a href="register_client/${cli.clientId}" class="btn btn-info btn-sm">修改</a>
                                 <a href="javascript:sureDelete('${cli.clientId}')" class="btn btn-warning btn-sm">删除</a>
                             </sec:authorize>
+                            <sec:authorize access="!hasRole('ROLE_ADMIN')">
+                                <a href="${cli.webServerRedirectUri}" class="btn btn-info btn-sm" target="_blank">进入系统</a>
+                            </sec:authorize>
                         </td>
                     </tr>
                 </c:forEach>
