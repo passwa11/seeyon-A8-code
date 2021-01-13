@@ -51,13 +51,14 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
             for (CheckUserStatus checkUserStatus : statusList) {
                 //从store中删除token
                 OAuth2AccessToken oAuth2AccessToken = redisTokenStore.readAccessToken(checkUserStatus.getToken());
-                OAuth2RefreshToken refreshToken = redisTokenStore.readRefreshToken(checkUserStatus.getToken());
                 if (null != oAuth2AccessToken) {
                     redisTokenStore.removeAccessToken(oAuth2AccessToken);
+                    OAuth2RefreshToken refreshToken = oAuth2AccessToken.getRefreshToken();
+                    if (null != refreshToken) {
+                        redisTokenStore.removeRefreshToken(refreshToken);
+                    }
                 }
-                if (null != refreshToken) {
-                    redisTokenStore.removeRefreshToken(refreshToken);
-                }
+
                 consumerTokenServices.revokeToken(checkUserStatus.getToken());
             }
             //数据库
