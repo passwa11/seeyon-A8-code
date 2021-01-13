@@ -117,11 +117,11 @@
 
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" name="accessTokenValidity"
-                                       id="accessTokenValidity"
-                                       placeholder="access_token_validity"/>
+                                       id="accessTokenValidity" value="${formDto.accessTokenValidity}"
+                                       placeholder=""/>
 
-                                <p class="help-block">设定客户端的access_token的有效时间值(单位:秒),可选, 若不设定值则使用默认的有效时间值(60 * 60 * 12,
-                                    12小时);
+                                <p class="help-block">设定客户端的access_token的有效时间值(单位:秒),可选, 若不设定值则使用默认的有效时间值(60 * 60 * ${Math.round(formDto.accessTokenValidity/3600)},
+                                        ${Math.round(formDto.accessTokenValidity/3600)}小时);
                                     若设定则必须是大于0的整数值</p>
                             </div>
                         </div>
@@ -130,12 +130,12 @@
 
                             <div class="col-sm-10">
                                 <input type="number" class="form-control" name="refreshTokenValidity"
-                                       id="refreshTokenValidity"
-                                       placeholder="refresh_token_validity"/>
+                                       id="refreshTokenValidity"  value="${formDto.refreshTokenValidity}"
+                                       placeholder=""/>
 
                                 <p class="help-block">设定客户端的refresh_token的有效时间值(单位:秒),可选, 若不设定值则使用默认的有效时间值(60 * 60 * 24
-                                    * 30,
-                                    30天);
+                                    * ${Math.round(formDto.refreshTokenValidity/(60 * 60 * 24))},
+                                        ${Math.round(formDto.refreshTokenValidity/(60 * 60 * 24))}天);
                                     若设定则必须是大于0的整数值</p>
                             </div>
                         </div>

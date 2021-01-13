@@ -34,9 +34,9 @@ public class OauthClientDetailsDto implements Serializable {
 
     private String authorities;
 
-    private Integer accessTokenValidity;
+    private Integer accessTokenValidity = 6 * 60 * 60;
 
-    private Integer refreshTokenValidity;
+    private Integer refreshTokenValidity = 60 * 60 * 24;
 
     // optional
     private String additionalInformation;
@@ -93,9 +93,9 @@ public class OauthClientDetailsDto implements Serializable {
 
         this.authorizedGrantTypes = clientDetails.authorizedGrantTypes();
 
-        this.realsecret=clientDetails.realsecret();
-        this.autoApprove=clientDetails.autoApprove();
-        this.clientName=clientDetails.clientName();
+        this.realsecret = clientDetails.realsecret();
+        this.autoApprove = clientDetails.autoApprove();
+        this.clientName = clientDetails.clientName();
     }
 
 
@@ -245,7 +245,7 @@ public class OauthClientDetailsDto implements Serializable {
         OauthClientDetails clientDetails = new OauthClientDetails()
                 .clientId(clientId)
                 // encrypted client secret
-               // .clientSecret(PasswordHandler.encode(clientSecret))
+                // .clientSecret(PasswordHandler.encode(clientSecret))
                 .clientSecret(clientSecret)
                 .resourceIds(resourceIds)
                 .authorizedGrantTypes(authorizedGrantTypes)

@@ -19,6 +19,7 @@ public class SpringOauthServerApplication {
      * @param args args
      */
     public static void main(String[] args) {
+        
         SpringApplication.run(SpringOauthServerApplication.class, args);
     }
 }
