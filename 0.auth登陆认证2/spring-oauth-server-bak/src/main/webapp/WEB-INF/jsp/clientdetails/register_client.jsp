@@ -54,19 +54,7 @@
                                         placeholder="client_secret" required="required" readonly="true"/>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="accessTokenValidity" class="col-sm-2 control-label">token有效时间</label>
 
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" name="accessTokenValidity"
-                                   id="accessTokenValidity"
-                                   placeholder="access_token_validity"/>
-
-                            <p class="help-block">设定客户端的access_token的有效时间值(单位:秒),可选, 若不设定值则使用默认的有效时间值(60 * 60 * 12,
-                                12小时);
-                                若设定则必须是大于0的整数值</p>
-                        </div>
-                    </div>
                     <div class="form-group" style="display: none;">
                         <label for="resourceIds" class="col-sm-2 control-label">resource_ids<em
                                 class="text-danger">*</em></label>
@@ -115,6 +103,41 @@
                         <div class="col-sm-10">
                             <form:input path="webServerRedirectUri" id="webServerRedirectUri" placeholder="redirect_uri"
                                         cssClass="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                            <a href="javascript:void(0);" ng-click="showMore()">更多选项</a>
+                        </div>
+                    </div>
+                    <div ng-show="visible">
+                        <div class="form-group">
+                            <label for="accessTokenValidity" class="col-sm-2 control-label">token有效时间</label>
+
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="accessTokenValidity"
+                                       id="accessTokenValidity"
+                                       placeholder="access_token_validity"/>
+
+                                <p class="help-block">设定客户端的access_token的有效时间值(单位:秒),可选, 若不设定值则使用默认的有效时间值(60 * 60 * 12,
+                                    12小时);
+                                    若设定则必须是大于0的整数值</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="refreshTokenValidity" class="col-sm-2 control-label">refresh_token有效时间</label>
+
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" name="refreshTokenValidity"
+                                       id="refreshTokenValidity"
+                                       placeholder="refresh_token_validity"/>
+
+                                <p class="help-block">设定客户端的refresh_token的有效时间值(单位:秒),可选, 若不设定值则使用默认的有效时间值(60 * 60 * 24
+                                    * 30,
+                                    30天);
+                                    若设定则必须是大于0的整数值</p>
+                            </div>
                         </div>
                     </div>
                     <input type="hidden" name="trusted" value="true"/>
