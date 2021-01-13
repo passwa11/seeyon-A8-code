@@ -53,8 +53,10 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
                 OAuth2AccessToken oAuth2AccessToken = redisTokenStore.readAccessToken(checkUserStatus.getToken());
                 OAuth2RefreshToken refreshToken = redisTokenStore.readRefreshToken(checkUserStatus.getToken());
                 if (null != oAuth2AccessToken) {
-                    redisTokenStore.removeRefreshToken(refreshToken);
                     redisTokenStore.removeAccessToken(oAuth2AccessToken);
+                }
+                if (null != refreshToken) {
+                    redisTokenStore.removeRefreshToken(refreshToken);
                 }
                 consumerTokenServices.revokeToken(checkUserStatus.getToken());
             }
