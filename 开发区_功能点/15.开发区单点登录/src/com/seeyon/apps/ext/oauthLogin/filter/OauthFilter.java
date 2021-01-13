@@ -1,21 +1,43 @@
 package com.seeyon.apps.ext.oauthLogin.filter;
 
+import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.oauthLogin.util.MapCacheUtil;
 import com.seeyon.apps.ext.oauthLogin.util.PropUtils;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.authenticate.domain.User;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class OauthFilter implements Filter {
+
+    private Log log = LogFactory.getLog(OauthFilter.class);
 
     private PropUtils propUtils = new PropUtils();
 
@@ -33,21 +55,54 @@ public class OauthFilter implements Filter {
             MultiValueMap map = new LinkedMultiValueMap();
             String t = MapCacheUtil.cache.get(user.getLoginName());
             if (null != t && !"".equals(t)) {
-                map.add(user.getLoginName(), MapCacheUtil.cache.get(user.getLoginName()));
-                String token = MapCacheUtil.cache.get(user.getLoginName());
-                ResponseEntity<String> responseEntity = rest.getForEntity(propUtils.getCheckUserStatus() + "?access_token=" + token, String.class);
-                String obj = responseEntity.getBody();
-                if ("true".equals(obj)) {
-                    filterChain.doFilter(request, response);
-                } else {
-                    String m = request.getParameter("method");
-                    if (m.equals("logout") || m.equals("index")) {
-                        filterChain.doFilter(request, response);
-                        return;
+                String m = request.getParameter("method");
+                HttpPost httpPost = null;
+                CloseableHttpResponse httpResponse = null;
+                try (CloseableHttpClient client = HttpClients.createDefault()) {
+                    //验证token 是否失效
+//                    MultiValueMap pmap = new LinkedMultiValueMap();
+//                    pmap.add("token", t);
+//                    ResponseEntity<Object> result = rest.postForEntity(propUtils.getCheckToken(), pmap, Object.class);
+                    List<NameValuePair> list = new ArrayList<NameValuePair>();
+                    list.add(new BasicNameValuePair("token", t));
+                    httpPost = new HttpPost(propUtils.getCheckToken());
+                    httpPost.setEntity(new UrlEncodedFormEntity(list));
+                    httpResponse = client.execute(httpPost);
+                    int StatusCode = httpResponse.getStatusLine().getStatusCode();
+                    if (StatusCode != HttpStatus.SC_OK) {//不等于200说明token过期了在服务端不存在了,所以调用接口报错
+                        if (m.equals("logout") || m.equals("index")) {
+                            filterChain.doFilter(request, response);
+                            return;
+                        } else {
+                            String servername = request.getServerName();
+                            response.sendRedirect("http://" + servername + "/seeyon/main.do?method=logout");
+                        }
                     } else {
-                        String servername = request.getServerName();
-                        response.sendRedirect("http://" + servername + "/seeyon/main.do?method=logout");
+                        map.add(user.getLoginName(), MapCacheUtil.cache.get(user.getLoginName()));
+                        String token = MapCacheUtil.cache.get(user.getLoginName());
+//                        ResponseEntity<String> responseEntity = rest.getForEntity(propUtils.getCheckUserStatus() + "?access_token=" + token, String.class);
+                        HttpGet httpGet = new HttpGet(propUtils.getCheckUserStatus() + "?access_token=" + token);
+                        httpResponse = client.execute(httpGet);
+                        if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                            String resultString = EntityUtils.toString(httpResponse.getEntity(), "utf-8").replaceAll(" ", "");
+                            if ("true".equals(resultString)) {
+                                filterChain.doFilter(request, response);
+                            } else {
+                                if (m.equals("logout") || m.equals("index")) {
+                                    filterChain.doFilter(request, response);
+                                    return;
+                                } else {
+                                    String servername = request.getServerName();
+                                    response.sendRedirect("http://" + servername + "/seeyon/main.do?method=logout");
+                                }
+                            }
+                        }
+
                     }
+                } catch (RestClientException e) {
+                    log.error("调用验证token 接口出错了：" + e.getMessage());
+                } finally {
+                    httpResponse.close();
                 }
             } else {
                 filterChain.doFilter(request, response);

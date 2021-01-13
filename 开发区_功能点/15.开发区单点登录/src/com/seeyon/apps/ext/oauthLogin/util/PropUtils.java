@@ -17,6 +17,7 @@ public class PropUtils {
     private String applicationUrl;
     private String SSO_Logout;
     private String checkUserStatus;
+    private String checkToken;
 
     private Properties pps;
 
@@ -36,9 +37,14 @@ public class PropUtils {
             applicationUrl = pps.getProperty("applicationUrl");
             SSO_Logout = pps.getProperty("SSO_Logout");
             checkUserStatus = pps.getProperty("Sso_check_user_status");
+            checkToken=pps.getProperty("Sso_check_token");
         } catch (Exception e) {
             System.out.println("未找到配置文件");
         }
+    }
+
+    public String getCheckToken() {
+        return checkToken;
     }
 
     public String getCheckUserStatus() {
