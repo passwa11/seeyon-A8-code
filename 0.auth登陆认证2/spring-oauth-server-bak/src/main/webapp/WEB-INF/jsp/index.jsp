@@ -80,7 +80,8 @@
                             <td width="18%">${cli.realsecret}</td>
                         </sec:authorize>
                         <sec:authorize access="!hasRole('ROLE_ADMIN')">
-                            <td width="18%">${cli.clientSecret}</td>
+<%--                            <td width="18%">${cli.clientSecret}</td>--%>
+                            <td width="18%">--</td>
                         </sec:authorize>
                         <td width="auto">${cli.webServerRedirectUri}</td>
                         <td width="15%">
