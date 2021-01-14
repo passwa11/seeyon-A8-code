@@ -125,6 +125,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -2215,8 +2217,20 @@ public class MainController extends BaseController {
             String ssoLogout = p.getSSO_Logout();
             MapCacheUtil.cache.put(user.getLoginName(), "");
 //            response.sendRedirect(ssoLogout + "?returnUrl=" + URLEncoder.encode("http://" + servername + "/seeyon/kfqLogin"));
-            response.sendRedirect(ssoLogout + "?returnUrl=" + URLEncoder.encode("http://" + servername + "/seeyon/main.do?method=index"));
-//            response.sendRedirect(SystemEnvironment.getContextPath() + destination);
+            try {
+                URL urlObj = new URL(ssoLogout);
+                HttpURLConnection oc = (HttpURLConnection) urlObj.openConnection();
+                oc.setUseCaches(false);
+                oc.setConnectTimeout(3000); // 设置超时时间
+                int status = oc.getResponseCode();// 请求状态
+                if (status != HttpStatus.SC_OK) {
+                    response.sendRedirect(SystemEnvironment.getContextPath() + destination);
+                } else {
+                    response.sendRedirect(ssoLogout + "?returnUrl=" + URLEncoder.encode("http://" + servername + "/seeyon/main.do?method=index"));
+                }
+            } catch (Exception e) {
+                response.sendRedirect(SystemEnvironment.getContextPath() + destination);
+            }
         }
 
         return null;

@@ -1,14 +1,11 @@
 package com.seeyon.apps.ext.oauthLogin.filter;
 
-import com.alibaba.fastjson.JSONObject;
 import com.seeyon.apps.ext.oauthLogin.util.MapCacheUtil;
 import com.seeyon.apps.ext.oauthLogin.util.PropUtils;
 import com.seeyon.ctp.common.AppContext;
 import com.seeyon.ctp.common.authenticate.domain.User;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -19,7 +16,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
@@ -29,11 +25,8 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class OauthFilter implements Filter {
 
@@ -67,7 +60,12 @@ public class OauthFilter implements Filter {
                     list.add(new BasicNameValuePair("token", t));
                     httpPost = new HttpPost(propUtils.getCheckToken());
                     httpPost.setEntity(new UrlEncodedFormEntity(list));
-                    httpResponse = client.execute(httpPost);
+                    try {
+                        //认证服务连接出现异常，直接方行，不走认证。
+                        httpResponse = client.execute(httpPost);
+                    } catch (IOException e) {
+                        filterChain.doFilter(request, response);
+                    }
                     int StatusCode = httpResponse.getStatusLine().getStatusCode();
                     if (StatusCode != HttpStatus.SC_OK) {//不等于200说明token过期了在服务端不存在了,所以调用接口报错
                         if (m.equals("logout") || m.equals("index")) {
@@ -102,7 +100,9 @@ public class OauthFilter implements Filter {
                 } catch (RestClientException e) {
                     log.error("调用验证token 接口出错了：" + e.getMessage());
                 } finally {
-                    httpResponse.close();
+                    if(null != httpResponse){
+                        httpResponse.close();
+                    }
                 }
             } else {
                 filterChain.doFilter(request, response);
