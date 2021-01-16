@@ -2213,6 +2213,7 @@ public class MainController extends BaseController {
             session.invalidate();
 
             String servername = request.getServerName();
+            String port = request.getServerPort() + "";
             PropUtils p = new PropUtils();
             String ssoLogout = p.getSSO_Logout();
             MapCacheUtil.cache.put(user.getLoginName(), "");
@@ -2226,7 +2227,7 @@ public class MainController extends BaseController {
                 if (status != HttpStatus.SC_OK) {
                     response.sendRedirect(SystemEnvironment.getContextPath() + destination);
                 } else {
-                    response.sendRedirect(ssoLogout + "?returnUrl=" + URLEncoder.encode("http://" + servername + "/seeyon/main.do?method=index"));
+                    response.sendRedirect(ssoLogout + "?returnUrl=" + URLEncoder.encode("http://" + servername + ":" + port + "/seeyon/main.do?method=index"));
                 }
             } catch (Exception e) {
                 response.sendRedirect(SystemEnvironment.getContextPath() + destination);

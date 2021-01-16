@@ -91,7 +91,8 @@ public class OauthFilter implements Filter {
                                     return;
                                 } else {
                                     String servername = request.getServerName();
-                                    response.sendRedirect("http://" + servername + "/seeyon/main.do?method=logout");
+                                    String port = request.getServerPort() + "";
+                                    response.sendRedirect("http://" + servername + ":" + port + "/seeyon/main.do?method=logout");
                                 }
                             }
                         }
@@ -100,7 +101,7 @@ public class OauthFilter implements Filter {
                 } catch (RestClientException e) {
                     log.error("调用验证token 接口出错了：" + e.getMessage());
                 } finally {
-                    if(null != httpResponse){
+                    if (null != httpResponse) {
                         httpResponse.close();
                     }
                 }
