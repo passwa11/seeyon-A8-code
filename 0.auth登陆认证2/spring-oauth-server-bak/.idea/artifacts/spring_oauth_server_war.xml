@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="spring-oauth-server:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>spring-oauth-server</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="server.war">
+      <element id="artifact" artifact-name="spring-oauth-server:war exploded" />
+    </root>
+  </artifact>
+</component>
