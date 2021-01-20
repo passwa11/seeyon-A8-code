@@ -149,7 +149,7 @@ public class BarCodeManagerImpl implements BarCodeManager {
     @Override
     public ResultVO getBarCodeAttachment(Map<String, Object> codeParam, Map<String, Object> customParam) throws BusinessException {
         BarCodeParamVo paramVo = new BarCodeParamVo(codeParam);
-        //logo图片
+        //logo图片 zhou
 //        paramVo.setLogoPath("F:\\Seeyon\\A87.1_sp1_07\\ApacheJetspeed\\temp\\dog.jpg");
         return getBarCodeAttachment(paramVo, customParam);
     }
