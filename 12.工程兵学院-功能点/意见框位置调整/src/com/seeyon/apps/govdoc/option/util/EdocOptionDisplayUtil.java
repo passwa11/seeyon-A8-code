@@ -454,7 +454,7 @@ public class EdocOptionDisplayUtil {
         String attribute = attitude;//getAttitude(opinion.getOpinionType(), opinion.getAttribute());
         String userName = getOpinionUserName(opinion.getCreateUserId(), opinion.getProxyName(), orgManager, displayConfig, opinion, popUserInfo, hasSignature);
         String content = opinion.getContent();
-        sb.append("<div id='" + opinion.getAffairId() + "' class='edocOpinion' style='clear:both;'>");
+        sb.append("<div id='" + opinion.getAffairId() + "' class='edocOpinion' style='clear:both;margin-top:25px;'>");
         sb.append("</div>");
         boolean newLine = displayConfig.isInscriberNewLine();
 
@@ -526,7 +526,7 @@ public class EdocOptionDisplayUtil {
         if (newLine) {//设置落款换行显示
             sb.append("</div>");
         }
-        sb.append("<br/>");//M3ywg 发现文单签批有问题，pc把字体从14Pt缩小，也会出现格式错乱。添加换行符，解决完整回复意见换个行。
+//        sb.append("<br/>");//M3ywg 发现文单签批有问题，pc把字体从14Pt缩小，也会出现格式错乱。添加换行符，解决完整回复意见换个行。
 
         return sb.toString().replaceAll("&nbsp;", "&ensp;");
     }
