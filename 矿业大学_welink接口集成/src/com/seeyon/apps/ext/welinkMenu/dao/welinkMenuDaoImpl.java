@@ -3,6 +3,7 @@ package com.seeyon.apps.ext.welinkMenu.dao;
 
 import com.seeyon.apps.ext.welinkMenu.po.WeLinkOaMapper;
 import com.seeyon.apps.ext.welinkMenu.po.WeLinkUsers;
+import com.seeyon.ctp.util.DBAgent;
 import com.seeyon.ctp.util.JDBCAgent;
 
 import java.sql.Connection;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class welinkMenuDaoImpl implements welinkMenuDao {
+
 
     @Override
     public List<String> selectUserIDByOrgId(String orgId) {
@@ -33,9 +35,15 @@ public class welinkMenuDaoImpl implements welinkMenuDao {
             e.printStackTrace();
         } finally {
             try {
-                set.close();
-                ps.close();
-                connection.close();
+                if (null != set) {
+                    set.close();
+                }
+                if (null != ps) {
+                    ps.close();
+                }
+                if (null != connection) {
+                    connection.close();
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -216,7 +224,7 @@ public class welinkMenuDaoImpl implements welinkMenuDao {
             pst.setString(1, oaMeetingId);
             resultSet = pst.executeQuery();
             while (resultSet.next()) {
-                linkOaMapper=new WeLinkOaMapper();
+                linkOaMapper = new WeLinkOaMapper();
                 linkOaMapper.setOaMeetingId(resultSet.getString(1));
                 linkOaMapper.setWelinkMeetingId(resultSet.getString(2));
             }
