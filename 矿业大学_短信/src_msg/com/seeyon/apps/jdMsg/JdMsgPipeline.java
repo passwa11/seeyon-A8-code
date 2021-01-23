@@ -67,8 +67,7 @@ public class JdMsgPipeline implements MessagePipeline {
 
     @Override
     public void invoke(Message[] messages) {
-        System.out.println("短信内容：");
-
+//        System.out.println("短信内容：");
     }
 
     @Override
