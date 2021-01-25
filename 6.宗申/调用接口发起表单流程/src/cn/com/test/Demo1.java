@@ -10,15 +10,16 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.*;
 
 public class Demo1 {
     public static void main(String[] args) {
 
         String token = TokenUtil.getToken();
         System.out.println(token);
-        String url = "http://localhost:80/seeyon/rest/flow/bpm0916";
+        String url = "http://localhost:80/seeyon/rest/flow/test";
         try (CloseableHttpClient client = HttpClients.createDefault()) {
             HttpPost hpost = new HttpPost(url);
             HttpResponse hResponse = null;
@@ -26,13 +27,27 @@ public class Demo1 {
             hpost.addHeader("token", token);
 
             Map<String, Object> data1 = new HashMap<String, Object>();
-            data1.put("templateCode", "bpm0916");
-            data1.put("senderLoginName", "yanyi");
-            data1.put("subject", "bpm集成测试六六");
+            data1.put("templateCode", "test");
+            data1.put("senderLoginName", "admin02");
+            data1.put("subject", "bpm集成测试122");
             Map<String, Object> dataMap = new HashMap<>();
-            dataMap.put("name", "11111111");
-            dataMap.put("address", "2222222");
-            data1.put("data", com.alibaba.fastjson.JSONObject.toJSONString(dataMap));
+            dataMap.put("dz", "12");
+//            dataMap.put("rq", LocalDate.now());
+            dataMap.put("name", "2");
+            List<Map<String, Object>> list = new ArrayList<>();
+            Map<String, Object> m = null;
+            m = new HashMap<>();
+            m.put("l1", "1");
+            m.put("l2", "1");
+            list.add(m);
+            m = new HashMap<>();
+            m.put("l1", "1111");
+            m.put("l2", "2222");
+            list.add(m);
+            dataMap.put("sub", list);
+            String json = com.alibaba.fastjson.JSONObject.toJSONString(dataMap);
+            System.out.println(json);
+            data1.put("data", json);
             data1.put("param", "0");
             data1.put("transfertype", "json");
             String requestParam = JSONObject.toJSONString(data1);
@@ -40,6 +55,7 @@ public class Demo1 {
             StringEntity entity = new StringEntity(requestParam, "UTF-8");
             hpost.setEntity(entity);
             hResponse = client.execute(hpost);
+            System.out.println("status:" + hResponse.getStatusLine().getStatusCode());
             if (hResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 HttpEntity httpEntity = hResponse.getEntity();
                 String result = EntityUtils.toString(httpEntity, "UTF-8");
