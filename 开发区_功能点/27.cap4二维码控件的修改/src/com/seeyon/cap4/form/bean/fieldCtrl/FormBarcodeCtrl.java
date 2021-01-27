@@ -254,6 +254,12 @@ public class FormBarcodeCtrl extends FormFieldCustomCtrl {
         //加密级别
         String encryptLevel = Strings.isBlank(encrypt)?"0":encrypt;
         String encodeLevel = "0".equals(encryptLevel)?"no":"normal";
+        //zhou----------------------------------------------------------
+        String tableName=formDataMasterBean.getFormTable().getTableName();
+        if("formmain_0540".equals(tableName)){
+            barcodeParam.put("bj",true);//宽度
+        }
+        //zhou----------------------------------------------------------
 
         //每次生成使用不同的uuid，这样避免待办打开的情况下重新生成了二维码，但是没有提交这种情况无法还原之前的二维码
         Long subreference = UUIDLong.longUUID();
