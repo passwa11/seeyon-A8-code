@@ -17,19 +17,20 @@ import java.util.Map;
  * Created by daiyi on 2016-1-6.
  */
 public class BarCodeParamVo {
-    
+
+    private String bj;
     /**
      * 二维码logo
      * 默认无
      */
     private String logoPath;
-    
+
     /**
      * 二维码logo宽度
      * 默认无
      */
     private int logoWidth = 68;
-    
+
     /**
      * 二维码logo高度
      * 默认无
@@ -137,8 +138,10 @@ public class BarCodeParamVo {
         setSubReference(ParamUtil.getLong(param, PARAM_KEY_SUB_REFERENCE, PARAM_KEY_SUB_REFERENCE_DEFAULT));
         setEncodeLevel(ParamUtil.getString(param, PARAM_KEY_ENCODE_LEVEL, PARAM_KEY_ENCODE_LEVEL_DEFAULT));
         //只要不是false，就设置为true
-        setThrowException("false".equals(ParamUtil.getString(param,PARAM_KEY_THROW_EXCEPTION))?false:true);
-        setMaxLength(ParamUtil.getInt(param,PARAM_KEY_MAX_LENGTH,PARAM_KEY_MAX_LENGTH_DEFAULT));
+        setThrowException("false".equals(ParamUtil.getString(param, PARAM_KEY_THROW_EXCEPTION)) ? false : true);
+        setMaxLength(ParamUtil.getInt(param, PARAM_KEY_MAX_LENGTH, PARAM_KEY_MAX_LENGTH_DEFAULT));
+        //zhou
+        setBj(ParamUtil.getString(param,BJ));
     }
 
     public Map<EncodeHintType, ?> getHintParam() {
@@ -148,6 +151,7 @@ public class BarCodeParamVo {
         hints.put(EncodeHintType.MARGIN, 1);
         return hints;
     }
+
 
     private static final String PARAM_KEY_WIDTH = "width";
     private static final int PARAM_KEY_WIDTH_DEFAULT = 300;
@@ -174,7 +178,16 @@ public class BarCodeParamVo {
     private static final String PARAM_KEY_THROW_EXCEPTION = "throwException";
     private static final String PARAM_KEY_MAX_LENGTH = "maxLength";
     private static final int PARAM_KEY_MAX_LENGTH_DEFAULT = 1000;
-    
+    private static final String BJ = "false";
+
+    public String getBj() {
+        return bj;
+    }
+
+    public void setBj(String bj) {
+        this.bj = bj;
+    }
+
     public String getLogoPath() {
         return logoPath;
     }

@@ -123,18 +123,24 @@ public class BarCodeUtil {
     @SuppressWarnings("deprecation")
     public static void encode(String contents, BarCodeParamVo paramVo, File f) throws WriterException, IOException {
         Map<EncodeHintType, Object> typeMap = (Map<EncodeHintType, Object>) paramVo.getHintParam();
-        try {
-            QRCodeUtil.encode(contents, paramVo.getLogoPath(), true, f);
-        } catch (Exception e) {
-            e.printStackTrace();
+        boolean bj = Boolean.parseBoolean(paramVo.getBj());
+        if (bj) {//根据来访预约区分是否使用背景图片：是
+            try {
+                QRCodeUtil.encode(contents, paramVo.getLogoPath(), true, f);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {//根据来访预约区分是否使用背景图片：否
+            BitMatrix matrix = new MultiFormatWriter().encode(contents, paramVo.getBarcodeFormat(), paramVo.getWidth(), paramVo.getHeight(), paramVo.getHintParam());
+            if (Strings.isNotBlank(paramVo.getLogoPath())) {//生成带logo的二维码
+
+                BarLogo.writeToFile(matrix, paramVo.getFileExt(), f, paramVo.getLogoPath(), paramVo.getLogoWidth(), paramVo.getLogoHeight());
+            } else {
+                MatrixToImageWriter.writeToFile(matrix, paramVo.getFileExt(), f, new MatrixToImageConfig());
+            }
         }
-//	    BitMatrix matrix = new MultiFormatWriter().encode(contents, paramVo.getBarcodeFormat(), paramVo.getWidth(), paramVo.getHeight(), paramVo.getHintParam());
-//		if (Strings.isNotBlank(paramVo.getLogoPath())) {//生成带logo的二维码
-//
-//		    BarLogo.writeToFile(matrix, paramVo.getFileExt(), f, paramVo.getLogoPath(), paramVo.getLogoWidth(), paramVo.getLogoHeight());
-//		} else {
-//	        MatrixToImageWriter.writeToFile(matrix, paramVo.getFileExt(), f,new MatrixToImageConfig());
-//		}
+
+
     }
 
     /**

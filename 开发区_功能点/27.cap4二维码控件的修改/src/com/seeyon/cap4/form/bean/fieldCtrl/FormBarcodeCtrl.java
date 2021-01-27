@@ -257,7 +257,9 @@ public class FormBarcodeCtrl extends FormFieldCustomCtrl {
         //zhou----------------------------------------------------------
         String tableName=formDataMasterBean.getFormTable().getTableName();
         if("formmain_0540".equals(tableName)){
-            barcodeParam.put("bj",true);//宽度
+            barcodeParam.put("bj","true");//背景
+        }else {
+            barcodeParam.put("bj","false");//背景
         }
         //zhou----------------------------------------------------------
 
