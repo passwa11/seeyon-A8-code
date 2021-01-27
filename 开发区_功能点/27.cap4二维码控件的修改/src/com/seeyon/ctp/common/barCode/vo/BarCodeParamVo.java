@@ -178,7 +178,7 @@ public class BarCodeParamVo {
     private static final String PARAM_KEY_THROW_EXCEPTION = "throwException";
     private static final String PARAM_KEY_MAX_LENGTH = "maxLength";
     private static final int PARAM_KEY_MAX_LENGTH_DEFAULT = 1000;
-    private static final String BJ = "false";
+    private static final String BJ = "bj";
 
     public String getBj() {
         return bj;
