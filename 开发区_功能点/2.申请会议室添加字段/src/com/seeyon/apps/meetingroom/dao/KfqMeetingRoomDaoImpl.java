@@ -20,7 +20,7 @@ public class KfqMeetingRoomDaoImpl implements KfqMeetingRoomDao {
         String sql = "select room.id,room.name,room.seatcount from meeting_room room where id not in (" +
                 " select a.meetingroomid from (select * from meeting_room_app where APPDATETIME>to_date(?,'yyyy-MM-dd') and id <>?) a " +
                 " where a.enddatetime > to_date(?,'yyyy-MM-dd HH24:mi:ss') and a.startdatetime<to_date(?,'yyyy-MM-dd HH24:mi:ss')) " +
-                " and instr(room.off_admin,?)>0";
+                " and instr(room.off_admin,?)>0 order by name asc ";
 
         List<MeetingRoom> list = new ArrayList<>();
         try {
