@@ -891,16 +891,45 @@ public class MeetingRoomController extends BaseController {
         map.put("endtime", simpleDateFormat.format(appVo.getMeetingRoomApp().getEndDatetime()));
         map.put("userId", Long.toString(user.getId()));
         List<MeetingRoom> rooms = kfqMeetingRoomManager.findAllMeetingRoom(map);
+
+        //获取被占用的会议室的id  开始
+        String sql = "select a.meetingroomid from MEETING_ROOM_APP a where a.STARTDATETIME < to_date(?,'yyyy-MM-dd HH24:mi:ss') and a.ENDDATETIME > to_date(?,'yyyy-MM-dd HH24:mi:ss')";
+        ResultSet rs = null;
+        List<Long> roomIds = new ArrayList<>();
+        try (Connection conn = JDBCAgent.getRawConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+        ) {
+            ps.setString(1, simpleDateFormat.format(appVo.getMeetingRoomApp().getStartDatetime()));
+            ps.setString(2, simpleDateFormat.format(appVo.getMeetingRoomApp().getEndDatetime()));
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                roomIds.add(rs.getLong("meetingroomid"));
+            }
+        } finally {
+            if (null != rs) {
+                rs.close();
+            }
+        }
+        //获取被占用的会议室的id  结束
+        for (int i = 0; i < rooms.size(); i++) {
+            MeetingRoom ro = rooms.get(i);
+            for (int i1 = 0; i1 < roomIds.size(); i1++) {
+                if (ro.getId().longValue() == roomIds.get(i1).longValue()) {
+                    rooms.remove(ro);
+                }
+            }
+        }
+
         if (null != kfqread && kfqread.equals("false")) {
 
             mav.addObject("rooms", rooms);
             mav.addObject("kfqread", false);
         } else {
-            String open=request.getParameter("openWin");
-            if(null != open && open.equals("1")){
+            String open = request.getParameter("openWin");
+            if (null != open && open.equals("1")) {
                 mav.addObject("rooms", rooms);
                 mav.addObject("kfqread", false);
-            }else {
+            } else {
                 mav.addObject("kfqread", true);
             }
 
@@ -1018,7 +1047,7 @@ public class MeetingRoomController extends BaseController {
                     ps.setString(1, request.getParameter("id"));
                     rs = ps.executeQuery();
                     while (rs.next()) {
-                        sb.append(rs.getString("username") + "【" + rs.getString("deptname") + "】申请了会议室：" + rs.getString("meetingname") + "，参会领导："+((rs.getString("ldname"))==null || "".equals(rs.getString("ldname"))?"无":rs.getString("ldname"))+"，时间为：" + rs.getString("startdatetime") + "至" + rs.getString("enddatetime") + "。请提前安排！");
+                        sb.append(rs.getString("username") + "【" + rs.getString("deptname") + "】申请了会议室：" + rs.getString("meetingname") + "，参会领导：" + ((rs.getString("ldname")) == null || "".equals(rs.getString("ldname")) ? "无" : rs.getString("ldname")) + "，时间为：" + rs.getString("startdatetime") + "至" + rs.getString("enddatetime") + "。请提前安排！");
                     }
                     ServiceResponse serviceResponse = messageService.sendMessageByLoginName(tokenId, loginNames, sb.toString(), urls);
                     serviceResponse.getResult();
