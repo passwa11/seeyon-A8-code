@@ -895,7 +895,7 @@ public class MeetingRoomController extends BaseController {
         //获取被占用的会议室的id  开始
         String sql = "select a.meetingroomid from MEETING_ROOM_APP a where a.STARTDATETIME < to_date(?,'yyyy-MM-dd HH24:mi:ss') and a.ENDDATETIME > to_date(?,'yyyy-MM-dd HH24:mi:ss')";
         ResultSet rs = null;
-        List<Long> roomIds = new ArrayList<>();
+        StringBuilder midStr = new StringBuilder();
         try (Connection conn = JDBCAgent.getRawConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
         ) {
@@ -903,31 +903,30 @@ public class MeetingRoomController extends BaseController {
             ps.setString(2, simpleDateFormat.format(appVo.getMeetingRoomApp().getEndDatetime()));
             rs = ps.executeQuery();
             while (rs.next()) {
-                roomIds.add(rs.getLong("meetingroomid"));
+                midStr.append(rs.getLong("meetingroomid") + ",");
             }
         } finally {
             if (null != rs) {
                 rs.close();
             }
         }
+        List<MeetingRoom> newM = new ArrayList<>();
         //获取被占用的会议室的id  结束
-        for (int i = 0; i < rooms.size(); i++) {
-            MeetingRoom ro = rooms.get(i);
-            for (int i1 = 0; i1 < roomIds.size(); i1++) {
-                if (ro.getId().longValue() == roomIds.get(i1).longValue()) {
-                    rooms.remove(ro);
-                }
+        for (MeetingRoom meetingRoom : rooms) {
+            String id = meetingRoom.getId().longValue() + "";
+            if ((midStr.toString()).indexOf(id) == -1) {
+                newM.add(meetingRoom);
             }
         }
 
         if (null != kfqread && kfqread.equals("false")) {
 
-            mav.addObject("rooms", rooms);
+            mav.addObject("rooms", newM);
             mav.addObject("kfqread", false);
         } else {
             String open = request.getParameter("openWin");
             if (null != open && open.equals("1")) {
-                mav.addObject("rooms", rooms);
+                mav.addObject("rooms", newM);
                 mav.addObject("kfqread", false);
             } else {
                 mav.addObject("kfqread", true);
