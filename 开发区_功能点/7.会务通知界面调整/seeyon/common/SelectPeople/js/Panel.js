@@ -4371,17 +4371,22 @@ function addTeamMember2List2(id, keyword) {
 
             titleText = titleText + "  ";
             // showText = showText.getLimitLength(nameMaxLength.three[0]);
-            if (membname.length < 8) {
+            if (membname.length < 16) {
                 if((member.name).indexOf("）")!=-1){
                     showText += "";
                 }
-                for (let j = 0; j < (8 - membname.length); j++) {
+                for (let j = 0; j < (16 - membname.length); j++) {
                     showText += "    ";
                 }
-
-                showText += "      ";
+                if(membname.length<=6){
+                    showText += "    ";
+                }else if(membname.length<=10 && membname.length>6){
+                    showText += "     ";
+                }else{
+                    showText += "      ";
+                }
             } else {
-                showText = membname.substring(0, 8);
+                showText = membname.substring(0, 16);
                 if(showText.indexOf("）")!=-1){
                     showText+= "      ";
                 }else {
