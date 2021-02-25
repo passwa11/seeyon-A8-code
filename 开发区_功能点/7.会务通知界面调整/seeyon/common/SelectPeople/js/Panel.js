@@ -4392,6 +4392,7 @@ function addTeamMember2List2(id, keyword) {
                 }else {
                     showText+= "..    ";
                 }
+
             }
             // showText += getNameSpace(nameMaxLength.three[0] + nameMaxSpace - showText.getBytesLength());
             if (memberType == Constants_Member) {
