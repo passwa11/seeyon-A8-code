@@ -189,7 +189,7 @@ var Constants_List1_size = {
 //~ 名字最多显示的字节数
 var nameMaxLength = {
     two: [22], //2列
-    three: [30, 36]  //3列
+    three: [16, 18]  //3列
 };
 
 //~ 名字与后面的补充信息之间的空格数
@@ -4335,8 +4335,10 @@ function addTeamMember2List2(id, keyword) {
         selectHTML.append(addTeamMemberOfType(concurentMembers, team.getRelatives(), "Relative"));
     }
 
+    //Type : Leader/主管 Member/组员 Supervisors/领导 Relative/关联人员
+    //如果type 部门，岗位，组，人员    _members 中包含list 只有一个对应的实体
+    //如果type是部门下的岗位，_members 中包含list，一个是部门对象，一个是岗位对象
     function addTeamMemberOfType(concurentMembers, _members, type) {
-        //zhou
         if (!_members) {
             return "";
         }
@@ -4364,37 +4366,14 @@ function addTeamMember2List2(id, keyword) {
             if (excludeElements.contains(memberType + memberId)) {
                 continue;
             }
-            //zhou
-            var membname=(member.name).replaceAll("(","（").replaceAll(")","）");
-            var showText = membname.getLimitLength(nameMaxLength.three[0]);
+
+            var showText = member.name.getLimitLength(nameMaxLength.three[0]);
             var titleText = member.name;
 
             titleText = titleText + "  ";
-            // showText = showText.getLimitLength(nameMaxLength.three[0]);
-            if (membname.length < 16) {
-                if((member.name).indexOf("）")!=-1){
-                    showText += "";
-                }
-                for (let j = 0; j < (16 - membname.length); j++) {
-                    showText += "    ";
-                }
-                if(membname.length<=6){
-                    showText += "    ";
-                }else if(membname.length<=10 && membname.length>6){
-                    showText += "     ";
-                }else{
-                    showText += "      ";
-                }
-            } else {
-                showText = membname.substring(0, 16);
-                if(showText.indexOf("）")!=-1){
-                    showText+= "      ";
-                }else {
-                    showText+= "..    ";
-                }
+            showText = showText.getLimitLength(nameMaxLength.three[0]);
+            showText += getNameSpace(nameMaxLength.three[0] + nameMaxSpace - showText.getBytesLength());
 
-            }
-            // showText += getNameSpace(nameMaxLength.three[0] + nameMaxSpace - showText.getBytesLength());
             if (memberType == Constants_Member) {
                 if (excludeElements.contains(Constants_Member + memberId)) {
                     continue;
@@ -4412,8 +4391,9 @@ function addTeamMember2List2(id, keyword) {
             var tempString = getNameSpace(nameMaxLength.three[0] + nameMaxSpace + nameMaxLength.three[1] + nameMaxSpace - showText.getBytesLength());
             showText += tempString;
             titleText += "  ";
-            // showText += $.i18n("selectPeople.Team" + type + "_label");
+            showText += $.i18n("selectPeople.Team" + type + "_label");
             titleText += $.i18n("selectPeople.Team" + type + "_label");
+
             if (!v3x.getBrowserFlag('selectPeopleShowType')) {
                 str.append("<div class='member-list-div' seleted='false' ondblclick=\"selectOne('" + memberType + "', this)\"  onclick=\"selectMemberFn(this,'memberDataBody')\"  value=\"").append(memberId).append("\" type=\"").append(memberType).append("\" accountId=\"").append(_accountId).append("\">").append(showText.escapeHTML(true)).append("</div>");
             } else {
@@ -4424,78 +4404,6 @@ function addTeamMember2List2(id, keyword) {
 
         return str;
     }
-
-    //Type : Leader/主管 Member/组员 Supervisors/领导 Relative/关联人员
-    //如果type 部门，岗位，组，人员    _members 中包含list 只有一个对应的实体
-    //如果type是部门下的岗位，_members 中包含list，一个是部门对象，一个是岗位对象
-    // function addTeamMemberOfType(concurentMembers, _members, type) {
-    //     //zhou
-    //     debugger;
-    //     if (!_members) {
-    //         return "";
-    //     }
-    //
-    //     var loadAccountData = new Array();
-    //
-    //     var str = new StringBuffer();
-    //     for (var i = 0; i < _members.size(); i++) {
-    //         var _accountId;
-    //         var member = _members.get(i);
-    //         var memberType = member.type;
-    //         var memberIdStr = member.id;
-    //         var memberId = memberIdStr;
-    //         if (memberId.indexOf("_") >= 0) {
-    //             var index0 = memberIdStr.indexOf("_");
-    //             _accountId = memberIdStr.substr(0, index0);
-    //             memberId = memberIdStr.substr(index0 + 1);
-    //
-    //             if (!loadAccountData.contains(_accountId) && currentAccountId != _accountId) {
-    //                 loadAccountData.push(_accountId);
-    //                 topWindow.initOrgModel(_accountId, currentMemberId, extParameters);
-    //             }
-    //         }
-    //
-    //         if (excludeElements.contains(memberType + memberId)) {
-    //             continue;
-    //         }
-    //
-    //         var showText = member.name.getLimitLength(nameMaxLength.three[0]);
-    //         var titleText = member.name;
-    //
-    //         titleText = titleText + "  ";
-    //         showText = showText.getLimitLength(nameMaxLength.three[0]);
-    //         showText += getNameSpace(nameMaxLength.three[0] + nameMaxSpace - showText.getBytesLength());
-    //
-    //         if (memberType == Constants_Member) {
-    //             if (excludeElements.contains(Constants_Member + memberId)) {
-    //                 continue;
-    //             }
-    //             var teamMember = topWindow.getObject(Constants_Member, memberId, _accountId);
-    //             if (teamMember && teamMember.departmentId) {
-    //                 var memberDept = topWindow.getObject(Constants_Department, teamMember.departmentId, _accountId);
-    //                 if (memberDept) {
-    //                     showText += memberDept.name;
-    //                     titleText += memberDept.name;
-    //                 }
-    //             }
-    //         }
-    //
-    //         var tempString = getNameSpace(nameMaxLength.three[0] + nameMaxSpace + nameMaxLength.three[1] + nameMaxSpace - showText.getBytesLength());
-    //         showText += tempString;
-    //         titleText += "  ";
-    //         showText += $.i18n("selectPeople.Team" + type + "_label");
-    //         titleText += $.i18n("selectPeople.Team" + type + "_label");
-    //
-    //         if (!v3x.getBrowserFlag('selectPeopleShowType')) {
-    //             str.append("<div class='member-list-div' seleted='false' ondblclick=\"selectOne('" + memberType + "', this)\"  onclick=\"selectMemberFn(this,'memberDataBody')\"  value=\"").append(memberId).append("\" type=\"").append(memberType).append("\" accountId=\"").append(_accountId).append("\">").append(showText.escapeHTML(true)).append("</div>");
-    //         } else {
-    //             str.append("<option value=\"").append(memberId).append("\" ondblclick=\"selectOne('" + memberType + "', this)\" title=\"").append(titleText.escapeHTML(true)).append("\" type=\"").append(memberType).append("\" accountId=\"").append(_accountId).append("\" class='TeamMember_" + type + "'>").append(showText.escapeHTML(true)).append("</option>");
-    //         }
-    //
-    //     }
-    //
-    //     return str;
-    // }
 
     selectHTML.append(memberDataBody_div_end);
 
@@ -4606,15 +4514,15 @@ function dbClickDeptSelectedMember() {
             let n_leaders = new ArrayList();
             for (var i = 0; i < leaders.size(); i++) {
                 let obj = leaders.get(i);
-                if (obj['id'].indexOf("_") != -1) {
+                if(obj['id'].indexOf("_")!=-1){
                     let o = obj['id'].split("_")[1];
                     obj['id'] = o;
                     n_leaders.add(obj);
                 }
             }
-            if (n_leaders.size() > 0) {
+            if(n_leaders.size()>0){
                 selectedListMemberData(n_leaders);
-            } else {
+            }else{
                 selectedListMemberData(leaders);
             }
 
@@ -4626,15 +4534,15 @@ function dbClickDeptSelectedMember() {
             let n_member = new ArrayList();
             for (var i = 0; i < mem.size(); i++) {
                 let obj = mem.get(i);
-                if (obj['id'].indexOf("_") != -1) {
+                if(obj['id'].indexOf("_")!=-1) {
                     let o = obj['id'].split("_")[1];
                     obj['id'] = o;
                     n_member.add(obj);
                 }
             }
-            if (n_member.size() > 0) {
+            if(n_member.size()>0){
                 selectedListMemberData(n_member);
-            } else {
+            }else {
                 selectedListMemberData(mem);
             }
         }
