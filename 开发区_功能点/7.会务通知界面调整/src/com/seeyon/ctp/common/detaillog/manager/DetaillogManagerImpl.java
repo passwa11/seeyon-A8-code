@@ -290,54 +290,68 @@ public class DetaillogManagerImpl implements DetaillogManager {
         affairVOList = ctpAffair2ctpAffairVO(affairList, affairVOList);
         List<FlowNodeDetailAffairVO> list = commonCtpAffairVO(affairVOList);
 //        zhou
+//        List<Map<String, Object>> mapList = getUnitData();
+//        Map params = new HashMap();
+//        params.put("summaryid", query.get("objectId").toString());
+//        List<KfqInform> informList = informManager.findInformbySummaryid(params);
+//        if(informList.size()>0){
+//            Connection connection = null;
+//            List<FlowNodeDetailAffairVO> newList = new ArrayList<>();
+//            if (informList.size() > 0) {
+//                try {
+//                    connection = JDBCAgent.getRawConnection();
+//                    for (int i = 0; i < informList.size(); i++) {
+//                        String userId = informList.get(i).getMemberid();
+//                        for (FlowNodeDetailAffairVO vo : list) {
+//                            if (Long.toString(vo.getMemberId()).equals(userId)) {
+//                                String deptname = getParentDept(userId, connection, mapList);
+//                                vo.setDeptName(deptname);
+//                                newList.add(vo);
+//                            }
+//                        }
+//                    }
+//                } catch (Exception e) {
+//                }
+//            } else {
+//                try {
+//                    connection = JDBCAgent.getRawConnection();
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
+//                for (FlowNodeDetailAffairVO vo : list) {
+//                    String deptname = getParentDept(Long.toString(vo.getMemberId()), connection, mapList);
+//                    vo.setDeptName(deptname);
+//                    newList.add(vo);
+//                }
+//            }
+//            if (null != connection) {
+//                try {
+//                    connection.close();
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            flipInfo.setData(newList);
+////        zhou
+//        }else {
+//            flipInfo.setData(list);
+//        }
+        List<FlowNodeDetailAffairVO> newList = new ArrayList<>();
         List<Map<String, Object>> mapList = getUnitData();
-        Map params = new HashMap();
-        params.put("summaryid", query.get("objectId").toString());
-        List<KfqInform> informList = informManager.findInformbySummaryid(params);
-        if(informList.size()>0){
-            Connection connection = null;
-            List<FlowNodeDetailAffairVO> newList = new ArrayList<>();
-            if (informList.size() > 0) {
-                try {
-                    connection = JDBCAgent.getRawConnection();
-                    for (int i = 0; i < informList.size(); i++) {
-                        String userId = informList.get(i).getMemberid();
-                        for (FlowNodeDetailAffairVO vo : list) {
-                            if (Long.toString(vo.getMemberId()).equals(userId)) {
-                                String deptname = getParentDept(userId, connection, mapList);
-                                vo.setDeptName(deptname);
-                                newList.add(vo);
-                            }
-                        }
-                    }
-                } catch (Exception e) {
-                }
-            } else {
-                try {
-                    connection = JDBCAgent.getRawConnection();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                for (FlowNodeDetailAffairVO vo : list) {
-                    String deptname = getParentDept(Long.toString(vo.getMemberId()), connection, mapList);
-                    vo.setDeptName(deptname);
-                    newList.add(vo);
-                }
+
+        try (Connection connection = JDBCAgent.getRawConnection();) {
+            for (FlowNodeDetailAffairVO vo : list) {
+//            if (Long.toString(vo.getMemberId()).equals()) {
+                String deptname = getParentDept(vo.getMemberId().toString(), connection, mapList);
+                vo.setDeptName(deptname);
+                newList.add(vo);
+//            }
             }
-            if (null != connection) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            flipInfo.setData(newList);
-//        zhou
-        }else {
-            flipInfo.setData(list);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         flipInfo.setNeedTotal(false);
-
+        flipInfo.setData(newList);
 //        if(list != null && list.size() > 0){
 //        	DBAgent.memoryPaging(list, flipInfo);
 //        }
