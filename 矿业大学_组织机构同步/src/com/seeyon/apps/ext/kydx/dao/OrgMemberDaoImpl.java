@@ -51,7 +51,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
 
     @Override
     public List<OrgMember> queryMiddleMember() {
-        String sql = "select memberid,jzgid,yrfsdm from m_org_member where 1=1";
+        String sql = "select memberid,gh,yrfsdm from m_org_member where 1=1";
         Connection connection = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -64,7 +64,7 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
             while (rs.next()) {
                 orgMember = new OrgMember();
                 orgMember.setId(rs.getString("memberid"));
-                orgMember.setLoginname(rs.getString("jzgid"));
+                orgMember.setLoginname(rs.getString("gh"));
                 orgMember.setYrfsdm(rs.getString("yrfsdm"));
                 list.add(orgMember);
             }
@@ -229,7 +229,6 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                         Map updatememberMap = new HashMap<>();
                         updatememberMap.put("id", memberJson.getString("id"));
                         updatememberMap.put("orgAccountId", member.getOrgAccountId());
-                        updatememberMap.put("orgDepartmentId", member.getOrgDepartmentId());
                         updatememberMap.put("telNumber", member.getPhone());
                         updatememberMap.put("officeNum", member.getTel());
                         updatememberMap.put("emailAddress", null == member.getEmail() ? "" : member.getEmail());
@@ -389,7 +388,6 @@ public class OrgMemberDaoImpl implements OrgMemberDao {
                                 } else {
                                     DBAgent.save(orgUser);
                                 }
-
 
                                 String sql = "update m_org_member set ";
                                 if (member.getName() != null && !"".equals(member.getName())) {
