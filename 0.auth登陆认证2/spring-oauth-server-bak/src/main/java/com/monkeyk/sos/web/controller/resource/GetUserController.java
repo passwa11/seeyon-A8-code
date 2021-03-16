@@ -21,7 +21,6 @@ public class GetUserController {
     @ResponseBody
     public UserJsonDto queryByUsername(String name, HttpServletRequest request) {
         User user = userService.findByUsername(name);
-
         UserJsonDto jsonDto = new UserJsonDto();
         if (null != user) {
             jsonDto.setUsername(user.username());
