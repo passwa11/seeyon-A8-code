@@ -1,5 +1,6 @@
 package com.monkeyk.sos.service;
 
+import com.monkeyk.sos.domain.user.User;
 import com.monkeyk.sos.service.dto.UserFormDto;
 import com.monkeyk.sos.service.dto.UserJsonDto;
 import com.monkeyk.sos.service.dto.UserOverviewDto;
@@ -17,4 +18,7 @@ public interface UserService extends UserDetailsService {
     boolean isExistedUsername(String username);
 
     String saveUser(UserFormDto formDto);
+
+    User findByUsername(String username);
+
 }
